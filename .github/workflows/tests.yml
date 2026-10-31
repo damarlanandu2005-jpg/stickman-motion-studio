@@ -1,7 +1,7 @@
 name: tests
 on:
   push:
-    branches: [main, pipeline-foundation]
+    branches: [main, pipeline-foundation, comfyui-integration]
   pull_request:
     branches: [main]
 jobs:
