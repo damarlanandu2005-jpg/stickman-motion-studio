@@ -1,0 +1,15 @@
+[submodule "external/ComfyUI"]
+	path = external/ComfyUI
+	url = https://github.com/comfyanonymous/ComfyUI.git
+[submodule "external/2d-character-pipeline"]
+	path = external/2d-character-pipeline
+	url = https://github.com/mor-o/comfyui-2d-character-pipeline.git
+[submodule "external/OpenScript"]
+	path = external/OpenScript
+	url = https://github.com/ishan-parihar/openscript.git
+[submodule "external/4brospix"]
+	path = external/4brospix
+	url = https://github.com/koo-bros/4brospix.git
+[submodule "external/automated-video-generator"]
+	path = external/automated-video-generator
+	url = https://github.com/itsPremkumar/Automated-Video-Generator.git
