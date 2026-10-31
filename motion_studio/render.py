@@ -1,8 +1,9 @@
 from __future__ import annotations
 import json,shutil,subprocess
 from pathlib import Path
-
 def render_project(project: Path,output_name="final.mp4"):
+    ffmpeg=shutil.which("ffmpeg")
+    if not ffmpeg: raise RuntimeError("FFmpeg not found on PATH. Install a prebuilt FFmpeg release.")
     shots=json.loads((project/"storyboard"/"shots.json").read_text(encoding="utf-8")).get("shots",[])
     if not shots: raise RuntimeError("No storyboard shots found.")
     clips=[]
@@ -13,8 +14,6 @@ def render_project(project: Path,output_name="final.mp4"):
         clip=(project/relative).resolve()
         if not clip.is_file() or clip.suffix.lower()!=".mp4": raise RuntimeError(f"Missing animated MP4 for {shot.get('id')}: {clip}")
         clips.append(clip)
-    ffmpeg=shutil.which("ffmpeg")
-    if not ffmpeg: raise RuntimeError("FFmpeg not found on PATH. Install a prebuilt FFmpeg release.")
     work=project/".studio"/"render"; work.mkdir(parents=True,exist_ok=True)
     concat=work/"concat.txt"
     concat.write_text("\n".join("file '"+str(p).replace("'","'\\''")+"'" for p in clips)+"\n",encoding="utf-8")
