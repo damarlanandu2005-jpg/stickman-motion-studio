@@ -1,0 +1,4 @@
+{
+ "$schema":"https://json-schema.org/draft/2020-12/schema","type":"object","required":["project_id","fps","shots"],
+ "properties":{"project_id":{"type":"string"},"fps":{"type":"integer","minimum":1},"shots":{"type":"array","items":{"type":"object","required":["shot_id","clip_path","approved"],"properties":{"shot_id":{"type":"string"},"clip_path":{"type":"string"},"approved":{"type":"boolean"}}}}}
+}

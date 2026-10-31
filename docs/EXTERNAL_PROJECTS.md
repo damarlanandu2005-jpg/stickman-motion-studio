@@ -1,52 +1,16 @@
-# External project integrations
+# External projects
 
-This repository integrates selected open-source projects as Git submodules. They remain separate upstream repositories; this project owns only the adapters, orchestration, configuration, and integration tests.
+External repositories are research candidates and optional tools, not runtime dependencies. Code, model weights, LoRAs, datasets, fonts, music and SFX retain their own licences and terms.
 
-## Add submodules (Windows PowerShell)
-
-From the root of this repository, run:
-
-```powershell
-powershell -ExecutionPolicy Bypass -File .\scripts\add-submodules.ps1
-```
-
-Then review the changes and commit them:
-
-```powershell
-git status
-git add .gitmodules external
-git commit -m "Add external production pipeline submodules"
-git push
-```
-
-For future fresh clones:
-
-```powershell
-git clone https://github.com/damarlanandu2005-jpg/stickman-motion-studio.git
-cd stickman-motion-studio
-git submodule update --init --recursive
-```
-
-## Selected submodules
-
-| Path | Upstream | Intended role |
+| Project | Intended use | Decision |
 |---|---|---|
-| `external/ComfyUI` | https://github.com/comfyanonymous/ComfyUI | Image generation and compatible AI workflows |
-| `external/2d-character-pipeline` | https://github.com/mor-o/comfyui-2d-character-pipeline | Experimental 2D character workflow; verify GPU memory needs |
-| `external/OpenScript` | https://github.com/ishan-parihar/openscript | Evaluate reusable editing/timeline components |
-| `external/4brospix` | https://github.com/koo-bros/4brospix | Experimental pipeline architecture reference |
-| `external/automated-video-generator` | https://github.com/itsPremkumar/Automated-Video-Generator | Evaluate reusable narration/caption/render components |
+| ComfyUI | Image generation/workflow execution | Optional core engine |
+| comfyui-2d-character-pipeline | Layered sprite sheets | Research only; upstream documents 24 GB VRAM, 32 GB RAM and ~120 GB disk |
+| 4brospix | Manifest-driven animation workflow ideas | Study architecture; upstream labels experimental |
+| OpenScript | Raw-footage editing | Optional; not an animation generator |
+| Automated Video Generator | TTS/Remotion assembly ideas | Reuse concepts selectively; stock-footage-first output is not our target |
 
-## Tools deliberately not cloned as source submodules
+## OpenScript nested dependency
+The current checkout references third_party/PupCaps as a gitlink but has no .gitmodules mapping. Recursive initialization therefore fails. OpenScript is optional; do not invent a URL or modify upstream files to unblock the core pipeline.
 
-Blender and FFmpeg are large standalone applications/toolchains. We should install compatible prebuilt releases on the workstation/Kaggle environment and invoke them through adapters, rather than embedding their entire source trees in this repository.
-
-- Blender: https://www.blender.org/
-- FFmpeg: https://ffmpeg.org/
-
-## Important
-
-- Submodules pin an upstream commit; updating them is an explicit operation.
-- Review each upstream license and any model/workflow licenses before commercial use.
-- Do not put model weights, generated videos, datasets, API keys, or large assets in Git.
-- The old `yt-auto` repository is not referenced or modified by this setup.
+Install Blender and FFmpeg from official prebuilt distributions. Pin submodule revisions when integrating. Never commit credentials, model weights or generated production media.

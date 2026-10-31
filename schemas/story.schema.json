@@ -1,0 +1,9 @@
+{
+ "$schema":"https://json-schema.org/draft/2020-12/schema","type":"object",
+ "required":["project_id","title","language","target","beats"],
+ "properties":{
+  "project_id":{"type":"string"},"title":{"type":"string","minLength":1},"language":{"type":"string"},
+  "target":{"type":"object","required":["aspect_ratio","fps"],"properties":{"aspect_ratio":{"enum":["9:16","16:9","1:1"]},"fps":{"type":"integer","minimum":1}}},
+  "beats":{"type":"array","minItems":1,"items":{"type":"object","required":["id","narration","duration_seconds","shot_ids"],"properties":{"id":{"type":"string"},"narration":{"type":"string","minLength":1},"duration_seconds":{"type":"number","exclusiveMinimum":0},"shot_ids":{"type":"array","minItems":1,"items":{"type":"string"}}}}}
+ }
+}

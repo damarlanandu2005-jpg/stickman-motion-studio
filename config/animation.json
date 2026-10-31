@@ -1,0 +1,11 @@
+{
+ "preferred_methods":["2d_rig","2.5d_layers","keyframed_pose","selective_image_to_video"],
+ "fps":30,"min_motion_checks_per_shot":2,"require_motion_evidence":true,
+ "allow_still_image_fallback":false,"max_ai_video_retry_attempts":2,
+ "methods":{
+  "2d_rig":"Layered artwork and reusable character rig for body/limb motion.",
+  "2.5d_layers":"Separate foreground, character and background; animate camera/parallax.",
+  "keyframed_pose":"Approved key poses for expressive moments and major state changes.",
+  "selective_image_to_video":"Use only after temporal consistency and quality review."
+ }
+}

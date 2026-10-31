@@ -1,0 +1,5 @@
+{
+ "$schema":"https://json-schema.org/draft/2020-12/schema","type":"object",
+ "required":["asset_id","kind","path","status","source"],
+ "properties":{"asset_id":{"type":"string"},"kind":{"enum":["character_reference","pose","background","prop","layer","animation_clip","narration","music","sfx","caption"]},"path":{"type":"string"},"status":{"enum":["generated","needs_review","approved","rejected"]},"source":{"type":"object","properties":{"tool":{"type":"string"},"model":{"type":"string"},"seed":{"type":["integer","null"]},"license":{"type":"string"}}}}
+}

@@ -1,0 +1,9 @@
+{
+ "style_name":"Stickman Thoughts clean explainer cartoon",
+ "render_style":"flat 2D vector/cartoon with optional 2.5D depth",
+ "outline":"thick dark-grey or black",
+ "palette":"soft muted colours with restrained accents",
+ "character":"simple white round head, dark outline, expressive readable poses",
+ "consistency_rules":["preserve head shape and body proportions","keep costume stable within a scene","use approved references for every shot","make action readable on a phone"],
+ "avoid":["static slideshow presented as animation","unmotivated camera movement","unrequested baked-in text","gore by default"]
+}

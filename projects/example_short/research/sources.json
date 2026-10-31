@@ -1,0 +1,4 @@
+{
+ "sources":[{"id":"src_001","title":"NASA Space Place — What Is Sound?","url":"https://spaceplace.nasa.gov/sound/en/","publisher":"NASA","accessed_at":"","notes":"Verify exact wording and current page before production."}],
+ "claims":[{"id":"claim_001","text":"Sound needs a medium to travel through.","source_ids":["src_001"],"status":"needs_verification"}]
+}

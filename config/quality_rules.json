@@ -1,0 +1,5 @@
+{
+ "human_approval_required":true,"no_gore":true,"reject_static_slideshow":true,
+ "checks":["claims_have_sources","character_identity_consistent","shot_action_matches_narration","motion_is_visible","no_unapproved_text_or_watermarks","audio_clear_and_not_clipped","captions_match_narration","export_is_playable"],
+ "severity":{"blocker":"unsafe, misleading, missing required asset or invalid export","major":"story/action mismatch, broken identity or absent intended motion","minor":"small prop/timing issue that does not change meaning"}
+}

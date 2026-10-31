@@ -1,0 +1,2 @@
+# Core uses Python standard library. Optional schema validation:
+jsonschema>=4.21

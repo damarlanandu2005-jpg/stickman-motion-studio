@@ -1,0 +1,9 @@
+{
+ "project_id":"example_short","title":"Why is space silent?","language":"en",
+ "target":{"aspect_ratio":"9:16","fps":30},
+ "beats":[
+  {"id":"beat_001","narration":"Imagine floating beside a spaceship. An explosion happens nearby. Why might you hear nothing?","duration_seconds":7,"shot_ids":["shot_001","shot_002"]},
+  {"id":"beat_002","narration":"Sound needs something to travel through. Space is almost a vacuum.","duration_seconds":8,"shot_ids":["shot_003"]},
+  {"id":"beat_003","narration":"The explosion can be spectacular to see, but silent to an astronaut outside the ship.","duration_seconds":8,"shot_ids":["shot_004"]}
+ ]
+}

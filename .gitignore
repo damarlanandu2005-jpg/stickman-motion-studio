@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.env
+.env.*
+!.env.example
+models/
+checkpoints/
+downloads/
+cache/
+projects/*/artwork/generated/
+projects/*/animation/work/
+projects/*/renders/*
+!projects/*/renders/.gitkeep

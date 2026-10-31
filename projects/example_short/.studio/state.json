@@ -1,0 +1,10 @@
+{
+ "project_id":"example_short","updated_at":null,
+ "stages":{
+  "research":{"status":"pending","attempts":0},"script":{"status":"pending","attempts":0},
+  "visual_direction":{"status":"pending","attempts":0},"artwork":{"status":"pending","attempts":0},
+  "animation":{"status":"pending","attempts":0},"audio":{"status":"pending","attempts":0},
+  "render":{"status":"pending","attempts":0},"quality_control":{"status":"pending","attempts":0},
+  "human_approval":{"status":"pending","attempts":0}
+ }
+}

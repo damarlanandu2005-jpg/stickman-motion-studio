@@ -1,0 +1,8 @@
+{
+ "project_id":"example_short","shots":[
+  {"id":"shot_001","beat_id":"beat_001","narration":"Imagine floating beside a spaceship.","duration_seconds":3.5,"environment":"Earth orbit","character_action":"Astronaut stickman floats beside spacecraft and turns toward camera.","camera":"Slow push-in with subtle orbital parallax.","motion_method":"2.5d_layers","required_assets":["astronaut_reference","spaceship_layers","earth_background"],"approval":"draft"},
+  {"id":"shot_002","beat_id":"beat_001","narration":"An explosion happens nearby. Why might you hear nothing?","duration_seconds":3.5,"environment":"Earth orbit","character_action":"Distant non-graphic flash; astronaut reacts and raises one hand.","camera":"Wide shot with brief light pulse.","motion_method":"keyframed_pose","required_assets":["astronaut_reaction_pose","space_flash_effect"],"approval":"draft"},
+  {"id":"shot_003","beat_id":"beat_002","narration":"Sound needs something to travel through. Space is almost a vacuum.","duration_seconds":8,"environment":"Educational space cross-section","character_action":"Stickman points to animated wave diagram.","camera":"Side view; wave lines stop at vacuum boundary.","motion_method":"2d_rig","required_assets":["stickman_pointing_pose","wave_diagram"],"approval":"draft"},
+  {"id":"shot_004","beat_id":"beat_003","narration":"The explosion can be spectacular to see, but silent to an astronaut outside the ship.","duration_seconds":8,"environment":"Earth orbit","character_action":"Astronaut looks toward flash then gestures toward helmet.","camera":"Medium close-up with slow drift.","motion_method":"2.5d_layers","required_assets":["astronaut_reference","spaceship_layers","space_flash_effect"],"approval":"draft"}
+ ]
+}

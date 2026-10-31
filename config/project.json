@@ -1,0 +1,6 @@
+{
+ "project_name":"Stickman Thoughts","language":"en","target_platform":"youtube",
+ "default_aspect_ratio":"9:16","default_fps":30,"default_resolution":[1080,1920],
+ "target_short_seconds":[35,58],"human_approval_required":true,"no_gore":true,
+ "render":{"container":"mp4","video_codec":"libx264","audio_codec":"aac","pixel_format":"yuv420p"}
+}

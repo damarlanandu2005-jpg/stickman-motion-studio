@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+[project]
+name = "stickman-motion-studio"
+version = "0.1.0"
+description = "Local-first orchestration for animated Stickman Thoughts videos"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+dependencies = []
+[project.optional-dependencies]
+dev = ["jsonschema>=4.21"]
+[project.scripts]
+stickman-studio = "motion_studio.cli:main"
+[tool.setuptools.packages.find]
+include = ["motion_studio*"]

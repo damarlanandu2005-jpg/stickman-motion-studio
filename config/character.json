@@ -1,0 +1,8 @@
+{
+ "character_id":"stickman_main","display_name":"Main Stickman",
+ "reference_directory":"character_library/references",
+ "default_costume":"simple_white_stickman",
+ "allowed_variations":["astronaut","explorer","historical_costume","scientist"],
+ "identity_anchors":["round white head","thick dark outline","simple expressive face"],
+ "require_reference_image":true,"require_pose_sheet_for_rigged_animation":true
+}

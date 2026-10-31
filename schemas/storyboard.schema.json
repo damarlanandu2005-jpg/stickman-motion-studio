@@ -1,0 +1,4 @@
+{
+ "$schema":"https://json-schema.org/draft/2020-12/schema","type":"object","required":["project_id","shots"],
+ "properties":{"project_id":{"type":"string"},"shots":{"type":"array","items":{"type":"object","required":["id","beat_id","narration","duration_seconds","environment","character_action","camera","motion_method","required_assets"],"properties":{"id":{"type":"string"},"beat_id":{"type":"string"},"narration":{"type":"string"},"duration_seconds":{"type":"number","exclusiveMinimum":0},"environment":{"type":"string"},"character_action":{"type":"string"},"camera":{"type":"string"},"motion_method":{"enum":["2d_rig","2.5d_layers","keyframed_pose","selective_image_to_video"]},"required_assets":{"type":"array","items":{"type":"string"}},"approval":{"enum":["draft","needs_review","approved","rejected"]}}}}}
+}
