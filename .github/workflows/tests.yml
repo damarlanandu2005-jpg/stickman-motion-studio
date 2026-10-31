@@ -69,6 +69,26 @@ jobs:
               json.dumps(metadata, indent=2) + "\n", encoding="utf-8"
           )
           print(f"Prepared private Kaggle notebook: {metadata['id']}")
+
+          comfyui_metadata = {
+              "id": f"{username}/stickman-motion-studio-comfyui-smoke-test",
+              "title": "Stickman Motion Studio ComfyUI Server Smoke Test",
+              "code_file": "comfyui_smoke_test.ipynb",
+              "language": "python",
+              "kernel_type": "notebook",
+              "is_private": "true",
+              "enable_gpu": "true",
+              "enable_internet": "true",
+              "machine_shape": "NvidiaTeslaT4",
+              "dataset_sources": [],
+              "competition_sources": [],
+              "kernel_sources": [],
+              "model_sources": []
+          }
+          Path("kaggle/comfyui-smoke-test/kernel-metadata.json").write_text(
+              json.dumps(comfyui_metadata, indent=2) + "\\n", encoding="utf-8"
+          )
+          print(f"Prepared private Kaggle notebook: {comfyui_metadata['id']}")
           PY
 
       - name: Configure legacy Kaggle JSON credentials
@@ -97,3 +117,6 @@ jobs:
 
       - name: Submit notebook to Kaggle
         run: kaggle kernels push --path kaggle/gpu-smoke-test --timeout 3600
+
+      - name: Submit ComfyUI server smoke test to Kaggle
+        run: kaggle kernels push --path kaggle/comfyui-smoke-test --timeout 3600
