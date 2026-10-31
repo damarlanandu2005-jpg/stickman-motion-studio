@@ -1,0 +1,12 @@
+{
+  "base_url": "http://127.0.0.1:8188",
+  "request_timeout_seconds": 30,
+  "job_timeout_seconds": 900,
+  "poll_interval_seconds": 2,
+  "workflow_format": "comfyui_api",
+  "notes": [
+    "Export workflows from ComfyUI using Save (API Format).",
+    "Model checkpoints and custom nodes must be installed in the ComfyUI environment.",
+    "Do not expose an unauthenticated ComfyUI server to the public internet."
+  ]
+}
