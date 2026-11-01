@@ -11,7 +11,9 @@ class ScriptWriterRunnerTests(unittest.TestCase):
     def test_output_pattern_matches_nested_report_and_result_files(self):
         pattern = re.compile(PROFILES["script-writer"]["pattern"])
         for name in (
-            "benchmark_report.json",\n            "fact_check_report.json",\n            "stickman_script_benchmark/revised_script.json",
+            "benchmark_report.json",
+            "fact_check_report.json",
+            "stickman_script_benchmark/revised_script.json",
             "stickman_script_benchmark/benchmark_results.json",
             "stickman_script_benchmark/model_comparison.csv",
             "stickman_script_benchmark/Qwen3-4B-Instruct-2507.json",
@@ -38,7 +40,9 @@ class ScriptWriterRunnerTests(unittest.TestCase):
                     "json_file": "Qwen3-4B-Instruct-2507.json",
                 }],
             }
-            fact_check = {**identity, "status": "needs_human_review", "first_pass": [], "second_pass": [], "unresolved_claims": [], "approved_script_file": None}\n            (root / "fact_check_report.json").write_text(json.dumps(fact_check), encoding="utf-8")\n            (root / "benchmark_report.json").write_text(json.dumps(report), encoding="utf-8")
+            fact_check = {**identity, "status": "needs_human_review", "first_pass": [], "second_pass": [], "unresolved_claims": [], "approved_script_file": None}
+            (root / "fact_check_report.json").write_text(json.dumps(fact_check), encoding="utf-8")
+            (root / "benchmark_report.json").write_text(json.dumps(report), encoding="utf-8")
             result = validate_script_writer_output(root, identity)
             self.assertTrue(result["ok"], result["failures"])
 
