@@ -2,7 +2,7 @@ import unittest
 from unittest.mock import patch
 
 from motion_studio.factcheck import (
-    Evidence, WikipediaSearch, build_verification_prompt, retrieve_evidence,
+    Evidence, WikipediaSearch, build_verification_prompt, extract_json_object, retrieve_evidence,
     verify_claim, fact_check_and_rewrite,
 )
 
@@ -22,6 +22,16 @@ class FactCheckTests(unittest.TestCase):
                 raise RuntimeError("offline")
         found = retrieve_evidence("Sun", [Provider([evidence]), Broken(), Provider([evidence])])
         self.assertEqual(found, [evidence])
+
+
+    def test_extract_json_object_handles_fences_and_braces_inside_strings(self):
+        parsed = extract_json_object('prefix ```json\\n{"text":"a } brace", "nested":{"ok":true}}\\n```')
+        self.assertEqual(parsed["text"], "a } brace")
+        self.assertTrue(parsed["nested"]["ok"])
+
+    def test_extract_json_object_rejects_truncated_output(self):
+        with self.assertRaises(ValueError):
+            extract_json_object('{"text":"unfinished"')
 
     def test_no_verifier_never_marks_claim_supported(self):
         result = verify_claim("Sun is a star", [])

@@ -37,6 +37,36 @@ class ClaimResult:
     recheck_verdict: str | None = None
 
 
+def extract_json_object(raw: str) -> dict:
+    """Extract the first complete JSON object, ignoring braces inside quoted strings."""
+    start = raw.find("{")
+    if start < 0:
+        raise ValueError("No JSON object found")
+    depth = 0
+    quoted = escaped = False
+    for index in range(start, len(raw)):
+        char = raw[index]
+        if quoted:
+            if escaped:
+                escaped = False
+            elif char == "\\\\":
+                escaped = True
+            elif char == '"':
+                quoted = False
+        elif char == '"':
+            quoted = True
+        elif char == "{":
+            depth += 1
+        elif char == "}":
+            depth -= 1
+            if depth == 0:
+                value = json.loads(raw[start:index + 1])
+                if not isinstance(value, dict):
+                    raise ValueError("Expected a JSON object")
+                return value
+    raise ValueError("Incomplete JSON object")
+
+
 def _request_json(url: str, *, method: str = "GET", payload: dict | None = None,
                   headers: dict | None = None, timeout: int = 20) -> dict:
     data = None if payload is None else json.dumps(payload).encode("utf-8")
