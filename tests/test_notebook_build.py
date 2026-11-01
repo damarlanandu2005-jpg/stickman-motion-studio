@@ -1,7 +1,9 @@
 import ast
-import json
+import os
 import sys
+import tempfile
 import unittest
+from unittest import mock
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -10,6 +12,13 @@ import build_image_smoke_notebook as builder  # noqa: E402
 
 
 class SmokeNotebookTests(unittest.TestCase):
+    def setUp(self):
+        self._tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(self._tmp.cleanup)
+        patcher = mock.patch.dict(os.environ, {"STICKMAN_OUT_DIR": self._tmp.name})
+        patcher.start()
+        self.addCleanup(patcher.stop)
+
     def test_committed_notebook_is_up_to_date(self):
         self.assertEqual(builder.TARGET.read_text(encoding="utf-8"), builder.render())
 

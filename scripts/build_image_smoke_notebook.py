@@ -37,7 +37,7 @@ RUN_TOKEN = globals().get("RUN_TOKEN", "manual")
 COMMIT_SHA = globals().get("COMMIT_SHA", "unknown")
 WORKFLOW_RUN_ID = globals().get("WORKFLOW_RUN_ID", "local")
 
-OUT = pathlib.Path("/kaggle/working/outputs")
+OUT = pathlib.Path(os.environ.get("STICKMAN_OUT_DIR", "/kaggle/working/outputs"))  # override only for unit tests
 OUT.mkdir(parents=True, exist_ok=True)
 WORK = pathlib.Path("/tmp/comfyui_run")
 COMFY = WORK / "ComfyUI"
