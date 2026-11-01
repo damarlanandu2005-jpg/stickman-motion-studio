@@ -321,7 +321,7 @@ jobs:
               )
               status_text = result.stdout.strip()
               (output_dir / "kaggle-status.txt").write_text(status_text + "\\n", encoding="utf-8")
-              match = re.search(r"KernelWorkerStatus\\.([A-Z_]+)", status_text)
+              match = re.search(r"KernelWorkerStatus\.([A-Z_]+)", status_text)
               if result.returncode != 0 or not match:
                   transient_failures += 1
                   print(status_text or "Kaggle status returned no output")
