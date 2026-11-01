@@ -59,7 +59,7 @@ jobs:
           PYTHONPATH: .
         run: |
           python -m motion_studio.kaggle_runner \
-            --kernel "$(echo "$KAGGLE_USERNAME" | tr -d '[:space:]')/stickman-motion-studio-phase5-mascot-consistency" \
+            --kernel "$(echo "$KAGGLE_USERNAME" | tr -d '[:space:]')/stickman-motion-studio-phase-5-mascot-consistency" \
             --title "Stickman Motion Studio Phase 5 Mascot Consistency" \
             --kernel-dir kaggle/phase5-mascot-consistency \
             --notebook phase5_mascot_consistency.ipynb \
