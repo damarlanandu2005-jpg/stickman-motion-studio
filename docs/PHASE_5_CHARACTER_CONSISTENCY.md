@@ -19,6 +19,7 @@ The machine-readable specification lives in `motion_studio/characters.py`. The w
 Run from the repository root:
 
 ```powershell
+python -m motion_studio init --project projects/first-short --title "First Short"
 python -m motion_studio character-init --project projects/first-short
 python -m motion_studio character-validate --project projects/first-short
 ```
