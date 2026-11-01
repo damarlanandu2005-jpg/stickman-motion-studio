@@ -185,3 +185,46 @@ class RunnerTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class BenchmarkValidationTests(unittest.TestCase):
+    def make(self, **override):
+        out = Path(tempfile.mkdtemp())
+        identity = make_identity()
+        image = out / "klein4b_a.png"
+        image.write_bytes(make_png(8, 8))
+        item = {"file": "klein4b_a.png", "seconds": 5.0, "image_sha256": sha256_file(image), "image_width": 8,
+                "image_height": 8, "looks_broken": False}
+        report = {"run_token": identity["run_token"], "run_id": identity["run_id"], "status": "success", "error_message": None,
+                  "install_ok": True, "model_downloaded": True, "pipeline_loaded": True, "cuda_available": True, "results": [item]}
+        report.update(override)
+        (out / "benchmark_report.json").write_text(json.dumps(report))
+        return out, identity
+
+    def test_good_benchmark_passes(self):
+        out, identity = self.make()
+        self.assertTrue(kr.validate_benchmark_output(out, identity)["ok"])
+
+    def test_foreign_token_fails(self):
+        out, identity = self.make(run_token="other")
+        self.assertFalse(kr.validate_benchmark_output(out, identity)["ok"])
+
+    def test_no_results_fails(self):
+        out, identity = self.make(results=[])
+        self.assertIn("no generated pictures", " ".join(kr.validate_benchmark_output(out, identity)["failures"]))
+
+    def test_broken_picture_flag_fails(self):
+        out, identity = self.make()
+        report = json.loads((out / "benchmark_report.json").read_text())
+        report["results"][0]["looks_broken"] = True
+        (out / "benchmark_report.json").write_text(json.dumps(report))
+        self.assertFalse(kr.validate_benchmark_output(out, identity)["ok"])
+
+    def test_missing_picture_fails(self):
+        out, identity = self.make()
+        (out / "klein4b_a.png").unlink()
+        self.assertFalse(kr.validate_benchmark_output(out, identity)["ok"])
+
+    def test_profiles_reference_real_validators(self):
+        for profile in kr.PROFILES.values():
+            self.assertTrue(callable(getattr(kr, profile["validate"])))

@@ -6,11 +6,6 @@ name: Kaggle image-generation smoke test
 # GitHub keeps at most ONE pending run per group (extra pending runs are cancelled by GitHub): start runs one at a time.
 on:
   workflow_dispatch:
-  # TEMPORARY: GitHub only lets a new workflow be dispatched by hand after it has run once on the branch.
-  # This path-limited push trigger starts exactly one run when this file changes. Remove after the first run.
-  push:
-    branches: [comfyui-integration]
-    paths: [".github/workflows/kaggle-image-smoke.yml"]
 
 concurrency:
   group: kaggle-notebook-image-generation-smoke-test

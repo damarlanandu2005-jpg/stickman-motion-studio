@@ -60,3 +60,32 @@ class SmokeNotebookTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class KleinNotebookTests(unittest.TestCase):
+    def setUp(self):
+        sys.path.insert(0, str(ROOT / "scripts"))
+        import build_klein_benchmark_notebook as klein
+        self.klein = klein
+        self._tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(self._tmp.cleanup)
+        patcher = mock.patch.dict(os.environ, {"STICKMAN_OUT_DIR": self._tmp.name})
+        patcher.start()
+        self.addCleanup(patcher.stop)
+
+    def test_notebook_up_to_date(self):
+        self.assertEqual(self.klein.TARGET.read_text(encoding="utf-8"), self.klein.render())
+
+    def test_code_cells_parse(self):
+        for index, cell in enumerate(self.klein.build()["cells"]):
+            if cell["cell_type"] == "code":
+                ast.parse("".join(cell["source"]), filename=f"cell {index}")
+
+    def test_report_starts_unobserved(self):
+        namespace = {}
+        exec(compile("".join(self.klein.build()["cells"][1]["source"]), "setup", "exec"), {"__name__": "x"}, namespace)
+        report = namespace["REPORT"]
+        for key in ("install_ok", "model_downloaded", "pipeline_loaded", "cuda_available"):
+            self.assertIs(report[key], False)
+        self.assertEqual(report["status"], "running")
+        self.assertGreaterEqual(len(namespace["CASES"]), 3)

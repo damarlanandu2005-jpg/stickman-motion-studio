@@ -162,6 +162,59 @@ def validate_output(out_dir: Path, identity: dict[str, Any], expected_model_sha2
     return {"ok": not failures, "failures": failures, "checks": checks}
 
 
+BENCHMARK_OUTPUT_PATTERN = r"(benchmark_report\.json|model_metadata\.json|install\.log|klein4b_[a-z0-9_]+\.png)$"
+
+
+def validate_benchmark_output(out_dir: Path, identity: dict[str, Any], expected_model_sha256: str | None = None) -> dict[str, Any]:
+    """Verify a model-benchmark run: identity, status, and every reported picture re-checked from the downloaded file."""
+    out_dir = Path(out_dir)
+    failures: list[str] = []
+    checks: dict[str, Any] = {}
+    report_path = next(iter(out_dir.rglob("benchmark_report.json")), None)
+    if not report_path:
+        return {"ok": False, "failures": ["missing benchmark_report.json"], "checks": checks}
+    try:
+        report = json.loads(report_path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        return {"ok": False, "failures": [f"report is not valid JSON: {exc}"], "checks": checks}
+    if report.get("run_token") != identity["run_token"]:
+        failures.append("report run_token does not match this run (output belongs to another execution)")
+    if report.get("run_id") != identity["run_id"]:
+        failures.append("report run_id does not match this run")
+    if report.get("status") != "success":
+        failures.append(f"report status is {report.get('status')!r}, not 'success'")
+    if report.get("error_message"):
+        failures.append(f"report carries an error: {report.get('error_message')}")
+    for key in ("install_ok", "model_downloaded", "pipeline_loaded", "cuda_available"):
+        if report.get(key) is not True:
+            failures.append(f"report field {key} is not True")
+    results = report.get("results") or []
+    if not results:
+        failures.append("report lists no generated pictures")
+    pictures = []
+    for item in results:
+        image = next(iter(out_dir.rglob(str(item.get("file", "?")))), None)
+        png = validate_png(image) if image else {"valid": False, "error": "file missing", "sha256": None, "width": None, "height": None}
+        pictures.append({"file": item.get("file"), "valid": png["valid"], "sha256": png["sha256"], "seconds": item.get("seconds")})
+        if not png["valid"]:
+            failures.append(f"{item.get('file')}: not a valid PNG ({png['error']})")
+            continue
+        if png["sha256"] != item.get("image_sha256"):
+            failures.append(f"{item.get('file')}: downloaded hash differs from the report")
+        if (png["width"], png["height"]) != (item.get("image_width"), item.get("image_height")):
+            failures.append(f"{item.get('file')}: downloaded dimensions differ from the report")
+        if item.get("looks_broken"):
+            failures.append(f"{item.get('file')}: flagged as a broken (flat/black) picture")
+    checks["pictures"] = pictures
+    return {"ok": not failures, "failures": failures, "checks": checks}
+
+
+PROFILES = {
+    "image-smoke": {"pattern": OUTPUT_FILE_PATTERN, "validate": "validate_output"},
+    "klein-benchmark": {"pattern": BENCHMARK_OUTPUT_PATTERN, "validate": "validate_benchmark_output"},
+}
+
+
 def execute(
     *,
     kernel_ref: str,
@@ -181,6 +234,8 @@ def execute(
     max_status_failures: int = 5,
     expected_model_sha256: str | None = None,
     hide: list[str] | None = None,
+    output_pattern: str = OUTPUT_FILE_PATTERN,
+    validate: Callable[..., dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
     """Push one stamped notebook, track that exact version, download and validate its output."""
     hide = hide or []
@@ -268,7 +323,7 @@ def execute(
         for attempt in range(1, max_download_attempts + 1):
             record["download_attempts"] = attempt
             code, out = runner(["kaggle", "kernels", "output", versioned, "-p", str(out_dir),
-                                "--file-pattern", OUTPUT_FILE_PATTERN, "-o"])
+                                "--file-pattern", output_pattern, "-o"])
             note("download", attempt=attempt, exit_code=code, text=redact(out, hide).strip()[-300:])
             if code == 0:
                 break
@@ -277,7 +332,7 @@ def execute(
             raise KaggleRunError("Run completed but its output could not be downloaded.")
 
         # 4. Validate independently of the notebook's own claims.
-        validation = validate_output(out_dir, identity, expected_model_sha256)
+        validation = (validate or validate_output)(out_dir, identity, expected_model_sha256)
         record["validation"] = validation
         if not validation["ok"]:
             raise KaggleRunError("Output failed validation: " + "; ".join(validation["failures"]))
@@ -303,6 +358,7 @@ def _cli(argv: list[str] | None = None) -> int:
     parser.add_argument("--work-dir", type=Path, default=Path(".kaggle-build"))
     parser.add_argument("--timeout-minutes", type=float, default=85)
     parser.add_argument("--model-sha256", default=None)
+    parser.add_argument("--profile", choices=sorted(PROFILES), default="image-smoke")
     args = parser.parse_args(argv)
 
     metadata = {
@@ -319,12 +375,12 @@ def _cli(argv: list[str] | None = None) -> int:
             kernel_ref=args.kernel, kernel_dir=args.kernel_dir, notebook_name=args.notebook,
             metadata=metadata, work_dir=args.work_dir, out_dir=args.out, identity=identity,
             timeout_seconds=args.timeout_minutes * 60, expected_model_sha256=args.model_sha256, hide=hide,
+            output_pattern=PROFILES[args.profile]["pattern"], validate=globals()[PROFILES[args.profile]["validate"]],
         )
     except KaggleRunError as exc:
         print(f"FAILED: {exc}", file=sys.stderr)
         return 1
-    print(f"VERIFIED: version {record['pushed_version']} produced output matching run token; "
-          f"image sha256 {record['validation']['checks']['png']['sha256']}")
+    print(f"VERIFIED: version {record['pushed_version']} produced output matching run token ({args.profile}).")
     return 0
 
 

@@ -1,0 +1,87 @@
+name: Kaggle model benchmark (FLUX.2 klein 4B)
+
+# Manual (plus one temporary first-run trigger below).
+# Only one run per Kaggle notebook may be active: the concurrency group below is keyed on the notebook,
+# not on the git ref, and is shared by any workflow that submits this notebook.
+# GitHub keeps at most ONE pending run per group (extra pending runs are cancelled by GitHub): start runs one at a time.
+on:
+  workflow_dispatch:
+  # TEMPORARY: GitHub only lets a new workflow be dispatched by hand after it has run once on the branch.
+  # This path-limited push trigger starts exactly one run when this file changes. Remove after the first run.
+  push:
+    branches: [comfyui-integration]
+    paths: [".github/workflows/kaggle-model-benchmark.yml"]
+
+concurrency:
+  group: kaggle-notebook-klein-4b-benchmark
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m unittest discover -s tests -v
+        env:
+          PYTHONPATH: .
+
+  benchmark-on-kaggle:
+    needs: unit-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Kaggle CLI (six is not declared by kaggle 2.2.5)
+        run: |
+          python -m pip install kaggle==2.2.5 six
+          kaggle --version
+
+      - name: Configure Kaggle credentials
+        env:
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+        run: |
+          if [ -z "$KAGGLE_USERNAME" ] || [ -z "$KAGGLE_KEY" ]; then
+            echo "Missing GitHub Actions secrets KAGGLE_USERNAME and/or KAGGLE_KEY"; exit 1
+          fi
+          mkdir -p "$HOME/.kaggle"
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          Path.home().joinpath(".kaggle", "kaggle.json").write_text(json.dumps({
+              "username": os.environ["KAGGLE_USERNAME"].strip(), "key": os.environ["KAGGLE_KEY"].strip()}))
+          PY
+          chmod 600 "$HOME/.kaggle/kaggle.json"
+
+      - name: Push, track and verify the Kaggle benchmark run
+        env:
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+          PYTHONPATH: .
+        run: |
+          python -m motion_studio.kaggle_runner \
+            --kernel "$(echo "$KAGGLE_USERNAME" | tr -d '[:space:]')/stickman-motion-studio-klein-4b-benchmark" \
+            --title "Stickman Motion Studio Klein 4B Benchmark" \
+            --kernel-dir kaggle/model-benchmark-klein4b \
+            --notebook klein4b_benchmark.ipynb \
+            --out kaggle-klein4b-output \
+            --profile klein-benchmark
+
+      - name: Upload report, image and logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: klein4b-benchmark-output
+          path: kaggle-klein4b-output/
+          if-no-files-found: warn
+          retention-days: 14
