@@ -5,7 +5,7 @@
 $ErrorActionPreference = "Stop"
 
 if (-not (Test-Path ".git")) {
-    throw "Run this script from the root of the cloned stickman-motion-studio repository."
+    throw "Run this script from the root of a cloned stickman-motion-studio repository."
 }
 
 $modules = @(
@@ -13,7 +13,9 @@ $modules = @(
     @{ Path = "external/2d-character-pipeline"; Url = "https://github.com/mor-o/comfyui-2d-character-pipeline.git" },
     @{ Path = "external/OpenScript"; Url = "https://github.com/ishan-parihar/openscript.git" },
     @{ Path = "external/4brospix"; Url = "https://github.com/koo-bros/4brospix.git" },
-    @{ Path = "external/automated-video-generator"; Url = "https://github.com/itsPremkumar/Automated-Video-Generator.git" }
+    @{ Path = "external/automated-video-generator"; Url = "https://github.com/itsPremkumar/Automated-Video-Generator.git" },
+    @{ Path = "external/yt-factcheck"; Url = "https://github.com/mickpletcher/yt-factcheck.git" },
+    @{ Path = "external/FAcTScore"; Url = "https://github.com/shmsw25/FAcTScore.git" }
 )
 
 foreach ($module in $modules) {
@@ -29,7 +31,7 @@ foreach ($module in $modules) {
 }
 
 Write-Host ""
-Write-Host "Submodules added. Review licenses and dependency requirements before running them."
-Write-Host "Commit .gitmodules and the gitlink entries with:"
+Write-Host "Submodules added. Review licences and dependency requirements before running them."
+Write-Host "Commit .gitmodules and gitlink entries with:"
 Write-Host "  git add .gitmodules external"
 Write-Host "  git commit -m 'Add external production pipeline submodules'"
