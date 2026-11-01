@@ -71,7 +71,7 @@ jobs:
           print(f"Prepared private Kaggle notebook: {metadata['id']}")
 
           comfyui_metadata = {
-              "id": f"{username}/stickman-motion-studio-comfyui-smoke-test",
+              "id": f"{username}/stickman-motion-studio-comfyui-server-smoke-test",
               "title": "Stickman Motion Studio ComfyUI Server Smoke Test",
               "code_file": "comfyui_smoke_test.ipynb",
               "language": "python",
