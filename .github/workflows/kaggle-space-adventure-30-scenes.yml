@@ -1,0 +1,74 @@
+name: Kaggle 30-scene space adventure
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: kaggle-space-adventure-30-scenes
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  runner-smoke-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify Kaggle runner modules compile
+        run: python -m py_compile motion_studio/kaggle_runner.py motion_studio/imagecheck.py
+
+  generate-space-adventure:
+    needs: runner-smoke-check
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install Kaggle CLI
+        run: |
+          python -m pip install kaggle==2.2.5 six
+          kaggle --version
+      - name: Configure Kaggle credentials
+        env:
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+        run: |
+          if [ -z "$KAGGLE_USERNAME" ] || [ -z "$KAGGLE_KEY" ]; then
+            echo "Missing GitHub Actions secrets KAGGLE_USERNAME and/or KAGGLE_KEY"; exit 1
+          fi
+          mkdir -p "$HOME/.kaggle"
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          Path.home().joinpath(".kaggle", "kaggle.json").write_text(json.dumps({
+              "username": os.environ["KAGGLE_USERNAME"].strip(),
+              "key": os.environ["KAGGLE_KEY"].strip()}))
+          PY
+          chmod 600 "$HOME/.kaggle/kaggle.json"
+      - name: Generate, track and verify the 30 Kaggle scenes
+        env:
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+          PYTHONPATH: .
+        run: |
+          python -m motion_studio.kaggle_runner \
+            --kernel "$(echo "$KAGGLE_USERNAME" | tr -d '[:space:]')/stickman-motion-studio-space-adventure-30-scenes" \
+            --title "Stickman Motion Studio Space Adventure 30 Scenes" \
+            --kernel-dir kaggle/space-adventure-30-scenes \
+            --notebook space_adventure_30_scenes.ipynb \
+            --out kaggle-space-adventure-output \
+            --profile klein-benchmark
+      - name: Upload 30 images, contact sheet, report and logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: space-adventure-30-scenes-output
+          path: kaggle-space-adventure-output/
+          if-no-files-found: warn
+          retention-days: 14
