@@ -241,12 +241,33 @@ def validate_script_writer_output(out_dir: Path, identity: dict[str, Any], expec
             output = item.get("json_file")
             if not output or not next(iter(Path(out_dir).rglob(str(output))), None):
                 failures.append(f"{label}: completed result JSON file is missing")
+    fact_path = next(iter(Path(out_dir).rglob("fact_check_report.json")), None)
+    if not fact_path:
+        failures.append("missing fact_check_report.json")
+    else:
+        try:
+            fact = json.loads(fact_path.read_text(encoding="utf-8"))
+            checks["fact_check"] = {"status": fact.get("status"), "first_pass_count": len(fact.get("first_pass") or []), "second_pass_count": len(fact.get("second_pass") or []), "unresolved_count": len(fact.get("unresolved_claims") or [])}
+            for key in ("run_id", "run_token"):
+                if fact.get(key) != identity.get(key):
+                    failures.append(f"fact-check {key} does not match this workflow run")
+            if fact.get("status") not in ("approved", "needs_human_review"):
+                failures.append("fact-check status is invalid")
+            if fact.get("status") == "approved":
+                if not fact.get("second_pass") or any(x.get("verdict") != "supported" or float(x.get("confidence", 0)) < 0.80 for x in fact["second_pass"]):
+                    failures.append("fact-check approval does not pass second-pass checks")
+                if not next(iter(Path(out_dir).rglob("verified_script.json")), None):
+                    failures.append("verified_script.json is missing")
+            elif fact.get("approved_script_file") is not None:
+                failures.append("human-review report must not name an approved script")
+        except (json.JSONDecodeError, TypeError, ValueError) as exc:
+            failures.append(f"fact-check report is invalid: {exc}")
     return {"ok": not failures, "failures": failures, "checks": checks}
 
 PROFILES = {
     "image-smoke": {"pattern": OUTPUT_FILE_PATTERN, "validate": "validate_output"},
     "klein-benchmark": {"pattern": BENCHMARK_OUTPUT_PATTERN, "validate": "validate_benchmark_output"},
-    "script-writer": {"pattern": r".*(benchmark_report\.json|benchmark_results\.json|model_comparison\.csv|Qwen3-4B-Instruct-2507\.(json|txt)|Gemma-3-4B-IT\.(json|txt))$", "validate": "validate_script_writer_output"},
+    "script-writer": {"pattern": r".*(benchmark_report\.json|benchmark_results\.json|model_comparison\.csv|fact_check_report\.json|revised_script\.json|verified_script\.json|Qwen3-4B-Instruct-2507\.(json|txt)|Gemma-3-4B-IT\.(json|txt))$", "validate": "validate_script_writer_output"},
 }
 
 
