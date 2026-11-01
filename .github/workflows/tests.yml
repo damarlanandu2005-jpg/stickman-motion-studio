@@ -5,7 +5,7 @@ name: tests
 
 on:
   push:
-    branches: [main, pipeline-foundation, comfyui-integration]
+    branches: [main, pipeline-foundation, comfyui-integration, phase-5-character-consistency]
   pull_request:
     branches: [main]
 
