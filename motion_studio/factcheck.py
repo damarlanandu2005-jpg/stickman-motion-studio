@@ -66,6 +66,39 @@ def extract_json_object(raw: str) -> dict:
                 return value
     raise ValueError("Incomplete JSON object")
 
+def sync_narration_segments(narration: str, scenes: list[dict]) -> list[dict]:
+    """Replace every scene narration segment with text derived from revised narration."""
+    import re
+    sentences = [part.strip() for part in re.split(r"(?<=[.!?])\\s+", str(narration).strip()) if part.strip()]
+    result = json.loads(json.dumps(scenes))
+    assigned: list[list[str]] = [[] for _ in result]
+    if sentences and result:
+        for index, sentence in enumerate(sentences):
+            slot = 0 if len(sentences) == 1 else round(index * (len(result) - 1) / (len(sentences) - 1))
+            assigned[slot].append(sentence)
+    for scene, parts in zip(result, assigned):
+        scene["narration_segment"] = " ".join(parts)
+    return result
+
+
+def normalize_continuity_bible(value: Any) -> dict:
+    """Normalize continuity_bible to the required object shape without discarding prose."""
+    if isinstance(value, dict):
+        return value
+    if isinstance(value, str):
+        raw = value.strip()
+        try:
+            parsed = json.loads(raw)
+            if isinstance(parsed, dict):
+                return parsed
+        except (ValueError, json.JSONDecodeError):
+            pass
+        return {"summary": raw, "character_continuity": [], "costume_continuity": [],
+                "prop_continuity": [], "location_continuity": [], "scene_transition_rules": []}
+    return {"summary": "", "character_continuity": [], "costume_continuity": [],
+            "prop_continuity": [], "location_continuity": [], "scene_transition_rules": []}
+
+
 
 def _request_json(url: str, *, method: str = "GET", payload: dict | None = None,
                   headers: dict | None = None, timeout: int = 20) -> dict:
