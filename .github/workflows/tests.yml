@@ -127,6 +127,7 @@ jobs:
           deadline = time.monotonic() + 55 * 60
           last_status = None
           transient_failures = 0
+          observed_active_execution = False
 
           while time.monotonic() < deadline:
               result = subprocess.run(
@@ -146,6 +147,8 @@ jobs:
 
               transient_failures = 0
               state = match.group(1)
+              if state in {"QUEUED", "RUNNING"}:
+                  observed_active_execution = True
               if state != last_status:
                   print(f"Kaggle execution state: {state}")
                   last_status = state
