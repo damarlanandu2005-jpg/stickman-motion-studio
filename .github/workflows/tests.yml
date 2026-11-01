@@ -114,10 +114,10 @@ jobs:
           notebook = json.loads(path.read_text(encoding="utf-8"))
           notebook["cells"].insert(0, {
               "cell_type": "code", "execution_count": None, "metadata": {}, "outputs": [],
-              "source": [f"RUN_TOKEN = {token!r}\\n"]
+              "source": [f"RUN_TOKEN = {token!r}\n"]
           })
-          path.write_text(json.dumps(notebook, indent=1) + "\\n", encoding="utf-8")
-          Path("kaggle/comfyui-smoke-test/run-token.txt").write_text(token + "\\n", encoding="utf-8")
+          path.write_text(json.dumps(notebook, indent=1) + "\n", encoding="utf-8")
+          Path("kaggle/comfyui-smoke-test/run-token.txt").write_text(token + "\n", encoding="utf-8")
           print(f"Stamped Kaggle notebook with execution token: {token}")
           PY
 
@@ -340,10 +340,10 @@ jobs:
           notebook = json.loads(path.read_text(encoding="utf-8"))
           notebook["cells"].insert(0, {
               "cell_type": "code", "execution_count": None, "metadata": {}, "outputs": [],
-              "source": [f"RUN_TOKEN = {token!r}\\n"]
+              "source": [f"RUN_TOKEN = {token!r}\n"]
           })
-          path.write_text(json.dumps(notebook, indent=1) + "\\n", encoding="utf-8")
-          Path("kaggle/image-generation-smoke-test/run-token.txt").write_text(token + "\\n", encoding="utf-8")
+          path.write_text(json.dumps(notebook, indent=1) + "\n", encoding="utf-8")
+          Path("kaggle/image-generation-smoke-test/run-token.txt").write_text(token + "\n", encoding="utf-8")
           print(f"Stamped Kaggle notebook with execution token: {token}")
           PY
 
