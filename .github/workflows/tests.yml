@@ -156,6 +156,12 @@ jobs:
           else:
               raise SystemExit("Timed out after 55 minutes waiting for Kaggle execution.")
 
+          if state == "COMPLETE" and not observed_active_execution:
+              raise SystemExit(
+                  "Kaggle reported COMPLETE without this workflow observing QUEUED/RUNNING. "
+                  "Refusing to accept a possibly stale result from an older notebook execution."
+              )
+
           if state != "COMPLETE":
               logs = subprocess.run(
                   ["kaggle", "kernels", "logs", kernel],
@@ -311,10 +317,11 @@ jobs:
           kernel = f"{os.environ['KAGGLE_USERNAME'].strip()}/stickman-motion-studio-image-generation-smoke-test"
           output_dir = Path("kaggle-image-generation-output")
           output_dir.mkdir(exist_ok=True)
-          terminal = {"COMPLETE", "ERROR", "CANCEL_ACKNOWLEDGED"}
+          terminal = {"COMPLETE", "ERROR", "CANCEL_ACKNOWLEDGED", "NEW_SCRIPT"}
           deadline = time.monotonic() + 85 * 60
           last_state = None
           transient_failures = 0
+          observed_active_execution = False
 
           while time.monotonic() < deadline:
               result = subprocess.run(
@@ -333,8 +340,10 @@ jobs:
                   continue
               transient_failures = 0
               state = match.group(1)
+              print(f"Kaggle image-generation state at {time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())}: {state}")
+              if state in {"QUEUED", "RUNNING"}:
+                  observed_active_execution = True
               if state != last_state:
-                  print(f"Kaggle image-generation state: {state}")
                   last_state = state
               if state in terminal:
                   break
