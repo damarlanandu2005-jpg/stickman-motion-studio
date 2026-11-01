@@ -346,6 +346,23 @@ def execute(
         save()
 
 
+def summarize_report(out_dir: Path, profile: str) -> str:
+    """Compact, human-readable lines from the already-verified report so the numbers are visible in CI logs."""
+    name = "benchmark_report.json" if profile == "klein-benchmark" else "generation_report.json"
+    path = next(iter(Path(out_dir).rglob(name)), None)
+    if not path:
+        return "(no report to summarize)"
+    r = json.loads(path.read_text(encoding="utf-8"))
+    keys = ["model_id", "model_revision", "model_license", "dtype_used", "dtype_attempts", "download_bytes", "download_seconds",
+            "pipeline_load_seconds", "seconds_per_picture_after_warmup_mean", "gpu_names", "torch_version", "library_versions",
+            "prompt_id", "generation_duration_seconds", "gpu_memory_peak_used_mib_nvidia_smi", "image_sha256", "notebook_duration_seconds"]
+    lines = [f"  {k}: {r[k]}" for k in keys if k in r]
+    for item in r.get("results", []):
+        lines.append("  picture: " + json.dumps({k: item.get(k) for k in (
+            "file", "seconds", "dtype", "peak_vram_allocated_gib_torch", "gpu_used_mib_after", "peak_process_rss_gb", "stats", "image_sha256")}))
+    return "\n".join(lines)
+
+
 def _cli(argv: list[str] | None = None) -> int:
     import os
 
@@ -381,6 +398,7 @@ def _cli(argv: list[str] | None = None) -> int:
         print(f"FAILED: {exc}", file=sys.stderr)
         return 1
     print(f"VERIFIED: version {record['pushed_version']} produced output matching run token ({args.profile}).")
+    print(summarize_report(args.out, args.profile))
     return 0
 
 

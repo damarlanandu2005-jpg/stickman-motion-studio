@@ -228,3 +228,16 @@ class BenchmarkValidationTests(unittest.TestCase):
     def test_profiles_reference_real_validators(self):
         for profile in kr.PROFILES.values():
             self.assertTrue(callable(getattr(kr, profile["validate"])))
+
+
+class SummaryTests(unittest.TestCase):
+    def test_summary_shows_numbers_from_report(self):
+        out = Path(tempfile.mkdtemp())
+        (out / "benchmark_report.json").write_text(json.dumps({
+            "model_id": "m", "dtype_used": "float16", "results": [{"file": "a.png", "seconds": 4.2}]}))
+        text = kr.summarize_report(out, "klein-benchmark")
+        self.assertIn("float16", text)
+        self.assertIn("4.2", text)
+
+    def test_summary_without_report_is_explicit(self):
+        self.assertIn("no report", kr.summarize_report(Path(tempfile.mkdtemp()), "image-smoke"))
