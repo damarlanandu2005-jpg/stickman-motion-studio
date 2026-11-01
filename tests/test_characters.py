@@ -55,7 +55,7 @@ class CharacterWorkspaceTests(unittest.TestCase):
             path.write_bytes(b"stickman")
             self.assertEqual(
                 sha256_file(path),
-                "f6a1f0e8b4e5cba6f6e8e31b5e6d1d5e3f5e2c0a1f0e3f0f4c8d9b7a6e5d4c3b",
+                "5c7d4ca8541273a2d6793b5d75f4cbb8c07cf2385088e102427515e70a18169d",
             )
 
 
