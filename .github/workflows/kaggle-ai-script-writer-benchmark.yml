@@ -2,21 +2,27 @@ name: Kaggle AI script-writer model benchmark
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - "kaggle/ai-script-writer-benchmark/**"
-      - ".github/workflows/kaggle-ai-script-writer-benchmark.yml"
 
 concurrency:
-  group: kaggle-ai-script-writer-benchmark
+  group: kaggle-ai-script-writer-model-benchmark
   cancel-in-progress: false
 
 permissions:
   contents: read
 
 jobs:
-  push-and-run:
+  runner-smoke-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify Kaggle runner modules compile
+        run: python -m py_compile motion_studio/kaggle_runner.py motion_studio/imagecheck.py
+
+  script-writer-on-kaggle:
+    needs: runner-smoke-check
     runs-on: ubuntu-latest
     timeout-minutes: 110
     steps:
@@ -24,20 +30,17 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-
       - name: Install Kaggle CLI
         run: |
           python -m pip install kaggle==2.2.5 six
           kaggle --version
-
       - name: Configure Kaggle credentials
         env:
           KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
           KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
         run: |
           if [ -z "$KAGGLE_USERNAME" ] || [ -z "$KAGGLE_KEY" ]; then
-            echo "Missing GitHub Actions secrets KAGGLE_USERNAME and/or KAGGLE_KEY"
-            exit 1
+            echo "Missing GitHub Actions secrets KAGGLE_USERNAME and/or KAGGLE_KEY"; exit 1
           fi
           mkdir -p "$HOME/.kaggle"
           python - <<'PY'
@@ -45,97 +48,27 @@ jobs:
           from pathlib import Path
           Path.home().joinpath(".kaggle", "kaggle.json").write_text(json.dumps({
               "username": os.environ["KAGGLE_USERNAME"].strip(),
-              "key": os.environ["KAGGLE_KEY"].strip()
-          }))
+              "key": os.environ["KAGGLE_KEY"].strip()}))
           PY
           chmod 600 "$HOME/.kaggle/kaggle.json"
-
-      - name: Prepare private Kaggle notebook metadata
+      - name: Push, track and verify the script-writer benchmark
         env:
           KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+          PYTHONPATH: .
         run: |
-          mkdir -p .kaggle-script-benchmark
-          cp kaggle/ai-script-writer-benchmark/ai_script_model_benchmark.ipynb .kaggle-script-benchmark/
-          python - <<'PY'
-          import json, os
-          from pathlib import Path
-          owner = os.environ["KAGGLE_USERNAME"].strip()
-          metadata = {
-              "id": owner + "/stickman-motion-studio-ai-script-writer-benchmark",
-              "title": "Stickman Motion Studio AI Script Writer Model Benchmark",
-              "code_file": "ai_script_model_benchmark.ipynb",
-              "language": "python",
-              "kernel_type": "notebook",
-              "is_private": "true",
-              "enable_gpu": "true",
-              "enable_internet": "true",
-              "machine_shape": "NvidiaTeslaT4",
-              "dataset_sources": [],
-              "competition_sources": [],
-              "kernel_sources": [],
-              "model_sources": []
-          }
-          Path(".kaggle-script-benchmark/kernel-metadata.json").write_text(json.dumps(metadata, indent=2))
-          PY
-
-      - name: Push notebook to Kaggle and capture version
-        id: push
-        run: |
-          set -o pipefail
-          kaggle kernels push -p .kaggle-script-benchmark 2>&1 | tee kaggle-push.log
-          VERSION=$(python - <<'PY'
-          import re
-          text=open("kaggle-push.log", encoding="utf-8").read()
-          m=re.search(r"Kernel version\s+(\d+)\s+successfully pushed", text, re.I)
-          if not m:
-              raise SystemExit("Kaggle did not confirm a pushed kernel version")
-          print(m.group(1))
-          PY
-          )
-          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
-          echo "Pushed Kaggle kernel version: $VERSION"
-
-      - name: Wait for this Kaggle version to finish
-        env:
-          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
-          KERNEL_VERSION: ${{ steps.push.outputs.version }}
-        run: |
-          REF="$(echo "$KAGGLE_USERNAME" | tr -d '[:space:]')/stickman-motion-studio-ai-script-writer-benchmark/$KERNEL_VERSION"
-          for attempt in $(seq 1 170); do
-            STATUS=$(kaggle kernels status "$REF" 2>&1 | tee kaggle-status.log | tail -n 1)
-            echo "Attempt $attempt: $STATUS"
-            case "$STATUS" in
-              *COMPLETE*) exit 0 ;;
-              *ERROR*|*CANCEL_ACKNOWLEDGED*)
-                kaggle kernels logs "$REF" > kaggle-kernel.log 2>&1 || true
-                cat kaggle-kernel.log
-                exit 1
-                ;;
-            esac
-            sleep 30
-          done
-          echo "Timed out waiting for Kaggle kernel $REF"
-          exit 1
-
-      - name: Download benchmark outputs from the exact Kaggle version
-        env:
-          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
-          KERNEL_VERSION: ${{ steps.push.outputs.version }}
-        run: |
-          REF="$(echo "$KAGGLE_USERNAME" | tr -d '[:space:]')/stickman-motion-studio-ai-script-writer-benchmark/$KERNEL_VERSION"
-          mkdir -p kaggle-script-benchmark-output
-          kaggle kernels output "$REF" -p kaggle-script-benchmark-output -o
-          find kaggle-script-benchmark-output -maxdepth 2 -type f -print
-
-      - name: Upload benchmark results and logs
+          python -m motion_studio.kaggle_runner \
+            --kernel "$(echo "$KAGGLE_USERNAME" | tr -d '[:space:]')/stickman-motion-studio-ai-script-writer-benchmark" \
+            --title "Stickman Motion Studio AI Script Writer Benchmark" \
+            --kernel-dir kaggle/ai-script-writer-benchmark \
+            --notebook ai_script_model_benchmark.ipynb \
+            --out kaggle-ai-script-writer-output \
+            --profile script-writer
+      - name: Upload verified benchmark report, model outputs and execution record
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: ai-script-writer-model-benchmark
-          path: |
-            kaggle-script-benchmark-output/
-            kaggle-push.log
-            kaggle-status.log
-            kaggle-kernel.log
+          path: kaggle-ai-script-writer-output/
           if-no-files-found: warn
           retention-days: 14
