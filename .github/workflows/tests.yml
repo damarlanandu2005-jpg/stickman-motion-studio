@@ -101,6 +101,26 @@ jobs:
           PY
           chmod 600 "$HOME/.kaggle/kaggle.json"
 
+      - name: Stamp this GitHub execution into the Kaggle notebook
+        env:
+          GITHUB_RUN_ID: ${{ github.run_id }}
+          GITHUB_RUN_ATTEMPT: ${{ github.run_attempt }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          token = f"{os.environ['GITHUB_RUN_ID']}-{os.environ['GITHUB_RUN_ATTEMPT']}"
+          path = Path("kaggle/comfyui-smoke-test/comfyui_smoke_test.ipynb")
+          notebook = json.loads(path.read_text(encoding="utf-8"))
+          notebook["cells"].insert(0, {
+              "cell_type": "code", "execution_count": None, "metadata": {}, "outputs": [],
+              "source": [f"RUN_TOKEN = {token!r}\\n"]
+          })
+          path.write_text(json.dumps(notebook, indent=1) + "\\n", encoding="utf-8")
+          Path("kaggle/comfyui-smoke-test/run-token.txt").write_text(token + "\\n", encoding="utf-8")
+          print(f"Stamped Kaggle notebook with execution token: {token}")
+          PY
+
       - name: Submit ComfyUI notebook and start Kaggle execution
         run: kaggle kernels push --path kaggle/comfyui-smoke-test --timeout 3600
 
@@ -159,12 +179,6 @@ jobs:
           else:
               raise SystemExit("Timed out after 55 minutes waiting for Kaggle execution.")
 
-          if state == "COMPLETE" and not observed_active_execution:
-              raise SystemExit(
-                  "Kaggle reported COMPLETE without this workflow observing QUEUED/RUNNING. "
-                  "Refusing to accept a possibly stale result from an older notebook execution."
-              )
-
           if state != "COMPLETE":
               logs = subprocess.run(
                   ["kaggle", "kernels", "logs", kernel],
@@ -193,6 +207,13 @@ jobs:
 
           report_path = reports[0]
           report = json.loads(report_path.read_text(encoding="utf-8"))
+          expected_token = Path("kaggle/comfyui-smoke-test/run-token.txt").read_text(encoding="utf-8").strip()
+          if report.get("run_token") != expected_token:
+              raise SystemExit(
+                  "Downloaded Kaggle report belongs to a different execution: "
+                  f"expected token {expected_token!r}, got {report.get('run_token')!r}. "
+                  "Refusing to accept stale output."
+              )
           required_true = [
               "comfyui_started",
               "api_system_stats_ok",
@@ -306,6 +327,26 @@ jobs:
           PY
           chmod 600 "$HOME/.kaggle/kaggle.json"
 
+      - name: Stamp this GitHub execution into the Kaggle notebook
+        env:
+          GITHUB_RUN_ID: ${{ github.run_id }}
+          GITHUB_RUN_ATTEMPT: ${{ github.run_attempt }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          token = f"{os.environ['GITHUB_RUN_ID']}-{os.environ['GITHUB_RUN_ATTEMPT']}"
+          path = Path("kaggle/image-generation-smoke-test/image_generation_smoke_test.ipynb")
+          notebook = json.loads(path.read_text(encoding="utf-8"))
+          notebook["cells"].insert(0, {
+              "cell_type": "code", "execution_count": None, "metadata": {}, "outputs": [],
+              "source": [f"RUN_TOKEN = {token!r}\\n"]
+          })
+          path.write_text(json.dumps(notebook, indent=1) + "\\n", encoding="utf-8")
+          Path("kaggle/image-generation-smoke-test/run-token.txt").write_text(token + "\\n", encoding="utf-8")
+          print(f"Stamped Kaggle notebook with execution token: {token}")
+          PY
+
       - name: Submit image-generation notebook to Kaggle
         run: kaggle kernels push --path kaggle/image-generation-smoke-test --timeout 3600
 
@@ -377,6 +418,13 @@ jobs:
               raise SystemExit("Kaggle completed but the required JSON report or generated PNG is missing.")
 
           report = json.loads(reports[0].read_text(encoding="utf-8"))
+          expected_token = Path("kaggle/image-generation-smoke-test/run-token.txt").read_text(encoding="utf-8").strip()
+          if report.get("run_token") != expected_token:
+              raise SystemExit(
+                  "Downloaded image-generation report belongs to a different execution: "
+                  f"expected token {expected_token!r}, got {report.get('run_token')!r}. "
+                  "Refusing to accept stale output."
+              )
           required_true = [
               "comfyui_started", "api_system_stats_ok", "api_object_info_ok",
               "required_nodes_present", "image_generation_completed", "image_saved",
