@@ -40,6 +40,8 @@ class ScriptWriterRunnerTests(unittest.TestCase):
                     "json_file": "Qwen3-4B-Instruct-2507.json",
                 }],
             }
+            revised = {"narration": "One sentence. Another sentence.", "continuity_bible": {"summary": "consistent"}, "scenes": [{"scene_number": 1, "narration_segment": "One sentence."}, {"scene_number": 2, "narration_segment": "Another sentence."}]}
+            (root / "revised_script.json").write_text(json.dumps(revised), encoding="utf-8")
             fact_check = {**identity, "status": "needs_human_review", "first_pass": [], "second_pass": [], "unresolved_claims": [], "approved_script_file": None}
             (root / "fact_check_report.json").write_text(json.dumps(fact_check), encoding="utf-8")
             (root / "benchmark_report.json").write_text(json.dumps(report), encoding="utf-8")
