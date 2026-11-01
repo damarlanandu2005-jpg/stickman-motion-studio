@@ -3,8 +3,8 @@ name: tests
 # Image-generation notebook startup try/except is now syntactically complete.
 
 concurrency:
-  group: comfyui-kaggle-${{ github.ref }}-${{ github.sha }}
-  cancel-in-progress: true
+  group: comfyui-kaggle-${{ github.ref }}
+  cancel-in-progress: false
 
 on:
   push:
