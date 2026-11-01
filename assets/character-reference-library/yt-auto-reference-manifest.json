@@ -1,0 +1,77 @@
+{
+  "source_repository": "damarlanandu2005-jpg/yt-auto",
+  "source_commit": "f7da39dbb7506997e4da4a0753938a82e396ba17",
+  "license_file": "cartoon/character_refs/licence.json",
+  "assets": {
+    "stickman_front": {
+      "path": "cartoon/character_refs/stickman_front.png",
+      "blob_sha": "00067559e2f5cd15a349c122bd8b44881685ae1b",
+      "url": "https://raw.githubusercontent.com/damarlanandu2005-jpg/yt-auto/f7da39dbb7506997e4da4a0753938a82e396ba17/cartoon/character_refs/stickman_front.png"
+    },
+    "stickman_side": {
+      "path": "cartoon/character_refs/stickman_side.png",
+      "blob_sha": "be7370cb06d1ddb5ca9870fb2ef2d42c7f7f6936",
+      "url": "https://raw.githubusercontent.com/damarlanandu2005-jpg/yt-auto/f7da39dbb7506997e4da4a0753938a82e396ba17/cartoon/character_refs/stickman_side.png"
+    },
+    "stickman_three_quarter": {
+      "path": "cartoon/character_refs/stickman_three_quarter.png",
+      "blob_sha": "df2b8ebe668af0ab14924fd84bc8fac3f1a86ade",
+      "url": "https://raw.githubusercontent.com/damarlanandu2005-jpg/yt-auto/f7da39dbb7506997e4da4a0753938a82e396ba17/cartoon/character_refs/stickman_three_quarter.png"
+    },
+    "stickman_thinking": {
+      "path": "cartoon/character_refs/stickman_thinking.png",
+      "blob_sha": "2462679150c92781a500ce137409b54194949206",
+      "url": "https://raw.githubusercontent.com/damarlanandu2005-jpg/yt-auto/f7da39dbb7506997e4da4a0753938a82e396ba17/cartoon/character_refs/stickman_thinking.png"
+    },
+    "stickman_faces": {
+      "path": "cartoon/character_refs/stickman_faces.png",
+      "blob_sha": "587df961bf22b9d4343b5c21c8a6cde6a7352d75",
+      "url": "https://raw.githubusercontent.com/damarlanandu2005-jpg/yt-auto/f7da39dbb7506997e4da4a0753938a82e396ba17/cartoon/character_refs/stickman_faces.png"
+    },
+    "stickman_poses": {
+      "path": "cartoon/character_refs/stickman_poses.png",
+      "blob_sha": "d228c74e3f31a38473dac3f1781bea262fb23351",
+      "url": "https://raw.githubusercontent.com/damarlanandu2005-jpg/yt-auto/f7da39dbb7506997e4da4a0753938a82e396ba17/cartoon/character_refs/stickman_poses.png"
+    },
+    "costume_ancient_egypt": {
+      "path": "cartoon/character_refs/costumes/costume_ancient_egypt.png",
+      "blob_sha": "19e97c1432e14058185e99790f93bfeb822064e9",
+      "url": "https://raw.githubusercontent.com/damarlanandu2005-jpg/yt-auto/f7da39dbb7506997e4da4a0753938a82e396ba17/cartoon/character_refs/costumes/costume_ancient_egypt.png"
+    },
+    "costume_astronaut": {
+      "path": "cartoon/character_refs/costumes/costume_astronaut.png",
+      "blob_sha": "18d795bd190db3746c49d84f14340f045960f24b",
+      "url": "https://raw.githubusercontent.com/damarlanandu2005-jpg/yt-auto/f7da39dbb7506997e4da4a0753938a82e396ba17/cartoon/character_refs/costumes/costume_astronaut.png"
+    },
+    "costume_diver": {
+      "path": "cartoon/character_refs/costumes/costume_diver.png",
+      "blob_sha": "95b51baa9192cb9068c10d61c41aa419d0e851a7",
+      "url": "https://raw.githubusercontent.com/damarlanandu2005-jpg/yt-auto/f7da39dbb7506997e4da4a0753938a82e396ba17/cartoon/character_refs/costumes/costume_diver.png"
+    },
+    "costume_doctor": {
+      "path": "cartoon/character_refs/costumes/costume_doctor.png",
+      "blob_sha": "16d49f6d0a74eaa9e1abcd768310dc1b47c106b3",
+      "url": "https://raw.githubusercontent.com/damarlanandu2005-jpg/yt-auto/f7da39dbb7506997e4da4a0753938a82e396ba17/cartoon/character_refs/costumes/costume_doctor.png"
+    },
+    "costume_explorer": {
+      "path": "cartoon/character_refs/costumes/costume_explorer.png",
+      "blob_sha": "b48c24f25f507004096c2a835671d24e7c6be9cf",
+      "url": "https://raw.githubusercontent.com/damarlanandu2005-jpg/yt-auto/f7da39dbb7506997e4da4a0753938a82e396ba17/cartoon/character_refs/costumes/costume_explorer.png"
+    },
+    "costume_sailor": {
+      "path": "cartoon/character_refs/costumes/costume_sailor.png",
+      "blob_sha": "09610a75d85e703dae12a17a20d1b5add8a6c737",
+      "url": "https://raw.githubusercontent.com/damarlanandu2005-jpg/yt-auto/f7da39dbb7506997e4da4a0753938a82e396ba17/cartoon/character_refs/costumes/costume_sailor.png"
+    },
+    "costume_soldier": {
+      "path": "cartoon/character_refs/costumes/costume_soldier.png",
+      "blob_sha": "b3fc9cc3a66dae5c67525637b6fa21feeae461e3",
+      "url": "https://raw.githubusercontent.com/damarlanandu2005-jpg/yt-auto/f7da39dbb7506997e4da4a0753938a82e396ba17/cartoon/character_refs/costumes/costume_soldier.png"
+    },
+    "costume_winter": {
+      "path": "cartoon/character_refs/costumes/costume_winter.png",
+      "blob_sha": "2820e88d549dada669d96483bc10ff7e90d0a925",
+      "url": "https://raw.githubusercontent.com/damarlanandu2005-jpg/yt-auto/f7da39dbb7506997e4da4a0753938a82e396ba17/cartoon/character_refs/costumes/costume_winter.png"
+    }
+  }
+}
