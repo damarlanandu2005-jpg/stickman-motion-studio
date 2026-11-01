@@ -8,7 +8,7 @@ on:
       - "kaggle/ai-script-writer-benchmark/**"
       - "motion_studio/kaggle_runner.py"
       - "motion_studio/factcheck.py"
-      - "tests/test_factcheck.py"
+      - "tests/test_factcheck.py"\n      - "tests/test_script_writer_runner.py"
       - ".github/workflows/kaggle-ai-script-writer-benchmark.yml"
 
 concurrency:
