@@ -18,11 +18,12 @@ jobs:
         env:
           PYTHONPATH: .
 
-  submit-kaggle-gpu-smoke-test:
-    name: Submit Kaggle GPU smoke test
+  comfyui-kaggle-smoke-test:
+    name: Run ComfyUI smoke test on Kaggle
     needs: unit-tests
     if: github.event_name == 'push' && github.ref == 'refs/heads/comfyui-integration'
     runs-on: ubuntu-latest
+    timeout-minutes: 75
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -51,26 +52,6 @@ jobs:
           if not username or "/" in username:
               raise SystemExit("KAGGLE_USERNAME must be your Kaggle account slug.")
           metadata = {
-              "id": f"{username}/stickman-motion-studio-gpu-smoke-test",
-              "title": "Stickman Motion Studio GPU Smoke Test",
-              "code_file": "gpu_smoke_test.ipynb",
-              "language": "python",
-              "kernel_type": "notebook",
-              "is_private": "true",
-              "enable_gpu": "true",
-              "enable_internet": "true",
-              "machine_shape": "NvidiaTeslaT4",
-              "dataset_sources": [],
-              "competition_sources": [],
-              "kernel_sources": [],
-              "model_sources": []
-          }
-          Path("kaggle/gpu-smoke-test/kernel-metadata.json").write_text(
-              json.dumps(metadata, indent=2) + "\n", encoding="utf-8"
-          )
-          print(f"Prepared private Kaggle notebook: {metadata['id']}")
-
-          comfyui_metadata = {
               "id": f"{username}/stickman-motion-studio-comfyui-server-smoke-test",
               "title": "Stickman Motion Studio ComfyUI Server Smoke Test",
               "code_file": "comfyui_smoke_test.ipynb",
@@ -86,12 +67,12 @@ jobs:
               "model_sources": []
           }
           Path("kaggle/comfyui-smoke-test/kernel-metadata.json").write_text(
-              json.dumps(comfyui_metadata, indent=2) + "\n", encoding="utf-8"
+              json.dumps(metadata, indent=2) + "\\n", encoding="utf-8"
           )
-          print(f"Prepared private Kaggle notebook: {comfyui_metadata['id']}")
+          print(f"Prepared private Kaggle notebook: {metadata['id']}")
           PY
 
-      - name: Configure legacy Kaggle JSON credentials
+      - name: Configure Kaggle credentials
         env:
           KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
           KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
@@ -104,7 +85,6 @@ jobs:
           python - <<'PY'
           import json, os
           from pathlib import Path
-
           credentials = {
               "username": os.environ["KAGGLE_USERNAME"].strip(),
               "key": os.environ["KAGGLE_KEY"].strip()
@@ -115,8 +95,122 @@ jobs:
           PY
           chmod 600 "$HOME/.kaggle/kaggle.json"
 
-      - name: Submit notebook to Kaggle
-        run: echo "GPU smoke test already passed; skipping resubmission."
-
-      - name: Submit ComfyUI server smoke test to Kaggle
+      - name: Submit ComfyUI notebook and start Kaggle execution
         run: kaggle kernels push --path kaggle/comfyui-smoke-test --timeout 3600
+
+      - name: Wait for Kaggle execution and verify notebook report
+        env:
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import re
+          import subprocess
+          import sys
+          import time
+          from pathlib import Path
+
+          kernel = f"{os.environ['KAGGLE_USERNAME'].strip()}/stickman-motion-studio-comfyui-server-smoke-test"
+          output_dir = Path("kaggle-comfyui-output")
+          output_dir.mkdir(exist_ok=True)
+          status_file = output_dir / "kaggle-status.txt"
+          log_file = output_dir / "kaggle-execution.log"
+
+          terminal = {"COMPLETE", "ERROR", "CANCEL_ACKNOWLEDGED"}
+          deadline = time.monotonic() + 55 * 60
+          last_status = None
+          transient_failures = 0
+
+          while time.monotonic() < deadline:
+              result = subprocess.run(
+                  ["kaggle", "kernels", "status", kernel],
+                  text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT
+              )
+              status_text = result.stdout.strip()
+              status_file.write_text(status_text + "\\n", encoding="utf-8")
+              match = re.search(r"KernelWorkerStatus\\.([A-Z_]+)", status_text)
+              if result.returncode != 0 or not match:
+                  transient_failures += 1
+                  print(status_text or "Kaggle status returned no output")
+                  if transient_failures >= 5:
+                      raise SystemExit("Could not read Kaggle execution status after 5 attempts.")
+                  time.sleep(20)
+                  continue
+
+              transient_failures = 0
+              state = match.group(1)
+              if state != last_status:
+                  print(f"Kaggle execution state: {state}")
+                  last_status = state
+
+              if state in terminal:
+                  break
+              time.sleep(30)
+          else:
+              raise SystemExit("Timed out after 55 minutes waiting for Kaggle execution.")
+
+          if state != "COMPLETE":
+              logs = subprocess.run(
+                  ["kaggle", "kernels", "logs", kernel],
+                  text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT
+              )
+              log_file.write_text(logs.stdout, encoding="utf-8")
+              print(logs.stdout[-12000:])
+              raise SystemExit(f"Kaggle notebook finished with terminal state: {state}")
+
+          download = subprocess.run(
+              ["kaggle", "kernels", "output", kernel, "--path", str(output_dir)],
+              text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT
+          )
+          print(download.stdout)
+          if download.returncode != 0:
+              raise SystemExit("Kaggle run completed but downloading its output failed.")
+
+          reports = list(output_dir.rglob("comfyui-smoke-test.json"))
+          if not reports:
+              logs = subprocess.run(
+                  ["kaggle", "kernels", "logs", kernel],
+                  text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT
+              )
+              log_file.write_text(logs.stdout, encoding="utf-8")
+              raise SystemExit("Kaggle run completed but comfyui-smoke-test.json was not found.")
+
+          report_path = reports[0]
+          report = json.loads(report_path.read_text(encoding="utf-8"))
+          required_true = [
+              "comfyui_started",
+              "api_system_stats_ok",
+              "api_object_info_ok",
+              "cuda_available",
+          ]
+          failures = [key for key in required_true if report.get(key) is not True]
+          node_count = report.get("node_type_count", 0)
+          if not isinstance(node_count, int) or node_count < 1:
+              failures.append("node_type_count (expected integer >= 1)")
+
+          print(json.dumps(report, indent=2))
+          if failures:
+              raise SystemExit("ComfyUI smoke test report failed checks: " + ", ".join(failures))
+          print(f"PASS: Kaggle execution completed and report verified: {report_path}")
+          PY
+
+      - name: Collect Kaggle execution logs on failure
+        if: failure()
+        env:
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+        run: |
+          mkdir -p kaggle-comfyui-output
+          KERNEL="$KAGGLE_USERNAME/stickman-motion-studio-comfyui-server-smoke-test"
+          kaggle kernels status "$KERNEL" > kaggle-comfyui-output/kaggle-status-final.txt 2>&1 || true
+          kaggle kernels logs "$KERNEL" > kaggle-comfyui-output/kaggle-execution.log 2>&1 || true
+          tail -n 200 kaggle-comfyui-output/kaggle-execution.log || true
+
+      - name: Upload Kaggle execution report and logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: comfyui-kaggle-smoke-test-output
+          path: kaggle-comfyui-output/
+          if-no-files-found: warn
+          retention-days: 14
