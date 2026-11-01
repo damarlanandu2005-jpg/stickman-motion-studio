@@ -2,6 +2,12 @@ name: Kaggle AI script-writer model benchmark
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "kaggle/ai-script-writer-benchmark/**"
+      - "motion_studio/kaggle_runner.py"
+      - ".github/workflows/kaggle-ai-script-writer-benchmark.yml"
 
 concurrency:
   group: kaggle-ai-script-writer-model-benchmark
