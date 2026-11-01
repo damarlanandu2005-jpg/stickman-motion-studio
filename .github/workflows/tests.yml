@@ -1,5 +1,7 @@
 name: tests
 
+# Image-generation notebook syntax fix is committed on this branch.
+
 concurrency:
   group: comfyui-kaggle-${{ github.ref }}
   cancel-in-progress: true
