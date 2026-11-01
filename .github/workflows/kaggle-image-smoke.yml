@@ -1,0 +1,87 @@
+name: Kaggle image-generation smoke test
+
+# Manual only. A push-triggered GPU run was cancelling queued runs and re-submitting the same notebook.
+# Only one run per Kaggle notebook may be active: the concurrency group below is keyed on the notebook,
+# not on the git ref, and is shared by any workflow that submits this notebook.
+# GitHub keeps at most ONE pending run per group (extra pending runs are cancelled by GitHub): start runs one at a time.
+on:
+  workflow_dispatch:
+  # TEMPORARY: GitHub only lets a new workflow be dispatched by hand after it has run once on the branch.
+  # This path-limited push trigger starts exactly one run when this file changes. Remove after the first run.
+  push:
+    branches: [comfyui-integration]
+    paths: [".github/workflows/kaggle-image-smoke.yml"]
+
+concurrency:
+  group: kaggle-notebook-image-generation-smoke-test
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m unittest discover -s tests -v
+        env:
+          PYTHONPATH: .
+
+  generate-on-kaggle:
+    needs: unit-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Kaggle CLI (six is not declared by kaggle 2.2.5)
+        run: |
+          python -m pip install kaggle==2.2.5 six
+          kaggle --version
+
+      - name: Configure Kaggle credentials
+        env:
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+        run: |
+          if [ -z "$KAGGLE_USERNAME" ] || [ -z "$KAGGLE_KEY" ]; then
+            echo "Missing GitHub Actions secrets KAGGLE_USERNAME and/or KAGGLE_KEY"; exit 1
+          fi
+          mkdir -p "$HOME/.kaggle"
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          Path.home().joinpath(".kaggle", "kaggle.json").write_text(json.dumps({
+              "username": os.environ["KAGGLE_USERNAME"].strip(), "key": os.environ["KAGGLE_KEY"].strip()}))
+          PY
+          chmod 600 "$HOME/.kaggle/kaggle.json"
+
+      - name: Push, track and verify the Kaggle run
+        env:
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+          PYTHONPATH: .
+        run: |
+          python -m motion_studio.kaggle_runner \
+            --kernel "$(echo "$KAGGLE_USERNAME" | tr -d '[:space:]')/stickman-motion-studio-image-generation-smoke-test" \
+            --title "Stickman Motion Studio Image Generation Smoke Test" \
+            --kernel-dir kaggle/image-generation-smoke-test \
+            --notebook image_generation_smoke_test.ipynb \
+            --out kaggle-image-generation-output \
+            --model-sha256 e9476a13728cd75d8279f6ec8bad753a66a1957ca375a1464dc63b37db6e3916
+
+      - name: Upload report, image and logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: image-generation-smoke-test-output
+          path: kaggle-image-generation-output/
+          if-no-files-found: warn
+          retention-days: 14
