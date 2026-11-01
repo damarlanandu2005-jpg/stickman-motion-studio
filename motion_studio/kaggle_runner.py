@@ -383,7 +383,7 @@ def execute(
 
 def summarize_report(out_dir: Path, profile: str) -> str:
     """Compact, human-readable lines from the already-verified report so the numbers are visible in CI logs."""
-    name = "benchmark_report.json" if profile == "klein-benchmark" else "generation_report.json"
+    name = "benchmark_report.json" if profile in {"klein-benchmark", "script-writer"} else "generation_report.json"
     path = next(iter(Path(out_dir).rglob(name)), None)
     if not path:
         return "(no report to summarize)"
