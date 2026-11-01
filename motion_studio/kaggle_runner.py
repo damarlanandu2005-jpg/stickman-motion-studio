@@ -209,9 +209,44 @@ def validate_benchmark_output(out_dir: Path, identity: dict[str, Any], expected_
     return {"ok": not failures, "failures": failures, "checks": checks}
 
 
+
+def validate_script_writer_output(out_dir: Path, identity: dict[str, Any], expected_model_sha256: str | None = None) -> dict[str, Any]:
+    """Validate AI script-writer benchmark outputs and their per-run identity."""
+    failures: list[str] = []
+    checks: dict[str, Any] = {}
+    report_path = next(iter(Path(out_dir).rglob("benchmark_report.json")), None)
+    if not report_path:
+        return {"ok": False, "failures": ["missing benchmark_report.json"], "checks": checks}
+    try:
+        report = json.loads(report_path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        return {"ok": False, "failures": [f"benchmark report is invalid JSON: {exc}"], "checks": checks}
+    for key in ("run_id", "run_token"):
+        if report.get(key) != identity.get(key):
+            failures.append(f"{key} does not match this workflow run")
+    if report.get("status") != "success":
+        failures.append(f"benchmark status is {report.get('status')!r}, not 'success'")
+    for key in ("dependencies_installed", "at_least_one_model_completed", "outputs_saved"):
+        if report.get(key) is not True:
+            failures.append(f"report field {key} is not True")
+    results = report.get("results") or []
+    checks["models"] = results
+    if not results:
+        failures.append("no model results were recorded")
+    for item in results:
+        label = str(item.get("label", "model"))
+        if item.get("completed") is not True and not item.get("error"):
+            failures.append(f"{label}: result neither completed nor recorded an error")
+        if item.get("completed"):
+            output = item.get("json_file")
+            if not output or not next(iter(Path(out_dir).rglob(str(output))), None):
+                failures.append(f"{label}: completed result JSON file is missing")
+    return {"ok": not failures, "failures": failures, "checks": checks}
+
 PROFILES = {
     "image-smoke": {"pattern": OUTPUT_FILE_PATTERN, "validate": "validate_output"},
     "klein-benchmark": {"pattern": BENCHMARK_OUTPUT_PATTERN, "validate": "validate_benchmark_output"},
+    "script-writer": {"pattern": r"(benchmark_report\\.json|benchmark_results\\.json|model_comparison\\.csv|Qwen3-4B-Instruct-2507\\.(json|txt)|Gemma-3-4B-IT\\.(json|txt))$", "validate": "validate_script_writer_output"},
 }
 
 
