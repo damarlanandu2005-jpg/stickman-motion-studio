@@ -246,7 +246,7 @@ def validate_script_writer_output(out_dir: Path, identity: dict[str, Any], expec
 PROFILES = {
     "image-smoke": {"pattern": OUTPUT_FILE_PATTERN, "validate": "validate_output"},
     "klein-benchmark": {"pattern": BENCHMARK_OUTPUT_PATTERN, "validate": "validate_benchmark_output"},
-    "script-writer": {"pattern": r"(benchmark_report\\.json|benchmark_results\\.json|model_comparison\\.csv|Qwen3-4B-Instruct-2507\\.(json|txt)|Gemma-3-4B-IT\\.(json|txt))$", "validate": "validate_script_writer_output"},
+    "script-writer": {"pattern": r".*(benchmark_report\.json|benchmark_results\.json|model_comparison\.csv|Qwen3-4B-Instruct-2507\.(json|txt)|Gemma-3-4B-IT\.(json|txt))$", "validate": "validate_script_writer_output"},
 }
 
 
