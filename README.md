@@ -5,7 +5,7 @@ Local-first production controller for Stickman Thoughts. The goal is expressive 
 ## Pipeline
 Research & source ledger → script → visual beats/shot plans → artwork & character layers → animation (2D rig / 2.5D / key poses / selective AI video) → narration/music/SFX → FFmpeg render → QC → human approval → manual YouTube upload.
 
-**Status:** controller foundation and first ComfyUI HTTP adapter are implemented. The adapter can check a server, submit an API-format workflow, poll its job, and download generated image outputs. Actual generation still requires a running ComfyUI server, compatible models and an exported workflow. Character consistency and animation are not yet integrated.
+**Status:** controller foundation, ComfyUI HTTP adapter, and Phase 5 mascot specification/prompt-pack tooling are implemented. The character tools create and validate a 14-prompt reference pack; they do not generate images or claim identity consistency. Kaggle reference conditioning and a human-approved master remain pending. Animation is not yet integrated.
 
 ## Cost and hardware
 - Core controller and ComfyUI adapter use Python standard library; no paid API required.
@@ -34,6 +34,6 @@ python -m motion_studio comfyui-run --workflow workflows/comfyui/your_workflow.a
 
 For Kaggle, run the controller in the same Kaggle runtime or provide a secure reachable endpoint; Kaggle's `127.0.0.1` is not your Windows laptop. See [ComfyUI integration](docs/COMFYUI_INTEGRATION.md).
 
-Other commands: `init`, `validate`, `plan`, `status`, `run-stage`, `render`.
+Character reference setup: `python -m motion_studio character-init --project projects/first-short` then `python -m motion_studio character-validate --project projects/first-short`. See [Phase 5 character consistency](docs/PHASE_5_CHARACTER_CONSISTENCY.md). Other commands: `init`, `validate`, `plan`, `status`, `run-stage`, `render`.
 
 Render accepts approved animated MP4 clips only. It intentionally refuses still-image fallback. The tool never uploads to YouTube. Human review is required before publishing.
