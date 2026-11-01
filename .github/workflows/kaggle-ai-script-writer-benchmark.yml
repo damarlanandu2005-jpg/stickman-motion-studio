@@ -7,6 +7,8 @@ on:
     paths:
       - "kaggle/ai-script-writer-benchmark/**"
       - "motion_studio/kaggle_runner.py"
+      - "motion_studio/factcheck.py"
+      - "tests/test_factcheck.py"
       - ".github/workflows/kaggle-ai-script-writer-benchmark.yml"
 
 concurrency:
@@ -28,6 +30,7 @@ jobs:
         run: python -m py_compile motion_studio/kaggle_runner.py motion_studio/imagecheck.py
       - name: Run script-writer output validation regression tests
         run: python -m unittest discover -s tests -p "test_script_writer_runner.py"
+          python -m unittest discover -s tests -p "test_factcheck.py"
 
   script-writer-on-kaggle:
     needs: runner-smoke-check

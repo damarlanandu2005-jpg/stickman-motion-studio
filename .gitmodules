@@ -13,3 +13,9 @@
 [submodule "external/automated-video-generator"]
 	path = external/automated-video-generator
 	url = https://github.com/itsPremkumar/Automated-Video-Generator.git
+[submodule "external/yt-factcheck"]
+	path = external/yt-factcheck
+	url = https://github.com/mickpletcher/yt-factcheck.git
+[submodule "external/FAcTScore"]
+	path = external/FAcTScore
+	url = https://github.com/shmsw25/FAcTScore.git
