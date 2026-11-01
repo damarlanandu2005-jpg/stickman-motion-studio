@@ -6,6 +6,7 @@ import sys
 from pathlib import Path
 
 from .adapters.comfyui import ComfyUIAdapter
+from .characters import initialise_character_workspace, validate_character_workspace
 from .models import STAGES
 from .pipeline import record_stage
 from .planner import readiness
@@ -51,6 +52,12 @@ def main(argv=None):
     p.add_argument("--project", required=True, type=existing_project)
     p.add_argument("--output", default="final.mp4")
 
+    p = subs.add_parser("character-init", help="Create the mascot reference workspace and prompt pack")
+    p.add_argument("--project", required=True, type=existing_project)
+
+    p = subs.add_parser("character-validate", help="Validate the mascot reference workspace")
+    p.add_argument("--project", required=True, type=existing_project)
+
     p = subs.add_parser("comfyui-check", help="Check connection to a ComfyUI server")
     p.add_argument("--url", default="http://127.0.0.1:8188")
 
@@ -93,6 +100,18 @@ def main(argv=None):
         if args.command == "render":
             print(f"Rendered: {render_project(args.project, args.output)}")
             return 0
+
+        if args.command == "character-init":
+            paths = initialise_character_workspace(args.project)
+            print(json.dumps(paths, indent=2))
+            return 0
+
+        if args.command == "character-validate":
+            checks = validate_character_workspace(args.project)
+            for name, passed, message in checks:
+                label = "PASS" if passed else "FAIL"
+                print(f"[{label}] {name}: {message}")
+            return 0 if all(passed for _, passed, _ in checks) else 2
 
         if args.command == "comfyui-check":
             adapter = ComfyUIAdapter(args.url)
