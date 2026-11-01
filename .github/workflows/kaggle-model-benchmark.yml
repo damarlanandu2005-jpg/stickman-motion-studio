@@ -1,16 +1,11 @@
 name: Kaggle model benchmark (FLUX.2 klein 4B)
 
-# Manual (plus one temporary first-run trigger below).
+# Manual only.
 # Only one run per Kaggle notebook may be active: the concurrency group below is keyed on the notebook,
 # not on the git ref, and is shared by any workflow that submits this notebook.
 # GitHub keeps at most ONE pending run per group (extra pending runs are cancelled by GitHub): start runs one at a time.
 on:
   workflow_dispatch:
-  # TEMPORARY: GitHub only lets a new workflow be dispatched by hand after it has run once on the branch.
-  # This path-limited push trigger starts exactly one run when this file changes. Remove after the first run.
-  push:
-    branches: [comfyui-integration]
-    paths: [".github/workflows/kaggle-model-benchmark.yml"]
 
 concurrency:
   group: kaggle-notebook-klein-4b-benchmark
