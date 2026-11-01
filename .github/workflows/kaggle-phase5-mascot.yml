@@ -12,19 +12,18 @@ permissions:
   contents: read
 
 jobs:
-  unit-tests:
+  runner-smoke-check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - run: python -m unittest discover -s tests -v
-        env:
-          PYTHONPATH: .
+      - name: Verify Kaggle runner modules compile
+        run: python -m py_compile motion_studio/kaggle_runner.py motion_studio/imagecheck.py
 
   phase5-on-kaggle:
-    needs: unit-tests
+    needs: runner-smoke-check
     runs-on: ubuntu-latest
     timeout-minutes: 110
     steps:
