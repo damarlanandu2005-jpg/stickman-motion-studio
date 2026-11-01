@@ -1,5 +1,9 @@
 name: tests
 
+concurrency:
+  group: comfyui-kaggle-${{ github.ref }}
+  cancel-in-progress: true
+
 on:
   push:
     branches: [main, pipeline-foundation, comfyui-integration]
