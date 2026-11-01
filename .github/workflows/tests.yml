@@ -253,7 +253,7 @@ jobs:
               raise SystemExit("KAGGLE_USERNAME must be your Kaggle account slug.")
           metadata = {
               "id": f"{username}/stickman-motion-studio-image-generation-smoke-test",
-              "title": "Stickman Motion Studio Real Image Generation Smoke Test",
+              "title": "Stickman Motion Studio Image Generation Smoke Test",
               "code_file": "image_generation_smoke_test.ipynb",
               "language": "python",
               "kernel_type": "notebook",
