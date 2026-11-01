@@ -267,7 +267,7 @@ jobs:
               "model_sources": []
           }
           Path("kaggle/image-generation-smoke-test/kernel-metadata.json").write_text(
-              json.dumps(metadata, indent=2) + "\\n", encoding="utf-8"
+              json.dumps(metadata, indent=2) + "\n", encoding="utf-8"
           )
           print(f"Prepared private Kaggle notebook: {metadata['id']}")
           PY
@@ -320,7 +320,7 @@ jobs:
                   text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT
               )
               status_text = result.stdout.strip()
-              (output_dir / "kaggle-status.txt").write_text(status_text + "\\n", encoding="utf-8")
+              (output_dir / "kaggle-status.txt").write_text(status_text + "\n", encoding="utf-8")
               match = re.search(r"KernelWorkerStatus\.([A-Z_]+)", status_text)
               if result.returncode != 0 or not match:
                   transient_failures += 1
