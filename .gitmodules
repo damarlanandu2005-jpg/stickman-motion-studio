@@ -19,3 +19,7 @@
 [submodule "external/FAcTScore"]
 	path = external/FAcTScore
 	url = https://github.com/shmsw25/FAcTScore.git
+
+[submodule "animation-poc/upstream"]
+	path = animation-poc/upstream
+	url = https://github.com/mromidev/claude-animated-shorts.git
