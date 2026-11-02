@@ -956,7 +956,7 @@
       ],
       "actions": [
         {
-          "subjectId": "rocket",
+          "subjectId": "astronaut",
           "kind": "fly",
           "startSeconds": 22,
           "endSeconds": 23.9,
@@ -1426,7 +1426,7 @@
       ],
       "actions": [
         {
-          "subjectId": "rocket",
+          "subjectId": "astronaut",
           "kind": "travel",
           "startSeconds": 34,
           "endSeconds": 35.9,
