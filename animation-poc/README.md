@@ -43,3 +43,19 @@ Likewise, the current Earth-to-alien composition is still a focused proof scene,
 5. Compare frame sheets, camera continuity, character animation, audio mix and final MP4 QA.
 
 The engine is considered reusable only after at least three materially different topics pass those tests.
+
+## Upstream baseline integration (2026-11-02)
+
+The Remotion root now registers `BridgeReferenceBaseline`, importing the upstream `BridgeShort` composition directly from the pinned submodule (`upstream/templates/bridge/Bridge.tsx`). This is an exact-source baseline, not a claim that the topic engine has been rebuilt.
+
+Run it locally with:
+
+```bash
+npm run render:bridge-reference
+```
+
+CI smoke-renders frames 0–89 of that composition before the Earth-to-alien topic proof. This isolates two separate questions:
+- **Reference baseline:** can this repo compile and render the original Bridge composition from the pinned upstream source?
+- **Topic engine:** can one shared composition deliver materially different topic worlds with authored shot plans and proper visual QA?
+
+The second question is still open. The existing `ReferenceTopicEngine` remains a prototype and must not be treated as the finished universal engine. The next engineering work is to extract reusable camera/shot/post/cast contracts from the Bridge source, then implement environment-specific world builders and subject/cast adapters without substituting generic primitives for authored scene design. Bridge-specific bridge/river/collapse physics stays in the Bridge example only.
