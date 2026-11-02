@@ -4,7 +4,8 @@
   "version": "0.1.0",
   "scripts": {
     "studio": "remotion studio src/index.ts",
-    "render": "remotion render src/index.ts EarthAlienPoc out/earth-to-alien-poc.mp4"
+    "render": "remotion render src/index.ts EarthAlienPoc out/earth-to-alien-poc.mp4",
+    "render:bridge-reference": "remotion render src/index.ts BridgeReferenceBaseline out/bridge-reference-baseline.mp4"
   },
   "dependencies": {
     "@remotion/cli": "^4.0.0",
