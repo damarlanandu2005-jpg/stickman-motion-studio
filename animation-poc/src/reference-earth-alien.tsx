@@ -7,15 +7,23 @@ import {bodyFront,Pen,Outfit} from "./toon-reference";
 
 // Character drawing and face/limb construction are the upstream toon.ts implementation.
 const explorer:Outfit={jacket:"#e9e9e2",pants:"#34465c",boots:"#22252b",belt:"#d8ad54",buttons:"#c8d5df",skin:"#f5cba8",build:"adult"};
-const makeCharacter=(frame:number)=>{
- const c=document.createElement("canvas");c.width=600;c.height=1000;
- const g=c.getContext("2d")!;bodyFront(new Pen(g),explorer,{mode:"stroll",phase:frame/30,expr:frame>285?"shock":"neutral",seed:17,light:-2.2,blink:Math.floor(frame/48)%9===0});
- const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;return t;
-};
 const Character:React.FC=()=>{
  const f=useCurrentFrame();const {camera}=useThree();
- const mat=useMemo(()=>new THREE.MeshBasicMaterial({map:makeCharacter(0),transparent:true,side:THREE.DoubleSide,depthWrite:false}),[]);
- useFrame(()=>{camera.position.set(Math.sin(f/150)*1.4,1.8,24-f*.055);camera.lookAt(0,0,-18);});
+ // Keep one canvas/texture and redraw the upstream toon renderer every frame.
+ // This preserves the reference walk cycle, expressions and blink timing.
+ const surface=useMemo(()=>{
+  const canvas=document.createElement("canvas");canvas.width=600;canvas.height=1000;
+  const context=canvas.getContext("2d")!;
+  const texture=new THREE.CanvasTexture(canvas);texture.colorSpace=THREE.SRGBColorSpace;
+  return {canvas,context,texture};
+ },[]);
+ const mat=useMemo(()=>new THREE.MeshBasicMaterial({map:surface.texture,transparent:true,side:THREE.DoubleSide,depthWrite:false}),[surface]);
+ useFrame(()=>{
+  surface.context.clearRect(0,0,surface.canvas.width,surface.canvas.height);
+  bodyFront(new Pen(surface.context),explorer,{mode:"stroll",phase:f/30,expr:f>285?"shock":"neutral",seed:17,light:-2.2,blink:Math.floor(f/48)%9===0});
+  surface.texture.needsUpdate=true;
+  camera.position.set(Math.sin(f/150)*1.4,1.8,24-f*.055);camera.lookAt(0,0,-18);
+ });
  return <mesh position={[0,-1.6,-7]} rotation={[0,Math.sin(f/100)*.06,0]} material={mat}><planeGeometry args={[3.8,6.4]}/></mesh>;
 };
 const Space:React.FC=()=>{
