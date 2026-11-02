@@ -180,7 +180,7 @@ const shotLayersAt=(plan:ReturnType<typeof toReferenceShotPlan>["plan"],scenes:C
  for(let i=1;i<plan.shots.length;i++){
   const incoming=plan.shots[i];
   if(incoming.transition!=="crossfade")continue;
-  const fade=incoming.camera.transitionFrames??8;
+  const fade=plan.crossfades[incoming.id]??0;
   if(fade<=0)continue;
   const from=incoming.a-fade/2,to=incoming.a+fade/2;
   if(frame>=from&&frame<to){
