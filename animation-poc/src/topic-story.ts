@@ -48,6 +48,7 @@ export interface TopicCamera {
   lookAt: Vec3;
   fov?: number;
   keyframes?: TopicCameraKeyframe[];
+  transitionFrames?: number;
   move?: "hold" | "push" | "pull" | "pan" | "orbit" | "follow" | "custom";
   intensity?: number;
   transition?: "cut" | "glide" | "crossfade";
@@ -118,6 +119,9 @@ export function compileTopic(story: TopicStory): CompiledTopic {
     const startFrame = Math.round(scene.startSeconds * story.fps);
     const endFrame = startFrame + Math.round(scene.durationSeconds * story.fps);
     const subjectIds = new Set(scene.subjects.map((s) => s.id));
+    if (scene.camera.transitionFrames !== undefined && (!Number.isInteger(scene.camera.transitionFrames) || scene.camera.transitionFrames < 0 || scene.camera.transitionFrames > 30)) {
+      throw new Error("Scene " + scene.id + ": transitionFrames must be an integer from 0 to 30");
+    }
     if (scene.camera.keyframes) {
       let lastKey = -Infinity;
       for (const key of scene.camera.keyframes) {
