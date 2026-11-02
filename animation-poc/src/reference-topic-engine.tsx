@@ -12,6 +12,8 @@ import {GradeEffect, GRADES, GRADE_STRENGTH, gradeFor} from "../upstream/templat
 import {TopicStory, TopicSubject, CompiledScene, ActionKind} from "./topic-story";
 import {toReferenceShotPlan} from "./reference-topic-adapter";
 import {applyCameraPose,cameraPoseAt} from "./reference/camera";
+import {cardShade,CARD_K} from "../upstream/templates/bridge/cardshade";
+import {NOINK} from "../upstream/templates/bridge/ink";
 
 const explorerOutfit: Outfit = {
   jacket: "#e9e9e2", pants: "#34465c", boots: "#22252b",
@@ -41,9 +43,12 @@ const ToonSubject:React.FC<{subject:TopicSubject; position:THREE.Vector3; frame:
     bodyFront(new Pen(surface.context),outfit,{mode,phase:frame/fps,expr,seed:hash(subject.id),light:-2.2,blink:Math.floor(frame/55)%8===0,look:progress>0.5?0.15:0});
     surface.texture.needsUpdate=true;
   });
-  return <mesh position={position} scale={subject.scale??1}>
-    <planeGeometry args={[3.4,5.7]}/>
-    <meshBasicMaterial map={surface.texture} transparent side={THREE.DoubleSide} depthWrite={false}/>
+  const meshRef=React.useRef<THREE.Mesh>(null);
+  useEffect(()=>{if(meshRef.current){meshRef.current.layers.set(NOINK);meshRef.current.castShadow=false;meshRef.current.receiveShadow=true;}},[]);
+
+  return <mesh ref={meshRef} position={position} scale={subject.scale??1} material={mat}
+    onBeforeRender={(renderer)=>{const rt=renderer.getRenderTarget();CARD_K.uPx.value=(rt?rt.height:renderer.domElement.height)/1920;}}>
+    <planeGeometry args={[600*.00216,1000*.00216]}/>
   </mesh>;
 };
 
