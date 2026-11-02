@@ -4,7 +4,8 @@ import {AbsoluteFill, interpolate, useCurrentFrame} from "remotion";
 import {ThreeCanvas} from "@remotion/three";
 import {useFrame, useThree} from "@react-three/fiber";
 import {bodyFront, Pen, Outfit} from "./reference/toon";
-import {compileTopic, TopicStory, TopicSubject, CompiledScene, ActionKind} from "./topic-story";
+import {TopicStory, TopicSubject, CompiledScene, ActionKind} from "./topic-story";
+import {toReferenceShotPlan} from "./reference-topic-adapter";
 
 const explorerOutfit: Outfit = {
   jacket: "#e9e9e2", pants: "#34465c", boots: "#22252b",
@@ -95,8 +96,9 @@ const CameraRig:React.FC<{scene:CompiledScene;frame:number;fps:number}> = ({scen
 
 export const ReferenceTopicEngine:React.FC<{story:TopicStory}> = ({story})=>{
  const frame=useCurrentFrame();
- const compiled=useMemo(()=>compileTopic(story),[story]);
- const active=compiled.compiledScenes.find(s=>frame>=s.startFrame&&frame<s.endFrame)??compiled.compiledScenes[compiled.compiledScenes.length-1];
+ const {topic:compiled,plan}=useMemo(()=>toReferenceShotPlan(story),[story]);
+ const shot=plan.shots.find(s=>frame>=s.a&&frame<s.b)??plan.shots[plan.shots.length-1];
+ const active=compiled.compiledScenes.find(s=>s.id===shot.sceneId)??compiled.compiledScenes[compiled.compiledScenes.length-1];
  const localFrame=frame-active.startFrame;
  return <AbsoluteFill style={{background:"#080e24",overflow:"hidden"}}>
   <ThreeCanvas width={story.width} height={story.height} camera={{position:[0,2,24],fov:active.camera.fov??48,near:.1,far:500}} gl={{antialias:true,alpha:false}}>
