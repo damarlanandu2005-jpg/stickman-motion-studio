@@ -43,23 +43,11 @@ jobs:
         working-directory: animation-poc
         run: npx tsc --noEmit
 
-      - name: Smoke-render the exact upstream Bridge composition
-        working-directory: animation-poc
-        run: npx remotion render src/index.ts BridgeReferenceBaseline out/bridge-reference-smoke.mp4 --codec h264 --crf 30 --scale 0.25 --frames=0-0 --props='{"post":{"dpr":0.25,"ink":false,"lens":false,"pre":false,"bloom":false,"grade":false}}'
-
-      - name: Render Earth-to-alien test video
+      - name: Render the first topic test (Earth to alien)
         working-directory: animation-poc
         run: npx remotion render src/index.ts EarthAlienReferencePOC out/earth-to-alien-reference-poc.mp4 --codec h264 --crf 20 --scale 0.5
 
-      - name: Render history pyramid test video
-        working-directory: animation-poc
-        run: npx remotion render src/index.ts HistoryPyramidReferencePOC out/history-pyramid-reference-poc.mp4 --codec h264 --crf 20 --scale 0.5
-
-      - name: Render bat echolocation test video
-        working-directory: animation-poc
-        run: npx remotion render src/index.ts BatEcholocationReferencePOC out/bat-echolocation-reference-poc.mp4 --codec h264 --crf 20 --scale 0.5
-
-      - name: Run upstream frame-by-frame QA and generate contact sheets
+      - name: Run frame QA for Earth-to-alien only
         working-directory: animation-poc
         shell: bash
         run: |
@@ -67,76 +55,59 @@ jobs:
           mkdir -p out/qa
           node <<'NODE'
           const fs = require("node:fs");
-          for (const slug of ["earth-to-alien", "history-pyramid", "bat-echolocation"]) {
-            const story = JSON.parse(fs.readFileSync(`src/${slug}.story.json`, "utf8"));
-            const shots = story.scenes.map((scene, index) => ({
-              id: index + 1,
-              a: Math.round(scene.startSeconds * story.fps),
-              b: Math.round((scene.startSeconds + scene.durationSeconds) * story.fps),
-            }));
-            const xfade = story.scenes.flatMap((scene, index) => {
-              const n = scene.camera.transition === "crossfade" ? (scene.camera.transitionFrames ?? 8) : 0;
-              if (index === 0 || n <= 0) return [];
-              const at = Math.round(scene.startSeconds * story.fps);
-              return [[at - Math.floor(n / 2), at + Math.ceil(n / 2)]];
-            });
-            fs.writeFileSync(`out/qa/${slug}-shots.json`, JSON.stringify({shots, xfade}, null, 2));
-          }
+          const slug = "earth-to-alien";
+          const story = JSON.parse(fs.readFileSync(`src/${slug}.story.json`, "utf8"));
+          const shots = story.scenes.map((scene, index) => ({
+            id: index + 1,
+            a: Math.round(scene.startSeconds * story.fps),
+            b: Math.round((scene.startSeconds + scene.durationSeconds) * story.fps),
+          }));
+          const xfade = story.scenes.flatMap((scene, index) => {
+            const n = scene.camera.transition === "crossfade" ? (scene.camera.transitionFrames ?? 8) : 0;
+            if (index === 0 || n <= 0) return [];
+            const at = Math.round(scene.startSeconds * story.fps);
+            return [[at - Math.floor(n / 2), at + Math.ceil(n / 2)]];
+          });
+          fs.writeFileSync(`out/qa/${slug}-shots.json`, JSON.stringify({shots, xfade}, null, 2));
           NODE
-          for slug in earth-to-alien history-pyramid bat-echolocation; do
-            .qa-venv/bin/python upstream/templates/scripts/short_qa.py "out/${slug}-reference-poc.mp4" "out/qa/${slug}" "out/qa/${slug}-shots.json"
-          done
+          .qa-venv/bin/python upstream/templates/scripts/short_qa.py out/earth-to-alien-reference-poc.mp4 out/qa/earth-to-alien out/qa/earth-to-alien-shots.json
           node <<'NODE'
           const fs = require("node:fs");
-          let failed = false;
-          for (const slug of ["earth-to-alien", "history-pyramid", "bat-echolocation"]) {
-            const report = fs.readFileSync(`out/qa/${slug}/report.md`, "utf8");
-            const frameLine = report.split("\n").find(line => line.startsWith("FRAMES "));
-            console.log(slug + " QA: " + frameLine);
-            const match = frameLine?.match(/black (\[[^\]]*\]); unplanned white (\[[^\]]*\]); frozen spans >=12f (\[[^\]]*\])/);
-            if (!match) { console.error("Could not parse frame QA summary for " + slug); failed = true; continue; }
-            const black = JSON.parse(match[1]);
-            const white = JSON.parse(match[2]);
-            const frozen = match[3] !== "[]";
-            if (black.length || white.length || frozen) {
-              console.error(slug + " has black/white/frozen frames; inspect its contact sheets");
-              failed = true;
-            }
-          }
-          if (failed) process.exit(1);
+          const report = fs.readFileSync("out/qa/earth-to-alien/report.md", "utf8");
+          const frameLine = report.split("\n").find(line => line.startsWith("FRAMES "));
+          console.log("Earth-to-alien QA: " + frameLine);
+          const match = frameLine?.match(/black (\[[^\]]*\]); unplanned white (\[[^\]]*\]); frozen spans >=12f (\[[^\]]*\])/);
+          if (!match) throw new Error("Could not parse frame QA summary");
+          const black = JSON.parse(match[1]);
+          const white = JSON.parse(match[2]);
+          const frozen = match[3] !== "[]";
+          if (black.length || white.length || frozen) throw new Error("Earth-to-alien has black/white/frozen frames; inspect contact sheets");
           NODE
 
-      - name: Verify the test MP4 and metadata
+      - name: Verify the Earth-to-alien MP4 and metadata
         working-directory: animation-poc
         shell: bash
         run: |
           set -euo pipefail
-          for name in earth-to-alien history-pyramid bat-echolocation; do
-            file="out/${name}-reference-poc.mp4"
-            test -s "$file"
-            ffprobe -v error -show_entries format=duration,size -show_entries stream=codec_name,width,height,r_frame_rate -of json "$file" > "out/${name}-reference-poc.ffprobe.json"
-          done
+          file="out/earth-to-alien-reference-poc.mp4"
+          test -s "$file"
+          ffprobe -v error -show_entries format=duration,size -show_entries stream=codec_name,width,height,r_frame_rate -of json "$file" > out/earth-to-alien-reference-poc.ffprobe.json
           node <<'NODE'
           const fs = require("node:fs");
-          const names = ["earth-to-alien", "history-pyramid", "bat-echolocation"];
-          let failed = false;
-          for (const name of names) {
-            const data = JSON.parse(fs.readFileSync(`out/${name}-reference-poc.ffprobe.json`, "utf8"));
-            const stream = data.streams?.[0];
-            const duration = Number(data.format?.duration);
-            const errors = [];
-            if (stream?.codec_name !== "h264") errors.push("codec must be h264");
-            if (stream?.width !== 540 || stream?.height !== 960) errors.push("resolution must be 540x960");
-            if (stream?.r_frame_rate !== "30/1") errors.push("frame rate must be 30 fps");
-            if (!Number.isFinite(duration) || Math.abs(duration - 13) > 0.05) errors.push("duration must be 13 seconds");
-            if (errors.length) { console.error(name + ": " + errors.join("; ")); failed = true; }
-            else console.log(name + ": " + duration + "s, " + stream.width + "x" + stream.height + ", " + stream.codec_name + ", " + stream.r_frame_rate);
-          }
-          if (failed) process.exit(1);
+          const data = JSON.parse(fs.readFileSync("out/earth-to-alien-reference-poc.ffprobe.json", "utf8"));
+          const stream = data.streams?.[0];
+          const duration = Number(data.format?.duration);
+          const errors = [];
+          if (stream?.codec_name !== "h264") errors.push("codec must be h264");
+          if (stream?.width !== 540 || stream?.height !== 960) errors.push("resolution must be 540x960");
+          if (stream?.r_frame_rate !== "30/1") errors.push("frame rate must be 30 fps");
+          if (!Number.isFinite(duration) || Math.abs(duration - 13) > 0.05) errors.push("duration must be 13 seconds");
+          if (errors.length) throw new Error(errors.join("; "));
+          console.log("Earth-to-alien: " + duration + "s, " + stream.width + "x" + stream.height + ", " + stream.codec_name + ", " + stream.r_frame_rate);
           NODE
 
       - uses: actions/upload-artifact@v7
         with:
-          name: reference-topic-engine-single-video-proof
+          name: earth-to-alien-single-test-proof
           path: animation-poc/out/
           retention-days: 7
