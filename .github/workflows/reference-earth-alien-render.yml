@@ -14,24 +14,34 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v4
-        with:
-          submodules: recursive
-      - uses: actions/setup-node@v4
+      # This repo contains unrelated research/tool submodules, one of which has
+      # a broken nested PupCaps entry. Do not recursively clone the entire repo.
+      - uses: actions/checkout@v5
+
+      # Only the pinned upstream renderer is required by this job.
+      - name: Initialise the Remotion reference renderer
+        run: git submodule update --init --depth=1 animation-poc/upstream
+
+      - uses: actions/setup-node@v6
         with:
           node-version: "20"
+          package-manager-cache: false
+
       - name: Install Remotion and Three.js dependencies
         working-directory: animation-poc
         run: npm install --no-audit --no-fund
+
       - name: Render 13-second vertical proof
         working-directory: animation-poc
         run: npx remotion render src/index.ts EarthAlienReferencePOC out/earth-to-alien-reference-poc.mp4 --codec h264 --crf 20 --scale 0.5
+
       - name: Verify output metadata
         working-directory: animation-poc
         run: |
           ffprobe -v error -show_entries format=duration,size -show_entries stream=codec_name,width,height,r_frame_rate -of json out/earth-to-alien-reference-poc.mp4 | tee out/ffprobe.json
           test -s out/earth-to-alien-reference-poc.mp4
-      - uses: actions/upload-artifact@v4
+
+      - uses: actions/upload-artifact@v6
         with:
           name: earth-to-alien-reference-poc
           path: animation-poc/out/
