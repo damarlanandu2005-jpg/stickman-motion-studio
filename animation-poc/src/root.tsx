@@ -1,6 +1,6 @@
 import React from "react";
 import {Composition} from "remotion";
-import {BridgeShort, BRIDGE_FRAMES} from "../upstream/templates/bridge/Bridge";
+import {BridgeShort, BRIDGE_FRAMES} from "./reference/BridgeReference";
 import {ReferenceTopicEngine} from "./reference-topic-engine";
 import {TopicStory, compileTopic} from "./topic-story";
 import earthStory from "./earth-to-alien.story.json";
