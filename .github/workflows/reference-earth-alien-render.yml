@@ -95,8 +95,10 @@ jobs:
             console.log(slug + " QA: " + frameLine);
             const match = frameLine?.match(/black (\[[^\]]*\]); unplanned white (\[[^\]]*\]); frozen spans >=12f (\[[^\]]*\])/);
             if (!match) { console.error("Could not parse frame QA summary for " + slug); failed = true; continue; }
-            const [black, white, frozen] = match.slice(1).map(JSON.parse);
-            if (black.length || white.length || frozen.length) {
+            const black = JSON.parse(match[1]);
+            const white = JSON.parse(match[2]);
+            const frozen = match[3] !== "[]";
+            if (black.length || white.length || frozen) {
               console.error(slug + " has black/white/frozen frames; inspect its contact sheets");
               failed = true;
             }
