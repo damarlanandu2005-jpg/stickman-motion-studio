@@ -40,6 +40,10 @@ jobs:
         working-directory: animation-poc
         run: npx tsc --noEmit
 
+      - name: Smoke-render the exact upstream Bridge composition
+        working-directory: animation-poc
+        run: npx remotion render src/index.ts BridgeReferenceBaseline out/bridge-reference-smoke.mp4 --codec h264 --crf 22 --scale 0.5 --frames=0-89
+
       - name: Render Earth-to-alien test video
         working-directory: animation-poc
         run: npx remotion render src/index.ts EarthAlienReferencePOC out/earth-to-alien-reference-poc.mp4 --codec h264 --crf 20 --scale 0.5
