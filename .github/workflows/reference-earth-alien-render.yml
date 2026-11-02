@@ -57,7 +57,8 @@ jobs:
           const fs = require("node:fs");
           const slug = "earth-to-alien";
           const story = JSON.parse(fs.readFileSync(`src/${slug}.story.json`, "utf8"));
-          const selectedScenes = story.scenes.filter(scene => scene.startSeconds < 10);\n          const shots = selectedScenes.map((scene, index) => ({
+          const selectedScenes = story.scenes.filter(scene => scene.startSeconds < 10);
+          const shots = selectedScenes.map((scene, index) => ({
             id: index + 1,
             a: Math.round(scene.startSeconds * story.fps),
             b: Math.round((scene.startSeconds + scene.durationSeconds) * story.fps),
