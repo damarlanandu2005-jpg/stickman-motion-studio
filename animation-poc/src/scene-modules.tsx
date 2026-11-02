@@ -138,6 +138,72 @@ const OceanEnvironment: React.FC<SceneModuleProps> = () => (
   </>
 );
 
+const CityEnvironment: React.FC<SceneModuleProps> = () => (
+  <>
+    <color attach="background" args={["#9fc4dc"]}/><fog attach="fog" args={["#b8d0df",65,210]}/>
+    <hemisphereLight args={["#dceeff","#4a4a52",1.05]}/><directionalLight position={[20,35,12]} intensity={2.1} castShadow/>
+    <Ground color="#77796d"/>
+    {Array.from({length:18},(_,i)=><group key={i} position={[(i%6-3)*17, -3, -35-Math.floor(i/6)*32]}>
+      <mesh position={[0,10+(i%4)*3,0]}><boxGeometry args={[9,20+(i%4)*6,9]}/><meshStandardMaterial color={["#8d9ba4","#b2a99b","#899a9c","#9e8e83"][i%4]} roughness={.9}/></mesh>
+      <mesh position={[0,21+(i%4)*3,.1]}><boxGeometry args={[5,1,9.2]}/><meshBasicMaterial color="#d4e5e8"/></mesh>
+    </group>)}
+  </>
+);
+const VillageEnvironment: React.FC<SceneModuleProps> = () => (
+  <>
+    <color attach="background" args={["#a8c9df"]}/><fog attach="fog" args={["#c0d5d9",55,180]}/>
+    <hemisphereLight args={["#e6f3ff","#596c43",1.1]}/><directionalLight position={[-18,28,12]} intensity={2} castShadow/>
+    <Ground color="#78915d"/>
+    {Array.from({length:9},(_,i)=><group key={i} position={[(i%3-1)*24,-3,-24-Math.floor(i/3)*28]}>
+      <mesh position={[0,4,0]}><boxGeometry args={[11,9,9]}/><meshStandardMaterial color={i%2?"#d2b58a":"#c4c8bd"} roughness={1}/></mesh>
+      <mesh position={[0,10,0]}><coneGeometry args={[8,5,4]}/><meshStandardMaterial color="#81584a" roughness={1}/></mesh>
+    </group>)}
+  </>
+);
+const MountainEnvironment: React.FC<SceneModuleProps> = () => (
+  <>
+    <color attach="background" args={["#b5c8d8"]}/><fog attach="fog" args={["#b5c8d8",55,210]}/>
+    <hemisphereLight args={["#e5f1ff","#46534b",1.1]}/><directionalLight position={[15,32,8]} intensity={2} castShadow/>
+    <Ground color="#657b67"/>
+    {Array.from({length:12},(_,i)=><mesh key={i} position={[(i-5.5)*18,8+(i%3)*3,-70-(i%4)*17]}>
+      <coneGeometry args={[13+(i%3)*3,28+(i%4)*8,5]}/><meshStandardMaterial color={i%2?"#748b91":"#87969b"} roughness={1}/>
+    </mesh>)}
+  </>
+);
+const CaveEnvironment: React.FC<SceneModuleProps> = () => (
+  <>
+    <color attach="background" args={["#101923"]}/><fog attach="fog" args={["#17232d",20,115]}/>
+    <ambientLight intensity={.3}/><hemisphereLight args={["#607b91","#1b1718",.7]}/>
+    <pointLight position={[0,8,-35]} color="#e9a66e" intensity={85} distance={95}/>
+    <mesh position={[0,5,-35]}><sphereGeometry args={[72,40,28]}/><meshStandardMaterial color="#27343d" roughness={1} side={THREE.BackSide}/></mesh>
+    <Ground color="#343638" y={-2}/>
+    {Array.from({length:18},(_,i)=><mesh key={i} position={[(i%6-2.5)*11,5,-14-Math.floor(i/6)*25]} rotation={[Math.PI,0,0]}>
+      <coneGeometry args={[1.5+(i%3)*.5,6+(i%4),7]}/><meshStandardMaterial color="#46515a" roughness={1}/>
+    </mesh>)}
+  </>
+);
+const LaboratoryEnvironment: React.FC<SceneModuleProps> = () => (
+  <>
+    <color attach="background" args={["#cbd8df"]}/><fog attach="fog" args={["#cbd8df",70,200]}/>
+    <ambientLight intensity={.8}/><hemisphereLight args={["#effaff","#66717b",.7]}/>
+    <directionalLight position={[8,25,12]} intensity={1.7}/>
+    <mesh rotation={[-Math.PI/2,0,0]} position={[0,-3,-35]}><planeGeometry args={[180,220]}/><meshStandardMaterial color="#cbd4d8" roughness={.85}/></mesh>
+    {[-1,1].map(side=><group key={side} position={[side*10,1,-24]}>
+      <mesh position={[0,4,0]}><boxGeometry args={[5,8,4]}/><meshStandardMaterial color="#e7edf0" metalness={.12}/></mesh>
+      <mesh position={[0,4,2.1]}><boxGeometry args={[3.5,2.4,.08]}/><meshBasicMaterial color="#48a9c5"/></mesh>
+    </group>)}
+  </>
+);
+const AbstractEnvironment: React.FC<SceneModuleProps> = () => (
+  <>
+    <color attach="background" args={["#201c3c"]}/><Stars count={800}/>
+    <ambientLight intensity={.55}/><pointLight position={[0,10,-20]} color="#9c80ff" intensity={35}/>
+    {Array.from({length:9},(_,i)=><mesh key={i} position={[(i-4)*5,Math.sin(i)*3,-20-(i%3)*9]} rotation={[.2*i,.3*i,0]}>
+      <icosahedronGeometry args={[2.5+(i%3),1]}/><meshStandardMaterial color={["#6f69c7","#4f9db5","#b36eaa"][i%3]} metalness={.25} roughness={.4}/>
+    </mesh>)}
+  </>
+);
+
 export const ENVIRONMENT_MODULES: Record<EnvironmentKind, EnvironmentModule> = {
   space:{kind:"space",Component:SpaceEnvironment,background:"#071126",keyLight:"#d7e8ff"},
   "launchpad":{kind:"launchpad",Component:LaunchpadEnvironment,background:"#78b9e8",keyLight:"#fff0d4"},
@@ -145,13 +211,13 @@ export const ENVIRONMENT_MODULES: Record<EnvironmentKind, EnvironmentModule> = {
   "historical-site":{kind:"historical-site",Component:HistoricalEnvironment,background:"#e6c18b",keyLight:"#fff0d0"},
   forest:{kind:"forest",Component:ForestEnvironment,background:"#a9c69b",keyLight:"#ffffff"},
   ocean:{kind:"ocean",Component:OceanEnvironment,background:"#91c6dc",keyLight:"#ffffff"},
-  city:{kind:"city",Component:HistoricalEnvironment,background:"#9fc4dc",keyLight:"#ffffff"},
-  village:{kind:"village",Component:HistoricalEnvironment,background:"#9fc4dc",keyLight:"#ffffff"},
-  mountains:{kind:"mountains",Component:AlienEnvironment,background:"#b5c8d8",keyLight:"#ffffff"},
+  city:{kind:"city",Component:CityEnvironment,background:"#9fc4dc",keyLight:"#ffffff"},
+  village:{kind:"village",Component:VillageEnvironment,background:"#a8c9df",keyLight:"#ffffff"},
+  mountains:{kind:"mountains",Component:MountainEnvironment,background:"#b5c8d8",keyLight:"#ffffff"},
   interior:{kind:"interior",Component:HistoricalEnvironment,background:"#b8c7d0",keyLight:"#ffffff"},
-  laboratory:{kind:"laboratory",Component:HistoricalEnvironment,background:"#cbd4d8",keyLight:"#ffffff"},
-  cave:{kind:"cave",Component:AlienEnvironment,background:"#101923",keyLight:"#e9a66e"},
-  abstract:{kind:"abstract",Component:SpaceEnvironment,background:"#101923",keyLight:"#ffffff"},
+  laboratory:{kind:"laboratory",Component:LaboratoryEnvironment,background:"#cbd8df",keyLight:"#ffffff"},
+  cave:{kind:"cave",Component:CaveEnvironment,background:"#101923",keyLight:"#e9a66e"},
+  abstract:{kind:"abstract",Component:AbstractEnvironment,background:"#201c3c",keyLight:"#9c80ff"},
 };
 
 export const TopicEnvironment: React.FC<SceneModuleProps & {kind:EnvironmentKind}> = ({kind,...props}) => {
