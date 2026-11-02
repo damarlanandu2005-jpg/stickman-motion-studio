@@ -20,16 +20,58 @@
       "environment": "historical-site",
       "environmentDescription": "A vast ancient Egyptian desert construction site with pyramids and stone blocks.",
       "subjects": [
-        {"id":"builder","kind":"person","design":"Reference-toon ancient Egyptian builder wearing a simple linen work outfit.","outfit":"linen work clothes","startPosition":[-2,-1.5,-8],"scale":1.1},
-        {"id":"great-pyramid","kind":"building","design":"Great Pyramid of Giza, monumental limestone pyramid.","startPosition":[-13,1,-52],"scale":1.7}
+        {
+          "id": "builder",
+          "kind": "person",
+          "design": "Reference-toon ancient Egyptian builder wearing a simple linen work outfit.",
+          "outfit": "linen work clothes",
+          "startPosition": [
+            -1,
+            -1.5,
+            -5
+          ],
+          "scale": 1.55
+        },
+        {
+          "id": "great-pyramid",
+          "kind": "building",
+          "design": "Great Pyramid of Giza, monumental limestone pyramid.",
+          "startPosition": [
+            -13,
+            1,
+            -52
+          ],
+          "scale": 1.7
+        }
       ],
       "actions": [
-        {"subjectId":"builder","kind":"look","startSeconds":0,"endSeconds":4,"detail":"Looks up at the enormous pyramid."}
+        {
+          "subjectId": "builder",
+          "kind": "look",
+          "startSeconds": 0,
+          "endSeconds": 4,
+          "detail": "Looks up at the enormous pyramid."
+        }
       ],
-      "camera":{"position":[0,2,24],"lookAt":[0,2,-24],"fov":48,"move":"push","intensity":1.5,"transition":"glide"},
-      "lighting":"Warm desert sunlight with long shadows.",
-      "atmosphere":"Fine sand haze and warm golden air.",
-      "narration":"Thousands of years ago, people built enormous stone monuments in the desert."
+      "camera": {
+        "position": [
+          0,
+          2,
+          16
+        ],
+        "lookAt": [
+          0,
+          1,
+          -16
+        ],
+        "fov": 38,
+        "move": "push",
+        "intensity": 1.5,
+        "transition": "glide"
+      },
+      "lighting": "Warm desert sunlight with long shadows.",
+      "atmosphere": "Fine sand haze and warm golden air.",
+      "narration": "Thousands of years ago, people built enormous stone monuments in the desert."
     },
     {
       "id": "moving-stone",
@@ -39,18 +81,77 @@
       "environment": "historical-site",
       "environmentDescription": "Workers move a huge limestone block across the sandy construction site.",
       "subjects": [
-        {"id":"builder","kind":"person","design":"Same reference-toon builder and consistent linen outfit.","outfit":"linen work clothes","startPosition":[-2,-1.5,-7],"scale":1.1},
-        {"id":"worker-team","kind":"crowd","design":"A small team of ancient Egyptian workers in simple linen outfits.","outfit":"linen work clothes","startPosition":[-7,-1.5,-12],"scale":0.7},
-        {"id":"stone-block","kind":"prop","design":"Large rectangular limestone block on a wooden sled.","startPosition":[3,-1,-10],"scale":1.5}
+        {
+          "id": "builder",
+          "kind": "person",
+          "design": "Same reference-toon builder and consistent linen outfit.",
+          "outfit": "linen work clothes",
+          "startPosition": [
+            -2,
+            -1.5,
+            -5
+          ],
+          "scale": 1.55
+        },
+        {
+          "id": "worker-team",
+          "kind": "crowd",
+          "design": "A small team of ancient Egyptian workers in simple linen outfits.",
+          "outfit": "linen work clothes",
+          "startPosition": [
+            -7,
+            -1.5,
+            -12
+          ],
+          "scale": 0.7
+        },
+        {
+          "id": "stone-block",
+          "kind": "prop",
+          "design": "Large rectangular limestone block on a wooden sled.",
+          "startPosition": [
+            3,
+            -1,
+            -10
+          ],
+          "scale": 1.5
+        }
       ],
       "actions": [
-        {"subjectId":"builder","kind":"interact","startSeconds":4,"endSeconds":9,"detail":"Helps guide the stone block."},
-        {"subjectId":"worker-team","kind":"travel","startSeconds":5,"endSeconds":9,"detail":"Pulls the stone toward the construction site."}
+        {
+          "subjectId": "builder",
+          "kind": "interact",
+          "startSeconds": 4,
+          "endSeconds": 9,
+          "detail": "Helps guide the stone block."
+        },
+        {
+          "subjectId": "worker-team",
+          "kind": "travel",
+          "startSeconds": 5,
+          "endSeconds": 9,
+          "detail": "Pulls the stone toward the construction site."
+        }
       ],
-      "camera":{"position":[9,5,18],"lookAt":[0,0,-12],"fov":44,"move":"pan","intensity":1.2,"transition":"crossfade"},
-      "lighting":"Bright warm sunlight.",
-      "atmosphere":"Dust rises around the moving stone.",
-      "narration":"Workers had to move heavy blocks, shape them, and place them with great care."
+      "camera": {
+        "position": [
+          0,
+          2,
+          16
+        ],
+        "lookAt": [
+          0,
+          1,
+          -16
+        ],
+        "fov": 38,
+        "move": "pan",
+        "intensity": 1.4,
+        "transition": "crossfade"
+      },
+      "lighting": "Bright warm sunlight.",
+      "atmosphere": "Dust rises around the moving stone.",
+      "narration": "Workers had to move heavy blocks, shape them, and place them with great care."
     },
     {
       "id": "lasting-monument",
@@ -60,16 +161,58 @@
       "environment": "historical-site",
       "environmentDescription": "A completed pyramid rises above the desert as the builder looks toward it.",
       "subjects": [
-        {"id":"builder","kind":"person","design":"Same reference-toon builder, now standing and looking at the finished monument.","outfit":"linen work clothes","startPosition":[0,-1.5,-8],"scale":1.1},
-        {"id":"finished-pyramid","kind":"building","design":"Completed ancient limestone pyramid.","startPosition":[0,1,-55],"scale":2}
+        {
+          "id": "builder",
+          "kind": "person",
+          "design": "Same reference-toon builder, now standing and looking at the finished monument.",
+          "outfit": "linen work clothes",
+          "startPosition": [
+            0,
+            -1.5,
+            -5
+          ],
+          "scale": 1.55
+        },
+        {
+          "id": "finished-pyramid",
+          "kind": "building",
+          "design": "Completed ancient limestone pyramid.",
+          "startPosition": [
+            0,
+            1,
+            -55
+          ],
+          "scale": 2
+        }
       ],
       "actions": [
-        {"subjectId":"builder","kind":"react","startSeconds":10,"endSeconds":13,"detail":"Looks up with pride and wonder."}
+        {
+          "subjectId": "builder",
+          "kind": "react",
+          "startSeconds": 10,
+          "endSeconds": 13,
+          "detail": "Looks up with pride and wonder."
+        }
       ],
-      "camera":{"position":[0,3,22],"lookAt":[0,3,-28],"fov":42,"move":"push","intensity":2,"transition":"glide"},
-      "lighting":"Golden late-afternoon sunlight.",
-      "atmosphere":"Quiet desert haze.",
-      "narration":"The pyramids became monuments that have endured for thousands of years."
+      "camera": {
+        "position": [
+          0,
+          2,
+          16
+        ],
+        "lookAt": [
+          0,
+          1,
+          -16
+        ],
+        "fov": 38,
+        "move": "push",
+        "intensity": 2,
+        "transition": "glide"
+      },
+      "lighting": "Golden late-afternoon sunlight.",
+      "atmosphere": "Quiet desert haze.",
+      "narration": "The pyramids became monuments that have endured for thousands of years."
     }
   ]
 }
