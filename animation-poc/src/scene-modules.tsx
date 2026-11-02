@@ -86,6 +86,24 @@ const AlienEnvironment: React.FC<SceneModuleProps> = () => (
   </>
 );
 
+const CockpitEnvironment: React.FC<SceneModuleProps> = () => (
+  <>
+    <color attach="background" args={["#202b38"]}/>
+    <fog attach="fog" args={["#202b38",35,125]}/>
+    <ambientLight intensity={0.62}/>
+    <hemisphereLight args={["#9ebbd4","#20202a",0.55]}/>
+    <pointLight position={[0,7,-9]} color="#78bde5" intensity={22} distance={35}/>
+    <mesh position={[0,5,-18]}><sphereGeometry args={[22,40,28]}/><meshStandardMaterial color="#344452" side={THREE.BackSide} roughness={.8}/></mesh>
+    {[-1,1].map(side=><group key={side} position={[side*5,-1,-7]}>
+      <mesh position={[0,2,0]}><boxGeometry args={[3.4,4.8,2.8]}/><meshStandardMaterial color="#46515d" metalness={.5} roughness={.45}/></mesh>
+      <mesh position={[0,4.4,1.46]}><boxGeometry args={[2.8,1.2,.08]}/><meshBasicMaterial color="#3e9ac0"/></mesh>
+    </group>)}
+    <mesh position={[0,-.2,-5]} rotation={[-.22,0,0]}><boxGeometry args={[12,1.3,4]}/><meshStandardMaterial color="#303d4a" metalness={.45}/></mesh>
+    {Array.from({length:8},(_,i)=><mesh key={i} position={[(i-3.5)*1.25,.55,-6]}><boxGeometry args={[.72,.58,.12]}/><meshBasicMaterial color={i%3===0?"#e3a94f":i%3===1?"#58b8d2":"#6d8e9d"}/></mesh>)}
+    <mesh position={[0,6,-22]}><torusGeometry args={[5,.45,12,64]}/><meshStandardMaterial color="#73818a" metalness={.7}/></mesh>
+  </>
+);
+
 const HistoricalEnvironment: React.FC<SceneModuleProps> = () => (
   <>
     <color attach="background" args={["#e6c18b"]}/>
@@ -178,6 +196,15 @@ export const TopicAsset: React.FC<{subject:TopicSubject; position:Vec3; frame:nu
       <mesh position={[0,.45,.7]} rotation={[Math.PI/2,0,0]}><sphereGeometry args={[.78,32,24]}/><meshStandardMaterial color="#3d83a9" metalness={.25} roughness={.18}/></mesh>
       {[-1,1].map(side=><group key={side} position={[side*1.55,-.1,0]}><mesh><boxGeometry args={[1.5,.18,3.1]}/><meshStandardMaterial color="#aebdc8" metalness={.5}/></mesh><mesh position={[0,0,-1.7]}><boxGeometry args={[.75,.12,.8]}/><meshBasicMaterial color="#e5b75b"/></mesh></group>)}
       <mesh position={[0,-2.15,0]}><coneGeometry args={[.48,1.4,20]}/><meshBasicMaterial color="#ff9a36"/></mesh>
+    </group>;
+  }
+  if(key==="crystal"){
+    return <group position={position} scale={scale}>
+      {[-1,0,1].map((x,i)=><mesh key={i} position={[x*.8,i===1?1.1:0,0]} rotation={[.08*x,0,.12*x]}>
+        <octahedronGeometry args={[i===1?1.5:1.05,1]}/>
+        <meshPhysicalMaterial color="#79e7f2" emissive="#25b9d1" emissiveIntensity={.65} roughness={.18} metalness={.12} transmission={.18}/>
+      </mesh>)}
+      <pointLight color="#67e9f5" intensity={12} distance={15}/>
     </group>;
   }
   if(key==="starfield") return <Stars count={720}/>;
