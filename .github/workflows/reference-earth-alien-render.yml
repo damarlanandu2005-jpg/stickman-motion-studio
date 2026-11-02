@@ -1,6 +1,12 @@
 name: Reference toon Earth-to-alien render smoke test
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - feat/reference-inspired-remotion-kaggle-poc
+    paths:
+      - 'animation-poc/**'
+      - '.github/workflows/reference-earth-alien-render.yml'
 permissions:
   contents: read
 jobs:
