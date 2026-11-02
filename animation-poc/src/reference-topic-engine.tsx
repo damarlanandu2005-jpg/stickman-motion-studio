@@ -35,6 +35,11 @@ const ToonSubject:React.FC<{subject:TopicSubject; position:THREE.Vector3; frame:
     return {canvas,context,texture};
   },[]);
   const outfit = useMemo<Outfit>(()=>({...explorerOutfit,jacket:subjectColor(subject)}),[subject.id,subject.design]);
+  const mat=useMemo(()=>{
+    const material=cardShade(new THREE.MeshLambertMaterial({map:surface.texture,alphaTest:.5,side:THREE.DoubleSide}));
+    material.alphaToCoverage=false;
+    return material;
+  },[surface]);
   useFrame(()=>{
     surface.context.clearRect(0,0,600,1000);
     const progress=action?clamp01((frame-action.startFrame)/Math.max(1,action.endFrame-action.startFrame)):0;
