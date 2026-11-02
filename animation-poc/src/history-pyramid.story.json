@@ -98,7 +98,15 @@
             "fov": 36
           }
         ],
-        "transitionFrames": 0
+        "transitionFrames": 0,
+        "dof": {
+          "cInf": 0,
+          "focusAt": [
+            -13,
+            1,
+            -52
+          ]
+        }
       },
       "lighting": "Warm desert sunlight with long shadows.",
       "atmosphere": "Fine sand haze and warm golden air.",
@@ -209,7 +217,15 @@
             "fov": 35
           }
         ],
-        "transitionFrames": 8
+        "transitionFrames": 8,
+        "dof": {
+          "cInf": 10,
+          "focusAt": [
+            3,
+            -1,
+            -10
+          ]
+        }
       },
       "lighting": "Bright warm sunlight.",
       "atmosphere": "Dust rises around the moving stone.",
@@ -301,7 +317,15 @@
             "fov": 35
           }
         ],
-        "transitionFrames": 0
+        "transitionFrames": 0,
+        "dof": {
+          "cInf": 0,
+          "focusAt": [
+            0,
+            1,
+            -55
+          ]
+        }
       },
       "lighting": "Golden late-afternoon sunlight.",
       "atmosphere": "Quiet desert haze.",
