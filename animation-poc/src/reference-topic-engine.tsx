@@ -136,7 +136,7 @@ const EchoPulse:React.FC<{position:THREE.Vector3;frame:number;scale:number}> = (
  </group>;
 };
 
-const PostStack:React.FC<{frame:number;light:string;focus:THREE.Vector3}> = ({frame,light,focus})=>{
+const PostStack:React.FC<{frame:number;light:string;focus:THREE.Vector3;cInf:number}> = ({frame,light,focus,cInf})=>{
  const {camera,scene}=useThree();
  const fx=useMemo(()=>({
   ink:new InkPass(scene,camera as THREE.PerspectiveCamera),
@@ -151,7 +151,7 @@ const PostStack:React.FC<{frame:number;light:string;focus:THREE.Vector3}> = ({fr
   const forward=new THREE.Vector3();camera.getWorldDirection(forward);
   const target=focus.clone();
   fx.lens.focus=Math.max(.3,target.sub(camera.position).dot(forward));
-  fx.lens.cInf=0;
+  fx.lens.cInf=cInf;
   gradeFor(fx.grade,/golden|sunset|warm|desert/i.test(light)?"golden":"day");
  });
  return <EffectComposer multisampling={4}>
@@ -164,13 +164,13 @@ const PostStack:React.FC<{frame:number;light:string;focus:THREE.Vector3}> = ({fr
  </EffectComposer>;
 };
 
-const TopicSceneCanvas:React.FC<{scene:CompiledScene;frame:number;fps:number;alpha:number}> = ({scene,frame,fps,alpha})=>(
+const TopicSceneCanvas:React.FC<{scene:CompiledScene;frame:number;fps:number;alpha:number;width:number;height:number}> = ({scene,frame,fps,alpha,width,height})=>(
  <AbsoluteFill style={{opacity:alpha}}>
-  <ThreeCanvas width={1080} height={1920} shadows camera={{position:scene.camera.position,fov:scene.camera.fov??40,near:.2,far:1500}} gl={{antialias:false,alpha:false,stencil:false,powerPreference:"high-performance",toneMappingExposure:1}}>
+  <ThreeCanvas width={width} height={height} shadows camera={{position:scene.camera.position,fov:scene.camera.fov??40,near:.2,far:1500}} gl={{antialias:false,alpha:false,stencil:false,powerPreference:"high-performance",toneMappingExposure:1}}>
    <Environment kind={scene.environment} frame={frame}/>
    <CameraRig scene={scene} frame={frame} fps={fps}/>
    {scene.subjects.map((subject,index)=><SubjectModel key={subject.id} subject={subject} frame={frame} fps={fps} action={actionAt(scene,frame,subject.id)} index={index}/>)}
-   <PostStack frame={frame} light={scene.lighting??""} focus={new THREE.Vector3(...scene.camera.lookAt)}/>
+   <PostStack frame={frame} light={scene.lighting??""} focus={new THREE.Vector3(...(scene.camera.dof?.focusAt??scene.camera.lookAt))} cInf={scene.camera.dof?.cInf??0}/>
   </ThreeCanvas>
  </AbsoluteFill>
 );
@@ -199,7 +199,7 @@ export const ReferenceTopicEngine:React.FC<{story:TopicStory}> = ({story})=>{
  const localFrame=frame-active.startFrame;
  const layers=shotLayersAt(plan,compiled.compiledScenes,frame);
  return <AbsoluteFill style={{background:"#080e24",overflow:"hidden"}}>
-  {layers.map((layer,index)=><TopicSceneCanvas key={layer.scene.id} scene={layer.scene} frame={frame} fps={story.fps} alpha={layer.alpha}/>)}
+  {layers.map((layer,index)=><TopicSceneCanvas key={layer.scene.id} scene={layer.scene} frame={frame} fps={story.fps} alpha={layer.alpha} width={story.width} height={story.height}/>)}
   <div style={{position:"absolute",left:28,right:28,bottom:88,textAlign:"center",fontFamily:"Arial,sans-serif",fontWeight:700,letterSpacing:3,fontSize:30,color:"#f5f3ee",textShadow:"0 3px 18px #000",opacity:interpolate(localFrame,[0,12,active.endFrame-active.startFrame-10,active.endFrame-active.startFrame],[0,1,1,0],{extrapolateRight:"clamp"})}}>{active.title??story.title}</div>
   {active.narration&&<div style={{position:"absolute",left:38,right:38,bottom:34,textAlign:"center",fontFamily:"Arial,sans-serif",fontSize:18,color:"#f5f3ee",textShadow:"0 2px 12px #000"}}>{active.narration}</div>}
  </AbsoluteFill>;
