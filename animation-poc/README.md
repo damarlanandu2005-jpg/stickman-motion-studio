@@ -59,3 +59,15 @@ CI smoke-renders frames 0–89 of that composition before the Earth-to-alien top
 - **Topic engine:** can one shared composition deliver materially different topic worlds with authored shot plans and proper visual QA?
 
 The second question is still open. The existing `ReferenceTopicEngine` remains a prototype and must not be treated as the finished universal engine. The next engineering work is to extract reusable camera/shot/post/cast contracts from the Bridge source, then implement environment-specific world builders and subject/cast adapters without substituting generic primitives for authored scene design. Bridge-specific bridge/river/collapse physics stays in the Bridge example only.
+
+## Implemented reference-system reuse
+
+The current topic path has been moved closer to the Bridge production architecture:
+- `src/reference/BridgeReference.tsx` is a local, type-safe entry for the upstream Bridge composition. It imports the original `World`, `build`, `cast`-backed world, ink, lens blur, grade and story modules from the pinned submodule. Its only source-level adjustment is replacing nullable conditional children with empty React fragments to satisfy this project's installed React/postprocessing type definitions.
+- `src/reference/camera.ts` extracts the upstream smootherstep camera glide and evaluates authored topic camera keyframes. Existing push/pull/pan/orbit/follow movement settings remain supported when a shot has no keyframes.
+- The topic shot adapter now compiles per-shot crossfade lengths; the composition stacks separate ThreeCanvas shot layers during fades, following the upstream Bridge composition's crossfade approach.
+- Topic character cards now use upstream `cardShade`, the `NOINK` layer, the reference 600x1000 character design scale and render-resolution-aware card shading instead of unlit, oversized MeshBasicMaterial planes.
+- Topic stories can specify per-shot depth-of-field strength and focus points; the existing upstream lens blur passes are used for those values.
+- Space and historical-site environment layers no longer add duplicate planets/pyramids on top of the authored story subjects.
+
+These are shared production-system integrations, not proof that every world type has been authored to final quality. The environment and non-character subject builders still need substantial topic-specific modelling, animation, material and composition work. A metadata-valid MP4 is not visual acceptance.
