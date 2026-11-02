@@ -67,7 +67,38 @@
         "fov": 38,
         "move": "push",
         "intensity": 1.5,
-        "transition": "glide"
+        "transition": "glide",
+        "keyframes": [
+          {
+            "atSeconds": 0,
+            "position": [
+              2,
+              2.5,
+              18
+            ],
+            "lookAt": [
+              -8,
+              1,
+              -30
+            ],
+            "fov": 40
+          },
+          {
+            "atSeconds": 3.8,
+            "position": [
+              -3,
+              3.2,
+              14
+            ],
+            "lookAt": [
+              -13,
+              1,
+              -52
+            ],
+            "fov": 36
+          }
+        ],
+        "transitionFrames": 0
       },
       "lighting": "Warm desert sunlight with long shadows.",
       "atmosphere": "Fine sand haze and warm golden air.",
@@ -147,7 +178,38 @@
         "fov": 38,
         "move": "pan",
         "intensity": 1.4,
-        "transition": "crossfade"
+        "transition": "crossfade",
+        "keyframes": [
+          {
+            "atSeconds": 0,
+            "position": [
+              -1,
+              2.2,
+              16
+            ],
+            "lookAt": [
+              0,
+              0,
+              -14
+            ],
+            "fov": 38
+          },
+          {
+            "atSeconds": 4.8,
+            "position": [
+              4,
+              2.5,
+              13
+            ],
+            "lookAt": [
+              3,
+              0,
+              -18
+            ],
+            "fov": 35
+          }
+        ],
+        "transitionFrames": 8
       },
       "lighting": "Bright warm sunlight.",
       "atmosphere": "Dust rises around the moving stone.",
@@ -208,7 +270,38 @@
         "fov": 38,
         "move": "push",
         "intensity": 2,
-        "transition": "glide"
+        "transition": "glide",
+        "keyframes": [
+          {
+            "atSeconds": 0,
+            "position": [
+              1,
+              2.4,
+              18
+            ],
+            "lookAt": [
+              0,
+              1,
+              -30
+            ],
+            "fov": 40
+          },
+          {
+            "atSeconds": 3.8,
+            "position": [
+              -1,
+              3,
+              13
+            ],
+            "lookAt": [
+              0,
+              1,
+              -55
+            ],
+            "fov": 35
+          }
+        ],
+        "transitionFrames": 0
       },
       "lighting": "Golden late-afternoon sunlight.",
       "atmosphere": "Quiet desert haze.",
