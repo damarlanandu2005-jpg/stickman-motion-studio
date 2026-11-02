@@ -85,7 +85,38 @@
         "fov": 48,
         "move": "push",
         "intensity": 0.2,
-        "transition": "glide"
+        "transition": "glide",
+        "keyframes": [
+          {
+            "atSeconds": 0,
+            "position": [
+              0,
+              1.8,
+              24
+            ],
+            "lookAt": [
+              0,
+              0,
+              -18
+            ],
+            "fov": 48
+          },
+          {
+            "atSeconds": 3.8,
+            "position": [
+              2,
+              2.4,
+              17
+            ],
+            "lookAt": [
+              -4,
+              0,
+              -24
+            ],
+            "fov": 43
+          }
+        ],
+        "transitionFrames": 0
       },
       "lighting": "Cool blue space light with a warm engine glow.",
       "atmosphere": "Sparse stars and subtle blue haze.",
@@ -161,7 +192,38 @@
         "fov": 48,
         "move": "follow",
         "intensity": 0.15,
-        "transition": "crossfade"
+        "transition": "crossfade",
+        "keyframes": [
+          {
+            "atSeconds": 0,
+            "position": [
+              0,
+              1.8,
+              20
+            ],
+            "lookAt": [
+              3,
+              0,
+              -35
+            ],
+            "fov": 48
+          },
+          {
+            "atSeconds": 4.8,
+            "position": [
+              -2,
+              2.8,
+              12
+            ],
+            "lookAt": [
+              8,
+              0,
+              -58
+            ],
+            "fov": 42
+          }
+        ],
+        "transitionFrames": 8
       },
       "lighting": "Cool blue key light with violet planetary bounce.",
       "atmosphere": "Deep-space haze and a restrained star field.",
@@ -215,7 +277,38 @@
         "fov": 44,
         "move": "push",
         "intensity": 0.25,
-        "transition": "glide"
+        "transition": "glide",
+        "keyframes": [
+          {
+            "atSeconds": 0,
+            "position": [
+              0,
+              1.8,
+              16
+            ],
+            "lookAt": [
+              5,
+              0,
+              -40
+            ],
+            "fov": 44
+          },
+          {
+            "atSeconds": 3.8,
+            "position": [
+              -2,
+              2.5,
+              12
+            ],
+            "lookAt": [
+              10,
+              0,
+              -62
+            ],
+            "fov": 39
+          }
+        ],
+        "transitionFrames": 0
       },
       "lighting": "Soft violet rim light against deep blue space.",
       "atmosphere": "Quiet, mysterious and cinematic.",
