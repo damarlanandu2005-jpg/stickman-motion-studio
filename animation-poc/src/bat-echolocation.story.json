@@ -66,7 +66,38 @@
         "fov": 38,
         "move": "push",
         "intensity": 1.2,
-        "transition": "glide"
+        "transition": "glide",
+        "keyframes": [
+          {
+            "atSeconds": 0,
+            "position": [
+              0,
+              2,
+              17
+            ],
+            "lookAt": [
+              0,
+              1,
+              -9
+            ],
+            "fov": 38
+          },
+          {
+            "atSeconds": 3.8,
+            "position": [
+              0,
+              2,
+              13
+            ],
+            "lookAt": [
+              0,
+              1,
+              -7
+            ],
+            "fov": 34
+          }
+        ],
+        "transitionFrames": 0
       },
       "lighting": "Cool cave light with a warm golden entrance glow.",
       "atmosphere": "Dark cave haze with a faint rim light.",
@@ -144,7 +175,38 @@
         "fov": 36,
         "move": "pan",
         "intensity": 1.4,
-        "transition": "crossfade"
+        "transition": "crossfade",
+        "keyframes": [
+          {
+            "atSeconds": 0,
+            "position": [
+              0,
+              3,
+              16
+            ],
+            "lookAt": [
+              0,
+              1,
+              -13
+            ],
+            "fov": 36
+          },
+          {
+            "atSeconds": 4.8,
+            "position": [
+              2,
+              3,
+              13
+            ],
+            "lookAt": [
+              0,
+              1,
+              -14
+            ],
+            "fov": 33
+          }
+        ],
+        "transitionFrames": 8
       },
       "lighting": "Cool blue cave light and subtle cyan echo highlights.",
       "atmosphere": "Fine dust catches the sound-wave glow.",
@@ -222,7 +284,38 @@
         "fov": 34,
         "move": "push",
         "intensity": 1.8,
-        "transition": "glide"
+        "transition": "glide",
+        "keyframes": [
+          {
+            "atSeconds": 0,
+            "position": [
+              1,
+              3,
+              15
+            ],
+            "lookAt": [
+              0,
+              1,
+              -10
+            ],
+            "fov": 34
+          },
+          {
+            "atSeconds": 3.8,
+            "position": [
+              -1,
+              2,
+              11
+            ],
+            "lookAt": [
+              1,
+              1,
+              -8
+            ],
+            "fov": 30
+          }
+        ],
+        "transitionFrames": 0
       },
       "lighting": "Warm rim light on the bat against cool cave shadows.",
       "atmosphere": "A narrow pool of light reveals the moving insect.",
