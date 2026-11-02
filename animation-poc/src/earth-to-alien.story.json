@@ -116,7 +116,15 @@
             "fov": 43
           }
         ],
-        "transitionFrames": 0
+        "transitionFrames": 0,
+        "dof": {
+          "cInf": 0,
+          "focusAt": [
+            0,
+            0,
+            -18
+          ]
+        }
       },
       "lighting": "Cool blue space light with a warm engine glow.",
       "atmosphere": "Sparse stars and subtle blue haze.",
@@ -223,7 +231,15 @@
             "fov": 42
           }
         ],
-        "transitionFrames": 8
+        "transitionFrames": 8,
+        "dof": {
+          "cInf": 0,
+          "focusAt": [
+            3,
+            0,
+            -35
+          ]
+        }
       },
       "lighting": "Cool blue key light with violet planetary bounce.",
       "atmosphere": "Deep-space haze and a restrained star field.",
@@ -308,7 +324,15 @@
             "fov": 39
           }
         ],
-        "transitionFrames": 0
+        "transitionFrames": 0,
+        "dof": {
+          "cInf": 8,
+          "focusAt": [
+            10,
+            0,
+            -62
+          ]
+        }
       },
       "lighting": "Soft violet rim light against deep blue space.",
       "atmosphere": "Quiet, mysterious and cinematic.",
