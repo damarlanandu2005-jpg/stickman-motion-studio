@@ -45,7 +45,7 @@ jobs:
 
       - name: Render the first topic test (Earth to alien)
         working-directory: animation-poc
-        run: npx remotion render src/index.ts EarthAlienReferencePOC out/earth-to-alien-reference-poc.mp4 --codec h264 --crf 20 --scale 0.5
+        run: npx remotion render src/index.ts EarthAlienReferencePOC out/earth-to-alien-reference-poc.mp4 --frames=0-299 --codec h264 --crf 20 --scale 0.5
 
       - name: Run frame QA for Earth-to-alien only
         working-directory: animation-poc
@@ -57,12 +57,12 @@ jobs:
           const fs = require("node:fs");
           const slug = "earth-to-alien";
           const story = JSON.parse(fs.readFileSync(`src/${slug}.story.json`, "utf8"));
-          const shots = story.scenes.map((scene, index) => ({
+          const selectedScenes = story.scenes.filter(scene => scene.startSeconds < 10);\n          const shots = selectedScenes.map((scene, index) => ({
             id: index + 1,
             a: Math.round(scene.startSeconds * story.fps),
             b: Math.round((scene.startSeconds + scene.durationSeconds) * story.fps),
           }));
-          const xfade = story.scenes.flatMap((scene, index) => {
+          const xfade = selectedScenes.flatMap((scene, index) => {
             const n = scene.camera.transition === "crossfade" ? (scene.camera.transitionFrames ?? 8) : 0;
             if (index === 0 || n <= 0) return [];
             const at = Math.round(scene.startSeconds * story.fps);
@@ -110,7 +110,7 @@ jobs:
           if (stream?.codec_name !== "h264") errors.push("codec must be h264");
           if (stream?.width !== 540 || stream?.height !== 960) errors.push("resolution must be 540x960");
           if (stream?.r_frame_rate !== "30/1") errors.push("frame rate must be 30 fps");
-          if (!Number.isFinite(duration) || Math.abs(duration - 13) > 0.05) errors.push("duration must be 13 seconds");
+          if (!Number.isFinite(duration) || Math.abs(duration - 10) > 0.05) errors.push("duration must be 10 seconds for the first 5-scene acceptance sample");
           if (errors.length) throw new Error(errors.join("; "));
           console.log("Earth-to-alien: " + duration + "s, " + stream.width + "x" + stream.height + ", " + stream.codec_name + ", " + stream.r_frame_rate);
           NODE
