@@ -1,0 +1,80 @@
+{
+  "project_id": "earth-to-alien-planet-poc",
+  "title": "Earth to an Alien Planet",
+  "purpose": "10-second renderer proof of concept; test composition, depth, camera motion, transitions, and Kaggle rendering before building the full Short.",
+  "format": {
+    "width": 576,
+    "height": 1024,
+    "fps": 24,
+    "duration_seconds": 10
+  },
+  "visual_direction": {
+    "approach": "stylized 2D subjects staged in a layered 3D space environment",
+    "palette": "deep indigo space, muted cyan highlights, warm Earth rim light, restrained magenta nebula",
+    "camera": "slow cinematic push and orbital drift; keep the main subject readable",
+    "assets": "procedurally generated original geometry and shapes only",
+    "temporary_subject": "simple neutral explorer silhouette proxy; replace after renderer proof"
+  },
+  "shots": [
+    {
+      "id": "shot_01",
+      "start_frame": 0,
+      "end_frame": 47,
+      "duration_seconds": 2,
+      "beat": "Earth in orbit",
+      "camera": "wide establishing shot; slow push toward Earth",
+      "visual": "large dimensional Earth at lower center, starfield and subtle nebula layers, small explorer craft entering frame",
+      "transition_out": "camera continues forward"
+    },
+    {
+      "id": "shot_02",
+      "start_frame": 48,
+      "end_frame": 95,
+      "duration_seconds": 2,
+      "beat": "Leaving home",
+      "camera": "tracking move behind the spacecraft",
+      "visual": "spacecraft passes Earth limb; Earth recedes and sunlight creates a restrained rim light",
+      "transition_out": "match movement into starfield"
+    },
+    {
+      "id": "shot_03",
+      "start_frame": 96,
+      "end_frame": 167,
+      "duration_seconds": 3,
+      "beat": "Deep space journey",
+      "camera": "smooth forward dolly through layered stars and nebula",
+      "visual": "ship crosses foreground and midground particles; clear parallax and depth",
+      "transition_out": "distant planet grows in frame"
+    },
+    {
+      "id": "shot_04",
+      "start_frame": 168,
+      "end_frame": 215,
+      "duration_seconds": 2,
+      "beat": "Alien world reveal",
+      "camera": "slow reveal with slight orbit",
+      "visual": "large original alien planet with atmospheric rim, two small moons, and cloud bands",
+      "transition_out": "gentle push toward planet"
+    },
+    {
+      "id": "shot_05",
+      "start_frame": 216,
+      "end_frame": 239,
+      "duration_seconds": 1,
+      "beat": "Approach",
+      "camera": "forward push toward planet atmosphere",
+      "visual": "ship silhouette aligns with the planet; end on a clean cinematic frame suitable for continuation",
+      "transition_out": "cut point for next test"
+    }
+  ],
+  "qa": {
+    "require_mp4": true,
+    "require_576x1024": true,
+    "require_24_fps": true,
+    "require_10_seconds": true,
+    "inspect_sampled_frames": true,
+    "report_renderer_string": true,
+    "report_gpu_visibility": true,
+    "report_cpu_ram_disk_and_render_seconds": true
+  }
+}
