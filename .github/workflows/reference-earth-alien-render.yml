@@ -10,7 +10,7 @@ on:
 permissions:
   contents: read
 concurrency:
-  group: reference-topic-render-${{ github.ref }}-${{ github.sha }}
+  group: reference-topic-render-${{ github.ref }}
   cancel-in-progress: false
 jobs:
   render:
