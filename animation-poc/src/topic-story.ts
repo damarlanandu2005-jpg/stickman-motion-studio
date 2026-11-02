@@ -4,7 +4,7 @@
  */
 export type EnvironmentKind =
   | "space" | "city" | "village" | "forest" | "ocean" | "mountains"
-  | "interior" | "historical-site" | "laboratory" | "cave" | "abstract";
+  | "interior" | "historical-site" | "laboratory" | "cave" | "abstract" | "launchpad" | "alien-world";
 
 export type SubjectKind =
   | "person" | "crowd" | "animal" | "vehicle" | "machine" | "building"
@@ -20,6 +20,8 @@ export interface TopicSubject {
   id: string;
   kind: SubjectKind;
   design: string;
+  /** Explicit key into the reusable topic asset registry; avoids guessing geometry from prose. */
+  assetKey?: string;
   role?: string;
   outfit?: string;
   startPosition?: Vec3;
