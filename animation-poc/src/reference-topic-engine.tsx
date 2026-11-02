@@ -11,6 +11,7 @@ import {LensBlur} from "../upstream/templates/bridge/lensblur";
 import {GradeEffect, GRADES, GRADE_STRENGTH, gradeFor} from "../upstream/templates/bridge/grade";
 import {TopicStory, TopicSubject, CompiledScene, ActionKind} from "./topic-story";
 import {toReferenceShotPlan} from "./reference-topic-adapter";
+import {applyCameraPose,cameraPoseAt} from "./reference/camera";
 
 const explorerOutfit: Outfit = {
   jacket: "#e9e9e2", pants: "#34465c", boots: "#22252b",
@@ -91,17 +92,8 @@ const SubjectModel:React.FC<{subject:TopicSubject;frame:number;fps:number;action
 const CameraRig:React.FC<{scene:CompiledScene;frame:number;fps:number}> = ({scene,frame,fps})=>{
  const {camera}=useThree();
  useFrame(()=>{
-  const raw=clamp01((frame-scene.startFrame)/Math.max(1,scene.endFrame-scene.startFrame));
-  const local=raw*raw*(3-2*raw);
-  const move=scene.camera.move??"hold", intensity=scene.camera.intensity??0;
-  const p=scene.camera.position, look=scene.camera.lookAt;
-  const push=move==="push"?intensity*local:move==="pull"?-intensity*local:0;
-  const pan=move==="pan"?intensity*Math.sin(local*Math.PI*2):0;
-  const orbit=move==="orbit"?intensity*local:0;
-  camera.position.set(p[0]+pan+Math.sin(orbit)*Math.max(1,intensity*2),p[1]+Math.sin(local*Math.PI)*0.25,p[2]-push+Math.cos(orbit)*Math.max(0,intensity*2));
-  camera.lookAt(look[0]+pan*.5,look[1],look[2]);
-  if(camera instanceof THREE.PerspectiveCamera){camera.fov=scene.camera.fov??40;camera.updateProjectionMatrix();}
-  camera.rotation.z=(scene.camera.roll??0)*Math.PI/180;
+  const pose=cameraPoseAt(scene.camera,frame-scene.startFrame,fps,scene.endFrame-scene.startFrame);
+  applyCameraPose(camera,pose);
  });
  return null;
 };
@@ -162,19 +154,41 @@ const PostStack:React.FC<{frame:number;light:string;focus:THREE.Vector3}> = ({fr
  </EffectComposer>;
 };
 
+const TopicSceneCanvas:React.FC<{scene:CompiledScene;frame:number;fps:number;alpha:number}> = ({scene,frame,fps,alpha})=>(
+ <AbsoluteFill style={{opacity:alpha}}>
+  <ThreeCanvas width={1080} height={1920} shadows camera={{position:scene.camera.position,fov:scene.camera.fov??40,near:.2,far:1500}} gl={{antialias:false,alpha:false,stencil:false,powerPreference:"high-performance",toneMappingExposure:1}}>
+   <Environment kind={scene.environment} frame={frame}/>
+   <CameraRig scene={scene} frame={frame} fps={fps}/>
+   {scene.subjects.map((subject,index)=><SubjectModel key={subject.id} subject={subject} frame={frame} fps={fps} action={actionAt(scene,frame,subject.id)} index={index}/>)}
+   <PostStack frame={frame} light={scene.lighting??""} focus={new THREE.Vector3(...scene.camera.lookAt)}/>
+  </ThreeCanvas>
+ </AbsoluteFill>
+);
+
+type ShotLayer={scene:CompiledScene;alpha:number};
+const shotLayersAt=(plan:ReturnType<typeof toReferenceShotPlan>["plan"],scenes:CompiledScene[],frame:number):ShotLayer[]=>{
+ for(let i=1;i<plan.shots.length;i++){
+  const incoming=plan.shots[i];
+  if(incoming.transition!=="crossfade")continue;
+  const fade=8;
+  const from=incoming.a-fade/2,to=incoming.a+fade/2;
+  if(frame>=from&&frame<to){
+   const previous=scenes[i-1],next=scenes[i];
+   return [{scene:previous,alpha:1},{scene:next,alpha:clamp01((frame-from)/Math.max(1,fade))}];
+  }
+ }
+ const scene=scenes.find(s=>frame>=s.startFrame&&frame<s.endFrame)??scenes[scenes.length-1];
+ return [{scene,alpha:1}];
+};
+
 export const ReferenceTopicEngine:React.FC<{story:TopicStory}> = ({story})=>{
  const frame=useCurrentFrame();
  const {topic:compiled,plan}=useMemo(()=>toReferenceShotPlan(story),[story]);
- const shot=plan.shots.find(s=>frame>=s.a&&frame<s.b)??plan.shots[plan.shots.length-1];
- const active=compiled.compiledScenes.find(s=>s.id===shot.sceneId)??compiled.compiledScenes[compiled.compiledScenes.length-1];
+ const active=compiled.compiledScenes.find(s=>frame>=s.startFrame&&frame<s.endFrame)??compiled.compiledScenes[compiled.compiledScenes.length-1];
  const localFrame=frame-active.startFrame;
+ const layers=shotLayersAt(plan,compiled.compiledScenes,frame);
  return <AbsoluteFill style={{background:"#080e24",overflow:"hidden"}}>
-  <ThreeCanvas width={story.width} height={story.height} shadows camera={{position:[0,2,24],fov:active.camera.fov??40,near:.2,far:1500}} gl={{antialias:false,alpha:false,stencil:false,powerPreference:"high-performance",toneMappingExposure:1}}>
-   <Environment kind={active.environment} frame={frame}/>
-   <CameraRig scene={active} frame={frame} fps={story.fps}/>
-   {active.subjects.map((subject,index)=><SubjectModel key={subject.id} subject={subject} frame={frame} fps={story.fps} action={actionAt(active,frame,subject.id)} index={index}/>)}
-   <PostStack frame={frame} light={active.lighting??""} focus={new THREE.Vector3(...active.camera.lookAt)}/>
-  </ThreeCanvas>
+  {layers.map((layer,index)=><TopicSceneCanvas key={layer.scene.id} scene={layer.scene} frame={frame} fps={story.fps} alpha={layer.alpha}/>)}
   <div style={{position:"absolute",left:28,right:28,bottom:88,textAlign:"center",fontFamily:"Arial,sans-serif",fontWeight:700,letterSpacing:3,fontSize:30,color:"#f5f3ee",textShadow:"0 3px 18px #000",opacity:interpolate(localFrame,[0,12,active.endFrame-active.startFrame-10,active.endFrame-active.startFrame],[0,1,1,0],{extrapolateRight:"clamp"})}}>{active.title??story.title}</div>
   {active.narration&&<div style={{position:"absolute",left:38,right:38,bottom:34,textAlign:"center",fontFamily:"Arial,sans-serif",fontSize:18,color:"#f5f3ee",textShadow:"0 2px 12px #000"}}>{active.narration}</div>}
  </AbsoluteFill>;
