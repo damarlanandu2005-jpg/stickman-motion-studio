@@ -97,7 +97,15 @@
             "fov": 34
           }
         ],
-        "transitionFrames": 0
+        "transitionFrames": 0,
+        "dof": {
+          "cInf": 12,
+          "focusAt": [
+            0,
+            1,
+            -5
+          ]
+        }
       },
       "lighting": "Cool cave light with a warm golden entrance glow.",
       "atmosphere": "Dark cave haze with a faint rim light.",
@@ -206,7 +214,15 @@
             "fov": 33
           }
         ],
-        "transitionFrames": 8
+        "transitionFrames": 8,
+        "dof": {
+          "cInf": 8,
+          "focusAt": [
+            0,
+            1,
+            -13
+          ]
+        }
       },
       "lighting": "Cool blue cave light and subtle cyan echo highlights.",
       "atmosphere": "Fine dust catches the sound-wave glow.",
@@ -315,7 +331,15 @@
             "fov": 30
           }
         ],
-        "transitionFrames": 0
+        "transitionFrames": 0,
+        "dof": {
+          "cInf": 12,
+          "focusAt": [
+            0,
+            1,
+            -5
+          ]
+        }
       },
       "lighting": "Warm rim light on the bat against cool cave shadows.",
       "atmosphere": "A narrow pool of light reveals the moving insect.",
