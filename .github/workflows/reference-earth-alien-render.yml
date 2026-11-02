@@ -16,15 +16,15 @@ jobs:
     steps:
       # This repo contains unrelated research/tool submodules, one of which has
       # a broken nested PupCaps entry. Do not recursively clone the entire repo.
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
 
       # Only the pinned upstream renderer is required by this job.
       - name: Initialise the Remotion reference renderer
         run: git submodule update --init --depth=1 animation-poc/upstream
 
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v7
         with:
-          node-version: "20"
+          node-version: "22"
           package-manager-cache: false
 
       - name: Install Remotion and Three.js dependencies
@@ -41,7 +41,7 @@ jobs:
           ffprobe -v error -show_entries format=duration,size -show_entries stream=codec_name,width,height,r_frame_rate -of json out/earth-to-alien-reference-poc.mp4 | tee out/ffprobe.json
           test -s out/earth-to-alien-reference-poc.mp4
 
-      - uses: actions/upload-artifact@v6
+      - uses: actions/upload-artifact@v7
         with:
           name: earth-to-alien-reference-poc
           path: animation-poc/out/
