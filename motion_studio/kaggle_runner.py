@@ -211,7 +211,7 @@ def validate_benchmark_output(out_dir: Path, identity: dict[str, Any], expected_
 
 
 def validate_script_writer_output(out_dir: Path, identity: dict[str, Any], expected_model_sha256: str | None = None) -> dict[str, Any]:
-    """Validate AI script-writer benchmark outputs and their per-run identity."""
+    """Validate script outputs, meaningful scene narration, and conservative fact-check state."""
     failures: list[str] = []
     checks: dict[str, Any] = {}
     report_path = next(iter(Path(out_dir).rglob("benchmark_report.json")), None)
@@ -251,11 +251,21 @@ def validate_script_writer_output(out_dir: Path, identity: dict[str, Any], expec
             if not scenes:
                 failures.append("revised script contains no scenes")
             narration = " ".join(str(revised.get("narration", "")).split())
-            segment_text = " ".join(str(s.get("narration_segment", "")) for s in scenes if str(s.get("narration_segment", "")).strip())
-            segment_text = " ".join(segment_text.split())
-            if narration and segment_text != narration:
+            raw_segments = [str(scene.get("narration_segment", "")).strip() for scene in scenes]
+            empty_scenes = [index + 1 for index, segment in enumerate(raw_segments) if not segment]
+            if empty_scenes:
+                failures.append("revised script has empty narration segments in scenes: " + ", ".join(map(str, empty_scenes)))
+            segment_text = " ".join(" ".join(raw_segments).split())
+            matches = bool(narration) and segment_text == narration
+            if narration and not matches:
                 failures.append("scene narration segments do not exactly match revised narration")
-            checks["revised_script"] = {"scene_count": len(scenes), "continuity_bible_is_object": isinstance(revised.get("continuity_bible"), dict), "scene_segments_match_narration": segment_text == narration}
+            checks["revised_script"] = {
+                "scene_count": len(scenes),
+                "continuity_bible_is_object": isinstance(revised.get("continuity_bible"), dict),
+                "nonempty_scene_segments": len(raw_segments) - len(empty_scenes),
+                "empty_scene_numbers": empty_scenes,
+                "scene_segments_match_narration": matches,
+            }
         except (json.JSONDecodeError, TypeError, ValueError) as exc:
             failures.append(f"revised script is invalid: {exc}")
     else:

@@ -50,3 +50,65 @@ class ScriptWriterRunnerTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+    def test_revised_script_validator_rejects_empty_scene_narration(self):
+        import json
+        import tempfile
+        from pathlib import Path
+        from motion_studio.kaggle_runner import validate_script_writer_output
+
+        identity = {"run_id": "run-1", "run_token": "token-1"}
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "benchmark_report.json").write_text(json.dumps({
+                **identity, "status": "success", "dependencies_installed": True,
+                "at_least_one_model_completed": True, "outputs_saved": True,
+                "results": [{"label": "Qwen", "completed": True, "json_file": "qwen.json"}]
+            }))
+            (root / "qwen.json").write_text("{}")
+            (root / "revised_script.json").write_text(json.dumps({
+                "narration": "First sentence. Second sentence.",
+                "continuity_bible": {},
+                "scenes": [
+                    {"narration_segment": "First sentence. Second sentence."},
+                    {"narration_segment": ""}
+                ]
+            }))
+            (root / "fact_check_report.json").write_text(json.dumps({
+                **identity, "status": "needs_human_review", "first_pass": [],
+                "second_pass": [], "unresolved_claims": [], "approved_script_file": None
+            }))
+            result = validate_script_writer_output(root, identity)
+            self.assertFalse(result["ok"])
+            self.assertTrue(any("empty narration segments" in item for item in result["failures"]))
+
+    def test_revised_script_validator_accepts_complete_nonempty_scene_segments(self):
+        import json
+        import tempfile
+        from pathlib import Path
+        from motion_studio.kaggle_runner import validate_script_writer_output
+
+        identity = {"run_id": "run-2", "run_token": "token-2"}
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "benchmark_report.json").write_text(json.dumps({
+                **identity, "status": "success", "dependencies_installed": True,
+                "at_least_one_model_completed": True, "outputs_saved": True,
+                "results": [{"label": "Qwen", "completed": True, "json_file": "qwen.json"}]
+            }))
+            (root / "qwen.json").write_text("{}")
+            (root / "revised_script.json").write_text(json.dumps({
+                "narration": "First sentence. Second sentence.",
+                "continuity_bible": {},
+                "scenes": [
+                    {"narration_segment": "First sentence."},
+                    {"narration_segment": "Second sentence."}
+                ]
+            }))
+            (root / "fact_check_report.json").write_text(json.dumps({
+                **identity, "status": "needs_human_review", "first_pass": [],
+                "second_pass": [], "unresolved_claims": [], "approved_script_file": None
+            }))
+            result = validate_script_writer_output(root, identity)
+            self.assertTrue(result["ok"], result["failures"])
