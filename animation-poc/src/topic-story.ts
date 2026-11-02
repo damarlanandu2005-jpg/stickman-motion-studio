@@ -4,7 +4,7 @@
  */
 export type EnvironmentKind =
   | "space" | "city" | "village" | "forest" | "ocean" | "mountains"
-  | "interior" | "historical-site" | "laboratory" | "abstract";
+  | "interior" | "historical-site" | "laboratory" | "cave" | "abstract";
 
 export type SubjectKind =
   | "person" | "crowd" | "animal" | "vehicle" | "machine" | "building"
@@ -41,6 +41,7 @@ export interface TopicCamera {
   move?: "hold" | "push" | "pull" | "pan" | "orbit" | "follow" | "custom";
   intensity?: number;
   transition?: "cut" | "glide" | "crossfade";
+  roll?: number;
 }
 
 export interface TopicScene {
