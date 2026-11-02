@@ -14,6 +14,7 @@ import {toReferenceShotPlan} from "./reference-topic-adapter";
 import {applyCameraPose,cameraPoseAt} from "./reference/camera";
 import {cardShade,CARD_K} from "../upstream/templates/bridge/cardshade";
 import {NOINK} from "../upstream/templates/bridge/ink";
+import {TopicEnvironment, TopicAsset} from "./scene-modules";
 
 const explorerOutfit: Outfit = {
   jacket: "#e9e9e2", pants: "#34465c", boots: "#22252b",
@@ -86,14 +87,14 @@ const SubjectModel:React.FC<{subject:TopicSubject;frame:number;fps:number;action
  const scale=subject.scale??1, col=subjectColor(subject);
  if(subject.kind==="person") return <ToonSubject subject={subject} position={position} frame={frame} fps={fps} action={action}/>;
  if(subject.kind==="crowd") return <group position={position}>{Array.from({length:5},(_,i)=><ToonSubject key={i} subject={{...subject,id:subject.id+"-"+i}} position={new THREE.Vector3((i-2)*1.5,0,-(i%2)*.5)} frame={frame} fps={fps} action={action}/>)}</group>;
- if(subject.kind==="planet") return <mesh position={position} scale={scale}><sphereGeometry args={[5,40,28]}/><meshStandardMaterial color={col} roughness={.92}/></mesh>;
+ if(subject.assetKey || subject.kind==="planet" || subject.kind==="vehicle" || (subject.kind==="weather" && /sun/i.test(subject.design))) return <TopicAsset subject={subject} position={[position.x,position.y,position.z]} frame={frame}/>;
  if(subject.kind==="building" && /pyramid/i.test(subject.design)) return <Pyramid position={position} scale={scale} color={col}/>;
  if(subject.kind==="building") return <group position={position} scale={scale}><mesh><boxGeometry args={[8,8,7]}/><meshStandardMaterial color={col}/></mesh><mesh position={[0,5,0]}><coneGeometry args={[6,3,4]}/><meshStandardMaterial color="#514a46"/></mesh></group>;
  if(subject.kind==="animal" && /bat/i.test(subject.design)) return <BatSubject position={position} scale={scale} frame={frame}/>;
  if(subject.kind==="animal") return <group position={position} scale={scale}><mesh scale={[1.15,.85,.72]}><sphereGeometry args={[1.5,32,24]}/><meshStandardMaterial color={col} roughness={.85}/></mesh><mesh position={[1.15,.45,0]} scale={[.55,.5,.55]}><sphereGeometry args={[.8,24,18]}/><meshStandardMaterial color={col} roughness={.85}/></mesh>{[-.75,.75].map(x=><mesh key={x} position={[x,-1.1,0]}><cylinderGeometry args={[.13,.16,1.5,10]}/><meshStandardMaterial color="#403a35"/></mesh>)}</group>;
  if(subject.kind==="prop" && /moth|insect/i.test(subject.design)) return <MothSubject position={position} scale={scale} frame={frame}/>;
  if(subject.kind==="scientific-model" && /echo|sonar|pulse/i.test(subject.design)) return <EchoPulse position={position} frame={frame} scale={scale}/>;
- if(subject.kind==="vehicle") return <group position={position} scale={scale}><mesh><capsuleGeometry args={[.7,2.2,6,12]}/><meshStandardMaterial color={col} metalness={.35}/></mesh><mesh position={[0,.8,0]}><boxGeometry args={[1.8,.7,1.5]}/><meshStandardMaterial color="#dce4e9" metalness={.25}/></mesh></group>;
+
  if(subject.kind==="weather") return <group position={position} scale={scale}>{[-1,0,1].map(x=><mesh key={x} position={[x,0,0]}><sphereGeometry args={[1.5,16,12]}/><meshStandardMaterial color="#e8edf0"/></mesh>)}</group>;
  if(subject.kind==="machine"||subject.kind==="scientific-model") return <group position={position} scale={scale}><mesh><torusGeometry args={[1.8,.18,10,48]}/><meshStandardMaterial color={col} metalness={.6}/></mesh><mesh><sphereGeometry args={[.8,20,16]}/><meshStandardMaterial color="#d7e5ee" metalness={.35}/></mesh></group>;
  return <mesh position={position} scale={scale}><boxGeometry args={[2,2,2]}/><meshStandardMaterial color={col}/></mesh>;
@@ -178,7 +179,7 @@ const PostStack:React.FC<{frame:number;light:string;focus:THREE.Vector3;cInf:num
 const TopicSceneCanvas:React.FC<{scene:CompiledScene;frame:number;fps:number;alpha:number;width:number;height:number}> = ({scene,frame,fps,alpha,width,height})=>(
  <AbsoluteFill style={{opacity:alpha}}>
   <ThreeCanvas width={width} height={height} shadows camera={{position:scene.camera.position,fov:scene.camera.fov??40,near:.2,far:1500}} gl={{antialias:false,alpha:false,stencil:false,powerPreference:"high-performance",toneMappingExposure:1}}>
-   <Environment kind={scene.environment} frame={frame}/>
+   <TopicEnvironment kind={scene.environment} frame={frame} description={scene.environmentDescription} atmosphere={scene.atmosphere}/>
    <CameraRig scene={scene} frame={frame} fps={fps}/>
    {scene.subjects.map((subject,index)=><SubjectModel key={subject.id} subject={subject} frame={frame} fps={fps} action={actionAt(scene,frame,subject.id)} index={index}/>)}
    <PostStack frame={frame} light={scene.lighting??""} focus={new THREE.Vector3(...(scene.camera.dof?.focusAt??scene.camera.lookAt))} cInf={scene.camera.dof?.cInf??0}/>
