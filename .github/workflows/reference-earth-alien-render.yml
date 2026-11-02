@@ -70,13 +70,14 @@ jobs:
           });
           fs.writeFileSync(`out/qa/${slug}-shots.json`, JSON.stringify({shots, xfade}, null, 2));
           NODE
-          .qa-venv/bin/python upstream/templates/scripts/short_qa.py out/earth-to-alien-reference-poc.mp4 out/qa/earth-to-alien out/qa/earth-to-alien-shots.json
+          # The virtualenv is created at the repository root; this step runs from animation-poc.
+          ../.qa-venv/bin/python upstream/templates/scripts/short_qa.py out/earth-to-alien-reference-poc.mp4 out/qa/earth-to-alien out/qa/earth-to-alien-shots.json
           node <<'NODE'
           const fs = require("node:fs");
           const report = fs.readFileSync("out/qa/earth-to-alien/report.md", "utf8");
-          const frameLine = report.split("\n").find(line => line.startsWith("FRAMES "));
+          const frameLine = report.split("\\n").find(line => line.startsWith("FRAMES "));
           console.log("Earth-to-alien QA: " + frameLine);
-          const match = frameLine?.match(/black (\[[^\]]*\]); unplanned white (\[[^\]]*\]); frozen spans >=12f (\[[^\]]*\])/);
+          const match = frameLine?.match(/black (\\[[^\\]]*\\]); unplanned white (\\[[^\\]]*\\]); frozen spans >=12f (\\[[^\\]]*\\])/);
           if (!match) throw new Error("Could not parse frame QA summary");
           const black = JSON.parse(match[1]);
           const white = JSON.parse(match[2]);
