@@ -145,7 +145,14 @@ const PostStack:React.FC<{frame:number;light:string;focus:THREE.Vector3;cInf:num
   tone:new ToneMappingEffect({mode:ToneMappingMode.NEUTRAL}),
   grade:new GradeEffect(GRADES.day,GRADE_STRENGTH.day),
  }),[camera,scene]);
- useEffect(()=>()=>{fx.ink.dispose();fx.lens.dispose();fx.bloom.dispose();fx.tone.dispose();fx.grade.dispose();},[fx]);
+ useEffect(()=>()=>{
+  // InkPass is a reference-renderer pass, not a postprocessing Effect, and
+  // intentionally has no dispose() method. Dispose only resources that expose it.
+  for(const resource of [fx.ink,fx.lens,fx.bloom,fx.tone,fx.grade]){
+   const dispose=(resource as {dispose?:()=>void}).dispose;
+   if(typeof dispose==="function") dispose.call(resource);
+  }
+ },[fx]);
  useEffect(()=>{noInkFallback(scene);},[scene]);
  useFrame(()=>{
   const forward=new THREE.Vector3();camera.getWorldDirection(forward);
