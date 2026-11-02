@@ -103,7 +103,7 @@ export function compileTopic(story: TopicStory): CompiledTopic {
   if (story.schemaVersion !== 1) throw new Error("Unsupported topic story schemaVersion");
   if (!story.id || !story.title || !story.topic) throw new Error("Story id, title and topic are required");
   if (!Number.isInteger(story.fps) || story.fps < 1) throw new Error("fps must be a positive integer");
-  if (story.width < 1 || story.height < 1) throw new Error("Video dimensions must be positive");
+  if (!Number.isInteger(story.width) || !Number.isInteger(story.height) || story.width < 1 || story.height < 1) throw new Error("Video dimensions must be positive integers");
   if (!story.scenes.length) throw new Error("A topic must contain at least one scene");
 
   const ids = new Set<string>();
@@ -119,7 +119,16 @@ export function compileTopic(story: TopicStory): CompiledTopic {
     }
     const startFrame = Math.round(scene.startSeconds * story.fps);
     const endFrame = startFrame + Math.round(scene.durationSeconds * story.fps);
-    const subjectIds = new Set(scene.subjects.map((s) => s.id));
+    const subjectIds = new Set<string>();
+    for (const subject of scene.subjects) {
+      if (!subject.id || subjectIds.has(subject.id)) throw new Error("Scene " + scene.id + ": subject ids must be non-empty and unique");
+      if (!subject.design) throw new Error("Scene " + scene.id + ": subject " + subject.id + " needs a visual design description");
+      if (subject.scale !== undefined && (!Number.isFinite(subject.scale) || subject.scale <= 0)) throw new Error("Scene " + scene.id + ": subject " + subject.id + " has an invalid scale");
+      if (subject.startPosition && !subject.startPosition.every(Number.isFinite)) throw new Error("Scene " + scene.id + ": subject " + subject.id + " has an invalid position");
+      subjectIds.add(subject.id);
+    }
+    if (![...scene.camera.position, ...scene.camera.lookAt].every(Number.isFinite)) throw new Error("Scene " + scene.id + ": camera vectors must be finite");
+    if (scene.camera.fov !== undefined && (!Number.isFinite(scene.camera.fov) || scene.camera.fov < 1 || scene.camera.fov > 179)) throw new Error("Scene " + scene.id + ": camera fov must be between 1 and 179 degrees");
     if (scene.camera.dof && (!Number.isFinite(scene.camera.dof.cInf) || scene.camera.dof.cInf < 0 || scene.camera.dof.cInf > 24)) {
       throw new Error("Scene " + scene.id + ": DOF cInf must be between 0 and 24 pixels");
     }
@@ -141,7 +150,7 @@ export function compileTopic(story: TopicStory): CompiledTopic {
     }
     for (const action of scene.actions) {
       if (!subjectIds.has(action.subjectId)) throw new Error(`Scene ${scene.id}: action refers to unknown subject ${action.subjectId}`);
-      if (action.startSeconds < scene.startSeconds || action.endSeconds > scene.startSeconds + scene.durationSeconds || action.endSeconds <= action.startSeconds) {
+      if (!Number.isFinite(action.startSeconds) || !Number.isFinite(action.endSeconds) || action.startSeconds < scene.startSeconds || action.endSeconds > scene.startSeconds + scene.durationSeconds || action.endSeconds <= action.startSeconds) {
         throw new Error(`Scene ${scene.id}: action timing is outside its scene`);
       }
     }
