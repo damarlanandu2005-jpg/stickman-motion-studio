@@ -48,26 +48,41 @@ jobs:
         working-directory: animation-poc
         run: npx remotion render src/index.ts EarthAlienReferencePOC out/earth-to-alien-reference-poc.mp4 --codec h264 --crf 20 --scale 0.5
 
+      - name: Render history pyramid test video
+        working-directory: animation-poc
+        run: npx remotion render src/index.ts HistoryPyramidReferencePOC out/history-pyramid-reference-poc.mp4 --codec h264 --crf 20 --scale 0.5
+
+      - name: Render bat echolocation test video
+        working-directory: animation-poc
+        run: npx remotion render src/index.ts BatEcholocationReferencePOC out/bat-echolocation-reference-poc.mp4 --codec h264 --crf 20 --scale 0.5
+
       - name: Verify the test MP4 and metadata
         working-directory: animation-poc
         shell: bash
         run: |
           set -euo pipefail
-          file="out/earth-to-alien-reference-poc.mp4"
-          test -s "$file"
-          ffprobe -v error -show_entries format=duration,size -show_entries stream=codec_name,width,height,r_frame_rate -of json "$file" > out/earth-to-alien-reference-poc.ffprobe.json
+          for name in earth-to-alien history-pyramid bat-echolocation; do
+            file="out/${name}-reference-poc.mp4"
+            test -s "$file"
+            ffprobe -v error -show_entries format=duration,size -show_entries stream=codec_name,width,height,r_frame_rate -of json "$file" > "out/${name}-reference-poc.ffprobe.json"
+          done
           node <<'NODE'
           const fs = require("node:fs");
-          const data = JSON.parse(fs.readFileSync("out/earth-to-alien-reference-poc.ffprobe.json", "utf8"));
-          const stream = data.streams?.[0];
-          const duration = Number(data.format?.duration);
-          const errors = [];
-          if (stream?.codec_name !== "h264") errors.push("codec must be h264");
-          if (stream?.width !== 540 || stream?.height !== 960) errors.push("resolution must be 540x960");
-          if (stream?.r_frame_rate !== "30/1") errors.push("frame rate must be 30 fps");
-          if (!Number.isFinite(duration) || Math.abs(duration - 13) > 0.05) errors.push("duration must be 13 seconds");
-          if (errors.length) { console.error(errors.join("; ")); process.exit(1); }
-          console.log("Earth-to-alien: " + duration + "s, " + stream.width + "x" + stream.height + ", " + stream.codec_name + ", " + stream.r_frame_rate);
+          const names = ["earth-to-alien", "history-pyramid", "bat-echolocation"];
+          let failed = false;
+          for (const name of names) {
+            const data = JSON.parse(fs.readFileSync(`out/${name}-reference-poc.ffprobe.json`, "utf8"));
+            const stream = data.streams?.[0];
+            const duration = Number(data.format?.duration);
+            const errors = [];
+            if (stream?.codec_name !== "h264") errors.push("codec must be h264");
+            if (stream?.width !== 540 || stream?.height !== 960) errors.push("resolution must be 540x960");
+            if (stream?.r_frame_rate !== "30/1") errors.push("frame rate must be 30 fps");
+            if (!Number.isFinite(duration) || Math.abs(duration - 13) > 0.05) errors.push("duration must be 13 seconds");
+            if (errors.length) { console.error(name + ": " + errors.join("; ")); failed = true; }
+            else console.log(name + ": " + duration + "s, " + stream.width + "x" + stream.height + ", " + stream.codec_name + ", " + stream.r_frame_rate);
+          }
+          if (failed) process.exit(1);
           NODE
 
       - uses: actions/upload-artifact@v7
