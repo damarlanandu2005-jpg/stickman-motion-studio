@@ -1,0 +1,232 @@
+{
+  "schemaVersion": 1,
+  "id": "how-bats-see-in-the-dark",
+  "title": "How Do Bats Navigate in the Dark?",
+  "topic": "animal echolocation",
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "style": {
+    "visualDirection": "Cinematic cave world with reference-template toon character design, dramatic lighting, depth of field and ink outlines.",
+    "characterSystem": "reference-toon",
+    "postProcessing": "reference-stack"
+  },
+  "scenes": [
+    {
+      "id": "cave-at-dusk",
+      "title": "A World Without Light",
+      "startSeconds": 0,
+      "durationSeconds": 4,
+      "environment": "cave",
+      "environmentDescription": "A deep limestone cave at night with a faint warm opening behind the bat.",
+      "subjects": [
+        {
+          "id": "bat",
+          "kind": "animal",
+          "design": "A small brown fruit bat with folded pointed ears, broad membranous wings and bright attentive eyes.",
+          "startPosition": [
+            0,
+            1,
+            -5
+          ],
+          "scale": 1.5
+        },
+        {
+          "id": "moth",
+          "kind": "prop",
+          "design": "A pale moth with two broad wings.",
+          "startPosition": [
+            4,
+            0,
+            -11
+          ],
+          "scale": 0.7
+        }
+      ],
+      "actions": [
+        {
+          "subjectId": "bat",
+          "kind": "look",
+          "startSeconds": 0,
+          "endSeconds": 4,
+          "detail": "The bat listens and turns toward the moth."
+        }
+      ],
+      "camera": {
+        "position": [
+          0,
+          2,
+          17
+        ],
+        "lookAt": [
+          0,
+          1,
+          -9
+        ],
+        "fov": 38,
+        "move": "push",
+        "intensity": 1.2,
+        "transition": "glide"
+      },
+      "lighting": "Cool cave light with a warm golden entrance glow.",
+      "atmosphere": "Dark cave haze with a faint rim light.",
+      "narration": "Inside a pitch-dark cave, a bat can still find its way."
+    },
+    {
+      "id": "sound-maps-the-cave",
+      "title": "Seeing With Sound",
+      "startSeconds": 4,
+      "durationSeconds": 5,
+      "environment": "cave",
+      "environmentDescription": "The bat sends sound pulses into the darkness; visible rings represent echoes for the viewer.",
+      "subjects": [
+        {
+          "id": "bat",
+          "kind": "animal",
+          "design": "The same brown bat, wings spread and flapping.",
+          "startPosition": [
+            0,
+            1,
+            -5
+          ],
+          "scale": 1.55
+        },
+        {
+          "id": "echo-waves",
+          "kind": "scientific-model",
+          "design": "Concentric echolocation pulse rings travelling outward from the bat.",
+          "startPosition": [
+            0,
+            1,
+            -13
+          ],
+          "scale": 1.3
+        },
+        {
+          "id": "moth",
+          "kind": "prop",
+          "design": "A pale moth fluttering in the distance.",
+          "startPosition": [
+            5,
+            0,
+            -16
+          ],
+          "scale": 0.7
+        }
+      ],
+      "actions": [
+        {
+          "subjectId": "bat",
+          "kind": "fly",
+          "startSeconds": 4,
+          "endSeconds": 9,
+          "detail": "Flaps forward while listening for returning echoes."
+        },
+        {
+          "subjectId": "echo-waves",
+          "kind": "transform",
+          "startSeconds": 4,
+          "endSeconds": 9,
+          "detail": "Sound pulses expand through the cave."
+        }
+      ],
+      "camera": {
+        "position": [
+          0,
+          3,
+          16
+        ],
+        "lookAt": [
+          0,
+          1,
+          -13
+        ],
+        "fov": 36,
+        "move": "pan",
+        "intensity": 1.4,
+        "transition": "crossfade"
+      },
+      "lighting": "Cool blue cave light and subtle cyan echo highlights.",
+      "atmosphere": "Fine dust catches the sound-wave glow.",
+      "narration": "It sends out high-pitched sounds, then listens for the echoes that bounce back."
+    },
+    {
+      "id": "catch-in-the-dark",
+      "title": "The Echo Reveals Dinner",
+      "startSeconds": 9,
+      "durationSeconds": 4,
+      "environment": "cave",
+      "environmentDescription": "The bat closes in on a moth in a dark cave.",
+      "subjects": [
+        {
+          "id": "bat",
+          "kind": "animal",
+          "design": "The same brown bat, wings extended in a quick dive.",
+          "startPosition": [
+            0,
+            1,
+            -5
+          ],
+          "scale": 1.6
+        },
+        {
+          "id": "moth",
+          "kind": "prop",
+          "design": "A pale moth with two broad wings.",
+          "startPosition": [
+            3,
+            0,
+            -8
+          ],
+          "scale": 0.7
+        },
+        {
+          "id": "echo-waves",
+          "kind": "scientific-model",
+          "design": "A final cluster of sonar echo rings.",
+          "startPosition": [
+            1,
+            1,
+            -10
+          ],
+          "scale": 0.8
+        }
+      ],
+      "actions": [
+        {
+          "subjectId": "bat",
+          "kind": "run",
+          "startSeconds": 9,
+          "endSeconds": 13,
+          "detail": "Dives toward the moth after locating it."
+        },
+        {
+          "subjectId": "moth",
+          "kind": "travel",
+          "startSeconds": 9,
+          "endSeconds": 12,
+          "detail": "Flutters across the cave."
+        }
+      ],
+      "camera": {
+        "position": [
+          1,
+          3,
+          15
+        ],
+        "lookAt": [
+          0,
+          1,
+          -10
+        ],
+        "fov": 34,
+        "move": "push",
+        "intensity": 1.8,
+        "transition": "glide"
+      },
+      "lighting": "Warm rim light on the bat against cool cave shadows.",
+      "atmosphere": "A narrow pool of light reveals the moving insect.",
+      "narration": "Those echoes reveal where its prey is—even when its eyes cannot."
+    }
+  ]
+}
