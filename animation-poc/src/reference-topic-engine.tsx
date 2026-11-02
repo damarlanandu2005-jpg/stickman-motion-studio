@@ -15,8 +15,8 @@ const hash = (s:string) => [...s].reduce((a,c)=>((a*31)+c.charCodeAt(0))>>>0, 7)
 const palette = ["#b86d4b","#547b9b","#8b6da8","#66865a","#c39a54","#6c8792"];
 const subjectColor = (s:TopicSubject) => palette[hash(s.id+s.design)%palette.length];
 
-const actionAt = (scene:CompiledScene, frame:number) =>
-  scene.actionsInFrames.find(a=>frame>=a.startFrame && frame<a.endFrame);
+const actionAt = (scene:CompiledScene, frame:number, subjectId:string) =>
+  scene.actionsInFrames.find(a=>a.subjectId===subjectId && frame>=a.startFrame && frame<a.endFrame);
 
 const ToonSubject:React.FC<{subject:TopicSubject; position:THREE.Vector3; frame:number; fps:number; action?:{kind:ActionKind;startFrame:number;endFrame:number}}> = ({subject,position,frame,fps,action}) => {
   const surface = useMemo(()=>{
@@ -102,7 +102,7 @@ export const ReferenceTopicEngine:React.FC<{story:TopicStory}> = ({story})=>{
   <ThreeCanvas width={story.width} height={story.height} camera={{position:[0,2,24],fov:active.camera.fov??48,near:.1,far:500}} gl={{antialias:true,alpha:false}}>
    <Environment kind={active.environment} frame={frame}/>
    <CameraRig scene={active} frame={frame} fps={story.fps}/>
-   {active.subjects.map((subject,index)=><SubjectModel key={subject.id} subject={subject} frame={frame} fps={story.fps} action={actionAt(active,frame)} index={index}/>)}
+   {active.subjects.map((subject,index)=><SubjectModel key={subject.id} subject={subject} frame={frame} fps={story.fps} action={actionAt(active,frame,subject.id)} index={index}/>)}
   </ThreeCanvas>
   <div style={{position:"absolute",left:28,right:28,bottom:88,textAlign:"center",fontFamily:"Arial,sans-serif",fontWeight:700,letterSpacing:3,fontSize:30,color:"#f5f3ee",textShadow:"0 3px 18px #000",opacity:interpolate(localFrame,[0,12,active.endFrame-active.startFrame-10,active.endFrame-active.startFrame],[0,1,1,0],{extrapolateRight:"clamp"})}}>{active.title??story.title}</div>
   {active.narration&&<div style={{position:"absolute",left:38,right:38,bottom:34,textAlign:"center",fontFamily:"Arial,sans-serif",fontSize:18,color:"#f5f3ee",textShadow:"0 2px 12px #000"}}>{active.narration}</div>}
