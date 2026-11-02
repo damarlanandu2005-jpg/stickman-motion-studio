@@ -59,7 +59,10 @@ export function toReferenceShotPlan(story: TopicStory): { topic: CompiledTopic; 
   }));
   const crossfades: Record<number, number> = {};
   shots.forEach((shot, index) => {
-    if (index > 0 && shot.transition === "crossfade") crossfades[shot.id] = Math.min(12, Math.floor((shot.b - shot.a) / 4));
+    if (index > 0 && shot.transition === "crossfade") {
+      const frames = shot.camera.transitionFrames ?? Math.min(12, Math.floor((shot.b - shot.a) / 4));
+      if (frames > 0) crossfades[shot.id] = frames;
+    }
   });
   return { topic, plan: { fps: topic.fps, totalFrames: topic.totalFrames, shots, crossfades } };
 }
