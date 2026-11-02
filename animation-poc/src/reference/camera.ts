@@ -16,7 +16,20 @@ const pose=(p:TopicCameraKeyframe|TopicCamera):CameraPose=>({
 /** Evaluate an authored camera path at a scene-local frame. Keyframe frame positions are seconds. */
 export function cameraPoseAt(camera:TopicCamera,localFrame:number,fps:number,durationFrames:number):CameraPose {
  const keys=(camera.keyframes??[]).slice().sort((a,b)=>a.atSeconds-b.atSeconds);
- if(!keys.length)return pose(camera);
+ if(!keys.length){
+  const base=pose(camera);
+  const progress=clamp01(localFrame/Math.max(1,durationFrames));
+  const move=camera.move??"hold",intensity=camera.intensity??0;
+  const push=move==="push"?intensity*progress:move==="pull"?-intensity*progress:0;
+  const pan=move==="pan"?intensity*Math.sin(progress*Math.PI*2):0;
+  const orbit=move==="orbit"?intensity*progress:0;
+  const follow=move==="follow"?intensity*progress:0;
+  return {
+   position:[base.position[0]+pan+Math.sin(orbit)*Math.max(1,intensity*2),base.position[1]+Math.sin(progress*Math.PI)*.25,base.position[2]-push+Math.cos(orbit)*Math.max(0,intensity*2)-follow],
+   lookAt:[base.lookAt[0]+pan*.5,base.lookAt[1],base.lookAt[2]],
+   fov:base.fov,roll:base.roll
+  };
+ }
  const t=localFrame/fps;
  if(t<=keys[0].atSeconds)return pose(keys[0]);
  for(let i=1;i<keys.length;i++){
