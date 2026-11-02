@@ -112,3 +112,15 @@ if __name__ == "__main__":
             }))
             result = validate_script_writer_output(root, identity)
             self.assertTrue(result["ok"], result["failures"])
+
+
+    def test_scene_narration_distribution_supports_fewer_sentences_than_scenes(self):
+        from motion_studio.factcheck import sync_narration_segments
+
+        narration = "One short sentence. Another short sentence. Final sentence."
+        scenes = [{"narration_segment": "old"} for _ in range(10)]
+        synced = sync_narration_segments(narration, scenes)
+        self.assertEqual(len(synced), 10)
+        self.assertTrue(all(scene["narration_segment"].strip() for scene in synced))
+        combined = " ".join(scene["narration_segment"] for scene in synced)
+        self.assertEqual(" ".join(combined.split()), narration)
