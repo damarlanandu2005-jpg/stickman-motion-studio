@@ -9,6 +9,9 @@ on:
       - '.github/workflows/reference-earth-alien-render.yml'
 permissions:
   contents: read
+concurrency:
+  group: reference-topic-render-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   render:
     runs-on: ubuntu-latest
