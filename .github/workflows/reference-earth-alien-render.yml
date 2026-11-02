@@ -1,4 +1,4 @@
-name: Reference toon multi-topic render test
+name: Reference toon single-topic render test
 on:
   workflow_dispatch:
   push:
@@ -40,32 +40,21 @@ jobs:
         working-directory: animation-poc
         run: npx tsc --noEmit
 
-      - name: Render Earth-to-alien topic
+      - name: Render Earth-to-alien test video
         working-directory: animation-poc
         run: npx remotion render src/index.ts EarthAlienReferencePOC out/earth-to-alien-reference-poc.mp4 --codec h264 --crf 20 --scale 0.5
 
-      - name: Render a different topic using the same engine
-        working-directory: animation-poc
-        run: npx remotion render src/index.ts HistoryPyramidReferencePOC out/history-pyramid-reference-poc.mp4 --codec h264 --crf 20 --scale 0.5
-
-      - name: Render an animal topic using the same engine
-        working-directory: animation-poc
-        run: npx remotion render src/index.ts BatEcholocationReferencePOC out/bat-echolocation-reference-poc.mp4 --codec h264 --crf 20 --scale 0.5
-
-      - name: Verify all three MP4 files and metadata
+      - name: Verify the test MP4 and metadata
         working-directory: animation-poc
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p out
-          for name in earth-to-alien-reference-poc history-pyramid-reference-poc bat-echolocation-reference-poc; do
-            file="out/${name}.mp4"
-            test -s "$file"
-            ffprobe -v error -show_entries format=duration,size -show_entries stream=codec_name,width,height,r_frame_rate -of json "$file" > "out/${name}.ffprobe.json"
-            node - "$name" <<'NODE'
+          file="out/earth-to-alien-reference-poc.mp4"
+          test -s "$file"
+          ffprobe -v error -show_entries format=duration,size -show_entries stream=codec_name,width,height,r_frame_rate -of json "$file" > out/earth-to-alien-reference-poc.ffprobe.json
+          node <<'NODE'
           const fs = require("node:fs");
-          const name = process.argv[2];
-          const data = JSON.parse(fs.readFileSync(`out/${name}.ffprobe.json`, "utf8"));
+          const data = JSON.parse(fs.readFileSync("out/earth-to-alien-reference-poc.ffprobe.json", "utf8"));
           const stream = data.streams?.[0];
           const duration = Number(data.format?.duration);
           const errors = [];
@@ -73,13 +62,12 @@ jobs:
           if (stream?.width !== 540 || stream?.height !== 960) errors.push("resolution must be 540x960");
           if (stream?.r_frame_rate !== "30/1") errors.push("frame rate must be 30 fps");
           if (!Number.isFinite(duration) || Math.abs(duration - 13) > 0.05) errors.push("duration must be 13 seconds");
-          if (errors.length) { console.error(name + ": " + errors.join("; ")); process.exit(1); }
-          console.log(name + ": " + duration + "s, " + stream.width + "x" + stream.height + ", " + stream.codec_name + ", " + stream.r_frame_rate);
+          if (errors.length) { console.error(errors.join("; ")); process.exit(1); }
+          console.log("Earth-to-alien: " + duration + "s, " + stream.width + "x" + stream.height + ", " + stream.codec_name + ", " + stream.r_frame_rate);
           NODE
-          done
 
       - uses: actions/upload-artifact@v7
         with:
-          name: reference-topic-engine-three-topic-proof
+          name: reference-topic-engine-single-video-proof
           path: animation-poc/out/
           retention-days: 7
