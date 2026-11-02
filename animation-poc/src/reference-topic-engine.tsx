@@ -1,4 +1,4 @@
-import React, {useMemo} from "react";
+import React, {useEffect, useMemo} from "react";
 import * as THREE from "three";
 import {AbsoluteFill, interpolate, useCurrentFrame} from "remotion";
 import {ThreeCanvas} from "@remotion/three";
