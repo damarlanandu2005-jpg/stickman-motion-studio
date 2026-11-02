@@ -35,7 +35,11 @@ const ToonSubject:React.FC<{subject:TopicSubject; position:THREE.Vector3; frame:
     const texture=new THREE.CanvasTexture(canvas); texture.colorSpace=THREE.SRGBColorSpace;
     return {canvas,context,texture};
   },[]);
-  const outfit = useMemo<Outfit>(()=>({...explorerOutfit,jacket:subjectColor(subject)}),[subject.id,subject.design]);
+  const outfit = useMemo<Outfit>(() => {
+    if (subject.role === "alien") return {...explorerOutfit, jacket:"#72b94d", pants:"#5b9c43", boots:"#355b32", skin:"#79c94f", belt:"#4c7f39", buttons:"#b8df83"};
+    if (subject.outfit?.toLowerCase().includes("astronaut")) return {...explorerOutfit, jacket:"#f0eee5", pants:"#d6d9d8", boots:"#343b43", belt:"#e59a32", buttons:"#397eaf", skin:"#f5cba8"};
+    return {...explorerOutfit,jacket:subjectColor(subject)};
+  },[subject.id,subject.design,subject.outfit,subject.role]);
   const mat=useMemo(()=>{
     const material=cardShade(new THREE.MeshLambertMaterial({map:surface.texture,alphaTest:.5,side:THREE.DoubleSide}));
     material.alphaToCoverage=false;
