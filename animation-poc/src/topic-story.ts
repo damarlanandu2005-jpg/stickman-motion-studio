@@ -47,6 +47,7 @@ export interface TopicCamera {
   position: Vec3;
   lookAt: Vec3;
   fov?: number;
+  dof?: { cInf: number; focusAt?: Vec3 };
   keyframes?: TopicCameraKeyframe[];
   transitionFrames?: number;
   move?: "hold" | "push" | "pull" | "pan" | "orbit" | "follow" | "custom";
@@ -119,6 +120,12 @@ export function compileTopic(story: TopicStory): CompiledTopic {
     const startFrame = Math.round(scene.startSeconds * story.fps);
     const endFrame = startFrame + Math.round(scene.durationSeconds * story.fps);
     const subjectIds = new Set(scene.subjects.map((s) => s.id));
+    if (scene.camera.dof && (!Number.isFinite(scene.camera.dof.cInf) || scene.camera.dof.cInf < 0 || scene.camera.dof.cInf > 24)) {
+      throw new Error("Scene " + scene.id + ": DOF cInf must be between 0 and 24 pixels");
+    }
+    if (scene.camera.dof?.focusAt && !scene.camera.dof.focusAt.every(Number.isFinite)) {
+      throw new Error("Scene " + scene.id + ": DOF focusAt must be a finite 3D point");
+    }
     if (scene.camera.transitionFrames !== undefined && (!Number.isInteger(scene.camera.transitionFrames) || scene.camera.transitionFrames < 0 || scene.camera.transitionFrames > 30)) {
       throw new Error("Scene " + scene.id + ": transitionFrames must be an integer from 0 to 30");
     }
