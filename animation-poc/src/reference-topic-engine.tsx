@@ -148,7 +148,11 @@ const PostStack:React.FC<{frame:number;light:string;focus:THREE.Vector3;cInf:num
  useEffect(()=>()=>{
   // InkPass is a reference-renderer pass, not a postprocessing Effect, and
   // intentionally has no dispose() method. Dispose only resources that expose it.
-  for(const resource of [fx.ink,fx.lens,fx.bloom,fx.tone,fx.grade]){
+  // LensBlur is a wrapper around two postprocessing Effect instances.
+  // In the pinned postprocessing version those Effect instances do not expose
+  // dispose(); calling LensBlur.dispose() therefore throws during R3F cleanup.
+  // EffectComposer owns the lifecycle of the two mounted Effect primitives.
+  for(const resource of [fx.ink,fx.bloom,fx.tone,fx.grade]){
    const dispose=(resource as {dispose?:()=>void}).dispose;
    if(typeof dispose==="function") dispose.call(resource);
   }
