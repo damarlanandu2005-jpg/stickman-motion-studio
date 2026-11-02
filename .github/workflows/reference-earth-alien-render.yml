@@ -15,7 +15,7 @@ concurrency:
 jobs:
   render:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v7
 
@@ -48,13 +48,17 @@ jobs:
         working-directory: animation-poc
         run: npx remotion render src/index.ts HistoryPyramidReferencePOC out/history-pyramid-reference-poc.mp4 --codec h264 --crf 20 --scale 0.5
 
-      - name: Verify both MP4 files and metadata
+      - name: Render an animal topic using the same engine
+        working-directory: animation-poc
+        run: npx remotion render src/index.ts BatEcholocationReferencePOC out/bat-echolocation-reference-poc.mp4 --codec h264 --crf 20 --scale 0.5
+
+      - name: Verify all three MP4 files and metadata
         working-directory: animation-poc
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p out
-          for name in earth-to-alien-reference-poc history-pyramid-reference-poc; do
+          for name in earth-to-alien-reference-poc history-pyramid-reference-poc bat-echolocation-reference-poc; do
             file="out/${name}.mp4"
             test -s "$file"
             ffprobe -v error -show_entries format=duration,size -show_entries stream=codec_name,width,height,r_frame_rate -of json "$file" > "out/${name}.ffprobe.json"
@@ -76,6 +80,6 @@ jobs:
 
       - uses: actions/upload-artifact@v7
         with:
-          name: reference-topic-engine-two-topic-proof
+          name: reference-topic-engine-three-topic-proof
           path: animation-poc/out/
           retention-days: 7
