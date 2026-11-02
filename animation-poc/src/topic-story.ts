@@ -34,10 +34,20 @@ export interface TopicAction {
   detail?: string;
 }
 
+export interface TopicCameraKeyframe {
+  atSeconds: number;
+  position: Vec3;
+  lookAt: Vec3;
+  fov?: number;
+  roll?: number;
+  cut?: boolean;
+}
+
 export interface TopicCamera {
   position: Vec3;
   lookAt: Vec3;
   fov?: number;
+  keyframes?: TopicCameraKeyframe[];
   move?: "hold" | "push" | "pull" | "pan" | "orbit" | "follow" | "custom";
   intensity?: number;
   transition?: "cut" | "glide" | "crossfade";
@@ -108,6 +118,16 @@ export function compileTopic(story: TopicStory): CompiledTopic {
     const startFrame = Math.round(scene.startSeconds * story.fps);
     const endFrame = startFrame + Math.round(scene.durationSeconds * story.fps);
     const subjectIds = new Set(scene.subjects.map((s) => s.id));
+    if (scene.camera.keyframes) {
+      let lastKey = -Infinity;
+      for (const key of scene.camera.keyframes) {
+        if (!Number.isFinite(key.atSeconds) || key.atSeconds < 0 || key.atSeconds > scene.durationSeconds || key.atSeconds <= lastKey) {
+          throw new Error(`Scene ${scene.id}: camera keyframes must be strictly increasing and inside the scene`);
+        }
+        if (![...key.position, ...key.lookAt].every(Number.isFinite)) throw new Error(`Scene ${scene.id}: camera keyframe contains a non-finite vector`);
+        lastKey = key.atSeconds;
+      }
+    }
     for (const action of scene.actions) {
       if (!subjectIds.has(action.subjectId)) throw new Error(`Scene ${scene.id}: action refers to unknown subject ${action.subjectId}`);
       if (action.startSeconds < scene.startSeconds || action.endSeconds > scene.startSeconds + scene.durationSeconds || action.endSeconds <= action.startSeconds) {
