@@ -15,8 +15,8 @@ export const EarthAlienPoc: React.FC = () => {
   const f = useCurrentFrame();
   const earthScale = interpolate(f, [0, 95, 239], [1, 0.62, 0.42], {extrapolateRight: 'clamp'});
   const earthX = interpolate(f, [0, 95, 239], [288, 160, -220], {extrapolateRight: 'clamp'});
-  const shipX = interpolate(f, [0, 48, 120, 239], [650, 330, 285, 250], {extrapolate: 'clamp'});
-  const shipY = interpolate(f, [0, 95, 239], [620, 490, 430], {extrapolate: 'clamp'});
+  const shipX = interpolate(f, [0, 48, 120, 239], [650, 330, 285, 250], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+  const shipY = interpolate(f, [0, 95, 239], [620, 490, 430], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
   const planetOpacity = interpolate(f, [125, 190, 239], [0, 1, 1], {extrapolateLeft: 'clamp'});
   const planetScale = interpolate(f, [125, 239], [0.15, 1.05], {extrapolateLeft: 'clamp'});
   const nebulaShift = interpolate(f, [0, 239], [0, -180], {extrapolateRight: 'clamp'});
