@@ -7,336 +7,2465 @@
   "width": 1080,
   "height": 1920,
   "style": {
-    "visualDirection": "Expressive 2D reference-toon characters staged in a dimensional 3D world with cinematic camera movement and atmospheric depth.",
+    "visualDirection": "Expressive Bridge-inspired 2D toon characters staged inside authored 3D environments; maintain the astronaut costume, rocket silhouette, readable Earth, Sun and destination planet across shots.",
     "characterSystem": "reference-toon",
     "postProcessing": "reference-stack"
   },
   "scenes": [
     {
-      "id": "earth-departure",
-      "title": "A Journey Begins",
+      "id": "01_earth_plan",
+      "title": "A Plan to Leave Earth",
       "startSeconds": 0,
-      "durationSeconds": 4,
-      "environment": "space",
-      "environmentDescription": "Earth fills the background; a small spacecraft begins its departure into a deep blue starfield.",
+      "durationSeconds": 2,
+      "environment": "launchpad",
+      "environmentDescription": "A bright launch complex with the rocket, launch tower, ground and distant sky.",
       "subjects": [
         {
-          "id": "explorer",
+          "id": "astronaut",
           "kind": "person",
-          "design": "Use the original reference toon character drawing and proportions; neutral astronaut explorer outfit.",
-          "outfit": "light explorer suit",
+          "design": "Consistent friendly round-headed astronaut wearing a white EVA spacesuit, blue chest controls, orange belt accents, dark gloves and boots, clear bubble helmet.",
+          "outfit": "white astronaut EVA suit with clear helmet",
           "startPosition": [
-            0,
+            -4,
             -1.6,
-            -7
+            -10
           ],
-          "scale": 1
+          "scale": 1.08
+        },
+        {
+          "id": "rocket",
+          "kind": "vehicle",
+          "assetKey": "rocket",
+          "design": "Tall white launch rocket with orange nose cone, red-orange fins and dark engine nozzle.",
+          "startPosition": [
+            1,
+            0,
+            -24
+          ],
+          "scale": 1.35
         },
         {
           "id": "earth",
           "kind": "planet",
-          "design": "Blue Earth with soft atmospheric rim.",
+          "assetKey": "earth",
+          "design": "Clearly recognizable blue Earth with blue oceans, green continents and bright atmospheric rim.",
           "startPosition": [
-            -8,
-            1,
-            -18
+            -1,
+            9,
+            -75
           ],
-          "scale": 1
-        },
-        {
-          "id": "ship",
-          "kind": "vehicle",
-          "design": "Compact silver exploration spacecraft.",
-          "startPosition": [
-            2.8,
-            -1.3,
-            -9
-          ],
-          "scale": 1
+          "scale": 2.25
         }
       ],
       "actions": [
         {
-          "subjectId": "explorer",
+          "subjectId": "astronaut",
           "kind": "look",
           "startSeconds": 0,
-          "endSeconds": 4,
-          "detail": "Looks toward the distant destination."
-        },
-        {
-          "subjectId": "ship",
-          "kind": "travel",
-          "startSeconds": 1,
-          "endSeconds": 4,
-          "detail": "Accelerates away from Earth."
+          "endSeconds": 1.9,
+          "detail": "Performs the story action."
         }
       ],
       "camera": {
         "position": [
           0,
-          1.8,
-          24
+          7,
+          42
         ],
         "lookAt": [
           0,
-          0,
-          -18
+          2,
+          -25
         ],
-        "fov": 48,
+        "fov": 42,
         "move": "push",
-        "intensity": 0.2,
-        "transition": "glide",
-        "keyframes": [
-          {
-            "atSeconds": 0,
-            "position": [
-              0,
-              1.8,
-              24
-            ],
-            "lookAt": [
-              0,
-              0,
-              -18
-            ],
-            "fov": 48
-          },
-          {
-            "atSeconds": 3.8,
-            "position": [
-              2,
-              2.4,
-              17
-            ],
-            "lookAt": [
-              -4,
-              0,
-              -24
-            ],
-            "fov": 43
-          }
-        ],
+        "intensity": 0.08,
+        "transition": "cut",
         "transitionFrames": 0,
         "dof": {
           "cInf": 0,
           "focusAt": [
             0,
-            0,
-            -18
+            2,
+            -25
           ]
         }
       },
-      "lighting": "Cool blue space light with a warm engine glow.",
-      "atmosphere": "Sparse stars and subtle blue haze.",
-      "narration": "What if you left Earth behind and travelled to a world no human had ever seen?"
+      "lighting": "Bright daylight with readable white rocket surfaces and blue sky.",
+      "atmosphere": "Clear sky, light clouds and atmospheric distance.",
+      "narration": ""
     },
     {
-      "id": "deep-space",
-      "title": "Beyond Our Solar System",
-      "startSeconds": 4,
-      "durationSeconds": 5,
-      "environment": "space",
-      "environmentDescription": "The spacecraft crosses a vast starfield; Earth recedes and an unfamiliar planet grows in the distance.",
+      "id": "02_suit_preparation",
+      "title": "Suit Preparation",
+      "startSeconds": 2,
+      "durationSeconds": 2,
+      "environment": "interior",
+      "environmentDescription": "Inside a detailed spacecraft cockpit with instrument panels and practical lighting.",
       "subjects": [
         {
-          "id": "explorer",
+          "id": "astronaut",
           "kind": "person",
-          "design": "Same reference toon explorer, same outfit and proportions.",
-          "outfit": "light explorer suit",
+          "design": "Consistent friendly round-headed astronaut wearing a white EVA spacesuit, blue chest controls, orange belt accents, dark gloves and boots, clear bubble helmet.",
+          "outfit": "white astronaut EVA suit with clear helmet",
+          "startPosition": [
+            -4,
+            -1.6,
+            -10
+          ],
+          "scale": 1.08
+        },
+        {
+          "id": "cockpit-console",
+          "kind": "machine",
+          "design": "Detailed spacecraft cockpit console with instrument screens, switches and control panels.",
           "startPosition": [
             0,
-            -1.6,
-            -7
-          ]
-        },
-        {
-          "id": "ship",
-          "kind": "vehicle",
-          "design": "Same silver exploration spacecraft.",
-          "startPosition": [
-            2.8,
-            -1.3,
+            -0.3,
             -9
-          ]
-        },
-        {
-          "id": "alien-world",
-          "kind": "planet",
-          "design": "Large violet rocky planet with a faint atmospheric rim.",
-          "startPosition": [
-            18,
-            -1,
-            -70
-          ]
+          ],
+          "scale": 1.4
         }
       ],
       "actions": [
         {
-          "subjectId": "ship",
-          "kind": "travel",
-          "startSeconds": 4,
-          "endSeconds": 9,
-          "detail": "Travels through deep space."
-        },
-        {
-          "subjectId": "explorer",
-          "kind": "look",
-          "startSeconds": 6,
-          "endSeconds": 9,
-          "detail": "Notices the new planet."
+          "subjectId": "astronaut",
+          "kind": "interact",
+          "startSeconds": 2,
+          "endSeconds": 3.9,
+          "detail": "Performs the story action."
         }
       ],
       "camera": {
         "position": [
           0,
-          1.8,
-          20
+          2.5,
+          18
         ],
         "lookAt": [
-          3,
           0,
-          -35
+          1,
+          -12
         ],
         "fov": 48,
-        "move": "follow",
-        "intensity": 0.15,
-        "transition": "crossfade",
-        "keyframes": [
-          {
-            "atSeconds": 0,
-            "position": [
-              0,
-              1.8,
-              20
-            ],
-            "lookAt": [
-              3,
-              0,
-              -35
-            ],
-            "fov": 48
-          },
-          {
-            "atSeconds": 4.8,
-            "position": [
-              -2,
-              2.8,
-              12
-            ],
-            "lookAt": [
-              8,
-              0,
-              -58
-            ],
-            "fov": 42
-          }
+        "move": "push",
+        "intensity": 0.08,
+        "transition": "glide",
+        "transitionFrames": 0,
+        "dof": {
+          "cInf": 0,
+          "focusAt": [
+            0,
+            1,
+            -12
+          ]
+        }
+      },
+      "lighting": "Readable cool cockpit lighting with warm instrument accents.",
+      "atmosphere": "Readable cockpit atmosphere and instrument glow.",
+      "narration": ""
+    },
+    {
+      "id": "03_walk_to_launchpad",
+      "title": "The Launchpad",
+      "startSeconds": 4,
+      "durationSeconds": 2,
+      "environment": "launchpad",
+      "environmentDescription": "A bright launch complex with the rocket, launch tower, ground and distant sky.",
+      "subjects": [
+        {
+          "id": "astronaut",
+          "kind": "person",
+          "design": "Consistent friendly round-headed astronaut wearing a white EVA spacesuit, blue chest controls, orange belt accents, dark gloves and boots, clear bubble helmet.",
+          "outfit": "white astronaut EVA suit with clear helmet",
+          "startPosition": [
+            -4,
+            -1.6,
+            -10
+          ],
+          "scale": 1.08
+        },
+        {
+          "id": "rocket",
+          "kind": "vehicle",
+          "assetKey": "rocket",
+          "design": "Tall white launch rocket with orange nose cone, red-orange fins and dark engine nozzle.",
+          "startPosition": [
+            1,
+            0,
+            -24
+          ],
+          "scale": 1.35
+        }
+      ],
+      "actions": [
+        {
+          "subjectId": "astronaut",
+          "kind": "walk",
+          "startSeconds": 4,
+          "endSeconds": 5.9,
+          "detail": "Performs the story action."
+        }
+      ],
+      "camera": {
+        "position": [
+          0,
+          7,
+          42
         ],
+        "lookAt": [
+          0,
+          2,
+          -25
+        ],
+        "fov": 42,
+        "move": "push",
+        "intensity": 0.08,
+        "transition": "glide",
+        "transitionFrames": 0,
+        "dof": {
+          "cInf": 0,
+          "focusAt": [
+            0,
+            2,
+            -25
+          ]
+        }
+      },
+      "lighting": "Bright daylight with readable white rocket surfaces and blue sky.",
+      "atmosphere": "Clear sky, light clouds and atmospheric distance.",
+      "narration": ""
+    },
+    {
+      "id": "04_enter_rocket",
+      "title": "Boarding the Rocket",
+      "startSeconds": 6,
+      "durationSeconds": 2,
+      "environment": "launchpad",
+      "environmentDescription": "A bright launch complex with the rocket, launch tower, ground and distant sky.",
+      "subjects": [
+        {
+          "id": "astronaut",
+          "kind": "person",
+          "design": "Consistent friendly round-headed astronaut wearing a white EVA spacesuit, blue chest controls, orange belt accents, dark gloves and boots, clear bubble helmet.",
+          "outfit": "white astronaut EVA suit with clear helmet",
+          "startPosition": [
+            -4,
+            -1.6,
+            -10
+          ],
+          "scale": 1.08
+        },
+        {
+          "id": "rocket",
+          "kind": "vehicle",
+          "assetKey": "rocket",
+          "design": "Tall white launch rocket with orange nose cone, red-orange fins and dark engine nozzle.",
+          "startPosition": [
+            1,
+            0,
+            -24
+          ],
+          "scale": 1.35
+        }
+      ],
+      "actions": [
+        {
+          "subjectId": "astronaut",
+          "kind": "interact",
+          "startSeconds": 6,
+          "endSeconds": 7.9,
+          "detail": "Performs the story action."
+        }
+      ],
+      "camera": {
+        "position": [
+          0,
+          7,
+          42
+        ],
+        "lookAt": [
+          0,
+          2,
+          -25
+        ],
+        "fov": 42,
+        "move": "push",
+        "intensity": 0.08,
+        "transition": "glide",
+        "transitionFrames": 0,
+        "dof": {
+          "cInf": 0,
+          "focusAt": [
+            0,
+            2,
+            -25
+          ]
+        }
+      },
+      "lighting": "Bright daylight with readable white rocket surfaces and blue sky.",
+      "atmosphere": "Clear sky, light clouds and atmospheric distance.",
+      "narration": ""
+    },
+    {
+      "id": "05_inside_rocket",
+      "title": "Inside the Rocket",
+      "startSeconds": 8,
+      "durationSeconds": 2,
+      "environment": "interior",
+      "environmentDescription": "Inside a detailed spacecraft cockpit with instrument panels and practical lighting.",
+      "subjects": [
+        {
+          "id": "astronaut",
+          "kind": "person",
+          "design": "Consistent friendly round-headed astronaut wearing a white EVA spacesuit, blue chest controls, orange belt accents, dark gloves and boots, clear bubble helmet.",
+          "outfit": "white astronaut EVA suit with clear helmet",
+          "startPosition": [
+            -4,
+            -1.6,
+            -10
+          ],
+          "scale": 1.08
+        },
+        {
+          "id": "cockpit-console",
+          "kind": "machine",
+          "design": "Detailed spacecraft cockpit console with instrument screens, switches and control panels.",
+          "startPosition": [
+            0,
+            -0.3,
+            -9
+          ],
+          "scale": 1.4
+        }
+      ],
+      "actions": [
+        {
+          "subjectId": "astronaut",
+          "kind": "idle",
+          "startSeconds": 8,
+          "endSeconds": 9.9,
+          "detail": "Performs the story action."
+        }
+      ],
+      "camera": {
+        "position": [
+          0,
+          2.5,
+          18
+        ],
+        "lookAt": [
+          0,
+          1,
+          -12
+        ],
+        "fov": 48,
+        "move": "push",
+        "intensity": 0.08,
+        "transition": "glide",
+        "transitionFrames": 0,
+        "dof": {
+          "cInf": 0,
+          "focusAt": [
+            0,
+            1,
+            -12
+          ]
+        }
+      },
+      "lighting": "Readable cool cockpit lighting with warm instrument accents.",
+      "atmosphere": "Readable cockpit atmosphere and instrument glow.",
+      "narration": ""
+    },
+    {
+      "id": "06_countdown",
+      "title": "Countdown",
+      "startSeconds": 10,
+      "durationSeconds": 2,
+      "environment": "interior",
+      "environmentDescription": "Inside a detailed spacecraft cockpit with instrument panels and practical lighting.",
+      "subjects": [
+        {
+          "id": "astronaut",
+          "kind": "person",
+          "design": "Consistent friendly round-headed astronaut wearing a white EVA spacesuit, blue chest controls, orange belt accents, dark gloves and boots, clear bubble helmet.",
+          "outfit": "white astronaut EVA suit with clear helmet",
+          "startPosition": [
+            -4,
+            -1.6,
+            -10
+          ],
+          "scale": 1.08
+        },
+        {
+          "id": "cockpit-console",
+          "kind": "machine",
+          "design": "Detailed spacecraft cockpit console with instrument screens, switches and control panels.",
+          "startPosition": [
+            0,
+            -0.3,
+            -9
+          ],
+          "scale": 1.4
+        },
+        {
+          "id": "rocket",
+          "kind": "vehicle",
+          "assetKey": "rocket",
+          "design": "Tall white launch rocket with orange nose cone, red-orange fins and dark engine nozzle.",
+          "startPosition": [
+            1,
+            0,
+            -24
+          ],
+          "scale": 1.35
+        }
+      ],
+      "actions": [
+        {
+          "subjectId": "astronaut",
+          "kind": "react",
+          "startSeconds": 10,
+          "endSeconds": 11.9,
+          "detail": "Performs the story action."
+        }
+      ],
+      "camera": {
+        "position": [
+          0,
+          2.5,
+          18
+        ],
+        "lookAt": [
+          0,
+          1,
+          -12
+        ],
+        "fov": 48,
+        "move": "push",
+        "intensity": 0.08,
+        "transition": "glide",
+        "transitionFrames": 0,
+        "dof": {
+          "cInf": 0,
+          "focusAt": [
+            0,
+            1,
+            -12
+          ]
+        }
+      },
+      "lighting": "Readable cool cockpit lighting with warm instrument accents.",
+      "atmosphere": "Readable cockpit atmosphere and instrument glow.",
+      "narration": ""
+    },
+    {
+      "id": "07_liftoff",
+      "title": "Liftoff",
+      "startSeconds": 12,
+      "durationSeconds": 2,
+      "environment": "launchpad",
+      "environmentDescription": "A bright launch complex with the rocket, launch tower, ground and distant sky.",
+      "subjects": [
+        {
+          "id": "astronaut",
+          "kind": "person",
+          "design": "Consistent friendly round-headed astronaut wearing a white EVA spacesuit, blue chest controls, orange belt accents, dark gloves and boots, clear bubble helmet.",
+          "outfit": "white astronaut EVA suit with clear helmet",
+          "startPosition": [
+            -4,
+            -1.6,
+            -10
+          ],
+          "scale": 1.08
+        },
+        {
+          "id": "rocket",
+          "kind": "vehicle",
+          "assetKey": "rocket",
+          "design": "Tall white launch rocket with orange nose cone, red-orange fins and dark engine nozzle.",
+          "startPosition": [
+            0,
+            2,
+            -22
+          ],
+          "scale": 1.35
+        },
+        {
+          "id": "earth",
+          "kind": "planet",
+          "assetKey": "earth",
+          "design": "Clearly recognizable blue Earth with blue oceans, green continents and bright atmospheric rim.",
+          "startPosition": [
+            -1,
+            9,
+            -75
+          ],
+          "scale": 2.25
+        },
+        {
+          "id": "sun",
+          "kind": "weather",
+          "assetKey": "sun",
+          "design": "Bright warm yellow Sun with orange corona and visible glow.",
+          "startPosition": [
+            24,
+            16,
+            -90
+          ],
+          "scale": 1.3
+        }
+      ],
+      "actions": [
+        {
+          "subjectId": "rocket",
+          "kind": "fly",
+          "startSeconds": 12,
+          "endSeconds": 13.9,
+          "detail": "Accelerates upward with visible engine thrust."
+        }
+      ],
+      "camera": {
+        "position": [
+          0,
+          7,
+          42
+        ],
+        "lookAt": [
+          0,
+          2,
+          -25
+        ],
+        "fov": 42,
+        "move": "push",
+        "intensity": 0.08,
+        "transition": "glide",
+        "transitionFrames": 0,
+        "dof": {
+          "cInf": 0,
+          "focusAt": [
+            0,
+            2,
+            -25
+          ]
+        }
+      },
+      "lighting": "Bright daylight with readable white rocket surfaces and blue sky.",
+      "atmosphere": "Clear sky, light clouds and atmospheric distance.",
+      "narration": ""
+    },
+    {
+      "id": "08_through_clouds",
+      "title": "Through the Clouds",
+      "startSeconds": 14,
+      "durationSeconds": 2,
+      "environment": "launchpad",
+      "environmentDescription": "A bright launch complex with the rocket, launch tower, ground and distant sky.",
+      "subjects": [
+        {
+          "id": "astronaut",
+          "kind": "person",
+          "design": "Consistent friendly round-headed astronaut wearing a white EVA spacesuit, blue chest controls, orange belt accents, dark gloves and boots, clear bubble helmet.",
+          "outfit": "white astronaut EVA suit with clear helmet",
+          "startPosition": [
+            -4,
+            -1.6,
+            -10
+          ],
+          "scale": 1.08
+        },
+        {
+          "id": "rocket",
+          "kind": "vehicle",
+          "assetKey": "rocket",
+          "design": "Tall white launch rocket with orange nose cone, red-orange fins and dark engine nozzle.",
+          "startPosition": [
+            0,
+            2,
+            -22
+          ],
+          "scale": 1.35
+        },
+        {
+          "id": "earth",
+          "kind": "planet",
+          "assetKey": "earth",
+          "design": "Clearly recognizable blue Earth with blue oceans, green continents and bright atmospheric rim.",
+          "startPosition": [
+            -1,
+            9,
+            -75
+          ],
+          "scale": 2.25
+        }
+      ],
+      "actions": [
+        {
+          "subjectId": "rocket",
+          "kind": "fly",
+          "startSeconds": 14,
+          "endSeconds": 15.9,
+          "detail": "Accelerates upward with visible engine thrust."
+        }
+      ],
+      "camera": {
+        "position": [
+          0,
+          7,
+          42
+        ],
+        "lookAt": [
+          0,
+          2,
+          -25
+        ],
+        "fov": 42,
+        "move": "push",
+        "intensity": 0.08,
+        "transition": "glide",
+        "transitionFrames": 0,
+        "dof": {
+          "cInf": 0,
+          "focusAt": [
+            0,
+            2,
+            -25
+          ]
+        }
+      },
+      "lighting": "Bright daylight with readable white rocket surfaces and blue sky.",
+      "atmosphere": "Clear sky, light clouds and atmospheric distance.",
+      "narration": ""
+    },
+    {
+      "id": "09_leave_atmosphere",
+      "title": "Leaving the Atmosphere",
+      "startSeconds": 16,
+      "durationSeconds": 2,
+      "environment": "space",
+      "environmentDescription": "Deep space with visible stars, distant planets and clear directional sunlight.",
+      "subjects": [
+        {
+          "id": "astronaut",
+          "kind": "person",
+          "design": "Consistent friendly round-headed astronaut wearing a white EVA spacesuit, blue chest controls, orange belt accents, dark gloves and boots, clear bubble helmet.",
+          "outfit": "white astronaut EVA suit with clear helmet",
+          "startPosition": [
+            -4,
+            -1.6,
+            -10
+          ],
+          "scale": 1.08
+        },
+        {
+          "id": "rocket",
+          "kind": "vehicle",
+          "assetKey": "rocket",
+          "design": "Tall white launch rocket with orange nose cone, red-orange fins and dark engine nozzle.",
+          "startPosition": [
+            0,
+            2,
+            -25
+          ],
+          "scale": 1.35
+        },
+        {
+          "id": "earth",
+          "kind": "planet",
+          "assetKey": "earth",
+          "design": "Clearly recognizable blue Earth with blue oceans, green continents and bright atmospheric rim.",
+          "startPosition": [
+            -1,
+            9,
+            -75
+          ],
+          "scale": 2.25
+        },
+        {
+          "id": "sun",
+          "kind": "weather",
+          "assetKey": "sun",
+          "design": "Bright warm yellow Sun with orange corona and visible glow.",
+          "startPosition": [
+            24,
+            16,
+            -90
+          ],
+          "scale": 1.3
+        }
+      ],
+      "actions": [
+        {
+          "subjectId": "rocket",
+          "kind": "travel",
+          "startSeconds": 16,
+          "endSeconds": 17.9,
+          "detail": "Travels through the scene with a clear directional path."
+        }
+      ],
+      "camera": {
+        "position": [
+          0,
+          5,
+          38
+        ],
+        "lookAt": [
+          0,
+          2,
+          -25
+        ],
+        "fov": 42,
+        "move": "push",
+        "intensity": 0.08,
+        "transition": "glide",
+        "transitionFrames": 0,
+        "dof": {
+          "cInf": 0,
+          "focusAt": [
+            0,
+            2,
+            -25
+          ]
+        }
+      },
+      "lighting": "Bright directional sunlight with blue fill; keep astronaut and spacecraft clearly exposed.",
+      "atmosphere": "Visible stars, Earth or destination planet when specified; never use a black empty frame.",
+      "narration": ""
+    },
+    {
+      "id": "10_earth_behind",
+      "title": "Earth Behind Us",
+      "startSeconds": 18,
+      "durationSeconds": 2,
+      "environment": "space",
+      "environmentDescription": "Deep space with visible stars, distant planets and clear directional sunlight.",
+      "subjects": [
+        {
+          "id": "astronaut",
+          "kind": "person",
+          "design": "Consistent friendly round-headed astronaut wearing a white EVA spacesuit, blue chest controls, orange belt accents, dark gloves and boots, clear bubble helmet.",
+          "outfit": "white astronaut EVA suit with clear helmet",
+          "startPosition": [
+            -4,
+            -1.6,
+            -10
+          ],
+          "scale": 1.08
+        },
+        {
+          "id": "spacecraft",
+          "kind": "vehicle",
+          "assetKey": "spacecraft",
+          "design": "Silver exploration spacecraft with cockpit window, side stabilizers and glowing engine.",
+          "startPosition": [
+            1,
+            -0.5,
+            -15
+          ],
+          "scale": 1.2
+        },
+        {
+          "id": "earth",
+          "kind": "planet",
+          "assetKey": "earth",
+          "design": "Clearly recognizable blue Earth with blue oceans, green continents and bright atmospheric rim.",
+          "startPosition": [
+            -1,
+            9,
+            -75
+          ],
+          "scale": 2.25
+        },
+        {
+          "id": "sun",
+          "kind": "weather",
+          "assetKey": "sun",
+          "design": "Bright warm yellow Sun with orange corona and visible glow.",
+          "startPosition": [
+            24,
+            16,
+            -90
+          ],
+          "scale": 1.3
+        }
+      ],
+      "actions": [
+        {
+          "subjectId": "astronaut",
+          "kind": "look",
+          "startSeconds": 18,
+          "endSeconds": 19.9,
+          "detail": "Performs the story action."
+        }
+      ],
+      "camera": {
+        "position": [
+          0,
+          5,
+          38
+        ],
+        "lookAt": [
+          0,
+          2,
+          -25
+        ],
+        "fov": 42,
+        "move": "push",
+        "intensity": 0.08,
+        "transition": "glide",
+        "transitionFrames": 0,
+        "dof": {
+          "cInf": 0,
+          "focusAt": [
+            0,
+            2,
+            -25
+          ]
+        }
+      },
+      "lighting": "Bright directional sunlight with blue fill; keep astronaut and spacecraft clearly exposed.",
+      "atmosphere": "Visible stars, Earth or destination planet when specified; never use a black empty frame.",
+      "narration": ""
+    },
+    {
+      "id": "11_sun_and_stars",
+      "title": "Sun and Stars",
+      "startSeconds": 20,
+      "durationSeconds": 2,
+      "environment": "space",
+      "environmentDescription": "Deep space with visible stars, distant planets and clear directional sunlight.",
+      "subjects": [
+        {
+          "id": "astronaut",
+          "kind": "person",
+          "design": "Consistent friendly round-headed astronaut wearing a white EVA spacesuit, blue chest controls, orange belt accents, dark gloves and boots, clear bubble helmet.",
+          "outfit": "white astronaut EVA suit with clear helmet",
+          "startPosition": [
+            -4,
+            -1.6,
+            -10
+          ],
+          "scale": 1.08
+        },
+        {
+          "id": "spacecraft",
+          "kind": "vehicle",
+          "assetKey": "spacecraft",
+          "design": "Silver exploration spacecraft with cockpit window, side stabilizers and glowing engine.",
+          "startPosition": [
+            1,
+            -0.5,
+            -15
+          ],
+          "scale": 1.2
+        },
+        {
+          "id": "earth",
+          "kind": "planet",
+          "assetKey": "earth",
+          "design": "Clearly recognizable blue Earth with blue oceans, green continents and bright atmospheric rim.",
+          "startPosition": [
+            -1,
+            9,
+            -75
+          ],
+          "scale": 2.25
+        },
+        {
+          "id": "sun",
+          "kind": "weather",
+          "assetKey": "sun",
+          "design": "Bright warm yellow Sun with orange corona and visible glow.",
+          "startPosition": [
+            24,
+            16,
+            -90
+          ],
+          "scale": 1.3
+        }
+      ],
+      "actions": [
+        {
+          "subjectId": "astronaut",
+          "kind": "look",
+          "startSeconds": 20,
+          "endSeconds": 21.9,
+          "detail": "Performs the story action."
+        }
+      ],
+      "camera": {
+        "position": [
+          0,
+          5,
+          38
+        ],
+        "lookAt": [
+          0,
+          2,
+          -25
+        ],
+        "fov": 42,
+        "move": "push",
+        "intensity": 0.08,
+        "transition": "glide",
+        "transitionFrames": 0,
+        "dof": {
+          "cInf": 0,
+          "focusAt": [
+            0,
+            2,
+            -25
+          ]
+        }
+      },
+      "lighting": "Bright directional sunlight with blue fill; keep astronaut and spacecraft clearly exposed.",
+      "atmosphere": "Visible stars, Earth or destination planet when specified; never use a black empty frame.",
+      "narration": ""
+    },
+    {
+      "id": "12_weightlessness",
+      "title": "Weightlessness",
+      "startSeconds": 22,
+      "durationSeconds": 2,
+      "environment": "interior",
+      "environmentDescription": "Inside a detailed spacecraft cockpit with instrument panels and practical lighting.",
+      "subjects": [
+        {
+          "id": "astronaut",
+          "kind": "person",
+          "design": "Consistent friendly round-headed astronaut wearing a white EVA spacesuit, blue chest controls, orange belt accents, dark gloves and boots, clear bubble helmet.",
+          "outfit": "white astronaut EVA suit with clear helmet",
+          "startPosition": [
+            -4,
+            -1.6,
+            -10
+          ],
+          "scale": 1.08
+        },
+        {
+          "id": "cockpit-console",
+          "kind": "machine",
+          "design": "Detailed spacecraft cockpit console with instrument screens, switches and control panels.",
+          "startPosition": [
+            0,
+            -0.3,
+            -9
+          ],
+          "scale": 1.4
+        }
+      ],
+      "actions": [
+        {
+          "subjectId": "rocket",
+          "kind": "fly",
+          "startSeconds": 22,
+          "endSeconds": 23.9,
+          "detail": "Accelerates upward with visible engine thrust."
+        }
+      ],
+      "camera": {
+        "position": [
+          0,
+          2.5,
+          18
+        ],
+        "lookAt": [
+          0,
+          1,
+          -12
+        ],
+        "fov": 48,
+        "move": "push",
+        "intensity": 0.08,
+        "transition": "glide",
+        "transitionFrames": 0,
+        "dof": {
+          "cInf": 0,
+          "focusAt": [
+            0,
+            1,
+            -12
+          ]
+        }
+      },
+      "lighting": "Readable cool cockpit lighting with warm instrument accents.",
+      "atmosphere": "Readable cockpit atmosphere and instrument glow.",
+      "narration": ""
+    },
+    {
+      "id": "13_turbulence",
+      "title": "Turbulence",
+      "startSeconds": 24,
+      "durationSeconds": 2,
+      "environment": "interior",
+      "environmentDescription": "Inside a detailed spacecraft cockpit with instrument panels and practical lighting.",
+      "subjects": [
+        {
+          "id": "astronaut",
+          "kind": "person",
+          "design": "Consistent friendly round-headed astronaut wearing a white EVA spacesuit, blue chest controls, orange belt accents, dark gloves and boots, clear bubble helmet.",
+          "outfit": "white astronaut EVA suit with clear helmet",
+          "startPosition": [
+            -4,
+            -1.6,
+            -10
+          ],
+          "scale": 1.08
+        },
+        {
+          "id": "cockpit-console",
+          "kind": "machine",
+          "design": "Detailed spacecraft cockpit console with instrument screens, switches and control panels.",
+          "startPosition": [
+            0,
+            -0.3,
+            -9
+          ],
+          "scale": 1.4
+        }
+      ],
+      "actions": [
+        {
+          "subjectId": "astronaut",
+          "kind": "react",
+          "startSeconds": 24,
+          "endSeconds": 25.9,
+          "detail": "Performs the story action."
+        }
+      ],
+      "camera": {
+        "position": [
+          0,
+          2.5,
+          18
+        ],
+        "lookAt": [
+          0,
+          1,
+          -12
+        ],
+        "fov": 48,
+        "move": "push",
+        "intensity": 0.08,
+        "transition": "glide",
+        "transitionFrames": 0,
+        "dof": {
+          "cInf": 0,
+          "focusAt": [
+            0,
+            1,
+            -12
+          ]
+        }
+      },
+      "lighting": "Readable cool cockpit lighting with warm instrument accents.",
+      "atmosphere": "Readable cockpit atmosphere and instrument glow.",
+      "narration": ""
+    },
+    {
+      "id": "14_stabilize_rocket",
+      "title": "Stabilizing the Ship",
+      "startSeconds": 26,
+      "durationSeconds": 2,
+      "environment": "interior",
+      "environmentDescription": "Inside a detailed spacecraft cockpit with instrument panels and practical lighting.",
+      "subjects": [
+        {
+          "id": "astronaut",
+          "kind": "person",
+          "design": "Consistent friendly round-headed astronaut wearing a white EVA spacesuit, blue chest controls, orange belt accents, dark gloves and boots, clear bubble helmet.",
+          "outfit": "white astronaut EVA suit with clear helmet",
+          "startPosition": [
+            -4,
+            -1.6,
+            -10
+          ],
+          "scale": 1.08
+        },
+        {
+          "id": "cockpit-console",
+          "kind": "machine",
+          "design": "Detailed spacecraft cockpit console with instrument screens, switches and control panels.",
+          "startPosition": [
+            0,
+            -0.3,
+            -9
+          ],
+          "scale": 1.4
+        }
+      ],
+      "actions": [
+        {
+          "subjectId": "astronaut",
+          "kind": "interact",
+          "startSeconds": 26,
+          "endSeconds": 27.9,
+          "detail": "Performs the story action."
+        }
+      ],
+      "camera": {
+        "position": [
+          0,
+          2.5,
+          18
+        ],
+        "lookAt": [
+          0,
+          1,
+          -12
+        ],
+        "fov": 48,
+        "move": "push",
+        "intensity": 0.08,
+        "transition": "glide",
+        "transitionFrames": 0,
+        "dof": {
+          "cInf": 0,
+          "focusAt": [
+            0,
+            1,
+            -12
+          ]
+        }
+      },
+      "lighting": "Readable cool cockpit lighting with warm instrument accents.",
+      "atmosphere": "Readable cockpit atmosphere and instrument glow.",
+      "narration": ""
+    },
+    {
+      "id": "15_system_stable",
+      "title": "Systems Stable",
+      "startSeconds": 28,
+      "durationSeconds": 2,
+      "environment": "interior",
+      "environmentDescription": "Inside a detailed spacecraft cockpit with instrument panels and practical lighting.",
+      "subjects": [
+        {
+          "id": "astronaut",
+          "kind": "person",
+          "design": "Consistent friendly round-headed astronaut wearing a white EVA spacesuit, blue chest controls, orange belt accents, dark gloves and boots, clear bubble helmet.",
+          "outfit": "white astronaut EVA suit with clear helmet",
+          "startPosition": [
+            -4,
+            -1.6,
+            -10
+          ],
+          "scale": 1.08
+        },
+        {
+          "id": "cockpit-console",
+          "kind": "machine",
+          "design": "Detailed spacecraft cockpit console with instrument screens, switches and control panels.",
+          "startPosition": [
+            0,
+            -0.3,
+            -9
+          ],
+          "scale": 1.4
+        }
+      ],
+      "actions": [
+        {
+          "subjectId": "astronaut",
+          "kind": "react",
+          "startSeconds": 28,
+          "endSeconds": 29.9,
+          "detail": "Performs the story action."
+        }
+      ],
+      "camera": {
+        "position": [
+          0,
+          2.5,
+          18
+        ],
+        "lookAt": [
+          0,
+          1,
+          -12
+        ],
+        "fov": 48,
+        "move": "push",
+        "intensity": 0.08,
+        "transition": "glide",
+        "transitionFrames": 0,
+        "dof": {
+          "cInf": 0,
+          "focusAt": [
+            0,
+            1,
+            -12
+          ]
+        }
+      },
+      "lighting": "Readable cool cockpit lighting with warm instrument accents.",
+      "atmosphere": "Readable cockpit atmosphere and instrument glow.",
+      "narration": ""
+    },
+    {
+      "id": "16_radar_signal",
+      "title": "A Strange Signal",
+      "startSeconds": 30,
+      "durationSeconds": 2,
+      "environment": "interior",
+      "environmentDescription": "Inside a detailed spacecraft cockpit with instrument panels and practical lighting.",
+      "subjects": [
+        {
+          "id": "astronaut",
+          "kind": "person",
+          "design": "Consistent friendly round-headed astronaut wearing a white EVA spacesuit, blue chest controls, orange belt accents, dark gloves and boots, clear bubble helmet.",
+          "outfit": "white astronaut EVA suit with clear helmet",
+          "startPosition": [
+            -4,
+            -1.6,
+            -10
+          ],
+          "scale": 1.08
+        },
+        {
+          "id": "cockpit-console",
+          "kind": "machine",
+          "design": "Detailed spacecraft cockpit console with instrument screens, switches and control panels.",
+          "startPosition": [
+            0,
+            -0.3,
+            -9
+          ],
+          "scale": 1.4
+        },
+        {
+          "id": "alien-planet",
+          "kind": "planet",
+          "assetKey": "alien-planet",
+          "design": "Large violet alien planet with atmospheric rim.",
+          "startPosition": [
+            4,
+            2,
+            -85
+          ],
+          "scale": 2.2
+        }
+      ],
+      "actions": [
+        {
+          "subjectId": "astronaut",
+          "kind": "point",
+          "startSeconds": 30,
+          "endSeconds": 31.9,
+          "detail": "Performs the story action."
+        }
+      ],
+      "camera": {
+        "position": [
+          0,
+          2.5,
+          18
+        ],
+        "lookAt": [
+          0,
+          1,
+          -12
+        ],
+        "fov": 48,
+        "move": "push",
+        "intensity": 0.08,
+        "transition": "glide",
+        "transitionFrames": 0,
+        "dof": {
+          "cInf": 0,
+          "focusAt": [
+            0,
+            1,
+            -12
+          ]
+        }
+      },
+      "lighting": "Readable cool cockpit lighting with warm instrument accents.",
+      "atmosphere": "Readable cockpit atmosphere and instrument glow.",
+      "narration": ""
+    },
+    {
+      "id": "17_alien_planet_first_sight",
+      "title": "First Sight of the Alien Planet",
+      "startSeconds": 32,
+      "durationSeconds": 2,
+      "environment": "space",
+      "environmentDescription": "Deep space with visible stars, distant planets and clear directional sunlight.",
+      "subjects": [
+        {
+          "id": "astronaut",
+          "kind": "person",
+          "design": "Consistent friendly round-headed astronaut wearing a white EVA spacesuit, blue chest controls, orange belt accents, dark gloves and boots, clear bubble helmet.",
+          "outfit": "white astronaut EVA suit with clear helmet",
+          "startPosition": [
+            -4,
+            -1.6,
+            -10
+          ],
+          "scale": 1.08
+        },
+        {
+          "id": "spacecraft",
+          "kind": "vehicle",
+          "assetKey": "spacecraft",
+          "design": "Silver exploration spacecraft with cockpit window, side stabilizers and glowing engine.",
+          "startPosition": [
+            1,
+            -0.5,
+            -15
+          ],
+          "scale": 1.2
+        },
+        {
+          "id": "alien-planet",
+          "kind": "planet",
+          "assetKey": "alien-planet",
+          "design": "Large violet alien planet with atmospheric rim.",
+          "startPosition": [
+            4,
+            2,
+            -85
+          ],
+          "scale": 2.2
+        },
+        {
+          "id": "sun",
+          "kind": "weather",
+          "assetKey": "sun",
+          "design": "Bright warm yellow Sun with orange corona and visible glow.",
+          "startPosition": [
+            24,
+            16,
+            -90
+          ],
+          "scale": 1.3
+        }
+      ],
+      "actions": [
+        {
+          "subjectId": "astronaut",
+          "kind": "look",
+          "startSeconds": 32,
+          "endSeconds": 33.9,
+          "detail": "Performs the story action."
+        }
+      ],
+      "camera": {
+        "position": [
+          0,
+          5,
+          38
+        ],
+        "lookAt": [
+          0,
+          2,
+          -25
+        ],
+        "fov": 42,
+        "move": "push",
+        "intensity": 0.08,
+        "transition": "glide",
+        "transitionFrames": 0,
+        "dof": {
+          "cInf": 0,
+          "focusAt": [
+            0,
+            2,
+            -25
+          ]
+        }
+      },
+      "lighting": "Bright directional sunlight with blue fill; keep astronaut and spacecraft clearly exposed.",
+      "atmosphere": "Visible stars, Earth or destination planet when specified; never use a black empty frame.",
+      "narration": ""
+    },
+    {
+      "id": "18_approach_planet",
+      "title": "Approaching the Planet",
+      "startSeconds": 34,
+      "durationSeconds": 2,
+      "environment": "space",
+      "environmentDescription": "Deep space with visible stars, distant planets and clear directional sunlight.",
+      "subjects": [
+        {
+          "id": "astronaut",
+          "kind": "person",
+          "design": "Consistent friendly round-headed astronaut wearing a white EVA spacesuit, blue chest controls, orange belt accents, dark gloves and boots, clear bubble helmet.",
+          "outfit": "white astronaut EVA suit with clear helmet",
+          "startPosition": [
+            -4,
+            -1.6,
+            -10
+          ],
+          "scale": 1.08
+        },
+        {
+          "id": "spacecraft",
+          "kind": "vehicle",
+          "assetKey": "spacecraft",
+          "design": "Silver exploration spacecraft with cockpit window, side stabilizers and glowing engine.",
+          "startPosition": [
+            1,
+            -0.5,
+            -15
+          ],
+          "scale": 1.2
+        },
+        {
+          "id": "alien-planet",
+          "kind": "planet",
+          "assetKey": "alien-planet",
+          "design": "Large violet alien planet with atmospheric rim.",
+          "startPosition": [
+            4,
+            2,
+            -85
+          ],
+          "scale": 2.2
+        }
+      ],
+      "actions": [
+        {
+          "subjectId": "rocket",
+          "kind": "travel",
+          "startSeconds": 34,
+          "endSeconds": 35.9,
+          "detail": "Travels through the scene with a clear directional path."
+        }
+      ],
+      "camera": {
+        "position": [
+          0,
+          5,
+          38
+        ],
+        "lookAt": [
+          0,
+          2,
+          -25
+        ],
+        "fov": 42,
+        "move": "push",
+        "intensity": 0.08,
+        "transition": "glide",
+        "transitionFrames": 0,
+        "dof": {
+          "cInf": 0,
+          "focusAt": [
+            0,
+            2,
+            -25
+          ]
+        }
+      },
+      "lighting": "Bright directional sunlight with blue fill; keep astronaut and spacecraft clearly exposed.",
+      "atmosphere": "Visible stars, Earth or destination planet when specified; never use a black empty frame.",
+      "narration": ""
+    },
+    {
+      "id": "19_land_on_planet",
+      "title": "Landing on the Planet",
+      "startSeconds": 36,
+      "durationSeconds": 2,
+      "environment": "alien-world",
+      "environmentDescription": "A rocky violet alien landscape with strange formations and luminous plants.",
+      "subjects": [
+        {
+          "id": "astronaut",
+          "kind": "person",
+          "design": "Consistent friendly round-headed astronaut wearing a white EVA spacesuit, blue chest controls, orange belt accents, dark gloves and boots, clear bubble helmet.",
+          "outfit": "white astronaut EVA suit with clear helmet",
+          "startPosition": [
+            -4,
+            -1.6,
+            -10
+          ],
+          "scale": 1.08
+        },
+        {
+          "id": "rocket",
+          "kind": "vehicle",
+          "assetKey": "rocket",
+          "design": "Tall white launch rocket with orange nose cone, red-orange fins and dark engine nozzle.",
+          "startPosition": [
+            1,
+            0,
+            -24
+          ],
+          "scale": 1.35
+        },
+        {
+          "id": "alien-planet",
+          "kind": "planet",
+          "assetKey": "alien-planet",
+          "design": "Large violet alien planet with atmospheric rim.",
+          "startPosition": [
+            4,
+            2,
+            -85
+          ],
+          "scale": 2.2
+        }
+      ],
+      "actions": [
+        {
+          "subjectId": "astronaut",
+          "kind": "interact",
+          "startSeconds": 36,
+          "endSeconds": 37.9,
+          "detail": "Performs the story action."
+        }
+      ],
+      "camera": {
+        "position": [
+          0,
+          6,
+          34
+        ],
+        "lookAt": [
+          0,
+          2,
+          -25
+        ],
+        "fov": 42,
+        "move": "push",
+        "intensity": 0.08,
+        "transition": "crossfade",
         "transitionFrames": 8,
         "dof": {
           "cInf": 0,
           "focusAt": [
-            3,
             0,
-            -35
+            2,
+            -25
           ]
         }
       },
-      "lighting": "Cool blue key light with violet planetary bounce.",
-      "atmosphere": "Deep-space haze and a restrained star field.",
-      "narration": "The stars become unfamiliar. Then, a new planet appears ahead."
+      "lighting": "Warm key light with violet ambient fill; maintain visible character detail.",
+      "atmosphere": "Visible alien terrain, atmospheric depth and luminous crystal details.",
+      "narration": ""
     },
     {
-      "id": "new-world",
-      "title": "The Unknown",
-      "startSeconds": 9,
-      "durationSeconds": 4,
-      "environment": "space",
-      "environmentDescription": "The alien planet dominates the view as the explorer approaches its unknown surface.",
+      "id": "20_step_out",
+      "title": "A New World",
+      "startSeconds": 38,
+      "durationSeconds": 2,
+      "environment": "alien-world",
+      "environmentDescription": "A rocky violet alien landscape with strange formations and luminous plants.",
       "subjects": [
         {
-          "id": "explorer",
+          "id": "astronaut",
           "kind": "person",
-          "design": "Same reference toon explorer; surprised expression.",
-          "outfit": "light explorer suit"
+          "design": "Consistent friendly round-headed astronaut wearing a white EVA spacesuit, blue chest controls, orange belt accents, dark gloves and boots, clear bubble helmet.",
+          "outfit": "white astronaut EVA suit with clear helmet",
+          "startPosition": [
+            -4,
+            -1.6,
+            -10
+          ],
+          "scale": 1.08
         },
         {
-          "id": "alien-world",
-          "kind": "planet",
-          "design": "Violet alien planet, softly illuminated.",
+          "id": "rocket",
+          "kind": "vehicle",
+          "assetKey": "rocket",
+          "design": "Tall white launch rocket with orange nose cone, red-orange fins and dark engine nozzle.",
           "startPosition": [
-            18,
-            -1,
-            -70
-          ]
+            1,
+            0,
+            -24
+          ],
+          "scale": 1.35
+        },
+        {
+          "id": "alien-planet",
+          "kind": "planet",
+          "assetKey": "alien-planet",
+          "design": "Large violet alien planet with atmospheric rim.",
+          "startPosition": [
+            4,
+            2,
+            -85
+          ],
+          "scale": 2.2
         }
       ],
       "actions": [
         {
-          "subjectId": "explorer",
-          "kind": "react",
-          "startSeconds": 11,
-          "endSeconds": 13,
-          "detail": "Reacts with curiosity and surprise."
+          "subjectId": "astronaut",
+          "kind": "walk",
+          "startSeconds": 38,
+          "endSeconds": 39.9,
+          "detail": "Performs the story action."
         }
       ],
       "camera": {
         "position": [
           0,
-          1.8,
-          16
+          6,
+          34
         ],
         "lookAt": [
-          5,
           0,
-          -40
+          2,
+          -25
         ],
-        "fov": 44,
+        "fov": 42,
         "move": "push",
-        "intensity": 0.25,
+        "intensity": 0.08,
         "transition": "glide",
-        "keyframes": [
-          {
-            "atSeconds": 0,
-            "position": [
-              0,
-              1.8,
-              16
-            ],
-            "lookAt": [
-              5,
-              0,
-              -40
-            ],
-            "fov": 44
-          },
-          {
-            "atSeconds": 3.8,
-            "position": [
-              -2,
-              2.5,
-              12
-            ],
-            "lookAt": [
-              10,
-              0,
-              -62
-            ],
-            "fov": 39
-          }
-        ],
         "transitionFrames": 0,
         "dof": {
-          "cInf": 8,
+          "cInf": 0,
           "focusAt": [
-            10,
             0,
-            -62
+            2,
+            -25
           ]
         }
       },
-      "lighting": "Soft violet rim light against deep blue space.",
-      "atmosphere": "Quiet, mysterious and cinematic.",
-      "narration": "And somewhere out there, a completely new world is waiting."
+      "lighting": "Warm key light with violet ambient fill; maintain visible character detail.",
+      "atmosphere": "Visible alien terrain, atmospheric depth and luminous crystal details.",
+      "narration": ""
+    },
+    {
+      "id": "21_explore_alien_world",
+      "title": "Exploring the Surface",
+      "startSeconds": 40,
+      "durationSeconds": 2,
+      "environment": "alien-world",
+      "environmentDescription": "A rocky violet alien landscape with strange formations and luminous plants.",
+      "subjects": [
+        {
+          "id": "astronaut",
+          "kind": "person",
+          "design": "Consistent friendly round-headed astronaut wearing a white EVA spacesuit, blue chest controls, orange belt accents, dark gloves and boots, clear bubble helmet.",
+          "outfit": "white astronaut EVA suit with clear helmet",
+          "startPosition": [
+            -4,
+            -1.6,
+            -10
+          ],
+          "scale": 1.08
+        },
+        {
+          "id": "alien-planet",
+          "kind": "planet",
+          "assetKey": "alien-planet",
+          "design": "Large violet alien planet with atmospheric rim.",
+          "startPosition": [
+            4,
+            2,
+            -85
+          ],
+          "scale": 2.2
+        }
+      ],
+      "actions": [
+        {
+          "subjectId": "astronaut",
+          "kind": "walk",
+          "startSeconds": 40,
+          "endSeconds": 41.9,
+          "detail": "Performs the story action."
+        }
+      ],
+      "camera": {
+        "position": [
+          0,
+          6,
+          34
+        ],
+        "lookAt": [
+          0,
+          2,
+          -25
+        ],
+        "fov": 42,
+        "move": "push",
+        "intensity": 0.08,
+        "transition": "glide",
+        "transitionFrames": 0,
+        "dof": {
+          "cInf": 0,
+          "focusAt": [
+            0,
+            2,
+            -25
+          ]
+        }
+      },
+      "lighting": "Warm key light with violet ambient fill; maintain visible character detail.",
+      "atmosphere": "Visible alien terrain, atmospheric depth and luminous crystal details.",
+      "narration": ""
+    },
+    {
+      "id": "22_crystal_discovery",
+      "title": "A Strange Crystal",
+      "startSeconds": 42,
+      "durationSeconds": 2,
+      "environment": "alien-world",
+      "environmentDescription": "A rocky violet alien landscape with strange formations and luminous plants.",
+      "subjects": [
+        {
+          "id": "astronaut",
+          "kind": "person",
+          "design": "Consistent friendly round-headed astronaut wearing a white EVA spacesuit, blue chest controls, orange belt accents, dark gloves and boots, clear bubble helmet.",
+          "outfit": "white astronaut EVA suit with clear helmet",
+          "startPosition": [
+            -4,
+            -1.6,
+            -10
+          ],
+          "scale": 1.08
+        },
+        {
+          "id": "crystal",
+          "kind": "prop",
+          "assetKey": "crystal",
+          "design": "Large luminous cyan alien crystal cluster.",
+          "startPosition": [
+            2,
+            -1,
+            -12
+          ],
+          "scale": 1.2
+        },
+        {
+          "id": "alien-planet",
+          "kind": "planet",
+          "assetKey": "alien-planet",
+          "design": "Large violet alien planet with atmospheric rim.",
+          "startPosition": [
+            4,
+            2,
+            -85
+          ],
+          "scale": 2.2
+        }
+      ],
+      "actions": [
+        {
+          "subjectId": "astronaut",
+          "kind": "interact",
+          "startSeconds": 42,
+          "endSeconds": 43.9,
+          "detail": "Performs the story action."
+        },
+        {
+          "subjectId": "astronaut",
+          "kind": "interact",
+          "startSeconds": 42.5,
+          "endSeconds": 43.9,
+          "detail": "Reaches toward the glowing crystal."
+        }
+      ],
+      "camera": {
+        "position": [
+          0,
+          6,
+          34
+        ],
+        "lookAt": [
+          0,
+          2,
+          -25
+        ],
+        "fov": 42,
+        "move": "push",
+        "intensity": 0.08,
+        "transition": "glide",
+        "transitionFrames": 0,
+        "dof": {
+          "cInf": 0,
+          "focusAt": [
+            0,
+            2,
+            -25
+          ]
+        }
+      },
+      "lighting": "Warm key light with violet ambient fill; maintain visible character detail.",
+      "atmosphere": "Visible alien terrain, atmospheric depth and luminous crystal details.",
+      "narration": ""
+    },
+    {
+      "id": "23_aliens_in_distance",
+      "title": "Movement in the Distance",
+      "startSeconds": 44,
+      "durationSeconds": 2,
+      "environment": "alien-world",
+      "environmentDescription": "A rocky violet alien landscape with strange formations and luminous plants.",
+      "subjects": [
+        {
+          "id": "astronaut",
+          "kind": "person",
+          "design": "Consistent friendly round-headed astronaut wearing a white EVA spacesuit, blue chest controls, orange belt accents, dark gloves and boots, clear bubble helmet.",
+          "outfit": "white astronaut EVA suit with clear helmet",
+          "startPosition": [
+            -4,
+            -1.6,
+            -10
+          ],
+          "scale": 1.08
+        },
+        {
+          "id": "alien-crew",
+          "kind": "crowd",
+          "design": "Small group of expressive green humanoid aliens with large heads and simple limbs.",
+          "role": "alien",
+          "outfit": "green alien skin",
+          "startPosition": [
+            5,
+            -1.5,
+            -20
+          ],
+          "scale": 0.9
+        },
+        {
+          "id": "alien-planet",
+          "kind": "planet",
+          "assetKey": "alien-planet",
+          "design": "Large violet alien planet with atmospheric rim.",
+          "startPosition": [
+            4,
+            2,
+            -85
+          ],
+          "scale": 2.2
+        }
+      ],
+      "actions": [
+        {
+          "subjectId": "astronaut",
+          "kind": "look",
+          "startSeconds": 44,
+          "endSeconds": 45.9,
+          "detail": "Performs the story action."
+        }
+      ],
+      "camera": {
+        "position": [
+          0,
+          6,
+          34
+        ],
+        "lookAt": [
+          0,
+          2,
+          -25
+        ],
+        "fov": 42,
+        "move": "push",
+        "intensity": 0.08,
+        "transition": "glide",
+        "transitionFrames": 0,
+        "dof": {
+          "cInf": 0,
+          "focusAt": [
+            0,
+            2,
+            -25
+          ]
+        }
+      },
+      "lighting": "Warm key light with violet ambient fill; maintain visible character detail.",
+      "atmosphere": "Visible alien terrain, atmospheric depth and luminous crystal details.",
+      "narration": ""
+    },
+    {
+      "id": "24_first_contact",
+      "title": "First Contact",
+      "startSeconds": 46,
+      "durationSeconds": 2,
+      "environment": "alien-world",
+      "environmentDescription": "A rocky violet alien landscape with strange formations and luminous plants.",
+      "subjects": [
+        {
+          "id": "astronaut",
+          "kind": "person",
+          "design": "Consistent friendly round-headed astronaut wearing a white EVA spacesuit, blue chest controls, orange belt accents, dark gloves and boots, clear bubble helmet.",
+          "outfit": "white astronaut EVA suit with clear helmet",
+          "startPosition": [
+            -4,
+            -1.6,
+            -10
+          ],
+          "scale": 1.08
+        },
+        {
+          "id": "alien-crew",
+          "kind": "crowd",
+          "design": "Small group of expressive green humanoid aliens with large heads and simple limbs.",
+          "role": "alien",
+          "outfit": "green alien skin",
+          "startPosition": [
+            5,
+            -1.5,
+            -20
+          ],
+          "scale": 0.9
+        },
+        {
+          "id": "rocket",
+          "kind": "vehicle",
+          "assetKey": "rocket",
+          "design": "Tall white launch rocket with orange nose cone, red-orange fins and dark engine nozzle.",
+          "startPosition": [
+            1,
+            0,
+            -24
+          ],
+          "scale": 1.35
+        }
+      ],
+      "actions": [
+        {
+          "subjectId": "astronaut",
+          "kind": "talk",
+          "startSeconds": 46,
+          "endSeconds": 47.9,
+          "detail": "Performs the story action."
+        },
+        {
+          "subjectId": "alien-crew",
+          "kind": "talk",
+          "startSeconds": 46.2,
+          "endSeconds": 47.8,
+          "detail": "The alien group cautiously approaches."
+        }
+      ],
+      "camera": {
+        "position": [
+          0,
+          6,
+          34
+        ],
+        "lookAt": [
+          0,
+          2,
+          -25
+        ],
+        "fov": 42,
+        "move": "push",
+        "intensity": 0.08,
+        "transition": "glide",
+        "transitionFrames": 0,
+        "dof": {
+          "cInf": 0,
+          "focusAt": [
+            0,
+            2,
+            -25
+          ]
+        }
+      },
+      "lighting": "Warm key light with violet ambient fill; maintain visible character detail.",
+      "atmosphere": "Visible alien terrain, atmospheric depth and luminous crystal details.",
+      "narration": ""
+    },
+    {
+      "id": "25_aliens_turn_hostile",
+      "title": "The Visitors Turn Hostile",
+      "startSeconds": 48,
+      "durationSeconds": 2,
+      "environment": "alien-world",
+      "environmentDescription": "A rocky violet alien landscape with strange formations and luminous plants.",
+      "subjects": [
+        {
+          "id": "astronaut",
+          "kind": "person",
+          "design": "Consistent friendly round-headed astronaut wearing a white EVA spacesuit, blue chest controls, orange belt accents, dark gloves and boots, clear bubble helmet.",
+          "outfit": "white astronaut EVA suit with clear helmet",
+          "startPosition": [
+            -4,
+            -1.6,
+            -10
+          ],
+          "scale": 1.08
+        },
+        {
+          "id": "alien-crew",
+          "kind": "crowd",
+          "design": "Small group of expressive green humanoid aliens with large heads and simple limbs.",
+          "role": "alien",
+          "outfit": "green alien skin",
+          "startPosition": [
+            5,
+            -1.5,
+            -20
+          ],
+          "scale": 0.9
+        }
+      ],
+      "actions": [
+        {
+          "subjectId": "astronaut",
+          "kind": "react",
+          "startSeconds": 48,
+          "endSeconds": 49.9,
+          "detail": "Performs the story action."
+        }
+      ],
+      "camera": {
+        "position": [
+          0,
+          6,
+          34
+        ],
+        "lookAt": [
+          0,
+          2,
+          -25
+        ],
+        "fov": 42,
+        "move": "push",
+        "intensity": 0.08,
+        "transition": "glide",
+        "transitionFrames": 0,
+        "dof": {
+          "cInf": 0,
+          "focusAt": [
+            0,
+            2,
+            -25
+          ]
+        }
+      },
+      "lighting": "Warm key light with violet ambient fill; maintain visible character detail.",
+      "atmosphere": "Visible alien terrain, atmospheric depth and luminous crystal details.",
+      "narration": ""
+    },
+    {
+      "id": "26_aliens_attack",
+      "title": "An Attack",
+      "startSeconds": 50,
+      "durationSeconds": 2,
+      "environment": "alien-world",
+      "environmentDescription": "A rocky violet alien landscape with strange formations and luminous plants.",
+      "subjects": [
+        {
+          "id": "astronaut",
+          "kind": "person",
+          "design": "Consistent friendly round-headed astronaut wearing a white EVA spacesuit, blue chest controls, orange belt accents, dark gloves and boots, clear bubble helmet.",
+          "outfit": "white astronaut EVA suit with clear helmet",
+          "startPosition": [
+            -4,
+            -1.6,
+            -10
+          ],
+          "scale": 1.08
+        },
+        {
+          "id": "alien-crew",
+          "kind": "crowd",
+          "design": "Small group of expressive green humanoid aliens with large heads and simple limbs.",
+          "role": "alien",
+          "outfit": "green alien skin",
+          "startPosition": [
+            5,
+            -1.5,
+            -20
+          ],
+          "scale": 0.9
+        }
+      ],
+      "actions": [
+        {
+          "subjectId": "astronaut",
+          "kind": "run",
+          "startSeconds": 50,
+          "endSeconds": 51.9,
+          "detail": "Runs urgently toward the rocket."
+        }
+      ],
+      "camera": {
+        "position": [
+          0,
+          6,
+          34
+        ],
+        "lookAt": [
+          0,
+          2,
+          -25
+        ],
+        "fov": 42,
+        "move": "push",
+        "intensity": 0.08,
+        "transition": "glide",
+        "transitionFrames": 0,
+        "dof": {
+          "cInf": 0,
+          "focusAt": [
+            0,
+            2,
+            -25
+          ]
+        }
+      },
+      "lighting": "Warm key light with violet ambient fill; maintain visible character detail.",
+      "atmosphere": "Visible alien terrain, atmospheric depth and luminous crystal details.",
+      "narration": ""
+    },
+    {
+      "id": "27_run_for_rocket",
+      "title": "Run for the Rocket",
+      "startSeconds": 52,
+      "durationSeconds": 2,
+      "environment": "alien-world",
+      "environmentDescription": "A rocky violet alien landscape with strange formations and luminous plants.",
+      "subjects": [
+        {
+          "id": "astronaut",
+          "kind": "person",
+          "design": "Consistent friendly round-headed astronaut wearing a white EVA spacesuit, blue chest controls, orange belt accents, dark gloves and boots, clear bubble helmet.",
+          "outfit": "white astronaut EVA suit with clear helmet",
+          "startPosition": [
+            -4,
+            -1.6,
+            -10
+          ],
+          "scale": 1.08
+        },
+        {
+          "id": "alien-crew",
+          "kind": "crowd",
+          "design": "Small group of expressive green humanoid aliens with large heads and simple limbs.",
+          "role": "alien",
+          "outfit": "green alien skin",
+          "startPosition": [
+            5,
+            -1.5,
+            -20
+          ],
+          "scale": 0.9
+        },
+        {
+          "id": "rocket",
+          "kind": "vehicle",
+          "assetKey": "rocket",
+          "design": "Tall white launch rocket with orange nose cone, red-orange fins and dark engine nozzle.",
+          "startPosition": [
+            1,
+            0,
+            -24
+          ],
+          "scale": 1.35
+        }
+      ],
+      "actions": [
+        {
+          "subjectId": "astronaut",
+          "kind": "run",
+          "startSeconds": 52,
+          "endSeconds": 53.9,
+          "detail": "Runs urgently toward the rocket."
+        }
+      ],
+      "camera": {
+        "position": [
+          0,
+          6,
+          34
+        ],
+        "lookAt": [
+          0,
+          2,
+          -25
+        ],
+        "fov": 42,
+        "move": "push",
+        "intensity": 0.08,
+        "transition": "glide",
+        "transitionFrames": 0,
+        "dof": {
+          "cInf": 0,
+          "focusAt": [
+            0,
+            2,
+            -25
+          ]
+        }
+      },
+      "lighting": "Warm key light with violet ambient fill; maintain visible character detail.",
+      "atmosphere": "Visible alien terrain, atmospheric depth and luminous crystal details.",
+      "narration": ""
+    },
+    {
+      "id": "28_reach_rocket",
+      "title": "Back to the Rocket",
+      "startSeconds": 54,
+      "durationSeconds": 2,
+      "environment": "alien-world",
+      "environmentDescription": "A rocky violet alien landscape with strange formations and luminous plants.",
+      "subjects": [
+        {
+          "id": "astronaut",
+          "kind": "person",
+          "design": "Consistent friendly round-headed astronaut wearing a white EVA spacesuit, blue chest controls, orange belt accents, dark gloves and boots, clear bubble helmet.",
+          "outfit": "white astronaut EVA suit with clear helmet",
+          "startPosition": [
+            -4,
+            -1.6,
+            -10
+          ],
+          "scale": 1.08
+        },
+        {
+          "id": "rocket",
+          "kind": "vehicle",
+          "assetKey": "rocket",
+          "design": "Tall white launch rocket with orange nose cone, red-orange fins and dark engine nozzle.",
+          "startPosition": [
+            1,
+            0,
+            -24
+          ],
+          "scale": 1.35
+        },
+        {
+          "id": "alien-crew",
+          "kind": "crowd",
+          "design": "Small group of expressive green humanoid aliens with large heads and simple limbs.",
+          "role": "alien",
+          "outfit": "green alien skin",
+          "startPosition": [
+            5,
+            -1.5,
+            -20
+          ],
+          "scale": 0.9
+        }
+      ],
+      "actions": [
+        {
+          "subjectId": "astronaut",
+          "kind": "interact",
+          "startSeconds": 54,
+          "endSeconds": 55.9,
+          "detail": "Performs the story action."
+        }
+      ],
+      "camera": {
+        "position": [
+          0,
+          6,
+          34
+        ],
+        "lookAt": [
+          0,
+          2,
+          -25
+        ],
+        "fov": 42,
+        "move": "push",
+        "intensity": 0.08,
+        "transition": "glide",
+        "transitionFrames": 0,
+        "dof": {
+          "cInf": 0,
+          "focusAt": [
+            0,
+            2,
+            -25
+          ]
+        }
+      },
+      "lighting": "Warm key light with violet ambient fill; maintain visible character detail.",
+      "atmosphere": "Visible alien terrain, atmospheric depth and luminous crystal details.",
+      "narration": ""
+    },
+    {
+      "id": "29_escape_takeoff",
+      "title": "Escape",
+      "startSeconds": 56,
+      "durationSeconds": 2,
+      "environment": "alien-world",
+      "environmentDescription": "A rocky violet alien landscape with strange formations and luminous plants.",
+      "subjects": [
+        {
+          "id": "astronaut",
+          "kind": "person",
+          "design": "Consistent friendly round-headed astronaut wearing a white EVA spacesuit, blue chest controls, orange belt accents, dark gloves and boots, clear bubble helmet.",
+          "outfit": "white astronaut EVA suit with clear helmet",
+          "startPosition": [
+            -4,
+            -1.6,
+            -10
+          ],
+          "scale": 1.08
+        },
+        {
+          "id": "rocket",
+          "kind": "vehicle",
+          "assetKey": "rocket",
+          "design": "Tall white launch rocket with orange nose cone, red-orange fins and dark engine nozzle.",
+          "startPosition": [
+            1,
+            0,
+            -24
+          ],
+          "scale": 1.35
+        },
+        {
+          "id": "alien-crew",
+          "kind": "crowd",
+          "design": "Small group of expressive green humanoid aliens with large heads and simple limbs.",
+          "role": "alien",
+          "outfit": "green alien skin",
+          "startPosition": [
+            5,
+            -1.5,
+            -20
+          ],
+          "scale": 0.9
+        }
+      ],
+      "actions": [
+        {
+          "subjectId": "rocket",
+          "kind": "fly",
+          "startSeconds": 56,
+          "endSeconds": 57.9,
+          "detail": "Accelerates upward with visible engine thrust."
+        }
+      ],
+      "camera": {
+        "position": [
+          0,
+          6,
+          34
+        ],
+        "lookAt": [
+          0,
+          2,
+          -25
+        ],
+        "fov": 42,
+        "move": "push",
+        "intensity": 0.08,
+        "transition": "glide",
+        "transitionFrames": 0,
+        "dof": {
+          "cInf": 0,
+          "focusAt": [
+            0,
+            2,
+            -25
+          ]
+        }
+      },
+      "lighting": "Warm key light with violet ambient fill; maintain visible character detail.",
+      "atmosphere": "Visible alien terrain, atmospheric depth and luminous crystal details.",
+      "narration": ""
+    },
+    {
+      "id": "30_leave_planet",
+      "title": "Leaving the Planet",
+      "startSeconds": 58,
+      "durationSeconds": 2,
+      "environment": "space",
+      "environmentDescription": "Deep space with visible stars, distant planets and clear directional sunlight.",
+      "subjects": [
+        {
+          "id": "astronaut",
+          "kind": "person",
+          "design": "Consistent friendly round-headed astronaut wearing a white EVA spacesuit, blue chest controls, orange belt accents, dark gloves and boots, clear bubble helmet.",
+          "outfit": "white astronaut EVA suit with clear helmet",
+          "startPosition": [
+            -4,
+            -1.6,
+            -10
+          ],
+          "scale": 1.08
+        },
+        {
+          "id": "rocket",
+          "kind": "vehicle",
+          "assetKey": "rocket",
+          "design": "Tall white launch rocket with orange nose cone, red-orange fins and dark engine nozzle.",
+          "startPosition": [
+            1,
+            0,
+            -24
+          ],
+          "scale": 1.35
+        },
+        {
+          "id": "alien-planet",
+          "kind": "planet",
+          "assetKey": "alien-planet",
+          "design": "Large violet alien planet with atmospheric rim.",
+          "startPosition": [
+            4,
+            2,
+            -85
+          ],
+          "scale": 2.2
+        },
+        {
+          "id": "earth",
+          "kind": "planet",
+          "assetKey": "earth",
+          "design": "Clearly recognizable blue Earth with blue oceans, green continents and bright atmospheric rim.",
+          "startPosition": [
+            -1,
+            9,
+            -75
+          ],
+          "scale": 2.25
+        },
+        {
+          "id": "sun",
+          "kind": "weather",
+          "assetKey": "sun",
+          "design": "Bright warm yellow Sun with orange corona and visible glow.",
+          "startPosition": [
+            24,
+            16,
+            -90
+          ],
+          "scale": 1.3
+        }
+      ],
+      "actions": [
+        {
+          "subjectId": "rocket",
+          "kind": "travel",
+          "startSeconds": 58,
+          "endSeconds": 59.9,
+          "detail": "Travels through the scene with a clear directional path."
+        }
+      ],
+      "camera": {
+        "position": [
+          0,
+          5,
+          38
+        ],
+        "lookAt": [
+          0,
+          2,
+          -25
+        ],
+        "fov": 42,
+        "move": "push",
+        "intensity": 0.08,
+        "transition": "crossfade",
+        "transitionFrames": 8,
+        "dof": {
+          "cInf": 0,
+          "focusAt": [
+            0,
+            2,
+            -25
+          ]
+        }
+      },
+      "lighting": "Bright directional sunlight with blue fill; keep astronaut and spacecraft clearly exposed.",
+      "atmosphere": "Visible stars, Earth or destination planet when specified; never use a black empty frame.",
+      "narration": ""
     }
   ]
 }
