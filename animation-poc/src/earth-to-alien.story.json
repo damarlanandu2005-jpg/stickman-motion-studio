@@ -1,0 +1,225 @@
+{
+  "schemaVersion": 1,
+  "id": "earth-to-alien-planet",
+  "title": "A Journey Beyond Earth",
+  "topic": "space exploration",
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "style": {
+    "visualDirection": "Expressive 2D reference-toon characters staged in a dimensional 3D world with cinematic camera movement and atmospheric depth.",
+    "characterSystem": "reference-toon",
+    "postProcessing": "reference-stack"
+  },
+  "scenes": [
+    {
+      "id": "earth-departure",
+      "title": "A Journey Begins",
+      "startSeconds": 0,
+      "durationSeconds": 4,
+      "environment": "space",
+      "environmentDescription": "Earth fills the background; a small spacecraft begins its departure into a deep blue starfield.",
+      "subjects": [
+        {
+          "id": "explorer",
+          "kind": "person",
+          "design": "Use the original reference toon character drawing and proportions; neutral astronaut explorer outfit.",
+          "outfit": "light explorer suit",
+          "startPosition": [
+            0,
+            -1.6,
+            -7
+          ],
+          "scale": 1
+        },
+        {
+          "id": "earth",
+          "kind": "planet",
+          "design": "Blue Earth with soft atmospheric rim.",
+          "startPosition": [
+            -8,
+            1,
+            -18
+          ],
+          "scale": 1
+        },
+        {
+          "id": "ship",
+          "kind": "vehicle",
+          "design": "Compact silver exploration spacecraft.",
+          "startPosition": [
+            2.8,
+            -1.3,
+            -9
+          ],
+          "scale": 1
+        }
+      ],
+      "actions": [
+        {
+          "subjectId": "explorer",
+          "kind": "look",
+          "startSeconds": 0,
+          "endSeconds": 4,
+          "detail": "Looks toward the distant destination."
+        },
+        {
+          "subjectId": "ship",
+          "kind": "travel",
+          "startSeconds": 1,
+          "endSeconds": 4,
+          "detail": "Accelerates away from Earth."
+        }
+      ],
+      "camera": {
+        "position": [
+          0,
+          1.8,
+          24
+        ],
+        "lookAt": [
+          0,
+          0,
+          -18
+        ],
+        "fov": 48,
+        "move": "push",
+        "intensity": 0.2,
+        "transition": "glide"
+      },
+      "lighting": "Cool blue space light with a warm engine glow.",
+      "atmosphere": "Sparse stars and subtle blue haze.",
+      "narration": "What if you left Earth behind and travelled to a world no human had ever seen?"
+    },
+    {
+      "id": "deep-space",
+      "title": "Beyond Our Solar System",
+      "startSeconds": 4,
+      "durationSeconds": 5,
+      "environment": "space",
+      "environmentDescription": "The spacecraft crosses a vast starfield; Earth recedes and an unfamiliar planet grows in the distance.",
+      "subjects": [
+        {
+          "id": "explorer",
+          "kind": "person",
+          "design": "Same reference toon explorer, same outfit and proportions.",
+          "outfit": "light explorer suit",
+          "startPosition": [
+            0,
+            -1.6,
+            -7
+          ]
+        },
+        {
+          "id": "ship",
+          "kind": "vehicle",
+          "design": "Same silver exploration spacecraft.",
+          "startPosition": [
+            2.8,
+            -1.3,
+            -9
+          ]
+        },
+        {
+          "id": "alien-world",
+          "kind": "planet",
+          "design": "Large violet rocky planet with a faint atmospheric rim.",
+          "startPosition": [
+            18,
+            -1,
+            -70
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "subjectId": "ship",
+          "kind": "travel",
+          "startSeconds": 4,
+          "endSeconds": 9,
+          "detail": "Travels through deep space."
+        },
+        {
+          "subjectId": "explorer",
+          "kind": "look",
+          "startSeconds": 6,
+          "endSeconds": 9,
+          "detail": "Notices the new planet."
+        }
+      ],
+      "camera": {
+        "position": [
+          0,
+          1.8,
+          20
+        ],
+        "lookAt": [
+          3,
+          0,
+          -35
+        ],
+        "fov": 48,
+        "move": "follow",
+        "intensity": 0.15,
+        "transition": "crossfade"
+      },
+      "lighting": "Cool blue key light with violet planetary bounce.",
+      "atmosphere": "Deep-space haze and a restrained star field.",
+      "narration": "The stars become unfamiliar. Then, a new planet appears ahead."
+    },
+    {
+      "id": "new-world",
+      "title": "The Unknown",
+      "startSeconds": 9,
+      "durationSeconds": 4,
+      "environment": "space",
+      "environmentDescription": "The alien planet dominates the view as the explorer approaches its unknown surface.",
+      "subjects": [
+        {
+          "id": "explorer",
+          "kind": "person",
+          "design": "Same reference toon explorer; surprised expression.",
+          "outfit": "light explorer suit"
+        },
+        {
+          "id": "alien-world",
+          "kind": "planet",
+          "design": "Violet alien planet, softly illuminated.",
+          "startPosition": [
+            18,
+            -1,
+            -70
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "subjectId": "explorer",
+          "kind": "react",
+          "startSeconds": 11,
+          "endSeconds": 13,
+          "detail": "Reacts with curiosity and surprise."
+        }
+      ],
+      "camera": {
+        "position": [
+          0,
+          1.8,
+          16
+        ],
+        "lookAt": [
+          5,
+          0,
+          -40
+        ],
+        "fov": 44,
+        "move": "push",
+        "intensity": 0.25,
+        "transition": "glide"
+      },
+      "lighting": "Soft violet rim light against deep blue space.",
+      "atmosphere": "Quiet, mysterious and cinematic.",
+      "narration": "And somewhere out there, a completely new world is waiting."
+    }
+  ]
+}
