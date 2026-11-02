@@ -35,10 +35,12 @@ class FactCheckTests(unittest.TestCase):
 
 
     def test_scene_segments_are_rebuilt_from_revised_narration(self):
-        scenes = [{"narration_segment": "OLD A"}, {"narration_segment": "OLD B"}, {"narration_segment": "OLD C"}]
-        synced = sync_narration_segments("New line one. New line two.", scenes)
-        combined = " ".join(x["narration_segment"] for x in synced if x["narration_segment"])
-        self.assertEqual(combined, "New line one. New line two.")
+        scenes = [{"narration_segment": "OLD"} for _ in range(3)]
+        narration = "New line one. New line two."
+        synced = sync_narration_segments(narration, scenes)
+        combined = " ".join(x["narration_segment"] for x in synced)
+        self.assertEqual(combined, narration)
+        self.assertTrue(all(x["narration_segment"].strip() for x in synced))
         self.assertNotIn("OLD", combined)
 
     def test_continuity_bible_string_is_preserved_in_object(self):

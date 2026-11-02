@@ -67,17 +67,19 @@ def extract_json_object(raw: str) -> dict:
     raise ValueError("Incomplete JSON object")
 
 def sync_narration_segments(narration: str, scenes: list[dict]) -> list[dict]:
-    """Replace every scene narration segment with text derived from revised narration."""
-    import re
-    sentences = [part.strip() for part in re.split(r"(?<=[.!?])\\s+", str(narration).strip()) if part.strip()]
+    """Split narration into ordered, balanced, non-empty word chunks for every scene."""
+    words = str(narration).split()
     result = json.loads(json.dumps(scenes))
-    assigned: list[list[str]] = [[] for _ in result]
-    if sentences and result:
-        for index, sentence in enumerate(sentences):
-            slot = 0 if len(sentences) == 1 else round(index * (len(result) - 1) / (len(sentences) - 1))
-            assigned[slot].append(sentence)
-    for scene, parts in zip(result, assigned):
-        scene["narration_segment"] = " ".join(parts)
+    if not result:
+        return result
+    if len(words) < len(result):
+        raise ValueError(f"Cannot give every scene narration: {len(words)} words for {len(result)} scenes")
+    for index, scene in enumerate(result):
+        start = round(index * len(words) / len(result))
+        end = round((index + 1) * len(words) / len(result))
+        scene["narration_segment"] = " ".join(words[start:end])
+    if any(not str(scene.get("narration_segment", "")).strip() for scene in result):
+        raise ValueError("Scene narration distribution left an empty scene")
     return result
 
 
