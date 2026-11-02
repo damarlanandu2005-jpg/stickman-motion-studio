@@ -1,0 +1,117 @@
+name: Bridge reference baseline test
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - feat/reference-inspired-remotion-kaggle-poc
+    paths:
+      - 'animation-poc/src/reference/BridgeReference.tsx'
+      - 'animation-poc/src/root.tsx'
+      - 'animation-poc/package.json'
+      - 'animation-poc/upstream'
+      - '.github/workflows/bridge-reference-baseline.yml'
+permissions:
+  contents: read
+concurrency:
+  group: bridge-reference-baseline-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  bridge-baseline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Step 1 - Check out repository
+        uses: actions/checkout@v7
+
+      - name: Step 2 - Initialise the pinned upstream Bridge renderer
+        run: |
+          set -euxo pipefail
+          git submodule update --init --depth=1 animation-poc/upstream
+          git -C animation-poc/upstream rev-parse HEAD
+          git submodule status animation-poc/upstream
+
+      - name: Step 3 - Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+          package-manager-cache: false
+      - name: Step 4 - Install FFmpeg and Python image tools
+        run: |
+          set -euxo pipefail
+          sudo apt-get update
+          sudo apt-get install --yes ffmpeg
+          python -m venv .qa-venv
+          .qa-venv/bin/pip install pillow
+
+      - name: Step 5 - Install the pinned Remotion and Three.js dependencies
+        working-directory: animation-poc
+        run: |
+          set -euxo pipefail
+          npm install --no-audit --no-fund
+
+      - name: Step 6 - Type-check the Bridge baseline and composition registry
+        working-directory: animation-poc
+        run: |
+          set -euxo pipefail
+          npx tsc --noEmit
+
+      - name: Step 7 - Render the original Bridge reference composition
+        working-directory: animation-poc
+        run: |
+          set -euxo pipefail
+          mkdir -p out/bridge-reference
+          npm run render:bridge-reference -- --scale 0.5 --codec h264 --crf 20
+          test -s out/bridge-reference-baseline.mp4
+          cp out/bridge-reference-baseline.mp4 out/bridge-reference/bridge-reference-baseline.mp4
+
+      - name: Step 8 - Verify Bridge video metadata and duration
+        working-directory: animation-poc
+        run: |
+          set -euxo pipefail
+          ffprobe -v error -show_entries format=duration,size -show_entries stream=codec_name,width,height,r_frame_rate -of json out/bridge-reference-baseline.mp4 | tee out/bridge-reference/ffprobe.json
+          node <<'NODE'
+          const fs = require("node:fs");
+          const data = JSON.parse(fs.readFileSync("out/bridge-reference/ffprobe.json", "utf8"));
+          const video = data.streams?.find((stream) => stream.codec_type === "video") ?? data.streams?.[0];
+          if (!video || video.codec_name !== "h264") throw new Error("Bridge render is missing an H.264 video stream");
+          if (video.width !== 540 || video.height !== 960) throw new Error("Unexpected scaled output dimensions: " + video.width + "x" + video.height);
+          if (video.r_frame_rate !== "30/1") throw new Error("Unexpected frame rate: " + video.r_frame_rate);
+          const duration = Number(data.format?.duration);
+          if (!Number.isFinite(duration) || duration <= 0) throw new Error("Invalid Bridge video duration");
+          console.log("BRIDGE_RESULT duration_seconds=" + duration + " width=" + video.width + " height=" + video.height + " fps=" + video.r_frame_rate + " codec=" + video.codec_name);
+          NODE
+
+      - name: Step 9 - Generate visual contact sheets across the full Bridge render
+        working-directory: animation-poc
+        run: |
+          set -euxo pipefail
+          mkdir -p out/bridge-reference/samples
+          ffmpeg -hide_banner -loglevel error -i out/bridge-reference-baseline.mp4 -vf "fps=1,scale=270:480" out/bridge-reference/samples/frame-%04d.jpg
+          ../.qa-venv/bin/python <<'PY'
+          from PIL import Image, ImageDraw
+          from pathlib import Path
+          files = sorted(Path("out/bridge-reference/samples").glob("frame-*.jpg"))
+          if not files:
+              raise SystemExit("No visual samples were extracted")
+          out = Path("out/bridge-reference")
+          for page in range((len(files) + 11) // 12):
+              selected = files[page * 12:(page + 1) * 12]
+              sheet = Image.new("RGB", (4 * 270, 3 * 510), "#20242a")
+              draw = ImageDraw.Draw(sheet)
+              for index, path in enumerate(selected):
+                  image = Image.open(path).convert("RGB")
+                  x, y = (index % 4) * 270, (index // 4) * 510
+                  sheet.paste(image, (x, y))
+                  draw.text((x + 8, y + 482), path.stem, fill="white")
+              sheet.save(out / f"contact-sheet-{page + 1:02d}.jpg", quality=90)
+          print(f"BRIDGE_VISUAL_SAMPLES count={len(files)} contact_sheets={(len(files) + 11) // 12}")
+          PY
+          ls -lh out/bridge-reference
+
+      - name: Step 10 - Upload the Bridge render, metadata, samples, and logs
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: bridge-reference-baseline-proof
+          path: animation-poc/out/bridge-reference/
+          retention-days: 7
