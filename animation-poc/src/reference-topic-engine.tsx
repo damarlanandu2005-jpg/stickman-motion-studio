@@ -51,6 +51,16 @@ const ToonSubject:React.FC<{subject:TopicSubject; position:THREE.Vector3; frame:
     const mode=action?.kind==="walk"||action?.kind==="run"||action?.kind==="travel"?"stroll":"stand";
     const expr=action?.kind==="react"?"shock":action?.kind==="talk"?"smile":"neutral";
     bodyFront(new Pen(surface.context),outfit,{mode,phase:frame/fps,expr,seed:hash(subject.id),light:-2.2,blink:Math.floor(frame/55)%8===0,look:progress>0.5?0.15:0});
+    // The astronaut helmet is drawn into the same reference-toon card as the body,
+    // keeping the costume consistent while retaining the upstream character renderer.
+    if(subject.outfit?.toLowerCase().includes("astronaut")){
+      const g=surface.context;
+      g.save();
+      g.strokeStyle="#273d4c"; g.lineWidth=15; g.beginPath(); g.ellipse(300,333,139,143,0,0,Math.PI*2); g.stroke();
+      g.strokeStyle="rgba(170,224,248,.95)"; g.lineWidth=9; g.beginPath(); g.ellipse(300,333,127,131,-.08,Math.PI*1.08,Math.PI*1.72); g.stroke();
+      g.strokeStyle="rgba(255,255,255,.9)"; g.lineWidth=7; g.beginPath(); g.arc(300,333,132,Math.PI*1.18,Math.PI*1.43); g.stroke();
+      g.restore();
+    }
     surface.texture.needsUpdate=true;
   });
   const meshRef=React.useRef<THREE.Mesh>(null);
