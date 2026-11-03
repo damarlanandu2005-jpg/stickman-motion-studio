@@ -51,11 +51,16 @@ export const COSTUMES: Record<string, Part[]> = {
 };
 
 const FACES: Record<string, (g: CanvasRenderingContext2D) => void> = {
-  neutral: (g) => { eye(g, 78, 108, 19, 30); eye(g, 178, 108, 19, 30); line(g, 100, 184, 156, 184, 13); },
-  smile: (g) => { eye(g, 78, 108, 19, 30); eye(g, 178, 108, 19, 30); arc(g, 128, 150, 44, 0.25, 0.75, 13); },
-  surprised: (g) => { eye(g, 84, 98, 18, 26); eye(g, 172, 98, 18, 26); g.fillStyle = "#241726"; g.beginPath(); g.ellipse(128, 174, 16, 22, 0, 0, 7); g.fill(); },
-  worried: (g) => { eye(g, 88, 104, 9, 13); eye(g, 168, 104, 9, 13); line(g, 70, 76, 104, 86, 6); line(g, 186, 76, 152, 86, 6); arc(g, 128, 176, 24, 1.15, 1.85, 7); },
-  dizzy: (g) => { for (const x of [88, 168]) { g.strokeStyle = "#241726"; g.lineWidth = 7; g.beginPath(); g.arc(x, 100, 13, 0, 5.5); g.stroke(); } line(g, 108, 166, 148, 166, 7); },
+  neutral: (g) => { eye(g, 78, 108, 19, 30); eye(g, 178, 108, 19, 30); brow(g, 78, 62, 0, 13); brow(g, 178, 62, 0, 13); line(g, 100, 184, 156, 184, 13); },
+  smile: (g) => { eye(g, 78, 108, 19, 30); eye(g, 178, 108, 19, 30); brow(g, 78, 58, 0.12, 13); brow(g, 178, 58, -0.12, 13); arc(g, 128, 150, 44, 0.25, 0.75, 13); },
+  surprised: (g) => { eye(g, 84, 98, 18, 26); eye(g, 172, 98, 18, 26); brow(g, 84, 44, 0.1, 13); brow(g, 172, 44, -0.1, 13); g.fillStyle = "#241726"; g.beginPath(); g.ellipse(128, 174, 16, 22, 0, 0, 7); g.fill(); },
+  worried: (g) => { eye(g, 88, 104, 9, 13); eye(g, 168, 104, 9, 13); line(g, 62, 80, 108, 58, 13); line(g, 194, 80, 148, 58, 13); arc(g, 128, 176, 24, 1.15, 1.85, 7); },
+  dizzy: (g) => { for (const x of [88, 168]) { g.strokeStyle = "#241726"; g.lineWidth = 7; g.beginPath(); g.arc(x, 100, 13, 0, 5.5); g.stroke(); } brow(g, 88, 66, -0.15, 12); brow(g, 168, 66, 0.15, 12); line(g, 108, 166, 148, 166, 7); },
+};
+/** eyebrow: a short thick line centred at (cx, cy); tilt > 0 lifts the outer end */
+const brow = (g: CanvasRenderingContext2D, cx: number, cy: number, tilt: number, w: number) => {
+  const dx = 24, side = cx < 128 ? -1 : 1;
+  line(g, cx - dx, cy + side * tilt * dx * -1 * 1, cx + dx, cy + side * tilt * dx, w);
 };
 const eye = (g: CanvasRenderingContext2D, x: number, y: number, rx: number, ry: number) => { g.fillStyle = "#241726"; g.beginPath(); g.ellipse(x, y, rx, ry, 0, 0, 7); g.fill(); };
 const line = (g: CanvasRenderingContext2D, x1: number, y1: number, x2: number, y2: number, w: number) => { g.strokeStyle = "#241726"; g.lineWidth = w; g.lineCap = "round"; g.beginPath(); g.moveTo(x1, y1); g.lineTo(x2, y2); g.stroke(); };

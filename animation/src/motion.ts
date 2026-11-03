@@ -74,9 +74,17 @@ export function gait(phase: number, speed: number): Pose {
 }
 
 function idle(t: number): Pose {
+  // a living stand: slow breathing, weight shifting from foot to foot, loose swinging arms, a head that looks around a little
   const o = { ...KEY.stand };
-  o.spineX = 0.015 * Math.sin(t * 2.1); o.headY = 0.05 * Math.sin(t * 0.7);
-  o.LShX = 0.02 * Math.sin(t * 2.1 + 1); o.RShX = 0.02 * Math.sin(t * 2.1 + 2);
+  const br = Math.sin(t * 2.3), sh = Math.sin(t * 0.55), sw = Math.sin(t * 0.9 + 1);
+  o.hipsY = -0.006 + 0.006 * br - 0.004 * Math.abs(sh);
+  o.roll = 0.035 * sh; o.turn = 0.05 * Math.sin(t * 0.4);
+  o.spineX = 0.02 + 0.02 * br; o.spineZ = -0.045 * sh; o.spineY = 0.05 * Math.sin(t * 0.4 + 2);
+  o.headY = 0.2 * Math.sin(t * 0.45) + 0.08 * Math.sin(t * 1.3); o.headX = 0.03 * Math.sin(t * 0.8 + 1); o.headZ = 0.04 * Math.sin(t * 0.6);
+  o.LShX = 0.1 + 0.09 * sw + 0.02 * br; o.RShX = 0.1 - 0.09 * sw + 0.02 * br;
+  o.LAbd = 0.13 + 0.05 * sh; o.RAbd = 0.13 - 0.05 * sh;
+  o.LEl = 0.28 + 0.1 * Math.sin(t * 0.9 + 2); o.REl = 0.28 + 0.1 * Math.sin(t * 0.9 + 4);
+  o.LKnee = 0.06 + 0.05 * Math.max(0, sh); o.RKnee = 0.06 + 0.05 * Math.max(0, -sh);
   return o;
 }
 
@@ -145,7 +153,7 @@ export function actionPose(a: Action, ta: number, c: Ctx): Out {
 }
 
 /** pose at a time from the action timeline, blending from the previous action for 0.25 s after a change */
-export function poseAtTime(actions: Action[], c: Ctx, blend = 0.25): Out & { index: number } {
+export function poseAtTime(actions: Action[], c: Ctx, blend = 0.4): Out & { index: number } {
   let i = 0;
   for (let k = 0; k < actions.length; k++) if (c.time >= actions[k].at_s) i = k;
   const cur = actionPose(actions[i], c.time - actions[i].at_s, c);

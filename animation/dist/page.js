@@ -30811,16 +30811,22 @@ var FACES = {
   neutral: (g) => {
     eye(g, 78, 108, 19, 30);
     eye(g, 178, 108, 19, 30);
+    brow(g, 78, 62, 0, 13);
+    brow(g, 178, 62, 0, 13);
     line(g, 100, 184, 156, 184, 13);
   },
   smile: (g) => {
     eye(g, 78, 108, 19, 30);
     eye(g, 178, 108, 19, 30);
+    brow(g, 78, 58, 0.12, 13);
+    brow(g, 178, 58, -0.12, 13);
     arc(g, 128, 150, 44, 0.25, 0.75, 13);
   },
   surprised: (g) => {
     eye(g, 84, 98, 18, 26);
     eye(g, 172, 98, 18, 26);
+    brow(g, 84, 44, 0.1, 13);
+    brow(g, 172, 44, -0.1, 13);
     g.fillStyle = "#241726";
     g.beginPath();
     g.ellipse(128, 174, 16, 22, 0, 0, 7);
@@ -30829,8 +30835,8 @@ var FACES = {
   worried: (g) => {
     eye(g, 88, 104, 9, 13);
     eye(g, 168, 104, 9, 13);
-    line(g, 70, 76, 104, 86, 6);
-    line(g, 186, 76, 152, 86, 6);
+    line(g, 62, 80, 108, 58, 13);
+    line(g, 194, 80, 148, 58, 13);
     arc(g, 128, 176, 24, 1.15, 1.85, 7);
   },
   dizzy: (g) => {
@@ -30841,8 +30847,14 @@ var FACES = {
       g.arc(x, 100, 13, 0, 5.5);
       g.stroke();
     }
+    brow(g, 88, 66, -0.15, 12);
+    brow(g, 168, 66, 0.15, 12);
     line(g, 108, 166, 148, 166, 7);
   }
+};
+var brow = (g, cx, cy, tilt, w) => {
+  const dx = 24, side = cx < 128 ? -1 : 1;
+  line(g, cx - dx, cy + side * tilt * dx * -1 * 1, cx + dx, cy + side * tilt * dx, w);
 };
 var eye = (g, x, y, rx, ry) => {
   g.fillStyle = "#241726";
@@ -31060,10 +31072,24 @@ function gait(phase, speed) {
 }
 function idle(t) {
   const o = { ...KEY.stand };
-  o.spineX = 0.015 * Math.sin(t * 2.1);
-  o.headY = 0.05 * Math.sin(t * 0.7);
-  o.LShX = 0.02 * Math.sin(t * 2.1 + 1);
-  o.RShX = 0.02 * Math.sin(t * 2.1 + 2);
+  const br = Math.sin(t * 2.3), sh = Math.sin(t * 0.55), sw = Math.sin(t * 0.9 + 1);
+  o.hipsY = -6e-3 + 6e-3 * br - 4e-3 * Math.abs(sh);
+  o.roll = 0.035 * sh;
+  o.turn = 0.05 * Math.sin(t * 0.4);
+  o.spineX = 0.02 + 0.02 * br;
+  o.spineZ = -0.045 * sh;
+  o.spineY = 0.05 * Math.sin(t * 0.4 + 2);
+  o.headY = 0.2 * Math.sin(t * 0.45) + 0.08 * Math.sin(t * 1.3);
+  o.headX = 0.03 * Math.sin(t * 0.8 + 1);
+  o.headZ = 0.04 * Math.sin(t * 0.6);
+  o.LShX = 0.1 + 0.09 * sw + 0.02 * br;
+  o.RShX = 0.1 - 0.09 * sw + 0.02 * br;
+  o.LAbd = 0.13 + 0.05 * sh;
+  o.RAbd = 0.13 - 0.05 * sh;
+  o.LEl = 0.28 + 0.1 * Math.sin(t * 0.9 + 2);
+  o.REl = 0.28 + 0.1 * Math.sin(t * 0.9 + 4);
+  o.LKnee = 0.06 + 0.05 * Math.max(0, sh);
+  o.RKnee = 0.06 + 0.05 * Math.max(0, -sh);
   return o;
 }
 function actionPose(a, ta, c) {
@@ -31166,7 +31192,7 @@ function actionPose(a, ta, c) {
     }
   }
 }
-function poseAtTime(actions, c, blend = 0.25) {
+function poseAtTime(actions, c, blend = 0.4) {
   let i = 0;
   for (let k = 0; k < actions.length; k++) if (c.time >= actions[k].at_s) i = k;
   const cur = actionPose(actions[i], c.time - actions[i].at_s, c);
