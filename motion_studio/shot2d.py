@@ -54,7 +54,7 @@ class Library:
 
     def body(self, pose: int):
         if pose not in self._body:
-            b = Image.open(self.root / self.outfit / f"body_{pose:02d}.png").convert("RGBA")
+            b = Image.open(self.root / self.outfit / (f"body_{pose:02d}.png" if isinstance(pose, int) else f"{pose}.png")).convert("RGBA")
             top, sh, nx = _neck(b)
             a = np.array(b)[:, :, 3] > 0
             ys, xs = np.nonzero(a[sh + 10:int(sh + 0.55 * (a.shape[0] - sh))])  # torso/hip area
