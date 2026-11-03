@@ -5,6 +5,10 @@ name: Render story (one parallel job per shot)
 # on its own runner at the same time (CPU), then one job joins them in order and runs the reference QA script.
 # Audio is paused: the video has no sound yet.
 on:
+  # the workflow file is not on main yet, so dispatch is not offered; a push to this test branch that changes the story or this file starts it
+  push:
+    branches: [test/image-to-3d-objects]
+    paths: [".github/workflows/render-story.yml", "animation/stories/**"]
   workflow_dispatch:
     inputs:
       story:
