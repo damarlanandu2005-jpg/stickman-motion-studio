@@ -1,0 +1,250 @@
+{
+  "stage": "klein",
+  "status": "success",
+  "error": null,
+  "pictures": [
+    {
+      "pose": "consist_explorer_neutral",
+      "seed": 4311,
+      "status": "success",
+      "file": "pose_consist_explorer_neutral.png",
+      "seconds": 31.51,
+      "width": 768,
+      "height": 768,
+      "sha256": "45af4e0079c3e93bba227eaa2e33f0a5bdf4887f4f897ca24d1244de359a10a4"
+    },
+    {
+      "pose": "consist_explorer_happy",
+      "seed": 4311,
+      "status": "success",
+      "file": "pose_consist_explorer_happy.png",
+      "seconds": 24.7,
+      "width": 768,
+      "height": 768,
+      "sha256": "6e1a18960027b6f7c10a1c89657ccf7fd5688442097d2675923e3e52209dc3e9"
+    },
+    {
+      "pose": "consist_explorer_angry",
+      "seed": 4311,
+      "status": "success",
+      "file": "pose_consist_explorer_angry.png",
+      "seconds": 24.69,
+      "width": 768,
+      "height": 768,
+      "sha256": "2501e130518a8a631a09261d86dfe1e110cf35d68dc35a47d3d8ec9c05508085"
+    },
+    {
+      "pose": "consist_explorer_scared",
+      "seed": 4311,
+      "status": "success",
+      "file": "pose_consist_explorer_scared.png",
+      "seconds": 24.81,
+      "width": 768,
+      "height": 768,
+      "sha256": "1e43d45cc915810de998573601b3c5a076193e7e96de9bbcac1aeb2b88fbfa1e"
+    },
+    {
+      "pose": "consist_explorer_sad",
+      "seed": 4311,
+      "status": "success",
+      "file": "pose_consist_explorer_sad.png",
+      "seconds": 24.93,
+      "width": 768,
+      "height": 768,
+      "sha256": "51556c172a289a55499ce4f42184ebddb8d3639e271d49a6a88f2a6df3f66052"
+    },
+    {
+      "pose": "consist_explorer_surprised",
+      "seed": 4311,
+      "status": "success",
+      "file": "pose_consist_explorer_surprised.png",
+      "seconds": 24.41,
+      "width": 768,
+      "height": 768,
+      "sha256": "6c8425a8b84da95a031197bb293dbac49ef2f58e167cb2abeaa4e1e072e90582"
+    },
+    {
+      "pose": "consist_explorer_smug",
+      "seed": 4311,
+      "status": "success",
+      "file": "pose_consist_explorer_smug.png",
+      "seconds": 24.52,
+      "width": 768,
+      "height": 768,
+      "sha256": "c66b04caca47bec451d0b06e6fb27ac0ce88595dfdc2a1bb9f4f4660bde89897"
+    },
+    {
+      "pose": "consist_explorer_laugh",
+      "seed": 4311,
+      "status": "success",
+      "file": "pose_consist_explorer_laugh.png",
+      "seconds": 25.19,
+      "width": 768,
+      "height": 768,
+      "sha256": "4d90d34090ffa8179c0ebfa6023e4d1b0c6d85f3cd003ee8157dd001ddfeca88"
+    },
+    {
+      "pose": "consist_astro_neutral",
+      "seed": 4311,
+      "status": "success",
+      "file": "pose_consist_astro_neutral.png",
+      "seconds": 25.8,
+      "width": 768,
+      "height": 768,
+      "sha256": "f2af34e2f9e0cf62c82c5c0eac748f8e9740dd446c2686223f747082a00cddf9"
+    },
+    {
+      "pose": "consist_astro_happy",
+      "seed": 4311,
+      "status": "success",
+      "file": "pose_consist_astro_happy.png",
+      "seconds": 25.96,
+      "width": 768,
+      "height": 768,
+      "sha256": "ede1a164dfd6983c8ee7b20b8f54e4338b3b7a8a31359e8a2c3e5d75d8215eaa"
+    },
+    {
+      "pose": "consist_astro_angry",
+      "seed": 4311,
+      "status": "success",
+      "file": "pose_consist_astro_angry.png",
+      "seconds": 25.4,
+      "width": 768,
+      "height": 768,
+      "sha256": "9edba8a2787a36361350ec382c7002e31d79ef9be2e9237b2c03be1bcd34aa3d"
+    },
+    {
+      "pose": "consist_astro_scared",
+      "seed": 4311,
+      "status": "success",
+      "file": "pose_consist_astro_scared.png",
+      "seconds": 24.88,
+      "width": 768,
+      "height": 768,
+      "sha256": "fe4325571d0b251af10bc88d5780c53da89ec3c385c3164a5c6c412499ba5964"
+    },
+    {
+      "pose": "consist_astro_sad",
+      "seed": 4311,
+      "status": "success",
+      "file": "pose_consist_astro_sad.png",
+      "seconds": 24.89,
+      "width": 768,
+      "height": 768,
+      "sha256": "79cc2a776c0d10e901c6eadb0b5de0d87a1fe790d9a4dec6eeca8b880ef22dd2"
+    },
+    {
+      "pose": "consist_astro_surprised",
+      "seed": 4311,
+      "status": "success",
+      "file": "pose_consist_astro_surprised.png",
+      "seconds": 24.11,
+      "width": 768,
+      "height": 768,
+      "sha256": "ba8a738c1a99d6270aacdcf8a3f9a9cd8af3e72763c92c40ed299e8f1e35674c"
+    },
+    {
+      "pose": "consist_astro_smug",
+      "seed": 4311,
+      "status": "success",
+      "file": "pose_consist_astro_smug.png",
+      "seconds": 23.59,
+      "width": 768,
+      "height": 768,
+      "sha256": "f17b11ec8fc95e27439375ddbc1a0f4ac50843b87535690f8b8779db93c7098b"
+    },
+    {
+      "pose": "consist_astro_laugh",
+      "seed": 4311,
+      "status": "success",
+      "file": "pose_consist_astro_laugh.png",
+      "seconds": 23.33,
+      "width": 768,
+      "height": 768,
+      "sha256": "62b91a5e1a71c7247f63fc07b5aee4181964b7218ea5366c27b479ea3356b178"
+    },
+    {
+      "pose": "consist_sailor_neutral",
+      "seed": 4311,
+      "status": "success",
+      "file": "pose_consist_sailor_neutral.png",
+      "seconds": 23.73,
+      "width": 768,
+      "height": 768,
+      "sha256": "dac7cd327ca29b009d2dc026f10bc5fb4f8f60bd9dc74307196a54adff37e093"
+    },
+    {
+      "pose": "consist_sailor_happy",
+      "seed": 4311,
+      "status": "success",
+      "file": "pose_consist_sailor_happy.png",
+      "seconds": 23.28,
+      "width": 768,
+      "height": 768,
+      "sha256": "4a855c5a9383ccef1d091e1c252c902e5d078bc8ab2af0ab5c4756d034fa2945"
+    },
+    {
+      "pose": "consist_sailor_angry",
+      "seed": 4311,
+      "status": "success",
+      "file": "pose_consist_sailor_angry.png",
+      "seconds": 23.75,
+      "width": 768,
+      "height": 768,
+      "sha256": "9a6fb837663b8f0834701af4a97e00d942199af0469361b445dbe9ef83f63646"
+    },
+    {
+      "pose": "consist_sailor_scared",
+      "seed": 4311,
+      "status": "success",
+      "file": "pose_consist_sailor_scared.png",
+      "seconds": 23.33,
+      "width": 768,
+      "height": 768,
+      "sha256": "88070ff8a49785955559ec04f79a27b242fa92cc49ea066dcea650e8f86b6d14"
+    },
+    {
+      "pose": "consist_sailor_sad",
+      "seed": 4311,
+      "status": "success",
+      "file": "pose_consist_sailor_sad.png",
+      "seconds": 23.27,
+      "width": 768,
+      "height": 768,
+      "sha256": "b4bf9dd4f8a1f4bf0de6a2ddf5f47bf5165615036a7ce575e6af5a5eae88c39c"
+    },
+    {
+      "pose": "consist_sailor_surprised",
+      "seed": 4311,
+      "status": "success",
+      "file": "pose_consist_sailor_surprised.png",
+      "seconds": 23.85,
+      "width": 768,
+      "height": 768,
+      "sha256": "5addbac33ec23ba389e8430c4083bfd0ea3e2420fff154b133b16f2ef1e48ed9"
+    },
+    {
+      "pose": "consist_sailor_smug",
+      "seed": 4311,
+      "status": "success",
+      "file": "pose_consist_sailor_smug.png",
+      "seconds": 23.36,
+      "width": 768,
+      "height": 768,
+      "sha256": "43e0b58fed3734062efa0870e40baf1193766d39e4b2d1b2c1332dba3a4c32f0"
+    },
+    {
+      "pose": "consist_sailor_laugh",
+      "seed": 4311,
+      "status": "success",
+      "file": "pose_consist_sailor_laugh.png",
+      "seconds": 23.41,
+      "width": 768,
+      "height": 768,
+      "sha256": "517840260629c4881fa0c94d4b3b6a5efe7996f3f8abdcb69f091b62f3478ff3"
+    }
+  ],
+  "download_seconds": 115.1,
+  "load_seconds": 65.9,
+  "peak_vram_gib": 7.83
+}

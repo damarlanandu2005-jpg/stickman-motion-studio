@@ -1,0 +1,160 @@
+{
+  "identity": {
+    "run_id": "f8f3ebcdb97049cf9cd24e614e42ddae",
+    "run_token": "6f6f52732e85f6209ddd6f1ea8c949ae",
+    "commit_sha": "1937d3fad50ce26aab6bb602e003bee7cd8f1302",
+    "workflow_run_id": "41688003089",
+    "workflow_run_attempt": "1",
+    "created_utc": "2026-11-03T17:51:15+00:00"
+  },
+  "kernel": "narasimhadamarla/stickman-motion-studio-head-hat-test",
+  "pushed_version": 2,
+  "push_attempts": 1,
+  "observations": [
+    {
+      "at": "2026-11-03T17:51:15+00:00",
+      "event": "notebook_stamped",
+      "run_token_written": true
+    },
+    {
+      "at": "2026-11-03T17:51:17+00:00",
+      "event": "push_response",
+      "attempt": 1,
+      "exit_code": 0,
+      "text": "Kernel version 2 successfully pushed.  Please check progress at https://www.kaggle.com/code/narasimhadamarla/stickman-motion-studio-head-hat-test"
+    },
+    {
+      "at": "2026-11-03T17:51:17+00:00",
+      "event": "push_accepted",
+      "version": 2
+    },
+    {
+      "at": "2026-11-03T17:51:18+00:00",
+      "event": "status",
+      "state": "RUNNING"
+    },
+    {
+      "at": "2026-11-03T18:06:02+00:00",
+      "event": "status",
+      "state": "COMPLETE"
+    },
+    {
+      "at": "2026-11-03T18:06:13+00:00",
+      "event": "download",
+      "attempt": 1,
+      "exit_code": 0,
+      "text": "t_klein.json to kaggle-poses-output/outputs\n\n  0%|          | 0.00/7.06k [00:00<?, ?B/s]\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 7.06k/7.06k [00:00<00:00, 31.6MB/s]\n\nOutput file downloaded to kaggle-poses-output/outputs/result_klein.json\nKernel log downloaded to kaggle-poses-output/stickman-motion-studio-head-hat-test.log"
+    }
+  ],
+  "download_attempts": 1,
+  "validation": {
+    "ok": true,
+    "failures": [],
+    "checks": {
+      "pictures": [
+        {
+          "file": "pose_consist_explorer_neutral.png",
+          "valid": true
+        },
+        {
+          "file": "pose_consist_explorer_happy.png",
+          "valid": true
+        },
+        {
+          "file": "pose_consist_explorer_angry.png",
+          "valid": true
+        },
+        {
+          "file": "pose_consist_explorer_scared.png",
+          "valid": true
+        },
+        {
+          "file": "pose_consist_explorer_sad.png",
+          "valid": true
+        },
+        {
+          "file": "pose_consist_explorer_surprised.png",
+          "valid": true
+        },
+        {
+          "file": "pose_consist_explorer_smug.png",
+          "valid": true
+        },
+        {
+          "file": "pose_consist_explorer_laugh.png",
+          "valid": true
+        },
+        {
+          "file": "pose_consist_astro_neutral.png",
+          "valid": true
+        },
+        {
+          "file": "pose_consist_astro_happy.png",
+          "valid": true
+        },
+        {
+          "file": "pose_consist_astro_angry.png",
+          "valid": true
+        },
+        {
+          "file": "pose_consist_astro_scared.png",
+          "valid": true
+        },
+        {
+          "file": "pose_consist_astro_sad.png",
+          "valid": true
+        },
+        {
+          "file": "pose_consist_astro_surprised.png",
+          "valid": true
+        },
+        {
+          "file": "pose_consist_astro_smug.png",
+          "valid": true
+        },
+        {
+          "file": "pose_consist_astro_laugh.png",
+          "valid": true
+        },
+        {
+          "file": "pose_consist_sailor_neutral.png",
+          "valid": true
+        },
+        {
+          "file": "pose_consist_sailor_happy.png",
+          "valid": true
+        },
+        {
+          "file": "pose_consist_sailor_angry.png",
+          "valid": true
+        },
+        {
+          "file": "pose_consist_sailor_scared.png",
+          "valid": true
+        },
+        {
+          "file": "pose_consist_sailor_sad.png",
+          "valid": true
+        },
+        {
+          "file": "pose_consist_sailor_surprised.png",
+          "valid": true
+        },
+        {
+          "file": "pose_consist_sailor_smug.png",
+          "valid": true
+        },
+        {
+          "file": "pose_consist_sailor_laugh.png",
+          "valid": true
+        }
+      ],
+      "drawn": 24,
+      "wanted": 24
+    }
+  },
+  "limitations": [
+    "The Kaggle CLI exposes the notebook version number, not a separate execution ID. Version tracking plus the run token in the output are used together."
+  ],
+  "result": "verified"
+}
