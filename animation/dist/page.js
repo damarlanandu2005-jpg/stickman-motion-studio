@@ -31690,17 +31690,31 @@ var Engine = class _Engine {
     return { p, yaw, lift, dir, walking, keepFacing };
   }
   /** a rider is on screen where his vehicle is, not at the spot he started from: the camera must frame him there */
-  riderVehicle(t, time) {
-    const r = t;
-    if (!r.actions) return null;
-    for (const a of r.actions) if (a.do === "ride" && a.to_s !== void 0 && time >= a.at_s && time <= a.to_s + (a.exit_s ?? 0.7)) return this.things.get(a.vehicle);
-    return null;
+  /** where a thing is on screen for framing: a rider moves from his own spot to the seat while getting in, and back while getting out (same blend as renderRig) */
+  framePos(t, time) {
+    const q = this.poseAt(t, time), r = t;
+    if (r.actions) for (const a of r.actions) {
+      if (a.do !== "ride" || a.to_s === void 0) continue;
+      const enter = a.enter_s ?? 0.9, exit = a.exit_s ?? 0.7, sm2 = (u) => {
+        const k = clamp012(u);
+        return k * k * (3 - 2 * k);
+      };
+      let w = 0;
+      if (time >= a.at_s && time < a.at_s + enter) w = sm2((time - a.at_s) / enter);
+      else if (time >= a.at_s + enter && time <= a.to_s) w = 1;
+      else if (time > a.to_s && time < a.to_s + exit) w = 1 - sm2((time - a.to_s) / exit);
+      if (w > 0) {
+        const v = this.poseAt(this.things.get(a.vehicle), time);
+        return { p: q.p.clone().lerp(v.p, w), lift: q.lift };
+      }
+    }
+    return { p: q.p, lift: q.lift };
   }
   /** camera position, look point and fov of one key at a time: hand-set, or auto-framed on the named things */
   keyPose(k, time) {
     if (!k.frame) return { pos: new Vector3(...k.pos), look: new Vector3(...this.lookPoint(k.look, time)), fov: k.fov };
     const f = k.frame, pts = f.on.map((id) => {
-      const t = this.things.get(id), q = this.poseAt(this.riderVehicle(t, time) ?? t, time);
+      const t = this.things.get(id), q = this.framePos(t, time);
       return { c: new Vector3(q.p.x, q.p.y + q.lift + t.height / 2, q.p.z), r: Math.max(t.height / 2, t.radius) };
     });
     const mid = pts.reduce((m, p) => m.add(p.c), new Vector3()).multiplyScalar(1 / pts.length);

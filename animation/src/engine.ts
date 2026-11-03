@@ -377,16 +377,25 @@ export class Engine {
   }
 
   /** a rider is on screen where his vehicle is, not at the spot he started from: the camera must frame him there */
-  private riderVehicle(t: Thing, time: number): Thing | null {
-    const r = t as RigActor; if (!r.actions) return null;
-    for (const a of r.actions) if (a.do === "ride" && a.to_s !== undefined && time >= a.at_s && time <= a.to_s + (a.exit_s ?? 0.7)) return this.things.get(a.vehicle!)!;
-    return null;
+  /** where a thing is on screen for framing: a rider moves from his own spot to the seat while getting in, and back while getting out (same blend as renderRig) */
+  private framePos(t: Thing, time: number): { p: THREE.Vector3; lift: number } {
+    const q = this.poseAt(t, time), r = t as RigActor;
+    if (r.actions) for (const a of r.actions) {
+      if (a.do !== "ride" || a.to_s === undefined) continue;
+      const enter = a.enter_s ?? 0.9, exit = a.exit_s ?? 0.7, sm = (u: number) => { const k = clamp01(u); return k * k * (3 - 2 * k); };
+      let w = 0;
+      if (time >= a.at_s && time < a.at_s + enter) w = sm((time - a.at_s) / enter);
+      else if (time >= a.at_s + enter && time <= a.to_s) w = 1;
+      else if (time > a.to_s && time < a.to_s + exit) w = 1 - sm((time - a.to_s) / exit);
+      if (w > 0) { const v = this.poseAt(this.things.get(a.vehicle!)!, time); return { p: q.p.clone().lerp(v.p, w), lift: q.lift }; }
+    }
+    return { p: q.p, lift: q.lift };
   }
 
   /** camera position, look point and fov of one key at a time: hand-set, or auto-framed on the named things */
   private keyPose(k: Scene["camera"][0], time: number) {
     if (!k.frame) return { pos: new THREE.Vector3(...k.pos!), look: new THREE.Vector3(...this.lookPoint(k.look!, time)), fov: k.fov };
-    const f = k.frame, pts = f.on.map((id) => { const t = this.things.get(id)!, q = this.poseAt(this.riderVehicle(t, time) ?? t, time); return { c: new THREE.Vector3(q.p.x, q.p.y + q.lift + t.height / 2, q.p.z), r: Math.max(t.height / 2, t.radius) }; });
+    const f = k.frame, pts = f.on.map((id) => { const t = this.things.get(id)!, q = this.framePos(t, time); return { c: new THREE.Vector3(q.p.x, q.p.y + q.lift + t.height / 2, q.p.z), r: Math.max(t.height / 2, t.radius) }; });
     const mid = pts.reduce((m, p) => m.add(p.c), new THREE.Vector3()).multiplyScalar(1 / pts.length);
     const R = Math.max(...pts.map((p) => p.c.distanceTo(mid) + p.r));            // sphere that holds everything named
     const vt = Math.tan(rad(k.fov) / 2), ht = vt * (this.w / this.h), d = R / ((f.fill ?? 0.55) * Math.min(vt, ht));
