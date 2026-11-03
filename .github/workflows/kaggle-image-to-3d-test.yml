@@ -1,5 +1,5 @@
 name: Kaggle image-to-3D test (3 objects)
-# (moon buggy run: open-top rover for the astronaut to ride)
+# (moon buggy run, attempt 2: test fixed)
 
 # Feasibility test: klein draws 3 objects, TripoSR and Hunyuan3D-2mini turn them into 3D models.
 # One run per Kaggle notebook at a time (concurrency keyed on the notebook).

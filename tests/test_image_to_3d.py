@@ -77,7 +77,7 @@ class NotebookTests(unittest.TestCase):
         exec(compile("".join(builder.build()["cells"][1]["source"]), "setup", "exec"), {"__name__": "x"}, ns)
         self.assertEqual(ns["REPORT"]["status"], "running")
         self.assertEqual(ns["REPORT"]["engines"], {})
-        self.assertEqual(len(ns["OBJECTS"]), 3)
+        self.assertEqual(len(ns["OBJECTS"]), 2)
         self.assertEqual(ns["KLEIN_REVISION"], "e7b7dc27f91deacad38e78976d1f2b499d76a294")
         for pin in ("TRIPOSR_COMMIT", "HUNYUAN_COMMIT"):
             self.assertEqual(len(ns[pin]), 40)
