@@ -169,12 +169,12 @@ def _caption(im: Image.Image, text: str, red: bool) -> None:
     global _FONT
     from PIL import ImageDraw, ImageFont
     if _FONT is None:
-        _FONT = ImageFont.truetype("/usr/share/fonts/truetype/google-fonts/Poppins-Bold.ttf", 58)
+        _FONT = ImageFont.truetype("/usr/share/fonts/truetype/google-fonts/Poppins-Bold.ttf", 46)
     d = ImageDraw.Draw(im)
     text = text.upper()
     w = d.textlength(text, font=_FONT)
     d.text(((W - w) / 2, int(H * 0.68)), text, font=_FONT, fill=(220, 30, 30) if red else (255, 255, 255),
-           stroke_width=5, stroke_fill=(0, 0, 0))
+           stroke_width=4, stroke_fill=(0, 0, 0))
 
 
 def render_video(shots: list[dict], out: Path, root: Path = ROOT, outfit: str = "explorer", audio: Path | None = None) -> dict:
