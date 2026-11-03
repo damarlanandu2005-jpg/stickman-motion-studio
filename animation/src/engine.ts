@@ -24,7 +24,7 @@ const mixHex = (a: string, b: string, t: number) => {
 };
 const rng = (seed: number) => () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; };
 
-type Thing = { id: string; root: THREE.Group; base: THREE.Vector3; baseYaw: number; moves: Move[]; radius: number; height: number; forward: number };
+type Thing = { appear?: number; id: string; root: THREE.Group; base: THREE.Vector3; baseYaw: number; moves: Move[]; radius: number; height: number; forward: number };
 type Actor = Thing & { cycles: Record<string, { frames: string[]; hz: number }>; cards: Map<string, THREE.Mesh>; pivot: THREE.Group; poses: Scene["characters"][0]["poses"]; facing: number; blob: THREE.Mesh };
 type FxCard = { mesh: THREE.Mesh; canvas: HTMLCanvasElement; tex: THREE.CanvasTexture };
 
@@ -224,7 +224,7 @@ export class Engine {
       inner.position.set(-c.x, -b2.min.y, -c.z);
       const root = new THREE.Group(); root.add(inner); this.scene.add(root);
       const sz = b2.getSize(new THREE.Vector3());
-      const t: Thing = { id: o.id, root, base: new THREE.Vector3(o.at[0], 0, o.at[1]), baseYaw: rad(o.turn_deg ?? 0), moves: o.moves ?? [],
+      const t: Thing = { appear: o.appear_s, id: o.id, root, base: new THREE.Vector3(o.at[0], 0, o.at[1]), baseYaw: rad(o.turn_deg ?? 0), moves: o.moves ?? [],
         radius: Math.max(sz.x, sz.z) / 2, height: a.height_m, forward: rad(a.forward_deg ?? 0) };
       this.things.set(o.id, t);
       for (const m of t.moves) if (m.type === "move" && m.dust) for (let i = 0; i < 4; i++) this.puffs.push({ card: this.fxCard(300, 300), owner: t, move: m });
@@ -368,6 +368,7 @@ export class Engine {
     for (const t of this.things.values()) {
       if ((t as Actor).cards) continue;
       const q = this.poseAt(t, time);
+      t.root.visible = t.appear === undefined || time >= t.appear;
       const tr = this.tracks[t.id];
       if (tr) {
         const k = tr[Math.min(frame, tr.length - 1)];

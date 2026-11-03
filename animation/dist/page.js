@@ -29761,6 +29761,7 @@ var Engine = class _Engine {
       this.scene.add(root);
       const sz = b2.getSize(new Vector3());
       const t = {
+        appear: o.appear_s,
         id: o.id,
         root,
         base: new Vector3(o.at[0], 0, o.at[1]),
@@ -29949,6 +29950,7 @@ var Engine = class _Engine {
     for (const t of this.things.values()) {
       if (t.cards) continue;
       const q = this.poseAt(t, time);
+      t.root.visible = t.appear === void 0 || time >= t.appear;
       const tr = this.tracks[t.id];
       if (tr) {
         const k = tr[Math.min(frame, tr.length - 1)];
@@ -30041,6 +30043,7 @@ function validateScene(s) {
     if (ids.has(o.id)) p.push(`duplicate id ${o.id}`);
     ids.add(o.id);
     if (!s.assets[o.asset]) p.push(`object ${o.id}: unknown asset ${o.asset}`);
+    if (o.appear_s !== void 0) inTime(o.appear_s, `object ${o.id} appear_s`);
     if (o.physics && o.moves?.length) p.push(`object ${o.id}: use either physics or moves, not both`);
     for (const m of o.moves ?? []) {
       inTime(m.from_s, `object ${o.id} ${m.type}`);

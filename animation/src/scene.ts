@@ -41,7 +41,8 @@ export type Scene = {
   environment: { light: "day" | "golden"; sky_top: string; sky_horizon: string; ground: string; fog_near: number; fog_far: number; scatter?: Scatter[] };
   assets: Record<string, { file: string; height_m: number; brightness?: number; forward_deg?: number }>;
   /** objects with a physics block are simulated by Blender (bake_physics.py) and replayed from the baked tracks */
-  objects: { id: string; asset: string; at: XZ; turn_deg?: number; moves?: Move[]; physics?: Physics }[];
+  objects: { id: string; asset: string; at: XZ; turn_deg?: number; moves?: Move[]; physics?: Physics;
+    /** hidden until this time (e.g. crystals that start falling at physics_bake.from_s) */ appear_s?: number }[];
   /** scene wind (force vector) pushing particles and cloth */
   wind?: XYZ;
   emitters?: Emitter[];
@@ -66,6 +67,7 @@ export function validateScene(s: Scene): string[] {
   for (const o of s.objects) {
     if (ids.has(o.id)) p.push(`duplicate id ${o.id}`); ids.add(o.id);
     if (!s.assets[o.asset]) p.push(`object ${o.id}: unknown asset ${o.asset}`);
+    if (o.appear_s !== undefined) inTime(o.appear_s, `object ${o.id} appear_s`);
     if (o.physics && o.moves?.length) p.push(`object ${o.id}: use either physics or moves, not both`);
     for (const m of o.moves ?? []) { inTime(m.from_s, `object ${o.id} ${m.type}`); inTime(m.to_s, `object ${o.id} ${m.type}`); if (m.to_s <= m.from_s) p.push(`object ${o.id} ${m.type}: to_s must be after from_s`); }
   }
