@@ -1,0 +1,150 @@
+[{"stream_name":"stderr","time":5.753216492,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":5.753271074,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":6.582879678,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":6.582922973,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":6.582928284,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":6.582931931,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":7.160101863,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.160126309,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.160130492,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.160138754,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":33.021612433,"data":"[install_klein] ok in 19.0 s\n"}
+,{"stream_name":"stdout","time":308.81166585,"data":"[klein] ok in 275.8 s\n"}
+,{"stream_name":"stdout","time":311.581152503,"data":"[venv] ok in 2.8 s\n"}
+,{"stream_name":"stdout","time":312.248700918,"data":"[venv] ok in 0.7 s\n"}
+,{"stream_name":"stdout","time":343.792916626,"data":"[install_3d_common] ok in 31.5 s\n"}
+,{"stream_name":"stdout","time":347.173245016,"data":"[triposr_clone] ok in 3.4 s\n"}
+,{"stream_name":"stdout","time":347.339111969,"data":"[triposr_clone] ok in 0.2 s\n"}
+,{"stream_name":"stdout","time":347.454463882,"data":"[triposr_shim] ok in 0.1 s\n"}
+,{"stream_name":"stdout","time":561.241575286,"data":"[triposr] ok in 213.8 s\n"}
+,{"stream_name":"stdout","time":567.371268359,"data":"[hunyuan_clone] ok in 6.1 s\n"}
+,{"stream_name":"stdout","time":567.687135015,"data":"[hunyuan_clone] ok in 0.3 s\n"}
+,{"stream_name":"stdout","time":800.719277471,"data":"[hunyuan_shape] ok in 233.0 s\n"}
+,{"stream_name":"stdout","time":886.67834176,"data":"[hunyuan_build_rasterizer] ok in 86.0 s\n"}
+,{"stream_name":"stdout","time":899.129466559,"data":"[hunyuan_build_renderer] ok in 12.5 s\n"}
+,{"stream_name":"stdout","time":1179.61625682,"data":"[hunyuan_paint] ok in 280.5 s\n"}
+,{"stream_name":"stdout","time":1179.617238821,"data":"{\n"}
+,{"stream_name":"stdout","time":1179.617274846,"data":"  \"klein\": {\n"}
+,{"stream_name":"stdout","time":1179.617281314,"data":"    \"stage_status\": \"success\",\n"}
+,{"stream_name":"stdout","time":1179.61728594,"data":"    \"objects_ok\": 3,\n"}
+,{"stream_name":"stdout","time":1179.617290193,"data":"    \"objects_total\": 3,\n"}
+,{"stream_name":"stdout","time":1179.617294528,"data":"    \"seconds_per_object\": [\n"}
+,{"stream_name":"stdout","time":1179.61729869,"data":"      27.72,\n"}
+,{"stream_name":"stdout","time":1179.617302799,"data":"      22.67,\n"}
+,{"stream_name":"stdout","time":1179.617306796,"data":"      22.07\n"}
+,{"stream_name":"stdout","time":1179.617310793,"data":"    ],\n"}
+,{"stream_name":"stdout","time":1179.617328105,"data":"    \"load_seconds\": 65.6,\n"}
+,{"stream_name":"stdout","time":1179.61733164,"data":"    \"error\": null\n"}
+,{"stream_name":"stdout","time":1179.617336458,"data":"  },\n"}
+,{"stream_name":"stdout","time":1179.61734352,"data":"  \"triposr\": {\n"}
+,{"stream_name":"stdout","time":1179.61734587,"data":"    \"stage_status\": \"success\",\n"}
+,{"stream_name":"stdout","time":1179.617348206,"data":"    \"objects_ok\": 3,\n"}
+,{"stream_name":"stdout","time":1179.617350418,"data":"    \"objects_total\": 3,\n"}
+,{"stream_name":"stdout","time":1179.61735263,"data":"    \"seconds_per_object\": [\n"}
+,{"stream_name":"stdout","time":1179.617354822,"data":"      31.18,\n"}
+,{"stream_name":"stdout","time":1179.617357058,"data":"      29.55,\n"}
+,{"stream_name":"stdout","time":1179.617359167,"data":"      27.46\n"}
+,{"stream_name":"stdout","time":1179.617361305,"data":"    ],\n"}
+,{"stream_name":"stdout","time":1179.617363441,"data":"    \"load_seconds\": 38.5,\n"}
+,{"stream_name":"stdout","time":1179.617365713,"data":"    \"error\": null\n"}
+,{"stream_name":"stdout","time":1179.617367906,"data":"  },\n"}
+,{"stream_name":"stdout","time":1179.617370026,"data":"  \"hunyuan_shape\": {\n"}
+,{"stream_name":"stdout","time":1179.617372263,"data":"    \"stage_status\": \"success\",\n"}
+,{"stream_name":"stdout","time":1179.617374675,"data":"    \"objects_ok\": 3,\n"}
+,{"stream_name":"stdout","time":1179.617376911,"data":"    \"objects_total\": 3,\n"}
+,{"stream_name":"stdout","time":1179.617379107,"data":"    \"seconds_per_object\": [\n"}
+,{"stream_name":"stdout","time":1179.617381376,"data":"      47.1,\n"}
+,{"stream_name":"stdout","time":1179.617383507,"data":"      48.58,\n"}
+,{"stream_name":"stdout","time":1179.617385626,"data":"      36.05\n"}
+,{"stream_name":"stdout","time":1179.617387765,"data":"    ],\n"}
+,{"stream_name":"stdout","time":1179.61738986,"data":"    \"load_seconds\": 72.2,\n"}
+,{"stream_name":"stdout","time":1179.617392062,"data":"    \"error\": null\n"}
+,{"stream_name":"stdout","time":1179.61739422,"data":"  },\n"}
+,{"stream_name":"stdout","time":1179.61739633,"data":"  \"hunyuan_paint\": {\n"}
+,{"stream_name":"stdout","time":1179.617398771,"data":"    \"stage_status\": \"success\",\n"}
+,{"stream_name":"stdout","time":1179.617401233,"data":"    \"objects_ok\": 3,\n"}
+,{"stream_name":"stdout","time":1179.617403412,"data":"    \"objects_total\": 3,\n"}
+,{"stream_name":"stdout","time":1179.617405621,"data":"    \"seconds_per_object\": [\n"}
+,{"stream_name":"stdout","time":1179.617407827,"data":"      38.77,\n"}
+,{"stream_name":"stdout","time":1179.617409972,"data":"      40.43,\n"}
+,{"stream_name":"stdout","time":1179.617412086,"data":"      36.09\n"}
+,{"stream_name":"stdout","time":1179.617414302,"data":"    ],\n"}
+,{"stream_name":"stdout","time":1179.617416406,"data":"    \"load_seconds\": 146.7,\n"}
+,{"stream_name":"stdout","time":1179.617418696,"data":"    \"error\": null\n"}
+,{"stream_name":"stdout","time":1179.617420998,"data":"  }\n"}
+,{"stream_name":"stdout","time":1179.617423141,"data":"}\n"}
+,{"stream_name":"stdout","time":1179.631905564,"data":"object_lifeboat.png\n"}
+,{"stream_name":"stdout","time":1179.650540962,"data":"object_rocket.png\n"}
+,{"stream_name":"stdout","time":1179.657094509,"data":"object_street_lamp.png\n"}
+,{"stream_name":"stdout","time":1179.660352881,"data":"hunyuan_lifeboat_shape.glb 720768 bytes\n"}
+,{"stream_name":"stdout","time":1179.660370602,"data":"hunyuan_lifeboat_textured.glb 2605256 bytes\n"}
+,{"stream_name":"stdout","time":1179.660375491,"data":"hunyuan_rocket_shape.glb 720816 bytes\n"}
+,{"stream_name":"stdout","time":1179.660405009,"data":"hunyuan_rocket_textured.glb 2954944 bytes\n"}
+,{"stream_name":"stdout","time":1179.660409274,"data":"hunyuan_street_lamp_shape.glb 720816 bytes\n"}
+,{"stream_name":"stdout","time":1179.660413042,"data":"hunyuan_street_lamp_textured.glb 3061800 bytes\n"}
+,{"stream_name":"stdout","time":1179.660416993,"data":"triposr_lifeboat.glb 1814096 bytes\n"}
+,{"stream_name":"stdout","time":1179.660420466,"data":"triposr_rocket.glb 1935876 bytes\n"}
+,{"stream_name":"stdout","time":1179.660423971,"data":"triposr_street_lamp.glb 459256 bytes\n"}
+,{"stream_name":"stdout","time":1179.678821732,"data":"Test completed. Engine results: {\n"}
+,{"stream_name":"stdout","time":1179.678838079,"data":" \"klein\": {\n"}
+,{"stream_name":"stdout","time":1179.678842902,"data":"  \"stage_status\": \"success\",\n"}
+,{"stream_name":"stdout","time":1179.678846916,"data":"  \"objects_ok\": 3,\n"}
+,{"stream_name":"stdout","time":1179.678850828,"data":"  \"objects_total\": 3,\n"}
+,{"stream_name":"stdout","time":1179.67885397,"data":"  \"seconds_per_object\": [\n"}
+,{"stream_name":"stdout","time":1179.678857388,"data":"   27.72,\n"}
+,{"stream_name":"stdout","time":1179.678860605,"data":"   22.67,\n"}
+,{"stream_name":"stdout","time":1179.67886389,"data":"   22.07\n"}
+,{"stream_name":"stdout","time":1179.67886715,"data":"  ],\n"}
+,{"stream_name":"stdout","time":1179.678870528,"data":"  \"load_seconds\": 65.6,\n"}
+,{"stream_name":"stdout","time":1179.678874208,"data":"  \"error\": null\n"}
+,{"stream_name":"stdout","time":1179.678878077,"data":" },\n"}
+,{"stream_name":"stdout","time":1179.67888194,"data":" \"triposr\": {\n"}
+,{"stream_name":"stdout","time":1179.678886235,"data":"  \"stage_status\": \"success\",\n"}
+,{"stream_name":"stdout","time":1179.678889793,"data":"  \"objects_ok\": 3,\n"}
+,{"stream_name":"stdout","time":1179.678893406,"data":"  \"objects_total\": 3,\n"}
+,{"stream_name":"stdout","time":1179.678897253,"data":"  \"seconds_per_object\": [\n"}
+,{"stream_name":"stdout","time":1179.678901117,"data":"   31.18,\n"}
+,{"stream_name":"stdout","time":1179.678904725,"data":"   29.55,\n"}
+,{"stream_name":"stdout","time":1179.678908019,"data":"   27.46\n"}
+,{"stream_name":"stdout","time":1179.678911498,"data":"  ],\n"}
+,{"stream_name":"stdout","time":1179.67891462,"data":"  \"load_seconds\": 38.5,\n"}
+,{"stream_name":"stdout","time":1179.67891792,"data":"  \"error\": null\n"}
+,{"stream_name":"stdout","time":1179.678921486,"data":" },\n"}
+,{"stream_name":"stdout","time":1179.678924633,"data":" \"hunyuan_shape\": {\n"}
+,{"stream_name":"stdout","time":1179.678927994,"data":"  \"stage_status\": \"success\",\n"}
+,{"stream_name":"stdout","time":1179.678931343,"data":"  \"objects_ok\": 3,\n"}
+,{"stream_name":"stdout","time":1179.678934573,"data":"  \"objects_total\": 3,\n"}
+,{"stream_name":"stdout","time":1179.678937829,"data":"  \"seconds_per_object\": [\n"}
+,{"stream_name":"stdout","time":1179.678941108,"data":"   47.1,\n"}
+,{"stream_name":"stdout","time":1179.678944185,"data":"   48.58,\n"}
+,{"stream_name":"stdout","time":1179.678947277,"data":"   36.05\n"}
+,{"stream_name":"stdout","time":1179.678950225,"data":"  ],\n"}
+,{"stream_name":"stdout","time":1179.678954773,"data":"  \"load_seconds\": 72.2,\n"}
+,{"stream_name":"stdout","time":1179.678957943,"data":"  \"error\": null\n"}
+,{"stream_name":"stdout","time":1179.678961218,"data":" },\n"}
+,{"stream_name":"stdout","time":1179.678965885,"data":" \"hunyuan_paint\": {\n"}
+,{"stream_name":"stdout","time":1179.67896924,"data":"  \"stage_status\": \"success\",\n"}
+,{"stream_name":"stdout","time":1179.678982595,"data":"  \"objects_ok\": 3,\n"}
+,{"stream_name":"stdout","time":1179.678986737,"data":"  \"objects_total\": 3,\n"}
+,{"stream_name":"stdout","time":1179.678993639,"data":"  \"seconds_per_object\": [\n"}
+,{"stream_name":"stdout","time":1179.678996618,"data":"   38.77,\n"}
+,{"stream_name":"stdout","time":1179.678999828,"data":"   40.43,\n"}
+,{"stream_name":"stdout","time":1179.679002949,"data":"   36.09\n"}
+,{"stream_name":"stdout","time":1179.67900633,"data":"  ],\n"}
+,{"stream_name":"stdout","time":1179.67900978,"data":"  \"load_seconds\": 146.7,\n"}
+,{"stream_name":"stdout","time":1179.679012951,"data":"  \"error\": null\n"}
+,{"stream_name":"stdout","time":1179.679016151,"data":" }\n"}
+,{"stream_name":"stdout","time":1179.679019092,"data":"}\n"}
+,{"stream_name":"stderr","time":1182.64320478,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":1182.643236193,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":1182.865765577,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":1182.865789733,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":1183.628487518,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":1183.71275465,"data":"[NbConvertApp] Writing 806736 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":1186.193308392,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":1186.740966483,"data":"[NbConvertApp] Support files will be in __results___files/\n"}
+,{"stream_name":"stderr","time":1186.740990168,"data":"[NbConvertApp] Making directory __results___files\n"}
+,{"stream_name":"stderr","time":1186.741327494,"data":"[NbConvertApp] Making directory __results___files\n"}
+,{"stream_name":"stderr","time":1186.741657275,"data":"[NbConvertApp] Making directory __results___files\n"}
+,{"stream_name":"stderr","time":1186.74195827,"data":"[NbConvertApp] Writing 351925 bytes to __results__.html\n"}
+]

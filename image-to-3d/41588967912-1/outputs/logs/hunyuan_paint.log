@@ -1,0 +1,20 @@
+$ /tmp/venv3d/bin/python /tmp/i23d_stages/hunyuan_paint.py /tmp/i23d_stages/hunyuan_paint.json
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1793687591.287829     700 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+Fetching 13 files:   0%|          | 0/13 [00:00<?, ?it/s]Fetching 13 files:   8%|▊         | 1/13 [00:00<00:05,  2.34it/s]Fetching 13 files:  38%|███▊      | 5/13 [00:03<00:06,  1.32it/s]Fetching 13 files:  85%|████████▍ | 11/13 [00:09<00:01,  1.15it/s]Fetching 13 files: 100%|██████████| 13/13 [00:09<00:00,  1.40it/s]
+Fetching 20 files:   0%|          | 0/20 [00:00<?, ?it/s]Fetching 20 files:   5%|▌         | 1/20 [00:00<00:04,  3.97it/s]Fetching 20 files:  25%|██▌       | 5/20 [00:15<00:48,  3.22s/it]Fetching 20 files:  50%|█████     | 10/20 [00:32<00:33,  3.31s/it]Fetching 20 files:  80%|████████  | 16/20 [01:10<00:19,  4.91s/it]Fetching 20 files: 100%|██████████| 20/20 [01:10<00:00,  3.54s/it]
+Loading pipeline components...:   0%|          | 0/6 [00:00<?, ?it/s]Loading pipeline components...:  33%|███▎      | 2/6 [00:13<00:27,  6.78s/it]Loading pipeline components...:  67%|██████▋   | 4/6 [00:13<00:05,  2.83s/it]Loading pipeline components...: 100%|██████████| 6/6 [00:14<00:00,  1.72s/it]Loading pipeline components...: 100%|██████████| 6/6 [00:14<00:00,  2.42s/it]
+Loading pipeline components...:   0%|          | 0/6 [00:00<?, ?it/s]Loading pipeline components...:  33%|███▎      | 2/6 [00:32<01:04, 16.15s/it]An error occurred while trying to fetch /tmp/hf_home/hub/models--tencent--Hunyuan3D-2/snapshots/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-paint-v2-0-turbo/vae: Error no file named diffusion_pytorch_model.safetensors found in directory /tmp/hf_home/hub/models--tencent--Hunyuan3D-2/snapshots/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-paint-v2-0-turbo/vae.
+Defaulting to unsafe serialization. Pass `allow_pickle=False` to raise an error instead.
+Loading pipeline components...:  67%|██████▋   | 4/6 [00:33<00:14,  7.05s/it]Loading pipeline components...:  83%|████████▎ | 5/6 [00:39<00:06,  6.75s/it]Loading pipeline components...: 100%|██████████| 6/6 [00:39<00:00,  6.63s/it]
+/tmp/hf_home/modules/diffusers_modules/local/pipeline.py:598: UserWarning: torch.range is deprecated and will be removed in a future release because its behavior is inconsistent with Python's range builtin. Instead, use torch.arange, which produces values in [start, end).
+  index = torch.range(29, 0, -bsz, device='cuda').long()
+The first timestep on the custom timestep schedule is 989, not `self.config.num_train_timesteps - 1`: 999. You may get unexpected results when using this timestep schedule.
+The custom timestep schedule contains the following timesteps which are not on the original training/distillation timestep schedule: [tensor(890), tensor(791), tensor(692), tensor(593), tensor(494), tensor(395), tensor(296), tensor(197), tensor(98)]. You may get unexpected results when using this timestep schedule.
+Hunyuan paint rocket in 38.77 s
+The first timestep on the custom timestep schedule is 989, not `self.config.num_train_timesteps - 1`: 999. You may get unexpected results when using this timestep schedule.
+The custom timestep schedule contains the following timesteps which are not on the original training/distillation timestep schedule: [tensor(890), tensor(791), tensor(692), tensor(593), tensor(494), tensor(395), tensor(296), tensor(197), tensor(98)]. You may get unexpected results when using this timestep schedule.
+Hunyuan paint lifeboat in 40.43 s
+The first timestep on the custom timestep schedule is 989, not `self.config.num_train_timesteps - 1`: 999. You may get unexpected results when using this timestep schedule.
+The custom timestep schedule contains the following timesteps which are not on the original training/distillation timestep schedule: [tensor(890), tensor(791), tensor(692), tensor(593), tensor(494), tensor(395), tensor(296), tensor(197), tensor(98)]. You may get unexpected results when using this timestep schedule.
+Hunyuan paint street_lamp in 36.09 s

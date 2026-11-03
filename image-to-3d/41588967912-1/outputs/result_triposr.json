@@ -1,0 +1,48 @@
+{
+  "stage": "triposr",
+  "status": "success",
+  "error": null,
+  "objects": [
+    {
+      "name": "rocket",
+      "status": "success",
+      "depth_ratio": 0.633,
+      "looks_flat": false,
+      "file": "triposr_rocket.glb",
+      "seconds": 31.18,
+      "vertices": 48374,
+      "faces": 96742,
+      "peak_vram_gib": 2.32,
+      "bytes": 1935876,
+      "sha256": "b3f0ff64745112d19bce639fd6ed365f36f97efbe8e0ddbffafbaae3e2b4bcf1"
+    },
+    {
+      "name": "lifeboat",
+      "status": "success",
+      "depth_ratio": 0.549,
+      "looks_flat": false,
+      "file": "triposr_lifeboat.glb",
+      "seconds": 29.55,
+      "vertices": 45324,
+      "faces": 90660,
+      "peak_vram_gib": 2.32,
+      "bytes": 1814096,
+      "sha256": "c67726eb90bde223ba4b98733ed2f341925d6e2785160bae00b540f40602e4e4"
+    },
+    {
+      "name": "street_lamp",
+      "status": "success",
+      "depth_ratio": 0.248,
+      "looks_flat": false,
+      "file": "triposr_street_lamp.glb",
+      "seconds": 27.46,
+      "vertices": 11458,
+      "faces": 22912,
+      "peak_vram_gib": 2.32,
+      "bytes": 459256,
+      "sha256": "6fb82f91ef2c51246b43ea8a09d39c0238b6f8ffd15b4ab1c53d34cc2190b8d0"
+    }
+  ],
+  "marching_cubes": "scikit-image stand-in at /tmp/i23d_shims/torchmcubes/__init__.py",
+  "load_seconds": 38.5
+}

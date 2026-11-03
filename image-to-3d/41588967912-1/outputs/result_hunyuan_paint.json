@@ -1,0 +1,35 @@
+{
+  "stage": "hunyuan_paint",
+  "status": "success",
+  "error": null,
+  "objects": [
+    {
+      "name": "rocket",
+      "status": "success",
+      "file": "hunyuan_rocket_textured.glb",
+      "seconds": 38.77,
+      "peak_vram_gib": 4.06,
+      "bytes": 2954944,
+      "sha256": "12f9bed63edda5f3e185a00da578dedd2f8c19586a51f2d0983236deef948a38"
+    },
+    {
+      "name": "lifeboat",
+      "status": "success",
+      "file": "hunyuan_lifeboat_textured.glb",
+      "seconds": 40.43,
+      "peak_vram_gib": 4.11,
+      "bytes": 2605256,
+      "sha256": "99a109954095a0405bcea8b699faf0bd70952df470cde2a0f8950079d4472e1e"
+    },
+    {
+      "name": "street_lamp",
+      "status": "success",
+      "file": "hunyuan_street_lamp_textured.glb",
+      "seconds": 36.09,
+      "peak_vram_gib": 4.11,
+      "bytes": 3061800,
+      "sha256": "9d0134254bf0de93878caf79212ffe30bccc9f0d40d03019f31f39141bfacbd2"
+    }
+  ],
+  "load_seconds": 146.7
+}

@@ -1,0 +1,53 @@
+{
+  "stage": "hunyuan_shape",
+  "status": "success",
+  "error": null,
+  "objects": [
+    {
+      "name": "rocket",
+      "status": "success",
+      "depth_ratio": 0.433,
+      "looks_flat": false,
+      "file": "hunyuan_rocket_shape.glb",
+      "seconds": 47.1,
+      "raw_faces": 512168,
+      "faces": 40000,
+      "vertices": 20002,
+      "peak_vram_gib": 4.48,
+      "bytes": 720816,
+      "sha256": "66a88dfc311673ffe2a0108f820e6c4529f1fee787f8506c43d7bd586e7fd425",
+      "cutout": "cutout_rocket.png"
+    },
+    {
+      "name": "lifeboat",
+      "status": "success",
+      "depth_ratio": 0.333,
+      "looks_flat": false,
+      "file": "hunyuan_lifeboat_shape.glb",
+      "seconds": 48.58,
+      "raw_faces": 582128,
+      "faces": 40000,
+      "vertices": 19998,
+      "peak_vram_gib": 4.48,
+      "bytes": 720768,
+      "sha256": "6b68197bfb37faafe85bee2433a4582cf7ab614b88ebd05e20d8021d9828a4f0",
+      "cutout": "cutout_lifeboat.png"
+    },
+    {
+      "name": "street_lamp",
+      "status": "success",
+      "depth_ratio": 0.257,
+      "looks_flat": false,
+      "file": "hunyuan_street_lamp_shape.glb",
+      "seconds": 36.05,
+      "raw_faces": 160168,
+      "faces": 40000,
+      "vertices": 20002,
+      "peak_vram_gib": 4.45,
+      "bytes": 720816,
+      "sha256": "23f26dcaddc41049ce93e6265aa3bbad96bc1a2168b6e1c9d50b156512b1f4a9",
+      "cutout": "cutout_street_lamp.png"
+    }
+  ],
+  "load_seconds": 72.2
+}

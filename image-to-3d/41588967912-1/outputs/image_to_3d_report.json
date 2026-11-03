@@ -1,0 +1,361 @@
+{
+  "run_token": "49465d97ebe8e728eda59363a80f3236",
+  "run_id": "56538b605f6c4f729bed05342e161426",
+  "commit_sha": "dfdaad0230a7dd7c794a5ca3d9fac79203e09df7",
+  "workflow_run_id": "41588967912",
+  "status": "completed",
+  "error_message": null,
+  "objects": [
+    "rocket",
+    "lifeboat",
+    "street_lamp"
+  ],
+  "environment": {
+    "python": "3.13.16",
+    "torch": "2.11.0+cu130",
+    "torch_cuda": "13.0",
+    "cuda_available": true,
+    "gpu_names": [
+      "Tesla T4",
+      "Tesla T4"
+    ],
+    "gpu_used_for_test": "cuda:0 only",
+    "nvcc": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2025 NVIDIA Corporation\nBuilt on Wed_Aug_20_01:58:59_PM_PDT_2025\nCuda compilation tools, release 13.0, V13.0.88\nBuild cuda_13.0.r13.0/compiler.36424714_0",
+    "disk_free_gb_tmp": 1038.2
+  },
+  "stages": {
+    "install_klein": [
+      {
+        "cmd": "/usr/bin/python3 -m pip install --no-cache-dir diffusers==0.42.1 transformers==5.22.1 huggingface-hub==1.33.0 accelerate pillow",
+        "seconds": 19.0,
+        "outcome": "ok"
+      }
+    ],
+    "klein": [
+      {
+        "cmd": "/usr/bin/python3 /tmp/i23d_stages/klein.py /tmp/i23d_stages/klein.json",
+        "seconds": 275.8,
+        "outcome": "ok"
+      }
+    ],
+    "venv": [
+      {
+        "cmd": "/usr/bin/python3 -m pip install -q virtualenv",
+        "seconds": 2.8,
+        "outcome": "ok"
+      },
+      {
+        "cmd": "/usr/bin/python3 -m virtualenv --system-site-packages /tmp/venv3d",
+        "seconds": 0.7,
+        "outcome": "ok"
+      }
+    ],
+    "install_3d_common": [
+      {
+        "cmd": "/tmp/venv3d/bin/python -m pip install --no-cache-dir transformers==4.48.3 diffusers==0.32.2 huggingface-hub==0.30.2 accelerate==1.3.0 omegaconf==2.3.0 einops trimesh pymeshlab pygltflib xatlas rembg[cpu] imageio opencv-python-headless moderngl scikit-image ninja pybind11 scikit-build-core cmake tqdm",
+        "seconds": 31.5,
+        "outcome": "ok"
+      }
+    ],
+    "triposr_clone": [
+      {
+        "cmd": "git clone -q https://github.com/VAST-AI-Research/TripoSR.git /tmp/TripoSR",
+        "seconds": 3.4,
+        "outcome": "ok"
+      },
+      {
+        "cmd": "git -C /tmp/TripoSR checkout -q 107cefdc244c39106fa830359024f6a2f1c78871",
+        "seconds": 0.2,
+        "outcome": "ok"
+      }
+    ],
+    "triposr_shim": [
+      {
+        "cmd": "/tmp/venv3d/bin/python -c import skimage; print('scikit-image', skimage.__version__)",
+        "seconds": 0.1,
+        "outcome": "ok"
+      }
+    ],
+    "triposr": [
+      {
+        "cmd": "/tmp/venv3d/bin/python /tmp/i23d_stages/triposr.py /tmp/i23d_stages/triposr.json",
+        "seconds": 213.8,
+        "outcome": "ok"
+      }
+    ],
+    "hunyuan_clone": [
+      {
+        "cmd": "git clone -q https://github.com/Tencent-Hunyuan/Hunyuan3D-2.git /tmp/Hunyuan3D-2",
+        "seconds": 6.1,
+        "outcome": "ok"
+      },
+      {
+        "cmd": "git -C /tmp/Hunyuan3D-2 checkout -q f8db63096c8282cb27354314d896feba5ba6ff8a",
+        "seconds": 0.3,
+        "outcome": "ok"
+      }
+    ],
+    "hunyuan_shape": [
+      {
+        "cmd": "/tmp/venv3d/bin/python /tmp/i23d_stages/hunyuan_shape.py /tmp/i23d_stages/hunyuan_shape.json",
+        "seconds": 233.0,
+        "outcome": "ok"
+      }
+    ],
+    "hunyuan_build_rasterizer": [
+      {
+        "cmd": "/tmp/venv3d/bin/python -m pip install --no-build-isolation .",
+        "seconds": 86.0,
+        "outcome": "ok"
+      }
+    ],
+    "hunyuan_build_renderer": [
+      {
+        "cmd": "/tmp/venv3d/bin/python setup.py build_ext --inplace",
+        "seconds": 12.5,
+        "outcome": "ok"
+      }
+    ],
+    "hunyuan_paint": [
+      {
+        "cmd": "/tmp/venv3d/bin/python /tmp/i23d_stages/hunyuan_paint.py /tmp/i23d_stages/hunyuan_paint.json",
+        "seconds": 280.5,
+        "outcome": "ok"
+      }
+    ]
+  },
+  "engines": {
+    "klein": {
+      "stage": "klein",
+      "status": "success",
+      "error": null,
+      "objects": [
+        {
+          "name": "rocket",
+          "file": "object_rocket.png",
+          "seconds": 27.72,
+          "seed": 3101,
+          "width": 768,
+          "height": 768,
+          "sha256": "88ac300d88fceb51b1aa60418b2b3919acd5bc40e4940a0d72133dddb3177448",
+          "status": "success"
+        },
+        {
+          "name": "lifeboat",
+          "file": "object_lifeboat.png",
+          "seconds": 22.67,
+          "seed": 3104,
+          "width": 768,
+          "height": 768,
+          "sha256": "6f783bfd1fa004a9f82ac6a59cc17c1c2f92a36f6139bb2a94e6de71f7d5bde7",
+          "status": "success"
+        },
+        {
+          "name": "street_lamp",
+          "file": "object_street_lamp.png",
+          "seconds": 22.07,
+          "seed": 3105,
+          "width": 768,
+          "height": 768,
+          "sha256": "dddeab97e7183f6e4513212153ff8124b0d9449f1a7e1cef39a48205d3ba340a",
+          "status": "success"
+        }
+      ],
+      "download_seconds": 109.1,
+      "load_seconds": 65.6,
+      "peak_vram_gib": 7.75
+    },
+    "triposr": {
+      "stage": "triposr",
+      "status": "success",
+      "error": null,
+      "objects": [
+        {
+          "name": "rocket",
+          "status": "success",
+          "depth_ratio": 0.633,
+          "looks_flat": false,
+          "file": "triposr_rocket.glb",
+          "seconds": 31.18,
+          "vertices": 48374,
+          "faces": 96742,
+          "peak_vram_gib": 2.32,
+          "bytes": 1935876,
+          "sha256": "b3f0ff64745112d19bce639fd6ed365f36f97efbe8e0ddbffafbaae3e2b4bcf1"
+        },
+        {
+          "name": "lifeboat",
+          "status": "success",
+          "depth_ratio": 0.549,
+          "looks_flat": false,
+          "file": "triposr_lifeboat.glb",
+          "seconds": 29.55,
+          "vertices": 45324,
+          "faces": 90660,
+          "peak_vram_gib": 2.32,
+          "bytes": 1814096,
+          "sha256": "c67726eb90bde223ba4b98733ed2f341925d6e2785160bae00b540f40602e4e4"
+        },
+        {
+          "name": "street_lamp",
+          "status": "success",
+          "depth_ratio": 0.248,
+          "looks_flat": false,
+          "file": "triposr_street_lamp.glb",
+          "seconds": 27.46,
+          "vertices": 11458,
+          "faces": 22912,
+          "peak_vram_gib": 2.32,
+          "bytes": 459256,
+          "sha256": "6fb82f91ef2c51246b43ea8a09d39c0238b6f8ffd15b4ab1c53d34cc2190b8d0"
+        }
+      ],
+      "marching_cubes": "scikit-image stand-in at /tmp/i23d_shims/torchmcubes/__init__.py",
+      "load_seconds": 38.5
+    },
+    "hunyuan_shape": {
+      "stage": "hunyuan_shape",
+      "status": "success",
+      "error": null,
+      "objects": [
+        {
+          "name": "rocket",
+          "status": "success",
+          "depth_ratio": 0.433,
+          "looks_flat": false,
+          "file": "hunyuan_rocket_shape.glb",
+          "seconds": 47.1,
+          "raw_faces": 512168,
+          "faces": 40000,
+          "vertices": 20002,
+          "peak_vram_gib": 4.48,
+          "bytes": 720816,
+          "sha256": "66a88dfc311673ffe2a0108f820e6c4529f1fee787f8506c43d7bd586e7fd425",
+          "cutout": "cutout_rocket.png"
+        },
+        {
+          "name": "lifeboat",
+          "status": "success",
+          "depth_ratio": 0.333,
+          "looks_flat": false,
+          "file": "hunyuan_lifeboat_shape.glb",
+          "seconds": 48.58,
+          "raw_faces": 582128,
+          "faces": 40000,
+          "vertices": 19998,
+          "peak_vram_gib": 4.48,
+          "bytes": 720768,
+          "sha256": "6b68197bfb37faafe85bee2433a4582cf7ab614b88ebd05e20d8021d9828a4f0",
+          "cutout": "cutout_lifeboat.png"
+        },
+        {
+          "name": "street_lamp",
+          "status": "success",
+          "depth_ratio": 0.257,
+          "looks_flat": false,
+          "file": "hunyuan_street_lamp_shape.glb",
+          "seconds": 36.05,
+          "raw_faces": 160168,
+          "faces": 40000,
+          "vertices": 20002,
+          "peak_vram_gib": 4.45,
+          "bytes": 720816,
+          "sha256": "23f26dcaddc41049ce93e6265aa3bbad96bc1a2168b6e1c9d50b156512b1f4a9",
+          "cutout": "cutout_street_lamp.png"
+        }
+      ],
+      "load_seconds": 72.2
+    },
+    "hunyuan_paint": {
+      "stage": "hunyuan_paint",
+      "status": "success",
+      "error": null,
+      "objects": [
+        {
+          "name": "rocket",
+          "status": "success",
+          "file": "hunyuan_rocket_textured.glb",
+          "seconds": 38.77,
+          "peak_vram_gib": 4.06,
+          "bytes": 2954944,
+          "sha256": "12f9bed63edda5f3e185a00da578dedd2f8c19586a51f2d0983236deef948a38"
+        },
+        {
+          "name": "lifeboat",
+          "status": "success",
+          "file": "hunyuan_lifeboat_textured.glb",
+          "seconds": 40.43,
+          "peak_vram_gib": 4.11,
+          "bytes": 2605256,
+          "sha256": "99a109954095a0405bcea8b699faf0bd70952df470cde2a0f8950079d4472e1e"
+        },
+        {
+          "name": "street_lamp",
+          "status": "success",
+          "file": "hunyuan_street_lamp_textured.glb",
+          "seconds": 36.09,
+          "peak_vram_gib": 4.11,
+          "bytes": 3061800,
+          "sha256": "9d0134254bf0de93878caf79212ffe30bccc9f0d40d03019f31f39141bfacbd2"
+        }
+      ],
+      "load_seconds": 146.7
+    }
+  },
+  "licences": {
+    "klein": "Apache-2.0",
+    "triposr": "MIT",
+    "hunyuan3d": "Tencent Hunyuan 3D 2.0 Community License (excludes EU, UK, South Korea)"
+  },
+  "summary": {
+    "klein": {
+      "stage_status": "success",
+      "objects_ok": 3,
+      "objects_total": 3,
+      "seconds_per_object": [
+        27.72,
+        22.67,
+        22.07
+      ],
+      "load_seconds": 65.6,
+      "error": null
+    },
+    "triposr": {
+      "stage_status": "success",
+      "objects_ok": 3,
+      "objects_total": 3,
+      "seconds_per_object": [
+        31.18,
+        29.55,
+        27.46
+      ],
+      "load_seconds": 38.5,
+      "error": null
+    },
+    "hunyuan_shape": {
+      "stage_status": "success",
+      "objects_ok": 3,
+      "objects_total": 3,
+      "seconds_per_object": [
+        47.1,
+        48.58,
+        36.05
+      ],
+      "load_seconds": 72.2,
+      "error": null
+    },
+    "hunyuan_paint": {
+      "stage_status": "success",
+      "objects_ok": 3,
+      "objects_total": 3,
+      "seconds_per_object": [
+        38.77,
+        40.43,
+        36.09
+      ],
+      "load_seconds": 146.7,
+      "error": null
+    }
+  },
+  "notebook_duration_seconds": 1171.4
+}

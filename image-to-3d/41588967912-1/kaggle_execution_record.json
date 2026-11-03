@@ -1,0 +1,135 @@
+{
+  "identity": {
+    "run_id": "56538b605f6c4f729bed05342e161426",
+    "run_token": "49465d97ebe8e728eda59363a80f3236",
+    "commit_sha": "dfdaad0230a7dd7c794a5ca3d9fac79203e09df7",
+    "workflow_run_id": "41588967912",
+    "workflow_run_attempt": "1",
+    "created_utc": "2026-11-03T06:17:57+00:00"
+  },
+  "kernel": "narasimhadamarla/stickman-motion-studio-image-to-3d-test",
+  "pushed_version": 2,
+  "push_attempts": 1,
+  "observations": [
+    {
+      "at": "2026-11-03T06:17:57+00:00",
+      "event": "notebook_stamped",
+      "run_token_written": true
+    },
+    {
+      "at": "2026-11-03T06:17:59+00:00",
+      "event": "push_response",
+      "attempt": 1,
+      "exit_code": 0,
+      "text": "Kernel version 2 successfully pushed.  Please check progress at https://www.kaggle.com/code/narasimhadamarla/stickman-motion-studio-image-to-3d-test"
+    },
+    {
+      "at": "2026-11-03T06:17:59+00:00",
+      "event": "push_accepted",
+      "version": 2
+    },
+    {
+      "at": "2026-11-03T06:17:59+00:00",
+      "event": "status",
+      "state": "QUEUED"
+    },
+    {
+      "at": "2026-11-03T06:18:30+00:00",
+      "event": "status",
+      "state": "RUNNING"
+    },
+    {
+      "at": "2026-11-03T06:38:18+00:00",
+      "event": "status",
+      "state": "COMPLETE"
+    },
+    {
+      "at": "2026-11-03T06:38:29+00:00",
+      "event": "download",
+      "attempt": 1,
+      "exit_code": 0,
+      "text": "8k [00:00<?, ?B/s]\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 448k/448k [00:00<00:00, 2.72MB/s]\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 448k/448k [00:00<00:00, 2.71MB/s]\n\nOutput file downloaded to kaggle-image-to-3d-output/outputs/triposr_street_lamp.glb\nKernel log downloaded to kaggle-image-to-3d-output/stickman-motion-studio-image-to-3d-test.log"
+    }
+  ],
+  "download_attempts": 1,
+  "validation": {
+    "ok": true,
+    "failures": [],
+    "checks": {
+      "objects": [
+        {
+          "file": "object_rocket.png",
+          "valid": true
+        },
+        {
+          "file": "object_lifeboat.png",
+          "valid": true
+        },
+        {
+          "file": "object_street_lamp.png",
+          "valid": true
+        }
+      ],
+      "models": [
+        {
+          "stage": "triposr",
+          "file": "triposr_rocket.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "triposr",
+          "file": "triposr_lifeboat.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "triposr",
+          "file": "triposr_street_lamp.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "hunyuan_shape",
+          "file": "hunyuan_rocket_shape.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "hunyuan_shape",
+          "file": "hunyuan_lifeboat_shape.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "hunyuan_shape",
+          "file": "hunyuan_street_lamp_shape.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "hunyuan_paint",
+          "file": "hunyuan_rocket_textured.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "hunyuan_paint",
+          "file": "hunyuan_lifeboat_textured.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "hunyuan_paint",
+          "file": "hunyuan_street_lamp_textured.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        }
+      ]
+    }
+  },
+  "limitations": [
+    "The Kaggle CLI exposes the notebook version number, not a separate execution ID. Version tracking plus the run token in the output are used together."
+  ],
+  "result": "verified"
+}

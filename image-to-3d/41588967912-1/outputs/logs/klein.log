@@ -1,0 +1,37 @@
+$ /usr/bin/python3 /tmp/i23d_stages/klein.py /tmp/i23d_stages/klein.json
+Fetching 25 files:   0%|          | 0/25 [00:00<?, ?it/s]Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Fetching 25 files:   4%|▍         | 1/25 [00:00<00:05,  4.00it/s]Fetching 25 files:  20%|██        | 5/25 [00:00<00:01, 10.95it/s]Fetching 25 files:  32%|███▏      | 8/25 [00:00<00:01, 10.28it/s]Fetching 25 files:  40%|████      | 10/25 [00:01<00:01,  9.47it/s]Fetching 25 files:  48%|████▊     | 12/25 [00:01<00:01,  8.86it/s]Fetching 25 files:  52%|█████▏    | 13/25 [00:01<00:01,  7.25it/s]Fetching 25 files:  56%|█████▌    | 14/25 [00:01<00:01,  5.86it/s]Fetching 25 files:  60%|██████    | 15/25 [00:02<00:01,  5.10it/s]Fetching 25 files:  76%|███████▌  | 19/25 [00:02<00:00,  7.41it/s]Fetching 25 files:  80%|████████  | 20/25 [00:06<00:04,  1.19it/s]Fetching 25 files:  84%|████████▍ | 21/25 [00:44<00:31,  7.93s/it]Fetching 25 files:  88%|████████▊ | 22/25 [01:02<00:30, 10.12s/it]Fetching 25 files:  92%|█████████▏| 23/25 [01:41<00:33, 16.97s/it]Fetching 25 files: 100%|██████████| 25/25 [01:48<00:00, 11.56s/it]Fetching 25 files: 100%|██████████| 25/25 [01:48<00:00,  4.35s/it]
+/usr/local/lib/python3.13/dist-packages/diffusers/utils/deprecation_utils.py:23: FutureWarning: `torch_dtype` is deprecated and will be removed in version 1.0.0. Please use `dtype` instead.
+  deprecate("torch_dtype", "1.0.0", _TORCH_DTYPE_DEPRECATION_MESSAGE)
+Loading pipeline components...:   0%|          | 0/5 [00:00<?, ?it/s]
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s][A
+Loading weights:   0%|          | 1/398 [00:11<1:15:39, 11.43s/it][A
+Loading weights:  30%|██▉       | 119/398 [00:11<00:19, 14.47it/s][A
+Loading weights:  45%|████▍     | 179/398 [00:16<00:16, 13.68it/s][A
+Loading weights:  52%|█████▏    | 205/398 [00:17<00:13, 14.20it/s][A
+Loading weights:  55%|█████▌    | 220/398 [00:18<00:11, 14.89it/s][A
+Loading weights:  58%|█████▊    | 230/398 [00:19<00:11, 14.52it/s][A
+Loading weights:  60%|█████▉    | 237/398 [00:20<00:11, 13.66it/s][A
+Loading weights:  62%|██████▏   | 245/398 [00:20<00:11, 13.01it/s][A
+Loading weights:  64%|██████▍   | 256/398 [00:21<00:10, 13.21it/s][A
+Loading weights:  67%|██████▋   | 267/398 [00:22<00:09, 13.52it/s][A
+Loading weights:  70%|██████▉   | 278/398 [00:23<00:08, 13.44it/s][A
+Loading weights:  73%|███████▎  | 289/398 [00:24<00:07, 13.63it/s][A
+Loading weights:  75%|███████▍  | 297/398 [00:24<00:06, 16.43it/s][A
+Loading weights:  76%|███████▌  | 301/398 [00:25<00:07, 12.94it/s][A
+Loading weights:  78%|███████▊  | 311/398 [00:25<00:06, 12.85it/s][A
+Loading weights:  81%|████████  | 322/398 [00:26<00:05, 13.34it/s][A
+Loading weights:  84%|████████▎ | 333/398 [00:27<00:04, 13.36it/s][A
+Loading weights:  86%|████████▋ | 344/398 [00:28<00:04, 13.40it/s][A
+Loading weights:  89%|████████▉ | 355/398 [00:29<00:03, 13.46it/s][A
+Loading weights:  92%|█████████▏| 366/398 [00:29<00:02, 13.65it/s][A
+Loading weights:  95%|█████████▍| 377/398 [00:30<00:01, 13.52it/s][A
+Loading weights:  97%|█████████▋| 388/398 [00:31<00:00, 13.62it/s][ALoading weights: 100%|██████████| 398/398 [00:31<00:00, 12.66it/s]
+Loading pipeline components...:  20%|██        | 1/5 [00:31<02:07, 31.83s/it]Loading pipeline components...:  40%|████      | 2/5 [00:32<00:40, 13.49s/it]The config attributes {'force_upcast': True} were passed to AutoencoderKLFlux2, but are not expected and will be ignored. Please verify your config.json configuration file.
+Loading pipeline components...:  60%|██████    | 3/5 [00:34<00:16,  8.32s/it]Loading pipeline components...: 100%|██████████| 5/5 [01:05<00:00, 12.36s/it]Loading pipeline components...: 100%|██████████| 5/5 [01:05<00:00, 13.11s/it]
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:09<00:28,  9.38s/it] 50%|█████     | 2/4 [00:10<00:08,  4.46s/it] 75%|███████▌  | 3/4 [00:11<00:02,  2.90s/it]100%|██████████| 4/4 [00:12<00:00,  2.16s/it]100%|██████████| 4/4 [00:12<00:00,  3.12s/it]
+klein drew rocket in 27.72 s
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:09<00:27,  9.12s/it] 50%|█████     | 2/4 [00:10<00:08,  4.37s/it] 75%|███████▌  | 3/4 [00:11<00:02,  2.85s/it]100%|██████████| 4/4 [00:12<00:00,  2.13s/it]100%|██████████| 4/4 [00:12<00:00,  3.06s/it]
+klein drew lifeboat in 22.67 s
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:08<00:26,  8.71s/it] 50%|█████     | 2/4 [00:09<00:08,  4.20s/it] 75%|███████▌  | 3/4 [00:10<00:02,  2.76s/it]100%|██████████| 4/4 [00:11<00:00,  2.09s/it]100%|██████████| 4/4 [00:11<00:00,  2.97s/it]
+klein drew street_lamp in 22.07 s

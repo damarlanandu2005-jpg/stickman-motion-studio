@@ -1,0 +1,40 @@
+{
+  "stage": "klein",
+  "status": "success",
+  "error": null,
+  "objects": [
+    {
+      "name": "rocket",
+      "file": "object_rocket.png",
+      "seconds": 27.72,
+      "seed": 3101,
+      "width": 768,
+      "height": 768,
+      "sha256": "88ac300d88fceb51b1aa60418b2b3919acd5bc40e4940a0d72133dddb3177448",
+      "status": "success"
+    },
+    {
+      "name": "lifeboat",
+      "file": "object_lifeboat.png",
+      "seconds": 22.67,
+      "seed": 3104,
+      "width": 768,
+      "height": 768,
+      "sha256": "6f783bfd1fa004a9f82ac6a59cc17c1c2f92a36f6139bb2a94e6de71f7d5bde7",
+      "status": "success"
+    },
+    {
+      "name": "street_lamp",
+      "file": "object_street_lamp.png",
+      "seconds": 22.07,
+      "seed": 3105,
+      "width": 768,
+      "height": 768,
+      "sha256": "dddeab97e7183f6e4513212153ff8124b0d9449f1a7e1cef39a48205d3ba340a",
+      "status": "success"
+    }
+  ],
+  "download_seconds": 109.1,
+  "load_seconds": 65.6,
+  "peak_vram_gib": 7.75
+}
