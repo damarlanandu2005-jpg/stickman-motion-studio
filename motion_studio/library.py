@@ -89,6 +89,9 @@ def check_sections(cat: dict[str, Any], root: Path = ROOT) -> list[str]:
         seen.add(m["id"])
         if f'"{m["id"]}"' not in text and m["id"] not in ("walk", "run"):
             problems.append(f"motion {m['id']} is not in motion.ts")
+    for it in cat.get("items", []):
+        if it.get("behavior"):
+            problems += check_behavior(root / it["behavior"], it["id"])
     sids = set()
     for sc in cat.get("scenes", []):
         if sc["id"] in sids: problems.append(f"duplicate scene {sc['id']}")
@@ -97,6 +100,33 @@ def check_sections(cat: dict[str, Any], root: Path = ROOT) -> list[str]:
             problems.append(f"scene {sc['id']}: unknown status {sc.get('status')!r}")
         if not (root / sc["file"]).is_file(): problems.append(f"scene {sc['id']}: {sc['file']} is missing")
     return problems
+
+
+def check_behavior(path: Path, owner: str) -> list[str]:
+    """A behavior file says what an object can do. Plain checks so a broken file never reaches a render."""
+    if not path.is_file():
+        return [f"{owner}: behavior file {path.name} is missing"]
+    try:
+        b = json.loads(path.read_text(encoding="utf-8"))
+    except ValueError as e:
+        return [f"{owner}: behavior file is not valid JSON ({e})"]
+    p: list[str] = []
+    if b.get("type") not in ("vehicle", "prop", "building"): p.append(f"{owner}: behavior type {b.get('type')!r} is unknown")
+    parts = {x.get("id"): x for x in b.get("parts", [])}
+    for pid, x in parts.items():
+        lo, hi = x["region"]["min"], x["region"]["max"]
+        if not all(0 <= a <= 1 for a in lo + hi) or any(a >= c for a, c in zip(lo, hi)): p.append(f"{owner}: part {pid} region must be a box inside 0..1")
+        if not any(abs(v) > 0 for v in x.get("axis", [0, 0, 0])): p.append(f"{owner}: part {pid} needs a hinge axis")
+        if not x.get("open_deg"): p.append(f"{owner}: part {pid} needs open_deg")
+    for t in b.get("triggers", []):
+        if t.get("part") not in parts: p.append(f"{owner}: trigger points to unknown part {t.get('part')}")
+        if not t.get("within_m", 0) > 0: p.append(f"{owner}: trigger needs within_m")
+    cr = b.get("crash")
+    if cr:
+        if not cr.get("min_speed_mps", 0) > 0: p.append(f"{owner}: crash needs min_speed_mps")
+        for pid in cr.get("open_parts", []):
+            if pid not in parts: p.append(f"{owner}: crash opens unknown part {pid}")
+    return p
 
 
 def dataset_ref(cat: dict[str, Any], owner: str) -> str:

@@ -1,0 +1,59 @@
+{
+  "id": "moon_buggy_a",
+  "type": "vehicle",
+  "max_speed_mps": 7,
+  "mass_kg": 400,
+  "collide_radius_m": 0.9,
+  "parts": [
+    {
+      "id": "door_L",
+      "region": {
+        "min": [
+          0.36,
+          0.3,
+          0.7
+        ],
+        "max": [
+          0.6,
+          0.6,
+          1.0
+        ],
+        "facing": [
+          0,
+          0,
+          1
+        ],
+        "facing_min": 0.6
+      },
+      "hinge": [
+        0.37,
+        0.45,
+        0.97
+      ],
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "open_deg": -70,
+      "open_s": 0.6
+    }
+  ],
+  "triggers": [
+    {
+      "on": "character_near",
+      "part": "door_L",
+      "within_m": 1.1,
+      "max_speed_mps": 0.3
+    }
+  ],
+  "crash": {
+    "min_speed_mps": 3.0,
+    "crumple": 1.0,
+    "recoil_m": 0.25,
+    "open_parts": [
+      "door_L"
+    ],
+    "kick": 1.4
+  }
+}

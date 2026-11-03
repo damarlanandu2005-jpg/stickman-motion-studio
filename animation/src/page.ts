@@ -22,7 +22,7 @@ let engine: Engine | null = null;
     if (!res.ok) return { ok: false, problems: ["scene has emitters or cloths but no baked effects file: run bake_effects.py"] };
     engine.setEffects((await res.json()) as EffectTracks);
   }
-  return { ok: true, problems, warnings: engine.warnings, frames: Math.round(scene.duration_s * scene.fps), fps: scene.fps, gl: engine.rendererInfo };
+  return { ok: true, problems, warnings: engine.warnings, events: engine.events, frames: Math.round(scene.duration_s * scene.fps), fps: scene.fps, gl: engine.rendererInfo };
 };
 
 (window as any).__render = (frame: number) => { engine!.render(frame); return true; };

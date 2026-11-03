@@ -265,7 +265,8 @@
         "klein_seed": 5101,
         "klein_prompt": "An open-top moon buggy rover for two astronauts: a low white frame with two visible bucket seats side by side, a steering handle, four big knobby grey wheels, a small orange antenna and a small cargo rack at the back. No roof, no windshield, nothing covering the seats. ",
         "made": "2026-11-03"
-      }
+      },
+      "behavior": "library/behaviors/moon_buggy_a.json"
     },
     {
       "id": "moon_buggy_b",
@@ -713,6 +714,12 @@
       "id": "rig_test",
       "file": "animation/scenes/rig_test.json",
       "status": "test"
+    },
+    {
+      "id": "behavior_test",
+      "file": "animation/scenes/behavior_test.json",
+      "status": "test",
+      "note": "door opens near a character, closes when driving, crash into the rocket from the behavior file"
     }
   ]
 }

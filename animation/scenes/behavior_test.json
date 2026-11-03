@@ -1,0 +1,182 @@
+{
+ "fps": 30,
+ "environment": {
+  "light": "day",
+  "sky_top": "#5b57b0",
+  "sky_horizon": "#f0bfcf",
+  "ground": "#c98f6a",
+  "fog_near": 30,
+  "fog_far": 140,
+  "scatter": [
+   {
+    "type": "rocks",
+    "count": 46,
+    "radius": 26,
+    "min_size": 0.15,
+    "max_size": 0.7,
+    "color": "#9a6f5c",
+    "seed": 7,
+    "keep_clear": [
+     [
+      0.0,
+      -1.5,
+      5.0
+     ],
+     [
+      3.0,
+      1.5,
+      1.5
+     ],
+     [
+      -3.6,
+      -9.0,
+      4.0
+     ]
+    ]
+   }
+  ]
+ },
+ "wind": [
+  1.6,
+  0,
+  -0.4
+ ],
+ "id": "behavior_test",
+ "duration_s": 14,
+ "assets": {
+  "rocket": {
+   "file": "assets/models/rocket.glb",
+   "height_m": 7.0
+  },
+  "buggy": {
+   "file": "assets/models/moon_buggy_a.glb",
+   "height_m": 1.5,
+   "forward_deg": -90,
+   "behavior": "assets/behaviors/moon_buggy_a.json"
+  }
+ },
+ "objects": [
+  {
+   "id": "rocket",
+   "asset": "rocket",
+   "at": [
+    -6.5,
+    -3.0
+   ],
+   "solid_radius_m": 1.3
+  },
+  {
+   "id": "buggy",
+   "asset": "buggy",
+   "at": [
+    2.5,
+    -3.0
+   ],
+   "moves": [
+    {
+     "type": "move",
+     "from_s": 5.4,
+     "to_s": 8.4,
+     "to": [
+      -8.0,
+      -3.0
+     ],
+     "face_travel": true,
+     "linear": true
+    }
+   ]
+  }
+ ],
+ "characters": [
+  {
+   "id": "hero",
+   "rig": {
+    "costume": "astronaut",
+    "face": "neutral"
+   },
+   "height_m": 1.8,
+   "at": [
+    -1.5,
+    0.5
+   ],
+   "actions": [
+    {
+     "at_s": 0,
+     "do": "stand",
+     "face_camera": true
+    },
+    {
+     "at_s": 0.5,
+     "do": "wave",
+     "arm": "R"
+    },
+    {
+     "at_s": 1.6,
+     "do": "stand"
+    },
+    {
+     "at_s": 4.0,
+     "do": "ride",
+     "vehicle": "buggy",
+     "seat": [
+      0,
+      0.9,
+      0
+     ],
+     "enter_s": 1.0,
+     "to_s": 9.5,
+     "exit_s": 0.8
+    },
+    {
+     "at_s": 9.5,
+     "do": "surprised"
+    },
+    {
+     "at_s": 11,
+     "do": "stand"
+    }
+   ],
+   "moves": [
+    {
+     "type": "move",
+     "from_s": 1.8,
+     "to_s": 3.6,
+     "to": [
+      2.0,
+      -2.0
+     ]
+    }
+   ]
+  }
+ ],
+ "camera": [
+  {
+   "at_s": 0,
+   "pos": [
+    2.5,
+    2.0,
+    0.0
+   ],
+   "look": [
+    2.5,
+    0.7,
+    -3.0
+   ],
+   "fov": 40
+  },
+  {
+   "at_s": 14,
+   "pos": [
+    2.5,
+    2.0,
+    0.0
+   ],
+   "look": [
+    2.5,
+    0.7,
+    -3.0
+   ],
+   "fov": 40
+  }
+ ]
+}

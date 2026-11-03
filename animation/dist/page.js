@@ -31470,12 +31470,21 @@ var Engine = class _Engine {
         m.castShadow = true;
         m.receiveShadow = true;
       });
+      let behSpec = null;
+      if (a.behavior) {
+        const r = await fetch(base + a.behavior);
+        if (!r.ok) throw new Error(`behavior file ${a.behavior} not found`);
+        behSpec = await r.json();
+        this.splitParts(inner, behSpec);
+      }
       const box = new Box3().setFromObject(inner), size = box.getSize(new Vector3());
+      const rawBox = box.clone(), rawScale = a.height_m / size.y;
       inner.scale.setScalar(a.height_m / size.y);
       const b2 = new Box3().setFromObject(inner), c = b2.getCenter(new Vector3());
       inner.position.set(-c.x, -b2.min.y, -c.z);
-      const root = new Group();
-      root.add(inner);
+      const root = new Group(), crush = new Group();
+      crush.add(inner);
+      root.add(crush);
       this.scene.add(root);
       const sz = b2.getSize(new Vector3());
       const t = {
@@ -31489,6 +31498,8 @@ var Engine = class _Engine {
         height: a.height_m,
         forward: rad2(a.forward_deg ?? 0)
       };
+      t.solidR = o.solid_radius_m;
+      if (behSpec) t.beh = this.makeBehavior(behSpec, inner, crush, rawBox, rawScale);
       this.things.set(o.id, t);
       for (const m of t.moves) if (m.type === "move" && m.dust) for (let i = 0; i < 4; i++) this.puffs.push({ card: this.fxCard(300, 300), owner: t, move: m });
     }
@@ -31576,6 +31587,7 @@ var Engine = class _Engine {
     this.composer.addPass(new InkPass(this.scene, this.cam));
     this.composer.addPass(new EffectPass(this.cam, new ToneMappingEffect({ mode: ToneMappingMode.NEUTRAL }), new GradeEffect(GRADES[env.light], 1)));
     this.composer.setSize(this.w, this.h);
+    this.buildBehaviors();
     this.buildRigTables();
   }
   fxCard(cw, chh) {
@@ -31632,6 +31644,16 @@ var Engine = class _Engine {
   }
   /** position, yaw and extra lift of a thing at time t, from its moves */
   poseAt(t, time) {
+    if (t.crash && time > t.crash.t) {
+      const q = this.poseAtRaw(t, t.crash.t), k = 1 - Math.exp(-(time - t.crash.t) / 0.07);
+      q.p.addScaledVector(t.crash.dir, -(t.beh?.spec.crash?.recoil_m ?? 0.2) * k);
+      q.dir = null;
+      q.lift = 0;
+      return q;
+    }
+    return this.poseAtRaw(t, time);
+  }
+  poseAtRaw(t, time) {
     const p = t.base.clone();
     let yaw = t.baseYaw, lift = 0, dir = null, walking = 0, keepFacing = false;
     for (const m of t.moves) {
@@ -31642,7 +31664,7 @@ var Engine = class _Engine {
       if (time < m.from_s) continue;
       const u = clamp012((time - m.from_s) / (m.to_s - m.from_s)), active = time <= m.to_s;
       if (m.type === "move" || m.type === "walk" || m.type === "hop") {
-        const k = m.type === "walk" ? u : easeIO(u), from = p.clone(), to = new Vector3(m.to[0], 0, m.to[1]);
+        const k = m.type === "walk" || m.type === "move" && m.linear ? u : easeIO(u), from = p.clone(), to = new Vector3(m.to[0], 0, m.to[1]);
         p.lerpVectors(from, to, k);
         if (active && from.distanceTo(to) > 1e-3) dir = Math.atan2(to.x - from.x, to.z - from.z);
         if (m.type === "move" && m.face_travel && dir !== null) yaw = dir - t.forward;
@@ -31699,6 +31721,7 @@ var Engine = class _Engine {
     this.cam.lookAt(c.look);
     for (const t of this.things.values()) {
       if (t.cards || t.rig) continue;
+      if (t.beh) this.applyBehavior(t, frame);
       const q = this.poseAt(t, time);
       t.root.visible = t.appear === void 0 || time >= t.appear;
       const tr = this.tracks[t.id];
@@ -31717,6 +31740,169 @@ var Engine = class _Engine {
     this.renderEffects(time);
     this.renderBakedEffects(frame);
     this.composer.render();
+  }
+  // ------------------------------------------------------------------ behaviors (what an object can do)
+  events = [];
+  /** cut the named parts out of the model: every triangle whose centre lies in a part's box moves to its own mesh */
+  splitParts(inner, spec) {
+    if (!spec.parts?.length) return;
+    inner.updateMatrixWorld(true);
+    const meshes = [];
+    inner.traverse((m) => {
+      if (m.isMesh) meshes.push(m);
+    });
+    const raw = new Box3().setFromObject(inner), sz = raw.getSize(new Vector3());
+    const abs = (f) => new Vector3(raw.min.x + f[0] * sz.x, raw.min.y + f[1] * sz.y, raw.min.z + f[2] * sz.z);
+    const regions = spec.parts.map((p) => ({ min: abs(p.region.min), max: abs(p.region.max), hinge: abs(p.hinge), face: p.region.facing ? new Vector3(...p.region.facing).normalize() : null, faceMin: p.region.facing_min ?? 0.6 }));
+    this.partMeshes.set(inner, []);
+    for (const m of meshes) {
+      const g = m.geometry.clone().applyMatrix4(m.matrixWorld).toNonIndexed();
+      const pos = g.getAttribute("position"), tri = pos.count / 3, owner = new Int16Array(tri).fill(-1), c = new Vector3(), e1 = new Vector3(), e2 = new Vector3(), v0 = new Vector3(), v1 = new Vector3(), v2 = new Vector3();
+      for (let i = 0; i < tri; i++) {
+        c.set(0, 0, 0);
+        for (let k = 0; k < 3; k++) c.add(new Vector3().fromBufferAttribute(pos, i * 3 + k));
+        c.multiplyScalar(1 / 3);
+        v0.fromBufferAttribute(pos, i * 3);
+        v1.fromBufferAttribute(pos, i * 3 + 1);
+        v2.fromBufferAttribute(pos, i * 3 + 2);
+        const nrm = e1.subVectors(v1, v0).cross(e2.subVectors(v2, v0)).normalize();
+        for (let r = 0; r < regions.length; r++) if ((!regions[r].face || nrm.dot(regions[r].face) >= regions[r].faceMin) && c.x >= regions[r].min.x && c.x <= regions[r].max.x && c.y >= regions[r].min.y && c.y <= regions[r].max.y && c.z >= regions[r].min.z && c.z <= regions[r].max.z) {
+          owner[i] = r;
+          break;
+        }
+      }
+      const build = (want) => {
+        const out = new BufferGeometry();
+        for (const [name, at] of Object.entries(g.attributes)) {
+          const a = at, list = [];
+          for (let i = 0; i < tri; i++) if (owner[i] === want) for (let k = 0; k < 3; k++) for (let j = 0; j < a.itemSize; j++) list.push(a.array[(i * 3 + k) * a.itemSize + j]);
+          if (list.length) out.setAttribute(name, new Float32BufferAttribute(list, a.itemSize));
+        }
+        return out.getAttribute("position") ? out : null;
+      };
+      const mat = m.material, parent = m.parent;
+      parent.remove(m);
+      const rest = build(-1);
+      const place = (geo, hinge) => {
+        const mesh = new Mesh(geo, mat);
+        mesh.castShadow = true;
+        mesh.receiveShadow = true;
+        if (hinge) mesh.position.copy(hinge).multiplyScalar(-1);
+        return mesh;
+      };
+      if (rest) inner.add(place(rest));
+      for (let r = 0; r < regions.length; r++) {
+        const geo = build(r);
+        if (!geo) continue;
+        let pv = this.partPivots.get(inner)?.[r];
+        if (!pv) {
+          pv = new Group();
+          pv.position.copy(regions[r].hinge);
+          inner.add(pv);
+          if (!this.partPivots.has(inner)) this.partPivots.set(inner, []);
+          this.partPivots.get(inner)[r] = pv;
+        }
+        pv.add(place(geo, regions[r].hinge));
+      }
+    }
+    spec.parts.forEach((p, r) => {
+      if (!this.partPivots.get(inner)?.[r]) this.warnings.push(`behavior ${spec.id}: part ${p.id} contains no triangles; check its region box`);
+    });
+  }
+  partMeshes = /* @__PURE__ */ new Map();
+  partPivots = /* @__PURE__ */ new Map();
+  makeBehavior(spec, inner, crush, raw, k) {
+    const sz = raw.getSize(new Vector3()), n = Math.round(this.s.duration_s * this.s.fps) + 1;
+    const toRoot = (f) => new Vector3(raw.min.x + f[0] * sz.x, raw.min.y + f[1] * sz.y, raw.min.z + f[2] * sz.z).multiplyScalar(k).add(inner.position);
+    const parts = (spec.parts ?? []).map((p, r) => ({
+      id: p.id,
+      pivot: this.partPivots.get(inner)?.[r] ?? new Group(),
+      hingeRoot: toRoot(p.hinge),
+      axis: new Vector3(...p.axis).normalize(),
+      openRad: rad2(p.open_deg),
+      angle: new Float32Array(n)
+    }));
+    return { spec, crush, parts, crumple: new Float32Array(n) };
+  }
+  /** replay one frame of an object's behavior: part angles and crumple, computed once in buildBehaviors */
+  applyBehavior(t, frame) {
+    const b = t.beh, i = Math.min(frame, b.crumple.length - 1);
+    for (const p of b.parts) p.pivot.quaternion.setFromAxisAngle(p.axis, p.angle[i] * p.openRad);
+    const c = b.crumple[i], f = t.forward;
+    const m = new Matrix4().makeRotationY(f).multiply(new Matrix4().makeScale(1 + 0.05 * c, 1 + 0.04 * c, 1 - 0.18 * c)).multiply(new Matrix4().makeRotationY(-f));
+    b.crush.matrixAutoUpdate = false;
+    b.crush.matrix.copy(m);
+    b.crush.matrixWorldNeedsUpdate = true;
+  }
+  /** the logic of every object with a behavior file, simulated once in frame order: crashes, doors, crumple */
+  buildBehaviors() {
+    const s = this.s, n = Math.round(s.duration_s * s.fps) + 1, dt = 1 / s.fps;
+    const solids = [...this.things.values()].filter((t) => t.solidR !== void 0);
+    const people = [...this.things.values()].filter((t) => t.rig || t.cards);
+    for (const t of this.things.values()) {
+      const b = t.beh;
+      if (!b) continue;
+      const P2 = [], speed = new Float32Array(n), yawA = new Float32Array(n);
+      for (let f = 0; f < n; f++) {
+        const q = this.poseAtRaw(t, f * dt);
+        P2.push(q.p.clone());
+        yawA[f] = q.yaw;
+      }
+      for (let f = 0; f < n; f++) {
+        const a = P2[Math.max(0, f - 1)], c = P2[Math.min(n - 1, f + 1)];
+        speed[f] = a.distanceTo(c) / (dt * (Math.min(n - 1, f + 1) - Math.max(0, f - 1)));
+      }
+      const cr = b.spec.crash, R = b.spec.collide_radius_m ?? t.radius * 0.8;
+      if (cr) {
+        search: for (let f = 1; f < n; f++) {
+          if (speed[f] < cr.min_speed_mps) continue;
+          const v = new Vector3().subVectors(P2[Math.min(n - 1, f + 1)], P2[f - 1]);
+          for (const o of solids) {
+            if (o === t) continue;
+            const op = this.poseAtRaw(o, f * dt).p, d = Math.hypot(P2[f].x - op.x, P2[f].z - op.z);
+            if (d <= R + o.solidR && v.dot(new Vector3(op.x - P2[f].x, 0, op.z - P2[f].z)) > 0) {
+              t.crash = { t: f * dt, p: P2[f].clone(), dir: new Vector3(v.x, 0, v.z).normalize(), speed: speed[f], other: o.id };
+              this.events.push({ t: +(f * dt).toFixed(2), what: `crash: ${t.id} hit ${o.id} at ${speed[f].toFixed(1)} m/s` });
+              break search;
+            }
+          }
+        }
+      }
+      const tc = t.crash?.t ?? Infinity;
+      for (const p of b.parts) {
+        const spec = b.spec.parts.find((x) => x.id === p.id), rate = 1 / (spec.open_s ?? 0.7);
+        let a = 0, wasOpen = false;
+        for (let f = 0; f < n; f++) {
+          const time = f * dt, y = yawA[f], c = Math.cos(y), sn = Math.sin(y);
+          const hx = P2[f].x + p.hingeRoot.x * c + p.hingeRoot.z * sn, hz = P2[f].z - p.hingeRoot.x * sn + p.hingeRoot.z * c;
+          let target = 0;
+          for (const tr of b.spec.triggers ?? []) if (tr.part === p.id && speed[f] <= (tr.max_speed_mps ?? 0.3))
+            for (const who of people) {
+              const w = this.poseAtRaw(who, time).p;
+              if (Math.hypot(w.x - hx, w.z - hz) <= tr.within_m) target = 1;
+            }
+          if (time >= tc && cr?.open_parts?.includes(p.id)) target = 1;
+          a += Math.max(-rate * dt, Math.min(rate * dt, target - a));
+          p.angle[f] = a;
+          const open = a > 0.5;
+          if (open !== wasOpen) {
+            this.events.push({ t: +time.toFixed(2), what: `${t.id}: ${p.id} ${open ? "opens" : "closes"}` });
+            wasOpen = open;
+          }
+        }
+      }
+      if (cr && t.crash) {
+        for (let f = 0; f < n; f++) {
+          const u = clamp012((f * dt - tc) / 0.14);
+          b.crumple[f] = f * dt < tc ? 0 : cr.crumple * (1 - Math.pow(1 - u, 3));
+        }
+        const at = t.crash.t, sz = t.height;
+        this.fx.push({ def: { type: "burst", at_s: at, dur_s: 0.5, on: t.id, size_m: sz * 1.1, color: "#ffd24a" }, card: this.fxCard(500, 500) });
+        this.fx.push({ def: { type: "stars", at_s: at + 0.1, dur_s: 1, on: t.id, size_m: sz * 0.9, lift_m: sz * 0.9 }, card: this.fxCard(420, 210) });
+        this.fx.push({ def: { type: "puff", at_s: at, dur_s: 1.2, on: t.id, size_m: sz * 1.3, color: "#e8d8c0" }, card: this.fxCard(300, 300) });
+        s.kicks = [...s.kicks ?? [], { at_s: at, amp: cr.kick ?? 1.2 }];
+      }
+    }
   }
   /** per-frame ground speed, gait phase and heading of each rig, from its scripted moves (done once, in frame order) */
   buildRigTables() {
@@ -31966,7 +32152,7 @@ window.__setup = async (sceneUrl, width, height) => {
     if (!res.ok) return { ok: false, problems: ["scene has emitters or cloths but no baked effects file: run bake_effects.py"] };
     engine.setEffects(await res.json());
   }
-  return { ok: true, problems, warnings: engine.warnings, frames: Math.round(scene.duration_s * scene.fps), fps: scene.fps, gl: engine.rendererInfo };
+  return { ok: true, problems, warnings: engine.warnings, events: engine.events, frames: Math.round(scene.duration_s * scene.fps), fps: scene.fps, gl: engine.rendererInfo };
 };
 window.__render = (frame) => {
   engine.render(frame);

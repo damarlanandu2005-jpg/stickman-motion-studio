@@ -130,3 +130,23 @@ class CatalogSectionTests(unittest.TestCase):
         problems = lib.check_sections(cat)
         self.assertTrue(any("moonwalk" in p for p in problems))
         self.assertTrue(any("ghost" in p for p in problems))
+
+
+class BehaviorFileTests(unittest.TestCase):
+    def test_buggy_behavior_is_valid(self):
+        self.assertEqual(lib.check_behavior(ROOT / "library/behaviors/moon_buggy_a.json", "moon_buggy_a"), [])
+
+    def test_engine_copy_matches_library_copy(self):
+        a = (ROOT / "library/behaviors/moon_buggy_a.json").read_text()
+        b = (ROOT / "animation/assets/behaviors/moon_buggy_a.json").read_text()
+        self.assertEqual(json.loads(a), json.loads(b))
+
+    def test_broken_behavior_is_reported(self):
+        with tempfile.TemporaryDirectory() as d:
+            f = Path(d) / "x.json"
+            f.write_text(json.dumps({"type": "vehicle", "parts": [{"id": "door", "region": {"min": [0, 0, 0], "max": [2, 1, 1]}, "axis": [0, 0, 0]}],
+                                     "triggers": [{"part": "ghost", "within_m": 1}], "crash": {"min_speed_mps": 3, "open_parts": ["nope"]}}))
+            problems = lib.check_behavior(f, "x")
+        text = " ".join(problems)
+        for word in ("region", "axis", "open_deg", "ghost", "nope"):
+            self.assertIn(word, text)

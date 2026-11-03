@@ -98,7 +98,7 @@ def main(argv: list[str] | None = None) -> int:
             if not chosen:
                 raise RuntimeError("no WebGL mode could render the scene")
             mode, browser, page, info, errors = chosen
-            report.update(mode=mode, gl=info["gl"], gpu_used=report["attempts"][-1]["gpu"], warnings=info.get("warnings", []),
+            report.update(mode=mode, gl=info["gl"], gpu_used=report["attempts"][-1]["gpu"], warnings=info.get("warnings", []), events=info.get("events", []),
                           fps=info["fps"], total_frames=info["frames"])
             end = info["frames"] if args.end < 0 else min(args.end, info["frames"])
             frames = [int(x) for x in args.frames.split(",") if x.strip()] or list(range(args.start, end))

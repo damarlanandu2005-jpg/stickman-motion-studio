@@ -6,7 +6,7 @@ export type XZ = [number, number];
 export type XYZ = [number, number, number];
 
 export type Move =
-  | { type: "move"; from_s: number; to_s: number; to: XZ; face_travel?: boolean; dust?: boolean }
+  | { type: "move"; from_s: number; to_s: number; to: XZ; face_travel?: boolean; dust?: boolean; /** constant speed instead of easing in and out (a vehicle that must hit something at full speed) */ linear?: boolean }
   | { type: "walk"; from_s: number; to_s: number; to: XZ; steps_per_s?: number }
   | { type: "hop"; from_s: number; to_s: number; to: XZ; height_m?: number; keep_facing?: boolean }
   | { type: "fly"; from_s: number; to_s: number; to: XYZ }
@@ -37,15 +37,29 @@ export type EffectTracks = { scene: string; fps: number; frames: number; blender
 
 export type PhysicsTracks = { scene: string; fps: number; frames: number; blender: string; objects: Record<string, number[][]> };
 
+/** what an object can DO, kept next to its model in the library (library/behaviors/<id>.json). The engine reads it; scenes never hard-code it. */
+export type Behavior = {
+  id: string; type: "vehicle" | "prop" | "building";
+  max_speed_mps?: number; mass_kg?: number;
+  /** ground circle used for crashes, around the object centre */
+  collide_radius_m?: number;
+  /** a part of the model cut out by a box (0..1 of the model's own bounding box) so it can swing about a hinge */
+  parts?: { id: string; region: { min: XYZ; max: XYZ; /** only triangles facing this way (e.g. the outside skin of a door) */ facing?: XYZ; facing_min?: number }; hinge: XYZ; axis: XYZ; open_deg: number; open_s?: number }[];
+  /** a part opens when any character comes this close and the object is (almost) standing still */
+  triggers?: { on: "character_near"; part: string; within_m: number; max_speed_mps?: number }[];
+  /** at or above this speed, hitting a solid thing is a crash */
+  crash?: { min_speed_mps: number; crumple: number; recoil_m?: number; open_parts?: string[]; kick?: number };
+};
+
 export type Scene = {
   id: string;
   description?: string;
   fps: number;
   duration_s: number;
   environment: { light: "day" | "golden"; sky_top: string; sky_horizon: string; ground: string; fog_near: number; fog_far: number; scatter?: Scatter[] };
-  assets: Record<string, { file: string; height_m: number; brightness?: number; forward_deg?: number }>;
+  assets: Record<string, { file: string; height_m: number; brightness?: number; forward_deg?: number; /** behavior file (library/behaviors): parts, triggers, crash rule */ behavior?: string }>;
   /** objects with a physics block are simulated by Blender (bake_physics.py) and replayed from the baked tracks */
-  objects: { id: string; asset: string; at: XZ; turn_deg?: number; moves?: Move[]; physics?: Physics;
+  objects: { id: string; asset: string; at: XZ; turn_deg?: number; /** a wall/rock/rocket other things can crash into (ground circle) */ solid_radius_m?: number; moves?: Move[]; physics?: Physics;
     /** hidden until this time (e.g. crystals that start falling at physics_bake.from_s) */ appear_s?: number }[];
   /** scene wind (force vector) pushing particles and cloth */
   wind?: XYZ;

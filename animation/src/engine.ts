@@ -12,7 +12,7 @@ import { LIGHTS } from "../reference/lights";
 import { GradeEffect, GRADES } from "../reference/grade";
 import { cardShade, blobMaterial, CARD_K } from "../reference/cardshade";
 import { Pen, INK, fxBurst, fxStars, fxPuff } from "../reference/toon";
-import { Scene, Move, XZ, XYZ, PhysicsTracks, EffectTracks, EmitterKind } from "./scene";
+import { Scene, Move, XZ, XYZ, PhysicsTracks, EffectTracks, EmitterKind, Behavior } from "./scene";
 import { Rig, COSTUMES, HIP_H, FIGURE_H } from "./rig";
 import { Action, poseAtTime, strideFor } from "./motion";
 
@@ -26,7 +26,12 @@ const mixHex = (a: string, b: string, t: number) => {
 };
 const rng = (seed: number) => () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; };
 
-type Thing = { appear?: number; id: string; root: THREE.Group; base: THREE.Vector3; baseYaw: number; moves: Move[]; radius: number; height: number; forward: number };
+type PartRt = { id: string; pivot: THREE.Group; hingeRoot: THREE.Vector3; axis: THREE.Vector3; openRad: number; angle: Float32Array };
+/** what an object can do (its behavior file), prepared for replay: door angles and crumple for every frame */
+type BehRt = { spec: Behavior; crush: THREE.Group; parts: PartRt[]; crumple: Float32Array };
+type Crash = { t: number; p: THREE.Vector3; dir: THREE.Vector3; speed: number; other: string };
+type Thing = { appear?: number; id: string; root: THREE.Group; base: THREE.Vector3; baseYaw: number; moves: Move[]; radius: number; height: number; forward: number;
+  beh?: BehRt; solidR?: number; crash?: Crash };
 type Actor = Thing & { cycles: Record<string, { frames: string[]; hz: number }>; cards: Map<string, THREE.Mesh>; pivot: THREE.Group; poses: NonNullable<Scene["characters"][0]["poses"]>; facing: number; blob: THREE.Mesh };
 type RigActor = Thing & { rig: Rig; actions: Action[]; expressions: { at_s: number; face: string }[]; face: string;
   speed: Float32Array; phase: Float32Array; yaw: Float32Array };
@@ -222,14 +227,19 @@ export class Engine {
         if (a.brightness) mat.color.multiplyScalar(a.brightness);
         m.material = mat; m.castShadow = true; m.receiveShadow = true;
       });
+      let behSpec: Behavior | null = null;
+      if (a.behavior) { const r = await fetch(base + a.behavior); if (!r.ok) throw new Error(`behavior file ${a.behavior} not found`); behSpec = await r.json(); this.splitParts(inner, behSpec!); }
       const box = new THREE.Box3().setFromObject(inner), size = box.getSize(new THREE.Vector3());
+      const rawBox = box.clone(), rawScale = a.height_m / size.y;
       inner.scale.setScalar(a.height_m / size.y);
       const b2 = new THREE.Box3().setFromObject(inner), c = b2.getCenter(new THREE.Vector3());
       inner.position.set(-c.x, -b2.min.y, -c.z);
-      const root = new THREE.Group(); root.add(inner); this.scene.add(root);
+      const root = new THREE.Group(), crush = new THREE.Group(); crush.add(inner); root.add(crush); this.scene.add(root);
       const sz = b2.getSize(new THREE.Vector3());
       const t: Thing = { appear: o.appear_s, id: o.id, root, base: new THREE.Vector3(o.at[0], 0, o.at[1]), baseYaw: rad(o.turn_deg ?? 0), moves: o.moves ?? [],
         radius: Math.max(sz.x, sz.z) / 2, height: a.height_m, forward: rad(a.forward_deg ?? 0) };
+      t.solidR = o.solid_radius_m;
+      if (behSpec) t.beh = this.makeBehavior(behSpec, inner, crush, rawBox, rawScale);
       this.things.set(o.id, t);
       for (const m of t.moves) if (m.type === "move" && m.dust) for (let i = 0; i < 4; i++) this.puffs.push({ card: this.fxCard(300, 300), owner: t, move: m });
     }
@@ -283,6 +293,7 @@ export class Engine {
     this.composer.addPass(new InkPass(this.scene, this.cam));
     this.composer.addPass(new EffectPass(this.cam, new ToneMappingEffect({ mode: ToneMappingMode.NEUTRAL }), new GradeEffect(GRADES[env.light], 1)));
     this.composer.setSize(this.w, this.h);
+    this.buildBehaviors();
     this.buildRigTables();
   }
 
@@ -329,13 +340,22 @@ export class Engine {
 
   /** position, yaw and extra lift of a thing at time t, from its moves */
   private poseAt(t: Thing, time: number) {
+    if (t.crash && time > t.crash.t) {
+      // after a crash the thing stops dead at the contact point and rebounds a little
+      const q = this.poseAtRaw(t, t.crash.t), k = 1 - Math.exp(-(time - t.crash.t) / 0.07);
+      q.p.addScaledVector(t.crash.dir, -(t.beh?.spec.crash?.recoil_m ?? 0.2) * k); q.dir = null; q.lift = 0;
+      return q;
+    }
+    return this.poseAtRaw(t, time);
+  }
+  private poseAtRaw(t: Thing, time: number) {
     const p = t.base.clone(); let yaw = t.baseYaw, lift = 0, dir: number | null = null, walking = 0, keepFacing = false;
     for (const m of t.moves) {
       if (m.type === "place") { if (time >= m.at_s) p.set(m.to[0], 0, m.to[1]); continue; }
       if (time < m.from_s) continue;
       const u = clamp01((time - m.from_s) / (m.to_s - m.from_s)), active = time <= m.to_s;
       if (m.type === "move" || m.type === "walk" || m.type === "hop") {
-        const k = m.type === "walk" ? u : easeIO(u), from = p.clone(), to = new THREE.Vector3(m.to[0], 0, m.to[1]);
+        const k = m.type === "walk" || (m.type === "move" && m.linear) ? u : easeIO(u), from = p.clone(), to = new THREE.Vector3(m.to[0], 0, m.to[1]);
         p.lerpVectors(from, to, k);
         if (active && from.distanceTo(to) > 1e-3) dir = Math.atan2(to.x - from.x, to.z - from.z);
         if (m.type === "move" && m.face_travel && dir !== null) yaw = dir - t.forward;
@@ -382,6 +402,7 @@ export class Engine {
 
     for (const t of this.things.values()) {
       if ((t as Actor).cards || (t as RigActor).rig) continue;
+      if (t.beh) this.applyBehavior(t, frame);
       const q = this.poseAt(t, time);
       t.root.visible = t.appear === undefined || time >= t.appear;
       const tr = this.tracks[t.id];
@@ -398,6 +419,129 @@ export class Engine {
     this.renderEffects(time);
     this.renderBakedEffects(frame);
     this.composer.render();
+  }
+
+  // ------------------------------------------------------------------ behaviors (what an object can do)
+  public events: { t: number; what: string }[] = [];
+
+  /** cut the named parts out of the model: every triangle whose centre lies in a part's box moves to its own mesh */
+  private splitParts(inner: THREE.Group, spec: Behavior) {
+    if (!spec.parts?.length) return;
+    inner.updateMatrixWorld(true);
+    const meshes: THREE.Mesh[] = []; inner.traverse((m: any) => { if (m.isMesh) meshes.push(m); });
+    const raw = new THREE.Box3().setFromObject(inner), sz = raw.getSize(new THREE.Vector3());
+    const abs = (f: XYZ) => new THREE.Vector3(raw.min.x + f[0] * sz.x, raw.min.y + f[1] * sz.y, raw.min.z + f[2] * sz.z);
+    const regions = spec.parts.map((p) => ({ min: abs(p.region.min), max: abs(p.region.max), hinge: abs(p.hinge), face: p.region.facing ? new THREE.Vector3(...p.region.facing).normalize() : null, faceMin: p.region.facing_min ?? 0.6 }));
+    this.partMeshes.set(inner, []);
+    for (const m of meshes) {
+      const g = m.geometry.clone().applyMatrix4(m.matrixWorld).toNonIndexed();
+      const pos = g.getAttribute("position"), tri = pos.count / 3, owner = new Int16Array(tri).fill(-1), c = new THREE.Vector3(), e1 = new THREE.Vector3(), e2 = new THREE.Vector3(), v0 = new THREE.Vector3(), v1 = new THREE.Vector3(), v2 = new THREE.Vector3();
+      for (let i = 0; i < tri; i++) {
+        c.set(0, 0, 0); for (let k = 0; k < 3; k++) c.add(new THREE.Vector3().fromBufferAttribute(pos, i * 3 + k)); c.multiplyScalar(1 / 3);
+        v0.fromBufferAttribute(pos, i * 3); v1.fromBufferAttribute(pos, i * 3 + 1); v2.fromBufferAttribute(pos, i * 3 + 2);
+        const nrm = e1.subVectors(v1, v0).cross(e2.subVectors(v2, v0)).normalize();
+        for (let r = 0; r < regions.length; r++) if ((!regions[r].face || nrm.dot(regions[r].face!) >= regions[r].faceMin) && c.x >= regions[r].min.x && c.x <= regions[r].max.x && c.y >= regions[r].min.y && c.y <= regions[r].max.y && c.z >= regions[r].min.z && c.z <= regions[r].max.z) { owner[i] = r; break; }
+      }
+      const build = (want: number) => {
+        const out = new THREE.BufferGeometry();
+        for (const [name, at] of Object.entries(g.attributes)) {
+          const a = at as THREE.BufferAttribute, list: number[] = [];
+          for (let i = 0; i < tri; i++) if (owner[i] === want) for (let k = 0; k < 3; k++) for (let j = 0; j < a.itemSize; j++) list.push(a.array[(i * 3 + k) * a.itemSize + j]);
+          if (list.length) out.setAttribute(name, new THREE.Float32BufferAttribute(list, a.itemSize));
+        }
+        return out.getAttribute("position") ? out : null;
+      };
+      const mat = m.material as THREE.Material, parent = m.parent!;
+      parent.remove(m);
+      const rest = build(-1);
+      const place = (geo: THREE.BufferGeometry, hinge?: THREE.Vector3) => {
+        const mesh = new THREE.Mesh(geo, mat); mesh.castShadow = true; mesh.receiveShadow = true;
+        if (hinge) mesh.position.copy(hinge).multiplyScalar(-1);
+        return mesh;
+      };
+      if (rest) inner.add(place(rest));
+      for (let r = 0; r < regions.length; r++) {
+        const geo = build(r); if (!geo) continue;
+        let pv = this.partPivots.get(inner)?.[r];
+        if (!pv) { pv = new THREE.Group(); pv.position.copy(regions[r].hinge); inner.add(pv); if (!this.partPivots.has(inner)) this.partPivots.set(inner, []); this.partPivots.get(inner)![r] = pv; }
+        pv.add(place(geo, regions[r].hinge));
+      }
+    }
+    // a part that caught no triangle is a mistake in the behavior file, not something to ignore
+    spec.parts.forEach((p, r) => { if (!this.partPivots.get(inner)?.[r]) this.warnings.push(`behavior ${spec.id}: part ${p.id} contains no triangles; check its region box`); });
+  }
+  private partMeshes = new Map<THREE.Group, THREE.Mesh[]>();
+  private partPivots = new Map<THREE.Group, THREE.Group[]>();
+
+  private makeBehavior(spec: Behavior, inner: THREE.Group, crush: THREE.Group, raw: THREE.Box3, k: number): BehRt {
+    const sz = raw.getSize(new THREE.Vector3()), n = Math.round(this.s.duration_s * this.s.fps) + 1;
+    const toRoot = (f: XYZ) => new THREE.Vector3(raw.min.x + f[0] * sz.x, raw.min.y + f[1] * sz.y, raw.min.z + f[2] * sz.z).multiplyScalar(k).add(inner.position);
+    const parts: PartRt[] = (spec.parts ?? []).map((p, r) => ({ id: p.id, pivot: this.partPivots.get(inner)?.[r] ?? new THREE.Group(), hingeRoot: toRoot(p.hinge),
+      axis: new THREE.Vector3(...p.axis).normalize(), openRad: rad(p.open_deg), angle: new Float32Array(n) }));
+    return { spec, crush, parts, crumple: new Float32Array(n) };
+  }
+
+  /** replay one frame of an object's behavior: part angles and crumple, computed once in buildBehaviors */
+  private applyBehavior(t: Thing, frame: number) {
+    const b = t.beh!, i = Math.min(frame, b.crumple.length - 1);
+    for (const p of b.parts) p.pivot.quaternion.setFromAxisAngle(p.axis, p.angle[i] * p.openRad);
+    const c = b.crumple[i], f = t.forward;
+    const m = new THREE.Matrix4().makeRotationY(f).multiply(new THREE.Matrix4().makeScale(1 + 0.05 * c, 1 + 0.04 * c, 1 - 0.18 * c)).multiply(new THREE.Matrix4().makeRotationY(-f));
+    b.crush.matrixAutoUpdate = false; b.crush.matrix.copy(m); b.crush.matrixWorldNeedsUpdate = true;
+  }
+
+  /** the logic of every object with a behavior file, simulated once in frame order: crashes, doors, crumple */
+  private buildBehaviors() {
+    const s = this.s, n = Math.round(s.duration_s * s.fps) + 1, dt = 1 / s.fps;
+    const solids = [...this.things.values()].filter((t) => t.solidR !== undefined);
+    const people = [...this.things.values()].filter((t) => (t as RigActor).rig || (t as Actor).cards);
+    for (const t of this.things.values()) {
+      const b = t.beh; if (!b) continue;
+      const P: THREE.Vector3[] = [], speed = new Float32Array(n), yawA = new Float32Array(n);
+      for (let f = 0; f < n; f++) { const q = this.poseAtRaw(t, f * dt); P.push(q.p.clone()); yawA[f] = q.yaw; }
+      for (let f = 0; f < n; f++) { const a = P[Math.max(0, f - 1)], c = P[Math.min(n - 1, f + 1)]; speed[f] = a.distanceTo(c) / (dt * (Math.min(n - 1, f + 1) - Math.max(0, f - 1))); }
+      // crash: moving fast enough, and the ground circles touch a solid thing it is moving towards
+      const cr = b.spec.crash, R = b.spec.collide_radius_m ?? t.radius * 0.8;
+      if (cr) {
+        search: for (let f = 1; f < n; f++) {
+          if (speed[f] < cr.min_speed_mps) continue;
+          const v = new THREE.Vector3().subVectors(P[Math.min(n - 1, f + 1)], P[f - 1]);
+          for (const o of solids) {
+            if (o === t) continue;
+            const op = this.poseAtRaw(o, f * dt).p, d = Math.hypot(P[f].x - op.x, P[f].z - op.z);
+            if (d <= R + o.solidR! && v.dot(new THREE.Vector3(op.x - P[f].x, 0, op.z - P[f].z)) > 0) {
+              t.crash = { t: f * dt, p: P[f].clone(), dir: new THREE.Vector3(v.x, 0, v.z).normalize(), speed: speed[f], other: o.id };
+              this.events.push({ t: +(f * dt).toFixed(2), what: `crash: ${t.id} hit ${o.id} at ${speed[f].toFixed(1)} m/s` });
+              break search;
+            }
+          }
+        }
+      }
+      const tc = t.crash?.t ?? Infinity;
+      for (const p of b.parts) {
+        const spec = b.spec.parts!.find((x) => x.id === p.id)!, rate = 1 / (spec.open_s ?? 0.7);
+        let a = 0, wasOpen = false;
+        for (let f = 0; f < n; f++) {
+          const time = f * dt, y = yawA[f], c = Math.cos(y), sn = Math.sin(y);
+          const hx = P[f].x + p.hingeRoot.x * c + p.hingeRoot.z * sn, hz = P[f].z - p.hingeRoot.x * sn + p.hingeRoot.z * c;
+          let target = 0;
+          for (const tr of b.spec.triggers ?? []) if (tr.part === p.id && speed[f] <= (tr.max_speed_mps ?? 0.3))
+            for (const who of people) { const w = this.poseAtRaw(who, time).p; if (Math.hypot(w.x - hx, w.z - hz) <= tr.within_m) target = 1; }
+          if (time >= tc && cr?.open_parts?.includes(p.id)) target = 1;
+          a += Math.max(-rate * dt, Math.min(rate * dt, target - a));
+          p.angle[f] = a;
+          const open = a > 0.5; if (open !== wasOpen) { this.events.push({ t: +time.toFixed(2), what: `${t.id}: ${p.id} ${open ? "opens" : "closes"}` }); wasOpen = open; }
+        }
+      }
+      if (cr && t.crash) {
+        for (let f = 0; f < n; f++) { const u = clamp01((f * dt - tc) / 0.14); b.crumple[f] = f * dt < tc ? 0 : cr.crumple * (1 - Math.pow(1 - u, 3)); }
+        const at = t.crash.t, sz = t.height;
+        this.fx.push({ def: { type: "burst", at_s: at, dur_s: 0.5, on: t.id, size_m: sz * 1.1, color: "#ffd24a" }, card: this.fxCard(500, 500) });
+        this.fx.push({ def: { type: "stars", at_s: at + 0.1, dur_s: 1.0, on: t.id, size_m: sz * 0.9, lift_m: sz * 0.9 }, card: this.fxCard(420, 210) });
+        this.fx.push({ def: { type: "puff", at_s: at, dur_s: 1.2, on: t.id, size_m: sz * 1.3, color: "#e8d8c0" }, card: this.fxCard(300, 300) });
+        s.kicks = [...(s.kicks ?? []), { at_s: at, amp: cr.kick ?? 1.2 }];
+      }
+    }
   }
 
   /** per-frame ground speed, gait phase and heading of each rig, from its scripted moves (done once, in frame order) */
