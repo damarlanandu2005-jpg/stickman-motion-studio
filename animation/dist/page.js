@@ -31101,29 +31101,35 @@ function actionPose(a, ta, c) {
     }
     case "jump": {
       const d = a.dur_s ?? 1, u = clamp01(ta / d), h = a.height_m ?? 1;
-      let pose, lift = 0;
-      if (u < 0.22) pose = mixPose(KEY.stand, KEY.crouch, sm(u / 0.22));
-      else if (u < 0.82) {
-        const v = (u - 0.22) / 0.6;
+      let lift = 0;
+      if (u >= 0.24 && u < 0.84) {
+        const v = (u - 0.24) / 0.6;
         lift = h * 4 * v * (1 - v);
-        pose = v < 0.35 ? mixPose(KEY.crouch, KEY.stretch, sm(v / 0.35)) : mixPose(KEY.stretch, KEY.tuck, sm((v - 0.35) / 0.65));
-        if (v > 0.8) pose = mixPose(pose, KEY.stand, sm((v - 0.8) / 0.2) * 0.6);
-      } else pose = mixPose(mixPose(KEY.tuck, KEY.crouch, sm((u - 0.82) / 0.06)), KEY.stand, sm((u - 0.88) / 0.12));
+      }
+      const pose = keyed([
+        [0, KEY.stand],
+        [0.24, KEY.crouch],
+        [0.42, KEY.stretch],
+        [0.62, KEY.tuck],
+        [0.76, mixPose(KEY.tuck, KEY.stand, 0.75)],
+        [0.9, mixPose(KEY.crouch, KEY.stand, 0.4)],
+        [1, KEY.stand]
+      ], u);
       return { pose, lock: true, lift };
     }
     case "fall": {
       const d = a.dur_s ?? 1.1, t = Math.min(ta, d), k = ta / d;
       const flail = Math.exp(-Math.max(0, ta - 0.3) * 2.2) * Math.min(1, ta / 0.12);
-      const pose = keyed([
+      const pose = { ...keyed([
         [0, KEY.stand],
         [0.2 * d, { ...KEY.stand, pitch: -0.2, spineX: -0.1, LShX: -0.9, RShX: -0.9, LAbd: 1.1, RAbd: 1.1, LEl: 0.2, REl: 0.2, headX: -0.4, LKnee: 0.2, RKnee: 0.2 }],
         [0.6 * d, { ...KEY.stand, pitch: -0.95, LHip: 0.7, RHip: 0.5, LKnee: 0.5, RKnee: 0.3, LAbd: 1.3, RAbd: 1.3, LShX: -0.2, RShX: -0.2, headX: -0.3 }],
         [d, KEY.lying]
-      ], t);
+      ], t) };
       if (k < 1.2) {
-        pose.LShX += 0.5 * Math.sin(ta * 17) * flail;
-        pose.RShX -= 0.5 * Math.sin(ta * 17) * flail;
-        pose.LAbd += 0.2 * Math.sin(ta * 21) * flail;
+        pose.LShX = (pose.LShX ?? 0) + 0.5 * Math.sin(ta * 17) * flail;
+        pose.RShX = (pose.RShX ?? 0) - 0.5 * Math.sin(ta * 17) * flail;
+        pose.LAbd = (pose.LAbd ?? 0) + 0.2 * Math.sin(ta * 21) * flail;
       }
       return { pose, lock: true, lift: 0 };
     }
