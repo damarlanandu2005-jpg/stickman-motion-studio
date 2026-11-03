@@ -123,15 +123,35 @@ def render_frame(lib: Library, shot: dict, local_t: float) -> Image.Image:
     cw, ch = scene.width / z, scene.height / z
     x0 = min(max(fx * scene.width - cw / 2, 0), scene.width - cw)
     y0 = min(max(fy * scene.height - ch / 2, 0), scene.height - ch)
-    return scene.convert("RGB").resize((W, H), Image.BICUBIC, box=(x0, y0, x0 + cw, y0 + ch))
+    out = scene.convert("RGB").resize((W, H), Image.BICUBIC, box=(x0, y0, x0 + cw, y0 + ch))
+    for a, b, text, red in shot.get("caps", []):
+        if a <= local_t < b:
+            _caption(out, text, red)
+    return out
 
 
-def render_video(shots: list[dict], out: Path, root: Path = ROOT, outfit: str = "explorer") -> dict:
+_FONT = None
+
+
+def _caption(im: Image.Image, text: str, red: bool) -> None:
+    """One big word, white with a black outline (red for the key word), below the feet."""
+    global _FONT
+    from PIL import ImageDraw, ImageFont
+    if _FONT is None:
+        _FONT = ImageFont.truetype("/usr/share/fonts/truetype/google-fonts/Poppins-Bold.ttf", 96)
+    d = ImageDraw.Draw(im)
+    text = text.upper()
+    w = d.textlength(text, font=_FONT)
+    d.text(((W - w) / 2, int(H * 0.855)), text, font=_FONT, fill=(220, 30, 30) if red else (255, 255, 255),
+           stroke_width=8, stroke_fill=(0, 0, 0))
+
+
+def render_video(shots: list[dict], out: Path, root: Path = ROOT, outfit: str = "explorer", audio: Path | None = None) -> dict:
     lib = Library(root, outfit)
     total = sum(s["dur"] for s in shots)
     frames = int(round(total * FPS))
     cmd = ["ffmpeg", "-nostdin", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS),
-           "-i", "-", "-c:v", "libx264", "-preset", "veryfast", "-crf", "20", "-pix_fmt", "yuv420p", "-movflags", "+faststart", str(out)]
+           "-i", "-", *(["-i", str(audio)] if audio else []), "-c:v", "libx264", "-preset", "veryfast", "-crf", "20", "-pix_fmt", "yuv420p", *(["-c:a", "aac", "-b:a", "160k", "-shortest"] if audio else []), "-movflags", "+faststart", str(out)]
     proc = subprocess.Popen(cmd, stdin=subprocess.PIPE)
     starts = []
     acc = 0.0

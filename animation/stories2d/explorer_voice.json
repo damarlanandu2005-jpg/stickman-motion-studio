@@ -1,0 +1,502 @@
+{
+ "voice": "af_heart",
+ "speed": 1.12,
+ "chunks": [
+  {
+   "text": "This explorer had *one* map.",
+   "bg": "jungle",
+   "cam": {
+    "z0": 1.0,
+    "z1": 1.08,
+    "x0": 0.5,
+    "x1": 0.44,
+    "y0": 0.5,
+    "y1": 0.5
+   },
+   "actors": [
+    {
+     "pose": 7,
+     "x": 0.5,
+     "feet": 0.83,
+     "height": 0.36,
+     "flip": false,
+     "faces": [
+      [
+       0,
+       "neutral"
+      ],
+      [
+       0.35,
+       "happy"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "text": "It led to a lost temple.",
+   "bg": "jungle",
+   "cam": {
+    "z0": 1.0,
+    "z1": 1.08,
+    "x0": 0.5,
+    "x1": 0.56,
+    "y0": 0.5,
+    "y1": 0.5
+   },
+   "actors": [
+    {
+     "pose": 1,
+     "x": 0.4,
+     "feet": 0.83,
+     "height": 0.36,
+     "flip": false,
+     "faces": [
+      [
+       0,
+       "neutral"
+      ],
+      [
+       0.35,
+       "smug"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "text": "Everyone said it was *fake*.",
+   "bg": "forest",
+   "cam": {
+    "z0": 1.1,
+    "z1": 1.1800000000000002,
+    "x0": 0.5,
+    "x1": 0.44,
+    "y0": 0.5,
+    "y1": 0.5
+   },
+   "actors": [
+    {
+     "pose": 4,
+     "x": 0.6,
+     "feet": 0.83,
+     "height": 0.36,
+     "flip": false,
+     "faces": [
+      [
+       0,
+       "neutral"
+      ],
+      [
+       0.35,
+       "smug"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "text": "He walked for three days.",
+   "bg": "forest",
+   "cam": {
+    "z0": 1.0,
+    "z1": 1.08,
+    "x0": 0.5,
+    "x1": 0.56,
+    "y0": 0.5,
+    "y1": 0.5
+   },
+   "actors": [
+    {
+     "pose": 8,
+     "x": 0.5,
+     "feet": 0.83,
+     "height": 0.34,
+     "flip": false,
+     "faces": [
+      [
+       0,
+       "neutral"
+      ],
+      [
+       0.35,
+       "neutral"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "text": "Then the map ended.",
+   "bg": "desert",
+   "cam": {
+    "z0": 1.0,
+    "z1": 1.08,
+    "x0": 0.5,
+    "x1": 0.44,
+    "y0": 0.5,
+    "y1": 0.5
+   },
+   "actors": [
+    {
+     "pose": 0,
+     "x": 0.5,
+     "feet": 0.83,
+     "height": 0.36,
+     "flip": false,
+     "faces": [
+      [
+       0,
+       "neutral"
+      ],
+      [
+       0.35,
+       "surprised"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "text": "Only *sand* in every direction.",
+   "bg": "desert",
+   "cam": {
+    "z0": 1.1,
+    "z1": 1.1800000000000002,
+    "x0": 0.5,
+    "x1": 0.56,
+    "y0": 0.5,
+    "y1": 0.5
+   },
+   "actors": [
+    {
+     "pose": 3,
+     "x": 0.5,
+     "feet": 0.83,
+     "height": 0.36,
+     "flip": false,
+     "faces": [
+      [
+       0,
+       "neutral"
+      ],
+      [
+       0.35,
+       "scared"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "text": "But he heard a strange sound.",
+   "bg": "cave",
+   "cam": {
+    "z0": 1.0,
+    "z1": 1.08,
+    "x0": 0.5,
+    "x1": 0.44,
+    "y0": 0.5,
+    "y1": 0.5
+   },
+   "actors": [
+    {
+     "pose": 5,
+     "x": 0.55,
+     "feet": 0.83,
+     "height": 0.36,
+     "flip": false,
+     "faces": [
+      [
+       0,
+       "neutral"
+      ],
+      [
+       0.35,
+       "scared"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "text": "Under his feet, a *tunnel*.",
+   "bg": "mine_tunnel",
+   "cam": {
+    "z0": 1.0,
+    "z1": 1.08,
+    "x0": 0.5,
+    "x1": 0.56,
+    "y0": 0.5,
+    "y1": 0.5
+   },
+   "actors": [
+    {
+     "pose": 10,
+     "x": 0.5,
+     "feet": 0.83,
+     "height": 0.3,
+     "flip": false,
+     "faces": [
+      [
+       0,
+       "neutral"
+      ],
+      [
+       0.35,
+       "surprised"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "text": "He climbed down slowly.",
+   "bg": "mine_tunnel",
+   "cam": {
+    "z0": 1.1,
+    "z1": 1.1800000000000002,
+    "x0": 0.5,
+    "x1": 0.44,
+    "y0": 0.5,
+    "y1": 0.5
+   },
+   "actors": [
+    {
+     "pose": 8,
+     "x": 0.45,
+     "feet": 0.83,
+     "height": 0.34,
+     "flip": false,
+     "faces": [
+      [
+       0,
+       "neutral"
+      ],
+      [
+       0.35,
+       "neutral"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "text": "The walls were covered in gold writing.",
+   "bg": "ancient_egypt",
+   "cam": {
+    "z0": 1.0,
+    "z1": 1.08,
+    "x0": 0.5,
+    "x1": 0.56,
+    "y0": 0.5,
+    "y1": 0.5
+   },
+   "actors": [
+    {
+     "pose": 6,
+     "x": 0.5,
+     "feet": 0.83,
+     "height": 0.36,
+     "flip": false,
+     "faces": [
+      [
+       0,
+       "neutral"
+      ],
+      [
+       0.35,
+       "surprised"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "text": "Nobody had seen this for *three thousand* years.",
+   "bg": "ancient_egypt",
+   "cam": {
+    "z0": 1.0,
+    "z1": 1.08,
+    "x0": 0.5,
+    "x1": 0.44,
+    "y0": 0.5,
+    "y1": 0.5
+   },
+   "actors": [
+    {
+     "pose": 3,
+     "x": 0.5,
+     "feet": 0.83,
+     "height": 0.36,
+     "flip": false,
+     "faces": [
+      [
+       0,
+       "neutral"
+      ],
+      [
+       0.35,
+       "happy"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "text": "Then the floor began to shake.",
+   "bg": "cave",
+   "cam": {
+    "z0": 1.1,
+    "z1": 1.1800000000000002,
+    "x0": 0.5,
+    "x1": 0.56,
+    "y0": 0.5,
+    "y1": 0.5
+   },
+   "actors": [
+    {
+     "pose": 11,
+     "x": 0.5,
+     "feet": 0.83,
+     "height": 0.32,
+     "flip": false,
+     "faces": [
+      [
+       0,
+       "neutral"
+      ],
+      [
+       0.35,
+       "scared"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "text": "He ran for his *life*.",
+   "bg": "cave",
+   "cam": {
+    "z0": 1.0,
+    "z1": 1.08,
+    "x0": 0.5,
+    "x1": 0.44,
+    "y0": 0.5,
+    "y1": 0.5
+   },
+   "actors": [
+    {
+     "pose": 9,
+     "x": 0.55,
+     "feet": 0.83,
+     "height": 0.34,
+     "flip": false,
+     "faces": [
+      [
+       0,
+       "neutral"
+      ],
+      [
+       0.35,
+       "scared"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "text": "Back outside, the wind was freezing.",
+   "bg": "snow_mountain",
+   "cam": {
+    "z0": 1.0,
+    "z1": 1.08,
+    "x0": 0.5,
+    "x1": 0.56,
+    "y0": 0.5,
+    "y1": 0.5
+   },
+   "actors": [
+    {
+     "pose": 5,
+     "x": 0.5,
+     "feet": 0.83,
+     "height": 0.36,
+     "flip": false,
+     "faces": [
+      [
+       0,
+       "neutral"
+      ],
+      [
+       0.35,
+       "sad"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "text": "But in his hand, a piece of *gold*.",
+   "bg": "snow_mountain",
+   "cam": {
+    "z0": 1.1,
+    "z1": 1.1800000000000002,
+    "x0": 0.5,
+    "x1": 0.44,
+    "y0": 0.5,
+    "y1": 0.5
+   },
+   "actors": [
+    {
+     "pose": 1,
+     "x": 0.45,
+     "feet": 0.83,
+     "height": 0.36,
+     "flip": false,
+     "faces": [
+      [
+       0,
+       "neutral"
+      ],
+      [
+       0.35,
+       "laugh"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "text": "The map was *real*.",
+   "bg": "jungle",
+   "cam": {
+    "z0": 1.0,
+    "z1": 1.08,
+    "x0": 0.5,
+    "x1": 0.56,
+    "y0": 0.5,
+    "y1": 0.5
+   },
+   "actors": [
+    {
+     "pose": 4,
+     "x": 0.5,
+     "feet": 0.83,
+     "height": 0.36,
+     "flip": false,
+     "faces": [
+      [
+       0,
+       "neutral"
+      ],
+      [
+       0.35,
+       "happy"
+      ]
+     ]
+    }
+   ]
+  }
+ ]
+}
