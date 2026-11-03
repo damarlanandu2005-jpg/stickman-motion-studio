@@ -22,6 +22,9 @@ STYLE = ("Flat 2D vector cartoon in the exact style of the reference stickman ch
          "small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. "
          "One complete vertical 9:16 illustration with a coherent detailed background. "
          "No text, no letters, no captions, no watermark, no panel borders, no collage.")
+STYLE_OBJECT = ("Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. "
+                "There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. "
+                "No text, no letters, no captions, no watermark, no panel borders.")
 FRAMES = {
     "wide": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture.",
     "medium": "Medium shot: the characters are shown from the chest up and fill the lower half of the frame; the background is visible above and behind them.",
@@ -51,8 +54,9 @@ def prompt_for(shot: dict) -> tuple[str, list[str]]:
         parts.append("Objects: " + shot["props"] + ".")
     if shot.get("mood"):
         parts.append("Mood and light: " + shot["mood"] + ".")
-    if not chars:  # the style reference shows a character; say clearly that this picture has none
-        parts.append("There is NO stickman, NO character, NO head and NO face anywhere in this picture, only the objects and the place.")
+    if not chars:  # object-only picture: no reference (it would leak the mascot face onto objects) and a style line without heads
+        parts.append(STYLE_OBJECT)
+        return " ".join(parts), refs
     parts.append(STYLE)
     return " ".join(parts), refs
 
@@ -61,8 +65,6 @@ def make_jobs(shots: list[dict], seed0: int = 6100) -> dict:
     jobs = []
     for i, shot in enumerate(shots):
         text, refs = prompt_for(shot)
-        if not refs:  # the model needs one reference for the style even in object-only pictures
-            refs = [COSTUMES["explorer"]]
         jobs.append({"id": shot["id"], "prompt": text, "refs": refs, "seed": seed0 + i, "width": 576, "height": 1024})
     return {"jobs": jobs}
 

@@ -22,9 +22,10 @@ class ScenePlanTests(unittest.TestCase):
         self.assertIn("reference image 2", text)
         self.assertIn("Wide shot", text)
 
-    def test_object_only_shot_still_gets_a_style_reference(self):
+    def test_object_only_shot_has_no_reference_and_no_face_words(self):
         jobs = make_jobs([{"id": "x", "frame": "insert", "props": "a clock"}])["jobs"]
-        self.assertEqual(len(jobs[0]["refs"]), 1)
+        self.assertEqual(jobs[0]["refs"], [])
+        self.assertNotIn("round white head", jobs[0]["prompt"])
         self.assertEqual((jobs[0]["width"], jobs[0]["height"]), (576, 1024))
 
     def test_every_costume_picture_exists(self):

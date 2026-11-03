@@ -73,8 +73,9 @@ try:
             for r in job["refs"]:
                 im = Image.open(Path(cfg["refdir"]) / r).convert("RGB"); im.thumbnail((1024, 1024)); refs.append(im)
             torch.cuda.synchronize(); t = time.monotonic()
-            img = pipe(prompt=job["prompt"], image=refs, width=job["width"], height=job["height"], num_inference_steps=cfg["steps"],
-                       guidance_scale=cfg["guidance"], generator=torch.Generator("cpu").manual_seed(job["seed"])).images[0]
+            kw = {"image": refs} if refs else {}  # object-only pictures use no reference, so no mascot face leaks onto objects
+            img = pipe(prompt=job["prompt"], width=job["width"], height=job["height"], num_inference_steps=cfg["steps"],
+                       guidance_scale=cfg["guidance"], generator=torch.Generator("cpu").manual_seed(job["seed"]), **kw).images[0]
             torch.cuda.synchronize(); secs = round(time.monotonic() - t, 2)
             p = out / f"pose_{name}.png"; img.save(p)
             item.update({"file": p.name, "seconds": secs, "width": img.width, "height": img.height,

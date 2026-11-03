@@ -42,10 +42,8 @@
   },
   {
    "id": "c05",
-   "prompt": "Close-up of the object only. No characters in the picture. Place: plain grey background. Objects: a big black traffic light with all lights off. There is NO stickman, NO character, NO head and NO face anywhere in this picture, only the objects and the place. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_explorer.png"
-   ],
+   "prompt": "Close-up of the object only. No characters in the picture. Place: plain grey background. Objects: a big black traffic light with all lights off. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
+   "refs": [],
    "seed": 6104,
    "width": 576,
    "height": 1024
@@ -73,10 +71,8 @@
   },
   {
    "id": "c08",
-   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Place: front of a grey police department building with columns and steps and a sign. There is NO stickman, NO character, NO head and NO face anywhere in this picture, only the objects and the place. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_explorer.png"
-   ],
+   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Place: front of a grey police department building with columns and steps and a sign. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
+   "refs": [],
    "seed": 6107,
    "width": 576,
    "height": 1024
@@ -114,10 +110,8 @@
   },
   {
    "id": "c12",
-   "prompt": "A flat plain colour background with one big simple object in the centre. No characters and no scenery. Place: plain orange background. Objects: a big round white clock face showing 12. There is NO stickman, NO character, NO head and NO face anywhere in this picture, only the objects and the place. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_explorer.png"
-   ],
+   "prompt": "A flat plain colour background with one big simple object in the centre. No characters and no scenery. Place: plain orange background. Objects: a big round white clock face showing 12. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
+   "refs": [],
    "seed": 6111,
    "width": 576,
    "height": 1024
@@ -145,10 +139,8 @@
   },
   {
    "id": "c15",
-   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Place: city street with a blue armoured police truck and shops. There is NO stickman, NO character, NO head and NO face anywhere in this picture, only the objects and the place. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_explorer.png"
-   ],
+   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Place: city street with a blue armoured police truck and shops. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
+   "refs": [],
    "seed": 6114,
    "width": 576,
    "height": 1024
@@ -175,10 +167,8 @@
   },
   {
    "id": "c18",
-   "prompt": "Close-up of the object only. No characters in the picture. Place: dark grey bomb casing. Objects: a digital timer showing 0:30 above red green yellow and blue wires. There is NO stickman, NO character, NO head and NO face anywhere in this picture, only the objects and the place. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_explorer.png"
-   ],
+   "prompt": "Close-up of the object only. No characters in the picture. Place: dark grey bomb casing. Objects: a digital timer showing 0:30 above red green yellow and blue wires. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
+   "refs": [],
    "seed": 6117,
    "width": 576,
    "height": 1024
@@ -205,20 +195,16 @@
   },
   {
    "id": "c21",
-   "prompt": "A flat plain colour background with one big simple object in the centre. No characters and no scenery. Place: orange background. Objects: three blue blueprint sheets with simple technical diagrams of a factory. There is NO stickman, NO character, NO head and NO face anywhere in this picture, only the objects and the place. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_explorer.png"
-   ],
+   "prompt": "A flat plain colour background with one big simple object in the centre. No characters and no scenery. Place: orange background. Objects: three blue blueprint sheets with simple technical diagrams of a factory. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
+   "refs": [],
    "seed": 6120,
    "width": 576,
    "height": 1024
   },
   {
    "id": "c22",
-   "prompt": "A flat plain colour background with one big simple object in the centre. No characters and no scenery. Place: plain blue background. Objects: a blueprint drawing of four batteries in a row. There is NO stickman, NO character, NO head and NO face anywhere in this picture, only the objects and the place. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_explorer.png"
-   ],
+   "prompt": "A flat plain colour background with one big simple object in the centre. No characters and no scenery. Place: plain blue background. Objects: a blueprint drawing of four batteries in a row. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
+   "refs": [],
    "seed": 6121,
    "width": 576,
    "height": 1024
@@ -235,20 +221,16 @@
   },
   {
    "id": "c24",
-   "prompt": "A flat plain colour background with one big simple object in the centre. No characters and no scenery. Place: plain blue background. Objects: a blueprint circuit board drawing with a hand pointing at a terminal. There is NO stickman, NO character, NO head and NO face anywhere in this picture, only the objects and the place. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_explorer.png"
-   ],
+   "prompt": "A flat plain colour background with one big simple object in the centre. No characters and no scenery. Place: plain blue background. Objects: a blueprint circuit board drawing with a hand pointing at a terminal. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
+   "refs": [],
    "seed": 6123,
    "width": 576,
    "height": 1024
   },
   {
    "id": "c25",
-   "prompt": "A flat plain colour background with one big simple object in the centre. No characters and no scenery. Place: plain orange background. Objects: four coloured paper strips red green yellow blue fanned out. There is NO stickman, NO character, NO head and NO face anywhere in this picture, only the objects and the place. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_explorer.png"
-   ],
+   "prompt": "A flat plain colour background with one big simple object in the centre. No characters and no scenery. Place: plain orange background. Objects: four coloured paper strips red green yellow blue fanned out. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
+   "refs": [],
    "seed": 6124,
    "width": 576,
    "height": 1024
@@ -265,10 +247,8 @@
   },
   {
    "id": "c27",
-   "prompt": "A flat plain colour background with one big simple object in the centre. No characters and no scenery. Place: plain beige background. Objects: a tear-off wall calendar showing YEAR 2. There is NO stickman, NO character, NO head and NO face anywhere in this picture, only the objects and the place. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_explorer.png"
-   ],
+   "prompt": "A flat plain colour background with one big simple object in the centre. No characters and no scenery. Place: plain beige background. Objects: a tear-off wall calendar showing YEAR 2. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
+   "refs": [],
    "seed": 6126,
    "width": 576,
    "height": 1024
@@ -286,10 +266,8 @@
   },
   {
    "id": "c29",
-   "prompt": "Close-up of the object only. No characters in the picture. Place: grey background. Objects: a bundle of grey twisted wires. There is NO stickman, NO character, NO head and NO face anywhere in this picture, only the objects and the place. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_explorer.png"
-   ],
+   "prompt": "Close-up of the object only. No characters in the picture. Place: grey background. Objects: a bundle of grey twisted wires. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
+   "refs": [],
    "seed": 6128,
    "width": 576,
    "height": 1024
@@ -306,10 +284,8 @@
   },
   {
    "id": "c31",
-   "prompt": "Close-up of the object only. No characters in the picture. Place: dark background. Objects: a timer showing 0:08 above a cut bundle of red blue yellow wires with sparks. There is NO stickman, NO character, NO head and NO face anywhere in this picture, only the objects and the place. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_explorer.png"
-   ],
+   "prompt": "Close-up of the object only. No characters in the picture. Place: dark background. Objects: a timer showing 0:08 above a cut bundle of red blue yellow wires with sparks. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
+   "refs": [],
    "seed": 6130,
    "width": 576,
    "height": 1024
@@ -336,30 +312,24 @@
   },
   {
    "id": "c34",
-   "prompt": "Close-up of the object only. No characters in the picture. Place: pale grey background. Objects: a grey bundle of wires with a timer showing 0:05. There is NO stickman, NO character, NO head and NO face anywhere in this picture, only the objects and the place. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_explorer.png"
-   ],
+   "prompt": "Close-up of the object only. No characters in the picture. Place: pale grey background. Objects: a grey bundle of wires with a timer showing 0:05. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
+   "refs": [],
    "seed": 6133,
    "width": 576,
    "height": 1024
   },
   {
    "id": "c35",
-   "prompt": "Close-up of the object only. No characters in the picture. Place: pale grey background. Objects: a tangled knot of grey wires with a timer showing 0:03 and a red wire in a clamp. There is NO stickman, NO character, NO head and NO face anywhere in this picture, only the objects and the place. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_explorer.png"
-   ],
+   "prompt": "Close-up of the object only. No characters in the picture. Place: pale grey background. Objects: a tangled knot of grey wires with a timer showing 0:03 and a red wire in a clamp. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
+   "refs": [],
    "seed": 6134,
    "width": 576,
    "height": 1024
   },
   {
    "id": "c36",
-   "prompt": "Close-up of the object only. No characters in the picture. Place: dark crate in a warehouse. Objects: a digital timer showing 0:01 above red blue yellow green wires on a wooden crate. There is NO stickman, NO character, NO head and NO face anywhere in this picture, only the objects and the place. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_explorer.png"
-   ],
+   "prompt": "Close-up of the object only. No characters in the picture. Place: dark crate in a warehouse. Objects: a digital timer showing 0:01 above red blue yellow green wires on a wooden crate. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
+   "refs": [],
    "seed": 6135,
    "width": 576,
    "height": 1024
@@ -387,10 +357,8 @@
   },
   {
    "id": "c39",
-   "prompt": "Close-up of the object only. No characters in the picture. Place: city skyline at sunset over water, orange and purple sky. There is NO stickman, NO character, NO head and NO face anywhere in this picture, only the objects and the place. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_explorer.png"
-   ],
+   "prompt": "Close-up of the object only. No characters in the picture. Place: city skyline at sunset over water, orange and purple sky. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
+   "refs": [],
    "seed": 6138,
    "width": 576,
    "height": 1024
@@ -408,40 +376,32 @@
   },
   {
    "id": "a24",
-   "prompt": "Close-up of the object only. No characters in the picture. Place: pale snow background. Objects: a wooden post with a coin flying above it and small sparkles. There is NO stickman, NO character, NO head and NO face anywhere in this picture, only the objects and the place. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_explorer.png"
-   ],
+   "prompt": "Close-up of the object only. No characters in the picture. Place: pale snow background. Objects: a wooden post with a coin flying above it and small sparkles. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
+   "refs": [],
    "seed": 6140,
    "width": 576,
    "height": 1024
   },
   {
    "id": "b10",
-   "prompt": "Close-up of the object only. No characters in the picture. Place: night sky with stars. Objects: a big military cargo plane in the distance with an orange explosion flash. There is NO stickman, NO character, NO head and NO face anywhere in this picture, only the objects and the place. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_explorer.png"
-   ],
+   "prompt": "Close-up of the object only. No characters in the picture. Place: night sky with stars. Objects: a big military cargo plane in the distance with an orange explosion flash. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
+   "refs": [],
    "seed": 6141,
    "width": 576,
    "height": 1024
   },
   {
    "id": "b11",
-   "prompt": "Close-up of the object only. No characters in the picture. Place: night sky. Objects: a giant orange fire explosion with dark smoke over a black ridge and a grey rock in front. There is NO stickman, NO character, NO head and NO face anywhere in this picture, only the objects and the place. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_explorer.png"
-   ],
+   "prompt": "Close-up of the object only. No characters in the picture. Place: night sky. Objects: a giant orange fire explosion with dark smoke over a black ridge and a grey rock in front. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
+   "refs": [],
    "seed": 6142,
    "width": 576,
    "height": 1024
   },
   {
    "id": "b12",
-   "prompt": "Close-up of the object only. No characters in the picture. Place: night sky. Objects: a bright yellow and orange explosion with black smoke over a grey rock. There is NO stickman, NO character, NO head and NO face anywhere in this picture, only the objects and the place. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_explorer.png"
-   ],
+   "prompt": "Close-up of the object only. No characters in the picture. Place: night sky. Objects: a bright yellow and orange explosion with black smoke over a grey rock. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
+   "refs": [],
    "seed": 6143,
    "width": 576,
    "height": 1024
