@@ -1,0 +1,108 @@
+{
+  "run_token": "5f075e9d34e1a29420bbb8b8af600e1f",
+  "run_id": "63f6c5e4f6d9455ab94c419bf5afff22",
+  "commit_sha": "25d61d3f7655d8ec0d16be3473e92c1f48c7fce0",
+  "workflow_run_id": "41710353600",
+  "status": "completed",
+  "error_message": null,
+  "poses": [
+    "probe_wide",
+    "probe_medium",
+    "probe_close",
+    "probe_insert",
+    "probe_card",
+    "probe_group"
+  ],
+  "seeds": [
+    0
+  ],
+  "reference": "animation/reference_art/",
+  "environment": {
+    "python": "3.13.16",
+    "torch": "2.11.0+cu130",
+    "cuda_available": true,
+    "gpu_names": [
+      "Tesla T4",
+      "Tesla T4"
+    ]
+  },
+  "klein": {
+    "stage": "klein",
+    "status": "success",
+    "error": null,
+    "pictures": [
+      {
+        "pose": "probe_wide",
+        "seed": 6100,
+        "status": "success",
+        "file": "pose_probe_wide.png",
+        "seconds": 34.54,
+        "width": 576,
+        "height": 1024,
+        "sha256": "4bbd14619f97d6580122800a1b3633a9d3f13a1542a925cf46206cbf599b15e4"
+      },
+      {
+        "pose": "probe_medium",
+        "seed": 6101,
+        "status": "success",
+        "file": "pose_probe_medium.png",
+        "seconds": 28.39,
+        "width": 576,
+        "height": 1024,
+        "sha256": "91e82958681016035cdc5d46d2bd92fd8bf4410f43f0c44567909aa4604e8658"
+      },
+      {
+        "pose": "probe_close",
+        "seed": 6102,
+        "status": "success",
+        "file": "pose_probe_close.png",
+        "seconds": 27.86,
+        "width": 576,
+        "height": 1024,
+        "sha256": "c92b608a1b1ce7fadb00f65bfbe35818bfe0a5d919e38493b699a595f2e43815"
+      },
+      {
+        "pose": "probe_insert",
+        "seed": 6103,
+        "status": "success",
+        "file": "pose_probe_insert.png",
+        "seconds": 28.88,
+        "width": 576,
+        "height": 1024,
+        "sha256": "d516a22e8b407dc8c503d27ca23dc280658ae5d7b0d802c0ee9ee5df34e7b163"
+      },
+      {
+        "pose": "probe_card",
+        "seed": 6104,
+        "status": "success",
+        "file": "pose_probe_card.png",
+        "seconds": 28.22,
+        "width": 576,
+        "height": 1024,
+        "sha256": "622e03d33bc0815f35d878fff011a301e91ce0553beda0978278c92c266194f6"
+      },
+      {
+        "pose": "probe_group",
+        "seed": 6105,
+        "status": "success",
+        "file": "pose_probe_group.png",
+        "seconds": 46.21,
+        "width": 576,
+        "height": 1024,
+        "sha256": "9902d7f5fdd28c2228208a9b673c3eb971a6617538ffd0f6447911871376a0a0"
+      }
+    ],
+    "download_seconds": 111.5,
+    "load_seconds": 65.6,
+    "peak_vram_gib": 8.73
+  },
+  "files": [
+    "pose_probe_wide.png",
+    "pose_probe_medium.png",
+    "pose_probe_close.png",
+    "pose_probe_insert.png",
+    "pose_probe_card.png",
+    "pose_probe_group.png"
+  ],
+  "notebook_duration_seconds": 439.1
+}

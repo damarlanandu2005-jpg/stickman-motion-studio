@@ -1,0 +1,93 @@
+{
+  "identity": {
+    "run_id": "63f6c5e4f6d9455ab94c419bf5afff22",
+    "run_token": "5f075e9d34e1a29420bbb8b8af600e1f",
+    "commit_sha": "25d61d3f7655d8ec0d16be3473e92c1f48c7fce0",
+    "workflow_run_id": "41710353600",
+    "workflow_run_attempt": "1",
+    "created_utc": "2026-11-03T20:13:33+00:00"
+  },
+  "kernel": "narasimhadamarla/stickman-motion-studio-scene-batch",
+  "pushed_version": 1,
+  "push_attempts": 1,
+  "observations": [
+    {
+      "at": "2026-11-03T20:13:33+00:00",
+      "event": "notebook_stamped",
+      "run_token_written": true
+    },
+    {
+      "at": "2026-11-03T20:13:35+00:00",
+      "event": "push_response",
+      "attempt": 1,
+      "exit_code": 0,
+      "text": "Kernel version 1 successfully pushed.  Please check progress at https://www.kaggle.com/code/narasimhadamarla/stickman-motion-studio-scene-batch"
+    },
+    {
+      "at": "2026-11-03T20:13:35+00:00",
+      "event": "push_accepted",
+      "version": 1
+    },
+    {
+      "at": "2026-11-03T20:13:36+00:00",
+      "event": "status",
+      "state": "QUEUED"
+    },
+    {
+      "at": "2026-11-03T20:14:06+00:00",
+      "event": "status",
+      "state": "RUNNING"
+    },
+    {
+      "at": "2026-11-03T20:21:44+00:00",
+      "event": "status",
+      "state": "COMPLETE"
+    },
+    {
+      "at": "2026-11-03T20:21:48+00:00",
+      "event": "download",
+      "attempt": 1,
+      "exit_code": 0,
+      "text": "ult_klein.json to kaggle-poses-output/outputs\n\n  0%|          | 0.00/1.77k [00:00<?, ?B/s]\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1.77k/1.77k [00:00<00:00, 11.2MB/s]\n\nOutput file downloaded to kaggle-poses-output/outputs/result_klein.json\nKernel log downloaded to kaggle-poses-output/stickman-motion-studio-scene-batch.log"
+    }
+  ],
+  "download_attempts": 1,
+  "validation": {
+    "ok": true,
+    "failures": [],
+    "checks": {
+      "pictures": [
+        {
+          "file": "pose_probe_wide.png",
+          "valid": true
+        },
+        {
+          "file": "pose_probe_medium.png",
+          "valid": true
+        },
+        {
+          "file": "pose_probe_close.png",
+          "valid": true
+        },
+        {
+          "file": "pose_probe_insert.png",
+          "valid": true
+        },
+        {
+          "file": "pose_probe_card.png",
+          "valid": true
+        },
+        {
+          "file": "pose_probe_group.png",
+          "valid": true
+        }
+      ],
+      "drawn": 6,
+      "wanted": 6
+    }
+  },
+  "limitations": [
+    "The Kaggle CLI exposes the notebook version number, not a separate execution ID. Version tracking plus the run token in the output are used together."
+  ],
+  "result": "verified"
+}
