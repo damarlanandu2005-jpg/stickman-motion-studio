@@ -128,6 +128,9 @@ class ValidatorTests(unittest.TestCase):
         self.assertIn("CUDA out of memory", text)
 
     def test_objects_are_drawn_at_an_angle_and_triposr_needs_no_compile(self):
+        tmp = tempfile.mkdtemp()
+        patcher = mock.patch.dict(os.environ, {"STICKMAN_OUT_DIR": tmp + "/out", "STICKMAN_STAGE_DIR": tmp + "/stages"})
+        patcher.start(); self.addCleanup(patcher.stop)
         ns = {}
         exec(compile("".join(builder.build()["cells"][1]["source"]), "setup", "exec"), {"__name__": "x"}, ns)
         self.assertIn("not a flat front view", ns["STYLE"])
