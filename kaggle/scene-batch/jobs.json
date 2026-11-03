@@ -1,408 +1,130 @@
 {
  "jobs": [
   {
-   "id": "c01",
-   "prompt": "Medium shot: the characters are shown from the chest up and fill the lower half of the frame; the background is visible above and behind them. Characters: a stickman in the costume of reference image 1, wearing a thick green bomb disposal suit with a round helmet. Keep each costume exactly as in its reference image and the same big round white head. Place: grey street barrier with yellow tape. Action: kneels over a box of coloured wires with a timer showing 0:03. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_soldier.png"
-   ],
+   "id": "a17",
+   "prompt": "A flat plain colour background with one big simple object in the centre. No characters and no scenery. Place: plain cream background. Objects: a red and white tear-off wall calendar showing DAY 14. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
+   "refs": [],
    "seed": 6100,
    "width": 576,
    "height": 1024
   },
   {
-   "id": "c02",
-   "prompt": "Medium shot: the characters are shown from the chest up and fill the lower half of the frame; the background is visible above and behind them. Characters: a stickman in the costume of reference image 1, wearing a thick green bomb disposal suit with a round helmet. Keep each costume exactly as in its reference image and the same big round white head. Place: grey smoky street. Action: stands fading in smoke. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_soldier.png"
-   ],
+   "id": "a19",
+   "prompt": "A flat plain colour background with one big simple object in the centre. No characters and no scenery. Place: plain black background. Objects: two big round binocular views showing a pale snowy field. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
+   "refs": [],
    "seed": 6101,
    "width": 576,
    "height": 1024
   },
   {
-   "id": "c03",
-   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, dressed as a police officer in a dark navy uniform and cap; a stickman in the costume of reference image 1, police officer wearing a headset with a microphone; a stickman in the costume of reference image 1, dressed as a police officer in a dark navy uniform and cap. Keep each costume exactly as in its reference image and the same big round white head. Place: police garage. Action: three officers stand in a row, one with a moustache. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_sailor.png"
-   ],
+   "id": "a22",
+   "prompt": "Close-up of the object only. No characters in the picture. Place: wide pale snowy field. Objects: a single wooden post far away in the snow. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
+   "refs": [],
    "seed": 6102,
    "width": 576,
    "height": 1024
   },
   {
-   "id": "c04",
-   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, wearing a mustard yellow coat and no hat, brown hair. Keep each costume exactly as in its reference image and the same big round white head. Place: city street corner with a red traffic light and shops. Action: stands looking up. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_explorer.png"
-   ],
+   "id": "b07",
+   "prompt": "Close-up of the object only. No characters in the picture. Place: dark screen with white corner frame marks. Objects: an overhead infrared drone camera view with a crosshair on tiny white figures. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
+   "refs": [],
    "seed": 6103,
    "width": 576,
    "height": 1024
   },
   {
-   "id": "c05",
-   "prompt": "Close-up of the object only. No characters in the picture. Place: plain grey background. Objects: a big black traffic light with all lights off. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
+   "id": "b15",
+   "prompt": "A flat plain colour background with one big simple object in the centre. No characters and no scenery. Place: pale blue-grey background. Objects: a brown clipboard with many red tally marks. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
    "refs": [],
    "seed": 6104,
    "width": 576,
    "height": 1024
   },
   {
-   "id": "c06",
-   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, an old doctor with glasses and a white coat; a stickman in the costume of reference image 2, wearing a mustard yellow coat and no hat, brown hair. Keep each costume exactly as in its reference image and the same big round white head. Place: bright clinic room. Action: the doctor holds a red heart card up to the man. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_doctor.png",
-    "costumes/costume_explorer.png"
-   ],
+   "id": "b17",
+   "prompt": "A flat plain colour background with one big simple object in the centre. No characters and no scenery. Place: plain orange background. Objects: a big orange clipboard with the pen on top. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
+   "refs": [],
    "seed": 6105,
    "width": 576,
    "height": 1024
   },
   {
-   "id": "c07",
-   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, wearing a mustard yellow coat and no hat, brown hair. Keep each costume exactly as in its reference image and the same big round white head. Place: police station wall with a notice board and notes. Action: points at the notice board. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_explorer.png"
-   ],
+   "id": "d16",
+   "prompt": "Close-up of the object only. No characters in the picture. Place: green hills under a blue sky with an old city far below. Objects: a very tall thin stone tower with a spiral staircase wrapped around it. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
+   "refs": [],
    "seed": 6106,
    "width": 576,
    "height": 1024
   },
   {
-   "id": "c08",
-   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Place: front of a grey police department building with columns and steps and a sign. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
+   "id": "d30",
+   "prompt": "Close-up of the object only. No characters in the picture. Place: dark stone wall. Objects: a glowing orange stone furnace with a black pot and bubbling steam. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
    "refs": [],
    "seed": 6107,
    "width": 576,
    "height": 1024
   },
   {
-   "id": "c09",
-   "prompt": "Extreme close-up: one character's big round head and face fill most of the picture, strong clear expression, only a hint of the costume at the bottom edge. Characters: a stickman in the costume of reference image 1, wearing a thick green bomb disposal suit with a round helmet. Keep each costume exactly as in its reference image and the same big round white head. Place: grey background. Action: big round helmet face with wide eyes behind the visor. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_soldier.png"
-   ],
+   "id": "d31",
+   "prompt": "Close-up of the object only. No characters in the picture. Place: wooden table. Objects: an old hand-drawn map of the world with black dots. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
+   "refs": [],
    "seed": 6108,
    "width": 576,
    "height": 1024
   },
   {
-   "id": "c10",
-   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, an old doctor with glasses and a white coat; a stickman in the costume of reference image 2, wearing a mustard yellow coat and no hat, brown hair. Keep each costume exactly as in its reference image and the same big round white head. Place: clinic with a wall chart and a clock. Action: the doctor holds up a chart, the man looks at it. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_doctor.png",
-    "costumes/costume_explorer.png"
-   ],
+   "id": "d34",
+   "prompt": "A flat plain colour background with one big simple object in the centre. No characters and no scenery. Place: plain sand beige sky background. Objects: a set of rising beige stone blocks like steps. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
+   "refs": [],
    "seed": 6109,
    "width": 576,
    "height": 1024
   },
   {
-   "id": "c11",
-   "prompt": "Medium shot: the characters are shown from the chest up and fill the lower half of the frame; the background is visible above and behind them. Characters: a stickman in the costume of reference image 1, wearing a mustard yellow coat and no hat, brown hair. Keep each costume exactly as in its reference image and the same big round white head. Place: dark night room with a desk lamp and a window with a moon. Action: sits at a desk studying. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_explorer.png"
-   ],
+   "id": "d35",
+   "prompt": "A flat plain colour background with one big simple object in the centre. No characters and no scenery. Place: dark blue sunburst rays background. Objects: a golden balance scale with coins on one side. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
+   "refs": [],
    "seed": 6110,
    "width": 576,
    "height": 1024
   },
   {
-   "id": "c12",
-   "prompt": "A flat plain colour background with one big simple object in the centre. No characters and no scenery. Place: plain orange background. Objects: a big round white clock face showing 12. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
+   "id": "l02",
+   "prompt": "Close-up of the object only. No characters in the picture. Place: stormy night. Objects: the lamp room of a lighthouse, the big lamp dark, glass cracked. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
    "refs": [],
    "seed": 6111,
    "width": 576,
    "height": 1024
   },
   {
-   "id": "c13",
-   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, an old doctor with glasses and a white coat; a stickman in the costume of reference image 2, wearing a mustard yellow coat and no hat, brown hair. Keep each costume exactly as in its reference image and the same big round white head. Place: bright clinic room. Action: they walk together. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_doctor.png",
-    "costumes/costume_explorer.png"
-   ],
+   "id": "l03",
+   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Place: stormy sea with a small wooden ship tossed by giant waves, lightning in the sky. Objects: a small fishing ship. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
+   "refs": [],
    "seed": 6112,
    "width": 576,
    "height": 1024
   },
   {
-   "id": "c14",
-   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, dressed as a police officer in a dark navy uniform and cap; a stickman in the costume of reference image 1, police officer wearing a headset with a microphone; a stickman in the costume of reference image 1, dressed as a police officer in a dark navy uniform and cap. Keep each costume exactly as in its reference image and the same big round white head. Place: garage with grey roller doors. Action: three officers raise their hands and cheer. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_sailor.png"
-   ],
+   "id": "l05",
+   "prompt": "A flat plain colour background with one big simple object in the centre. No characters and no scenery. Place: plain dark blue background. Objects: a big white number 900 above a tiny staircase icon. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
+   "refs": [],
    "seed": 6113,
    "width": 576,
    "height": 1024
   },
   {
-   "id": "c15",
-   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Place: city street with a blue armoured police truck and shops. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
+   "id": "l10",
+   "prompt": "Close-up of the object only. No characters in the picture. Place: lamp room. Objects: a hand lighting the big lighthouse lamp, bright yellow glow. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
    "refs": [],
    "seed": 6114,
    "width": 576,
    "height": 1024
   },
   {
-   "id": "c16",
-   "prompt": "Medium shot: the characters are shown from the chest up and fill the lower half of the frame; the background is visible above and behind them. Characters: a stickman in the costume of reference image 1, police officer wearing a headset with a microphone. Keep each costume exactly as in its reference image and the same big round white head. Place: garage wall. Action: stands thinking with a thought bubble holding a green check mark. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_sailor.png"
-   ],
+   "id": "l11",
+   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Place: stormy sea at night with a lighthouse beam cutting through the rain towards a small ship. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
+   "refs": [],
    "seed": 6115,
-   "width": 576,
-   "height": 1024
-  },
-  {
-   "id": "c17",
-   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, police officer with a headset and moustache. Keep each costume exactly as in its reference image and the same big round white head. Place: control room with a city map and monitors. Action: points at the map. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_sailor.png"
-   ],
-   "seed": 6116,
-   "width": 576,
-   "height": 1024
-  },
-  {
-   "id": "c18",
-   "prompt": "Close-up of the object only. No characters in the picture. Place: dark grey bomb casing. Objects: a digital timer showing 0:30 above red green yellow and blue wires. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
-   "refs": [],
-   "seed": 6117,
-   "width": 576,
-   "height": 1024
-  },
-  {
-   "id": "c19",
-   "prompt": "Extreme close-up: one character's big round head and face fill most of the picture, strong clear expression, only a hint of the costume at the bottom edge. Characters: a stickman in the costume of reference image 1, police officer wearing a headset with a microphone. Keep each costume exactly as in its reference image and the same big round white head. Place: grey background. Action: big worried face with a sweat drop, headset microphone. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_sailor.png"
-   ],
-   "seed": 6118,
-   "width": 576,
-   "height": 1024
-  },
-  {
-   "id": "c20",
-   "prompt": "Medium shot: the characters are shown from the chest up and fill the lower half of the frame; the background is visible above and behind them. Characters: a stickman in the costume of reference image 1, wearing a mustard yellow coat and no hat, brown hair. Keep each costume exactly as in its reference image and the same big round white head. Place: dark night room with a desk lamp, moon in the window and a clock. Action: sits asleep over a book. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_explorer.png"
-   ],
-   "seed": 6119,
-   "width": 576,
-   "height": 1024
-  },
-  {
-   "id": "c21",
-   "prompt": "A flat plain colour background with one big simple object in the centre. No characters and no scenery. Place: orange background. Objects: three blue blueprint sheets with simple technical diagrams of a factory. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
-   "refs": [],
-   "seed": 6120,
-   "width": 576,
-   "height": 1024
-  },
-  {
-   "id": "c22",
-   "prompt": "A flat plain colour background with one big simple object in the centre. No characters and no scenery. Place: plain blue background. Objects: a blueprint drawing of four batteries in a row. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
-   "refs": [],
-   "seed": 6121,
-   "width": 576,
-   "height": 1024
-  },
-  {
-   "id": "c23",
-   "prompt": "Medium shot: the characters are shown from the chest up and fill the lower half of the frame; the background is visible above and behind them. Characters: a stickman in the costume of reference image 1, wearing a mustard yellow coat and no hat, brown hair. Keep each costume exactly as in its reference image and the same big round white head. Place: night desk with a tall stack of colourful books. Action: sits relaxed with half-closed eyes. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_explorer.png"
-   ],
-   "seed": 6122,
-   "width": 576,
-   "height": 1024
-  },
-  {
-   "id": "c24",
-   "prompt": "A flat plain colour background with one big simple object in the centre. No characters and no scenery. Place: plain blue background. Objects: a blueprint circuit board drawing with a hand pointing at a terminal. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
-   "refs": [],
-   "seed": 6123,
-   "width": 576,
-   "height": 1024
-  },
-  {
-   "id": "c25",
-   "prompt": "A flat plain colour background with one big simple object in the centre. No characters and no scenery. Place: plain orange background. Objects: four coloured paper strips red green yellow blue fanned out. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
-   "refs": [],
-   "seed": 6124,
-   "width": 576,
-   "height": 1024
-  },
-  {
-   "id": "c26",
-   "prompt": "Medium shot: the characters are shown from the chest up and fill the lower half of the frame; the background is visible above and behind them. Characters: a stickman in the costume of reference image 1, police officer wearing a headset with a microphone. Keep each costume exactly as in its reference image and the same big round white head. Place: garage wall with a row of green check marks and a big red number 23. Action: stands with arms crossed. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_sailor.png"
-   ],
-   "seed": 6125,
-   "width": 576,
-   "height": 1024
-  },
-  {
-   "id": "c27",
-   "prompt": "A flat plain colour background with one big simple object in the centre. No characters and no scenery. Place: plain beige background. Objects: a tear-off wall calendar showing YEAR 2. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
-   "refs": [],
-   "seed": 6126,
-   "width": 576,
-   "height": 1024
-  },
-  {
-   "id": "c28",
-   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, dressed as a police officer in a dark navy uniform and cap; a stickman in the costume of reference image 2, an old doctor with glasses and a white coat. Keep each costume exactly as in its reference image and the same big round white head. Place: dark warehouse with a spotlight and a box of coloured wires. Action: they look at a device on the floor. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_sailor.png",
-    "costumes/costume_doctor.png"
-   ],
-   "seed": 6127,
-   "width": 576,
-   "height": 1024
-  },
-  {
-   "id": "c29",
-   "prompt": "Close-up of the object only. No characters in the picture. Place: grey background. Objects: a bundle of grey twisted wires. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
-   "refs": [],
-   "seed": 6128,
-   "width": 576,
-   "height": 1024
-  },
-  {
-   "id": "c30",
-   "prompt": "Extreme close-up: one character's big round head and face fill most of the picture, strong clear expression, only a hint of the costume at the bottom edge. Characters: a stickman in the costume of reference image 1, police chief with a white shirt, cap and moustache, holding a radio to his mouth. Keep each costume exactly as in its reference image and the same big round white head. Place: police street scene with yellow tape. Action: shouting into the radio. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_sailor.png"
-   ],
-   "seed": 6129,
-   "width": 576,
-   "height": 1024
-  },
-  {
-   "id": "c31",
-   "prompt": "Close-up of the object only. No characters in the picture. Place: dark background. Objects: a timer showing 0:08 above a cut bundle of red blue yellow wires with sparks. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
-   "refs": [],
-   "seed": 6130,
-   "width": 576,
-   "height": 1024
-  },
-  {
-   "id": "c32",
-   "prompt": "Medium shot: the characters are shown from the chest up and fill the lower half of the frame; the background is visible above and behind them. Characters: a stickman in the costume of reference image 1, police officer wearing a headset with a microphone. Keep each costume exactly as in its reference image and the same big round white head. Place: dark warehouse with a spotlight. Action: holds both hands on his headset. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_sailor.png"
-   ],
-   "seed": 6131,
-   "width": 576,
-   "height": 1024
-  },
-  {
-   "id": "c33",
-   "prompt": "Extreme close-up: one character's big round head and face fill most of the picture, strong clear expression, only a hint of the costume at the bottom edge. Characters: a stickman in the costume of reference image 1, police officer wearing a headset with a microphone. Keep each costume exactly as in its reference image and the same big round white head. Place: dark background. Action: huge calm face with eyes nearly closed. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_sailor.png"
-   ],
-   "seed": 6132,
-   "width": 576,
-   "height": 1024
-  },
-  {
-   "id": "c34",
-   "prompt": "Close-up of the object only. No characters in the picture. Place: pale grey background. Objects: a grey bundle of wires with a timer showing 0:05. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
-   "refs": [],
-   "seed": 6133,
-   "width": 576,
-   "height": 1024
-  },
-  {
-   "id": "c35",
-   "prompt": "Close-up of the object only. No characters in the picture. Place: pale grey background. Objects: a tangled knot of grey wires with a timer showing 0:03 and a red wire in a clamp. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
-   "refs": [],
-   "seed": 6134,
-   "width": 576,
-   "height": 1024
-  },
-  {
-   "id": "c36",
-   "prompt": "Close-up of the object only. No characters in the picture. Place: dark crate in a warehouse. Objects: a digital timer showing 0:01 above red blue yellow green wires on a wooden crate. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
-   "refs": [],
-   "seed": 6135,
-   "width": 576,
-   "height": 1024
-  },
-  {
-   "id": "c37",
-   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, police chief in white shirt and cap with moustache; a stickman in the costume of reference image 1, police officer wearing a headset with a microphone. Keep each costume exactly as in its reference image and the same big round white head. Place: garage with grey roller doors. Action: the chief talks, the other officer listens with a speech bubble showing the number 74. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_sailor.png"
-   ],
-   "seed": 6136,
-   "width": 576,
-   "height": 1024
-  },
-  {
-   "id": "c38",
-   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, head instructor; a stickman in the costume of reference image 2, police officer wearing a headset with a microphone; a stickman in the costume of reference image 2, dressed as a police officer in a dark navy uniform and cap. Keep each costume exactly as in its reference image and the same big round white head. Place: classroom with a wooden sign on the wall and desks. Action: the instructor points at the students. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_doctor.png",
-    "costumes/costume_sailor.png"
-   ],
-   "seed": 6137,
-   "width": 576,
-   "height": 1024
-  },
-  {
-   "id": "c39",
-   "prompt": "Close-up of the object only. No characters in the picture. Place: city skyline at sunset over water, orange and purple sky. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
-   "refs": [],
-   "seed": 6138,
-   "width": 576,
-   "height": 1024
-  },
-  {
-   "id": "c40",
-   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, police officer wearing a headset with a microphone; a stickman in the costume of reference image 2, wearing a thick green bomb disposal suit with a round helmet. Keep each costume exactly as in its reference image and the same big round white head. Place: classroom with a green board. Action: one is holding a paint can, both smiling. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_sailor.png",
-    "costumes/costume_soldier.png"
-   ],
-   "seed": 6139,
-   "width": 576,
-   "height": 1024
-  },
-  {
-   "id": "a24",
-   "prompt": "Close-up of the object only. No characters in the picture. Place: pale snow background. Objects: a wooden post with a coin flying above it and small sparkles. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
-   "refs": [],
-   "seed": 6140,
-   "width": 576,
-   "height": 1024
-  },
-  {
-   "id": "b10",
-   "prompt": "Close-up of the object only. No characters in the picture. Place: night sky with stars. Objects: a big military cargo plane in the distance with an orange explosion flash. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
-   "refs": [],
-   "seed": 6141,
-   "width": 576,
-   "height": 1024
-  },
-  {
-   "id": "b11",
-   "prompt": "Close-up of the object only. No characters in the picture. Place: night sky. Objects: a giant orange fire explosion with dark smoke over a black ridge and a grey rock in front. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
-   "refs": [],
-   "seed": 6142,
-   "width": 576,
-   "height": 1024
-  },
-  {
-   "id": "b12",
-   "prompt": "Close-up of the object only. No characters in the picture. Place: night sky. Objects: a bright yellow and orange explosion with black smoke over a grey rock. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
-   "refs": [],
-   "seed": 6143,
    "width": 576,
    "height": 1024
   }

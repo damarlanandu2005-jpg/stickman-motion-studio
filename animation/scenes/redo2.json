@@ -1,0 +1,129 @@
+[
+ {
+  "id": "a17",
+  "frame": "card",
+  "chars": [],
+  "place": "plain cream background",
+  "action": "",
+  "props": "a red and white tear-off wall calendar showing DAY 14"
+ },
+ {
+  "id": "a19",
+  "frame": "card",
+  "chars": [],
+  "place": "plain black background",
+  "action": "",
+  "props": "two big round binocular views showing a pale snowy field"
+ },
+ {
+  "id": "a22",
+  "frame": "insert",
+  "chars": [],
+  "place": "wide pale snowy field",
+  "action": "",
+  "props": "a single wooden post far away in the snow"
+ },
+ {
+  "id": "b07",
+  "frame": "insert",
+  "chars": [],
+  "place": "dark screen with white corner frame marks",
+  "action": "",
+  "props": "an overhead infrared drone camera view with a crosshair on tiny white figures"
+ },
+ {
+  "id": "b15",
+  "frame": "card",
+  "chars": [],
+  "place": "pale blue-grey background",
+  "action": "",
+  "props": "a brown clipboard with many red tally marks"
+ },
+ {
+  "id": "b17",
+  "frame": "card",
+  "chars": [],
+  "place": "plain orange background",
+  "action": "",
+  "props": "a big orange clipboard with the pen on top"
+ },
+ {
+  "id": "d16",
+  "frame": "insert",
+  "chars": [],
+  "place": "green hills under a blue sky with an old city far below",
+  "action": "",
+  "props": "a very tall thin stone tower with a spiral staircase wrapped around it"
+ },
+ {
+  "id": "d30",
+  "frame": "insert",
+  "chars": [],
+  "place": "dark stone wall",
+  "action": "",
+  "props": "a glowing orange stone furnace with a black pot and bubbling steam"
+ },
+ {
+  "id": "d31",
+  "frame": "insert",
+  "chars": [],
+  "place": "wooden table",
+  "action": "",
+  "props": "an old hand-drawn map of the world with black dots"
+ },
+ {
+  "id": "d34",
+  "frame": "card",
+  "chars": [],
+  "place": "plain sand beige sky background",
+  "action": "",
+  "props": "a set of rising beige stone blocks like steps"
+ },
+ {
+  "id": "d35",
+  "frame": "card",
+  "chars": [],
+  "place": "dark blue sunburst rays background",
+  "action": "",
+  "props": "a golden balance scale with coins on one side"
+ },
+ {
+  "id": "l02",
+  "text": "The lighthouse light went *out*.",
+  "frame": "insert",
+  "props": "the lamp room of a lighthouse, the big lamp dark, glass cracked",
+  "place": "stormy night",
+  "cam": "push"
+ },
+ {
+  "id": "l03",
+  "text": "One ship was still at sea.",
+  "frame": "wide",
+  "place": "stormy sea with a small wooden ship tossed by giant waves, lightning in the sky",
+  "props": "a small fishing ship",
+  "cam": "drift"
+ },
+ {
+  "id": "l05",
+  "text": "Nine hundred steps. No time.",
+  "frame": "card",
+  "props": "a big white number 900 above a tiny staircase icon",
+  "place": "plain dark blue background",
+  "cam": "push"
+ },
+ {
+  "id": "l10",
+  "text": "They lit the lamp by *hand*.",
+  "frame": "insert",
+  "props": "a hand lighting the big lighthouse lamp, bright yellow glow",
+  "place": "lamp room",
+  "cam": "push"
+ },
+ {
+  "id": "l11",
+  "text": "The beam swept across the waves.",
+  "frame": "wide",
+  "place": "stormy sea at night with a lighthouse beam cutting through the rain towards a small ship",
+  "cam": "pull"
+ }
+]
