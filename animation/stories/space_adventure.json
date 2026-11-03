@@ -145,6 +145,7 @@
   },
   "space_wrench": {
    "type": "prop",
+   "length_m": 0.5,
    "height_m": 0.4,
    "tags": [
     "tool"
@@ -286,7 +287,20 @@
        "hero",
        "rocket"
       ],
-      "az_deg": 165,
+      "az_deg": 28,
+      "el_deg": 6,
+      "fill": 0.9
+     },
+     "fov": 50
+    },
+    {
+     "at_s": 1.2,
+     "frame": {
+      "on": [
+       "hero",
+       "rocket"
+      ],
+      "az_deg": 15,
       "el_deg": 6,
       "fill": 0.85
      },
@@ -299,22 +313,9 @@
        "hero",
        "rocket"
       ],
-      "az_deg": 150,
+      "az_deg": 15,
       "el_deg": 6,
-      "fill": 0.8
-     },
-     "fov": 50
-    },
-    {
-     "at_s": 2.4,
-     "frame": {
-      "on": [
-       "hero",
-       "rocket"
-      ],
-      "az_deg": 150,
-      "el_deg": 6,
-      "fill": 0.8
+      "fill": 0.85
      },
      "fov": 50
     }
@@ -751,7 +752,7 @@
      "id": "gantry",
      "asset": "access_gantry",
      "at": [
-      4.5,
+      -5.5,
       -4
      ]
     },
@@ -832,40 +833,39 @@
      "frame": {
       "on": [
        "hero",
-       "ladder",
-       "rocket"
+       "ladder"
       ],
-      "az_deg": 55,
+      "az_deg": 50,
       "el_deg": 8,
-      "fill": 0.8
+      "fill": 1.0
      },
-     "fov": 50
+     "fov": 46
     },
     {
      "at_s": 1.6,
      "frame": {
       "on": [
-       "hero",
-       "rocket"
+       "ladder",
+       "hero"
       ],
-      "az_deg": 60,
-      "el_deg": 10,
-      "fill": 0.55
+      "az_deg": 70,
+      "el_deg": 12,
+      "fill": 1.0
      },
-     "fov": 50
+     "fov": 46
     },
     {
      "at_s": 3.0,
      "frame": {
       "on": [
-       "hero",
-       "rocket"
+       "ladder",
+       "hero"
       ],
-      "az_deg": 60,
-      "el_deg": 10,
-      "fill": 0.55
+      "az_deg": 70,
+      "el_deg": 12,
+      "fill": 1.0
      },
-     "fov": 50
+     "fov": 46
     }
    ]
   },
@@ -3795,19 +3795,35 @@
      ]
     },
     {
+     "id": "sc6",
+     "asset": "alien_plant",
+     "at": [
+      -3.0618619044356725,
+      -12.50685433476034
+     ]
+    },
+    {
+     "id": "sc7",
+     "asset": "alien_flower",
+     "at": [
+      3.087521718471861,
+      -13.852117624143798
+     ]
+    },
+    {
      "id": "b1",
      "asset": "purple_boulder",
      "at": [
-      -3.5,
-      -9.0
+      -3.0,
+      -5.0
      ]
     },
     {
      "id": "b2",
      "asset": "purple_boulder",
      "at": [
-      3.5,
-      -10.5
+      3.0,
+      -6.0
      ]
     },
     {
@@ -3815,7 +3831,7 @@
      "asset": "purple_boulder",
      "at": [
       0.2,
-      -12.5
+      -7.5
      ]
     }
    ],
@@ -3849,8 +3865,8 @@
      "id": "al1",
      "height_m": 1.7,
      "at": [
-      -3.5,
-      -10.6
+      -3.0,
+      -6.6
      ],
      "actions": [
       {
@@ -3871,12 +3887,12 @@
      "id": "al2",
      "height_m": 1.7,
      "at": [
-      3.5,
-      -12.0
+      3.0,
+      -7.6
      ],
      "actions": [
       {
-       "at_s": 0.4,
+       "at_s": 0,
        "do": "stand"
       },
       {
@@ -3898,7 +3914,7 @@
      "height_m": 1.7,
      "at": [
       0.2,
-      -14.0
+      -9.1
      ],
      "actions": [
       {

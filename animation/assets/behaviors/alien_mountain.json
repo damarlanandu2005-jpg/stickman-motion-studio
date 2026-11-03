@@ -1,0 +1,7 @@
+{
+  "id": "alien_mountain",
+  "type": "building",
+  "solid": true,
+  "collide_radius_m": 6.0,
+  "source": "generated from library/types/building.json and the model's measured footprint"
+}

@@ -37,7 +37,7 @@ ENVS: dict[str, dict[str, Any]] = {
     "high_sky": {"light": "day", "sky_top": "#050b2e", "sky_horizon": "#2c63b8", "ground": None, "fog_near": 120, "fog_far": 600, "stars": 500},
     "space": {"light": "day", "sky_top": "#04050d", "sky_horizon": "#0a0c1c", "ground": None, "fog_near": 200, "fog_far": 800, "stars": 900},
     "alien_world": {"light": "day", "sky_top": "#5a3fa0", "sky_horizon": "#f0b0cf", "ground": "#9a5f98", "fog_near": 25, "fog_far": 150,
-                    "skyline": {"color": "#7b4f9e", "color2": "#a86fbf", "dist_m": 140, "count": 26, "min_m": 8, "max_m": 26, "seed": 9},
+                    "skyline": {"color": "#7b4f9e", "color2": "#a86fbf", "dist_m": 120, "count": 26, "min_m": 8, "max_m": 26, "seed": 9},
                     "scatter": [{"type": "rocks", "count": 40, "radius": 24, "min_size": 0.15, "max_size": 0.6, "color": "#8a5f8f", "seed": 11, "keep_clear": [[0, -3, 3], [1.5, -2, 1.5]]}]},
 }
 
@@ -140,7 +140,11 @@ def asset_entry(name: str, a: dict[str, Any], cat: dict[str, Any]) -> tuple[dict
     it = next((i for i in cat["items"] if i["id"] == lib), None)
     if not it:
         raise SystemExit(f"asset {name}: not in the library yet (run plan, create it, then ingest)")
-    ent: dict[str, Any] = {"file": it["local"].replace("animation/", ""), "height_m": a["height_m"]}
+    height = a["height_m"]
+    if a.get("length_m"):  # long thin things (a wrench) are sized by their longest side, not by their height
+        w, h, d = glb_extent(ROOT / it["local"])
+        height = a["length_m"] * h / max(w, h, d)
+    ent: dict[str, Any] = {"file": it["local"].replace("animation/", ""), "height_m": round(height, 3)}
     if a.get("forward_deg") is not None:
         ent["forward_deg"] = a["forward_deg"]
     beh = ROOT / "animation/assets/behaviors" / f"{lib}.json"

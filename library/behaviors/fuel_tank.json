@@ -1,0 +1,7 @@
+{
+  "id": "fuel_tank",
+  "type": "building",
+  "solid": true,
+  "collide_radius_m": 0.52,
+  "source": "generated from library/types/building.json and the model's measured footprint"
+}

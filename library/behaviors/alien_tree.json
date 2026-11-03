@@ -1,0 +1,7 @@
+{
+  "id": "alien_tree",
+  "type": "prop",
+  "solid": false,
+  "collide_radius_m": 0.83,
+  "source": "generated from library/types/prop.json and the model's measured footprint"
+}

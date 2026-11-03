@@ -208,7 +208,7 @@ export function makeSkyline(o: { color: string; color2?: string; dist_m: number;
     const geo = new THREE.ConeGeometry(w / 2, h, 5 + Math.floor(rand() * 3), 1); geo.translate(0, h / 2 - 0.5, 0);
     const col = new THREE.Color(o.color).lerp(new THREE.Color(o.color2 ?? o.color), rand());
     const m = new THREE.Mesh(geo, twoTone(new THREE.MeshLambertMaterial({ color: col })));
-    const d = o.dist_m * (0.9 + rand() * 0.25); m.position.set(Math.sin(a) * d, 0, Math.cos(a) * d); m.rotation.y = rand() * 6; m.receiveShadow = false; g.add(m);
+    const d = o.dist_m * (0.9 + rand() * 0.25); m.position.set(Math.sin(a) * d, 0, Math.cos(a) * d); m.rotation.y = rand() * 6; m.receiveShadow = false; m.layers.set(NOINK); g.add(m);
   }
   return g;
 }

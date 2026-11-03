@@ -1,0 +1,7 @@
+{
+  "id": "launch_pad_base",
+  "type": "building",
+  "solid": true,
+  "collide_radius_m": 2.19,
+  "source": "generated from library/types/building.json and the model's measured footprint"
+}

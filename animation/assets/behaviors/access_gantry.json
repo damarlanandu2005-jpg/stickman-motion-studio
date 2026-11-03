@@ -1,0 +1,7 @@
+{
+  "id": "access_gantry",
+  "type": "building",
+  "solid": true,
+  "collide_radius_m": 5.91,
+  "source": "generated from library/types/building.json and the model's measured footprint"
+}

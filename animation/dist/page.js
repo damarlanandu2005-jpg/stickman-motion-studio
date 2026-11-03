@@ -31489,6 +31489,7 @@ function makeSkyline(o) {
     m.position.set(Math.sin(a) * d, 0, Math.cos(a) * d);
     m.rotation.y = rand() * 6;
     m.receiveShadow = false;
+    m.layers.set(NOINK);
     g.add(m);
   }
   return g;
