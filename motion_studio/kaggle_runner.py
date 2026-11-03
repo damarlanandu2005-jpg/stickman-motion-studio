@@ -18,6 +18,7 @@ fail instead of guessing.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 import secrets
@@ -293,9 +294,61 @@ def validate_script_writer_output(out_dir: Path, identity: dict[str, Any], expec
             failures.append(f"fact-check report is invalid: {exc}")
     return {"ok": not failures, "failures": failures, "checks": checks}
 
+IMAGE_TO_3D_PATTERN = r"(image_to_3d_report\.json|result_[a-z_]+\.json|object_[a-z_]+\.png|cutout_[a-z_]+\.png|[a-z_]+\.glb|[a-z_0-9]+\.log)$"
+
+
+def validate_image_to_3d_output(out_dir: Path, identity: dict[str, Any], expected_model_sha256: str | None = None) -> dict[str, Any]:
+    """Image-to-3D feasibility test: the output must belong to this run and every file the report claims must exist
+    intact. Engines are allowed to fail (that is the finding), but a claimed success must be backed by a real GLB."""
+    out_dir = Path(out_dir)
+    failures: list[str] = []
+    checks: dict[str, Any] = {"objects": [], "models": []}
+    report_path = next(iter(out_dir.rglob("image_to_3d_report.json")), None)
+    if not report_path:
+        return {"ok": False, "failures": ["missing image_to_3d_report.json"], "checks": checks}
+    try:
+        report = json.loads(report_path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        return {"ok": False, "failures": [f"report is not valid JSON: {exc}"], "checks": checks}
+    if report.get("run_token") != identity["run_token"]:
+        failures.append("report run_token does not match this run (output belongs to another execution)")
+    if report.get("run_id") != identity["run_id"]:
+        failures.append("report run_id does not match this run")
+    if report.get("status") != "completed":
+        failures.append(f"test did not complete: status {report.get('status')!r}, error {report.get('error_message')!r}")
+    engines = report.get("engines") or {}
+    klein = engines.get("klein") or {}
+    for item in klein.get("objects", []):
+        image = next(iter(out_dir.rglob(str(item.get("file", "?")))), None)
+        png = validate_png(image) if image else {"valid": False, "error": "file missing", "sha256": None}
+        checks["objects"].append({"file": item.get("file"), "valid": png["valid"]})
+        if not png["valid"]:
+            failures.append(f"{item.get('file')}: not a valid PNG ({png['error']})")
+        elif png["sha256"] != item.get("sha256"):
+            failures.append(f"{item.get('file')}: hash differs from the report")
+    if report.get("status") == "completed" and len(klein.get("objects", [])) != len(report.get("objects", [])):
+        failures.append("klein did not draw every object listed in the report")
+    for stage, data in engines.items():
+        if stage == "klein":
+            continue
+        for item in data.get("objects", []):
+            if item.get("status") != "success":
+                continue
+            glb = next(iter(out_dir.rglob(str(item.get("file", "?")))), None)
+            ok = bool(glb) and glb.read_bytes()[:4] == b"glTF"
+            same = ok and hashlib.sha256(glb.read_bytes()).hexdigest() == item.get("sha256")
+            checks["models"].append({"stage": stage, "file": item.get("file"), "glb_header_ok": ok, "hash_matches": same})
+            if not ok:
+                failures.append(f"{stage}: claimed {item.get('file')} but it is missing or not a GLB")
+            elif not same:
+                failures.append(f"{stage}: {item.get('file')} hash differs from the report")
+    return {"ok": not failures, "failures": failures, "checks": checks}
+
+
 PROFILES = {
     "image-smoke": {"pattern": OUTPUT_FILE_PATTERN, "validate": "validate_output"},
     "klein-benchmark": {"pattern": BENCHMARK_OUTPUT_PATTERN, "validate": "validate_benchmark_output"},
+    "image-to-3d": {"pattern": IMAGE_TO_3D_PATTERN, "validate": "validate_image_to_3d_output"},
     "script-writer": {"pattern": r".*(benchmark_report\.json|benchmark_results\.json|model_comparison\.csv|fact_check_report\.json|revised_script\.json|verified_script\.json|Qwen3-4B-Instruct-2507\.(json|txt)|Gemma-3-4B-IT\.(json|txt))$", "validate": "validate_script_writer_output"},
 }
 
@@ -408,7 +461,7 @@ def execute(
         for attempt in range(1, max_download_attempts + 1):
             record["download_attempts"] = attempt
             code, out = runner(["kaggle", "kernels", "output", versioned, "-p", str(out_dir),
-                                "--file-pattern", output_pattern, "-o"])
+                                "--file-pattern", output_pattern, "--page-size", "200", "-o"])
             note("download", attempt=attempt, exit_code=code, text=redact(out, hide).strip()[-300:])
             if code == 0:
                 break
@@ -433,6 +486,19 @@ def execute(
 
 def summarize_report(out_dir: Path, profile: str) -> str:
     """Compact, human-readable lines from the already-verified report so the numbers are visible in CI logs."""
+    if profile == "image-to-3d":
+        path = next(iter(Path(out_dir).rglob("image_to_3d_report.json")), None)
+        if not path:
+            return "(no report to summarize)"
+        r = json.loads(path.read_text(encoding="utf-8"))
+        lines = [f"  environment: {r.get('environment')}", f"  notebook_duration_seconds: {r.get('notebook_duration_seconds')}"]
+        for name, s in (r.get("summary") or {}).items():
+            lines.append(f"  ENGINE {name}: {json.dumps(s)}")
+        for name, data in (r.get("engines") or {}).items():
+            for item in data.get("objects", []):
+                lines.append(f"  {name} object: " + json.dumps({k: item.get(k) for k in (
+                    "name", "status", "seconds", "faces", "raw_faces", "vertices", "peak_vram_gib", "bytes", "file", "error")}))
+        return "\n".join(lines)
     name = "benchmark_report.json" if profile in {"klein-benchmark", "script-writer"} else "generation_report.json"
     path = next(iter(Path(out_dir).rglob(name)), None)
     if not path:
@@ -461,6 +527,8 @@ def _cli(argv: list[str] | None = None) -> int:
     parser.add_argument("--timeout-minutes", type=float, default=85)
     parser.add_argument("--model-sha256", default=None)
     parser.add_argument("--profile", choices=sorted(PROFILES), default="image-smoke")
+    parser.add_argument("--kaggle-run-limit-seconds", type=int, default=3600,
+                        help="Maximum run time Kaggle allows the notebook (kernels push -t)")
     args = parser.parse_args(argv)
 
     metadata = {
@@ -477,6 +545,7 @@ def _cli(argv: list[str] | None = None) -> int:
             kernel_ref=args.kernel, kernel_dir=args.kernel_dir, notebook_name=args.notebook,
             metadata=metadata, work_dir=args.work_dir, out_dir=args.out, identity=identity,
             timeout_seconds=args.timeout_minutes * 60, expected_model_sha256=args.model_sha256, hide=hide,
+            push_timeout_seconds=args.kaggle_run_limit_seconds,
             output_pattern=PROFILES[args.profile]["pattern"], validate=globals()[PROFILES[args.profile]["validate"]],
         )
     except KaggleRunError as exc:
