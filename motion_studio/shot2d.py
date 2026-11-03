@@ -78,6 +78,9 @@ def draw_actor(lib: Library, scene: Image.Image, actor: dict, t: float, dur: flo
     for at, ps in actor.get("pose_seq", []):  # pose changes inside one shot
         if t >= at:
             pose = ps
+    if actor.get("cycle"):  # walk/run cycle: a list of body pictures played in a loop while the character moves
+        cyc = actor["cycle"]
+        pose = cyc[int(t * actor.get("cycle_fps", 8)) % len(cyc)]
     expr = "neutral"
     for at, e in actor.get("faces", [[0, "neutral"]]):
         if t >= at:
@@ -95,7 +98,7 @@ def draw_actor(lib: Library, scene: Image.Image, actor: dict, t: float, dur: flo
         x_pos = actor["x"] + (actor["x1"] - actor["x"]) * u
         flip = actor["x1"] < actor["x"]
         stride = actor.get("stride", 2.2)  # steps per second
-        bob = -abs(math.sin(t * math.pi * stride)) * 0.014 * sh
+        bob = 0.0 if actor.get("cycle") else -abs(math.sin(t * math.pi * stride)) * 0.014 * sh
         sway = math.sin(t * math.pi * stride) * 3.0
     key = ("b", pose, round(k, 3), flip)
     if key not in lib._cache:
