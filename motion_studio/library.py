@@ -117,7 +117,9 @@ def check_behavior(path: Path, owner: str) -> list[str]:
         lo, hi = x["region"]["min"], x["region"]["max"]
         if not all(0 <= a <= 1 for a in lo + hi) or any(a >= c for a, c in zip(lo, hi)): p.append(f"{owner}: part {pid} region must be a box inside 0..1")
         if not any(abs(v) > 0 for v in x.get("axis", [0, 0, 0])): p.append(f"{owner}: part {pid} needs a hinge axis")
-        if not x.get("open_deg"): p.append(f"{owner}: part {pid} needs open_deg")
+        if x.get("kind") == "spin":
+            if not x.get("radius_m", 0) > 0: p.append(f"{owner}: wheel {pid} needs radius_m")
+        elif not x.get("open_deg"): p.append(f"{owner}: part {pid} needs open_deg")
     for t in b.get("triggers", []):
         if t.get("part") not in parts: p.append(f"{owner}: trigger points to unknown part {t.get('part')}")
         if not t.get("within_m", 0) > 0: p.append(f"{owner}: trigger needs within_m")

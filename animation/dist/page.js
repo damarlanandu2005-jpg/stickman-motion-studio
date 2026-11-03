@@ -31753,7 +31753,7 @@ var Engine = class _Engine {
     });
     const raw = new Box3().setFromObject(inner), sz = raw.getSize(new Vector3());
     const abs = (f) => new Vector3(raw.min.x + f[0] * sz.x, raw.min.y + f[1] * sz.y, raw.min.z + f[2] * sz.z);
-    const regions = spec.parts.map((p) => ({ min: abs(p.region.min), max: abs(p.region.max), hinge: abs(p.hinge), face: p.region.facing ? new Vector3(...p.region.facing).normalize() : null, faceMin: p.region.facing_min ?? 0.6 }));
+    const regions = spec.parts.map((p) => ({ min: abs(p.region.min), max: abs(p.region.max), hinge: abs(p.hinge), face: p.region.facing ? new Vector3(...p.region.facing).normalize() : null, faceMin: p.region.facing_min ?? 0.6, disc: p.region.disc_r ? p.region.disc_r * sz.y : 0 }));
     this.partMeshes.set(inner, []);
     for (const m of meshes) {
       const g = m.geometry.clone().applyMatrix4(m.matrixWorld).toNonIndexed();
@@ -31766,7 +31766,29 @@ var Engine = class _Engine {
         v1.fromBufferAttribute(pos, i * 3 + 1);
         v2.fromBufferAttribute(pos, i * 3 + 2);
         const nrm = e1.subVectors(v1, v0).cross(e2.subVectors(v2, v0)).normalize();
-        for (let r = 0; r < regions.length; r++) if ((!regions[r].face || nrm.dot(regions[r].face) >= regions[r].faceMin) && c.x >= regions[r].min.x && c.x <= regions[r].max.x && c.y >= regions[r].min.y && c.y <= regions[r].max.y && c.z >= regions[r].min.z && c.z <= regions[r].max.z) {
+        for (let r = 0; r < regions.length; r++) if ((!regions[r].face || nrm.dot(regions[r].face) >= regions[r].faceMin) && (!regions[r].disc || Math.hypot(c.x - regions[r].hinge.x, c.y - regions[r].hinge.y) <= regions[r].disc) && c.x >= regions[r].min.x && c.x <= regions[r].max.x && c.y >= regions[r].min.y && c.y <= regions[r].max.y && c.z >= regions[r].min.z && c.z <= regions[r].max.z) {
+          owner[i] = r;
+          break;
+        }
+      }
+      for (let r = 0; r < regions.length; r++) if (spec.parts[r].kind === "spin" && regions[r].disc) {
+        const bb = new Box3();
+        for (let i = 0; i < tri; i++) if (owner[i] === r) for (let k = 0; k < 3; k++) bb.expandByPoint(v0.fromBufferAttribute(pos, i * 3 + k));
+        if (!bb.isEmpty()) {
+          regions[r].hinge.x = (bb.min.x + bb.max.x) / 2;
+          regions[r].hinge.y = (bb.min.y + bb.max.y) / 2;
+          regions[r].hinge.z = (bb.min.z + bb.max.z) / 2;
+        }
+      }
+      owner.fill(-1);
+      for (let i = 0; i < tri; i++) {
+        c.set(0, 0, 0);
+        v0.fromBufferAttribute(pos, i * 3);
+        v1.fromBufferAttribute(pos, i * 3 + 1);
+        v2.fromBufferAttribute(pos, i * 3 + 2);
+        c.add(v0).add(v1).add(v2).multiplyScalar(1 / 3);
+        const nrm = e1.subVectors(v1, v0).cross(e2.subVectors(v2, v0)).normalize();
+        for (let r = 0; r < regions.length; r++) if ((!regions[r].face || nrm.dot(regions[r].face) >= regions[r].faceMin) && c.x >= regions[r].min.x && c.x <= regions[r].max.x && c.y >= regions[r].min.y && c.y <= regions[r].max.y && c.z >= regions[r].min.z && c.z <= regions[r].max.z && (!regions[r].disc || Math.hypot(c.x - regions[r].hinge.x, c.y - regions[r].hinge.y) <= regions[r].disc)) {
           owner[i] = r;
           break;
         }
@@ -31819,7 +31841,7 @@ var Engine = class _Engine {
       pivot: this.partPivots.get(inner)?.[r] ?? new Group(),
       hingeRoot: toRoot(p.hinge),
       axis: new Vector3(...p.axis).normalize(),
-      openRad: rad2(p.open_deg),
+      openRad: p.kind === "spin" ? 1 : rad2(p.open_deg ?? 0),
       angle: new Float32Array(n)
     }));
     return { spec, crush, parts, crumple: new Float32Array(n) };
@@ -31871,6 +31893,15 @@ var Engine = class _Engine {
       const tc = t.crash?.t ?? Infinity;
       for (const p of b.parts) {
         const spec = b.spec.parts.find((x) => x.id === p.id), rate = 1 / (spec.open_s ?? 0.7);
+        if (spec.kind === "spin") {
+          const r = spec.radius_m ?? 0.35;
+          let ang = 0;
+          for (let f = 0; f < n; f++) {
+            if (f > 0 && f * dt <= tc) ang += speed[f] * dt / r;
+            p.angle[f] = ang;
+          }
+          continue;
+        }
         let a = 0, wasOpen = false;
         for (let f = 0; f < n; f++) {
           const time = f * dt, y = yawA[f], c = Math.cos(y), sn = Math.sin(y);
