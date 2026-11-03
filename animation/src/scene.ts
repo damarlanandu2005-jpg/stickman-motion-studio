@@ -21,7 +21,9 @@ export type EmitterKind = "smoke" | "fire" | "sparks" | "explosion" | "dust" | "
 /** Blender particle effect (bake_effects.py): real gravity, drag, turbulence and wind; every key but id, kind, at is optional */
 export type Emitter = { id: string; kind: EmitterKind; at: XYZ; from_s: number; to_s: number; count?: number; life_s?: number; speed?: number;
   dir?: XYZ; spread?: number; gravity?: number; turbulence?: number; wind?: number; drag?: number; size_m?: number; size_end_m?: number;
-  bounce?: number; spin?: number; seed?: number; color?: string; area_m?: number };
+  bounce?: number; spin?: number; seed?: number; color?: string; area_m?: number;
+  /** travel with a scripted object (e.g. the rocket), `at` is then ignored and `offset` is added to its position */
+  follow?: string; offset?: XYZ };
 /** a flag or curtain: the left edge is pinned, the rest hangs and is pushed by the wind (Blender cloth) */
 export type Cloth = { id: string; at: XYZ; size: [number, number]; grid?: [number, number]; wind?: number; mass_kg?: number; stiffness?: number;
   bending?: number; seed?: number; color?: string; color2?: string; pole?: boolean };
@@ -46,6 +48,8 @@ export type Scene = {
   cloths?: Cloth[];
   physics_bake?: { from_s?: number; substeps?: number; iterations?: number };
   characters: { id: string; cards: string; height_m: number; at: XZ;
+    /** a pose name that plays several cards in turn, e.g. walk -> walk_1..walk_4 at hz pictures per second */
+    cycles?: Record<string, { frames: string[]; hz: number }>;
     poses: { at_s: number; pose: string; face?: "left" | "right" }[]; moves?: Move[] }[];
   effects?: { type: "burst" | "stars" | "puff"; at_s: number; dur_s: number; on: string; size_m: number; color?: string; lift_m?: number }[];
   /** look is a fixed point, or { follow: id, offset } to keep a moving object or character in frame */
@@ -68,6 +72,7 @@ export function validateScene(s: Scene): string[] {
   for (const c of s.characters) {
     if (ids.has(c.id)) p.push(`duplicate id ${c.id}`); ids.add(c.id);
     if (!c.cards.includes("{pose}")) p.push(`character ${c.id}: cards must contain {pose}`);
+    for (const [n, cy] of Object.entries(c.cycles ?? {})) if (!cy.frames.length || !(cy.hz > 0)) p.push(`character ${c.id}: cycle ${n} needs frames and a positive hz`);
     if (!c.poses.length || c.poses[0].at_s !== 0) p.push(`character ${c.id}: first pose must be at 0s`);
     for (const k of c.poses) inTime(k.at_s, `character ${c.id} pose`);
     for (const m of c.moves ?? []) { inTime(m.from_s, `character ${c.id} ${m.type}`); inTime(m.to_s, `character ${c.id} ${m.type}`); }
@@ -82,6 +87,7 @@ export function validateScene(s: Scene): string[] {
   const KINDS = ["smoke", "fire", "sparks", "explosion", "dust", "splash", "chunks", "snow"];
   for (const e of s.emitters ?? []) {
     if (ids.has(e.id)) p.push(`duplicate id ${e.id}`); ids.add(e.id);
+    if (e.follow && !s.objects.some((o) => o.id === e.follow)) p.push(`emitter ${e.id}: unknown follow target ${e.follow}`);
     if (!KINDS.includes(e.kind)) p.push(`emitter ${e.id}: unknown kind ${e.kind}`);
     if (!(e.to_s >= e.from_s)) p.push(`emitter ${e.id}: to_s must not be before from_s`);
     inTime(e.from_s, `emitter ${e.id}`); inTime(e.to_s, `emitter ${e.id}`);

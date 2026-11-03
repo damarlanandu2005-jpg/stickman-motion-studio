@@ -25,7 +25,7 @@ const mixHex = (a: string, b: string, t: number) => {
 const rng = (seed: number) => () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; };
 
 type Thing = { id: string; root: THREE.Group; base: THREE.Vector3; baseYaw: number; moves: Move[]; radius: number; height: number; forward: number };
-type Actor = Thing & { cards: Map<string, THREE.Mesh>; pivot: THREE.Group; poses: Scene["characters"][0]["poses"]; facing: number; blob: THREE.Mesh };
+type Actor = Thing & { cycles: Record<string, { frames: string[]; hz: number }>; cards: Map<string, THREE.Mesh>; pivot: THREE.Group; poses: Scene["characters"][0]["poses"]; facing: number; blob: THREE.Mesh };
 type FxCard = { mesh: THREE.Mesh; canvas: HTMLCanvasElement; tex: THREE.CanvasTexture };
 
 export class Engine {
@@ -232,7 +232,7 @@ export class Engine {
 
     // characters: one lit, ink-free billboard card per pose (scale fixed by the first pose's card)
     for (const ch of s.characters) {
-      const names = [...new Set(ch.poses.map((p) => p.pose))];
+      const names = [...new Set([...ch.poses.map((p) => p.pose).filter((n) => !ch.cycles?.[n]), ...Object.values(ch.cycles ?? {}).flatMap((c) => c.frames)])];
       const texLoader = new THREE.TextureLoader(), cards = new Map<string, THREE.Mesh>();
       let pxPerM = 0;
       for (const n of names) {
@@ -252,7 +252,7 @@ export class Engine {
       root.add(pivot); this.scene.add(root);
       const blob = new THREE.Mesh(new THREE.PlaneGeometry(ch.height_m * 0.55, ch.height_m * 0.22).rotateX(-Math.PI / 2), blobMaterial(this.blobTexture()));
       blob.position.y = 0.01; blob.layers.set(NOINK); root.add(blob);
-      const a: Actor = { id: ch.id, root, pivot, cards, blob, poses: ch.poses, facing: 1, base: new THREE.Vector3(ch.at[0], 0, ch.at[1]), baseYaw: 0,
+      const a: Actor = { id: ch.id, root, pivot, cards, cycles: ch.cycles ?? {}, blob, poses: ch.poses, facing: 1, base: new THREE.Vector3(ch.at[0], 0, ch.at[1]), baseYaw: 0,
         moves: ch.moves ?? [], radius: 0.3, height: ch.height_m, forward: 0 };
       this.actors.push(a); this.things.set(ch.id, a);
     }
@@ -387,7 +387,9 @@ export class Engine {
     const q = this.poseAt(a, time);
     let pose = a.poses[0];
     for (const k of a.poses) if (time >= k.at_s) pose = k;
-    for (const [n, m] of a.cards) m.visible = n === pose.pose;
+    const cy = a.cycles[pose.pose];
+    const shown = cy ? cy.frames[Math.floor(Math.max(0, time - pose.at_s) * cy.hz + 1e-6) % cy.frames.length] : pose.pose;
+    for (const [n, m] of a.cards) m.visible = n === shown;
     // facing: explicit per pose, else from the screen direction of travel (cards are drawn facing right)
     if (pose.face) a.facing = pose.face === "right" ? 1 : -1;
     else if (q.dir !== null && !q.keepFacing) {

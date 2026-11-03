@@ -76,6 +76,41 @@ def add_fields(wind, turbulence_needed: bool):
         t.field.flow = 0.0
 
 
+def _ease(x: float) -> float:
+    t = max(0.0, min(1.0, x))
+    return t * t * (3 - 2 * t)
+
+
+def follow_position(obj: dict, offset, time_s: float):
+    """Where a scripted object is at time t (same rules as engine.ts poseAt for move / fly), plus an offset."""
+    x, y, z = obj["at"][0], 0.0, obj["at"][1]
+    for m in obj.get("moves") or []:
+        if time_s < m["from_s"]:
+            continue
+        u = max(0.0, min(1.0, (time_s - m["from_s"]) / (m["to_s"] - m["from_s"])))
+        if m["type"] in ("move", "walk", "hop"):
+            k = u if m["type"] == "walk" else _ease(u)
+            x, z = x + (m["to"][0] - x) * k, z + (m["to"][1] - z) * k
+        elif m["type"] == "fly":
+            k = _ease(u)
+            x, y, z = x + (m["to"][0] - x) * k, y + (m["to"][1] - y) * k, z + (m["to"][2] - z) * k
+    o = offset or (0, 0, 0)
+    return (x + o[0], y + o[1], z + o[2])
+
+
+def animate_follow(ob, e: dict, s: dict, fps: int, frames: int):
+    """Keyframe the emitter so it travels with the object it follows (e.g. a rocket's exhaust)."""
+    target = next((o for o in s["objects"] if o["id"] == e["follow"]), None)
+    if target is None:
+        raise ValueError(f"emitter {e['id']}: unknown follow target {e['follow']!r}")
+    for f in range(1, frames + 1):
+        ob.location = to_blender(follow_position(target, e.get("offset"), (f - 1) / fps))
+        ob.keyframe_insert("location", frame=f)
+    for fc in (ob.animation_data.action.fcurves if hasattr(ob.animation_data.action, "fcurves") else []):
+        for kp in fc.keyframe_points:
+            kp.interpolation = "LINEAR"
+
+
 def make_emitter(e: dict, fps: int, wind_on: bool):
     kind = e["kind"]
     if kind not in KINDS:
@@ -126,12 +161,14 @@ def make_emitter(e: dict, fps: int, wind_on: bool):
     return ob, p
 
 
-def bake_emitters(s: dict, fps: int, frames: int) -> dict:
+def bake_emitters(s: dict, fps: int, frames: int) -> dict:  # noqa: C901
     out = {}
     emitters = s.get("emitters") or []
     live = []
     for e in emitters:
         ob, p = make_emitter(e, fps, bool(s.get("wind")))
+        if e.get("follow"):
+            animate_follow(ob, e, s, fps, frames)
         live.append((e, ob, p))
     sc = bpy.context.scene
     frames_data = {e["id"]: [] for e, _, _ in live}

@@ -29774,7 +29774,7 @@ var Engine = class _Engine {
       for (const m of t.moves) if (m.type === "move" && m.dust) for (let i = 0; i < 4; i++) this.puffs.push({ card: this.fxCard(300, 300), owner: t, move: m });
     }
     for (const ch of s.characters) {
-      const names = [...new Set(ch.poses.map((p) => p.pose))];
+      const names = [.../* @__PURE__ */ new Set([...ch.poses.map((p) => p.pose).filter((n) => !ch.cycles?.[n]), ...Object.values(ch.cycles ?? {}).flatMap((c) => c.frames)])];
       const texLoader = new TextureLoader(), cards = /* @__PURE__ */ new Map();
       let pxPerM = 0;
       for (const n of names) {
@@ -29805,6 +29805,7 @@ var Engine = class _Engine {
         root,
         pivot,
         cards,
+        cycles: ch.cycles ?? {},
         blob,
         poses: ch.poses,
         facing: 1,
@@ -29968,7 +29969,9 @@ var Engine = class _Engine {
     const q = this.poseAt(a, time);
     let pose = a.poses[0];
     for (const k of a.poses) if (time >= k.at_s) pose = k;
-    for (const [n, m] of a.cards) m.visible = n === pose.pose;
+    const cy = a.cycles[pose.pose];
+    const shown = cy ? cy.frames[Math.floor(Math.max(0, time - pose.at_s) * cy.hz + 1e-6) % cy.frames.length] : pose.pose;
+    for (const [n, m] of a.cards) m.visible = n === shown;
     if (pose.face) a.facing = pose.face === "right" ? 1 : -1;
     else if (q.dir !== null && !q.keepFacing) {
       const now = q.p.clone().project(this.cam), ahead = q.p.clone().add(new Vector3(Math.sin(q.dir), 0, Math.cos(q.dir))).project(this.cam);
@@ -30049,6 +30052,7 @@ function validateScene(s) {
     if (ids.has(c.id)) p.push(`duplicate id ${c.id}`);
     ids.add(c.id);
     if (!c.cards.includes("{pose}")) p.push(`character ${c.id}: cards must contain {pose}`);
+    for (const [n, cy] of Object.entries(c.cycles ?? {})) if (!cy.frames.length || !(cy.hz > 0)) p.push(`character ${c.id}: cycle ${n} needs frames and a positive hz`);
     if (!c.poses.length || c.poses[0].at_s !== 0) p.push(`character ${c.id}: first pose must be at 0s`);
     for (const k of c.poses) inTime(k.at_s, `character ${c.id} pose`);
     for (const m of c.moves ?? []) {
@@ -30070,6 +30074,7 @@ function validateScene(s) {
   for (const e of s.emitters ?? []) {
     if (ids.has(e.id)) p.push(`duplicate id ${e.id}`);
     ids.add(e.id);
+    if (e.follow && !s.objects.some((o) => o.id === e.follow)) p.push(`emitter ${e.id}: unknown follow target ${e.follow}`);
     if (!KINDS.includes(e.kind)) p.push(`emitter ${e.id}: unknown kind ${e.kind}`);
     if (!(e.to_s >= e.from_s)) p.push(`emitter ${e.id}: to_s must not be before from_s`);
     inTime(e.from_s, `emitter ${e.id}`);
