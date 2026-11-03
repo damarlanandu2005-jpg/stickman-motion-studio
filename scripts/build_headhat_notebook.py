@@ -40,7 +40,8 @@ REPO = "damarlanandu2005-jpg/stickman-motion-studio"
 FALLBACK_REF = "test/image-to-3d-objects"
 REFDIR = "animation/reference_art/headhat/"
 REFS = {"heads_20.png": "18d24f9fd1afcccbf2c3f86122400f4fe20e522ece0fd6cb8f1332cface95c6d", "head_neutral.png": "9a6996322895f603761ed2bdfd85bbaa15149e4fbdce8863adc20ca4da46d064",
-        "hat_explorer.png": "c47d32322533c5c0d5f88391dacfee06ce3d3a96f0970205faadba81c099351b", "hat_astro.png": "684326cef6581ef9e6d92eb5e1d0e0a2533af4dbf3306ce3e0a7b415a5403c3e"}
+        "hat_explorer.png": "c47d32322533c5c0d5f88391dacfee06ce3d3a96f0970205faadba81c099351b", "hat_sailor.png": "9b1c13bdd855eb36c44bf8127ab24cb1656570027133c4570d4d49004eab3104",
+        "hat_astro.png": "684326cef6581ef9e6d92eb5e1d0e0a2533af4dbf3306ce3e0a7b415a5403c3e"}
 
 KLEIN_ID, KLEIN_REVISION = "black-forest-labs/FLUX.2-klein-4B", "e7b7dc27f91deacad38e78976d1f2b499d76a294"
 KLEIN_PIP = ["diffusers==0.42.1", "transformers==5.22.1", "huggingface-hub==1.33.0", "accelerate", "pillow"]
@@ -53,16 +54,16 @@ SHEET = ("Use the first reference image as the exact style and the exact 20 face
          "every cell. Pure white background, wide white gaps, no frame lines, no text, no marks. Head and hat only, no neck, no body.")
 SINGLE = ("Draw ONE stickman head: the same bare round white head with thick black outline from the first reference image, WEARING the "
           "hat shown in the second reference image. The hat sits snugly on top of the head, edges touching the head outline, no gap at the "
-          "sides. Same flat 2D cartoon style. Facial expression: {expr}. Centered, pure white background, no neck, no body, no text.")
-EXPR = {"happy": "big happy open-mouth smile, brows raised", "angry": "angry, brows slanted down, gritted teeth",
-        "scared": "scared, tiny eyes, wavy mouth, one sweat drop", "laugh": "laughing, eyes closed as curves, wide open mouth"}
-HATS = {"explorer": "hat_explorer.png", "astro": "hat_astro.png"}
+          "sides. Same flat 2D cartoon style. The head is a perfect round circle, the same size every time. Facial expression: {expr}. Centered, pure white background, no neck, no body, no text.")
+EXPR = {"neutral": "calm neutral, small straight mouth, soft brows", "happy": "big happy open-mouth smile, brows raised",
+        "angry": "angry, brows slanted down, gritted teeth", "scared": "scared, tiny eyes, wavy mouth, one sweat drop",
+        "sad": "sad, small frown, brows slanted up in the middle", "surprised": "surprised, big round eyes, small round open mouth",
+        "smug": "smug, half-closed eyes, one brow up, small smirk", "laugh": "laughing, eyes closed as curves, wide open mouth"}
+HATS = {"explorer": "hat_explorer.png", "astro": "hat_astro.png", "sailor": "hat_sailor.png"}
 JOBS = {}
 for hat, hf in HATS.items():
-    for seed in (4301, 4302):
-        JOBS[f"sheet_{hat}_s{seed}"] = {"refs": ["heads_20.png", hf], "prompt": SHEET, "seed": seed, "width": 896, "height": 1120}
     for ex, text in EXPR.items():
-        JOBS[f"single_{hat}_{ex}"] = {"refs": ["head_neutral.png", hf], "prompt": SINGLE.format(expr=text), "seed": 4311, "width": 768, "height": 768}
+        JOBS[f"consist_{hat}_{ex}"] = {"refs": ["head_neutral.png", hf], "prompt": SINGLE.format(expr=text), "seed": 4311, "width": 768, "height": 768}
 STEPS, GUIDANCE = 4, 1.0
 
 REPORT = {
