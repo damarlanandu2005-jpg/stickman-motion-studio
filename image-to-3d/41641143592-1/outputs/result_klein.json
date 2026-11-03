@@ -1,0 +1,130 @@
+{
+  "stage": "klein",
+  "status": "success",
+  "error": null,
+  "objects": [
+    {
+      "name": "access_gantry",
+      "file": "object_access_gantry.png",
+      "seconds": 28.33,
+      "seed": 7101,
+      "width": 768,
+      "height": 768,
+      "sha256": "c285acbf4459edc636bd7c3fbc3c99df86b50be4e91f9e47c852b0980c0cd579",
+      "status": "success"
+    },
+    {
+      "name": "launch_pad_base",
+      "file": "object_launch_pad_base.png",
+      "seconds": 22.65,
+      "seed": 7102,
+      "width": 768,
+      "height": 768,
+      "sha256": "9f37eb8abb65b8c3568c1283dc59fb0b89a585f341802537ea3eef4b142fb525",
+      "status": "success"
+    },
+    {
+      "name": "safety_fence",
+      "file": "object_safety_fence.png",
+      "seconds": 21.79,
+      "seed": 7103,
+      "width": 768,
+      "height": 768,
+      "sha256": "8df06f7972404e61212af039b96a2092d8e2205ea7f44924825c847eccf4b003",
+      "status": "success"
+    },
+    {
+      "name": "alien_mountain",
+      "file": "object_alien_mountain.png",
+      "seconds": 21.05,
+      "seed": 7104,
+      "width": 768,
+      "height": 768,
+      "sha256": "8f0a93812fbd970eee6e99b3a7e08484ee8c990307aec3ccc4f383fdfa1771d6",
+      "status": "success"
+    },
+    {
+      "name": "alien_mushroom",
+      "file": "object_alien_mushroom.png",
+      "seconds": 20.61,
+      "seed": 7105,
+      "width": 768,
+      "height": 768,
+      "sha256": "4879be2b88a01ca16fac1735df53063c657e48ad2e2aaa445f75911075b103d3",
+      "status": "success"
+    },
+    {
+      "name": "alien_flower",
+      "file": "object_alien_flower.png",
+      "seconds": 20.03,
+      "seed": 7106,
+      "width": 768,
+      "height": 768,
+      "sha256": "d674c9ed86de8e38b5e5ebed7e45898efc5587ec30ba22032db49a943149df2a",
+      "status": "success"
+    },
+    {
+      "name": "purple_boulder",
+      "file": "object_purple_boulder.png",
+      "seconds": 19.68,
+      "seed": 7107,
+      "width": 768,
+      "height": 768,
+      "sha256": "19e67200c75b2f04b1c8c89561a5cd6181d072f6f214988689119c0ff7e41209",
+      "status": "success"
+    },
+    {
+      "name": "space_wrench",
+      "file": "object_space_wrench.png",
+      "seconds": 19.82,
+      "seed": 7108,
+      "width": 768,
+      "height": 768,
+      "sha256": "11f7b514bd4913b6f5ad7688ea52d49f9bc0d3ad75444dc81f275c3df5955d65",
+      "status": "success"
+    },
+    {
+      "name": "checklist_clipboard",
+      "file": "object_checklist_clipboard.png",
+      "seconds": 19.75,
+      "seed": 7109,
+      "width": 768,
+      "height": 768,
+      "sha256": "a2971c2a0572049cfc4f7b75d571a47135f046fff194b4323d8075678d2535eb",
+      "status": "success"
+    },
+    {
+      "name": "supply_crate",
+      "file": "object_supply_crate.png",
+      "seconds": 19.85,
+      "seed": 7110,
+      "width": 768,
+      "height": 768,
+      "sha256": "9b6ba8ca2034d72f439d11eec4b0aa374a71eecf8aa4e92d90dd0751d59ed0b4",
+      "status": "success"
+    },
+    {
+      "name": "fuel_tank",
+      "file": "object_fuel_tank.png",
+      "seconds": 20.06,
+      "seed": 7111,
+      "width": 768,
+      "height": 768,
+      "sha256": "aba4771b4373135974c147d8a410b33b49dbcea69ce3ec8948fc4eea8abc7535",
+      "status": "success"
+    },
+    {
+      "name": "alien_tree",
+      "file": "object_alien_tree.png",
+      "seconds": 20.26,
+      "seed": 7112,
+      "width": 768,
+      "height": 768,
+      "sha256": "28a603013fe1d9601a3f9be84e31dd58770867a886b01793667d37be617778ca",
+      "status": "success"
+    }
+  ],
+  "download_seconds": 113.5,
+  "load_seconds": 66.7,
+  "peak_vram_gib": 7.75
+}

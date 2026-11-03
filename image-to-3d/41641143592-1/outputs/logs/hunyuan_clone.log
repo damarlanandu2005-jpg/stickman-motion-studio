@@ -1,0 +1,2 @@
+$ git clone -q https://github.com/Tencent-Hunyuan/Hunyuan3D-2.git /tmp/Hunyuan3D-2
+$ git -C /tmp/Hunyuan3D-2 checkout -q f8db63096c8282cb27354314d896feba5ba6ff8a

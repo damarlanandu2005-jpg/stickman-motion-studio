@@ -1,0 +1,2 @@
+$ /tmp/venv3d/bin/python -c import skimage; print('scikit-image', skimage.__version__)
+scikit-image 0.26.0

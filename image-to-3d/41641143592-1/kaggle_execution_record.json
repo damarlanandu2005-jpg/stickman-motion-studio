@@ -1,0 +1,333 @@
+{
+  "identity": {
+    "run_id": "f5fc030812e0439783c14f645f00d6aa",
+    "run_token": "10c3b68e27691576e39332dadc725f44",
+    "commit_sha": "0f3c187c05a133de20d117e9512e271b4f331437",
+    "workflow_run_id": "41641143592",
+    "workflow_run_attempt": "1",
+    "created_utc": "2026-11-03T13:05:19+00:00"
+  },
+  "kernel": "narasimhadamarla/stickman-motion-studio-image-to-3d-test",
+  "pushed_version": 5,
+  "push_attempts": 1,
+  "observations": [
+    {
+      "at": "2026-11-03T13:05:19+00:00",
+      "event": "notebook_stamped",
+      "run_token_written": true
+    },
+    {
+      "at": "2026-11-03T13:05:21+00:00",
+      "event": "push_response",
+      "attempt": 1,
+      "exit_code": 0,
+      "text": "Kernel version 5 successfully pushed.  Please check progress at https://www.kaggle.com/code/narasimhadamarla/stickman-motion-studio-image-to-3d-test"
+    },
+    {
+      "at": "2026-11-03T13:05:21+00:00",
+      "event": "push_accepted",
+      "version": 5
+    },
+    {
+      "at": "2026-11-03T13:05:22+00:00",
+      "event": "status",
+      "state": "QUEUED"
+    },
+    {
+      "at": "2026-11-03T13:05:52+00:00",
+      "event": "status",
+      "state": "RUNNING"
+    },
+    {
+      "at": "2026-11-03T13:47:39+00:00",
+      "event": "status",
+      "state": "COMPLETE"
+    },
+    {
+      "at": "2026-11-03T13:48:10+00:00",
+      "event": "download",
+      "attempt": 1,
+      "exit_code": 0,
+      "text": "00, 7.98MB/s]\n 59%|\u2588\u2588\u2588\u2588\u2588\u2589    | 3.00M/5.04M [00:00<00:00, 12.0MB/s]\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 5.04M/5.04M [00:00<00:00, 14.9MB/s]\n\nOutput file downloaded to kaggle-image-to-3d-output/outputs/triposr_supply_crate.glb\nKernel log downloaded to kaggle-image-to-3d-output/stickman-motion-studio-image-to-3d-test.log"
+    }
+  ],
+  "download_attempts": 1,
+  "validation": {
+    "ok": true,
+    "failures": [],
+    "checks": {
+      "objects": [
+        {
+          "file": "object_access_gantry.png",
+          "valid": true
+        },
+        {
+          "file": "object_launch_pad_base.png",
+          "valid": true
+        },
+        {
+          "file": "object_safety_fence.png",
+          "valid": true
+        },
+        {
+          "file": "object_alien_mountain.png",
+          "valid": true
+        },
+        {
+          "file": "object_alien_mushroom.png",
+          "valid": true
+        },
+        {
+          "file": "object_alien_flower.png",
+          "valid": true
+        },
+        {
+          "file": "object_purple_boulder.png",
+          "valid": true
+        },
+        {
+          "file": "object_space_wrench.png",
+          "valid": true
+        },
+        {
+          "file": "object_checklist_clipboard.png",
+          "valid": true
+        },
+        {
+          "file": "object_supply_crate.png",
+          "valid": true
+        },
+        {
+          "file": "object_fuel_tank.png",
+          "valid": true
+        },
+        {
+          "file": "object_alien_tree.png",
+          "valid": true
+        }
+      ],
+      "models": [
+        {
+          "stage": "triposr",
+          "file": "triposr_access_gantry.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "triposr",
+          "file": "triposr_launch_pad_base.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "triposr",
+          "file": "triposr_safety_fence.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "triposr",
+          "file": "triposr_alien_mountain.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "triposr",
+          "file": "triposr_alien_mushroom.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "triposr",
+          "file": "triposr_alien_flower.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "triposr",
+          "file": "triposr_purple_boulder.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "triposr",
+          "file": "triposr_space_wrench.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "triposr",
+          "file": "triposr_checklist_clipboard.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "triposr",
+          "file": "triposr_supply_crate.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "triposr",
+          "file": "triposr_fuel_tank.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "triposr",
+          "file": "triposr_alien_tree.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "hunyuan_shape",
+          "file": "hunyuan_access_gantry_shape.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "hunyuan_shape",
+          "file": "hunyuan_launch_pad_base_shape.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "hunyuan_shape",
+          "file": "hunyuan_safety_fence_shape.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "hunyuan_shape",
+          "file": "hunyuan_alien_mountain_shape.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "hunyuan_shape",
+          "file": "hunyuan_alien_mushroom_shape.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "hunyuan_shape",
+          "file": "hunyuan_alien_flower_shape.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "hunyuan_shape",
+          "file": "hunyuan_purple_boulder_shape.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "hunyuan_shape",
+          "file": "hunyuan_space_wrench_shape.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "hunyuan_shape",
+          "file": "hunyuan_checklist_clipboard_shape.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "hunyuan_shape",
+          "file": "hunyuan_supply_crate_shape.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "hunyuan_shape",
+          "file": "hunyuan_fuel_tank_shape.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "hunyuan_shape",
+          "file": "hunyuan_alien_tree_shape.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "hunyuan_paint",
+          "file": "hunyuan_access_gantry_textured.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "hunyuan_paint",
+          "file": "hunyuan_launch_pad_base_textured.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "hunyuan_paint",
+          "file": "hunyuan_safety_fence_textured.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "hunyuan_paint",
+          "file": "hunyuan_alien_mountain_textured.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "hunyuan_paint",
+          "file": "hunyuan_alien_mushroom_textured.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "hunyuan_paint",
+          "file": "hunyuan_alien_flower_textured.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "hunyuan_paint",
+          "file": "hunyuan_purple_boulder_textured.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "hunyuan_paint",
+          "file": "hunyuan_space_wrench_textured.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "hunyuan_paint",
+          "file": "hunyuan_checklist_clipboard_textured.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "hunyuan_paint",
+          "file": "hunyuan_supply_crate_textured.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "hunyuan_paint",
+          "file": "hunyuan_fuel_tank_textured.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "hunyuan_paint",
+          "file": "hunyuan_alien_tree_textured.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        }
+      ]
+    }
+  },
+  "limitations": [
+    "The Kaggle CLI exposes the notebook version number, not a separate execution ID. Version tracking plus the run token in the output are used together."
+  ],
+  "result": "verified"
+}

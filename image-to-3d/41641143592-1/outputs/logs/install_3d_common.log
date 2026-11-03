@@ -1,0 +1,212 @@
+$ /tmp/venv3d/bin/python -m pip install --no-cache-dir transformers==4.48.3 diffusers==0.32.2 huggingface-hub==0.30.2 accelerate==1.3.0 omegaconf==2.3.0 einops trimesh pymeshlab pygltflib xatlas rembg[cpu] imageio opencv-python-headless moderngl scikit-image ninja pybind11 scikit-build-core cmake tqdm
+Collecting transformers==4.48.3
+  Downloading transformers-4.48.3-py3-none-any.whl.metadata (44 kB)
+Collecting diffusers==0.32.2
+  Downloading diffusers-0.32.2-py3-none-any.whl.metadata (18 kB)
+Collecting huggingface-hub==0.30.2
+  Downloading huggingface_hub-0.30.2-py3-none-any.whl.metadata (13 kB)
+Collecting accelerate==1.3.0
+  Downloading accelerate-1.3.0-py3-none-any.whl.metadata (19 kB)
+Collecting omegaconf==2.3.0
+  Downloading omegaconf-2.3.0-py3-none-any.whl.metadata (3.9 kB)
+Requirement already satisfied: einops in /usr/local/lib/python3.13/dist-packages (0.8.2)
+Collecting trimesh
+  Downloading trimesh-5.2.0-py3-none-any.whl.metadata (13 kB)
+Collecting pymeshlab
+  Downloading pymeshlab-2025.7.post1-cp313-cp313-manylinux_2_35_x86_64.whl.metadata (4.0 kB)
+Requirement already satisfied: pygltflib in /usr/local/lib/python3.13/dist-packages (1.16.5)
+Collecting xatlas
+  Downloading xatlas-0.0.11-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.2 kB)
+Requirement already satisfied: imageio in /usr/local/lib/python3.13/dist-packages (2.38.1)
+Requirement already satisfied: opencv-python-headless in /usr/local/lib/python3.13/dist-packages (4.14.0.94)
+Collecting moderngl
+  Downloading moderngl-5.13.0-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (8.1 kB)
+Requirement already satisfied: scikit-image in /usr/local/lib/python3.13/dist-packages (0.25.2)
+Requirement already satisfied: ninja in /usr/local/lib/python3.13/dist-packages (1.13.2)
+Requirement already satisfied: pybind11 in /usr/local/lib/python3.13/dist-packages (3.1.0)
+Collecting scikit-build-core
+  Downloading scikit_build_core-1.1.2-py3-none-any.whl.metadata (19 kB)
+Requirement already satisfied: cmake in /usr/local/lib/python3.13/dist-packages (3.31.10)
+Requirement already satisfied: tqdm in /usr/local/lib/python3.13/dist-packages (4.67.3)
+Collecting rembg[cpu]
+  Downloading rembg-2.0.86-py3-none-any.whl.metadata (30 kB)
+Requirement already satisfied: filelock in /usr/local/lib/python3.13/dist-packages (from transformers==4.48.3) (4.2.4)
+Requirement already satisfied: numpy>=1.17 in /usr/local/lib/python3.13/dist-packages (from transformers==4.48.3) (2.1.3)
+Requirement already satisfied: packaging>=20.0 in /usr/local/lib/python3.13/dist-packages (from transformers==4.48.3) (26.3)
+Requirement already satisfied: pyyaml>=5.1 in /usr/local/lib/python3.13/dist-packages (from transformers==4.48.3) (6.0.3)
+Requirement already satisfied: regex!=2019.12.17 in /usr/local/lib/python3.13/dist-packages (from transformers==4.48.3) (2025.11.3)
+Requirement already satisfied: requests in /usr/local/lib/python3.13/dist-packages (from transformers==4.48.3) (2.34.2)
+Collecting tokenizers<0.22,>=0.21 (from transformers==4.48.3)
+  Downloading tokenizers-0.21.4-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.7 kB)
+Requirement already satisfied: safetensors>=0.4.1 in /usr/local/lib/python3.13/dist-packages (from transformers==4.48.3) (0.8.0)
+Requirement already satisfied: fsspec>=2023.5.0 in /usr/local/lib/python3.13/dist-packages (from huggingface-hub==0.30.2) (2025.12.0)
+Requirement already satisfied: typing-extensions>=3.7.4.3 in /usr/local/lib/python3.13/dist-packages (from huggingface-hub==0.30.2) (4.16.0)
+Requirement already satisfied: importlib-metadata in /usr/local/lib/python3.13/dist-packages (from diffusers==0.32.2) (8.9.0)
+Requirement already satisfied: Pillow in /usr/local/lib/python3.13/dist-packages (from diffusers==0.32.2) (13.0.0)
+Requirement already satisfied: psutil in /usr/local/lib/python3.13/dist-packages (from accelerate==1.3.0) (5.9.5)
+Requirement already satisfied: torch>=2.0.0 in /usr/local/lib/python3.13/dist-packages (from accelerate==1.3.0) (2.11.0+cu130)
+Collecting antlr4-python3-runtime==4.9.* (from omegaconf==2.3.0)
+  Downloading antlr4-python3-runtime-4.9.3.tar.gz (117 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Requirement already satisfied: dataclasses-json>=0.0.25 in /usr/local/lib/python3.13/dist-packages (from pygltflib) (0.6.7)
+Requirement already satisfied: deprecated in /usr/local/lib/python3.13/dist-packages (from pygltflib) (3.0.1)
+Requirement already satisfied: jsonschema<5.0.0,>=4.25.1 in /usr/local/lib/python3.13/dist-packages (from rembg[cpu]) (4.26.0)
+Collecting numpy>=1.17 (from transformers==4.48.3)
+  Downloading numpy-2.5.4-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)
+Collecting onnxruntime<2.0.0,>=1.23.2 (from rembg[cpu])
+  Downloading onnxruntime-1.31.1-cp313-cp313-manylinux_2_28_x86_64.whl.metadata (5.8 kB)
+Requirement already satisfied: pooch<2.0.0,>=1.8.2 in /usr/local/lib/python3.13/dist-packages (from rembg[cpu]) (1.9.0)
+Collecting pymatting<2.0.0,>=1.1.14 (from rembg[cpu])
+  Downloading pymatting-1.1.16-py3-none-any.whl.metadata (9.1 kB)
+Collecting scikit-image
+  Downloading scikit_image-0.26.0-cp313-cp313-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (15 kB)
+Requirement already satisfied: scipy<2.0.0,>=1.16.3 in /usr/local/lib/python3.13/dist-packages (from rembg[cpu]) (1.16.3)
+Requirement already satisfied: networkx>=3.0 in /usr/local/lib/python3.13/dist-packages (from scikit-image) (3.7)
+Requirement already satisfied: tifffile>=2022.8.12 in /usr/local/lib/python3.13/dist-packages (from scikit-image) (2026.10.15)
+Requirement already satisfied: lazy-loader>=0.4 in /usr/local/lib/python3.13/dist-packages (from scikit-image) (0.6)
+Requirement already satisfied: attrs>=22.2.0 in /usr/local/lib/python3.13/dist-packages (from jsonschema<5.0.0,>=4.25.1->rembg[cpu]) (26.1.0)
+Requirement already satisfied: jsonschema-specifications>=2023.03.6 in /usr/local/lib/python3.13/dist-packages (from jsonschema<5.0.0,>=4.25.1->rembg[cpu]) (2025.9.1)
+Requirement already satisfied: referencing>=0.28.4 in /usr/local/lib/python3.13/dist-packages (from jsonschema<5.0.0,>=4.25.1->rembg[cpu]) (0.37.0)
+Requirement already satisfied: rpds-py>=0.25.0 in /usr/local/lib/python3.13/dist-packages (from jsonschema<5.0.0,>=4.25.1->rembg[cpu]) (2026.9.1)
+Requirement already satisfied: flatbuffers in /usr/local/lib/python3.13/dist-packages (from onnxruntime<2.0.0,>=1.23.2->rembg[cpu]) (25.12.19)
+Requirement already satisfied: protobuf>=4.25.8 in /usr/local/lib/python3.13/dist-packages (from onnxruntime<2.0.0,>=1.23.2->rembg[cpu]) (7.36.2)
+Requirement already satisfied: platformdirs>=2.5.0 in /usr/local/lib/python3.13/dist-packages (from pooch<2.0.0,>=1.8.2->rembg[cpu]) (4.13.5)
+Requirement already satisfied: numba>=0.60.0 in /usr/local/lib/python3.13/dist-packages (from pymatting<2.0.0,>=1.1.14->rembg[cpu]) (0.61.2)
+Collecting glcontext>=3.0.0 (from moderngl)
+  Downloading glcontext-3.1.0-cp313-cp313-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (6.2 kB)
+Requirement already satisfied: pathspec>=0.12.0 in /usr/local/lib/python3.13/dist-packages (from scikit-build-core) (1.1.1)
+Requirement already satisfied: marshmallow<4.0.0,>=3.18.0 in /usr/local/lib/python3.13/dist-packages (from dataclasses-json>=0.0.25->pygltflib) (3.26.2)
+Requirement already satisfied: typing-inspect<1,>=0.4.0 in /usr/local/lib/python3.13/dist-packages (from dataclasses-json>=0.0.25->pygltflib) (0.9.0)
+Requirement already satisfied: mypy-extensions>=0.3.0 in /usr/local/lib/python3.13/dist-packages (from typing-inspect<1,>=0.4.0->dataclasses-json>=0.0.25->pygltflib) (1.1.0)
+Requirement already satisfied: llvmlite<0.45,>=0.44.0dev0 in /usr/local/lib/python3.13/dist-packages (from numba>=0.60.0->pymatting<2.0.0,>=1.1.14->rembg[cpu]) (0.44.0)
+INFO: pip is looking at multiple versions of numba to determine which version is compatible with other requirements. This could take a while.
+Collecting numba>=0.60.0 (from pymatting<2.0.0,>=1.1.14->rembg[cpu])
+  Downloading numba-0.68.1-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (2.8 kB)
+Collecting llvmlite<0.51,>=0.50.0dev0 (from numba>=0.60.0->pymatting<2.0.0,>=1.1.14->rembg[cpu])
+  Downloading llvmlite-0.50.0-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (5.1 kB)
+Requirement already satisfied: charset_normalizer<4,>=2 in /usr/local/lib/python3.13/dist-packages (from requests->transformers==4.48.3) (3.4.9)
+Requirement already satisfied: idna<4,>=2.5 in /usr/local/lib/python3.13/dist-packages (from requests->transformers==4.48.3) (3.20)
+Requirement already satisfied: urllib3<3,>=1.26 in /usr/local/lib/python3.13/dist-packages (from requests->transformers==4.48.3) (2.8.0)
+Requirement already satisfied: certifi>=2023.5.7 in /usr/local/lib/python3.13/dist-packages (from requests->transformers==4.48.3) (2026.10.23)
+Requirement already satisfied: setuptools<82 in /usr/local/lib/python3.13/dist-packages (from torch>=2.0.0->accelerate==1.3.0) (81.0.0)
+Requirement already satisfied: sympy>=1.13.3 in /usr/local/lib/python3.13/dist-packages (from torch>=2.0.0->accelerate==1.3.0) (1.14.0)
+Requirement already satisfied: jinja2 in /usr/local/lib/python3.13/dist-packages (from torch>=2.0.0->accelerate==1.3.0) (3.1.6)
+Requirement already satisfied: cuda-toolkit==13.0.2 in /usr/local/lib/python3.13/dist-packages (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.2; platform_system == "Linux"->torch>=2.0.0->accelerate==1.3.0) (13.0.2)
+Requirement already satisfied: cuda-bindings<14,>=13.0.3 in /usr/local/lib/python3.13/dist-packages (from torch>=2.0.0->accelerate==1.3.0) (13.0.3)
+Requirement already satisfied: nvidia-cudnn-cu13==9.19.0.56 in /usr/local/lib/python3.13/dist-packages (from torch>=2.0.0->accelerate==1.3.0) (9.19.0.56)
+Requirement already satisfied: nvidia-cusparselt-cu13==0.8.0 in /usr/local/lib/python3.13/dist-packages (from torch>=2.0.0->accelerate==1.3.0) (0.8.0)
+Requirement already satisfied: nvidia-nccl-cu13==2.28.9 in /usr/local/lib/python3.13/dist-packages (from torch>=2.0.0->accelerate==1.3.0) (2.28.9)
+Requirement already satisfied: nvidia-nvshmem-cu13==3.4.5 in /usr/local/lib/python3.13/dist-packages (from torch>=2.0.0->accelerate==1.3.0) (3.4.5)
+Requirement already satisfied: triton==3.6.0 in /usr/local/lib/python3.13/dist-packages (from torch>=2.0.0->accelerate==1.3.0) (3.6.0)
+Requirement already satisfied: nvidia-cublas==13.1.0.3.* in /usr/local/lib/python3.13/dist-packages (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.2; platform_system == "Linux"->torch>=2.0.0->accelerate==1.3.0) (13.1.0.3)
+Requirement already satisfied: nvidia-cuda-runtime==13.0.96.* in /usr/local/lib/python3.13/dist-packages (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.2; platform_system == "Linux"->torch>=2.0.0->accelerate==1.3.0) (13.0.96)
+Requirement already satisfied: nvidia-cufft==12.0.0.61.* in /usr/local/lib/python3.13/dist-packages (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.2; platform_system == "Linux"->torch>=2.0.0->accelerate==1.3.0) (12.0.0.61)
+Requirement already satisfied: nvidia-cufile==1.15.1.6.* in /usr/local/lib/python3.13/dist-packages (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.2; platform_system == "Linux"->torch>=2.0.0->accelerate==1.3.0) (1.15.1.6)
+Requirement already satisfied: nvidia-cuda-cupti==13.0.85.* in /usr/local/lib/python3.13/dist-packages (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.2; platform_system == "Linux"->torch>=2.0.0->accelerate==1.3.0) (13.0.85)
+Requirement already satisfied: nvidia-curand==10.4.0.35.* in /usr/local/lib/python3.13/dist-packages (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.2; platform_system == "Linux"->torch>=2.0.0->accelerate==1.3.0) (10.4.0.35)
+Requirement already satisfied: nvidia-cusolver==12.0.4.66.* in /usr/local/lib/python3.13/dist-packages (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.2; platform_system == "Linux"->torch>=2.0.0->accelerate==1.3.0) (12.0.4.66)
+Requirement already satisfied: nvidia-cusparse==12.6.3.3.* in /usr/local/lib/python3.13/dist-packages (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.2; platform_system == "Linux"->torch>=2.0.0->accelerate==1.3.0) (12.6.3.3)
+Requirement already satisfied: nvidia-nvjitlink==13.0.88.* in /usr/local/lib/python3.13/dist-packages (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.2; platform_system == "Linux"->torch>=2.0.0->accelerate==1.3.0) (13.0.88)
+Requirement already satisfied: nvidia-cuda-nvrtc==13.0.88.* in /usr/local/lib/python3.13/dist-packages (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.2; platform_system == "Linux"->torch>=2.0.0->accelerate==1.3.0) (13.0.88)
+Requirement already satisfied: nvidia-nvtx==13.0.85.* in /usr/local/lib/python3.13/dist-packages (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.2; platform_system == "Linux"->torch>=2.0.0->accelerate==1.3.0) (13.0.85)
+Requirement already satisfied: cuda-pathfinder~=1.1 in /usr/local/lib/python3.13/dist-packages (from cuda-bindings<14,>=13.0.3->torch>=2.0.0->accelerate==1.3.0) (1.8.4)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in /usr/local/lib/python3.13/dist-packages (from sympy>=1.13.3->torch>=2.0.0->accelerate==1.3.0) (1.3.0)
+Requirement already satisfied: wrapt<3,>=1.16 in /usr/local/lib/python3.13/dist-packages (from deprecated->pygltflib) (1.17.3)
+Requirement already satisfied: zipp>=3.20 in /usr/local/lib/python3.13/dist-packages (from importlib-metadata->diffusers==0.32.2) (4.1.2)
+Requirement already satisfied: MarkupSafe>=2.0 in /usr/local/lib/python3.13/dist-packages (from jinja2->torch>=2.0.0->accelerate==1.3.0) (3.0.4)
+Downloading transformers-4.48.3-py3-none-any.whl (9.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.7/9.7 MB 166.2 MB/s  0:00:00
+Downloading huggingface_hub-0.30.2-py3-none-any.whl (481 kB)
+Downloading diffusers-0.32.2-py3-none-any.whl (3.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.2/3.2 MB 146.7 MB/s  0:00:00
+Downloading accelerate-1.3.0-py3-none-any.whl (336 kB)
+Downloading omegaconf-2.3.0-py3-none-any.whl (79 kB)
+Downloading tokenizers-0.21.4-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.1/3.1 MB 115.1 MB/s  0:00:00
+Downloading trimesh-5.2.0-py3-none-any.whl (751 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 751.5/751.5 kB 336.2 MB/s  0:00:00
+Downloading pymeshlab-2025.7.post1-cp313-cp313-manylinux_2_35_x86_64.whl (106.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 106.4/106.4 MB 133.3 MB/s  0:00:00
+Downloading xatlas-0.0.11-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (260 kB)
+Downloading rembg-2.0.86-py3-none-any.whl (67 kB)
+Downloading scikit_image-0.26.0-cp313-cp313-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (13.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 13.7/13.7 MB 400.3 MB/s  0:00:00
+Downloading numpy-2.5.4-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.7/16.7 MB 350.1 MB/s  0:00:00
+Downloading onnxruntime-1.31.1-cp313-cp313-manylinux_2_28_x86_64.whl (23.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 23.8/23.8 MB 237.8 MB/s  0:00:00
+Downloading pymatting-1.1.16-py3-none-any.whl (56 kB)
+Downloading moderngl-5.13.0-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (308 kB)
+Downloading scikit_build_core-1.1.2-py3-none-any.whl (295 kB)
+Downloading glcontext-3.1.0-cp313-cp313-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (53 kB)
+Downloading numba-0.68.1-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (3.9 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.9/3.9 MB 555.1 MB/s  0:00:00
+Downloading llvmlite-0.50.0-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (59.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 59.7/59.7 MB 243.1 MB/s  0:00:00
+Building wheels for collected packages: antlr4-python3-runtime
+  Building wheel for antlr4-python3-runtime (pyproject.toml): started
+  Building wheel for antlr4-python3-runtime (pyproject.toml): finished with status 'done'
+  Created wheel for antlr4-python3-runtime: filename=antlr4_python3_runtime-4.9.3-py3-none-any.whl size=144590 sha256=45d70bdeb85fbb779bdc931ace0a7ccba1b60cccb10e9113641b5060c2b89f48
+  Stored in directory: /tmp/pip-ephem-wheel-cache-3rta2hwx/wheels/d5/b3/74/a35b66048c9de6631cd74cbc9475e6feb3e69a467983446bd8
+Successfully built antlr4-python3-runtime
+Installing collected packages: glcontext, antlr4-python3-runtime, xatlas, scikit-build-core, omegaconf, numpy, moderngl, llvmlite, trimesh, pymeshlab, onnxruntime, numba, huggingface-hub, tokenizers, scikit-image, pymatting, diffusers, transformers, rembg, accelerate
+  Attempting uninstall: omegaconf
+    Found existing installation: omegaconf 2.4.0
+    Not uninstalling omegaconf at /usr/local/lib/python3.13/dist-packages, outside environment /tmp/venv3d
+    Can't uninstall 'omegaconf'. No files were found to uninstall.
+  Attempting uninstall: numpy
+    Found existing installation: numpy 2.1.3
+    Not uninstalling numpy at /usr/local/lib/python3.13/dist-packages, outside environment /tmp/venv3d
+    Can't uninstall 'numpy'. No files were found to uninstall.
+  Attempting uninstall: llvmlite
+    Found existing installation: llvmlite 0.44.0
+    Not uninstalling llvmlite at /usr/local/lib/python3.13/dist-packages, outside environment /tmp/venv3d
+    Can't uninstall 'llvmlite'. No files were found to uninstall.
+  Attempting uninstall: numba
+    Found existing installation: numba 0.61.2
+    Not uninstalling numba at /usr/local/lib/python3.13/dist-packages, outside environment /tmp/venv3d
+    Can't uninstall 'numba'. No files were found to uninstall.
+  Attempting uninstall: huggingface-hub
+    Found existing installation: huggingface_hub 1.33.0
+    Not uninstalling huggingface-hub at /usr/local/lib/python3.13/dist-packages, outside environment /tmp/venv3d
+    Can't uninstall 'huggingface_hub'. No files were found to uninstall.
+  Attempting uninstall: tokenizers
+    Found existing installation: tokenizers 0.23.3
+    Not uninstalling tokenizers at /usr/local/lib/python3.13/dist-packages, outside environment /tmp/venv3d
+    Can't uninstall 'tokenizers'. No files were found to uninstall.
+  Attempting uninstall: scikit-image
+    Found existing installation: scikit-image 0.25.2
+    Not uninstalling scikit-image at /usr/local/lib/python3.13/dist-packages, outside environment /tmp/venv3d
+    Can't uninstall 'scikit-image'. No files were found to uninstall.
+  Attempting uninstall: diffusers
+    Found existing installation: diffusers 0.42.1
+    Not uninstalling diffusers at /usr/local/lib/python3.13/dist-packages, outside environment /tmp/venv3d
+    Can't uninstall 'diffusers'. No files were found to uninstall.
+  Attempting uninstall: transformers
+    Found existing installation: transformers 5.22.1
+    Not uninstalling transformers at /usr/local/lib/python3.13/dist-packages, outside environment /tmp/venv3d
+    Can't uninstall 'transformers'. No files were found to uninstall.
+  Attempting uninstall: accelerate
+    Found existing installation: accelerate 1.15.0
+    Not uninstalling accelerate at /usr/local/lib/python3.13/dist-packages, outside environment /tmp/venv3d
+    Can't uninstall 'accelerate'. No files were found to uninstall.
+
+ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+bigframes 2.51.0 requires google-cloud-bigquery-storage<3.0.0,>=2.30.0, which is not installed.
+ydata-profiling 4.18.4 requires numba<0.63,>=0.60, but you have numba 0.68.1 which is incompatible.
+ydata-profiling 4.18.4 requires numpy<2.4,>=1.22, but you have numpy 2.5.4 which is incompatible.
+dopamine-rl 4.1.2 requires gym<=0.25.2, but you have gym 0.26.2 which is incompatible.
+moviepy 1.0.3 requires decorator<5.0,>=4.0.2, but you have decorator 5.3.1 which is incompatible.
+cuml-cu13 26.6.0 requires numba<0.65.0,>=0.60.0, but you have numba 0.68.1 which is incompatible.
+cudf-cu13 26.6.0 requires numba<0.65.0,>=0.60.0, but you have numba 0.68.1 which is incompatible.
+ydf 0.15.0 requires protobuf<7.0.0,>=5.29.1, but you have protobuf 7.36.2 which is incompatible.
+gradio-client 2.7.2 requires huggingface-hub<3.0,>=1.16.0, but you have huggingface-hub 0.30.2 which is incompatible.
+gradio 6.30.0 requires huggingface-hub<3.0,>=1.16.0, but you have huggingface-hub 0.30.2 which is incompatible.
+gradio 6.30.0 requires pillow<13.0,>=8.0, but you have pillow 13.0.0 which is incompatible.
+pytensor 2.38.3 requires numba<=0.65.1,>=0.58, but you have numba 0.68.1 which is incompatible.
+Successfully installed accelerate-1.3.0 antlr4-python3-runtime-4.9.3 diffusers-0.32.2 glcontext-3.1.0 huggingface-hub-0.30.2 llvmlite-0.50.0 moderngl-5.13.0 numba-0.68.1 numpy-2.5.4 omegaconf-2.3.0 onnxruntime-1.31.1 pymatting-1.1.16 pymeshlab-2025.7.post1 rembg-2.0.86 scikit-build-core-1.1.2 scikit-image-0.26.0 tokenizers-0.21.4 transformers-4.48.3 trimesh-5.2.0 xatlas-0.0.11

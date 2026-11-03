@@ -1,0 +1,47 @@
+$ /tmp/venv3d/bin/python /tmp/i23d_stages/hunyuan_paint.py /tmp/i23d_stages/hunyuan_paint.json
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1793712917.886383     743 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+Fetching 13 files:   0%|          | 0/13 [00:00<?, ?it/s]Fetching 13 files:   8%|▊         | 1/13 [00:00<00:02,  5.44it/s]Fetching 13 files:  38%|███▊      | 5/13 [00:02<00:04,  1.98it/s]Fetching 13 files:  85%|████████▍ | 11/13 [00:14<00:02,  1.43s/it]Fetching 13 files: 100%|██████████| 13/13 [00:14<00:00,  1.08s/it]
+Fetching 20 files:   0%|          | 0/20 [00:00<?, ?it/s]Fetching 20 files:  25%|██▌       | 5/20 [00:08<00:24,  1.65s/it]Fetching 20 files:  50%|█████     | 10/20 [00:17<00:18,  1.81s/it]Fetching 20 files:  80%|████████  | 16/20 [01:04<00:19,  4.84s/it]Fetching 20 files: 100%|██████████| 20/20 [01:04<00:00,  3.24s/it]
+Loading pipeline components...:   0%|          | 0/6 [00:00<?, ?it/s]Loading pipeline components...:  17%|█▋        | 1/6 [00:00<00:04,  1.17it/s]Loading pipeline components...:  33%|███▎      | 2/6 [00:01<00:01,  2.27it/s]Loading pipeline components...:  83%|████████▎ | 5/6 [00:14<00:03,  3.41s/it]Loading pipeline components...: 100%|██████████| 6/6 [00:14<00:00,  2.48s/it]
+Loading pipeline components...:   0%|          | 0/6 [00:00<?, ?it/s]Loading pipeline components...:  17%|█▋        | 1/6 [00:05<00:26,  5.39s/it]An error occurred while trying to fetch /tmp/hf_home/hub/models--tencent--Hunyuan3D-2/snapshots/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-paint-v2-0-turbo/vae: Error no file named diffusion_pytorch_model.safetensors found in directory /tmp/hf_home/hub/models--tencent--Hunyuan3D-2/snapshots/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-paint-v2-0-turbo/vae.
+Defaulting to unsafe serialization. Pass `allow_pickle=False` to raise an error instead.
+Loading pipeline components...:  33%|███▎      | 2/6 [00:06<00:11,  2.91s/it]Loading pipeline components...:  83%|████████▎ | 5/6 [00:46<00:10, 10.37s/it]Loading pipeline components...: 100%|██████████| 6/6 [00:46<00:00,  7.77s/it]
+/tmp/hf_home/modules/diffusers_modules/local/pipeline.py:598: UserWarning: torch.range is deprecated and will be removed in a future release because its behavior is inconsistent with Python's range builtin. Instead, use torch.arange, which produces values in [start, end).
+  index = torch.range(29, 0, -bsz, device='cuda').long()
+The first timestep on the custom timestep schedule is 989, not `self.config.num_train_timesteps - 1`: 999. You may get unexpected results when using this timestep schedule.
+The custom timestep schedule contains the following timesteps which are not on the original training/distillation timestep schedule: [tensor(890), tensor(791), tensor(692), tensor(593), tensor(494), tensor(395), tensor(296), tensor(197), tensor(98)]. You may get unexpected results when using this timestep schedule.
+Hunyuan paint access_gantry in 41.21 s
+The first timestep on the custom timestep schedule is 989, not `self.config.num_train_timesteps - 1`: 999. You may get unexpected results when using this timestep schedule.
+The custom timestep schedule contains the following timesteps which are not on the original training/distillation timestep schedule: [tensor(890), tensor(791), tensor(692), tensor(593), tensor(494), tensor(395), tensor(296), tensor(197), tensor(98)]. You may get unexpected results when using this timestep schedule.
+Hunyuan paint launch_pad_base in 63.64 s
+The first timestep on the custom timestep schedule is 989, not `self.config.num_train_timesteps - 1`: 999. You may get unexpected results when using this timestep schedule.
+The custom timestep schedule contains the following timesteps which are not on the original training/distillation timestep schedule: [tensor(890), tensor(791), tensor(692), tensor(593), tensor(494), tensor(395), tensor(296), tensor(197), tensor(98)]. You may get unexpected results when using this timestep schedule.
+Hunyuan paint safety_fence in 32.92 s
+The first timestep on the custom timestep schedule is 989, not `self.config.num_train_timesteps - 1`: 999. You may get unexpected results when using this timestep schedule.
+The custom timestep schedule contains the following timesteps which are not on the original training/distillation timestep schedule: [tensor(890), tensor(791), tensor(692), tensor(593), tensor(494), tensor(395), tensor(296), tensor(197), tensor(98)]. You may get unexpected results when using this timestep schedule.
+Hunyuan paint alien_mountain in 49.08 s
+The first timestep on the custom timestep schedule is 989, not `self.config.num_train_timesteps - 1`: 999. You may get unexpected results when using this timestep schedule.
+The custom timestep schedule contains the following timesteps which are not on the original training/distillation timestep schedule: [tensor(890), tensor(791), tensor(692), tensor(593), tensor(494), tensor(395), tensor(296), tensor(197), tensor(98)]. You may get unexpected results when using this timestep schedule.
+Hunyuan paint alien_mushroom in 37.8 s
+The first timestep on the custom timestep schedule is 989, not `self.config.num_train_timesteps - 1`: 999. You may get unexpected results when using this timestep schedule.
+The custom timestep schedule contains the following timesteps which are not on the original training/distillation timestep schedule: [tensor(890), tensor(791), tensor(692), tensor(593), tensor(494), tensor(395), tensor(296), tensor(197), tensor(98)]. You may get unexpected results when using this timestep schedule.
+Hunyuan paint alien_flower in 39.57 s
+The first timestep on the custom timestep schedule is 989, not `self.config.num_train_timesteps - 1`: 999. You may get unexpected results when using this timestep schedule.
+The custom timestep schedule contains the following timesteps which are not on the original training/distillation timestep schedule: [tensor(890), tensor(791), tensor(692), tensor(593), tensor(494), tensor(395), tensor(296), tensor(197), tensor(98)]. You may get unexpected results when using this timestep schedule.
+Hunyuan paint purple_boulder in 38.71 s
+The first timestep on the custom timestep schedule is 989, not `self.config.num_train_timesteps - 1`: 999. You may get unexpected results when using this timestep schedule.
+The custom timestep schedule contains the following timesteps which are not on the original training/distillation timestep schedule: [tensor(890), tensor(791), tensor(692), tensor(593), tensor(494), tensor(395), tensor(296), tensor(197), tensor(98)]. You may get unexpected results when using this timestep schedule.
+Hunyuan paint space_wrench in 44.99 s
+The first timestep on the custom timestep schedule is 989, not `self.config.num_train_timesteps - 1`: 999. You may get unexpected results when using this timestep schedule.
+The custom timestep schedule contains the following timesteps which are not on the original training/distillation timestep schedule: [tensor(890), tensor(791), tensor(692), tensor(593), tensor(494), tensor(395), tensor(296), tensor(197), tensor(98)]. You may get unexpected results when using this timestep schedule.
+Hunyuan paint checklist_clipboard in 45.09 s
+The first timestep on the custom timestep schedule is 989, not `self.config.num_train_timesteps - 1`: 999. You may get unexpected results when using this timestep schedule.
+The custom timestep schedule contains the following timesteps which are not on the original training/distillation timestep schedule: [tensor(890), tensor(791), tensor(692), tensor(593), tensor(494), tensor(395), tensor(296), tensor(197), tensor(98)]. You may get unexpected results when using this timestep schedule.
+Hunyuan paint supply_crate in 36.51 s
+The first timestep on the custom timestep schedule is 989, not `self.config.num_train_timesteps - 1`: 999. You may get unexpected results when using this timestep schedule.
+The custom timestep schedule contains the following timesteps which are not on the original training/distillation timestep schedule: [tensor(890), tensor(791), tensor(692), tensor(593), tensor(494), tensor(395), tensor(296), tensor(197), tensor(98)]. You may get unexpected results when using this timestep schedule.
+Hunyuan paint fuel_tank in 36.76 s
+The first timestep on the custom timestep schedule is 989, not `self.config.num_train_timesteps - 1`: 999. You may get unexpected results when using this timestep schedule.
+The custom timestep schedule contains the following timesteps which are not on the original training/distillation timestep schedule: [tensor(890), tensor(791), tensor(692), tensor(593), tensor(494), tensor(395), tensor(296), tensor(197), tensor(98)]. You may get unexpected results when using this timestep schedule.
+Hunyuan paint alien_tree in 57.17 s

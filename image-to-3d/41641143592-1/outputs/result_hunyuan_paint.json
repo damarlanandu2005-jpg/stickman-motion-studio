@@ -1,0 +1,116 @@
+{
+  "stage": "hunyuan_paint",
+  "status": "success",
+  "error": null,
+  "objects": [
+    {
+      "name": "access_gantry",
+      "status": "success",
+      "file": "hunyuan_access_gantry_textured.glb",
+      "seconds": 41.21,
+      "peak_vram_gib": 4.06,
+      "bytes": 4003112,
+      "sha256": "76d201428d4fed13fefa392c23782129965f53cf03fdccc79bf30d0afe346194"
+    },
+    {
+      "name": "launch_pad_base",
+      "status": "success",
+      "file": "hunyuan_launch_pad_base_textured.glb",
+      "seconds": 63.64,
+      "peak_vram_gib": 4.11,
+      "bytes": 3655124,
+      "sha256": "ba9c7f4e4dcafa5c2188d2aed041179fae2810526cf0f88aea06b96de679ceff"
+    },
+    {
+      "name": "safety_fence",
+      "status": "success",
+      "file": "hunyuan_safety_fence_textured.glb",
+      "seconds": 32.92,
+      "peak_vram_gib": 4.11,
+      "bytes": 2376412,
+      "sha256": "3a7b9e733a6b4a5bc70d56cfbb793e0ad83cfe72d791080ff716aea206d09d47"
+    },
+    {
+      "name": "alien_mountain",
+      "status": "success",
+      "file": "hunyuan_alien_mountain_textured.glb",
+      "seconds": 49.08,
+      "peak_vram_gib": 4.11,
+      "bytes": 4179952,
+      "sha256": "7ac42762a6211d88dbb37bef85cd58133dbda3ef8805c4eb0c8d27be8ade930c"
+    },
+    {
+      "name": "alien_mushroom",
+      "status": "success",
+      "file": "hunyuan_alien_mushroom_textured.glb",
+      "seconds": 37.8,
+      "peak_vram_gib": 4.11,
+      "bytes": 3103144,
+      "sha256": "c61c0cbe3f1a5cea51ba32955a2d3aa811a713074ae7cbf84506ef40bae18371"
+    },
+    {
+      "name": "alien_flower",
+      "status": "success",
+      "file": "hunyuan_alien_flower_textured.glb",
+      "seconds": 39.57,
+      "peak_vram_gib": 4.11,
+      "bytes": 3300964,
+      "sha256": "d7c50af3ad3778143411beae25238b2227cadc92cb5957f5ac789ce28d766c5f"
+    },
+    {
+      "name": "purple_boulder",
+      "status": "success",
+      "file": "hunyuan_purple_boulder_textured.glb",
+      "seconds": 38.71,
+      "peak_vram_gib": 4.11,
+      "bytes": 2896464,
+      "sha256": "4018cff5bf1a66e1e38302b53f957c5f65db6e96109e79011858eb2f51e4f286"
+    },
+    {
+      "name": "space_wrench",
+      "status": "success",
+      "file": "hunyuan_space_wrench_textured.glb",
+      "seconds": 44.99,
+      "peak_vram_gib": 4.11,
+      "bytes": 2901128,
+      "sha256": "651cae1331082395aa9d7a6e25d07bd3f71d46ea73f51d25085856a18779f7a1"
+    },
+    {
+      "name": "checklist_clipboard",
+      "status": "success",
+      "file": "hunyuan_checklist_clipboard_textured.glb",
+      "seconds": 45.09,
+      "peak_vram_gib": 4.11,
+      "bytes": 3015860,
+      "sha256": "4e4f2297d80c3b25f5620a0d2643e6c21c249a72bd36656a62f0703e25bef501"
+    },
+    {
+      "name": "supply_crate",
+      "status": "success",
+      "file": "hunyuan_supply_crate_textured.glb",
+      "seconds": 36.51,
+      "peak_vram_gib": 4.11,
+      "bytes": 3090060,
+      "sha256": "d17f47bb2cdcbc0fc21f349ebeedc714d58ec475f41cfe7cccefc7321532c33f"
+    },
+    {
+      "name": "fuel_tank",
+      "status": "success",
+      "file": "hunyuan_fuel_tank_textured.glb",
+      "seconds": 36.76,
+      "peak_vram_gib": 4.11,
+      "bytes": 3375276,
+      "sha256": "a048d0105cf416a6b28caa368799f90364ad3650b1cfece2a33ed9903e6af29e"
+    },
+    {
+      "name": "alien_tree",
+      "status": "success",
+      "file": "hunyuan_alien_tree_textured.glb",
+      "seconds": 57.17,
+      "peak_vram_gib": 4.11,
+      "bytes": 3554256,
+      "sha256": "5465d3f8266f5b67e2ba1737f33bc231c50a993670b2d3ad9790abfb8273c4af"
+    }
+  ],
+  "load_seconds": 155.4
+}
