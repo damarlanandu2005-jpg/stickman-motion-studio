@@ -345,9 +345,47 @@ def validate_image_to_3d_output(out_dir: Path, identity: dict[str, Any], expecte
     return {"ok": not failures, "failures": failures, "checks": checks}
 
 
+ANIMATION_PROOF_PATTERN = r"(proof_report\.json|render\.mp4|render_report\.json|report\.md|sheet_\d+\.jpg|still_\d+\.png|[a-z_0-9]+\.log)$"
+
+
+def validate_animation_proof_output(out_dir: Path, identity: dict[str, Any], expected_model_sha256: str | None = None) -> dict[str, Any]:
+    """Scene-engine proof render: the report must belong to this run and the MP4 it describes must exist intact."""
+    out_dir = Path(out_dir)
+    failures: list[str] = []
+    checks: dict[str, Any] = {}
+    report_path = next(iter(out_dir.rglob("proof_report.json")), None)
+    if not report_path:
+        return {"ok": False, "failures": ["missing proof_report.json"], "checks": checks}
+    try:
+        report = json.loads(report_path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        return {"ok": False, "failures": [f"report is not valid JSON: {exc}"], "checks": checks}
+    if report.get("run_token") != identity["run_token"]:
+        failures.append("report run_token does not match this run (output belongs to another execution)")
+    if report.get("run_id") != identity["run_id"]:
+        failures.append("report run_id does not match this run")
+    if report.get("status") != "completed":
+        failures.append(f"render did not complete: {report.get('error_message')!r}")
+    video = report.get("video") or {}
+    mp4 = next(iter(out_dir.rglob("render.mp4")), None)
+    if not mp4:
+        failures.append("render.mp4 is missing")
+    else:
+        data = mp4.read_bytes()
+        checks["mp4_bytes"] = len(data)
+        if data[4:8] != b"ftyp":
+            failures.append("render.mp4 is not an MP4 file")
+        elif hashlib.sha256(data).hexdigest() != video.get("sha256"):
+            failures.append("render.mp4 hash differs from the report")
+    if (video.get("width"), video.get("height")) != (report.get("width"), report.get("height")):
+        failures.append("video size differs from the requested size")
+    return {"ok": not failures, "failures": failures, "checks": checks}
+
+
 PROFILES = {
     "image-smoke": {"pattern": OUTPUT_FILE_PATTERN, "validate": "validate_output"},
     "klein-benchmark": {"pattern": BENCHMARK_OUTPUT_PATTERN, "validate": "validate_benchmark_output"},
+    "animation-proof": {"pattern": ANIMATION_PROOF_PATTERN, "validate": "validate_animation_proof_output"},
     "image-to-3d": {"pattern": IMAGE_TO_3D_PATTERN, "validate": "validate_image_to_3d_output"},
     "script-writer": {"pattern": r".*(benchmark_report\.json|benchmark_results\.json|model_comparison\.csv|fact_check_report\.json|revised_script\.json|verified_script\.json|Qwen3-4B-Instruct-2507\.(json|txt)|Gemma-3-4B-IT\.(json|txt))$", "validate": "validate_script_writer_output"},
 }
@@ -486,6 +524,18 @@ def execute(
 
 def summarize_report(out_dir: Path, profile: str) -> str:
     """Compact, human-readable lines from the already-verified report so the numbers are visible in CI logs."""
+    if profile == "animation-proof":
+        path = next(iter(Path(out_dir).rglob("proof_report.json")), None)
+        if not path:
+            return "(no report to summarize)"
+        r = json.loads(path.read_text(encoding="utf-8"))
+        rr = r.get("render") or {}
+        lines = [f"  environment: {r.get('environment')}", f"  steps: {r.get('steps')}", f"  video: {r.get('video')}",
+                 "  render: " + json.dumps({k: rr.get(k) for k in ("mode", "gl", "gpu_used", "frames_rendered", "seconds_per_frame_mean",
+                                                                   "seconds_per_frame_max", "render_seconds_total", "warnings", "page_errors")}),
+                 f"  attempts: {json.dumps(rr.get('attempts'))}", f"  notebook_duration_seconds: {r.get('notebook_duration_seconds')}",
+                 "  QA: " + str(r.get("qa")).replace(chr(10), " | ")]
+        return "\n".join(lines)
     if profile == "image-to-3d":
         path = next(iter(Path(out_dir).rglob("image_to_3d_report.json")), None)
         if not path:

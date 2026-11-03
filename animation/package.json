@@ -1,0 +1,12 @@
+{
+  "name": "stickman-motion-studio-animation",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Scene engine: library objects + stickman cards rendered with the reference repo's look files.",
+  "scripts": {
+    "build": "esbuild src/page.ts --bundle --format=esm --target=es2022 --outfile=dist/page.js --log-level=warning",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": { "three": "0.170.0", "postprocessing": "6.36.4" },
+  "devDependencies": { "esbuild": "0.24.2", "typescript": "5.7.2", "@types/three": "0.170.0" }
+}
