@@ -9,7 +9,7 @@ from PIL import Image
 
 from motion_studio import sfx
 from motion_studio.scene_plan import COSTUMES, auto_sfx, make_jobs, prompt_for
-from motion_studio.story import captions, build_shots
+from motion_studio.short_story import captions, build_shots
 
 ROOT = Path(__file__).resolve().parents[1]
 

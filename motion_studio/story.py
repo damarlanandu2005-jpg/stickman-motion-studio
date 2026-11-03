@@ -1,83 +1,235 @@
-"""Story -> finished short (any topic). One file describes the whole video:
+"""Story -> assets -> per-shot scene files.
 
-{"voice": "am_fenrir", "speed": 1.12,
- "shots": [{"id": "s01", "text": "He walked for *three* days.", "frame": "wide", "chars": ["explorer"], "place": "...", "action": "...", "props": "...",
-            "cam": "push", "sfx": [...]  (optional; auto-picked from the words if missing)}]}
+A story file lists what the video needs (assets with a type and a real size) and the shots (scene fragments: who is
+where, what they do, where the camera looks). This module does the repeatable work around it:
 
-    python -m motion_studio.story plan  story.json            # writes kaggle/scene-batch/jobs.json (pictures are drawn on Kaggle)
-    python -m motion_studio.story video story.json pictures_dir models_dir out.mp4
-Voice lines are spoken one per shot, so each shot lasts exactly as long as its line (plus a small gap).
+  plan    which assets are in the library, which are missing (and the picture prompt for each missing one)
+  ingest  take the generated 3D files, measure them, write each one's behavior file from its TYPE template
+          (library/types/<type>.json), add them to library/catalog.json
+  build   write one scene JSON per shot: environment preset, assets with behavior files, solid footprints from the
+          type rules, characters from the species table, auto camera. Nothing is hand-fixed per video.
+
+The story itself (the script) is written by a person or, later, by the script writer. This module never invents
+story content.
 """
 from __future__ import annotations
 
+import argparse
+import hashlib
 import json
-import re
+import shutil
+import struct
 import sys
-import wave
 from pathlib import Path
+from typing import Any
 
-import numpy as np
+ROOT = Path(__file__).resolve().parents[1]
+CATALOG = ROOT / "library" / "catalog.json"
+TYPES = ROOT / "library" / "types"
 
-from .assemble import assemble
-from .scene_plan import auto_sfx, make_jobs
-
-SR, GAP = 24000, 0.06
-CAMS = {"push": {"z0": 1.0, "z1": 1.12}, "pull": {"z0": 1.12, "z1": 1.0}, "drift": {"z0": 1.06, "z1": 1.06, "x0": 0.45, "x1": 0.55},
-        "rise": {"z0": 1.08, "z1": 1.08, "y0": 0.6, "y1": 0.4}, "shake": {"z0": 1.05, "z1": 1.1}}
-
-
-def speak(texts: list[str], models: Path, voice: str, speed: float, wav_out: Path) -> list[float]:
-    from kokoro_onnx import Kokoro
-    k = Kokoro(str(models / "kokoro-v1.0.onnx"), str(models / "voices-v1.0.bin"))
-    parts, durs = [], []
-    for t in texts:
-        x, sr = k.create(t.replace("*", ""), voice=voice, speed=speed, lang="en-us")
-        nz = np.nonzero(np.abs(x) > 0.01)[0]
-        x = x[nz[0]:nz[-1] + 1] if len(nz) else x
-        x = np.concatenate([x, np.zeros(int(GAP * SR), np.float32)])
-        parts.append(x)
-        durs.append(len(x) / SR)
-    pcm = (np.clip(np.concatenate(parts), -1, 1) * 32767).astype(np.int16)
-    with wave.open(str(wav_out), "wb") as f:
-        f.setnchannels(1); f.setsampwidth(2); f.setframerate(SR); f.writeframes(pcm.tobytes())
-    return durs
+# ---------------------------------------------------------------- environments (one per shot; the same list serves every topic)
+ENVS: dict[str, dict[str, Any]] = {
+    "launch_pad": {"light": "day", "sky_top": "#3f86d8", "sky_horizon": "#d4e8ff", "ground": "#b9b4a8", "fog_near": 40, "fog_far": 220,
+                   "skyline": {"color": "#8fb4d9", "color2": "#a9c9e8", "dist_m": 170, "count": 22, "min_m": 6, "max_m": 20, "seed": 4}},
+    "suit_room": {"light": "day", "sky_top": "#20242e", "sky_horizon": "#20242e", "ground": None, "fog_near": 60, "fog_far": 400, "room": {"size": [7, 3, 6], "floor": "#58606e", "wall": "#dfe3ec", "trim": "#2f6fd6"}},
+    "cockpit": {"light": "day", "sky_top": "#10131c", "sky_horizon": "#10131c", "ground": None, "fog_near": 60, "fog_far": 400, "room": {"size": [7, 3, 6], "floor": "#4a5160", "wall": "#c9cfdb", "ceiling": "#9aa1b0", "trim": "#e0692a"}},
+    "sky": {"light": "day", "sky_top": "#2f74d0", "sky_horizon": "#cfe6ff", "ground": None, "fog_near": 80, "fog_far": 500},
+    "high_sky": {"light": "day", "sky_top": "#050b2e", "sky_horizon": "#2c63b8", "ground": None, "fog_near": 120, "fog_far": 600, "stars": 500},
+    "space": {"light": "day", "sky_top": "#04050d", "sky_horizon": "#0a0c1c", "ground": None, "fog_near": 200, "fog_far": 800, "stars": 900},
+    "alien_world": {"light": "day", "sky_top": "#5a3fa0", "sky_horizon": "#f0b0cf", "ground": "#9a5f98", "fog_near": 25, "fog_far": 150,
+                    "skyline": {"color": "#7b4f9e", "color2": "#a86fbf", "dist_m": 120, "count": 26, "min_m": 8, "max_m": 26, "seed": 9},
+                    "scatter": [{"type": "rocks", "count": 40, "radius": 24, "min_size": 0.15, "max_size": 0.6, "color": "#8a5f8f", "seed": 11, "keep_clear": [[0, -3, 3], [1.5, -2, 1.5]]}]},
+}
 
 
-def captions(text: str, dur: float) -> list[list]:
-    words = []
-    for w in text.split():  # short words join the next word
-        if words and len(re.sub(r"\W", "", words[-1])) <= 2 and not words[-1].endswith((".", ",")):
-            words[-1] += " " + w
+# ---------------------------------------------------------------- helpers
+def read_json(p: Path) -> Any:
+    return json.loads(p.read_text(encoding="utf-8"))
+
+
+def type_rules(t: str) -> dict[str, Any]:
+    p = TYPES / f"{t}.json"
+    if not p.is_file():
+        raise SystemExit(f"no rules template for type {t!r}: write library/types/{t}.json first")
+    return read_json(p)
+
+
+def glb_extent(path: Path) -> tuple[float, float, float]:
+    """(width x, height y, depth z) of a GLB from its position accessors (no 3D library needed)."""
+    data = path.read_bytes()
+    if data[:4] != b"glTF":
+        raise ValueError(f"{path.name}: not a GLB")
+    n = struct.unpack_from("<I", data, 12)[0]
+    gltf = json.loads(data[20:20 + n])
+    lo, hi = [1e9] * 3, [-1e9] * 3
+    # a model may be a tree of nodes with transforms; scenes from the image-to-3D pipeline have one mesh, so the plain accessor box is exact
+    for mesh in gltf.get("meshes", []):
+        for prim in mesh["primitives"]:
+            acc = gltf["accessors"][prim["attributes"]["POSITION"]]
+            for i in range(3):
+                lo[i] = min(lo[i], acc["min"][i]); hi[i] = max(hi[i], acc["max"][i])
+    return hi[0] - lo[0], hi[1] - lo[1], hi[2] - lo[2]
+
+
+def footprint_radius_m(glb: Path, height_m: float) -> float:
+    w, h, d = glb_extent(glb)
+    return max(w, d) / 2 * (height_m / h) if h > 0 else 0.5
+
+
+def sha256(p: Path) -> str:
+    return hashlib.sha256(p.read_bytes()).hexdigest()
+
+
+# ---------------------------------------------------------------- plan
+def plan(story: dict[str, Any], cat: dict[str, Any]) -> dict[str, Any]:
+    items = {i["id"]: i for i in cat["items"]}
+    have, missing = [], []
+    for name, a in story["assets"].items():
+        lib = a.get("library", name)
+        it = items.get(lib)
+        if it and (ROOT / it["local"]).is_file():
+            have.append({"asset": name, "library_id": lib, "type": a["type"], "height_m": a["height_m"]})
         else:
-            words.append(w)
-    wt = np.array([len(re.sub(r"\W", "", w)) + 1 for w in words], float)
-    edges = np.concatenate([[0], np.cumsum(wt) / wt.sum()]) * (dur - GAP)
-    return [[round(float(edges[i]), 3), round(float(edges[i + 1]) if i + 1 < len(words) else dur, 3), w.replace("*", "").strip(".,!?"), "*" in w]
-            for i, w in enumerate(words)]
+            missing.append({"asset": name, "type": a["type"], "height_m": a["height_m"], "tags": a.get("tags", []), "prompt_file": a.get("prompt_file", name)})
+    return {"story": story["id"], "in_library": have, "missing": missing}
 
 
-def build_shots(story: dict, durs: list[float]) -> list[dict]:
-    shots = []
-    for s, d in zip(story["shots"], durs):
-        cam = s.get("cam", "push")
-        shots.append({"id": s["id"], "dur": d, "cam": CAMS[cam] if isinstance(cam, str) else cam, "shake": 0.6 if cam == "shake" else 0.0,
-                      "caps": captions(s["text"], d), "sfx": s["sfx"] if "sfx" in s else auto_sfx(s)})
-    return shots
+# ---------------------------------------------------------------- ingest (generated model -> library item with rules)
+def make_behavior(name: str, typ: str, glb: Path, height_m: float) -> dict[str, Any]:
+    rules = type_rules(typ)["automatic"]
+    r = min(rules["max_collide_m"], max(0.2, footprint_radius_m(glb, height_m) * rules["collide_from_footprint"]))
+    return {"id": name, "type": typ, "solid": bool(rules["solid"]), "collide_radius_m": round(r, 2), "source": f"generated from library/types/{typ}.json and the model's measured footprint"}
 
 
-def main(argv: list[str]) -> int:
-    mode, story = argv[0], json.loads(Path(argv[1]).read_text())
-    if mode == "plan":
-        out = Path(__file__).resolve().parents[1] / "kaggle" / "scene-batch" / "jobs.json"
-        out.write_text(json.dumps(make_jobs(story["shots"]), indent=1), encoding="utf-8")
-        print(f"wrote {len(story['shots'])} jobs to {out}")
-        return 0
-    pictures, models, out = Path(argv[2]), Path(argv[3]), Path(argv[4])
-    wav = out.with_name(out.stem + "_voice.wav")
-    durs = speak([s["text"] for s in story["shots"]], models, story.get("voice", "am_fenrir"), story.get("speed", 1.12), wav)
-    print(assemble(build_shots(story, durs), pictures, out, wav))
+def ingest(story: dict[str, Any], models: Path, provenance: dict[str, Any], dry: bool = False) -> list[str]:
+    cat = read_json(CATALOG)
+    ids = {i["id"] for i in cat["items"]}
+    done = []
+    for name, a in story["assets"].items():
+        if name in ids:
+            continue
+        stem = a.get("prompt_file", name)
+        src = next((c for c in (models / f"hunyuan_{stem}_textured.glb", models / f"{stem}.glb") if c.is_file()), None)
+        if src is None:
+            continue
+        dst = ROOT / "animation/assets/models" / f"{name}.glb"
+        beh = make_behavior(name, a["type"], src, a["height_m"])
+        bpath_a, bpath_l = ROOT / "animation/assets/behaviors" / f"{name}.json", ROOT / "library/behaviors" / f"{name}.json"
+        if dry:
+            done.append(f"{name}: would add model + behavior {beh['collide_radius_m']} m"); continue
+        shutil.copyfile(src, dst)
+        for b in (bpath_a, bpath_l):
+            b.parent.mkdir(parents=True, exist_ok=True); b.write_text(json.dumps(beh, indent=2) + "\n", encoding="utf-8")
+        prov = provenance.get(a.get("prompt_file", name), {})
+        cat["items"].append({"id": name, "kind": "model", "file": f"model__{name}.glb", "local": f"animation/assets/models/{name}.glb", "height_m": a["height_m"], "tags": a.get("tags", []) + [a["type"]],
+                             "behavior": f"library/behaviors/{name}.json", "sha256": sha256(dst), "bytes": dst.stat().st_size,
+                             "licence": prov.get("licence", "Generated by Hunyuan3D-2mini turbo + Hunyuan3D-Paint turbo (Tencent Hunyuan 3D 2.0 Community License; owner accepted the licence on 2026-11-03) from a FLUX.2 klein 4B picture (Apache-2.0)"),
+                             "source": prov.get("source", {"pipeline": "story asset creation", "made": "2026-11-03"})})
+        cat["items"].append({"id": f"behavior_{name}", "kind": "behavior", "file": f"behavior__{name}.json", "local": f"library/behaviors/{name}.json", "tags": ["behavior", a["type"]],
+                             "sha256": sha256(bpath_l), "bytes": bpath_l.stat().st_size, "licence": "Written for this project (owner's repository)",
+                             "source": {"method": f"generated from library/types/{a['type']}.json by motion_studio.story", "made": "2026-11-03"}})
+        done.append(f"{name}: added (type {a['type']}, collide {beh['collide_radius_m']} m)")
+    if not dry and done:
+        CATALOG.write_text(json.dumps(cat, indent=2) + "\n", encoding="utf-8")
+    return done
+
+
+# ---------------------------------------------------------------- build (story -> one scene per shot)
+def asset_entry(name: str, a: dict[str, Any], cat: dict[str, Any]) -> tuple[dict[str, Any], dict[str, Any]]:
+    lib = a.get("library", name)
+    it = next((i for i in cat["items"] if i["id"] == lib), None)
+    if not it:
+        raise SystemExit(f"asset {name}: not in the library yet (run plan, create it, then ingest)")
+    height = a["height_m"]
+    if a.get("length_m"):  # long thin things (a wrench) are sized by their longest side, not by their height
+        w, h, d = glb_extent(ROOT / it["local"])
+        height = a["length_m"] * h / max(w, h, d)
+    ent: dict[str, Any] = {"file": it["local"].replace("animation/", ""), "height_m": round(height, 3)}
+    if a.get("forward_deg") is not None:
+        ent["forward_deg"] = a["forward_deg"]
+    beh = ROOT / "animation/assets/behaviors" / f"{lib}.json"
+    if beh.is_file():
+        ent["behavior"] = f"assets/behaviors/{lib}.json"
+    return ent, (read_json(beh) if beh.is_file() else {})
+
+
+def build_shot(story: dict[str, Any], shot: dict[str, Any], cat: dict[str, Any]) -> dict[str, Any]:
+    env = json.loads(json.dumps(ENVS[shot["env"]]))
+    assets: dict[str, Any] = {}
+    objects = []
+    for o in shot.get("objects", []):
+        name = o["asset"]
+        if name not in assets:
+            ent, beh = asset_entry(name, story["assets"][name], cat)
+            assets[name] = ent
+            assets[name]["_beh"] = beh
+        beh = assets[name]["_beh"]
+        o = dict(o)
+        # the type rules decide solidity; a shot can still override
+        if "solid_radius_m" not in o and beh.get("solid"):
+            o["solid_radius_m"] = beh["collide_radius_m"]
+        if o.get("thrust") and "flame_m" not in o["thrust"]:
+            o["thrust"] = {**o["thrust"], "flame_m": round(story["assets"][name]["height_m"] * type_rules("rocket")["automatic"]["flame_m_ratio"], 2)}
+        objects.append(o)
+    for a in assets.values():
+        a.pop("_beh", None)
+    chars = []
+    for c in shot.get("cast", []):
+        base = story["characters"][c["who"]]
+        ch = {"id": c.get("id", c["who"]), "rig": {**base["rig"]}, "height_m": c.get("height_m", base["height_m"]), "at": c["at"], "actions": c["actions"]}
+        for k in ("moves", "expressions", "until_s", "appear_s"):
+            if k in c:
+                ch[k] = c[k]
+        chars.append(ch)
+    scene: dict[str, Any] = {"id": f"{story['id']}_{shot['id']}", "description": shot["id"], "fps": story["fps"], "duration_s": shot["duration_s"], "environment": env,
+                             "assets": assets, "objects": objects, "characters": chars, "camera": shot["camera"]}
+    if shot.get("bodies"):
+        env["bodies"] = shot["bodies"]
+    if shot.get("river"):
+        env["river"] = shot["river"]
+    if shot.get("effects"):
+        scene["effects"] = shot["effects"]
+    if shot.get("props"):
+        scene["props"] = shot["props"]
+    if shot.get("kicks"):
+        scene["kicks"] = shot["kicks"]
+    return scene
+
+
+def build(story: dict[str, Any], out: Path) -> list[Path]:
+    cat = read_json(CATALOG)
+    out.mkdir(parents=True, exist_ok=True)
+    paths = []
+    for shot in story["shots"]:
+        sc = build_shot(story, shot, cat)
+        p = out / f"{shot['id']}.json"
+        p.write_text(json.dumps(sc, indent=1) + "\n", encoding="utf-8")
+        paths.append(p)
+    (out / "shots.json").write_text(json.dumps([{"id": s["id"], "scene": f"{s['id']}.json", "duration_s": s["duration_s"]} for s in story["shots"]], indent=1) + "\n")
+    return paths
+
+
+def main(argv: list[str] | None = None) -> int:
+    ap = argparse.ArgumentParser(prog="motion_studio.story")
+    sub = ap.add_subparsers(dest="cmd", required=True)
+    for n in ("plan", "build", "ingest"):
+        p = sub.add_parser(n); p.add_argument("story", type=Path)
+    sub.choices["build"].add_argument("--out", type=Path, required=True)
+    sub.choices["ingest"].add_argument("--models", type=Path, required=True)
+    sub.choices["ingest"].add_argument("--provenance", type=Path)
+    a = ap.parse_args(argv)
+    story = read_json(a.story)
+    if a.cmd == "plan":
+        print(json.dumps(plan(story, read_json(CATALOG)), indent=1))
+    elif a.cmd == "build":
+        for p in build(story, a.out):
+            print(p)
+    else:
+        prov = read_json(a.provenance) if a.provenance else {}
+        for line in ingest(story, a.models, prov):
+            print(line)
     return 0
 
 
 if __name__ == "__main__":
-    raise SystemExit(main(sys.argv[1:]))
+    sys.exit(main())
