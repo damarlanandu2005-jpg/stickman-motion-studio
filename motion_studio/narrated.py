@@ -24,7 +24,7 @@ GAP = 0.06  # seconds between chunks
 def build(story: dict, models: Path, workdir: Path) -> tuple[list[dict], Path]:
     from kokoro_onnx import Kokoro
     k = Kokoro(str(models / "kokoro-v1.0.onnx"), str(models / "voices-v1.0.bin"))
-    voice, speed = story.get("voice", "af_heart"), story.get("speed", 1.12)
+    voice, speed = story.get("voice", "am_fenrir"), story.get("speed", 1.12)
     audio, shots = [], []
     for c in story["chunks"]:
         plain = c["text"].replace("*", "")
