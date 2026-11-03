@@ -51,8 +51,8 @@ export const COSTUMES: Record<string, Part[]> = {
 };
 
 const FACES: Record<string, (g: CanvasRenderingContext2D) => void> = {
-  neutral: (g) => { eye(g, 84, 104, 14, 22); eye(g, 172, 104, 14, 22); line(g, 106, 176, 150, 176, 10); },
-  smile: (g) => { eye(g, 84, 104, 14, 22); eye(g, 172, 104, 14, 22); arc(g, 128, 150, 36, 0.25, 0.75, 10); },
+  neutral: (g) => { eye(g, 78, 108, 19, 30); eye(g, 178, 108, 19, 30); line(g, 100, 184, 156, 184, 13); },
+  smile: (g) => { eye(g, 78, 108, 19, 30); eye(g, 178, 108, 19, 30); arc(g, 128, 150, 44, 0.25, 0.75, 13); },
   surprised: (g) => { eye(g, 84, 98, 18, 26); eye(g, 172, 98, 18, 26); g.fillStyle = "#241726"; g.beginPath(); g.ellipse(128, 174, 16, 22, 0, 0, 7); g.fill(); },
   worried: (g) => { eye(g, 88, 104, 9, 13); eye(g, 168, 104, 9, 13); line(g, 70, 76, 104, 86, 6); line(g, 186, 76, 152, 86, 6); arc(g, 128, 176, 24, 1.15, 1.85, 7); },
   dizzy: (g) => { for (const x of [88, 168]) { g.strokeStyle = "#241726"; g.lineWidth = 7; g.beginPath(); g.arc(x, 100, 13, 0, 5.5); g.stroke(); } line(g, 108, 166, 148, 166, 7); },
