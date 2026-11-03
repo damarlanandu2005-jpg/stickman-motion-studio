@@ -1,0 +1,245 @@
+{
+  "identity": {
+    "run_id": "a79b9b29fc5c4601ab29ebe2388efb3e",
+    "run_token": "fc8e0ea73061b4296a9ca82a6455db0f",
+    "commit_sha": "42d1953a8be755f9732ba696aecc1cbac136037d",
+    "workflow_run_id": "41724052026",
+    "workflow_run_attempt": "1",
+    "created_utc": "2026-11-03T21:43:06+00:00"
+  },
+  "kernel": "narasimhadamarla/stickman-motion-studio-scene-batch",
+  "pushed_version": 5,
+  "push_attempts": 1,
+  "observations": [
+    {
+      "at": "2026-11-03T21:43:06+00:00",
+      "event": "notebook_stamped",
+      "run_token_written": true
+    },
+    {
+      "at": "2026-11-03T21:43:09+00:00",
+      "event": "push_response",
+      "attempt": 1,
+      "exit_code": 0,
+      "text": "Kernel version 5 successfully pushed.  Please check progress at https://www.kaggle.com/code/narasimhadamarla/stickman-motion-studio-scene-batch"
+    },
+    {
+      "at": "2026-11-03T21:43:09+00:00",
+      "event": "push_accepted",
+      "version": 5
+    },
+    {
+      "at": "2026-11-03T21:43:09+00:00",
+      "event": "status",
+      "state": "QUEUED"
+    },
+    {
+      "at": "2026-11-03T21:43:40+00:00",
+      "event": "status",
+      "state": "RUNNING"
+    },
+    {
+      "at": "2026-11-03T22:06:35+00:00",
+      "event": "status",
+      "state": "COMPLETE"
+    },
+    {
+      "at": "2026-11-03T22:06:55+00:00",
+      "event": "download",
+      "attempt": 1,
+      "exit_code": 0,
+      "text": "ult_klein.json to kaggle-poses-output/outputs\n\n  0%|          | 0.00/11.3k [00:00<?, ?B/s]\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 11.3k/11.3k [00:00<00:00, 3.87MB/s]\n\nOutput file downloaded to kaggle-poses-output/outputs/result_klein.json\nKernel log downloaded to kaggle-poses-output/stickman-motion-studio-scene-batch.log"
+    }
+  ],
+  "download_attempts": 1,
+  "validation": {
+    "ok": true,
+    "failures": [],
+    "checks": {
+      "pictures": [
+        {
+          "file": "pose_c01.png",
+          "valid": true
+        },
+        {
+          "file": "pose_c02.png",
+          "valid": true
+        },
+        {
+          "file": "pose_c03.png",
+          "valid": true
+        },
+        {
+          "file": "pose_c04.png",
+          "valid": true
+        },
+        {
+          "file": "pose_c05.png",
+          "valid": true
+        },
+        {
+          "file": "pose_c06.png",
+          "valid": true
+        },
+        {
+          "file": "pose_c07.png",
+          "valid": true
+        },
+        {
+          "file": "pose_c08.png",
+          "valid": true
+        },
+        {
+          "file": "pose_c09.png",
+          "valid": true
+        },
+        {
+          "file": "pose_c10.png",
+          "valid": true
+        },
+        {
+          "file": "pose_c11.png",
+          "valid": true
+        },
+        {
+          "file": "pose_c12.png",
+          "valid": true
+        },
+        {
+          "file": "pose_c13.png",
+          "valid": true
+        },
+        {
+          "file": "pose_c14.png",
+          "valid": true
+        },
+        {
+          "file": "pose_c15.png",
+          "valid": true
+        },
+        {
+          "file": "pose_c16.png",
+          "valid": true
+        },
+        {
+          "file": "pose_c17.png",
+          "valid": true
+        },
+        {
+          "file": "pose_c18.png",
+          "valid": true
+        },
+        {
+          "file": "pose_c19.png",
+          "valid": true
+        },
+        {
+          "file": "pose_c20.png",
+          "valid": true
+        },
+        {
+          "file": "pose_c21.png",
+          "valid": true
+        },
+        {
+          "file": "pose_c22.png",
+          "valid": true
+        },
+        {
+          "file": "pose_c23.png",
+          "valid": true
+        },
+        {
+          "file": "pose_c24.png",
+          "valid": true
+        },
+        {
+          "file": "pose_c25.png",
+          "valid": true
+        },
+        {
+          "file": "pose_c26.png",
+          "valid": true
+        },
+        {
+          "file": "pose_c27.png",
+          "valid": true
+        },
+        {
+          "file": "pose_c28.png",
+          "valid": true
+        },
+        {
+          "file": "pose_c29.png",
+          "valid": true
+        },
+        {
+          "file": "pose_c30.png",
+          "valid": true
+        },
+        {
+          "file": "pose_c31.png",
+          "valid": true
+        },
+        {
+          "file": "pose_c32.png",
+          "valid": true
+        },
+        {
+          "file": "pose_c33.png",
+          "valid": true
+        },
+        {
+          "file": "pose_c34.png",
+          "valid": true
+        },
+        {
+          "file": "pose_c35.png",
+          "valid": true
+        },
+        {
+          "file": "pose_c36.png",
+          "valid": true
+        },
+        {
+          "file": "pose_c37.png",
+          "valid": true
+        },
+        {
+          "file": "pose_c38.png",
+          "valid": true
+        },
+        {
+          "file": "pose_c39.png",
+          "valid": true
+        },
+        {
+          "file": "pose_c40.png",
+          "valid": true
+        },
+        {
+          "file": "pose_a24.png",
+          "valid": true
+        },
+        {
+          "file": "pose_b10.png",
+          "valid": true
+        },
+        {
+          "file": "pose_b11.png",
+          "valid": true
+        },
+        {
+          "file": "pose_b12.png",
+          "valid": true
+        }
+      ],
+      "drawn": 44,
+      "wanted": 44
+    }
+  },
+  "limitations": [
+    "The Kaggle CLI exposes the notebook version number, not a separate execution ID. Version tracking plus the run token in the output are used together."
+  ],
+  "result": "verified"
+}
