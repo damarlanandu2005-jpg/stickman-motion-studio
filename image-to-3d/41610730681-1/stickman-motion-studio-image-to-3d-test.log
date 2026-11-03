@@ -1,0 +1,137 @@
+[{"stream_name":"stderr","time":7.075796367,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":7.075841853,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":8.088592463,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.088625326,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.088628966,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.088631607,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":8.723255317,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.723287958,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.723297787,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.723300527,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":39.071698968,"data":"[install_klein] ok in 21.5 s\n"}
+,{"stream_name":"stdout","time":302.884629646,"data":"[klein] ok in 263.8 s\n"}
+,{"stream_name":"stdout","time":306.573038628,"data":"[venv] ok in 3.7 s\n"}
+,{"stream_name":"stdout","time":307.340811513,"data":"[venv] ok in 0.8 s\n"}
+,{"stream_name":"stdout","time":338.8486374,"data":"[install_3d_common] ok in 31.5 s\n"}
+,{"stream_name":"stdout","time":342.380969997,"data":"[triposr_clone] ok in 3.5 s\n"}
+,{"stream_name":"stdout","time":342.547085951,"data":"[triposr_clone] ok in 0.2 s\n"}
+,{"stream_name":"stdout","time":342.664769429,"data":"[triposr_shim] ok in 0.1 s\n"}
+,{"stream_name":"stdout","time":541.970408233,"data":"[triposr] ok in 199.3 s\n"}
+,{"stream_name":"stdout","time":548.201918277,"data":"[hunyuan_clone] ok in 6.2 s\n"}
+,{"stream_name":"stdout","time":548.568693215,"data":"[hunyuan_clone] ok in 0.4 s\n"}
+,{"stream_name":"stdout","time":789.370572092,"data":"[hunyuan_shape] ok in 240.8 s\n"}
+,{"stream_name":"stdout","time":872.733794176,"data":"[hunyuan_build_rasterizer] ok in 83.4 s\n"}
+,{"stream_name":"stdout","time":885.290524604,"data":"[hunyuan_build_renderer] ok in 12.6 s\n"}
+,{"stream_name":"stdout","time":1132.386625791,"data":"[hunyuan_paint] ok in 247.1 s\n"}
+,{"stream_name":"stdout","time":1132.387707584,"data":"{\n"}
+,{"stream_name":"stdout","time":1132.387755691,"data":"  \"klein\": {\n"}
+,{"stream_name":"stdout","time":1132.387762559,"data":"    \"stage_status\": \"success\",\n"}
+,{"stream_name":"stdout","time":1132.387767299,"data":"    \"objects_ok\": 2,\n"}
+,{"stream_name":"stdout","time":1132.38777158,"data":"    \"objects_total\": 2,\n"}
+,{"stream_name":"stdout","time":1132.38777657,"data":"    \"seconds_per_object\": [\n"}
+,{"stream_name":"stdout","time":1132.387780934,"data":"      29.53,\n"}
+,{"stream_name":"stdout","time":1132.38778508,"data":"      23.01\n"}
+,{"stream_name":"stdout","time":1132.387790057,"data":"    ],\n"}
+,{"stream_name":"stdout","time":1132.38779437,"data":"    \"load_seconds\": 66.2,\n"}
+,{"stream_name":"stdout","time":1132.387810782,"data":"    \"error\": null\n"}
+,{"stream_name":"stdout","time":1132.387814694,"data":"  },\n"}
+,{"stream_name":"stdout","time":1132.387818095,"data":"  \"triposr\": {\n"}
+,{"stream_name":"stdout","time":1132.38782152,"data":"    \"stage_status\": \"success\",\n"}
+,{"stream_name":"stdout","time":1132.387825128,"data":"    \"objects_ok\": 2,\n"}
+,{"stream_name":"stdout","time":1132.387828733,"data":"    \"objects_total\": 2,\n"}
+,{"stream_name":"stdout","time":1132.387832285,"data":"    \"seconds_per_object\": [\n"}
+,{"stream_name":"stdout","time":1132.387835812,"data":"      32.88,\n"}
+,{"stream_name":"stdout","time":1132.387838952,"data":"      31.28\n"}
+,{"stream_name":"stdout","time":1132.38784207,"data":"    ],\n"}
+,{"stream_name":"stdout","time":1132.387845145,"data":"    \"load_seconds\": 42.7,\n"}
+,{"stream_name":"stdout","time":1132.387848557,"data":"    \"error\": null\n"}
+,{"stream_name":"stdout","time":1132.387851697,"data":"  },\n"}
+,{"stream_name":"stdout","time":1132.3878549,"data":"  \"hunyuan_shape\": {\n"}
+,{"stream_name":"stdout","time":1132.387858408,"data":"    \"stage_status\": \"success\",\n"}
+,{"stream_name":"stdout","time":1132.387861806,"data":"    \"objects_ok\": 2,\n"}
+,{"stream_name":"stdout","time":1132.387865265,"data":"    \"objects_total\": 2,\n"}
+,{"stream_name":"stdout","time":1132.38786857,"data":"    \"seconds_per_object\": [\n"}
+,{"stream_name":"stdout","time":1132.387871624,"data":"      70.77,\n"}
+,{"stream_name":"stdout","time":1132.387874887,"data":"      68.49\n"}
+,{"stream_name":"stdout","time":1132.38787837,"data":"    ],\n"}
+,{"stream_name":"stdout","time":1132.38788146,"data":"    \"load_seconds\": 71.9,\n"}
+,{"stream_name":"stdout","time":1132.387884723,"data":"    \"error\": null\n"}
+,{"stream_name":"stdout","time":1132.387887844,"data":"  },\n"}
+,{"stream_name":"stdout","time":1132.38789083,"data":"  \"hunyuan_paint\": {\n"}
+,{"stream_name":"stdout","time":1132.387893843,"data":"    \"stage_status\": \"success\",\n"}
+,{"stream_name":"stdout","time":1132.387899065,"data":"    \"objects_ok\": 2,\n"}
+,{"stream_name":"stdout","time":1132.387902393,"data":"    \"objects_total\": 2,\n"}
+,{"stream_name":"stdout","time":1132.387905989,"data":"    \"seconds_per_object\": [\n"}
+,{"stream_name":"stdout","time":1132.387909415,"data":"      40.42,\n"}
+,{"stream_name":"stdout","time":1132.387912754,"data":"      35.2\n"}
+,{"stream_name":"stdout","time":1132.387915898,"data":"    ],\n"}
+,{"stream_name":"stdout","time":1132.38791896,"data":"    \"load_seconds\": 152.6,\n"}
+,{"stream_name":"stdout","time":1132.387922357,"data":"    \"error\": null\n"}
+,{"stream_name":"stdout","time":1132.387925568,"data":"  }\n"}
+,{"stream_name":"stdout","time":1132.387928643,"data":"}\n"}
+,{"stream_name":"stdout","time":1132.403469833,"data":"object_moon_buggy_a.png\n"}
+,{"stream_name":"stdout","time":1132.439442601,"data":"object_moon_buggy_b.png\n"}
+,{"stream_name":"stdout","time":1132.448924522,"data":"hunyuan_moon_buggy_a_shape.glb 720080 bytes\n"}
+,{"stream_name":"stdout","time":1132.448968771,"data":"hunyuan_moon_buggy_a_textured.glb 3438800 bytes\n"}
+,{"stream_name":"stdout","time":1132.448974736,"data":"hunyuan_moon_buggy_b_shape.glb 720240 bytes\n"}
+,{"stream_name":"stdout","time":1132.448979007,"data":"hunyuan_moon_buggy_b_textured.glb 3475540 bytes\n"}
+,{"stream_name":"stdout","time":1132.44898303,"data":"triposr_moon_buggy_a.glb 3422432 bytes\n"}
+,{"stream_name":"stdout","time":1132.448986642,"data":"triposr_moon_buggy_b.glb 3628632 bytes\n"}
+,{"stream_name":"stdout","time":1132.472119282,"data":"Test completed. Engine results: {\n"}
+,{"stream_name":"stdout","time":1132.472138157,"data":" \"klein\": {\n"}
+,{"stream_name":"stdout","time":1132.472160818,"data":"  \"stage_status\": \"success\",\n"}
+,{"stream_name":"stdout","time":1132.472166004,"data":"  \"objects_ok\": 2,\n"}
+,{"stream_name":"stdout","time":1132.472170645,"data":"  \"objects_total\": 2,\n"}
+,{"stream_name":"stdout","time":1132.472175491,"data":"  \"seconds_per_object\": [\n"}
+,{"stream_name":"stdout","time":1132.472180218,"data":"   29.53,\n"}
+,{"stream_name":"stdout","time":1132.472184354,"data":"   23.01\n"}
+,{"stream_name":"stdout","time":1132.472188669,"data":"  ],\n"}
+,{"stream_name":"stdout","time":1132.472193027,"data":"  \"load_seconds\": 66.2,\n"}
+,{"stream_name":"stdout","time":1132.472196998,"data":"  \"error\": null\n"}
+,{"stream_name":"stdout","time":1132.472200832,"data":" },\n"}
+,{"stream_name":"stdout","time":1132.472204546,"data":" \"triposr\": {\n"}
+,{"stream_name":"stdout","time":1132.4722084,"data":"  \"stage_status\": \"success\",\n"}
+,{"stream_name":"stdout","time":1132.472212415,"data":"  \"objects_ok\": 2,\n"}
+,{"stream_name":"stdout","time":1132.472216273,"data":"  \"objects_total\": 2,\n"}
+,{"stream_name":"stdout","time":1132.472220055,"data":"  \"seconds_per_object\": [\n"}
+,{"stream_name":"stdout","time":1132.472224538,"data":"   32.88,\n"}
+,{"stream_name":"stdout","time":1132.472229141,"data":"   31.28\n"}
+,{"stream_name":"stdout","time":1132.472233663,"data":"  ],\n"}
+,{"stream_name":"stdout","time":1132.472238195,"data":"  \"load_seconds\": 42.7,\n"}
+,{"stream_name":"stdout","time":1132.472242846,"data":"  \"error\": null\n"}
+,{"stream_name":"stdout","time":1132.472246546,"data":" },\n"}
+,{"stream_name":"stdout","time":1132.472250631,"data":" \"hunyuan_shape\": {\n"}
+,{"stream_name":"stdout","time":1132.47225426,"data":"  \"stage_status\": \"success\",\n"}
+,{"stream_name":"stdout","time":1132.472258311,"data":"  \"objects_ok\": 2,\n"}
+,{"stream_name":"stdout","time":1132.472262532,"data":"  \"objects_total\": 2,\n"}
+,{"stream_name":"stdout","time":1132.472266874,"data":"  \"seconds_per_object\": [\n"}
+,{"stream_name":"stdout","time":1132.472271057,"data":"   70.77,\n"}
+,{"stream_name":"stdout","time":1132.472274601,"data":"   68.49\n"}
+,{"stream_name":"stdout","time":1132.472278532,"data":"  ],\n"}
+,{"stream_name":"stdout","time":1132.472282138,"data":"  \"load_seconds\": 71.9,\n"}
+,{"stream_name":"stdout","time":1132.47228601,"data":"  \"error\": null\n"}
+,{"stream_name":"stdout","time":1132.472290125,"data":" },\n"}
+,{"stream_name":"stdout","time":1132.472294129,"data":" \"hunyuan_paint\": {\n"}
+,{"stream_name":"stdout","time":1132.472297856,"data":"  \"stage_status\": \"success\",\n"}
+,{"stream_name":"stdout","time":1132.472301892,"data":"  \"objects_ok\": 2,\n"}
+,{"stream_name":"stdout","time":1132.472306255,"data":"  \"objects_total\": 2,\n"}
+,{"stream_name":"stdout","time":1132.472310265,"data":"  \"seconds_per_object\": [\n"}
+,{"stream_name":"stdout","time":1132.472314283,"data":"   40.42,\n"}
+,{"stream_name":"stdout","time":1132.472318321,"data":"   35.2\n"}
+,{"stream_name":"stdout","time":1132.472322312,"data":"  ],\n"}
+,{"stream_name":"stdout","time":1132.472326278,"data":"  \"load_seconds\": 152.6,\n"}
+,{"stream_name":"stdout","time":1132.47233042,"data":"  \"error\": null\n"}
+,{"stream_name":"stdout","time":1132.472334556,"data":" }\n"}
+,{"stream_name":"stdout","time":1132.472338883,"data":"}\n"}
+,{"stream_name":"stderr","time":1135.715701222,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":1135.715780521,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":1135.967337581,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":1135.967388183,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":1137.369207555,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":1137.466559261,"data":"[NbConvertApp] Writing 1135722 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":1140.064113136,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":1140.676071916,"data":"[NbConvertApp] Support files will be in __results___files/\n"}
+,{"stream_name":"stderr","time":1140.676112143,"data":"[NbConvertApp] Making directory __results___files\n"}
+,{"stream_name":"stderr","time":1140.676565182,"data":"[NbConvertApp] Making directory __results___files\n"}
+,{"stream_name":"stderr","time":1140.677019152,"data":"[NbConvertApp] Writing 351144 bytes to __results__.html\n"}
+]

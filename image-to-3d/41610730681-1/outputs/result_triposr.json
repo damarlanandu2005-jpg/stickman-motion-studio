@@ -1,0 +1,35 @@
+{
+  "stage": "triposr",
+  "status": "success",
+  "error": null,
+  "objects": [
+    {
+      "name": "moon_buggy_a",
+      "status": "success",
+      "depth_ratio": 0.712,
+      "looks_flat": false,
+      "file": "triposr_moon_buggy_a.glb",
+      "seconds": 32.88,
+      "vertices": 85530,
+      "faces": 171080,
+      "peak_vram_gib": 2.32,
+      "bytes": 3422432,
+      "sha256": "1fceb25613c2c5c4a7321f1a8de5db2ca1468b8e512d4b9c89beb307ddee380c"
+    },
+    {
+      "name": "moon_buggy_b",
+      "status": "success",
+      "depth_ratio": 0.897,
+      "looks_flat": false,
+      "file": "triposr_moon_buggy_b.glb",
+      "seconds": 31.28,
+      "vertices": 90679,
+      "faces": 181398,
+      "peak_vram_gib": 2.32,
+      "bytes": 3628632,
+      "sha256": "ccd30e80829794169b308ed7f5e8236c8920b8e35a1c5ce2cc5217b4d52ad05a"
+    }
+  ],
+  "marching_cubes": "scikit-image stand-in at /tmp/i23d_shims/torchmcubes/__init__.py",
+  "load_seconds": 42.7
+}

@@ -1,0 +1,8 @@
+$ /tmp/venv3d/bin/python setup.py build_ext --inplace
+running build_ext
+building 'mesh_processor' extension
+creating build/temp.linux-x86_64-cpython-313
+x86_64-linux-gnu-g++ -fno-strict-overflow -Wsign-compare -DNDEBUG -g -O2 -Wall -g -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer -fstack-protector-strong -fstack-clash-protection -Wformat -Werror=format-security -fcf-protection -g -fwrapv -O2 -fPIC -I/usr/local/lib/python3.13/dist-packages/pybind11/include -I/usr/local/lib/python3.13/dist-packages/pybind11/include -I/tmp/venv3d/include -I/usr/include/python3.13 -c mesh_processor.cpp -o build/temp.linux-x86_64-cpython-313/mesh_processor.o -O3 -std=c++14 -fPIC -Wall -Wextra -pthread
+creating build/lib.linux-x86_64-cpython-313
+x86_64-linux-gnu-g++ -fno-strict-overflow -Wsign-compare -DNDEBUG -g -O2 -Wall -g -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer -fstack-protector-strong -fstack-clash-protection -Wformat -Werror=format-security -fcf-protection -g -fwrapv -O2 -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -g -fwrapv -O2 build/temp.linux-x86_64-cpython-313/mesh_processor.o -L/usr/lib/x86_64-linux-gnu -o build/lib.linux-x86_64-cpython-313/mesh_processor.cpython-313-x86_64-linux-gnu.so -fPIC -pthread
+copying build/lib.linux-x86_64-cpython-313/mesh_processor.cpython-313-x86_64-linux-gnu.so -> 

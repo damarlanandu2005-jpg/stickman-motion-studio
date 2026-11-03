@@ -1,0 +1,38 @@
+{
+  "stage": "hunyuan_shape",
+  "status": "success",
+  "error": null,
+  "objects": [
+    {
+      "name": "moon_buggy_a",
+      "status": "success",
+      "depth_ratio": 0.582,
+      "looks_flat": false,
+      "file": "hunyuan_moon_buggy_a_shape.glb",
+      "seconds": 70.77,
+      "raw_faces": 1358376,
+      "faces": 40000,
+      "vertices": 19941,
+      "peak_vram_gib": 5.08,
+      "bytes": 720080,
+      "sha256": "ddd66c22369909e1dbdf0df14cce7a1a6a9662ab9fd6d9f51b8bac3dc94eea58",
+      "cutout": "cutout_moon_buggy_a.png"
+    },
+    {
+      "name": "moon_buggy_b",
+      "status": "success",
+      "depth_ratio": 0.582,
+      "looks_flat": false,
+      "file": "hunyuan_moon_buggy_b_shape.glb",
+      "seconds": 68.49,
+      "raw_faces": 1314364,
+      "faces": 40000,
+      "vertices": 19954,
+      "peak_vram_gib": 4.9,
+      "bytes": 720240,
+      "sha256": "eabfa57233a432d2f5fa82a2ab4d45076ee548f780d2a7c0b109cc0ddd5481d7",
+      "cutout": "cutout_moon_buggy_b.png"
+    }
+  ],
+  "load_seconds": 71.9
+}

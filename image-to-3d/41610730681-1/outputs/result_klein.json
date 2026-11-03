@@ -1,0 +1,30 @@
+{
+  "stage": "klein",
+  "status": "success",
+  "error": null,
+  "objects": [
+    {
+      "name": "moon_buggy_a",
+      "file": "object_moon_buggy_a.png",
+      "seconds": 29.53,
+      "seed": 5101,
+      "width": 768,
+      "height": 768,
+      "sha256": "4e9f6ef4b0a25fa762bcce6967135a62fa30e551097662a226547050c5fb0b08",
+      "status": "success"
+    },
+    {
+      "name": "moon_buggy_b",
+      "file": "object_moon_buggy_b.png",
+      "seconds": 23.01,
+      "seed": 5102,
+      "width": 768,
+      "height": 768,
+      "sha256": "fd8276e72d9c1ff9bdaa924d66ff6eb835e900f86c6b5c517fefc65a67ea9b15",
+      "status": "success"
+    }
+  ],
+  "download_seconds": 111.2,
+  "load_seconds": 66.2,
+  "peak_vram_gib": 7.75
+}

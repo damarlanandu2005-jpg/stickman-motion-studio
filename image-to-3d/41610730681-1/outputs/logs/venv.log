@@ -1,0 +1,7 @@
+$ /usr/bin/python3 -m pip install -q virtualenv
+$ /usr/bin/python3 -m virtualenv --system-site-packages /tmp/venv3d
+created virtual environment CPython3.13.16.final.0-64-x86_64 in 569ms
+  creator CPython3Posix(dest=/tmp/venv3d, clear=False, no_vcs_ignore=False, venv_redirect=None, global=True)
+  seeder FromAppData(download=False, pip=bundle, via=copy, app_data_dir=/root/.cache/virtualenv)
+    added seed packages: pip==26.2.2
+  activators BashActivator,CShellActivator,FishActivator,NushellActivator,PowerShellActivator,PythonActivator,XonshActivator

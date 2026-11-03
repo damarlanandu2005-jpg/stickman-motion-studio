@@ -1,0 +1,26 @@
+{
+  "stage": "hunyuan_paint",
+  "status": "success",
+  "error": null,
+  "objects": [
+    {
+      "name": "moon_buggy_a",
+      "status": "success",
+      "file": "hunyuan_moon_buggy_a_textured.glb",
+      "seconds": 40.42,
+      "peak_vram_gib": 4.06,
+      "bytes": 3438800,
+      "sha256": "32a104bd5dacdd3479cbedc3d1fd7c3b614aafb248fdba47d9c4c7ad2768dcf5"
+    },
+    {
+      "name": "moon_buggy_b",
+      "status": "success",
+      "file": "hunyuan_moon_buggy_b_textured.glb",
+      "seconds": 35.2,
+      "peak_vram_gib": 4.11,
+      "bytes": 3475540,
+      "sha256": "db6f6f84907bf774ad1a3dbb9ef5d8b3034db982c4a9b29004d7354ee76abddf"
+    }
+  ],
+  "load_seconds": 152.6
+}

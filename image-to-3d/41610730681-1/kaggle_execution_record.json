@@ -1,0 +1,113 @@
+{
+  "identity": {
+    "run_id": "8f833d70e2b94c48b6af055c7e364309",
+    "run_token": "94eec83759384c8799c5ebaefe271357",
+    "commit_sha": "140103c3f0e2a2fead08f4d96d7886335ca3e325",
+    "workflow_run_id": "41610730681",
+    "workflow_run_attempt": "1",
+    "created_utc": "2026-11-03T09:24:32+00:00"
+  },
+  "kernel": "narasimhadamarla/stickman-motion-studio-image-to-3d-test",
+  "pushed_version": 3,
+  "push_attempts": 1,
+  "observations": [
+    {
+      "at": "2026-11-03T09:24:32+00:00",
+      "event": "notebook_stamped",
+      "run_token_written": true
+    },
+    {
+      "at": "2026-11-03T09:24:33+00:00",
+      "event": "push_response",
+      "attempt": 1,
+      "exit_code": 0,
+      "text": "Kernel version 3 successfully pushed.  Please check progress at https://www.kaggle.com/code/narasimhadamarla/stickman-motion-studio-image-to-3d-test"
+    },
+    {
+      "at": "2026-11-03T09:24:33+00:00",
+      "event": "push_accepted",
+      "version": 3
+    },
+    {
+      "at": "2026-11-03T09:24:34+00:00",
+      "event": "status",
+      "state": "QUEUED"
+    },
+    {
+      "at": "2026-11-03T09:25:04+00:00",
+      "event": "status",
+      "state": "RUNNING"
+    },
+    {
+      "at": "2026-11-03T09:44:21+00:00",
+      "event": "status",
+      "state": "COMPLETE"
+    },
+    {
+      "at": "2026-11-03T09:44:28+00:00",
+      "event": "download",
+      "attempt": 1,
+      "exit_code": 0,
+      "text": "-to-3d-output/outputs\n\n  0%|          | 0.00/3.46M [00:00<?, ?B/s]\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 3.46M/3.46M [00:00<00:00, 48.0MB/s]\n\nOutput file downloaded to kaggle-image-to-3d-output/outputs/triposr_moon_buggy_b.glb\nKernel log downloaded to kaggle-image-to-3d-output/stickman-motion-studio-image-to-3d-test.log"
+    }
+  ],
+  "download_attempts": 1,
+  "validation": {
+    "ok": true,
+    "failures": [],
+    "checks": {
+      "objects": [
+        {
+          "file": "object_moon_buggy_a.png",
+          "valid": true
+        },
+        {
+          "file": "object_moon_buggy_b.png",
+          "valid": true
+        }
+      ],
+      "models": [
+        {
+          "stage": "triposr",
+          "file": "triposr_moon_buggy_a.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "triposr",
+          "file": "triposr_moon_buggy_b.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "hunyuan_shape",
+          "file": "hunyuan_moon_buggy_a_shape.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "hunyuan_shape",
+          "file": "hunyuan_moon_buggy_b_shape.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "hunyuan_paint",
+          "file": "hunyuan_moon_buggy_a_textured.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "hunyuan_paint",
+          "file": "hunyuan_moon_buggy_b_textured.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        }
+      ]
+    }
+  },
+  "limitations": [
+    "The Kaggle CLI exposes the notebook version number, not a separate execution ID. Version tracking plus the run token in the output are used together."
+  ],
+  "result": "verified"
+}
