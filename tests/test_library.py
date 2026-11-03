@@ -150,3 +150,16 @@ class BehaviorFileTests(unittest.TestCase):
         text = " ".join(problems)
         for word in ("region", "axis", "open_deg", "ghost", "nope"):
             self.assertIn(word, text)
+
+
+class WheelBehaviorTests(unittest.TestCase):
+    def test_wheel_needs_radius_and_buggy_has_four_wheels(self):
+        b = json.loads((ROOT / "library/behaviors/moon_buggy_a.json").read_text())
+        wheels = [p for p in b["parts"] if p.get("kind") == "spin"]
+        self.assertEqual(len(wheels), 4)
+        with tempfile.TemporaryDirectory() as d:
+            f = Path(d) / "w.json"
+            b["parts"] = [{"id": "w", "kind": "spin", "region": {"min": [0, 0, 0], "max": [1, 1, 1]}, "hinge": [0.5, 0.5, 0.5], "axis": [0, 0, 1]}]
+            b.pop("triggers", None); b.pop("crash", None)
+            f.write_text(json.dumps(b))
+            self.assertTrue(any("radius_m" in p for p in lib.check_behavior(f, "w")))

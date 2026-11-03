@@ -206,7 +206,8 @@ export class Engine {
     this.scene.add(this.sun, this.sun.target);
     // sun frozen for the shot and camera-relative (az from the camera's forward axis), like world.ts
     const c0 = s.camera[0], l0 = Array.isArray(c0.look) ? c0.look : [0, 0, 0];
-    const fwd = new THREE.Vector3(l0[0] - c0.pos[0], 0, l0[2] - c0.pos[2]).normalize();
+    const fwd = c0.pos ? new THREE.Vector3(l0[0] - c0.pos[0], 0, l0[2] - c0.pos[2]).normalize()
+      : new THREE.Vector3(-Math.sin(rad(c0.frame?.az_deg ?? 20)), 0, -Math.cos(rad(c0.frame?.az_deg ?? 20)));   // auto-framed: looks from its azimuth towards the subject
     const sd = fwd.applyAxisAngle(new THREE.Vector3(0, 1, 0), -rad(L.az)).multiplyScalar(Math.cos(rad(L.el)));
     sd.y = Math.sin(rad(L.el)); this.sun.position.copy(sd.multiplyScalar(60)); this.sun.target.position.set(0, 0, 0);
 
@@ -294,6 +295,7 @@ export class Engine {
     this.composer.addPass(new EffectPass(this.cam, new ToneMappingEffect({ mode: ToneMappingMode.NEUTRAL }), new GradeEffect(GRADES[env.light], 1)));
     this.composer.setSize(this.w, this.h);
     this.buildBehaviors();
+    this.resolveRides();
     this.buildRigTables();
   }
 
@@ -374,17 +376,37 @@ export class Engine {
     return { p, yaw, lift, dir, walking, keepFacing };
   }
 
+  /** a rider is on screen where his vehicle is, not at the spot he started from: the camera must frame him there */
+  private riderVehicle(t: Thing, time: number): Thing | null {
+    const r = t as RigActor; if (!r.actions) return null;
+    for (const a of r.actions) if (a.do === "ride" && a.to_s !== undefined && time >= a.at_s && time <= a.to_s + (a.exit_s ?? 0.7)) return this.things.get(a.vehicle!)!;
+    return null;
+  }
+
+  /** camera position, look point and fov of one key at a time: hand-set, or auto-framed on the named things */
+  private keyPose(k: Scene["camera"][0], time: number) {
+    if (!k.frame) return { pos: new THREE.Vector3(...k.pos!), look: new THREE.Vector3(...this.lookPoint(k.look!, time)), fov: k.fov };
+    const f = k.frame, pts = f.on.map((id) => { const t = this.things.get(id)!, q = this.poseAt(this.riderVehicle(t, time) ?? t, time); return { c: new THREE.Vector3(q.p.x, q.p.y + q.lift + t.height / 2, q.p.z), r: Math.max(t.height / 2, t.radius) }; });
+    const mid = pts.reduce((m, p) => m.add(p.c), new THREE.Vector3()).multiplyScalar(1 / pts.length);
+    const R = Math.max(...pts.map((p) => p.c.distanceTo(mid) + p.r));            // sphere that holds everything named
+    const vt = Math.tan(rad(k.fov) / 2), ht = vt * (this.w / this.h), d = R / ((f.fill ?? 0.55) * Math.min(vt, ht));
+    const az = rad(f.az_deg ?? 20), el = rad(f.el_deg ?? 12);
+    const pos = mid.clone().add(new THREE.Vector3(Math.sin(az) * Math.cos(el), Math.sin(el), Math.cos(az) * Math.cos(el)).multiplyScalar(d));
+    pos.y = Math.max(pos.y, 0.4);
+    return { pos, look: mid, fov: k.fov };
+  }
+
   private cameraAt(time: number) {
     const k = this.s.camera; let i = 0;
     while (i < k.length - 2 && time >= k[i + 1].at_s) i++;
     const a = k[i], b = k[Math.min(i + 1, k.length - 1)];
     const u = b.cut ? (time >= b.at_s ? 1 : 0) : smoother((time - a.at_s) / Math.max(1e-6, b.at_s - a.at_s));
-    const L = (x: number[], y: number[]) => new THREE.Vector3(x[0] + (y[0] - x[0]) * u, x[1] + (y[1] - x[1]) * u, x[2] + (y[2] - x[2]) * u);
-    return { pos: L(a.pos, b.pos), look: L(this.lookPoint(a.look, time), this.lookPoint(b.look, time)), fov: a.fov + (b.fov - a.fov) * u };
+    const pa = this.keyPose(a, time), pb = this.keyPose(b, time);
+    return { pos: pa.pos.lerp(pb.pos, u), look: pa.look.lerp(pb.look, u), fov: pa.fov + (pb.fov - pa.fov) * u };
   }
 
   /** a fixed look point, or a followed thing's current position plus an offset */
-  private lookPoint(look: Scene["camera"][0]["look"], time: number): number[] {
+  private lookPoint(look: NonNullable<Scene["camera"][0]["look"]>, time: number): number[] {
     if (Array.isArray(look)) return look;
     const q = this.poseAt(this.things.get(look.follow)!, time), o = look.offset ?? [0, 1, 0];
     return [q.p.x + o[0], q.p.y + q.lift + o[1], q.p.z + o[2]];
@@ -563,6 +585,27 @@ export class Engine {
     }
   }
 
+  /** where a rider ends up when he gets out: beside the vehicle (on the door side if it has a door), not back where he started */
+  private resolveRides() {
+    for (const r of this.rigs) {
+      for (const a of r.actions) {
+        if (a.do !== "ride" || a.to_s === undefined) continue;
+        const v = this.things.get(a.vehicle!)!, q = this.poseAt(v, a.to_s), psi = q.yaw + v.forward, sd = a.seat!;
+        const c = Math.cos(q.yaw), sn = Math.sin(q.yaw);
+        const seat = new THREE.Vector3(q.p.x + sd[0] * c + sd[2] * sn, 0, q.p.z - sd[0] * sn + sd[2] * c);
+        const side = new THREE.Vector3(Math.cos(psi), 0, -Math.sin(psi)), reach = (a.exit_m ?? 1.1);
+        const cand = [1, -1].map((k) => seat.clone().addScaledVector(side, k * reach));
+        let pick = cand[0];
+        const door = v.beh?.parts.find((p) => v.beh!.spec.parts!.find((x) => x.id === p.id)!.kind !== "spin");
+        if (door) {
+          const hx = q.p.x + door.hingeRoot.x * c + door.hingeRoot.z * sn, hz = q.p.z - door.hingeRoot.x * sn + door.hingeRoot.z * c;
+          pick = cand.sort((m, n) => Math.hypot(m.x - hx, m.z - hz) - Math.hypot(n.x - hx, n.z - hz))[0];
+        }
+        r.moves = [...r.moves.filter((m) => !(m.type === "place" && m.at_s === a.to_s)), { type: "place", at_s: a.to_s, to: [pick.x, pick.z] }];
+      }
+    }
+  }
+
   /** per-frame ground speed, gait phase and heading of each rig, from its scripted moves (done once, in frame order) */
   private buildRigTables() {
     const s = this.s, n = Math.round(s.duration_s * s.fps) + 1, dt = 1 / s.fps;
@@ -591,11 +634,20 @@ export class Engine {
   private renderRig(r: RigActor, frame: number, time: number) {
     const i = Math.min(frame, r.speed.length - 1), q = this.poseAt(r, time);
     const out = poseAtTime(r.actions, { time, speed: r.speed[i], phase: r.phase[i] });
-    r.rig.apply(out.pose);
     let x = q.p.x, z = q.p.z, y = 0, yaw = r.yaw[i], lift = out.lift + q.lift;
     const act = r.actions[out.index];
     const prev = r.actions[out.index - 1];
     const ride = act.do === "ride" ? act : prev && prev.do === "ride" && time < prev.to_s! + (prev.exit_s ?? 0.7) ? prev : null;
+    // a rider reacts by himself when his vehicle crashes: thrown forward, arms up, shocked face (no scene script needed)
+    let shocked = false;
+    const crash = ride ? this.things.get(ride.vehicle!)!.crash : undefined;
+    if (crash && time > crash.t && act === ride) {
+      const dt = time - crash.t, bump = (1 - Math.exp(-dt / 0.06)) * Math.exp(-dt / 0.8), p = out.pose;
+      p.spineX = (p.spineX ?? 0) + 0.45 * bump; p.headX = (p.headX ?? 0) - 0.3 * bump; p.pitch = (p.pitch ?? 0) + 0.12 * bump;
+      p.LShX = (p.LShX ?? 0) + 0.9 * bump; p.RShX = (p.RShX ?? 0) + 0.9 * bump; p.LAbd = (p.LAbd ?? 0) + 0.5 * bump; p.RAbd = (p.RAbd ?? 0) + 0.5 * bump;
+      shocked = dt < 2.2;
+    }
+    r.rig.apply(out.pose);
     if (ride) {
       const v = this.things.get(ride.vehicle!)!, vq = this.poseAt(v, time), c = Math.cos(vq.yaw), sn = Math.sin(vq.yaw), sd = ride.seat!;
       const sx = vq.p.x + sd[0] * c + sd[2] * sn, sz = vq.p.z - sd[0] * sn + sd[2] * c, sy = vq.p.y + vq.lift + sd[1] - HIP_H * (r.height / FIGURE_H);
@@ -619,6 +671,7 @@ export class Engine {
     let face = r.face;
     const ex = r.expressions.filter((e) => time >= e.at_s).pop();
     if (ex) face = ex.face; else if (act.expression) face = act.expression;
+    if (shocked) face = "surprised";
     r.rig.setExpression(face);
   }
 

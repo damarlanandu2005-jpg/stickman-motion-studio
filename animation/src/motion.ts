@@ -11,7 +11,7 @@ export type Action = {
   dur_s?: number;            // jump / fall / sit / getup length
   height_m?: number;         // jump height, float height
   arm?: "L" | "R";           // wave / point arm
-  vehicle?: string; seat?: [number, number, number]; to_s?: number; enter_s?: number; exit_s?: number; exit_to?: [number, number];
+  vehicle?: string; seat?: [number, number, number]; to_s?: number; enter_s?: number; exit_s?: number; exit_m?: number; exit_to?: [number, number];
   face_deg?: number; face_camera?: boolean; face_toward?: string;   // heading while standing still
   expression?: string;
 };

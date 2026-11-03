@@ -76,7 +76,10 @@ export type Scene = {
     poses?: { at_s: number; pose: string; face?: "left" | "right" }[]; moves?: Move[] }[];
   effects?: { type: "burst" | "stars" | "puff"; at_s: number; dur_s: number; on: string; size_m: number; color?: string; lift_m?: number }[];
   /** look is a fixed point, or { follow: id, offset } to keep a moving object or character in frame */
-  camera: { at_s: number; pos: XYZ; look: XYZ | { follow: string; offset?: XYZ }; fov: number; cut?: boolean }[];
+  camera: { at_s: number; pos?: XYZ; look?: XYZ | { follow: string; offset?: XYZ }; fov: number; cut?: boolean;
+    /** auto framing: the engine places the camera so the named things fill `fill` of the picture (default 0.55), seen from
+     *  `az_deg` (0 = from +z, 90 = from +x) and `el_deg` above the ground. No hand-set positions, so it works for any topic. */
+    frame?: { on: string[]; az_deg?: number; el_deg?: number; fill?: number } }[];
   kicks?: { at_s: number; amp: number }[];
 };
 
@@ -113,7 +116,11 @@ export function validateScene(s: Scene): string[] {
   if (!cam.length || cam[0].at_s !== 0) p.push("camera: first key must be at 0s");
   for (let i = 1; i < cam.length; i++) if (cam[i].at_s <= cam[i - 1].at_s) p.push(`camera: key ${i} is not after key ${i - 1}`);
   if (cam.length && cam[cam.length - 1].at_s < s.duration_s) p.push("camera: last key must be at or after the end");
-  for (const k of cam) if (!Array.isArray(k.look) && !ids.has(k.look.follow)) p.push(`camera: unknown follow target ${k.look.follow}`);
+  for (const k of cam) {
+    if (k.frame) { if (!k.frame.on.length) p.push("camera: frame.on must name at least one thing"); for (const id of k.frame.on) if (!ids.has(id)) p.push(`camera: unknown frame target ${id}`); }
+    else if (!k.pos || !k.look) p.push("camera: a key needs pos and look, or a frame block");
+    else if (!Array.isArray(k.look) && !ids.has(k.look.follow)) p.push(`camera: unknown follow target ${k.look.follow}`);
+  }
   for (const k of s.kicks ?? []) inTime(k.at_s, "kick");
   const KINDS = ["smoke", "fire", "sparks", "explosion", "dust", "splash", "chunks", "snow"];
   for (const e of s.emitters ?? []) {
