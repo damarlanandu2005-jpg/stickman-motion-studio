@@ -66,7 +66,29 @@ def make_jobs(shots: list[dict], seed0: int = 6100) -> dict:
 
 
 if __name__ == "__main__":
-    shots = json.loads(Path(sys.argv[1]).read_text())
+    shots = [x for f in sys.argv[1:] for x in json.loads(Path(f).read_text())]
     out = ROOT / "kaggle" / "scene-batch" / "jobs.json"
     out.write_text(json.dumps(make_jobs(shots), indent=1), encoding="utf-8")
     print(f"wrote {len(shots)} jobs to {out}")
+
+
+SFX_WORDS = [  # (words in the shot text, sound, when in the shot, gain, extra)
+    (("explosion", "explodes", "blast", "fire explosion"), "boom", 0.05, 0.55, {}),
+    (("gunshot", "shoots", "fires a rifle", "shot fired"), "gunshot", 0.1, 0.5, {}),
+    (("timer", "countdown", "bomb"), "tick", 0.0, 0.35, {"repeat": 6, "every": 0.5}),
+    (("snowstorm", "storm", "wind", "blizzard"), "wind", 0.0, 0.25, {"dur": 3.0}),
+    (("radio", "headset"), "static", 0.05, 0.12, {"dur": 0.5}),
+    (("siren", "ambulance", "police truck"), "siren", 0.0, 0.2, {"dur": 2.0}),
+    (("falls", "crashes", "drops", "slams"), "thud", 0.1, 0.5, {}),
+    (("walks", "runs", "marches"), "step", 0.0, 0.3, {"repeat": 4, "every": 0.35}),
+]
+
+
+def auto_sfx(shot: dict) -> list[dict]:
+    """Pick object sounds from the words of a shot spec (only where a sound is really implied)."""
+    text = " ".join(str(shot.get(k, "")) for k in ("place", "action", "props")).lower()
+    out = []
+    for words, kind, t, gain, extra in SFX_WORDS:
+        if any(w in text for w in words):
+            out.append({"type": kind, "t": t, "gain": gain, **extra})
+    return out

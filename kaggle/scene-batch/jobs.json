@@ -1,8 +1,8 @@
 {
  "jobs": [
   {
-   "id": "probe_wide",
-   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1. Keep each costume exactly as in its reference image and the same big round white head. Place: snowy trench line at a ruined city on a grey winter morning, sandbags covered in snow, bare trees, broken buildings far away. Action: the soldier lies behind the sandbags aiming a long rifle. Mood and light: cold grey light. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "id": "a01",
+   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat. Keep each costume exactly as in its reference image and the same big round white head. Place: snowy trench at a ruined city, bare trees, grey sky. Action: lies behind sandbags aiming a long rifle. Objects: a wooden sign board hanging top left. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
    "refs": [
     "costumes/costume_winter.png"
    ],
@@ -11,8 +11,8 @@
    "height": 1024
   },
   {
-   "id": "probe_medium",
-   "prompt": "Medium shot: the characters are shown from the chest up and fill the lower half of the frame; the background is visible above and behind them. Characters: a stickman in the costume of reference image 1; a stickman in the costume of reference image 1, with a beard and a different tired face. Keep each costume exactly as in its reference image and the same big round white head. Place: inside a snowy trench. Action: the two soldiers stand side by side, one points ahead and the other listens. Mood and light: cold blue evening. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "id": "a02",
+   "prompt": "Medium shot: the characters are shown from the chest up and fill the lower half of the frame; the background is visible above and behind them. Characters: a stickman in the costume of reference image 1, wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat. Keep each costume exactly as in its reference image and the same big round white head. Place: snowy trench with sandbags. Action: aims a long rifle over the sandbags. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
    "refs": [
     "costumes/costume_winter.png"
    ],
@@ -21,8 +21,8 @@
    "height": 1024
   },
   {
-   "id": "probe_close",
-   "prompt": "Extreme close-up: one character's big round head and face fill most of the picture, strong clear expression, only a hint of the costume at the bottom edge. Characters: a stickman in the costume of reference image 1. Keep each costume exactly as in its reference image and the same big round white head. Place: snowy background. Action: the soldier covers one eye with his hand and grits his teeth in pain. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "id": "a03",
+   "prompt": "Medium shot: the characters are shown from the chest up and fill the lower half of the frame; the background is visible above and behind them. Characters: a stickman in the costume of reference image 1, wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat. Keep each costume exactly as in its reference image and the same big round white head. Place: dark blue night in a trench. Action: stands with arms crossed, worried face. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
    "refs": [
     "costumes/costume_winter.png"
    ],
@@ -31,34 +31,404 @@
    "height": 1024
   },
   {
-   "id": "probe_insert",
-   "prompt": "Close-up of the object only. No characters in the picture. Place: army medical tent. Objects: an old wall eye-test chart with rows of letters hanging on a wooden tent wall. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "id": "a04",
+   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat. Keep each costume exactly as in its reference image and the same big round white head. Place: snowy trench, ruined city skyline, grey sky. Action: aims rifle, a bright flash near him. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
    "refs": [
-    "costumes/costume_explorer.png"
+    "costumes/costume_winter.png"
    ],
    "seed": 6103,
    "width": 576,
    "height": 1024
   },
   {
-   "id": "probe_card",
-   "prompt": "A flat plain colour background with one big simple object in the centre. No characters and no scenery. Place: plain cream coloured background. Objects: a red and white tear-off wall calendar showing the number 14. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "id": "a05",
+   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat. Keep each costume exactly as in its reference image and the same big round white head. Place: snowy trench, ruined city skyline. Action: aims rifle, a small red cloth on his shoulder. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
    "refs": [
-    "costumes/costume_explorer.png"
+    "costumes/costume_winter.png"
    ],
    "seed": 6104,
    "width": 576,
    "height": 1024
   },
   {
-   "id": "probe_group",
-   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1; a stickman in the costume of reference image 2; a stickman in the costume of reference image 3. Keep each costume exactly as in its reference image and the same big round white head. Place: a big modern city street with a police truck, shops and traffic lights. Action: three different characters talk in a small group. Mood and light: bright day. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "id": "a06",
+   "prompt": "Extreme close-up: one character's big round head and face fill most of the picture, strong clear expression, only a hint of the costume at the bottom edge. Characters: a stickman in the costume of reference image 1, wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat. Keep each costume exactly as in its reference image and the same big round white head. Place: snowy background. Action: covers one eye with his hand, gritted teeth. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
    "refs": [
-    "costumes/costume_doctor.png",
-    "costumes/costume_sailor.png",
-    "costumes/costume_soldier.png"
+    "costumes/costume_winter.png"
    ],
    "seed": 6105,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "a07",
+   "prompt": "Medium shot: the characters are shown from the chest up and fill the lower half of the frame; the background is visible above and behind them. Characters: a stickman in the costume of reference image 1, wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat. Keep each costume exactly as in its reference image and the same big round white head. Place: pale snowy sky. Action: covers one eye with his hand, worried face. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_winter.png"
+   ],
+   "seed": 6106,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "a08",
+   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, a medic with a red cross armband. Keep each costume exactly as in its reference image and the same big round white head. Place: army medical tent. Action: points at a wall eye-chart. Objects: an eye-test chart on the wall. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_soldier.png"
+   ],
+   "seed": 6107,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "a09",
+   "prompt": "Medium shot: the characters are shown from the chest up and fill the lower half of the frame; the background is visible above and behind them. Characters: a stickman in the costume of reference image 1, wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat. Keep each costume exactly as in its reference image and the same big round white head. Place: snowy trench. Action: stands with hands together, a long rifle leaning behind him. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_winter.png"
+   ],
+   "seed": 6108,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "a10",
+   "prompt": "Medium shot: the characters are shown from the chest up and fill the lower half of the frame; the background is visible above and behind them. Characters: a stickman in the costume of reference image 1, wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat. Keep each costume exactly as in its reference image and the same big round white head. Place: dark blue night at a sniper post. Action: stands with arms crossed. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_winter.png"
+   ],
+   "seed": 6109,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "a11",
+   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat; a stickman in the costume of reference image 1, wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat, with a beard and a different tired face. Keep each costume exactly as in its reference image and the same big round white head. Place: snowy trench, ruined city, grey sky. Action: stand side by side, one holds the other's shoulder. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_winter.png"
+   ],
+   "seed": 6110,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "a12",
+   "prompt": "Medium shot: the characters are shown from the chest up and fill the lower half of the frame; the background is visible above and behind them. Characters: a stickman in the costume of reference image 1, wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat; a stickman in the costume of reference image 1, wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat, with a beard and a different tired face. Keep each costume exactly as in its reference image and the same big round white head. Place: snowy trench with sandbags. Action: one points ahead with a rifle, the other has eyes closed. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_winter.png"
+   ],
+   "seed": 6111,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "a13",
+   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat; a stickman in the costume of reference image 1, wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat, with a beard and a different tired face. Keep each costume exactly as in its reference image and the same big round white head. Place: snowy field, ruined city, grey sky. Action: stand side by side looking ahead. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_winter.png"
+   ],
+   "seed": 6112,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "a14",
+   "prompt": "Extreme close-up: one character's big round head and face fill most of the picture, strong clear expression, only a hint of the costume at the bottom edge. Characters: a stickman in the costume of reference image 1, wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat. Keep each costume exactly as in its reference image and the same big round white head. Place: snowy background. Action: big calm face looking straight at the viewer. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_winter.png"
+   ],
+   "seed": 6113,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "a15",
+   "prompt": "Extreme close-up: one character's big round head and face fill most of the picture, strong clear expression, only a hint of the costume at the bottom edge. Characters: a stickman in the costume of reference image 1, wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat; a stickman in the costume of reference image 1, wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat, with a beard and a different tired face. Keep each costume exactly as in its reference image and the same big round white head. Place: snowy background. Action: two big faces side by side, one points. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_winter.png"
+   ],
+   "seed": 6114,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "a16",
+   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat; a stickman in the costume of reference image 1, wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat, with a beard and a different tired face. Keep each costume exactly as in its reference image and the same big round white head. Place: snowy trench, ruined city. Action: kneel behind sandbags, one holds a rifle. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_winter.png"
+   ],
+   "seed": 6115,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "a17",
+   "prompt": "A flat plain colour background with one big simple object in the centre. No characters and no scenery. Place: plain cream background. Objects: a red and white tear-off wall calendar showing DAY 14. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_explorer.png"
+   ],
+   "seed": 6116,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "a18",
+   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, wearing a peaked officer cap with a red band and a thick moustache; a stickman in the costume of reference image 1, a second officer in a flat cap. Keep each costume exactly as in its reference image and the same big round white head. Place: dim wooden hut with a window. Action: two officers stand with worried faces. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_soldier.png"
+   ],
+   "seed": 6117,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "a19",
+   "prompt": "A flat plain colour background with one big simple object in the centre. No characters and no scenery. Place: plain black background. Objects: two big round binocular views showing a pale snowy field. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_explorer.png"
+   ],
+   "seed": 6118,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "a20",
+   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat; a stickman in the costume of reference image 1, wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat, with a beard and a different tired face. Keep each costume exactly as in its reference image and the same big round white head. Place: heavy snowstorm, everything pale and faded. Action: stand with rifles. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_winter.png"
+   ],
+   "seed": 6119,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "a21",
+   "prompt": "Extreme close-up: one character's big round head and face fill most of the picture, strong clear expression, only a hint of the costume at the bottom edge. Characters: a stickman in the costume of reference image 1, wearing a peaked officer cap with a red band and a thick moustache; a stickman in the costume of reference image 2, wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat. Keep each costume exactly as in its reference image and the same big round white head. Place: wooden hut. Action: one big wide-eyed officer face at left, a soldier face at right. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_soldier.png",
+    "costumes/costume_winter.png"
+   ],
+   "seed": 6120,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "a22",
+   "prompt": "Close-up of the object only. No characters in the picture. Place: wide pale snowy field. Objects: a single wooden post far away in the snow. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_explorer.png"
+   ],
+   "seed": 6121,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "a23",
+   "prompt": "Medium shot: the characters are shown from the chest up and fill the lower half of the frame; the background is visible above and behind them. Characters: a stickman in the costume of reference image 1, wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat; a stickman in the costume of reference image 1, wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat, with a beard and a different tired face. Keep each costume exactly as in its reference image and the same big round white head. Place: inside a wooden hut with a window. Action: stand close, one holds a rifle. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_winter.png"
+   ],
+   "seed": 6122,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "a24",
+   "prompt": "Close-up of the object only. No characters in the picture. Place: pale snow background. Objects: a wooden post with a coin flying above it and small sparkles. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_explorer.png"
+   ],
+   "seed": 6123,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "a25",
+   "prompt": "Medium shot: the characters are shown from the chest up and fill the lower half of the frame; the background is visible above and behind them. Characters: a stickman in the costume of reference image 1, wearing a peaked officer cap with a red band and a thick moustache; a stickman in the costume of reference image 2, a small soldier. Keep each costume exactly as in its reference image and the same big round white head. Place: wooden hut with a window and sandbags. Action: the officer stands behind the small soldier. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_soldier.png",
+    "costumes/costume_winter.png"
+   ],
+   "seed": 6124,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "a26",
+   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, wearing a peaked officer cap with a red band and a thick moustache. Keep each costume exactly as in its reference image and the same big round white head. Place: snowy ruined city background. Action: stands alone with one hand raised. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_soldier.png"
+   ],
+   "seed": 6125,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "b01",
+   "prompt": "Extreme close-up: one character's big round head and face fill most of the picture, strong clear expression, only a hint of the costume at the bottom edge. Characters: a stickman in the costume of reference image 1. Keep each costume exactly as in its reference image and the same big round white head. Place: dark night with tall grass. Action: covers one eye with a hand, helmet with night-vision goggles on top. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_soldier.png"
+   ],
+   "seed": 6126,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "b02",
+   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1; a stickman in the costume of reference image 1, second soldier. Keep each costume exactly as in its reference image and the same big round white head. Place: night vision green circular view of a dark cornfield. Action: two soldiers crouch with rifles. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_soldier.png"
+   ],
+   "seed": 6127,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "b03",
+   "prompt": "Medium shot: the characters are shown from the chest up and fill the lower half of the frame; the background is visible above and behind them. Characters: a stickman in the costume of reference image 1. Keep each costume exactly as in its reference image and the same big round white head. Place: green night-vision circle view, tall grass. Action: soldier crouches with a rifle, angry face, a hand pointing. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_soldier.png"
+   ],
+   "seed": 6128,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "b04",
+   "prompt": "Extreme close-up: one character's big round head and face fill most of the picture, strong clear expression, only a hint of the costume at the bottom edge. Characters: a stickman in the costume of reference image 1. Keep each costume exactly as in its reference image and the same big round white head. Place: dark night field. Action: big worried face with helmet and night-vision goggles. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_soldier.png"
+   ],
+   "seed": 6129,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "b05",
+   "prompt": "Medium shot: the characters are shown from the chest up and fill the lower half of the frame; the background is visible above and behind them. Characters: a stickman in the costume of reference image 1; a stickman in the costume of reference image 1, wounded, lying on the ground. Keep each costume exactly as in its reference image and the same big round white head. Place: night battlefield with fire glow. Action: one soldier kneels over his wounded friend. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_soldier.png"
+   ],
+   "seed": 6130,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "b06",
+   "prompt": "Medium shot: the characters are shown from the chest up and fill the lower half of the frame; the background is visible above and behind them. Characters: a stickman in the costume of reference image 1; a stickman in the costume of reference image 1, second soldier. Keep each costume exactly as in its reference image and the same big round white head. Place: dark rocky hill at night. Action: one soldier helps another walk. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_soldier.png"
+   ],
+   "seed": 6131,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "b07",
+   "prompt": "Close-up of the object only. No characters in the picture. Place: dark screen with white corner frame marks. Objects: an overhead infrared drone camera view with a crosshair on tiny white figures. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_explorer.png"
+   ],
+   "seed": 6132,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "b08",
+   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, wearing a headset and a moustache. Keep each costume exactly as in its reference image and the same big round white head. Place: military control room with a big map and a monitor. Action: sits at a desk with arms down. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_sailor.png"
+   ],
+   "seed": 6133,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "b09",
+   "prompt": "Extreme close-up: one character's big round head and face fill most of the picture, strong clear expression, only a hint of the costume at the bottom edge. Characters: a stickman in the costume of reference image 1. Keep each costume exactly as in its reference image and the same big round white head. Place: night sky. Action: grinning face with a radio on his shoulder. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_soldier.png"
+   ],
+   "seed": 6134,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "b10",
+   "prompt": "Close-up of the object only. No characters in the picture. Place: night sky with stars. Objects: a big military cargo plane in the distance with an orange explosion flash. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_explorer.png"
+   ],
+   "seed": 6135,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "b11",
+   "prompt": "Close-up of the object only. No characters in the picture. Place: night sky. Objects: a giant orange fire explosion with dark smoke over a black ridge and a grey rock in front. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_explorer.png"
+   ],
+   "seed": 6136,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "b12",
+   "prompt": "Close-up of the object only. No characters in the picture. Place: night sky. Objects: a bright yellow and orange explosion with black smoke over a grey rock. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_explorer.png"
+   ],
+   "seed": 6137,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "b13",
+   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1; a stickman in the costume of reference image 1, second soldier; a stickman in the costume of reference image 1, third soldier. Keep each costume exactly as in its reference image and the same big round white head. Place: dark rocky hill under stars. Action: three tiny soldiers huddle behind a big grey rock. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_soldier.png"
+   ],
+   "seed": 6138,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "b14",
+   "prompt": "Medium shot: the characters are shown from the chest up and fill the lower half of the frame; the background is visible above and behind them. Characters: a stickman in the costume of reference image 1, patient wearing a hospital gown, eyes closed. Keep each costume exactly as in its reference image and the same big round white head. Place: hospital room with a heart monitor. Action: lies in a hospital bed. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_doctor.png"
+   ],
+   "seed": 6139,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "b15",
+   "prompt": "A flat plain colour background with one big simple object in the centre. No characters and no scenery. Place: pale blue-grey background. Objects: a brown clipboard with many red tally marks. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_explorer.png"
+   ],
+   "seed": 6140,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "b16",
+   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, wearing a hospital gown, holding an IV pole. Keep each costume exactly as in its reference image and the same big round white head. Place: hospital hallway with a brown door. Action: walks slowly. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_doctor.png"
+   ],
+   "seed": 6141,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "b17",
+   "prompt": "A flat plain colour background with one big simple object in the centre. No characters and no scenery. Place: plain orange background. Objects: a big orange clipboard with the pen on top. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_explorer.png"
+   ],
+   "seed": 6142,
    "width": 576,
    "height": 1024
   }

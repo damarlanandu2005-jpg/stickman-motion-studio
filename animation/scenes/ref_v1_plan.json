@@ -3,7 +3,10 @@
   "id": "a01",
   "frame": "wide",
   "chars": [
-   "winter"
+   {
+    "c": "winter",
+    "note": "wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat"
+   }
   ],
   "place": "snowy trench at a ruined city, bare trees, grey sky",
   "action": "lies behind sandbags aiming a long rifle",
@@ -13,7 +16,10 @@
   "id": "a02",
   "frame": "medium",
   "chars": [
-   "winter"
+   {
+    "c": "winter",
+    "note": "wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat"
+   }
   ],
   "place": "snowy trench with sandbags",
   "action": "aims a long rifle over the sandbags",
@@ -23,7 +29,10 @@
   "id": "a03",
   "frame": "medium",
   "chars": [
-   "winter"
+   {
+    "c": "winter",
+    "note": "wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat"
+   }
   ],
   "place": "dark blue night in a trench",
   "action": "stands with arms crossed, worried face",
@@ -33,7 +42,10 @@
   "id": "a04",
   "frame": "wide",
   "chars": [
-   "winter"
+   {
+    "c": "winter",
+    "note": "wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat"
+   }
   ],
   "place": "snowy trench, ruined city skyline, grey sky",
   "action": "aims rifle, a bright flash near him",
@@ -43,7 +55,10 @@
   "id": "a05",
   "frame": "wide",
   "chars": [
-   "winter"
+   {
+    "c": "winter",
+    "note": "wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat"
+   }
   ],
   "place": "snowy trench, ruined city skyline",
   "action": "aims rifle, a small red cloth on his shoulder",
@@ -53,7 +68,10 @@
   "id": "a06",
   "frame": "close",
   "chars": [
-   "winter"
+   {
+    "c": "winter",
+    "note": "wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat"
+   }
   ],
   "place": "snowy background",
   "action": "covers one eye with his hand, gritted teeth",
@@ -63,7 +81,10 @@
   "id": "a07",
   "frame": "medium",
   "chars": [
-   "winter"
+   {
+    "c": "winter",
+    "note": "wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat"
+   }
   ],
   "place": "pale snowy sky",
   "action": "covers one eye with his hand, worried face",
@@ -86,7 +107,10 @@
   "id": "a09",
   "frame": "medium",
   "chars": [
-   "winter"
+   {
+    "c": "winter",
+    "note": "wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat"
+   }
   ],
   "place": "snowy trench",
   "action": "stands with hands together, a long rifle leaning behind him",
@@ -96,7 +120,10 @@
   "id": "a10",
   "frame": "medium",
   "chars": [
-   "winter"
+   {
+    "c": "winter",
+    "note": "wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat"
+   }
   ],
   "place": "dark blue night at a sniper post",
   "action": "stands with arms crossed",
@@ -106,10 +133,13 @@
   "id": "a11",
   "frame": "wide",
   "chars": [
-   "winter",
    {
     "c": "winter",
-    "note": "with a beard and a different tired face"
+    "note": "wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat"
+   },
+   {
+    "c": "winter",
+    "note": "wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat, with a beard and a different tired face"
    }
   ],
   "place": "snowy trench, ruined city, grey sky",
@@ -120,10 +150,13 @@
   "id": "a12",
   "frame": "medium",
   "chars": [
-   "winter",
    {
     "c": "winter",
-    "note": "with a beard and a different tired face"
+    "note": "wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat"
+   },
+   {
+    "c": "winter",
+    "note": "wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat, with a beard and a different tired face"
    }
   ],
   "place": "snowy trench with sandbags",
@@ -134,10 +167,13 @@
   "id": "a13",
   "frame": "wide",
   "chars": [
-   "winter",
    {
     "c": "winter",
-    "note": "with a beard and a different tired face"
+    "note": "wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat"
+   },
+   {
+    "c": "winter",
+    "note": "wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat, with a beard and a different tired face"
    }
   ],
   "place": "snowy field, ruined city, grey sky",
@@ -148,7 +184,10 @@
   "id": "a14",
   "frame": "close",
   "chars": [
-   "winter"
+   {
+    "c": "winter",
+    "note": "wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat"
+   }
   ],
   "place": "snowy background",
   "action": "big calm face looking straight at the viewer",
@@ -158,10 +197,13 @@
   "id": "a15",
   "frame": "close",
   "chars": [
-   "winter",
    {
     "c": "winter",
-    "note": "with a beard and a different tired face"
+    "note": "wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat"
+   },
+   {
+    "c": "winter",
+    "note": "wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat, with a beard and a different tired face"
    }
   ],
   "place": "snowy background",
@@ -172,10 +214,13 @@
   "id": "a16",
   "frame": "wide",
   "chars": [
-   "winter",
    {
     "c": "winter",
-    "note": "with a beard and a different tired face"
+    "note": "wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat"
+   },
+   {
+    "c": "winter",
+    "note": "wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat, with a beard and a different tired face"
    }
   ],
   "place": "snowy trench, ruined city",
@@ -219,10 +264,13 @@
   "id": "a20",
   "frame": "wide",
   "chars": [
-   "winter",
    {
     "c": "winter",
-    "note": "with a beard and a different tired face"
+    "note": "wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat"
+   },
+   {
+    "c": "winter",
+    "note": "wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat, with a beard and a different tired face"
    }
   ],
   "place": "heavy snowstorm, everything pale and faded",
@@ -237,7 +285,10 @@
     "c": "soldier",
     "note": "wearing a peaked officer cap with a red band and a thick moustache"
    },
-   "winter"
+   {
+    "c": "winter",
+    "note": "wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat"
+   }
   ],
   "place": "wooden hut",
   "action": "one big wide-eyed officer face at left, a soldier face at right",
@@ -255,10 +306,13 @@
   "id": "a23",
   "frame": "medium",
   "chars": [
-   "winter",
    {
     "c": "winter",
-    "note": "with a beard and a different tired face"
+    "note": "wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat"
+   },
+   {
+    "c": "winter",
+    "note": "wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat, with a beard and a different tired face"
    }
   ],
   "place": "inside a wooden hut with a window",

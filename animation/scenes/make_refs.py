@@ -5,8 +5,8 @@ import json
 from pathlib import Path
 
 HERE = Path(__file__).parent
-W = "winter"
-SOLDIER2 = {"c": "winter", "note": "with a beard and a different tired face"}
+W = {"c": "winter", "note": "wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat"}
+SOLDIER2 = {"c": "winter", "note": "wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat, with a beard and a different tired face"}
 OFFICER = {"c": "soldier", "note": "wearing a peaked officer cap with a red band and a thick moustache"}
 
 V1 = [  # frame, chars, place, action, props, caption, cam
