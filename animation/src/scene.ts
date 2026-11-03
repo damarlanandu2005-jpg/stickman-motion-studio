@@ -46,7 +46,7 @@ export type Behavior = {
   /** a part of the model cut out by a box (0..1 of the model's own bounding box) so it can swing about a hinge */
   parts?: { id: string; region: { min: XYZ; max: XYZ; /** only triangles facing this way (e.g. the outside skin of a door) */ facing?: XYZ; facing_min?: number; /** only triangles within this distance of the hinge in x/y (fraction of the model height): cuts a round wheel out of a box */ disc_r?: number }; hinge: XYZ; axis: XYZ;
     /** "hinge" (default): swings open_deg about the hinge. "spin": a wheel that turns as the object moves, radius_m from the model */
-    kind?: "hinge" | "spin"; open_deg?: number; open_s?: number; radius_m?: number }[];
+    kind?: "hinge" | "spin"; /** find the wheel centre from the triangles caught (only when no measured centre is given) */ auto_pivot?: boolean; open_deg?: number; open_s?: number; radius_m?: number }[];
   /** a part opens when any character comes this close and the object is (almost) standing still */
   triggers?: { on: "character_near"; part: string; within_m: number; max_speed_mps?: number }[];
   /** at or above this speed, hitting a solid thing is a crash */

@@ -465,7 +465,7 @@ export class Engine {
         for (let r = 0; r < regions.length; r++) if ((!regions[r].face || nrm.dot(regions[r].face!) >= regions[r].faceMin) && (!regions[r].disc || Math.hypot(c.x - regions[r].hinge.x, c.y - regions[r].hinge.y) <= regions[r].disc) && c.x >= regions[r].min.x && c.x <= regions[r].max.x && c.y >= regions[r].min.y && c.y <= regions[r].max.y && c.z >= regions[r].min.z && c.z <= regions[r].max.z) { owner[i] = r; break; }
       }
       // a wheel turns about its own centre: find it from the triangles the disc caught, then cut again around it
-      for (let r = 0; r < regions.length; r++) if (spec.parts![r].kind === "spin" && regions[r].disc) {
+      for (let r = 0; r < regions.length; r++) if (spec.parts![r].kind === "spin" && regions[r].disc && spec.parts![r].auto_pivot) {
         const bb = new THREE.Box3();
         for (let i = 0; i < tri; i++) if (owner[i] === r) for (let k = 0; k < 3; k++) bb.expandByPoint(v0.fromBufferAttribute(pos, i * 3 + k));
         if (!bb.isEmpty()) { regions[r].hinge.x = (bb.min.x + bb.max.x) / 2; regions[r].hinge.y = (bb.min.y + bb.max.y) / 2; regions[r].hinge.z = (bb.min.z + bb.max.z) / 2; }

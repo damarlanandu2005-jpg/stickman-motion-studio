@@ -31794,7 +31794,7 @@ var Engine = class _Engine {
           break;
         }
       }
-      for (let r = 0; r < regions.length; r++) if (spec.parts[r].kind === "spin" && regions[r].disc) {
+      for (let r = 0; r < regions.length; r++) if (spec.parts[r].kind === "spin" && regions[r].disc && spec.parts[r].auto_pivot) {
         const bb = new Box3();
         for (let i = 0; i < tri; i++) if (owner[i] === r) for (let k = 0; k < 3; k++) bb.expandByPoint(v0.fromBufferAttribute(pos, i * 3 + k));
         if (!bb.isEmpty()) {
