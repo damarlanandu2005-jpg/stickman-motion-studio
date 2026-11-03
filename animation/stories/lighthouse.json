@@ -1,0 +1,14 @@
+{"voice": "am_fenrir", "speed": 1.12, "shots": [
+ {"id": "l01", "text": "A storm hit the island at *midnight*.", "frame": "wide", "chars": ["sailor"], "place": "a rocky island with a tall lighthouse, huge waves and black storm clouds", "action": "stands holding his cap against the wind", "mood": "dark night, lightning", "cam": "push"},
+ {"id": "l02", "text": "The lighthouse light went *out*.", "frame": "insert", "props": "the lamp room of a lighthouse, the big lamp dark, glass cracked", "place": "stormy night", "cam": "push"},
+ {"id": "l03", "text": "One ship was still at sea.", "frame": "wide", "place": "stormy sea with a small wooden ship tossed by giant waves, lightning in the sky", "props": "a small fishing ship", "cam": "drift"},
+ {"id": "l04", "text": "The old keeper ran for the stairs.", "frame": "medium", "chars": ["sailor"], "place": "inside a spiral stone staircase in the lighthouse", "action": "runs up the stairs, panicked face", "cam": "shake"},
+ {"id": "l05", "text": "Nine hundred steps. No time.", "frame": "card", "props": "a big white number 900 above a tiny staircase icon", "place": "plain dark blue background", "cam": "push"},
+ {"id": "l06", "text": "A doctor was sleeping in the village.", "frame": "wide", "chars": ["doctor"], "place": "a small village house at night with a lit window, rain falling", "action": "wakes up and looks out of the window", "cam": "pull"},
+ {"id": "l07", "text": "She saw the dark tower and *understood*.", "frame": "close", "chars": ["doctor"], "place": "dark window with rain", "action": "wide eyes, hand on her mouth", "cam": "push"},
+ {"id": "l08", "text": "She grabbed her *lantern* and ran.", "frame": "wide", "chars": ["doctor"], "place": "muddy village road in a storm leading to a lighthouse on a cliff", "action": "runs carrying a glowing lantern", "cam": "drift"},
+ {"id": "l09", "text": "Two people. One tiny flame.", "frame": "medium", "chars": ["sailor", "doctor"], "place": "top of the lighthouse in the dark lamp room", "action": "they hold a lantern together and look at the sea", "cam": "push"},
+ {"id": "l10", "text": "They lit the lamp by *hand*.", "frame": "insert", "props": "a hand lighting the big lighthouse lamp, bright yellow glow", "place": "lamp room", "cam": "push"},
+ {"id": "l11", "text": "The beam swept across the waves.", "frame": "wide", "place": "stormy sea at night with a lighthouse beam cutting through the rain towards a small ship", "cam": "pull"},
+ {"id": "l12", "text": "At sunrise, the ship was *safe*.", "frame": "wide", "chars": ["sailor", "doctor"], "place": "sunrise over a calm harbour with a small fishing ship at the dock and a lighthouse behind", "action": "they wave happily", "cam": "pull"}
+]}

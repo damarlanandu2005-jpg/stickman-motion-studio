@@ -66,7 +66,10 @@ def make_jobs(shots: list[dict], seed0: int = 6100) -> dict:
 
 
 if __name__ == "__main__":
-    shots = [x for f in sys.argv[1:] for x in json.loads(Path(f).read_text())]
+    shots = []
+    for f in sys.argv[1:]:
+        data = json.loads(Path(f).read_text())
+        shots += data["shots"] if isinstance(data, dict) else data
     out = ROOT / "kaggle" / "scene-batch" / "jobs.json"
     out.write_text(json.dumps(make_jobs(shots), indent=1), encoding="utf-8")
     print(f"wrote {len(shots)} jobs to {out}")
