@@ -1,0 +1,7 @@
+{
+  "id": "spaceport_building",
+  "type": "building",
+  "solid": true,
+  "collide_radius_m": 1.55,
+  "source": "generated from library/types/building.json and the model's measured footprint"
+}

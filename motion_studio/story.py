@@ -35,7 +35,7 @@ ENVS: dict[str, dict[str, Any]] = {
     "sky": {"light": "day", "sky_top": "#2f74d0", "sky_horizon": "#cfe6ff", "ground": None, "fog_near": 80, "fog_far": 500},
     "high_sky": {"light": "day", "sky_top": "#050b2e", "sky_horizon": "#2c63b8", "ground": None, "fog_near": 120, "fog_far": 600, "stars": 500},
     "space": {"light": "day", "sky_top": "#04050d", "sky_horizon": "#0a0c1c", "ground": None, "fog_near": 200, "fog_far": 800, "stars": 900},
-    "alien_world": {"light": "golden", "sky_top": "#5a3fa0", "sky_horizon": "#f0b0cf", "ground": "#c98fb0", "fog_near": 25, "fog_far": 150,
+    "alien_world": {"light": "day", "sky_top": "#5a3fa0", "sky_horizon": "#f0b0cf", "ground": "#9a5f98", "fog_near": 25, "fog_far": 150,
                     "scatter": [{"type": "rocks", "count": 40, "radius": 24, "min_size": 0.15, "max_size": 0.6, "color": "#8a5f8f", "seed": 11, "keep_clear": [[0, -3, 3], [1.5, -2, 1.5]]}]},
 }
 
@@ -106,8 +106,9 @@ def ingest(story: dict[str, Any], models: Path, provenance: dict[str, Any], dry:
     for name, a in story["assets"].items():
         if name in ids:
             continue
-        src = models / f"{a.get('prompt_file', name)}.glb"
-        if not src.is_file():
+        stem = a.get("prompt_file", name)
+        src = next((c for c in (models / f"hunyuan_{stem}_textured.glb", models / f"{stem}.glb") if c.is_file()), None)
+        if src is None:
             continue
         dst = ROOT / "animation/assets/models" / f"{name}.glb"
         beh = make_behavior(name, a["type"], src, a["height_m"])
