@@ -25,4 +25,8 @@ Status words used here: **implemented** (code written), **unit tested**, **execu
 4. `motion_studio/compare.py`: same numbers for a reference and our video, side by side.
 5. Sprite helper: `shot2d.py`, `cut_cycle.py` (walk/run loops from sheets).
 
-Not built yet: script -> shot list planner, automatic quality gate and redraw, upscaling of 576x1024 pictures.
+6. `motion_studio/planner.py`: script -> shot list through any language model (prompt, answer checking, retry, rule-based fallback). Tested with a fake model only.
+7. `motion_studio/gate.py`: picture checks (missing, blank, too dark, near-copy, stray face on an object-only picture) + redraw job maker.
+8. `motion_studio/runner.py`: one command, story file -> Kaggle -> download -> gate -> redraw rounds -> voice + video. Run end to end once on the 12-shot lighthouse story (0 pictures flagged, 1 round).
+
+Not built yet: a real language model behind the planner, costume/hat/anatomy checks, upscaling of 576x1024 pictures, daily scheduling, final upload (stays human).
