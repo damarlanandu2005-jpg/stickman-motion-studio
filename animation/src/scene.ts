@@ -1,5 +1,7 @@
 // Scene file format: one JSON file describes a whole shot, so a new topic is a new JSON file, not new code.
 // Units: metres and seconds. Ground is y = 0; positions on the ground are [x, z].
+import type { Action } from "./motion";
+export type { Action };
 export type XZ = [number, number];
 export type XYZ = [number, number, number];
 
@@ -10,7 +12,9 @@ export type Move =
   | { type: "fly"; from_s: number; to_s: number; to: XYZ }
   | { type: "float"; from_s: number; to_s: number; amp_m?: number; period_s?: number }
   | { type: "spin"; from_s: number; to_s: number; deg_per_s: number }
-  | { type: "shake"; from_s: number; to_s: number; amp_m?: number };
+  | { type: "shake"; from_s: number; to_s: number; amp_m?: number }
+  /** put the thing at a ground position from this time on (e.g. where a rider steps off a vehicle) */
+  | { type: "place"; at_s: number; to: XZ };
 
 export type Scatter = { type: "rocks"; count: number; radius: number; min_size: number; max_size: number; color: string; seed: number; keep_clear?: XYZ[] };
 
@@ -48,10 +52,12 @@ export type Scene = {
   emitters?: Emitter[];
   cloths?: Cloth[];
   physics_bake?: { from_s?: number; substeps?: number; iterations?: number };
-  characters: { id: string; cards: string; height_m: number; at: XZ;
+  characters: { id: string; cards?: string; height_m: number; at: XZ;
+    /** a 3D stickman: one skeleton, a costume layer, scripted actions (see motion.ts); replaces cards and poses */
+    rig?: { costume: string; face?: string }; actions?: Action[]; expressions?: { at_s: number; face: string }[];
     /** a pose name that plays several cards in turn, e.g. walk -> walk_1..walk_4 at hz pictures per second */
     cycles?: Record<string, { frames: string[]; hz: number }>;
-    poses: { at_s: number; pose: string; face?: "left" | "right" }[]; moves?: Move[] }[];
+    poses?: { at_s: number; pose: string; face?: "left" | "right" }[]; moves?: Move[] }[];
   effects?: { type: "burst" | "stars" | "puff"; at_s: number; dur_s: number; on: string; size_m: number; color?: string; lift_m?: number }[];
   /** look is a fixed point, or { follow: id, offset } to keep a moving object or character in frame */
   camera: { at_s: number; pos: XYZ; look: XYZ | { follow: string; offset?: XYZ }; fov: number; cut?: boolean }[];
@@ -69,15 +75,22 @@ export function validateScene(s: Scene): string[] {
     if (!s.assets[o.asset]) p.push(`object ${o.id}: unknown asset ${o.asset}`);
     if (o.appear_s !== undefined) inTime(o.appear_s, `object ${o.id} appear_s`);
     if (o.physics && o.moves?.length) p.push(`object ${o.id}: use either physics or moves, not both`);
-    for (const m of o.moves ?? []) { inTime(m.from_s, `object ${o.id} ${m.type}`); inTime(m.to_s, `object ${o.id} ${m.type}`); if (m.to_s <= m.from_s) p.push(`object ${o.id} ${m.type}: to_s must be after from_s`); }
+    for (const m of o.moves ?? []) { if (m.type === "place") { inTime(m.at_s, `object ${o.id} place`); continue; } inTime(m.from_s, `object ${o.id} ${m.type}`); inTime(m.to_s, `object ${o.id} ${m.type}`); if (m.to_s <= m.from_s) p.push(`object ${o.id} ${m.type}: to_s must be after from_s`); }
   }
   for (const c of s.characters) {
     if (ids.has(c.id)) p.push(`duplicate id ${c.id}`); ids.add(c.id);
-    if (!c.cards.includes("{pose}")) p.push(`character ${c.id}: cards must contain {pose}`);
-    for (const [n, cy] of Object.entries(c.cycles ?? {})) if (!cy.frames.length || !(cy.hz > 0)) p.push(`character ${c.id}: cycle ${n} needs frames and a positive hz`);
-    if (!c.poses.length || c.poses[0].at_s !== 0) p.push(`character ${c.id}: first pose must be at 0s`);
-    for (const k of c.poses) inTime(k.at_s, `character ${c.id} pose`);
-    for (const m of c.moves ?? []) { inTime(m.from_s, `character ${c.id} ${m.type}`); inTime(m.to_s, `character ${c.id} ${m.type}`); }
+    if (c.rig) {
+      if (!c.actions?.length || c.actions[0].at_s !== 0) p.push(`character ${c.id}: first action must be at 0s`);
+      for (let i = 1; i < (c.actions?.length ?? 0); i++) if (c.actions![i].at_s <= c.actions![i - 1].at_s) p.push(`character ${c.id}: action ${i} is not after action ${i - 1}`);
+      for (const a of c.actions ?? []) { inTime(a.at_s, `character ${c.id} action ${a.do}`);
+        if (a.do === "ride") { if (!a.vehicle || !a.seat || a.to_s === undefined) p.push(`character ${c.id}: ride needs vehicle, seat and to_s`); else if (!s.objects.some((o) => o.id === a.vehicle)) p.push(`character ${c.id}: unknown vehicle ${a.vehicle}`); } }
+    } else {
+      if (!c.cards?.includes("{pose}")) p.push(`character ${c.id}: cards must contain {pose}`);
+      for (const [n, cy] of Object.entries(c.cycles ?? {})) if (!cy.frames.length || !(cy.hz > 0)) p.push(`character ${c.id}: cycle ${n} needs frames and a positive hz`);
+      if (!c.poses?.length || c.poses[0].at_s !== 0) p.push(`character ${c.id}: first pose must be at 0s`);
+      for (const k of c.poses ?? []) inTime(k.at_s, `character ${c.id} pose`);
+    }
+    for (const m of c.moves ?? []) { if (m.type === "place") { inTime(m.at_s, `character ${c.id} place`); continue; } inTime(m.from_s, `character ${c.id} ${m.type}`); inTime(m.to_s, `character ${c.id} ${m.type}`); }
   }
   for (const e of s.effects ?? []) { if (!ids.has(e.on)) p.push(`effect ${e.type}: unknown target ${e.on}`); inTime(e.at_s, `effect ${e.type}`); }
   const cam = s.camera;

@@ -1,0 +1,154 @@
+{
+ "id": "rig_test",
+ "fps": 30,
+ "duration_s": 16,
+ "environment": {
+  "light": "day",
+  "sky_top": "#5b57b0",
+  "sky_horizon": "#f0bfcf",
+  "ground": "#c98f6a",
+  "fog_near": 30,
+  "fog_far": 140,
+  "scatter": [
+   {
+    "type": "rocks",
+    "count": 46,
+    "radius": 26,
+    "min_size": 0.15,
+    "max_size": 0.7,
+    "color": "#9a6f5c",
+    "seed": 7,
+    "keep_clear": [
+     [
+      0.0,
+      -1.5,
+      5.0
+     ],
+     [
+      3.0,
+      1.5,
+      1.5
+     ],
+     [
+      -3.6,
+      -9.0,
+      4.0
+     ]
+    ]
+   }
+  ]
+ },
+ "assets": {},
+ "objects": [],
+ "characters": [
+  {
+   "id": "hero",
+   "rig": {
+    "costume": "astronaut"
+   },
+   "height_m": 1.8,
+   "at": [
+    -1.2,
+    0
+   ],
+   "actions": [
+    {
+     "at_s": 0,
+     "do": "stand",
+     "face_camera": true
+    },
+    {
+     "at_s": 1.0,
+     "do": "wave",
+     "dur_s": 1
+    },
+    {
+     "at_s": 3.0,
+     "do": "stand"
+    },
+    {
+     "at_s": 9.0,
+     "do": "point",
+     "arm": "L"
+    },
+    {
+     "at_s": 10.5,
+     "do": "surprised"
+    },
+    {
+     "at_s": 11.5,
+     "do": "fall",
+     "dur_s": 1.1
+    },
+    {
+     "at_s": 13.0,
+     "do": "getup",
+     "dur_s": 1.5
+    },
+    {
+     "at_s": 14.7,
+     "do": "stand"
+    }
+   ],
+   "moves": [
+    {
+     "type": "move",
+     "from_s": 3.2,
+     "to_s": 5.2,
+     "to": [
+      1.2,
+      0
+     ]
+    },
+    {
+     "type": "move",
+     "from_s": 5.4,
+     "to_s": 7.4,
+     "to": [
+      1.2,
+      -3.5
+     ]
+    },
+    {
+     "type": "move",
+     "from_s": 7.6,
+     "to_s": 8.8,
+     "to": [
+      1.2,
+      2.5
+     ]
+    }
+   ]
+  }
+ ],
+ "camera": [
+  {
+   "at_s": 0,
+   "pos": [
+    0,
+    1.4,
+    6.5
+   ],
+   "look": [
+    0,
+    1.0,
+    0
+   ],
+   "fov": 50
+  },
+  {
+   "at_s": 16,
+   "pos": [
+    0,
+    1.4,
+    6.5
+   ],
+   "look": [
+    0,
+    1.0,
+    0
+   ],
+   "fov": 50
+  }
+ ]
+}

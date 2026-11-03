@@ -13,6 +13,8 @@ import { GradeEffect, GRADES } from "../reference/grade";
 import { cardShade, blobMaterial, CARD_K } from "../reference/cardshade";
 import { Pen, INK, fxBurst, fxStars, fxPuff } from "../reference/toon";
 import { Scene, Move, XZ, XYZ, PhysicsTracks, EffectTracks, EmitterKind } from "./scene";
+import { Rig, COSTUMES, HIP_H, FIGURE_H } from "./rig";
+import { Action, poseAtTime, strideFor } from "./motion";
 
 const clamp01 = (x: number) => Math.max(0, Math.min(1, x));
 const smoother = (x: number) => { const t = clamp01(x); return t * t * t * (t * (t * 6 - 15) + 10); };
@@ -25,7 +27,9 @@ const mixHex = (a: string, b: string, t: number) => {
 const rng = (seed: number) => () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; };
 
 type Thing = { appear?: number; id: string; root: THREE.Group; base: THREE.Vector3; baseYaw: number; moves: Move[]; radius: number; height: number; forward: number };
-type Actor = Thing & { cycles: Record<string, { frames: string[]; hz: number }>; cards: Map<string, THREE.Mesh>; pivot: THREE.Group; poses: Scene["characters"][0]["poses"]; facing: number; blob: THREE.Mesh };
+type Actor = Thing & { cycles: Record<string, { frames: string[]; hz: number }>; cards: Map<string, THREE.Mesh>; pivot: THREE.Group; poses: NonNullable<Scene["characters"][0]["poses"]>; facing: number; blob: THREE.Mesh };
+type RigActor = Thing & { rig: Rig; actions: Action[]; expressions: { at_s: number; face: string }[]; face: string;
+  speed: Float32Array; phase: Float32Array; yaw: Float32Array };
 type FxCard = { mesh: THREE.Mesh; canvas: HTMLCanvasElement; tex: THREE.CanvasTexture };
 
 export class Engine {
@@ -33,7 +37,7 @@ export class Engine {
   private s: Scene; private w: number; private h: number;
   private renderer: THREE.WebGLRenderer; private scene = new THREE.Scene(); private cam: THREE.PerspectiveCamera;
   private composer!: EffectComposer; private sun!: THREE.DirectionalLight;
-  private things = new Map<string, Thing>(); private actors: Actor[] = [];
+  private things = new Map<string, Thing>(); private actors: Actor[] = []; private rigs: RigActor[] = [];
   private fx: { def: NonNullable<Scene["effects"]>[0]; card: FxCard }[] = [];
   private puffs: { card: FxCard; owner: Thing; move: Extract<Move, { type: "move" }> }[] = [];
   /** Blender-baked physics: per frame [x, y, z, qx, qy, qz, qw] of each simulated object's root (bake_physics.py) */
@@ -232,11 +236,20 @@ export class Engine {
 
     // characters: one lit, ink-free billboard card per pose (scale fixed by the first pose's card)
     for (const ch of s.characters) {
-      const names = [...new Set([...ch.poses.map((p) => p.pose).filter((n) => !ch.cycles?.[n]), ...Object.values(ch.cycles ?? {}).flatMap((c) => c.frames)])];
+      if (ch.rig) {
+        const rig = new Rig(COSTUMES[ch.rig.costume] ?? COSTUMES.none, ch.height_m, ch.rig.face ?? "neutral");
+        rig.root.traverse((o: any) => { if (o.isMesh && o.castShadow !== false) o.castShadow = true; });
+        this.scene.add(rig.root);
+        const ra: RigActor = { id: ch.id, root: rig.root, base: new THREE.Vector3(ch.at[0], 0, ch.at[1]), baseYaw: 0, moves: ch.moves ?? [], radius: 0.3, height: ch.height_m, forward: 0,
+          rig, actions: ch.actions!, expressions: ch.expressions ?? [], face: ch.rig.face ?? "neutral", speed: new Float32Array(0), phase: new Float32Array(0), yaw: new Float32Array(0) };
+        this.rigs.push(ra); this.things.set(ch.id, ra);
+        continue;
+      }
+      const names = [...new Set([...ch.poses!.map((p) => p.pose).filter((n) => !ch.cycles?.[n]), ...Object.values(ch.cycles ?? {}).flatMap((c) => c.frames)])];
       const texLoader = new THREE.TextureLoader(), cards = new Map<string, THREE.Mesh>();
       let pxPerM = 0;
       for (const n of names) {
-        const tex = await texLoader.loadAsync(base + ch.cards.replace("{pose}", n));
+        const tex = await texLoader.loadAsync(base + ch.cards!.replace("{pose}", n));
         tex.colorSpace = THREE.SRGBColorSpace; tex.anisotropy = 4;
         const img = tex.image as HTMLImageElement;
         if (!pxPerM) pxPerM = img.height / ch.height_m;
@@ -252,7 +265,7 @@ export class Engine {
       root.add(pivot); this.scene.add(root);
       const blob = new THREE.Mesh(new THREE.PlaneGeometry(ch.height_m * 0.55, ch.height_m * 0.22).rotateX(-Math.PI / 2), blobMaterial(this.blobTexture()));
       blob.position.y = 0.01; blob.layers.set(NOINK); root.add(blob);
-      const a: Actor = { id: ch.id, root, pivot, cards, cycles: ch.cycles ?? {}, blob, poses: ch.poses, facing: 1, base: new THREE.Vector3(ch.at[0], 0, ch.at[1]), baseYaw: 0,
+      const a: Actor = { id: ch.id, root, pivot, cards, cycles: ch.cycles ?? {}, blob, poses: ch.poses!, facing: 1, base: new THREE.Vector3(ch.at[0], 0, ch.at[1]), baseYaw: 0,
         moves: ch.moves ?? [], radius: 0.3, height: ch.height_m, forward: 0 };
       this.actors.push(a); this.things.set(ch.id, a);
     }
@@ -270,6 +283,7 @@ export class Engine {
     this.composer.addPass(new InkPass(this.scene, this.cam));
     this.composer.addPass(new EffectPass(this.cam, new ToneMappingEffect({ mode: ToneMappingMode.NEUTRAL }), new GradeEffect(GRADES[env.light], 1)));
     this.composer.setSize(this.w, this.h);
+    this.buildRigTables();
   }
 
   private fxCard(cw: number, chh: number): FxCard {
@@ -317,6 +331,7 @@ export class Engine {
   private poseAt(t: Thing, time: number) {
     const p = t.base.clone(); let yaw = t.baseYaw, lift = 0, dir: number | null = null, walking = 0, keepFacing = false;
     for (const m of t.moves) {
+      if (m.type === "place") { if (time >= m.at_s) p.set(m.to[0], 0, m.to[1]); continue; }
       if (time < m.from_s) continue;
       const u = clamp01((time - m.from_s) / (m.to_s - m.from_s)), active = time <= m.to_s;
       if (m.type === "move" || m.type === "walk" || m.type === "hop") {
@@ -366,7 +381,7 @@ export class Engine {
     this.cam.position.copy(c.pos); this.cam.fov = c.fov; this.cam.updateProjectionMatrix(); this.cam.lookAt(c.look);
 
     for (const t of this.things.values()) {
-      if ((t as Actor).cards) continue;
+      if ((t as Actor).cards || (t as RigActor).rig) continue;
       const q = this.poseAt(t, time);
       t.root.visible = t.appear === undefined || time >= t.appear;
       const tr = this.tracks[t.id];
@@ -378,10 +393,70 @@ export class Engine {
       t.root.position.set(q.p.x, q.p.y + q.lift, q.p.z); t.root.rotation.y = q.yaw;
     }
     for (const a of this.actors) this.renderActor(a, time);
+    for (const r of this.rigs) this.renderRig(r, frame, time);
     this.renderPuffs(time);
     this.renderEffects(time);
     this.renderBakedEffects(frame);
     this.composer.render();
+  }
+
+  /** per-frame ground speed, gait phase and heading of each rig, from its scripted moves (done once, in frame order) */
+  private buildRigTables() {
+    const s = this.s, n = Math.round(s.duration_s * s.fps) + 1, dt = 1 / s.fps;
+    for (const r of this.rigs) {
+      r.speed = new Float32Array(n); r.phase = new Float32Array(n); r.yaw = new Float32Array(n);
+      let ph = 0, yaw = 0;
+      for (let f = 0; f < n; f++) {
+        const t = f * dt, a = this.poseAt(r, Math.max(0, t - dt / 2)).p, b = this.poseAt(r, Math.min(s.duration_s, t + dt / 2)).p;
+        const vx = (b.x - a.x) / dt, vz = (b.z - a.z) / dt, sp = Math.hypot(vx, vz);
+        r.speed[f] = sp; ph += (2 * Math.PI * sp * dt) / strideFor(sp); r.phase[f] = ph;
+        const cur = r.actions[poseAtTime(r.actions, { time: t, speed: 0, phase: 0 }).index], here = this.poseAt(r, t).p;
+        let target: number | null = null;
+        if (sp > 0.25) target = Math.atan2(vx, vz);
+        else if (cur.face_camera || f === 0) { const c = this.cameraAt(t).pos; target = Math.atan2(c.x - here.x, c.z - here.z); }
+        if (cur.face_deg !== undefined && sp <= 0.25) target = rad(cur.face_deg);
+        if (cur.face_toward && sp <= 0.25) { const o = this.poseAt(this.things.get(cur.face_toward)!, t).p; target = Math.atan2(o.x - here.x, o.z - here.z); }
+        if (target !== null) {
+          let d = target - yaw; d = Math.atan2(Math.sin(d), Math.cos(d));
+          yaw = f === 0 ? target : yaw + Math.max(-7 * dt, Math.min(7 * dt, d));
+        }
+        r.yaw[f] = yaw;
+      }
+    }
+  }
+
+  private renderRig(r: RigActor, frame: number, time: number) {
+    const i = Math.min(frame, r.speed.length - 1), q = this.poseAt(r, time);
+    const out = poseAtTime(r.actions, { time, speed: r.speed[i], phase: r.phase[i] });
+    r.rig.apply(out.pose);
+    let x = q.p.x, z = q.p.z, y = 0, yaw = r.yaw[i], lift = out.lift + q.lift;
+    const act = r.actions[out.index];
+    const prev = r.actions[out.index - 1];
+    const ride = act.do === "ride" ? act : prev && prev.do === "ride" && time < prev.to_s! + (prev.exit_s ?? 0.7) ? prev : null;
+    if (ride) {
+      const v = this.things.get(ride.vehicle!)!, vq = this.poseAt(v, time), c = Math.cos(vq.yaw), sn = Math.sin(vq.yaw), sd = ride.seat!;
+      const sx = vq.p.x + sd[0] * c + sd[2] * sn, sz = vq.p.z - sd[0] * sn + sd[2] * c, sy = vq.p.y + vq.lift + sd[1] - HIP_H * (r.height / FIGURE_H);
+      const rideYaw = vq.yaw + v.forward;
+      const dy = (a: number, b: number, u: number) => { let d = b - a; d = Math.atan2(Math.sin(d), Math.cos(d)); return a + d * u; };
+      if (act === ride) {
+        const u = Math.min(1, (time - ride.at_s) / (ride.enter_s ?? 0.9)), k = u * u * (3 - 2 * u);
+        x = q.p.x + (sx - q.p.x) * k; z = q.p.z + (sz - q.p.z) * k; y = sy * k + 0.45 * Math.sin(Math.PI * u) * (1 - u); yaw = dy(r.yaw[i], rideYaw, k);
+        lift = 0;
+      } else {
+        const u = Math.min(1, (time - ride.to_s!) / (ride.exit_s ?? 0.7)), k = u * u * (3 - 2 * u);
+        x = sx + (q.p.x - sx) * k; z = sz + (q.p.z - sz) * k; y = sy * (1 - k) + 0.5 * Math.sin(Math.PI * u); yaw = dy(rideYaw, r.yaw[i], k);
+        // blend from the sitting pose happens in poseAtTime; ground lock only takes over once he has landed
+        lift = out.lift;
+      }
+      r.rig.root.position.set(x, y + lift, z); r.rig.root.rotation.y = yaw;
+    } else {
+      r.rig.root.position.set(x, 0, z); r.rig.root.rotation.y = yaw;
+      r.rig.root.position.y = out.lock ? -r.rig.lowestPoint() + lift : lift;
+    }
+    let face = r.face;
+    const ex = r.expressions.filter((e) => time >= e.at_s).pop();
+    if (ex) face = ex.face; else if (act.expression) face = act.expression;
+    r.rig.setExpression(face);
   }
 
   private renderActor(a: Actor, time: number) {
