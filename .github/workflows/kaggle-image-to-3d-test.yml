@@ -5,3 +5,106 @@ name: Kaggle image-to-3D test (3 objects)
 # One run per Kaggle notebook at a time (concurrency keyed on the notebook).
 on:
   workflow_dispatch:
+
+concurrency:
+  group: kaggle-notebook-image-to-3d-test
+  cancel-in-progress: false
+
+permissions:
+  contents: write  # only used to publish results to the separate test-results branch
+
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m unittest discover -s tests -v
+        env:
+          PYTHONPATH: .
+      - run: python scripts/build_image_to_3d_notebook.py --check
+
+  image-to-3d-on-kaggle:
+    needs: unit-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 215
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Kaggle CLI
+        run: |
+          python -m pip install kaggle==2.2.5 six
+          kaggle --version
+
+      - name: Configure Kaggle credentials
+        env:
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+        run: |
+          if [ -z "$KAGGLE_USERNAME" ] || [ -z "$KAGGLE_KEY" ]; then
+            echo "Missing GitHub Actions secrets KAGGLE_USERNAME and/or KAGGLE_KEY"; exit 1
+          fi
+          mkdir -p "$HOME/.kaggle"
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          Path.home().joinpath(".kaggle", "kaggle.json").write_text(json.dumps({
+              "username": os.environ["KAGGLE_USERNAME"].strip(), "key": os.environ["KAGGLE_KEY"].strip()}))
+          PY
+          chmod 600 "$HOME/.kaggle/kaggle.json"
+
+      - name: Push, track and verify the Kaggle run
+        env:
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+          PYTHONPATH: .
+        run: |
+          python -m motion_studio.kaggle_runner \
+            --kernel "$(echo "$KAGGLE_USERNAME" | tr -d '[:space:]')/stickman-motion-studio-image-to-3d-test" \
+            --title "Stickman Motion Studio Image To 3D Test" \
+            --kernel-dir kaggle/image-to-3d-test \
+            --notebook image_to_3d_test.ipynb \
+            --out kaggle-image-to-3d-output \
+            --profile image-to-3d \
+            --timeout-minutes 195 \
+            --kaggle-run-limit-seconds 10800
+
+      - name: Upload outputs as an artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: image-to-3d-test-output
+          path: kaggle-image-to-3d-output/
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Publish outputs to the test-results branch
+        if: always()
+        env:
+          RUN_DIR: image-to-3d/${{ github.run_id }}-${{ github.run_attempt }}
+        run: |
+          if [ ! -d kaggle-image-to-3d-output ] || [ -z "$(ls -A kaggle-image-to-3d-output)" ]; then
+            echo "No outputs to publish"; exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git ls-remote --exit-code --heads origin test-results >/dev/null; then
+            git fetch --depth 1 origin test-results
+            git worktree add /tmp/results FETCH_HEAD
+            cd /tmp/results && git checkout -B test-results
+          else
+            git worktree add --detach /tmp/results
+            cd /tmp/results && git checkout --orphan test-results && git rm -rq --cached . && git clean -fdq
+          fi
+          mkdir -p "$RUN_DIR"
+          cp -r "$GITHUB_WORKSPACE"/kaggle-image-to-3d-output/. "$RUN_DIR"/
+          find "$RUN_DIR" -type f -size +90M -print -delete
+          git add "$RUN_DIR"
+          git commit -q -m "Image-to-3D test outputs, workflow run ${{ github.run_id }}"
+          git push -q origin test-results
+          echo "Published to branch test-results: $RUN_DIR"
