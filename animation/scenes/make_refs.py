@@ -2,7 +2,11 @@
 same number of shots, same shot lengths, same mix of frame types. Each row: id, frame, chars, place, action/props, caption, cam, sfx.
 Run: python animation/scenes/make_refs.py   (writes ref_v1.json ... ref_v4.json)"""
 import json
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+from motion_studio.short_story import captions
 
 HERE = Path(__file__).parent
 W = {"c": "winter", "note": "wearing a brown fur-flap ushanka hat with a red star and an olive green winter coat"}
@@ -171,10 +175,9 @@ def build(name, rows, durs, prefix):
     for i, (frame, chars, place, action, props, cap, cam) in enumerate(rows):
         sid = f"{prefix}{i + 1:02d}"
         plan.append({"id": sid, "frame": frame, "chars": chars, "place": place, "action": action, "props": props})
-        words = cap.split()
         d = durs[i]
-        caps = [[round(d * k / len(words), 2), round(d * (k + 1) / len(words), 2), w, False] for k, w in enumerate(words)]
-        shots.append({"id": sid, "dur": d, "cam": CAMS[cam], "caps": [[a, b, " ".join(words) if len(words) <= 3 else w, r] for a, b, w, r in caps][:1] if False else caps})
+        caps = captions(cap, d)
+        shots.append({"id": sid, "dur": d, "cam": CAMS[cam], "caps": caps})
     (HERE / f"ref_{name}_plan.json").write_text(json.dumps(plan, indent=1))
     (HERE / f"ref_{name}_shots.json").write_text(json.dumps(shots, indent=1))
     print(name, len(rows), "shots", round(sum(durs[:len(rows)]), 1), "s")

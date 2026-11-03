@@ -9,14 +9,8 @@
   "caps": [
    [
     0.0,
-    0.55,
-    "A",
-    false
-   ],
-   [
-    0.55,
     1.1,
-    "NAVY",
+    "A NAVY",
     false
    ]
   ]
@@ -49,14 +43,8 @@
   "caps": [
    [
     0.0,
-    0.23,
-    "FEET",
-    false
-   ],
-   [
-    0.23,
     0.47,
-    "AWAY",
+    "FEET AWAY",
     false
    ]
   ]
@@ -71,20 +59,8 @@
   "caps": [
    [
     0.0,
-    0.23,
-    "HE",
-    false
-   ],
-   [
-    0.23,
-    0.47,
-    "WAS",
-    false
-   ],
-   [
-    0.47,
     0.7,
-    "SHOT",
+    "HE WAS SHOT",
     false
    ]
   ]
@@ -101,14 +77,8 @@
   "caps": [
    [
     0.0,
-    5.04,
-    "REFUSING",
-    false
-   ],
-   [
-    5.04,
     10.07,
-    "TO",
+    "REFUSING TO",
     false
    ]
   ]
@@ -123,14 +93,8 @@
   "caps": [
    [
     0.0,
-    0.95,
-    "DESPERATE",
-    false
-   ],
-   [
-    0.95,
     1.9,
-    "CHOICE",
+    "DESPERATE CHOICE",
     false
    ]
   ]
@@ -145,14 +109,8 @@
   "caps": [
    [
     0.0,
-    1.33,
-    "DIRECTLY",
-    false
-   ],
-   [
-    1.33,
     2.67,
-    "ONTO",
+    "DIRECTLY ONTO",
     false
    ]
   ]
@@ -167,20 +125,8 @@
   "caps": [
    [
     0.0,
-    0.6,
-    "THE",
-    false
-   ],
-   [
-    0.6,
-    1.2,
-    "STRIKE",
-    false
-   ],
-   [
-    1.2,
     1.8,
-    "COULD",
+    "THE STRIKE COULD",
     false
    ]
   ]
@@ -195,20 +141,8 @@
   "caps": [
    [
     0.0,
-    0.83,
-    "WE'RE",
-    false
-   ],
-   [
-    0.83,
-    1.67,
-    "GOING",
-    false
-   ],
-   [
-    1.67,
     2.5,
-    "TO",
+    "WE'RE GOING TO",
     false
    ]
   ]
@@ -225,20 +159,8 @@
   "caps": [
    [
     0.0,
-    0.16,
-    "DIE",
-    false
-   ],
-   [
-    0.16,
-    0.31,
-    "ANYWAY",
-    false
-   ],
-   [
-    0.31,
     0.47,
-    "THE",
+    "DIE ANYWAY THE",
     false
    ]
   ]
@@ -253,14 +175,8 @@
   "caps": [
    [
     0.0,
-    0.47,
-    "INSTANTLY",
-    false
-   ],
-   [
-    0.47,
     0.93,
-    "WIPED",
+    "INSTANTLY WIPED",
     false
    ]
   ]
@@ -275,20 +191,8 @@
   "caps": [
    [
     0.0,
-    0.3,
-    "OUT",
-    false
-   ],
-   [
-    0.3,
-    0.6,
-    "THE",
-    false
-   ],
-   [
-    0.6,
     0.9,
-    "ENEMY",
+    "OUT THE ENEMY",
     false
    ]
   ]
@@ -303,14 +207,8 @@
   "caps": [
    [
     0.0,
-    1.15,
-    "EVERY",
-    false
-   ],
-   [
-    1.15,
     2.3,
-    "SINGLE",
+    "EVERY SINGLE",
     false
    ]
   ]
@@ -327,20 +225,8 @@
   "caps": [
    [
     0.0,
-    0.93,
-    "AND",
-    false
-   ],
-   [
-    0.93,
-    1.87,
-    "EVEN",
-    false
-   ],
-   [
-    1.87,
     2.8,
-    "THOUGH",
+    "AND EVEN THOUGH",
     false
    ]
   ]
@@ -355,14 +241,8 @@
   "caps": [
    [
     0.0,
-    0.79,
-    "53",
-    false
-   ],
-   [
-    0.79,
     1.57,
-    "SURGERIES",
+    "53 SURGERIES",
     false
    ]
   ]
@@ -377,14 +257,8 @@
   "caps": [
    [
     0.0,
-    1.78,
-    "RECOVERY",
-    false
-   ],
-   [
-    1.78,
     3.57,
-    "WAS",
+    "RECOVERY WAS",
     false
    ]
   ]
@@ -399,20 +273,8 @@
   "caps": [
    [
     0.0,
-    0.93,
-    "NO",
-    false
-   ],
-   [
-    0.93,
-    1.87,
-    "REGRETS",
-    false
-   ],
-   [
-    1.87,
     2.8,
-    "AND",
+    "NO REGRETS AND",
     false
    ]
   ]

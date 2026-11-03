@@ -43,17 +43,27 @@ def speak(texts: list[str], models: Path, voice: str, speed: float, wav_out: Pat
     return durs
 
 
+def phrase_groups(text: str, max_words: int = 3, max_chars: int = 16) -> list[str]:
+    """Split a line into caption groups of 1 to 3 words (like the reference shorts: 'FEET TURNED INTO'); *word* marks red."""
+    groups, cur = [], []
+    for w in text.split():
+        plain = " ".join(x.replace("*", "") for x in cur + [w])
+        if cur and (len(cur) >= max_words or len(plain) > max_chars):
+            groups.append(cur); cur = []
+        cur.append(w)
+    if cur:
+        groups.append(cur)
+    if len(groups) > 1 and len(groups[-1]) == 1 and len(groups[-2]) < max_words:  # no lonely last word
+        groups[-2] += groups.pop()
+    return [" ".join(g) for g in groups]
+
+
 def captions(text: str, dur: float) -> list[list]:
-    words = []
-    for w in text.split():  # short words join the next word
-        if words and len(re.sub(r"\W", "", words[-1])) <= 2 and not words[-1].endswith((".", ",")):
-            words[-1] += " " + w
-        else:
-            words.append(w)
-    wt = np.array([len(re.sub(r"\W", "", w)) + 1 for w in words], float)
+    groups = phrase_groups(text)
+    wt = np.array([len(re.sub(r"\W", "", g)) + 1 for g in groups], float)
     edges = np.concatenate([[0], np.cumsum(wt) / wt.sum()]) * (dur - GAP)
-    return [[round(float(edges[i]), 3), round(float(edges[i + 1]) if i + 1 < len(words) else dur, 3), w.replace("*", "").strip(".,!?"), "*" in w]
-            for i, w in enumerate(words)]
+    return [[round(float(edges[i]), 3), round(float(edges[i + 1]) if i + 1 < len(groups) else dur, 3), g.replace("*", "").strip(".,!?"), "*" in g]
+            for i, g in enumerate(groups)]
 
 
 def build_shots(story: dict, durs: list[float]) -> list[dict]:

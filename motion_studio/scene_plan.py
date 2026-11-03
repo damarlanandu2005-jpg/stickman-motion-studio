@@ -51,6 +51,8 @@ def prompt_for(shot: dict) -> tuple[str, list[str]]:
         parts.append("Objects: " + shot["props"] + ".")
     if shot.get("mood"):
         parts.append("Mood and light: " + shot["mood"] + ".")
+    if not chars:  # the style reference shows a character; say clearly that this picture has none
+        parts.append("There is NO stickman, NO character, NO head and NO face anywhere in this picture, only the objects and the place.")
     parts.append(STYLE)
     return " ".join(parts), refs
 
