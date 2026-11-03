@@ -1,0 +1,12 @@
+[
+  {"name": "launch_tower", "seed": 6101, "height_m": 28.0, "type": "building",
+   "prompt": "A tall rocket launch service tower: a slim steel lattice tower with a white and red-striped frame, a side walkway arm that extends out, small ladders and railings, a lightning mast on top, standing on a small concrete base."},
+  {"name": "rocket_ladder", "seed": 6102, "height_m": 4.0, "type": "prop",
+   "prompt": "A tall steel access ladder with a small platform at the top: two grey vertical rails with many rungs, a small railing platform at the top, two support legs at the bottom."},
+  {"name": "alien_plant", "seed": 6103, "height_m": 1.4, "type": "prop",
+   "prompt": "A strange glowing alien plant: a thick curved purple stem with four large pink and teal leaves, glowing blue bulb flowers, growing from a small mound of rock."},
+  {"name": "rock_formation", "seed": 6104, "height_m": 4.0, "type": "prop",
+   "prompt": "A tall alien rock formation: a cluster of three brown and purple rock spires of different heights with layered stripes, rough chunky shapes."},
+  {"name": "spaceport_building", "seed": 6105, "height_m": 6.0, "type": "building",
+   "prompt": "A small spaceport control building: a white box building with a flat roof, a large glass viewing window in front, a radar dish on the roof, a small door and a blue stripe."}
+]

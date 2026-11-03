@@ -20,6 +20,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 TARGET = ROOT / "kaggle" / "image-to-3d-test" / "image_to_3d_test.ipynb"
+OBJECTS_FILE = ROOT / "kaggle" / "image-to-3d-test" / "objects.json"   # the batch of objects to make; written by the story tool
 
 INTRO = """# Image-to-3D feasibility test (3 objects)
 
@@ -71,10 +72,7 @@ STYLE = ("isolated single object, centered, whole object fully visible. Three-qu
          "and slightly above, so the side and the depth of the object are clearly visible; not a flat front view. "
          "plain pure white background, no ground, no shadow, no text, no people. Flat 2D cartoon illustration, "
          "clean thick dark outlines, soft muted colours, simple flat shading.")
-OBJECTS = [
-    {"name": "moon_buggy_a", "seed": 5101, "prompt": "An open-top moon buggy rover for two astronauts: a low white frame with two visible bucket seats side by side, a steering handle, four big knobby grey wheels, a small orange antenna and a small cargo rack at the back. No roof, no windshield, nothing covering the seats. " + STYLE},
-    {"name": "moon_buggy_b", "seed": 5102, "prompt": "A cute cartoon open moon buggy: wide low white chassis, two open seats with orange cushions clearly visible from above, a small steering wheel, four large chunky wheels, a short antenna. Completely open top. " + STYLE},
-]
+OBJECTS = [{**o, "prompt": o["prompt"] + " " + STYLE} for o in json.loads(r"""__OBJECTS_JSON__""")]
 SIZE, STEPS, GUIDANCE = 768, 4, 1.0
 
 # Nothing below is observed yet; each stage sets its own fields from what actually happened.
@@ -387,7 +385,7 @@ def stage_constants() -> str:
 
 def build() -> dict:
     return {
-        "cells": [cell("markdown", INTRO), cell("code", SETUP), cell("code", stage_constants()), cell("code", HELPERS),
+        "cells": [cell("markdown", INTRO), cell("code", SETUP.replace("__OBJECTS_JSON__", json.dumps(json.loads(OBJECTS_FILE.read_text(encoding="utf-8")), indent=1))), cell("code", stage_constants()), cell("code", HELPERS),
                   cell("code", MAIN), cell("code", SHOW), cell("code", VERDICT)],
         "metadata": {"kernelspec": {"display_name": "Python 3", "language": "python", "name": "python3"},
                      "language_info": {"name": "python"}},

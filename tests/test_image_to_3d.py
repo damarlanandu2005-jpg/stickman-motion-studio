@@ -77,7 +77,7 @@ class NotebookTests(unittest.TestCase):
         exec(compile("".join(builder.build()["cells"][1]["source"]), "setup", "exec"), {"__name__": "x"}, ns)
         self.assertEqual(ns["REPORT"]["status"], "running")
         self.assertEqual(ns["REPORT"]["engines"], {})
-        self.assertEqual(len(ns["OBJECTS"]), 2)
+        self.assertEqual(len(ns["OBJECTS"]), len(json.loads((ROOT / "kaggle/image-to-3d-test/objects.json").read_text())))
         self.assertEqual(ns["KLEIN_REVISION"], "e7b7dc27f91deacad38e78976d1f2b499d76a294")
         for pin in ("TRIPOSR_COMMIT", "HUNYUAN_COMMIT"):
             self.assertEqual(len(ns[pin]), 40)
@@ -134,7 +134,7 @@ class ValidatorTests(unittest.TestCase):
         ns = {}
         exec(compile("".join(builder.build()["cells"][1]["source"]), "setup", "exec"), {"__name__": "x"}, ns)
         self.assertIn("not a flat front view", ns["STYLE"])
-        self.assertEqual([o["name"] for o in ns["OBJECTS"]], ["moon_buggy_a", "moon_buggy_b"])
+        self.assertEqual([o["name"] for o in ns["OBJECTS"]], [o["name"] for o in json.loads((ROOT / "kaggle/image-to-3d-test/objects.json").read_text())])
         self.assertIn("def marching_cubes(volume, level)", ns["TORCHMCUBES_SHIM"])
         self.assertNotIn("TORCHMCUBES_GIT", ns)
         for stage in (builder.TRIPOSR_STAGE, builder.HUNYUAN_SHAPE_STAGE):
