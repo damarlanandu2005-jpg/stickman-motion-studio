@@ -14,14 +14,21 @@ import build_astronaut_poses_notebook as builder  # noqa: E402
 from motion_studio import kaggle_runner as kr  # noqa: E402
 
 IDENTITY = {"run_id": "run-1", "run_token": "tok-1"}
-PNG = b"\x89PNG\r\n\x1a\n" + b"\x00" * 8
+
+
+def make_png(path: Path, gray: int, w: int = 16, h: int = 24) -> None:
+    """Tiny valid PNG without Pillow (CI does not install it)."""
+    import struct, zlib
+    def chunk(kind, data):
+        return struct.pack(">I", len(data)) + kind + data + struct.pack(">I", zlib.crc32(kind + data) & 0xFFFFFFFF)
+    raw = b"".join(b"\x00" + bytes([gray]) * w for _ in range(h))
+    path.write_bytes(b"\x89PNG\r\n\x1a\n" + chunk(b"IHDR", struct.pack(">IIBBBBB", w, h, 8, 0, 0, 0, 0)) + chunk(b"IDAT", zlib.compress(raw)) + chunk(b"IEND", b""))
 
 
 def write_run(out: Path, **override):
     """Fake output folder: only tests the validator's logic, never evidence of a real drawing."""
-    from PIL import Image
     out.mkdir(parents=True, exist_ok=True)
-    Image.new("RGB", (16, 24), "white").save(out / "pose_stand_s1.png")
+    make_png(out / "pose_stand_s1.png", 255)
     digest = hashlib.sha256((out / "pose_stand_s1.png").read_bytes()).hexdigest()
     report = {"run_token": "tok-1", "run_id": "run-1", "status": "completed", "error_message": None, "poses": ["stand"], "seeds": [1],
               "klein": {"status": "success", "pictures": [{"pose": "stand", "seed": 1, "status": "success", "file": "pose_stand_s1.png", "sha256": digest, "seconds": 3.0}]}}
@@ -69,8 +76,7 @@ class ValidatorTests(unittest.TestCase):
 
     def test_changed_picture_fails(self):
         out = self.out(); write_run(out)
-        from PIL import Image
-        Image.new("RGB", (16, 24), "black").save(out / "pose_stand_s1.png")
+        make_png(out / "pose_stand_s1.png", 0)
         self.assertIn("hash", " ".join(kr.validate_poses_output(out, IDENTITY)["failures"]))
 
     def test_no_pictures_fails(self):

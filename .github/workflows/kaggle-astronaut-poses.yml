@@ -1,4 +1,5 @@
 name: Kaggle astronaut poses (klein, image reference)
+# (first run attempt 2: tests no longer need Pillow)
 
 # klein draws the space-costume stickman in many poses from the approved costume picture.
 # One run per Kaggle notebook at a time (concurrency keyed on the notebook).
