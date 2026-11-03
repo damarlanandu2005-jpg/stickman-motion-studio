@@ -12,7 +12,7 @@ import { LIGHTS } from "../reference/lights";
 import { GradeEffect, GRADES } from "../reference/grade";
 import { cardShade, blobMaterial, CARD_K } from "../reference/cardshade";
 import { Pen, fxBurst, fxStars, fxPuff } from "../reference/toon";
-import { Scene, Move, XZ, XYZ } from "./scene";
+import { Scene, Move, XZ, XYZ, PhysicsTracks } from "./scene";
 
 const clamp01 = (x: number) => Math.max(0, Math.min(1, x));
 const smoother = (x: number) => { const t = clamp01(x); return t * t * t * (t * (t * 6 - 15) + 10); };
@@ -32,6 +32,16 @@ export class Engine {
   private things = new Map<string, Thing>(); private actors: Actor[] = [];
   private fx: { def: NonNullable<Scene["effects"]>[0]; card: FxCard }[] = [];
   private puffs: { card: FxCard; owner: Thing; move: Extract<Move, { type: "move" }> }[] = [];
+  /** Blender-baked physics: per frame [x, y, z, qx, qy, qz, qw] of each simulated object's root (bake_physics.py) */
+  private tracks: Record<string, number[][]> = {};
+
+  /** baked physics overrides scripted moves for that object; frames past the end hold the last pose */
+  setPhysics(t: PhysicsTracks | null) {
+    if (!t) return;
+    if (t.fps !== this.s.fps) this.warnings.push(`physics was baked at ${t.fps} fps, scene is ${this.s.fps} fps`);
+    for (const o of this.s.objects) if (o.physics && !t.objects[o.id]) this.warnings.push(`no baked physics for ${o.id}: run bake_physics.py`);
+    this.tracks = t.objects;
+  }
 
   private constructor(s: Scene, canvas: HTMLCanvasElement, w: number, h: number) {
     this.s = s; this.w = w; this.h = h;
@@ -187,7 +197,9 @@ export class Engine {
 
   /** objects must not overlap where they stand (characters are thin cards and are allowed to pass) */
   private checkLayout() {
-    const list = [...this.things.values()].filter((t) => !(t as Actor).cards);
+    // objects dropped by physics start in the air, so only ground-standing objects are compared
+    const dropped = new Set(this.s.objects.filter((o) => (o.physics?.drop_m ?? 0) > 0).map((o) => o.id));
+    const list = [...this.things.values()].filter((t) => !(t as Actor).cards && !dropped.has(t.id));
     for (let i = 0; i < list.length; i++) for (let j = i + 1; j < list.length; j++) {
       const a = list[i], b = list[j], d = Math.hypot(a.base.x - b.base.x, a.base.z - b.base.z);
       if (d < a.radius + b.radius) this.warnings.push(`${a.id} and ${b.id} overlap at their start positions (${d.toFixed(2)} m apart)`);
@@ -249,6 +261,12 @@ export class Engine {
     for (const t of this.things.values()) {
       if ((t as Actor).cards) continue;
       const q = this.poseAt(t, time);
+      const tr = this.tracks[t.id];
+      if (tr) {
+        const k = tr[Math.min(frame, tr.length - 1)];
+        t.root.position.set(k[0], k[1], k[2]); t.root.quaternion.set(k[3], k[4], k[5], k[6]);
+        continue;
+      }
       t.root.position.set(q.p.x, q.lift, q.p.z); t.root.rotation.y = q.yaw;
     }
     for (const a of this.actors) this.renderActor(a, time);

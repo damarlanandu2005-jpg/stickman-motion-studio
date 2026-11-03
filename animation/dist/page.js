@@ -29388,6 +29388,15 @@ var Engine = class _Engine {
   actors = [];
   fx = [];
   puffs = [];
+  /** Blender-baked physics: per frame [x, y, z, qx, qy, qz, qw] of each simulated object's root (bake_physics.py) */
+  tracks = {};
+  /** baked physics overrides scripted moves for that object; frames past the end hold the last pose */
+  setPhysics(t) {
+    if (!t) return;
+    if (t.fps !== this.s.fps) this.warnings.push(`physics was baked at ${t.fps} fps, scene is ${this.s.fps} fps`);
+    for (const o of this.s.objects) if (o.physics && !t.objects[o.id]) this.warnings.push(`no baked physics for ${o.id}: run bake_physics.py`);
+    this.tracks = t.objects;
+  }
   constructor(s, canvas, w, h) {
     this.s = s;
     this.w = w;
@@ -29595,7 +29604,8 @@ var Engine = class _Engine {
   }
   /** objects must not overlap where they stand (characters are thin cards and are allowed to pass) */
   checkLayout() {
-    const list = [...this.things.values()].filter((t) => !t.cards);
+    const dropped = new Set(this.s.objects.filter((o) => (o.physics?.drop_m ?? 0) > 0).map((o) => o.id));
+    const list = [...this.things.values()].filter((t) => !t.cards && !dropped.has(t.id));
     for (let i = 0; i < list.length; i++) for (let j = i + 1; j < list.length; j++) {
       const a = list[i], b = list[j], d = Math.hypot(a.base.x - b.base.x, a.base.z - b.base.z);
       if (d < a.radius + b.radius) this.warnings.push(`${a.id} and ${b.id} overlap at their start positions (${d.toFixed(2)} m apart)`);
@@ -29667,6 +29677,13 @@ var Engine = class _Engine {
     for (const t of this.things.values()) {
       if (t.cards) continue;
       const q = this.poseAt(t, time);
+      const tr = this.tracks[t.id];
+      if (tr) {
+        const k = tr[Math.min(frame, tr.length - 1)];
+        t.root.position.set(k[0], k[1], k[2]);
+        t.root.quaternion.set(k[3], k[4], k[5], k[6]);
+        continue;
+      }
       t.root.position.set(q.p.x, q.lift, q.p.z);
       t.root.rotation.y = q.yaw;
     }
@@ -29749,6 +29766,7 @@ function validateScene(s) {
     if (ids.has(o.id)) p.push(`duplicate id ${o.id}`);
     ids.add(o.id);
     if (!s.assets[o.asset]) p.push(`object ${o.id}: unknown asset ${o.asset}`);
+    if (o.physics && o.moves?.length) p.push(`object ${o.id}: use either physics or moves, not both`);
     for (const m of o.moves ?? []) {
       inTime(m.from_s, `object ${o.id} ${m.type}`);
       inTime(m.to_s, `object ${o.id} ${m.type}`);
@@ -29792,6 +29810,11 @@ window.__setup = async (sceneUrl, width, height) => {
   document.body.style.margin = "0";
   document.body.appendChild(canvas);
   engine = await Engine.create(scene, canvas, width, height, "./");
+  if (scene.objects.some((o) => o.physics)) {
+    const res = await fetch(sceneUrl.replace(/\.json$/, ".physics.json"));
+    if (!res.ok) return { ok: false, problems: ["scene has physics objects but no baked physics file: run bake_physics.py"] };
+    engine.setPhysics(await res.json());
+  }
   return { ok: true, problems, warnings: engine.warnings, frames: Math.round(scene.duration_s * scene.fps), fps: scene.fps, gl: engine.rendererInfo };
 };
 window.__render = (frame) => {

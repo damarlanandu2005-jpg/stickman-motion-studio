@@ -14,6 +14,11 @@ export type Move =
 
 export type Scatter = { type: "rocks"; count: number; radius: number; min_size: number; max_size: number; color: string; seed: number; keep_clear?: XYZ[] };
 
+export type Physics = { type: "dynamic" | "passive"; mass_kg?: number; shape?: "convex" | "box" | "mesh"; friction?: number;
+  bounce?: number; drop_m?: number; tilt_deg?: XYZ; linear_damping?: number; angular_damping?: number };
+
+export type PhysicsTracks = { scene: string; fps: number; frames: number; blender: string; objects: Record<string, number[][]> };
+
 export type Scene = {
   id: string;
   description?: string;
@@ -21,7 +26,9 @@ export type Scene = {
   duration_s: number;
   environment: { light: "day" | "golden"; sky_top: string; sky_horizon: string; ground: string; fog_near: number; fog_far: number; scatter?: Scatter[] };
   assets: Record<string, { file: string; height_m: number; brightness?: number; forward_deg?: number }>;
-  objects: { id: string; asset: string; at: XZ; turn_deg?: number; moves?: Move[] }[];
+  /** objects with a physics block are simulated by Blender (bake_physics.py) and replayed from the baked tracks */
+  objects: { id: string; asset: string; at: XZ; turn_deg?: number; moves?: Move[]; physics?: Physics }[];
+  physics_bake?: { from_s?: number; substeps?: number; iterations?: number };
   characters: { id: string; cards: string; height_m: number; at: XZ;
     poses: { at_s: number; pose: string; face?: "left" | "right" }[]; moves?: Move[] }[];
   effects?: { type: "burst" | "stars" | "puff"; at_s: number; dur_s: number; on: string; size_m: number; color?: string; lift_m?: number }[];
@@ -39,6 +46,7 @@ export function validateScene(s: Scene): string[] {
   for (const o of s.objects) {
     if (ids.has(o.id)) p.push(`duplicate id ${o.id}`); ids.add(o.id);
     if (!s.assets[o.asset]) p.push(`object ${o.id}: unknown asset ${o.asset}`);
+    if (o.physics && o.moves?.length) p.push(`object ${o.id}: use either physics or moves, not both`);
     for (const m of o.moves ?? []) { inTime(m.from_s, `object ${o.id} ${m.type}`); inTime(m.to_s, `object ${o.id} ${m.type}`); if (m.to_s <= m.from_s) p.push(`object ${o.id} ${m.type}: to_s must be after from_s`); }
   }
   for (const c of s.characters) {

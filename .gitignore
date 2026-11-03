@@ -1,3 +1,4 @@
 animation/node_modules/
 __pycache__/
 *.pyc
+animation/scenes/*.physics.json

@@ -3,6 +3,7 @@ name: Render scene (split across parallel jobs)
 # Every frame of a scene is a pure function of its time, so the frames are split into chunks that render at the same
 # time on separate GitHub runners (CPU, no Kaggle GPU hours used), then one job joins them and checks the video
 # with the reference repo's own QA script (animation/reference/short_qa.py).
+# If the scene has physics objects, Blender (bpy) first bakes real rigid-body physics once; every render job replays it.
 on:
   workflow_dispatch:
     inputs:
@@ -16,10 +17,6 @@ on:
         default: "1080"
       height:
         default: "1920"
-  # TEMPORARY: lets this new workflow run once from its branch. Path-limited to this file; remove after the first run.
-  push:
-    branches: [test/image-to-3d-objects]
-    paths: [".github/workflows/render-split.yml"]
 
 concurrency:
   group: render-split-${{ github.ref }}-${{ inputs.scene || 'default' }}
@@ -40,6 +37,7 @@ jobs:
     outputs:
       matrix: ${{ steps.plan.outputs.matrix }}
       total: ${{ steps.plan.outputs.total }}
+      physics: ${{ steps.plan.outputs.physics }}
     steps:
       - uses: actions/checkout@v4
       - id: plan
@@ -54,11 +52,34 @@ jobs:
           with open(os.environ["GITHUB_OUTPUT"], "a") as fh:
               fh.write(f"matrix={json.dumps({'include': chunks})}\n")
               fh.write(f"total={total}\n")
+              fh.write(f"physics={'true' if any(o.get('physics') for o in scene['objects']) else 'false'}\n")
           print(total, "frames in", len(chunks), "chunks:", chunks)
           PY
 
-  render:
+  bake-physics:
     needs: plan
+    if: needs.plan.outputs.physics == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Install Blender as a Python module
+        run: python -m pip install -q bpy==5.2.3
+      - name: Bake rigid-body physics
+        working-directory: animation
+        run: python bake_physics.py "$SCENE"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: physics
+          path: animation/scenes/*.physics.json
+          retention-days: 7
+
+  render:
+    needs: [plan, bake-physics]
+    if: always() && needs.plan.result == 'success' && (needs.bake-physics.result == 'success' || needs.bake-physics.result == 'skipped')
     runs-on: ubuntu-latest
     timeout-minutes: 120
     strategy:
@@ -86,6 +107,11 @@ jobs:
         run: |
           python -m pip install -q playwright==1.63.0
           python -m playwright install --with-deps chromium
+      - uses: actions/download-artifact@v4
+        if: needs.plan.outputs.physics == 'true'
+        with:
+          name: physics
+          path: animation/scenes
       - name: Render frames ${{ matrix.start }}-${{ matrix.end }}
         working-directory: animation
         run: |
@@ -122,6 +148,11 @@ jobs:
         with:
           pattern: chunk-*
           path: chunks
+      - uses: actions/download-artifact@v4
+        if: needs.plan.outputs.physics == 'true'
+        with:
+          name: physics
+          path: out/physics
       - name: Join chunks, check the video, run the reference QA
         env:
           TOTAL: ${{ needs.plan.outputs.total }}

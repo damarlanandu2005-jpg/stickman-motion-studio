@@ -100,3 +100,36 @@ class ValidatorTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class SplitAndPhysicsTests(unittest.TestCase):
+    def test_physics_scene_is_well_formed(self):
+        anim = ROOT / "animation"
+        scene = json.loads((anim / "scenes" / "crystal_rockfall_physics.json").read_text())
+        sim = [o for o in scene["objects"] if o.get("physics")]
+        self.assertTrue(any(o["physics"]["type"] == "dynamic" for o in sim))
+        for o in sim:
+            self.assertIn(o["physics"]["type"], ("dynamic", "passive"))
+            self.assertFalse(o.get("moves"), f"{o['id']}: physics objects must not also have scripted moves")
+            self.assertIn(o["asset"], scene["assets"])
+
+    def test_bake_script_maps_axes_like_the_gltf_importer(self):
+        source = (ROOT / "animation" / "bake_physics.py").read_text()
+        self.assertIn("Matrix(((1, 0, 0, 0), (0, 0, 1, 0), (0, -1, 0, 0), (0, 0, 0, 1)))", source)
+        self.assertIn('sc.frame_set(f)', source)  # steps frames in order so Bullet simulates in sequence
+
+    def test_render_frames_supports_chunks(self):
+        source = (ROOT / "animation" / "render_frames.py").read_text()
+        for flag in ("--start", "--end", "--video-name"):
+            self.assertIn(flag, source)
+
+    def test_split_workflow_bakes_physics_before_rendering(self):
+        try:
+            import yaml
+        except ImportError:
+            self.skipTest("PyYAML not installed")
+        wf = yaml.safe_load((ROOT / ".github" / "workflows" / "render-split.yml").read_text())
+        jobs = wf["jobs"]
+        self.assertEqual(set(jobs), {"plan", "bake-physics", "render", "merge"})
+        self.assertIn("bake-physics", jobs["render"]["needs"])
+        self.assertEqual(jobs["render"]["strategy"]["fail-fast"], False)
