@@ -1,0 +1,692 @@
+[
+ {
+  "id": "d01",
+  "frame": "wide",
+  "chars": [
+   {
+    "c": "explorer",
+    "note": "young man in a blue long robe and a small red cap, big smile"
+   },
+   {
+    "c": "egypt",
+    "note": "a sultan in a red robe with a tall white turban and a thick black moustache and beard"
+   }
+  ],
+  "place": "old Ottoman city plaza in front of a big round stone tower, warm sunny day",
+  "action": "stand side by side",
+  "props": ""
+ },
+ {
+  "id": "d02",
+  "frame": "wide",
+  "chars": [
+   {
+    "c": "soldier",
+    "note": "palace guard in a blue coat with a tall white and yellow ceremonial hat"
+   },
+   {
+    "c": "soldier",
+    "note": "palace guard in a blue coat with a tall white and yellow ceremonial hat"
+   }
+  ],
+  "place": "castle gate with battlements",
+  "action": "two guards stand proudly",
+  "props": ""
+ },
+ {
+  "id": "d03",
+  "frame": "medium",
+  "chars": [
+   {
+    "c": "soldier",
+    "note": "palace guard in a blue coat with a tall white and yellow ceremonial hat"
+   },
+   {
+    "c": "soldier",
+    "note": "palace guard in a blue coat with a tall white and yellow ceremonial hat"
+   }
+  ],
+  "place": "castle gate",
+  "action": "two guards laugh with crossed axes",
+  "props": ""
+ },
+ {
+  "id": "d04",
+  "frame": "wide",
+  "chars": [
+   {
+    "c": "egypt",
+    "note": "a sultan in a red robe with a tall white turban and a thick black moustache and beard"
+   }
+  ],
+  "place": "hilltop above the old city skyline with domes and minarets",
+  "action": "stands facing the viewer",
+  "props": ""
+ },
+ {
+  "id": "d05",
+  "frame": "wide",
+  "chars": [
+   {
+    "c": "explorer",
+    "note": "young man in a blue long robe and a small red cap, big smile"
+   }
+  ],
+  "place": "building site with wooden scaffolding and stone blocks",
+  "action": "carries a stone block",
+  "props": ""
+ },
+ {
+  "id": "d06",
+  "frame": "wide",
+  "chars": [
+   {
+    "c": "explorer",
+    "note": "young man in a blue long robe and a small red cap, big smile"
+   }
+  ],
+  "place": "green field with a small stone tower and a pointed roof",
+  "action": "smiles",
+  "props": ""
+ },
+ {
+  "id": "d07",
+  "frame": "medium",
+  "chars": [
+   {
+    "c": "explorer",
+    "note": "young man in a blue long robe and a small red cap, big smile"
+   },
+   {
+    "c": "egypt",
+    "note": "a sultan in a red robe with a tall white turban and a thick black moustache and beard"
+   }
+  ],
+  "place": "palace room with blue tiles and a red carpet",
+  "action": "talk with crossed arms",
+  "props": ""
+ },
+ {
+  "id": "d08",
+  "frame": "wide",
+  "chars": [
+   {
+    "c": "explorer",
+    "note": "young man in a blue long robe and a small red cap, big smile"
+   }
+  ],
+  "place": "harbour with a big wooden sailing ship with two masts",
+  "action": "stands on the dock",
+  "props": ""
+ },
+ {
+  "id": "d09",
+  "frame": "wide",
+  "chars": [
+   {
+    "c": "explorer",
+    "note": "young man in a blue long robe and a small red cap, big smile"
+   }
+  ],
+  "place": "street with a brown wooden house and cypress trees",
+  "action": "stands with arms crossed",
+  "props": ""
+ },
+ {
+  "id": "d10",
+  "frame": "medium",
+  "chars": [
+   {
+    "c": "explorer",
+    "note": "young man in a blue long robe and a small red cap, big smile"
+   },
+   {
+    "c": "winter",
+    "note": "an older man in a green robe and a white-green turban"
+   }
+  ],
+  "place": "treasury with shelves of gold cups",
+  "action": "the green robed man hands gold to the young man",
+  "props": ""
+ },
+ {
+  "id": "d11",
+  "frame": "wide",
+  "chars": [
+   {
+    "c": "explorer",
+    "note": "young man in a blue long robe and a small red cap, big smile"
+   },
+   {
+    "c": "egypt",
+    "note": "a sultan in a red robe with a tall white turban and a thick black moustache and beard"
+   }
+  ],
+  "place": "palace garden with arches and cypress trees",
+  "action": "stand talking",
+  "props": ""
+ },
+ {
+  "id": "d12",
+  "frame": "wide",
+  "chars": [
+   {
+    "c": "explorer",
+    "note": "young man in a blue long robe and a small red cap, big smile"
+   },
+   {
+    "c": "egypt",
+    "note": "a sultan in a red robe with a tall white turban and a thick black moustache and beard"
+   },
+   {
+    "c": "winter",
+    "note": "an older man in a green robe and a white-green turban"
+   }
+  ],
+  "place": "palace garden with arches and cypress trees",
+  "action": "talk and laugh",
+  "props": ""
+ },
+ {
+  "id": "d13",
+  "frame": "wide",
+  "chars": [
+   {
+    "c": "explorer",
+    "note": "young man in a blue long robe and a small red cap, big smile"
+   },
+   {
+    "c": "egypt",
+    "note": "a sultan in a red robe with a tall white turban and a thick black moustache and beard"
+   }
+  ],
+  "place": "throne room with a golden throne and a red carpet",
+  "action": "stand beside the throne",
+  "props": ""
+ },
+ {
+  "id": "d14",
+  "frame": "wide",
+  "chars": [
+   {
+    "c": "explorer",
+    "note": "young man in a blue long robe and a small red cap, big smile"
+   }
+  ],
+  "place": "huge curved stone staircase going up a tower",
+  "action": "points at the steps",
+  "props": ""
+ },
+ {
+  "id": "d15",
+  "frame": "wide",
+  "chars": [
+   {
+    "c": "explorer",
+    "note": "young man in a blue long robe and a small red cap, big smile"
+   }
+  ],
+  "place": "inside a stone tower, an arched window and a staircase",
+  "action": "stands scratching his head",
+  "props": ""
+ },
+ {
+  "id": "d16",
+  "frame": "insert",
+  "chars": [],
+  "place": "green hills under a blue sky with an old city far below",
+  "action": "",
+  "props": "a very tall thin stone tower with a spiral staircase wrapped around it"
+ },
+ {
+  "id": "d17",
+  "frame": "medium",
+  "chars": [
+   {
+    "c": "egypt",
+    "note": "a sultan in a red robe with a tall white turban and a thick black moustache and beard"
+   }
+  ],
+  "place": "green and gold palace hall with a patterned wall",
+  "action": "smiles with a hand on his belly",
+  "props": ""
+ },
+ {
+  "id": "d18",
+  "frame": "wide",
+  "chars": [
+   {
+    "c": "egypt",
+    "note": "a sultan in a red robe with a tall white turban and a thick black moustache and beard"
+   },
+   {
+    "c": "winter",
+    "note": "advisor in a purple robe"
+   },
+   {
+    "c": "winter",
+    "note": "advisor in an orange robe"
+   }
+  ],
+  "place": "palace hall with a patterned carpet",
+  "action": "the sultan stands between two advisors",
+  "props": ""
+ },
+ {
+  "id": "d19",
+  "frame": "wide",
+  "chars": [
+   {
+    "c": "egypt",
+    "note": "a sultan in a red robe with a tall white turban and a thick black moustache and beard"
+   },
+   {
+    "c": "soldier",
+    "note": "palace guard in a blue coat with a tall white and yellow ceremonial hat"
+   },
+   {
+    "c": "soldier",
+    "note": "palace guard in a blue coat with a tall white and yellow ceremonial hat"
+   },
+   {
+    "c": "winter",
+    "note": "an older man in a green robe and a white-green turban"
+   }
+  ],
+  "place": "castle courtyard with a tower behind",
+  "action": "a big group stands together",
+  "props": ""
+ },
+ {
+  "id": "d20",
+  "frame": "wide",
+  "chars": [
+   {
+    "c": "winter",
+    "note": "an older man in a green robe and a white-green turban"
+   }
+  ],
+  "place": "stone steps on a tall tower with a curved wall and blue sea",
+  "action": "walks up the steps",
+  "props": ""
+ },
+ {
+  "id": "d21",
+  "frame": "wide",
+  "chars": [
+   {
+    "c": "winter",
+    "note": "an older man in a green robe and a white-green turban"
+   }
+  ],
+  "place": "a spiral stone staircase inside a tower",
+  "action": "points forward",
+  "props": ""
+ },
+ {
+  "id": "d22",
+  "frame": "wide",
+  "chars": [
+   {
+    "c": "winter",
+    "note": "an older man in a green robe and a white-green turban"
+   }
+  ],
+  "place": "a spiral stone staircase",
+  "action": "carries a heavy sack on his back and a pile of coins on a step",
+  "props": ""
+ },
+ {
+  "id": "d23",
+  "frame": "wide",
+  "chars": [
+   {
+    "c": "winter",
+    "note": "an older man in a green robe and a white-green turban"
+   }
+  ],
+  "place": "stone staircase with an arch window",
+  "action": "bends under a heavy brown sack",
+  "props": ""
+ },
+ {
+  "id": "d24",
+  "frame": "wide",
+  "chars": [
+   {
+    "c": "winter",
+    "note": "an older man in a green robe and a white-green turban"
+   }
+  ],
+  "place": "a stone staircase going up with a sea view",
+  "action": "walks beside a grey donkey carrying baskets",
+  "props": ""
+ },
+ {
+  "id": "d25",
+  "frame": "medium",
+  "chars": [
+   {
+    "c": "winter",
+    "note": "an older man in a green robe and a white-green turban"
+   }
+  ],
+  "place": "treasury room with a blue tiled wall and a wooden chest",
+  "action": "stands holding an abacus",
+  "props": ""
+ },
+ {
+  "id": "d26",
+  "frame": "wide",
+  "chars": [
+   {
+    "c": "winter",
+    "note": "an older man in a green robe and a white-green turban"
+   }
+  ],
+  "place": "dark treasury with a stone arch and a wooden chest",
+  "action": "stands with his arms raised",
+  "props": ""
+ },
+ {
+  "id": "d27",
+  "frame": "wide",
+  "chars": [
+   {
+    "c": "winter",
+    "note": "an older man in a green robe and a white-green turban"
+   },
+   {
+    "c": "egypt",
+    "note": "a sultan in a red robe with a tall white turban and a thick black moustache and beard"
+   }
+  ],
+  "place": "stone room with an iron-bound chest and barrels",
+  "action": "talk, the sultan is happy",
+  "props": ""
+ },
+ {
+  "id": "d28",
+  "frame": "wide",
+  "chars": [
+   {
+    "c": "winter",
+    "note": "an older man in a green robe and a white-green turban"
+   }
+  ],
+  "place": "stone staircase of a tall tower, bright sky",
+  "action": "runs up the stairs",
+  "props": ""
+ },
+ {
+  "id": "d29",
+  "frame": "wide",
+  "chars": [
+   {
+    "c": "winter",
+    "note": "an older man in a green robe and a white-green turban"
+   },
+   {
+    "c": "egypt",
+    "note": "a sultan in a red robe with a tall white turban and a thick black moustache and beard"
+   }
+  ],
+  "place": "old city rooftops in the background",
+  "action": "one bends over out of breath, the other stands proudly",
+  "props": ""
+ },
+ {
+  "id": "d30",
+  "frame": "insert",
+  "chars": [],
+  "place": "dark stone wall",
+  "action": "",
+  "props": "a glowing orange stone furnace with a black pot and bubbling steam"
+ },
+ {
+  "id": "d31",
+  "frame": "insert",
+  "chars": [],
+  "place": "wooden table",
+  "action": "",
+  "props": "an old hand-drawn map of the world with black dots"
+ },
+ {
+  "id": "d32",
+  "frame": "wide",
+  "chars": [
+   {
+    "c": "winter",
+    "note": "an older man in a green robe and a white-green turban"
+   },
+   {
+    "c": "egypt",
+    "note": "a sultan in a red robe with a tall white turban and a thick black moustache and beard"
+   }
+  ],
+  "place": "palace arch with a view to the sea",
+  "action": "a very tall wooden measuring rod stands next to the sultan and the green robed man",
+  "props": ""
+ },
+ {
+  "id": "d33",
+  "frame": "card",
+  "chars": [
+   {
+    "c": "explorer",
+    "note": "young man in a blue long robe and a small red cap, big smile"
+   }
+  ],
+  "place": "yellow sunburst rays background",
+  "action": "holds an abacus and smiles",
+  "props": ""
+ },
+ {
+  "id": "d34",
+  "frame": "card",
+  "chars": [],
+  "place": "plain sand beige sky background",
+  "action": "",
+  "props": "a set of rising beige stone blocks like steps"
+ },
+ {
+  "id": "d35",
+  "frame": "card",
+  "chars": [],
+  "place": "dark blue sunburst rays background",
+  "action": "",
+  "props": "a golden balance scale with coins on one side"
+ },
+ {
+  "id": "d36",
+  "frame": "wide",
+  "chars": [
+   {
+    "c": "explorer",
+    "note": "young man in a blue long robe and a small red cap, big smile"
+   }
+  ],
+  "place": "green field with a very tall stone spiral tower far away, old city below",
+  "action": "stands seen from behind looking up",
+  "props": ""
+ },
+ {
+  "id": "d37",
+  "frame": "wide",
+  "chars": [
+   {
+    "c": "egypt",
+    "note": "a sultan in a red robe with a tall white turban and a thick black moustache and beard"
+   },
+   {
+    "c": "soldier",
+    "note": "palace guard in a blue coat with a tall white and yellow ceremonial hat"
+   },
+   {
+    "c": "soldier",
+    "note": "palace guard in a blue coat with a tall white and yellow ceremonial hat"
+   },
+   {
+    "c": "winter",
+    "note": "an older man in a green robe and a white-green turban"
+   },
+   {
+    "c": "explorer",
+    "note": "young man in a blue long robe and a small red cap, big smile"
+   }
+  ],
+  "place": "palace courtyard crowded with people in front of a castle tower",
+  "action": "a crowd stands facing the viewer",
+  "props": ""
+ },
+ {
+  "id": "d38",
+  "frame": "medium",
+  "chars": [
+   {
+    "c": "egypt",
+    "note": "a sultan in a red robe with a tall white turban and a thick black moustache and beard"
+   },
+   {
+    "c": "winter",
+    "note": "an older man in a green robe and a white-green turban"
+   }
+  ],
+  "place": "palace room with hanging lanterns",
+  "action": "talk closely",
+  "props": ""
+ },
+ {
+  "id": "d39",
+  "frame": "medium",
+  "chars": [
+   {
+    "c": "egypt",
+    "note": "a sultan in a red robe with a tall white turban and a thick black moustache and beard"
+   }
+  ],
+  "place": "red throne with a gold canopy",
+  "action": "leans back on the throne",
+  "props": ""
+ },
+ {
+  "id": "d40",
+  "frame": "wide",
+  "chars": [
+   {
+    "c": "explorer",
+    "note": "young man in a blue long robe and a small red cap, big smile"
+   },
+   {
+    "c": "egypt",
+    "note": "a sultan in a red robe with a tall white turban and a thick black moustache and beard"
+   }
+  ],
+  "place": "red and gold throne room",
+  "action": "cheer with raised arms",
+  "props": ""
+ },
+ {
+  "id": "d41",
+  "frame": "wide",
+  "chars": [
+   {
+    "c": "explorer",
+    "note": "young man in a blue long robe and a small red cap, big smile"
+   },
+   {
+    "c": "egypt",
+    "note": "a sultan in a red robe with a tall white turban and a thick black moustache and beard"
+   }
+  ],
+  "place": "treasury room with scrolls and chests",
+  "action": "inspect the treasure",
+  "props": ""
+ },
+ {
+  "id": "d42",
+  "frame": "wide",
+  "chars": [
+   {
+    "c": "winter",
+    "note": "an older man in a green robe and a white-green turban"
+   },
+   {
+    "c": "explorer",
+    "note": "young man in a blue long robe and a small red cap, big smile"
+   },
+   {
+    "c": "egypt",
+    "note": "a sultan in a red robe with a tall white turban and a thick black moustache and beard"
+   }
+  ],
+  "place": "stone doorway with iron door",
+  "action": "three men look at the viewer",
+  "props": ""
+ },
+ {
+  "id": "d43",
+  "frame": "medium",
+  "chars": [
+   {
+    "c": "winter",
+    "note": "an older man in a green robe and a white-green turban"
+   }
+  ],
+  "place": "stone arch with empty shelves",
+  "action": "stands with arms out",
+  "props": ""
+ },
+ {
+  "id": "d44",
+  "frame": "medium",
+  "chars": [
+   {
+    "c": "winter",
+    "note": "an older man in a green robe and a white-green turban"
+   }
+  ],
+  "place": "dim room with a calendar on the wall and a candle",
+  "action": "points at the calendar",
+  "props": ""
+ },
+ {
+  "id": "d45",
+  "frame": "medium",
+  "chars": [
+   {
+    "c": "winter",
+    "note": "an older man in a green robe and a white-green turban"
+   }
+  ],
+  "place": "room with an arched window and a view of the city at sunset",
+  "action": "stands with arms out, worried",
+  "props": ""
+ },
+ {
+  "id": "d46",
+  "frame": "medium",
+  "chars": [
+   {
+    "c": "winter",
+    "note": "old man with a white beard and white-green turban, tired"
+   }
+  ],
+  "place": "dim room at sunset with scattered papers and gold coins on the floor",
+  "action": "stands alone",
+  "props": ""
+ },
+ {
+  "id": "d47",
+  "frame": "wide",
+  "chars": [
+   {
+    "c": "winter",
+    "note": "an older man in a green robe and a white-green turban"
+   }
+  ],
+  "place": "base of a tall stone tower with steps and green plants",
+  "action": "stands leaning with a sad smile",
+  "props": ""
+ }
+]

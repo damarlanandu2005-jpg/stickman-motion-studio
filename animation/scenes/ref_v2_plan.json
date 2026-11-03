@@ -1,0 +1,189 @@
+[
+ {
+  "id": "b01",
+  "frame": "close",
+  "chars": [
+   "soldier"
+  ],
+  "place": "dark night with tall grass",
+  "action": "covers one eye with a hand, helmet with night-vision goggles on top",
+  "props": ""
+ },
+ {
+  "id": "b02",
+  "frame": "wide",
+  "chars": [
+   "soldier",
+   {
+    "c": "soldier",
+    "note": "second soldier"
+   }
+  ],
+  "place": "night vision green circular view of a dark cornfield",
+  "action": "two soldiers crouch with rifles",
+  "props": ""
+ },
+ {
+  "id": "b03",
+  "frame": "medium",
+  "chars": [
+   "soldier"
+  ],
+  "place": "green night-vision circle view, tall grass",
+  "action": "soldier crouches with a rifle, angry face, a hand pointing",
+  "props": ""
+ },
+ {
+  "id": "b04",
+  "frame": "close",
+  "chars": [
+   "soldier"
+  ],
+  "place": "dark night field",
+  "action": "big worried face with helmet and night-vision goggles",
+  "props": ""
+ },
+ {
+  "id": "b05",
+  "frame": "medium",
+  "chars": [
+   "soldier",
+   {
+    "c": "soldier",
+    "note": "wounded, lying on the ground"
+   }
+  ],
+  "place": "night battlefield with fire glow",
+  "action": "one soldier kneels over his wounded friend",
+  "props": ""
+ },
+ {
+  "id": "b06",
+  "frame": "medium",
+  "chars": [
+   "soldier",
+   {
+    "c": "soldier",
+    "note": "second soldier"
+   }
+  ],
+  "place": "dark rocky hill at night",
+  "action": "one soldier helps another walk",
+  "props": ""
+ },
+ {
+  "id": "b07",
+  "frame": "insert",
+  "chars": [],
+  "place": "dark screen with white corner frame marks",
+  "action": "",
+  "props": "an overhead infrared drone camera view with a crosshair on tiny white figures"
+ },
+ {
+  "id": "b08",
+  "frame": "wide",
+  "chars": [
+   {
+    "c": "sailor",
+    "note": "wearing a headset and a moustache"
+   }
+  ],
+  "place": "military control room with a big map and a monitor",
+  "action": "sits at a desk with arms down",
+  "props": ""
+ },
+ {
+  "id": "b09",
+  "frame": "close",
+  "chars": [
+   "soldier"
+  ],
+  "place": "night sky",
+  "action": "grinning face with a radio on his shoulder",
+  "props": ""
+ },
+ {
+  "id": "b10",
+  "frame": "insert",
+  "chars": [],
+  "place": "night sky with stars",
+  "action": "",
+  "props": "a big military cargo plane in the distance with an orange explosion flash"
+ },
+ {
+  "id": "b11",
+  "frame": "insert",
+  "chars": [],
+  "place": "night sky",
+  "action": "",
+  "props": "a giant orange fire explosion with dark smoke over a black ridge and a grey rock in front"
+ },
+ {
+  "id": "b12",
+  "frame": "insert",
+  "chars": [],
+  "place": "night sky",
+  "action": "",
+  "props": "a bright yellow and orange explosion with black smoke over a grey rock"
+ },
+ {
+  "id": "b13",
+  "frame": "wide",
+  "chars": [
+   "soldier",
+   {
+    "c": "soldier",
+    "note": "second soldier"
+   },
+   {
+    "c": "soldier",
+    "note": "third soldier"
+   }
+  ],
+  "place": "dark rocky hill under stars",
+  "action": "three tiny soldiers huddle behind a big grey rock",
+  "props": ""
+ },
+ {
+  "id": "b14",
+  "frame": "medium",
+  "chars": [
+   {
+    "c": "doctor",
+    "note": "patient wearing a hospital gown, eyes closed"
+   }
+  ],
+  "place": "hospital room with a heart monitor",
+  "action": "lies in a hospital bed",
+  "props": ""
+ },
+ {
+  "id": "b15",
+  "frame": "card",
+  "chars": [],
+  "place": "pale blue-grey background",
+  "action": "",
+  "props": "a brown clipboard with many red tally marks"
+ },
+ {
+  "id": "b16",
+  "frame": "wide",
+  "chars": [
+   {
+    "c": "doctor",
+    "note": "wearing a hospital gown, holding an IV pole"
+   }
+  ],
+  "place": "hospital hallway with a brown door",
+  "action": "walks slowly",
+  "props": ""
+ },
+ {
+  "id": "b17",
+  "frame": "card",
+  "chars": [],
+  "place": "plain orange background",
+  "action": "",
+  "props": "a big orange clipboard with the pen on top"
+ }
+]

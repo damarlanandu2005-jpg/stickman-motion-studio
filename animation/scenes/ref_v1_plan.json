@@ -1,0 +1,306 @@
+[
+ {
+  "id": "a01",
+  "frame": "wide",
+  "chars": [
+   "winter"
+  ],
+  "place": "snowy trench at a ruined city, bare trees, grey sky",
+  "action": "lies behind sandbags aiming a long rifle",
+  "props": "a wooden sign board hanging top left"
+ },
+ {
+  "id": "a02",
+  "frame": "medium",
+  "chars": [
+   "winter"
+  ],
+  "place": "snowy trench with sandbags",
+  "action": "aims a long rifle over the sandbags",
+  "props": ""
+ },
+ {
+  "id": "a03",
+  "frame": "medium",
+  "chars": [
+   "winter"
+  ],
+  "place": "dark blue night in a trench",
+  "action": "stands with arms crossed, worried face",
+  "props": ""
+ },
+ {
+  "id": "a04",
+  "frame": "wide",
+  "chars": [
+   "winter"
+  ],
+  "place": "snowy trench, ruined city skyline, grey sky",
+  "action": "aims rifle, a bright flash near him",
+  "props": ""
+ },
+ {
+  "id": "a05",
+  "frame": "wide",
+  "chars": [
+   "winter"
+  ],
+  "place": "snowy trench, ruined city skyline",
+  "action": "aims rifle, a small red cloth on his shoulder",
+  "props": ""
+ },
+ {
+  "id": "a06",
+  "frame": "close",
+  "chars": [
+   "winter"
+  ],
+  "place": "snowy background",
+  "action": "covers one eye with his hand, gritted teeth",
+  "props": ""
+ },
+ {
+  "id": "a07",
+  "frame": "medium",
+  "chars": [
+   "winter"
+  ],
+  "place": "pale snowy sky",
+  "action": "covers one eye with his hand, worried face",
+  "props": ""
+ },
+ {
+  "id": "a08",
+  "frame": "wide",
+  "chars": [
+   {
+    "c": "soldier",
+    "note": "a medic with a red cross armband"
+   }
+  ],
+  "place": "army medical tent",
+  "action": "points at a wall eye-chart",
+  "props": "an eye-test chart on the wall"
+ },
+ {
+  "id": "a09",
+  "frame": "medium",
+  "chars": [
+   "winter"
+  ],
+  "place": "snowy trench",
+  "action": "stands with hands together, a long rifle leaning behind him",
+  "props": ""
+ },
+ {
+  "id": "a10",
+  "frame": "medium",
+  "chars": [
+   "winter"
+  ],
+  "place": "dark blue night at a sniper post",
+  "action": "stands with arms crossed",
+  "props": ""
+ },
+ {
+  "id": "a11",
+  "frame": "wide",
+  "chars": [
+   "winter",
+   {
+    "c": "winter",
+    "note": "with a beard and a different tired face"
+   }
+  ],
+  "place": "snowy trench, ruined city, grey sky",
+  "action": "stand side by side, one holds the other's shoulder",
+  "props": ""
+ },
+ {
+  "id": "a12",
+  "frame": "medium",
+  "chars": [
+   "winter",
+   {
+    "c": "winter",
+    "note": "with a beard and a different tired face"
+   }
+  ],
+  "place": "snowy trench with sandbags",
+  "action": "one points ahead with a rifle, the other has eyes closed",
+  "props": ""
+ },
+ {
+  "id": "a13",
+  "frame": "wide",
+  "chars": [
+   "winter",
+   {
+    "c": "winter",
+    "note": "with a beard and a different tired face"
+   }
+  ],
+  "place": "snowy field, ruined city, grey sky",
+  "action": "stand side by side looking ahead",
+  "props": ""
+ },
+ {
+  "id": "a14",
+  "frame": "close",
+  "chars": [
+   "winter"
+  ],
+  "place": "snowy background",
+  "action": "big calm face looking straight at the viewer",
+  "props": ""
+ },
+ {
+  "id": "a15",
+  "frame": "close",
+  "chars": [
+   "winter",
+   {
+    "c": "winter",
+    "note": "with a beard and a different tired face"
+   }
+  ],
+  "place": "snowy background",
+  "action": "two big faces side by side, one points",
+  "props": ""
+ },
+ {
+  "id": "a16",
+  "frame": "wide",
+  "chars": [
+   "winter",
+   {
+    "c": "winter",
+    "note": "with a beard and a different tired face"
+   }
+  ],
+  "place": "snowy trench, ruined city",
+  "action": "kneel behind sandbags, one holds a rifle",
+  "props": ""
+ },
+ {
+  "id": "a17",
+  "frame": "card",
+  "chars": [],
+  "place": "plain cream background",
+  "action": "",
+  "props": "a red and white tear-off wall calendar showing DAY 14"
+ },
+ {
+  "id": "a18",
+  "frame": "wide",
+  "chars": [
+   {
+    "c": "soldier",
+    "note": "wearing a peaked officer cap with a red band and a thick moustache"
+   },
+   {
+    "c": "soldier",
+    "note": "a second officer in a flat cap"
+   }
+  ],
+  "place": "dim wooden hut with a window",
+  "action": "two officers stand with worried faces",
+  "props": ""
+ },
+ {
+  "id": "a19",
+  "frame": "card",
+  "chars": [],
+  "place": "plain black background",
+  "action": "",
+  "props": "two big round binocular views showing a pale snowy field"
+ },
+ {
+  "id": "a20",
+  "frame": "wide",
+  "chars": [
+   "winter",
+   {
+    "c": "winter",
+    "note": "with a beard and a different tired face"
+   }
+  ],
+  "place": "heavy snowstorm, everything pale and faded",
+  "action": "stand with rifles",
+  "props": ""
+ },
+ {
+  "id": "a21",
+  "frame": "close",
+  "chars": [
+   {
+    "c": "soldier",
+    "note": "wearing a peaked officer cap with a red band and a thick moustache"
+   },
+   "winter"
+  ],
+  "place": "wooden hut",
+  "action": "one big wide-eyed officer face at left, a soldier face at right",
+  "props": ""
+ },
+ {
+  "id": "a22",
+  "frame": "insert",
+  "chars": [],
+  "place": "wide pale snowy field",
+  "action": "",
+  "props": "a single wooden post far away in the snow"
+ },
+ {
+  "id": "a23",
+  "frame": "medium",
+  "chars": [
+   "winter",
+   {
+    "c": "winter",
+    "note": "with a beard and a different tired face"
+   }
+  ],
+  "place": "inside a wooden hut with a window",
+  "action": "stand close, one holds a rifle",
+  "props": ""
+ },
+ {
+  "id": "a24",
+  "frame": "insert",
+  "chars": [],
+  "place": "pale snow background",
+  "action": "",
+  "props": "a wooden post with a coin flying above it and small sparkles"
+ },
+ {
+  "id": "a25",
+  "frame": "medium",
+  "chars": [
+   {
+    "c": "soldier",
+    "note": "wearing a peaked officer cap with a red band and a thick moustache"
+   },
+   {
+    "c": "winter",
+    "note": "a small soldier"
+   }
+  ],
+  "place": "wooden hut with a window and sandbags",
+  "action": "the officer stands behind the small soldier",
+  "props": ""
+ },
+ {
+  "id": "a26",
+  "frame": "wide",
+  "chars": [
+   {
+    "c": "soldier",
+    "note": "wearing a peaked officer cap with a red band and a thick moustache"
+   }
+  ],
+  "place": "snowy ruined city background",
+  "action": "stands alone with one hand raised",
+  "props": ""
+ }
+]

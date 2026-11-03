@@ -1,0 +1,490 @@
+[
+ {
+  "id": "c01",
+  "frame": "medium",
+  "chars": [
+   {
+    "c": "soldier",
+    "note": "wearing a thick green bomb disposal suit with a round helmet"
+   }
+  ],
+  "place": "grey street barrier with yellow tape",
+  "action": "kneels over a box of coloured wires with a timer showing 0:03",
+  "props": ""
+ },
+ {
+  "id": "c02",
+  "frame": "medium",
+  "chars": [
+   {
+    "c": "soldier",
+    "note": "wearing a thick green bomb disposal suit with a round helmet"
+   }
+  ],
+  "place": "grey smoky street",
+  "action": "stands fading in smoke",
+  "props": ""
+ },
+ {
+  "id": "c03",
+  "frame": "wide",
+  "chars": [
+   {
+    "c": "sailor",
+    "note": "dressed as a police officer in a dark navy uniform and cap"
+   },
+   {
+    "c": "sailor",
+    "note": "police officer wearing a headset with a microphone"
+   },
+   {
+    "c": "sailor",
+    "note": "dressed as a police officer in a dark navy uniform and cap"
+   }
+  ],
+  "place": "police garage",
+  "action": "three officers stand in a row, one with a moustache",
+  "props": ""
+ },
+ {
+  "id": "c04",
+  "frame": "wide",
+  "chars": [
+   {
+    "c": "explorer",
+    "note": "wearing a mustard yellow coat and no hat, brown hair"
+   }
+  ],
+  "place": "city street corner with a red traffic light and shops",
+  "action": "stands looking up",
+  "props": ""
+ },
+ {
+  "id": "c05",
+  "frame": "insert",
+  "chars": [],
+  "place": "plain grey background",
+  "action": "",
+  "props": "a big black traffic light with all lights off"
+ },
+ {
+  "id": "c06",
+  "frame": "wide",
+  "chars": [
+   {
+    "c": "doctor",
+    "note": "an old doctor with glasses and a white coat"
+   },
+   {
+    "c": "explorer",
+    "note": "wearing a mustard yellow coat and no hat, brown hair"
+   }
+  ],
+  "place": "bright clinic room",
+  "action": "the doctor holds a red heart card up to the man",
+  "props": ""
+ },
+ {
+  "id": "c07",
+  "frame": "wide",
+  "chars": [
+   {
+    "c": "explorer",
+    "note": "wearing a mustard yellow coat and no hat, brown hair"
+   }
+  ],
+  "place": "police station wall with a notice board and notes",
+  "action": "points at the notice board",
+  "props": ""
+ },
+ {
+  "id": "c08",
+  "frame": "wide",
+  "chars": [],
+  "place": "front of a grey police department building with columns and steps and a sign",
+  "action": "",
+  "props": ""
+ },
+ {
+  "id": "c09",
+  "frame": "close",
+  "chars": [
+   {
+    "c": "soldier",
+    "note": "wearing a thick green bomb disposal suit with a round helmet"
+   }
+  ],
+  "place": "grey background",
+  "action": "big round helmet face with wide eyes behind the visor",
+  "props": ""
+ },
+ {
+  "id": "c10",
+  "frame": "wide",
+  "chars": [
+   {
+    "c": "doctor",
+    "note": "an old doctor with glasses and a white coat"
+   },
+   {
+    "c": "explorer",
+    "note": "wearing a mustard yellow coat and no hat, brown hair"
+   }
+  ],
+  "place": "clinic with a wall chart and a clock",
+  "action": "the doctor holds up a chart, the man looks at it",
+  "props": ""
+ },
+ {
+  "id": "c11",
+  "frame": "medium",
+  "chars": [
+   {
+    "c": "explorer",
+    "note": "wearing a mustard yellow coat and no hat, brown hair"
+   }
+  ],
+  "place": "dark night room with a desk lamp and a window with a moon",
+  "action": "sits at a desk studying",
+  "props": ""
+ },
+ {
+  "id": "c12",
+  "frame": "card",
+  "chars": [],
+  "place": "plain orange background",
+  "action": "",
+  "props": "a big round white clock face showing 12"
+ },
+ {
+  "id": "c13",
+  "frame": "wide",
+  "chars": [
+   {
+    "c": "doctor",
+    "note": "an old doctor with glasses and a white coat"
+   },
+   {
+    "c": "explorer",
+    "note": "wearing a mustard yellow coat and no hat, brown hair"
+   }
+  ],
+  "place": "bright clinic room",
+  "action": "they walk together",
+  "props": ""
+ },
+ {
+  "id": "c14",
+  "frame": "wide",
+  "chars": [
+   {
+    "c": "sailor",
+    "note": "dressed as a police officer in a dark navy uniform and cap"
+   },
+   {
+    "c": "sailor",
+    "note": "police officer wearing a headset with a microphone"
+   },
+   {
+    "c": "sailor",
+    "note": "dressed as a police officer in a dark navy uniform and cap"
+   }
+  ],
+  "place": "garage with grey roller doors",
+  "action": "three officers raise their hands and cheer",
+  "props": ""
+ },
+ {
+  "id": "c15",
+  "frame": "wide",
+  "chars": [],
+  "place": "city street with a blue armoured police truck and shops",
+  "action": "",
+  "props": ""
+ },
+ {
+  "id": "c16",
+  "frame": "medium",
+  "chars": [
+   {
+    "c": "sailor",
+    "note": "police officer wearing a headset with a microphone"
+   }
+  ],
+  "place": "garage wall",
+  "action": "stands thinking with a thought bubble holding a green check mark",
+  "props": ""
+ },
+ {
+  "id": "c17",
+  "frame": "wide",
+  "chars": [
+   {
+    "c": "sailor",
+    "note": "police officer with a headset and moustache"
+   }
+  ],
+  "place": "control room with a city map and monitors",
+  "action": "points at the map",
+  "props": ""
+ },
+ {
+  "id": "c18",
+  "frame": "insert",
+  "chars": [],
+  "place": "dark grey bomb casing",
+  "action": "",
+  "props": "a digital timer showing 0:30 above red green yellow and blue wires"
+ },
+ {
+  "id": "c19",
+  "frame": "close",
+  "chars": [
+   {
+    "c": "sailor",
+    "note": "police officer wearing a headset with a microphone"
+   }
+  ],
+  "place": "grey background",
+  "action": "big worried face with a sweat drop, headset microphone",
+  "props": ""
+ },
+ {
+  "id": "c20",
+  "frame": "medium",
+  "chars": [
+   {
+    "c": "explorer",
+    "note": "wearing a mustard yellow coat and no hat, brown hair"
+   }
+  ],
+  "place": "dark night room with a desk lamp, moon in the window and a clock",
+  "action": "sits asleep over a book",
+  "props": ""
+ },
+ {
+  "id": "c21",
+  "frame": "card",
+  "chars": [],
+  "place": "orange background",
+  "action": "",
+  "props": "three blue blueprint sheets with simple technical diagrams of a factory"
+ },
+ {
+  "id": "c22",
+  "frame": "card",
+  "chars": [],
+  "place": "plain blue background",
+  "action": "",
+  "props": "a blueprint drawing of four batteries in a row"
+ },
+ {
+  "id": "c23",
+  "frame": "medium",
+  "chars": [
+   {
+    "c": "explorer",
+    "note": "wearing a mustard yellow coat and no hat, brown hair"
+   }
+  ],
+  "place": "night desk with a tall stack of colourful books",
+  "action": "sits relaxed with half-closed eyes",
+  "props": ""
+ },
+ {
+  "id": "c24",
+  "frame": "card",
+  "chars": [],
+  "place": "plain blue background",
+  "action": "",
+  "props": "a blueprint circuit board drawing with a hand pointing at a terminal"
+ },
+ {
+  "id": "c25",
+  "frame": "card",
+  "chars": [],
+  "place": "plain orange background",
+  "action": "",
+  "props": "four coloured paper strips red green yellow blue fanned out"
+ },
+ {
+  "id": "c26",
+  "frame": "medium",
+  "chars": [
+   {
+    "c": "sailor",
+    "note": "police officer wearing a headset with a microphone"
+   }
+  ],
+  "place": "garage wall with a row of green check marks and a big red number 23",
+  "action": "stands with arms crossed",
+  "props": ""
+ },
+ {
+  "id": "c27",
+  "frame": "card",
+  "chars": [],
+  "place": "plain beige background",
+  "action": "",
+  "props": "a tear-off wall calendar showing YEAR 2"
+ },
+ {
+  "id": "c28",
+  "frame": "wide",
+  "chars": [
+   {
+    "c": "sailor",
+    "note": "dressed as a police officer in a dark navy uniform and cap"
+   },
+   {
+    "c": "doctor",
+    "note": "an old doctor with glasses and a white coat"
+   }
+  ],
+  "place": "dark warehouse with a spotlight and a box of coloured wires",
+  "action": "they look at a device on the floor",
+  "props": ""
+ },
+ {
+  "id": "c29",
+  "frame": "insert",
+  "chars": [],
+  "place": "grey background",
+  "action": "",
+  "props": "a bundle of grey twisted wires"
+ },
+ {
+  "id": "c30",
+  "frame": "close",
+  "chars": [
+   {
+    "c": "sailor",
+    "note": "police chief with a white shirt, cap and moustache, holding a radio to his mouth"
+   }
+  ],
+  "place": "police street scene with yellow tape",
+  "action": "shouting into the radio",
+  "props": ""
+ },
+ {
+  "id": "c31",
+  "frame": "insert",
+  "chars": [],
+  "place": "dark background",
+  "action": "",
+  "props": "a timer showing 0:08 above a cut bundle of red blue yellow wires with sparks"
+ },
+ {
+  "id": "c32",
+  "frame": "medium",
+  "chars": [
+   {
+    "c": "sailor",
+    "note": "police officer wearing a headset with a microphone"
+   }
+  ],
+  "place": "dark warehouse with a spotlight",
+  "action": "holds both hands on his headset",
+  "props": ""
+ },
+ {
+  "id": "c33",
+  "frame": "close",
+  "chars": [
+   {
+    "c": "sailor",
+    "note": "police officer wearing a headset with a microphone"
+   }
+  ],
+  "place": "dark background",
+  "action": "huge calm face with eyes nearly closed",
+  "props": ""
+ },
+ {
+  "id": "c34",
+  "frame": "insert",
+  "chars": [],
+  "place": "pale grey background",
+  "action": "",
+  "props": "a grey bundle of wires with a timer showing 0:05"
+ },
+ {
+  "id": "c35",
+  "frame": "insert",
+  "chars": [],
+  "place": "pale grey background",
+  "action": "",
+  "props": "a tangled knot of grey wires with a timer showing 0:03 and a red wire in a clamp"
+ },
+ {
+  "id": "c36",
+  "frame": "insert",
+  "chars": [],
+  "place": "dark crate in a warehouse",
+  "action": "",
+  "props": "a digital timer showing 0:01 above red blue yellow green wires on a wooden crate"
+ },
+ {
+  "id": "c37",
+  "frame": "wide",
+  "chars": [
+   {
+    "c": "sailor",
+    "note": "police chief in white shirt and cap with moustache"
+   },
+   {
+    "c": "sailor",
+    "note": "police officer wearing a headset with a microphone"
+   }
+  ],
+  "place": "garage with grey roller doors",
+  "action": "the chief talks, the other officer listens with a speech bubble showing the number 74",
+  "props": ""
+ },
+ {
+  "id": "c38",
+  "frame": "wide",
+  "chars": [
+   {
+    "c": "doctor",
+    "note": "head instructor"
+   },
+   {
+    "c": "sailor",
+    "note": "police officer wearing a headset with a microphone"
+   },
+   {
+    "c": "sailor",
+    "note": "dressed as a police officer in a dark navy uniform and cap"
+   }
+  ],
+  "place": "classroom with a wooden sign on the wall and desks",
+  "action": "the instructor points at the students",
+  "props": ""
+ },
+ {
+  "id": "c39",
+  "frame": "insert",
+  "chars": [],
+  "place": "city skyline at sunset over water, orange and purple sky",
+  "action": "",
+  "props": ""
+ },
+ {
+  "id": "c40",
+  "frame": "wide",
+  "chars": [
+   {
+    "c": "sailor",
+    "note": "police officer wearing a headset with a microphone"
+   },
+   {
+    "c": "soldier",
+    "note": "wearing a thick green bomb disposal suit with a round helmet"
+   }
+  ],
+  "place": "classroom with a green board",
+  "action": "one is holding a paint can, both smiling",
+  "props": ""
+ }
+]
