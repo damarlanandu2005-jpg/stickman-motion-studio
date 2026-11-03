@@ -1,0 +1,180 @@
+{
+  "run_token": "73f760e0e7b3c0fd46cf5c2d69ae8b4c",
+  "run_id": "2d0f4c94b30049e8bbf4c3e8d39beb33",
+  "commit_sha": "b0de7f2bcdb37f6a0188336885266acf7b1fb515",
+  "workflow_run_id": "41731035440",
+  "status": "completed",
+  "error_message": null,
+  "poses": [
+    "l01",
+    "l02",
+    "l03",
+    "l04",
+    "l05",
+    "l06",
+    "l07",
+    "l08",
+    "l09",
+    "l10",
+    "l11",
+    "l12"
+  ],
+  "seeds": [
+    0
+  ],
+  "reference": "animation/reference_art/",
+  "environment": {
+    "python": "3.13.16",
+    "torch": "2.11.0+cu130",
+    "cuda_available": true,
+    "gpu_names": [
+      "Tesla T4",
+      "Tesla T4"
+    ]
+  },
+  "klein": {
+    "stage": "klein",
+    "status": "success",
+    "error": null,
+    "pictures": [
+      {
+        "pose": "l01",
+        "seed": 6100,
+        "status": "success",
+        "file": "pose_l01.png",
+        "seconds": 41.96,
+        "width": 576,
+        "height": 1024,
+        "sha256": "00102d4c6798897dc7cb006b4d1ba7759681c1ae6cc99c9995e135d45cf3d5f4"
+      },
+      {
+        "pose": "l02",
+        "seed": 6101,
+        "status": "success",
+        "file": "pose_l02.png",
+        "seconds": 24.32,
+        "width": 576,
+        "height": 1024,
+        "sha256": "1a08d3cbf0f90f355ead36ffa028fc3e6d1ddbebe439b8a2941442346e982e30"
+      },
+      {
+        "pose": "l03",
+        "seed": 6102,
+        "status": "success",
+        "file": "pose_l03.png",
+        "seconds": 24.26,
+        "width": 576,
+        "height": 1024,
+        "sha256": "a9f350236d32386acc2ba11468f3e5873bc17b09fbe38be36a9344e3ac9c41ba"
+      },
+      {
+        "pose": "l04",
+        "seed": 6103,
+        "status": "success",
+        "file": "pose_l04.png",
+        "seconds": 30.39,
+        "width": 576,
+        "height": 1024,
+        "sha256": "5b62510751638dd940dae67f147e2d56539808378e36711429c952a1038ac941"
+      },
+      {
+        "pose": "l05",
+        "seed": 6104,
+        "status": "success",
+        "file": "pose_l05.png",
+        "seconds": 24.42,
+        "width": 576,
+        "height": 1024,
+        "sha256": "803e1d5885f49ea370d2bdb5543fdace48d2e6858054b2e90a27b4d3b9164c11"
+      },
+      {
+        "pose": "l06",
+        "seed": 6105,
+        "status": "success",
+        "file": "pose_l06.png",
+        "seconds": 29.54,
+        "width": 576,
+        "height": 1024,
+        "sha256": "4a74111efbb0140c13852c9f77e62dc9e30685bb7135f07a00023597799aa727"
+      },
+      {
+        "pose": "l07",
+        "seed": 6106,
+        "status": "success",
+        "file": "pose_l07.png",
+        "seconds": 29.88,
+        "width": 576,
+        "height": 1024,
+        "sha256": "dd93916b5029a8dfdeca65c1b59668e42ca8a02366cea4680d117163914ddca3"
+      },
+      {
+        "pose": "l08",
+        "seed": 6107,
+        "status": "success",
+        "file": "pose_l08.png",
+        "seconds": 29.98,
+        "width": 576,
+        "height": 1024,
+        "sha256": "58b1af5900876753a7c88f3801f916b5bea68a9372e0837c3e77233391d91182"
+      },
+      {
+        "pose": "l09",
+        "seed": 6108,
+        "status": "success",
+        "file": "pose_l09.png",
+        "seconds": 38.83,
+        "width": 576,
+        "height": 1024,
+        "sha256": "1dc052ae0dea49ef1ff2be8a9c7d5c54cb45189197ead4b0c5c6dd161268829b"
+      },
+      {
+        "pose": "l10",
+        "seed": 6109,
+        "status": "success",
+        "file": "pose_l10.png",
+        "seconds": 22.65,
+        "width": 576,
+        "height": 1024,
+        "sha256": "8745226dcf1da21d653697a418fd7ffc660ec4072a44d718160a38f0e96066e1"
+      },
+      {
+        "pose": "l11",
+        "seed": 6110,
+        "status": "success",
+        "file": "pose_l11.png",
+        "seconds": 21.89,
+        "width": 576,
+        "height": 1024,
+        "sha256": "5067b412625463c2b7f9460e30dc39185e6762ed460d66401b5325a4b422aa37"
+      },
+      {
+        "pose": "l12",
+        "seed": 6111,
+        "status": "success",
+        "file": "pose_l12.png",
+        "seconds": 37.09,
+        "width": 576,
+        "height": 1024,
+        "sha256": "7e5c73e7d653c33bb6d006a9ee12008f67b47947a505d3544b765204cb1f2261"
+      }
+    ],
+    "download_seconds": 115.8,
+    "load_seconds": 66.7,
+    "peak_vram_gib": 8.66
+  },
+  "files": [
+    "pose_l01.png",
+    "pose_l02.png",
+    "pose_l03.png",
+    "pose_l04.png",
+    "pose_l05.png",
+    "pose_l06.png",
+    "pose_l07.png",
+    "pose_l08.png",
+    "pose_l09.png",
+    "pose_l10.png",
+    "pose_l11.png",
+    "pose_l12.png"
+  ],
+  "notebook_duration_seconds": 644.6
+}
