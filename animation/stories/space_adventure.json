@@ -1,6 +1,6 @@
 {
  "id": "space_adventure",
- "title": "Space adventure (30-shot test)",
+ "title": "Space adventure (30-shot test, version 2: richer scenes, more logic)",
  "fps": 30,
  "audio": "paused",
  "note": "Script written by Claude as a stand-in for the automatic script writer (deferred). Shots are scene fragments; assets, environments, behaviors and cameras are filled in by motion_studio/story.py.",
@@ -77,110 +77,177 @@
     "rock"
    ],
    "prompt_file": "rock_formation"
+  },
+  "access_gantry": {
+   "type": "building",
+   "height_m": 12.0,
+   "tags": [
+    "space",
+    "launch",
+    "gantry"
+   ],
+   "prompt_file": "access_gantry"
+  },
+  "launch_pad_base": {
+   "type": "building",
+   "height_m": 1.0,
+   "tags": [
+    "space",
+    "launch",
+    "pad"
+   ],
+   "prompt_file": "launch_pad_base"
+  },
+  "safety_fence": {
+   "type": "prop",
+   "height_m": 1.2,
+   "tags": [
+    "fence",
+    "safety"
+   ],
+   "prompt_file": "safety_fence"
+  },
+  "alien_mountain": {
+   "type": "building",
+   "height_m": 16.0,
+   "tags": [
+    "alien",
+    "mountain"
+   ],
+   "prompt_file": "alien_mountain"
+  },
+  "alien_mushroom": {
+   "type": "prop",
+   "height_m": 1.3,
+   "tags": [
+    "alien",
+    "plant"
+   ],
+   "prompt_file": "alien_mushroom"
+  },
+  "alien_flower": {
+   "type": "prop",
+   "height_m": 2.6,
+   "tags": [
+    "alien",
+    "plant"
+   ],
+   "prompt_file": "alien_flower"
+  },
+  "purple_boulder": {
+   "type": "building",
+   "height_m": 2.0,
+   "tags": [
+    "alien",
+    "rock"
+   ],
+   "prompt_file": "purple_boulder"
+  },
+  "space_wrench": {
+   "type": "prop",
+   "height_m": 0.4,
+   "tags": [
+    "tool"
+   ],
+   "prompt_file": "space_wrench"
+  },
+  "checklist_clipboard": {
+   "type": "prop",
+   "height_m": 0.5,
+   "tags": [
+    "tool",
+    "paper"
+   ],
+   "prompt_file": "checklist_clipboard"
+  },
+  "supply_crate": {
+   "type": "prop",
+   "height_m": 0.9,
+   "tags": [
+    "crate"
+   ],
+   "prompt_file": "supply_crate"
+  },
+  "fuel_tank": {
+   "type": "building",
+   "height_m": 3.5,
+   "tags": [
+    "space",
+    "tank"
+   ],
+   "prompt_file": "fuel_tank"
+  },
+  "alien_tree": {
+   "type": "prop",
+   "height_m": 3.5,
+   "tags": [
+    "alien",
+    "plant"
+   ],
+   "prompt_file": "alien_tree"
   }
  },
  "shots": [
   {
    "id": "01_earth_plan",
-   "duration_s": 2.0,
-   "env": "space",
-   "bodies": [
+   "duration_s": 2.4,
+   "env": "launch_pad",
+   "objects": [
     {
-     "kind": "earth",
-     "dir": [
-      0.1,
-      -0.5,
-      -1
-     ],
-     "radius_m": 170
-    },
-    {
-     "kind": "sun",
-     "dir": [
-      0.8,
-      0.35,
-      -1
-     ],
-     "radius_m": 60
-    }
-   ],
-   "camera": [
-    {
-     "at_s": 0,
-     "pos": [
-      0,
-      0,
-      0
-     ],
-     "look": [
-      0,
-      -0.1,
-      -1
-     ],
-     "fov": 50
-    },
-    {
-     "at_s": 2.0,
-     "pos": [
-      0,
-      0.4,
-      0
-     ],
-     "look": [
-      0,
-      -0.1,
-      -1
-     ],
-     "fov": 50
-    }
-   ]
-  },
-  {
-   "id": "02_suit_preparation",
-   "duration_s": 2.2,
-   "env": "suit_room",
-   "props": [
-    {
-     "id": "locker",
-     "kind": "locker",
+     "id": "rocket",
+     "asset": "rocket",
      "at": [
-      -2.4,
       0,
-      -2.2
+      -14
      ]
     },
     {
-     "id": "locker2",
-     "kind": "locker",
+     "id": "pad",
+     "asset": "launch_pad_base",
      "at": [
-      -1.6,
       0,
-      -2.2
-     ],
-     "color": "#6f7a8f"
+      -14
+     ]
     },
     {
-     "id": "table",
-     "kind": "console",
+     "id": "tower",
+     "asset": "access_gantry",
      "at": [
-      1.8,
-      0,
-      -1.6
+      5.5,
+      -14
+     ]
+    },
+    {
+     "id": "hq",
+     "asset": "spaceport_building",
+     "at": [
+      -3,
+      -2
      ],
-     "size": [
+     "turn_deg": 20
+    },
+    {
+     "id": "fence1",
+     "asset": "safety_fence",
+     "at": [
       1.2,
-      0.9,
-      0.6
-     ],
-     "screen": "panel"
+      1.5
+     ]
     },
     {
-     "id": "helmet",
-     "kind": "helmet",
+     "id": "fence2",
+     "asset": "safety_fence",
      "at": [
-      1.8,
-      0.92,
-      -1.6
+      2.8,
+      1.5
+     ]
+    },
+    {
+     "id": "fence3",
+     "asset": "safety_fence",
+     "at": [
+      4.4,
+      1.5
      ]
     }
    ],
@@ -188,23 +255,19 @@
     {
      "who": "hero",
      "at": [
-      0,
-      0
+      -0.6,
+      0.2
      ],
      "actions": [
       {
        "at_s": 0,
        "do": "stand",
-       "face_camera": true
+       "face_toward": "rocket"
       },
       {
-       "at_s": 0.5,
-       "do": "wave",
+       "at_s": 0.8,
+       "do": "point",
        "arm": "R"
-      },
-      {
-       "at_s": 1.6,
-       "do": "stand"
       }
      ],
      "expressions": [
@@ -221,7 +284,164 @@
      "frame": {
       "on": [
        "hero",
-       "locker"
+       "rocket"
+      ],
+      "az_deg": 165,
+      "el_deg": 6,
+      "fill": 0.85
+     },
+     "fov": 50
+    },
+    {
+     "at_s": 2.4,
+     "frame": {
+      "on": [
+       "hero",
+       "rocket"
+      ],
+      "az_deg": 150,
+      "el_deg": 6,
+      "fill": 0.8
+     },
+     "fov": 50
+    },
+    {
+     "at_s": 2.4,
+     "frame": {
+      "on": [
+       "hero",
+       "rocket"
+      ],
+      "az_deg": 150,
+      "el_deg": 6,
+      "fill": 0.8
+     },
+     "fov": 50
+    }
+   ]
+  },
+  {
+   "id": "02_suit_preparation",
+   "duration_s": 2.6,
+   "env": "suit_room",
+   "props": [
+    {
+     "id": "locker1",
+     "kind": "locker",
+     "at": [
+      -2.6,
+      0,
+      -2.4
+     ]
+    },
+    {
+     "id": "locker2",
+     "kind": "locker",
+     "at": [
+      -1.9,
+      0,
+      -2.4
+     ],
+     "color": "#6f7a8f"
+    },
+    {
+     "id": "locker3",
+     "kind": "locker",
+     "at": [
+      -1.2,
+      0,
+      -2.4
+     ]
+    },
+    {
+     "id": "table",
+     "kind": "console",
+     "at": [
+      1.9,
+      0,
+      -1.8
+     ],
+     "size": [
+      1.3,
+      0.9,
+      0.7
+     ],
+     "screen": "panel"
+    },
+    {
+     "id": "helmet",
+     "kind": "helmet",
+     "at": [
+      2.2,
+      0.92,
+      -1.8
+     ]
+    },
+    {
+     "id": "board",
+     "kind": "panel",
+     "at": [
+      0.2,
+      1.1,
+      -2.95
+     ],
+     "size": [
+      1.5,
+      0.8
+     ],
+     "screen": "panel"
+    }
+   ],
+   "objects": [
+    {
+     "id": "clip",
+     "asset": "checklist_clipboard",
+     "at": [
+      1.6,
+      -1.8
+     ],
+     "at_y": 0.95
+    }
+   ],
+   "cast": [
+    {
+     "who": "hero",
+     "at": [
+      0,
+      -0.2
+     ],
+     "actions": [
+      {
+       "at_s": 0,
+       "do": "stand",
+       "face_camera": true
+      },
+      {
+       "at_s": 0.5,
+       "do": "wave",
+       "arm": "R"
+      },
+      {
+       "at_s": 1.5,
+       "do": "thumbsup"
+      }
+     ],
+     "expressions": [
+      {
+       "at_s": 0,
+       "face": "smile"
+      }
+     ]
+    }
+   ],
+   "camera": [
+    {
+     "at_s": 0,
+     "frame": {
+      "on": [
+       "hero",
+       "locker2",
+       "table"
       ],
       "az_deg": 15,
       "el_deg": 6,
@@ -230,11 +450,12 @@
      "fov": 48
     },
     {
-     "at_s": 2.2,
+     "at_s": 2.6,
      "frame": {
       "on": [
        "hero",
-       "locker"
+       "locker2",
+       "table"
       ],
       "az_deg": 15,
       "el_deg": 6,
@@ -246,31 +467,183 @@
   },
   {
    "id": "03_walk_to_launchpad",
-   "duration_s": 2.4,
+   "duration_s": 2.6,
    "env": "launch_pad",
    "objects": [
     {
-     "id": "rocket",
-     "asset": "rocket",
+     "id": "pad",
+     "asset": "launch_pad_base",
      "at": [
       0,
-      -14
+      -16
      ]
     },
     {
-     "id": "tower",
-     "asset": "launch_tower",
+     "id": "tank",
+     "asset": "fuel_tank",
      "at": [
-      5.2,
-      -14
+      -11,
+      -21
+     ]
+    },
+    {
+     "id": "crate1",
+     "asset": "supply_crate",
+     "at": [
+      -5.5,
+      -12
+     ]
+    },
+    {
+     "id": "crate2",
+     "asset": "supply_crate",
+     "at": [
+      -4.5,
+      -11.4
      ]
     },
     {
      "id": "hq",
      "asset": "spaceport_building",
      "at": [
-      -10,
-      -9
+      -15,
+      -15
+     ]
+    },
+    {
+     "id": "fence0",
+     "asset": "safety_fence",
+     "at": [
+      -7.0,
+      -7
+     ]
+    },
+    {
+     "id": "fence1",
+     "asset": "safety_fence",
+     "at": [
+      -5.4,
+      -7
+     ]
+    },
+    {
+     "id": "fence2",
+     "asset": "safety_fence",
+     "at": [
+      -3.8,
+      -7
+     ]
+    },
+    {
+     "id": "fence3",
+     "asset": "safety_fence",
+     "at": [
+      -2.1999999999999993,
+      -7
+     ]
+    },
+    {
+     "id": "fence4",
+     "asset": "safety_fence",
+     "at": [
+      -0.5999999999999996,
+      -7
+     ]
+    },
+    {
+     "id": "rocket",
+     "asset": "rocket",
+     "at": [
+      0,
+      -16
+     ]
+    },
+    {
+     "id": "tower",
+     "asset": "access_gantry",
+     "at": [
+      6,
+      -16
+     ]
+    },
+    {
+     "id": "fl0",
+     "asset": "safety_fence",
+     "at": [
+      -3.5,
+      3.0
+     ]
+    },
+    {
+     "id": "fl1",
+     "asset": "safety_fence",
+     "at": [
+      -3.5,
+      1.4
+     ]
+    },
+    {
+     "id": "fl2",
+     "asset": "safety_fence",
+     "at": [
+      -3.5,
+      -0.20000000000000018
+     ]
+    },
+    {
+     "id": "fl3",
+     "asset": "safety_fence",
+     "at": [
+      -3.5,
+      -1.8000000000000007
+     ]
+    },
+    {
+     "id": "fl4",
+     "asset": "safety_fence",
+     "at": [
+      -3.5,
+      -3.4000000000000004
+     ]
+    },
+    {
+     "id": "fr0",
+     "asset": "safety_fence",
+     "at": [
+      3.5,
+      3.0
+     ]
+    },
+    {
+     "id": "fr1",
+     "asset": "safety_fence",
+     "at": [
+      3.5,
+      1.4
+     ]
+    },
+    {
+     "id": "fr2",
+     "asset": "safety_fence",
+     "at": [
+      3.5,
+      -0.20000000000000018
+     ]
+    },
+    {
+     "id": "fr3",
+     "asset": "safety_fence",
+     "at": [
+      3.5,
+      -1.8000000000000007
+     ]
+    },
+    {
+     "id": "fr4",
+     "asset": "safety_fence",
+     "at": [
+      3.5,
+      -3.4000000000000004
      ]
     }
    ],
@@ -279,7 +652,7 @@
      "who": "hero",
      "at": [
       0,
-      3
+      4
      ],
      "actions": [
       {
@@ -291,11 +664,17 @@
       {
        "type": "walk",
        "from_s": 0.1,
-       "to_s": 2.4,
+       "to_s": 2.6,
        "to": [
         0,
-        -1
+        -2
        ]
+      }
+     ],
+     "expressions": [
+      {
+       "at_s": 0,
+       "face": "smile"
       }
      ]
     }
@@ -307,35 +686,35 @@
       "on": [
        "hero"
       ],
-      "az_deg": 25,
+      "az_deg": 20,
       "el_deg": 6,
       "fill": 0.55
      },
      "fov": 48
     },
     {
-     "at_s": 1.2,
+     "at_s": 1.4,
      "frame": {
       "on": [
        "hero",
        "rocket"
       ],
-      "az_deg": 15,
-      "el_deg": 8,
-      "fill": 0.8
+      "az_deg": 12,
+      "el_deg": 7,
+      "fill": 0.9
      },
      "fov": 48
     },
     {
-     "at_s": 2.4,
+     "at_s": 2.6,
      "frame": {
       "on": [
        "hero",
        "rocket"
       ],
-      "az_deg": 15,
-      "el_deg": 8,
-      "fill": 0.8
+      "az_deg": 12,
+      "el_deg": 7,
+      "fill": 0.9
      },
      "fov": 48
     }
@@ -343,7 +722,7 @@
   },
   {
    "id": "04_enter_rocket",
-   "duration_s": 2.4,
+   "duration_s": 3.0,
    "env": "launch_pad",
    "objects": [
     {
@@ -352,14 +731,52 @@
      "at": [
       0,
       -3
-     ]
+     ],
+     "hatch": {
+      "height_m": 3.4,
+      "azimuth_deg": 90,
+      "open_s": 0.6
+     }
     },
     {
      "id": "ladder",
      "asset": "rocket_ladder",
      "at": [
-      1.5,
-      -2.2
+      1.45,
+      -3
+     ],
+     "turn_deg": 0
+    },
+    {
+     "id": "gantry",
+     "asset": "access_gantry",
+     "at": [
+      4.5,
+      -4
+     ]
+    },
+    {
+     "id": "pad",
+     "asset": "launch_pad_base",
+     "at": [
+      0,
+      -3
+     ]
+    },
+    {
+     "id": "tank",
+     "asset": "fuel_tank",
+     "at": [
+      -9,
+      -9
+     ]
+    },
+    {
+     "id": "hq",
+     "asset": "spaceport_building",
+     "at": [
+      -12,
+      -4
      ]
     }
    ],
@@ -367,25 +784,44 @@
     {
      "who": "hero",
      "at": [
-      3.5,
-      1
+      4.2,
+      -2.3
      ],
-     "until_s": 2.0,
+     "until_s": 2.9,
      "actions": [
       {
        "at_s": 0,
-       "do": "stand"
+       "do": "stand",
+       "face_toward": "ladder"
+      },
+      {
+       "at_s": 0.5,
+       "do": "stand",
+       "face_toward": "ladder"
+      },
+      {
+       "at_s": 0.9,
+       "do": "climb",
+       "to_s": 2.6,
+       "up_m": 3.2,
+       "face_toward": "rocket"
       }
      ],
      "moves": [
       {
        "type": "walk",
        "from_s": 0.1,
-       "to_s": 1.7,
+       "to_s": 0.9,
        "to": [
-        1.5,
-        -0.9
+        1.95,
+        -3
        ]
+      }
+     ],
+     "expressions": [
+      {
+       "at_s": 0,
+       "face": "smile"
       }
      ]
     }
@@ -396,32 +832,46 @@
      "frame": {
       "on": [
        "hero",
-       "ladder"
+       "ladder",
+       "rocket"
       ],
-      "az_deg": 20,
-      "el_deg": 6,
-      "fill": 0.6
+      "az_deg": 55,
+      "el_deg": 8,
+      "fill": 0.8
      },
-     "fov": 48
+     "fov": 50
     },
     {
-     "at_s": 2.4,
+     "at_s": 1.6,
      "frame": {
       "on": [
        "hero",
-       "ladder"
+       "rocket"
       ],
-      "az_deg": 20,
-      "el_deg": 6,
-      "fill": 0.6
+      "az_deg": 60,
+      "el_deg": 10,
+      "fill": 0.55
      },
-     "fov": 48
+     "fov": 50
+    },
+    {
+     "at_s": 3.0,
+     "frame": {
+      "on": [
+       "hero",
+       "rocket"
+      ],
+      "az_deg": 60,
+      "el_deg": 10,
+      "fill": 0.55
+     },
+     "fov": 50
     }
    ]
   },
   {
    "id": "05_inside_rocket",
-   "duration_s": 2.2,
+   "duration_s": 2.4,
    "env": "cockpit",
    "props": [
     {
@@ -444,16 +894,48 @@
      "screen": "panel"
     },
     {
+     "id": "side1",
+     "kind": "console",
+     "at": [
+      -2.3,
+      0,
+      -1.0
+     ],
+     "turn_deg": 70,
+     "size": [
+      1.2,
+      0.9,
+      0.6
+     ],
+     "screen": "radar"
+    },
+    {
+     "id": "side2",
+     "kind": "console",
+     "at": [
+      2.3,
+      0,
+      -1.0
+     ],
+     "turn_deg": -70,
+     "size": [
+      1.2,
+      0.9,
+      0.6
+     ],
+     "screen": "panel"
+    },
+    {
      "id": "win",
      "kind": "window",
      "at": [
-      -2.2,
-      1.0,
+      -1.4,
+      1.2,
       -2.95
      ],
      "size": [
-      1.7,
-      1.0
+      1.5,
+      0.9
      ],
      "view": "pad"
     },
@@ -461,13 +943,13 @@
      "id": "win2",
      "kind": "window",
      "at": [
-      2.2,
-      1.0,
+      1.4,
+      1.2,
       -2.95
      ],
      "size": [
-      1.7,
-      1.0
+      1.5,
+      0.9
      ],
      "view": "pad"
     }
@@ -486,10 +968,14 @@
        "face_camera": true
       },
       {
-       "at_s": 0.5,
+       "at_s": 0.4,
        "do": "sit",
        "chair": true,
-       "dur_s": 0.9
+       "dur_s": 0.8
+      },
+      {
+       "at_s": 1.3,
+       "do": "operate"
       }
      ],
      "expressions": [
@@ -506,7 +992,8 @@
      "frame": {
       "on": [
        "hero",
-       "seat"
+       "seat",
+       "console"
       ],
       "az_deg": 15,
       "el_deg": 6,
@@ -515,11 +1002,12 @@
      "fov": 48
     },
     {
-     "at_s": 2.2,
+     "at_s": 2.4,
      "frame": {
       "on": [
        "hero",
-       "seat"
+       "seat",
+       "console"
       ],
       "az_deg": 15,
       "el_deg": 6,
@@ -531,7 +1019,7 @@
   },
   {
    "id": "06_countdown",
-   "duration_s": 2.4,
+   "duration_s": 2.6,
    "env": "cockpit",
    "props": [
     {
@@ -558,30 +1046,57 @@
        "text": "T-3"
       },
       {
-       "at_s": 0.6,
+       "at_s": 0.7,
        "text": "T-2"
       },
       {
-       "at_s": 1.2,
+       "at_s": 1.4,
        "text": "T-1"
       },
       {
-       "at_s": 1.8,
+       "at_s": 2.0,
        "text": "GO"
       }
      ]
     },
     {
+     "id": "side1",
+     "kind": "console",
+     "at": [
+      -2.3,
+      0,
+      -1.0
+     ],
+     "turn_deg": 70,
+     "size": [
+      1.2,
+      0.9,
+      0.6
+     ],
+     "screen": "radar"
+    },
+    {
+     "id": "side2",
+     "kind": "panel",
+     "at": [
+      2.6,
+      1.2,
+      -0.5
+     ],
+     "turn_deg": -90,
+     "screen": "panel"
+    },
+    {
      "id": "win",
      "kind": "window",
      "at": [
-      -2.2,
-      1.0,
+      -1.4,
+      1.2,
       -2.95
      ],
      "size": [
-      1.7,
-      1.0
+      1.5,
+      0.9
      ],
      "view": "pad"
     }
@@ -596,26 +1111,28 @@
      "actions": [
       {
        "at_s": 0,
-       "do": "sit",
-       "chair": true,
-       "dur_s": 0.01
+       "do": "operate"
       }
      ],
      "expressions": [
       {
        "at_s": 0,
+       "face": "neutral"
+      },
+      {
+       "at_s": 1.4,
        "face": "worried"
       },
       {
-       "at_s": 1.8,
-       "face": "smile"
+       "at_s": 2.0,
+       "face": "grin"
       }
      ]
     }
    ],
    "kicks": [
     {
-     "at_s": 1.9,
+     "at_s": 2.1,
      "amp": 0.6
     }
    ],
@@ -640,20 +1157,20 @@
        "hero",
        "console"
       ],
-      "az_deg": 10,
+      "az_deg": 8,
       "el_deg": 6,
       "fill": 0.95
      },
      "fov": 48
     },
     {
-     "at_s": 2.4,
+     "at_s": 2.6,
      "frame": {
       "on": [
        "hero",
        "console"
       ],
-      "az_deg": 10,
+      "az_deg": 8,
       "el_deg": 6,
       "fill": 0.95
      },
@@ -663,9 +1180,17 @@
   },
   {
    "id": "07_liftoff",
-   "duration_s": 2.8,
+   "duration_s": 3.0,
    "env": "launch_pad",
    "objects": [
+    {
+     "id": "pad",
+     "asset": "launch_pad_base",
+     "at": [
+      0,
+      -3
+     ]
+    },
     {
      "id": "rocket",
      "asset": "rocket",
@@ -675,7 +1200,10 @@
      ],
      "thrust": {
       "from_s": 0.5,
-      "to_s": 2.8
+      "to_s": 3.0
+     },
+     "legs": {
+      "deploy_s": -5
      },
      "moves": [
       {
@@ -687,22 +1215,120 @@
       {
        "type": "fly",
        "from_s": 1.0,
-       "to_s": 2.8,
+       "to_s": 3.0,
        "to": [
         0,
-        24,
+        26,
         -3
        ]
       }
      ]
     },
     {
-     "id": "tower",
-     "asset": "launch_tower",
+     "id": "gantry",
+     "asset": "access_gantry",
      "at": [
-      5.2,
+      5.5,
       -3
      ]
+    },
+    {
+     "id": "tank",
+     "asset": "fuel_tank",
+     "at": [
+      -8,
+      -6
+     ]
+    },
+    {
+     "id": "hq",
+     "asset": "spaceport_building",
+     "at": [
+      -12,
+      2
+     ]
+    },
+    {
+     "id": "f0",
+     "asset": "safety_fence",
+     "at": [
+      -6.0,
+      5
+     ]
+    },
+    {
+     "id": "f1",
+     "asset": "safety_fence",
+     "at": [
+      -4.4,
+      5
+     ]
+    },
+    {
+     "id": "f2",
+     "asset": "safety_fence",
+     "at": [
+      -2.8,
+      5
+     ]
+    },
+    {
+     "id": "f3",
+     "asset": "safety_fence",
+     "at": [
+      -1.1999999999999993,
+      5
+     ]
+    },
+    {
+     "id": "f4",
+     "asset": "safety_fence",
+     "at": [
+      0.40000000000000036,
+      5
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "type": "puff",
+     "at_s": 0.8,
+     "dur_s": 1.4,
+     "on": "rocket",
+     "size_m": 4.5,
+     "lift_m": 0.8
+    },
+    {
+     "type": "puff",
+     "at_s": 1.05,
+     "dur_s": 1.4,
+     "on": "rocket",
+     "size_m": 4.5,
+     "lift_m": 0.8
+    },
+    {
+     "type": "puff",
+     "at_s": 1.3,
+     "dur_s": 1.4,
+     "on": "rocket",
+     "size_m": 4.5,
+     "lift_m": 0.8
+    },
+    {
+     "type": "puff",
+     "at_s": 1.55,
+     "dur_s": 1.4,
+     "on": "rocket",
+     "size_m": 4.5,
+     "lift_m": 0.8
+    },
+    {
+     "type": "puff",
+     "at_s": 1.8,
+     "dur_s": 1.4,
+     "on": "rocket",
+     "size_m": 4.5,
+     "lift_m": 0.8
     }
    ],
    "kicks": [
@@ -721,16 +1347,16 @@
      "frame": {
       "on": [
        "rocket",
-       "tower"
+       "gantry"
       ],
       "az_deg": 12,
       "el_deg": 4,
-      "fill": 0.7
+      "fill": 0.8
      },
      "fov": 48
     },
     {
-     "at_s": 1.8,
+     "at_s": 2.0,
      "frame": {
       "on": [
        "rocket"
@@ -742,7 +1368,7 @@
      "fov": 48
     },
     {
-     "at_s": 2.8,
+     "at_s": 3.0,
      "frame": {
       "on": [
        "rocket"
@@ -757,7 +1383,7 @@
   },
   {
    "id": "08_through_clouds",
-   "duration_s": 2.2,
+   "duration_s": 2.4,
    "env": "sky",
    "objects": [
     {
@@ -769,13 +1395,13 @@
      ],
      "thrust": {
       "from_s": 0,
-      "to_s": 2.2
+      "to_s": 2.4
      },
      "moves": [
       {
        "type": "fly",
        "from_s": 0,
-       "to_s": 2.2,
+       "to_s": 2.4,
        "to": [
         0,
         22,
@@ -791,8 +1417,36 @@
      "kind": "cloud",
      "at": [
       -5,
-      5,
+      4,
       -3
+     ],
+     "size": [
+      3.4,
+      3.4,
+      3.4
+     ]
+    },
+    {
+     "id": "c1",
+     "kind": "cloud",
+     "at": [
+      4.5,
+      7,
+      -2
+     ],
+     "size": [
+      3.8,
+      3.8,
+      3.8
+     ]
+    },
+    {
+     "id": "c2",
+     "kind": "cloud",
+     "at": [
+      -3,
+      10,
+      1
      ],
      "size": [
       3.2,
@@ -801,11 +1455,25 @@
      ]
     },
     {
-     "id": "c1",
+     "id": "c3",
      "kind": "cloud",
      "at": [
-      4.5,
-      9,
+      5,
+      13,
+      -4
+     ],
+     "size": [
+      4.0,
+      4.0,
+      4.0
+     ]
+    },
+    {
+     "id": "c4",
+     "kind": "cloud",
+     "at": [
+      -5.5,
+      16,
       -2
      ],
      "size": [
@@ -815,46 +1483,114 @@
      ]
     },
     {
-     "id": "c2",
+     "id": "c5",
+     "kind": "cloud",
+     "at": [
+      0,
+      6,
+      -8
+     ],
+     "size": [
+      4.5,
+      4.5,
+      4.5
+     ]
+    },
+    {
+     "id": "c6",
+     "kind": "cloud",
+     "at": [
+      -8,
+      12,
+      -9
+     ],
+     "size": [
+      4.5,
+      4.5,
+      4.5
+     ]
+    },
+    {
+     "id": "c7",
+     "kind": "cloud",
+     "at": [
+      8,
+      9,
+      -9
+     ],
+     "size": [
+      4.2,
+      4.2,
+      4.2
+     ]
+    },
+    {
+     "id": "c8",
+     "kind": "cloud",
+     "at": [
+      2,
+      18,
+      -6
+     ],
+     "size": [
+      4.6,
+      4.6,
+      4.6
+     ]
+    },
+    {
+     "id": "c9",
      "kind": "cloud",
      "at": [
       -3,
-      14,
-      1
-     ],
-     "size": [
-      3,
       3,
       3
-     ]
-    },
-    {
-     "id": "c3",
-     "kind": "cloud",
-     "at": [
-      5,
-      17,
-      -4
      ],
      "size": [
-      3.8,
-      3.8,
-      3.8
+      3.0,
+      3.0,
+      3.0
      ]
     },
     {
-     "id": "c4",
+     "id": "c10",
      "kind": "cloud",
      "at": [
-      -5.5,
-      20,
-      -2
+      6,
+      15,
+      2
      ],
      "size": [
       3.4,
       3.4,
       3.4
      ]
+    },
+    {
+     "id": "c11",
+     "kind": "cloud",
+     "at": [
+      -7,
+      7,
+      2
+     ],
+     "size": [
+      3.2,
+      3.2,
+      3.2
+     ]
+    }
+   ],
+   "bodies": [
+    {
+     "kind": "sun",
+     "dir": [
+      0.35,
+      0.6,
+      -1
+     ],
+     "radius_m": 26,
+     "dist_m": 560
     }
    ],
    "camera": [
@@ -871,7 +1607,7 @@
      "fov": 48
     },
     {
-     "at_s": 2.2,
+     "at_s": 2.4,
      "frame": {
       "on": [
        "rocket"
@@ -886,17 +1622,17 @@
   },
   {
    "id": "09_leave_atmosphere",
-   "duration_s": 2.2,
+   "duration_s": 2.4,
    "env": "high_sky",
    "bodies": [
     {
      "kind": "earth",
      "dir": [
       0,
-      -0.9,
-      -0.5
+      -0.95,
+      -0.4
      ],
-     "radius_m": 330,
+     "radius_m": 380,
      "dist_m": 600
     }
    ],
@@ -910,13 +1646,13 @@
      ],
      "thrust": {
       "from_s": 0,
-      "to_s": 2.2
+      "to_s": 2.4
      },
      "moves": [
       {
        "type": "fly",
        "from_s": 0,
-       "to_s": 2.2,
+       "to_s": 2.4,
        "to": [
         0,
         16,
@@ -940,7 +1676,7 @@
      "fov": 48
     },
     {
-     "at_s": 2.2,
+     "at_s": 2.4,
      "frame": {
       "on": [
        "rocket"
@@ -955,7 +1691,7 @@
   },
   {
    "id": "10_earth_behind",
-   "duration_s": 2.2,
+   "duration_s": 2.4,
    "env": "space",
    "bodies": [
     {
@@ -978,14 +1714,14 @@
      ],
      "thrust": {
       "from_s": 0,
-      "to_s": 2.2,
+      "to_s": 2.4,
       "smoke": false
      },
      "moves": [
       {
        "type": "fly",
        "from_s": 0,
-       "to_s": 2.2,
+       "to_s": 2.4,
        "to": [
         0,
         6,
@@ -1009,7 +1745,7 @@
      "fov": 48
     },
     {
-     "at_s": 2.2,
+     "at_s": 2.4,
      "frame": {
       "on": [
        "rocket"
@@ -1024,17 +1760,48 @@
   },
   {
    "id": "11_sun_and_stars",
-   "duration_s": 2.2,
+   "duration_s": 2.4,
    "env": "space",
    "bodies": [
     {
      "kind": "sun",
      "dir": [
-      -0.15,
-      0.1,
+      -0.2,
+      0.12,
       -1
      ],
-     "radius_m": 80
+     "radius_m": 70
+    },
+    {
+     "kind": "earth",
+     "dir": [
+      0.65,
+      -0.3,
+      -1
+     ],
+     "radius_m": 18
+    },
+    {
+     "kind": "planet",
+     "dir": [
+      -0.7,
+      0.3,
+      -1
+     ],
+     "radius_m": 14,
+     "color": "#e89b5a",
+     "color2": "#b86a3a"
+    },
+    {
+     "kind": "ringed",
+     "dir": [
+      0.5,
+      0.45,
+      -1
+     ],
+     "radius_m": 22,
+     "color": "#d9c28a",
+     "color2": "#f3e6b8"
     }
    ],
    "objects": [
@@ -1049,15 +1816,9 @@
       {
        "type": "float",
        "from_s": 0,
-       "to_s": 2.2,
+       "to_s": 2.4,
        "amp_m": 0.25,
        "period_s": 3
-      },
-      {
-       "type": "spin",
-       "from_s": 0,
-       "to_s": 2.2,
-       "deg_per_s": 10
       }
      ]
     }
@@ -1076,7 +1837,7 @@
      "fov": 48
     },
     {
-     "at_s": 2.2,
+     "at_s": 2.4,
      "frame": {
       "on": [
        "rocket"
@@ -1091,7 +1852,7 @@
   },
   {
    "id": "12_weightlessness",
-   "duration_s": 2.4,
+   "duration_s": 2.6,
    "env": "cockpit",
    "props": [
     {
@@ -1117,13 +1878,13 @@
      "id": "win",
      "kind": "window",
      "at": [
-      -2.2,
-      1.0,
+      -1.4,
+      1.2,
       -2.95
      ],
      "size": [
-      1.7,
-      1.0
+      1.5,
+      0.9
      ],
      "view": "space"
     },
@@ -1131,15 +1892,65 @@
      "id": "win2",
      "kind": "window",
      "at": [
-      2.2,
-      1.0,
+      1.4,
+      1.2,
       -2.95
      ],
      "size": [
-      1.7,
-      1.0
+      1.5,
+      0.9
      ],
      "view": "space"
+    }
+   ],
+   "objects": [
+    {
+     "id": "wrench",
+     "asset": "space_wrench",
+     "at": [
+      0.9,
+      -0.3
+     ],
+     "at_y": 1.6,
+     "moves": [
+      {
+       "type": "float",
+       "from_s": 0,
+       "to_s": 2.6,
+       "amp_m": 0.3,
+       "period_s": 2.6
+      },
+      {
+       "type": "spin",
+       "from_s": 0,
+       "to_s": 2.6,
+       "deg_per_s": 70
+      }
+     ]
+    },
+    {
+     "id": "clip",
+     "asset": "checklist_clipboard",
+     "at": [
+      -1.0,
+      0.4
+     ],
+     "at_y": 1.2,
+     "moves": [
+      {
+       "type": "float",
+       "from_s": 0,
+       "to_s": 2.6,
+       "amp_m": 0.25,
+       "period_s": 3.2
+      },
+      {
+       "type": "spin",
+       "from_s": 0,
+       "to_s": 2.6,
+       "deg_per_s": -50
+      }
+     ]
     }
    ],
    "cast": [
@@ -1173,7 +1984,9 @@
      "at_s": 0,
      "frame": {
       "on": [
-       "hero"
+       "hero",
+       "wrench",
+       "clip"
       ],
       "az_deg": 15,
       "el_deg": 4,
@@ -1182,10 +1995,12 @@
      "fov": 48
     },
     {
-     "at_s": 2.4,
+     "at_s": 2.6,
      "frame": {
       "on": [
-       "hero"
+       "hero",
+       "wrench",
+       "clip"
       ],
       "az_deg": 15,
       "el_deg": 4,
@@ -1197,7 +2012,7 @@
   },
   {
    "id": "13_turbulence",
-   "duration_s": 2.2,
+   "duration_s": 2.4,
    "env": "cockpit",
    "props": [
     {
@@ -1223,14 +2038,53 @@
      "id": "warn",
      "kind": "panel",
      "at": [
-      -2.0,
-      1.2,
+      -2.2,
+      1.3,
       -2.95
      ],
      "screen": "warning",
      "size": [
       1.2,
       0.7
+     ]
+    },
+    {
+     "id": "warn2",
+     "kind": "panel",
+     "at": [
+      2.2,
+      1.3,
+      -2.95
+     ],
+     "screen": "warning",
+     "size": [
+      1.2,
+      0.7
+     ]
+    }
+   ],
+   "objects": [
+    {
+     "id": "wrench",
+     "asset": "space_wrench",
+     "at": [
+      1.0,
+      -0.3
+     ],
+     "at_y": 1.3,
+     "moves": [
+      {
+       "type": "shake",
+       "from_s": 0,
+       "to_s": 2.4,
+       "amp_m": 0.2
+      },
+      {
+       "type": "spin",
+       "from_s": 0,
+       "to_s": 2.4,
+       "deg_per_s": 160
+      }
      ]
     }
    ],
@@ -1244,9 +2098,8 @@
      "actions": [
       {
        "at_s": 0,
-       "do": "sit",
-       "chair": true,
-       "dur_s": 0.01
+       "do": "operate",
+       "shake": 1.0
       }
      ],
      "expressions": [
@@ -1297,6 +2150,10 @@
     {
      "at_s": 2.0,
      "amp": 0.9
+    },
+    {
+     "at_s": 2.2,
+     "amp": 0.9
     }
    ],
    "camera": [
@@ -1314,7 +2171,7 @@
      "fov": 48
     },
     {
-     "at_s": 2.2,
+     "at_s": 2.4,
      "frame": {
       "on": [
        "hero",
@@ -1330,52 +2187,116 @@
   },
   {
    "id": "14_stabilize_rocket",
-   "duration_s": 2.2,
-   "env": "space",
-   "bodies": [
+   "duration_s": 2.4,
+   "env": "cockpit",
+   "props": [
     {
-     "kind": "earth",
-     "dir": [
-      0.6,
-      -0.35,
-      -1
-     ],
-     "radius_m": 180
-    }
-   ],
-   "objects": [
-    {
-     "id": "rocket",
-     "asset": "rocket",
+     "id": "seat",
+     "kind": "seat",
      "at": [
       0,
-      0
+      0,
+      0.2
+     ]
+    },
+    {
+     "id": "console",
+     "kind": "console",
+     "at": [
+      0,
+      0,
+      -1.9
      ],
-     "moves": [
+     "screen": "warning"
+    },
+    {
+     "id": "win",
+     "kind": "window",
+     "at": [
+      -1.4,
+      1.2,
+      -2.95
+     ],
+     "size": [
+      1.5,
+      0.9
+     ],
+     "view": "space"
+    },
+    {
+     "id": "win2",
+     "kind": "window",
+     "at": [
+      1.4,
+      1.2,
+      -2.95
+     ],
+     "size": [
+      1.5,
+      0.9
+     ],
+     "view": "space"
+    }
+   ],
+   "cast": [
+    {
+     "who": "hero",
+     "at": [
+      0,
+      0.2
+     ],
+     "actions": [
       {
-       "type": "shake",
-       "from_s": 0,
-       "to_s": 1.2,
-       "amp_m": 0.12
+       "at_s": 0,
+       "do": "operate",
+       "shake": 1.0
       },
       {
-       "type": "float",
-       "from_s": 1.2,
-       "to_s": 2.2,
-       "amp_m": 0.08,
-       "period_s": 3
+       "at_s": 1.0,
+       "do": "operate",
+       "shake": 0.5
+      }
+     ],
+     "expressions": [
+      {
+       "at_s": 0,
+       "face": "worried"
+      },
+      {
+       "at_s": 1.6,
+       "face": "neutral"
       }
      ]
     }
    ],
    "kicks": [
     {
-     "at_s": 0.1,
-     "amp": 0.7
+     "at_s": 0.15,
+     "amp": 0.6399999999999999
     },
     {
-     "at_s": 0.5,
-     "amp": 0.5
+     "at_s": 0.3,
+     "amp": 0.58
+    },
+    {
+     "at_s": 0.44999999999999996,
+     "amp": 0.52
+    },
+    {
+     "at_s": 0.6,
+     "amp": 0.45999999999999996
+    },
+    {
+     "at_s": 0.75,
+     "amp": 0.39999999999999997
+    },
+    {
+     "at_s": 0.8999999999999999,
+     "amp": 0.33999999999999997
+    },
+    {
+     "at_s": 1.05,
+     "amp": 0.27999999999999997
     }
    ],
    "camera": [
@@ -1383,23 +2304,25 @@
      "at_s": 0,
      "frame": {
       "on": [
-       "rocket"
+       "hero",
+       "console"
       ],
-      "az_deg": 30,
-      "el_deg": 5,
-      "fill": 0.45
+      "az_deg": 8,
+      "el_deg": 6,
+      "fill": 0.95
      },
      "fov": 48
     },
     {
-     "at_s": 2.2,
+     "at_s": 2.4,
      "frame": {
       "on": [
-       "rocket"
+       "hero",
+       "console"
       ],
-      "az_deg": 30,
-      "el_deg": 5,
-      "fill": 0.45
+      "az_deg": 8,
+      "el_deg": 6,
+      "fill": 0.95
      },
      "fov": 48
     }
@@ -1407,7 +2330,7 @@
   },
   {
    "id": "15_system_stable",
-   "duration_s": 2.0,
+   "duration_s": 2.2,
    "env": "cockpit",
    "props": [
     {
@@ -1433,13 +2356,27 @@
      "id": "win",
      "kind": "window",
      "at": [
-      -2.2,
-      1.0,
+      -1.4,
+      1.2,
       -2.95
      ],
      "size": [
-      1.7,
-      1.0
+      1.5,
+      0.9
+     ],
+     "view": "space"
+    },
+    {
+     "id": "win2",
+     "kind": "window",
+     "at": [
+      1.4,
+      1.2,
+      -2.95
+     ],
+     "size": [
+      1.5,
+      0.9
      ],
      "view": "space"
     }
@@ -1454,14 +2391,12 @@
      "actions": [
       {
        "at_s": 0,
-       "do": "sit",
-       "chair": true,
-       "dur_s": 0.01
+       "do": "operate"
       },
       {
-       "at_s": 0.6,
-       "do": "wave",
-       "arm": "R"
+       "at_s": 0.7,
+       "do": "thumbsup",
+       "chair": true
       }
      ],
      "expressions": [
@@ -1470,7 +2405,7 @@
        "face": "neutral"
       },
       {
-       "at_s": 0.5,
+       "at_s": 0.6,
        "face": "smile"
       }
      ]
@@ -1491,7 +2426,7 @@
      "fov": 48
     },
     {
-     "at_s": 2.0,
+     "at_s": 2.2,
      "frame": {
       "on": [
        "hero",
@@ -1507,7 +2442,7 @@
   },
   {
    "id": "16_radar_signal",
-   "duration_s": 2.4,
+   "duration_s": 2.6,
    "env": "cockpit",
    "props": [
     {
@@ -1528,21 +2463,21 @@
       -1.9
      ],
      "screen": "radar",
-     "blip_at_s": 0.7
+     "blip_at_s": 0.8
     },
     {
      "id": "radar",
      "kind": "panel",
      "at": [
-      -2.2,
-      1.0,
+      -1.6,
+      1.3,
       -2.95
      ],
      "screen": "radar",
-     "blip_at_s": 0.7,
+     "blip_at_s": 0.8,
      "size": [
-      1.4,
-      1.0
+      1.6,
+      1.1
      ]
     }
    ],
@@ -1556,14 +2491,17 @@
      "actions": [
       {
        "at_s": 0,
+       "do": "operate"
+      },
+      {
+       "at_s": 0.9,
        "do": "sit",
        "chair": true,
        "dur_s": 0.01
       },
       {
-       "at_s": 0.8,
-       "do": "point",
-       "arm": "L"
+       "at_s": 1.0,
+       "do": "operate"
       }
      ],
      "expressions": [
@@ -1572,7 +2510,7 @@
        "face": "neutral"
       },
       {
-       "at_s": 0.8,
+       "at_s": 0.9,
        "face": "surprised"
       }
      ]
@@ -1584,7 +2522,8 @@
      "frame": {
       "on": [
        "hero",
-       "console"
+       "console",
+       "radar"
       ],
       "az_deg": 20,
       "el_deg": 8,
@@ -1593,11 +2532,12 @@
      "fov": 48
     },
     {
-     "at_s": 2.4,
+     "at_s": 2.6,
      "frame": {
       "on": [
        "hero",
-       "console"
+       "console",
+       "radar"
       ],
       "az_deg": 20,
       "el_deg": 8,
@@ -1609,7 +2549,7 @@
   },
   {
    "id": "17_alien_planet_first_sight",
-   "duration_s": 2.4,
+   "duration_s": 2.6,
    "env": "space",
    "bodies": [
     {
@@ -1622,6 +2562,26 @@
      "radius_m": 120,
      "color": "#c58ad8",
      "color2": "#f1d6ff"
+    },
+    {
+     "kind": "moon",
+     "dir": [
+      -0.5,
+      0.25,
+      -1
+     ],
+     "radius_m": 16,
+     "color": "#e6d7ee"
+    },
+    {
+     "kind": "moon",
+     "dir": [
+      0.55,
+      0.3,
+      -1
+     ],
+     "radius_m": 10,
+     "color": "#d9b8e8"
     }
    ],
    "objects": [
@@ -1636,7 +2596,7 @@
       {
        "type": "float",
        "from_s": 0,
-       "to_s": 2.4,
+       "to_s": 2.6,
        "amp_m": 0.1,
        "period_s": 3
       }
@@ -1657,7 +2617,7 @@
      "fov": 48
     },
     {
-     "at_s": 2.4,
+     "at_s": 2.6,
      "frame": {
       "on": [
        "rocket"
@@ -1672,7 +2632,7 @@
   },
   {
    "id": "18_approach_planet",
-   "duration_s": 2.4,
+   "duration_s": 2.6,
    "env": "space",
    "bodies": [
     {
@@ -1682,10 +2642,20 @@
       -0.1,
       -1
      ],
-     "radius_m": 260,
+     "radius_m": 300,
      "color": "#c58ad8",
      "color2": "#8f5fb8",
      "dist_m": 500
+    },
+    {
+     "kind": "moon",
+     "dir": [
+      0.6,
+      0.3,
+      -1
+     ],
+     "radius_m": 18,
+     "color": "#e6d7ee"
     }
    ],
    "objects": [
@@ -1698,14 +2668,14 @@
      ],
      "thrust": {
       "from_s": 0,
-      "to_s": 2.4,
+      "to_s": 2.6,
       "smoke": false
      },
      "moves": [
       {
        "type": "fly",
        "from_s": 0,
-       "to_s": 2.4,
+       "to_s": 2.6,
        "to": [
         0,
         -3,
@@ -1729,7 +2699,7 @@
      "fov": 48
     },
     {
-     "at_s": 2.4,
+     "at_s": 2.6,
      "frame": {
       "on": [
        "rocket"
@@ -1744,9 +2714,149 @@
   },
   {
    "id": "19_land_on_planet",
-   "duration_s": 2.8,
+   "duration_s": 3.0,
    "env": "alien_world",
+   "bodies": [
+    {
+     "kind": "ringed",
+     "dir": [
+      -0.5,
+      0.42,
+      -1
+     ],
+     "radius_m": 70,
+     "dist_m": 520,
+     "color": "#d9a6e8",
+     "color2": "#fff0ff"
+    },
+    {
+     "kind": "moon",
+     "dir": [
+      0.55,
+      0.5,
+      -1
+     ],
+     "radius_m": 22,
+     "dist_m": 520,
+     "color": "#e6d7ee"
+    }
+   ],
+   "river": {
+    "points": [
+     [
+      -14,
+      -10
+     ],
+     [
+      -6,
+      -6
+     ],
+     [
+      2,
+      -9
+     ],
+     [
+      10,
+      -6
+     ],
+     [
+      20,
+      -12
+     ]
+    ],
+    "width_m": 2.2,
+    "color": "#59d0ff"
+   },
    "objects": [
+    {
+     "id": "mount1",
+     "asset": "alien_mountain",
+     "at": [
+      -26,
+      -42
+     ]
+    },
+    {
+     "id": "mount2",
+     "asset": "alien_mountain",
+     "at": [
+      22,
+      -50
+     ],
+     "turn_deg": 90
+    },
+    {
+     "id": "mount3",
+     "asset": "alien_mountain",
+     "at": [
+      -4,
+      -64
+     ]
+    },
+    {
+     "id": "sc0",
+     "asset": "alien_flower",
+     "at": [
+      -8.731271511775198,
+      -6.305132526125535
+     ]
+    },
+    {
+     "id": "sc1",
+     "asset": "alien_tree",
+     "at": [
+      8.527549237953227,
+      -9.489861948521156
+     ]
+    },
+    {
+     "id": "sc2",
+     "asset": "alien_mushroom",
+     "at": [
+      4.990870174183882,
+      3.898982129577476
+     ]
+    },
+    {
+     "id": "sc3",
+     "asset": "alien_mushroom",
+     "at": [
+      -5.6968140545544745,
+      3.5774467022710263
+     ]
+    },
+    {
+     "id": "sc4",
+     "asset": "alien_tree",
+     "at": [
+      -11.81228082645153,
+      -3.943305046955987
+     ]
+    },
+    {
+     "id": "sc5",
+     "asset": "alien_flower",
+     "at": [
+      11.671530207839739,
+      -2.1344658641898935
+     ]
+    },
+    {
+     "id": "sc6",
+     "asset": "alien_plant",
+     "at": [
+      -2.4754398350841162,
+      -12.995787893297779
+     ]
+    },
+    {
+     "id": "sc7",
+     "asset": "alien_flower",
+     "at": [
+      2.8907743881096026,
+      -13.556919935318435
+     ]
+    },
     {
      "id": "rocket",
      "asset": "rocket",
@@ -1755,39 +2865,52 @@
       -3
      ],
      "solid_radius_m": 1.3,
+     "at_y": 14,
+     "legs": {
+      "deploy_s": 0.2
+     },
      "thrust": {
       "from_s": 0,
-      "to_s": 2.0
+      "to_s": 2.3
      },
      "moves": [
       {
        "type": "fly",
        "from_s": 0,
-       "to_s": 2.1,
+       "to_s": 2.4,
        "to": [
         0,
         0,
         -3
        ]
       }
-     ],
-     "at_y": 14
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "type": "puff",
+     "at_s": 2.2,
+     "dur_s": 1.0,
+     "on": "rocket",
+     "size_m": 3.5,
+     "lift_m": 0.5
     },
     {
-     "id": "plant",
-     "asset": "alien_plant",
-     "at": [
-      -5,
-      -6
-     ]
+     "type": "puff",
+     "at_s": 2.4000000000000004,
+     "dur_s": 1.0,
+     "on": "rocket",
+     "size_m": 3.5,
+     "lift_m": 0.5
     },
     {
-     "id": "rocks",
-     "asset": "rock_formation",
-     "at": [
-      7,
-      -9
-     ]
+     "type": "puff",
+     "at_s": 2.6,
+     "dur_s": 1.0,
+     "on": "rocket",
+     "size_m": 3.5,
+     "lift_m": 0.5
     }
    ],
    "camera": [
@@ -1804,7 +2927,7 @@
      "fov": 48
     },
     {
-     "at_s": 2.8,
+     "at_s": 3.0,
      "frame": {
       "on": [
        "rocket"
@@ -1819,9 +2942,149 @@
   },
   {
    "id": "20_step_out",
-   "duration_s": 2.4,
+   "duration_s": 2.8,
    "env": "alien_world",
+   "bodies": [
+    {
+     "kind": "ringed",
+     "dir": [
+      -0.5,
+      0.42,
+      -1
+     ],
+     "radius_m": 70,
+     "dist_m": 520,
+     "color": "#d9a6e8",
+     "color2": "#fff0ff"
+    },
+    {
+     "kind": "moon",
+     "dir": [
+      0.55,
+      0.5,
+      -1
+     ],
+     "radius_m": 22,
+     "dist_m": 520,
+     "color": "#e6d7ee"
+    }
+   ],
+   "river": {
+    "points": [
+     [
+      -14,
+      -10
+     ],
+     [
+      -6,
+      -6
+     ],
+     [
+      2,
+      -9
+     ],
+     [
+      10,
+      -6
+     ],
+     [
+      20,
+      -12
+     ]
+    ],
+    "width_m": 2.2,
+    "color": "#59d0ff"
+   },
    "objects": [
+    {
+     "id": "mount1",
+     "asset": "alien_mountain",
+     "at": [
+      -26,
+      -42
+     ]
+    },
+    {
+     "id": "mount2",
+     "asset": "alien_mountain",
+     "at": [
+      22,
+      -50
+     ],
+     "turn_deg": 90
+    },
+    {
+     "id": "mount3",
+     "asset": "alien_mountain",
+     "at": [
+      -4,
+      -64
+     ]
+    },
+    {
+     "id": "sc0",
+     "asset": "alien_flower",
+     "at": [
+      -7.087931456221501,
+      -6.104345025881301
+     ]
+    },
+    {
+     "id": "sc1",
+     "asset": "alien_tree",
+     "at": [
+      7.113102735453618,
+      -9.830256009682156
+     ]
+    },
+    {
+     "id": "sc2",
+     "asset": "alien_mushroom",
+     "at": [
+      5.670997756258899,
+      4.471939978137047
+     ]
+    },
+    {
+     "id": "sc3",
+     "asset": "alien_mushroom",
+     "at": [
+      -5.660539197119558,
+      2.616272915178288
+     ]
+    },
+    {
+     "id": "sc4",
+     "asset": "alien_tree",
+     "at": [
+      -10.788111668643076,
+      -2.7863965327183244
+     ]
+    },
+    {
+     "id": "sc5",
+     "asset": "alien_flower",
+     "at": [
+      11.162408034224006,
+      -2.683234259490389
+     ]
+    },
+    {
+     "id": "sc6",
+     "asset": "alien_plant",
+     "at": [
+      -3.1386607194174627,
+      -12.212936359589257
+     ]
+    },
+    {
+     "id": "sc7",
+     "asset": "alien_flower",
+     "at": [
+      3.4460241624749317,
+      -13.010360874100515
+     ]
+    },
     {
      "id": "rocket",
      "asset": "rocket",
@@ -1829,22 +3092,22 @@
       0,
       -3
      ],
-     "solid_radius_m": 1.3
+     "solid_radius_m": 1.3,
+     "legs": {
+      "deploy_s": -5
+     },
+     "hatch": {
+      "height_m": 3.4,
+      "azimuth_deg": 90,
+      "open_s": -2
+     }
     },
     {
      "id": "ladder",
      "asset": "rocket_ladder",
      "at": [
-      1.5,
-      -2.2
-     ]
-    },
-    {
-     "id": "plant",
-     "asset": "alien_plant",
-     "at": [
-      -5,
-      -6
+      1.45,
+      -3
      ]
     }
    ],
@@ -1852,41 +3115,53 @@
     {
      "who": "hero",
      "at": [
-      1.5,
-      -1.0
+      1.95,
+      -3
      ],
+     "appear_s": 0.4,
      "actions": [
       {
        "at_s": 0,
        "do": "stand",
+       "face_toward": "rocket"
+      },
+      {
+       "at_s": 0.4,
+       "do": "climb",
+       "start_m": 3.2,
+       "up_m": 0,
+       "to_s": 1.7,
+       "face_toward": "rocket"
+      },
+      {
+       "at_s": 1.7,
+       "do": "stand",
        "face_camera": true
       },
       {
-       "at_s": 1.2,
-       "do": "wave",
-       "arm": "R"
-      }
-     ],
-     "appear_s": 0.5,
-     "expressions": [
-      {
-       "at_s": 0,
-       "face": "surprised"
-      },
-      {
-       "at_s": 1.2,
-       "face": "smile"
+       "at_s": 2.0,
+       "do": "look"
       }
      ],
      "moves": [
       {
        "type": "walk",
-       "from_s": 0.5,
-       "to_s": 1.2,
+       "from_s": 1.7,
+       "to_s": 2.8,
        "to": [
-        2.0,
-        0.4
+        3.2,
+        -1.2
        ]
+      }
+     ],
+     "expressions": [
+      {
+       "at_s": 0,
+       "face": "worried"
+      },
+      {
+       "at_s": 1.7,
+       "face": "surprised"
       }
      ]
     }
@@ -1897,24 +3172,26 @@
      "frame": {
       "on": [
        "hero",
-       "rocket"
+       "rocket",
+       "ladder"
       ],
-      "az_deg": 20,
-      "el_deg": 6,
-      "fill": 0.65
+      "az_deg": 55,
+      "el_deg": 8,
+      "fill": 0.8
      },
      "fov": 48
     },
     {
-     "at_s": 2.4,
+     "at_s": 2.8,
      "frame": {
       "on": [
        "hero",
-       "rocket"
+       "rocket",
+       "ladder"
       ],
-      "az_deg": 20,
-      "el_deg": 6,
-      "fill": 0.65
+      "az_deg": 55,
+      "el_deg": 8,
+      "fill": 0.8
      },
      "fov": 48
     }
@@ -1922,31 +3199,147 @@
   },
   {
    "id": "21_explore_alien_world",
-   "duration_s": 2.6,
+   "duration_s": 2.8,
    "env": "alien_world",
+   "bodies": [
+    {
+     "kind": "ringed",
+     "dir": [
+      -0.5,
+      0.42,
+      -1
+     ],
+     "radius_m": 70,
+     "dist_m": 520,
+     "color": "#d9a6e8",
+     "color2": "#fff0ff"
+    },
+    {
+     "kind": "moon",
+     "dir": [
+      0.55,
+      0.5,
+      -1
+     ],
+     "radius_m": 22,
+     "dist_m": 520,
+     "color": "#e6d7ee"
+    }
+   ],
+   "river": {
+    "points": [
+     [
+      -14,
+      -10
+     ],
+     [
+      -6,
+      -6
+     ],
+     [
+      2,
+      -9
+     ],
+     [
+      10,
+      -6
+     ],
+     [
+      20,
+      -12
+     ]
+    ],
+    "width_m": 2.2,
+    "color": "#59d0ff"
+   },
    "objects": [
     {
-     "id": "plant",
-     "asset": "alien_plant",
+     "id": "mount1",
+     "asset": "alien_mountain",
      "at": [
-      3.5,
-      -5
+      -26,
+      -42
      ]
     },
     {
-     "id": "rocks",
-     "asset": "rock_formation",
+     "id": "mount2",
+     "asset": "alien_mountain",
      "at": [
-      -6,
-      -9
+      22,
+      -50
+     ],
+     "turn_deg": 90
+    },
+    {
+     "id": "mount3",
+     "asset": "alien_mountain",
+     "at": [
+      -4,
+      -64
      ]
     },
     {
-     "id": "plant2",
+     "id": "sc0",
+     "asset": "alien_flower",
+     "at": [
+      -8.524070745816218,
+      -6.9115415494080965
+     ]
+    },
+    {
+     "id": "sc1",
+     "asset": "alien_tree",
+     "at": [
+      7.739910333096159,
+      -8.792159922807611
+     ]
+    },
+    {
+     "id": "sc2",
+     "asset": "alien_mushroom",
+     "at": [
+      5.251440608216108,
+      3.131057718479626
+     ]
+    },
+    {
+     "id": "sc3",
+     "asset": "alien_mushroom",
+     "at": [
+      -6.973664016890252,
+      3.6749381641929197
+     ]
+    },
+    {
+     "id": "sc4",
+     "asset": "alien_tree",
+     "at": [
+      -11.481291971343985,
+      -3.5313380779066073
+     ]
+    },
+    {
+     "id": "sc5",
+     "asset": "alien_flower",
+     "at": [
+      11.991289671020926,
+      -2.059472984955104
+     ]
+    },
+    {
+     "id": "sc6",
      "asset": "alien_plant",
      "at": [
-      -3,
-      -4.5
+      -2.3270770974512223,
+      -12.04729358260133
+     ]
+    },
+    {
+     "id": "sc7",
+     "asset": "alien_flower",
+     "at": [
+      3.278136281088324,
+      -14.698767151952952
      ]
     }
    ],
@@ -1955,7 +3348,7 @@
      "who": "hero",
      "at": [
       0,
-      3
+      4
      ],
      "actions": [
       {
@@ -1967,10 +3360,10 @@
       {
        "type": "walk",
        "from_s": 0.1,
-       "to_s": 2.6,
+       "to_s": 2.8,
        "to": [
         0,
-        -1.5
+        -2
        ]
       }
      ],
@@ -2000,24 +3393,24 @@
      "frame": {
       "on": [
        "hero",
-       "plant"
+       "sc2"
       ],
       "az_deg": 30,
       "el_deg": 8,
-      "fill": 0.7
+      "fill": 0.8
      },
      "fov": 48
     },
     {
-     "at_s": 2.6,
+     "at_s": 2.8,
      "frame": {
       "on": [
        "hero",
-       "plant"
+       "sc2"
       ],
       "az_deg": 30,
       "el_deg": 8,
-      "fill": 0.7
+      "fill": 0.8
      },
      "fov": 48
     }
@@ -2025,23 +3418,171 @@
   },
   {
    "id": "22_crystal_discovery",
-   "duration_s": 2.4,
+   "duration_s": 2.6,
    "env": "alien_world",
+   "bodies": [
+    {
+     "kind": "ringed",
+     "dir": [
+      -0.5,
+      0.42,
+      -1
+     ],
+     "radius_m": 70,
+     "dist_m": 520,
+     "color": "#d9a6e8",
+     "color2": "#fff0ff"
+    },
+    {
+     "kind": "moon",
+     "dir": [
+      0.55,
+      0.5,
+      -1
+     ],
+     "radius_m": 22,
+     "dist_m": 520,
+     "color": "#e6d7ee"
+    }
+   ],
+   "river": {
+    "points": [
+     [
+      -14,
+      -10
+     ],
+     [
+      -6,
+      -6
+     ],
+     [
+      2,
+      -9
+     ],
+     [
+      10,
+      -6
+     ],
+     [
+      20,
+      -12
+     ]
+    ],
+    "width_m": 2.2,
+    "color": "#59d0ff"
+   },
    "objects": [
+    {
+     "id": "mount1",
+     "asset": "alien_mountain",
+     "at": [
+      -26,
+      -42
+     ]
+    },
+    {
+     "id": "mount2",
+     "asset": "alien_mountain",
+     "at": [
+      22,
+      -50
+     ],
+     "turn_deg": 90
+    },
+    {
+     "id": "mount3",
+     "asset": "alien_mountain",
+     "at": [
+      -4,
+      -64
+     ]
+    },
+    {
+     "id": "sc0",
+     "asset": "alien_flower",
+     "at": [
+      -8.52790382052513,
+      -7.793667931538568
+     ]
+    },
+    {
+     "id": "sc1",
+     "asset": "alien_tree",
+     "at": [
+      7.792116485221362,
+      -9.690055458395179
+     ]
+    },
+    {
+     "id": "sc2",
+     "asset": "alien_mushroom",
+     "at": [
+      4.13303019135918,
+      3.8031820289701495
+     ]
+    },
+    {
+     "id": "sc3",
+     "asset": "alien_mushroom",
+     "at": [
+      -5.164089913824562,
+      3.600904702991617
+     ]
+    },
+    {
+     "id": "sc4",
+     "asset": "alien_tree",
+     "at": [
+      -10.469674794989123,
+      -3.556143648619365
+     ]
+    },
+    {
+     "id": "sc5",
+     "asset": "alien_flower",
+     "at": [
+      11.073360016349627,
+      -2.4466347131170996
+     ]
+    },
+    {
+     "id": "sc6",
+     "asset": "alien_plant",
+     "at": [
+      -3.654670941429262,
+      -12.78763341513694
+     ]
+    },
+    {
+     "id": "sc7",
+     "asset": "alien_flower",
+     "at": [
+      2.428800865157833,
+      -13.14504873714388
+     ]
+    },
     {
      "id": "crystal",
      "asset": "crystal_cluster",
      "at": [
-      1.8,
+      1.7,
       -2.0
      ]
     },
     {
-     "id": "rocks",
-     "asset": "rock_formation",
+     "id": "crystal2",
+     "asset": "crystal_cluster",
      "at": [
-      -6,
-      -9
+      3.4,
+      -3.4
+     ]
+    },
+    {
+     "id": "crystal3",
+     "asset": "crystal_cluster",
+     "at": [
+      0.2,
+      -3.8
      ]
     }
    ],
@@ -2049,22 +3590,22 @@
     {
      "who": "hero",
      "at": [
-      -1.2,
-      1.5
+      -0.6,
+      0.6
      ],
      "actions": [
       {
        "at_s": 0,
-       "do": "stand"
+       "do": "stand",
+       "face_toward": "crystal"
       },
       {
        "at_s": 0.5,
        "do": "surprised"
       },
       {
-       "at_s": 1.3,
-       "do": "point",
-       "arm": "R",
+       "at_s": 1.1,
+       "do": "kneel",
        "face_toward": "crystal"
       }
      ],
@@ -2078,8 +3619,19 @@
        "face": "surprised"
       },
       {
-       "at_s": 1.3,
+       "at_s": 1.1,
        "face": "smile"
+      }
+     ],
+     "moves": [
+      {
+       "type": "walk",
+       "from_s": 0.0,
+       "to_s": 0.4,
+       "to": [
+        -0.2,
+        -0.4
+       ]
       }
      ]
     }
@@ -2094,12 +3646,12 @@
       ],
       "az_deg": 20,
       "el_deg": 6,
-      "fill": 0.65
+      "fill": 0.7
      },
      "fov": 48
     },
     {
-     "at_s": 2.4,
+     "at_s": 2.6,
      "frame": {
       "on": [
        "hero",
@@ -2107,7 +3659,7 @@
       ],
       "az_deg": 20,
       "el_deg": 6,
-      "fill": 0.65
+      "fill": 0.7
      },
      "fov": 48
     }
@@ -2115,23 +3667,155 @@
   },
   {
    "id": "23_aliens_in_distance",
-   "duration_s": 2.4,
+   "duration_s": 2.6,
    "env": "alien_world",
+   "bodies": [
+    {
+     "kind": "ringed",
+     "dir": [
+      -0.5,
+      0.42,
+      -1
+     ],
+     "radius_m": 70,
+     "dist_m": 520,
+     "color": "#d9a6e8",
+     "color2": "#fff0ff"
+    },
+    {
+     "kind": "moon",
+     "dir": [
+      0.55,
+      0.5,
+      -1
+     ],
+     "radius_m": 22,
+     "dist_m": 520,
+     "color": "#e6d7ee"
+    }
+   ],
+   "river": {
+    "points": [
+     [
+      -14,
+      -10
+     ],
+     [
+      -6,
+      -6
+     ],
+     [
+      2,
+      -9
+     ],
+     [
+      10,
+      -6
+     ],
+     [
+      20,
+      -12
+     ]
+    ],
+    "width_m": 2.2,
+    "color": "#59d0ff"
+   },
    "objects": [
     {
-     "id": "rocks",
-     "asset": "rock_formation",
+     "id": "mount1",
+     "asset": "alien_mountain",
      "at": [
-      -5,
-      -10
+      -26,
+      -42
      ]
     },
     {
-     "id": "plant",
-     "asset": "alien_plant",
+     "id": "mount2",
+     "asset": "alien_mountain",
      "at": [
-      4.5,
-      -6
+      22,
+      -50
+     ],
+     "turn_deg": 90
+    },
+    {
+     "id": "mount3",
+     "asset": "alien_mountain",
+     "at": [
+      -4,
+      -64
+     ]
+    },
+    {
+     "id": "sc0",
+     "asset": "alien_flower",
+     "at": [
+      -7.754196610220596,
+      -6.516426021478541
+     ]
+    },
+    {
+     "id": "sc1",
+     "asset": "alien_tree",
+     "at": [
+      8.590387131131394,
+      -8.115099432445898
+     ]
+    },
+    {
+     "id": "sc2",
+     "asset": "alien_mushroom",
+     "at": [
+      5.479797149479861,
+      4.844649993330834
+     ]
+    },
+    {
+     "id": "sc3",
+     "asset": "alien_mushroom",
+     "at": [
+      -6.94198954343277,
+      2.9312453087562105
+     ]
+    },
+    {
+     "id": "sc4",
+     "asset": "alien_tree",
+     "at": [
+      -10.113286566003373,
+      -2.7020508937261516
+     ]
+    },
+    {
+     "id": "sc5",
+     "asset": "alien_flower",
+     "at": [
+      11.801800983501245,
+      -2.7735880706937115
+     ]
+    },
+    {
+     "id": "b1",
+     "asset": "purple_boulder",
+     "at": [
+      -3.5,
+      -9.0
+     ]
+    },
+    {
+     "id": "b2",
+     "asset": "purple_boulder",
+     "at": [
+      3.5,
+      -10.5
+     ]
+    },
+    {
+     "id": "b3",
+     "asset": "purple_boulder",
+     "at": [
+      0.2,
+      -12.5
      ]
     }
    ],
@@ -2145,10 +3829,11 @@
      "actions": [
       {
        "at_s": 0,
-       "do": "stand"
+       "do": "stand",
+       "face_toward": "b3"
       },
       {
-       "at_s": 0.4,
+       "at_s": 0.5,
        "do": "look"
       }
      ],
@@ -2162,52 +3847,70 @@
     {
      "who": "alien",
      "id": "al1",
-     "at": [
-      -2,
-      -12
-     ],
      "height_m": 1.7,
+     "at": [
+      -3.5,
+      -10.6
+     ],
      "actions": [
       {
        "at_s": 0,
-       "do": "stand"
+       "do": "peek",
+       "face_toward": "hero"
       }
      ],
-     "moves": [
+     "expressions": [
       {
-       "type": "walk",
-       "from_s": 0.2,
-       "to_s": 2.4,
-       "to": [
-        -1.5,
-        -8
-       ]
+       "at_s": 0,
+       "face": "neutral"
       }
      ]
     },
     {
      "who": "alien",
      "id": "al2",
-     "at": [
-      2,
-      -13
-     ],
      "height_m": 1.7,
+     "at": [
+      3.5,
+      -12.0
+     ],
+     "actions": [
+      {
+       "at_s": 0.4,
+       "do": "stand"
+      },
+      {
+       "at_s": 0.5,
+       "do": "peek",
+       "face_toward": "hero"
+      }
+     ],
+     "expressions": [
+      {
+       "at_s": 0,
+       "face": "neutral"
+      }
+     ]
+    },
+    {
+     "who": "alien",
+     "id": "al3",
+     "height_m": 1.7,
+     "at": [
+      0.2,
+      -14.0
+     ],
      "actions": [
       {
        "at_s": 0,
-       "do": "stand"
+       "do": "peek",
+       "face_toward": "hero"
       }
      ],
-     "moves": [
+     "expressions": [
       {
-       "type": "walk",
-       "from_s": 0.4,
-       "to_s": 2.4,
-       "to": [
-        1.2,
-        -9
-       ]
+       "at_s": 0,
+       "face": "grin"
       }
      ]
     }
@@ -2218,26 +3921,28 @@
      "frame": {
       "on": [
        "hero",
-       "al1",
-       "al2"
+       "b1",
+       "b2",
+       "al3"
       ],
       "az_deg": 5,
       "el_deg": 5,
-      "fill": 0.9
+      "fill": 0.95
      },
      "fov": 52
     },
     {
-     "at_s": 2.4,
+     "at_s": 2.6,
      "frame": {
       "on": [
        "hero",
-       "al1",
-       "al2"
+       "b1",
+       "b2",
+       "al3"
       ],
       "az_deg": 5,
       "el_deg": 5,
-      "fill": 0.9
+      "fill": 0.95
      },
      "fov": 52
     }
@@ -2245,29 +3950,174 @@
   },
   {
    "id": "24_first_contact",
-   "duration_s": 2.6,
+   "duration_s": 2.8,
    "env": "alien_world",
+   "bodies": [
+    {
+     "kind": "ringed",
+     "dir": [
+      -0.5,
+      0.42,
+      -1
+     ],
+     "radius_m": 70,
+     "dist_m": 520,
+     "color": "#d9a6e8",
+     "color2": "#fff0ff"
+    },
+    {
+     "kind": "moon",
+     "dir": [
+      0.55,
+      0.5,
+      -1
+     ],
+     "radius_m": 22,
+     "dist_m": 520,
+     "color": "#e6d7ee"
+    }
+   ],
+   "river": {
+    "points": [
+     [
+      -14,
+      -10
+     ],
+     [
+      -6,
+      -6
+     ],
+     [
+      2,
+      -9
+     ],
+     [
+      10,
+      -6
+     ],
+     [
+      20,
+      -12
+     ]
+    ],
+    "width_m": 2.2,
+    "color": "#59d0ff"
+   },
    "objects": [
     {
-     "id": "plant",
+     "id": "mount1",
+     "asset": "alien_mountain",
+     "at": [
+      -26,
+      -42
+     ]
+    },
+    {
+     "id": "mount2",
+     "asset": "alien_mountain",
+     "at": [
+      22,
+      -50
+     ],
+     "turn_deg": 90
+    },
+    {
+     "id": "mount3",
+     "asset": "alien_mountain",
+     "at": [
+      -4,
+      -64
+     ]
+    },
+    {
+     "id": "sc0",
+     "asset": "alien_flower",
+     "at": [
+      -7.413319832476674,
+      -6.356091915360547
+     ]
+    },
+    {
+     "id": "sc1",
+     "asset": "alien_tree",
+     "at": [
+      7.97006925586189,
+      -9.476757034110683
+     ]
+    },
+    {
+     "id": "sc2",
+     "asset": "alien_mushroom",
+     "at": [
+      4.000903429770142,
+      4.3256371257675355
+     ]
+    },
+    {
+     "id": "sc3",
+     "asset": "alien_mushroom",
+     "at": [
+      -6.05949148587111,
+      3.5194612701957864
+     ]
+    },
+    {
+     "id": "sc4",
+     "asset": "alien_tree",
+     "at": [
+      -11.253679255852317,
+      -2.4597203281240194
+     ]
+    },
+    {
+     "id": "sc5",
+     "asset": "alien_flower",
+     "at": [
+      10.545396171343942,
+      -1.3961690336747927
+     ]
+    },
+    {
+     "id": "sc6",
      "asset": "alien_plant",
      "at": [
-      4.5,
-      -4
+      -2.540350334755968,
+      -12.171987117669394
      ]
+    },
+    {
+     "id": "sc7",
+     "asset": "alien_flower",
+     "at": [
+      3.0766104391105538,
+      -13.635896517422644
+     ]
+    },
+    {
+     "id": "rocket",
+     "asset": "rocket",
+     "at": [
+      -9,
+      -14
+     ],
+     "legs": {
+      "deploy_s": -5
+     },
+     "solid_radius_m": 1.3
     }
    ],
    "cast": [
     {
      "who": "hero",
      "at": [
-      -1.4,
+      -1.6,
       0
      ],
      "actions": [
       {
        "at_s": 0,
-       "do": "stand"
+       "do": "stand",
+       "face_toward": "al1"
       },
       {
        "at_s": 0.5,
@@ -2276,12 +4126,17 @@
       },
       {
        "at_s": 1.9,
-       "do": "stand"
+       "do": "stand",
+       "face_toward": "al1"
       }
      ],
      "expressions": [
       {
        "at_s": 0,
+       "face": "neutral"
+      },
+      {
+       "at_s": 0.5,
        "face": "smile"
       }
      ]
@@ -2289,11 +4144,11 @@
     {
      "who": "alien",
      "id": "al1",
+     "height_m": 1.7,
      "at": [
-      1.4,
+      1.5,
       0
      ],
-     "height_m": 1.7,
      "actions": [
       {
        "at_s": 0,
@@ -2316,6 +4171,58 @@
        "face": "smile"
       }
      ]
+    },
+    {
+     "who": "alien",
+     "id": "al2",
+     "height_m": 1.7,
+     "at": [
+      2.5,
+      -1.0
+     ],
+     "actions": [
+      {
+       "at_s": 0,
+       "do": "stand",
+       "face_toward": "hero"
+      }
+     ],
+     "expressions": [
+      {
+       "at_s": 0,
+       "face": "neutral"
+      },
+      {
+       "at_s": 1.2,
+       "face": "smile"
+      }
+     ]
+    },
+    {
+     "who": "alien",
+     "id": "al3",
+     "height_m": 1.7,
+     "at": [
+      2.6,
+      1.1
+     ],
+     "actions": [
+      {
+       "at_s": 0,
+       "do": "stand",
+       "face_toward": "hero"
+      }
+     ],
+     "expressions": [
+      {
+       "at_s": 0,
+       "face": "neutral"
+      },
+      {
+       "at_s": 1.2,
+       "face": "grin"
+      }
+     ]
     }
    ],
    "camera": [
@@ -2324,24 +4231,28 @@
      "frame": {
       "on": [
        "hero",
-       "al1"
+       "al1",
+       "al2",
+       "al3"
       ],
-      "az_deg": 10,
+      "az_deg": 12,
       "el_deg": 6,
-      "fill": 0.8
+      "fill": 0.85
      },
      "fov": 48
     },
     {
-     "at_s": 2.6,
+     "at_s": 2.8,
      "frame": {
       "on": [
        "hero",
-       "al1"
+       "al1",
+       "al2",
+       "al3"
       ],
-      "az_deg": 10,
+      "az_deg": 12,
       "el_deg": 6,
-      "fill": 0.8
+      "fill": 0.85
      },
      "fov": 48
     }
@@ -2349,15 +4260,147 @@
   },
   {
    "id": "25_aliens_turn_hostile",
-   "duration_s": 2.4,
+   "duration_s": 2.6,
    "env": "alien_world",
+   "bodies": [
+    {
+     "kind": "ringed",
+     "dir": [
+      -0.5,
+      0.42,
+      -1
+     ],
+     "radius_m": 70,
+     "dist_m": 520,
+     "color": "#d9a6e8",
+     "color2": "#fff0ff"
+    },
+    {
+     "kind": "moon",
+     "dir": [
+      0.55,
+      0.5,
+      -1
+     ],
+     "radius_m": 22,
+     "dist_m": 520,
+     "color": "#e6d7ee"
+    }
+   ],
+   "river": {
+    "points": [
+     [
+      -14,
+      -10
+     ],
+     [
+      -6,
+      -6
+     ],
+     [
+      2,
+      -9
+     ],
+     [
+      10,
+      -6
+     ],
+     [
+      20,
+      -12
+     ]
+    ],
+    "width_m": 2.2,
+    "color": "#59d0ff"
+   },
    "objects": [
     {
-     "id": "rocks",
-     "asset": "rock_formation",
+     "id": "mount1",
+     "asset": "alien_mountain",
      "at": [
-      -6,
-      -9
+      -26,
+      -42
+     ]
+    },
+    {
+     "id": "mount2",
+     "asset": "alien_mountain",
+     "at": [
+      22,
+      -50
+     ],
+     "turn_deg": 90
+    },
+    {
+     "id": "mount3",
+     "asset": "alien_mountain",
+     "at": [
+      -4,
+      -64
+     ]
+    },
+    {
+     "id": "sc0",
+     "asset": "alien_flower",
+     "at": [
+      -8.352334470333675,
+      -7.698301652150996
+     ]
+    },
+    {
+     "id": "sc1",
+     "asset": "alien_tree",
+     "at": [
+      8.301868946079708,
+      -9.855127426664914
+     ]
+    },
+    {
+     "id": "sc2",
+     "asset": "alien_mushroom",
+     "at": [
+      5.071764008613378,
+      3.731377833825171
+     ]
+    },
+    {
+     "id": "sc3",
+     "asset": "alien_mushroom",
+     "at": [
+      -6.884002150450586,
+      3.0148714663788407
+     ]
+    },
+    {
+     "id": "sc4",
+     "asset": "alien_tree",
+     "at": [
+      -11.92500868311603,
+      -3.1327086326752283
+     ]
+    },
+    {
+     "id": "sc5",
+     "asset": "alien_flower",
+     "at": [
+      10.139710847149239,
+      -2.8185739733122697
+     ]
+    },
+    {
+     "id": "sc6",
+     "asset": "alien_plant",
+     "at": [
+      -3.150961621714972,
+      -11.346295750655925
+     ]
+    },
+    {
+     "id": "sc7",
+     "asset": "alien_flower",
+     "at": [
+      2.247603922299291,
+      -14.55352207078597
      ]
     }
    ],
@@ -2365,16 +4408,17 @@
     {
      "who": "hero",
      "at": [
-      -1.8,
+      -1.4,
       0
      ],
      "actions": [
       {
        "at_s": 0,
-       "do": "stand"
+       "do": "stand",
+       "face_toward": "al1"
       },
       {
-       "at_s": 0.8,
+       "at_s": 0.7,
        "do": "surprised"
       }
      ],
@@ -2384,23 +4428,40 @@
        "face": "smile"
       },
       {
-       "at_s": 0.8,
+       "at_s": 0.7,
        "face": "worried"
+      }
+     ],
+     "moves": [
+      {
+       "type": "walk",
+       "from_s": 0.9,
+       "to_s": 2.6,
+       "to": [
+        -4.2,
+        0.3
+       ],
+       "backwards": true
       }
      ]
     },
     {
      "who": "alien",
      "id": "al1",
+     "height_m": 1.7,
      "at": [
-      1.2,
+      1.4,
       0
      ],
-     "height_m": 1.7,
      "actions": [
       {
        "at_s": 0,
        "do": "stand",
+       "face_toward": "hero"
+      },
+      {
+       "at_s": 0.7,
+       "do": "threaten",
        "face_toward": "hero"
       }
      ],
@@ -2418,10 +4479,10 @@
       {
        "type": "walk",
        "from_s": 1.0,
-       "to_s": 2.4,
+       "to_s": 2.6,
        "to": [
-        -0.2,
-        0
+        -1.4,
+        0.1
        ]
       }
      ]
@@ -2429,15 +4490,20 @@
     {
      "who": "alien",
      "id": "al2",
+     "height_m": 1.7,
      "at": [
       2.6,
-      -1.5
+      -1.3
      ],
-     "height_m": 1.7,
      "actions": [
       {
        "at_s": 0,
        "do": "stand",
+       "face_toward": "hero"
+      },
+      {
+       "at_s": 0.8,
+       "do": "threaten",
        "face_toward": "hero"
       }
      ],
@@ -2454,11 +4520,53 @@
      "moves": [
       {
        "type": "walk",
-       "from_s": 1.0,
-       "to_s": 2.4,
+       "from_s": 1.1,
+       "to_s": 2.6,
        "to": [
-        0.9,
+        -0.9,
         -1.0
+       ]
+      }
+     ]
+    },
+    {
+     "who": "alien",
+     "id": "al3",
+     "height_m": 1.7,
+     "at": [
+      2.7,
+      1.4
+     ],
+     "actions": [
+      {
+       "at_s": 0,
+       "do": "stand",
+       "face_toward": "hero"
+      },
+      {
+       "at_s": 0.9,
+       "do": "threaten",
+       "face_toward": "hero"
+      }
+     ],
+     "expressions": [
+      {
+       "at_s": 0,
+       "face": "grin"
+      },
+      {
+       "at_s": 0.8,
+       "face": "angry"
+      }
+     ],
+     "moves": [
+      {
+       "type": "walk",
+       "from_s": 1.1,
+       "to_s": 2.6,
+       "to": [
+        -0.9,
+        1.4
        ]
       }
      ]
@@ -2471,25 +4579,27 @@
       "on": [
        "hero",
        "al1",
-       "al2"
+       "al2",
+       "al3"
       ],
       "az_deg": 12,
       "el_deg": 6,
-      "fill": 0.8
+      "fill": 0.85
      },
      "fov": 48
     },
     {
-     "at_s": 2.4,
+     "at_s": 2.6,
      "frame": {
       "on": [
        "hero",
        "al1",
-       "al2"
+       "al2",
+       "al3"
       ],
       "az_deg": 12,
       "el_deg": 6,
-      "fill": 0.8
+      "fill": 0.85
      },
      "fov": 48
     }
@@ -2497,15 +4607,147 @@
   },
   {
    "id": "26_aliens_attack",
-   "duration_s": 2.6,
+   "duration_s": 2.8,
    "env": "alien_world",
+   "bodies": [
+    {
+     "kind": "ringed",
+     "dir": [
+      -0.5,
+      0.42,
+      -1
+     ],
+     "radius_m": 70,
+     "dist_m": 520,
+     "color": "#d9a6e8",
+     "color2": "#fff0ff"
+    },
+    {
+     "kind": "moon",
+     "dir": [
+      0.55,
+      0.5,
+      -1
+     ],
+     "radius_m": 22,
+     "dist_m": 520,
+     "color": "#e6d7ee"
+    }
+   ],
+   "river": {
+    "points": [
+     [
+      -14,
+      -10
+     ],
+     [
+      -6,
+      -6
+     ],
+     [
+      2,
+      -9
+     ],
+     [
+      10,
+      -6
+     ],
+     [
+      20,
+      -12
+     ]
+    ],
+    "width_m": 2.2,
+    "color": "#59d0ff"
+   },
    "objects": [
     {
-     "id": "rocks",
-     "asset": "rock_formation",
+     "id": "mount1",
+     "asset": "alien_mountain",
      "at": [
-      -6,
-      -9
+      -26,
+      -42
+     ]
+    },
+    {
+     "id": "mount2",
+     "asset": "alien_mountain",
+     "at": [
+      22,
+      -50
+     ],
+     "turn_deg": 90
+    },
+    {
+     "id": "mount3",
+     "asset": "alien_mountain",
+     "at": [
+      -4,
+      -64
+     ]
+    },
+    {
+     "id": "sc0",
+     "asset": "alien_flower",
+     "at": [
+      -8.546588281237902,
+      -6.075409928331235
+     ]
+    },
+    {
+     "id": "sc1",
+     "asset": "alien_tree",
+     "at": [
+      7.25266179730172,
+      -8.590366154256785
+     ]
+    },
+    {
+     "id": "sc2",
+     "asset": "alien_mushroom",
+     "at": [
+      4.1703705361015055,
+      3.49488196985817
+     ]
+    },
+    {
+     "id": "sc3",
+     "asset": "alien_mushroom",
+     "at": [
+      -5.0017429216748415,
+      2.4187952637778256
+     ]
+    },
+    {
+     "id": "sc4",
+     "asset": "alien_tree",
+     "at": [
+      -10.716263129855786,
+      -3.0817324744552064
+     ]
+    },
+    {
+     "id": "sc5",
+     "asset": "alien_flower",
+     "at": [
+      10.906264862276286,
+      -2.0100346122216446
+     ]
+    },
+    {
+     "id": "sc6",
+     "asset": "alien_plant",
+     "at": [
+      -3.6155383155146357,
+      -11.338957452734057
+     ]
+    },
+    {
+     "id": "sc7",
+     "asset": "alien_flower",
+     "at": [
+      2.1791312468811794,
+      -14.53163408102059
      ]
     }
    ],
@@ -2519,40 +4761,52 @@
      "actions": [
       {
        "at_s": 0,
-       "do": "stand"
+       "do": "stand",
+       "face_toward": "al1"
       },
       {
-       "at_s": 0.4,
+       "at_s": 0.3,
        "do": "surprised"
       },
       {
-       "at_s": 1.5,
-       "do": "fall",
-       "dur_s": 1.0
+       "at_s": 0.8,
+       "do": "stand"
       }
      ],
      "expressions": [
       {
        "at_s": 0,
        "face": "worried"
-      },
+      }
+     ],
+     "moves": [
       {
-       "at_s": 1.5,
-       "face": "dizzy"
+       "type": "walk",
+       "from_s": 0.9,
+       "to_s": 2.8,
+       "to": [
+        -14,
+        -1
+       ]
       }
      ]
     },
     {
      "who": "alien",
      "id": "al1",
+     "height_m": 1.7,
      "at": [
-      3.2,
+      3.0,
       0.3
      ],
-     "height_m": 1.7,
      "actions": [
       {
        "at_s": 0,
+       "do": "threaten",
+       "face_toward": "hero"
+      },
+      {
+       "at_s": 0.7,
        "do": "stand"
       }
      ],
@@ -2565,11 +4819,11 @@
      "moves": [
       {
        "type": "walk",
-       "from_s": 0.2,
-       "to_s": 1.7,
+       "from_s": 0.6,
+       "to_s": 2.8,
        "to": [
-        -1.0,
-        0.1
+        -11,
+        -0.7
        ]
       }
      ]
@@ -2577,14 +4831,19 @@
     {
      "who": "alien",
      "id": "al2",
-     "at": [
-      3.8,
-      -1.0
-     ],
      "height_m": 1.7,
+     "at": [
+      4.0,
+      -1.2
+     ],
      "actions": [
       {
        "at_s": 0,
+       "do": "threaten",
+       "face_toward": "hero"
+      },
+      {
+       "at_s": 0.8,
        "do": "stand"
       }
      ],
@@ -2597,14 +4856,85 @@
      "moves": [
       {
        "type": "walk",
-       "from_s": 0.3,
-       "to_s": 1.8,
+       "from_s": 0.7,
+       "to_s": 2.8,
        "to": [
-        -0.6,
-        -0.9
+        -10.5,
+        -1.9
        ]
       }
      ]
+    },
+    {
+     "who": "alien",
+     "id": "al3",
+     "height_m": 1.7,
+     "at": [
+      4.2,
+      1.4
+     ],
+     "actions": [
+      {
+       "at_s": 0,
+       "do": "threaten",
+       "face_toward": "hero"
+      },
+      {
+       "at_s": 0.9,
+       "do": "stand"
+      }
+     ],
+     "expressions": [
+      {
+       "at_s": 0,
+       "face": "angry"
+      }
+     ],
+     "moves": [
+      {
+       "type": "walk",
+       "from_s": 0.8,
+       "to_s": 2.8,
+       "to": [
+        -10.8,
+        0.5
+       ]
+      }
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "type": "puff",
+     "at_s": 0.9,
+     "dur_s": 0.9,
+     "on": "al1",
+     "size_m": 1.6,
+     "lift_m": 0.4
+    },
+    {
+     "type": "puff",
+     "at_s": 1.2,
+     "dur_s": 0.9,
+     "on": "al1",
+     "size_m": 1.6,
+     "lift_m": 0.4
+    },
+    {
+     "type": "puff",
+     "at_s": 1.5,
+     "dur_s": 0.9,
+     "on": "al1",
+     "size_m": 1.6,
+     "lift_m": 0.4
+    },
+    {
+     "type": "puff",
+     "at_s": 1.7999999999999998,
+     "dur_s": 0.9,
+     "on": "al1",
+     "size_m": 1.6,
+     "lift_m": 0.4
     }
    ],
    "camera": [
@@ -2614,43 +4944,185 @@
       "on": [
        "hero",
        "al1",
-       "al2"
+       "al2",
+       "al3"
       ],
-      "az_deg": 15,
+      "az_deg": 80,
       "el_deg": 6,
-      "fill": 0.8
+      "fill": 0.9
      },
-     "fov": 48
+     "fov": 52
     },
     {
-     "at_s": 2.6,
+     "at_s": 2.8,
      "frame": {
       "on": [
        "hero",
        "al1",
-       "al2"
+       "al2",
+       "al3"
       ],
-      "az_deg": 15,
+      "az_deg": 80,
       "el_deg": 6,
-      "fill": 0.8
+      "fill": 0.9
      },
-     "fov": 48
+     "fov": 52
     }
    ]
   },
   {
    "id": "27_run_for_rocket",
-   "duration_s": 2.6,
+   "duration_s": 2.8,
    "env": "alien_world",
+   "bodies": [
+    {
+     "kind": "ringed",
+     "dir": [
+      -0.5,
+      0.42,
+      -1
+     ],
+     "radius_m": 70,
+     "dist_m": 520,
+     "color": "#d9a6e8",
+     "color2": "#fff0ff"
+    },
+    {
+     "kind": "moon",
+     "dir": [
+      0.55,
+      0.5,
+      -1
+     ],
+     "radius_m": 22,
+     "dist_m": 520,
+     "color": "#e6d7ee"
+    }
+   ],
+   "river": {
+    "points": [
+     [
+      -14,
+      -10
+     ],
+     [
+      -6,
+      -6
+     ],
+     [
+      2,
+      -9
+     ],
+     [
+      10,
+      -6
+     ],
+     [
+      20,
+      -12
+     ]
+    ],
+    "width_m": 2.2,
+    "color": "#59d0ff"
+   },
    "objects": [
+    {
+     "id": "mount1",
+     "asset": "alien_mountain",
+     "at": [
+      -26,
+      -42
+     ]
+    },
+    {
+     "id": "mount2",
+     "asset": "alien_mountain",
+     "at": [
+      22,
+      -50
+     ],
+     "turn_deg": 90
+    },
+    {
+     "id": "mount3",
+     "asset": "alien_mountain",
+     "at": [
+      -4,
+      -64
+     ]
+    },
+    {
+     "id": "sc0",
+     "asset": "alien_flower",
+     "at": [
+      -8.073985284369957,
+      -7.253376137209916
+     ]
+    },
+    {
+     "id": "sc1",
+     "asset": "alien_tree",
+     "at": [
+      7.2770788250289105,
+      -8.266876300027317
+     ]
+    },
+    {
+     "id": "sc4",
+     "asset": "alien_tree",
+     "at": [
+      -11.987129891837753,
+      -2.9944358398955835
+     ]
+    },
+    {
+     "id": "sc5",
+     "asset": "alien_flower",
+     "at": [
+      11.796595940063876,
+      -2.8383707056339977
+     ]
+    },
+    {
+     "id": "sc6",
+     "asset": "alien_plant",
+     "at": [
+      -2.8914590636434276,
+      -11.766699914632763
+     ]
+    },
+    {
+     "id": "sc7",
+     "asset": "alien_flower",
+     "at": [
+      2.081791530969623,
+      -14.241960791209129
+     ]
+    },
     {
      "id": "rocket",
      "asset": "rocket",
      "at": [
       0,
-      -16
+      -17
      ],
-     "solid_radius_m": 1.3
+     "solid_radius_m": 1.3,
+     "legs": {
+      "deploy_s": -5
+     },
+     "hatch": {
+      "height_m": 3.4,
+      "azimuth_deg": 90,
+      "open_s": -2
+     }
+    },
+    {
+     "id": "ladder",
+     "asset": "rocket_ladder",
+     "at": [
+      1.45,
+      -17
+     ]
     }
    ],
    "cast": [
@@ -2658,7 +5130,7 @@
      "who": "hero",
      "at": [
       0,
-      6
+      7
      ],
      "actions": [
       {
@@ -2676,10 +5148,10 @@
       {
        "type": "walk",
        "from_s": 0,
-       "to_s": 2.6,
+       "to_s": 2.8,
        "to": [
         0,
-        -9
+        -13
        ]
       }
      ]
@@ -2687,11 +5159,11 @@
     {
      "who": "alien",
      "id": "al1",
+     "height_m": 1.7,
      "at": [
       -1.5,
-      11
+      14
      ],
-     "height_m": 1.7,
      "actions": [
       {
        "at_s": 0,
@@ -2708,10 +5180,10 @@
       {
        "type": "walk",
        "from_s": 0,
-       "to_s": 2.6,
+       "to_s": 2.8,
        "to": [
         -1.2,
-        -5
+        -6
        ]
       }
      ]
@@ -2719,11 +5191,11 @@
     {
      "who": "alien",
      "id": "al2",
+     "height_m": 1.7,
      "at": [
       1.5,
-      12
+      15
      ],
-     "height_m": 1.7,
      "actions": [
       {
        "at_s": 0,
@@ -2740,10 +5212,42 @@
       {
        "type": "walk",
        "from_s": 0,
-       "to_s": 2.6,
+       "to_s": 2.8,
        "to": [
         1.2,
-        -4.5
+        -5.5
+       ]
+      }
+     ]
+    },
+    {
+     "who": "alien",
+     "id": "al3",
+     "height_m": 1.7,
+     "at": [
+      0,
+      16
+     ],
+     "actions": [
+      {
+       "at_s": 0,
+       "do": "stand"
+      }
+     ],
+     "expressions": [
+      {
+       "at_s": 0,
+       "face": "angry"
+      }
+     ],
+     "moves": [
+      {
+       "type": "walk",
+       "from_s": 0,
+       "to_s": 2.8,
+       "to": [
+        0,
+        -5
        ]
       }
      ]
@@ -2756,7 +5260,8 @@
       "on": [
        "hero",
        "al1",
-       "al2"
+       "al2",
+       "al3"
       ],
       "az_deg": 75,
       "el_deg": 8,
@@ -2765,12 +5270,13 @@
      "fov": 52
     },
     {
-     "at_s": 2.6,
+     "at_s": 2.8,
      "frame": {
       "on": [
        "hero",
        "al1",
-       "al2"
+       "al2",
+       "al3"
       ],
       "az_deg": 75,
       "el_deg": 8,
@@ -2782,9 +5288,149 @@
   },
   {
    "id": "28_reach_rocket",
-   "duration_s": 2.2,
+   "duration_s": 2.8,
    "env": "alien_world",
+   "bodies": [
+    {
+     "kind": "ringed",
+     "dir": [
+      -0.5,
+      0.42,
+      -1
+     ],
+     "radius_m": 70,
+     "dist_m": 520,
+     "color": "#d9a6e8",
+     "color2": "#fff0ff"
+    },
+    {
+     "kind": "moon",
+     "dir": [
+      0.55,
+      0.5,
+      -1
+     ],
+     "radius_m": 22,
+     "dist_m": 520,
+     "color": "#e6d7ee"
+    }
+   ],
+   "river": {
+    "points": [
+     [
+      -14,
+      -10
+     ],
+     [
+      -6,
+      -6
+     ],
+     [
+      2,
+      -9
+     ],
+     [
+      10,
+      -6
+     ],
+     [
+      20,
+      -12
+     ]
+    ],
+    "width_m": 2.2,
+    "color": "#59d0ff"
+   },
    "objects": [
+    {
+     "id": "mount1",
+     "asset": "alien_mountain",
+     "at": [
+      -26,
+      -42
+     ]
+    },
+    {
+     "id": "mount2",
+     "asset": "alien_mountain",
+     "at": [
+      22,
+      -50
+     ],
+     "turn_deg": 90
+    },
+    {
+     "id": "mount3",
+     "asset": "alien_mountain",
+     "at": [
+      -4,
+      -64
+     ]
+    },
+    {
+     "id": "sc0",
+     "asset": "alien_flower",
+     "at": [
+      -7.857194810620173,
+      -7.142221890649771
+     ]
+    },
+    {
+     "id": "sc1",
+     "asset": "alien_tree",
+     "at": [
+      8.156182602268942,
+      -9.587803535720997
+     ]
+    },
+    {
+     "id": "sc2",
+     "asset": "alien_mushroom",
+     "at": [
+      5.62664250271464,
+      4.647177745066891
+     ]
+    },
+    {
+     "id": "sc3",
+     "asset": "alien_mushroom",
+     "at": [
+      -5.693054932197649,
+      2.3204591130376393
+     ]
+    },
+    {
+     "id": "sc4",
+     "asset": "alien_tree",
+     "at": [
+      -10.95866128072015,
+      -3.344454376755814
+     ]
+    },
+    {
+     "id": "sc5",
+     "asset": "alien_flower",
+     "at": [
+      10.499993353372801,
+      -1.0943661817081767
+     ]
+    },
+    {
+     "id": "sc6",
+     "asset": "alien_plant",
+     "at": [
+      -2.00688601492109,
+      -12.910887235099134
+     ]
+    },
+    {
+     "id": "sc7",
+     "asset": "alien_flower",
+     "at": [
+      3.7203220745725822,
+      -13.79361877806363
+     ]
+    },
     {
      "id": "rocket",
      "asset": "rocket",
@@ -2792,14 +5438,22 @@
       0,
       -3
      ],
-     "solid_radius_m": 1.3
+     "solid_radius_m": 1.3,
+     "legs": {
+      "deploy_s": -5
+     },
+     "hatch": {
+      "height_m": 3.4,
+      "azimuth_deg": 90,
+      "open_s": 0.3
+     }
     },
     {
      "id": "ladder",
      "asset": "rocket_ladder",
      "at": [
-      1.5,
-      -2.2
+      1.45,
+      -3
      ]
     }
    ],
@@ -2807,14 +5461,26 @@
     {
      "who": "hero",
      "at": [
-      3,
-      5
+      5,
+      3
      ],
-     "until_s": 1.7,
+     "until_s": 2.7,
      "actions": [
       {
        "at_s": 0,
        "do": "stand"
+      },
+      {
+       "at_s": 1.0,
+       "do": "stand",
+       "face_toward": "ladder"
+      },
+      {
+       "at_s": 1.25,
+       "do": "climb",
+       "to_s": 2.5,
+       "up_m": 3.2,
+       "face_toward": "rocket"
       }
      ],
      "expressions": [
@@ -2827,10 +5493,10 @@
       {
        "type": "walk",
        "from_s": 0,
-       "to_s": 1.5,
+       "to_s": 1.25,
        "to": [
-        1.5,
-        -0.9
+        1.95,
+        -3
        ]
       }
      ]
@@ -2838,15 +5504,20 @@
     {
      "who": "alien",
      "id": "al1",
-     "at": [
-      2,
-      10
-     ],
      "height_m": 1.7,
+     "at": [
+      6,
+      9
+     ],
      "actions": [
       {
        "at_s": 0,
        "do": "stand"
+      },
+      {
+       "at_s": 1.6,
+       "do": "threaten",
+       "face_toward": "ladder"
       }
      ],
      "expressions": [
@@ -2859,10 +5530,47 @@
       {
        "type": "walk",
        "from_s": 0,
-       "to_s": 2.2,
+       "to_s": 1.6,
        "to": [
-        1.5,
-        1.5
+        2.6,
+        -1.6
+       ]
+      }
+     ]
+    },
+    {
+     "who": "alien",
+     "id": "al2",
+     "height_m": 1.7,
+     "at": [
+      8,
+      10
+     ],
+     "actions": [
+      {
+       "at_s": 0,
+       "do": "stand"
+      },
+      {
+       "at_s": 1.8,
+       "do": "threaten",
+       "face_toward": "ladder"
+      }
+     ],
+     "expressions": [
+      {
+       "at_s": 0,
+       "face": "angry"
+      }
+     ],
+     "moves": [
+      {
+       "type": "walk",
+       "from_s": 0,
+       "to_s": 1.8,
+       "to": [
+        3.3,
+        -2.8
        ]
       }
      ]
@@ -2877,22 +5585,22 @@
        "ladder",
        "al1"
       ],
-      "az_deg": 20,
-      "el_deg": 6,
+      "az_deg": 55,
+      "el_deg": 8,
       "fill": 0.8
      },
      "fov": 48
     },
     {
-     "at_s": 2.2,
+     "at_s": 2.8,
      "frame": {
       "on": [
        "hero",
        "ladder",
        "al1"
       ],
-      "az_deg": 20,
-      "el_deg": 6,
+      "az_deg": 55,
+      "el_deg": 8,
       "fill": 0.8
      },
      "fov": 48
@@ -2901,9 +5609,149 @@
   },
   {
    "id": "29_escape_takeoff",
-   "duration_s": 2.6,
+   "duration_s": 3.0,
    "env": "alien_world",
+   "bodies": [
+    {
+     "kind": "ringed",
+     "dir": [
+      -0.5,
+      0.42,
+      -1
+     ],
+     "radius_m": 70,
+     "dist_m": 520,
+     "color": "#d9a6e8",
+     "color2": "#fff0ff"
+    },
+    {
+     "kind": "moon",
+     "dir": [
+      0.55,
+      0.5,
+      -1
+     ],
+     "radius_m": 22,
+     "dist_m": 520,
+     "color": "#e6d7ee"
+    }
+   ],
+   "river": {
+    "points": [
+     [
+      -14,
+      -10
+     ],
+     [
+      -6,
+      -6
+     ],
+     [
+      2,
+      -9
+     ],
+     [
+      10,
+      -6
+     ],
+     [
+      20,
+      -12
+     ]
+    ],
+    "width_m": 2.2,
+    "color": "#59d0ff"
+   },
    "objects": [
+    {
+     "id": "mount1",
+     "asset": "alien_mountain",
+     "at": [
+      -26,
+      -42
+     ]
+    },
+    {
+     "id": "mount2",
+     "asset": "alien_mountain",
+     "at": [
+      22,
+      -50
+     ],
+     "turn_deg": 90
+    },
+    {
+     "id": "mount3",
+     "asset": "alien_mountain",
+     "at": [
+      -4,
+      -64
+     ]
+    },
+    {
+     "id": "sc0",
+     "asset": "alien_flower",
+     "at": [
+      -8.095240892980362,
+      -6.880455227839008
+     ]
+    },
+    {
+     "id": "sc1",
+     "asset": "alien_tree",
+     "at": [
+      8.848421168047459,
+      -9.068699859800454
+     ]
+    },
+    {
+     "id": "sc2",
+     "asset": "alien_mushroom",
+     "at": [
+      5.015682546124542,
+      4.174769657699794
+     ]
+    },
+    {
+     "id": "sc3",
+     "asset": "alien_mushroom",
+     "at": [
+      -6.630679312290247,
+      3.023817278083611
+     ]
+    },
+    {
+     "id": "sc4",
+     "asset": "alien_tree",
+     "at": [
+      -10.740234559566396,
+      -2.4140462549600947
+     ]
+    },
+    {
+     "id": "sc5",
+     "asset": "alien_flower",
+     "at": [
+      10.188246912458437,
+      -2.393197474750949
+     ]
+    },
+    {
+     "id": "sc6",
+     "asset": "alien_plant",
+     "at": [
+      -3.8186589250163214,
+      -11.380710931265645
+     ]
+    },
+    {
+     "id": "sc7",
+     "asset": "alien_flower",
+     "at": [
+      3.386876965082478,
+      -14.916239327260309
+     ]
+    },
     {
      "id": "rocket",
      "asset": "rocket",
@@ -2911,9 +5759,12 @@
       0,
       -3
      ],
+     "legs": {
+      "deploy_s": -5
+     },
      "thrust": {
       "from_s": 0.2,
-      "to_s": 2.6
+      "to_s": 3.0
      },
      "moves": [
       {
@@ -2925,10 +5776,10 @@
       {
        "type": "fly",
        "from_s": 0.6,
-       "to_s": 2.6,
+       "to_s": 3.0,
        "to": [
         0,
-        22,
+        24,
         -3
        ]
       }
@@ -2939,15 +5790,16 @@
     {
      "who": "alien",
      "id": "al1",
+     "height_m": 1.7,
      "at": [
       3.5,
       3
      ],
-     "height_m": 1.7,
      "actions": [
       {
        "at_s": 0,
-       "do": "stand"
+       "do": "threaten",
+       "face_toward": "rocket"
       },
       {
        "at_s": 0.9,
@@ -2969,15 +5821,16 @@
     {
      "who": "alien",
      "id": "al2",
+     "height_m": 1.7,
      "at": [
       -3.5,
       3.5
      ],
-     "height_m": 1.7,
      "actions": [
       {
        "at_s": 0,
-       "do": "stand"
+       "do": "threaten",
+       "face_toward": "rocket"
       },
       {
        "at_s": 1.1,
@@ -2995,6 +5848,79 @@
        "face": "dizzy"
       }
      ]
+    },
+    {
+     "who": "alien",
+     "id": "al3",
+     "height_m": 1.7,
+     "at": [
+      0.5,
+      5.5
+     ],
+     "actions": [
+      {
+       "at_s": 0,
+       "do": "threaten",
+       "face_toward": "rocket"
+      },
+      {
+       "at_s": 1.0,
+       "do": "fall",
+       "dur_s": 0.9
+      }
+     ],
+     "expressions": [
+      {
+       "at_s": 0,
+       "face": "angry"
+      },
+      {
+       "at_s": 1.0,
+       "face": "dizzy"
+      }
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "type": "puff",
+     "at_s": 0.5,
+     "dur_s": 1.3,
+     "on": "rocket",
+     "size_m": 4.5,
+     "lift_m": 0.8
+    },
+    {
+     "type": "puff",
+     "at_s": 0.75,
+     "dur_s": 1.3,
+     "on": "rocket",
+     "size_m": 4.5,
+     "lift_m": 0.8
+    },
+    {
+     "type": "puff",
+     "at_s": 1.0,
+     "dur_s": 1.3,
+     "on": "rocket",
+     "size_m": 4.5,
+     "lift_m": 0.8
+    },
+    {
+     "type": "puff",
+     "at_s": 1.25,
+     "dur_s": 1.3,
+     "on": "rocket",
+     "size_m": 4.5,
+     "lift_m": 0.8
+    },
+    {
+     "type": "puff",
+     "at_s": 1.5,
+     "dur_s": 1.3,
+     "on": "rocket",
+     "size_m": 4.5,
+     "lift_m": 0.8
     }
    ],
    "kicks": [
@@ -3014,16 +5940,17 @@
       "on": [
        "rocket",
        "al1",
-       "al2"
+       "al2",
+       "al3"
       ],
       "az_deg": 12,
       "el_deg": 6,
-      "fill": 0.8
+      "fill": 0.85
      },
      "fov": 48
     },
     {
-     "at_s": 1.9,
+     "at_s": 2.1,
      "frame": {
       "on": [
        "rocket"
@@ -3035,7 +5962,7 @@
      "fov": 48
     },
     {
-     "at_s": 2.6,
+     "at_s": 3.0,
      "frame": {
       "on": [
        "rocket"
@@ -3050,7 +5977,7 @@
   },
   {
    "id": "30_leave_planet",
-   "duration_s": 2.4,
+   "duration_s": 2.6,
    "env": "space",
    "bodies": [
     {
@@ -3063,6 +5990,25 @@
      "radius_m": 160,
      "color": "#c58ad8",
      "color2": "#f1d6ff"
+    },
+    {
+     "kind": "moon",
+     "dir": [
+      0.3,
+      -0.2,
+      -1
+     ],
+     "radius_m": 20,
+     "color": "#e6d7ee"
+    },
+    {
+     "kind": "sun",
+     "dir": [
+      0.7,
+      0.4,
+      -1
+     ],
+     "radius_m": 50
     }
    ],
    "objects": [
@@ -3075,14 +6021,14 @@
      ],
      "thrust": {
       "from_s": 0,
-      "to_s": 2.4,
+      "to_s": 2.6,
       "smoke": false
      },
      "moves": [
       {
        "type": "fly",
        "from_s": 0,
-       "to_s": 2.4,
+       "to_s": 2.6,
        "to": [
         8,
         5,
@@ -3106,7 +6052,7 @@
      "fov": 48
     },
     {
-     "at_s": 2.4,
+     "at_s": 2.6,
      "frame": {
       "on": [
        "rocket"

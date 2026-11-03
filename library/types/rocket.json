@@ -17,12 +17,14 @@
     "smoke puffs stay where the rocket was when each puff was born, so a rising rocket leaves a trail",
     "shake move before liftoff, camera kicks at ignition",
     "flame length is half the rocket height unless the scene says more",
-    "the camera can frame the rocket automatically while it flies"
+    "the camera can frame the rocket automatically while it flies",
+    "hatch: a door in the side opens and closes at the times the scene gives (orange rim, dark opening); a climber disappears into it",
+    "landing legs: four struts unfold at deploy time and reach the ground"
   ],
   "not_done_yet": [
     "real fluid smoke (Blender particles) - the trail is card puffs",
     "stage separation, parachutes, landing legs",
-    "rocket parts opening (hatch): characters hide into it instead"
+    "hatch is added by code to any rocket model; it is not cut out of the generated model"
   ],
   "how_numbers_are_chosen": "hand-written default ratios today; real rockets would take sizes from a source."
 }

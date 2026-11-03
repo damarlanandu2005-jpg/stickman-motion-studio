@@ -31477,6 +31477,91 @@ function makeProp(p) {
   }
   return { root, height, radius, update };
 }
+function makeSkyline(o) {
+  const g = new Group(), rand = rng(o.seed ?? 3);
+  for (let i = 0; i < o.count; i++) {
+    const a = i / o.count * Math.PI * 2 + (rand() - 0.5) * 0.12, h = o.min_m + rand() * (o.max_m - o.min_m), w = h * (1.2 + rand() * 1.4);
+    const geo = new ConeGeometry(w / 2, h, 5 + Math.floor(rand() * 3), 1);
+    geo.translate(0, h / 2 - 0.5, 0);
+    const col = new Color(o.color).lerp(new Color(o.color2 ?? o.color), rand());
+    const m = new Mesh(geo, twoTone(new MeshLambertMaterial({ color: col })));
+    const d = o.dist_m * (0.9 + rand() * 0.25);
+    m.position.set(Math.sin(a) * d, 0, Math.cos(a) * d);
+    m.rotation.y = rand() * 6;
+    m.receiveShadow = false;
+    g.add(m);
+  }
+  return g;
+}
+function makeRiver(points, width, color2) {
+  const pos = [], idx = [];
+  const P2 = points.map((p) => new Vector2(p[0], p[1])), N = 12 * (P2.length - 1);
+  const curve = new SplineCurve(P2), pts = curve.getPoints(N);
+  pts.forEach((p, i) => {
+    const q = pts[Math.min(i + 1, pts.length - 1)], r = pts[Math.max(i - 1, 0)], t = new Vector2(q.x - r.x, q.y - r.y).normalize(), n = new Vector2(-t.y, t.x);
+    const w = width * (0.85 + 0.25 * Math.sin(i * 0.7)) / 2;
+    pos.push(p.x + n.x * w, 0.02, p.y + n.y * w, p.x - n.x * w, 0.02, p.y - n.y * w);
+    if (i < pts.length - 1) {
+      const a = i * 2;
+      idx.push(a, a + 1, a + 2, a + 1, a + 3, a + 2);
+    }
+  });
+  const geo = new BufferGeometry();
+  geo.setAttribute("position", new Float32BufferAttribute(pos, 3));
+  geo.setIndex(idx);
+  const m = new Mesh(geo, new MeshBasicMaterial({ color: color2, toneMapped: false, side: DoubleSide, fog: true }));
+  m.layers.set(NOINK);
+  m.renderOrder = 1;
+  return m;
+}
+function makeHatch(radius, height_m, azimuth_deg) {
+  const group = new Group(), az = azimuth_deg * Math.PI / 180;
+  group.position.set(Math.sin(az) * radius, height_m, Math.cos(az) * radius);
+  group.rotation.y = az;
+  const hole = new Mesh(new CylinderGeometry(0.42, 0.42, 0.08, 20).rotateX(Math.PI / 2), new MeshBasicMaterial({ color: "#14131c", toneMapped: false }));
+  hole.scale.set(0.75, 1.25, 1);
+  hole.position.z = 0.02;
+  hole.layers.set(NOINK);
+  group.add(hole);
+  const rim = new Mesh(new TorusGeometry(0.4, 0.045, 8, 24), lam("#e07a2d"));
+  rim.scale.set(0.78, 1.28, 1);
+  rim.position.z = 0.04;
+  group.add(rim);
+  const door = new Group();
+  door.position.set(-0.34, 0, 0.07);
+  group.add(door);
+  const panel = new Mesh(new RoundedBoxGeometry(0.7, 1.12, 0.07, 3, 0.03), lam("#eef0f5"));
+  panel.position.set(0.34, 0, 0);
+  panel.castShadow = true;
+  door.add(panel);
+  const knob = new Mesh(new SphereGeometry(0.05, 10, 8), lam("#e07a2d"));
+  knob.position.set(0.55, 0, 0.06);
+  door.add(knob);
+  return { group, door };
+}
+function makeLegs(height_m, bodyR) {
+  const group = new Group(), H = height_m * 0.2, legs = [];
+  for (let i = 0; i < 4; i++) {
+    const az = i / 4 * Math.PI * 2 + Math.PI / 4, pivot = new Group();
+    pivot.position.set(Math.sin(az) * bodyR, H, Math.cos(az) * bodyR);
+    pivot.rotation.y = az;
+    const arm = new Group();
+    pivot.add(arm);
+    const L = H / Math.cos(0.6);
+    const strut = new Mesh(new CylinderGeometry(0.07, 0.09, L, 8).translate(0, -L / 2, 0), lam("#7d818c"));
+    strut.castShadow = true;
+    arm.add(strut);
+    const pad = new Mesh(new CylinderGeometry(0.28, 0.32, 0.08, 14), lam("#4a4f5e"));
+    pad.position.y = -L;
+    arm.add(pad);
+    group.add(pivot);
+    legs.push(arm);
+  }
+  return { group, unfold: (k) => legs.forEach((a) => {
+    a.rotation.x = 0.6 * k + 0.04;
+    a.scale.y = 0.55 + 0.45 * k;
+  }) };
+}
 
 // src/motion.ts
 var clamp01 = (x) => Math.max(0, Math.min(1, x));
@@ -31645,6 +31730,70 @@ function actionPose(a, ta, c) {
         headX: -0.1 * Math.sin(t * 0.8)
       };
       return { pose: mixPose(idle(c.time), o, sm(ta / 0.6)), lock: false, lift: (a.height_m ?? 0.9) * sm(ta / 1.2) };
+    }
+    case "kneel": {
+      const o = {
+        ...idle(c.time),
+        LHip: 1.45,
+        LKnee: 1.5,
+        LAnk: 0.3,
+        RHip: -0.25,
+        RKnee: 2.5,
+        RAnk: 0.6,
+        spineX: 0.4,
+        headX: -0.35,
+        LShX: 1,
+        LEl: 0.4,
+        LAbd: 0.2,
+        RShX: 0.35,
+        REl: 0.7,
+        spineY: 0.12 * Math.sin(ta * 1.5)
+      };
+      return { pose: mixPose(idle(c.time), o, sm(ta / 0.6)), lock: true, lift: 0 };
+    }
+    case "thumbsup": {
+      const base = a.chair ? KEY.seated : idle(c.time);
+      const o = { ...base, RShX: 1, RAbd: 0.35, REl: 1.7, headX: 0.12 * Math.sin(ta * 9) * Math.exp(-ta * 1.2), spineX: (base.spineX ?? 0) - 0.03 };
+      return { pose: mixPose(idle(c.time), o, sm(ta / 0.3)), lock: true, lift: a.chair ? -0.35 * sm(ta / 0.3) : 0 };
+    }
+    case "operate": {
+      const k = sm(ta / 0.6), sh = a.shake ?? 0, o = {
+        ...KEY.seated,
+        LShX: 1.25 + 0.15 * Math.sin(ta * 3.1) + 0.1 * sh * Math.sin(ta * 31),
+        RShX: 1.25 + 0.15 * Math.sin(ta * 2.3 + 1) - 0.1 * sh * Math.sin(ta * 29),
+        LEl: 0.6,
+        REl: 0.6,
+        LAbd: 0.2,
+        RAbd: 0.2,
+        spineX: 0.18 + 0.1 * sh,
+        headX: -0.1,
+        roll: 0.08 * sh * Math.sin(ta * 23),
+        pitch: 0.05 * sh * Math.sin(ta * 19 + 1),
+        headZ: 0.1 * sh * Math.sin(ta * 17)
+      };
+      return { pose: mixPose(idle(c.time), o, k), lock: true, lift: -0.35 * k };
+    }
+    case "climb": {
+      const d = Math.max(0.1, (a.to_s ?? a.at_s + 1) - a.at_s), u = clamp01(ta / d), end = a.up_m ?? 2, start = a.start_m ?? 0, up = Math.abs(end - start), dirn = end >= start ? 1 : -1, ph = dirn * u * (up / 0.3) * Math.PI;
+      const o = { ...idle(c.time), spineX: 0.12, headX: -0.25, pitch: 0.08 };
+      for (const [side, p0] of [["L", ph], ["R", ph + Math.PI]]) {
+        const m = Math.sin(p0), n = Math.max(0, Math.cos(p0));
+        o[side + "ShX"] = 2.45 + 0.35 * m;
+        o[side + "El"] = 0.5 + 0.5 * (1 - m) * 0.5;
+        o[side + "Abd"] = 0.15;
+        o[side + "Hip"] = 0.75 + 0.55 * Math.max(0, -m);
+        o[side + "Knee"] = 1 + 0.7 * n;
+        o[side + "Ank"] = 0.3;
+      }
+      return { pose: mixPose(idle(c.time), o, sm(ta / 0.3)), lock: false, lift: start + (end - start) * sm(u) };
+    }
+    case "peek": {
+      const o = { ...KEY.crouch, LShX: 0.2, RShX: 0.2, LEl: 0.9, REl: 0.9, headX: 0.25, headY: 0.3 * Math.sin(ta * 1.3), spineX: 0.35 };
+      return { pose: mixPose(idle(c.time), o, sm(ta / 0.35)), lock: true, lift: 0 };
+    }
+    case "threaten": {
+      const sh = Math.sin(ta * 17), o = { ...idle(c.time), LAbd: 2.2 + 0.15 * sh, RAbd: 2.2 - 0.15 * sh, LShX: 0.2, RShX: 0.2, LEl: 0.9, REl: 0.9, spineX: 0.18, headX: 0.1, roll: 0.04 * sh };
+      return { pose: mixPose(idle(c.time), o, sm(ta / 0.25)), lock: true, lift: 0 };
     }
     case "ride": {
       return { pose: mixPose(idle(c.time), KEY.seated, sm(ta / (a.enter_s ?? 0.9))), lock: false, lift: 0 };
@@ -31929,13 +32078,18 @@ var Engine = class _Engine {
       this.scene.add(sb.mesh);
     });
     if (env.room) this.scene.add(buildRoom(env.room));
+    if (env.skyline) this.scene.add(makeSkyline(env.skyline));
+    if (env.river) this.scene.add(makeRiver(env.river.points, env.river.width_m, env.river.color));
     for (const p of s.props ?? []) {
       const mp = makeProp(p);
       mp.root.position.set(...p.at);
       mp.root.rotation.y = rad2(p.turn_deg ?? 0);
       this.scene.add(mp.root);
       this.propMade.push({ p: mp, def: p });
-      this.things.set(p.id, { id: p.id, isProp: true, appear: p.appear_s, until: p.until_s, root: mp.root, base: new Vector3(p.at[0], p.at[1], p.at[2]), baseYaw: rad2(p.turn_deg ?? 0), moves: [], radius: mp.radius, height: mp.height, forward: 0 });
+      const fl = p.float;
+      const th = { id: p.id, isProp: true, appear: p.appear_s, until: p.until_s, root: mp.root, base: new Vector3(p.at[0], p.at[1], p.at[2]), baseYaw: rad2(p.turn_deg ?? 0), moves: [], radius: mp.radius, height: mp.height, forward: 0 };
+      if (fl) th.floatProp = { amp: fl.amp_m ?? 0.15, spin: (fl.spin_deg_s ?? 25) * Math.PI / 180, y0: p.at[1] };
+      this.things.set(p.id, th);
     }
     const loader = new GLTFLoader(), cache = /* @__PURE__ */ new Map();
     for (const o of s.objects) {
@@ -31982,6 +32136,17 @@ var Engine = class _Engine {
         forward: rad2(a.forward_deg ?? 0)
       };
       t.solidR = o.solid_radius_m;
+      if (o.hatch) {
+        const h = makeHatch(Math.max(sz.x, sz.z) * 0.44, o.hatch.height_m, o.hatch.azimuth_deg);
+        root.add(h.group);
+        t.hatch = { h, open_s: o.hatch.open_s, close_s: o.hatch.close_s };
+      }
+      if (o.legs) {
+        const L2 = makeLegs(a.height_m, Math.max(sz.x, sz.z) * 0.22);
+        root.add(L2.group);
+        t.legs = { unfold: L2.unfold, deploy_s: o.legs.deploy_s };
+        L2.unfold(0);
+      }
       if (o.thrust) {
         t.thrust = o.thrust;
         const fl = o.thrust.flame_m ?? a.height_m * 0.5, g = new Group();
@@ -32258,6 +32423,12 @@ var Engine = class _Engine {
     for (const b of this.bodies) b.mesh.position.copy(this.cam.position).addScaledVector(b.dir, b.dist), b.mesh.quaternion.copy(this.cam.quaternion);
     for (const m of this.propMade) m.p.update(time);
     for (const t of this.things.values()) {
+      if (t.isProp && t.floatProp) {
+        const f = t.floatProp;
+        t.root.position.y = f.y0 + f.amp * Math.sin(time * 1.3 + f.y0 * 3);
+        t.root.rotation.y = f.spin * time;
+        t.root.rotation.z = 0.35 * Math.sin(time * 0.8 + f.y0);
+      }
       if (t.isProp) {
         t.root.visible = (t.appear === void 0 || time >= t.appear) && (t.until === void 0 || time < t.until);
         continue;
@@ -32283,6 +32454,7 @@ var Engine = class _Engine {
     }
     this.renderPuffs(time);
     this.renderThrust(time);
+    this.renderRocketParts(time);
     this.renderEffects(time);
     this.renderBakedEffects(frame);
     this.composer.render();
@@ -32512,12 +32684,13 @@ var Engine = class _Engine {
       for (let f = 0; f < n; f++) {
         const t = f * dt, a = this.poseAt(r, Math.max(0, t - dt / 2)).p, b = this.poseAt(r, Math.min(s.duration_s, t + dt / 2)).p;
         const vx = (b.x - a.x) / dt, vz = (b.z - a.z) / dt, sp = Math.hypot(vx, vz);
+        const back = r.moves.some((m) => m.type === "walk" && m.backwards && t >= m.from_s && t <= m.to_s);
         r.speed[f] = sp;
-        ph += 2 * Math.PI * sp * dt / strideFor(sp);
+        ph += (back ? -1 : 1) * (2 * Math.PI * sp * dt) / strideFor(sp);
         r.phase[f] = ph;
         const cur = r.actions[poseAtTime(r.actions, { time: t, speed: 0, phase: 0 }).index], here = this.poseAt(r, t).p;
         let target = null;
-        if (sp > 0.25) target = Math.atan2(vx, vz);
+        if (sp > 0.25) target = Math.atan2(vx, vz) + (back ? Math.PI : 0);
         else if (cur.face_camera || f === 0) {
           const c = this.cameraAt(t).pos;
           target = Math.atan2(c.x - here.x, c.z - here.z);
@@ -32637,6 +32810,21 @@ var Engine = class _Engine {
       card.mesh.quaternion.copy(this.cam.quaternion);
     }
   }
+  /** rocket rules: the hatch door swings open/closed, the landing legs unfold */
+  renderRocketParts(time) {
+    const sm2 = (u) => {
+      const k = clamp012(u);
+      return k * k * (3 - 2 * k);
+    };
+    for (const t of this.things.values()) {
+      if (t.hatch) {
+        const { open_s, close_s } = t.hatch;
+        const k = sm2((time - open_s) / 0.7) * (close_s === void 0 ? 1 : 1 - sm2((time - close_s) / 0.7));
+        t.hatch.h.door.rotation.y = -1.7 * k;
+      }
+      if (t.legs) t.legs.unfold(sm2((time - t.legs.deploy_s) / 0.8));
+    }
+  }
   /** engine flame (flickers, fades in/out) and a smoke trail: each puff stays where the object was when it was born */
   renderThrust(time) {
     for (const t of this.things.values()) {
@@ -32714,6 +32902,7 @@ function validateScene(s) {
     ids.add(pr.id);
   }
   for (const c of s.characters) {
+    for (const a of c.actions ?? []) if (a.do === "climb" && (a.to_s === void 0 || a.up_m === void 0)) p.push(`character ${c.id}: climb needs to_s and up_m`);
     if (ids.has(c.id)) p.push(`duplicate id ${c.id}`);
     ids.add(c.id);
     if (c.rig) {

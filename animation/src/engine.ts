@@ -14,7 +14,7 @@ import { cardShade, blobMaterial, CARD_K } from "../reference/cardshade";
 import { Pen, INK, fxBurst, fxStars, fxPuff } from "../reference/toon";
 import { Scene, Move, XZ, XYZ, PhysicsTracks, EffectTracks, EmitterKind, Behavior } from "./scene";
 import { Rig, COSTUMES, HEADS, HIP_H, FIGURE_H } from "./rig";
-import { makeBody, makeStars, buildRoom, makeProp, SkyBody, MadeProp } from "./set";
+import { makeBody, makeStars, buildRoom, makeProp, makeSkyline, makeRiver, makeHatch, makeLegs, Hatch, SkyBody, MadeProp } from "./set";
 import { Action, poseAtTime, strideFor } from "./motion";
 
 const clamp01 = (x: number) => Math.max(0, Math.min(1, x));
@@ -31,7 +31,7 @@ type PartRt = { id: string; pivot: THREE.Group; hingeRoot: THREE.Vector3; axis: 
 /** what an object can do (its behavior file), prepared for replay: door angles and crumple for every frame */
 type BehRt = { spec: Behavior; crush: THREE.Group; parts: PartRt[]; crumple: Float32Array };
 type Crash = { t: number; p: THREE.Vector3; dir: THREE.Vector3; speed: number; other: string };
-type Thing = { thrust?: { from_s: number; to_s: number; smoke?: boolean }; flame?: THREE.Group; smoke?: FxCard[]; appear?: number; until?: number; isProp?: boolean; id: string; root: THREE.Group; base: THREE.Vector3; baseYaw: number; moves: Move[]; radius: number; height: number; forward: number;
+type Thing = { hatch?: { h: Hatch; open_s: number; close_s?: number }; legs?: { unfold: (k: number) => void; deploy_s: number }; floatProp?: { amp: number; spin: number; y0: number }; thrust?: { from_s: number; to_s: number; smoke?: boolean }; flame?: THREE.Group; smoke?: FxCard[]; appear?: number; until?: number; isProp?: boolean; id: string; root: THREE.Group; base: THREE.Vector3; baseYaw: number; moves: Move[]; radius: number; height: number; forward: number;
   beh?: BehRt; solidR?: number; crash?: Crash };
 type Actor = Thing & { cycles: Record<string, { frames: string[]; hz: number }>; cards: Map<string, THREE.Mesh>; pivot: THREE.Group; poses: NonNullable<Scene["characters"][0]["poses"]>; facing: number; blob: THREE.Mesh };
 type RigActor = Thing & { rig: Rig; actions: Action[]; expressions: { at_s: number; face: string }[]; face: string;
@@ -220,9 +220,13 @@ export class Engine {
     if (env.stars) { this.stars = makeStars(env.stars); this.scene.add(this.stars); }
     (env.bodies ?? []).forEach((b, i) => { const sb = makeBody(b, 5 + i); this.bodies.push(sb); this.scene.add(sb.mesh); });
     if (env.room) this.scene.add(buildRoom(env.room));
+    if (env.skyline) this.scene.add(makeSkyline(env.skyline));
+    if (env.river) this.scene.add(makeRiver(env.river.points, env.river.width_m, env.river.color));
     for (const p of s.props ?? []) {
       const mp = makeProp(p); mp.root.position.set(...p.at); mp.root.rotation.y = rad(p.turn_deg ?? 0); this.scene.add(mp.root); this.propMade.push({ p: mp, def: p });
-      this.things.set(p.id, { id: p.id, isProp: true, appear: p.appear_s, until: p.until_s, root: mp.root, base: new THREE.Vector3(p.at[0], p.at[1], p.at[2]), baseYaw: rad(p.turn_deg ?? 0), moves: [], radius: mp.radius, height: mp.height, forward: 0 });
+      const fl = p.float; const th: Thing = { id: p.id, isProp: true, appear: p.appear_s, until: p.until_s, root: mp.root, base: new THREE.Vector3(p.at[0], p.at[1], p.at[2]), baseYaw: rad(p.turn_deg ?? 0), moves: [], radius: mp.radius, height: mp.height, forward: 0 };
+      if (fl) th.floatProp = { amp: fl.amp_m ?? 0.15, spin: ((fl.spin_deg_s ?? 25) * Math.PI) / 180, y0: p.at[1] };
+      this.things.set(p.id, th);
     }
 
     // objects from the asset library, scaled to their real height and stood on the ground
@@ -251,6 +255,8 @@ export class Engine {
       const t: Thing = { appear: o.appear_s, until: o.until_s, id: o.id, root, base: new THREE.Vector3(o.at[0], o.at_y ?? 0, o.at[1]), baseYaw: rad(o.turn_deg ?? 0), moves: o.moves ?? [],
         radius: Math.max(sz.x, sz.z) / 2, height: a.height_m, forward: rad(a.forward_deg ?? 0) };
       t.solidR = o.solid_radius_m;
+      if (o.hatch) { const h = makeHatch(Math.max(sz.x, sz.z) * 0.44, o.hatch.height_m, o.hatch.azimuth_deg); root.add(h.group); t.hatch = { h, open_s: o.hatch.open_s, close_s: o.hatch.close_s }; }
+      if (o.legs) { const L = makeLegs(a.height_m, Math.max(sz.x, sz.z) * 0.22); root.add(L.group); t.legs = { unfold: L.unfold, deploy_s: o.legs.deploy_s }; L.unfold(0); }
       if (o.thrust) {
         t.thrust = o.thrust; const fl = o.thrust.flame_m ?? a.height_m * 0.5, g = new THREE.Group();
         for (const [r, h, col] of [[0.16, 1.0, "#ff7a1a"], [0.11, 0.78, "#ffc22e"], [0.06, 0.55, "#fff6c8"]] as [number, number, string][]) {
@@ -455,6 +461,7 @@ export class Engine {
     for (const b of this.bodies) b.mesh.position.copy(this.cam.position).addScaledVector(b.dir, b.dist), b.mesh.quaternion.copy(this.cam.quaternion);
     for (const m of this.propMade) m.p.update(time);
     for (const t of this.things.values()) {
+      if (t.isProp && t.floatProp) { const f = t.floatProp; t.root.position.y = f.y0 + f.amp * Math.sin(time * 1.3 + f.y0 * 3); t.root.rotation.y = f.spin * time; t.root.rotation.z = 0.35 * Math.sin(time * 0.8 + f.y0); }
       if (t.isProp) { t.root.visible = (t.appear === undefined || time >= t.appear) && (t.until === undefined || time < t.until); continue; }
       if ((t as Actor).cards || (t as RigActor).rig) continue;
       if (t.beh) this.applyBehavior(t, frame);
@@ -472,6 +479,7 @@ export class Engine {
     for (const r of this.rigs) { this.renderRig(r, frame, time); if ((r.until !== undefined && time >= r.until) || (r.appear !== undefined && time < r.appear)) r.root.visible = false; }
     this.renderPuffs(time);
     this.renderThrust(time);
+    this.renderRocketParts(time);
     this.renderEffects(time);
     this.renderBakedEffects(frame);
     this.composer.render();
@@ -649,10 +657,11 @@ export class Engine {
       for (let f = 0; f < n; f++) {
         const t = f * dt, a = this.poseAt(r, Math.max(0, t - dt / 2)).p, b = this.poseAt(r, Math.min(s.duration_s, t + dt / 2)).p;
         const vx = (b.x - a.x) / dt, vz = (b.z - a.z) / dt, sp = Math.hypot(vx, vz);
-        r.speed[f] = sp; ph += (2 * Math.PI * sp * dt) / strideFor(sp); r.phase[f] = ph;
+        const back = r.moves.some((m) => m.type === "walk" && m.backwards && t >= m.from_s && t <= m.to_s);
+        r.speed[f] = sp; ph += (back ? -1 : 1) * (2 * Math.PI * sp * dt) / strideFor(sp); r.phase[f] = ph;
         const cur = r.actions[poseAtTime(r.actions, { time: t, speed: 0, phase: 0 }).index], here = this.poseAt(r, t).p;
         let target: number | null = null;
-        if (sp > 0.25) target = Math.atan2(vx, vz);
+        if (sp > 0.25) target = Math.atan2(vx, vz) + (back ? Math.PI : 0);
         else if (cur.face_camera || f === 0) { const c = this.cameraAt(t).pos; target = Math.atan2(c.x - here.x, c.z - here.z); }
         if (cur.face_deg !== undefined && sp <= 0.25) target = rad(cur.face_deg);
         if (cur.face_toward && sp <= 0.25) { const o = this.poseAt(this.things.get(cur.face_toward)!, t).p; target = Math.atan2(o.x - here.x, o.z - here.z); }
@@ -754,6 +763,15 @@ export class Engine {
       const toCam = new THREE.Vector3(this.cam.position.x - pos.x, 0, this.cam.position.z - pos.z).normalize().multiplyScalar(t.radius + 0.15);
       card.mesh.position.set(pos.x + toCam.x, (def.lift_m ?? t.height * 0.55), pos.z + toCam.z);
       card.mesh.quaternion.copy(this.cam.quaternion);
+    }
+  }
+
+  /** rocket rules: the hatch door swings open/closed, the landing legs unfold */
+  private renderRocketParts(time: number) {
+    const sm = (u: number) => { const k = clamp01(u); return k * k * (3 - 2 * k); };
+    for (const t of this.things.values()) {
+      if (t.hatch) { const { open_s, close_s } = t.hatch; const k = sm((time - open_s) / 0.7) * (close_s === undefined ? 1 : 1 - sm((time - close_s) / 0.7)); t.hatch.h.door.rotation.y = -1.7 * k; }
+      if (t.legs) t.legs.unfold(sm((time - t.legs.deploy_s) / 0.8));
     }
   }
 

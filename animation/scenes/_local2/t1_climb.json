@@ -1,0 +1,122 @@
+{
+ "id": "space_adventure_t1_climb",
+ "description": "t1_climb",
+ "fps": 30,
+ "duration_s": 3,
+ "environment": {
+  "light": "day",
+  "sky_top": "#3f86d8",
+  "sky_horizon": "#d4e8ff",
+  "ground": "#b9b4a8",
+  "fog_near": 40,
+  "fog_far": 220
+ },
+ "assets": {
+  "rocket": {
+   "file": "assets/models/rocket.glb",
+   "height_m": 7.0
+  },
+  "rocket_ladder": {
+   "file": "assets/models/rocket_ladder.glb",
+   "height_m": 3.4,
+   "behavior": "assets/behaviors/rocket_ladder.json"
+  }
+ },
+ "objects": [
+  {
+   "id": "rocket",
+   "asset": "rocket",
+   "at": [
+    0,
+    -3
+   ],
+   "hatch": {
+    "height_m": 3.0,
+    "azimuth_deg": 90,
+    "open_s": 1.2
+   },
+   "legs": {
+    "deploy_s": 0
+   }
+  },
+  {
+   "id": "ladder",
+   "asset": "rocket_ladder",
+   "at": [
+    1.5,
+    -3
+   ]
+  }
+ ],
+ "characters": [
+  {
+   "id": "hero",
+   "rig": {
+    "costume": "astronaut",
+    "face": "neutral"
+   },
+   "height_m": 1.8,
+   "at": [
+    3,
+    -3
+   ],
+   "actions": [
+    {
+     "at_s": 0,
+     "do": "stand"
+    },
+    {
+     "at_s": 0.4,
+     "do": "stand",
+     "face_toward": "ladder"
+    },
+    {
+     "at_s": 1.0,
+     "do": "climb",
+     "to_s": 2.6,
+     "up_m": 3.0,
+     "face_toward": "rocket"
+    }
+   ],
+   "moves": [
+    {
+     "type": "walk",
+     "from_s": 0,
+     "to_s": 0.8,
+     "to": [
+      1.9,
+      -3
+     ]
+    }
+   ]
+  }
+ ],
+ "camera": [
+  {
+   "at_s": 0,
+   "frame": {
+    "on": [
+     "hero",
+     "rocket"
+    ],
+    "az_deg": 60,
+    "el_deg": 6,
+    "fill": 0.8
+   },
+   "fov": 48
+  },
+  {
+   "at_s": 3,
+   "frame": {
+    "on": [
+     "hero",
+     "rocket"
+    ],
+    "az_deg": 60,
+    "el_deg": 6,
+    "fill": 0.8
+   },
+   "fov": 48
+  }
+ ]
+}

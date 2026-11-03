@@ -27,7 +27,14 @@
     "getup",
     "float",
     "ride",
-    "look"
+    "look",
+    "kneel",
+    "thumbsup",
+    "operate (hands on controls, shaking)",
+    "climb (hand over hand)",
+    "peek (crouch behind cover)",
+    "threaten (angry arms)",
+    "walk backwards (stepping back)"
   ],
   "faces_every_species_has": [
     "neutral",

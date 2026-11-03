@@ -1,0 +1,128 @@
+{
+ "id": "space_adventure_t2_kneel",
+ "description": "t2_kneel",
+ "fps": 30,
+ "duration_s": 3,
+ "environment": {
+  "light": "day",
+  "sky_top": "#5a3fa0",
+  "sky_horizon": "#f0b0cf",
+  "ground": "#9a5f98",
+  "fog_near": 25,
+  "fog_far": 150,
+  "scatter": [
+   {
+    "type": "rocks",
+    "count": 40,
+    "radius": 24,
+    "min_size": 0.15,
+    "max_size": 0.6,
+    "color": "#8a5f8f",
+    "seed": 11,
+    "keep_clear": [
+     [
+      0,
+      -3,
+      3
+     ],
+     [
+      1.5,
+      -2,
+      1.5
+     ]
+    ]
+   }
+  ]
+ },
+ "assets": {
+  "crystal_cluster": {
+   "file": "assets/models/crystal_cluster.glb",
+   "height_m": 1.3
+  }
+ },
+ "objects": [
+  {
+   "id": "crystal",
+   "asset": "crystal_cluster",
+   "at": [
+    1.2,
+    -1
+   ]
+  }
+ ],
+ "characters": [
+  {
+   "id": "hero",
+   "rig": {
+    "costume": "astronaut",
+    "face": "neutral"
+   },
+   "height_m": 1.8,
+   "at": [
+    -0.6,
+    -1
+   ],
+   "actions": [
+    {
+     "at_s": 0,
+     "do": "stand"
+    },
+    {
+     "at_s": 0.4,
+     "do": "kneel",
+     "face_toward": "crystal"
+    }
+   ]
+  },
+  {
+   "id": "al1",
+   "rig": {
+    "costume": "alien",
+    "face": "neutral",
+    "species": "alien"
+   },
+   "height_m": 1.7,
+   "at": [
+    3,
+    -6
+   ],
+   "actions": [
+    {
+     "at_s": 0,
+     "do": "peek",
+     "face_toward": "hero"
+    }
+   ]
+  }
+ ],
+ "camera": [
+  {
+   "at_s": 0,
+   "frame": {
+    "on": [
+     "hero",
+     "crystal",
+     "al1"
+    ],
+    "az_deg": 20,
+    "el_deg": 8,
+    "fill": 0.8
+   },
+   "fov": 48
+  },
+  {
+   "at_s": 3,
+   "frame": {
+    "on": [
+     "hero",
+     "crystal",
+     "al1"
+    ],
+    "az_deg": 20,
+    "el_deg": 8,
+    "fill": 0.8
+   },
+   "fov": 48
+  }
+ ]
+}

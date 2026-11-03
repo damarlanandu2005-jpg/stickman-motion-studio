@@ -29,13 +29,15 @@ TYPES = ROOT / "library" / "types"
 
 # ---------------------------------------------------------------- environments (one per shot; the same list serves every topic)
 ENVS: dict[str, dict[str, Any]] = {
-    "launch_pad": {"light": "day", "sky_top": "#3f86d8", "sky_horizon": "#d4e8ff", "ground": "#b9b4a8", "fog_near": 40, "fog_far": 220},
+    "launch_pad": {"light": "day", "sky_top": "#3f86d8", "sky_horizon": "#d4e8ff", "ground": "#b9b4a8", "fog_near": 40, "fog_far": 220,
+                   "skyline": {"color": "#8fb4d9", "color2": "#a9c9e8", "dist_m": 170, "count": 22, "min_m": 6, "max_m": 20, "seed": 4}},
     "suit_room": {"light": "day", "sky_top": "#20242e", "sky_horizon": "#20242e", "ground": None, "fog_near": 60, "fog_far": 400, "room": {"size": [7, 3, 6], "floor": "#58606e", "wall": "#dfe3ec", "trim": "#2f6fd6"}},
     "cockpit": {"light": "day", "sky_top": "#10131c", "sky_horizon": "#10131c", "ground": None, "fog_near": 60, "fog_far": 400, "room": {"size": [7, 3, 6], "floor": "#4a5160", "wall": "#c9cfdb", "ceiling": "#9aa1b0", "trim": "#e0692a"}},
     "sky": {"light": "day", "sky_top": "#2f74d0", "sky_horizon": "#cfe6ff", "ground": None, "fog_near": 80, "fog_far": 500},
     "high_sky": {"light": "day", "sky_top": "#050b2e", "sky_horizon": "#2c63b8", "ground": None, "fog_near": 120, "fog_far": 600, "stars": 500},
     "space": {"light": "day", "sky_top": "#04050d", "sky_horizon": "#0a0c1c", "ground": None, "fog_near": 200, "fog_far": 800, "stars": 900},
     "alien_world": {"light": "day", "sky_top": "#5a3fa0", "sky_horizon": "#f0b0cf", "ground": "#9a5f98", "fog_near": 25, "fog_far": 150,
+                    "skyline": {"color": "#7b4f9e", "color2": "#a86fbf", "dist_m": 140, "count": 26, "min_m": 8, "max_m": 26, "seed": 9},
                     "scatter": [{"type": "rocks", "count": 40, "radius": 24, "min_size": 0.15, "max_size": 0.6, "color": "#8a5f8f", "seed": 11, "keep_clear": [[0, -3, 3], [1.5, -2, 1.5]]}]},
 }
 
@@ -179,6 +181,10 @@ def build_shot(story: dict[str, Any], shot: dict[str, Any], cat: dict[str, Any])
                              "assets": assets, "objects": objects, "characters": chars, "camera": shot["camera"]}
     if shot.get("bodies"):
         env["bodies"] = shot["bodies"]
+    if shot.get("river"):
+        env["river"] = shot["river"]
+    if shot.get("effects"):
+        scene["effects"] = shot["effects"]
     if shot.get("props"):
         scene["props"] = shot["props"]
     if shot.get("kicks"):

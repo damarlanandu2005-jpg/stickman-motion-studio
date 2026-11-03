@@ -7,7 +7,7 @@ export type XYZ = [number, number, number];
 
 export type Move =
   | { type: "move"; from_s: number; to_s: number; to: XZ; face_travel?: boolean; dust?: boolean; /** constant speed instead of easing in and out (a vehicle that must hit something at full speed) */ linear?: boolean }
-  | { type: "walk"; from_s: number; to_s: number; to: XZ; steps_per_s?: number }
+  | { type: "walk"; from_s: number; to_s: number; to: XZ; steps_per_s?: number; /** walk backwards (stepping back in alarm): the body keeps facing the way it came from */ backwards?: boolean }
   | { type: "hop"; from_s: number; to_s: number; to: XZ; height_m?: number; keep_facing?: boolean }
   | { type: "fly"; from_s: number; to_s: number; to: XYZ }
   | { type: "float"; from_s: number; to_s: number; amp_m?: number; period_s?: number }
@@ -42,7 +42,7 @@ export type Body = { kind: "earth" | "sun" | "planet" | "ringed" | "moon"; /** d
 export type Room = { size: XYZ; floor?: string; wall?: string; ceiling?: string; trim?: string };
 export type Prop = { id: string; kind: "console" | "seat" | "window" | "locker" | "helmet" | "cloud" | "panel"; at: XYZ; turn_deg?: number; size?: XYZ; color?: string;
   /** moving picture on a screen or window */ screen?: "radar" | "countdown" | "warning" | "panel"; view?: "sky" | "space" | "planet" | "clouds" | "pad";
-  blip_at_s?: number; text_at?: { at_s: number; text: string }[]; until_s?: number; appear_s?: number };
+  blip_at_s?: number; /** drifts and turns slowly (zero gravity) */ float?: { amp_m?: number; spin_deg_s?: number }; text_at?: { at_s: number; text: string }[]; until_s?: number; appear_s?: number };
 
 export type Behavior = {
   id: string; type: "vehicle" | "prop" | "building" | "rocket"; solid?: boolean;
@@ -65,13 +65,16 @@ export type Scene = {
   fps: number;
   duration_s: number;
   environment: { light: "day" | "golden"; sky_top: string; sky_horizon: string; ground: string | null; fog_near: number; fog_far: number; scatter?: Scatter[];
-    /** space and interiors: stars that stay with the camera, big flat planets/sun/earth far away, a closed room */ stars?: number; bodies?: Body[]; room?: Room };
+    /** space and interiors: stars that stay with the camera, big flat planets/sun/earth far away, a closed room */ stars?: number; bodies?: Body[]; room?: Room;
+    /** distant mountains ring and a glowing river, made by code */ skyline?: { color: string; color2?: string; dist_m: number; count: number; min_m: number; max_m: number; seed?: number }; river?: { points: [number, number][]; width_m: number; color: string } };
   props?: Prop[];
   assets: Record<string, { file: string; height_m: number; brightness?: number; forward_deg?: number; /** behavior file (library/behaviors): parts, triggers, crash rule */ behavior?: string }>;
   /** objects with a physics block are simulated by Blender (bake_physics.py) and replayed from the baked tracks */
   objects: { id: string; asset: string; at: XZ; /** start height above the ground (a rocket coming in to land) */ at_y?: number; turn_deg?: number; /** a wall/rock/rocket other things can crash into (ground circle) */ solid_radius_m?: number; moves?: Move[]; physics?: Physics;
     /** hidden until this time (e.g. crystals that start falling at physics_bake.from_s) */ appear_s?: number; /** hidden from this time (e.g. a person who climbed in) */ until_s?: number;
-    /** an engine burning: a flame under the object and a smoke trail left behind on the path it flew */ thrust?: { from_s: number; to_s: number; flame_m?: number; smoke?: boolean } }[];
+    /** an engine burning: a flame under the object and a smoke trail left behind on the path it flew */ thrust?: { from_s: number; to_s: number; flame_m?: number; smoke?: boolean };
+    /** rocket rule: a hatch whose door swings open between open_s and close_s (facing azimuth_deg, 0 = +z, 90 = +x) */ hatch?: { height_m: number; azimuth_deg: number; open_s: number; close_s?: number };
+    /** rocket rule: landing legs unfold at deploy_s (over 0.8 s) */ legs?: { deploy_s: number } }[];
   /** scene wind (force vector) pushing particles and cloth */
   wind?: XYZ;
   emitters?: Emitter[];
@@ -107,6 +110,7 @@ export function validateScene(s: Scene): string[] {
   }
   for (const pr of s.props ?? []) { if (ids.has(pr.id)) p.push(`duplicate id ${pr.id}`); ids.add(pr.id); }
   for (const c of s.characters) {
+    for (const a of c.actions ?? []) if (a.do === "climb" && (a.to_s === undefined || a.up_m === undefined)) p.push(`character ${c.id}: climb needs to_s and up_m`);
     if (ids.has(c.id)) p.push(`duplicate id ${c.id}`); ids.add(c.id);
     if (c.rig) {
       if (!c.actions?.length || c.actions[0].at_s !== 0) p.push(`character ${c.id}: first action must be at 0s`);

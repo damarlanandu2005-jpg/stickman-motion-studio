@@ -1,0 +1,111 @@
+{
+ "id": "space_adventure_t4_operate",
+ "description": "t4_operate",
+ "fps": 30,
+ "duration_s": 3,
+ "environment": {
+  "light": "day",
+  "sky_top": "#10131c",
+  "sky_horizon": "#10131c",
+  "ground": null,
+  "fog_near": 60,
+  "fog_far": 400,
+  "room": {
+   "size": [
+    7,
+    3,
+    6
+   ],
+   "floor": "#4a5160",
+   "wall": "#c9cfdb",
+   "ceiling": "#9aa1b0",
+   "trim": "#e0692a"
+  }
+ },
+ "assets": {},
+ "objects": [],
+ "characters": [
+  {
+   "id": "hero",
+   "rig": {
+    "costume": "astronaut",
+    "face": "neutral"
+   },
+   "height_m": 1.8,
+   "at": [
+    0,
+    0.2
+   ],
+   "actions": [
+    {
+     "at_s": 0,
+     "do": "operate",
+     "shake": 1.0
+    },
+    {
+     "at_s": 1.5,
+     "do": "thumbsup"
+    }
+   ]
+  }
+ ],
+ "camera": [
+  {
+   "at_s": 0,
+   "frame": {
+    "on": [
+     "hero",
+     "console"
+    ],
+    "az_deg": 15,
+    "el_deg": 8,
+    "fill": 0.9
+   },
+   "fov": 48
+  },
+  {
+   "at_s": 3,
+   "frame": {
+    "on": [
+     "hero",
+     "console"
+    ],
+    "az_deg": 15,
+    "el_deg": 8,
+    "fill": 0.9
+   },
+   "fov": 48
+  }
+ ],
+ "props": [
+  {
+   "id": "seat",
+   "kind": "seat",
+   "at": [
+    0,
+    0,
+    0.2
+   ]
+  },
+  {
+   "id": "console",
+   "kind": "console",
+   "at": [
+    0,
+    0,
+    -1.9
+   ],
+   "screen": "panel"
+  },
+  {
+   "id": "wrench",
+   "kind": "helmet",
+   "at": [
+    0.8,
+    1.2,
+    -0.8
+   ],
+   "float": {}
+  }
+ ]
+}

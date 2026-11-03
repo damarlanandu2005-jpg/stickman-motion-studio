@@ -7,11 +7,14 @@ import { Pose } from "./rig";
 
 export type Action = {
   at_s: number;
-  do: "stand" | "wave" | "point" | "surprised" | "jump" | "fall" | "sit" | "getup" | "float" | "ride" | "look";
+  do: "stand" | "wave" | "point" | "surprised" | "jump" | "fall" | "sit" | "getup" | "float" | "ride" | "look" | "kneel" | "thumbsup" | "operate" | "climb" | "peek" | "threaten";
   dur_s?: number;            // jump / fall / sit / getup length
   height_m?: number;         // jump height, float height
   arm?: "L" | "R";           // wave / point arm
   vehicle?: string; seat?: [number, number, number]; to_s?: number; enter_s?: number; exit_s?: number; exit_m?: number; exit_to?: [number, number];
+  start_m?: number;          // climb: height at the start (climbing down: start_m high, up_m = 0)
+  up_m?: number;             // climb: how high (metres) the climber goes between at_s and to_s
+  shake?: number;            // operate: how hard the craft shakes (0 = calm); the astronaut leans into the controls
   chair?: boolean;           // sit: on a chair/seat (seated pose, lowered to seat height) instead of on the floor
   face_deg?: number; face_camera?: boolean; face_toward?: string;   // heading while standing still
   expression?: string;
@@ -147,6 +150,46 @@ export function actionPose(a: Action, ta: number, c: Ctx): Out {
         LShX: 0.35 + 0.15 * Math.sin(t * 1.0), RShX: 0.25 + 0.15 * Math.sin(t * 1.2), LEl: 0.4, REl: 0.4, LHip: 0.35 + 0.2 * Math.sin(t * 1.1), RHip: 0.1 + 0.2 * Math.sin(t * 0.9 + 2),
         LKnee: 0.5 + 0.15 * Math.sin(t * 1.0), RKnee: 0.35 + 0.15 * Math.sin(t * 1.3), LHipAbd: 0.15, RHipAbd: 0.15, headX: -0.1 * Math.sin(t * 0.8) };
       return { pose: mixPose(idle(c.time), o, sm(ta / 0.6)), lock: false, lift: (a.height_m ?? 0.9) * sm(ta / 1.2) };
+    }
+    case "kneel": {
+      // one knee on the ground, leaning forward, one hand reaching out (examining something low)
+      const o: Pose = { ...idle(c.time), LHip: 1.45, LKnee: 1.5, LAnk: 0.3, RHip: -0.25, RKnee: 2.5, RAnk: 0.6, spineX: 0.4, headX: -0.35, LShX: 1.0, LEl: 0.4, LAbd: 0.2, RShX: 0.35, REl: 0.7,
+        spineY: 0.12 * Math.sin(ta * 1.5) };
+      return { pose: mixPose(idle(c.time), o, sm(ta / 0.6)), lock: true, lift: 0 };
+    }
+    case "thumbsup": {
+      const base = a.chair ? KEY.seated : idle(c.time);
+      const o: Pose = { ...base, RShX: 1.0, RAbd: 0.35, REl: 1.7, headX: 0.12 * Math.sin(ta * 9) * Math.exp(-ta * 1.2), spineX: (base.spineX ?? 0) - 0.03 };
+      return { pose: mixPose(idle(c.time), o, sm(ta / 0.3)), lock: true, lift: a.chair ? -0.35 * sm(ta / 0.3) : 0 };
+    }
+    case "operate": {
+      // seated, hands on the controls; with shake > 0 the whole body is thrown about and he fights the controls
+      const k = sm(ta / 0.6), sh = a.shake ?? 0, o: Pose = { ...KEY.seated,
+        LShX: 1.25 + 0.15 * Math.sin(ta * 3.1) + 0.1 * sh * Math.sin(ta * 31), RShX: 1.25 + 0.15 * Math.sin(ta * 2.3 + 1) - 0.1 * sh * Math.sin(ta * 29),
+        LEl: 0.6, REl: 0.6, LAbd: 0.2, RAbd: 0.2, spineX: 0.18 + 0.1 * sh, headX: -0.1,
+        roll: 0.08 * sh * Math.sin(ta * 23), pitch: 0.05 * sh * Math.sin(ta * 19 + 1), headZ: 0.1 * sh * Math.sin(ta * 17) };
+      return { pose: mixPose(idle(c.time), o, k), lock: true, lift: -0.35 * k };
+    }
+    case "climb": {
+      // hand over hand, up a ladder or gantry: arms and legs alternate; he rises up_m between at_s and to_s
+      const d = Math.max(0.1, (a.to_s ?? a.at_s + 1) - a.at_s), u = clamp01(ta / d), end = a.up_m ?? 2, start = a.start_m ?? 0, up = Math.abs(end - start), dirn = end >= start ? 1 : -1, ph = dirn * u * (up / 0.3) * Math.PI;
+      const o: Pose = { ...idle(c.time), spineX: 0.12, headX: -0.25, pitch: 0.08 };
+      for (const [side, p0] of [["L", ph], ["R", ph + Math.PI]] as [string, number][]) {
+        const m = Math.sin(p0), n = Math.max(0, Math.cos(p0));
+        o[side + "ShX"] = 2.45 + 0.35 * m; o[side + "El"] = 0.5 + 0.5 * (1 - m) * 0.5; o[side + "Abd"] = 0.15;
+        o[side + "Hip"] = 0.75 + 0.55 * Math.max(0, -m); o[side + "Knee"] = 1.0 + 0.7 * n; o[side + "Ank"] = 0.3;
+      }
+      return { pose: mixPose(idle(c.time), o, sm(ta / 0.3)), lock: false, lift: start + (end - start) * sm(u) };
+    }
+    case "peek": {
+      // crouched behind cover, head up, watching
+      const o: Pose = { ...KEY.crouch, LShX: 0.2, RShX: 0.2, LEl: 0.9, REl: 0.9, headX: 0.25, headY: 0.3 * Math.sin(ta * 1.3), spineX: 0.35 };
+      return { pose: mixPose(idle(c.time), o, sm(ta / 0.35)), lock: true, lift: 0 };
+    }
+    case "threaten": {
+      // angry: arms thrown up and shaken, body leaning in
+      const sh = Math.sin(ta * 17), o: Pose = { ...idle(c.time), LAbd: 2.2 + 0.15 * sh, RAbd: 2.2 - 0.15 * sh, LShX: 0.2, RShX: 0.2, LEl: 0.9, REl: 0.9, spineX: 0.18, headX: 0.1, roll: 0.04 * sh };
+      return { pose: mixPose(idle(c.time), o, sm(ta / 0.25)), lock: true, lift: 0 };
     }
     case "ride": {
       return { pose: mixPose(idle(c.time), KEY.seated, sm(ta / (a.enter_s ?? 0.9))), lock: false, lift: 0 };

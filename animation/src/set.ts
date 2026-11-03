@@ -198,3 +198,61 @@ export function makeProp(p: Prop): MadeProp {
   }
   return { root, height, radius, update };
 }
+
+// ---------------------------------------------------------------- landscape (made by code, any topic can use it)
+/** a ring of distant low-poly mountains, two-tone shaded, so a flat plain has a horizon */
+export function makeSkyline(o: { color: string; color2?: string; dist_m: number; count: number; min_m: number; max_m: number; seed?: number }): THREE.Group {
+  const g = new THREE.Group(), rand = rng(o.seed ?? 3);
+  for (let i = 0; i < o.count; i++) {
+    const a = (i / o.count) * Math.PI * 2 + (rand() - 0.5) * 0.12, h = o.min_m + rand() * (o.max_m - o.min_m), w = h * (1.2 + rand() * 1.4);
+    const geo = new THREE.ConeGeometry(w / 2, h, 5 + Math.floor(rand() * 3), 1); geo.translate(0, h / 2 - 0.5, 0);
+    const col = new THREE.Color(o.color).lerp(new THREE.Color(o.color2 ?? o.color), rand());
+    const m = new THREE.Mesh(geo, twoTone(new THREE.MeshLambertMaterial({ color: col })));
+    const d = o.dist_m * (0.9 + rand() * 0.25); m.position.set(Math.sin(a) * d, 0, Math.cos(a) * d); m.rotation.y = rand() * 6; m.receiveShadow = false; g.add(m);
+  }
+  return g;
+}
+
+/** a glowing river: a ribbon laid on the ground along a path (XZ points) */
+export function makeRiver(points: [number, number][], width: number, color: string): THREE.Mesh {
+  const pos: number[] = [], idx: number[] = [];
+  const P = points.map((p) => new THREE.Vector2(p[0], p[1])), N = 12 * (P.length - 1);
+  const curve = new THREE.SplineCurve(P), pts = curve.getPoints(N);
+  pts.forEach((p, i) => {
+    const q = pts[Math.min(i + 1, pts.length - 1)], r = pts[Math.max(i - 1, 0)], t = new THREE.Vector2(q.x - r.x, q.y - r.y).normalize(), n = new THREE.Vector2(-t.y, t.x);
+    const w = width * (0.85 + 0.25 * Math.sin(i * 0.7)) / 2;
+    pos.push(p.x + n.x * w, 0.02, p.y + n.y * w, p.x - n.x * w, 0.02, p.y - n.y * w);
+    if (i < pts.length - 1) { const a = i * 2; idx.push(a, a + 1, a + 2, a + 1, a + 3, a + 2); }
+  });
+  const geo = new THREE.BufferGeometry(); geo.setAttribute("position", new THREE.Float32BufferAttribute(pos, 3)); geo.setIndex(idx);
+  const m = new THREE.Mesh(geo, new THREE.MeshBasicMaterial({ color, toneMapped: false, side: THREE.DoubleSide, fog: true }));
+  m.layers.set(NOINK); m.renderOrder = 1; return m;
+}
+
+// ---------------------------------------------------------------- rocket parts (rules of the "rocket" type)
+export type Hatch = { group: THREE.Group; door: THREE.Group };
+/** a hatch in the side of a rocket: dark opening with an orange rim, and a white door that swings open about its hinge */
+export function makeHatch(radius: number, height_m: number, azimuth_deg: number): Hatch {
+  const group = new THREE.Group(), az = (azimuth_deg * Math.PI) / 180;
+  group.position.set(Math.sin(az) * radius, height_m, Math.cos(az) * radius); group.rotation.y = az;
+  const hole = new THREE.Mesh(new THREE.CylinderGeometry(0.42, 0.42, 0.08, 20).rotateX(Math.PI / 2), new THREE.MeshBasicMaterial({ color: "#14131c", toneMapped: false }));
+  hole.scale.set(0.75, 1.25, 1); hole.position.z = 0.02; hole.layers.set(NOINK); group.add(hole);
+  const rim = new THREE.Mesh(new THREE.TorusGeometry(0.4, 0.045, 8, 24), lam("#e07a2d")); rim.scale.set(0.78, 1.28, 1); rim.position.z = 0.04; group.add(rim);
+  const door = new THREE.Group(); door.position.set(-0.34, 0, 0.07); group.add(door);
+  const panel = new THREE.Mesh(new RoundedBoxGeometry(0.7, 1.12, 0.07, 3, 0.03), lam("#eef0f5")); panel.position.set(0.34, 0, 0.0); panel.castShadow = true; door.add(panel);
+  const knob = new THREE.Mesh(new THREE.SphereGeometry(0.05, 10, 8), lam("#e07a2d")); knob.position.set(0.55, 0, 0.06); door.add(knob);
+  return { group, door };
+}
+/** four landing legs that unfold from the body: unfold(0..1) */
+export function makeLegs(height_m: number, bodyR: number): { group: THREE.Group; unfold: (k: number) => void } {
+  const group = new THREE.Group(), H = height_m * 0.2, legs: THREE.Group[] = [];
+  for (let i = 0; i < 4; i++) {
+    const az = (i / 4) * Math.PI * 2 + Math.PI / 4, pivot = new THREE.Group(); pivot.position.set(Math.sin(az) * bodyR, H, Math.cos(az) * bodyR); pivot.rotation.y = az;
+    const arm = new THREE.Group(); pivot.add(arm);
+    const L = H / Math.cos(0.6);
+    const strut = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.09, L, 8).translate(0, -L / 2, 0), lam("#7d818c")); strut.castShadow = true; arm.add(strut);
+    const pad = new THREE.Mesh(new THREE.CylinderGeometry(0.28, 0.32, 0.08, 14), lam("#4a4f5e")); pad.position.y = -L; arm.add(pad);
+    group.add(pivot); legs.push(arm);
+  }
+  return { group, unfold: (k: number) => legs.forEach((a) => { a.rotation.x = 0.6 * k + 0.04; a.scale.y = 0.55 + 0.45 * k; }) };
+}

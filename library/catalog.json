@@ -921,6 +921,30 @@
     {
       "id": "look",
       "code": "animation/src/motion.ts"
+    },
+    {
+      "id": "kneel",
+      "code": "animation/src/motion.ts"
+    },
+    {
+      "id": "thumbsup",
+      "code": "animation/src/motion.ts"
+    },
+    {
+      "id": "operate",
+      "code": "animation/src/motion.ts"
+    },
+    {
+      "id": "climb",
+      "code": "animation/src/motion.ts"
+    },
+    {
+      "id": "peek",
+      "code": "animation/src/motion.ts"
+    },
+    {
+      "id": "threaten",
+      "code": "animation/src/motion.ts"
     }
   ],
   "scenes": [

@@ -1,0 +1,22 @@
+[
+ {
+  "id": "t1_climb",
+  "scene": "t1_climb.json",
+  "duration_s": 3
+ },
+ {
+  "id": "t2_kneel",
+  "scene": "t2_kneel.json",
+  "duration_s": 3
+ },
+ {
+  "id": "t3_back",
+  "scene": "t3_back.json",
+  "duration_s": 3
+ },
+ {
+  "id": "t4_operate",
+  "scene": "t4_operate.json",
+  "duration_s": 3
+ }
+]
