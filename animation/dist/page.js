@@ -29646,7 +29646,7 @@ var Engine = class _Engine {
         const m = e.sprites[q[0]];
         if (!m) continue;
         const u = q[5], size = q[4] * (e.kind === "chunks" && u > 0.85 ? 1 - (u - 0.85) / 0.15 : 1);
-        m.position.set(q[1], Math.max(q[2], e.kind === "chunks" ? size * 0.5 : 0), q[3]);
+        m.position.set(q[1], Math.max(q[2], e.kind === "chunks" ? size * 0.5 : e.kind === "snow" ? 0 : size), q[3]);
         m.visible = size > 1e-3;
         if (bank) {
           const mat = m.material;
@@ -29929,7 +29929,7 @@ var Engine = class _Engine {
   lookPoint(look, time) {
     if (Array.isArray(look)) return look;
     const q = this.poseAt(this.things.get(look.follow), time), o = look.offset ?? [0, 1, 0];
-    return [q.p.x + o[0], q.lift + o[1], q.p.z + o[2]];
+    return [q.p.x + o[0], q.p.y + q.lift + o[1], q.p.z + o[2]];
   }
   render(frame) {
     const s = this.s, time = frame / s.fps;
@@ -29958,7 +29958,7 @@ var Engine = class _Engine {
         t.root.quaternion.set(k[3], k[4], k[5], k[6]);
         continue;
       }
-      t.root.position.set(q.p.x, q.lift, q.p.z);
+      t.root.position.set(q.p.x, q.p.y + q.lift, q.p.z);
       t.root.rotation.y = q.yaw;
     }
     for (const a of this.actors) this.renderActor(a, time);

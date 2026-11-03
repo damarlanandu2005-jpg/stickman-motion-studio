@@ -160,3 +160,28 @@ class EffectsTests(unittest.TestCase):
     def test_split_workflow_bakes_effects(self):
         text = (ROOT / ".github" / "workflows" / "render-split.yml").read_text()
         self.assertIn("python bake_effects.py", text)
+
+
+class MissionSceneTests(unittest.TestCase):
+    def test_mission_scene_files_and_cards_exist(self):
+        anim = ROOT / "animation"
+        scene = json.loads((anim / "scenes" / "astronaut_mission.json").read_text())
+        for asset in scene["assets"].values():
+            self.assertTrue((anim / asset["file"]).exists(), asset["file"])
+        for ch in scene["characters"]:
+            cycles = ch.get("cycles", {})
+            names = {p["pose"] for p in ch["poses"] if p["pose"] not in cycles}
+            for cy in cycles.values():
+                names |= set(cy["frames"])
+            for n in names:
+                self.assertTrue((anim / ch["cards"].replace("{pose}", n)).exists(), n)
+            for p in ch["poses"]:
+                self.assertTrue(p["pose"] in cycles or p["pose"] in names)
+        total = scene["duration_s"]
+        for key in scene["camera"]:
+            self.assertLessEqual(key["at_s"], total)
+        self.assertGreaterEqual(scene["camera"][-1]["at_s"], total)
+        kinds = {e["kind"] for e in scene["emitters"]}
+        self.assertTrue({"smoke", "fire", "sparks", "explosion", "dust", "chunks"} <= kinds)
+        self.assertTrue(scene["cloths"])
+        self.assertTrue(any(o.get("physics") for o in scene["objects"]))

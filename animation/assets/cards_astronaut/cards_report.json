@@ -1,0 +1,112 @@
+{
+  "poses": {
+    "stand": {
+      "file": "pose_stand_s4201.png",
+      "crop_w": 544,
+      "crop_h": 1003,
+      "card_w": 476,
+      "card_h": 877
+    },
+    "walk_1": {
+      "file": "pose_walk_1_s4202.png",
+      "crop_w": 560,
+      "crop_h": 978,
+      "card_w": 490,
+      "card_h": 855
+    },
+    "walk_2": {
+      "file": "pose_walk_2_s4202.png",
+      "crop_w": 487,
+      "crop_h": 956,
+      "card_w": 426,
+      "card_h": 836
+    },
+    "walk_3": {
+      "file": "pose_walk_3_s4202.png",
+      "crop_w": 565,
+      "crop_h": 979,
+      "card_w": 494,
+      "card_h": 856
+    },
+    "walk_4": {
+      "file": "pose_walk_4_s4202.png",
+      "crop_w": 494,
+      "crop_h": 953,
+      "card_w": 432,
+      "card_h": 834
+    },
+    "run_1": {
+      "file": "pose_run_1_s4201.png",
+      "crop_w": 541,
+      "crop_h": 911,
+      "card_w": 473,
+      "card_h": 797
+    },
+    "run_2": {
+      "file": "pose_run_2_s4201.png",
+      "crop_w": 563,
+      "crop_h": 849,
+      "card_w": 492,
+      "card_h": 743
+    },
+    "crouch": {
+      "file": "pose_crouch_s4201.png",
+      "crop_w": 614,
+      "crop_h": 927,
+      "card_w": 537,
+      "card_h": 811
+    },
+    "jump": {
+      "file": "pose_jump_s4201.png",
+      "crop_w": 488,
+      "crop_h": 894,
+      "card_w": 427,
+      "card_h": 782
+    },
+    "sit": {
+      "file": "pose_sit_s4202.png",
+      "crop_w": 626,
+      "crop_h": 935,
+      "card_w": 548,
+      "card_h": 818
+    },
+    "fall": {
+      "file": "pose_fall_s4202.png",
+      "crop_w": 691,
+      "crop_h": 845,
+      "card_w": 604,
+      "card_h": 739
+    },
+    "point": {
+      "file": "pose_point_s4202.png",
+      "crop_w": 594,
+      "crop_h": 991,
+      "card_w": 520,
+      "card_h": 867
+    },
+    "wave": {
+      "file": "pose_wave_s4202.png",
+      "crop_w": 588,
+      "crop_h": 1004,
+      "card_w": 514,
+      "card_h": 878
+    },
+    "surprised": {
+      "file": "pose_surprised_s4202.png",
+      "crop_w": 629,
+      "crop_h": 1005,
+      "card_w": 550,
+      "card_h": 879
+    },
+    "float": {
+      "file": "pose_float_s4201.png",
+      "crop_w": 548,
+      "crop_h": 938,
+      "card_w": 479,
+      "card_h": 820
+    }
+  },
+  "problems": [],
+  "scale": 0.8746,
+  "reference_height_px": 991
+}
