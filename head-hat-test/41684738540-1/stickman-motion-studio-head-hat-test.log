@@ -1,0 +1,41 @@
+[{"stream_name":"stderr","time":6.906232197,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":6.906273027,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":7.883122995,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.883152505,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.883158086,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.883162239,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":8.509833046,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.509884149,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.509890238,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.509894487,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":42.561853719,"data":"[install_klein] ok in 20.9 s\n"}
+,{"stream_name":"stdout","time":606.856738766,"data":"[klein] ok in 564.3 s\n"}
+,{"stream_name":"stdout","time":606.857799733,"data":"{\n"}
+,{"stream_name":"stdout","time":606.857827859,"data":"  \"status\": \"completed\",\n"}
+,{"stream_name":"stdout","time":606.857834223,"data":"  \"error_message\": null,\n"}
+,{"stream_name":"stdout","time":606.85783971,"data":"  \"files\": [\n"}
+,{"stream_name":"stdout","time":606.857844764,"data":"    \"pose_sheet_explorer_s4301.png\",\n"}
+,{"stream_name":"stdout","time":606.857849279,"data":"    \"pose_sheet_explorer_s4302.png\",\n"}
+,{"stream_name":"stdout","time":606.857854378,"data":"    \"pose_single_explorer_happy.png\",\n"}
+,{"stream_name":"stdout","time":606.857859352,"data":"    \"pose_single_explorer_angry.png\",\n"}
+,{"stream_name":"stdout","time":606.857864097,"data":"    \"pose_single_explorer_scared.png\",\n"}
+,{"stream_name":"stdout","time":606.85786842,"data":"    \"pose_single_explorer_laugh.png\",\n"}
+,{"stream_name":"stdout","time":606.857872857,"data":"    \"pose_sheet_astro_s4301.png\",\n"}
+,{"stream_name":"stdout","time":606.85787704,"data":"    \"pose_sheet_astro_s4302.png\",\n"}
+,{"stream_name":"stdout","time":606.857881227,"data":"    \"pose_single_astro_happy.png\",\n"}
+,{"stream_name":"stdout","time":606.857885562,"data":"    \"pose_single_astro_angry.png\",\n"}
+,{"stream_name":"stdout","time":606.857889844,"data":"    \"pose_single_astro_scared.png\",\n"}
+,{"stream_name":"stdout","time":606.857894603,"data":"    \"pose_single_astro_laugh.png\"\n"}
+,{"stream_name":"stdout","time":606.857899774,"data":"  ],\n"}
+,{"stream_name":"stdout","time":606.857904825,"data":"  \"notebook_duration_seconds\": 597.2\n"}
+,{"stream_name":"stdout","time":606.857910625,"data":"}\n"}
+,{"stream_name":"stdout","time":606.868199054,"data":"Drew 12 of 12 pictures\n"}
+,{"stream_name":"stderr","time":610.351150071,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":610.351215977,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":610.596605484,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":610.59664215,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":611.764815824,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":611.83995267,"data":"[NbConvertApp] Writing 17870 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":614.375253065,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":615.061472316,"data":"[NbConvertApp] Writing 316572 bytes to __results__.html\n"}
+]
