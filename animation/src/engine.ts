@@ -13,7 +13,8 @@ import { GradeEffect, GRADES } from "../reference/grade";
 import { cardShade, blobMaterial, CARD_K } from "../reference/cardshade";
 import { Pen, INK, fxBurst, fxStars, fxPuff } from "../reference/toon";
 import { Scene, Move, XZ, XYZ, PhysicsTracks, EffectTracks, EmitterKind, Behavior } from "./scene";
-import { Rig, COSTUMES, HIP_H, FIGURE_H } from "./rig";
+import { Rig, COSTUMES, HEADS, HIP_H, FIGURE_H } from "./rig";
+import { makeBody, makeStars, buildRoom, makeProp, SkyBody, MadeProp } from "./set";
 import { Action, poseAtTime, strideFor } from "./motion";
 
 const clamp01 = (x: number) => Math.max(0, Math.min(1, x));
@@ -30,7 +31,7 @@ type PartRt = { id: string; pivot: THREE.Group; hingeRoot: THREE.Vector3; axis: 
 /** what an object can do (its behavior file), prepared for replay: door angles and crumple for every frame */
 type BehRt = { spec: Behavior; crush: THREE.Group; parts: PartRt[]; crumple: Float32Array };
 type Crash = { t: number; p: THREE.Vector3; dir: THREE.Vector3; speed: number; other: string };
-type Thing = { appear?: number; id: string; root: THREE.Group; base: THREE.Vector3; baseYaw: number; moves: Move[]; radius: number; height: number; forward: number;
+type Thing = { appear?: number; until?: number; isProp?: boolean; id: string; root: THREE.Group; base: THREE.Vector3; baseYaw: number; moves: Move[]; radius: number; height: number; forward: number;
   beh?: BehRt; solidR?: number; crash?: Crash };
 type Actor = Thing & { cycles: Record<string, { frames: string[]; hz: number }>; cards: Map<string, THREE.Mesh>; pivot: THREE.Group; poses: NonNullable<Scene["characters"][0]["poses"]>; facing: number; blob: THREE.Mesh };
 type RigActor = Thing & { rig: Rig; actions: Action[]; expressions: { at_s: number; face: string }[]; face: string;
@@ -38,6 +39,7 @@ type RigActor = Thing & { rig: Rig; actions: Action[]; expressions: { at_s: numb
 type FxCard = { mesh: THREE.Mesh; canvas: HTMLCanvasElement; tex: THREE.CanvasTexture };
 
 export class Engine {
+  private stars: THREE.Points | null = null; private bodies: SkyBody[] = []; private propMade: { p: MadeProp; def: { id: string } }[] = [];
   readonly warnings: string[] = [];
   private s: Scene; private w: number; private h: number;
   private renderer: THREE.WebGLRenderer; private scene = new THREE.Scene(); private cam: THREE.PerspectiveCamera;
@@ -211,8 +213,17 @@ export class Engine {
     const sd = fwd.applyAxisAngle(new THREE.Vector3(0, 1, 0), -rad(L.az)).multiplyScalar(Math.cos(rad(L.el)));
     sd.y = Math.sin(rad(L.el)); this.sun.position.copy(sd.multiplyScalar(60)); this.sun.target.position.set(0, 0, 0);
 
-    const ground = new THREE.Mesh(new THREE.PlaneGeometry(400, 400).rotateX(-Math.PI / 2), twoTone(new THREE.MeshLambertMaterial({ color: env.ground })));
-    ground.receiveShadow = true; this.scene.add(ground);
+    if (env.ground) {
+      const ground = new THREE.Mesh(new THREE.PlaneGeometry(400, 400).rotateX(-Math.PI / 2), twoTone(new THREE.MeshLambertMaterial({ color: env.ground })));
+      ground.receiveShadow = true; this.scene.add(ground);
+    }
+    if (env.stars) { this.stars = makeStars(env.stars); this.scene.add(this.stars); }
+    (env.bodies ?? []).forEach((b, i) => { const sb = makeBody(b, 5 + i); this.bodies.push(sb); this.scene.add(sb.mesh); });
+    if (env.room) this.scene.add(buildRoom(env.room));
+    for (const p of s.props ?? []) {
+      const mp = makeProp(p); mp.root.position.set(...p.at); mp.root.rotation.y = rad(p.turn_deg ?? 0); this.scene.add(mp.root); this.propMade.push({ p: mp, def: p });
+      this.things.set(p.id, { id: p.id, isProp: true, appear: p.appear_s, until: p.until_s, root: mp.root, base: new THREE.Vector3(p.at[0], p.at[1], p.at[2]), baseYaw: rad(p.turn_deg ?? 0), moves: [], radius: mp.radius, height: mp.height, forward: 0 });
+    }
 
     // objects from the asset library, scaled to their real height and stood on the ground
     const loader = new GLTFLoader(), cache = new Map<string, THREE.Group>();
@@ -237,7 +248,7 @@ export class Engine {
       inner.position.set(-c.x, -b2.min.y, -c.z);
       const root = new THREE.Group(), crush = new THREE.Group(); crush.add(inner); root.add(crush); this.scene.add(root);
       const sz = b2.getSize(new THREE.Vector3());
-      const t: Thing = { appear: o.appear_s, id: o.id, root, base: new THREE.Vector3(o.at[0], 0, o.at[1]), baseYaw: rad(o.turn_deg ?? 0), moves: o.moves ?? [],
+      const t: Thing = { appear: o.appear_s, until: o.until_s, id: o.id, root, base: new THREE.Vector3(o.at[0], 0, o.at[1]), baseYaw: rad(o.turn_deg ?? 0), moves: o.moves ?? [],
         radius: Math.max(sz.x, sz.z) / 2, height: a.height_m, forward: rad(a.forward_deg ?? 0) };
       t.solidR = o.solid_radius_m;
       if (behSpec) t.beh = this.makeBehavior(behSpec, inner, crush, rawBox, rawScale);
@@ -248,10 +259,10 @@ export class Engine {
     // characters: one lit, ink-free billboard card per pose (scale fixed by the first pose's card)
     for (const ch of s.characters) {
       if (ch.rig) {
-        const rig = new Rig(COSTUMES[ch.rig.costume] ?? COSTUMES.none, ch.height_m, ch.rig.face ?? "neutral");
+        const rig = new Rig(COSTUMES[ch.rig.costume] ?? COSTUMES.none, ch.height_m, ch.rig.face ?? "neutral", HEADS[ch.rig.species ?? ""] );
         rig.root.traverse((o: any) => { if (o.isMesh && o.castShadow !== false) o.castShadow = true; });
         this.scene.add(rig.root);
-        const ra: RigActor = { id: ch.id, root: rig.root, base: new THREE.Vector3(ch.at[0], 0, ch.at[1]), baseYaw: 0, moves: ch.moves ?? [], radius: 0.3, height: ch.height_m, forward: 0,
+        const ra: RigActor = { until: ch.until_s, id: ch.id, root: rig.root, base: new THREE.Vector3(ch.at[0], 0, ch.at[1]), baseYaw: 0, moves: ch.moves ?? [], radius: 0.3, height: ch.height_m, forward: 0,
           rig, actions: ch.actions!, expressions: ch.expressions ?? [], face: ch.rig.face ?? "neutral", speed: new Float32Array(0), phase: new Float32Array(0), yaw: new Float32Array(0) };
         this.rigs.push(ra); this.things.set(ch.id, ra);
         continue;
@@ -333,7 +344,7 @@ export class Engine {
   private checkLayout() {
     // objects dropped by physics start in the air, so only ground-standing objects are compared
     const dropped = new Set(this.s.objects.filter((o) => (o.physics?.drop_m ?? 0) > 0).map((o) => o.id));
-    const list = [...this.things.values()].filter((t) => !(t as Actor).cards && !dropped.has(t.id));
+    const list = [...this.things.values()].filter((t) => !(t as Actor).cards && !dropped.has(t.id) && !t.isProp);
     for (let i = 0; i < list.length; i++) for (let j = i + 1; j < list.length; j++) {
       const a = list[i], b = list[j], d = Math.hypot(a.base.x - b.base.x, a.base.z - b.base.z);
       if (d < a.radius + b.radius) this.warnings.push(`${a.id} and ${b.id} overlap at their start positions (${d.toFixed(2)} m apart)`);
@@ -431,11 +442,15 @@ export class Engine {
     }
     this.cam.position.copy(c.pos); this.cam.fov = c.fov; this.cam.updateProjectionMatrix(); this.cam.lookAt(c.look);
 
+    if (this.stars) this.stars.position.copy(this.cam.position);
+    for (const b of this.bodies) b.mesh.position.copy(this.cam.position).addScaledVector(b.dir, b.dist), b.mesh.quaternion.copy(this.cam.quaternion);
+    for (const m of this.propMade) m.p.update(time);
     for (const t of this.things.values()) {
+      if (t.isProp) { t.root.visible = (t.appear === undefined || time >= t.appear) && (t.until === undefined || time < t.until); continue; }
       if ((t as Actor).cards || (t as RigActor).rig) continue;
       if (t.beh) this.applyBehavior(t, frame);
       const q = this.poseAt(t, time);
-      t.root.visible = t.appear === undefined || time >= t.appear;
+      t.root.visible = (t.appear === undefined || time >= t.appear) && (t.until === undefined || time < t.until);
       const tr = this.tracks[t.id];
       if (tr) {
         const k = tr[Math.min(frame, tr.length - 1)];
@@ -445,7 +460,7 @@ export class Engine {
       t.root.position.set(q.p.x, q.p.y + q.lift, q.p.z); t.root.rotation.y = q.yaw;
     }
     for (const a of this.actors) this.renderActor(a, time);
-    for (const r of this.rigs) this.renderRig(r, frame, time);
+    for (const r of this.rigs) { this.renderRig(r, frame, time); if (r.until !== undefined && time >= r.until) r.root.visible = false; }
     this.renderPuffs(time);
     this.renderEffects(time);
     this.renderBakedEffects(frame);

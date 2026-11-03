@@ -73,8 +73,8 @@ class NotebookTests(unittest.TestCase):
             ast.parse(getattr(builder, name), filename=name)
 
     def test_setup_starts_unobserved_with_three_objects(self):
-        ns = {}
-        exec(compile("".join(builder.build()["cells"][1]["source"]), "setup", "exec"), {"__name__": "x"}, ns)
+        ns = {"__name__": "x"}
+        exec(compile("".join(builder.build()["cells"][1]["source"]), "setup", "exec"), ns)
         self.assertEqual(ns["REPORT"]["status"], "running")
         self.assertEqual(ns["REPORT"]["engines"], {})
         self.assertEqual(len(ns["OBJECTS"]), len(json.loads((ROOT / "kaggle/image-to-3d-test/objects.json").read_text())))
@@ -131,8 +131,8 @@ class ValidatorTests(unittest.TestCase):
         tmp = tempfile.mkdtemp()
         patcher = mock.patch.dict(os.environ, {"STICKMAN_OUT_DIR": tmp + "/out", "STICKMAN_STAGE_DIR": tmp + "/stages"})
         patcher.start(); self.addCleanup(patcher.stop)
-        ns = {}
-        exec(compile("".join(builder.build()["cells"][1]["source"]), "setup", "exec"), {"__name__": "x"}, ns)
+        ns = {"__name__": "x"}
+        exec(compile("".join(builder.build()["cells"][1]["source"]), "setup", "exec"), ns)
         self.assertIn("not a flat front view", ns["STYLE"])
         self.assertEqual([o["name"] for o in ns["OBJECTS"]], [o["name"] for o in json.loads((ROOT / "kaggle/image-to-3d-test/objects.json").read_text())])
         self.assertIn("def marching_cubes(volume, level)", ns["TORCHMCUBES_SHIM"])

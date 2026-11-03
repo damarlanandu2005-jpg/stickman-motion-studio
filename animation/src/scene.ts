@@ -38,6 +38,12 @@ export type EffectTracks = { scene: string; fps: number; frames: number; blender
 export type PhysicsTracks = { scene: string; fps: number; frames: number; blender: string; objects: Record<string, number[][]> };
 
 /** what an object can DO, kept next to its model in the library (library/behaviors/<id>.json). The engine reads it; scenes never hard-code it. */
+export type Body = { kind: "earth" | "sun" | "planet" | "ringed" | "moon"; /** direction from the camera (unit-ish vector) */ dir: XYZ; radius_m: number; dist_m?: number; color?: string; color2?: string };
+export type Room = { size: XYZ; floor?: string; wall?: string; ceiling?: string; trim?: string };
+export type Prop = { id: string; kind: "console" | "seat" | "window" | "locker" | "helmet" | "cloud" | "panel"; at: XYZ; turn_deg?: number; size?: XYZ; color?: string;
+  /** moving picture on a screen or window */ screen?: "radar" | "countdown" | "warning" | "panel"; view?: "sky" | "space" | "planet" | "clouds" | "pad";
+  blip_at_s?: number; text_at?: { at_s: number; text: string }[]; until_s?: number; appear_s?: number };
+
 export type Behavior = {
   id: string; type: "vehicle" | "prop" | "building";
   max_speed_mps?: number; mass_kg?: number;
@@ -58,11 +64,13 @@ export type Scene = {
   description?: string;
   fps: number;
   duration_s: number;
-  environment: { light: "day" | "golden"; sky_top: string; sky_horizon: string; ground: string; fog_near: number; fog_far: number; scatter?: Scatter[] };
+  environment: { light: "day" | "golden"; sky_top: string; sky_horizon: string; ground: string | null; fog_near: number; fog_far: number; scatter?: Scatter[];
+    /** space and interiors: stars that stay with the camera, big flat planets/sun/earth far away, a closed room */ stars?: number; bodies?: Body[]; room?: Room };
+  props?: Prop[];
   assets: Record<string, { file: string; height_m: number; brightness?: number; forward_deg?: number; /** behavior file (library/behaviors): parts, triggers, crash rule */ behavior?: string }>;
   /** objects with a physics block are simulated by Blender (bake_physics.py) and replayed from the baked tracks */
   objects: { id: string; asset: string; at: XZ; turn_deg?: number; /** a wall/rock/rocket other things can crash into (ground circle) */ solid_radius_m?: number; moves?: Move[]; physics?: Physics;
-    /** hidden until this time (e.g. crystals that start falling at physics_bake.from_s) */ appear_s?: number }[];
+    /** hidden until this time (e.g. crystals that start falling at physics_bake.from_s) */ appear_s?: number; /** hidden from this time (e.g. a person who climbed in) */ until_s?: number }[];
   /** scene wind (force vector) pushing particles and cloth */
   wind?: XYZ;
   emitters?: Emitter[];
@@ -70,7 +78,7 @@ export type Scene = {
   physics_bake?: { from_s?: number; substeps?: number; iterations?: number };
   characters: { id: string; cards?: string; height_m: number; at: XZ;
     /** a 3D stickman: one skeleton, a costume layer, scripted actions (see motion.ts); replaces cards and poses */
-    rig?: { costume: string; face?: string }; actions?: Action[]; expressions?: { at_s: number; face: string }[];
+    rig?: { costume: string; face?: string; /** species skin, e.g. alien */ species?: string }; until_s?: number; actions?: Action[]; expressions?: { at_s: number; face: string }[];
     /** a pose name that plays several cards in turn, e.g. walk -> walk_1..walk_4 at hz pictures per second */
     cycles?: Record<string, { frames: string[]; hz: number }>;
     poses?: { at_s: number; pose: string; face?: "left" | "right" }[]; moves?: Move[] }[];

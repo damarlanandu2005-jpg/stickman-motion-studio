@@ -50,11 +50,32 @@ export const COSTUMES: Record<string, Part[]> = {
   ],
 };
 
+/** the alien species: the same skeleton and motions, a different skin and a few extra parts (antennae, tunic, big ears) */
+COSTUMES.alien = [
+  { bone: "torso", shape: "capsule", size: [0.17, 0.2], at: [0, 0.22, 0], color: "#7b3fb0" },
+  { bone: "torso", shape: "torus", size: [0.17, 0.028], at: [0, 0.04, 0], rot: [Math.PI / 2, 0, 0], color: "#f2a81d" },
+  { bone: "torso", shape: "sphere", size: [0.045], at: [0, 0.3, 0.17], color: "#7df0c8" },
+  { bone: "head", shape: "cyl", size: [0.012, 0.2], at: [0.1, 0.52, 0], rot: [0, 0, -0.35], color: "#3fae6a" },
+  { bone: "head", shape: "cyl", size: [0.012, 0.2], at: [-0.1, 0.52, 0], rot: [0, 0, 0.35], color: "#3fae6a" },
+  { bone: "head", shape: "sphere", size: [0.05], at: [0.15, 0.63, 0], color: "#f2d21d" },
+  { bone: "head", shape: "sphere", size: [0.05], at: [-0.15, 0.63, 0], color: "#f2d21d" },
+  { bone: "head", shape: "cyl", size: [0.05, 0.03], at: [0.28, 0.27, 0], rot: [0, 0, Math.PI / 2], color: "#3fae6a", mirror: true },
+  { bone: "arm", shape: "capsule", size: [0.05, 0.2], at: [0, -0.14, 0], color: "#3fae6a", mirror: true },
+  { bone: "fore", shape: "capsule", size: [0.045, 0.2], at: [0, -0.14, 0], color: "#3fae6a", mirror: true },
+  { bone: "thigh", shape: "capsule", size: [0.06, 0.3], at: [0, -0.22, 0], color: "#4a2d78", mirror: true },
+  { bone: "shin", shape: "capsule", size: [0.055, 0.3], at: [0, -0.22, 0], color: "#4a2d78", mirror: true },
+  { bone: "foot", shape: "box", size: [0.12, 0.08, 0.26], at: [0, -0.04, 0.07], color: "#3fae6a", mirror: true },
+];
+/** head colour per species (the bare stickman head is white) */
+export const HEADS: Record<string, string> = { alien: "#58c783" };
+
 const FACES: Record<string, (g: CanvasRenderingContext2D) => void> = {
   neutral: (g) => { eye(g, 78, 108, 19, 30); eye(g, 178, 108, 19, 30); brow(g, 78, 54, 0.1, 11); brow(g, 178, 54, 0.1, 11); line(g, 100, 184, 156, 184, 13); },
   smile: (g) => { eye(g, 78, 108, 19, 30); eye(g, 178, 108, 19, 30); brow(g, 78, 56, 0.04, 12); brow(g, 178, 56, 0.04, 12); arc(g, 128, 150, 44, 0.25, 0.75, 13); },
   surprised: (g) => { eye(g, 84, 98, 18, 26); eye(g, 172, 98, 18, 26); brow(g, 84, 44, 0.1, 12); brow(g, 172, 44, 0.1, 12); g.fillStyle = "#241726"; g.beginPath(); g.ellipse(128, 174, 16, 22, 0, 0, 7); g.fill(); },
   worried: (g) => { eye(g, 88, 104, 9, 13); eye(g, 168, 104, 9, 13); line(g, 62, 80, 108, 58, 13); line(g, 194, 80, 148, 58, 13); arc(g, 128, 176, 24, 1.15, 1.85, 7); },
+  angry: (g) => { eye(g, 84, 108, 15, 18); eye(g, 172, 108, 15, 18); line(g, 52, 70, 108, 92, 14); line(g, 204, 70, 148, 92, 14); line(g, 96, 180, 160, 180, 12); line(g, 96, 180, 106, 168, 9); line(g, 160, 180, 150, 168, 9); },
+  grin: (g) => { eye(g, 78, 108, 19, 30); eye(g, 178, 108, 19, 30); brow(g, 78, 54, 0.06, 11); brow(g, 178, 54, 0.06, 11); g.fillStyle = "#241726"; g.beginPath(); g.arc(128, 150, 46, 0.05 * Math.PI, 0.95 * Math.PI); g.closePath(); g.fill(); },
   dizzy: (g) => { for (const x of [88, 168]) { g.strokeStyle = "#241726"; g.lineWidth = 7; g.beginPath(); g.arc(x, 100, 13, 0, 5.5); g.stroke(); } brow(g, 88, 66, -0.15, 12); brow(g, 168, 66, 0.15, 12); line(g, 108, 166, 148, 166, 7); },
 };
 /** eyebrow: a short thick line centred at (cx, cy); tilt > 0 lifts the INNER end (friendly/worried), < 0 lowers it (angry); same sign on both eyes = same expression */
@@ -78,7 +99,7 @@ export class Rig {
   private faceTex: THREE.CanvasTexture; private faceG: CanvasRenderingContext2D; private expr = "";
   private readonly scale: number;
 
-  constructor(costume: Part[], heightM: number, face = "neutral") {
+  constructor(costume: Part[], heightM: number, face = "neutral", head = SKIN) {
     this.scale = heightM / FIGURE_H;
     this.figure.scale.setScalar(this.scale);
     this.root.add(this.figure);
@@ -108,7 +129,7 @@ export class Rig {
     this.thigh.forEach((t) => add(t, new THREE.CapsuleGeometry(0.032, 0.38, 4, 8), INKCOL, [0, -0.22, 0]));
     this.shin.forEach((s) => add(s, new THREE.CapsuleGeometry(0.032, 0.38, 4, 8), INKCOL, [0, -0.22, 0]));
     this.foot.forEach((f) => add(f, new THREE.CapsuleGeometry(0.036, 0.16, 4, 8), INKCOL, [0, -0.03, 0.06], [Math.PI / 2, 0, 0]));
-    add(this.head, new THREE.SphereGeometry(0.27, 32, 22), SKIN, [0, 0.25, 0]);
+    add(this.head, new THREE.SphereGeometry(0.27, 32, 22), head, [0, 0.25, 0]);
 
     // face: a thin shell on the front of the head carrying the fixed face texture
     const c = document.createElement("canvas"); c.width = c.height = 256;
