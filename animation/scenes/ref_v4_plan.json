@@ -14,7 +14,8 @@
   ],
   "place": "old Ottoman city plaza in front of a big round stone tower, warm sunny day",
   "action": "stand side by side",
-  "props": ""
+  "props": "",
+  "face": "proud smiles"
  },
  {
   "id": "d02",
@@ -31,7 +32,8 @@
   ],
   "place": "castle gate with battlements",
   "action": "two guards stand proudly",
-  "props": ""
+  "props": "",
+  "face": "stern proud faces"
  },
  {
   "id": "d03",
@@ -48,7 +50,8 @@
   ],
   "place": "castle gate",
   "action": "two guards laugh with crossed axes",
-  "props": ""
+  "props": "",
+  "face": "laughing with wide open mouths"
  },
  {
   "id": "d04",
@@ -61,7 +64,8 @@
   ],
   "place": "hilltop above the old city skyline with domes and minarets",
   "action": "stands facing the viewer",
-  "props": ""
+  "props": "",
+  "face": "smug half-closed eyes and a smirk"
  },
  {
   "id": "d05",
@@ -74,7 +78,8 @@
   ],
   "place": "building site with wooden scaffolding and stone blocks",
   "action": "carries a stone block",
-  "props": ""
+  "props": "",
+  "face": "determined"
  },
  {
   "id": "d06",
@@ -87,7 +92,8 @@
   ],
   "place": "green field with a small stone tower and a pointed roof",
   "action": "smiles",
-  "props": ""
+  "props": "",
+  "face": "happy"
  },
  {
   "id": "d07",
@@ -104,7 +110,8 @@
   ],
   "place": "palace room with blue tiles and a red carpet",
   "action": "talk with crossed arms",
-  "props": ""
+  "props": "",
+  "face": "the sultan smug, the young man respectful"
  },
  {
   "id": "d08",
@@ -117,7 +124,8 @@
   ],
   "place": "harbour with a big wooden sailing ship with two masts",
   "action": "stands on the dock",
-  "props": ""
+  "props": "",
+  "face": "curious"
  },
  {
   "id": "d09",
@@ -130,7 +138,8 @@
   ],
   "place": "street with a brown wooden house and cypress trees",
   "action": "stands with arms crossed",
-  "props": ""
+  "props": "",
+  "face": "proud"
  },
  {
   "id": "d10",
@@ -147,7 +156,8 @@
   ],
   "place": "treasury with shelves of gold cups",
   "action": "the green robed man hands gold to the young man",
-  "props": ""
+  "props": "",
+  "face": "the old man generous, the young man amazed"
  },
  {
   "id": "d11",
@@ -164,7 +174,8 @@
   ],
   "place": "palace garden with arches and cypress trees",
   "action": "stand talking",
-  "props": ""
+  "props": "",
+  "face": "friendly"
  },
  {
   "id": "d12",
@@ -185,7 +196,8 @@
   ],
   "place": "palace garden with arches and cypress trees",
   "action": "talk and laugh",
-  "props": ""
+  "props": "",
+  "face": "laughing"
  },
  {
   "id": "d13",
@@ -202,7 +214,8 @@
   ],
   "place": "throne room with a golden throne and a red carpet",
   "action": "stand beside the throne",
-  "props": ""
+  "props": "",
+  "face": "the sultan amused, the young man hopeful"
  },
  {
   "id": "d14",
@@ -215,7 +228,8 @@
   ],
   "place": "huge curved stone staircase going up a tower",
   "action": "points at the steps",
-  "props": ""
+  "props": "",
+  "face": "puzzled, one eyebrow up"
  },
  {
   "id": "d15",
@@ -228,7 +242,8 @@
   ],
   "place": "inside a stone tower, an arched window and a staircase",
   "action": "stands scratching his head",
-  "props": ""
+  "props": "",
+  "face": "tired and puzzled"
  },
  {
   "id": "d16",
@@ -249,7 +264,8 @@
   ],
   "place": "green and gold palace hall with a patterned wall",
   "action": "smiles with a hand on his belly",
-  "props": ""
+  "props": "",
+  "face": "a proud smug smile"
  },
  {
   "id": "d18",
@@ -270,7 +286,8 @@
   ],
   "place": "palace hall with a patterned carpet",
   "action": "the sultan stands between two advisors",
-  "props": ""
+  "props": "",
+  "face": "pleased"
  },
  {
   "id": "d19",
@@ -295,7 +312,8 @@
   ],
   "place": "castle courtyard with a tower behind",
   "action": "a big group stands together",
-  "props": ""
+  "props": "",
+  "face": "serious"
  },
  {
   "id": "d20",
@@ -308,7 +326,8 @@
   ],
   "place": "stone steps on a tall tower with a curved wall and blue sea",
   "action": "walks up the steps",
-  "props": ""
+  "props": "",
+  "face": "determined"
  },
  {
   "id": "d21",
@@ -321,7 +340,8 @@
   ],
   "place": "a spiral stone staircase inside a tower",
   "action": "points forward",
-  "props": ""
+  "props": "",
+  "face": "excited"
  },
  {
   "id": "d22",
@@ -334,7 +354,8 @@
   ],
   "place": "a spiral stone staircase",
   "action": "carries a heavy sack on his back and a pile of coins on a step",
-  "props": ""
+  "props": "",
+  "face": "straining with effort"
  },
  {
   "id": "d23",
@@ -347,7 +368,8 @@
   ],
   "place": "stone staircase with an arch window",
   "action": "bends under a heavy brown sack",
-  "props": ""
+  "props": "",
+  "face": "exhausted, sweating"
  },
  {
   "id": "d24",
@@ -360,7 +382,8 @@
   ],
   "place": "a stone staircase going up with a sea view",
   "action": "walks beside a grey donkey carrying baskets",
-  "props": ""
+  "props": "",
+  "face": "patient"
  },
  {
   "id": "d25",
@@ -373,7 +396,8 @@
   ],
   "place": "treasury room with a blue tiled wall and a wooden chest",
   "action": "stands holding an abacus",
-  "props": ""
+  "props": "",
+  "face": "proud"
  },
  {
   "id": "d26",
@@ -386,7 +410,8 @@
   ],
   "place": "dark treasury with a stone arch and a wooden chest",
   "action": "stands with his arms raised",
-  "props": ""
+  "props": "",
+  "face": "arms up, wide-eyed"
  },
  {
   "id": "d27",
@@ -403,7 +428,8 @@
   ],
   "place": "stone room with an iron-bound chest and barrels",
   "action": "talk, the sultan is happy",
-  "props": ""
+  "props": "",
+  "face": "the sultan satisfied, the old man nervous"
  },
  {
   "id": "d28",
@@ -416,7 +442,8 @@
   ],
   "place": "stone staircase of a tall tower, bright sky",
   "action": "runs up the stairs",
-  "props": ""
+  "props": "",
+  "face": "panting and sweating"
  },
  {
   "id": "d29",
@@ -433,7 +460,8 @@
   ],
   "place": "old city rooftops in the background",
   "action": "one bends over out of breath, the other stands proudly",
-  "props": ""
+  "props": "",
+  "face": "one exhausted, one smug"
  },
  {
   "id": "d30",
@@ -466,7 +494,8 @@
   ],
   "place": "palace arch with a view to the sea",
   "action": "a very tall wooden measuring rod stands next to the sultan and the green robed man",
-  "props": ""
+  "props": "",
+  "face": "the sultan amused"
  },
  {
   "id": "d33",
@@ -479,7 +508,8 @@
   ],
   "place": "yellow sunburst rays background",
   "action": "holds an abacus and smiles",
-  "props": ""
+  "props": "",
+  "face": "proud smile"
  },
  {
   "id": "d34",
@@ -508,7 +538,8 @@
   ],
   "place": "green field with a very tall stone spiral tower far away, old city below",
   "action": "stands seen from behind looking up",
-  "props": ""
+  "props": "",
+  "face": "awed"
  },
  {
   "id": "d37",
@@ -537,7 +568,8 @@
   ],
   "place": "palace courtyard crowded with people in front of a castle tower",
   "action": "a crowd stands facing the viewer",
-  "props": ""
+  "props": "",
+  "face": "solemn"
  },
  {
   "id": "d38",
@@ -554,7 +586,8 @@
   ],
   "place": "palace room with hanging lanterns",
   "action": "talk closely",
-  "props": ""
+  "props": "",
+  "face": "worried whispering"
  },
  {
   "id": "d39",
@@ -567,7 +600,8 @@
   ],
   "place": "red throne with a gold canopy",
   "action": "leans back on the throne",
-  "props": ""
+  "props": "",
+  "face": "smug, leaning back"
  },
  {
   "id": "d40",
@@ -584,7 +618,8 @@
   ],
   "place": "red and gold throne room",
   "action": "cheer with raised arms",
-  "props": ""
+  "props": "",
+  "face": "both thrilled"
  },
  {
   "id": "d41",
@@ -601,7 +636,8 @@
   ],
   "place": "treasury room with scrolls and chests",
   "action": "inspect the treasure",
-  "props": ""
+  "props": "",
+  "face": "greedy happy"
  },
  {
   "id": "d42",
@@ -622,7 +658,8 @@
   ],
   "place": "stone doorway with iron door",
   "action": "three men look at the viewer",
-  "props": ""
+  "props": "",
+  "face": "nervous"
  },
  {
   "id": "d43",
@@ -635,7 +672,8 @@
   ],
   "place": "stone arch with empty shelves",
   "action": "stands with arms out",
-  "props": ""
+  "props": "",
+  "face": "sad and worried"
  },
  {
   "id": "d44",
@@ -648,7 +686,8 @@
   ],
   "place": "dim room with a calendar on the wall and a candle",
   "action": "points at the calendar",
-  "props": ""
+  "props": "",
+  "face": "very worried"
  },
  {
   "id": "d45",
@@ -661,7 +700,8 @@
   ],
   "place": "room with an arched window and a view of the city at sunset",
   "action": "stands with arms out, worried",
-  "props": ""
+  "props": "",
+  "face": "sad and tired"
  },
  {
   "id": "d46",
@@ -674,7 +714,8 @@
   ],
   "place": "dim room at sunset with scattered papers and gold coins on the floor",
   "action": "stands alone",
-  "props": ""
+  "props": "",
+  "face": "sad"
  },
  {
   "id": "d47",
@@ -687,6 +728,7 @@
   ],
   "place": "base of a tall stone tower with steps and green plants",
   "action": "stands leaning with a sad smile",
-  "props": ""
+  "props": "",
+  "face": "tired smile"
  }
 ]

@@ -50,7 +50,7 @@ def render_shot_frame(lib, shot: dict, t: float) -> Image.Image:
         out = render_still(shot, t)
         for a, b, text, red in shot.get("caps", []):
             if a <= t < b:
-                _caption(out, text, red)
+                _caption(out, text, red, shot.get("cap_y", 0.68))
         return out
     return shot2d.render_frame(lib, shot, t)
 

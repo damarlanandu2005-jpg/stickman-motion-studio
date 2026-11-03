@@ -7,7 +7,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 from motion_studio.assemble import assemble
 from motion_studio.compare import stats
-from motion_studio.scene_plan import auto_sfx
+from motion_studio.scene_plan import auto_sfx, caption_y
 
 name, pics, out = sys.argv[1], Path(sys.argv[2]), Path(sys.argv[3])
 here = Path(__file__).parent
@@ -15,6 +15,7 @@ shots = json.loads((here / f"ref_{name}_shots.json").read_text())
 plan = {p["id"]: p for p in json.loads((here / f"ref_{name}_plan.json").read_text())}
 for s in shots:
     s["sfx"] = auto_sfx(plan[s["id"]])
+    s["cap_y"] = caption_y(plan[s["id"]])
 out.mkdir(parents=True, exist_ok=True)
 mp4 = out / f"recreate_{name}.mp4"
 info = assemble(shots, pics, mp4)

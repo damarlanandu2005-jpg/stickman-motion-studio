@@ -50,6 +50,8 @@ def prompt_for(shot: dict) -> tuple[str, list[str]]:
         parts.append("Place: " + shot["place"] + ".")
     if shot.get("action"):
         parts.append("Action: " + shot["action"] + ".")
+    if shot.get("face") and chars:
+        parts.append("Facial expressions (clearly readable, with eyebrows and mouth): " + shot["face"] + ".")
     if shot.get("props"):
         parts.append("Objects: " + shot["props"] + ".")
     if shot.get("mood"):
@@ -99,3 +101,10 @@ def auto_sfx(shot: dict) -> list[dict]:
         if any(w in text for w in words):
             out.append({"type": kind, "t": t, "gain": gain, **extra})
     return out
+
+
+CAPTION_Y = {"wide": 0.58, "medium": 0.68, "close": 0.70, "insert": 0.70, "card": 0.70}  # wide: characters stand low, so the caption sits above their heads
+
+
+def caption_y(shot: dict) -> float:
+    return CAPTION_Y.get(shot.get("frame", "medium"), 0.68)

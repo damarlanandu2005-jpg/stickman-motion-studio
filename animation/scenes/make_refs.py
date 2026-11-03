@@ -170,11 +170,20 @@ V4 = [
 CAMS = {"push": {"z0": 1.0, "z1": 1.12}, "pull": {"z0": 1.12, "z1": 1.0}, "drift": {"z0": 1.06, "z1": 1.06, "x0": 0.45, "x1": 0.55}}
 
 
+FACES4 = ["proud smiles", "stern proud faces", "laughing with wide open mouths", "smug half-closed eyes and a smirk", "determined", "happy", "the sultan smug, the young man respectful", "curious", "proud", "the old man generous, the young man amazed",
+          "friendly", "laughing", "the sultan amused, the young man hopeful", "puzzled, one eyebrow up", "tired and puzzled", "", "a proud smug smile", "pleased", "serious", "determined",
+          "excited", "straining with effort", "exhausted, sweating", "patient", "proud", "arms up, wide-eyed", "the sultan satisfied, the old man nervous", "panting and sweating", "one exhausted, one smug", "",
+          "", "the sultan amused", "proud smile", "", "", "awed", "solemn", "worried whispering", "smug, leaning back", "both thrilled", "greedy happy", "nervous", "sad and worried", "very worried", "sad and tired", "sad", "tired smile"]
+
+
 def build(name, rows, durs, prefix):
     shots, plan = [], []
     for i, (frame, chars, place, action, props, cap, cam) in enumerate(rows):
         sid = f"{prefix}{i + 1:02d}"
-        plan.append({"id": sid, "frame": frame, "chars": chars, "place": place, "action": action, "props": props})
+        item = {"id": sid, "frame": frame, "chars": chars, "place": place, "action": action, "props": props}
+        if name == "v4" and i < len(FACES4) and FACES4[i]:
+            item["face"] = FACES4[i]
+        plan.append(item)
         d = durs[i]
         caps = captions(cap, d)
         shots.append({"id": sid, "dur": d, "cam": CAMS[cam], "caps": caps})

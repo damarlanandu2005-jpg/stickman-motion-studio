@@ -19,7 +19,7 @@ from pathlib import Path
 import numpy as np
 
 from .assemble import assemble
-from .scene_plan import auto_sfx, make_jobs
+from .scene_plan import auto_sfx, caption_y, make_jobs
 
 SR, GAP = 24000, 0.06
 CAMS = {"push": {"z0": 1.0, "z1": 1.12}, "pull": {"z0": 1.12, "z1": 1.0}, "drift": {"z0": 1.06, "z1": 1.06, "x0": 0.45, "x1": 0.55},
@@ -71,7 +71,7 @@ def build_shots(story: dict, durs: list[float]) -> list[dict]:
     for s, d in zip(story["shots"], durs):
         cam = s.get("cam", "push")
         shots.append({"id": s["id"], "dur": d, "cam": CAMS[cam] if isinstance(cam, str) else cam, "shake": 0.6 if cam == "shake" else 0.0,
-                      "caps": captions(s["text"], d), "sfx": s["sfx"] if "sfx" in s else auto_sfx(s)})
+                      "caps": captions(s["text"], d), "cap_y": caption_y(s), "sfx": s["sfx"] if "sfx" in s else auto_sfx(s)})
     return shots
 
 

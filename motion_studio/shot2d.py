@@ -164,7 +164,7 @@ def render_frame(lib: Library, shot: dict, local_t: float) -> Image.Image:
 _FONT = None
 
 
-def _caption(im: Image.Image, text: str, red: bool) -> None:
+def _caption(im: Image.Image, text: str, red: bool, y: float = 0.68) -> None:
     """One word or short phrase, white with a black outline (red for the key word), at 68 % height like the reference shorts."""
     global _FONT
     from PIL import ImageDraw, ImageFont
@@ -173,7 +173,7 @@ def _caption(im: Image.Image, text: str, red: bool) -> None:
     d = ImageDraw.Draw(im)
     text = text.upper()
     w = d.textlength(text, font=_FONT)
-    d.text(((W - w) / 2, int(H * 0.68)), text, font=_FONT, fill=(220, 30, 30) if red else (255, 255, 255),
+    d.text(((W - w) / 2, int(H * y)), text, font=_FONT, fill=(220, 30, 30) if red else (255, 255, 255),
            stroke_width=4, stroke_fill=(0, 0, 0))
 
 
