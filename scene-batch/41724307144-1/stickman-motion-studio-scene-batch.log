@@ -1,0 +1,45 @@
+[{"stream_name":"stderr","time":6.6143518100000005,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":6.614421386,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":7.583612892,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.583643974,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.583651333,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.583659101,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":8.199481988,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.199517328,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.199521372,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.199523992,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":43.105495752,"data":"[install_klein] ok in 21.7 s\n"}
+,{"stream_name":"stdout","time":596.559273756,"data":"[klein] ok in 553.4 s\n"}
+,{"stream_name":"stdout","time":596.560503165,"data":"{\n"}
+,{"stream_name":"stdout","time":596.560520141,"data":"  \"status\": \"completed\",\n"}
+,{"stream_name":"stdout","time":596.560525921,"data":"  \"error_message\": null,\n"}
+,{"stream_name":"stdout","time":596.560530746,"data":"  \"files\": [\n"}
+,{"stream_name":"stdout","time":596.560535418,"data":"    \"pose_a17.png\",\n"}
+,{"stream_name":"stdout","time":596.56054021,"data":"    \"pose_a19.png\",\n"}
+,{"stream_name":"stdout","time":596.560545626,"data":"    \"pose_a22.png\",\n"}
+,{"stream_name":"stdout","time":596.560550494,"data":"    \"pose_b07.png\",\n"}
+,{"stream_name":"stdout","time":596.560555497,"data":"    \"pose_b15.png\",\n"}
+,{"stream_name":"stdout","time":596.560559774,"data":"    \"pose_b17.png\",\n"}
+,{"stream_name":"stdout","time":596.56056385,"data":"    \"pose_d16.png\",\n"}
+,{"stream_name":"stdout","time":596.560567987,"data":"    \"pose_d30.png\",\n"}
+,{"stream_name":"stdout","time":596.560572138,"data":"    \"pose_d31.png\",\n"}
+,{"stream_name":"stdout","time":596.560576149,"data":"    \"pose_d34.png\",\n"}
+,{"stream_name":"stdout","time":596.560580043,"data":"    \"pose_d35.png\",\n"}
+,{"stream_name":"stdout","time":596.560584118,"data":"    \"pose_l02.png\",\n"}
+,{"stream_name":"stdout","time":596.560588163,"data":"    \"pose_l03.png\",\n"}
+,{"stream_name":"stdout","time":596.56059236,"data":"    \"pose_l05.png\",\n"}
+,{"stream_name":"stdout","time":596.560596539,"data":"    \"pose_l10.png\",\n"}
+,{"stream_name":"stdout","time":596.560600715,"data":"    \"pose_l11.png\"\n"}
+,{"stream_name":"stdout","time":596.56061042,"data":"  ],\n"}
+,{"stream_name":"stdout","time":596.5606144,"data":"  \"notebook_duration_seconds\": 587.2\n"}
+,{"stream_name":"stdout","time":596.56061734,"data":"}\n"}
+,{"stream_name":"stdout","time":596.571008215,"data":"Drew 16 of 16 pictures\n"}
+,{"stream_name":"stderr","time":600.143087163,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":600.143117845,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":600.394335655,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":600.394362236,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":601.603434185,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":601.683316589,"data":"[NbConvertApp] Writing 26456 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":604.274717914,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":605.146281187,"data":"[NbConvertApp] Writing 328447 bytes to __results__.html\n"}
+]
