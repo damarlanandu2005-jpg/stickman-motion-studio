@@ -1,0 +1,382 @@
+{
+  "run_token": "d8e75752145d1bcd85a7717f891c5cf5",
+  "run_id": "561b8bc9286144ff9831c9845238af0f",
+  "commit_sha": "1e2e53184404afdd7ed387e6914219a4acc5c26b",
+  "workflow_run_id": "41604735653",
+  "status": "completed",
+  "error_message": null,
+  "poses": [
+    "stand",
+    "walk_1",
+    "walk_2",
+    "walk_3",
+    "walk_4",
+    "run_1",
+    "run_2",
+    "crouch",
+    "jump",
+    "sit",
+    "fall",
+    "point",
+    "wave",
+    "surprised",
+    "float"
+  ],
+  "seeds": [
+    4201,
+    4202
+  ],
+  "reference": "animation/reference_art/costume_astronaut.png",
+  "environment": {
+    "python": "3.13.16",
+    "torch": "2.11.0+cu130",
+    "cuda_available": true,
+    "gpu_names": [
+      "Tesla T4",
+      "Tesla T4"
+    ]
+  },
+  "klein": {
+    "stage": "klein",
+    "status": "success",
+    "error": null,
+    "pictures": [
+      {
+        "pose": "stand",
+        "seed": 4201,
+        "status": "success",
+        "file": "pose_stand_s4201.png",
+        "seconds": 41.37,
+        "width": 768,
+        "height": 1152,
+        "sha256": "18a6e7192d30c66a4f06592d8edfc301db91da30a32f68f59fd35f367e7884f3"
+      },
+      {
+        "pose": "stand",
+        "seed": 4202,
+        "status": "success",
+        "file": "pose_stand_s4202.png",
+        "seconds": 35.2,
+        "width": 768,
+        "height": 1152,
+        "sha256": "f266fab388d6500ee4bc1cbf69dc59575c11286e597812a3551d6b871e8b6f6e"
+      },
+      {
+        "pose": "walk_1",
+        "seed": 4201,
+        "status": "success",
+        "file": "pose_walk_1_s4201.png",
+        "seconds": 35.57,
+        "width": 768,
+        "height": 1152,
+        "sha256": "36b75c034228f197ee9ad8ee74a2a4303e5849c8156fdfb26c630ede16ed64b0"
+      },
+      {
+        "pose": "walk_1",
+        "seed": 4202,
+        "status": "success",
+        "file": "pose_walk_1_s4202.png",
+        "seconds": 36.47,
+        "width": 768,
+        "height": 1152,
+        "sha256": "85d4929643e3a01247b2bd2dfc927389475b8af84e047802ab6e89ef0838d060"
+      },
+      {
+        "pose": "walk_2",
+        "seed": 4201,
+        "status": "success",
+        "file": "pose_walk_2_s4201.png",
+        "seconds": 37.09,
+        "width": 768,
+        "height": 1152,
+        "sha256": "e9ae6ad3b893dd0d5c0089b8841959213e281d968f2a4a47b50475425899b9b2"
+      },
+      {
+        "pose": "walk_2",
+        "seed": 4202,
+        "status": "success",
+        "file": "pose_walk_2_s4202.png",
+        "seconds": 37.75,
+        "width": 768,
+        "height": 1152,
+        "sha256": "af87718b42525256763d65d7393e58db2ed732852f0a82b278f563d1beed6e2c"
+      },
+      {
+        "pose": "walk_3",
+        "seed": 4201,
+        "status": "success",
+        "file": "pose_walk_3_s4201.png",
+        "seconds": 38.22,
+        "width": 768,
+        "height": 1152,
+        "sha256": "d0462dbfe6ff894c54a9ea85304031c561f4074bb0e77cf02e6e2b1fd6f21397"
+      },
+      {
+        "pose": "walk_3",
+        "seed": 4202,
+        "status": "success",
+        "file": "pose_walk_3_s4202.png",
+        "seconds": 37.44,
+        "width": 768,
+        "height": 1152,
+        "sha256": "37f7722a9ed0ce5fec57d4a3f8345b36db077f9905a1b25b63252f1e4187df0f"
+      },
+      {
+        "pose": "walk_4",
+        "seed": 4201,
+        "status": "success",
+        "file": "pose_walk_4_s4201.png",
+        "seconds": 37.83,
+        "width": 768,
+        "height": 1152,
+        "sha256": "c7bfd414e313ef41cae89e0662d5f7395f66878e323a95d6251c6349268fc778"
+      },
+      {
+        "pose": "walk_4",
+        "seed": 4202,
+        "status": "success",
+        "file": "pose_walk_4_s4202.png",
+        "seconds": 37.58,
+        "width": 768,
+        "height": 1152,
+        "sha256": "525c4aeedd4e783cab38a9df6b4ad5efa6d35ce7ffbfe6958c67b15bc6fbb2bf"
+      },
+      {
+        "pose": "run_1",
+        "seed": 4201,
+        "status": "success",
+        "file": "pose_run_1_s4201.png",
+        "seconds": 36.59,
+        "width": 768,
+        "height": 1152,
+        "sha256": "871f4a4824a5ab67a313249b26b62c22951db5d0332ba242dda0be30d3df8ff2"
+      },
+      {
+        "pose": "run_1",
+        "seed": 4202,
+        "status": "success",
+        "file": "pose_run_1_s4202.png",
+        "seconds": 37.67,
+        "width": 768,
+        "height": 1152,
+        "sha256": "0a49575a6fcf71cc7f3c0672f889ee817caf629ff50ac5aa7d2cab51b052b689"
+      },
+      {
+        "pose": "run_2",
+        "seed": 4201,
+        "status": "success",
+        "file": "pose_run_2_s4201.png",
+        "seconds": 37.32,
+        "width": 768,
+        "height": 1152,
+        "sha256": "d996a3c7a58f5c74cc1e7fc6f9d55437fb15335bc5578b824e6bde9bf2122626"
+      },
+      {
+        "pose": "run_2",
+        "seed": 4202,
+        "status": "success",
+        "file": "pose_run_2_s4202.png",
+        "seconds": 37.38,
+        "width": 768,
+        "height": 1152,
+        "sha256": "c3bcd946481860008c8280695ea640a2a4087c839e6faa91424019fc9bfb427d"
+      },
+      {
+        "pose": "crouch",
+        "seed": 4201,
+        "status": "success",
+        "file": "pose_crouch_s4201.png",
+        "seconds": 37.33,
+        "width": 768,
+        "height": 1152,
+        "sha256": "ba4f064e35e3a386faba1aa2cc6f03b43b289a3668bb5b895fe645387fc32a3b"
+      },
+      {
+        "pose": "crouch",
+        "seed": 4202,
+        "status": "success",
+        "file": "pose_crouch_s4202.png",
+        "seconds": 37.39,
+        "width": 768,
+        "height": 1152,
+        "sha256": "c07db122810decda9a287f72acd72fb09aee322c90156dc32faf8cd1c8a36ff5"
+      },
+      {
+        "pose": "jump",
+        "seed": 4201,
+        "status": "success",
+        "file": "pose_jump_s4201.png",
+        "seconds": 36.59,
+        "width": 768,
+        "height": 1152,
+        "sha256": "0a9e67bd042db47c2f856caecf4a66b553ed96d8187a27519647db2fcc1790bf"
+      },
+      {
+        "pose": "jump",
+        "seed": 4202,
+        "status": "success",
+        "file": "pose_jump_s4202.png",
+        "seconds": 36.38,
+        "width": 768,
+        "height": 1152,
+        "sha256": "d285b8d666d77e7e5270e17b662bd363d2ce58d868bf7b2a587e8914c60bd278"
+      },
+      {
+        "pose": "sit",
+        "seed": 4201,
+        "status": "success",
+        "file": "pose_sit_s4201.png",
+        "seconds": 36.62,
+        "width": 768,
+        "height": 1152,
+        "sha256": "4337349af3c4cd7a003ba14f5b174f66c23daf441c7854a7cbf88d558ac7650a"
+      },
+      {
+        "pose": "sit",
+        "seed": 4202,
+        "status": "success",
+        "file": "pose_sit_s4202.png",
+        "seconds": 36.39,
+        "width": 768,
+        "height": 1152,
+        "sha256": "6f87b077b1072774a411cfd1f8cb9c8bfcb2ad90f9aacef8a101f9b44c60f651"
+      },
+      {
+        "pose": "fall",
+        "seed": 4201,
+        "status": "success",
+        "file": "pose_fall_s4201.png",
+        "seconds": 35.72,
+        "width": 768,
+        "height": 1152,
+        "sha256": "16a6114dac8a15146c8fde60330a086727c1d15a7fdcabfb685a79579a793074"
+      },
+      {
+        "pose": "fall",
+        "seed": 4202,
+        "status": "success",
+        "file": "pose_fall_s4202.png",
+        "seconds": 34.8,
+        "width": 768,
+        "height": 1152,
+        "sha256": "1d977cda759bdf0249b483df34260badf7e5dbca18d5e62291c14282e31b25b6"
+      },
+      {
+        "pose": "point",
+        "seed": 4201,
+        "status": "success",
+        "file": "pose_point_s4201.png",
+        "seconds": 34.26,
+        "width": 768,
+        "height": 1152,
+        "sha256": "617c86acbdf7eed66c55208c30d5dcc0f14229b25ba9a4dc148ccfb35ebae02c"
+      },
+      {
+        "pose": "point",
+        "seed": 4202,
+        "status": "success",
+        "file": "pose_point_s4202.png",
+        "seconds": 34.31,
+        "width": 768,
+        "height": 1152,
+        "sha256": "b0749164ef98aaa98682583f005a09ac93f81c3baf52042a4e6d6b218829206b"
+      },
+      {
+        "pose": "wave",
+        "seed": 4201,
+        "status": "success",
+        "file": "pose_wave_s4201.png",
+        "seconds": 34.3,
+        "width": 768,
+        "height": 1152,
+        "sha256": "4cdb1eaa283d7a595b77e0dc7564ecc396d6dcc23226d84f42eebcd18632a6ee"
+      },
+      {
+        "pose": "wave",
+        "seed": 4202,
+        "status": "success",
+        "file": "pose_wave_s4202.png",
+        "seconds": 34.32,
+        "width": 768,
+        "height": 1152,
+        "sha256": "8602cafefad972d026a279b4ad5d5b4b397afab9f80197cbba0812c491f74738"
+      },
+      {
+        "pose": "surprised",
+        "seed": 4201,
+        "status": "success",
+        "file": "pose_surprised_s4201.png",
+        "seconds": 34.84,
+        "width": 768,
+        "height": 1152,
+        "sha256": "f8b06130869a2f2b46e7e5b9a7762b4ff7dffc72eb2a474376db654775d24301"
+      },
+      {
+        "pose": "surprised",
+        "seed": 4202,
+        "status": "success",
+        "file": "pose_surprised_s4202.png",
+        "seconds": 34.12,
+        "width": 768,
+        "height": 1152,
+        "sha256": "4752ad16384211129e782975c413ca52cbec45605947f4ecd4fee23a8c1eb397"
+      },
+      {
+        "pose": "float",
+        "seed": 4201,
+        "status": "success",
+        "file": "pose_float_s4201.png",
+        "seconds": 34.39,
+        "width": 768,
+        "height": 1152,
+        "sha256": "2ba7c53bc8a86b6b19ad52bac8790589a929a0d33c824229436cc9c40c6dcfca"
+      },
+      {
+        "pose": "float",
+        "seed": 4202,
+        "status": "success",
+        "file": "pose_float_s4202.png",
+        "seconds": 34.22,
+        "width": 768,
+        "height": 1152,
+        "sha256": "255e324b52905c67d9ce0185b0fb3944676e7e5cb7a721f7ef82fb3294267266"
+      }
+    ],
+    "download_seconds": 111.4,
+    "load_seconds": 65.6,
+    "peak_vram_gib": 8.94
+  },
+  "files": [
+    "pose_stand_s4201.png",
+    "pose_stand_s4202.png",
+    "pose_walk_1_s4201.png",
+    "pose_walk_1_s4202.png",
+    "pose_walk_2_s4201.png",
+    "pose_walk_2_s4202.png",
+    "pose_walk_3_s4201.png",
+    "pose_walk_3_s4202.png",
+    "pose_walk_4_s4201.png",
+    "pose_walk_4_s4202.png",
+    "pose_run_1_s4201.png",
+    "pose_run_1_s4202.png",
+    "pose_run_2_s4201.png",
+    "pose_run_2_s4202.png",
+    "pose_crouch_s4201.png",
+    "pose_crouch_s4202.png",
+    "pose_jump_s4201.png",
+    "pose_jump_s4202.png",
+    "pose_sit_s4201.png",
+    "pose_sit_s4202.png",
+    "pose_fall_s4201.png",
+    "pose_fall_s4202.png",
+    "pose_point_s4201.png",
+    "pose_point_s4202.png",
+    "pose_wave_s4201.png",
+    "pose_wave_s4202.png",
+    "pose_surprised_s4201.png",
+    "pose_surprised_s4202.png",
+    "pose_float_s4201.png",
+    "pose_float_s4202.png"
+  ],
+  "notebook_duration_seconds": 1337.5
+}

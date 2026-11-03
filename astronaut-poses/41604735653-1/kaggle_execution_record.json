@@ -1,0 +1,189 @@
+{
+  "identity": {
+    "run_id": "561b8bc9286144ff9831c9845238af0f",
+    "run_token": "d8e75752145d1bcd85a7717f891c5cf5",
+    "commit_sha": "1e2e53184404afdd7ed387e6914219a4acc5c26b",
+    "workflow_run_id": "41604735653",
+    "workflow_run_attempt": "1",
+    "created_utc": "2026-11-03T08:38:31+00:00"
+  },
+  "kernel": "narasimhadamarla/stickman-motion-studio-astronaut-poses",
+  "pushed_version": 1,
+  "push_attempts": 1,
+  "observations": [
+    {
+      "at": "2026-11-03T08:38:31+00:00",
+      "event": "notebook_stamped",
+      "run_token_written": true
+    },
+    {
+      "at": "2026-11-03T08:38:33+00:00",
+      "event": "push_response",
+      "attempt": 1,
+      "exit_code": 0,
+      "text": "Kernel version 1 successfully pushed.  Please check progress at https://www.kaggle.com/code/narasimhadamarla/stickman-motion-studio-astronaut-poses"
+    },
+    {
+      "at": "2026-11-03T08:38:33+00:00",
+      "event": "push_accepted",
+      "version": 1
+    },
+    {
+      "at": "2026-11-03T08:38:33+00:00",
+      "event": "status",
+      "state": "QUEUED"
+    },
+    {
+      "at": "2026-11-03T08:39:04+00:00",
+      "event": "status",
+      "state": "RUNNING"
+    },
+    {
+      "at": "2026-11-03T09:01:47+00:00",
+      "event": "status",
+      "state": "COMPLETE"
+    },
+    {
+      "at": "2026-11-03T09:01:57+00:00",
+      "event": "download",
+      "attempt": 1,
+      "exit_code": 0,
+      "text": "klein.json to kaggle-poses-output/outputs\n\n  0%|          | 0.00/8.08k [00:00<?, ?B/s]\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 8.08k/8.08k [00:00<00:00, 37.2MB/s]\n\nOutput file downloaded to kaggle-poses-output/outputs/result_klein.json\nKernel log downloaded to kaggle-poses-output/stickman-motion-studio-astronaut-poses.log"
+    }
+  ],
+  "download_attempts": 1,
+  "validation": {
+    "ok": true,
+    "failures": [],
+    "checks": {
+      "pictures": [
+        {
+          "file": "pose_stand_s4201.png",
+          "valid": true
+        },
+        {
+          "file": "pose_stand_s4202.png",
+          "valid": true
+        },
+        {
+          "file": "pose_walk_1_s4201.png",
+          "valid": true
+        },
+        {
+          "file": "pose_walk_1_s4202.png",
+          "valid": true
+        },
+        {
+          "file": "pose_walk_2_s4201.png",
+          "valid": true
+        },
+        {
+          "file": "pose_walk_2_s4202.png",
+          "valid": true
+        },
+        {
+          "file": "pose_walk_3_s4201.png",
+          "valid": true
+        },
+        {
+          "file": "pose_walk_3_s4202.png",
+          "valid": true
+        },
+        {
+          "file": "pose_walk_4_s4201.png",
+          "valid": true
+        },
+        {
+          "file": "pose_walk_4_s4202.png",
+          "valid": true
+        },
+        {
+          "file": "pose_run_1_s4201.png",
+          "valid": true
+        },
+        {
+          "file": "pose_run_1_s4202.png",
+          "valid": true
+        },
+        {
+          "file": "pose_run_2_s4201.png",
+          "valid": true
+        },
+        {
+          "file": "pose_run_2_s4202.png",
+          "valid": true
+        },
+        {
+          "file": "pose_crouch_s4201.png",
+          "valid": true
+        },
+        {
+          "file": "pose_crouch_s4202.png",
+          "valid": true
+        },
+        {
+          "file": "pose_jump_s4201.png",
+          "valid": true
+        },
+        {
+          "file": "pose_jump_s4202.png",
+          "valid": true
+        },
+        {
+          "file": "pose_sit_s4201.png",
+          "valid": true
+        },
+        {
+          "file": "pose_sit_s4202.png",
+          "valid": true
+        },
+        {
+          "file": "pose_fall_s4201.png",
+          "valid": true
+        },
+        {
+          "file": "pose_fall_s4202.png",
+          "valid": true
+        },
+        {
+          "file": "pose_point_s4201.png",
+          "valid": true
+        },
+        {
+          "file": "pose_point_s4202.png",
+          "valid": true
+        },
+        {
+          "file": "pose_wave_s4201.png",
+          "valid": true
+        },
+        {
+          "file": "pose_wave_s4202.png",
+          "valid": true
+        },
+        {
+          "file": "pose_surprised_s4201.png",
+          "valid": true
+        },
+        {
+          "file": "pose_surprised_s4202.png",
+          "valid": true
+        },
+        {
+          "file": "pose_float_s4201.png",
+          "valid": true
+        },
+        {
+          "file": "pose_float_s4202.png",
+          "valid": true
+        }
+      ],
+      "drawn": 30,
+      "wanted": 30
+    }
+  },
+  "limitations": [
+    "The Kaggle CLI exposes the notebook version number, not a separate execution ID. Version tracking plus the run token in the output are used together."
+  ],
+  "result": "verified"
+}

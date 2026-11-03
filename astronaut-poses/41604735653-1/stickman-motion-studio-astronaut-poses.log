@@ -1,0 +1,59 @@
+[{"stream_name":"stderr","time":7.634095341,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":7.634183522,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":8.649140178,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.649184304,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.649190199,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.649194543,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":9.345515492,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":9.3455434,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":9.345548792,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":9.345552812,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":42.220726992,"data":"[install_klein] ok in 22.8 s\n"}
+,{"stream_name":"stdout","time":1348.055023901,"data":"[klein] ok in 1305.8 s\n"}
+,{"stream_name":"stdout","time":1348.056162488,"data":"{\n"}
+,{"stream_name":"stdout","time":1348.056210311,"data":"  \"status\": \"completed\",\n"}
+,{"stream_name":"stdout","time":1348.056217831,"data":"  \"error_message\": null,\n"}
+,{"stream_name":"stdout","time":1348.056225565,"data":"  \"files\": [\n"}
+,{"stream_name":"stdout","time":1348.056230731,"data":"    \"pose_stand_s4201.png\",\n"}
+,{"stream_name":"stdout","time":1348.056250306,"data":"    \"pose_stand_s4202.png\",\n"}
+,{"stream_name":"stdout","time":1348.056255708,"data":"    \"pose_walk_1_s4201.png\",\n"}
+,{"stream_name":"stdout","time":1348.056261018,"data":"    \"pose_walk_1_s4202.png\",\n"}
+,{"stream_name":"stdout","time":1348.056267208,"data":"    \"pose_walk_2_s4201.png\",\n"}
+,{"stream_name":"stdout","time":1348.056272208,"data":"    \"pose_walk_2_s4202.png\",\n"}
+,{"stream_name":"stdout","time":1348.056277307,"data":"    \"pose_walk_3_s4201.png\",\n"}
+,{"stream_name":"stdout","time":1348.056282623,"data":"    \"pose_walk_3_s4202.png\",\n"}
+,{"stream_name":"stdout","time":1348.056287573,"data":"    \"pose_walk_4_s4201.png\",\n"}
+,{"stream_name":"stdout","time":1348.056292547,"data":"    \"pose_walk_4_s4202.png\",\n"}
+,{"stream_name":"stdout","time":1348.056297449,"data":"    \"pose_run_1_s4201.png\",\n"}
+,{"stream_name":"stdout","time":1348.056302422,"data":"    \"pose_run_1_s4202.png\",\n"}
+,{"stream_name":"stdout","time":1348.056307448,"data":"    \"pose_run_2_s4201.png\",\n"}
+,{"stream_name":"stdout","time":1348.056333066,"data":"    \"pose_run_2_s4202.png\",\n"}
+,{"stream_name":"stdout","time":1348.056339324,"data":"    \"pose_crouch_s4201.png\",\n"}
+,{"stream_name":"stdout","time":1348.056344592,"data":"    \"pose_crouch_s4202.png\",\n"}
+,{"stream_name":"stdout","time":1348.056350667,"data":"    \"pose_jump_s4201.png\",\n"}
+,{"stream_name":"stdout","time":1348.056355797,"data":"    \"pose_jump_s4202.png\",\n"}
+,{"stream_name":"stdout","time":1348.056372726,"data":"    \"pose_sit_s4201.png\",\n"}
+,{"stream_name":"stdout","time":1348.056376729,"data":"    \"pose_sit_s4202.png\",\n"}
+,{"stream_name":"stdout","time":1348.056381,"data":"    \"pose_fall_s4201.png\",\n"}
+,{"stream_name":"stdout","time":1348.056384892,"data":"    \"pose_fall_s4202.png\",\n"}
+,{"stream_name":"stdout","time":1348.056388937,"data":"    \"pose_point_s4201.png\",\n"}
+,{"stream_name":"stdout","time":1348.056392841,"data":"    \"pose_point_s4202.png\",\n"}
+,{"stream_name":"stdout","time":1348.056396714,"data":"    \"pose_wave_s4201.png\",\n"}
+,{"stream_name":"stdout","time":1348.056401296,"data":"    \"pose_wave_s4202.png\",\n"}
+,{"stream_name":"stdout","time":1348.056406344,"data":"    \"pose_surprised_s4201.png\",\n"}
+,{"stream_name":"stdout","time":1348.056411378,"data":"    \"pose_surprised_s4202.png\",\n"}
+,{"stream_name":"stdout","time":1348.056416081,"data":"    \"pose_float_s4201.png\",\n"}
+,{"stream_name":"stdout","time":1348.056420854,"data":"    \"pose_float_s4202.png\"\n"}
+,{"stream_name":"stdout","time":1348.056424541,"data":"  ],\n"}
+,{"stream_name":"stdout","time":1348.056428261,"data":"  \"notebook_duration_seconds\": 1337.5\n"}
+,{"stream_name":"stdout","time":1348.056432654,"data":"}\n"}
+,{"stream_name":"stdout","time":1348.068762051,"data":"Drew 30 of 30 pictures\n"}
+,{"stream_name":"stderr","time":1351.993336942,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":1351.993388797,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":1352.299262039,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":1352.299298484,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":1353.622972043,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":1353.707782937,"data":"[NbConvertApp] Writing 18962 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":1356.465814003,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":1357.28541735,"data":"[NbConvertApp] Writing 315393 bytes to __results__.html\n"}
+]
