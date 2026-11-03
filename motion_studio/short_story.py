@@ -22,7 +22,7 @@ from .assemble import assemble
 from .scene_plan import auto_sfx, caption_y, make_jobs
 
 SR, GAP = 24000, 0.06
-CAMS = {"push": {"z0": 1.0, "z1": 1.12}, "pull": {"z0": 1.12, "z1": 1.0}, "drift": {"z0": 1.06, "z1": 1.06, "x0": 0.45, "x1": 0.55},
+CAMS = {"push": {"z0": 1.0, "z1": 1.16}, "pull": {"z0": 1.16, "z1": 1.0}, "drift": {"z0": 1.06, "z1": 1.06, "x0": 0.45, "x1": 0.55},
         "rise": {"z0": 1.08, "z1": 1.08, "y0": 0.6, "y1": 0.4}, "shake": {"z0": 1.05, "z1": 1.1}}
 
 

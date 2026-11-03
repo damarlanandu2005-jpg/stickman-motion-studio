@@ -30,7 +30,7 @@ def render_still(shot: dict, t: float) -> Image.Image:
     im = _picture(shot["image"])
     cam = shot.get("cam", {})
     u = min(max(t / shot["dur"], 0.0), 1.0)
-    u = u * u * (3 - 2 * u)
+    # linear, not eased: the reference shorts never hold still (2-3 % still frames); a slow sway keeps even drift-free shots alive
     z = cam.get("z0", 1.0) + (cam.get("z1", 1.06) - cam.get("z0", 1.0)) * u
     fx = cam.get("x0", 0.5) + (cam.get("x1", 0.5) - cam.get("x0", 0.5)) * u
     fy = cam.get("y0", 0.5) + (cam.get("y1", 0.5) - cam.get("y0", 0.5)) * u
@@ -38,8 +38,8 @@ def render_still(shot: dict, t: float) -> Image.Image:
     cw = base_w / z
     ch = cw * H / W
     sh = shot.get("shake", 0.0)
-    dx = np.sin(t * 47.0) * sh * 0.006 * im.width
-    dy = np.cos(t * 39.0) * sh * 0.006 * im.height
+    dx = np.sin(t * 47.0) * sh * 0.006 * im.width + np.sin(t * 1.7) * 0.004 * im.width
+    dy = np.cos(t * 39.0) * sh * 0.006 * im.height + np.cos(t * 1.3) * 0.003 * im.height
     x0 = min(max(fx * im.width - cw / 2 + dx, 0), im.width - cw)
     y0 = min(max(fy * im.height - ch / 2 + dy, 0), im.height - ch)
     return im.resize((W, H), Image.BICUBIC, box=(x0, y0, x0 + cw, y0 + ch))

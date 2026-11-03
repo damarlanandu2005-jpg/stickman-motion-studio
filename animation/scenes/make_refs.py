@@ -167,7 +167,7 @@ V4 = [
  ("wide", [PC], "base of a tall stone tower with steps and green plants", "stands leaning with a sad smile", "", "got", "pull"),
 ]
 
-CAMS = {"push": {"z0": 1.0, "z1": 1.12}, "pull": {"z0": 1.12, "z1": 1.0}, "drift": {"z0": 1.06, "z1": 1.06, "x0": 0.45, "x1": 0.55}}
+CAMS = {"push": {"z0": 1.0, "z1": 1.16}, "pull": {"z0": 1.16, "z1": 1.0}, "drift": {"z0": 1.06, "z1": 1.06, "x0": 0.45, "x1": 0.55}}
 
 
 FACES4 = ["proud smiles", "stern proud faces", "laughing with wide open mouths", "smug half-closed eyes and a smirk", "determined", "happy", "the sultan smug, the young man respectful", "curious", "proud", "the old man generous, the young man amazed",
