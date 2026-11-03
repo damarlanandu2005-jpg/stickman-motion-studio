@@ -1,0 +1,2 @@
+$ git clone -q https://github.com/VAST-AI-Research/TripoSR.git /tmp/TripoSR
+$ git -C /tmp/TripoSR checkout -q 107cefdc244c39106fa830359024f6a2f1c78871

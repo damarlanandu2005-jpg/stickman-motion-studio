@@ -1,0 +1,53 @@
+{
+  "stage": "hunyuan_paint",
+  "status": "success",
+  "error": null,
+  "objects": [
+    {
+      "name": "launch_tower",
+      "status": "success",
+      "file": "hunyuan_launch_tower_textured.glb",
+      "seconds": 48.39,
+      "peak_vram_gib": 4.06,
+      "bytes": 3809360,
+      "sha256": "aff56d9cb25bcdb864897290f480de43a17707ae4de7909ff87f879a6f984d24"
+    },
+    {
+      "name": "rocket_ladder",
+      "status": "success",
+      "file": "hunyuan_rocket_ladder_textured.glb",
+      "seconds": 38.51,
+      "peak_vram_gib": 4.11,
+      "bytes": 3199260,
+      "sha256": "a25221624dff1eb4a671ebd8f2571546bb5b59528e519dcd5b3819f885343b9b"
+    },
+    {
+      "name": "alien_plant",
+      "status": "success",
+      "file": "hunyuan_alien_plant_textured.glb",
+      "seconds": 72.91,
+      "peak_vram_gib": 4.11,
+      "bytes": 3236092,
+      "sha256": "6d1db41f6dcd934b7f1fd82de4429799c16397d1cd32b224e46bef3937bf5bef"
+    },
+    {
+      "name": "rock_formation",
+      "status": "success",
+      "file": "hunyuan_rock_formation_textured.glb",
+      "seconds": 69.21,
+      "peak_vram_gib": 4.11,
+      "bytes": 2978792,
+      "sha256": "7e90f4a46c8e4a0408fd92e3d333d87caefbcf3b66767a1b90bd7ae267efe2d7"
+    },
+    {
+      "name": "spaceport_building",
+      "status": "success",
+      "file": "hunyuan_spaceport_building_textured.glb",
+      "seconds": 38.07,
+      "peak_vram_gib": 4.11,
+      "bytes": 3655296,
+      "sha256": "69bb5c7878a4ab13a564e2f246c448803c10b9cf727bc3f14cd28869bd4f8f5c"
+    }
+  ],
+  "load_seconds": 150.2
+}

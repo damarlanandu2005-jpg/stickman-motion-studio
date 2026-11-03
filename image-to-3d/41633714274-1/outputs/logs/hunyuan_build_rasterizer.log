@@ -1,0 +1,12 @@
+$ /tmp/venv3d/bin/python -m pip install --no-build-isolation .
+Processing ./.
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: custom_rasterizer
+  Building wheel for custom_rasterizer (pyproject.toml): started
+  Building wheel for custom_rasterizer (pyproject.toml): finished with status 'done'
+  Created wheel for custom_rasterizer: filename=custom_rasterizer-0.1-cp313-cp313-linux_x86_64.whl size=5033059 sha256=f37d4e88095845a74e1654380b485608639965d2585bcd4e0ea9158ca7dc7d56
+  Stored in directory: /tmp/pip-ephem-wheel-cache-aqmxqj4h/wheels/36/31/53/035fdcb410c9128db0e3a92dbc8bf4be2f94c3a2ec45d7c163
+Successfully built custom_rasterizer
+Installing collected packages: custom_rasterizer
+Successfully installed custom_rasterizer-0.1

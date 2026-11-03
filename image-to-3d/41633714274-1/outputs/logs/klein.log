@@ -1,0 +1,47 @@
+$ /usr/bin/python3 /tmp/i23d_stages/klein.py /tmp/i23d_stages/klein.json
+Fetching 25 files:   0%|          | 0/25 [00:00<?, ?it/s]Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Fetching 25 files:   4%|▍         | 1/25 [00:00<00:02,  8.23it/s]Fetching 25 files:  24%|██▍       | 6/25 [00:00<00:00, 25.51it/s]Fetching 25 files:  40%|████      | 10/25 [00:00<00:00, 22.86it/s]Fetching 25 files:  52%|█████▏    | 13/25 [00:00<00:00, 20.31it/s]Fetching 25 files:  64%|██████▍   | 16/25 [00:01<00:00, 11.94it/s]Fetching 25 files:  76%|███████▌  | 19/25 [00:01<00:00, 13.51it/s]Fetching 25 files:  84%|████████▍ | 21/25 [00:13<00:05,  1.44s/it]Fetching 25 files:  88%|████████▊ | 22/25 [01:28<00:36, 12.02s/it]Fetching 25 files:  96%|█████████▌| 24/25 [01:45<00:11, 11.11s/it]Fetching 25 files: 100%|██████████| 25/25 [01:50<00:00, 10.01s/it]Fetching 25 files: 100%|██████████| 25/25 [01:50<00:00,  4.43s/it]
+/usr/local/lib/python3.13/dist-packages/diffusers/utils/deprecation_utils.py:23: FutureWarning: `torch_dtype` is deprecated and will be removed in version 1.0.0. Please use `dtype` instead.
+  deprecate("torch_dtype", "1.0.0", _TORCH_DTYPE_DEPRECATION_MESSAGE)
+Loading pipeline components...:   0%|          | 0/5 [00:00<?, ?it/s]Loading pipeline components...:  20%|██        | 1/5 [00:01<00:07,  1.93s/it]Loading pipeline components...:  40%|████      | 2/5 [00:02<00:03,  1.24s/it]The config attributes {'force_upcast': True} were passed to AutoencoderKLFlux2, but are not expected and will be ignored. Please verify your config.json configuration file.
+Loading pipeline components...:  60%|██████    | 3/5 [00:03<00:02,  1.17s/it]
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s][A
+Loading weights:   0%|          | 1/398 [00:11<1:14:19, 11.23s/it][A
+Loading weights:  30%|██▉       | 119/398 [00:11<00:19, 14.57it/s][A
+Loading weights:  40%|████      | 161/398 [00:14<00:16, 14.18it/s][A
+Loading weights:  45%|████▍     | 179/398 [00:16<00:15, 13.72it/s][A
+Loading weights:  48%|████▊     | 190/398 [00:16<00:14, 13.95it/s][A
+Loading weights:  51%|█████     | 201/398 [00:17<00:13, 14.15it/s][A
+Loading weights:  53%|█████▎    | 212/398 [00:18<00:13, 14.30it/s][A
+Loading weights:  56%|█████▌    | 223/398 [00:18<00:11, 14.71it/s][A
+Loading weights:  57%|█████▋    | 227/398 [00:19<00:11, 15.15it/s][A
+Loading weights:  59%|█████▉    | 234/398 [00:19<00:11, 14.02it/s][A
+Loading weights:  60%|█████▉    | 237/398 [00:19<00:10, 14.67it/s][A
+Loading weights:  62%|██████▏   | 245/398 [00:20<00:11, 13.68it/s][A
+Loading weights:  64%|██████▎   | 253/398 [00:20<00:08, 17.03it/s][A
+Loading weights:  64%|██████▍   | 256/398 [00:21<00:11, 12.42it/s][A
+Loading weights:  67%|██████▋   | 267/398 [00:22<00:10, 12.89it/s][A
+Loading weights:  70%|██████▉   | 278/398 [00:23<00:09, 13.12it/s][A
+Loading weights:  72%|███████▏  | 287/398 [00:23<00:06, 17.66it/s][A
+Loading weights:  73%|███████▎  | 291/398 [00:23<00:08, 13.05it/s][A
+Loading weights:  75%|███████▌  | 300/398 [00:24<00:07, 12.38it/s][A
+Loading weights:  78%|███████▊  | 311/398 [00:25<00:06, 12.97it/s][A
+Loading weights:  80%|████████  | 320/398 [00:25<00:04, 17.48it/s][A
+Loading weights:  82%|████████▏ | 325/398 [00:26<00:05, 13.30it/s][A
+Loading weights:  84%|████████▎ | 333/398 [00:27<00:05, 12.42it/s][A
+Loading weights:  86%|████████▋ | 344/398 [00:27<00:04, 12.76it/s][A
+Loading weights:  89%|████████▉ | 355/398 [00:28<00:03, 12.88it/s][A
+Loading weights:  92%|█████████▏| 366/398 [00:29<00:02, 13.35it/s][A
+Loading weights:  95%|█████████▍| 377/398 [00:30<00:01, 13.51it/s][A
+Loading weights:  97%|█████████▋| 388/398 [00:31<00:00, 13.46it/s][ALoading weights: 100%|██████████| 398/398 [00:31<00:00, 12.77it/s]
+Loading pipeline components...:  80%|████████  | 4/5 [00:35<00:13, 13.14s/it]Loading pipeline components...: 100%|██████████| 5/5 [01:06<00:00, 19.54s/it]Loading pipeline components...: 100%|██████████| 5/5 [01:06<00:00, 13.23s/it]
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:09<00:28,  9.48s/it] 50%|█████     | 2/4 [00:10<00:09,  4.50s/it] 75%|███████▌  | 3/4 [00:11<00:02,  2.92s/it]100%|██████████| 4/4 [00:12<00:00,  2.18s/it]100%|██████████| 4/4 [00:12<00:00,  3.14s/it]
+klein drew launch_tower in 29.24 s
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:09<00:28,  9.47s/it] 50%|█████     | 2/4 [00:10<00:09,  4.51s/it] 75%|███████▌  | 3/4 [00:11<00:02,  2.93s/it]100%|██████████| 4/4 [00:12<00:00,  2.18s/it]100%|██████████| 4/4 [00:12<00:00,  3.15s/it]
+klein drew rocket_ladder in 23.3 s
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:09<00:27,  9.31s/it] 50%|█████     | 2/4 [00:10<00:08,  4.44s/it] 75%|███████▌  | 3/4 [00:11<00:02,  2.89s/it]100%|██████████| 4/4 [00:12<00:00,  2.17s/it]100%|██████████| 4/4 [00:12<00:00,  3.11s/it]
+klein drew alien_plant in 23.14 s
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:08<00:25,  8.44s/it] 50%|█████     | 2/4 [00:09<00:08,  4.09s/it] 75%|███████▌  | 3/4 [00:10<00:02,  2.71s/it]100%|██████████| 4/4 [00:11<00:00,  2.07s/it]100%|██████████| 4/4 [00:11<00:00,  2.91s/it]
+klein drew rock_formation in 22.07 s
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:08<00:24,  8.09s/it] 50%|█████     | 2/4 [00:09<00:07,  3.96s/it] 75%|███████▌  | 3/4 [00:10<00:02,  2.65s/it]100%|██████████| 4/4 [00:11<00:00,  2.03s/it]100%|██████████| 4/4 [00:11<00:00,  2.83s/it]
+klein drew spaceport_building in 21.66 s

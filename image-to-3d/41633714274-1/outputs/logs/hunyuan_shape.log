@@ -1,0 +1,35 @@
+$ /tmp/venv3d/bin/python /tmp/i23d_stages/hunyuan_shape.py /tmp/i23d_stages/hunyuan_shape.json
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1793708731.749987     589 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+2026-11-03 12:25:32,911 - hy3dgen.shapgen - INFO - Try to load model from local path: /tmp/hy3dgen/tencent/Hunyuan3D-2mini/hunyuan3d-dit-v2-mini-turbo
+2026-11-03 12:25:32,912 - hy3dgen.shapgen - INFO - Model path not exists, try to download from huggingface
+Fetching 3 files:   0%|          | 0/3 [00:00<?, ?it/s]Fetching 3 files:  33%|███▎      | 1/3 [00:00<00:00,  4.72it/s]Fetching 3 files:  67%|██████▋   | 2/3 [00:31<00:18, 18.71s/it]Fetching 3 files: 100%|██████████| 3/3 [00:31<00:00, 10.64s/it]
+2026-11-03 12:26:05,004 - hy3dgen.shapgen - INFO - Loading model from /tmp/hf_home/hub/models--tencent--Hunyuan3D-2mini/snapshots/f90a0f7df7d5e6f71109cf333f6a95a0ae3194a6/hunyuan3d-dit-v2-mini-turbo/model.fp16.ckpt
+PointCrossAttentionEncoder INFO: pc_sharpedge_size is given, using pc_size=5120, pc_sharpedge_size=5120
+2026-11-03 12:26:49,762 - hy3dgen.shapgen - INFO - Try to load model from local path: /tmp/hy3dgen/tencent/Hunyuan3D-2mini/hunyuan3d-vae-v2-mini-turbo
+2026-11-03 12:26:49,762 - hy3dgen.shapgen - INFO - Model path not exists, try to download from huggingface
+Fetching 3 files:   0%|          | 0/3 [00:00<?, ?it/s]Fetching 3 files:  33%|███▎      | 1/3 [00:00<00:00,  5.91it/s]Fetching 3 files:  67%|██████▋   | 2/3 [00:01<00:01,  1.04s/it]Fetching 3 files: 100%|██████████| 3/3 [00:01<00:00,  1.58it/s]
+2026-11-03 12:26:51,728 - hy3dgen.shapgen - INFO - Loading model from /tmp/hf_home/hub/models--tencent--Hunyuan3D-2mini/snapshots/f90a0f7df7d5e6f71109cf333f6a95a0ae3194a6/hunyuan3d-vae-v2-mini-turbo/model.fp16.ckpt
+PointCrossAttentionEncoder INFO: pc_sharpedge_size is given, using pc_size=5120, pc_sharpedge_size=5120
+Diffusion Sampling::   0%|          | 0/5 [00:00<?, ?it/s]Diffusion Sampling::  20%|██        | 1/5 [00:00<00:02,  1.73it/s]Diffusion Sampling::  60%|██████    | 3/5 [00:01<00:00,  3.03it/s]Diffusion Sampling::  80%|████████  | 4/5 [00:01<00:00,  2.65it/s]Diffusion Sampling:: 100%|██████████| 5/5 [00:02<00:00,  2.45it/s]Diffusion Sampling:: 100%|██████████| 5/5 [00:02<00:00,  2.50it/s]
+2026-11-03 12:27:42,635 - hy3dgen.shapgen - INFO - FlashVDMVolumeDecoding Resolution: [95, 190, 380]
+FlashVDM Volume Decoding:   0%|          | 0/64 [00:00<?, ?it/s]FlashVDM Volume Decoding:  41%|████      | 26/64 [00:00<00:00, 259.22it/s]FlashVDM Volume Decoding: 100%|██████████| 64/64 [00:00<00:00, 458.44it/s]
+/tmp/Hunyuan3D-2/hy3dgen/shapegen/models/autoencoders/volume_decoders.py:81: UserWarning: Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /pytorch/torch/csrc/autograd/python_variable_indexing.cpp:347.)
+  sliced = padded[slice_dims]
+Hunyuan shape launch_tower in 41.42 s
+Diffusion Sampling::   0%|          | 0/5 [00:00<?, ?it/s]Diffusion Sampling::  20%|██        | 1/5 [00:00<00:01,  2.15it/s]Diffusion Sampling::  60%|██████    | 3/5 [00:00<00:00,  3.31it/s]Diffusion Sampling::  80%|████████  | 4/5 [00:01<00:00,  2.80it/s]Diffusion Sampling:: 100%|██████████| 5/5 [00:01<00:00,  2.54it/s]Diffusion Sampling:: 100%|██████████| 5/5 [00:01<00:00,  2.65it/s]
+2026-11-03 12:28:21,732 - hy3dgen.shapgen - INFO - FlashVDMVolumeDecoding Resolution: [95, 190, 380]
+FlashVDM Volume Decoding:   0%|          | 0/64 [00:00<?, ?it/s]FlashVDM Volume Decoding: 100%|██████████| 64/64 [00:00<00:00, 884.14it/s]
+Hunyuan shape rocket_ladder in 36.88 s
+Diffusion Sampling::   0%|          | 0/5 [00:00<?, ?it/s]Diffusion Sampling::  20%|██        | 1/5 [00:00<00:01,  2.13it/s]Diffusion Sampling::  60%|██████    | 3/5 [00:00<00:00,  3.23it/s]Diffusion Sampling::  80%|████████  | 4/5 [00:01<00:00,  2.75it/s]Diffusion Sampling:: 100%|██████████| 5/5 [00:01<00:00,  2.51it/s]Diffusion Sampling:: 100%|██████████| 5/5 [00:01<00:00,  2.61it/s]
+2026-11-03 12:28:57,585 - hy3dgen.shapgen - INFO - FlashVDMVolumeDecoding Resolution: [95, 190, 380]
+FlashVDM Volume Decoding:   0%|          | 0/64 [00:00<?, ?it/s]FlashVDM Volume Decoding: 100%|██████████| 64/64 [00:00<00:00, 872.52it/s]
+Hunyuan shape alien_plant in 41.62 s
+Diffusion Sampling::   0%|          | 0/5 [00:00<?, ?it/s]Diffusion Sampling::  20%|██        | 1/5 [00:00<00:01,  2.10it/s]Diffusion Sampling::  60%|██████    | 3/5 [00:00<00:00,  3.23it/s]Diffusion Sampling::  80%|████████  | 4/5 [00:01<00:00,  2.73it/s]Diffusion Sampling:: 100%|██████████| 5/5 [00:01<00:00,  2.50it/s]Diffusion Sampling:: 100%|██████████| 5/5 [00:01<00:00,  2.60it/s]
+2026-11-03 12:29:39,386 - hy3dgen.shapgen - INFO - FlashVDMVolumeDecoding Resolution: [95, 190, 380]
+FlashVDM Volume Decoding:   0%|          | 0/64 [00:00<?, ?it/s]FlashVDM Volume Decoding: 100%|██████████| 64/64 [00:00<00:00, 882.69it/s]
+Hunyuan shape rock_formation in 37.08 s
+Diffusion Sampling::   0%|          | 0/5 [00:00<?, ?it/s]Diffusion Sampling::  20%|██        | 1/5 [00:00<00:01,  2.07it/s]Diffusion Sampling::  60%|██████    | 3/5 [00:00<00:00,  3.17it/s]Diffusion Sampling::  80%|████████  | 4/5 [00:01<00:00,  2.67it/s]Diffusion Sampling:: 100%|██████████| 5/5 [00:01<00:00,  2.43it/s]Diffusion Sampling:: 100%|██████████| 5/5 [00:01<00:00,  2.54it/s]
+2026-11-03 12:30:16,512 - hy3dgen.shapgen - INFO - FlashVDMVolumeDecoding Resolution: [95, 190, 380]
+FlashVDM Volume Decoding:   0%|          | 0/64 [00:00<?, ?it/s]FlashVDM Volume Decoding: 100%|██████████| 64/64 [00:00<00:00, 882.03it/s]
+Hunyuan shape spaceport_building in 63.19 s

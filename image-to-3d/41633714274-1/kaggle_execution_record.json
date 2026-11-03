@@ -1,0 +1,179 @@
+{
+  "identity": {
+    "run_id": "9c8d72bafd6a412cb4d0b98a876c6f4e",
+    "run_token": "b89a8f5a3f4aac4a460df92e461efd12",
+    "commit_sha": "097e22c7309faba463e6ab36d2091ec6052deb16",
+    "workflow_run_id": "41633714274",
+    "workflow_run_attempt": "1",
+    "created_utc": "2026-11-03T12:12:28+00:00"
+  },
+  "kernel": "narasimhadamarla/stickman-motion-studio-image-to-3d-test",
+  "pushed_version": 4,
+  "push_attempts": 1,
+  "observations": [
+    {
+      "at": "2026-11-03T12:12:28+00:00",
+      "event": "notebook_stamped",
+      "run_token_written": true
+    },
+    {
+      "at": "2026-11-03T12:12:30+00:00",
+      "event": "push_response",
+      "attempt": 1,
+      "exit_code": 0,
+      "text": "Kernel version 4 successfully pushed.  Please check progress at https://www.kaggle.com/code/narasimhadamarla/stickman-motion-studio-image-to-3d-test"
+    },
+    {
+      "at": "2026-11-03T12:12:30+00:00",
+      "event": "push_accepted",
+      "version": 4
+    },
+    {
+      "at": "2026-11-03T12:12:31+00:00",
+      "event": "status",
+      "state": "QUEUED"
+    },
+    {
+      "at": "2026-11-03T12:13:01+00:00",
+      "event": "status",
+      "state": "RUNNING"
+    },
+    {
+      "at": "2026-11-03T12:40:29+00:00",
+      "event": "status",
+      "state": "COMPLETE"
+    },
+    {
+      "at": "2026-11-03T12:40:48+00:00",
+      "event": "download",
+      "attempt": 1,
+      "exit_code": 0,
+      "text": "10MB/s]\n 94%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258e| 3.00M/3.21M [00:00<00:00, 7.49MB/s]\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 3.21M/3.21M [00:00<00:00, 6.94MB/s]\n\nOutput file downloaded to kaggle-image-to-3d-output/outputs/triposr_spaceport_building.glb\nKernel log downloaded to kaggle-image-to-3d-output/stickman-motion-studio-image-to-3d-test.log"
+    }
+  ],
+  "download_attempts": 1,
+  "validation": {
+    "ok": true,
+    "failures": [],
+    "checks": {
+      "objects": [
+        {
+          "file": "object_launch_tower.png",
+          "valid": true
+        },
+        {
+          "file": "object_rocket_ladder.png",
+          "valid": true
+        },
+        {
+          "file": "object_alien_plant.png",
+          "valid": true
+        },
+        {
+          "file": "object_rock_formation.png",
+          "valid": true
+        },
+        {
+          "file": "object_spaceport_building.png",
+          "valid": true
+        }
+      ],
+      "models": [
+        {
+          "stage": "triposr",
+          "file": "triposr_launch_tower.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "triposr",
+          "file": "triposr_rocket_ladder.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "triposr",
+          "file": "triposr_alien_plant.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "triposr",
+          "file": "triposr_rock_formation.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "triposr",
+          "file": "triposr_spaceport_building.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "hunyuan_shape",
+          "file": "hunyuan_launch_tower_shape.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "hunyuan_shape",
+          "file": "hunyuan_rocket_ladder_shape.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "hunyuan_shape",
+          "file": "hunyuan_alien_plant_shape.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "hunyuan_shape",
+          "file": "hunyuan_rock_formation_shape.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "hunyuan_shape",
+          "file": "hunyuan_spaceport_building_shape.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "hunyuan_paint",
+          "file": "hunyuan_launch_tower_textured.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "hunyuan_paint",
+          "file": "hunyuan_rocket_ladder_textured.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "hunyuan_paint",
+          "file": "hunyuan_alien_plant_textured.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "hunyuan_paint",
+          "file": "hunyuan_rock_formation_textured.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "hunyuan_paint",
+          "file": "hunyuan_spaceport_building_textured.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        }
+      ]
+    }
+  },
+  "limitations": [
+    "The Kaggle CLI exposes the notebook version number, not a separate execution ID. Version tracking plus the run token in the output are used together."
+  ],
+  "result": "verified"
+}

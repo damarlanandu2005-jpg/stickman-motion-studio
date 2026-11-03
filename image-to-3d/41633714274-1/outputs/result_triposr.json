@@ -1,0 +1,74 @@
+{
+  "stage": "triposr",
+  "status": "success",
+  "error": null,
+  "objects": [
+    {
+      "name": "launch_tower",
+      "status": "success",
+      "depth_ratio": 0.366,
+      "looks_flat": false,
+      "file": "triposr_launch_tower.glb",
+      "seconds": 33.71,
+      "vertices": 18810,
+      "faces": 37576,
+      "peak_vram_gib": 2.32,
+      "bytes": 752860,
+      "sha256": "5a31e6faeccbe962ddb639cc99abc0a4d0581382336dc9a09b98e08455a0a4e7"
+    },
+    {
+      "name": "rocket_ladder",
+      "status": "success",
+      "depth_ratio": 0.323,
+      "looks_flat": false,
+      "file": "triposr_rocket_ladder.glb",
+      "seconds": 47.46,
+      "vertices": 11480,
+      "faces": 22988,
+      "peak_vram_gib": 2.32,
+      "bytes": 460524,
+      "sha256": "10296d1b176180cdde2420bfecd95435adc84e90bbe27eab06da0152e9adb97c"
+    },
+    {
+      "name": "alien_plant",
+      "status": "success",
+      "depth_ratio": 0.361,
+      "looks_flat": false,
+      "file": "triposr_alien_plant.glb",
+      "seconds": 30.0,
+      "vertices": 36051,
+      "faces": 72110,
+      "peak_vram_gib": 2.32,
+      "bytes": 1443128,
+      "sha256": "64c500a231d45c4442556c2cee3a0d3a5758e2ea0c40f38b6951c29f4ec73c0d"
+    },
+    {
+      "name": "rock_formation",
+      "status": "success",
+      "depth_ratio": 0.251,
+      "looks_flat": false,
+      "file": "triposr_rock_formation.glb",
+      "seconds": 30.08,
+      "vertices": 26505,
+      "faces": 53006,
+      "peak_vram_gib": 2.32,
+      "bytes": 1061144,
+      "sha256": "b74afdd15a534729c1bdec7cb3e52433f4b28f2b04dd2cc536ebf857af012687"
+    },
+    {
+      "name": "spaceport_building",
+      "status": "success",
+      "depth_ratio": 0.917,
+      "looks_flat": false,
+      "file": "triposr_spaceport_building.glb",
+      "seconds": 30.59,
+      "vertices": 84032,
+      "faces": 168038,
+      "peak_vram_gib": 2.32,
+      "bytes": 3361964,
+      "sha256": "4a5b3599eb4d224a1721def033cd597308c172eca3849483a7f64ee29f56cac6"
+    }
+  ],
+  "marching_cubes": "scikit-image stand-in at /tmp/i23d_shims/torchmcubes/__init__.py",
+  "load_seconds": 47.7
+}

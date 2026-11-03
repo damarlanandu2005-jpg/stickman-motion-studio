@@ -1,0 +1,83 @@
+{
+  "stage": "hunyuan_shape",
+  "status": "success",
+  "error": null,
+  "objects": [
+    {
+      "name": "launch_tower",
+      "status": "success",
+      "depth_ratio": 0.251,
+      "looks_flat": false,
+      "file": "hunyuan_launch_tower_shape.glb",
+      "seconds": 41.42,
+      "raw_faces": 255338,
+      "faces": 40000,
+      "vertices": 19713,
+      "peak_vram_gib": 4.45,
+      "bytes": 717348,
+      "sha256": "ab9d0eef638391e8b5731a3607d963aa6bf549c1c513f43e295759a379e80f68",
+      "cutout": "cutout_launch_tower.png"
+    },
+    {
+      "name": "rocket_ladder",
+      "status": "success",
+      "depth_ratio": 0.247,
+      "looks_flat": false,
+      "file": "hunyuan_rocket_ladder_shape.glb",
+      "seconds": 36.88,
+      "raw_faces": 183760,
+      "faces": 40000,
+      "vertices": 19976,
+      "peak_vram_gib": 4.45,
+      "bytes": 720504,
+      "sha256": "83b05686259810dcfe5d116435f764ec8e67f2b844a20783fc311559d1125114",
+      "cutout": "cutout_rocket_ladder.png"
+    },
+    {
+      "name": "alien_plant",
+      "status": "success",
+      "depth_ratio": 0.407,
+      "looks_flat": false,
+      "file": "hunyuan_alien_plant_shape.glb",
+      "seconds": 41.62,
+      "raw_faces": 380660,
+      "faces": 40000,
+      "vertices": 19996,
+      "peak_vram_gib": 4.46,
+      "bytes": 720744,
+      "sha256": "c4e0922222e237e681cee9f9559cbff4e99d21780bfaf8e238f012a4782283bb",
+      "cutout": "cutout_alien_plant.png"
+    },
+    {
+      "name": "rock_formation",
+      "status": "success",
+      "depth_ratio": 0.007,
+      "looks_flat": true,
+      "file": "hunyuan_rock_formation_shape.glb",
+      "seconds": 37.08,
+      "raw_faces": 219688,
+      "faces": 40000,
+      "vertices": 20002,
+      "peak_vram_gib": 4.45,
+      "bytes": 720816,
+      "sha256": "fd754aacc93ea5b741bf1a8abc039cde66618dca51f7fb444ffa32b21b3252e6",
+      "cutout": "cutout_rock_formation.png"
+    },
+    {
+      "name": "spaceport_building",
+      "status": "success",
+      "depth_ratio": 0.802,
+      "looks_flat": false,
+      "file": "hunyuan_spaceport_building_shape.glb",
+      "seconds": 63.19,
+      "raw_faces": 1090032,
+      "faces": 40000,
+      "vertices": 20002,
+      "peak_vram_gib": 4.64,
+      "bytes": 720816,
+      "sha256": "908976546054c405652533c71a7e9cf173c1f8ee27070d09561f6b5c14b7725b",
+      "cutout": "cutout_spaceport_building.png"
+    }
+  ],
+  "load_seconds": 81.1
+}

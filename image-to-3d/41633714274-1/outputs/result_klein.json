@@ -1,0 +1,60 @@
+{
+  "stage": "klein",
+  "status": "success",
+  "error": null,
+  "objects": [
+    {
+      "name": "launch_tower",
+      "file": "object_launch_tower.png",
+      "seconds": 29.24,
+      "seed": 6101,
+      "width": 768,
+      "height": 768,
+      "sha256": "e6fe6f5b9415ece5fb30e16a780b04416d65eefd9c13f1f0f11ee1068ac1197c",
+      "status": "success"
+    },
+    {
+      "name": "rocket_ladder",
+      "file": "object_rocket_ladder.png",
+      "seconds": 23.3,
+      "seed": 6102,
+      "width": 768,
+      "height": 768,
+      "sha256": "6b03fa2b6c12de5d282f602733bf31382e1f4bb443ddcfb4b904ff044bea4cec",
+      "status": "success"
+    },
+    {
+      "name": "alien_plant",
+      "file": "object_alien_plant.png",
+      "seconds": 23.14,
+      "seed": 6103,
+      "width": 768,
+      "height": 768,
+      "sha256": "f85bc48a5c01e1a21d2986fd78b441294931f9af0078717f4af19302a859fbe2",
+      "status": "success"
+    },
+    {
+      "name": "rock_formation",
+      "file": "object_rock_formation.png",
+      "seconds": 22.07,
+      "seed": 6104,
+      "width": 768,
+      "height": 768,
+      "sha256": "8961f1a0ad617b70d7f72f817bc37387edf5ac836d6881977d00a8aa3e9603d6",
+      "status": "success"
+    },
+    {
+      "name": "spaceport_building",
+      "file": "object_spaceport_building.png",
+      "seconds": 21.66,
+      "seed": 6105,
+      "width": 768,
+      "height": 768,
+      "sha256": "63f7a58fe828a877f6999be164f0ce3893b59123c1996d10762a7364b4bafcd5",
+      "status": "success"
+    }
+  ],
+  "download_seconds": 110.9,
+  "load_seconds": 66.2,
+  "peak_vram_gib": 7.75
+}

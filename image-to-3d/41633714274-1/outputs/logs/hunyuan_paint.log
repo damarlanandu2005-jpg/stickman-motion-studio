@@ -1,0 +1,26 @@
+$ /tmp/venv3d/bin/python /tmp/i23d_stages/hunyuan_paint.py /tmp/i23d_stages/hunyuan_paint.json
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1793709161.645008     770 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+Fetching 13 files:   0%|          | 0/13 [00:00<?, ?it/s]Fetching 13 files:   8%|▊         | 1/13 [00:00<00:02,  4.33it/s]Fetching 13 files:  38%|███▊      | 5/13 [00:04<00:07,  1.05it/s]Fetching 13 files:  85%|████████▍ | 11/13 [00:09<00:01,  1.20it/s]Fetching 13 files: 100%|██████████| 13/13 [00:09<00:00,  1.42it/s]
+Fetching 20 files:   0%|          | 0/20 [00:00<?, ?it/s]Fetching 20 files:  25%|██▌       | 5/20 [00:31<01:35,  6.34s/it]Fetching 20 files:  80%|████████  | 16/20 [00:59<00:13,  3.43s/it]Fetching 20 files: 100%|██████████| 20/20 [00:59<00:00,  2.96s/it]
+Loading pipeline components...:   0%|          | 0/6 [00:00<?, ?it/s]Loading pipeline components...:  17%|█▋        | 1/6 [00:00<00:00,  6.49it/s]Loading pipeline components...:  50%|█████     | 3/6 [00:14<00:15,  5.17s/it]Loading pipeline components...:  67%|██████▋   | 4/6 [00:14<00:07,  3.67s/it]Loading pipeline components...: 100%|██████████| 6/6 [00:15<00:00,  1.89s/it]Loading pipeline components...: 100%|██████████| 6/6 [00:15<00:00,  2.50s/it]
+Loading pipeline components...:   0%|          | 0/6 [00:00<?, ?it/s]Loading pipeline components...:  50%|█████     | 3/6 [00:35<00:35, 11.69s/it]Loading pipeline components...:  67%|██████▋   | 4/6 [00:41<00:19,  9.91s/it]An error occurred while trying to fetch /tmp/hf_home/hub/models--tencent--Hunyuan3D-2/snapshots/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-paint-v2-0-turbo/vae: Error no file named diffusion_pytorch_model.safetensors found in directory /tmp/hf_home/hub/models--tencent--Hunyuan3D-2/snapshots/9cd649ba6913f7a852e3286bad86bfa9a2d83dcf/hunyuan3d-paint-v2-0-turbo/vae.
+Defaulting to unsafe serialization. Pass `allow_pickle=False` to raise an error instead.
+Loading pipeline components...: 100%|██████████| 6/6 [00:42<00:00,  5.48s/it]Loading pipeline components...: 100%|██████████| 6/6 [00:42<00:00,  7.10s/it]
+/tmp/hf_home/modules/diffusers_modules/local/pipeline.py:598: UserWarning: torch.range is deprecated and will be removed in a future release because its behavior is inconsistent with Python's range builtin. Instead, use torch.arange, which produces values in [start, end).
+  index = torch.range(29, 0, -bsz, device='cuda').long()
+The first timestep on the custom timestep schedule is 989, not `self.config.num_train_timesteps - 1`: 999. You may get unexpected results when using this timestep schedule.
+The custom timestep schedule contains the following timesteps which are not on the original training/distillation timestep schedule: [tensor(890), tensor(791), tensor(692), tensor(593), tensor(494), tensor(395), tensor(296), tensor(197), tensor(98)]. You may get unexpected results when using this timestep schedule.
+Hunyuan paint launch_tower in 48.39 s
+The first timestep on the custom timestep schedule is 989, not `self.config.num_train_timesteps - 1`: 999. You may get unexpected results when using this timestep schedule.
+The custom timestep schedule contains the following timesteps which are not on the original training/distillation timestep schedule: [tensor(890), tensor(791), tensor(692), tensor(593), tensor(494), tensor(395), tensor(296), tensor(197), tensor(98)]. You may get unexpected results when using this timestep schedule.
+Hunyuan paint rocket_ladder in 38.51 s
+The first timestep on the custom timestep schedule is 989, not `self.config.num_train_timesteps - 1`: 999. You may get unexpected results when using this timestep schedule.
+The custom timestep schedule contains the following timesteps which are not on the original training/distillation timestep schedule: [tensor(890), tensor(791), tensor(692), tensor(593), tensor(494), tensor(395), tensor(296), tensor(197), tensor(98)]. You may get unexpected results when using this timestep schedule.
+Hunyuan paint alien_plant in 72.91 s
+The first timestep on the custom timestep schedule is 989, not `self.config.num_train_timesteps - 1`: 999. You may get unexpected results when using this timestep schedule.
+The custom timestep schedule contains the following timesteps which are not on the original training/distillation timestep schedule: [tensor(890), tensor(791), tensor(692), tensor(593), tensor(494), tensor(395), tensor(296), tensor(197), tensor(98)]. You may get unexpected results when using this timestep schedule.
+Hunyuan paint rock_formation in 69.21 s
+The first timestep on the custom timestep schedule is 989, not `self.config.num_train_timesteps - 1`: 999. You may get unexpected results when using this timestep schedule.
+The custom timestep schedule contains the following timesteps which are not on the original training/distillation timestep schedule: [tensor(890), tensor(791), tensor(692), tensor(593), tensor(494), tensor(395), tensor(296), tensor(197), tensor(98)]. You may get unexpected results when using this timestep schedule.
+Hunyuan paint spaceport_building in 38.07 s
