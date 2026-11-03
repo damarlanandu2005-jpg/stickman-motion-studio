@@ -55,7 +55,11 @@ class Library:
     def body(self, pose: int):
         if pose not in self._body:
             b = Image.open(self.root / self.outfit / f"body_{pose:02d}.png").convert("RGBA")
-            self._body[pose] = (b, *_neck(b))
+            top, sh, nx = _neck(b)
+            a = np.array(b)[:, :, 3] > 0
+            ys, xs = np.nonzero(a[sh + 10:int(sh + 0.55 * (a.shape[0] - sh))])  # torso/hip area
+            lean = math.degrees(math.atan2(nx - xs.mean(), ys.mean() + sh + 10 - top)) if len(xs) else 0.0
+            self._body[pose] = (b, top, sh, nx, lean)
         return self._body[pose]
 
     def head(self, expr: str) -> Image.Image:
@@ -68,25 +72,37 @@ class Library:
         return self.head("neutral").width
 
 
-def draw_actor(lib: Library, scene: Image.Image, actor: dict, t: float) -> None:
+def draw_actor(lib: Library, scene: Image.Image, actor: dict, t: float, dur: float = 1.0) -> None:
     """Paint one character. actor: pose, x (0..1 of width), feet (0..1 of height), height (0..1 of height, headless body)."""
     pose = actor.get("pose", 0)
+    for at, ps in actor.get("pose_seq", []):  # pose changes inside one shot
+        if t >= at:
+            pose = ps
     expr = "neutral"
     for at, e in actor.get("faces", [[0, "neutral"]]):
         if t >= at:
             expr = e
-    body, ntop, nshoulder, nx = lib.body(pose)
+    body, ntop, nshoulder, nx, lean = lib.body(pose)
     sw, sh = scene.size
     body_h = actor.get("height", 0.36) * sh
     k = body_h / body.height
     bob = math.sin(t * 2 * math.pi / 2.6) * 0.004 * sh
     flip = actor.get("flip", False)
+    x_pos = actor.get("x", 0.5)
+    sway = 0.0
+    if "x1" in actor:  # walk or run across the shot, with step bounce and a little head sway
+        u = min(max(t / actor.get("move_dur", dur), 0.0), 1.0)
+        x_pos = actor["x"] + (actor["x1"] - actor["x"]) * u
+        flip = actor["x1"] < actor["x"]
+        stride = actor.get("stride", 2.2)  # steps per second
+        bob = -abs(math.sin(t * math.pi * stride)) * 0.014 * sh
+        sway = math.sin(t * math.pi * stride) * 3.0
     key = ("b", pose, round(k, 3), flip)
     if key not in lib._cache:
         b = body.resize((int(body.width * k), int(body.height * k)), Image.LANCZOS)
         lib._cache[key] = b.transpose(Image.FLIP_LEFT_RIGHT) if flip else b
     b = lib._cache[key]
-    fx = actor.get("x", 0.5) * sw
+    fx = x_pos * sw
     fy = actor.get("feet", 0.86) * sh + bob
     bx = int(fx - (b.width - nx * k if flip else nx * k))
     by = int(fy - b.height)
@@ -98,22 +114,34 @@ def draw_actor(lib: Library, scene: Image.Image, actor: dict, t: float) -> None:
     # head: width tied to the body height, chin just over the shoulders (bottom-centre of the sprite is the chin)
     fw = int(body_h * actor.get("head", 0.62))
     hk = fw / lib.head_ref_width()
-    hkey = ("h", expr, round(hk, 3), flip)
+    ang = round((-lean if flip else lean) * actor.get("tilt", 0.85) + sway)  # head follows the lean of the body
+    hkey = ("h", expr, round(hk, 3), flip, ang)
     if hkey not in lib._cache:
         h = lib.head(expr)
         h = h.resize((max(int(h.width * hk), 1), max(int(h.height * hk), 1)), Image.LANCZOS)
-        lib._cache[hkey] = h.transpose(Image.FLIP_LEFT_RIGHT) if flip else h
+        h = h.transpose(Image.FLIP_LEFT_RIGHT) if flip else h
+        if ang:  # turn about the chin: pivot sits at the middle of a big canvas, then the canvas is turned
+            L = max(h.size) * 2
+            cv = Image.new("RGBA", (L * 2, L * 2), (0, 0, 0, 0))
+            cv.paste(h, (L - h.width // 2, L - h.height))
+            h = cv.rotate(-ang, Image.BICUBIC)  # screen-clockwise for a right lean
+            h = h.crop(h.getchannel("A").getbbox() or (0, 0, 1, 1)) if False else h
+        lib._cache[hkey] = h
     h = lib._cache[hkey]
     neck_x = bx + (b.width - nx * k if flip else nx * k)
     chin_y = by + (ntop + 0.9 * (nshoulder - ntop)) * k + 0.03 * fw
-    scene.paste(h, (int(neck_x - h.width / 2), int(chin_y - h.height)), h)
+    chin_y += fw * 0.12 * min(abs(lean), 25) / 25  # leaning bodies: sink the head so the neck stays joined
+    if ang:
+        scene.paste(h, (int(neck_x - h.width / 2), int(chin_y - h.height / 2)), h)  # pivot is the canvas centre
+    else:
+        scene.paste(h, (int(neck_x - h.width / 2), int(chin_y - h.height)), h)
 
 
 def render_frame(lib: Library, shot: dict, local_t: float) -> Image.Image:
     bg = lib.bg(shot["bg"])
     scene = bg.copy().convert("RGBA")
     for actor in shot.get("actors", []):
-        draw_actor(lib, scene, actor, local_t)
+        draw_actor(lib, scene, actor, local_t, shot["dur"])
     cam = shot.get("cam", {})
     u = min(max(local_t / shot["dur"], 0.0), 1.0)
     u = u * u * (3 - 2 * u)  # ease in and out
