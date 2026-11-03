@@ -1,0 +1,68 @@
+name: Asset library sync (Kaggle dataset)
+
+# The asset files live in a private Kaggle dataset; library/catalog.json in this repository says what each file is.
+# publish: create the dataset the first time, add a new version afterwards. verify: download every file back
+# from Kaggle and compare it byte-for-byte (sha256) with the catalog.
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        type: choice
+        options: [publish-and-verify, verify]
+        default: publish-and-verify
+      message:
+        default: "Update asset library"
+  # TEMPORARY: lets this new workflow run once from its branch. Path-limited to this file; remove after the first run.
+  push:
+    branches: [test/image-to-3d-objects]
+    paths: [".github/workflows/library-sync.yml"]
+
+concurrency:
+  group: kaggle-dataset-stickman-asset-library
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Unit tests and catalog check
+        env:
+          PYTHONPATH: .
+        run: |
+          python -m unittest tests.test_library -v
+          python -m motion_studio.library check
+      - name: Install Kaggle CLI
+        run: python -m pip install -q kaggle==2.2.5 six
+      - name: Configure Kaggle credentials
+        env:
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+        run: |
+          if [ -z "$KAGGLE_USERNAME" ] || [ -z "$KAGGLE_KEY" ]; then echo "Missing Kaggle secrets"; exit 1; fi
+          mkdir -p "$HOME/.kaggle"
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          Path.home().joinpath(".kaggle", "kaggle.json").write_text(json.dumps({
+              "username": os.environ["KAGGLE_USERNAME"].strip(), "key": os.environ["KAGGLE_KEY"].strip()}))
+          PY
+          chmod 600 "$HOME/.kaggle/kaggle.json"
+      - name: Publish to the private Kaggle dataset
+        if: (inputs.action || 'publish-and-verify') == 'publish-and-verify'
+        env:
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          PYTHONPATH: .
+        run: python -m motion_studio.library publish --message "${{ inputs.message || 'Initial asset library' }} (${{ github.sha }})"
+      - name: Download everything back and verify the hashes
+        env:
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          PYTHONPATH: .
+        run: python -m motion_studio.library verify --dest library-download
