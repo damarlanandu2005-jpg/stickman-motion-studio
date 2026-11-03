@@ -97,3 +97,30 @@ class CutCycleTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class GateTests(unittest.TestCase):
+    def test_flags_missing_blank_duplicate_and_stray_face(self):
+        from PIL import ImageDraw
+        from motion_studio.gate import check, redo_jobs
+        rng = np.random.default_rng(1)
+        with tempfile.TemporaryDirectory() as d:
+            d = Path(d)
+            Image.fromarray(rng.integers(0, 255, (1024, 576, 3), dtype=np.uint8)).save(d / "pose_ok.png")
+            Image.new("RGB", (576, 1024), (120, 120, 120)).save(d / "pose_blank.png")
+            Image.fromarray(rng.integers(0, 255, (1024, 576, 3), dtype=np.uint8)).save(d / "pose_ok2.png")
+            im = Image.new("RGB", (576, 1024), (200, 120, 60))
+            dr = ImageDraw.Draw(im)
+            dr.ellipse([150, 300, 430, 580], fill="white", outline="black", width=8)
+            dr.ellipse([230, 400, 260, 440], fill="black")
+            dr.ellipse([330, 400, 360, 440], fill="black")
+            im.save(d / "pose_face.png")
+            jobs = [{"id": i, "refs": [], "seed": 5} for i in ("ok", "blank", "ok2", "face", "gone")]
+            flagged = check(jobs, d)
+            self.assertNotIn("ok", flagged)
+            self.assertIn("blank", flagged["blank"])
+            self.assertEqual(flagged["gone"], ["missing"])
+            self.assertTrue(any("stray face" in w for w in flagged["face"]))
+            redo = redo_jobs(jobs, flagged, 1)
+            self.assertEqual({j["id"] for j in redo}, set(flagged))
+            self.assertTrue(all(j["seed"] == 1005 for j in redo))
