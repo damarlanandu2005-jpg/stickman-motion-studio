@@ -1,9 +1,13 @@
 name: Kaggle image-to-3D test (3 objects)
+# (moon buggy run: open-top rover for the astronaut to ride)
 
 # Feasibility test: klein draws 3 objects, TripoSR and Hunyuan3D-2mini turn them into 3D models.
 # One run per Kaggle notebook at a time (concurrency keyed on the notebook).
 on:
   workflow_dispatch:
+  push:  # TEMPORARY trigger for this run, removed afterwards
+    branches: [test/image-to-3d-objects]
+    paths: [.github/workflows/kaggle-image-to-3d-test.yml]
 
 concurrency:
   group: kaggle-notebook-image-to-3d-test

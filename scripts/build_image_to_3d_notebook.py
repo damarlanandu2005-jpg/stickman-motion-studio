@@ -72,9 +72,8 @@ STYLE = ("isolated single object, centered, whole object fully visible. Three-qu
          "plain pure white background, no ground, no shadow, no text, no people. Flat 2D cartoon illustration, "
          "clean thick dark outlines, soft muted colours, simple flat shading.")
 OBJECTS = [
-    {"name": "rocket", "seed": 3101, "prompt": "A small retro cartoon rocket ship standing upright on three fins, white body, orange nose cone, round blue window. " + STYLE},
-    {"name": "lifeboat", "seed": 3104, "prompt": "A small wooden rowing lifeboat with white sides, a red stripe and two oars resting inside. " + STYLE},
-    {"name": "street_lamp", "seed": 3105, "prompt": "A tall old-fashioned black iron street lamp on a round base, with a glowing four-sided glass lantern on top. " + STYLE},
+    {"name": "moon_buggy_a", "seed": 5101, "prompt": "An open-top moon buggy rover for two astronauts: a low white frame with two visible bucket seats side by side, a steering handle, four big knobby grey wheels, a small orange antenna and a small cargo rack at the back. No roof, no windshield, nothing covering the seats. " + STYLE},
+    {"name": "moon_buggy_b", "seed": 5102, "prompt": "A cute cartoon open moon buggy: wide low white chassis, two open seats with orange cushions clearly visible from above, a small steering wheel, four large chunky wheels, a short antenna. Completely open top. " + STYLE},
 ]
 SIZE, STEPS, GUIDANCE = 768, 4, 1.0
 

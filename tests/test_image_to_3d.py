@@ -134,7 +134,7 @@ class ValidatorTests(unittest.TestCase):
         ns = {}
         exec(compile("".join(builder.build()["cells"][1]["source"]), "setup", "exec"), {"__name__": "x"}, ns)
         self.assertIn("not a flat front view", ns["STYLE"])
-        self.assertEqual([o["name"] for o in ns["OBJECTS"]], ["rocket", "lifeboat", "street_lamp"])
+        self.assertEqual([o["name"] for o in ns["OBJECTS"]], ["moon_buggy_a", "moon_buggy_b"])
         self.assertIn("def marching_cubes(volume, level)", ns["TORCHMCUBES_SHIM"])
         self.assertNotIn("TORCHMCUBES_GIT", ns)
         for stage in (builder.TRIPOSR_STAGE, builder.HUNYUAN_SHAPE_STAGE):
