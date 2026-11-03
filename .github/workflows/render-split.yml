@@ -1,0 +1,200 @@
+name: Render scene (split across parallel jobs)
+
+# Every frame of a scene is a pure function of its time, so the frames are split into chunks that render at the same
+# time on separate GitHub runners (CPU, no Kaggle GPU hours used), then one job joins them and checks the video
+# with the reference repo's own QA script (animation/reference/short_qa.py).
+on:
+  workflow_dispatch:
+    inputs:
+      scene:
+        description: "Scene file inside animation/"
+        default: "scenes/alien_crystal_proof.json"
+      chunks:
+        description: "Number of parallel render jobs (1-20)"
+        default: "12"
+      width:
+        default: "1080"
+      height:
+        default: "1920"
+  # TEMPORARY: lets this new workflow run once from its branch. Path-limited to this file; remove after the first run.
+  push:
+    branches: [test/image-to-3d-objects]
+    paths: [".github/workflows/render-split.yml"]
+
+concurrency:
+  group: render-split-${{ github.ref }}-${{ inputs.scene || 'default' }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write  # only used to publish results to the separate test-results branch
+
+env:
+  SCENE: ${{ inputs.scene || 'scenes/alien_crystal_proof.json' }}
+  CHUNKS: ${{ inputs.chunks || '12' }}
+  WIDTH: ${{ inputs.width || '1080' }}
+  HEIGHT: ${{ inputs.height || '1920' }}
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.plan.outputs.matrix }}
+      total: ${{ steps.plan.outputs.total }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: plan
+        run: |
+          python3 - <<'PY'
+          import json, math, os
+          scene = json.load(open(os.path.join("animation", os.environ["SCENE"])))
+          total = round(scene["duration_s"] * scene["fps"])
+          n = max(1, min(20, int(os.environ["CHUNKS"]), total))
+          size = math.ceil(total / n)
+          chunks = [{"start": s, "end": min(s + size, total)} for s in range(0, total, size)]
+          with open(os.environ["GITHUB_OUTPUT"], "a") as fh:
+              fh.write(f"matrix={json.dumps({'include': chunks})}\n")
+              fh.write(f"total={total}\n")
+          print(total, "frames in", len(chunks), "chunks:", chunks)
+          PY
+
+  render:
+    needs: plan
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJson(needs.plan.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: FFmpeg (static release build, cached)
+        uses: actions/cache@v4
+        with:
+          path: ~/ffmpeg
+          key: ffmpeg-n8.1-latest-linux64-gpl-8.1
+      - name: Install FFmpeg if not cached
+        run: |
+          if [ ! -x "$HOME/ffmpeg/bin/ffmpeg" ]; then
+            mkdir -p "$HOME/ffmpeg"
+            curl -fsSL --retry 3 https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-n8.1-latest-linux64-gpl-8.1.tar.xz \
+              | tar -xJ -C "$HOME/ffmpeg" --strip-components=1
+          fi
+          echo "$HOME/ffmpeg/bin" >> "$GITHUB_PATH"
+      - name: Install headless Chromium
+        run: |
+          python -m pip install -q playwright==1.63.0
+          python -m playwright install --with-deps chromium
+      - name: Render frames ${{ matrix.start }}-${{ matrix.end }}
+        working-directory: animation
+        run: |
+          python render_frames.py --scene "$SCENE" --out "../chunk" --width "$WIDTH" --height "$HEIGHT" \
+            --start ${{ matrix.start }} --end ${{ matrix.end }} --video-name "chunk_$(printf %05d ${{ matrix.start }}).mp4" --gl software
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: chunk-${{ matrix.start }}
+          path: chunk/
+          retention-days: 3
+
+  merge:
+    needs: [plan, render]
+    if: always() && needs.plan.result == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: FFmpeg (static release build, cached)
+        uses: actions/cache@v4
+        with:
+          path: ~/ffmpeg
+          key: ffmpeg-n8.1-latest-linux64-gpl-8.1
+      - name: Install FFmpeg if not cached
+        run: |
+          if [ ! -x "$HOME/ffmpeg/bin/ffmpeg" ]; then
+            mkdir -p "$HOME/ffmpeg"
+            curl -fsSL --retry 3 https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-n8.1-latest-linux64-gpl-8.1.tar.xz \
+              | tar -xJ -C "$HOME/ffmpeg" --strip-components=1
+          fi
+          echo "$HOME/ffmpeg/bin" >> "$GITHUB_PATH"
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: chunk-*
+          path: chunks
+      - name: Join chunks, check the video, run the reference QA
+        env:
+          TOTAL: ${{ needs.plan.outputs.total }}
+          MATRIX: ${{ needs.plan.outputs.matrix }}
+        run: |
+          python3 -m pip install -q numpy pillow
+          mkdir -p out
+          python3 - <<'PY'
+          import glob, json, os, subprocess, hashlib
+          plan = json.loads(os.environ["MATRIX"])["include"]
+          total = int(os.environ["TOTAL"])
+          report = {"scene": os.environ["SCENE"], "total_frames": total, "chunks": [], "status": "running", "problems": []}
+          parts = []
+          for c in plan:
+              d = f"chunks/chunk-{c['start']}"
+              rr = os.path.join(d, "render_report.json")
+              info = json.load(open(rr)) if os.path.exists(rr) else {"status": "missing"}
+              mp4 = sorted(glob.glob(os.path.join(d, "chunk_*.mp4")))
+              report["chunks"].append({"start": c["start"], "end": c["end"], "status": info.get("status"), "gl": (info.get("gl") or {}).get("renderer"),
+                                       "frames": info.get("frames_rendered"), "seconds_per_frame_mean": info.get("seconds_per_frame_mean"),
+                                       "render_seconds_total": info.get("render_seconds_total"), "error": info.get("error")})
+              if info.get("status") != "completed" or not mp4:
+                  report["problems"].append(f"chunk {c['start']}-{c['end']} did not complete: {info.get('error')}")
+              else:
+                  parts.append(os.path.abspath(mp4[0]))
+          if not report["problems"]:
+              open("out/list.txt", "w").write("".join(f"file '{p}'\n" for p in parts))
+              subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", "out/list.txt", "-c", "copy",
+                              "-movflags", "+faststart", "out/render.mp4"], check=True)
+              probe = json.loads(subprocess.run(["ffprobe", "-v", "error", "-count_frames", "-show_entries",
+                  "stream=codec_name,width,height,r_frame_rate,nb_read_frames:format=duration,size", "-of", "json", "out/render.mp4"],
+                  capture_output=True, text=True, check=True).stdout)
+              v = probe["streams"][0]
+              report["video"] = {"codec": v["codec_name"], "width": v["width"], "height": v["height"], "fps": v["r_frame_rate"],
+                                 "frames": int(v["nb_read_frames"]), "duration_s": float(probe["format"]["duration"]),
+                                 "bytes": int(probe["format"]["size"]), "sha256": hashlib.sha256(open("out/render.mp4", "rb").read()).hexdigest()}
+              if report["video"]["frames"] != total:
+                  report["problems"].append(f"joined video has {report['video']['frames']} frames, expected {total}")
+              if (v["width"], v["height"]) != (int(os.environ["WIDTH"]), int(os.environ["HEIGHT"])):
+                  report["problems"].append("joined video has the wrong size")
+          secs = [c["render_seconds_total"] for c in report["chunks"] if c["render_seconds_total"]]
+          report["slowest_chunk_seconds"] = max(secs) if secs else None
+          report["sum_of_chunk_seconds"] = round(sum(secs), 1) if secs else None
+          report["status"] = "completed" if not report["problems"] else "failed"
+          json.dump(report, open("out/split_report.json", "w"), indent=2)
+          print(json.dumps(report, indent=2))
+          if report["problems"]:
+              raise SystemExit("Split render failed: " + "; ".join(report["problems"]))
+          PY
+          python3 animation/reference/short_qa.py out/render.mp4 out/qa
+          cat out/qa/report.md
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: split-render-output
+          path: out/
+          retention-days: 14
+      - name: Publish outputs to the test-results branch
+        if: always()
+        env:
+          RUN_DIR: split-render/${{ github.run_id }}-${{ github.run_attempt }}
+        run: |
+          if [ ! -f out/split_report.json ]; then echo "No outputs to publish"; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch --depth 1 origin test-results
+          git worktree add /tmp/results FETCH_HEAD
+          cd /tmp/results && git checkout -B test-results
+          mkdir -p "$RUN_DIR"
+          cp -r "$GITHUB_WORKSPACE"/out/. "$RUN_DIR"/
+          rm -f "$RUN_DIR/list.txt"
+          find "$RUN_DIR" -type f -size +90M -print -delete
+          git add "$RUN_DIR"
+          git commit -q -m "Split render outputs, workflow run ${{ github.run_id }}"
+          git push -q origin test-results
+          echo "Published to branch test-results: $RUN_DIR"

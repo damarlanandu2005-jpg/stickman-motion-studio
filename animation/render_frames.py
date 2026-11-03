@@ -30,8 +30,10 @@ GPU_WORDS = ("nvidia", "tesla", "geforce", "quadro", "amd", "radeon", "intel")
 
 
 def serve(root: Path) -> tuple[socketserver.TCPServer, int]:
-    handler = functools.partial(http.server.SimpleHTTPRequestHandler, directory=str(root))
-    handler.log_message = lambda *a, **k: None
+    class Quiet(http.server.SimpleHTTPRequestHandler):
+        def log_message(self, *a, **k):
+            pass
+    handler = functools.partial(Quiet, directory=str(root))
     httpd = socketserver.TCPServer(("127.0.0.1", 0), handler)
     threading.Thread(target=httpd.serve_forever, daemon=True).start()
     return httpd, httpd.server_address[1]
@@ -59,6 +61,9 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--gl", default="auto", choices=["auto", "gpu", "software"])
     ap.add_argument("--no-video", action="store_true")
     ap.add_argument("--crf", type=int, default=18)
+    ap.add_argument("--start", type=int, default=0, help="first frame (for split rendering)")
+    ap.add_argument("--end", type=int, default=-1, help="one past the last frame; -1 = scene end")
+    ap.add_argument("--video-name", default="render.mp4")
     args = ap.parse_args(argv)
 
     from playwright.sync_api import sync_playwright
@@ -95,10 +100,14 @@ def main(argv: list[str] | None = None) -> int:
             mode, browser, page, info, errors = chosen
             report.update(mode=mode, gl=info["gl"], gpu_used=report["attempts"][-1]["gpu"], warnings=info.get("warnings", []),
                           fps=info["fps"], total_frames=info["frames"])
-            frames = [int(x) for x in args.frames.split(",") if x.strip()] or list(range(info["frames"]))
+            end = info["frames"] if args.end < 0 else min(args.end, info["frames"])
+            frames = [int(x) for x in args.frames.split(",") if x.strip()] or list(range(args.start, end))
+            if not frames:
+                raise RuntimeError(f"no frames to render in range {args.start}..{end}")
+            report.update(start=frames[0], end=frames[-1] + 1)
             canvas = page.locator("canvas")
             ffmpeg = None
-            video = args.out / "render.mp4"
+            video = args.out / args.video_name
             if not args.frames and not args.no_video:
                 exe = shutil.which("ffmpeg")
                 if not exe:
@@ -116,7 +125,7 @@ def main(argv: list[str] | None = None) -> int:
                     ffmpeg.stdin.write(png)
                 else:
                     (args.out / f"still_{f:04d}.png").write_bytes(png)
-                if f in (0, len(frames) // 2) or i == len(frames) - 1:
+                if i in (0, len(frames) // 2) or i == len(frames) - 1:
                     (args.out / f"still_{f:04d}.png").write_bytes(png)
                 if i % 30 == 0:
                     print(f"frame {f} ({i + 1}/{len(frames)}) {times[-1]} s", flush=True)
