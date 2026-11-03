@@ -1,0 +1,26 @@
+{
+  "type": "vehicle",
+  "summary": "Anything with wheels that a character can ride or that can crash.",
+  "status": "written and tested on moon_buggy_a only",
+  "required_in_behavior_file": {
+    "collide_radius_m": "ground circle used for crashes",
+    "max_speed_mps": "top speed",
+    "parts": "at least 2 wheels (kind: spin, with radius_m); doors (kind: hinge) are optional",
+    "crash": "min_speed_mps, crumple, recoil_m, open_parts (which parts pop open)"
+  },
+  "rules_the_engine_applies_automatically": [
+    "wheels turn by ground distance / radius_m, so rolling matches the speed; they lock at a crash",
+    "a door opens when a character comes within within_m and the vehicle is (almost) still, and closes when it drives",
+    "a crash happens when the vehicle moves at or above min_speed_mps and its ground circle touches a solid object (scene object with solid_radius_m)",
+    "after a crash the vehicle stops dead, rebounds a little, squashes, and shows stars, dust and a camera kick",
+    "a rider is thrown forward, throws his arms up and looks shocked after a crash",
+    "a rider gets out beside the vehicle, on the door side if it has a door",
+    "the camera can frame the vehicle and its rider automatically (camera key with a frame block)"
+  ],
+  "not_done_yet": [
+    "steering (front wheels turning when the vehicle turns)",
+    "clean doors and wheels: parts are cut out of one solid model, so edges are rough; generate vehicles with separate parts instead",
+    "real bending metal; the crash is a squash plus effects"
+  ],
+  "how_numbers_are_chosen": "today: written by hand from general knowledge. Later: an AI fills in size, speed and weight (with a source link for real-world vehicles) and the checks in motion_studio/library.py validate the file."
+}

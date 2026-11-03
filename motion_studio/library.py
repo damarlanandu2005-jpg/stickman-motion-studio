@@ -27,7 +27,7 @@ from typing import Any, Callable
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_CATALOG = ROOT / "library" / "catalog.json"
-KINDS = {"model", "card", "texture"}
+KINDS = {"model", "card", "texture", "behavior", "rules"}
 
 Runner = Callable[[list[str]], tuple[int, str]]
 
@@ -92,6 +92,8 @@ def check_sections(cat: dict[str, Any], root: Path = ROOT) -> list[str]:
     for it in cat.get("items", []):
         if it.get("behavior"):
             problems += check_behavior(root / it["behavior"], it["id"])
+    for t in cat.get("types", []):
+        if not (root / t["file"]).is_file(): problems.append(f"type {t['id']}: {t['file']} is missing")
     sids = set()
     for sc in cat.get("scenes", []):
         if sc["id"] in sids: problems.append(f"duplicate scene {sc['id']}")
@@ -123,6 +125,12 @@ def check_behavior(path: Path, owner: str) -> list[str]:
     for t in b.get("triggers", []):
         if t.get("part") not in parts: p.append(f"{owner}: trigger points to unknown part {t.get('part')}")
         if not t.get("within_m", 0) > 0: p.append(f"{owner}: trigger needs within_m")
+    if b.get("type") == "vehicle":
+        wheels = [x for x in b.get("parts", []) if x.get("kind") == "spin"]
+        if len(wheels) < 2: p.append(f"{owner}: a vehicle needs at least 2 wheels (spin parts)")
+        for key in ("collide_radius_m", "max_speed_mps"):
+            if not b.get(key, 0) > 0: p.append(f"{owner}: a vehicle needs {key}")
+        if not b.get("crash"): p.append(f"{owner}: a vehicle needs a crash rule")
     cr = b.get("crash")
     if cr:
         if not cr.get("min_speed_mps", 0) > 0: p.append(f"{owner}: crash needs min_speed_mps")

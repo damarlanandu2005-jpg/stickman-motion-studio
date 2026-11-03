@@ -609,6 +609,41 @@
         "made": "2026-11-03",
         "note": "legacy flat card; the 3D rig replaces it"
       }
+    },
+    {
+      "id": "behavior_moon_buggy_a",
+      "kind": "behavior",
+      "file": "behavior__moon_buggy_a.json",
+      "local": "library/behaviors/moon_buggy_a.json",
+      "tags": [
+        "behavior",
+        "vehicle",
+        "buggy"
+      ],
+      "sha256": "b9ea6536b4b8a40e372dac9dd29c595e7d90c94ff550fe6b521992679c8b76b9",
+      "bytes": 2503,
+      "licence": "Written for this project (owner's repository)",
+      "source": {
+        "method": "written by hand, checked by motion_studio.library.check_behavior",
+        "made": "2026-11-03"
+      }
+    },
+    {
+      "id": "rules_vehicle",
+      "kind": "rules",
+      "file": "rules__vehicle.json",
+      "local": "library/types/vehicle.json",
+      "tags": [
+        "rules",
+        "vehicle"
+      ],
+      "sha256": "d805989ce83f1d0f7fe1be6745f375f30f62dbcf5ca9fbbec1f40aa234f78df2",
+      "bytes": 1783,
+      "licence": "Written for this project (owner's repository)",
+      "source": {
+        "method": "written by hand from what the engine really does",
+        "made": "2026-11-03"
+      }
     }
   ],
   "character": {
@@ -720,6 +755,13 @@
       "file": "animation/scenes/behavior_test.json",
       "status": "test",
       "note": "door opens near a character, closes when driving, crash into the rocket from the behavior file"
+    }
+  ],
+  "types": [
+    {
+      "id": "vehicle",
+      "file": "library/types/vehicle.json",
+      "status": "tested on one object"
     }
   ]
 }

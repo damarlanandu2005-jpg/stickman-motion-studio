@@ -163,3 +163,20 @@ class WheelBehaviorTests(unittest.TestCase):
             b.pop("triggers", None); b.pop("crash", None)
             f.write_text(json.dumps(b))
             self.assertTrue(any("radius_m" in p for p in lib.check_behavior(f, "w")))
+
+
+class VehicleRuleTests(unittest.TestCase):
+    def test_vehicle_without_wheels_or_crash_is_rejected(self):
+        with tempfile.TemporaryDirectory() as d:
+            f = Path(d) / "v.json"
+            f.write_text(json.dumps({"type": "vehicle", "parts": []}))
+            text = " ".join(lib.check_behavior(f, "v"))
+        for word in ("2 wheels", "collide_radius_m", "max_speed_mps", "crash"):
+            self.assertIn(word, text)
+
+    def test_catalog_lists_behavior_and_vehicle_rules(self):
+        cat = lib.load()
+        kinds = {i["id"]: i["kind"] for i in cat["items"]}
+        self.assertEqual(kinds["behavior_moon_buggy_a"], "behavior")
+        self.assertEqual(kinds["rules_vehicle"], "rules")
+        self.assertEqual(lib.check_catalog(cat), [])
