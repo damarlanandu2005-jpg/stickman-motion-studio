@@ -124,3 +124,46 @@ class GateTests(unittest.TestCase):
             redo = redo_jobs(jobs, flagged, 1)
             self.assertEqual({j["id"] for j in redo}, set(flagged))
             self.assertTrue(all(j["seed"] == 1005 for j in redo))
+
+
+class PlannerTests(unittest.TestCase):
+    SCRIPT = "He walked for three days. Then the map ended. Only sand in every direction."
+
+    def good(self):
+        return json.dumps({"shots": [
+            {"id": "s01", "text": "He walked for three days.", "frame": "wide", "chars": ["explorer"], "place": "desert"},
+            {"id": "s02", "text": "Then the map ended.", "frame": "insert", "chars": [], "props": "a torn map"},
+            {"id": "s03", "text": "Only sand in every direction.", "frame": "wide", "chars": ["explorer"], "place": "desert"}]})
+
+    def test_valid_answer_passes_and_bad_one_is_retried_with_problems(self):
+        from motion_studio.planner import plan_script
+        calls = []
+
+        def llm(prompt):
+            calls.append(prompt)
+            return "not json" if len(calls) == 1 else "Here you go:\n" + self.good()
+        story = plan_script(self.SCRIPT, llm)
+        self.assertEqual(len(story["shots"]), 3)
+        self.assertEqual(len(calls), 2)
+        self.assertIn("previous answer had these problems", calls[1])
+
+    def test_check_catches_changed_words_unknown_costume_and_frame_rules(self):
+        from motion_studio.planner import check
+        story = json.loads(self.good())
+        story["shots"][0]["chars"] = ["wizard"]
+        story["shots"][1]["chars"] = ["explorer"]
+        story["shots"][2]["text"] = "Only sand."
+        problems = " | ".join(check(story, self.SCRIPT))
+        self.assertIn("unknown costume", problems)
+        self.assertIn("must have no characters", problems)
+        self.assertIn("do not contain the script words", problems)
+
+    def test_gives_up_after_tries(self):
+        from motion_studio.planner import plan_script
+        with self.assertRaises(ValueError):
+            plan_script(self.SCRIPT, lambda p: "{}", tries=2)
+
+    def test_fallback_is_always_valid_and_keeps_every_word(self):
+        from motion_studio.planner import check, fallback_plan
+        story = fallback_plan(self.SCRIPT * 3)
+        self.assertEqual(check(story, self.SCRIPT * 3), [])
