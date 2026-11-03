@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
   push:   # one-time start (a new workflow cannot be run by hand from a branch until it has run once); remove after the first run
     branches: [test/image-to-3d-objects]
-    paths: ['kaggle/scene-batch/jobs.json']
+    paths: ['kaggle/scene-batch/jobs.json', '.github/workflows/kaggle-scene-batch.yml']
 
 concurrency:
   group: kaggle-notebook-scene-batch
@@ -24,6 +24,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+      - run: python -m pip install numpy pillow scipy
       - run: python -m unittest discover -s tests -v
         env:
           PYTHONPATH: .
