@@ -1,0 +1,34 @@
+[
+ {
+  "id": "a24",
+  "frame": "insert",
+  "chars": [],
+  "place": "pale snow background",
+  "action": "",
+  "props": "a wooden post with a coin flying above it and small sparkles"
+ },
+ {
+  "id": "b10",
+  "frame": "insert",
+  "chars": [],
+  "place": "night sky with stars",
+  "action": "",
+  "props": "a big military cargo plane in the distance with an orange explosion flash"
+ },
+ {
+  "id": "b11",
+  "frame": "insert",
+  "chars": [],
+  "place": "night sky",
+  "action": "",
+  "props": "a giant orange fire explosion with dark smoke over a black ridge and a grey rock in front"
+ },
+ {
+  "id": "b12",
+  "frame": "insert",
+  "chars": [],
+  "place": "night sky",
+  "action": "",
+  "props": "a bright yellow and orange explosion with black smoke over a grey rock"
+ }
+]
