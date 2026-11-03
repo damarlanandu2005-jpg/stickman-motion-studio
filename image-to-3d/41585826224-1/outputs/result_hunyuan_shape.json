@@ -1,0 +1,47 @@
+{
+  "stage": "hunyuan_shape",
+  "status": "success",
+  "error": null,
+  "objects": [
+    {
+      "name": "rocket",
+      "status": "success",
+      "file": "hunyuan_rocket_shape.glb",
+      "seconds": 42.34,
+      "raw_faces": 226424,
+      "faces": 40000,
+      "vertices": 20002,
+      "peak_vram_gib": 4.46,
+      "bytes": 720816,
+      "sha256": "1c101fcac68f5372f88d74e43577ccb057c5921131ea537eb112560a3d3daba5",
+      "cutout": "cutout_rocket.png"
+    },
+    {
+      "name": "crystal_cluster",
+      "status": "success",
+      "file": "hunyuan_crystal_cluster_shape.glb",
+      "seconds": 52.73,
+      "raw_faces": 903740,
+      "faces": 40000,
+      "vertices": 20002,
+      "peak_vram_gib": 4.5,
+      "bytes": 720812,
+      "sha256": "89723187624fa928942cf01c2f7487d6d6cddf4683d38de1c6effde9928fbb69",
+      "cutout": "cutout_crystal_cluster.png"
+    },
+    {
+      "name": "space_rover",
+      "status": "success",
+      "file": "hunyuan_space_rover_shape.glb",
+      "seconds": 56.5,
+      "raw_faces": 1067248,
+      "faces": 40000,
+      "vertices": 19996,
+      "peak_vram_gib": 4.67,
+      "bytes": 720740,
+      "sha256": "ef0fc509b75608af222dbaa7062343d25a9e2c046a42c2626f43c5fb7a6191b0",
+      "cutout": "cutout_space_rover.png"
+    }
+  ],
+  "load_seconds": 73.7
+}

@@ -1,0 +1,40 @@
+{
+  "stage": "klein",
+  "status": "success",
+  "error": null,
+  "objects": [
+    {
+      "name": "rocket",
+      "file": "object_rocket.png",
+      "seconds": 27.92,
+      "seed": 3101,
+      "width": 768,
+      "height": 768,
+      "sha256": "ce4f8876d0ec598629ab32a26144b7b4c107020920e454b4d7339cb40f0a0a12",
+      "status": "success"
+    },
+    {
+      "name": "crystal_cluster",
+      "file": "object_crystal_cluster.png",
+      "seconds": 22.1,
+      "seed": 3102,
+      "width": 768,
+      "height": 768,
+      "sha256": "9f3583cf3748439cd707361321597974135f3e561a2fce5553488693a472350f",
+      "status": "success"
+    },
+    {
+      "name": "space_rover",
+      "file": "object_space_rover.png",
+      "seconds": 21.5,
+      "seed": 3103,
+      "width": 768,
+      "height": 768,
+      "sha256": "e9a7fea1f0638c13456857d7e0980367c122de1d53ba465a592b7ba88232af36",
+      "status": "success"
+    }
+  ],
+  "download_seconds": 110.8,
+  "load_seconds": 65.4,
+  "peak_vram_gib": 7.75
+}

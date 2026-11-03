@@ -1,0 +1,138 @@
+[{"stream_name":"stderr","time":6.867537143,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":6.867600837,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":7.753876835,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.753904555,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.753909547,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.75391316,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":8.341641479,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.341667574,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.341672359,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.341676066,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":35.268458507,"data":"[install_klein] ok in 19.3 s\n"}
+,{"stream_name":"stdout","time":313.26296078,"data":"[klein] ok in 278.0 s\n"}
+,{"stream_name":"stdout","time":316.983692669,"data":"[venv] ok in 3.7 s\n"}
+,{"stream_name":"stdout","time":317.751268107,"data":"[venv] ok in 0.8 s\n"}
+,{"stream_name":"stdout","time":347.639823609,"data":"[install_3d_common] ok in 29.9 s\n"}
+,{"stream_name":"stdout","time":349.112766658,"data":"[triposr_clone] ok in 1.5 s\n"}
+,{"stream_name":"stdout","time":349.278177237,"data":"[triposr_clone] ok in 0.2 s\n"}
+,{"stream_name":"stdout","time":364.582296391,"data":"[triposr_torchmcubes] exit 1 in 15.3 s\n"}
+,{"stream_name":"stdout","time":367.70493182,"data":"[hunyuan_clone] ok in 3.1 s\n"}
+,{"stream_name":"stdout","time":368.021195267,"data":"[hunyuan_clone] ok in 0.3 s\n"}
+,{"stream_name":"stdout","time":704.945039862,"data":"[hunyuan_shape] ok in 336.9 s\n"}
+,{"stream_name":"stdout","time":781.047677853,"data":"[hunyuan_build_rasterizer] ok in 76.1 s\n"}
+,{"stream_name":"stdout","time":792.891382411,"data":"[hunyuan_build_renderer] ok in 11.8 s\n"}
+,{"stream_name":"stdout","time":1109.786993951,"data":"[hunyuan_paint] ok in 316.9 s\n"}
+,{"stream_name":"stdout","time":1109.788018252,"data":"{\n"}
+,{"stream_name":"stdout","time":1109.788047534,"data":"  \"klein\": {\n"}
+,{"stream_name":"stdout","time":1109.788054229,"data":"    \"stage_status\": \"success\",\n"}
+,{"stream_name":"stdout","time":1109.788059117,"data":"    \"objects_ok\": 3,\n"}
+,{"stream_name":"stdout","time":1109.788063469,"data":"    \"objects_total\": 3,\n"}
+,{"stream_name":"stdout","time":1109.788074599,"data":"    \"seconds_per_object\": [\n"}
+,{"stream_name":"stdout","time":1109.788079376,"data":"      27.92,\n"}
+,{"stream_name":"stdout","time":1109.788084078,"data":"      22.1,\n"}
+,{"stream_name":"stdout","time":1109.788088254,"data":"      21.5\n"}
+,{"stream_name":"stdout","time":1109.788092276,"data":"    ],\n"}
+,{"stream_name":"stdout","time":1109.788096329,"data":"    \"load_seconds\": 65.4,\n"}
+,{"stream_name":"stdout","time":1109.788114694,"data":"    \"error\": null\n"}
+,{"stream_name":"stdout","time":1109.788118378,"data":"  },\n"}
+,{"stream_name":"stdout","time":1109.788121519,"data":"  \"triposr\": {\n"}
+,{"stream_name":"stdout","time":1109.788124738,"data":"    \"stage_status\": \"failed\",\n"}
+,{"stream_name":"stdout","time":1109.788128483,"data":"    \"objects_ok\": 0,\n"}
+,{"stream_name":"stdout","time":1109.788132387,"data":"    \"objects_total\": 3,\n"}
+,{"stream_name":"stdout","time":1109.788135692,"data":"    \"seconds_per_object\": [],\n"}
+,{"stream_name":"stdout","time":1109.788139028,"data":"    \"load_seconds\": null,\n"}
+,{"stream_name":"stdout","time":1109.788142459,"data":"    \"error\": \"TripoSR setup failed; see logs/triposr_clone.log and logs/triposr_torchmcubes.log\"\n"}
+,{"stream_name":"stdout","time":1109.788146086,"data":"  },\n"}
+,{"stream_name":"stdout","time":1109.78814894,"data":"  \"hunyuan_shape\": {\n"}
+,{"stream_name":"stdout","time":1109.788152114,"data":"    \"stage_status\": \"success\",\n"}
+,{"stream_name":"stdout","time":1109.788155567,"data":"    \"objects_ok\": 3,\n"}
+,{"stream_name":"stdout","time":1109.78815901,"data":"    \"objects_total\": 3,\n"}
+,{"stream_name":"stdout","time":1109.788162485,"data":"    \"seconds_per_object\": [\n"}
+,{"stream_name":"stdout","time":1109.788165858,"data":"      42.34,\n"}
+,{"stream_name":"stdout","time":1109.788169097,"data":"      52.73,\n"}
+,{"stream_name":"stdout","time":1109.788227806,"data":"      56.5\n"}
+,{"stream_name":"stdout","time":1109.788233698,"data":"    ],\n"}
+,{"stream_name":"stdout","time":1109.788237771,"data":"    \"load_seconds\": 73.7,\n"}
+,{"stream_name":"stdout","time":1109.78824105,"data":"    \"error\": null\n"}
+,{"stream_name":"stdout","time":1109.78824482,"data":"  },\n"}
+,{"stream_name":"stdout","time":1109.788248052,"data":"  \"hunyuan_paint\": {\n"}
+,{"stream_name":"stdout","time":1109.788251311,"data":"    \"stage_status\": \"success\",\n"}
+,{"stream_name":"stdout","time":1109.78825472,"data":"    \"objects_ok\": 3,\n"}
+,{"stream_name":"stdout","time":1109.788257877,"data":"    \"objects_total\": 3,\n"}
+,{"stream_name":"stdout","time":1109.788268297,"data":"    \"seconds_per_object\": [\n"}
+,{"stream_name":"stdout","time":1109.78827189,"data":"      64.4,\n"}
+,{"stream_name":"stdout","time":1109.788275372,"data":"      38.62,\n"}
+,{"stream_name":"stdout","time":1109.788278885,"data":"      33.15\n"}
+,{"stream_name":"stdout","time":1109.78828258,"data":"    ],\n"}
+,{"stream_name":"stdout","time":1109.788286664,"data":"    \"load_seconds\": 157.4,\n"}
+,{"stream_name":"stdout","time":1109.78829057,"data":"    \"error\": null\n"}
+,{"stream_name":"stdout","time":1109.788293939,"data":"  }\n"}
+,{"stream_name":"stdout","time":1109.788297387,"data":"}\n"}
+,{"stream_name":"stdout","time":1109.805501378,"data":"object_crystal_cluster.png\n"}
+,{"stream_name":"stdout","time":1109.831102908,"data":"object_rocket.png\n"}
+,{"stream_name":"stdout","time":1109.838912256,"data":"object_space_rover.png\n"}
+,{"stream_name":"stdout","time":1109.845947773,"data":"hunyuan_crystal_cluster_shape.glb 720812 bytes\n"}
+,{"stream_name":"stdout","time":1109.84596667,"data":"hunyuan_crystal_cluster_textured.glb 3260896 bytes\n"}
+,{"stream_name":"stdout","time":1109.845971209,"data":"hunyuan_rocket_shape.glb 720816 bytes\n"}
+,{"stream_name":"stdout","time":1109.845974782,"data":"hunyuan_rocket_textured.glb 2400616 bytes\n"}
+,{"stream_name":"stdout","time":1109.845978365,"data":"hunyuan_space_rover_shape.glb 720740 bytes\n"}
+,{"stream_name":"stdout","time":1109.845981943,"data":"hunyuan_space_rover_textured.glb 3294932 bytes\n"}
+,{"stream_name":"stdout","time":1109.866026355,"data":"Test completed. Engine results: {\n"}
+,{"stream_name":"stdout","time":1109.866044725,"data":" \"klein\": {\n"}
+,{"stream_name":"stdout","time":1109.866049702,"data":"  \"stage_status\": \"success\",\n"}
+,{"stream_name":"stdout","time":1109.866053519,"data":"  \"objects_ok\": 3,\n"}
+,{"stream_name":"stdout","time":1109.86605689,"data":"  \"objects_total\": 3,\n"}
+,{"stream_name":"stdout","time":1109.866060564,"data":"  \"seconds_per_object\": [\n"}
+,{"stream_name":"stdout","time":1109.866064124,"data":"   27.92,\n"}
+,{"stream_name":"stdout","time":1109.866067544,"data":"   22.1,\n"}
+,{"stream_name":"stdout","time":1109.866071022,"data":"   21.5\n"}
+,{"stream_name":"stdout","time":1109.866074391,"data":"  ],\n"}
+,{"stream_name":"stdout","time":1109.866077854,"data":"  \"load_seconds\": 65.4,\n"}
+,{"stream_name":"stdout","time":1109.866081154,"data":"  \"error\": null\n"}
+,{"stream_name":"stdout","time":1109.866084469,"data":" },\n"}
+,{"stream_name":"stdout","time":1109.866087604,"data":" \"triposr\": {\n"}
+,{"stream_name":"stdout","time":1109.866090976,"data":"  \"stage_status\": \"failed\",\n"}
+,{"stream_name":"stdout","time":1109.866094864,"data":"  \"objects_ok\": 0,\n"}
+,{"stream_name":"stdout","time":1109.866098285,"data":"  \"objects_total\": 3,\n"}
+,{"stream_name":"stdout","time":1109.866108829,"data":"  \"seconds_per_object\": [],\n"}
+,{"stream_name":"stdout","time":1109.866112465,"data":"  \"load_seconds\": null,\n"}
+,{"stream_name":"stdout","time":1109.866116,"data":"  \"error\": \"TripoSR setup failed; see logs/triposr_clone.log and logs/triposr_torchmcubes.log\"\n"}
+,{"stream_name":"stdout","time":1109.866120033,"data":" },\n"}
+,{"stream_name":"stdout","time":1109.866123408,"data":" \"hunyuan_shape\": {\n"}
+,{"stream_name":"stdout","time":1109.866126951,"data":"  \"stage_status\": \"success\",\n"}
+,{"stream_name":"stdout","time":1109.866130678,"data":"  \"objects_ok\": 3,\n"}
+,{"stream_name":"stdout","time":1109.866134126,"data":"  \"objects_total\": 3,\n"}
+,{"stream_name":"stdout","time":1109.866137623,"data":"  \"seconds_per_object\": [\n"}
+,{"stream_name":"stdout","time":1109.866141229,"data":"   42.34,\n"}
+,{"stream_name":"stdout","time":1109.866144633,"data":"   52.73,\n"}
+,{"stream_name":"stdout","time":1109.866148188,"data":"   56.5\n"}
+,{"stream_name":"stdout","time":1109.866151577,"data":"  ],\n"}
+,{"stream_name":"stdout","time":1109.866154954,"data":"  \"load_seconds\": 73.7,\n"}
+,{"stream_name":"stdout","time":1109.866158795,"data":"  \"error\": null\n"}
+,{"stream_name":"stdout","time":1109.866162294,"data":" },\n"}
+,{"stream_name":"stdout","time":1109.86616555,"data":" \"hunyuan_paint\": {\n"}
+,{"stream_name":"stdout","time":1109.866168947,"data":"  \"stage_status\": \"success\",\n"}
+,{"stream_name":"stdout","time":1109.866172489,"data":"  \"objects_ok\": 3,\n"}
+,{"stream_name":"stdout","time":1109.866175769,"data":"  \"objects_total\": 3,\n"}
+,{"stream_name":"stdout","time":1109.866339985,"data":"  \"seconds_per_object\": [\n"}
+,{"stream_name":"stdout","time":1109.866347841,"data":"   64.4,\n"}
+,{"stream_name":"stdout","time":1109.86635139,"data":"   38.62,\n"}
+,{"stream_name":"stdout","time":1109.86635459,"data":"   33.15\n"}
+,{"stream_name":"stdout","time":1109.866358059,"data":"  ],\n"}
+,{"stream_name":"stdout","time":1109.866361759,"data":"  \"load_seconds\": 157.4,\n"}
+,{"stream_name":"stdout","time":1109.866365617,"data":"  \"error\": null\n"}
+,{"stream_name":"stdout","time":1109.866369141,"data":" }\n"}
+,{"stream_name":"stdout","time":1109.866381117,"data":"}\n"}
+,{"stream_name":"stderr","time":1112.991887793,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":1112.991925484,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":1113.226888355,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":1113.226924032,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":1114.015644799,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":1114.102800978,"data":"[NbConvertApp] Writing 989004 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":1116.565851068,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":1117.311211783,"data":"[NbConvertApp] Support files will be in __results___files/\n"}
+,{"stream_name":"stderr","time":1117.31125287,"data":"[NbConvertApp] Making directory __results___files\n"}
+,{"stream_name":"stderr","time":1117.31157546,"data":"[NbConvertApp] Making directory __results___files\n"}
+,{"stream_name":"stderr","time":1117.311853697,"data":"[NbConvertApp] Making directory __results___files\n"}
+,{"stream_name":"stderr","time":1117.312222822,"data":"[NbConvertApp] Writing 349471 bytes to __results__.html\n"}
+]

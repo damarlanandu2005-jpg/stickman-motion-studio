@@ -1,0 +1,117 @@
+{
+  "identity": {
+    "run_id": "1f673bf4c1a641f58e898f01e4feab5c",
+    "run_token": "1715acf88b654bce0f437ec271a984f9",
+    "commit_sha": "a0c705f89c6e65cd3b20da6737fe883acc0fc7bc",
+    "workflow_run_id": "41585826224",
+    "workflow_run_attempt": "1",
+    "created_utc": "2026-11-03T05:46:35+00:00"
+  },
+  "kernel": "narasimhadamarla/stickman-motion-studio-image-to-3d-test",
+  "pushed_version": 1,
+  "push_attempts": 1,
+  "observations": [
+    {
+      "at": "2026-11-03T05:46:35+00:00",
+      "event": "notebook_stamped",
+      "run_token_written": true
+    },
+    {
+      "at": "2026-11-03T05:46:37+00:00",
+      "event": "push_response",
+      "attempt": 1,
+      "exit_code": 0,
+      "text": "Kernel version 1 successfully pushed.  Please check progress at https://www.kaggle.com/code/narasimhadamarla/stickman-motion-studio-image-to-3d-test"
+    },
+    {
+      "at": "2026-11-03T05:46:37+00:00",
+      "event": "push_accepted",
+      "version": 1
+    },
+    {
+      "at": "2026-11-03T05:46:38+00:00",
+      "event": "status",
+      "state": "QUEUED"
+    },
+    {
+      "at": "2026-11-03T05:47:08+00:00",
+      "event": "status",
+      "state": "RUNNING"
+    },
+    {
+      "at": "2026-11-03T06:05:52+00:00",
+      "event": "status",
+      "state": "COMPLETE"
+    },
+    {
+      "at": "2026-11-03T06:06:00+00:00",
+      "event": "download",
+      "attempt": 1,
+      "exit_code": 0,
+      "text": " kaggle-image-to-3d-output/outputs\n\n  0%|          | 0.00/986 [00:00<?, ?B/s]\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 986/986 [00:00<00:00, 6.87MB/s]\n\nOutput file downloaded to kaggle-image-to-3d-output/outputs/result_klein.json\nKernel log downloaded to kaggle-image-to-3d-output/stickman-motion-studio-image-to-3d-test.log"
+    }
+  ],
+  "download_attempts": 1,
+  "validation": {
+    "ok": true,
+    "failures": [],
+    "checks": {
+      "objects": [
+        {
+          "file": "object_rocket.png",
+          "valid": true
+        },
+        {
+          "file": "object_crystal_cluster.png",
+          "valid": true
+        },
+        {
+          "file": "object_space_rover.png",
+          "valid": true
+        }
+      ],
+      "models": [
+        {
+          "stage": "hunyuan_shape",
+          "file": "hunyuan_rocket_shape.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "hunyuan_shape",
+          "file": "hunyuan_crystal_cluster_shape.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "hunyuan_shape",
+          "file": "hunyuan_space_rover_shape.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "hunyuan_paint",
+          "file": "hunyuan_rocket_textured.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "hunyuan_paint",
+          "file": "hunyuan_crystal_cluster_textured.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        },
+        {
+          "stage": "hunyuan_paint",
+          "file": "hunyuan_space_rover_textured.glb",
+          "glb_header_ok": true,
+          "hash_matches": true
+        }
+      ]
+    }
+  },
+  "limitations": [
+    "The Kaggle CLI exposes the notebook version number, not a separate execution ID. Version tracking plus the run token in the output are used together."
+  ],
+  "result": "verified"
+}

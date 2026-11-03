@@ -1,0 +1,35 @@
+{
+  "stage": "hunyuan_paint",
+  "status": "success",
+  "error": null,
+  "objects": [
+    {
+      "name": "rocket",
+      "status": "success",
+      "file": "hunyuan_rocket_textured.glb",
+      "seconds": 64.4,
+      "peak_vram_gib": 4.06,
+      "bytes": 2400616,
+      "sha256": "d10e456f7c89969422bcbc46c0548717a63e680d29048796648938ff20722822"
+    },
+    {
+      "name": "crystal_cluster",
+      "status": "success",
+      "file": "hunyuan_crystal_cluster_textured.glb",
+      "seconds": 38.62,
+      "peak_vram_gib": 4.11,
+      "bytes": 3260896,
+      "sha256": "50e78b16c0ff6dbd6bae17071450a03e4f1f96883d567cdaaeb7de2b5bb3e4c1"
+    },
+    {
+      "name": "space_rover",
+      "status": "success",
+      "file": "hunyuan_space_rover_textured.glb",
+      "seconds": 33.15,
+      "peak_vram_gib": 4.11,
+      "bytes": 3294932,
+      "sha256": "299961f8330c241ad5ab9f9e3f1c6f3581590589f5e4d97c60d82b8ff51c3c59"
+    }
+  ],
+  "load_seconds": 157.4
+}

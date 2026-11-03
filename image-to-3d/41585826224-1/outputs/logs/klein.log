@@ -1,0 +1,27 @@
+$ /usr/bin/python3 /tmp/i23d_stages/klein.py /tmp/i23d_stages/klein.json
+Fetching 25 files:   0%|          | 0/25 [00:00<?, ?it/s]Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Fetching 25 files:   8%|▊         | 2/25 [00:00<00:01, 17.00it/s]Fetching 25 files:  44%|████▍     | 11/25 [00:00<00:00, 50.59it/s]Fetching 25 files:  64%|██████▍   | 16/25 [00:00<00:00, 19.05it/s]Fetching 25 files:  80%|████████  | 20/25 [00:12<00:04,  1.00it/s]Fetching 25 files:  84%|████████▍ | 21/25 [00:34<00:12,  3.14s/it]Fetching 25 files:  88%|████████▊ | 22/25 [01:25<00:27,  9.16s/it]Fetching 25 files:  96%|█████████▌| 24/25 [01:26<00:06,  6.91s/it]Fetching 25 files:  96%|█████████▌| 24/25 [01:40<00:06,  6.91s/it]Fetching 25 files: 100%|██████████| 25/25 [01:50<00:00,  9.61s/it]Fetching 25 files: 100%|██████████| 25/25 [01:50<00:00,  4.43s/it]
+/usr/local/lib/python3.13/dist-packages/diffusers/utils/deprecation_utils.py:23: FutureWarning: `torch_dtype` is deprecated and will be removed in version 1.0.0. Please use `dtype` instead.
+  deprecate("torch_dtype", "1.0.0", _TORCH_DTYPE_DEPRECATION_MESSAGE)
+Loading pipeline components...:   0%|          | 0/5 [00:00<?, ?it/s]
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s][A
+Loading weights:   0%|          | 1/398 [00:11<1:14:05, 11.20s/it][A
+Loading weights:  30%|██▉       | 119/398 [00:11<00:18, 14.95it/s][A
+Loading weights:  59%|█████▉    | 236/398 [00:19<00:11, 14.23it/s][A
+Loading weights:  72%|███████▏  | 285/398 [00:23<00:07, 14.46it/s][A
+Loading weights:  79%|███████▊  | 313/398 [00:25<00:06, 13.90it/s][A
+Loading weights:  83%|████████▎ | 330/398 [00:26<00:04, 14.53it/s][A
+Loading weights:  86%|████████▌ | 342/398 [00:27<00:03, 14.53it/s][A
+Loading weights:  88%|████████▊ | 351/398 [00:27<00:03, 14.15it/s][A
+Loading weights:  90%|████████▉ | 357/398 [00:28<00:03, 13.03it/s][A
+Loading weights:  92%|█████████▏| 366/398 [00:29<00:02, 12.72it/s][A
+Loading weights:  95%|█████████▍| 377/398 [00:30<00:01, 13.15it/s][A
+Loading weights:  97%|█████████▋| 388/398 [00:30<00:00, 13.31it/s][ALoading weights: 100%|██████████| 398/398 [00:31<00:00, 12.83it/s]
+Loading pipeline components...:  20%|██        | 1/5 [00:31<02:05, 31.49s/it]Loading pipeline components...:  40%|████      | 2/5 [00:32<00:40, 13.39s/it]Loading pipeline components...:  60%|██████    | 3/5 [00:33<00:16,  8.02s/it]Loading pipeline components...:  80%|████████  | 4/5 [01:04<00:17, 17.06s/it]The config attributes {'force_upcast': True} were passed to AutoencoderKLFlux2, but are not expected and will be ignored. Please verify your config.json configuration file.
+Loading pipeline components...: 100%|██████████| 5/5 [01:05<00:00, 11.14s/it]Loading pipeline components...: 100%|██████████| 5/5 [01:05<00:00, 13.08s/it]
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:09<00:27,  9.29s/it] 50%|█████     | 2/4 [00:10<00:08,  4.42s/it] 75%|███████▌  | 3/4 [00:11<00:02,  2.88s/it]100%|██████████| 4/4 [00:12<00:00,  2.15s/it]100%|██████████| 4/4 [00:12<00:00,  3.09s/it]
+klein drew rocket in 27.92 s
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:08<00:26,  8.83s/it] 50%|█████     | 2/4 [00:09<00:08,  4.25s/it] 75%|███████▌  | 3/4 [00:10<00:02,  2.78s/it]100%|██████████| 4/4 [00:11<00:00,  2.09s/it]100%|██████████| 4/4 [00:11<00:00,  2.98s/it]
+klein drew crystal_cluster in 22.1 s
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:08<00:24,  8.27s/it] 50%|█████     | 2/4 [00:09<00:08,  4.02s/it] 75%|███████▌  | 3/4 [00:10<00:02,  2.65s/it]100%|██████████| 4/4 [00:11<00:00,  2.02s/it]100%|██████████| 4/4 [00:11<00:00,  2.85s/it]
+klein drew space_rover in 21.5 s
