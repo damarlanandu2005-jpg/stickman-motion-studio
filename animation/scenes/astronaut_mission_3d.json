@@ -50,10 +50,9 @@
    "height_m": 7.0
   },
   "space_rover": {
-   "file": "assets/models/space_rover.glb",
-   "height_m": 2.6,
-   "brightness": 1.1,
-   "forward_deg": 0
+   "file": "assets/models/moon_buggy_a.glb",
+   "height_m": 1.5,
+   "forward_deg": -90
   },
   "crystal_cluster": {
    "file": "assets/models/crystal_cluster.glb",
