@@ -12,6 +12,7 @@ export type Action = {
   height_m?: number;         // jump height, float height
   arm?: "L" | "R";           // wave / point arm
   vehicle?: string; seat?: [number, number, number]; to_s?: number; enter_s?: number; exit_s?: number; exit_m?: number; exit_to?: [number, number];
+  chair?: boolean;           // sit: on a chair/seat (seated pose, lowered to seat height) instead of on the floor
   face_deg?: number; face_camera?: boolean; face_toward?: string;   // heading while standing still
   expression?: string;
 };
@@ -137,6 +138,7 @@ export function actionPose(a: Action, ta: number, c: Ctx): Out {
     }
     case "sit": {
       const d = a.dur_s ?? 1.0;
+      if (a.chair) { const k = sm(ta / d); return { pose: mixPose(idle(c.time), KEY.seated, k), lock: true, lift: -0.35 * k }; }
       return { pose: keyed([[0, KEY.stand], [0.5 * d, KEY.crouch], [d, KEY.sitFloor]], ta), lock: true, lift: 0 };
     }
     case "float": {

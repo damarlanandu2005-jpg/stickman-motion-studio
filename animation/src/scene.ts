@@ -45,7 +45,7 @@ export type Prop = { id: string; kind: "console" | "seat" | "window" | "locker" 
   blip_at_s?: number; text_at?: { at_s: number; text: string }[]; until_s?: number; appear_s?: number };
 
 export type Behavior = {
-  id: string; type: "vehicle" | "prop" | "building";
+  id: string; type: "vehicle" | "prop" | "building" | "rocket"; solid?: boolean;
   max_speed_mps?: number; mass_kg?: number;
   /** ground circle used for crashes, around the object centre */
   collide_radius_m?: number;
@@ -69,8 +69,9 @@ export type Scene = {
   props?: Prop[];
   assets: Record<string, { file: string; height_m: number; brightness?: number; forward_deg?: number; /** behavior file (library/behaviors): parts, triggers, crash rule */ behavior?: string }>;
   /** objects with a physics block are simulated by Blender (bake_physics.py) and replayed from the baked tracks */
-  objects: { id: string; asset: string; at: XZ; turn_deg?: number; /** a wall/rock/rocket other things can crash into (ground circle) */ solid_radius_m?: number; moves?: Move[]; physics?: Physics;
-    /** hidden until this time (e.g. crystals that start falling at physics_bake.from_s) */ appear_s?: number; /** hidden from this time (e.g. a person who climbed in) */ until_s?: number }[];
+  objects: { id: string; asset: string; at: XZ; /** start height above the ground (a rocket coming in to land) */ at_y?: number; turn_deg?: number; /** a wall/rock/rocket other things can crash into (ground circle) */ solid_radius_m?: number; moves?: Move[]; physics?: Physics;
+    /** hidden until this time (e.g. crystals that start falling at physics_bake.from_s) */ appear_s?: number; /** hidden from this time (e.g. a person who climbed in) */ until_s?: number;
+    /** an engine burning: a flame under the object and a smoke trail left behind on the path it flew */ thrust?: { from_s: number; to_s: number; flame_m?: number; smoke?: boolean } }[];
   /** scene wind (force vector) pushing particles and cloth */
   wind?: XYZ;
   emitters?: Emitter[];
@@ -78,7 +79,7 @@ export type Scene = {
   physics_bake?: { from_s?: number; substeps?: number; iterations?: number };
   characters: { id: string; cards?: string; height_m: number; at: XZ;
     /** a 3D stickman: one skeleton, a costume layer, scripted actions (see motion.ts); replaces cards and poses */
-    rig?: { costume: string; face?: string; /** species skin, e.g. alien */ species?: string }; until_s?: number; actions?: Action[]; expressions?: { at_s: number; face: string }[];
+    rig?: { costume: string; face?: string; /** species skin, e.g. alien */ species?: string }; until_s?: number; appear_s?: number; actions?: Action[]; expressions?: { at_s: number; face: string }[];
     /** a pose name that plays several cards in turn, e.g. walk -> walk_1..walk_4 at hz pictures per second */
     cycles?: Record<string, { frames: string[]; hz: number }>;
     poses?: { at_s: number; pose: string; face?: "left" | "right" }[]; moves?: Move[] }[];
@@ -104,6 +105,7 @@ export function validateScene(s: Scene): string[] {
     if (o.physics && o.moves?.length) p.push(`object ${o.id}: use either physics or moves, not both`);
     for (const m of o.moves ?? []) { if (m.type === "place") { inTime(m.at_s, `object ${o.id} place`); continue; } inTime(m.from_s, `object ${o.id} ${m.type}`); inTime(m.to_s, `object ${o.id} ${m.type}`); if (m.to_s <= m.from_s) p.push(`object ${o.id} ${m.type}: to_s must be after from_s`); }
   }
+  for (const pr of s.props ?? []) { if (ids.has(pr.id)) p.push(`duplicate id ${pr.id}`); ids.add(pr.id); }
   for (const c of s.characters) {
     if (ids.has(c.id)) p.push(`duplicate id ${c.id}`); ids.add(c.id);
     if (c.rig) {

@@ -1,0 +1,3123 @@
+{
+ "id": "space_adventure",
+ "title": "Space adventure (30-shot test)",
+ "fps": 30,
+ "audio": "paused",
+ "note": "Script written by Claude as a stand-in for the automatic script writer (deferred). Shots are scene fragments; assets, environments, behaviors and cameras are filled in by motion_studio/story.py.",
+ "characters": {
+  "hero": {
+   "rig": {
+    "costume": "astronaut",
+    "face": "neutral"
+   },
+   "height_m": 1.8
+  },
+  "alien": {
+   "rig": {
+    "costume": "alien",
+    "face": "neutral",
+    "species": "alien"
+   },
+   "height_m": 1.7
+  }
+ },
+ "assets": {
+  "rocket": {
+   "library": "rocket",
+   "type": "rocket",
+   "height_m": 7.0
+  },
+  "crystal_cluster": {
+   "library": "crystal_cluster",
+   "type": "prop",
+   "height_m": 1.3
+  },
+  "launch_tower": {
+   "type": "building",
+   "height_m": 11.0,
+   "tags": [
+    "space",
+    "launch",
+    "tower"
+   ],
+   "prompt_file": "launch_tower"
+  },
+  "rocket_ladder": {
+   "type": "prop",
+   "height_m": 3.4,
+   "tags": [
+    "space",
+    "ladder"
+   ],
+   "prompt_file": "rocket_ladder"
+  },
+  "spaceport_building": {
+   "type": "building",
+   "height_m": 4.5,
+   "tags": [
+    "space",
+    "building"
+   ],
+   "prompt_file": "spaceport_building"
+  },
+  "alien_plant": {
+   "type": "prop",
+   "height_m": 2.2,
+   "tags": [
+    "alien",
+    "plant"
+   ],
+   "prompt_file": "alien_plant"
+  },
+  "rock_formation": {
+   "type": "building",
+   "height_m": 5.0,
+   "tags": [
+    "alien",
+    "rock"
+   ],
+   "prompt_file": "rock_formation"
+  }
+ },
+ "shots": [
+  {
+   "id": "01_earth_plan",
+   "duration_s": 2.0,
+   "env": "space",
+   "bodies": [
+    {
+     "kind": "earth",
+     "dir": [
+      0.1,
+      -0.5,
+      -1
+     ],
+     "radius_m": 170
+    },
+    {
+     "kind": "sun",
+     "dir": [
+      0.8,
+      0.35,
+      -1
+     ],
+     "radius_m": 60
+    }
+   ],
+   "camera": [
+    {
+     "at_s": 0,
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "look": [
+      0,
+      -0.1,
+      -1
+     ],
+     "fov": 50
+    },
+    {
+     "at_s": 2.0,
+     "pos": [
+      0,
+      0.4,
+      0
+     ],
+     "look": [
+      0,
+      -0.1,
+      -1
+     ],
+     "fov": 50
+    }
+   ]
+  },
+  {
+   "id": "02_suit_preparation",
+   "duration_s": 2.2,
+   "env": "suit_room",
+   "props": [
+    {
+     "id": "locker",
+     "kind": "locker",
+     "at": [
+      -2.4,
+      0,
+      -2.2
+     ]
+    },
+    {
+     "id": "locker2",
+     "kind": "locker",
+     "at": [
+      -1.6,
+      0,
+      -2.2
+     ],
+     "color": "#6f7a8f"
+    },
+    {
+     "id": "table",
+     "kind": "console",
+     "at": [
+      1.8,
+      0,
+      -1.6
+     ],
+     "size": [
+      1.2,
+      0.9,
+      0.6
+     ],
+     "screen": "panel"
+    },
+    {
+     "id": "helmet",
+     "kind": "helmet",
+     "at": [
+      1.8,
+      0.92,
+      -1.6
+     ]
+    }
+   ],
+   "cast": [
+    {
+     "who": "hero",
+     "at": [
+      0,
+      0
+     ],
+     "actions": [
+      {
+       "at_s": 0,
+       "do": "stand",
+       "face_camera": true
+      },
+      {
+       "at_s": 0.5,
+       "do": "wave",
+       "arm": "R"
+      },
+      {
+       "at_s": 1.6,
+       "do": "stand"
+      }
+     ],
+     "expressions": [
+      {
+       "at_s": 0,
+       "face": "smile"
+      }
+     ]
+    }
+   ],
+   "camera": [
+    {
+     "at_s": 0,
+     "frame": {
+      "on": [
+       "hero",
+       "locker"
+      ],
+      "az_deg": 15,
+      "el_deg": 6,
+      "fill": 0.95
+     },
+     "fov": 48
+    },
+    {
+     "at_s": 2.2,
+     "frame": {
+      "on": [
+       "hero",
+       "locker"
+      ],
+      "az_deg": 15,
+      "el_deg": 6,
+      "fill": 0.95
+     },
+     "fov": 48
+    }
+   ]
+  },
+  {
+   "id": "03_walk_to_launchpad",
+   "duration_s": 2.4,
+   "env": "launch_pad",
+   "objects": [
+    {
+     "id": "rocket",
+     "asset": "rocket",
+     "at": [
+      0,
+      -14
+     ]
+    },
+    {
+     "id": "tower",
+     "asset": "launch_tower",
+     "at": [
+      5.2,
+      -14
+     ]
+    },
+    {
+     "id": "hq",
+     "asset": "spaceport_building",
+     "at": [
+      -10,
+      -9
+     ]
+    }
+   ],
+   "cast": [
+    {
+     "who": "hero",
+     "at": [
+      0,
+      3
+     ],
+     "actions": [
+      {
+       "at_s": 0,
+       "do": "stand"
+      }
+     ],
+     "moves": [
+      {
+       "type": "walk",
+       "from_s": 0.1,
+       "to_s": 2.4,
+       "to": [
+        0,
+        -1
+       ]
+      }
+     ]
+    }
+   ],
+   "camera": [
+    {
+     "at_s": 0,
+     "frame": {
+      "on": [
+       "hero"
+      ],
+      "az_deg": 25,
+      "el_deg": 6,
+      "fill": 0.55
+     },
+     "fov": 48
+    },
+    {
+     "at_s": 1.2,
+     "frame": {
+      "on": [
+       "hero",
+       "rocket"
+      ],
+      "az_deg": 15,
+      "el_deg": 8,
+      "fill": 0.8
+     },
+     "fov": 48
+    },
+    {
+     "at_s": 2.4,
+     "frame": {
+      "on": [
+       "hero",
+       "rocket"
+      ],
+      "az_deg": 15,
+      "el_deg": 8,
+      "fill": 0.8
+     },
+     "fov": 48
+    }
+   ]
+  },
+  {
+   "id": "04_enter_rocket",
+   "duration_s": 2.4,
+   "env": "launch_pad",
+   "objects": [
+    {
+     "id": "rocket",
+     "asset": "rocket",
+     "at": [
+      0,
+      -3
+     ]
+    },
+    {
+     "id": "ladder",
+     "asset": "rocket_ladder",
+     "at": [
+      1.5,
+      -2.2
+     ]
+    }
+   ],
+   "cast": [
+    {
+     "who": "hero",
+     "at": [
+      3.5,
+      1
+     ],
+     "until_s": 2.0,
+     "actions": [
+      {
+       "at_s": 0,
+       "do": "stand"
+      }
+     ],
+     "moves": [
+      {
+       "type": "walk",
+       "from_s": 0.1,
+       "to_s": 1.7,
+       "to": [
+        1.5,
+        -0.9
+       ]
+      }
+     ]
+    }
+   ],
+   "camera": [
+    {
+     "at_s": 0,
+     "frame": {
+      "on": [
+       "hero",
+       "ladder"
+      ],
+      "az_deg": 20,
+      "el_deg": 6,
+      "fill": 0.6
+     },
+     "fov": 48
+    },
+    {
+     "at_s": 2.4,
+     "frame": {
+      "on": [
+       "hero",
+       "ladder"
+      ],
+      "az_deg": 20,
+      "el_deg": 6,
+      "fill": 0.6
+     },
+     "fov": 48
+    }
+   ]
+  },
+  {
+   "id": "05_inside_rocket",
+   "duration_s": 2.2,
+   "env": "cockpit",
+   "props": [
+    {
+     "id": "seat",
+     "kind": "seat",
+     "at": [
+      0,
+      0,
+      0.2
+     ]
+    },
+    {
+     "id": "console",
+     "kind": "console",
+     "at": [
+      0,
+      0,
+      -1.9
+     ],
+     "screen": "panel"
+    },
+    {
+     "id": "win",
+     "kind": "window",
+     "at": [
+      -2.2,
+      1.0,
+      -2.95
+     ],
+     "size": [
+      1.7,
+      1.0
+     ],
+     "view": "pad"
+    },
+    {
+     "id": "win2",
+     "kind": "window",
+     "at": [
+      2.2,
+      1.0,
+      -2.95
+     ],
+     "size": [
+      1.7,
+      1.0
+     ],
+     "view": "pad"
+    }
+   ],
+   "cast": [
+    {
+     "who": "hero",
+     "at": [
+      0,
+      0.2
+     ],
+     "actions": [
+      {
+       "at_s": 0,
+       "do": "stand",
+       "face_camera": true
+      },
+      {
+       "at_s": 0.5,
+       "do": "sit",
+       "chair": true,
+       "dur_s": 0.9
+      }
+     ],
+     "expressions": [
+      {
+       "at_s": 0,
+       "face": "smile"
+      }
+     ]
+    }
+   ],
+   "camera": [
+    {
+     "at_s": 0,
+     "frame": {
+      "on": [
+       "hero",
+       "seat"
+      ],
+      "az_deg": 15,
+      "el_deg": 6,
+      "fill": 0.9
+     },
+     "fov": 48
+    },
+    {
+     "at_s": 2.2,
+     "frame": {
+      "on": [
+       "hero",
+       "seat"
+      ],
+      "az_deg": 15,
+      "el_deg": 6,
+      "fill": 0.9
+     },
+     "fov": 48
+    }
+   ]
+  },
+  {
+   "id": "06_countdown",
+   "duration_s": 2.4,
+   "env": "cockpit",
+   "props": [
+    {
+     "id": "seat",
+     "kind": "seat",
+     "at": [
+      0,
+      0,
+      0.2
+     ]
+    },
+    {
+     "id": "console",
+     "kind": "console",
+     "at": [
+      0,
+      0,
+      -1.9
+     ],
+     "screen": "countdown",
+     "text_at": [
+      {
+       "at_s": 0,
+       "text": "T-3"
+      },
+      {
+       "at_s": 0.6,
+       "text": "T-2"
+      },
+      {
+       "at_s": 1.2,
+       "text": "T-1"
+      },
+      {
+       "at_s": 1.8,
+       "text": "GO"
+      }
+     ]
+    },
+    {
+     "id": "win",
+     "kind": "window",
+     "at": [
+      -2.2,
+      1.0,
+      -2.95
+     ],
+     "size": [
+      1.7,
+      1.0
+     ],
+     "view": "pad"
+    }
+   ],
+   "cast": [
+    {
+     "who": "hero",
+     "at": [
+      0,
+      0.2
+     ],
+     "actions": [
+      {
+       "at_s": 0,
+       "do": "sit",
+       "chair": true,
+       "dur_s": 0.01
+      }
+     ],
+     "expressions": [
+      {
+       "at_s": 0,
+       "face": "worried"
+      },
+      {
+       "at_s": 1.8,
+       "face": "smile"
+      }
+     ]
+    }
+   ],
+   "kicks": [
+    {
+     "at_s": 1.9,
+     "amp": 0.6
+    }
+   ],
+   "camera": [
+    {
+     "at_s": 0,
+     "frame": {
+      "on": [
+       "hero",
+       "console"
+      ],
+      "az_deg": 25,
+      "el_deg": 8,
+      "fill": 0.9
+     },
+     "fov": 48
+    },
+    {
+     "at_s": 2.0,
+     "frame": {
+      "on": [
+       "hero",
+       "console"
+      ],
+      "az_deg": 10,
+      "el_deg": 6,
+      "fill": 0.95
+     },
+     "fov": 48
+    },
+    {
+     "at_s": 2.4,
+     "frame": {
+      "on": [
+       "hero",
+       "console"
+      ],
+      "az_deg": 10,
+      "el_deg": 6,
+      "fill": 0.95
+     },
+     "fov": 48
+    }
+   ]
+  },
+  {
+   "id": "07_liftoff",
+   "duration_s": 2.8,
+   "env": "launch_pad",
+   "objects": [
+    {
+     "id": "rocket",
+     "asset": "rocket",
+     "at": [
+      0,
+      -3
+     ],
+     "thrust": {
+      "from_s": 0.5,
+      "to_s": 2.8
+     },
+     "moves": [
+      {
+       "type": "shake",
+       "from_s": 0,
+       "to_s": 1.0,
+       "amp_m": 0.06
+      },
+      {
+       "type": "fly",
+       "from_s": 1.0,
+       "to_s": 2.8,
+       "to": [
+        0,
+        24,
+        -3
+       ]
+      }
+     ]
+    },
+    {
+     "id": "tower",
+     "asset": "launch_tower",
+     "at": [
+      5.2,
+      -3
+     ]
+    }
+   ],
+   "kicks": [
+    {
+     "at_s": 0.6,
+     "amp": 0.5
+    },
+    {
+     "at_s": 1.0,
+     "amp": 0.8
+    }
+   ],
+   "camera": [
+    {
+     "at_s": 0,
+     "frame": {
+      "on": [
+       "rocket",
+       "tower"
+      ],
+      "az_deg": 12,
+      "el_deg": 4,
+      "fill": 0.7
+     },
+     "fov": 48
+    },
+    {
+     "at_s": 1.8,
+     "frame": {
+      "on": [
+       "rocket"
+      ],
+      "az_deg": 10,
+      "el_deg": 14,
+      "fill": 0.5
+     },
+     "fov": 48
+    },
+    {
+     "at_s": 2.8,
+     "frame": {
+      "on": [
+       "rocket"
+      ],
+      "az_deg": 10,
+      "el_deg": 14,
+      "fill": 0.5
+     },
+     "fov": 48
+    }
+   ]
+  },
+  {
+   "id": "08_through_clouds",
+   "duration_s": 2.2,
+   "env": "sky",
+   "objects": [
+    {
+     "id": "rocket",
+     "asset": "rocket",
+     "at": [
+      0,
+      0
+     ],
+     "thrust": {
+      "from_s": 0,
+      "to_s": 2.2
+     },
+     "moves": [
+      {
+       "type": "fly",
+       "from_s": 0,
+       "to_s": 2.2,
+       "to": [
+        0,
+        22,
+        0
+       ]
+      }
+     ]
+    }
+   ],
+   "props": [
+    {
+     "id": "c0",
+     "kind": "cloud",
+     "at": [
+      -5,
+      5,
+      -3
+     ],
+     "size": [
+      3.2,
+      3.2,
+      3.2
+     ]
+    },
+    {
+     "id": "c1",
+     "kind": "cloud",
+     "at": [
+      4.5,
+      9,
+      -2
+     ],
+     "size": [
+      3.6,
+      3.6,
+      3.6
+     ]
+    },
+    {
+     "id": "c2",
+     "kind": "cloud",
+     "at": [
+      -3,
+      14,
+      1
+     ],
+     "size": [
+      3,
+      3,
+      3
+     ]
+    },
+    {
+     "id": "c3",
+     "kind": "cloud",
+     "at": [
+      5,
+      17,
+      -4
+     ],
+     "size": [
+      3.8,
+      3.8,
+      3.8
+     ]
+    },
+    {
+     "id": "c4",
+     "kind": "cloud",
+     "at": [
+      -5.5,
+      20,
+      -2
+     ],
+     "size": [
+      3.4,
+      3.4,
+      3.4
+     ]
+    }
+   ],
+   "camera": [
+    {
+     "at_s": 0,
+     "frame": {
+      "on": [
+       "rocket"
+      ],
+      "az_deg": 10,
+      "el_deg": 6,
+      "fill": 0.4
+     },
+     "fov": 48
+    },
+    {
+     "at_s": 2.2,
+     "frame": {
+      "on": [
+       "rocket"
+      ],
+      "az_deg": 10,
+      "el_deg": 6,
+      "fill": 0.4
+     },
+     "fov": 48
+    }
+   ]
+  },
+  {
+   "id": "09_leave_atmosphere",
+   "duration_s": 2.2,
+   "env": "high_sky",
+   "bodies": [
+    {
+     "kind": "earth",
+     "dir": [
+      0,
+      -0.9,
+      -0.5
+     ],
+     "radius_m": 330,
+     "dist_m": 600
+    }
+   ],
+   "objects": [
+    {
+     "id": "rocket",
+     "asset": "rocket",
+     "at": [
+      0,
+      0
+     ],
+     "thrust": {
+      "from_s": 0,
+      "to_s": 2.2
+     },
+     "moves": [
+      {
+       "type": "fly",
+       "from_s": 0,
+       "to_s": 2.2,
+       "to": [
+        0,
+        16,
+        0
+       ]
+      }
+     ]
+    }
+   ],
+   "camera": [
+    {
+     "at_s": 0,
+     "frame": {
+      "on": [
+       "rocket"
+      ],
+      "az_deg": 15,
+      "el_deg": 4,
+      "fill": 0.35
+     },
+     "fov": 48
+    },
+    {
+     "at_s": 2.2,
+     "frame": {
+      "on": [
+       "rocket"
+      ],
+      "az_deg": 15,
+      "el_deg": 4,
+      "fill": 0.35
+     },
+     "fov": 48
+    }
+   ]
+  },
+  {
+   "id": "10_earth_behind",
+   "duration_s": 2.2,
+   "env": "space",
+   "bodies": [
+    {
+     "kind": "earth",
+     "dir": [
+      -0.5,
+      -0.1,
+      -1
+     ],
+     "radius_m": 220
+    }
+   ],
+   "objects": [
+    {
+     "id": "rocket",
+     "asset": "rocket",
+     "at": [
+      0,
+      0
+     ],
+     "thrust": {
+      "from_s": 0,
+      "to_s": 2.2,
+      "smoke": false
+     },
+     "moves": [
+      {
+       "type": "fly",
+       "from_s": 0,
+       "to_s": 2.2,
+       "to": [
+        0,
+        6,
+        0
+       ]
+      }
+     ]
+    }
+   ],
+   "camera": [
+    {
+     "at_s": 0,
+     "frame": {
+      "on": [
+       "rocket"
+      ],
+      "az_deg": 40,
+      "el_deg": 4,
+      "fill": 0.4
+     },
+     "fov": 48
+    },
+    {
+     "at_s": 2.2,
+     "frame": {
+      "on": [
+       "rocket"
+      ],
+      "az_deg": 40,
+      "el_deg": 4,
+      "fill": 0.4
+     },
+     "fov": 48
+    }
+   ]
+  },
+  {
+   "id": "11_sun_and_stars",
+   "duration_s": 2.2,
+   "env": "space",
+   "bodies": [
+    {
+     "kind": "sun",
+     "dir": [
+      0.5,
+      0.15,
+      -1
+     ],
+     "radius_m": 80
+    }
+   ],
+   "objects": [
+    {
+     "id": "rocket",
+     "asset": "rocket",
+     "at": [
+      0,
+      0
+     ],
+     "moves": [
+      {
+       "type": "float",
+       "from_s": 0,
+       "to_s": 2.2,
+       "amp_m": 0.25,
+       "period_s": 3
+      },
+      {
+       "type": "spin",
+       "from_s": 0,
+       "to_s": 2.2,
+       "deg_per_s": 10
+      }
+     ]
+    }
+   ],
+   "camera": [
+    {
+     "at_s": 0,
+     "frame": {
+      "on": [
+       "rocket"
+      ],
+      "az_deg": 50,
+      "el_deg": 6,
+      "fill": 0.45
+     },
+     "fov": 48
+    },
+    {
+     "at_s": 2.2,
+     "frame": {
+      "on": [
+       "rocket"
+      ],
+      "az_deg": 50,
+      "el_deg": 6,
+      "fill": 0.45
+     },
+     "fov": 48
+    }
+   ]
+  },
+  {
+   "id": "12_weightlessness",
+   "duration_s": 2.4,
+   "env": "cockpit",
+   "props": [
+    {
+     "id": "seat",
+     "kind": "seat",
+     "at": [
+      0,
+      0,
+      0.8
+     ]
+    },
+    {
+     "id": "console",
+     "kind": "console",
+     "at": [
+      0,
+      0,
+      -2.0
+     ],
+     "screen": "panel"
+    },
+    {
+     "id": "win",
+     "kind": "window",
+     "at": [
+      -2.2,
+      1.0,
+      -2.95
+     ],
+     "size": [
+      1.7,
+      1.0
+     ],
+     "view": "space"
+    },
+    {
+     "id": "win2",
+     "kind": "window",
+     "at": [
+      2.2,
+      1.0,
+      -2.95
+     ],
+     "size": [
+      1.7,
+      1.0
+     ],
+     "view": "space"
+    }
+   ],
+   "cast": [
+    {
+     "who": "hero",
+     "at": [
+      0,
+      0
+     ],
+     "actions": [
+      {
+       "at_s": 0,
+       "do": "stand"
+      },
+      {
+       "at_s": 0.3,
+       "do": "float",
+       "height_m": 0.9
+      }
+     ],
+     "expressions": [
+      {
+       "at_s": 0,
+       "face": "smile"
+      }
+     ]
+    }
+   ],
+   "camera": [
+    {
+     "at_s": 0,
+     "frame": {
+      "on": [
+       "hero"
+      ],
+      "az_deg": 15,
+      "el_deg": 4,
+      "fill": 0.8
+     },
+     "fov": 48
+    },
+    {
+     "at_s": 2.4,
+     "frame": {
+      "on": [
+       "hero"
+      ],
+      "az_deg": 15,
+      "el_deg": 4,
+      "fill": 0.8
+     },
+     "fov": 48
+    }
+   ]
+  },
+  {
+   "id": "13_turbulence",
+   "duration_s": 2.2,
+   "env": "cockpit",
+   "props": [
+    {
+     "id": "seat",
+     "kind": "seat",
+     "at": [
+      0,
+      0,
+      0.2
+     ]
+    },
+    {
+     "id": "console",
+     "kind": "console",
+     "at": [
+      0,
+      0,
+      -1.9
+     ],
+     "screen": "warning"
+    },
+    {
+     "id": "warn",
+     "kind": "panel",
+     "at": [
+      -2.0,
+      1.2,
+      -2.95
+     ],
+     "screen": "warning",
+     "size": [
+      1.2,
+      0.7
+     ]
+    }
+   ],
+   "cast": [
+    {
+     "who": "hero",
+     "at": [
+      0,
+      0.2
+     ],
+     "actions": [
+      {
+       "at_s": 0,
+       "do": "sit",
+       "chair": true,
+       "dur_s": 0.01
+      }
+     ],
+     "expressions": [
+      {
+       "at_s": 0,
+       "face": "worried"
+      }
+     ]
+    }
+   ],
+   "kicks": [
+    {
+     "at_s": 0.2,
+     "amp": 0.9
+    },
+    {
+     "at_s": 0.4,
+     "amp": 0.9
+    },
+    {
+     "at_s": 0.6000000000000001,
+     "amp": 0.5
+    },
+    {
+     "at_s": 0.8,
+     "amp": 0.9
+    },
+    {
+     "at_s": 1.0,
+     "amp": 0.9
+    },
+    {
+     "at_s": 1.2000000000000002,
+     "amp": 0.5
+    },
+    {
+     "at_s": 1.4000000000000001,
+     "amp": 0.9
+    },
+    {
+     "at_s": 1.6,
+     "amp": 0.9
+    },
+    {
+     "at_s": 1.8,
+     "amp": 0.5
+    },
+    {
+     "at_s": 2.0,
+     "amp": 0.9
+    }
+   ],
+   "camera": [
+    {
+     "at_s": 0,
+     "frame": {
+      "on": [
+       "hero",
+       "console"
+      ],
+      "az_deg": 20,
+      "el_deg": 8,
+      "fill": 0.9
+     },
+     "fov": 48
+    },
+    {
+     "at_s": 2.2,
+     "frame": {
+      "on": [
+       "hero",
+       "console"
+      ],
+      "az_deg": 20,
+      "el_deg": 8,
+      "fill": 0.9
+     },
+     "fov": 48
+    }
+   ]
+  },
+  {
+   "id": "14_stabilize_rocket",
+   "duration_s": 2.2,
+   "env": "space",
+   "bodies": [
+    {
+     "kind": "earth",
+     "dir": [
+      0.6,
+      -0.35,
+      -1
+     ],
+     "radius_m": 180
+    }
+   ],
+   "objects": [
+    {
+     "id": "rocket",
+     "asset": "rocket",
+     "at": [
+      0,
+      0
+     ],
+     "moves": [
+      {
+       "type": "shake",
+       "from_s": 0,
+       "to_s": 1.2,
+       "amp_m": 0.12
+      },
+      {
+       "type": "float",
+       "from_s": 1.2,
+       "to_s": 2.2,
+       "amp_m": 0.08,
+       "period_s": 3
+      }
+     ]
+    }
+   ],
+   "kicks": [
+    {
+     "at_s": 0.1,
+     "amp": 0.7
+    },
+    {
+     "at_s": 0.5,
+     "amp": 0.5
+    }
+   ],
+   "camera": [
+    {
+     "at_s": 0,
+     "frame": {
+      "on": [
+       "rocket"
+      ],
+      "az_deg": 30,
+      "el_deg": 5,
+      "fill": 0.45
+     },
+     "fov": 48
+    },
+    {
+     "at_s": 2.2,
+     "frame": {
+      "on": [
+       "rocket"
+      ],
+      "az_deg": 30,
+      "el_deg": 5,
+      "fill": 0.45
+     },
+     "fov": 48
+    }
+   ]
+  },
+  {
+   "id": "15_system_stable",
+   "duration_s": 2.0,
+   "env": "cockpit",
+   "props": [
+    {
+     "id": "seat",
+     "kind": "seat",
+     "at": [
+      0,
+      0,
+      0.2
+     ]
+    },
+    {
+     "id": "console",
+     "kind": "console",
+     "at": [
+      0,
+      0,
+      -1.9
+     ],
+     "screen": "panel"
+    },
+    {
+     "id": "win",
+     "kind": "window",
+     "at": [
+      -2.2,
+      1.0,
+      -2.95
+     ],
+     "size": [
+      1.7,
+      1.0
+     ],
+     "view": "space"
+    }
+   ],
+   "cast": [
+    {
+     "who": "hero",
+     "at": [
+      0,
+      0.2
+     ],
+     "actions": [
+      {
+       "at_s": 0,
+       "do": "sit",
+       "chair": true,
+       "dur_s": 0.01
+      },
+      {
+       "at_s": 0.6,
+       "do": "wave",
+       "arm": "R"
+      }
+     ],
+     "expressions": [
+      {
+       "at_s": 0,
+       "face": "neutral"
+      },
+      {
+       "at_s": 0.5,
+       "face": "smile"
+      }
+     ]
+    }
+   ],
+   "camera": [
+    {
+     "at_s": 0,
+     "frame": {
+      "on": [
+       "hero",
+       "console"
+      ],
+      "az_deg": 15,
+      "el_deg": 6,
+      "fill": 0.9
+     },
+     "fov": 48
+    },
+    {
+     "at_s": 2.0,
+     "frame": {
+      "on": [
+       "hero",
+       "console"
+      ],
+      "az_deg": 15,
+      "el_deg": 6,
+      "fill": 0.9
+     },
+     "fov": 48
+    }
+   ]
+  },
+  {
+   "id": "16_radar_signal",
+   "duration_s": 2.4,
+   "env": "cockpit",
+   "props": [
+    {
+     "id": "seat",
+     "kind": "seat",
+     "at": [
+      0,
+      0,
+      0.2
+     ]
+    },
+    {
+     "id": "console",
+     "kind": "console",
+     "at": [
+      0,
+      0,
+      -1.9
+     ],
+     "screen": "radar",
+     "blip_at_s": 0.7
+    },
+    {
+     "id": "radar",
+     "kind": "panel",
+     "at": [
+      -2.2,
+      1.0,
+      -2.95
+     ],
+     "screen": "radar",
+     "blip_at_s": 0.7,
+     "size": [
+      1.4,
+      1.0
+     ]
+    }
+   ],
+   "cast": [
+    {
+     "who": "hero",
+     "at": [
+      0,
+      0.2
+     ],
+     "actions": [
+      {
+       "at_s": 0,
+       "do": "sit",
+       "chair": true,
+       "dur_s": 0.01
+      },
+      {
+       "at_s": 0.8,
+       "do": "point",
+       "arm": "L"
+      }
+     ],
+     "expressions": [
+      {
+       "at_s": 0,
+       "face": "neutral"
+      },
+      {
+       "at_s": 0.8,
+       "face": "surprised"
+      }
+     ]
+    }
+   ],
+   "camera": [
+    {
+     "at_s": 0,
+     "frame": {
+      "on": [
+       "hero",
+       "console"
+      ],
+      "az_deg": 20,
+      "el_deg": 8,
+      "fill": 0.9
+     },
+     "fov": 48
+    },
+    {
+     "at_s": 2.4,
+     "frame": {
+      "on": [
+       "hero",
+       "console"
+      ],
+      "az_deg": 20,
+      "el_deg": 8,
+      "fill": 0.9
+     },
+     "fov": 48
+    }
+   ]
+  },
+  {
+   "id": "17_alien_planet_first_sight",
+   "duration_s": 2.4,
+   "env": "space",
+   "bodies": [
+    {
+     "kind": "ringed",
+     "dir": [
+      0.25,
+      0.05,
+      -1
+     ],
+     "radius_m": 120,
+     "color": "#c58ad8",
+     "color2": "#f1d6ff"
+    }
+   ],
+   "objects": [
+    {
+     "id": "rocket",
+     "asset": "rocket",
+     "at": [
+      0,
+      0
+     ],
+     "moves": [
+      {
+       "type": "float",
+       "from_s": 0,
+       "to_s": 2.4,
+       "amp_m": 0.1,
+       "period_s": 3
+      }
+     ]
+    }
+   ],
+   "camera": [
+    {
+     "at_s": 0,
+     "frame": {
+      "on": [
+       "rocket"
+      ],
+      "az_deg": 140,
+      "el_deg": 4,
+      "fill": 0.4
+     },
+     "fov": 48
+    },
+    {
+     "at_s": 2.4,
+     "frame": {
+      "on": [
+       "rocket"
+      ],
+      "az_deg": 140,
+      "el_deg": 4,
+      "fill": 0.4
+     },
+     "fov": 48
+    }
+   ]
+  },
+  {
+   "id": "18_approach_planet",
+   "duration_s": 2.4,
+   "env": "space",
+   "bodies": [
+    {
+     "kind": "planet",
+     "dir": [
+      0.0,
+      -0.1,
+      -1
+     ],
+     "radius_m": 260,
+     "color": "#c58ad8",
+     "color2": "#8f5fb8",
+     "dist_m": 500
+    }
+   ],
+   "objects": [
+    {
+     "id": "rocket",
+     "asset": "rocket",
+     "at": [
+      0,
+      0
+     ],
+     "thrust": {
+      "from_s": 0,
+      "to_s": 2.4,
+      "smoke": false
+     },
+     "moves": [
+      {
+       "type": "fly",
+       "from_s": 0,
+       "to_s": 2.4,
+       "to": [
+        0,
+        -3,
+        -14
+       ]
+      }
+     ]
+    }
+   ],
+   "camera": [
+    {
+     "at_s": 0,
+     "frame": {
+      "on": [
+       "rocket"
+      ],
+      "az_deg": 165,
+      "el_deg": 6,
+      "fill": 0.4
+     },
+     "fov": 48
+    },
+    {
+     "at_s": 2.4,
+     "frame": {
+      "on": [
+       "rocket"
+      ],
+      "az_deg": 165,
+      "el_deg": 6,
+      "fill": 0.4
+     },
+     "fov": 48
+    }
+   ]
+  },
+  {
+   "id": "19_land_on_planet",
+   "duration_s": 2.8,
+   "env": "alien_world",
+   "objects": [
+    {
+     "id": "rocket",
+     "asset": "rocket",
+     "at": [
+      0,
+      -3
+     ],
+     "solid_radius_m": 1.3,
+     "thrust": {
+      "from_s": 0,
+      "to_s": 2.0
+     },
+     "moves": [
+      {
+       "type": "fly",
+       "from_s": 0,
+       "to_s": 2.1,
+       "to": [
+        0,
+        0,
+        -3
+       ]
+      }
+     ],
+     "at_y": 14
+    },
+    {
+     "id": "plant",
+     "asset": "alien_plant",
+     "at": [
+      -5,
+      -6
+     ]
+    },
+    {
+     "id": "rocks",
+     "asset": "rock_formation",
+     "at": [
+      7,
+      -9
+     ]
+    }
+   ],
+   "camera": [
+    {
+     "at_s": 0,
+     "frame": {
+      "on": [
+       "rocket"
+      ],
+      "az_deg": 15,
+      "el_deg": 6,
+      "fill": 0.55
+     },
+     "fov": 48
+    },
+    {
+     "at_s": 2.8,
+     "frame": {
+      "on": [
+       "rocket"
+      ],
+      "az_deg": 15,
+      "el_deg": 6,
+      "fill": 0.55
+     },
+     "fov": 48
+    }
+   ]
+  },
+  {
+   "id": "20_step_out",
+   "duration_s": 2.4,
+   "env": "alien_world",
+   "objects": [
+    {
+     "id": "rocket",
+     "asset": "rocket",
+     "at": [
+      0,
+      -3
+     ],
+     "solid_radius_m": 1.3
+    },
+    {
+     "id": "ladder",
+     "asset": "rocket_ladder",
+     "at": [
+      1.5,
+      -2.2
+     ]
+    },
+    {
+     "id": "plant",
+     "asset": "alien_plant",
+     "at": [
+      -5,
+      -6
+     ]
+    }
+   ],
+   "cast": [
+    {
+     "who": "hero",
+     "at": [
+      1.5,
+      -1.0
+     ],
+     "actions": [
+      {
+       "at_s": 0,
+       "do": "stand",
+       "face_camera": true
+      },
+      {
+       "at_s": 1.2,
+       "do": "wave",
+       "arm": "R"
+      }
+     ],
+     "appear_s": 0.5,
+     "expressions": [
+      {
+       "at_s": 0,
+       "face": "surprised"
+      },
+      {
+       "at_s": 1.2,
+       "face": "smile"
+      }
+     ],
+     "moves": [
+      {
+       "type": "walk",
+       "from_s": 0.5,
+       "to_s": 1.2,
+       "to": [
+        2.0,
+        0.4
+       ]
+      }
+     ]
+    }
+   ],
+   "camera": [
+    {
+     "at_s": 0,
+     "frame": {
+      "on": [
+       "hero",
+       "rocket"
+      ],
+      "az_deg": 20,
+      "el_deg": 6,
+      "fill": 0.65
+     },
+     "fov": 48
+    },
+    {
+     "at_s": 2.4,
+     "frame": {
+      "on": [
+       "hero",
+       "rocket"
+      ],
+      "az_deg": 20,
+      "el_deg": 6,
+      "fill": 0.65
+     },
+     "fov": 48
+    }
+   ]
+  },
+  {
+   "id": "21_explore_alien_world",
+   "duration_s": 2.6,
+   "env": "alien_world",
+   "objects": [
+    {
+     "id": "plant",
+     "asset": "alien_plant",
+     "at": [
+      3.5,
+      -5
+     ]
+    },
+    {
+     "id": "rocks",
+     "asset": "rock_formation",
+     "at": [
+      -6,
+      -9
+     ]
+    },
+    {
+     "id": "plant2",
+     "asset": "alien_plant",
+     "at": [
+      -3,
+      -4.5
+     ]
+    }
+   ],
+   "cast": [
+    {
+     "who": "hero",
+     "at": [
+      0,
+      3
+     ],
+     "actions": [
+      {
+       "at_s": 0,
+       "do": "stand"
+      }
+     ],
+     "moves": [
+      {
+       "type": "walk",
+       "from_s": 0.1,
+       "to_s": 2.6,
+       "to": [
+        0,
+        -1.5
+       ]
+      }
+     ],
+     "expressions": [
+      {
+       "at_s": 0,
+       "face": "smile"
+      }
+     ]
+    }
+   ],
+   "camera": [
+    {
+     "at_s": 0,
+     "frame": {
+      "on": [
+       "hero"
+      ],
+      "az_deg": 35,
+      "el_deg": 6,
+      "fill": 0.5
+     },
+     "fov": 48
+    },
+    {
+     "at_s": 1.4,
+     "frame": {
+      "on": [
+       "hero",
+       "plant"
+      ],
+      "az_deg": 30,
+      "el_deg": 8,
+      "fill": 0.7
+     },
+     "fov": 48
+    },
+    {
+     "at_s": 2.6,
+     "frame": {
+      "on": [
+       "hero",
+       "plant"
+      ],
+      "az_deg": 30,
+      "el_deg": 8,
+      "fill": 0.7
+     },
+     "fov": 48
+    }
+   ]
+  },
+  {
+   "id": "22_crystal_discovery",
+   "duration_s": 2.4,
+   "env": "alien_world",
+   "objects": [
+    {
+     "id": "crystal",
+     "asset": "crystal_cluster",
+     "at": [
+      1.8,
+      -2.0
+     ]
+    },
+    {
+     "id": "rocks",
+     "asset": "rock_formation",
+     "at": [
+      -6,
+      -9
+     ]
+    }
+   ],
+   "cast": [
+    {
+     "who": "hero",
+     "at": [
+      -1.2,
+      1.5
+     ],
+     "actions": [
+      {
+       "at_s": 0,
+       "do": "stand"
+      },
+      {
+       "at_s": 0.5,
+       "do": "surprised"
+      },
+      {
+       "at_s": 1.3,
+       "do": "point",
+       "arm": "R",
+       "face_toward": "crystal"
+      }
+     ],
+     "expressions": [
+      {
+       "at_s": 0,
+       "face": "neutral"
+      },
+      {
+       "at_s": 0.5,
+       "face": "surprised"
+      },
+      {
+       "at_s": 1.3,
+       "face": "smile"
+      }
+     ]
+    }
+   ],
+   "camera": [
+    {
+     "at_s": 0,
+     "frame": {
+      "on": [
+       "hero",
+       "crystal"
+      ],
+      "az_deg": 20,
+      "el_deg": 6,
+      "fill": 0.65
+     },
+     "fov": 48
+    },
+    {
+     "at_s": 2.4,
+     "frame": {
+      "on": [
+       "hero",
+       "crystal"
+      ],
+      "az_deg": 20,
+      "el_deg": 6,
+      "fill": 0.65
+     },
+     "fov": 48
+    }
+   ]
+  },
+  {
+   "id": "23_aliens_in_distance",
+   "duration_s": 2.4,
+   "env": "alien_world",
+   "objects": [
+    {
+     "id": "rocks",
+     "asset": "rock_formation",
+     "at": [
+      -5,
+      -10
+     ]
+    },
+    {
+     "id": "plant",
+     "asset": "alien_plant",
+     "at": [
+      4.5,
+      -6
+     ]
+    }
+   ],
+   "cast": [
+    {
+     "who": "hero",
+     "at": [
+      0,
+      2
+     ],
+     "actions": [
+      {
+       "at_s": 0,
+       "do": "stand"
+      },
+      {
+       "at_s": 0.4,
+       "do": "look"
+      }
+     ],
+     "expressions": [
+      {
+       "at_s": 0,
+       "face": "surprised"
+      }
+     ]
+    },
+    {
+     "who": "alien",
+     "id": "al1",
+     "at": [
+      -2,
+      -12
+     ],
+     "height_m": 1.7,
+     "actions": [
+      {
+       "at_s": 0,
+       "do": "stand"
+      }
+     ],
+     "moves": [
+      {
+       "type": "walk",
+       "from_s": 0.2,
+       "to_s": 2.4,
+       "to": [
+        -1.5,
+        -8
+       ]
+      }
+     ]
+    },
+    {
+     "who": "alien",
+     "id": "al2",
+     "at": [
+      2,
+      -13
+     ],
+     "height_m": 1.7,
+     "actions": [
+      {
+       "at_s": 0,
+       "do": "stand"
+      }
+     ],
+     "moves": [
+      {
+       "type": "walk",
+       "from_s": 0.4,
+       "to_s": 2.4,
+       "to": [
+        1.2,
+        -9
+       ]
+      }
+     ]
+    }
+   ],
+   "camera": [
+    {
+     "at_s": 0,
+     "frame": {
+      "on": [
+       "hero",
+       "al1",
+       "al2"
+      ],
+      "az_deg": 5,
+      "el_deg": 5,
+      "fill": 0.9
+     },
+     "fov": 52
+    },
+    {
+     "at_s": 2.4,
+     "frame": {
+      "on": [
+       "hero",
+       "al1",
+       "al2"
+      ],
+      "az_deg": 5,
+      "el_deg": 5,
+      "fill": 0.9
+     },
+     "fov": 52
+    }
+   ]
+  },
+  {
+   "id": "24_first_contact",
+   "duration_s": 2.6,
+   "env": "alien_world",
+   "objects": [
+    {
+     "id": "plant",
+     "asset": "alien_plant",
+     "at": [
+      4.5,
+      -4
+     ]
+    }
+   ],
+   "cast": [
+    {
+     "who": "hero",
+     "at": [
+      -1.4,
+      0
+     ],
+     "actions": [
+      {
+       "at_s": 0,
+       "do": "stand"
+      },
+      {
+       "at_s": 0.5,
+       "do": "wave",
+       "arm": "R"
+      },
+      {
+       "at_s": 1.9,
+       "do": "stand"
+      }
+     ],
+     "expressions": [
+      {
+       "at_s": 0,
+       "face": "smile"
+      }
+     ]
+    },
+    {
+     "who": "alien",
+     "id": "al1",
+     "at": [
+      1.4,
+      0
+     ],
+     "height_m": 1.7,
+     "actions": [
+      {
+       "at_s": 0,
+       "do": "stand",
+       "face_toward": "hero"
+      },
+      {
+       "at_s": 1.0,
+       "do": "wave",
+       "arm": "L"
+      }
+     ],
+     "expressions": [
+      {
+       "at_s": 0,
+       "face": "neutral"
+      },
+      {
+       "at_s": 1.0,
+       "face": "smile"
+      }
+     ]
+    }
+   ],
+   "camera": [
+    {
+     "at_s": 0,
+     "frame": {
+      "on": [
+       "hero",
+       "al1"
+      ],
+      "az_deg": 10,
+      "el_deg": 6,
+      "fill": 0.8
+     },
+     "fov": 48
+    },
+    {
+     "at_s": 2.6,
+     "frame": {
+      "on": [
+       "hero",
+       "al1"
+      ],
+      "az_deg": 10,
+      "el_deg": 6,
+      "fill": 0.8
+     },
+     "fov": 48
+    }
+   ]
+  },
+  {
+   "id": "25_aliens_turn_hostile",
+   "duration_s": 2.4,
+   "env": "alien_world",
+   "objects": [
+    {
+     "id": "rocks",
+     "asset": "rock_formation",
+     "at": [
+      -6,
+      -9
+     ]
+    }
+   ],
+   "cast": [
+    {
+     "who": "hero",
+     "at": [
+      -1.8,
+      0
+     ],
+     "actions": [
+      {
+       "at_s": 0,
+       "do": "stand"
+      },
+      {
+       "at_s": 0.8,
+       "do": "surprised"
+      }
+     ],
+     "expressions": [
+      {
+       "at_s": 0,
+       "face": "smile"
+      },
+      {
+       "at_s": 0.8,
+       "face": "worried"
+      }
+     ]
+    },
+    {
+     "who": "alien",
+     "id": "al1",
+     "at": [
+      1.2,
+      0
+     ],
+     "height_m": 1.7,
+     "actions": [
+      {
+       "at_s": 0,
+       "do": "stand",
+       "face_toward": "hero"
+      }
+     ],
+     "expressions": [
+      {
+       "at_s": 0,
+       "face": "smile"
+      },
+      {
+       "at_s": 0.6,
+       "face": "angry"
+      }
+     ],
+     "moves": [
+      {
+       "type": "walk",
+       "from_s": 1.0,
+       "to_s": 2.4,
+       "to": [
+        -0.2,
+        0
+       ]
+      }
+     ]
+    },
+    {
+     "who": "alien",
+     "id": "al2",
+     "at": [
+      2.6,
+      -1.5
+     ],
+     "height_m": 1.7,
+     "actions": [
+      {
+       "at_s": 0,
+       "do": "stand",
+       "face_toward": "hero"
+      }
+     ],
+     "expressions": [
+      {
+       "at_s": 0,
+       "face": "grin"
+      },
+      {
+       "at_s": 0.7,
+       "face": "angry"
+      }
+     ],
+     "moves": [
+      {
+       "type": "walk",
+       "from_s": 1.0,
+       "to_s": 2.4,
+       "to": [
+        0.9,
+        -1.0
+       ]
+      }
+     ]
+    }
+   ],
+   "camera": [
+    {
+     "at_s": 0,
+     "frame": {
+      "on": [
+       "hero",
+       "al1",
+       "al2"
+      ],
+      "az_deg": 12,
+      "el_deg": 6,
+      "fill": 0.8
+     },
+     "fov": 48
+    },
+    {
+     "at_s": 2.4,
+     "frame": {
+      "on": [
+       "hero",
+       "al1",
+       "al2"
+      ],
+      "az_deg": 12,
+      "el_deg": 6,
+      "fill": 0.8
+     },
+     "fov": 48
+    }
+   ]
+  },
+  {
+   "id": "26_aliens_attack",
+   "duration_s": 2.6,
+   "env": "alien_world",
+   "objects": [
+    {
+     "id": "rocks",
+     "asset": "rock_formation",
+     "at": [
+      -6,
+      -9
+     ]
+    }
+   ],
+   "cast": [
+    {
+     "who": "hero",
+     "at": [
+      -2,
+      0
+     ],
+     "actions": [
+      {
+       "at_s": 0,
+       "do": "stand"
+      },
+      {
+       "at_s": 0.4,
+       "do": "surprised"
+      },
+      {
+       "at_s": 1.5,
+       "do": "fall",
+       "dur_s": 1.0
+      }
+     ],
+     "expressions": [
+      {
+       "at_s": 0,
+       "face": "worried"
+      },
+      {
+       "at_s": 1.5,
+       "face": "dizzy"
+      }
+     ]
+    },
+    {
+     "who": "alien",
+     "id": "al1",
+     "at": [
+      3.2,
+      0.3
+     ],
+     "height_m": 1.7,
+     "actions": [
+      {
+       "at_s": 0,
+       "do": "stand"
+      }
+     ],
+     "expressions": [
+      {
+       "at_s": 0,
+       "face": "angry"
+      }
+     ],
+     "moves": [
+      {
+       "type": "walk",
+       "from_s": 0.2,
+       "to_s": 1.7,
+       "to": [
+        -1.0,
+        0.1
+       ]
+      }
+     ]
+    },
+    {
+     "who": "alien",
+     "id": "al2",
+     "at": [
+      3.8,
+      -1.0
+     ],
+     "height_m": 1.7,
+     "actions": [
+      {
+       "at_s": 0,
+       "do": "stand"
+      }
+     ],
+     "expressions": [
+      {
+       "at_s": 0,
+       "face": "angry"
+      }
+     ],
+     "moves": [
+      {
+       "type": "walk",
+       "from_s": 0.3,
+       "to_s": 1.8,
+       "to": [
+        -0.6,
+        -0.9
+       ]
+      }
+     ]
+    }
+   ],
+   "camera": [
+    {
+     "at_s": 0,
+     "frame": {
+      "on": [
+       "hero",
+       "al1",
+       "al2"
+      ],
+      "az_deg": 15,
+      "el_deg": 6,
+      "fill": 0.8
+     },
+     "fov": 48
+    },
+    {
+     "at_s": 2.6,
+     "frame": {
+      "on": [
+       "hero",
+       "al1",
+       "al2"
+      ],
+      "az_deg": 15,
+      "el_deg": 6,
+      "fill": 0.8
+     },
+     "fov": 48
+    }
+   ]
+  },
+  {
+   "id": "27_run_for_rocket",
+   "duration_s": 2.6,
+   "env": "alien_world",
+   "objects": [
+    {
+     "id": "rocket",
+     "asset": "rocket",
+     "at": [
+      0,
+      -16
+     ],
+     "solid_radius_m": 1.3
+    }
+   ],
+   "cast": [
+    {
+     "who": "hero",
+     "at": [
+      0,
+      6
+     ],
+     "actions": [
+      {
+       "at_s": 0,
+       "do": "stand"
+      }
+     ],
+     "expressions": [
+      {
+       "at_s": 0,
+       "face": "worried"
+      }
+     ],
+     "moves": [
+      {
+       "type": "walk",
+       "from_s": 0,
+       "to_s": 2.6,
+       "to": [
+        0,
+        -9
+       ]
+      }
+     ]
+    },
+    {
+     "who": "alien",
+     "id": "al1",
+     "at": [
+      -1.5,
+      11
+     ],
+     "height_m": 1.7,
+     "actions": [
+      {
+       "at_s": 0,
+       "do": "stand"
+      }
+     ],
+     "expressions": [
+      {
+       "at_s": 0,
+       "face": "angry"
+      }
+     ],
+     "moves": [
+      {
+       "type": "walk",
+       "from_s": 0,
+       "to_s": 2.6,
+       "to": [
+        -1.2,
+        -5
+       ]
+      }
+     ]
+    },
+    {
+     "who": "alien",
+     "id": "al2",
+     "at": [
+      1.5,
+      12
+     ],
+     "height_m": 1.7,
+     "actions": [
+      {
+       "at_s": 0,
+       "do": "stand"
+      }
+     ],
+     "expressions": [
+      {
+       "at_s": 0,
+       "face": "angry"
+      }
+     ],
+     "moves": [
+      {
+       "type": "walk",
+       "from_s": 0,
+       "to_s": 2.6,
+       "to": [
+        1.2,
+        -4.5
+       ]
+      }
+     ]
+    }
+   ],
+   "camera": [
+    {
+     "at_s": 0,
+     "frame": {
+      "on": [
+       "hero",
+       "al1",
+       "al2"
+      ],
+      "az_deg": 75,
+      "el_deg": 8,
+      "fill": 0.9
+     },
+     "fov": 52
+    },
+    {
+     "at_s": 2.6,
+     "frame": {
+      "on": [
+       "hero",
+       "al1",
+       "al2"
+      ],
+      "az_deg": 75,
+      "el_deg": 8,
+      "fill": 0.9
+     },
+     "fov": 52
+    }
+   ]
+  },
+  {
+   "id": "28_reach_rocket",
+   "duration_s": 2.2,
+   "env": "alien_world",
+   "objects": [
+    {
+     "id": "rocket",
+     "asset": "rocket",
+     "at": [
+      0,
+      -3
+     ],
+     "solid_radius_m": 1.3
+    },
+    {
+     "id": "ladder",
+     "asset": "rocket_ladder",
+     "at": [
+      1.5,
+      -2.2
+     ]
+    }
+   ],
+   "cast": [
+    {
+     "who": "hero",
+     "at": [
+      3,
+      5
+     ],
+     "until_s": 1.7,
+     "actions": [
+      {
+       "at_s": 0,
+       "do": "stand"
+      }
+     ],
+     "expressions": [
+      {
+       "at_s": 0,
+       "face": "worried"
+      }
+     ],
+     "moves": [
+      {
+       "type": "walk",
+       "from_s": 0,
+       "to_s": 1.5,
+       "to": [
+        1.5,
+        -0.9
+       ]
+      }
+     ]
+    },
+    {
+     "who": "alien",
+     "id": "al1",
+     "at": [
+      2,
+      10
+     ],
+     "height_m": 1.7,
+     "actions": [
+      {
+       "at_s": 0,
+       "do": "stand"
+      }
+     ],
+     "expressions": [
+      {
+       "at_s": 0,
+       "face": "angry"
+      }
+     ],
+     "moves": [
+      {
+       "type": "walk",
+       "from_s": 0,
+       "to_s": 2.2,
+       "to": [
+        1.5,
+        1.5
+       ]
+      }
+     ]
+    }
+   ],
+   "camera": [
+    {
+     "at_s": 0,
+     "frame": {
+      "on": [
+       "hero",
+       "ladder",
+       "al1"
+      ],
+      "az_deg": 20,
+      "el_deg": 6,
+      "fill": 0.8
+     },
+     "fov": 48
+    },
+    {
+     "at_s": 2.2,
+     "frame": {
+      "on": [
+       "hero",
+       "ladder",
+       "al1"
+      ],
+      "az_deg": 20,
+      "el_deg": 6,
+      "fill": 0.8
+     },
+     "fov": 48
+    }
+   ]
+  },
+  {
+   "id": "29_escape_takeoff",
+   "duration_s": 2.6,
+   "env": "alien_world",
+   "objects": [
+    {
+     "id": "rocket",
+     "asset": "rocket",
+     "at": [
+      0,
+      -3
+     ],
+     "thrust": {
+      "from_s": 0.2,
+      "to_s": 2.6
+     },
+     "moves": [
+      {
+       "type": "shake",
+       "from_s": 0,
+       "to_s": 0.6,
+       "amp_m": 0.06
+      },
+      {
+       "type": "fly",
+       "from_s": 0.6,
+       "to_s": 2.6,
+       "to": [
+        0,
+        22,
+        -3
+       ]
+      }
+     ]
+    }
+   ],
+   "cast": [
+    {
+     "who": "alien",
+     "id": "al1",
+     "at": [
+      3.5,
+      3
+     ],
+     "height_m": 1.7,
+     "actions": [
+      {
+       "at_s": 0,
+       "do": "stand"
+      },
+      {
+       "at_s": 0.9,
+       "do": "fall",
+       "dur_s": 0.9
+      }
+     ],
+     "expressions": [
+      {
+       "at_s": 0,
+       "face": "angry"
+      },
+      {
+       "at_s": 0.9,
+       "face": "dizzy"
+      }
+     ]
+    },
+    {
+     "who": "alien",
+     "id": "al2",
+     "at": [
+      -3.5,
+      3.5
+     ],
+     "height_m": 1.7,
+     "actions": [
+      {
+       "at_s": 0,
+       "do": "stand"
+      },
+      {
+       "at_s": 1.1,
+       "do": "fall",
+       "dur_s": 0.9
+      }
+     ],
+     "expressions": [
+      {
+       "at_s": 0,
+       "face": "angry"
+      },
+      {
+       "at_s": 1.1,
+       "face": "dizzy"
+      }
+     ]
+    }
+   ],
+   "kicks": [
+    {
+     "at_s": 0.3,
+     "amp": 0.6
+    },
+    {
+     "at_s": 0.7,
+     "amp": 0.9
+    }
+   ],
+   "camera": [
+    {
+     "at_s": 0,
+     "frame": {
+      "on": [
+       "rocket",
+       "al1",
+       "al2"
+      ],
+      "az_deg": 12,
+      "el_deg": 6,
+      "fill": 0.8
+     },
+     "fov": 48
+    },
+    {
+     "at_s": 1.9,
+     "frame": {
+      "on": [
+       "rocket"
+      ],
+      "az_deg": 12,
+      "el_deg": 14,
+      "fill": 0.5
+     },
+     "fov": 48
+    },
+    {
+     "at_s": 2.6,
+     "frame": {
+      "on": [
+       "rocket"
+      ],
+      "az_deg": 12,
+      "el_deg": 14,
+      "fill": 0.5
+     },
+     "fov": 48
+    }
+   ]
+  },
+  {
+   "id": "30_leave_planet",
+   "duration_s": 2.4,
+   "env": "space",
+   "bodies": [
+    {
+     "kind": "ringed",
+     "dir": [
+      -0.6,
+      -0.4,
+      -1
+     ],
+     "radius_m": 160,
+     "color": "#c58ad8",
+     "color2": "#f1d6ff"
+    }
+   ],
+   "objects": [
+    {
+     "id": "rocket",
+     "asset": "rocket",
+     "at": [
+      0,
+      0
+     ],
+     "thrust": {
+      "from_s": 0,
+      "to_s": 2.4,
+      "smoke": false
+     },
+     "moves": [
+      {
+       "type": "fly",
+       "from_s": 0,
+       "to_s": 2.4,
+       "to": [
+        8,
+        5,
+        -20
+       ]
+      }
+     ]
+    }
+   ],
+   "camera": [
+    {
+     "at_s": 0,
+     "frame": {
+      "on": [
+       "rocket"
+      ],
+      "az_deg": 25,
+      "el_deg": 5,
+      "fill": 0.35
+     },
+     "fov": 48
+    },
+    {
+     "at_s": 2.4,
+     "frame": {
+      "on": [
+       "rocket"
+      ],
+      "az_deg": 25,
+      "el_deg": 5,
+      "fill": 0.35
+     },
+     "fov": 48
+    }
+   ]
+  }
+ ]
+}

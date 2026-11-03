@@ -3,3 +3,4 @@ __pycache__/
 *.pyc
 animation/scenes/*.physics.json
 animation/scenes/*.effects.json
+animation/scenes/_local/

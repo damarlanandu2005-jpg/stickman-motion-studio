@@ -1,0 +1,25 @@
+{
+  "type": "building",
+  "summary": "Anything big and fixed that people walk around or into: houses, towers, rock formations, walls.",
+  "status": "written; solid-footprint rule tested through the story builder only",
+  "automatic": {
+    "solid": true,
+    "collide_from_footprint": 0.85,
+    "max_collide_m": 6.0
+  },
+  "required_in_behavior_file": {
+    "collide_radius_m": "ground circle taken from the real model width",
+    "solid": "true: moving things that touch it at crash speed crash"
+  },
+  "rules_the_engine_applies_automatically": [
+    "it never moves and is never overlapped by other objects at their start positions (layout check)",
+    "a vehicle or character-sized thing hitting it at or above the crash speed crashes (solid_radius_m)",
+    "standing on the ground, scaled to its real height"
+  ],
+  "not_done_yet": [
+    "doors and windows that open",
+    "damage / collapse",
+    "interiors"
+  ],
+  "how_numbers_are_chosen": "footprint radius is measured from the model's bounding box (motion_studio/story.py); the real height comes from the story asset list."
+}

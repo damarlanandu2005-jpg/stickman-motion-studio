@@ -71,7 +71,7 @@ export function makeStars(n: number, seed = 7): THREE.Points {
   }
   const geo = new THREE.BufferGeometry(); geo.setAttribute("position", new THREE.Float32BufferAttribute(pos, 3)); geo.setAttribute("color", new THREE.Float32BufferAttribute(col, 3));
   const pts = new THREE.Points(geo, new THREE.PointsMaterial({ size: 2.4, sizeAttenuation: false, vertexColors: true, fog: false, depthWrite: false, toneMapped: false }));
-  pts.layers.set(NOINK); pts.renderOrder = -11; pts.frustumCulled = false;
+  pts.layers.set(NOINK); pts.renderOrder = -9; pts.frustumCulled = false;
   return pts;
 }
 
@@ -81,7 +81,7 @@ const lam = (color: string, opacity?: number) => twoTone(new THREE.MeshLambertMa
 export function buildRoom(r: Room): THREE.Group {
   const [w, h, d] = r.size, grp = new THREE.Group();
   const face = (color: string, geo: THREE.BufferGeometry, at: [number, number, number], rot: [number, number, number]) => {
-    const m = new THREE.Mesh(geo, twoTone(new THREE.MeshLambertMaterial({ color, side: THREE.DoubleSide })));
+    const m = new THREE.Mesh(geo, twoTone(new THREE.MeshLambertMaterial({ color, side: THREE.FrontSide })));
     m.position.set(...at); m.rotation.set(...rot); m.receiveShadow = true; grp.add(m); return m;
   };
   face(r.floor ?? "#59606e", new THREE.PlaneGeometry(w, d), [0, 0, 0], [-Math.PI / 2, 0, 0]);

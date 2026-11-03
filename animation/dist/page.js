@@ -945,9 +945,9 @@ function createElementNS(name) {
   return document.createElementNS("http://www.w3.org/1999/xhtml", name);
 }
 function createCanvasElement() {
-  const canvas = createElementNS("canvas");
-  canvas.style.display = "block";
-  return canvas;
+  const canvas2 = createElementNS("canvas");
+  canvas2.style.display = "block";
+  return canvas2;
 }
 var _cache = {};
 function warnOnce(message) {
@@ -1123,9 +1123,9 @@ var ImageUtils = class {
     if (typeof HTMLCanvasElement === "undefined") {
       return image.src;
     }
-    let canvas;
+    let canvas2;
     if (image instanceof HTMLCanvasElement) {
-      canvas = image;
+      canvas2 = image;
     } else {
       if (_canvas === void 0) _canvas = createElementNS("canvas");
       _canvas.width = image.width;
@@ -1136,21 +1136,21 @@ var ImageUtils = class {
       } else {
         context.drawImage(image, 0, 0, image.width, image.height);
       }
-      canvas = _canvas;
+      canvas2 = _canvas;
     }
-    if (canvas.width > 2048 || canvas.height > 2048) {
+    if (canvas2.width > 2048 || canvas2.height > 2048) {
       console.warn("THREE.ImageUtils.getDataURL: Image converted to jpg for performance reasons", image);
-      return canvas.toDataURL("image/jpeg", 0.6);
+      return canvas2.toDataURL("image/jpeg", 0.6);
     } else {
-      return canvas.toDataURL("image/png");
+      return canvas2.toDataURL("image/png");
     }
   }
   static sRGBToLinear(image) {
     if (typeof HTMLImageElement !== "undefined" && image instanceof HTMLImageElement || typeof HTMLCanvasElement !== "undefined" && image instanceof HTMLCanvasElement || typeof ImageBitmap !== "undefined" && image instanceof ImageBitmap) {
-      const canvas = createElementNS("canvas");
-      canvas.width = image.width;
-      canvas.height = image.height;
-      const context = canvas.getContext("2d");
+      const canvas2 = createElementNS("canvas");
+      canvas2.width = image.width;
+      canvas2.height = image.height;
+      const context = canvas2.getContext("2d");
       context.drawImage(image, 0, 0, image.width, image.height);
       const imageData = context.getImageData(0, 0, image.width, image.height);
       const data = imageData.data;
@@ -1158,7 +1158,7 @@ var ImageUtils = class {
         data[i] = SRGBToLinear(data[i] / 255) * 255;
       }
       context.putImageData(imageData, 0, 0);
-      return canvas;
+      return canvas2;
     } else if (image.data) {
       const data = image.data.slice(0);
       for (let i = 0; i < data.length; i++) {
@@ -14355,13 +14355,13 @@ function WebGLTextures(_gl, extensions, state, properties, capabilities, utils, 
         const width = Math.floor(scale * dimensions.width);
         const height = Math.floor(scale * dimensions.height);
         if (_canvas2 === void 0) _canvas2 = createCanvas(width, height);
-        const canvas = needsNewCanvas ? createCanvas(width, height) : _canvas2;
-        canvas.width = width;
-        canvas.height = height;
-        const context = canvas.getContext("2d");
+        const canvas2 = needsNewCanvas ? createCanvas(width, height) : _canvas2;
+        canvas2.width = width;
+        canvas2.height = height;
+        const context = canvas2.getContext("2d");
         context.drawImage(image, 0, 0, width, height);
         console.warn("THREE.WebGLRenderer: Texture has been resized from (" + dimensions.width + "x" + dimensions.height + ") to (" + width + "x" + height + ").");
-        return canvas;
+        return canvas2;
       } else {
         if ("data" in image) {
           console.warn("THREE.WebGLRenderer: Image in DataTexture is too big (" + dimensions.width + "x" + dimensions.height + ").");
@@ -16823,7 +16823,7 @@ function WebGLUniformsGroups(gl, info, capabilities, state) {
 var WebGLRenderer = class {
   constructor(parameters = {}) {
     const {
-      canvas = createCanvasElement(),
+      canvas: canvas2 = createCanvasElement(),
       context = null,
       depth = true,
       stencil = false,
@@ -16851,7 +16851,7 @@ var WebGLRenderer = class {
     let currentRenderState = null;
     const renderListStack = [];
     const renderStateStack = [];
-    this.domElement = canvas;
+    this.domElement = canvas2;
     this.debug = {
       /**
        * Enables error checking and reporting when shader programs are being compiled
@@ -16886,8 +16886,8 @@ var WebGLRenderer = class {
     let _currentScissorTest = null;
     const _currentClearColor = new Color(0);
     let _currentClearAlpha = 0;
-    let _width = canvas.width;
-    let _height = canvas.height;
+    let _width = canvas2.width;
+    let _height = canvas2.height;
     let _pixelRatio = 1;
     let _opaqueSort = null;
     let _transparentSort = null;
@@ -16908,7 +16908,7 @@ var WebGLRenderer = class {
     }
     let _gl = context;
     function getContext(contextName, contextAttributes) {
-      return canvas.getContext(contextName, contextAttributes);
+      return canvas2.getContext(contextName, contextAttributes);
     }
     try {
       const contextAttributes = {
@@ -16921,10 +16921,10 @@ var WebGLRenderer = class {
         powerPreference,
         failIfMajorPerformanceCaveat
       };
-      if ("setAttribute" in canvas) canvas.setAttribute("data-engine", `three.js r${REVISION}`);
-      canvas.addEventListener("webglcontextlost", onContextLost, false);
-      canvas.addEventListener("webglcontextrestored", onContextRestore, false);
-      canvas.addEventListener("webglcontextcreationerror", onContextCreationError, false);
+      if ("setAttribute" in canvas2) canvas2.setAttribute("data-engine", `three.js r${REVISION}`);
+      canvas2.addEventListener("webglcontextlost", onContextLost, false);
+      canvas2.addEventListener("webglcontextrestored", onContextRestore, false);
+      canvas2.addEventListener("webglcontextcreationerror", onContextCreationError, false);
       if (_gl === null) {
         const contextName = "webgl2";
         _gl = getContext(contextName, contextAttributes);
@@ -17018,11 +17018,11 @@ var WebGLRenderer = class {
       }
       _width = width;
       _height = height;
-      canvas.width = Math.floor(width * _pixelRatio);
-      canvas.height = Math.floor(height * _pixelRatio);
+      canvas2.width = Math.floor(width * _pixelRatio);
+      canvas2.height = Math.floor(height * _pixelRatio);
       if (updateStyle === true) {
-        canvas.style.width = width + "px";
-        canvas.style.height = height + "px";
+        canvas2.style.width = width + "px";
+        canvas2.style.height = height + "px";
       }
       this.setViewport(0, 0, width, height);
     };
@@ -17033,8 +17033,8 @@ var WebGLRenderer = class {
       _width = width;
       _height = height;
       _pixelRatio = pixelRatio;
-      canvas.width = Math.floor(width * pixelRatio);
-      canvas.height = Math.floor(height * pixelRatio);
+      canvas2.width = Math.floor(width * pixelRatio);
+      canvas2.height = Math.floor(height * pixelRatio);
       this.setViewport(0, 0, width, height);
     };
     this.getCurrentViewport = function(target) {
@@ -17138,9 +17138,9 @@ var WebGLRenderer = class {
       this.clear(false, false, true);
     };
     this.dispose = function() {
-      canvas.removeEventListener("webglcontextlost", onContextLost, false);
-      canvas.removeEventListener("webglcontextrestored", onContextRestore, false);
-      canvas.removeEventListener("webglcontextcreationerror", onContextCreationError, false);
+      canvas2.removeEventListener("webglcontextlost", onContextLost, false);
+      canvas2.removeEventListener("webglcontextrestored", onContextRestore, false);
+      canvas2.removeEventListener("webglcontextcreationerror", onContextCreationError, false);
       renderLists.dispose();
       renderStates.dispose();
       properties.dispose();
@@ -19378,8 +19378,8 @@ function testPoint(point, index, localThresholdSq, matrixWorld, raycaster, inter
   }
 }
 var CanvasTexture = class extends Texture {
-  constructor(canvas, mapping, wrapS, wrapT, magFilter, minFilter, format, type, anisotropy) {
-    super(canvas, mapping, wrapS, wrapT, magFilter, minFilter, format, type, anisotropy);
+  constructor(canvas2, mapping, wrapS, wrapT, magFilter, minFilter, format, type, anisotropy) {
+    super(canvas2, mapping, wrapS, wrapT, magFilter, minFilter, format, type, anisotropy);
     this.isCanvasTexture = true;
     this.needsUpdate = true;
   }
@@ -20648,6 +20648,24 @@ var CylinderGeometry = class _CylinderGeometry extends BufferGeometry {
   }
   static fromJSON(data) {
     return new _CylinderGeometry(data.radiusTop, data.radiusBottom, data.height, data.radialSegments, data.heightSegments, data.openEnded, data.thetaStart, data.thetaLength);
+  }
+};
+var ConeGeometry = class _ConeGeometry extends CylinderGeometry {
+  constructor(radius = 1, height = 1, radialSegments = 32, heightSegments = 1, openEnded = false, thetaStart = 0, thetaLength = Math.PI * 2) {
+    super(0, radius, height, radialSegments, heightSegments, openEnded, thetaStart, thetaLength);
+    this.type = "ConeGeometry";
+    this.parameters = {
+      radius,
+      height,
+      radialSegments,
+      heightSegments,
+      openEnded,
+      thetaStart,
+      thetaLength
+    };
+  }
+  static fromJSON(data) {
+    return new _ConeGeometry(data.radius, data.height, data.radialSegments, data.heightSegments, data.openEnded, data.thetaStart, data.thetaLength);
   }
 };
 var PolyhedronGeometry = class _PolyhedronGeometry extends BufferGeometry {
@@ -30807,6 +30825,22 @@ var COSTUMES = {
     { bone: "foot", shape: "box", size: [0.18, 0.045, 0.34], at: [0, -0.09, 0.08], color: "#6c707b", mirror: true }
   ]
 };
+COSTUMES.alien = [
+  { bone: "torso", shape: "capsule", size: [0.17, 0.2], at: [0, 0.22, 0], color: "#7b3fb0" },
+  { bone: "torso", shape: "torus", size: [0.17, 0.028], at: [0, 0.04, 0], rot: [Math.PI / 2, 0, 0], color: "#f2a81d" },
+  { bone: "torso", shape: "sphere", size: [0.045], at: [0, 0.3, 0.17], color: "#7df0c8" },
+  { bone: "head", shape: "cyl", size: [0.012, 0.2], at: [0.1, 0.52, 0], rot: [0, 0, -0.35], color: "#3fae6a" },
+  { bone: "head", shape: "cyl", size: [0.012, 0.2], at: [-0.1, 0.52, 0], rot: [0, 0, 0.35], color: "#3fae6a" },
+  { bone: "head", shape: "sphere", size: [0.05], at: [0.15, 0.63, 0], color: "#f2d21d" },
+  { bone: "head", shape: "sphere", size: [0.05], at: [-0.15, 0.63, 0], color: "#f2d21d" },
+  { bone: "head", shape: "cyl", size: [0.05, 0.03], at: [0.28, 0.27, 0], rot: [0, 0, Math.PI / 2], color: "#3fae6a", mirror: true },
+  { bone: "arm", shape: "capsule", size: [0.05, 0.2], at: [0, -0.14, 0], color: "#3fae6a", mirror: true },
+  { bone: "fore", shape: "capsule", size: [0.045, 0.2], at: [0, -0.14, 0], color: "#3fae6a", mirror: true },
+  { bone: "thigh", shape: "capsule", size: [0.06, 0.3], at: [0, -0.22, 0], color: "#4a2d78", mirror: true },
+  { bone: "shin", shape: "capsule", size: [0.055, 0.3], at: [0, -0.22, 0], color: "#4a2d78", mirror: true },
+  { bone: "foot", shape: "box", size: [0.12, 0.08, 0.26], at: [0, -0.04, 0.07], color: "#3fae6a", mirror: true }
+];
+var HEADS = { alien: "#58c783" };
 var FACES = {
   neutral: (g) => {
     eye(g, 78, 108, 19, 30);
@@ -30838,6 +30872,26 @@ var FACES = {
     line(g, 62, 80, 108, 58, 13);
     line(g, 194, 80, 148, 58, 13);
     arc(g, 128, 176, 24, 1.15, 1.85, 7);
+  },
+  angry: (g) => {
+    eye(g, 84, 108, 15, 18);
+    eye(g, 172, 108, 15, 18);
+    line(g, 52, 70, 108, 92, 14);
+    line(g, 204, 70, 148, 92, 14);
+    line(g, 96, 180, 160, 180, 12);
+    line(g, 96, 180, 106, 168, 9);
+    line(g, 160, 180, 150, 168, 9);
+  },
+  grin: (g) => {
+    eye(g, 78, 108, 19, 30);
+    eye(g, 178, 108, 19, 30);
+    brow(g, 78, 54, 0.06, 11);
+    brow(g, 178, 54, 0.06, 11);
+    g.fillStyle = "#241726";
+    g.beginPath();
+    g.arc(128, 150, 46, 0.05 * Math.PI, 0.95 * Math.PI);
+    g.closePath();
+    g.fill();
   },
   dizzy: (g) => {
     for (const x of [88, 168]) {
@@ -30905,7 +30959,7 @@ var Rig = class {
   faceG;
   expr = "";
   scale;
-  constructor(costume, heightM, face = "neutral") {
+  constructor(costume, heightM, face = "neutral", head = SKIN) {
     this.scale = heightM / FIGURE_H;
     this.figure.scale.setScalar(this.scale);
     this.root.add(this.figure);
@@ -30939,7 +30993,7 @@ var Rig = class {
     this.thigh.forEach((t) => add(t, new CapsuleGeometry(0.032, 0.38, 4, 8), INKCOL, [0, -0.22, 0]));
     this.shin.forEach((s) => add(s, new CapsuleGeometry(0.032, 0.38, 4, 8), INKCOL, [0, -0.22, 0]));
     this.foot.forEach((f) => add(f, new CapsuleGeometry(0.036, 0.16, 4, 8), INKCOL, [0, -0.03, 0.06], [Math.PI / 2, 0, 0]));
-    add(this.head, new SphereGeometry(0.27, 32, 22), SKIN, [0, 0.25, 0]);
+    add(this.head, new SphereGeometry(0.27, 32, 22), head, [0, 0.25, 0]);
     const c = document.createElement("canvas");
     c.width = c.height = 256;
     this.faceG = c.getContext("2d");
@@ -31022,6 +31076,407 @@ var Rig = class {
     return low;
   }
 };
+
+// src/set.ts
+var rng = (seed) => () => {
+  seed = seed * 1664525 + 1013904223 >>> 0;
+  return seed / 4294967296;
+};
+var canvas = (w, h = w) => {
+  const c = document.createElement("canvas");
+  c.width = w;
+  c.height = h;
+  return c;
+};
+var INK2 = "#241726";
+function drawEarth(g, S, seed) {
+  const r = S * 0.46, c = S / 2, rand = rng(seed);
+  g.fillStyle = "#2a62c9";
+  g.beginPath();
+  g.arc(c, c, r, 0, 7);
+  g.fill();
+  g.save();
+  g.beginPath();
+  g.arc(c, c, r, 0, 7);
+  g.clip();
+  g.fillStyle = "#4aa356";
+  for (let i = 0; i < 7; i++) {
+    g.beginPath();
+    g.ellipse(c + (rand() - 0.5) * r * 1.2, c + (rand() - 0.5) * r * 1.2, r * (0.12 + rand() * 0.25), r * (0.08 + rand() * 0.18), rand() * 3, 0, 7);
+    g.fill();
+  }
+  g.strokeStyle = "rgba(255,255,255,0.85)";
+  g.lineWidth = r * 0.07;
+  g.lineCap = "round";
+  for (let i = 0; i < 6; i++) {
+    g.beginPath();
+    const x = c + (rand() - 0.5) * r * 1.4, y = c + (rand() - 0.5) * r * 1.4;
+    g.moveTo(x, y);
+    g.quadraticCurveTo(x + r * 0.25, y - r * 0.1, x + r * 0.5, y + r * 0.05);
+    g.stroke();
+  }
+  const sh = g.createRadialGradient(c - r * 0.35, c - r * 0.35, r * 0.2, c, c, r);
+  sh.addColorStop(0, "rgba(255,255,255,0.18)");
+  sh.addColorStop(0.7, "rgba(0,0,0,0)");
+  sh.addColorStop(1, "rgba(5,10,40,0.55)");
+  g.fillStyle = sh;
+  g.fillRect(0, 0, S, S);
+  g.restore();
+  g.strokeStyle = "rgba(140,200,255,0.9)";
+  g.lineWidth = S * 0.018;
+  g.beginPath();
+  g.arc(c, c, r + S * 0.01, 0, 7);
+  g.stroke();
+  g.strokeStyle = INK2;
+  g.lineWidth = S * 0.012;
+  g.beginPath();
+  g.arc(c, c, r, 0, 7);
+  g.stroke();
+}
+function drawSun(g, S) {
+  const c = S / 2, gr = g.createRadialGradient(c, c, S * 0.05, c, c, S * 0.5);
+  gr.addColorStop(0, "rgba(255,255,230,1)");
+  gr.addColorStop(0.25, "rgba(255,236,120,1)");
+  gr.addColorStop(0.32, "rgba(255,200,60,0.45)");
+  gr.addColorStop(1, "rgba(255,180,40,0)");
+  g.fillStyle = gr;
+  g.fillRect(0, 0, S, S);
+  g.strokeStyle = "rgba(255,240,170,0.8)";
+  g.lineWidth = S * 0.012;
+  for (let i = 0; i < 14; i++) {
+    const a = i / 14 * Math.PI * 2;
+    g.beginPath();
+    g.moveTo(c + Math.cos(a) * S * 0.2, c + Math.sin(a) * S * 0.2);
+    g.lineTo(c + Math.cos(a) * S * 0.42, c + Math.sin(a) * S * 0.42);
+    g.stroke();
+  }
+}
+function drawPlanet(g, S, color2, color22, ringed, moon, seed) {
+  const r = S * (ringed ? 0.27 : 0.45), c = S / 2, rand = rng(seed);
+  const ring = (front) => {
+    g.save();
+    g.translate(c, c);
+    g.rotate(-0.28);
+    g.strokeStyle = color22;
+    g.globalAlpha = 0.85;
+    g.lineWidth = S * 0.05;
+    g.beginPath();
+    g.ellipse(0, 0, S * 0.46, S * 0.11, 0, front ? 0 : Math.PI, front ? Math.PI : Math.PI * 2);
+    g.stroke();
+    g.lineWidth = S * 0.02;
+    g.strokeStyle = INK2;
+    g.beginPath();
+    g.ellipse(0, 0, S * 0.485, S * 0.125, 0, front ? 0 : Math.PI, front ? Math.PI : Math.PI * 2);
+    g.stroke();
+    g.restore();
+  };
+  if (ringed) ring(false);
+  g.fillStyle = color2;
+  g.beginPath();
+  g.arc(c, c, r, 0, 7);
+  g.fill();
+  g.save();
+  g.beginPath();
+  g.arc(c, c, r, 0, 7);
+  g.clip();
+  if (moon) {
+    g.fillStyle = "rgba(0,0,0,0.13)";
+    for (let i = 0; i < 8; i++) {
+      g.beginPath();
+      g.arc(c + (rand() - 0.5) * r * 1.5, c + (rand() - 0.5) * r * 1.5, r * (0.07 + rand() * 0.14), 0, 7);
+      g.fill();
+    }
+  } else {
+    g.fillStyle = color22;
+    g.globalAlpha = 0.5;
+    for (let i = 0; i < 4; i++) g.fillRect(c - r, c - r * 0.7 + i * r * 0.42, r * 2, r * 0.17);
+    g.globalAlpha = 1;
+  }
+  const sh = g.createRadialGradient(c - r * 0.4, c - r * 0.4, r * 0.15, c, c, r);
+  sh.addColorStop(0, "rgba(255,255,255,0.2)");
+  sh.addColorStop(0.65, "rgba(0,0,0,0)");
+  sh.addColorStop(1, "rgba(10,0,30,0.5)");
+  g.fillStyle = sh;
+  g.fillRect(0, 0, S, S);
+  g.restore();
+  g.strokeStyle = INK2;
+  g.lineWidth = S * 0.014;
+  g.beginPath();
+  g.arc(c, c, r, 0, 7);
+  g.stroke();
+  if (ringed) ring(true);
+}
+function makeBody(b, seed) {
+  const S = 512, cv = canvas(S), g = cv.getContext("2d");
+  if (b.kind === "earth") drawEarth(g, S, seed);
+  else if (b.kind === "sun") drawSun(g, S);
+  else drawPlanet(g, S, b.color ?? "#c58ad8", b.color2 ?? "#f1d6ff", b.kind === "ringed", b.kind === "moon", seed);
+  const tex = new CanvasTexture(cv);
+  tex.colorSpace = SRGBColorSpace;
+  const dist = b.dist_m ?? 600, size = (b.kind === "sun" ? 2.2 : 1) * b.radius_m * 2 / (b.kind === "ringed" ? 0.54 : 0.92);
+  const mesh = new Mesh(new PlaneGeometry(size, size), new MeshBasicMaterial({ map: tex, transparent: true, depthWrite: false, fog: false, toneMapped: false }));
+  mesh.layers.set(NOINK);
+  mesh.renderOrder = -10;
+  mesh.frustumCulled = false;
+  return { mesh, dir: new Vector3(...b.dir).normalize(), dist };
+}
+function makeStars(n, seed = 7) {
+  const rand = rng(seed), pos = [], col = [];
+  for (let i = 0; i < n; i++) {
+    const u = rand() * 2 - 1, a = rand() * Math.PI * 2, s = Math.sqrt(1 - u * u), r = 800;
+    pos.push(Math.cos(a) * s * r, u * r, Math.sin(a) * s * r);
+    const w = 0.7 + rand() * 0.3, tint = rand();
+    col.push(w, w, tint < 0.2 ? 1 : w);
+  }
+  const geo = new BufferGeometry();
+  geo.setAttribute("position", new Float32BufferAttribute(pos, 3));
+  geo.setAttribute("color", new Float32BufferAttribute(col, 3));
+  const pts = new Points(geo, new PointsMaterial({ size: 2.4, sizeAttenuation: false, vertexColors: true, fog: false, depthWrite: false, toneMapped: false }));
+  pts.layers.set(NOINK);
+  pts.renderOrder = -9;
+  pts.frustumCulled = false;
+  return pts;
+}
+var lam = (color2, opacity) => twoTone(new MeshLambertMaterial({ color: color2, transparent: opacity !== void 0, opacity: opacity ?? 1, side: FrontSide }));
+function buildRoom(r) {
+  const [w, h, d] = r.size, grp2 = new Group();
+  const face = (color2, geo, at, rot) => {
+    const m = new Mesh(geo, twoTone(new MeshLambertMaterial({ color: color2, side: FrontSide })));
+    m.position.set(...at);
+    m.rotation.set(...rot);
+    m.receiveShadow = true;
+    grp2.add(m);
+    return m;
+  };
+  face(r.floor ?? "#59606e", new PlaneGeometry(w, d), [0, 0, 0], [-Math.PI / 2, 0, 0]);
+  face(r.ceiling ?? "#aab0bd", new PlaneGeometry(w, d), [0, h, 0], [Math.PI / 2, 0, 0]);
+  face(r.wall ?? "#d9dde6", new PlaneGeometry(w, h), [0, h / 2, -d / 2], [0, 0, 0]);
+  face(r.wall ?? "#d9dde6", new PlaneGeometry(w, h), [0, h / 2, d / 2], [0, Math.PI, 0]);
+  face(r.wall ?? "#d9dde6", new PlaneGeometry(d, h), [-w / 2, h / 2, 0], [0, Math.PI / 2, 0]);
+  face(r.wall ?? "#d9dde6", new PlaneGeometry(d, h), [w / 2, h / 2, 0], [0, -Math.PI / 2, 0]);
+  const trim = r.trim ?? "#2f6fd6";
+  for (const [gw, at, rot] of [[w, [0, 0.35, -d / 2 + 0.01], [0, 0, 0]], [w, [0, 0.35, d / 2 - 0.01], [0, Math.PI, 0]], [d, [-w / 2 + 0.01, 0.35, 0], [0, Math.PI / 2, 0]], [d, [w / 2 - 0.01, 0.35, 0], [0, -Math.PI / 2, 0]]])
+    face(trim, new PlaneGeometry(gw, 0.14), at, rot);
+  return grp2;
+}
+function viewPicture(g, W, H, view, time) {
+  const rand = rng(11);
+  if (view === "space") {
+    g.fillStyle = "#070a1c";
+    g.fillRect(0, 0, W, H);
+    g.fillStyle = "#fff";
+    for (let i = 0; i < 90; i++) {
+      const s = 1 + rand() * 2.2;
+      g.fillRect(rand() * W, rand() * H, s, s);
+    }
+  } else if (view === "planet") {
+    const gr = g.createLinearGradient(0, 0, 0, H);
+    gr.addColorStop(0, "#5a3fa0");
+    gr.addColorStop(1, "#e9a0c8");
+    g.fillStyle = gr;
+    g.fillRect(0, 0, W, H);
+    g.fillStyle = "#f6e8ff";
+    g.beginPath();
+    g.arc(W * 0.7, H * 0.32, H * 0.2, 0, 7);
+    g.fill();
+    g.strokeStyle = "#ffd9f4";
+    g.lineWidth = H * 0.025;
+    g.beginPath();
+    g.ellipse(W * 0.7, H * 0.32, H * 0.36, H * 0.07, -0.3, 0, 7);
+    g.stroke();
+    g.fillStyle = "#3b2a66";
+    g.beginPath();
+    g.moveTo(0, H);
+    g.lineTo(W * 0.2, H * 0.7);
+    g.lineTo(W * 0.38, H * 0.9);
+    g.lineTo(W * 0.6, H * 0.65);
+    g.lineTo(W, H);
+    g.fill();
+  } else if (view === "clouds") {
+    const gr = g.createLinearGradient(0, 0, 0, H);
+    gr.addColorStop(0, "#5aa8ee");
+    gr.addColorStop(1, "#cfe8ff");
+    g.fillStyle = gr;
+    g.fillRect(0, 0, W, H);
+    g.fillStyle = "rgba(255,255,255,0.95)";
+    for (let i = 0; i < 9; i++) {
+      g.beginPath();
+      g.arc((rand() * W + time * 120) % W, rand() * H, H * (0.1 + rand() * 0.14), 0, 7);
+      g.fill();
+    }
+  } else {
+    const gr = g.createLinearGradient(0, 0, 0, H);
+    gr.addColorStop(0, "#4f9ae6");
+    gr.addColorStop(1, "#d5ebff");
+    g.fillStyle = gr;
+    g.fillRect(0, 0, W, H);
+    g.fillStyle = "#6bb34f";
+    g.fillRect(0, H * 0.82, W, H * 0.18);
+    if (view === "pad") {
+      g.fillStyle = "#e8ecf2";
+      g.fillRect(W * 0.62, H * 0.3, W * 0.05, H * 0.52);
+      g.beginPath();
+      g.moveTo(W * 0.62, H * 0.3);
+      g.lineTo(W * 0.645, H * 0.18);
+      g.lineTo(W * 0.67, H * 0.3);
+      g.fill();
+      g.fillStyle = "#e07a2d";
+      g.beginPath();
+      g.moveTo(W * 0.62, H * 0.3);
+      g.lineTo(W * 0.645, H * 0.18);
+      g.lineTo(W * 0.67, H * 0.3);
+      g.fill();
+      g.strokeStyle = "#8a909c";
+      g.lineWidth = 3;
+      g.strokeRect(W * 0.7, H * 0.28, W * 0.03, H * 0.54);
+    }
+  }
+}
+function screenDraw(g, W, H, kind, time, p) {
+  g.fillStyle = "#0a1b14";
+  g.fillRect(0, 0, W, H);
+  if (kind === "radar") {
+    const c = [W / 2, H / 2], R = Math.min(W, H) * 0.44;
+    g.strokeStyle = "#39e08a";
+    g.lineWidth = 3;
+    for (const k of [0.33, 0.66, 1]) {
+      g.beginPath();
+      g.arc(c[0], c[1], R * k, 0, 7);
+      g.stroke();
+    }
+    g.beginPath();
+    g.moveTo(c[0] - R, c[1]);
+    g.lineTo(c[0] + R, c[1]);
+    g.moveTo(c[0], c[1] - R);
+    g.lineTo(c[0], c[1] + R);
+    g.stroke();
+    const a = time * 2.6;
+    g.strokeStyle = "rgba(120,255,170,0.9)";
+    g.lineWidth = 6;
+    g.beginPath();
+    g.moveTo(c[0], c[1]);
+    g.lineTo(c[0] + Math.cos(a) * R, c[1] + Math.sin(a) * R);
+    g.stroke();
+    if (p.blip_at_s !== void 0 && time >= p.blip_at_s) {
+      const pulse = 0.6 + 0.4 * Math.sin((time - p.blip_at_s) * 9);
+      g.fillStyle = `rgba(255,200,80,${pulse})`;
+      g.beginPath();
+      g.arc(c[0] + R * 0.45, c[1] - R * 0.3, R * 0.11, 0, 7);
+      g.fill();
+      g.strokeStyle = "#ffd36a";
+      g.lineWidth = 4;
+      g.beginPath();
+      g.ellipse(c[0] + R * 0.45, c[1] - R * 0.3, R * 0.2, R * 0.05, -0.3, 0, 7);
+      g.stroke();
+    }
+  } else if (kind === "countdown") {
+    const t = [...p.text_at ?? []].filter((e) => time >= e.at_s).pop();
+    g.fillStyle = "#ff5a3c";
+    g.font = `bold ${Math.round(H * 0.5)}px monospace`;
+    g.textAlign = "center";
+    g.textBaseline = "middle";
+    g.fillText(t ? t.text : "T-00", W / 2, H / 2);
+  } else if (kind === "warning") {
+    const on = Math.floor(time * 4) % 2 === 0;
+    g.fillStyle = on ? "#ff3b30" : "#5a1410";
+    g.fillRect(W * 0.1, H * 0.15, W * 0.8, H * 0.7);
+    g.fillStyle = "#fff";
+    g.font = `bold ${Math.round(H * 0.4)}px monospace`;
+    g.textAlign = "center";
+    g.textBaseline = "middle";
+    g.fillText("!", W / 2, H / 2);
+  } else {
+    for (let i = 0; i < 6; i++) {
+      const v = 0.35 + 0.35 * Math.sin(time * (1.1 + i * 0.37) + i);
+      g.fillStyle = i % 2 ? "#39e08a" : "#4aa8ff";
+      g.fillRect(W * 0.08 + i * W * 0.15, H * (0.9 - v * 0.8), W * 0.1, H * v * 0.8);
+    }
+  }
+}
+function makeProp(p) {
+  const root = new Group(), s = p.size ?? [1, 1, 1];
+  const box = (w, h, d, color2, at, rot, round = 0.03) => {
+    const m = new Mesh(new RoundedBoxGeometry(w, h, d, 3, Math.min(round, w / 3, h / 3, d / 3)), lam(color2));
+    m.position.set(...at);
+    if (rot) m.rotation.set(...rot);
+    m.castShadow = true;
+    m.receiveShadow = true;
+    root.add(m);
+    return m;
+  };
+  let update = (_t) => {
+  }, height = s[1], radius = Math.max(s[0], s[2]) / 2;
+  const screenMesh = (w, h, at, rot, draw) => {
+    const cv = canvas(256, Math.round(256 * h / w)), g = cv.getContext("2d"), tex = new CanvasTexture(cv);
+    tex.colorSpace = SRGBColorSpace;
+    const m = new Mesh(new PlaneGeometry(w, h), new MeshBasicMaterial({ map: tex, toneMapped: false, fog: false }));
+    m.position.set(...at);
+    m.rotation.set(...rot);
+    m.layers.set(NOINK);
+    root.add(m);
+    const prev = update;
+    update = (t) => {
+      prev(t);
+      draw(g, cv.width, cv.height, t);
+      tex.needsUpdate = true;
+    };
+  };
+  if (p.kind === "console") {
+    const [w, h, d] = [s[0] || 1.3, s[1] || 0.95, s[2] || 0.7];
+    box(w, h * 0.7, d, p.color ?? "#3a4252", [0, h * 0.35, 0]);
+    box(w, 0.1, d * 0.8, "#4a5266", [0, h * 0.7 + 0.04, d * 0.05], [-0.45, 0, 0]);
+    screenMesh(w * 0.8, d * 0.6, [0, h * 0.7 + 0.1, d * 0.05], [-0.45 - Math.PI / 2, 0, 0], (g, W, H, t) => screenDraw(g, W, H, p.screen ?? "panel", t, p));
+    for (let i = 0; i < 4; i++) box(0.07, 0.03, 0.07, i % 2 ? "#d9342b" : "#f2a81d", [-w * 0.3 + i * 0.16, h * 0.7 + 0.08, d * 0.34], [-0.45, 0, 0], 0.01);
+    height = h;
+    radius = Math.max(w, d) / 2;
+  } else if (p.kind === "seat") {
+    box(0.55, 0.12, 0.55, "#4a4f5e", [0, 0.45, 0]);
+    box(0.55, 0.78, 0.12, "#4a4f5e", [0, 0.85, -0.3], [-0.12, 0, 0]);
+    box(0.3, 0.2, 0.1, "#f2a81d", [0, 1.28, -0.32], [-0.12, 0, 0]);
+    box(0.08, 0.28, 0.4, "#3a3e4b", [0.32, 0.62, 0]);
+    box(0.08, 0.28, 0.4, "#3a3e4b", [-0.32, 0.62, 0]);
+    box(0.12, 0.42, 0.12, "#6c707b", [0, 0.21, 0]);
+    height = 1.4;
+    radius = 0.4;
+  } else if (p.kind === "window") {
+    const [w, h] = [s[0] || 1.6, s[1] || 1];
+    screenMesh(w, h, [0, h / 2, 0.012], [0, 0, 0], (g, W, H, t) => viewPicture(g, W, H, p.view ?? "sky", t));
+    box(w + 0.16, 0.08, 0.08, "#9aa0ad", [0, h + 0.04, 0.03]);
+    box(w + 0.16, 0.08, 0.08, "#9aa0ad", [0, -0.04, 0.03]);
+    box(0.08, h + 0.16, 0.08, "#9aa0ad", [-w / 2 - 0.04, h / 2, 0.03]);
+    box(0.08, h + 0.16, 0.08, "#9aa0ad", [w / 2 + 0.04, h / 2, 0.03]);
+    height = h;
+    radius = w / 2;
+  } else if (p.kind === "locker") {
+    box(s[0] || 0.6, s[1] || 2, s[2] || 0.5, p.color ?? "#7d8798", [0, (s[1] || 2) / 2, 0]);
+    box(0.04, 0.3, 0.03, "#2b2f3a", [0.18, 1, (s[2] || 0.5) / 2 + 0.01], void 0, 0.01);
+    height = s[1] || 2;
+    radius = 0.35;
+  } else if (p.kind === "helmet") {
+    const m = new Mesh(new SphereGeometry(0.27, 24, 16), lam("#bfe3ff", 0.45));
+    m.position.y = 0.27;
+    root.add(m);
+    box(0.4, 0.06, 0.4, "#9a9ea8", [0, 0.03, 0], void 0, 0.03);
+    height = 0.55;
+    radius = 0.3;
+  } else if (p.kind === "cloud") {
+    const rand = rng(31), sc = s[0] || 3;
+    for (let i = 0; i < 7; i++) {
+      const m = new Mesh(new SphereGeometry(sc * (0.32 + rand() * 0.28), 14, 10), lam("#fbfdff"));
+      m.position.set((rand() - 0.5) * sc * 1.8, (rand() - 0.3) * sc * 0.5, (rand() - 0.5) * sc * 0.9);
+      m.castShadow = false;
+      root.add(m);
+    }
+    height = sc;
+    radius = sc;
+  } else {
+    box(s[0] || 1.2, s[1] || 0.7, 0.06, "#2d3340", [0, (s[1] || 0.7) / 2, 0]);
+    screenMesh((s[0] || 1.2) * 0.86, (s[1] || 0.7) * 0.8, [0, (s[1] || 0.7) / 2, 0.035], [0, 0, 0], (g, W, H, t) => screenDraw(g, W, H, p.screen ?? "panel", t, p));
+    height = s[1] || 0.7;
+    radius = (s[0] || 1.2) / 2;
+  }
+  return { root, height, radius, update };
+}
 
 // src/motion.ts
 var clamp01 = (x) => Math.max(0, Math.min(1, x));
@@ -31165,6 +31620,10 @@ function actionPose(a, ta, c) {
     }
     case "sit": {
       const d = a.dur_s ?? 1;
+      if (a.chair) {
+        const k = sm(ta / d);
+        return { pose: mixPose(idle(c.time), KEY.seated, k), lock: true, lift: -0.35 * k };
+      }
       return { pose: keyed([[0, KEY.stand], [0.5 * d, KEY.crouch], [d, KEY.sitFloor]], ta), lock: true, lift: 0 };
     }
     case "float": {
@@ -31221,11 +31680,14 @@ var mixHex = (a, b, t) => {
   const pa = new Color(a), pb = new Color(b), c = pa.lerp(pb, clamp012(t));
   return "#" + c.getHexString();
 };
-var rng = (seed) => () => {
+var rng2 = (seed) => () => {
   seed = seed * 1664525 + 1013904223 >>> 0;
   return seed / 4294967296;
 };
 var Engine = class _Engine {
+  stars = null;
+  bodies = [];
+  propMade = [];
   warnings = [];
   s;
   w;
@@ -31386,19 +31848,19 @@ var Engine = class _Engine {
       c.mesh.geometry.computeBoundingSphere();
     }
   }
-  constructor(s, canvas, w, h) {
+  constructor(s, canvas2, w, h) {
     this.s = s;
     this.w = w;
     this.h = h;
-    this.renderer = new WebGLRenderer({ canvas, antialias: false, preserveDrawingBuffer: true, powerPreference: "high-performance" });
+    this.renderer = new WebGLRenderer({ canvas: canvas2, antialias: false, preserveDrawingBuffer: true, powerPreference: "high-performance" });
     this.renderer.setPixelRatio(1);
     this.renderer.setSize(w, h, false);
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = PCFSoftShadowMap;
     this.cam = new PerspectiveCamera(s.camera[0].fov, w / h, 0.1, 900);
   }
-  static async create(s, canvas, w, h, base = "./") {
-    const e = new _Engine(s, canvas, w, h);
+  static async create(s, canvas2, w, h, base = "./") {
+    const e = new _Engine(s, canvas2, w, h);
     await e.build(base);
     return e;
   }
@@ -31452,9 +31914,29 @@ var Engine = class _Engine {
     sd.y = Math.sin(rad2(L.el));
     this.sun.position.copy(sd.multiplyScalar(60));
     this.sun.target.position.set(0, 0, 0);
-    const ground = new Mesh(new PlaneGeometry(400, 400).rotateX(-Math.PI / 2), twoTone(new MeshLambertMaterial({ color: env.ground })));
-    ground.receiveShadow = true;
-    this.scene.add(ground);
+    if (env.ground) {
+      const ground = new Mesh(new PlaneGeometry(400, 400).rotateX(-Math.PI / 2), twoTone(new MeshLambertMaterial({ color: env.ground })));
+      ground.receiveShadow = true;
+      this.scene.add(ground);
+    }
+    if (env.stars) {
+      this.stars = makeStars(env.stars);
+      this.scene.add(this.stars);
+    }
+    (env.bodies ?? []).forEach((b, i) => {
+      const sb = makeBody(b, 5 + i);
+      this.bodies.push(sb);
+      this.scene.add(sb.mesh);
+    });
+    if (env.room) this.scene.add(buildRoom(env.room));
+    for (const p of s.props ?? []) {
+      const mp = makeProp(p);
+      mp.root.position.set(...p.at);
+      mp.root.rotation.y = rad2(p.turn_deg ?? 0);
+      this.scene.add(mp.root);
+      this.propMade.push({ p: mp, def: p });
+      this.things.set(p.id, { id: p.id, isProp: true, appear: p.appear_s, until: p.until_s, root: mp.root, base: new Vector3(p.at[0], p.at[1], p.at[2]), baseYaw: rad2(p.turn_deg ?? 0), moves: [], radius: mp.radius, height: mp.height, forward: 0 });
+    }
     const loader = new GLTFLoader(), cache = /* @__PURE__ */ new Map();
     for (const o of s.objects) {
       const a = s.assets[o.asset];
@@ -31489,9 +31971,10 @@ var Engine = class _Engine {
       const sz = b2.getSize(new Vector3());
       const t = {
         appear: o.appear_s,
+        until: o.until_s,
         id: o.id,
         root,
-        base: new Vector3(o.at[0], 0, o.at[1]),
+        base: new Vector3(o.at[0], o.at_y ?? 0, o.at[1]),
         baseYaw: rad2(o.turn_deg ?? 0),
         moves: o.moves ?? [],
         radius: Math.max(sz.x, sz.z) / 2,
@@ -31499,18 +31982,33 @@ var Engine = class _Engine {
         forward: rad2(a.forward_deg ?? 0)
       };
       t.solidR = o.solid_radius_m;
+      if (o.thrust) {
+        t.thrust = o.thrust;
+        const fl = o.thrust.flame_m ?? a.height_m * 0.5, g = new Group();
+        for (const [r, h, col] of [[0.16, 1, "#ff7a1a"], [0.11, 0.78, "#ffc22e"], [0.06, 0.55, "#fff6c8"]]) {
+          const cone = new Mesh(new ConeGeometry(r * a.height_m * 0.5, h * fl, 14, 1, true).translate(0, -h * fl / 2, 0), new MeshBasicMaterial({ color: col, fog: false, toneMapped: false, side: DoubleSide }));
+          cone.layers.set(NOINK);
+          g.add(cone);
+        }
+        g.visible = false;
+        root.add(g);
+        t.flame = g;
+        if (o.thrust.smoke !== false) t.smoke = Array.from({ length: 16 }, () => this.fxCard(300, 300));
+      }
       if (behSpec) t.beh = this.makeBehavior(behSpec, inner, crush, rawBox, rawScale);
       this.things.set(o.id, t);
       for (const m of t.moves) if (m.type === "move" && m.dust) for (let i = 0; i < 4; i++) this.puffs.push({ card: this.fxCard(300, 300), owner: t, move: m });
     }
     for (const ch of s.characters) {
       if (ch.rig) {
-        const rig = new Rig(COSTUMES[ch.rig.costume] ?? COSTUMES.none, ch.height_m, ch.rig.face ?? "neutral");
+        const rig = new Rig(COSTUMES[ch.rig.costume] ?? COSTUMES.none, ch.height_m, ch.rig.face ?? "neutral", HEADS[ch.rig.species ?? ""]);
         rig.root.traverse((o) => {
           if (o.isMesh && o.castShadow !== false) o.castShadow = true;
         });
         this.scene.add(rig.root);
         const ra = {
+          until: ch.until_s,
+          appear: ch.appear_s,
           id: ch.id,
           root: rig.root,
           base: new Vector3(ch.at[0], 0, ch.at[1]),
@@ -31592,17 +32090,17 @@ var Engine = class _Engine {
     this.buildRigTables();
   }
   fxCard(cw, chh) {
-    const canvas = document.createElement("canvas");
-    canvas.width = cw;
-    canvas.height = chh;
-    const tex = new CanvasTexture(canvas);
+    const canvas2 = document.createElement("canvas");
+    canvas2.width = cw;
+    canvas2.height = chh;
+    const tex = new CanvasTexture(canvas2);
     tex.colorSpace = SRGBColorSpace;
     const mesh = new Mesh(new PlaneGeometry(1, chh / cw), new MeshBasicMaterial({ map: tex, transparent: true, depthWrite: false, fog: false, toneMapped: false }));
     mesh.layers.set(NOINK);
     mesh.visible = false;
     mesh.renderOrder = 5;
     this.scene.add(mesh);
-    return { mesh, canvas, tex };
+    return { mesh, canvas: canvas2, tex };
   }
   blobTexture() {
     const c = document.createElement("canvas");
@@ -31616,7 +32114,7 @@ var Engine = class _Engine {
     return new CanvasTexture(c);
   }
   scatter(sc) {
-    const r = rng(sc.seed), mat = twoTone(new MeshLambertMaterial({ color: sc.color, flatShading: true }));
+    const r = rng2(sc.seed), mat = twoTone(new MeshLambertMaterial({ color: sc.color, flatShading: true }));
     const geo = new IcosahedronGeometry(1, 0);
     let placed = 0, tries = 0;
     while (placed < sc.count && tries++ < sc.count * 40) {
@@ -31637,7 +32135,7 @@ var Engine = class _Engine {
   /** objects must not overlap where they stand (characters are thin cards and are allowed to pass) */
   checkLayout() {
     const dropped = new Set(this.s.objects.filter((o) => (o.physics?.drop_m ?? 0) > 0).map((o) => o.id));
-    const list = [...this.things.values()].filter((t) => !t.cards && !dropped.has(t.id));
+    const list = [...this.things.values()].filter((t) => !t.cards && !dropped.has(t.id) && !t.isProp);
     for (let i = 0; i < list.length; i++) for (let j = i + 1; j < list.length; j++) {
       const a = list[i], b = list[j], d = Math.hypot(a.base.x - b.base.x, a.base.z - b.base.z);
       if (d < a.radius + b.radius) this.warnings.push(`${a.id} and ${b.id} overlap at their start positions (${d.toFixed(2)} m apart)`);
@@ -31756,11 +32254,18 @@ var Engine = class _Engine {
     this.cam.fov = c.fov;
     this.cam.updateProjectionMatrix();
     this.cam.lookAt(c.look);
+    if (this.stars) this.stars.position.copy(this.cam.position);
+    for (const b of this.bodies) b.mesh.position.copy(this.cam.position).addScaledVector(b.dir, b.dist), b.mesh.quaternion.copy(this.cam.quaternion);
+    for (const m of this.propMade) m.p.update(time);
     for (const t of this.things.values()) {
+      if (t.isProp) {
+        t.root.visible = (t.appear === void 0 || time >= t.appear) && (t.until === void 0 || time < t.until);
+        continue;
+      }
       if (t.cards || t.rig) continue;
       if (t.beh) this.applyBehavior(t, frame);
       const q = this.poseAt(t, time);
-      t.root.visible = t.appear === void 0 || time >= t.appear;
+      t.root.visible = (t.appear === void 0 || time >= t.appear) && (t.until === void 0 || time < t.until);
       const tr = this.tracks[t.id];
       if (tr) {
         const k = tr[Math.min(frame, tr.length - 1)];
@@ -31772,8 +32277,12 @@ var Engine = class _Engine {
       t.root.rotation.y = q.yaw;
     }
     for (const a of this.actors) this.renderActor(a, time);
-    for (const r of this.rigs) this.renderRig(r, frame, time);
+    for (const r of this.rigs) {
+      this.renderRig(r, frame, time);
+      if (r.until !== void 0 && time >= r.until || r.appear !== void 0 && time < r.appear) r.root.visible = false;
+    }
     this.renderPuffs(time);
+    this.renderThrust(time);
     this.renderEffects(time);
     this.renderBakedEffects(frame);
     this.composer.render();
@@ -32128,6 +32637,32 @@ var Engine = class _Engine {
       card.mesh.quaternion.copy(this.cam.quaternion);
     }
   }
+  /** engine flame (flickers, fades in/out) and a smoke trail: each puff stays where the object was when it was born */
+  renderThrust(time) {
+    for (const t of this.things.values()) {
+      if (!t.thrust || !t.flame) continue;
+      const { from_s, to_s } = t.thrust, on = time >= from_s && time <= to_s;
+      const k = on ? Math.min(1, (time - from_s) / 0.25) * Math.min(1, (to_s - time) / 0.25 + 0.2) : 0;
+      t.flame.visible = on && t.root.visible;
+      if (on) {
+        const fl = 0.85 + 0.3 * Math.sin(time * 61) * Math.cos(time * 37);
+        t.flame.scale.set(0.9 + 0.2 * Math.sin(time * 80), Math.max(0.1, k * fl), 0.9 + 0.2 * Math.cos(time * 70));
+      }
+      (t.smoke ?? []).forEach((c, i) => {
+        const life = 1.6, age = ((time - from_s - i * (life / 16)) % life + life) % life, born = time - age;
+        const vis = t.root.visible && born >= from_s && born <= to_s + 0.3 && time <= to_s + life;
+        c.mesh.visible = vis;
+        if (!vis) return;
+        const u = age / life, q = this.poseAt(t, born), g = c.canvas.getContext("2d");
+        g.clearRect(0, 0, 300, 300);
+        fxPuff(new Pen(g), Math.min(0.999, u));
+        c.tex.needsUpdate = true;
+        c.mesh.scale.setScalar(t.height * (0.35 + 0.8 * u));
+        c.mesh.position.set(q.p.x + Math.sin(i * 2.1) * 0.5 * u * t.height * 0.3, Math.max(0.2, q.p.y + q.lift) + t.height * 0.05, q.p.z + Math.cos(i * 1.7) * 0.4 * u * t.height * 0.3);
+        c.mesh.quaternion.copy(this.cam.quaternion);
+      });
+    }
+  }
   renderPuffs(time) {
     const groups = /* @__PURE__ */ new Map();
     for (const p of this.puffs) {
@@ -32173,6 +32708,10 @@ function validateScene(s) {
       inTime(m.to_s, `object ${o.id} ${m.type}`);
       if (m.to_s <= m.from_s) p.push(`object ${o.id} ${m.type}: to_s must be after from_s`);
     }
+  }
+  for (const pr of s.props ?? []) {
+    if (ids.has(pr.id)) p.push(`duplicate id ${pr.id}`);
+    ids.add(pr.id);
   }
   for (const c of s.characters) {
     if (ids.has(c.id)) p.push(`duplicate id ${c.id}`);
@@ -32243,13 +32782,13 @@ window.__setup = async (sceneUrl, width, height) => {
   const scene = await (await fetch(sceneUrl)).json();
   const problems = validateScene(scene);
   if (problems.length) return { ok: false, problems };
-  const canvas = document.createElement("canvas");
-  canvas.width = width;
-  canvas.height = height;
-  canvas.style.display = "block";
+  const canvas2 = document.createElement("canvas");
+  canvas2.width = width;
+  canvas2.height = height;
+  canvas2.style.display = "block";
   document.body.style.margin = "0";
-  document.body.appendChild(canvas);
-  engine = await Engine.create(scene, canvas, width, height, "./");
+  document.body.appendChild(canvas2);
+  engine = await Engine.create(scene, canvas2, width, height, "./");
   if (scene.objects.some((o) => o.physics)) {
     const res = await fetch(sceneUrl.replace(/\.json$/, ".physics.json"));
     if (!res.ok) return { ok: false, problems: ["scene has physics objects but no baked physics file: run bake_physics.py"] };

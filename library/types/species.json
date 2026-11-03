@@ -1,0 +1,52 @@
+{
+  "type": "species",
+  "summary": "A living character. All species share ONE skeleton and ONE set of motions; a species is only a costume layer, a head colour and faces.",
+  "status": "hero (astronaut) and alien tested in the space-adventure story",
+  "species": {
+    "hero": {
+      "costume": "astronaut",
+      "head": "white",
+      "height_m": 1.8
+    },
+    "alien": {
+      "costume": "alien",
+      "head": "green",
+      "height_m": 1.7,
+      "extras": "two antennae with yellow tips, big ear discs, purple tunic"
+    }
+  },
+  "motions_every_species_has": [
+    "stand (breathing, weight shift, loose arms)",
+    "walk and run (from ground speed)",
+    "wave",
+    "point",
+    "surprised",
+    "jump",
+    "fall",
+    "sit (floor or chair)",
+    "getup",
+    "float",
+    "ride",
+    "look"
+  ],
+  "faces_every_species_has": [
+    "neutral",
+    "smile",
+    "surprised",
+    "worried",
+    "dizzy",
+    "angry",
+    "grin"
+  ],
+  "rules_the_engine_applies_automatically": [
+    "a new species is added by writing a costume list and a head colour in rig.ts - no new animation work",
+    "the feet stay on the ground while walking",
+    "blends between actions take 0.4 s"
+  ],
+  "not_done_yet": [
+    "species with a different body shape (4 legs, tentacles)",
+    "talking mouth",
+    "hands holding things"
+  ],
+  "how_numbers_are_chosen": "hand-written; a new species would be described by the story and turned into a costume list."
+}

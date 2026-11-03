@@ -113,7 +113,7 @@ def check_behavior(path: Path, owner: str) -> list[str]:
     except ValueError as e:
         return [f"{owner}: behavior file is not valid JSON ({e})"]
     p: list[str] = []
-    if b.get("type") not in ("vehicle", "prop", "building"): p.append(f"{owner}: behavior type {b.get('type')!r} is unknown")
+    if b.get("type") not in ("vehicle", "prop", "building", "rocket"): p.append(f"{owner}: behavior type {b.get('type')!r} is unknown")
     parts = {x.get("id"): x for x in b.get("parts", [])}
     for pid, x in parts.items():
         lo, hi = x["region"]["min"], x["region"]["max"]

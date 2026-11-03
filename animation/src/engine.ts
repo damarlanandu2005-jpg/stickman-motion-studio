@@ -31,7 +31,7 @@ type PartRt = { id: string; pivot: THREE.Group; hingeRoot: THREE.Vector3; axis: 
 /** what an object can do (its behavior file), prepared for replay: door angles and crumple for every frame */
 type BehRt = { spec: Behavior; crush: THREE.Group; parts: PartRt[]; crumple: Float32Array };
 type Crash = { t: number; p: THREE.Vector3; dir: THREE.Vector3; speed: number; other: string };
-type Thing = { appear?: number; until?: number; isProp?: boolean; id: string; root: THREE.Group; base: THREE.Vector3; baseYaw: number; moves: Move[]; radius: number; height: number; forward: number;
+type Thing = { thrust?: { from_s: number; to_s: number; smoke?: boolean }; flame?: THREE.Group; smoke?: FxCard[]; appear?: number; until?: number; isProp?: boolean; id: string; root: THREE.Group; base: THREE.Vector3; baseYaw: number; moves: Move[]; radius: number; height: number; forward: number;
   beh?: BehRt; solidR?: number; crash?: Crash };
 type Actor = Thing & { cycles: Record<string, { frames: string[]; hz: number }>; cards: Map<string, THREE.Mesh>; pivot: THREE.Group; poses: NonNullable<Scene["characters"][0]["poses"]>; facing: number; blob: THREE.Mesh };
 type RigActor = Thing & { rig: Rig; actions: Action[]; expressions: { at_s: number; face: string }[]; face: string;
@@ -248,9 +248,18 @@ export class Engine {
       inner.position.set(-c.x, -b2.min.y, -c.z);
       const root = new THREE.Group(), crush = new THREE.Group(); crush.add(inner); root.add(crush); this.scene.add(root);
       const sz = b2.getSize(new THREE.Vector3());
-      const t: Thing = { appear: o.appear_s, until: o.until_s, id: o.id, root, base: new THREE.Vector3(o.at[0], 0, o.at[1]), baseYaw: rad(o.turn_deg ?? 0), moves: o.moves ?? [],
+      const t: Thing = { appear: o.appear_s, until: o.until_s, id: o.id, root, base: new THREE.Vector3(o.at[0], o.at_y ?? 0, o.at[1]), baseYaw: rad(o.turn_deg ?? 0), moves: o.moves ?? [],
         radius: Math.max(sz.x, sz.z) / 2, height: a.height_m, forward: rad(a.forward_deg ?? 0) };
       t.solidR = o.solid_radius_m;
+      if (o.thrust) {
+        t.thrust = o.thrust; const fl = o.thrust.flame_m ?? a.height_m * 0.5, g = new THREE.Group();
+        for (const [r, h, col] of [[0.16, 1.0, "#ff7a1a"], [0.11, 0.78, "#ffc22e"], [0.06, 0.55, "#fff6c8"]] as [number, number, string][]) {
+          const cone = new THREE.Mesh(new THREE.ConeGeometry(r * a.height_m * 0.5, h * fl, 14, 1, true).translate(0, -h * fl / 2, 0), new THREE.MeshBasicMaterial({ color: col, fog: false, toneMapped: false, side: THREE.DoubleSide }));
+          cone.layers.set(NOINK); g.add(cone);
+        }
+        g.visible = false; root.add(g); t.flame = g;
+        if (o.thrust.smoke !== false) t.smoke = Array.from({ length: 16 }, () => this.fxCard(300, 300));
+      }
       if (behSpec) t.beh = this.makeBehavior(behSpec, inner, crush, rawBox, rawScale);
       this.things.set(o.id, t);
       for (const m of t.moves) if (m.type === "move" && m.dust) for (let i = 0; i < 4; i++) this.puffs.push({ card: this.fxCard(300, 300), owner: t, move: m });
@@ -262,7 +271,7 @@ export class Engine {
         const rig = new Rig(COSTUMES[ch.rig.costume] ?? COSTUMES.none, ch.height_m, ch.rig.face ?? "neutral", HEADS[ch.rig.species ?? ""] );
         rig.root.traverse((o: any) => { if (o.isMesh && o.castShadow !== false) o.castShadow = true; });
         this.scene.add(rig.root);
-        const ra: RigActor = { until: ch.until_s, id: ch.id, root: rig.root, base: new THREE.Vector3(ch.at[0], 0, ch.at[1]), baseYaw: 0, moves: ch.moves ?? [], radius: 0.3, height: ch.height_m, forward: 0,
+        const ra: RigActor = { until: ch.until_s, appear: ch.appear_s, id: ch.id, root: rig.root, base: new THREE.Vector3(ch.at[0], 0, ch.at[1]), baseYaw: 0, moves: ch.moves ?? [], radius: 0.3, height: ch.height_m, forward: 0,
           rig, actions: ch.actions!, expressions: ch.expressions ?? [], face: ch.rig.face ?? "neutral", speed: new Float32Array(0), phase: new Float32Array(0), yaw: new Float32Array(0) };
         this.rigs.push(ra); this.things.set(ch.id, ra);
         continue;
@@ -460,8 +469,9 @@ export class Engine {
       t.root.position.set(q.p.x, q.p.y + q.lift, q.p.z); t.root.rotation.y = q.yaw;
     }
     for (const a of this.actors) this.renderActor(a, time);
-    for (const r of this.rigs) { this.renderRig(r, frame, time); if (r.until !== undefined && time >= r.until) r.root.visible = false; }
+    for (const r of this.rigs) { this.renderRig(r, frame, time); if ((r.until !== undefined && time >= r.until) || (r.appear !== undefined && time < r.appear)) r.root.visible = false; }
     this.renderPuffs(time);
+    this.renderThrust(time);
     this.renderEffects(time);
     this.renderBakedEffects(frame);
     this.composer.render();
@@ -744,6 +754,27 @@ export class Engine {
       const toCam = new THREE.Vector3(this.cam.position.x - pos.x, 0, this.cam.position.z - pos.z).normalize().multiplyScalar(t.radius + 0.15);
       card.mesh.position.set(pos.x + toCam.x, (def.lift_m ?? t.height * 0.55), pos.z + toCam.z);
       card.mesh.quaternion.copy(this.cam.quaternion);
+    }
+  }
+
+  /** engine flame (flickers, fades in/out) and a smoke trail: each puff stays where the object was when it was born */
+  private renderThrust(time: number) {
+    for (const t of this.things.values()) {
+      if (!t.thrust || !t.flame) continue;
+      const { from_s, to_s } = t.thrust, on = time >= from_s && time <= to_s;
+      const k = on ? Math.min(1, (time - from_s) / 0.25) * Math.min(1, (to_s - time) / 0.25 + 0.2) : 0;
+      t.flame.visible = on && t.root.visible;
+      if (on) { const fl = 0.85 + 0.3 * Math.sin(time * 61) * Math.cos(time * 37); t.flame.scale.set(0.9 + 0.2 * Math.sin(time * 80), Math.max(0.1, k * fl), 0.9 + 0.2 * Math.cos(time * 70)); }
+      (t.smoke ?? []).forEach((c, i) => {
+        const life = 1.6, age = (((time - from_s - i * (life / 16)) % life) + life) % life, born = time - age;
+        const vis = t.root.visible && born >= from_s && born <= to_s + 0.3 && time <= to_s + life;
+        c.mesh.visible = vis; if (!vis) return;
+        const u = age / life, q = this.poseAt(t, born), g = c.canvas.getContext("2d")!;
+        g.clearRect(0, 0, 300, 300); fxPuff(new Pen(g), Math.min(0.999, u)); c.tex.needsUpdate = true;
+        c.mesh.scale.setScalar(t.height * (0.35 + 0.8 * u));
+        c.mesh.position.set(q.p.x + Math.sin(i * 2.1) * 0.5 * u * t.height * 0.3, Math.max(0.2, q.p.y + q.lift) + t.height * 0.05, q.p.z + Math.cos(i * 1.7) * 0.4 * u * t.height * 0.3);
+        c.mesh.quaternion.copy(this.cam.quaternion);
+      });
     }
   }
 

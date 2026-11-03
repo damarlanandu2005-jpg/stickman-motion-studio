@@ -1,0 +1,24 @@
+{
+  "type": "prop",
+  "summary": "Small things placed in a scene: plants, ladders, crystals, boxes, lamps.",
+  "status": "written; tested through the story builder only",
+  "automatic": {
+    "solid": false,
+    "collide_from_footprint": 0.5,
+    "max_collide_m": 1.5
+  },
+  "required_in_behavior_file": {
+    "collide_radius_m": "small ground circle from the model width"
+  },
+  "rules_the_engine_applies_automatically": [
+    "standing on the ground, scaled to its real height",
+    "layout check against other objects",
+    "can be hidden/shown by time (appear_s, until_s) and can be dropped by Blender physics when a scene says so"
+  ],
+  "not_done_yet": [
+    "swaying in wind",
+    "breaking when hit",
+    "climbing: the ladder is only a picture, the climber hides into the rocket"
+  ],
+  "how_numbers_are_chosen": "footprint from the model; height from the story asset list."
+}
