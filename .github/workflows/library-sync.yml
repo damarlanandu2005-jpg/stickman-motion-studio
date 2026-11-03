@@ -12,10 +12,6 @@ on:
         default: publish-and-verify
       message:
         default: "Update asset library"
-  # TEMPORARY: lets this new workflow run once from its branch. Path-limited to this file; remove after the first run.
-  push:
-    branches: [test/image-to-3d-objects]
-    paths: [".github/workflows/library-sync.yml"]
 
 concurrency:
   group: kaggle-dataset-stickman-asset-library
