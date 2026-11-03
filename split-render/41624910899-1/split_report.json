@@ -1,0 +1,120 @@
+{
+  "scene": "scenes/behavior_test.json",
+  "total_frames": 420,
+  "chunks": [
+    {
+      "start": 0,
+      "end": 42,
+      "status": "completed",
+      "gl": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "frames": 42,
+      "seconds_per_frame_mean": 1.298,
+      "render_seconds_total": 56.9,
+      "error": null
+    },
+    {
+      "start": 42,
+      "end": 84,
+      "status": "completed",
+      "gl": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "frames": 42,
+      "seconds_per_frame_mean": 2.932,
+      "render_seconds_total": 125.9,
+      "error": null
+    },
+    {
+      "start": 84,
+      "end": 126,
+      "status": "completed",
+      "gl": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "frames": 42,
+      "seconds_per_frame_mean": 3.289,
+      "render_seconds_total": 141.9,
+      "error": null
+    },
+    {
+      "start": 126,
+      "end": 168,
+      "status": "completed",
+      "gl": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "frames": 42,
+      "seconds_per_frame_mean": 3.335,
+      "render_seconds_total": 142.3,
+      "error": null
+    },
+    {
+      "start": 168,
+      "end": 210,
+      "status": "completed",
+      "gl": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "frames": 42,
+      "seconds_per_frame_mean": 3.516,
+      "render_seconds_total": 150.4,
+      "error": null
+    },
+    {
+      "start": 210,
+      "end": 252,
+      "status": "completed",
+      "gl": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "frames": 42,
+      "seconds_per_frame_mean": 3.294,
+      "render_seconds_total": 140.4,
+      "error": null
+    },
+    {
+      "start": 252,
+      "end": 294,
+      "status": "completed",
+      "gl": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "frames": 42,
+      "seconds_per_frame_mean": 2.364,
+      "render_seconds_total": 101.3,
+      "error": null
+    },
+    {
+      "start": 294,
+      "end": 336,
+      "status": "completed",
+      "gl": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "frames": 42,
+      "seconds_per_frame_mean": 3.779,
+      "render_seconds_total": 161.6,
+      "error": null
+    },
+    {
+      "start": 336,
+      "end": 378,
+      "status": "completed",
+      "gl": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "frames": 42,
+      "seconds_per_frame_mean": 3.9,
+      "render_seconds_total": 166.3,
+      "error": null
+    },
+    {
+      "start": 378,
+      "end": 420,
+      "status": "completed",
+      "gl": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "frames": 42,
+      "seconds_per_frame_mean": 3.839,
+      "render_seconds_total": 164.1,
+      "error": null
+    }
+  ],
+  "status": "completed",
+  "problems": [],
+  "video": {
+    "codec": "h264",
+    "width": 1080,
+    "height": 1920,
+    "fps": "30/1",
+    "frames": 420,
+    "duration_s": 14.0,
+    "bytes": 6711614,
+    "sha256": "0416598371960efac50e80b45280177ac2faf08f46b550ed48c73668747530bd"
+  },
+  "slowest_chunk_seconds": 166.3,
+  "sum_of_chunk_seconds": 1351.1
+}
