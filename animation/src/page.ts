@@ -1,6 +1,6 @@
 // Browser entry used by render_frames.py: __setup(scene, w, h) then __render(frame) for each frame.
 import { Engine } from "./engine";
-import { Scene, PhysicsTracks, validateScene } from "./scene";
+import { Scene, PhysicsTracks, EffectTracks, validateScene } from "./scene";
 
 let engine: Engine | null = null;
 
@@ -16,6 +16,11 @@ let engine: Engine | null = null;
     const res = await fetch(sceneUrl.replace(/\.json$/, ".physics.json"));
     if (!res.ok) return { ok: false, problems: ["scene has physics objects but no baked physics file: run bake_physics.py"] };
     engine.setPhysics((await res.json()) as PhysicsTracks);
+  }
+  if (scene.emitters?.length || scene.cloths?.length) {
+    const res = await fetch(sceneUrl.replace(/\.json$/, ".effects.json"));
+    if (!res.ok) return { ok: false, problems: ["scene has emitters or cloths but no baked effects file: run bake_effects.py"] };
+    engine.setEffects((await res.json()) as EffectTracks);
   }
   return { ok: true, problems, warnings: engine.warnings, frames: Math.round(scene.duration_s * scene.fps), fps: scene.fps, gl: engine.rendererInfo };
 };

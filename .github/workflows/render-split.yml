@@ -3,7 +3,8 @@ name: Render scene (split across parallel jobs)
 # Every frame of a scene is a pure function of its time, so the frames are split into chunks that render at the same
 # time on separate GitHub runners (CPU, no Kaggle GPU hours used), then one job joins them and checks the video
 # with the reference repo's own QA script (animation/reference/short_qa.py).
-# If the scene has physics objects, Blender (bpy) first bakes real rigid-body physics once; every render job replays it.
+# If the scene has physics objects, particle effects (smoke, fire, sparks, explosion, dust, splash, chunks, snow) or cloth, Blender (bpy)
+# first bakes the real physics once; every render job replays it.
 on:
   workflow_dispatch:
     inputs:
@@ -37,7 +38,9 @@ jobs:
     outputs:
       matrix: ${{ steps.plan.outputs.matrix }}
       total: ${{ steps.plan.outputs.total }}
+      bake: ${{ steps.plan.outputs.bake }}
       physics: ${{ steps.plan.outputs.physics }}
+      effects: ${{ steps.plan.outputs.effects }}
     steps:
       - uses: actions/checkout@v4
       - id: plan
@@ -52,13 +55,16 @@ jobs:
           with open(os.environ["GITHUB_OUTPUT"], "a") as fh:
               fh.write(f"matrix={json.dumps({'include': chunks})}\n")
               fh.write(f"total={total}\n")
+              need = any(o.get('physics') for o in scene['objects']) or bool(scene.get('emitters')) or bool(scene.get('cloths'))
+              fh.write(f"bake={'true' if need else 'false'}\n")
               fh.write(f"physics={'true' if any(o.get('physics') for o in scene['objects']) else 'false'}\n")
+              fh.write(f"effects={'true' if (scene.get('emitters') or scene.get('cloths')) else 'false'}\n")
           print(total, "frames in", len(chunks), "chunks:", chunks)
           PY
 
-  bake-physics:
+  bake-blender:
     needs: plan
-    if: needs.plan.outputs.physics == 'true'
+    if: needs.plan.outputs.bake == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -69,17 +75,24 @@ jobs:
       - name: Install Blender as a Python module
         run: python -m pip install -q bpy==5.2.3
       - name: Bake rigid-body physics
+        if: needs.plan.outputs.physics == 'true'
         working-directory: animation
         run: python bake_physics.py "$SCENE"
+      - name: Bake particle effects and cloth
+        if: needs.plan.outputs.effects == 'true'
+        working-directory: animation
+        run: python bake_effects.py "$SCENE"
       - uses: actions/upload-artifact@v4
         with:
-          name: physics
-          path: animation/scenes/*.physics.json
+          name: baked
+          path: |
+            animation/scenes/*.physics.json
+            animation/scenes/*.effects.json
           retention-days: 7
 
   render:
-    needs: [plan, bake-physics]
-    if: always() && needs.plan.result == 'success' && (needs.bake-physics.result == 'success' || needs.bake-physics.result == 'skipped')
+    needs: [plan, bake-blender]
+    if: always() && needs.plan.result == 'success' && (needs.bake-blender.result == 'success' || needs.bake-blender.result == 'skipped')
     runs-on: ubuntu-latest
     timeout-minutes: 120
     strategy:
@@ -108,9 +121,9 @@ jobs:
           python -m pip install -q playwright==1.63.0
           python -m playwright install --with-deps chromium
       - uses: actions/download-artifact@v4
-        if: needs.plan.outputs.physics == 'true'
+        if: needs.plan.outputs.bake == 'true'
         with:
-          name: physics
+          name: baked
           path: animation/scenes
       - name: Render frames ${{ matrix.start }}-${{ matrix.end }}
         working-directory: animation
@@ -149,10 +162,10 @@ jobs:
           pattern: chunk-*
           path: chunks
       - uses: actions/download-artifact@v4
-        if: needs.plan.outputs.physics == 'true'
+        if: needs.plan.outputs.bake == 'true'
         with:
-          name: physics
-          path: out/physics
+          name: baked
+          path: out/baked
       - name: Join chunks, check the video, run the reference QA
         env:
           TOTAL: ${{ needs.plan.outputs.total }}

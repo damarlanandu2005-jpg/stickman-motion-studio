@@ -17,6 +17,18 @@ export type Scatter = { type: "rocks"; count: number; radius: number; min_size: 
 export type Physics = { type: "dynamic" | "passive"; mass_kg?: number; shape?: "convex" | "box" | "mesh"; friction?: number;
   bounce?: number; drop_m?: number; tilt_deg?: XYZ; linear_damping?: number; angular_damping?: number };
 
+export type EmitterKind = "smoke" | "fire" | "sparks" | "explosion" | "dust" | "splash" | "chunks" | "snow";
+/** Blender particle effect (bake_effects.py): real gravity, drag, turbulence and wind; every key but id, kind, at is optional */
+export type Emitter = { id: string; kind: EmitterKind; at: XYZ; from_s: number; to_s: number; count?: number; life_s?: number; speed?: number;
+  dir?: XYZ; spread?: number; gravity?: number; turbulence?: number; wind?: number; drag?: number; size_m?: number; size_end_m?: number;
+  bounce?: number; spin?: number; seed?: number; color?: string; area_m?: number };
+/** a flag or curtain: the left edge is pinned, the rest hangs and is pushed by the wind (Blender cloth) */
+export type Cloth = { id: string; at: XYZ; size: [number, number]; grid?: [number, number]; wind?: number; mass_kg?: number; stiffness?: number;
+  bending?: number; seed?: number; color?: string; color2?: string; pole?: boolean };
+export type EffectTracks = { scene: string; fps: number; frames: number; blender: string;
+  emitters: Record<string, { kind: EmitterKind; max: number; peak_alive: number; frames: number[][][] }>;
+  cloths: Record<string, { nx: number; ny: number; frames: number[][]; final_motion_m: number }> };
+
 export type PhysicsTracks = { scene: string; fps: number; frames: number; blender: string; objects: Record<string, number[][]> };
 
 export type Scene = {
@@ -28,6 +40,10 @@ export type Scene = {
   assets: Record<string, { file: string; height_m: number; brightness?: number; forward_deg?: number }>;
   /** objects with a physics block are simulated by Blender (bake_physics.py) and replayed from the baked tracks */
   objects: { id: string; asset: string; at: XZ; turn_deg?: number; moves?: Move[]; physics?: Physics }[];
+  /** scene wind (force vector) pushing particles and cloth */
+  wind?: XYZ;
+  emitters?: Emitter[];
+  cloths?: Cloth[];
   physics_bake?: { from_s?: number; substeps?: number; iterations?: number };
   characters: { id: string; cards: string; height_m: number; at: XZ;
     poses: { at_s: number; pose: string; face?: "left" | "right" }[]; moves?: Move[] }[];
@@ -63,5 +79,17 @@ export function validateScene(s: Scene): string[] {
   if (cam.length && cam[cam.length - 1].at_s < s.duration_s) p.push("camera: last key must be at or after the end");
   for (const k of cam) if (!Array.isArray(k.look) && !ids.has(k.look.follow)) p.push(`camera: unknown follow target ${k.look.follow}`);
   for (const k of s.kicks ?? []) inTime(k.at_s, "kick");
+  const KINDS = ["smoke", "fire", "sparks", "explosion", "dust", "splash", "chunks", "snow"];
+  for (const e of s.emitters ?? []) {
+    if (ids.has(e.id)) p.push(`duplicate id ${e.id}`); ids.add(e.id);
+    if (!KINDS.includes(e.kind)) p.push(`emitter ${e.id}: unknown kind ${e.kind}`);
+    if (!(e.to_s >= e.from_s)) p.push(`emitter ${e.id}: to_s must not be before from_s`);
+    inTime(e.from_s, `emitter ${e.id}`); inTime(e.to_s, `emitter ${e.id}`);
+    if (e.count !== undefined && !(e.count > 0 && e.count <= 400)) p.push(`emitter ${e.id}: count must be 1..400`);
+  }
+  for (const c of s.cloths ?? []) {
+    if (ids.has(c.id)) p.push(`duplicate id ${c.id}`); ids.add(c.id);
+    if (!(c.size[0] > 0 && c.size[1] > 0)) p.push(`cloth ${c.id}: size must be positive`);
+  }
   return p;
 }

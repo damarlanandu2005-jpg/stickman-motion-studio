@@ -19384,6 +19384,136 @@ var CanvasTexture = class extends Texture {
     this.needsUpdate = true;
   }
 };
+var CylinderGeometry = class _CylinderGeometry extends BufferGeometry {
+  constructor(radiusTop = 1, radiusBottom = 1, height = 1, radialSegments = 32, heightSegments = 1, openEnded = false, thetaStart = 0, thetaLength = Math.PI * 2) {
+    super();
+    this.type = "CylinderGeometry";
+    this.parameters = {
+      radiusTop,
+      radiusBottom,
+      height,
+      radialSegments,
+      heightSegments,
+      openEnded,
+      thetaStart,
+      thetaLength
+    };
+    const scope = this;
+    radialSegments = Math.floor(radialSegments);
+    heightSegments = Math.floor(heightSegments);
+    const indices = [];
+    const vertices = [];
+    const normals = [];
+    const uvs = [];
+    let index = 0;
+    const indexArray = [];
+    const halfHeight = height / 2;
+    let groupStart = 0;
+    generateTorso();
+    if (openEnded === false) {
+      if (radiusTop > 0) generateCap(true);
+      if (radiusBottom > 0) generateCap(false);
+    }
+    this.setIndex(indices);
+    this.setAttribute("position", new Float32BufferAttribute(vertices, 3));
+    this.setAttribute("normal", new Float32BufferAttribute(normals, 3));
+    this.setAttribute("uv", new Float32BufferAttribute(uvs, 2));
+    function generateTorso() {
+      const normal = new Vector3();
+      const vertex2 = new Vector3();
+      let groupCount = 0;
+      const slope = (radiusBottom - radiusTop) / height;
+      for (let y = 0; y <= heightSegments; y++) {
+        const indexRow = [];
+        const v = y / heightSegments;
+        const radius = v * (radiusBottom - radiusTop) + radiusTop;
+        for (let x = 0; x <= radialSegments; x++) {
+          const u = x / radialSegments;
+          const theta = u * thetaLength + thetaStart;
+          const sinTheta = Math.sin(theta);
+          const cosTheta = Math.cos(theta);
+          vertex2.x = radius * sinTheta;
+          vertex2.y = -v * height + halfHeight;
+          vertex2.z = radius * cosTheta;
+          vertices.push(vertex2.x, vertex2.y, vertex2.z);
+          normal.set(sinTheta, slope, cosTheta).normalize();
+          normals.push(normal.x, normal.y, normal.z);
+          uvs.push(u, 1 - v);
+          indexRow.push(index++);
+        }
+        indexArray.push(indexRow);
+      }
+      for (let x = 0; x < radialSegments; x++) {
+        for (let y = 0; y < heightSegments; y++) {
+          const a = indexArray[y][x];
+          const b = indexArray[y + 1][x];
+          const c = indexArray[y + 1][x + 1];
+          const d = indexArray[y][x + 1];
+          if (radiusTop > 0 || y !== 0) {
+            indices.push(a, b, d);
+            groupCount += 3;
+          }
+          if (radiusBottom > 0 || y !== heightSegments - 1) {
+            indices.push(b, c, d);
+            groupCount += 3;
+          }
+        }
+      }
+      scope.addGroup(groupStart, groupCount, 0);
+      groupStart += groupCount;
+    }
+    function generateCap(top) {
+      const centerIndexStart = index;
+      const uv = new Vector2();
+      const vertex2 = new Vector3();
+      let groupCount = 0;
+      const radius = top === true ? radiusTop : radiusBottom;
+      const sign = top === true ? 1 : -1;
+      for (let x = 1; x <= radialSegments; x++) {
+        vertices.push(0, halfHeight * sign, 0);
+        normals.push(0, sign, 0);
+        uvs.push(0.5, 0.5);
+        index++;
+      }
+      const centerIndexEnd = index;
+      for (let x = 0; x <= radialSegments; x++) {
+        const u = x / radialSegments;
+        const theta = u * thetaLength + thetaStart;
+        const cosTheta = Math.cos(theta);
+        const sinTheta = Math.sin(theta);
+        vertex2.x = radius * sinTheta;
+        vertex2.y = halfHeight * sign;
+        vertex2.z = radius * cosTheta;
+        vertices.push(vertex2.x, vertex2.y, vertex2.z);
+        normals.push(0, sign, 0);
+        uv.x = cosTheta * 0.5 + 0.5;
+        uv.y = sinTheta * 0.5 * sign + 0.5;
+        uvs.push(uv.x, uv.y);
+        index++;
+      }
+      for (let x = 0; x < radialSegments; x++) {
+        const c = centerIndexStart + x;
+        const i = centerIndexEnd + x;
+        if (top === true) {
+          indices.push(i, i + 1, c);
+        } else {
+          indices.push(i + 1, i, c);
+        }
+        groupCount += 3;
+      }
+      scope.addGroup(groupStart, groupCount, top === true ? 1 : 2);
+      groupStart += groupCount;
+    }
+  }
+  copy(source) {
+    super.copy(source);
+    this.parameters = Object.assign({}, source.parameters);
+    return this;
+  }
+  static fromJSON(data) {
+    return new _CylinderGeometry(data.radiusTop, data.radiusBottom, data.height, data.radialSegments, data.heightSegments, data.openEnded, data.thetaStart, data.thetaLength);
+  }
+};
 var PolyhedronGeometry = class _PolyhedronGeometry extends BufferGeometry {
   constructor(vertices = [], indices = [], radius = 1, detail = 0) {
     super();
@@ -29370,6 +29500,10 @@ var easeIO = (x) => {
   return t * t * (3 - 2 * t);
 };
 var rad2 = (d) => d * Math.PI / 180;
+var mixHex = (a, b, t) => {
+  const pa = new Color(a), pb = new Color(b), c = pa.lerp(pb, clamp01(t));
+  return "#" + c.getHexString();
+};
 var rng = (seed) => () => {
   seed = seed * 1664525 + 1013904223 >>> 0;
   return seed / 4294967296;
@@ -29396,6 +29530,143 @@ var Engine = class _Engine {
     if (t.fps !== this.s.fps) this.warnings.push(`physics was baked at ${t.fps} fps, scene is ${this.s.fps} fps`);
     for (const o of this.s.objects) if (o.physics && !t.objects[o.id]) this.warnings.push(`no baked physics for ${o.id}: run bake_physics.py`);
     this.tracks = t.objects;
+  }
+  /** Blender-baked particles and cloth (bake_effects.py): the engine only replays them */
+  emitters = [];
+  cloths = [];
+  spriteBank = /* @__PURE__ */ new Map();
+  setEffects(t) {
+    if (!t) return;
+    if (t.fps !== this.s.fps) this.warnings.push(`effects were baked at ${t.fps} fps, scene is ${this.s.fps} fps`);
+    for (const e of this.s.emitters ?? []) {
+      const tr = t.emitters[e.id];
+      if (!tr) {
+        this.warnings.push(`no baked effect for emitter ${e.id}: run bake_effects.py`);
+        continue;
+      }
+      const sprites = [];
+      for (let i = 0; i < tr.max; i++) sprites.push(this.makeParticle(e.kind, e.color));
+      this.emitters.push({ id: e.id, kind: e.kind, color: e.color, sprites, frames: tr.frames });
+    }
+    for (const c of this.s.cloths ?? []) {
+      const tr = t.cloths[c.id];
+      if (!tr) {
+        this.warnings.push(`no baked cloth for ${c.id}: run bake_effects.py`);
+        continue;
+      }
+      this.cloths.push(this.makeCloth(c, tr));
+    }
+  }
+  /** the 2D look of each particle kind: ink-outlined cartoon drawings, six frames over the particle's life */
+  bankFor(kind) {
+    if (this.spriteBank.has(kind)) return this.spriteBank.get(kind);
+    const bank = [];
+    for (let b = 0; b < 6; b++) {
+      const u = b / 5, c = document.createElement("canvas");
+      c.width = c.height = 128;
+      const g = c.getContext("2d"), pen = new Pen(g);
+      pen.ol = 5;
+      const puff = (col, _a) => {
+        const blobs = [[64, 64, 34, 30]];
+        for (let i = 0; i < 4; i++) {
+          const an = rad2(30 + i * 95);
+          blobs.push([64 + 20 * Math.cos(an), 66 + 14 * Math.sin(an), 30 - 4 * (i % 2), 26]);
+        }
+        for (const [x, y, rx, ry] of blobs) pen.ell(x, y, rx + 3, ry + 3, INK, 0);
+        for (const [x, y, rx, ry] of blobs) pen.ell(x, y, rx, ry, col, 0);
+      };
+      if (kind === "smoke") puff(mixHex("#f3eef6", "#8f8798", u), u);
+      else if (kind === "dust") puff(mixHex("#eadfc9", "#b8a888", u), u);
+      else if (kind === "explosion") puff(u < 0.3 ? mixHex("#fff1a8", "#ffa53a", u / 0.3) : mixHex("#ffa53a", "#6b5a66", (u - 0.3) / 0.7), u);
+      else if (kind === "fire") {
+        const col = mixHex("#ffe45c", "#e8431f", u);
+        pen.poly([[64, 6], [92, 56], [100, 92], [64, 122], [28, 92], [38, 52]], col, 5);
+        pen.poly([[64, 50], [80, 84], [64, 112], [48, 84]], mixHex("#fff6b8", "#ffb43a", u), 0);
+      } else if (kind === "sparks") pen.poly([[64, 4], [78, 50], [124, 64], [78, 78], [64, 124], [50, 78], [4, 64], [50, 50]], "#ffe86a", 5);
+      else if (kind === "splash") {
+        pen.ell(64, 70, 34, 42, "#8fd3ff", 5);
+        pen.ell(52, 54, 8, 12, "#ffffff", 0);
+      } else if (kind === "snow") pen.ell(64, 64, 38, 38, "#ffffff", 4);
+      const tex = new CanvasTexture(c);
+      tex.colorSpace = SRGBColorSpace;
+      bank.push(tex);
+    }
+    this.spriteBank.set(kind, bank);
+    return bank;
+  }
+  makeParticle(kind, color2) {
+    if (kind === "chunks") {
+      const m2 = new Mesh(new IcosahedronGeometry(1, 0), twoTone(new MeshLambertMaterial({ color: color2 ?? "#8d8198", flatShading: true })));
+      m2.castShadow = true;
+      m2.visible = false;
+      this.scene.add(m2);
+      return m2;
+    }
+    const m = new Mesh(new PlaneGeometry(1, 1), new MeshBasicMaterial({ map: this.bankFor(kind)[0], transparent: true, depthWrite: false, fog: false, toneMapped: false }));
+    m.layers.set(NOINK);
+    m.renderOrder = 6;
+    m.visible = false;
+    this.scene.add(m);
+    return m;
+  }
+  makeCloth(c, tr) {
+    const nx = tr.nx, ny = tr.ny, n = (nx + 1) * (ny + 1);
+    const geo = new BufferGeometry();
+    geo.setAttribute("position", new BufferAttribute(new Float32Array(n * 3), 3));
+    const col = new Float32Array(n * 3), c1 = new Color(c.color ?? "#e0453a"), c2 = new Color(c.color2 ?? "#f6f1e6");
+    for (let j = 0; j <= ny; j++) for (let i = 0; i <= nx; i++) {
+      const band = Math.floor(j / ny * 5.999) % 2 ? c2 : c1;
+      col.set([band.r, band.g, band.b], (j * (nx + 1) + i) * 3);
+    }
+    geo.setAttribute("color", new BufferAttribute(col, 3));
+    const idx = [];
+    for (let j = 0; j < ny; j++) for (let i = 0; i < nx; i++) {
+      const a = j * (nx + 1) + i, b = a + 1, d = a + nx + 1, e = d + 1;
+      idx.push(a, d, b, b, d, e);
+    }
+    geo.setIndex(idx);
+    const mesh = new Mesh(geo, twoTone(new MeshLambertMaterial({ vertexColors: true, side: DoubleSide })));
+    mesh.castShadow = true;
+    mesh.frustumCulled = false;
+    this.scene.add(mesh);
+    if (c.pole !== false) {
+      const top = c.at[1] + c.size[1] + 0.35;
+      const pole = new Mesh(new CylinderGeometry(0.045, 0.06, top, 10).translate(0, top / 2, 0), twoTone(new MeshLambertMaterial({ color: "#5b4a3d" })));
+      pole.position.set(c.at[0] - 0.03, 0, c.at[2]);
+      pole.castShadow = true;
+      this.scene.add(pole);
+    }
+    return { id: c.id, mesh, frames: tr.frames, nx, ny };
+  }
+  renderBakedEffects(frame) {
+    for (const e of this.emitters) {
+      const row = e.frames[Math.min(frame, e.frames.length - 1)] ?? [], bank = e.kind === "chunks" ? null : this.bankFor(e.kind);
+      e.sprites.forEach((m) => m.visible = false);
+      for (const q of row) {
+        const m = e.sprites[q[0]];
+        if (!m) continue;
+        const u = q[5], size = q[4] * (e.kind === "chunks" && u > 0.85 ? 1 - (u - 0.85) / 0.15 : 1);
+        m.position.set(q[1], Math.max(q[2], e.kind === "chunks" ? size * 0.5 : 0), q[3]);
+        m.visible = size > 1e-3;
+        if (bank) {
+          const mat = m.material;
+          mat.map = bank[Math.min(5, Math.floor(u * 6))];
+          mat.opacity = e.kind === "snow" || e.kind === "sparks" || e.kind === "splash" ? 1 : Math.min(1, 1.6 * (1 - u));
+          m.scale.setScalar(size * 2);
+          m.quaternion.copy(this.cam.quaternion);
+        } else {
+          m.scale.setScalar(size);
+          m.quaternion.set(q[6], q[7], q[8], q[9]);
+        }
+      }
+    }
+    for (const c of this.cloths) {
+      const f = c.frames[Math.min(frame, c.frames.length - 1)], pos = c.mesh.geometry.getAttribute("position");
+      pos.array.set(f);
+      pos.needsUpdate = true;
+      c.mesh.geometry.computeVertexNormals();
+      c.mesh.geometry.computeBoundingSphere();
+    }
   }
   constructor(s, canvas, w, h) {
     this.s = s;
@@ -29690,6 +29961,7 @@ var Engine = class _Engine {
     for (const a of this.actors) this.renderActor(a, time);
     this.renderPuffs(time);
     this.renderEffects(time);
+    this.renderBakedEffects(frame);
     this.composer.render();
   }
   renderActor(a, time) {
@@ -29794,6 +30066,21 @@ function validateScene(s) {
   if (cam.length && cam[cam.length - 1].at_s < s.duration_s) p.push("camera: last key must be at or after the end");
   for (const k of cam) if (!Array.isArray(k.look) && !ids.has(k.look.follow)) p.push(`camera: unknown follow target ${k.look.follow}`);
   for (const k of s.kicks ?? []) inTime(k.at_s, "kick");
+  const KINDS = ["smoke", "fire", "sparks", "explosion", "dust", "splash", "chunks", "snow"];
+  for (const e of s.emitters ?? []) {
+    if (ids.has(e.id)) p.push(`duplicate id ${e.id}`);
+    ids.add(e.id);
+    if (!KINDS.includes(e.kind)) p.push(`emitter ${e.id}: unknown kind ${e.kind}`);
+    if (!(e.to_s >= e.from_s)) p.push(`emitter ${e.id}: to_s must not be before from_s`);
+    inTime(e.from_s, `emitter ${e.id}`);
+    inTime(e.to_s, `emitter ${e.id}`);
+    if (e.count !== void 0 && !(e.count > 0 && e.count <= 400)) p.push(`emitter ${e.id}: count must be 1..400`);
+  }
+  for (const c of s.cloths ?? []) {
+    if (ids.has(c.id)) p.push(`duplicate id ${c.id}`);
+    ids.add(c.id);
+    if (!(c.size[0] > 0 && c.size[1] > 0)) p.push(`cloth ${c.id}: size must be positive`);
+  }
   return p;
 }
 
@@ -29814,6 +30101,11 @@ window.__setup = async (sceneUrl, width, height) => {
     const res = await fetch(sceneUrl.replace(/\.json$/, ".physics.json"));
     if (!res.ok) return { ok: false, problems: ["scene has physics objects but no baked physics file: run bake_physics.py"] };
     engine.setPhysics(await res.json());
+  }
+  if (scene.emitters?.length || scene.cloths?.length) {
+    const res = await fetch(sceneUrl.replace(/\.json$/, ".effects.json"));
+    if (!res.ok) return { ok: false, problems: ["scene has emitters or cloths but no baked effects file: run bake_effects.py"] };
+    engine.setEffects(await res.json());
   }
   return { ok: true, problems, warnings: engine.warnings, frames: Math.round(scene.duration_s * scene.fps), fps: scene.fps, gl: engine.rendererInfo };
 };

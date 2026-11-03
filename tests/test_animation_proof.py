@@ -123,13 +123,40 @@ class SplitAndPhysicsTests(unittest.TestCase):
         for flag in ("--start", "--end", "--video-name"):
             self.assertIn(flag, source)
 
-    def test_split_workflow_bakes_physics_before_rendering(self):
+    def test_split_workflow_bakes_blender_before_rendering(self):
         try:
             import yaml
         except ImportError:
             self.skipTest("PyYAML not installed")
         wf = yaml.safe_load((ROOT / ".github" / "workflows" / "render-split.yml").read_text())
         jobs = wf["jobs"]
-        self.assertEqual(set(jobs), {"plan", "bake-physics", "render", "merge"})
-        self.assertIn("bake-physics", jobs["render"]["needs"])
+        self.assertEqual(set(jobs), {"plan", "bake-blender", "render", "merge"})
+        self.assertIn("bake-blender", jobs["render"]["needs"])
         self.assertEqual(jobs["render"]["strategy"]["fail-fast"], False)
+
+
+class EffectsTests(unittest.TestCase):
+    def test_effects_scene_is_well_formed(self):
+        scene = json.loads((ROOT / "animation" / "scenes" / "effects_test.json").read_text())
+        kinds = {e["kind"] for e in scene["emitters"]}
+        self.assertEqual(kinds, {"smoke", "fire", "sparks", "explosion", "chunks", "snow"})
+        self.assertTrue(scene["cloths"] and scene["wind"])
+        ids = [e["id"] for e in scene["emitters"]] + [c["id"] for c in scene["cloths"]]
+        self.assertEqual(len(ids), len(set(ids)))
+
+    def test_bake_effects_uses_real_blender_forces(self):
+        source = (ROOT / "animation" / "bake_effects.py").read_text()
+        for needle in ('"PARTICLE_SYSTEM"', '"CLOTH"', 'effector_add(type="WIND"', 'effector_add(type="TURBULENCE"', '"COLLISION"', "sc.frame_set(f)"):
+            self.assertIn(needle, source)
+        for kind in ("smoke", "fire", "sparks", "explosion", "dust", "splash", "chunks", "snow"):
+            self.assertIn(f'"{kind}":', source)
+
+    def test_engine_replays_baked_effects_without_simulating(self):
+        engine = (ROOT / "animation" / "src" / "engine.ts").read_text()
+        self.assertIn("setEffects", engine)
+        self.assertIn("renderBakedEffects", engine)
+        self.assertNotIn("Math.random", engine)  # frames must be repeatable
+
+    def test_split_workflow_bakes_effects(self):
+        text = (ROOT / ".github" / "workflows" / "render-split.yml").read_text()
+        self.assertIn("python bake_effects.py", text)

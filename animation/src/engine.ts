@@ -11,13 +11,17 @@ import { twoTone, TONE, CHAR, untone } from "../reference/shade";
 import { LIGHTS } from "../reference/lights";
 import { GradeEffect, GRADES } from "../reference/grade";
 import { cardShade, blobMaterial, CARD_K } from "../reference/cardshade";
-import { Pen, fxBurst, fxStars, fxPuff } from "../reference/toon";
-import { Scene, Move, XZ, XYZ, PhysicsTracks } from "./scene";
+import { Pen, INK, fxBurst, fxStars, fxPuff } from "../reference/toon";
+import { Scene, Move, XZ, XYZ, PhysicsTracks, EffectTracks, EmitterKind } from "./scene";
 
 const clamp01 = (x: number) => Math.max(0, Math.min(1, x));
 const smoother = (x: number) => { const t = clamp01(x); return t * t * t * (t * (t * 6 - 15) + 10); };
 const easeIO = (x: number) => { const t = clamp01(x); return t * t * (3 - 2 * t); };
 const rad = (d: number) => (d * Math.PI) / 180;
+const mixHex = (a: string, b: string, t: number) => {
+  const pa = new THREE.Color(a), pb = new THREE.Color(b), c = pa.lerp(pb, clamp01(t));
+  return "#" + c.getHexString();
+};
 const rng = (seed: number) => () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; };
 
 type Thing = { id: string; root: THREE.Group; base: THREE.Vector3; baseYaw: number; moves: Move[]; radius: number; height: number; forward: number };
@@ -41,6 +45,109 @@ export class Engine {
     if (t.fps !== this.s.fps) this.warnings.push(`physics was baked at ${t.fps} fps, scene is ${this.s.fps} fps`);
     for (const o of this.s.objects) if (o.physics && !t.objects[o.id]) this.warnings.push(`no baked physics for ${o.id}: run bake_physics.py`);
     this.tracks = t.objects;
+  }
+
+  /** Blender-baked particles and cloth (bake_effects.py): the engine only replays them */
+  private emitters: { id: string; kind: EmitterKind; color?: string; sprites: THREE.Mesh[]; frames: number[][][] }[] = [];
+  private cloths: { id: string; mesh: THREE.Mesh; frames: number[][]; nx: number; ny: number }[] = [];
+  private spriteBank = new Map<string, THREE.CanvasTexture[]>();
+
+  setEffects(t: EffectTracks | null) {
+    if (!t) return;
+    if (t.fps !== this.s.fps) this.warnings.push(`effects were baked at ${t.fps} fps, scene is ${this.s.fps} fps`);
+    for (const e of this.s.emitters ?? []) {
+      const tr = t.emitters[e.id];
+      if (!tr) { this.warnings.push(`no baked effect for emitter ${e.id}: run bake_effects.py`); continue; }
+      const sprites: THREE.Mesh[] = [];
+      for (let i = 0; i < tr.max; i++) sprites.push(this.makeParticle(e.kind, e.color));
+      this.emitters.push({ id: e.id, kind: e.kind, color: e.color, sprites, frames: tr.frames });
+    }
+    for (const c of this.s.cloths ?? []) {
+      const tr = t.cloths[c.id];
+      if (!tr) { this.warnings.push(`no baked cloth for ${c.id}: run bake_effects.py`); continue; }
+      this.cloths.push(this.makeCloth(c, tr));
+    }
+  }
+
+  /** the 2D look of each particle kind: ink-outlined cartoon drawings, six frames over the particle's life */
+  private bankFor(kind: EmitterKind): THREE.CanvasTexture[] {
+    if (this.spriteBank.has(kind)) return this.spriteBank.get(kind)!;
+    const bank: THREE.CanvasTexture[] = [];
+    for (let b = 0; b < 6; b++) {
+      const u = b / 5, c = document.createElement("canvas"); c.width = c.height = 128;
+      const g = c.getContext("2d")!, pen = new Pen(g); pen.ol = 5;
+      // ink pass first, then a fill-only pass on top, so the puffs read as one outlined cloud (no inner outlines)
+      const puff = (col: string, _a: number) => {
+        const blobs: [number, number, number, number][] = [[64, 64, 34, 30]];
+        for (let i = 0; i < 4; i++) { const an = rad(30 + i * 95); blobs.push([64 + 20 * Math.cos(an), 66 + 14 * Math.sin(an), 30 - 4 * (i % 2), 26]); }
+        for (const [x, y, rx, ry] of blobs) pen.ell(x, y, rx + 3, ry + 3, INK, 0);
+        for (const [x, y, rx, ry] of blobs) pen.ell(x, y, rx, ry, col, 0);
+      };
+      if (kind === "smoke") puff(mixHex("#f3eef6", "#8f8798", u), u);
+      else if (kind === "dust") puff(mixHex("#eadfc9", "#b8a888", u), u);
+      else if (kind === "explosion") puff(u < 0.3 ? mixHex("#fff1a8", "#ffa53a", u / 0.3) : mixHex("#ffa53a", "#6b5a66", (u - 0.3) / 0.7), u);
+      else if (kind === "fire") {
+        const col = mixHex("#ffe45c", "#e8431f", u);
+        pen.poly([[64, 6], [92, 56], [100, 92], [64, 122], [28, 92], [38, 52]], col, 5);
+        pen.poly([[64, 50], [80, 84], [64, 112], [48, 84]], mixHex("#fff6b8", "#ffb43a", u), 0);
+      } else if (kind === "sparks") pen.poly([[64, 4], [78, 50], [124, 64], [78, 78], [64, 124], [50, 78], [4, 64], [50, 50]], "#ffe86a", 5);
+      else if (kind === "splash") { pen.ell(64, 70, 34, 42, "#8fd3ff", 5); pen.ell(52, 54, 8, 12, "#ffffff", 0); }
+      else if (kind === "snow") pen.ell(64, 64, 38, 38, "#ffffff", 4);
+      const tex = new THREE.CanvasTexture(c); tex.colorSpace = THREE.SRGBColorSpace; bank.push(tex);
+    }
+    this.spriteBank.set(kind, bank);
+    return bank;
+  }
+
+  private makeParticle(kind: EmitterKind, color?: string): THREE.Mesh {
+    if (kind === "chunks") {
+      const m = new THREE.Mesh(new THREE.IcosahedronGeometry(1, 0), twoTone(new THREE.MeshLambertMaterial({ color: color ?? "#8d8198", flatShading: true })));
+      m.castShadow = true; m.visible = false; this.scene.add(m); return m;
+    }
+    const m = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), new THREE.MeshBasicMaterial({ map: this.bankFor(kind)[0], transparent: true, depthWrite: false, fog: false, toneMapped: false }));
+    m.layers.set(NOINK); m.renderOrder = 6; m.visible = false; this.scene.add(m); return m;
+  }
+
+  private makeCloth(c: NonNullable<Scene["cloths"]>[0], tr: EffectTracks["cloths"][string]) {
+    const nx = tr.nx, ny = tr.ny, n = (nx + 1) * (ny + 1);
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute("position", new THREE.BufferAttribute(new Float32Array(n * 3), 3));
+    const col = new Float32Array(n * 3), c1 = new THREE.Color(c.color ?? "#e0453a"), c2 = new THREE.Color(c.color2 ?? "#f6f1e6");
+    for (let j = 0; j <= ny; j++) for (let i = 0; i <= nx; i++) { const band = Math.floor((j / ny) * 5.999) % 2 ? c2 : c1; col.set([band.r, band.g, band.b], (j * (nx + 1) + i) * 3); }
+    geo.setAttribute("color", new THREE.BufferAttribute(col, 3));
+    const idx: number[] = [];
+    for (let j = 0; j < ny; j++) for (let i = 0; i < nx; i++) { const a = j * (nx + 1) + i, b = a + 1, d = a + nx + 1, e = d + 1; idx.push(a, d, b, b, d, e); }
+    geo.setIndex(idx);
+    const mesh = new THREE.Mesh(geo, twoTone(new THREE.MeshLambertMaterial({ vertexColors: true, side: THREE.DoubleSide })));
+    mesh.castShadow = true; mesh.frustumCulled = false; this.scene.add(mesh);
+    if (c.pole !== false) {
+      const top = c.at[1] + c.size[1] + 0.35;
+      const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.045, 0.06, top, 10).translate(0, top / 2, 0), twoTone(new THREE.MeshLambertMaterial({ color: "#5b4a3d" })));
+      pole.position.set(c.at[0] - 0.03, 0, c.at[2]); pole.castShadow = true; this.scene.add(pole);
+    }
+    return { id: c.id, mesh, frames: tr.frames, nx, ny };
+  }
+
+  private renderBakedEffects(frame: number) {
+    for (const e of this.emitters) {
+      const row = e.frames[Math.min(frame, e.frames.length - 1)] ?? [], bank = e.kind === "chunks" ? null : this.bankFor(e.kind);
+      e.sprites.forEach((m) => (m.visible = false));
+      for (const q of row) {
+        const m = e.sprites[q[0]]; if (!m) continue;
+        const u = q[5], size = q[4] * (e.kind === "chunks" && u > 0.85 ? 1 - (u - 0.85) / 0.15 : 1);
+        m.position.set(q[1], Math.max(q[2], e.kind === "chunks" ? size * 0.5 : 0), q[3]); m.visible = size > 0.001;
+        if (bank) {
+          const mat = m.material as THREE.MeshBasicMaterial;
+          mat.map = bank[Math.min(5, Math.floor(u * 6))];
+          mat.opacity = e.kind === "snow" || e.kind === "sparks" || e.kind === "splash" ? 1 : Math.min(1, 1.6 * (1 - u));
+          m.scale.setScalar(size * 2); m.quaternion.copy(this.cam.quaternion);
+        } else { m.scale.setScalar(size); m.quaternion.set(q[6], q[7], q[8], q[9]); }
+      }
+    }
+    for (const c of this.cloths) {
+      const f = c.frames[Math.min(frame, c.frames.length - 1)], pos = c.mesh.geometry.getAttribute("position") as THREE.BufferAttribute;
+      pos.array.set(f); pos.needsUpdate = true; c.mesh.geometry.computeVertexNormals(); c.mesh.geometry.computeBoundingSphere();
+    }
   }
 
   private constructor(s: Scene, canvas: HTMLCanvasElement, w: number, h: number) {
@@ -272,6 +379,7 @@ export class Engine {
     for (const a of this.actors) this.renderActor(a, time);
     this.renderPuffs(time);
     this.renderEffects(time);
+    this.renderBakedEffects(frame);
     this.composer.render();
   }
 
