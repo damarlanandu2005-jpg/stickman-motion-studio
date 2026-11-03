@@ -1,0 +1,324 @@
+{
+  "story": "animation/stories/space_adventure.json",
+  "shots": [
+    {
+      "id": "01_earth_plan",
+      "status": "completed",
+      "frames": 60,
+      "expected_frames": 60,
+      "seconds_per_frame_mean": 1.44,
+      "events": [],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "id": "02_suit_preparation",
+      "status": "completed",
+      "frames": 66,
+      "expected_frames": 66,
+      "seconds_per_frame_mean": 2.042,
+      "events": [],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "id": "03_walk_to_launchpad",
+      "status": "completed",
+      "frames": 72,
+      "expected_frames": 72,
+      "seconds_per_frame_mean": 2.343,
+      "events": [],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "id": "04_enter_rocket",
+      "status": "completed",
+      "frames": 72,
+      "expected_frames": 72,
+      "seconds_per_frame_mean": 2.177,
+      "events": [],
+      "warnings": [
+        "rocket and ladder overlap at their start positions (1.70 m apart)"
+      ],
+      "error": null
+    },
+    {
+      "id": "05_inside_rocket",
+      "status": "completed",
+      "frames": 66,
+      "expected_frames": 66,
+      "seconds_per_frame_mean": 2.58,
+      "events": [],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "id": "06_countdown",
+      "status": "completed",
+      "frames": 72,
+      "expected_frames": 72,
+      "seconds_per_frame_mean": 2.281,
+      "events": [],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "id": "07_liftoff",
+      "status": "completed",
+      "frames": 84,
+      "expected_frames": 84,
+      "seconds_per_frame_mean": 1.798,
+      "events": [],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "id": "08_through_clouds",
+      "status": "completed",
+      "frames": 66,
+      "expected_frames": 66,
+      "seconds_per_frame_mean": 2.0,
+      "events": [],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "id": "09_leave_atmosphere",
+      "status": "completed",
+      "frames": 66,
+      "expected_frames": 66,
+      "seconds_per_frame_mean": 1.193,
+      "events": [],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "id": "10_earth_behind",
+      "status": "completed",
+      "frames": 66,
+      "expected_frames": 66,
+      "seconds_per_frame_mean": 1.72,
+      "events": [],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "id": "11_sun_and_stars",
+      "status": "completed",
+      "frames": 66,
+      "expected_frames": 66,
+      "seconds_per_frame_mean": 1.799,
+      "events": [],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "id": "12_weightlessness",
+      "status": "completed",
+      "frames": 72,
+      "expected_frames": 72,
+      "seconds_per_frame_mean": 2.83,
+      "events": [],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "id": "13_turbulence",
+      "status": "completed",
+      "frames": 66,
+      "expected_frames": 66,
+      "seconds_per_frame_mean": 2.572,
+      "events": [],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "id": "14_stabilize_rocket",
+      "status": "completed",
+      "frames": 66,
+      "expected_frames": 66,
+      "seconds_per_frame_mean": 1.063,
+      "events": [],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "id": "15_system_stable",
+      "status": "completed",
+      "frames": 60,
+      "expected_frames": 60,
+      "seconds_per_frame_mean": 1.224,
+      "events": [],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "id": "16_radar_signal",
+      "status": "completed",
+      "frames": 72,
+      "expected_frames": 72,
+      "seconds_per_frame_mean": 2.35,
+      "events": [],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "id": "17_alien_planet_first_sight",
+      "status": "completed",
+      "frames": 72,
+      "expected_frames": 72,
+      "seconds_per_frame_mean": 1.561,
+      "events": [],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "id": "18_approach_planet",
+      "status": "completed",
+      "frames": 72,
+      "expected_frames": 72,
+      "seconds_per_frame_mean": 0.934,
+      "events": [],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "id": "19_land_on_planet",
+      "status": "completed",
+      "frames": 84,
+      "expected_frames": 84,
+      "seconds_per_frame_mean": 1.452,
+      "events": [],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "id": "20_step_out",
+      "status": "completed",
+      "frames": 72,
+      "expected_frames": 72,
+      "seconds_per_frame_mean": 2.241,
+      "events": [],
+      "warnings": [
+        "rocket and ladder overlap at their start positions (1.70 m apart)"
+      ],
+      "error": null
+    },
+    {
+      "id": "21_explore_alien_world",
+      "status": "completed",
+      "frames": 78,
+      "expected_frames": 78,
+      "seconds_per_frame_mean": 2.331,
+      "events": [],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "id": "22_crystal_discovery",
+      "status": "completed",
+      "frames": 72,
+      "expected_frames": 72,
+      "seconds_per_frame_mean": 2.135,
+      "events": [],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "id": "23_aliens_in_distance",
+      "status": "completed",
+      "frames": 72,
+      "expected_frames": 72,
+      "seconds_per_frame_mean": 2.351,
+      "events": [],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "id": "24_first_contact",
+      "status": "completed",
+      "frames": 78,
+      "expected_frames": 78,
+      "seconds_per_frame_mean": 2.116,
+      "events": [],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "id": "25_aliens_turn_hostile",
+      "status": "completed",
+      "frames": 72,
+      "expected_frames": 72,
+      "seconds_per_frame_mean": 2.26,
+      "events": [],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "id": "26_aliens_attack",
+      "status": "completed",
+      "frames": 78,
+      "expected_frames": 78,
+      "seconds_per_frame_mean": 1.721,
+      "events": [],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "id": "27_run_for_rocket",
+      "status": "completed",
+      "frames": 78,
+      "expected_frames": 78,
+      "seconds_per_frame_mean": 1.592,
+      "events": [],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "id": "28_reach_rocket",
+      "status": "completed",
+      "frames": 66,
+      "expected_frames": 66,
+      "seconds_per_frame_mean": 2.293,
+      "events": [],
+      "warnings": [
+        "rocket and ladder overlap at their start positions (1.70 m apart)"
+      ],
+      "error": null
+    },
+    {
+      "id": "29_escape_takeoff",
+      "status": "completed",
+      "frames": 78,
+      "expected_frames": 78,
+      "seconds_per_frame_mean": 2.529,
+      "events": [],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "id": "30_leave_planet",
+      "status": "completed",
+      "frames": 72,
+      "expected_frames": 72,
+      "seconds_per_frame_mean": 1.657,
+      "events": [],
+      "warnings": [],
+      "error": null
+    }
+  ],
+  "status": "completed",
+  "problems": [],
+  "video": {
+    "codec": "h264",
+    "width": 1080,
+    "height": 1920,
+    "fps": "30/1",
+    "frames": 2136,
+    "duration_s": 71.2,
+    "bytes": 10334794,
+    "sha256": "7d77a6a444b0cf08aba9c67277fbf39450967e0097443813678ef8cc2e0eda8d",
+    "audio": "none (paused)"
+  }
+}
