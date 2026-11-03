@@ -113,3 +113,20 @@ class PublishFetchTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class CatalogSectionTests(unittest.TestCase):
+    def test_real_catalog_sections_are_consistent(self):
+        cat = lib.load()
+        self.assertEqual(lib.check_sections(cat), [])
+        ids = {i["id"] for i in cat["items"]}
+        self.assertIn("moon_buggy_a", ids)
+        self.assertIn("astronaut", cat["character"]["costumes"])
+
+    def test_unknown_motion_and_missing_scene_are_reported(self):
+        cat = copy.deepcopy(lib.load())
+        cat["motions"].append({"id": "moonwalk", "code": "animation/src/motion.ts"})
+        cat["scenes"].append({"id": "ghost", "file": "animation/scenes/ghost.json", "status": "test"})
+        problems = lib.check_sections(cat)
+        self.assertTrue(any("moonwalk" in p for p in problems))
+        self.assertTrue(any("ghost" in p for p in problems))

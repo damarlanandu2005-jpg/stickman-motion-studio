@@ -69,6 +69,33 @@ def check_catalog(cat: dict[str, Any], root: Path = ROOT) -> list[str]:
             problems.append(f"{i}: local file {it.get('local')} is missing")
         elif sha256(local) != it.get("sha256"):
             problems.append(f"{i}: local file {it.get('local')} does not match the catalog hash")
+    problems += check_sections(cat, root)
+    return problems
+
+
+def check_sections(cat: dict[str, Any], root: Path = ROOT) -> list[str]:
+    """Character, motions and scenes are defined in code/scene files: every listed path must exist and every motion
+    must really be handled by animation/src/motion.ts."""
+    problems: list[str] = []
+    ch = cat.get("character")
+    if ch:
+        if not (root / ch["code"]).is_file(): problems.append(f"character: {ch['code']} is missing")
+        elif not (ch.get("height_m", 0) > 0): problems.append("character: needs height_m")
+    code = (root / "animation/src/motion.ts")
+    text = code.read_text(encoding="utf-8") if code.is_file() else ""
+    seen = set()
+    for m in cat.get("motions", []):
+        if m["id"] in seen: problems.append(f"duplicate motion {m['id']}")
+        seen.add(m["id"])
+        if f'"{m["id"]}"' not in text and m["id"] not in ("walk", "run"):
+            problems.append(f"motion {m['id']} is not in motion.ts")
+    sids = set()
+    for sc in cat.get("scenes", []):
+        if sc["id"] in sids: problems.append(f"duplicate scene {sc['id']}")
+        sids.add(sc["id"])
+        if sc.get("status") not in ("test", "episode-draft", "episode-legacy", "episode"):
+            problems.append(f"scene {sc['id']}: unknown status {sc.get('status')!r}")
+        if not (root / sc["file"]).is_file(): problems.append(f"scene {sc['id']}: {sc['file']} is missing")
     return problems
 
 
