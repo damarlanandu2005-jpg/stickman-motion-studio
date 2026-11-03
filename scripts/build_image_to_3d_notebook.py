@@ -51,18 +51,30 @@ KLEIN_ID, KLEIN_REVISION = "black-forest-labs/FLUX.2-klein-4B", "e7b7dc27f91deac
 KLEIN_PIP = ["diffusers==0.42.1", "transformers==5.22.1", "huggingface-hub==1.33.0", "accelerate", "pillow"]
 TRIPOSR_REPO, TRIPOSR_COMMIT = "https://github.com/VAST-AI-Research/TripoSR.git", "107cefdc244c39106fa830359024f6a2f1c78871"
 HUNYUAN_REPO, HUNYUAN_COMMIT = "https://github.com/Tencent-Hunyuan/Hunyuan3D-2.git", "f8db63096c8282cb27354314d896feba5ba6ff8a"
-TORCHMCUBES_GIT = "git+https://github.com/tatsy/torchmcubes.git@a9ac95aa329957ba646e7bb057f825f5dfa77f38"
+# torchmcubes did not compile on Kaggle's CUDA 13 (run 41585826224). TripoSR only needs its marching_cubes(volume, level);
+# this stand-in gives the same result shape with scikit-image (CPU), so nothing has to be compiled.
+TORCHMCUBES_SHIM = """import numpy as np, torch
+from skimage import measure
+
+
+def marching_cubes(volume, level):
+    v = volume.detach().float().cpu().numpy()
+    verts, faces, _, _ = measure.marching_cubes(v, level)
+    verts = verts[:, [2, 1, 0]].copy()  # torchmcubes returns (z, y, x); TripoSR swaps it back
+    return torch.from_numpy(verts).float(), torch.from_numpy(faces.astype(np.int64))
+"""
 VENV_PIP = ["transformers==4.48.3", "diffusers==0.32.2", "huggingface-hub==0.30.2", "accelerate==1.3.0",
             "omegaconf==2.3.0", "einops", "trimesh", "pymeshlab", "pygltflib", "xatlas", "rembg[cpu]", "imageio",
             "opencv-python-headless", "moderngl", "scikit-image", "ninja", "pybind11", "scikit-build-core", "cmake", "tqdm"]
 
-STYLE = ("isolated single object, centered, whole object fully visible, three-quarter view from slightly above, "
+STYLE = ("isolated single object, centered, whole object fully visible. Three-quarter perspective view from the front-left "
+         "and slightly above, so the side and the depth of the object are clearly visible; not a flat front view. "
          "plain pure white background, no ground, no shadow, no text, no people. Flat 2D cartoon illustration, "
          "clean thick dark outlines, soft muted colours, simple flat shading.")
 OBJECTS = [
     {"name": "rocket", "seed": 3101, "prompt": "A small retro cartoon rocket ship standing upright on three fins, white body, orange nose cone, round blue window. " + STYLE},
-    {"name": "crystal_cluster", "seed": 3102, "prompt": "A cluster of five glowing blue crystals growing out of a small grey rock. " + STYLE},
-    {"name": "space_rover", "seed": 3103, "prompt": "A small cartoon six-wheeled space rover with a boxy white body, a short antenna and one solar panel. " + STYLE},
+    {"name": "lifeboat", "seed": 3104, "prompt": "A small wooden rowing lifeboat with white sides, a red stripe and two oars resting inside. " + STYLE},
+    {"name": "street_lamp", "seed": 3105, "prompt": "A tall old-fashioned black iron street lamp on a round base, with a glowing four-sided glass lantern on top. " + STYLE},
 ]
 SIZE, STEPS, GUIDANCE = 768, 4, 1.0
 
@@ -109,18 +121,15 @@ Path(cfg["result"]).write_text(json.dumps(res, indent=2))
 TRIPOSR_STAGE = r'''import json, sys, time, hashlib, traceback
 from pathlib import Path
 cfg = json.loads(Path(sys.argv[1]).read_text())
-sys.path.insert(0, cfg["repo"])
+sys.path.insert(0, cfg["repo"]); sys.path.insert(0, cfg["shim_dir"])
 res = {"stage": "triposr", "status": "running", "error": None, "objects": []}
 try:
     import numpy as np, torch, rembg
     from PIL import Image
     from tsr.system import TSR
     from tsr.utils import remove_background, resize_foreground
-    try:
-        import torchmcubes_module  # noqa: F401
-        res["torchmcubes_cuda"] = hasattr(torchmcubes_module, "mcubes_cuda")
-    except Exception as exc:
-        res["torchmcubes_cuda"] = f"unknown: {exc}"
+    import torchmcubes
+    res["marching_cubes"] = "scikit-image stand-in at " + torchmcubes.__file__
     t = time.monotonic()
     model = TSR.from_pretrained("stabilityai/TripoSR", config_name="config.yaml", weight_name="model.ckpt")
     model.renderer.set_chunk_size(8192); model.to("cuda"); res["load_seconds"] = round(time.monotonic() - t, 1)
@@ -136,7 +145,11 @@ try:
             with torch.no_grad():
                 codes = model([im], device="cuda")
             mesh = model.extract_mesh(codes, True, resolution=256)[0]
+            mesh.fix_normals()
             torch.cuda.synchronize(); secs = round(time.monotonic() - t, 2)
+            ext = sorted(float(x) for x in mesh.extents)
+            item["depth_ratio"] = round(ext[0] / ext[2], 3) if ext[2] else 0.0
+            item["looks_flat"] = item["depth_ratio"] < 0.15
             p = Path(cfg["out_dir"]) / f"triposr_{o['name']}.glb"; mesh.export(p)
             item.update(status="success", file=p.name, seconds=secs, vertices=int(len(mesh.vertices)), faces=int(len(mesh.faces)),
                         peak_vram_gib=round(torch.cuda.max_memory_allocated() / 2**30, 2), bytes=p.stat().st_size,
@@ -178,6 +191,9 @@ try:
             raw_faces = int(len(mesh.faces))
             mesh = FaceReducer()(DegenerateFaceRemover()(FloaterRemover()(mesh)), max_facenum=40000)
             torch.cuda.synchronize(); secs = round(time.monotonic() - t, 2)
+            ext = sorted(float(x) for x in mesh.extents)
+            item["depth_ratio"] = round(ext[0] / ext[2], 3) if ext[2] else 0.0
+            item["looks_flat"] = item["depth_ratio"] < 0.15
             p = Path(cfg["out_dir"]) / f"hunyuan_{o['name']}_shape.glb"; mesh.export(p)
             item.update(status="success", file=p.name, seconds=secs, raw_faces=raw_faces, faces=int(len(mesh.faces)),
                         vertices=int(len(mesh.vertices)), peak_vram_gib=round(torch.cuda.max_memory_allocated() / 2**30, 2),
@@ -307,11 +323,13 @@ MAIN = r'''try:
     tsr_repo = "/tmp/TripoSR"
     if (run_logged("triposr_clone", ["git", "clone", "-q", TRIPOSR_REPO, tsr_repo], 300)
             and run_logged("triposr_clone", ["git", "-C", tsr_repo, "checkout", "-q", TRIPOSR_COMMIT], 120)
-            and run_logged("triposr_torchmcubes", [py, "-m", "pip", "install", "--no-build-isolation", TORCHMCUBES_GIT], 1200)):
-        stage_script("triposr", TRIPOSR_STAGE, {"repo": tsr_repo, "objects": objects}, py, 1500)
+            and run_logged("triposr_shim", [py, "-c", "import skimage; print('scikit-image', skimage.__version__)"], 120)):
+        shim_dir = pathlib.Path("/tmp/i23d_shims/torchmcubes"); shim_dir.mkdir(parents=True, exist_ok=True)
+        (shim_dir / "__init__.py").write_text(TORCHMCUBES_SHIM, encoding="utf-8")
+        stage_script("triposr", TRIPOSR_STAGE, {"repo": tsr_repo, "shim_dir": str(shim_dir.parent), "objects": objects}, py, 1500)
     else:
         REPORT["engines"]["triposr"] = {"stage": "triposr", "status": "failed", "objects": [],
-                                        "error": "TripoSR setup failed; see logs/triposr_clone.log and logs/triposr_torchmcubes.log"}
+                                        "error": "TripoSR setup failed; see logs/triposr_clone.log and logs/triposr_shim.log"}
 
     # Hunyuan3D-2mini shape, then texture (texture needs two compiled extensions)
     hy_repo = "/tmp/Hunyuan3D-2"

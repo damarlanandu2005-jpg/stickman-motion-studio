@@ -497,7 +497,7 @@ def summarize_report(out_dir: Path, profile: str) -> str:
         for name, data in (r.get("engines") or {}).items():
             for item in data.get("objects", []):
                 lines.append(f"  {name} object: " + json.dumps({k: item.get(k) for k in (
-                    "name", "status", "seconds", "faces", "raw_faces", "vertices", "peak_vram_gib", "bytes", "file", "error")}))
+                    "name", "status", "seconds", "faces", "raw_faces", "vertices", "depth_ratio", "looks_flat", "peak_vram_gib", "bytes", "file", "error")}))
         return "\n".join(lines)
     name = "benchmark_report.json" if profile in {"klein-benchmark", "script-writer"} else "generation_report.json"
     path = next(iter(Path(out_dir).rglob(name)), None)
