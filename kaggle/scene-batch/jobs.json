@@ -1,130 +1,483 @@
 {
  "jobs": [
   {
-   "id": "a17",
-   "prompt": "A flat plain colour background with one big simple object in the centre. No characters and no scenery. Place: plain cream background. Objects: a red and white tear-off wall calendar showing DAY 14. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
-   "refs": [],
+   "id": "e01",
+   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, young man in a blue long robe and a small red cap, big smile; a stickman in the costume of reference image 2, a sultan in a red robe with a tall white turban and a thick black moustache and beard. Keep each costume exactly as in its reference image and the same big round white head. Place: old Ottoman city plaza in front of a big round stone tower, warm sunny day. Action: stand side by side. Facial expressions (clearly readable, with eyebrows and mouth): proud smiles. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_explorer.png",
+    "costumes/costume_ancient_egypt.png"
+   ],
    "seed": 6100,
    "width": 576,
    "height": 1024
   },
   {
-   "id": "a19",
-   "prompt": "A flat plain colour background with one big simple object in the centre. No characters and no scenery. Place: plain black background. Objects: two big round binocular views showing a pale snowy field. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
-   "refs": [],
+   "id": "e02",
+   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, palace guard in a blue coat with a tall white and yellow ceremonial hat; a stickman in the costume of reference image 1, palace guard in a blue coat with a tall white and yellow ceremonial hat. Keep each costume exactly as in its reference image and the same big round white head. Place: castle gate with battlements. Action: two guards stand proudly. Facial expressions (clearly readable, with eyebrows and mouth): stern proud faces. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_soldier.png"
+   ],
    "seed": 6101,
    "width": 576,
    "height": 1024
   },
   {
-   "id": "a22",
-   "prompt": "Close-up of the object only. No characters in the picture. Place: wide pale snowy field. Objects: a single wooden post far away in the snow. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
-   "refs": [],
+   "id": "e03",
+   "prompt": "Medium shot: the characters are shown from the chest up and fill the lower half of the frame; the background is visible above and behind them. Characters: a stickman in the costume of reference image 1, palace guard in a blue coat with a tall white and yellow ceremonial hat; a stickman in the costume of reference image 1, palace guard in a blue coat with a tall white and yellow ceremonial hat. Keep each costume exactly as in its reference image and the same big round white head. Place: castle gate. Action: two guards laugh with crossed axes. Facial expressions (clearly readable, with eyebrows and mouth): laughing with wide open mouths. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_soldier.png"
+   ],
    "seed": 6102,
    "width": 576,
    "height": 1024
   },
   {
-   "id": "b07",
-   "prompt": "Close-up of the object only. No characters in the picture. Place: dark screen with white corner frame marks. Objects: an overhead infrared drone camera view with a crosshair on tiny white figures. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
-   "refs": [],
+   "id": "e04",
+   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, a sultan in a red robe with a tall white turban and a thick black moustache and beard. Keep each costume exactly as in its reference image and the same big round white head. Place: hilltop above the old city skyline with domes and minarets. Action: stands facing the viewer. Facial expressions (clearly readable, with eyebrows and mouth): smug half-closed eyes and a smirk. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_ancient_egypt.png"
+   ],
    "seed": 6103,
    "width": 576,
    "height": 1024
   },
   {
-   "id": "b15",
-   "prompt": "A flat plain colour background with one big simple object in the centre. No characters and no scenery. Place: pale blue-grey background. Objects: a brown clipboard with many red tally marks. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
-   "refs": [],
+   "id": "e05",
+   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, young man in a blue long robe and a small red cap, big smile. Keep each costume exactly as in its reference image and the same big round white head. Place: building site with wooden scaffolding and stone blocks. Action: carries a stone block. Facial expressions (clearly readable, with eyebrows and mouth): determined. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_explorer.png"
+   ],
    "seed": 6104,
    "width": 576,
    "height": 1024
   },
   {
-   "id": "b17",
-   "prompt": "A flat plain colour background with one big simple object in the centre. No characters and no scenery. Place: plain orange background. Objects: a big orange clipboard with the pen on top. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
-   "refs": [],
+   "id": "e06",
+   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, young man in a blue long robe and a small red cap, big smile. Keep each costume exactly as in its reference image and the same big round white head. Place: green field with a small stone tower and a pointed roof. Action: smiles. Facial expressions (clearly readable, with eyebrows and mouth): happy. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_explorer.png"
+   ],
    "seed": 6105,
    "width": 576,
    "height": 1024
   },
   {
-   "id": "d16",
-   "prompt": "Close-up of the object only. No characters in the picture. Place: green hills under a blue sky with an old city far below. Objects: a very tall thin stone tower with a spiral staircase wrapped around it. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
-   "refs": [],
+   "id": "e07",
+   "prompt": "Medium shot: the characters are shown from the chest up and fill the lower half of the frame; the background is visible above and behind them. Characters: a stickman in the costume of reference image 1, young man in a blue long robe and a small red cap, big smile; a stickman in the costume of reference image 2, a sultan in a red robe with a tall white turban and a thick black moustache and beard. Keep each costume exactly as in its reference image and the same big round white head. Place: palace room with blue tiles and a red carpet. Action: talk with crossed arms. Facial expressions (clearly readable, with eyebrows and mouth): the sultan smug, the young man respectful. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_explorer.png",
+    "costumes/costume_ancient_egypt.png"
+   ],
    "seed": 6106,
    "width": 576,
    "height": 1024
   },
   {
-   "id": "d30",
-   "prompt": "Close-up of the object only. No characters in the picture. Place: dark stone wall. Objects: a glowing orange stone furnace with a black pot and bubbling steam. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
-   "refs": [],
+   "id": "e08",
+   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, young man in a blue long robe and a small red cap, big smile. Keep each costume exactly as in its reference image and the same big round white head. Place: harbour with a big wooden sailing ship with two masts. Action: stands on the dock. Facial expressions (clearly readable, with eyebrows and mouth): curious. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_explorer.png"
+   ],
    "seed": 6107,
    "width": 576,
    "height": 1024
   },
   {
-   "id": "d31",
-   "prompt": "Close-up of the object only. No characters in the picture. Place: wooden table. Objects: an old hand-drawn map of the world with black dots. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
-   "refs": [],
+   "id": "e09",
+   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, young man in a blue long robe and a small red cap, big smile. Keep each costume exactly as in its reference image and the same big round white head. Place: street with a brown wooden house and cypress trees. Action: stands with arms crossed. Facial expressions (clearly readable, with eyebrows and mouth): proud. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_explorer.png"
+   ],
    "seed": 6108,
    "width": 576,
    "height": 1024
   },
   {
-   "id": "d34",
-   "prompt": "A flat plain colour background with one big simple object in the centre. No characters and no scenery. Place: plain sand beige sky background. Objects: a set of rising beige stone blocks like steps. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
-   "refs": [],
+   "id": "e10",
+   "prompt": "Medium shot: the characters are shown from the chest up and fill the lower half of the frame; the background is visible above and behind them. Characters: a stickman in the costume of reference image 1, young man in a blue long robe and a small red cap, big smile; a stickman in the costume of reference image 2, an older man in a green robe and a white-green turban. Keep each costume exactly as in its reference image and the same big round white head. Place: treasury with shelves of gold cups. Action: the green robed man hands gold to the young man. Facial expressions (clearly readable, with eyebrows and mouth): the old man generous, the young man amazed. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_explorer.png",
+    "costumes/costume_winter.png"
+   ],
    "seed": 6109,
    "width": 576,
    "height": 1024
   },
   {
-   "id": "d35",
-   "prompt": "A flat plain colour background with one big simple object in the centre. No characters and no scenery. Place: dark blue sunburst rays background. Objects: a golden balance scale with coins on one side. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
-   "refs": [],
+   "id": "e11",
+   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, young man in a blue long robe and a small red cap, big smile; a stickman in the costume of reference image 2, a sultan in a red robe with a tall white turban and a thick black moustache and beard. Keep each costume exactly as in its reference image and the same big round white head. Place: palace garden with arches and cypress trees. Action: stand talking. Facial expressions (clearly readable, with eyebrows and mouth): friendly. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_explorer.png",
+    "costumes/costume_ancient_egypt.png"
+   ],
    "seed": 6110,
    "width": 576,
    "height": 1024
   },
   {
-   "id": "l02",
-   "prompt": "Close-up of the object only. No characters in the picture. Place: stormy night. Objects: the lamp room of a lighthouse, the big lamp dark, glass cracked. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
-   "refs": [],
+   "id": "e12",
+   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, young man in a blue long robe and a small red cap, big smile; a stickman in the costume of reference image 2, a sultan in a red robe with a tall white turban and a thick black moustache and beard; a stickman in the costume of reference image 3, an older man in a green robe and a white-green turban. Keep each costume exactly as in its reference image and the same big round white head. Place: palace garden with arches and cypress trees. Action: talk and laugh. Facial expressions (clearly readable, with eyebrows and mouth): laughing. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_explorer.png",
+    "costumes/costume_ancient_egypt.png",
+    "costumes/costume_winter.png"
+   ],
    "seed": 6111,
    "width": 576,
    "height": 1024
   },
   {
-   "id": "l03",
-   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Place: stormy sea with a small wooden ship tossed by giant waves, lightning in the sky. Objects: a small fishing ship. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
-   "refs": [],
+   "id": "e13",
+   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, young man in a blue long robe and a small red cap, big smile; a stickman in the costume of reference image 2, a sultan in a red robe with a tall white turban and a thick black moustache and beard. Keep each costume exactly as in its reference image and the same big round white head. Place: throne room with a golden throne and a red carpet. Action: stand beside the throne. Facial expressions (clearly readable, with eyebrows and mouth): the sultan amused, the young man hopeful. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_explorer.png",
+    "costumes/costume_ancient_egypt.png"
+   ],
    "seed": 6112,
    "width": 576,
    "height": 1024
   },
   {
-   "id": "l05",
-   "prompt": "A flat plain colour background with one big simple object in the centre. No characters and no scenery. Place: plain dark blue background. Objects: a big white number 900 above a tiny staircase icon. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
-   "refs": [],
+   "id": "e14",
+   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, young man in a blue long robe and a small red cap, big smile. Keep each costume exactly as in its reference image and the same big round white head. Place: huge curved stone staircase going up a tower. Action: points at the steps. Facial expressions (clearly readable, with eyebrows and mouth): puzzled, one eyebrow up. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_explorer.png"
+   ],
    "seed": 6113,
    "width": 576,
    "height": 1024
   },
   {
-   "id": "l10",
-   "prompt": "Close-up of the object only. No characters in the picture. Place: lamp room. Objects: a hand lighting the big lighthouse lamp, bright yellow glow. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
-   "refs": [],
+   "id": "e15",
+   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, young man in a blue long robe and a small red cap, big smile. Keep each costume exactly as in its reference image and the same big round white head. Place: inside a stone tower, an arched window and a staircase. Action: stands scratching his head. Facial expressions (clearly readable, with eyebrows and mouth): tired and puzzled. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_explorer.png"
+   ],
    "seed": 6114,
    "width": 576,
    "height": 1024
   },
   {
-   "id": "l11",
-   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Place: stormy sea at night with a lighthouse beam cutting through the rain towards a small ship. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
+   "id": "e16",
+   "prompt": "Close-up of the object only. No characters in the picture. Place: green hills under a blue sky with an old city far below. Objects: a very tall thin stone tower with a spiral staircase wrapped around it. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
    "refs": [],
    "seed": 6115,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "e17",
+   "prompt": "Medium shot: the characters are shown from the chest up and fill the lower half of the frame; the background is visible above and behind them. Characters: a stickman in the costume of reference image 1, a sultan in a red robe with a tall white turban and a thick black moustache and beard. Keep each costume exactly as in its reference image and the same big round white head. Place: green and gold palace hall with a patterned wall. Action: smiles with a hand on his belly. Facial expressions (clearly readable, with eyebrows and mouth): a proud smug smile. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_ancient_egypt.png"
+   ],
+   "seed": 6116,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "e18",
+   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, a sultan in a red robe with a tall white turban and a thick black moustache and beard; a stickman in the costume of reference image 2, advisor in a purple robe; a stickman in the costume of reference image 2, advisor in an orange robe. Keep each costume exactly as in its reference image and the same big round white head. Place: palace hall with a patterned carpet. Action: the sultan stands between two advisors. Facial expressions (clearly readable, with eyebrows and mouth): pleased. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_ancient_egypt.png",
+    "costumes/costume_winter.png"
+   ],
+   "seed": 6117,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "e19",
+   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, a sultan in a red robe with a tall white turban and a thick black moustache and beard; a stickman in the costume of reference image 2, palace guard in a blue coat with a tall white and yellow ceremonial hat; a stickman in the costume of reference image 2, palace guard in a blue coat with a tall white and yellow ceremonial hat; a stickman in the costume of reference image 3, an older man in a green robe and a white-green turban. Keep each costume exactly as in its reference image and the same big round white head. Place: castle courtyard with a tower behind. Action: a big group stands together. Facial expressions (clearly readable, with eyebrows and mouth): serious. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_ancient_egypt.png",
+    "costumes/costume_soldier.png",
+    "costumes/costume_winter.png"
+   ],
+   "seed": 6118,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "e20",
+   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, an older man in a green robe and a white-green turban. Keep each costume exactly as in its reference image and the same big round white head. Place: stone steps on a tall tower with a curved wall and blue sea. Action: walks up the steps. Facial expressions (clearly readable, with eyebrows and mouth): determined. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_winter.png"
+   ],
+   "seed": 6119,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "e21",
+   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, an older man in a green robe and a white-green turban. Keep each costume exactly as in its reference image and the same big round white head. Place: a spiral stone staircase inside a tower. Action: points forward. Facial expressions (clearly readable, with eyebrows and mouth): excited. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_winter.png"
+   ],
+   "seed": 6120,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "e22",
+   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, an older man in a green robe and a white-green turban. Keep each costume exactly as in its reference image and the same big round white head. Place: a spiral stone staircase. Action: carries a heavy sack on his back and a pile of coins on a step. Facial expressions (clearly readable, with eyebrows and mouth): straining with effort. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_winter.png"
+   ],
+   "seed": 6121,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "e23",
+   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, an older man in a green robe and a white-green turban. Keep each costume exactly as in its reference image and the same big round white head. Place: stone staircase with an arch window. Action: bends under a heavy brown sack. Facial expressions (clearly readable, with eyebrows and mouth): exhausted, sweating. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_winter.png"
+   ],
+   "seed": 6122,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "e24",
+   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, an older man in a green robe and a white-green turban. Keep each costume exactly as in its reference image and the same big round white head. Place: a stone staircase going up with a sea view. Action: walks beside a grey donkey carrying baskets. Facial expressions (clearly readable, with eyebrows and mouth): patient. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_winter.png"
+   ],
+   "seed": 6123,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "e25",
+   "prompt": "Medium shot: the characters are shown from the chest up and fill the lower half of the frame; the background is visible above and behind them. Characters: a stickman in the costume of reference image 1, an older man in a green robe and a white-green turban. Keep each costume exactly as in its reference image and the same big round white head. Place: treasury room with a blue tiled wall and a wooden chest. Action: stands holding an abacus. Facial expressions (clearly readable, with eyebrows and mouth): proud. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_winter.png"
+   ],
+   "seed": 6124,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "e26",
+   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, an older man in a green robe and a white-green turban. Keep each costume exactly as in its reference image and the same big round white head. Place: dark treasury with a stone arch and a wooden chest. Action: stands with his arms raised. Facial expressions (clearly readable, with eyebrows and mouth): arms up, wide-eyed. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_winter.png"
+   ],
+   "seed": 6125,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "e27",
+   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, an older man in a green robe and a white-green turban; a stickman in the costume of reference image 2, a sultan in a red robe with a tall white turban and a thick black moustache and beard. Keep each costume exactly as in its reference image and the same big round white head. Place: stone room with an iron-bound chest and barrels. Action: talk, the sultan is happy. Facial expressions (clearly readable, with eyebrows and mouth): the sultan satisfied, the old man nervous. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_winter.png",
+    "costumes/costume_ancient_egypt.png"
+   ],
+   "seed": 6126,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "e28",
+   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, an older man in a green robe and a white-green turban. Keep each costume exactly as in its reference image and the same big round white head. Place: stone staircase of a tall tower, bright sky. Action: runs up the stairs. Facial expressions (clearly readable, with eyebrows and mouth): panting and sweating. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_winter.png"
+   ],
+   "seed": 6127,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "e29",
+   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, an older man in a green robe and a white-green turban; a stickman in the costume of reference image 2, a sultan in a red robe with a tall white turban and a thick black moustache and beard. Keep each costume exactly as in its reference image and the same big round white head. Place: old city rooftops in the background. Action: one bends over out of breath, the other stands proudly. Facial expressions (clearly readable, with eyebrows and mouth): one exhausted, one smug. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_winter.png",
+    "costumes/costume_ancient_egypt.png"
+   ],
+   "seed": 6128,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "e30",
+   "prompt": "Close-up of the object only. No characters in the picture. Place: dark stone wall. Objects: a glowing orange stone furnace with a black pot and bubbling steam. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
+   "refs": [],
+   "seed": 6129,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "e31",
+   "prompt": "Close-up of the object only. No characters in the picture. Place: wooden table. Objects: an old hand-drawn map of the world with black dots. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
+   "refs": [],
+   "seed": 6130,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "e32",
+   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, an older man in a green robe and a white-green turban; a stickman in the costume of reference image 2, a sultan in a red robe with a tall white turban and a thick black moustache and beard. Keep each costume exactly as in its reference image and the same big round white head. Place: palace arch with a view to the sea. Action: a very tall wooden measuring rod stands next to the sultan and the green robed man. Facial expressions (clearly readable, with eyebrows and mouth): the sultan amused. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_winter.png",
+    "costumes/costume_ancient_egypt.png"
+   ],
+   "seed": 6131,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "e33",
+   "prompt": "A flat plain colour background with one big simple object in the centre. No characters and no scenery. Characters: a stickman in the costume of reference image 1, young man in a blue long robe and a small red cap, big smile. Keep each costume exactly as in its reference image and the same big round white head. Place: yellow sunburst rays background. Action: holds an abacus and smiles. Facial expressions (clearly readable, with eyebrows and mouth): proud smile. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_explorer.png"
+   ],
+   "seed": 6132,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "e34",
+   "prompt": "A flat plain colour background with one big simple object in the centre. No characters and no scenery. Place: plain sand beige sky background. Objects: a set of rising beige stone blocks like steps. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
+   "refs": [],
+   "seed": 6133,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "e35",
+   "prompt": "A flat plain colour background with one big simple object in the centre. No characters and no scenery. Place: dark blue sunburst rays background. Objects: a golden balance scale with coins on one side. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
+   "refs": [],
+   "seed": 6134,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "e36",
+   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, young man in a blue long robe and a small red cap, big smile. Keep each costume exactly as in its reference image and the same big round white head. Place: green field with a very tall stone spiral tower far away, old city below. Action: stands seen from behind looking up. Facial expressions (clearly readable, with eyebrows and mouth): awed. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_explorer.png"
+   ],
+   "seed": 6135,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "e37",
+   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, a sultan in a red robe with a tall white turban and a thick black moustache and beard; a stickman in the costume of reference image 2, palace guard in a blue coat with a tall white and yellow ceremonial hat; a stickman in the costume of reference image 2, palace guard in a blue coat with a tall white and yellow ceremonial hat; a stickman in the costume of reference image 3, an older man in a green robe and a white-green turban; a stickman in the costume of reference image 4, young man in a blue long robe and a small red cap, big smile. Keep each costume exactly as in its reference image and the same big round white head. Place: palace courtyard crowded with people in front of a castle tower. Action: a crowd stands facing the viewer. Facial expressions (clearly readable, with eyebrows and mouth): solemn. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_ancient_egypt.png",
+    "costumes/costume_soldier.png",
+    "costumes/costume_winter.png",
+    "costumes/costume_explorer.png"
+   ],
+   "seed": 6136,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "e38",
+   "prompt": "Medium shot: the characters are shown from the chest up and fill the lower half of the frame; the background is visible above and behind them. Characters: a stickman in the costume of reference image 1, a sultan in a red robe with a tall white turban and a thick black moustache and beard; a stickman in the costume of reference image 2, an older man in a green robe and a white-green turban. Keep each costume exactly as in its reference image and the same big round white head. Place: palace room with hanging lanterns. Action: talk closely. Facial expressions (clearly readable, with eyebrows and mouth): worried whispering. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_ancient_egypt.png",
+    "costumes/costume_winter.png"
+   ],
+   "seed": 6137,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "e39",
+   "prompt": "Medium shot: the characters are shown from the chest up and fill the lower half of the frame; the background is visible above and behind them. Characters: a stickman in the costume of reference image 1, a sultan in a red robe with a tall white turban and a thick black moustache and beard. Keep each costume exactly as in its reference image and the same big round white head. Place: red throne with a gold canopy. Action: leans back on the throne. Facial expressions (clearly readable, with eyebrows and mouth): smug, leaning back. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_ancient_egypt.png"
+   ],
+   "seed": 6138,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "e40",
+   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, young man in a blue long robe and a small red cap, big smile; a stickman in the costume of reference image 2, a sultan in a red robe with a tall white turban and a thick black moustache and beard. Keep each costume exactly as in its reference image and the same big round white head. Place: red and gold throne room. Action: cheer with raised arms. Facial expressions (clearly readable, with eyebrows and mouth): both thrilled. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_explorer.png",
+    "costumes/costume_ancient_egypt.png"
+   ],
+   "seed": 6139,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "e41",
+   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, young man in a blue long robe and a small red cap, big smile; a stickman in the costume of reference image 2, a sultan in a red robe with a tall white turban and a thick black moustache and beard. Keep each costume exactly as in its reference image and the same big round white head. Place: treasury room with scrolls and chests. Action: inspect the treasure. Facial expressions (clearly readable, with eyebrows and mouth): greedy happy. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_explorer.png",
+    "costumes/costume_ancient_egypt.png"
+   ],
+   "seed": 6140,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "e42",
+   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, an older man in a green robe and a white-green turban; a stickman in the costume of reference image 2, young man in a blue long robe and a small red cap, big smile; a stickman in the costume of reference image 3, a sultan in a red robe with a tall white turban and a thick black moustache and beard. Keep each costume exactly as in its reference image and the same big round white head. Place: stone doorway with iron door. Action: three men look at the viewer. Facial expressions (clearly readable, with eyebrows and mouth): nervous. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_winter.png",
+    "costumes/costume_explorer.png",
+    "costumes/costume_ancient_egypt.png"
+   ],
+   "seed": 6141,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "e43",
+   "prompt": "Medium shot: the characters are shown from the chest up and fill the lower half of the frame; the background is visible above and behind them. Characters: a stickman in the costume of reference image 1, an older man in a green robe and a white-green turban. Keep each costume exactly as in its reference image and the same big round white head. Place: stone arch with empty shelves. Action: stands with arms out. Facial expressions (clearly readable, with eyebrows and mouth): sad and worried. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_winter.png"
+   ],
+   "seed": 6142,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "e44",
+   "prompt": "Medium shot: the characters are shown from the chest up and fill the lower half of the frame; the background is visible above and behind them. Characters: a stickman in the costume of reference image 1, an older man in a green robe and a white-green turban. Keep each costume exactly as in its reference image and the same big round white head. Place: dim room with a calendar on the wall and a candle. Action: points at the calendar. Facial expressions (clearly readable, with eyebrows and mouth): very worried. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_winter.png"
+   ],
+   "seed": 6143,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "e45",
+   "prompt": "Medium shot: the characters are shown from the chest up and fill the lower half of the frame; the background is visible above and behind them. Characters: a stickman in the costume of reference image 1, an older man in a green robe and a white-green turban. Keep each costume exactly as in its reference image and the same big round white head. Place: room with an arched window and a view of the city at sunset. Action: stands with arms out, worried. Facial expressions (clearly readable, with eyebrows and mouth): sad and tired. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_winter.png"
+   ],
+   "seed": 6144,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "e46",
+   "prompt": "Medium shot: the characters are shown from the chest up and fill the lower half of the frame; the background is visible above and behind them. Characters: a stickman in the costume of reference image 1, old man with a white beard and white-green turban, tired. Keep each costume exactly as in its reference image and the same big round white head. Place: dim room at sunset with scattered papers and gold coins on the floor. Action: stands alone. Facial expressions (clearly readable, with eyebrows and mouth): sad. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_winter.png"
+   ],
+   "seed": 6145,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "e47",
+   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1, an older man in a green robe and a white-green turban. Keep each costume exactly as in its reference image and the same big round white head. Place: base of a tall stone tower with steps and green plants. Action: stands leaning with a sad smile. Facial expressions (clearly readable, with eyebrows and mouth): tired smile. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
+   "refs": [
+    "costumes/costume_winter.png"
+   ],
+   "seed": 6146,
    "width": 576,
    "height": 1024
   }
