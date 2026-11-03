@@ -1,0 +1,8 @@
+[
+ {"id":"probe_wide","frame":"wide","chars":["winter"],"place":"snowy trench line at a ruined city on a grey winter morning, sandbags covered in snow, bare trees, broken buildings far away","action":"the soldier lies behind the sandbags aiming a long rifle","mood":"cold grey light"},
+ {"id":"probe_medium","frame":"medium","chars":["winter",{"c":"winter","note":"with a beard and a different tired face"}],"place":"inside a snowy trench","action":"the two soldiers stand side by side, one points ahead and the other listens","mood":"cold blue evening"},
+ {"id":"probe_close","frame":"close","chars":["winter"],"place":"snowy background","action":"the soldier covers one eye with his hand and grits his teeth in pain"},
+ {"id":"probe_insert","frame":"insert","props":"an old wall eye-test chart with rows of letters hanging on a wooden tent wall","place":"army medical tent"},
+ {"id":"probe_card","frame":"card","props":"a red and white tear-off wall calendar showing the number 14","place":"plain cream coloured background"},
+ {"id":"probe_group","frame":"wide","chars":["doctor",{"c":"sailor"},{"c":"soldier"}],"place":"a big modern city street with a police truck, shops and traffic lights","action":"three different characters talk in a small group","mood":"bright day"}
+]
