@@ -1,0 +1,1 @@
+$ /usr/bin/python3 -m pip install -q playwright==1.63.0

@@ -1,0 +1,71 @@
+[{"stream_name":"stderr","time":6.801271105,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":6.801307061,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":7.745264101,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.745288898,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.745293874,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.745297516,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":8.344692004,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.344725013,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.344730888,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.344735105,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":14.963718774,"data":"[install_playwright] ok in 5.4 s\n"}
+,{"stream_name":"stdout","time":48.714617442,"data":"[install_chromium] ok in 33.7 s\n"}
+,{"stream_name":"stdout","time":1342.984939532,"data":"[render] ok in 1293.2 s\n"}
+,{"stream_name":"stdout","time":1349.547377839,"data":"[qa] ok in 4.9 s\n"}
+,{"stream_name":"stdout","time":1349.548275841,"data":"{\n"}
+,{"stream_name":"stdout","time":1349.548307275,"data":"  \"status\": \"completed\",\n"}
+,{"stream_name":"stdout","time":1349.548330807,"data":"  \"error_message\": null,\n"}
+,{"stream_name":"stdout","time":1349.548336015,"data":"  \"environment\": {\n"}
+,{"stream_name":"stdout","time":1349.548340778,"data":"    \"python\": \"3.13.16\",\n"}
+,{"stream_name":"stdout","time":1349.548346096,"data":"    \"nvidia_smi\": \"Tesla T4, 15360 MiB, 580.178.04\\nTesla T4, 15360 MiB, 580.178.04\",\n"}
+,{"stream_name":"stdout","time":1349.548352033,"data":"    \"cpu_count\": 4,\n"}
+,{"stream_name":"stdout","time":1349.548356926,"data":"    \"ffmpeg\": \"ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers\"\n"}
+,{"stream_name":"stdout","time":1349.548362571,"data":"  },\n"}
+,{"stream_name":"stdout","time":1349.548366938,"data":"  \"steps\": {\n"}
+,{"stream_name":"stdout","time":1349.548372551,"data":"    \"install_playwright\": {\n"}
+,{"stream_name":"stdout","time":1349.548378196,"data":"      \"seconds\": 5.4,\n"}
+,{"stream_name":"stdout","time":1349.548383853,"data":"      \"outcome\": \"ok\"\n"}
+,{"stream_name":"stdout","time":1349.548389131,"data":"    },\n"}
+,{"stream_name":"stdout","time":1349.548393909,"data":"    \"install_chromium\": {\n"}
+,{"stream_name":"stdout","time":1349.548399044,"data":"      \"seconds\": 33.7,\n"}
+,{"stream_name":"stdout","time":1349.548404592,"data":"      \"outcome\": \"ok\"\n"}
+,{"stream_name":"stdout","time":1349.548410598,"data":"    },\n"}
+,{"stream_name":"stdout","time":1349.548416159,"data":"    \"fetch_repo\": {\n"}
+,{"stream_name":"stdout","time":1349.54842098,"data":"      \"seconds\": 0.8,\n"}
+,{"stream_name":"stdout","time":1349.548445218,"data":"      \"outcome\": \"ok\",\n"}
+,{"stream_name":"stdout","time":1349.548449486,"data":"      \"ref\": \"f652ea153658934c21c44d2d82f71040a96e6a28\"\n"}
+,{"stream_name":"stdout","time":1349.548455945,"data":"    },\n"}
+,{"stream_name":"stdout","time":1349.548459802,"data":"    \"render\": {\n"}
+,{"stream_name":"stdout","time":1349.548463738,"data":"      \"seconds\": 1293.2,\n"}
+,{"stream_name":"stdout","time":1349.548467492,"data":"      \"outcome\": \"ok\"\n"}
+,{"stream_name":"stdout","time":1349.548475615,"data":"    },\n"}
+,{"stream_name":"stdout","time":1349.548478436,"data":"    \"qa\": {\n"}
+,{"stream_name":"stdout","time":1349.548481047,"data":"      \"seconds\": 4.9,\n"}
+,{"stream_name":"stdout","time":1349.548483709,"data":"      \"outcome\": \"ok\"\n"}
+,{"stream_name":"stdout","time":1349.548486303,"data":"    }\n"}
+,{"stream_name":"stdout","time":1349.548488885,"data":"  },\n"}
+,{"stream_name":"stdout","time":1349.548491456,"data":"  \"video\": {\n"}
+,{"stream_name":"stdout","time":1349.548510814,"data":"    \"codec\": \"h264\",\n"}
+,{"stream_name":"stdout","time":1349.548515609,"data":"    \"width\": 1080,\n"}
+,{"stream_name":"stdout","time":1349.548519824,"data":"    \"height\": 1920,\n"}
+,{"stream_name":"stdout","time":1349.548523487,"data":"    \"fps\": \"30/1\",\n"}
+,{"stream_name":"stdout","time":1349.548527585,"data":"    \"pix_fmt\": \"yuv420p\",\n"}
+,{"stream_name":"stdout","time":1349.548532211,"data":"    \"frames\": 360,\n"}
+,{"stream_name":"stdout","time":1349.548536631,"data":"    \"duration_s\": 12.0,\n"}
+,{"stream_name":"stdout","time":1349.548540433,"data":"    \"bytes\": 3435332,\n"}
+,{"stream_name":"stdout","time":1349.548544394,"data":"    \"audio_streams\": 0,\n"}
+,{"stream_name":"stdout","time":1349.548548291,"data":"    \"file\": \"render/render.mp4\",\n"}
+,{"stream_name":"stdout","time":1349.548552374,"data":"    \"sha256\": \"4ffc27878d614c1e116600d9cfc8e78beebcb720c90da50e1ec8d60d9ad3bc5d\"\n"}
+,{"stream_name":"stdout","time":1349.548556639,"data":"  }\n"}
+,{"stream_name":"stdout","time":1349.548560394,"data":"}\n"}
+,{"stream_name":"stdout","time":1349.548564288,"data":"{'mode': 'software', 'gl': {'vendor': 'Google Inc. (Google)', 'renderer': 'ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)'}, 'gpu_used': False, 'seconds_per_frame_mean': 3.57, 'render_seconds_total': 1293.0}\n"}
+,{"stream_name":"stdout","time":1349.558948461,"data":"PASS: rendered 360 frames, 1080 x 1920 with {'vendor': 'Google Inc. (Google)', 'renderer': 'ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)'} | GPU used: False\n"}
+,{"stream_name":"stderr","time":1352.001760014,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":1352.001790357,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":1352.187853113,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":1352.187883096,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":1352.969622169,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":1353.04354013,"data":"[NbConvertApp] Writing 15879 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":1355.467766661,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":1355.992261596,"data":"[NbConvertApp] Writing 319143 bytes to __results__.html\n"}
+]
