@@ -1,0 +1,41 @@
+$ /usr/bin/python3 /tmp/walk_cycle_test/klein_stage.py /tmp/walk_cycle_test/klein_stage.json
+Fetching 25 files:   0%|          | 0/25 [00:00<?, ?it/s]Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Fetching 25 files:   8%|▊         | 2/25 [00:00<00:01, 13.91it/s]Fetching 25 files:  32%|███▏      | 8/25 [00:00<00:00, 31.30it/s]Fetching 25 files:  48%|████▊     | 12/25 [00:00<00:00, 29.73it/s]Fetching 25 files:  60%|██████    | 15/25 [00:00<00:00, 20.94it/s]Fetching 25 files:  72%|███████▏  | 18/25 [00:00<00:00, 14.85it/s]Fetching 25 files:  80%|████████  | 20/25 [00:03<00:01,  2.54it/s]Fetching 25 files:  80%|████████  | 20/25 [00:20<00:01,  2.54it/s]Fetching 25 files:  84%|████████▍ | 21/25 [00:51<00:28,  7.10s/it]Fetching 25 files:  92%|█████████▏| 23/25 [01:30<00:21, 10.57s/it]Fetching 25 files: 100%|██████████| 25/25 [01:54<00:00, 10.99s/it]Fetching 25 files: 100%|██████████| 25/25 [01:54<00:00,  4.58s/it]
+/usr/local/lib/python3.13/dist-packages/diffusers/utils/deprecation_utils.py:23: FutureWarning: `torch_dtype` is deprecated and will be removed in version 1.0.0. Please use `dtype` instead.
+  deprecate("torch_dtype", "1.0.0", _TORCH_DTYPE_DEPRECATION_MESSAGE)
+Loading pipeline components...:   0%|          | 0/5 [00:00<?, ?it/s]Loading pipeline components...:  20%|██        | 1/5 [00:00<00:03,  1.26it/s]Loading pipeline components...:  40%|████      | 2/5 [00:30<00:53, 17.89s/it]The config attributes {'force_upcast': True} were passed to AutoencoderKLFlux2, but are not expected and will be ignored. Please verify your config.json configuration file.
+Loading pipeline components...:  80%|████████  | 4/5 [00:31<00:06,  6.91s/it]
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s][A
+Loading weights:   0%|          | 1/398 [00:11<1:17:26, 11.70s/it][A
+Loading weights:  30%|██▉       | 119/398 [00:11<00:19, 14.21it/s][A
+Loading weights:  48%|████▊     | 193/398 [00:17<00:14, 13.77it/s][A
+Loading weights:  56%|█████▋    | 224/398 [00:19<00:12, 13.62it/s][A
+Loading weights:  61%|██████    | 242/398 [00:20<00:10, 14.29it/s][A
+Loading weights:  64%|██████▍   | 254/398 [00:21<00:10, 14.39it/s][A
+Loading weights:  66%|██████▌   | 262/398 [00:22<00:09, 13.92it/s][A
+Loading weights:  67%|██████▋   | 268/398 [00:23<00:10, 12.80it/s][A
+Loading weights:  70%|██████▉   | 278/398 [00:23<00:09, 12.80it/s][A
+Loading weights:  73%|███████▎  | 289/398 [00:24<00:08, 13.03it/s][A
+Loading weights:  75%|███████▌  | 300/398 [00:25<00:07, 13.20it/s][A
+Loading weights:  78%|███████▊  | 310/398 [00:25<00:05, 16.81it/s][A
+Loading weights:  79%|███████▉  | 315/398 [00:26<00:06, 13.50it/s][A
+Loading weights:  81%|████████  | 322/398 [00:26<00:06, 12.58it/s][A
+Loading weights:  84%|████████▎ | 333/398 [00:27<00:05, 12.57it/s][A
+Loading weights:  86%|████████▋ | 344/398 [00:28<00:04, 13.01it/s][A
+Loading weights:  89%|████████▉ | 355/398 [00:29<00:03, 13.34it/s][A
+Loading weights:  92%|█████████▏| 366/398 [00:30<00:02, 13.36it/s][A
+Loading weights:  95%|█████████▍| 377/398 [00:31<00:01, 13.58it/s][A
+Loading weights:  97%|█████████▋| 388/398 [00:31<00:00, 13.38it/s][ALoading weights: 100%|██████████| 398/398 [00:31<00:00, 12.49it/s]
+Loading pipeline components...: 100%|██████████| 5/5 [01:03<00:00, 14.74s/it]Loading pipeline components...: 100%|██████████| 5/5 [01:03<00:00, 12.73s/it]
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:09<00:28,  9.58s/it] 50%|█████     | 2/4 [00:13<00:12,  6.29s/it] 75%|███████▌  | 3/4 [00:17<00:05,  5.28s/it]100%|██████████| 4/4 [00:21<00:00,  4.82s/it]100%|██████████| 4/4 [00:21<00:00,  5.44s/it]
+klein drew pose_cycle_soldier_walk.png in 42.28 s
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:09<00:27,  9.19s/it] 50%|█████     | 2/4 [00:13<00:12,  6.23s/it] 75%|███████▌  | 3/4 [00:17<00:05,  5.30s/it]100%|██████████| 4/4 [00:21<00:00,  4.89s/it]100%|██████████| 4/4 [00:21<00:00,  5.45s/it]
+klein drew pose_cycle_soldier_run.png in 36.26 s
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:08<00:26,  8.93s/it] 50%|█████     | 2/4 [00:13<00:12,  6.23s/it] 75%|███████▌  | 3/4 [00:17<00:05,  5.39s/it]100%|██████████| 4/4 [00:22<00:00,  5.01s/it]100%|██████████| 4/4 [00:22<00:00,  5.52s/it]
+klein drew pose_cycle_doctor_walk.png in 36.84 s
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:08<00:26,  8.81s/it] 50%|█████     | 2/4 [00:13<00:12,  6.25s/it] 75%|███████▌  | 3/4 [00:17<00:05,  5.46s/it]100%|██████████| 4/4 [00:22<00:00,  5.10s/it]100%|██████████| 4/4 [00:22<00:00,  5.59s/it]
+klein drew pose_cycle_doctor_run.png in 37.22 s
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:08<00:24,  8.04s/it] 50%|█████     | 2/4 [00:12<00:12,  6.04s/it] 75%|███████▌  | 3/4 [00:17<00:05,  5.42s/it]100%|██████████| 4/4 [00:22<00:00,  5.15s/it]100%|██████████| 4/4 [00:22<00:00,  5.53s/it]
+klein drew pose_cycle_sailor_walk.png in 37.1 s
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:08<00:24,  8.09s/it] 50%|█████     | 2/4 [00:12<00:12,  6.16s/it] 75%|███████▌  | 3/4 [00:17<00:05,  5.60s/it]100%|██████████| 4/4 [00:22<00:00,  5.35s/it]100%|██████████| 4/4 [00:22<00:00,  5.70s/it]
+klein drew pose_cycle_sailor_run.png in 38.12 s

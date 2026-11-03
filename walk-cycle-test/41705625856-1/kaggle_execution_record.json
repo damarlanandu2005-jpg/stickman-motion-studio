@@ -1,0 +1,93 @@
+{
+  "identity": {
+    "run_id": "c44dfc54345648d780bf4487ae4e50d0",
+    "run_token": "ae5b962d69f2fd5eba937cdb7f76c09f",
+    "commit_sha": "161a955dd6d37f74c99725b7f943efd8f9cdb3fd",
+    "workflow_run_id": "41705625856",
+    "workflow_run_attempt": "1",
+    "created_utc": "2026-11-03T19:43:20+00:00"
+  },
+  "kernel": "narasimhadamarla/stickman-motion-studio-walk-cycle-test",
+  "pushed_version": 1,
+  "push_attempts": 1,
+  "observations": [
+    {
+      "at": "2026-11-03T19:43:20+00:00",
+      "event": "notebook_stamped",
+      "run_token_written": true
+    },
+    {
+      "at": "2026-11-03T19:43:22+00:00",
+      "event": "push_response",
+      "attempt": 1,
+      "exit_code": 0,
+      "text": "Kernel version 1 successfully pushed.  Please check progress at https://www.kaggle.com/code/narasimhadamarla/stickman-motion-studio-walk-cycle-test"
+    },
+    {
+      "at": "2026-11-03T19:43:22+00:00",
+      "event": "push_accepted",
+      "version": 1
+    },
+    {
+      "at": "2026-11-03T19:43:22+00:00",
+      "event": "status",
+      "state": "QUEUED"
+    },
+    {
+      "at": "2026-11-03T19:43:53+00:00",
+      "event": "status",
+      "state": "RUNNING"
+    },
+    {
+      "at": "2026-11-03T19:52:00+00:00",
+      "event": "status",
+      "state": "COMPLETE"
+    },
+    {
+      "at": "2026-11-03T19:52:02+00:00",
+      "event": "download",
+      "attempt": 1,
+      "exit_code": 0,
+      "text": "klein.json to kaggle-poses-output/outputs\n\n  0%|          | 0.00/1.84k [00:00<?, ?B/s]\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1.84k/1.84k [00:00<00:00, 9.01MB/s]\n\nOutput file downloaded to kaggle-poses-output/outputs/result_klein.json\nKernel log downloaded to kaggle-poses-output/stickman-motion-studio-walk-cycle-test.log"
+    }
+  ],
+  "download_attempts": 1,
+  "validation": {
+    "ok": true,
+    "failures": [],
+    "checks": {
+      "pictures": [
+        {
+          "file": "pose_cycle_soldier_walk.png",
+          "valid": true
+        },
+        {
+          "file": "pose_cycle_soldier_run.png",
+          "valid": true
+        },
+        {
+          "file": "pose_cycle_doctor_walk.png",
+          "valid": true
+        },
+        {
+          "file": "pose_cycle_doctor_run.png",
+          "valid": true
+        },
+        {
+          "file": "pose_cycle_sailor_walk.png",
+          "valid": true
+        },
+        {
+          "file": "pose_cycle_sailor_run.png",
+          "valid": true
+        }
+      ],
+      "drawn": 6,
+      "wanted": 6
+    }
+  },
+  "limitations": [
+    "The Kaggle CLI exposes the notebook version number, not a separate execution ID. Version tracking plus the run token in the output are used together."
+  ],
+  "result": "verified"
+}

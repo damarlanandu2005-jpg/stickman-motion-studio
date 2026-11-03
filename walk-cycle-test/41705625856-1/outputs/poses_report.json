@@ -1,0 +1,108 @@
+{
+  "run_token": "ae5b962d69f2fd5eba937cdb7f76c09f",
+  "run_id": "c44dfc54345648d780bf4487ae4e50d0",
+  "commit_sha": "161a955dd6d37f74c99725b7f943efd8f9cdb3fd",
+  "workflow_run_id": "41705625856",
+  "status": "completed",
+  "error_message": null,
+  "poses": [
+    "cycle_soldier_walk",
+    "cycle_soldier_run",
+    "cycle_doctor_walk",
+    "cycle_doctor_run",
+    "cycle_sailor_walk",
+    "cycle_sailor_run"
+  ],
+  "seeds": [
+    0
+  ],
+  "reference": "animation/reference_art/walkcycle/",
+  "environment": {
+    "python": "3.13.16",
+    "torch": "2.11.0+cu130",
+    "cuda_available": true,
+    "gpu_names": [
+      "Tesla T4",
+      "Tesla T4"
+    ]
+  },
+  "klein": {
+    "stage": "klein",
+    "status": "success",
+    "error": null,
+    "pictures": [
+      {
+        "pose": "cycle_soldier_walk",
+        "seed": 5107,
+        "status": "success",
+        "file": "pose_cycle_soldier_walk.png",
+        "seconds": 42.28,
+        "width": 1536,
+        "height": 512,
+        "sha256": "23dbb169818e0058bba0b05dfbc015a574fb45e61d176d4f1c0f43806a4e6ba6"
+      },
+      {
+        "pose": "cycle_soldier_run",
+        "seed": 5107,
+        "status": "success",
+        "file": "pose_cycle_soldier_run.png",
+        "seconds": 36.26,
+        "width": 1536,
+        "height": 512,
+        "sha256": "0ed0c01ebdf748358e3674f361b3d64859b9cdf42ca88a0d1069d1e362021142"
+      },
+      {
+        "pose": "cycle_doctor_walk",
+        "seed": 5107,
+        "status": "success",
+        "file": "pose_cycle_doctor_walk.png",
+        "seconds": 36.84,
+        "width": 1536,
+        "height": 512,
+        "sha256": "0728f2186f4d083a2f40f83f54115175bcc77ba876c0ea4e35c976d3cc8be7f3"
+      },
+      {
+        "pose": "cycle_doctor_run",
+        "seed": 5107,
+        "status": "success",
+        "file": "pose_cycle_doctor_run.png",
+        "seconds": 37.22,
+        "width": 1536,
+        "height": 512,
+        "sha256": "f042f905f9233caad831964d57cef27d2a183083ec22c98851730b571f247af2"
+      },
+      {
+        "pose": "cycle_sailor_walk",
+        "seed": 5107,
+        "status": "success",
+        "file": "pose_cycle_sailor_walk.png",
+        "seconds": 37.1,
+        "width": 1536,
+        "height": 512,
+        "sha256": "1fb3d786c55fe342dd42b5c575f305eba1f3e72d9b1073f3d2d8f660b339bd34"
+      },
+      {
+        "pose": "cycle_sailor_run",
+        "seed": 5107,
+        "status": "success",
+        "file": "pose_cycle_sailor_run.png",
+        "seconds": 38.12,
+        "width": 1536,
+        "height": 512,
+        "sha256": "80142c0d82cc37e15c2143b423a394c267aaee048993595250ad357eb0b1b0d7"
+      }
+    ],
+    "download_seconds": 114.6,
+    "load_seconds": 63.7,
+    "peak_vram_gib": 8.8
+  },
+  "files": [
+    "pose_cycle_soldier_walk.png",
+    "pose_cycle_soldier_run.png",
+    "pose_cycle_doctor_walk.png",
+    "pose_cycle_doctor_run.png",
+    "pose_cycle_sailor_walk.png",
+    "pose_cycle_sailor_run.png"
+  ],
+  "notebook_duration_seconds": 475.1
+}
