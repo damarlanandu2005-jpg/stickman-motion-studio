@@ -5,9 +5,6 @@ name: Kaggle walk/run cycle test (klein, other costumes)
 # One run per Kaggle notebook at a time (concurrency keyed on the notebook).
 on:
   workflow_dispatch:
-  push:   # one-time start (a new workflow cannot be run by hand from a branch until it has run once); remove after the first run
-    branches: [test/image-to-3d-objects]
-    paths: ['kaggle/walk-cycle-test/**']
 
 concurrency:
   group: kaggle-notebook-walk-cycle-test
