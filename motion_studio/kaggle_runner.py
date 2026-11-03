@@ -382,11 +382,50 @@ def validate_animation_proof_output(out_dir: Path, identity: dict[str, Any], exp
     return {"ok": not failures, "failures": failures, "checks": checks}
 
 
+POSES_PATTERN = r"(poses_report\.json|result_klein\.json|pose_[a-z0-9_]+\.png|[a-z_0-9]+\.log)$"
+
+
+def validate_poses_output(out_dir: Path, identity: dict[str, Any], expected_model_sha256: str | None = None) -> dict[str, Any]:
+    """Astronaut pose pictures: the report must belong to this run and every picture it claims must exist intact."""
+    out_dir = Path(out_dir)
+    failures: list[str] = []
+    checks: dict[str, Any] = {"pictures": []}
+    report_path = next(iter(out_dir.rglob("poses_report.json")), None)
+    if not report_path:
+        return {"ok": False, "failures": ["missing poses_report.json"], "checks": checks}
+    try:
+        report = json.loads(report_path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        return {"ok": False, "failures": [f"report is not valid JSON: {exc}"], "checks": checks}
+    if report.get("run_token") != identity["run_token"]:
+        failures.append("report run_token does not match this run (output belongs to another execution)")
+    if report.get("run_id") != identity["run_id"]:
+        failures.append("report run_id does not match this run")
+    if report.get("status") != "completed":
+        failures.append(f"poses did not complete: status {report.get('status')!r}, error {report.get('error_message')!r}")
+    pictures = (report.get("klein") or {}).get("pictures") or []
+    wanted = len(report.get("poses", [])) * len(report.get("seeds", []))
+    ok = [p for p in pictures if p.get("status") == "success"]
+    checks["drawn"], checks["wanted"] = len(ok), wanted
+    if report.get("status") == "completed" and len(ok) == 0:
+        failures.append("no picture was drawn")
+    for item in ok:
+        image = next(iter(out_dir.rglob(str(item.get("file", "?")))), None)
+        png = validate_png(image) if image else {"valid": False, "error": "file missing", "sha256": None}
+        checks["pictures"].append({"file": item.get("file"), "valid": png["valid"]})
+        if not png["valid"]:
+            failures.append(f"{item.get('file')}: not a valid PNG ({png['error']})")
+        elif png["sha256"] != item.get("sha256"):
+            failures.append(f"{item.get('file')}: hash differs from the report")
+    return {"ok": not failures, "failures": failures, "checks": checks}
+
+
 PROFILES = {
     "image-smoke": {"pattern": OUTPUT_FILE_PATTERN, "validate": "validate_output"},
     "klein-benchmark": {"pattern": BENCHMARK_OUTPUT_PATTERN, "validate": "validate_benchmark_output"},
     "animation-proof": {"pattern": ANIMATION_PROOF_PATTERN, "validate": "validate_animation_proof_output"},
     "image-to-3d": {"pattern": IMAGE_TO_3D_PATTERN, "validate": "validate_image_to_3d_output"},
+    "poses": {"pattern": POSES_PATTERN, "validate": "validate_poses_output"},
     "script-writer": {"pattern": r".*(benchmark_report\.json|benchmark_results\.json|model_comparison\.csv|fact_check_report\.json|revised_script\.json|verified_script\.json|Qwen3-4B-Instruct-2507\.(json|txt)|Gemma-3-4B-IT\.(json|txt))$", "validate": "validate_script_writer_output"},
 }
 
@@ -536,6 +575,18 @@ def summarize_report(out_dir: Path, profile: str) -> str:
                  f"  attempts: {json.dumps(rr.get('attempts'))}", f"  notebook_duration_seconds: {r.get('notebook_duration_seconds')}",
                  "  QA: " + str(r.get("qa")).replace(chr(10), " | ")]
         return "\n".join(lines)
+    if profile == "poses":
+        path = next(iter(Path(out_dir).rglob("poses_report.json")), None)
+        if not path:
+            return "(no report to summarize)"
+        r = json.loads(path.read_text(encoding="utf-8"))
+        k = r.get("klein") or {}
+        pics = k.get("pictures", [])
+        secs = [p["seconds"] for p in pics if p.get("seconds")]
+        return "\n".join([f"  environment: {r.get('environment')}", f"  klein: {k.get('status')} load {k.get('load_seconds')} s, peak VRAM {k.get('peak_vram_gib')} GiB",
+                          f"  pictures drawn: {len([p for p in pics if p.get('status') == 'success'])} of {len(pics)}; seconds each: min {min(secs, default=None)} max {max(secs, default=None)}",
+                          f"  failed: {[(p['pose'], p['seed'], p.get('error')) for p in pics if p.get('status') != 'success']}",
+                          f"  notebook_duration_seconds: {r.get('notebook_duration_seconds')}"])
     if profile == "image-to-3d":
         path = next(iter(Path(out_dir).rglob("image_to_3d_report.json")), None)
         if not path:
