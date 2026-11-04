@@ -1,0 +1,29 @@
+# EXAMPLE only (written by Claude to show the format). Your own scripts go in this folder.
+TITLE: He Defused 41 Bombs Without Seeing COLOR
+VOICE: am_fenrir
+CAST: animation/cast/example_bomb.json
+
+SCENE
+bg: bomb squad office, inside
+who: arthur
+pose: stand
+props: bomb
+say: Arthur was a *normal* man.
+text: 41 BOMBS
+camera: push
+
+SCENE
+bg: city street at night
+who: arthur, chief
+pose: point
+say: Then the chief gave him *one* chance.
+camera: pan
+
+CHANGE: arthur -> squad
+
+SCENE
+bg: bomb squad office, inside
+who: arthur
+props: red wire, blue wire
+say: Now he wore the *squad* suit.
+sound: tick
