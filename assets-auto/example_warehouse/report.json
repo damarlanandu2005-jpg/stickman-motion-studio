@@ -13,82 +13,25 @@
     "file": "pose_bg_old_warehouse_inside_r1_c0.png",
     "pass": true,
     "why": [],
-    "score": -0.189,
+    "score": -0.689,
     "text_check": true,
-    "sat": 0.438,
-    "dark": 0.1,
-    "bright": 0.586,
-    "low_dark": 0.115,
-    "grad": 5.705,
-    "repair": "pale bottom band cut off and picture stretched back (code repair)"
+    "sat": 0.06,
+    "dark": 0.24,
+    "bright": 0.405,
+    "low_dark": 0.01,
+    "grad": 6.536
    },
    {
     "file": "pose_bg_old_warehouse_inside_r1_c1.png",
-    "pass": false,
-    "why": [
-     "picture is noisy is outside the library's range"
-    ],
-    "score": -0.095,
-    "text_check": true,
-    "sat": 0.391,
-    "dark": 0.097,
-    "bright": 0.629,
-    "low_dark": 0.059,
-    "grad": 9.278
-   },
-   {
-    "file": "pose_bg_old_warehouse_inside_r2_c0.png",
     "pass": true,
     "why": [],
-    "score": -0.134,
+    "score": -0.496,
     "text_check": true,
-    "sat": 0.428,
-    "dark": 0.095,
-    "bright": 0.668,
-    "low_dark": 0.102,
-    "grad": 7.532,
-    "repair": "pale bottom band cut off and picture stretched back (code repair)"
-   },
-   {
-    "file": "pose_bg_old_warehouse_inside_r2_c1.png",
-    "pass": true,
-    "why": [],
-    "score": -0.238,
-    "text_check": true,
-    "sat": 0.443,
-    "dark": 0.131,
-    "bright": 0.568,
-    "low_dark": 0.113,
-    "grad": 7.553,
-    "repair": "pale bottom band cut off and picture stretched back (code repair)"
-   },
-   {
-    "file": "pose_bg_old_warehouse_inside_r3_c0.png",
-    "pass": false,
-    "why": [
-     "colour style is outside the library's range"
-    ],
-    "score": -0.285,
-    "text_check": true,
-    "sat": 0.55,
-    "dark": 0.094,
-    "bright": 0.595,
-    "low_dark": 0.077,
-    "grad": 6.69,
-    "repair": "pale bottom band cut off and picture stretched back (code repair)"
-   },
-   {
-    "file": "pose_bg_old_warehouse_inside_r3_c1.png",
-    "pass": true,
-    "why": [],
-    "score": -0.244,
-    "text_check": true,
-    "sat": 0.458,
-    "dark": 0.107,
-    "bright": 0.557,
-    "low_dark": 0.113,
-    "grad": 6.108,
-    "repair": "pale bottom band cut off and picture stretched back (code repair)"
+    "sat": 0.139,
+    "dark": 0.153,
+    "bright": 0.474,
+    "low_dark": 0.0,
+    "grad": 6.046
    }
   ],
   "bg_rooftop_sunset": [
@@ -96,83 +39,25 @@
     "file": "pose_bg_rooftop_sunset_r1_c0.png",
     "pass": true,
     "why": [],
-    "score": -0.403,
+    "score": -0.195,
     "text_check": true,
-    "sat": 0.515,
-    "dark": 0.031,
-    "bright": 0.841,
-    "low_dark": 0.104,
-    "grad": 2.444,
-    "repair": "pale bottom band cut off and picture stretched back (code repair)"
+    "sat": 0.397,
+    "dark": 0.028,
+    "bright": 0.743,
+    "low_dark": 0.04,
+    "grad": 1.889
    },
    {
     "file": "pose_bg_rooftop_sunset_r1_c1.png",
-    "pass": false,
-    "why": [
-     "colour style is outside the library's range"
-    ],
-    "score": -0.345,
-    "text_check": true,
-    "sat": 0.599,
-    "dark": 0.059,
-    "bright": 0.754,
-    "low_dark": 0.113,
-    "grad": 3.618,
-    "repair": "pale bottom band cut off and picture stretched back (code repair)"
-   },
-   {
-    "file": "pose_bg_rooftop_sunset_r2_c0.png",
     "pass": true,
     "why": [],
-    "score": -0.254,
+    "score": -0.268,
     "text_check": true,
-    "sat": 0.525,
-    "dark": 0.059,
-    "bright": 0.737,
-    "low_dark": 0.113,
-    "grad": 3.659,
-    "repair": "pale bottom band cut off and picture stretched back (code repair)"
-   },
-   {
-    "file": "pose_bg_rooftop_sunset_r2_c1.png",
-    "pass": false,
-    "why": [
-     "colour style is outside the library's range"
-    ],
-    "score": -0.458,
-    "text_check": true,
-    "sat": 0.641,
-    "dark": 0.053,
-    "bright": 0.823,
-    "low_dark": 0.105,
-    "grad": 3.84,
-    "repair": "pale bottom band cut off and picture stretched back (code repair)"
-   },
-   {
-    "file": "pose_bg_rooftop_sunset_r3_c0.png",
-    "pass": true,
-    "why": [],
-    "score": -0.235,
-    "text_check": true,
-    "sat": 0.511,
-    "dark": 0.055,
-    "bright": 0.731,
-    "low_dark": 0.111,
-    "grad": 4.223,
-    "repair": "pale bottom band cut off and picture stretched back (code repair)"
-   },
-   {
-    "file": "pose_bg_rooftop_sunset_r3_c1.png",
-    "pass": true,
-    "why": [],
-    "score": -0.412,
-    "text_check": true,
-    "sat": 0.496,
-    "dark": 0.034,
-    "bright": 0.876,
-    "low_dark": 0.112,
-    "grad": 2.402,
-    "repair": "pale bottom band cut off and picture stretched back (code repair)"
+    "sat": 0.459,
+    "dark": 0.03,
+    "bright": 0.759,
+    "low_dark": 0.042,
+    "grad": 2.027
    }
   ]
  },
