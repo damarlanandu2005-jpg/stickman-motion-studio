@@ -132,7 +132,7 @@ def test_plan_draws_a_continuation_from_its_base_and_waits_when_the_base_is_miss
     r = aa.plan({"name": "t", "needs": [need, waits]}, 1, st, lib, tmp_path / "j.json")
     jobs = json.loads((tmp_path / "j.json").read_text())["jobs"]
     assert r["waiting"] == ["bg_room_night"] and all(j["id"].startswith("bg_room_sun") for j in jobs)
-    assert all(j["refs"] == ["ds:backgrounds__bg_0.png"] and j["prompt"].startswith("Edit the reference picture") and "Change only this: sun" in j["prompt"] for j in jobs)
+    assert all(j["refs"] == ["ds:backgrounds__bg_0.png"] and j["prompt"].startswith("Edit the reference picture") and "it is now sun" in j["prompt"] for j in jobs)
 
 
 def test_judge_saves_a_continuation_with_its_base_and_asks_for_a_dataset_update(tmp_path, monkeypatch):
