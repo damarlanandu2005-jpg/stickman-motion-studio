@@ -218,6 +218,9 @@ def render_frame(lib: Library, shot: dict, local_t: float) -> Image.Image:
     for tx in shot.get("texts", []):
         if tx.get("screen"):
             out = out.convert("RGBA"); draw_text(out, tx, local_t, shot["dur"]); out = out.convert("RGB")
+    if shot.get("fx"):
+        from . import effects
+        out = effects.draw(out, shot["fx"], local_t, shot["dur"], shot.get("fx_seed", 0))
     for a, b, peak in shot.get("flash", []):  # white flash: fades out between a and b
         if a <= local_t < b:
             al = peak * (1 - (local_t - a) / max(b - a, 1e-6))

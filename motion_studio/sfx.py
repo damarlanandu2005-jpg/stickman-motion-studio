@@ -1,5 +1,5 @@
 """Object sounds made by code (no downloads, so no licence questions). Only used where a shot asks for one.
-Types: boom, gunshot, thud, beep, tick, wind, static, step, click, siren.  All mono, 24 kHz, peak <= 1.
+Types: boom, gunshot, thud, beep, tick, wind, static, step, click, siren, rain, thunder, bubbles, splash, crackle, door, crowd.  All mono, 24 kHz, peak <= 1.
 """
 from __future__ import annotations
 
@@ -60,6 +60,38 @@ def make(kind: str, dur: float | None = None) -> np.ndarray:
         t = np.arange(n) / SR
         f = 900 + 350 * np.sin(2 * np.pi * 0.8 * t)
         x = np.sin(2 * np.pi * np.cumsum(f) / SR) * np.minimum(1, np.minimum(t / 0.1, (n / SR - t) / 0.2))
+    elif kind == "rain":
+        n = int((dur or 3.0) * SR)
+        x = _RNG.standard_normal(n) - _lowpass(_RNG.standard_normal(n), 6)          # hiss: noise without the low part
+        x = x * (0.8 + 0.2 * np.sin(2 * np.pi * 0.7 * np.arange(n) / SR))
+    elif kind == "thunder":
+        n = int(2.2 * SR)
+        t = np.arange(n) / SR
+        x = _lowpass(_RNG.standard_normal(n), 220) * 8 * _env(n, 0.15, 0.7) * (0.7 + 0.3 * np.sin(2 * np.pi * 3 * t))
+    elif kind == "bubbles":
+        n = int((dur or 1.5) * SR)
+        x = np.zeros(n)
+        for t0 in np.sort(_RNG.uniform(0, max((n / SR) - 0.2, 0.05), 9)):          # short rising chirps = bubbles
+            m = int(0.09 * SR); tt = np.arange(m) / SR; a = int(t0 * SR)
+            f = _RNG.uniform(500, 900) * (1 + 6 * tt)
+            x[a:a + m] += (np.sin(2 * np.pi * np.cumsum(f) / SR) * np.exp(-tt / 0.03))[:max(min(m, n - a), 0)]
+    elif kind == "splash":
+        n = int(0.9 * SR)
+        x = _lowpass(_RNG.standard_normal(n), 14) * 4 * _env(n, 0.004, 0.18) + _lowpass(_RNG.standard_normal(n), 90) * 2 * _env(n, 0.003, 0.25)
+    elif kind == "crackle":
+        n = int((dur or 2.0) * SR)
+        x = np.zeros(n)
+        for t0 in _RNG.uniform(0, n / SR, int(14 * (n / SR) + 4)):                  # fire: random short pops over a soft rumble
+            m = int(0.012 * SR); a = int(t0 * SR)
+            x[a:a + m] += (_RNG.standard_normal(m) * np.exp(-np.arange(m) / (0.003 * SR)))[:max(min(m, n - a), 0)] * _RNG.uniform(0.3, 1.0)
+        x += _lowpass(_RNG.standard_normal(n), 80) * 0.6
+    elif kind == "door":
+        n = int(0.5 * SR)
+        t = np.arange(n) / SR
+        x = np.sin(2 * np.pi * 140 * t) * _env(n, 0.002, 0.07) + _RNG.standard_normal(n) * _env(n, 0.001, 0.02) * 0.6
+    elif kind == "crowd":
+        n = int((dur or 3.0) * SR)
+        x = _lowpass(_RNG.standard_normal(n), 40) * (0.6 + 0.4 * np.sin(2 * np.pi * 1.3 * np.arange(n) / SR))
     else:
         raise ValueError(f"unknown sound: {kind}")
     return (x / max(np.abs(x).max(), 1e-9)).astype(np.float32)

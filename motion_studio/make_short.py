@@ -18,6 +18,17 @@ from . import shot_planner as planner
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def _with_sounds(shots: list, wav, work: Path):
+    """Voice + the sounds the script asks for, in one wav. If mixing fails the voice alone is used (a short without effects beats no short)."""
+    from . import sfx
+    if not any(s.get("sfx") for s in shots):
+        return wav
+    try:
+        return sfx.mix(shots, Path(wav), work / "voice_sfx.wav")
+    except Exception as e:                          # noqa: BLE001
+        print(f"sound mix failed, voice only: {e}"); return wav
+
+
 def make(script_path: Path, models: Path, out: Path, root: Path = ROOT) -> dict:
     script = sr.parse_script(Path(script_path).read_text(encoding="utf-8"))
     cast_path = (root / script["cast"]) if script["cast"] else None
@@ -31,6 +42,7 @@ def make(script_path: Path, models: Path, out: Path, root: Path = ROOT) -> dict:
     wav, durs, words, vreport = voice_first.synth_scenes(models, work, ir["scenes"], voice=ir["voice"])
     shots, warns = planner.plan_shots(ir, durs, words, cast, root)
     (work / "shots.json").write_text(json.dumps(shots, indent=1))
+    wav = _with_sounds(shots, wav, work)
     video = shot2d.render_video(shots, out, root=root / "animation" / "assets2d", audio=wav)
     report = {"ok": True, "video": str(out), "render": video, "scenes": len(shots), "warnings": warns, "missing_assets": ir["missing_assets"],
               "missing_costumes": ir["missing_costumes"], "voice": vreport, "human_reviewed": False}

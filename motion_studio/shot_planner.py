@@ -16,6 +16,7 @@ from pathlib import Path
 
 from .voice_first import SR  # noqa: F401  (keeps the timing module the single source of the sample rate)
 from .v3_voice import caption_groups
+from . import script_sounds
 
 ROOT = Path(__file__).resolve().parents[1]
 PUSH = {"z0": 1.0, "z1": 1.16}
@@ -90,6 +91,8 @@ def plan_shots(ir: dict, durs: list[float], words: list, cast: dict, root: Path 
         texts = [{"text": sc["text"], "x": 0.5, "y": 0.2, "size": 0.07, "font": "bold", "color": (255, 255, 255), "stroke": 3, "screen": True}] if sc["text"] else []
         caps = [[round(max(a - t, 0), 3), round(min(b - t, d), 3), txt, key_words(txt, allred)] for a, b, txt, red in groups if b > t + 0.05 and a < t + d - 0.05]
         cam = CAMS.get(sc["camera"], AUTO_CAMS[(sc["n"] - 1) % 3])
-        shots.append({"bg": bg, "dur": d, "cam": cam, "actors": actors, "objects": objects, "texts": texts, "caps": caps, "cap_y": 0.68})
+        sfx_l, fx_l = script_sounds.plan(sc, d)
+        shots.append({"bg": bg, "dur": d, "cam": cam, "actors": actors, "objects": objects, "texts": texts, "caps": caps, "cap_y": 0.68,
+                      "sfx": sfx_l, "fx": fx_l, "fx_seed": sc["n"]})
         t += d
     return shots, warns

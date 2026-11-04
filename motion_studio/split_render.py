@@ -57,6 +57,8 @@ def prepare(script_path: Path, models: Path, work: Path, root: Path = ROOT) -> d
     wav, durs, words, vreport = voice_first.synth_scenes(models, work, ir["scenes"], voice=ir["voice"])
     shots, warns = planner.plan_shots(ir, durs, words, cast, root)
     (work / "shots.json").write_text(json.dumps(shots, indent=1))
+    from .make_short import _with_sounds
+    wav = _with_sounds(shots, wav, work)
     total = sum(s["dur"] for s in shots); frames = int(round(total * shot2d.FPS))
     meta = {"ok": True, "title": ir["title"], "wav": str(Path(wav).name), "frames": frames, "fps": shot2d.FPS, "seconds": round(total, 2), "shots": len(shots),
             "warnings": warns, "missing_assets": ir["missing_assets"], "missing_costumes": ir["missing_costumes"], "human_reviewed": False}
