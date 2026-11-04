@@ -1,0 +1,363 @@
+{
+ "title": "He Could Not See Red",
+ "voice": "am_fenrir",
+ "scenes": [
+  {
+   "n": 1,
+   "voice": "Arthur was a bomb expert, and he could not tell red from green.",
+   "red": [
+    "bomb"
+   ],
+   "bg": {
+    "wanted": "bomb squad office, inside",
+    "library_id": null,
+    "match": 0.25
+   },
+   "who": [
+    {
+     "character": "arthur",
+     "stage": "normal",
+     "costume": "civ",
+     "costume_status": "missing"
+    }
+   ],
+   "pose": [
+    "stand"
+   ],
+   "props": [
+    {
+     "wanted": "bomb",
+     "library_id": null,
+     "match": 0.0
+    }
+   ],
+   "text": "COLOUR BLIND",
+   "sound": "",
+   "camera": "push"
+  },
+  {
+   "n": 2,
+   "voice": "One night the chief called him, because a bomb sat under the bridge.",
+   "red": [
+    "bomb"
+   ],
+   "bg": {
+    "wanted": "city street at night",
+    "library_id": null,
+    "match": 0.33
+   },
+   "who": [
+    {
+     "character": "arthur",
+     "stage": "normal",
+     "costume": "civ",
+     "costume_status": "missing"
+    },
+    {
+     "character": "chief",
+     "stage": "main",
+     "costume": "chief",
+     "costume_status": "missing"
+    }
+   ],
+   "pose": [
+    "point"
+   ],
+   "props": [],
+   "text": "",
+   "sound": "siren",
+   "camera": "pan"
+  },
+  {
+   "n": 3,
+   "voice": "Two wires. One red, one blue, and to him both looked grey.",
+   "red": [
+    "red"
+   ],
+   "bg": {
+    "wanted": "concrete bunker, dim light",
+    "library_id": null,
+    "match": 0.25
+   },
+   "who": [
+    {
+     "character": "arthur",
+     "stage": "squad",
+     "costume": "bombsuit",
+     "costume_status": "spec_only"
+    }
+   ],
+   "pose": [
+    "crouch"
+   ],
+   "props": [
+    {
+     "wanted": "red wire",
+     "library_id": null,
+     "match": 0.0
+    },
+    {
+     "wanted": "blue wire",
+     "library_id": null,
+     "match": 0.0
+    }
+   ],
+   "text": "",
+   "sound": "tick",
+   "camera": "push"
+  },
+  {
+   "n": 4,
+   "voice": "Ten seconds left, and the whole city waited.",
+   "red": [
+    "seconds"
+   ],
+   "bg": {
+    "wanted": "concrete bunker, dim light, a flashing red timer on the wall",
+    "library_id": null,
+    "match": 0.12
+   },
+   "who": [
+    {
+     "character": "arthur",
+     "stage": "squad",
+     "costume": "bombsuit",
+     "costume_status": "spec_only"
+    }
+   ],
+   "pose": [
+    "think"
+   ],
+   "props": [],
+   "text": "",
+   "sound": "tick",
+   "camera": "push"
+  },
+  {
+   "n": 5,
+   "voice": "So he trusted his ears, not his eyes.",
+   "red": [
+    "ears"
+   ],
+   "bg": {
+    "wanted": "bomb squad office, inside",
+    "library_id": null,
+    "match": 0.25
+   },
+   "who": [
+    {
+     "character": "arthur",
+     "stage": "squad",
+     "costume": "bombsuit",
+     "costume_status": "spec_only"
+    },
+    {
+     "character": "chief",
+     "stage": "main",
+     "costume": "chief",
+     "costume_status": "missing"
+    }
+   ],
+   "pose": [
+    "hands_on_hips"
+   ],
+   "props": [],
+   "text": "",
+   "sound": "",
+   "camera": "still"
+  },
+  {
+   "n": 6,
+   "voice": "He cut the wire, and nothing exploded.",
+   "red": [
+    "exploded"
+   ],
+   "bg": {
+    "wanted": "city street at night, wet from heavy rain",
+    "library_id": null,
+    "match": 0.0
+   },
+   "who": [
+    {
+     "character": "arthur",
+     "stage": "squad",
+     "costume": "bombsuit",
+     "costume_status": "spec_only"
+    }
+   ],
+   "pose": [
+    "arms_up"
+   ],
+   "props": [],
+   "text": "",
+   "sound": "rain",
+   "camera": "pull"
+  },
+  {
+   "n": 7,
+   "voice": "By morning the whole city knew his name.",
+   "red": [
+    "name"
+   ],
+   "bg": {
+    "wanted": "sunny city street in the morning",
+    "library_id": null,
+    "match": 0.0
+   },
+   "who": [
+    {
+     "character": "arthur",
+     "stage": "squad",
+     "costume": "bombsuit",
+     "costume_status": "spec_only"
+    },
+    {
+     "character": "chief",
+     "stage": "main",
+     "costume": "chief",
+     "costume_status": "missing"
+    }
+   ],
+   "pose": [
+    "cheer"
+   ],
+   "props": [],
+   "text": "",
+   "sound": "",
+   "camera": "push"
+  }
+ ],
+ "errors": [],
+ "costume_status": {
+  "civ": "missing",
+  "chief": "missing",
+  "bombsuit": "spec_only"
+ },
+ "missing_costumes": [
+  "bombsuit",
+  "chief",
+  "civ"
+ ],
+ "missing_assets": [
+  {
+   "id": "bg_bomb_squad_office_inside",
+   "type": "background",
+   "tags": [
+    "bomb",
+    "squad",
+    "office",
+    "inside"
+   ],
+   "desc": "bomb squad office, inside",
+   "scene": 1
+  },
+  {
+   "id": "bg_city_street_night",
+   "type": "background",
+   "tags": [
+    "city",
+    "street",
+    "night"
+   ],
+   "desc": "city street at night",
+   "scene": 2
+  },
+  {
+   "id": "bg_concrete_bunker_dim_light",
+   "type": "background",
+   "tags": [
+    "concrete",
+    "bunker",
+    "dim",
+    "light"
+   ],
+   "desc": "concrete bunker, dim light",
+   "scene": 3
+  },
+  {
+   "id": "bg_concrete_bunker_dim_light_flashing_red_t",
+   "type": "background",
+   "tags": [
+    "concrete",
+    "bunker",
+    "dim",
+    "light",
+    "flashing",
+    "red",
+    "timer",
+    "wall"
+   ],
+   "desc": "concrete bunker, dim light, a flashing red timer on the wall",
+   "scene": 4,
+   "base": "bg_concrete_bunker_dim_light",
+   "mode": "same",
+   "root": "bg_concrete_bunker_dim_light",
+   "change": "concrete bunker, dim light, a flashing red timer on the wall"
+  },
+  {
+   "id": "bg_city_street_night_wet_from_heavy_rain",
+   "type": "background",
+   "tags": [
+    "city",
+    "street",
+    "night",
+    "wet",
+    "from",
+    "heavy",
+    "rain"
+   ],
+   "desc": "city street at night, wet from heavy rain",
+   "scene": 6,
+   "base": "bg_city_street_night",
+   "mode": "same",
+   "root": "bg_city_street_night",
+   "change": "city street at night, wet from heavy rain"
+  },
+  {
+   "id": "bg_sunny_city_street_morning",
+   "type": "background",
+   "tags": [
+    "sunny",
+    "city",
+    "street",
+    "morning"
+   ],
+   "desc": "sunny city street in the morning",
+   "scene": 7,
+   "base": "bg_city_street_night",
+   "mode": "next",
+   "root": "bg_city_street_night",
+   "change": "sunny city street in the morning"
+  },
+  {
+   "id": "obj_bomb",
+   "type": "object",
+   "tags": [
+    "bomb"
+   ],
+   "desc": "bomb",
+   "scene": 1
+  },
+  {
+   "id": "obj_red_wire",
+   "type": "object",
+   "tags": [
+    "red",
+    "wire"
+   ],
+   "desc": "red wire",
+   "scene": 3
+  },
+  {
+   "id": "obj_blue_wire",
+   "type": "object",
+   "tags": [
+    "blue",
+    "wire"
+   ],
+   "desc": "blue wire",
+   "scene": 3
+  }
+ ],
+ "ok": true
+}

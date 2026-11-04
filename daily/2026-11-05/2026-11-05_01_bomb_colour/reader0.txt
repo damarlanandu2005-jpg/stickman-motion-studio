@@ -1,0 +1,14 @@
+He Could Not See Red: 7 scenes, voice am_fenrir
+  costume bombsuit: spec_only
+  costume chief: missing
+  costume civ: missing
+  to draw: background 'bomb squad office, inside' (scene 1)
+  to draw: background 'city street at night' (scene 2)
+  to draw: background 'concrete bunker, dim light' (scene 3)
+  to draw: background 'concrete bunker, dim light, a flashing red timer on the wall' (scene 4)
+  to draw: background 'city street at night, wet from heavy rain' (scene 6)
+  to draw: background 'sunny city street in the morning' (scene 7)
+  to draw: object 'bomb' (scene 1)
+  to draw: object 'red wire' (scene 3)
+  to draw: object 'blue wire' (scene 3)
+OK

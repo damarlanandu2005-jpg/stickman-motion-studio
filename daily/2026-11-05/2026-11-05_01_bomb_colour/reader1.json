@@ -1,0 +1,241 @@
+{
+ "title": "He Could Not See Red",
+ "voice": "am_fenrir",
+ "scenes": [
+  {
+   "n": 1,
+   "voice": "Arthur was a bomb expert, and he could not tell red from green.",
+   "red": [
+    "bomb"
+   ],
+   "bg": {
+    "wanted": "bomb squad office, inside",
+    "library_id": "bg_bomb_squad_office_inside",
+    "match": 1.0
+   },
+   "who": [
+    {
+     "character": "arthur",
+     "stage": "normal",
+     "costume": "civ",
+     "costume_status": "ready"
+    }
+   ],
+   "pose": [
+    "stand"
+   ],
+   "props": [
+    {
+     "wanted": "bomb",
+     "library_id": "obj_bomb",
+     "match": 1.0
+    }
+   ],
+   "text": "COLOUR BLIND",
+   "sound": "",
+   "camera": "push"
+  },
+  {
+   "n": 2,
+   "voice": "One night the chief called him, because a bomb sat under the bridge.",
+   "red": [
+    "bomb"
+   ],
+   "bg": {
+    "wanted": "city street at night",
+    "library_id": "bg_city_street_night",
+    "match": 1.0
+   },
+   "who": [
+    {
+     "character": "arthur",
+     "stage": "normal",
+     "costume": "civ",
+     "costume_status": "ready"
+    },
+    {
+     "character": "chief",
+     "stage": "main",
+     "costume": "chief",
+     "costume_status": "ready"
+    }
+   ],
+   "pose": [
+    "point"
+   ],
+   "props": [],
+   "text": "",
+   "sound": "siren",
+   "camera": "pan"
+  },
+  {
+   "n": 3,
+   "voice": "Two wires. One red, one blue, and to him both looked grey.",
+   "red": [
+    "red"
+   ],
+   "bg": {
+    "wanted": "concrete bunker, dim light",
+    "library_id": "bg_concrete_bunker_dim_light",
+    "match": 1.0
+   },
+   "who": [
+    {
+     "character": "arthur",
+     "stage": "squad",
+     "costume": "bombsuit",
+     "costume_status": "spec_only"
+    }
+   ],
+   "pose": [
+    "crouch"
+   ],
+   "props": [
+    {
+     "wanted": "red wire",
+     "library_id": "obj_red_wire",
+     "match": 1.0
+    },
+    {
+     "wanted": "blue wire",
+     "library_id": "obj_blue_wire",
+     "match": 1.0
+    }
+   ],
+   "text": "",
+   "sound": "tick",
+   "camera": "push"
+  },
+  {
+   "n": 4,
+   "voice": "Ten seconds left, and the whole city waited.",
+   "red": [
+    "seconds"
+   ],
+   "bg": {
+    "wanted": "concrete bunker, dim light, a flashing red timer on the wall",
+    "library_id": "bg_concrete_bunker_dim_light_flashing_red_t",
+    "match": 1.0
+   },
+   "who": [
+    {
+     "character": "arthur",
+     "stage": "squad",
+     "costume": "bombsuit",
+     "costume_status": "spec_only"
+    }
+   ],
+   "pose": [
+    "think"
+   ],
+   "props": [],
+   "text": "",
+   "sound": "tick",
+   "camera": "push"
+  },
+  {
+   "n": 5,
+   "voice": "So he trusted his ears, not his eyes.",
+   "red": [
+    "ears"
+   ],
+   "bg": {
+    "wanted": "bomb squad office, inside",
+    "library_id": "bg_bomb_squad_office_inside",
+    "match": 1.0
+   },
+   "who": [
+    {
+     "character": "arthur",
+     "stage": "squad",
+     "costume": "bombsuit",
+     "costume_status": "spec_only"
+    },
+    {
+     "character": "chief",
+     "stage": "main",
+     "costume": "chief",
+     "costume_status": "ready"
+    }
+   ],
+   "pose": [
+    "hands_on_hips"
+   ],
+   "props": [],
+   "text": "",
+   "sound": "",
+   "camera": "still"
+  },
+  {
+   "n": 6,
+   "voice": "He cut the wire, and nothing exploded.",
+   "red": [
+    "exploded"
+   ],
+   "bg": {
+    "wanted": "city street at night, wet from heavy rain",
+    "library_id": "bg_city_street_night_wet_from_heavy_rain",
+    "match": 1.0
+   },
+   "who": [
+    {
+     "character": "arthur",
+     "stage": "squad",
+     "costume": "bombsuit",
+     "costume_status": "spec_only"
+    }
+   ],
+   "pose": [
+    "arms_up"
+   ],
+   "props": [],
+   "text": "",
+   "sound": "rain",
+   "camera": "pull"
+  },
+  {
+   "n": 7,
+   "voice": "By morning the whole city knew his name.",
+   "red": [
+    "name"
+   ],
+   "bg": {
+    "wanted": "sunny city street in the morning",
+    "library_id": "bg_sunny_city_street_morning",
+    "match": 1.0
+   },
+   "who": [
+    {
+     "character": "arthur",
+     "stage": "squad",
+     "costume": "bombsuit",
+     "costume_status": "spec_only"
+    },
+    {
+     "character": "chief",
+     "stage": "main",
+     "costume": "chief",
+     "costume_status": "ready"
+    }
+   ],
+   "pose": [
+    "cheer"
+   ],
+   "props": [],
+   "text": "",
+   "sound": "",
+   "camera": "push"
+  }
+ ],
+ "errors": [],
+ "costume_status": {
+  "civ": "ready",
+  "chief": "ready",
+  "bombsuit": "spec_only"
+ },
+ "missing_costumes": [
+  "bombsuit"
+ ],
+ "missing_assets": [],
+ "ok": true
+}

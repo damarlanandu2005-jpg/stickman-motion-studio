@@ -1,0 +1,5 @@
+He Could Not See Red: 7 scenes, voice am_fenrir
+  costume bombsuit: spec_only
+  costume chief: ready
+  costume civ: ready
+OK

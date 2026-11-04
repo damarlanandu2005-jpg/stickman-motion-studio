@@ -1,0 +1,543 @@
+[
+ {
+  "bg": "lib:bg_bomb_squad_office_inside",
+  "dur": 3.818,
+  "cam": {
+   "z0": 1.0,
+   "z1": 1.16
+  },
+  "actors": [
+   {
+    "outfit": "role_civ",
+    "pose": 0,
+    "x": 0.4,
+    "feet": 0.9,
+    "height": 0.32,
+    "faces": [
+     [
+      0,
+      "scared"
+     ]
+    ]
+   }
+  ],
+  "objects": [
+   {
+    "lib": "obj_bomb",
+    "x": 0.82,
+    "feet": 0.9,
+    "height": 0.16,
+    "pop": 0.2
+   }
+  ],
+  "texts": [
+   {
+    "text": "COLOUR BLIND",
+    "x": 0.5,
+    "y": 0.2,
+    "size": 0.07,
+    "font": "bold",
+    "color": [
+     255,
+     255,
+     255
+    ],
+    "stroke": 3,
+    "screen": true
+   }
+  ],
+  "caps": [
+   [
+    0.15,
+    0.85,
+    "Arthur was a",
+    []
+   ],
+   [
+    0.85,
+    1.514,
+    "bomb expert",
+    [
+     "bomb"
+    ]
+   ],
+   [
+    1.514,
+    2.214,
+    "and he could",
+    []
+   ],
+   [
+    2.214,
+    2.914,
+    "not tell red",
+    [
+     "red"
+    ]
+   ],
+   [
+    2.914,
+    3.818,
+    "from green",
+    []
+   ]
+  ],
+  "cap_y": 0.68,
+  "sfx": [
+   {
+    "type": "tick",
+    "t": 0.0,
+    "gain": 0.35,
+    "repeat": 6,
+    "every": 0.5
+   }
+  ],
+  "fx": [],
+  "fx_seed": 1
+ },
+ {
+  "bg": "lib:bg_city_street_night",
+  "dur": 3.681,
+  "cam": {
+   "z0": 1.06,
+   "z1": 1.06,
+   "x0": 0.45,
+   "x1": 0.55
+  },
+  "actors": [
+   {
+    "outfit": "role_civ",
+    "pose": 1,
+    "x": 0.3,
+    "feet": 0.9,
+    "height": 0.31,
+    "faces": [
+     [
+      0,
+      "scared"
+     ]
+    ]
+   },
+   {
+    "outfit": "role_chief",
+    "pose": 1,
+    "x": 0.7,
+    "feet": 0.9,
+    "height": 0.31,
+    "faces": [
+     [
+      0,
+      "scared"
+     ]
+    ]
+   }
+  ],
+  "objects": [],
+  "texts": [],
+  "caps": [
+   [
+    0.0,
+    0.7,
+    "One night the",
+    []
+   ],
+   [
+    0.7,
+    1.368,
+    "chief called",
+    []
+   ],
+   [
+    1.368,
+    1.565,
+    "him",
+    []
+   ],
+   [
+    1.565,
+    2.32,
+    "because a bomb",
+    [
+     "bomb"
+    ]
+   ],
+   [
+    2.32,
+    3.02,
+    "sat under the",
+    []
+   ],
+   [
+    3.02,
+    3.681,
+    "bridge",
+    []
+   ]
+  ],
+  "cap_y": 0.68,
+  "sfx": [
+   {
+    "type": "siren",
+    "t": 0.0,
+    "gain": 0.2,
+    "dur": 2.0
+   }
+  ],
+  "fx": [],
+  "fx_seed": 2
+ },
+ {
+  "bg": "lib:bg_concrete_bunker_dim_light",
+  "dur": 3.474,
+  "cam": {
+   "z0": 1.0,
+   "z1": 1.16
+  },
+  "actors": [
+   {
+    "outfit": "bombsuit",
+    "pose": 10,
+    "x": 0.4,
+    "feet": 0.9,
+    "height": 0.32,
+    "faces": [
+     [
+      0,
+      "neutral"
+     ]
+    ]
+   }
+  ],
+  "objects": [
+   {
+    "lib": "obj_red_wire",
+    "x": 0.82,
+    "feet": 0.9,
+    "height": 0.16,
+    "pop": 0.2
+   },
+   {
+    "lib": "obj_blue_wire",
+    "x": 0.82,
+    "feet": 0.9,
+    "height": 0.16,
+    "pop": 0.45
+   }
+  ],
+  "texts": [],
+  "caps": [
+   [
+    0.0,
+    0.582,
+    "Two wires",
+    []
+   ],
+   [
+    0.582,
+    1.037,
+    "One red",
+    [
+     "red"
+    ]
+   ],
+   [
+    1.037,
+    1.556,
+    "one blue",
+    []
+   ],
+   [
+    1.556,
+    2.175,
+    "and to him",
+    []
+   ],
+   [
+    2.175,
+    2.883,
+    "both looked",
+    []
+   ],
+   [
+    2.883,
+    3.474,
+    "grey",
+    []
+   ]
+  ],
+  "cap_y": 0.68,
+  "sfx": [],
+  "fx": [],
+  "fx_seed": 3
+ },
+ {
+  "bg": "lib:bg_concrete_bunker_dim_light_flashing_red_t",
+  "dur": 2.493,
+  "cam": {
+   "z0": 1.0,
+   "z1": 1.16
+  },
+  "actors": [
+   {
+    "outfit": "bombsuit",
+    "pose": 6,
+    "x": 0.5,
+    "feet": 0.9,
+    "height": 0.36,
+    "faces": [
+     [
+      0,
+      "scared"
+     ]
+    ]
+   }
+  ],
+  "objects": [],
+  "texts": [],
+  "caps": [
+   [
+    0.0,
+    0.617,
+    "Ten seconds",
+    [
+     "seconds"
+    ]
+   ],
+   [
+    0.617,
+    0.871,
+    "left",
+    []
+   ],
+   [
+    0.871,
+    1.576,
+    "and the whole",
+    []
+   ],
+   [
+    1.576,
+    2.493,
+    "city waited",
+    []
+   ]
+  ],
+  "cap_y": 0.68,
+  "sfx": [
+   {
+    "type": "tick",
+    "t": 0.0,
+    "gain": 0.35,
+    "repeat": 6,
+    "every": 0.5
+   }
+  ],
+  "fx": [],
+  "fx_seed": 4
+ },
+ {
+  "bg": "lib:bg_bomb_squad_office_inside",
+  "dur": 2.214,
+  "cam": {
+   "z0": 1.0,
+   "z1": 1.0
+  },
+  "actors": [
+   {
+    "outfit": "bombsuit",
+    "pose": 4,
+    "x": 0.3,
+    "feet": 0.9,
+    "height": 0.31,
+    "faces": [
+     [
+      0,
+      "neutral"
+     ]
+    ]
+   },
+   {
+    "outfit": "role_chief",
+    "pose": 4,
+    "x": 0.7,
+    "feet": 0.9,
+    "height": 0.31,
+    "faces": [
+     [
+      0,
+      "neutral"
+     ]
+    ]
+   }
+  ],
+  "objects": [],
+  "texts": [],
+  "caps": [
+   [
+    0.0,
+    0.747,
+    "So he trusted",
+    []
+   ],
+   [
+    0.747,
+    1.226,
+    "his ears",
+    [
+     "ears"
+    ]
+   ],
+   [
+    1.226,
+    2.214,
+    "not his eyes",
+    []
+   ]
+  ],
+  "cap_y": 0.68,
+  "sfx": [
+   {
+    "type": "tick",
+    "t": 0.0,
+    "gain": 0.35,
+    "repeat": 6,
+    "every": 0.5
+   }
+  ],
+  "fx": [],
+  "fx_seed": 5
+ },
+ {
+  "bg": "lib:bg_city_street_night_wet_from_heavy_rain",
+  "dur": 2.196,
+  "cam": {
+   "z0": 1.16,
+   "z1": 1.0
+  },
+  "actors": [
+   {
+    "outfit": "bombsuit",
+    "pose": 3,
+    "x": 0.5,
+    "feet": 0.9,
+    "height": 0.36,
+    "faces": [
+     [
+      0,
+      "scared"
+     ]
+    ]
+   }
+  ],
+  "objects": [],
+  "texts": [],
+  "caps": [
+   [
+    0.0,
+    0.543,
+    "He cut the",
+    []
+   ],
+   [
+    0.543,
+    0.798,
+    "wire",
+    []
+   ],
+   [
+    0.798,
+    1.419,
+    "and nothing",
+    []
+   ],
+   [
+    1.419,
+    2.196,
+    "exploded",
+    [
+     "exploded"
+    ]
+   ]
+  ],
+  "cap_y": 0.68,
+  "sfx": [
+   {
+    "type": "rain",
+    "t": 0.0,
+    "gain": 0.18,
+    "dur": 2.2
+   }
+  ],
+  "fx": [
+   {
+    "type": "rain",
+    "strength": 1.0
+   }
+  ],
+  "fx_seed": 6
+ },
+ {
+  "bg": "lib:bg_sunny_city_street_morning",
+  "dur": 2.11,
+  "cam": {
+   "z0": 1.0,
+   "z1": 1.16
+  },
+  "actors": [
+   {
+    "outfit": "bombsuit",
+    "pose": 3,
+    "x": 0.3,
+    "feet": 0.9,
+    "height": 0.31,
+    "faces": [
+     [
+      0,
+      "neutral"
+     ]
+    ]
+   },
+   {
+    "outfit": "role_chief",
+    "pose": 3,
+    "x": 0.7,
+    "feet": 0.9,
+    "height": 0.31,
+    "faces": [
+     [
+      0,
+      "neutral"
+     ]
+    ]
+   }
+  ],
+  "objects": [],
+  "texts": [],
+  "caps": [
+   [
+    0.0,
+    0.679,
+    "By morning the",
+    []
+   ],
+   [
+    0.679,
+    1.407,
+    "whole city knew",
+    []
+   ],
+   [
+    1.407,
+    1.81,
+    "his name",
+    [
+     "name"
+    ]
+   ]
+  ],
+  "cap_y": 0.68,
+  "sfx": [],
+  "fx": [],
+  "fx_seed": 7
+ }
+]

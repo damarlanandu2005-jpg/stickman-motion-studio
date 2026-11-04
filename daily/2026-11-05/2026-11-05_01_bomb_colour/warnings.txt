@@ -1,0 +1,1 @@
+WARN: costume 'bombsuit': drawn automatically, heads borrowed from 'tech', not reviewed by a person

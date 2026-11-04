@@ -1,0 +1,17 @@
+[0;93m2026-11-04 23:09:37.637916241 [W:onnxruntime:Default, device_discovery.cc:95 GetPciBusId] Skipping pci_bus_id for PCI path at "/sys/devices/LNXSYSTM:00/LNXSYBUS:00/ACPI0004:00/MSFT1000:00/5620e0c7-8062-4dce-aeb7-520c7ef76171" because filename "5620e0c7-8062-4dce-aeb7-520c7ef76171" did not match expected pattern of [0-9a-f]+:[0-9a-f]+:[0-9a-f]+[.][0-9a-f]+[m
+{
+ "ok": true,
+ "video": "daily-out/2026-11-05/2026-11-05_01_bomb_colour/2026-11-05_01_bomb_colour.mp4",
+ "render": {
+  "frames": 600,
+  "seconds": 20.0,
+  "shots": 7,
+  "fps": 30,
+  "all_frames": 600
+ },
+ "scenes": 7,
+ "warnings": [],
+ "missing_assets": [],
+ "missing_costumes": [],
+ "human_reviewed": false
+}

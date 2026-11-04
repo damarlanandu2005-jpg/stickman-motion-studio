@@ -1,0 +1,2 @@
+{"costume": "bombsuit", "stand_in": "role_tech", "bodies_from_loop": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], "bodies_borrowed": [], "heads_borrowed": ["angry", "happy", "laugh", "neutral", "sad", "scared", "smug", "surprised"], "ok": true, "warnings": ["heads borrowed from role_tech"]}
+ASSEMBLED=true

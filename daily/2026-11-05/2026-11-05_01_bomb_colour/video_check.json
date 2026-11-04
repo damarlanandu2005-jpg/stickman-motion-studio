@@ -1,0 +1,26 @@
+{
+ "file": "daily-out/2026-11-05/2026-11-05_01_bomb_colour/2026-11-05_01_bomb_colour.mp4",
+ "fails": [],
+ "warnings": [],
+ "seconds": 20.0,
+ "size": [
+  720,
+  1280
+ ],
+ "frame_means": [
+  158.1,
+  84.4,
+  79.9,
+  160.7,
+  156.7
+ ],
+ "frame_changes": [
+  106.8,
+  40.5,
+  98.3,
+  57.4
+ ],
+ "audio_rms": 0.1428,
+ "ok": true
+}
+VIDEO_OK=true

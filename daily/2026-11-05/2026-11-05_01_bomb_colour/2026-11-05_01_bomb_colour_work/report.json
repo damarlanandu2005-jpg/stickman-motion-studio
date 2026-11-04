@@ -1,0 +1,60 @@
+{
+ "ok": true,
+ "video": "daily-out/2026-11-05/2026-11-05_01_bomb_colour/2026-11-05_01_bomb_colour.mp4",
+ "render": {
+  "frames": 600,
+  "seconds": 20.0,
+  "shots": 7,
+  "fps": 30,
+  "all_frames": 600
+ },
+ "scenes": 7,
+ "warnings": [],
+ "missing_assets": [],
+ "missing_costumes": [],
+ "voice": [
+  {
+   "scene": 1,
+   "voice_s": 3.37,
+   "scene_s": 3.818,
+   "stretched": false
+  },
+  {
+   "scene": 2,
+   "voice_s": 3.38,
+   "scene_s": 3.681,
+   "stretched": false
+  },
+  {
+   "scene": 3,
+   "voice_s": 3.17,
+   "scene_s": 3.474,
+   "stretched": false
+  },
+  {
+   "scene": 4,
+   "voice_s": 2.19,
+   "scene_s": 2.493,
+   "stretched": false
+  },
+  {
+   "scene": 5,
+   "voice_s": 1.91,
+   "scene_s": 2.214,
+   "stretched": false
+  },
+  {
+   "scene": 6,
+   "voice_s": 1.9,
+   "scene_s": 2.196,
+   "stretched": false
+  },
+  {
+   "scene": 7,
+   "voice_s": 1.81,
+   "scene_s": 2.11,
+   "stretched": false
+  }
+ ],
+ "human_reviewed": false
+}

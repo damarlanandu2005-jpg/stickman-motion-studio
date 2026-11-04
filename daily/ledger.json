@@ -1,0 +1,11 @@
+{
+ "2026-11-05_01_bomb_colour": {
+  "last_run": "41918688366 2026-11-04",
+  "notes": [
+   "WARN: costume 'bombsuit': drawn automatically, heads borrowed from 'tech', not reviewed by a person  (1 warnings in total)"
+  ],
+  "status": "done_with_warnings",
+  "tries": 0,
+  "video": "shorts/2026-11-05_01_bomb_colour/2026-11-05_01_bomb_colour.mp4"
+ }
+}
