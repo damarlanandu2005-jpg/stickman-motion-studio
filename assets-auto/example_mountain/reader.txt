@@ -1,4 +1,3 @@
 The Last Climb: 1 scenes, voice am_fenrir
   costume chief: ready
-  to draw: background 'snowy mountain pass' (scene 1)
 OK

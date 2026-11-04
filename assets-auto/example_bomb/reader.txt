@@ -1,0 +1,5 @@
+He Defused 41 Bombs Without Seeing COLOR: 3 scenes, voice am_fenrir
+  costume bombsuit: spec_only
+  costume chief: ready
+  costume civ: ready
+OK
