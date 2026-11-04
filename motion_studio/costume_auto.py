@@ -47,7 +47,66 @@ def stray_white(rgba: Image.Image) -> list[str]:
     big = sum(1 for k in range(1, n2 + 1) if (lab2 == k).sum() / h / h >= 0.0025)
     if big > 3:
         why.append("extra white parts (bare arm or leg)")
+    tops = [k for k in range(1, n2 + 1) if (lab2 == k).sum() / h / h >= 0.0025 and (np.nonzero(lab2 == k)[0].mean() - y0) / h < 0.25]
+    if not tops:
+        why.append("no white neck stub or hands (back view or hands missing)")
     return sorted(set(why))
+
+
+def pale_share(rgba: Image.Image, median_v: float) -> float:
+    """Share of suit pixels much lighter than the rest of the sheet's suit: a pale (uncovered or washed out) patch."""
+    a = np.asarray(rgba).astype(np.float32); rgb = a[:, :, :3] / 255.0
+    mx, mn = rgb.max(2), rgb.min(2); sat = np.where(mx > 0, (mx - mn) / np.maximum(mx, 1e-6), 0)
+    col = (a[:, :, 3] > 0) & (mx > 0.2) & (sat > 0.18)
+    return float(((mx > median_v + 0.17) & col).sum() / max(col.sum(), 1))
+
+
+def sheet_median_v(cuts: list[Image.Image]) -> float:
+    vals = []
+    for c in cuts:
+        a = np.asarray(c).astype(np.float32); rgb = a[:, :, :3] / 255.0; mx, mn = rgb.max(2), rgb.min(2)
+        sat = np.where(mx > 0, (mx - mn) / np.maximum(mx, 1e-6), 0); vals.append(mx[(a[:, :, 3] > 0) & (mx > 0.2) & (sat > 0.18)])
+    v = np.concatenate(vals) if vals else np.zeros(0)
+    return float(np.median(v)) if len(v) else 0.5
+
+
+def repair_cut(rgba: Image.Image, median_v: float) -> Image.Image:
+    """Code repair of a drawn pose: long white limbs / white leg sticks and pale patches are filled with the suit's own colour.
+    Outlines (dark pixels) are not touched; neck stub and round hands are kept."""
+    a = np.asarray(rgba).copy(); m = ndi.binary_fill_holes(a[:, :, 3] > 0)
+    if not m.any():
+        return rgba
+    ys, xs = np.nonzero(m); h = ys.max() - ys.min() + 1; y0 = ys.min()
+    rgb = a[:, :, :3].astype(np.float32) / 255.0; mx, mn = rgb.max(2), rgb.min(2)
+    sat = np.where(mx > 0, (mx - mn) / np.maximum(mx, 1e-6), 0); col = m & (mx > 0.2) & (sat > 0.18)
+    suit = np.median(a[:, :, :3][col & (mx < median_v + 0.1)], axis=0) if (col & (mx < median_v + 0.1)).any() else np.array([60, 85, 40])
+    fix = col & (mx > median_v + 0.17)                                   # pale patches
+    white = (a[:, :, :3].min(2) > 190) & m
+    lab, n = ndi.label(white)
+    for k in range(1, n + 1):
+        yy, xx = np.nonzero(lab == k); area = len(yy) / h / h
+        if area < 0.002:
+            continue
+        ev = np.sort(np.linalg.eigvalsh(np.cov(np.vstack([xx, yy]))))[::-1]
+        el = float(np.sqrt(ev[0] / max(ev[1], 1e-6))); cy = (yy.mean() - y0) / h
+        if cy < 0.25:                                                    # neck stub
+            continue
+        if (area > 0.02 and el > 2.5) or (cy > 0.65 and el > 1.35):     # bare shin / white leg stick (hands are round)
+            fix |= ndi.binary_dilation(lab == k, iterations=1) & (mx > 0.5)
+    a[fix, :3] = suit.astype(np.uint8)
+    return Image.fromarray(a, "RGBA")
+
+
+def repair_sheet(drawn: Path, info: list[dict], out: Path) -> Path:
+    im = Image.open(drawn).convert("RGB").resize((cc.SHEET_W, cc.SHEET_H), Image.LANCZOS)
+    cuts = [cc.cutout(im.crop(tuple(c["cell"]))) for c in info]; med_v = sheet_median_v(cuts)
+    sheet = im.copy()
+    for c, cut in zip(info, cuts):
+        rep = repair_cut(cut, med_v); box = tuple(c["cell"])
+        cell = im.crop(box).copy(); cell.paste(rep.convert("RGB"), (0, 0), Image.fromarray((np.asarray(rep)[:, :, 3] > 0).astype(np.uint8) * 255))
+        sheet.paste(cell, box[:2])
+    sheet.save(out)
+    return out
 
 
 def silhouette(drawn_cut: Image.Image, ref_cut: Image.Image) -> tuple[float, float]:
@@ -61,14 +120,19 @@ def score_sheet(drawn: Path, ref: Path, info: list[dict], target_hue: tuple[floa
     """check_sheet numbers + silhouette match + stray white limbs, per pose. Adds 'score' (higher = closer to the old pose)."""
     res = cc.check_sheet(drawn, ref, info, target_hue)
     im, rf = Image.open(drawn).convert("RGB").resize((cc.SHEET_W, cc.SHEET_H), Image.LANCZOS), Image.open(ref).convert("RGB")
-    for r, c in zip(res, info):
-        box = tuple(c["cell"]); cut, old = cc.cutout(im.crop(box)), cc.cutout(rf.crop(box))
+    cuts = [cc.cutout(im.crop(tuple(c["cell"]))) for c in info]
+    med_v = sheet_median_v(cuts)
+    for r, c, cut in zip(res, info, cuts):
+        box = tuple(c["cell"]); old = cc.cutout(rf.crop(box))
         iou, cov = silhouette(cut, old)
         r["sil_overlap"], r["sil_cover"] = round(iou, 3), round(cov, 3)
         why = list(r.get("why", []))
         if iou < SIL_OVERLAP or cov < SIL_COVER:
             why.append("silhouette")
         why += stray_white(cut)
+        r["pale_share"] = round(pale_share(cut, med_v), 3)
+        if r["pale_share"] > 0.04:
+            why.append("pale patch in suit")
         r["why"], r["pass"] = sorted(set(why)), not why
         r["score"] = round(iou + cov - abs(1 - r.get("h_ratio", 0)) - abs(1 - r.get("w_ratio", 0)), 3)
         r["rgb"] = suit_rgb(cut)

@@ -7,6 +7,7 @@ def fig(stray=False):
     a = np.zeros((300, 200, 4), np.uint8)
     a[40:260, 60:140] = (40, 90, 40, 255)
     a[120:160, 40:60] = (255, 255, 255, 255)       # round-ish hand
+    a[10:40, 95:105] = (255, 255, 255, 255)        # neck stub
     if stray:
         a[170:260, 85:105] = (255, 255, 255, 255)  # long bare shin
     return Image.fromarray(a, "RGBA")
@@ -55,3 +56,16 @@ def test_four_white_parts_is_caught():
 def test_redraw_jobs_use_new_seeds_per_round():
     a = ca.redraw_jobs("x", "p", [10], 1, "o.png", "a.png"); b = ca.redraw_jobs("x", "p", [10], 2, "o.png", "a.png")
     assert not {j["seed"] for j in a} & {j["seed"] for j in b} and a[0]["wanted_poses"] == [10]
+
+
+def test_back_view_without_neck_or_hands_is_caught():
+    a = np.zeros((300, 200, 4), np.uint8); a[40:260, 60:140] = (40, 90, 40, 255)
+    assert any("no white neck" in w for w in ca.stray_white(Image.fromarray(a, "RGBA")))
+
+
+def test_pale_patch_is_measured():
+    a = np.zeros((300, 200, 4), np.uint8); a[40:260, 60:140] = (40, 90, 40, 255); a[200:260, 60:100] = (150, 200, 140, 255)
+    im = Image.fromarray(a, "RGBA")
+    assert ca.pale_share(im, ca.sheet_median_v([im])) > 0.04
+    b = a.copy(); b[200:260, 60:100] = (40, 90, 40, 255)
+    assert ca.pale_share(Image.fromarray(b, "RGBA"), 0.35) == 0.0

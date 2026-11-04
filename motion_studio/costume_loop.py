@@ -57,8 +57,11 @@ def judge(spec: dict, round_no: int, state: Path, outputs: Path, art: Path = ART
     cand = state / "candidates"; cand.mkdir(parents=True, exist_ok=True)
     for f in Path(outputs).rglob("pose_*.png"):          # keep every sheet ever drawn for this costume
         shutil.copy(f, cand / f.name.replace("pose_", "", 1))
-    sheets = {p.stem: p for p in sorted(cand.glob(f"{spec['name']}_r*_s*.png"))}
     info = json.loads((art / spec["old_info"]).read_text())
+    for p in sorted(cand.glob(f"{spec['name']}_r*_s*.png")):   # every drawn sheet also gets a code-repaired twin (bare / pale leg parts filled with suit colour)
+        if not p.stem.endswith("fix") and not (cand / f"{p.stem}fix.png").exists():
+            ca.repair_sheet(p, info, cand / f"{p.stem}fix.png")
+    sheets = {p.stem: p for p in sorted(cand.glob(f"{spec['name']}_r*_s*.png"))}
     ref = art / spec["old_sheet"]
     scored = {k: ca.score_sheet(p, ref, info, tuple(spec["target_hue"])) for k, p in sheets.items()}
     picks = ca.pick_best(scored) if scored else {}
