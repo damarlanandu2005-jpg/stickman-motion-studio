@@ -1,6 +1,6 @@
 {
  "costume": "bombsuit",
- "round": 2,
+ "round": 3,
  "sheets_drawn": [
   "bombsuit_r1_s0",
   "bombsuit_r1_s0fix",
@@ -8,17 +8,20 @@
   "bombsuit_r1_s1fix",
   "bombsuit_r1_s2",
   "bombsuit_r1_s2fix",
-  "bombsuit_r2_s0",
-  "bombsuit_r2_s0fix",
-  "bombsuit_r2_s1",
-  "bombsuit_r2_s1fix",
-  "bombsuit_r2_s2",
-  "bombsuit_r2_s2fix",
-  "bombsuit_r2_s3",
-  "bombsuit_r2_s3fix"
+  "bombsuit_r3_s0",
+  "bombsuit_r3_s0fix",
+  "bombsuit_r3_s1",
+  "bombsuit_r3_s1fix",
+  "bombsuit_r3_s2",
+  "bombsuit_r3_s2fix",
+  "bombsuit_r3_s3",
+  "bombsuit_r3_s3fix"
  ],
- "complete": true,
- "missing_poses": [],
+ "complete": false,
+ "missing_poses": [
+  7,
+  10
+ ],
  "why_failed_per_sheet": {
   "bombsuit_r1_s0": {
    "2": [
@@ -50,7 +53,12 @@
     "head or hat on top"
    ],
    "10": [
-    "extra white parts (bare arm or leg)"
+    "extra white parts (bare arm or leg)",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "extra white parts (bare arm or leg)",
+    "white limb left (bare leg)"
    ]
   },
   "bombsuit_r1_s1": {
@@ -66,11 +74,17 @@
    ]
   },
   "bombsuit_r1_s1fix": {
+   "7": [
+    "white limb left (bare leg)"
+   ],
    "10": [
     "extra white parts (bare arm or leg)"
    ]
   },
   "bombsuit_r1_s2": {
+   "2": [
+    "limb layout differs from the old pose (back view?)"
+   ],
    "5": [
     "extra white parts (bare arm or leg)"
    ],
@@ -84,67 +98,181 @@
    ]
   },
   "bombsuit_r1_s2fix": {
+   "2": [
+    "limb layout differs from the old pose (back view?)"
+   ],
    "5": [
     "extra white parts (bare arm or leg)"
    ],
    "10": [
     "extra white parts (bare arm or leg)",
     "white limb left (bare leg)"
+   ],
+   "11": [
+    "extra white parts (bare arm or leg)",
+    "white limb left (bare leg)"
    ]
   },
-  "bombsuit_r2_s0": {
+  "bombsuit_r3_s0": {
+   "6": [
+    "silhouette"
+   ],
+   "8": [
+    "limb layout differs from the old pose (back view?)"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "head or hat on top",
+    "no white neck stub or hands (back view or hands missing)",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "limb layout differs from the old pose (back view?)",
+    "silhouette",
+    "white limb left (bare leg)"
+   ]
+  },
+  "bombsuit_r3_s0fix": {
+   "6": [
+    "silhouette"
+   ],
+   "8": [
+    "limb layout differs from the old pose (back view?)"
+   ],
+   "10": [
+    "head or hat on top",
+    "no white neck stub or hands (back view or hands missing)",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ]
+  },
+  "bombsuit_r3_s1": {
+   "10": [
+    "extra white parts (bare arm or leg)"
+   ],
+   "11": [
+    "limb layout differs from the old pose (back view?)",
+    "white limb left (bare leg)"
+   ]
+  },
+  "bombsuit_r3_s1fix": {
+   "10": [
+    "extra white parts (bare arm or leg)"
+   ],
+   "11": [
+    "limb layout differs from the old pose (back view?)",
+    "white limb left (bare leg)"
+   ]
+  },
+  "bombsuit_r3_s2": {
+   "2": [
+    "limb layout differs from the old pose (back view?)"
+   ],
+   "4": [
+    "height"
+   ],
+   "5": [
+    "height"
+   ],
+   "6": [
+    "height",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "7": [
+    "height",
+    "limb layout differs from the old pose (back view?)"
+   ],
+   "8": [
+    "limb layout differs from the old pose (back view?)"
+   ],
+   "9": [
+    "limb layout differs from the old pose (back view?)"
+   ],
+   "10": [
+    "limb layout differs from the old pose (back view?)",
+    "no white neck stub or hands (back view or hands missing)",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "limb layout differs from the old pose (back view?)",
+    "silhouette",
+    "white limb left (bare leg)"
+   ]
+  },
+  "bombsuit_r3_s2fix": {
+   "2": [
+    "limb layout differs from the old pose (back view?)"
+   ],
+   "4": [
+    "height"
+   ],
+   "5": [
+    "height"
+   ],
+   "6": [
+    "height",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "7": [
+    "height",
+    "limb layout differs from the old pose (back view?)"
+   ],
+   "8": [
+    "limb layout differs from the old pose (back view?)"
+   ],
+   "9": [
+    "limb layout differs from the old pose (back view?)"
+   ],
+   "10": [
+    "limb layout differs from the old pose (back view?)",
+    "no white neck stub or hands (back view or hands missing)"
+   ],
+   "11": [
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ]
+  },
+  "bombsuit_r3_s3": {
+   "2": [
+    "limb layout differs from the old pose (back view?)"
+   ],
+   "4": [
+    "height"
+   ],
+   "5": [
+    "height"
+   ],
+   "6": [
+    "height",
+    "silhouette"
+   ],
+   "7": [
+    "height",
+    "limb layout differs from the old pose (back view?)"
+   ],
+   "8": [
+    "limb layout differs from the old pose (back view?)"
+   ],
+   "9": [
+    "limb layout differs from the old pose (back view?)"
+   ],
    "10": [
     "extra white parts (bare arm or leg)",
     "white limb left (bare leg)"
    ],
    "11": [
-    "white limb left (bare leg)"
-   ]
-  },
-  "bombsuit_r2_s0fix": {},
-  "bombsuit_r2_s1": {
-   "4": [
-    "height"
-   ],
-   "5": [
-    "height"
-   ],
-   "6": [
-    "height",
-    "silhouette"
-   ],
-   "7": [
-    "height"
-   ],
-   "10": [
-    "white limb left (bare leg)"
-   ],
-   "11": [
-    "silhouette",
-    "white limb left (bare leg)"
-   ]
-  },
-  "bombsuit_r2_s1fix": {
-   "4": [
-    "height"
-   ],
-   "5": [
-    "height"
-   ],
-   "6": [
-    "height",
-    "silhouette"
-   ],
-   "7": [
-    "height"
-   ],
-   "11": [
+    "limb layout differs from the old pose (back view?)",
     "silhouette"
    ]
   },
-  "bombsuit_r2_s2": {
-   "3": [
-    "extra white parts (bare arm or leg)"
+  "bombsuit_r3_s3fix": {
+   "2": [
+    "limb layout differs from the old pose (back view?)"
    ],
    "4": [
     "height"
@@ -157,71 +285,22 @@
     "silhouette"
    ],
    "7": [
-    "height"
-   ],
-   "10": [
-    "no white neck stub or hands (back view or hands missing)"
-   ],
-   "11": [
-    "silhouette",
-    "white limb left (bare leg)"
-   ]
-  },
-  "bombsuit_r2_s2fix": {
-   "3": [
-    "extra white parts (bare arm or leg)"
-   ],
-   "4": [
-    "height"
-   ],
-   "5": [
-    "height"
-   ],
-   "6": [
     "height",
-    "silhouette"
+    "limb layout differs from the old pose (back view?)"
    ],
-   "7": [
-    "height"
+   "8": [
+    "limb layout differs from the old pose (back view?)"
    ],
-   "10": [
-    "no white neck stub or hands (back view or hands missing)"
-   ],
-   "11": [
-    "silhouette"
-   ]
-  },
-  "bombsuit_r2_s3": {
-   "6": [
-    "silhouette"
-   ],
-   "10": [
-    "head or hat on top",
-    "height",
-    "no white neck stub or hands (back view or hands missing)",
-    "silhouette"
+   "9": [
+    "limb layout differs from the old pose (back view?)"
    ],
    "11": [
-    "silhouette",
-    "white limb left (bare leg)"
-   ]
-  },
-  "bombsuit_r2_s3fix": {
-   "6": [
-    "silhouette"
-   ],
-   "10": [
-    "head or hat on top",
-    "height",
-    "no white neck stub or hands (back view or hands missing)",
-    "silhouette"
-   ],
-   "11": [
+    "limb layout differs from the old pose (back view?)",
     "silhouette"
    ]
   }
  },
  "status": "auto_accepted",
  "human_reviewed": false,
- "last_round": false
+ "last_round": true
 }

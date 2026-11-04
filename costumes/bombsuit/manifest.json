@@ -4,66 +4,59 @@
  "human_reviewed": false,
  "poses": {
   "0": {
-   "from": "bombsuit_r2_s0fix",
-   "sha256": "d13fb5a7f3d292cb",
-   "score": 1.938
+   "from": "bombsuit_r1_s1fix",
+   "sha256": "88f894c0281b33bf",
+   "score": 1.936
   },
   "1": {
-   "from": "bombsuit_r2_s0fix",
-   "sha256": "d13fb5a7f3d292cb",
-   "score": 1.836
+   "from": "bombsuit_r1_s1fix",
+   "sha256": "88f894c0281b33bf",
+   "score": 1.782
   },
   "2": {
-   "from": "bombsuit_r2_s0fix",
-   "sha256": "d13fb5a7f3d292cb",
-   "score": 1.827
+   "from": "bombsuit_r1_s1fix",
+   "sha256": "88f894c0281b33bf",
+   "score": 1.814
   },
   "3": {
-   "from": "bombsuit_r2_s0fix",
-   "sha256": "d13fb5a7f3d292cb",
-   "score": 1.907
+   "from": "bombsuit_r1_s1fix",
+   "sha256": "88f894c0281b33bf",
+   "score": 1.929
   },
   "4": {
-   "from": "bombsuit_r2_s0fix",
-   "sha256": "d13fb5a7f3d292cb",
-   "score": 1.828
+   "from": "bombsuit_r1_s1fix",
+   "sha256": "88f894c0281b33bf",
+   "score": 1.931
   },
   "5": {
-   "from": "bombsuit_r2_s0fix",
-   "sha256": "d13fb5a7f3d292cb",
-   "score": 1.751
+   "from": "bombsuit_r1_s1fix",
+   "sha256": "88f894c0281b33bf",
+   "score": 1.905
   },
   "6": {
-   "from": "bombsuit_r2_s0fix",
-   "sha256": "d13fb5a7f3d292cb",
-   "score": 1.721
-  },
-  "7": {
-   "from": "bombsuit_r2_s0fix",
-   "sha256": "d13fb5a7f3d292cb",
-   "score": 1.839
+   "from": "bombsuit_r1_s1fix",
+   "sha256": "88f894c0281b33bf",
+   "score": 1.769
   },
   "8": {
-   "from": "bombsuit_r2_s0fix",
-   "sha256": "d13fb5a7f3d292cb",
-   "score": 1.754
+   "from": "bombsuit_r1_s1fix",
+   "sha256": "88f894c0281b33bf",
+   "score": 1.869
   },
   "9": {
-   "from": "bombsuit_r2_s0fix",
-   "sha256": "d13fb5a7f3d292cb",
-   "score": 1.713
-  },
-  "10": {
-   "from": "bombsuit_r2_s0fix",
-   "sha256": "d13fb5a7f3d292cb",
-   "score": 1.847
+   "from": "bombsuit_r1_s1fix",
+   "sha256": "88f894c0281b33bf",
+   "score": 1.884
   },
   "11": {
-   "from": "bombsuit_r2_s0fix",
-   "sha256": "d13fb5a7f3d292cb",
-   "score": 1.723
+   "from": "bombsuit_r1_s1fix",
+   "sha256": "88f894c0281b33bf",
+   "score": 1.885
   }
  },
- "missing": [],
- "complete": true
+ "missing": [
+  7,
+  10
+ ],
+ "complete": false
 }
