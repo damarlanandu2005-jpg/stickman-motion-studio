@@ -1,12 +1,12 @@
 {
  "request": "example_bomb",
- "round": 1,
- "accepted": [
+ "round": 3,
+ "accepted": [],
+ "still_missing": [
   "bg_bomb_squad_office_inside",
   "bg_city_street_night"
  ],
- "still_missing": [],
- "complete": true,
+ "complete": false,
  "gate_log": {
   "bg_bomb_squad_office_inside": [
    {
@@ -15,66 +15,184 @@
     "why": [
      "the bottom of the picture is a pale sky-blue block, not a floor"
     ],
-    "score": -0.161,
+    "score": -0.383,
     "text_check": true,
-    "sat": 0.358,
-    "dark": 0.064,
-    "bright": 0.766,
+    "sat": 0.143,
+    "dark": 0.042,
+    "bright": 0.778,
     "low_dark": 0.0,
-    "grad": 5.627
+    "grad": 3.344
    },
    {
     "file": "pose_bg_bomb_squad_office_inside_r1_c1.png",
-    "pass": true,
-    "why": [],
-    "score": -0.257,
+    "pass": false,
+    "why": [
+     "the bottom of the picture is a pale sky-blue block, not a floor"
+    ],
+    "score": -0.34,
     "text_check": true,
-    "sat": 0.349,
-    "dark": 0.051,
-    "bright": 0.872,
+    "sat": 0.204,
+    "dark": 0.059,
+    "bright": 0.821,
     "low_dark": 0.0,
-    "grad": 6.992
+    "grad": 6.622
+   },
+   {
+    "file": "pose_bg_bomb_squad_office_inside_r2_c0.png",
+    "pass": false,
+    "why": [
+     "the bottom of the picture is a pale sky-blue block, not a floor"
+    ],
+    "score": -0.331,
+    "text_check": true,
+    "sat": 0.231,
+    "dark": 0.046,
+    "bright": 0.823,
+    "low_dark": 0.0,
+    "grad": 5.378
+   },
+   {
+    "file": "pose_bg_bomb_squad_office_inside_r2_c1.png",
+    "pass": false,
+    "why": [
+     "the bottom of the picture is a pale sky-blue block, not a floor"
+    ],
+    "score": -0.356,
+    "text_check": true,
+    "sat": 0.182,
+    "dark": 0.077,
+    "bright": 0.789,
+    "low_dark": 0.0,
+    "grad": 7.117
+   },
+   {
+    "file": "pose_bg_bomb_squad_office_inside_r3_c0.png",
+    "pass": false,
+    "why": [
+     "the bottom of the picture is a pale sky-blue block, not a floor"
+    ],
+    "score": -0.32,
+    "text_check": true,
+    "sat": 0.175,
+    "dark": 0.055,
+    "bright": 0.775,
+    "low_dark": 0.0,
+    "grad": 5.506
+   },
+   {
+    "file": "pose_bg_bomb_squad_office_inside_r3_c1.png",
+    "pass": false,
+    "why": [
+     "the bottom of the picture is a pale sky-blue block, not a floor"
+    ],
+    "score": -0.372,
+    "text_check": true,
+    "sat": 0.184,
+    "dark": 0.083,
+    "bright": 0.8,
+    "low_dark": 0.0,
+    "grad": 5.8
    }
   ],
   "bg_city_street_night": [
    {
     "file": "pose_bg_city_street_night_r1_c0.png",
-    "pass": true,
-    "why": [],
-    "score": -0.207,
+    "pass": false,
+    "why": [
+     "the bottom of the picture is a pale sky-blue block, not a floor"
+    ],
+    "score": -0.259,
     "text_check": true,
-    "sat": 0.456,
-    "dark": 0.094,
-    "bright": 0.624,
+    "sat": 0.399,
+    "dark": 0.175,
+    "bright": 0.534,
     "low_dark": 0.0,
-    "grad": 4.912
+    "grad": 4.293
    },
    {
     "file": "pose_bg_city_street_night_r1_c1.png",
-    "pass": true,
-    "why": [],
-    "score": -0.199,
+    "pass": false,
+    "why": [
+     "the bottom of the picture is a pale sky-blue block, not a floor"
+    ],
+    "score": -0.424,
     "text_check": true,
-    "sat": 0.442,
-    "dark": 0.073,
-    "bright": 0.593,
+    "sat": 0.437,
+    "dark": 0.255,
+    "bright": 0.444,
+    "low_dark": 0.005,
+    "grad": 4.262
+   },
+   {
+    "file": "pose_bg_city_street_night_r2_c0.png",
+    "pass": false,
+    "why": [
+     "the bottom of the picture is a pale sky-blue block, not a floor"
+    ],
+    "score": -0.379,
+    "text_check": true,
+    "sat": 0.409,
+    "dark": 0.207,
+    "bright": 0.441,
+    "low_dark": 0.004,
+    "grad": 5.376
+   },
+   {
+    "file": "pose_bg_city_street_night_r2_c1.png",
+    "pass": false,
+    "why": [
+     "the bottom of the picture is a pale sky-blue block, not a floor"
+    ],
+    "score": -0.293,
+    "text_check": true,
+    "sat": 0.394,
+    "dark": 0.131,
+    "bright": 0.466,
     "low_dark": 0.0,
-    "grad": 3.52
+    "grad": 4.385
+   },
+   {
+    "file": "pose_bg_city_street_night_r3_c0.png",
+    "pass": false,
+    "why": [
+     "the bottom of the picture is a pale sky-blue block, not a floor"
+    ],
+    "score": -0.367,
+    "text_check": true,
+    "sat": 0.443,
+    "dark": 0.165,
+    "bright": 0.463,
+    "low_dark": 0.008,
+    "grad": 5.41
+   },
+   {
+    "file": "pose_bg_city_street_night_r3_c1.png",
+    "pass": false,
+    "why": [
+     "the bottom of the picture is a pale sky-blue block, not a floor"
+    ],
+    "score": -0.288,
+    "text_check": true,
+    "sat": 0.427,
+    "dark": 0.153,
+    "bright": 0.519,
+    "low_dark": 0.0,
+    "grad": 3.954
    }
   ]
  },
  "human_reviewed": false,
  "style_reference": {
   "n": 20,
-  "sat": 0.3244550824165344,
+  "sat": 0.3688216209411621,
   "sat_lo": -0.016279444694519044,
   "sat_hi": 0.5432394599914551,
-  "dark": 0.056813557942708336,
+  "dark": 0.05638292100694445,
   "dark_lo": -0.055132921006944446,
   "dark_hi": 0.5481410047743056,
   "bright": 0.6502376198768616,
-  "bright_lo": 0.16568145513534546,
-  "bright_hi": 1.023855950832367,
+  "bright_lo": 0.16677571058273316,
+  "bright_hi": 1.0136428999900817,
   "low_dark": 0.0,
   "low_dark_lo": -0.02044642857142857,
   "low_dark_hi": 0.19083333333333333,
