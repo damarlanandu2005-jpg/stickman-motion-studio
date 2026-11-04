@@ -102,6 +102,35 @@ def pale_blue_bottom(img: Image.Image) -> bool:
     return 0.45 <= h <= 0.60 and 0.08 <= s <= 0.50 and v >= 0.95
 
 
+def _pale(r: tuple[float, float, float]) -> bool:
+    h, sat, v = colorsys.rgb_to_hsv(*r)
+    return 0.45 <= h <= 0.60 and 0.08 <= sat <= 0.50 and v >= 0.95
+
+
+def band_start(img: Image.Image) -> int | None:
+    """Row (in a 1024-high picture) where the pale sky-blue band at the bottom begins; None when the bottom is not such a band."""
+    a = np.asarray(img.convert("RGB").resize((W, H))).astype(np.float32)
+    med = np.median(a, axis=1) / 255
+    y = H - 1
+    while y > 0 and _pale(tuple(float(x) for x in med[y])):
+        y -= 1
+    return y + 1 if y < H - 1 else None
+
+
+MIN_KEEP = 0.70      # the part above the band must be at least this share of the picture, else stretching it back would distort too much
+
+
+def repair_bottom(img: Image.Image) -> Image.Image | None:
+    """Every drawn background came with a pale sky-blue band at the bottom (model habit). Cut the band off and stretch the rest back to the full
+    picture. Returns None when the band is too tall to repair this way (then the picture is redrawn instead)."""
+    y = band_start(img)
+    if y is None:
+        return img.convert("RGB")
+    if y < MIN_KEEP * H or H - y < 0.03 * H:
+        return None
+    return img.convert("RGB").resize((W, H)).crop((0, 0, W, y)).resize((W, H), Image.LANCZOS)
+
+
 def library_style(db: dict, lib: Path = LIB) -> dict:
     """Median style numbers of the plain library backgrounds (the pictures already accepted as the channel's look)."""
     rows = [stats(Image.open(lib / v["file"])) for i, v in db["items"].items() if v["type"] == "background" and i.startswith("bg_") and (lib / v["file"]).exists()]
@@ -213,7 +242,14 @@ def judge(request: dict, round_no: int, state: Path, outputs: Path, lib: Path = 
             continue
         scored = []
         for c in sorted(cand_dir.glob(f"pose_{n['id']}_r*_c*.png")):
+            note = None
+            if n["type"] == "background" and pale_blue_bottom(Image.open(c)):
+                fixed = repair_bottom(Image.open(c))
+                if fixed is not None:
+                    fixed.save(c); note = "pale bottom band cut off and picture stretched back (code repair)"
             g = gate_background(c, style) if n["type"] == "background" else gate_object(c)
+            if note:
+                g["repair"] = note
             scored.append((c, g))
         log[n["id"]] = [{"file": c.name, **g} for c, g in scored]
         ok = [(c, g) for c, g in scored if g["pass"]]

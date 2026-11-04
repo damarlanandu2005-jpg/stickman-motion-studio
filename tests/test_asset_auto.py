@@ -85,3 +85,22 @@ def test_pale_blue_bottom_is_rejected_and_library_style_floor_is_not(tmp_path):
     assert aa.pale_blue_bottom(bad); bad.save(tmp_path / "bad.png")
     r = aa.gate_background(tmp_path / "bad.png", style); assert any("pale sky-blue" in w for w in r["why"])
     assert not aa.pale_blue_bottom(Image.open(lib / "backgrounds" / "bg_1.png"))
+
+
+def test_pale_band_is_cut_off_and_too_tall_band_is_refused(tmp_path):
+    lib = _lib(tmp_path); style = aa.library_style(json.loads((lib / "index.json").read_text()), lib)
+    im = Image.open(lib / "backgrounds" / "bg_0.png").convert("RGB"); d = ImageDraw.Draw(im); d.rectangle([0, 860, W, H], fill=(205, 245, 253))
+    assert aa.band_start(im) == 860
+    fixed = aa.repair_bottom(im); assert fixed.size == (W, H) and not aa.pale_blue_bottom(fixed)
+    d.rectangle([0, 600, W, H], fill=(205, 245, 253)); assert aa.repair_bottom(im) is None
+    assert aa.repair_bottom(Image.open(lib / "backgrounds" / "bg_1.png")).size == (W, H)    # no band: unchanged picture
+
+
+def test_judge_repairs_a_banded_picture_and_saves_the_repair(tmp_path, monkeypatch):
+    monkeypatch.setattr(aa, "gate_background", lambda c, style, refs=None: {"pass": True, "why": [], "score": 0.0})   # the style numbers of a 4-picture toy library are too narrow for a stretched picture
+    lib = _lib(tmp_path); st = tmp_path / "st"; out = tmp_path / "out"; out.mkdir()
+    req = {"name": "t", "needs": [{"id": "bg_x", "type": "background", "tags": ["room"], "desc": "a room"}]}
+    im = Image.open(lib / "backgrounds" / "bg_2.png").convert("RGB"); ImageDraw.Draw(im).rectangle([0, 850, W, H], fill=(205, 245, 253)); im.save(out / "pose_bg_x_r1_c0.png")
+    rep = aa.judge(req, 1, st, out, lib)
+    assert rep["complete"] and "repair" in rep["gate_log"]["bg_x"][0]
+    assert not aa.pale_blue_bottom(Image.open(lib / "backgrounds" / "bg_x.png"))
