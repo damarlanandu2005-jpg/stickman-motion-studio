@@ -53,7 +53,7 @@ def style_refs(db: dict, need: dict, k: int = 2) -> list[str]:
 
 
 def prompt_for(need: dict, refs: list[str]) -> str:
-    base = lib_mod.PROMPTS[need["type"]].format(desc=need["desc"])
+    base = lib_mod.prompt_text(need["type"], need.get("draw") or need["desc"])
     if refs and need["type"] == "background":
         return ("Use exactly the same art style, line weight and colour feeling as the reference pictures, but draw a completely different place. " + base)
     return base
@@ -65,12 +65,12 @@ def continuation_prompt(need: dict) -> str:
     from .script_reader import VARIANT, words as _w
     if need.get("mode") == "next":
         return ("Draw the next view of the same area as the reference picture. Continue exactly the same art style, the same kind of buildings, shops, "
-                f"lamps, ground and the same colours as in the reference picture, but show a new view of the area: {need['desc']}. " + lib_mod.STYLE)
-    change = need.get("change") or need["desc"]
-    if change and set(_w(change)) <= VARIANT:                 # only look words (time of day, weather): say it as a change of light
+                f"lamps, ground and the same colours as in the reference picture, but show a new view of the area: {(need.get('draw') or need['desc']).strip().rstrip('.')}. " + lib_mod.style_text())
+    change = need.get("draw") or need.get("change") or need["desc"]
+    if not need.get("draw") and change and set(_w(change)) <= VARIANT:                 # only look words (time of day, weather): say it as a change of light
         change = f"the time and light of day, it is now {change}, so the sky, light and shadows change as that time of day needs"
     return ("Edit the reference picture. Keep exactly the same place: the same camera view, the same layout, the same objects "
-            f"and the same art style. Change only this: {change}. " + lib_mod.STYLE)
+            f"and the same art style. Change only this: {change.strip().rstrip('.')}. " + lib_mod.style_text())
 
 
 def base_state(need: dict, db: dict, state: Path) -> str:

@@ -18,12 +18,30 @@ from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1] / "animation" / "asset_library"
 INDEX = ROOT / "index.json"
-STYLE = ("Flat 2D vector cartoon, thick clean dark outlines, clean flat colours with soft simple shading, in the same style as a stickman "
-         "explainer short. There is no character, no person, no face and no eyes in the picture. No text, no letters, no watermark, no frame.")
+STYLE_FILE = ROOT.parent / "style" / "house_style.txt"
+DEFAULT_STYLE = ("Flat 2D vector cartoon, thick clean dark outlines, clean flat colours with soft simple shading, in the same style as a stickman "
+                 "explainer short. There is no character, no person, no face and no eyes in the picture. No text, no letters, no watermark, no frame.")
+
+
+def style_text() -> str:
+    """The channel's style text, added to EVERY picture prompt. The owner replaces animation/style/house_style.txt (for example once a week)."""
+    try:
+        t = STYLE_FILE.read_text(encoding="utf-8").strip()
+    except OSError:
+        t = ""
+    return " ".join(t.split()) or DEFAULT_STYLE
+
+
+STYLE = DEFAULT_STYLE      # kept for old callers; new code uses style_text()
 PROMPTS = {
-    "background": "A vertical 9:16 background scene: {desc}. " + STYLE,
-    "object": "One single object only: {desc}. Shown from the front with a slight three-quarter view, centred, complete, on a pure plain white background, no floor, no shadow, no other objects. " + STYLE,
+    "background": "A vertical 9:16 background scene: {desc}. {style}",
+    "object": "One single object only: {desc}. Shown from the front with a slight three-quarter view, centred, complete, on a pure plain white background, no floor, no shadow, no other objects. {style}",
 }
+
+
+def prompt_text(kind: str, desc: str) -> str:
+    """The words sent to the model for a new picture. `desc` is the author's detailed text (script `draw:`) or, if there is none, the short `bg:` words."""
+    return PROMPTS[kind].format(desc=desc.strip().rstrip("."), style=style_text())
 
 
 def load() -> dict:
@@ -61,7 +79,7 @@ def ensure(db: dict, needs: list[dict]) -> tuple[dict[str, str], list[dict]]:
 def asset_jobs(missing: list[dict], seed0: int = 7100) -> dict:
     jobs = []
     for i, n in enumerate(missing):
-        jobs.append({"id": n["id"], "prompt": PROMPTS[n["type"]].format(desc=n["desc"]), "refs": [], "seed": seed0 + i, "width": 576, "height": 1024})
+        jobs.append({"id": n["id"], "prompt": prompt_text(n["type"], n["desc"]), "refs": [], "seed": seed0 + i, "width": 576, "height": 1024})
     return {"jobs": jobs}
 
 

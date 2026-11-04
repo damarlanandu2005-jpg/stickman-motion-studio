@@ -27,7 +27,9 @@ SCENE
 |---|---|---|
 | `say:` | yes | What the voice says. Put `*stars*` around the word that must be RED in the caption. |
 | `bg:` | yes | Words for the background. The reader looks in the library; if nothing fits, it is listed to be drawn. |
-| `from:` | no | Only with `bg:`. Draw this background FROM an earlier one (same place, same camera, same layout) and change only what `bg:` says. Example: `bg: rooftop, the sun is up` + `from: rooftop at sunset`. Not needed for look words (see below). |
+| `draw:` | no | Your detailed words for the background picture of this scene (what is where, colours, time of day). Used as the prompt as written. Without it the short `bg:` words are used. Write what you WANT to see ("the wooden floor goes down to the bottom"), not what you do not want. |
+| `next:` | no | Like `from:`, but for the NEXT VIEW of the same area (walk down the market street): the style, buildings, lamps and colours continue, the view is new. |
+| `from:` | no | Only with `bg:`. Draw this background FROM an earlier one (same place, same camera, same layout) and change only what `bg:` says. Example: `bg: rooftop, the sun is up` + `from: rooftop at sunset`. Not needed for look words (see below). `from: previous` = the scene before. |
 | `who:` | no | Characters in the scene, e.g. `arthur@normal` (a stage) or just `arthur` (his current stage). |
 | `pose:` | no | Free words for now (stand, point, run...). The next step maps them. |
 | `props:` | no | Objects in the scene. Missing ones are listed to be drawn. |
@@ -61,3 +63,11 @@ python -m motion_studio.script_reader scripts_in/your_script.txt --out build/you
 ```
 
 It prints plain errors with the line number, the costume status (ready / bodies_only / spec_only / missing), and what must be drawn. Status here means: code written and unit tested. It does not plan shots, timing or camera yet.
+
+## Rules for pictures that use a reference
+- A NEW place that continues nothing takes **no** reference. It is drawn from your words only.
+- `from:` = same place, one thing changes (the earlier picture is the reference, layout must stay). `next:` = next view of the same area.
+- Chains are drawn in script order. Each picture uses the one before it; the code also compares with the FIRST picture of the chain to catch drift.
+
+## Style text (once a week)
+`animation/style/house_style.txt` is added to the end of EVERY picture prompt. Replace its text when your style changes.

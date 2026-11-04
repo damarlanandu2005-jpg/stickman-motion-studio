@@ -119,3 +119,9 @@ def test_next_and_previous_make_chains_with_modes_and_a_shared_root():
     assert needs[third]["base"] == second and needs[third]["mode"] == "same" and needs[third]["root"] == first
     assert "base" not in needs["bg_quiet_park"]                                # a new place takes no reference
     assert any("not both" in e for e in sr.resolve(sr.parse_script("SCENE\nbg: x\nfrom: previous\nnext: previous\nwho: a\nsay: s\n"), cast, db)["errors"])
+
+
+def test_draw_text_reaches_the_request():
+    db = {"items": {}}; cast = {"characters": {"a": {"stages": {"n": {"costume": "civ"}}}}, "costumes": {"civ": {}}}
+    r = sr.resolve(sr.parse_script("SCENE\nbg: market street\ndraw: A busy market street, red awning on the left.\nwho: a\nsay: One.\n"), cast, db)
+    assert r["ok"] and r["missing_assets"][0]["draw"] == "A busy market street, red awning on the left."

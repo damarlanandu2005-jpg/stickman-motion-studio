@@ -195,3 +195,17 @@ def test_drift_from_the_first_picture_of_a_chain_is_noticed(tmp_path):
     _scene(tmp_path / "first.png"); _scene(tmp_path / "second.png", sun=True); _scene(tmp_path / "third.png", sun=True, seed=5)
     g = aa.gate_continuation(tmp_path / "third.png", tmp_path / "second.png", style, "same", tmp_path / "first.png")
     assert "struct_root" in g and g["struct_root"] < aa.ROOT_MIN + 0.3
+
+
+def test_draw_text_and_style_file_make_the_prompt(tmp_path, monkeypatch):
+    sf = tmp_path / "style.txt"; sf.write_text("My weekly style.\n  Second   line.")
+    monkeypatch.setattr(aa.lib_mod, "STYLE_FILE", sf)
+    lib = _lib(tmp_path); st = tmp_path / "st"; st.mkdir()
+    need = {"id": "bg_m", "type": "background", "tags": ["market"], "desc": "market", "draw": "A busy market street with a red awning on the left."}
+    aa.plan({"name": "t", "needs": [need]}, 1, st, lib, tmp_path / "j.json")
+    p = json.loads((tmp_path / "j.json").read_text())["jobs"][0]["prompt"]
+    assert p == "A vertical 9:16 background scene: A busy market street with a red awning on the left. My weekly style. Second line."
+    nxt = {"id": "bg_n", "type": "background", "tags": ["market"], "desc": "market", "draw": "Further down: fruit stalls and street lamps.", "base": "bg_0", "mode": "next"}
+    assert "fruit stalls and street lamps" in aa.continuation_prompt(nxt) and aa.continuation_prompt(nxt).endswith("My weekly style. Second line.")
+    chg = {"id": "bg_c", "type": "background", "tags": ["market"], "desc": "market", "draw": "The sky is bright blue with a big yellow sun.", "base": "bg_0", "mode": "same"}
+    assert "Change only this: The sky is bright blue with a big yellow sun." in aa.continuation_prompt(chg)

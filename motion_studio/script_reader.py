@@ -32,7 +32,7 @@ from pathlib import Path
 from . import asset_library as lib
 
 ROOT = Path(__file__).resolve().parents[1]
-KEYS = {"bg", "who", "pose", "props", "say", "text", "sound", "camera", "from", "next"}
+KEYS = {"bg", "who", "pose", "props", "say", "text", "sound", "camera", "from", "next", "draw"}
 CAMERAS = {"push", "pull", "pan", "still"}
 STOP = {"a", "an", "the", "of", "at", "on", "with", "and", "in", "to"}
 HUES = {"green": (0.17, 0.45), "olive green": (0.17, 0.45), "yellow": (0.10, 0.20), "blue": (0.50, 0.70), "light blue": (0.50, 0.62),
@@ -198,6 +198,8 @@ def resolve(script: dict, cast: dict, db: dict | None = None, root: Path = ROOT)
                         base = n["id"]; break
             if not bg and not any(n["id"] == nid for n in needs_bg):
                 need = {"id": nid, "type": "background", "tags": words(sc["bg"]), "desc": sc["bg"], "scene": i + 1}
+                if sc.get("draw"):
+                    need["draw"] = sc["draw"]
                 if base and base != nid:
                     bd = (db["items"].get(base) or {}).get("desc") or next((n["desc"] for n in needs_bg if n["id"] == base), "")
                     need["base"] = base; need["mode"] = mode or "same"
@@ -281,7 +283,7 @@ def main(argv: list[str] | None = None) -> int:
     r = resolve(script, cast, db, Path(a.root) if a.root else ROOT)
     if a.write_request:
         Path(a.write_request).parent.mkdir(parents=True, exist_ok=True)
-        Path(a.write_request).write_text(json.dumps({"name": Path(a.script).stem, "needs": [{k: n[k] for k in ("id", "type", "tags", "desc", "base", "change", "mode", "root") if k in n} for n in r["missing_assets"]]}, indent=1))
+        Path(a.write_request).write_text(json.dumps({"name": Path(a.script).stem, "needs": [{k: n[k] for k in ("id", "type", "tags", "desc", "base", "change", "mode", "root", "draw") if k in n} for n in r["missing_assets"]]}, indent=1))
     if a.write_specs:
         r["specs_written"] = write_specs(r, cast, Path(a.write_specs))
     if a.out:
