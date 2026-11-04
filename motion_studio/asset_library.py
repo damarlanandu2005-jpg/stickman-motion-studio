@@ -5,7 +5,7 @@ ones become Kaggle jobs (`asset_jobs`); when the pictures come back, `ingest` sa
 The library lives in the repo (animation/asset_library), not on Kaggle, because Kaggle keeps no files between runs.
 
 Types:
-  background  full 9:16 picture, NO characters, empty floor area in the lower third so objects and characters can stand on it
+  background  full 9:16 picture, NO characters
   object      one object on a plain white background -> cut out to transparent
   character   (later) one cast member in one pose + expression
 """
@@ -21,7 +21,7 @@ INDEX = ROOT / "index.json"
 STYLE = ("Flat 2D vector cartoon, thick clean dark outlines, clean flat colours with soft simple shading, in the same style as a stickman "
          "explainer short. There is no character, no person, no face and no eyes in the picture. No text, no letters, no watermark, no frame.")
 PROMPTS = {
-    "background": "A vertical 9:16 background scene: {desc}. The lower third is a clear floor or ground area (no furniture) where characters can stand: it is the SAME floor or ground of this place, in colours that belong to the scene, and it continues down to the bottom edge of the picture. Never leave a flat empty band or a plain pale blue block at the bottom, and never paint the sky or the wall colour on the floor. " + STYLE,
+    "background": "A vertical 9:16 background scene: {desc}. " + STYLE,
     "object": "One single object only: {desc}. Shown from the front with a slight three-quarter view, centred, complete, on a pure plain white background, no floor, no shadow, no other objects. " + STYLE,
 }
 
