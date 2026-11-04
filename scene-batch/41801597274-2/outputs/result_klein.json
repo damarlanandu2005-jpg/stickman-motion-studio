@@ -1,0 +1,40 @@
+{
+  "stage": "klein",
+  "status": "success",
+  "error": null,
+  "pictures": [
+    {
+      "pose": "suit_A_s0",
+      "seed": 9500,
+      "status": "success",
+      "file": "pose_suit_A_s0.png",
+      "seconds": 49.66,
+      "width": 1440,
+      "height": 1088,
+      "sha256": "46a23694e9849c39fdc5e6d5bbe65f04f9617b78b6405f7f8b00ba49594c5c51"
+    },
+    {
+      "pose": "suit_A_s1",
+      "seed": 9501,
+      "status": "success",
+      "file": "pose_suit_A_s1.png",
+      "seconds": 45.36,
+      "width": 1440,
+      "height": 1088,
+      "sha256": "c21b63fa723bd366e5e73d940e88ae39b8d83132d5271599c589b093203c3e7f"
+    },
+    {
+      "pose": "suit_A_s2",
+      "seed": 9502,
+      "status": "success",
+      "file": "pose_suit_A_s2.png",
+      "seconds": 47.67,
+      "width": 1440,
+      "height": 1088,
+      "sha256": "acad49aae20ce8986de132b3801e546191153f52be83e4828158a4072dd255cc"
+    }
+  ],
+  "download_seconds": 111.3,
+  "load_seconds": 65.5,
+  "peak_vram_gib": 8.8
+}

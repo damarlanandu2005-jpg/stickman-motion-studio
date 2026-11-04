@@ -1,0 +1,86 @@
+{
+  "identity": {
+    "run_id": "d1ded14d9a044346a05d5874b89b3424",
+    "run_token": "7cb81ab6ef403fccb609e18585d51ff6",
+    "commit_sha": "6988931301b9d772d262bfd0ad2cf88fe3a115c8",
+    "workflow_run_id": "41801597274",
+    "workflow_run_attempt": "2",
+    "created_utc": "2026-11-04T08:45:45+00:00"
+  },
+  "kernel": "narasimhadamarla/stickman-motion-studio-scene-batch",
+  "pushed_version": 15,
+  "push_attempts": 1,
+  "observations": [
+    {
+      "at": "2026-11-04T08:45:45+00:00",
+      "event": "notebook_stamped",
+      "run_token_written": true
+    },
+    {
+      "at": "2026-11-04T08:45:47+00:00",
+      "event": "push_response",
+      "attempt": 1,
+      "exit_code": 0,
+      "text": "Kernel version 15 successfully pushed.  Please check progress at https://www.kaggle.com/code/narasimhadamarla/stickman-motion-studio-scene-batch"
+    },
+    {
+      "at": "2026-11-04T08:45:47+00:00",
+      "event": "push_accepted",
+      "version": 15
+    },
+    {
+      "at": "2026-11-04T08:45:47+00:00",
+      "event": "status",
+      "state": "QUEUED"
+    },
+    {
+      "at": "2026-11-04T08:46:18+00:00",
+      "event": "status",
+      "state": "RUNNING"
+    },
+    {
+      "at": "2026-11-04T08:52:53+00:00",
+      "event": "status",
+      "state": "COMPLETE"
+    },
+    {
+      "at": "2026-11-04T08:52:57+00:00",
+      "event": "download",
+      "attempt": 1,
+      "exit_code": 0,
+      "text": "ng result_klein.json to kaggle-poses-output/outputs\n\n  0%|          | 0.00/978 [00:00<?, ?B/s]\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 978/978 [00:00<00:00, 7.27MB/s]\n\nOutput file downloaded to kaggle-poses-output/outputs/result_klein.json\nKernel log downloaded to kaggle-poses-output/stickman-motion-studio-scene-batch.log"
+    }
+  ],
+  "download_attempts": 1,
+  "validation": {
+    "ok": false,
+    "failures": [
+      "pose_suit_A_s0.png: not a valid PNG (file missing)",
+      "pose_suit_A_s1.png: not a valid PNG (file missing)",
+      "pose_suit_A_s2.png: not a valid PNG (file missing)"
+    ],
+    "checks": {
+      "pictures": [
+        {
+          "file": "pose_suit_A_s0.png",
+          "valid": false
+        },
+        {
+          "file": "pose_suit_A_s1.png",
+          "valid": false
+        },
+        {
+          "file": "pose_suit_A_s2.png",
+          "valid": false
+        }
+      ],
+      "drawn": 3,
+      "wanted": 3
+    }
+  },
+  "limitations": [
+    "The Kaggle CLI exposes the notebook version number, not a separate execution ID. Version tracking plus the run token in the output are used together."
+  ],
+  "result": "failed",
+  "error": "Output failed validation: pose_suit_A_s0.png: not a valid PNG (file missing); pose_suit_A_s1.png: not a valid PNG (file missing); pose_suit_A_s2.png: not a valid PNG (file missing)"
+}
