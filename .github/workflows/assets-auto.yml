@@ -72,3 +72,28 @@ jobs:
           path: assets-state/
           if-no-files-found: warn
           retention-days: 14
+      - name: Publish the drawn pictures to the test-results branch
+        if: always()
+        run: |
+          [ -d assets-state ] || { echo "nothing to publish"; exit 0; }
+          if git ls-remote --exit-code --heads origin test-results >/dev/null; then
+            git fetch --depth 1 origin test-results
+            git worktree add /tmp/results FETCH_HEAD
+            cd /tmp/results && git checkout -B test-results
+          else
+            exit 0
+          fi
+          for D in "$GITHUB_WORKSPACE"/assets-state/*; do
+            N=$(basename "$D"); mkdir -p "assets-auto/$N"
+            cp "$D"/candidates/*.png "assets-auto/$N"/ 2>/dev/null || true
+            cp "$D"/report.json "$D"/reader.txt "$D"/reader_after.txt "$D"/verify.json "assets-auto/$N"/ 2>/dev/null || true
+            for F in "$GITHUB_WORKSPACE"/animation/asset_library/backgrounds/*.png "$GITHUB_WORKSPACE"/animation/asset_library/objects/*.png; do :; done
+          done
+          git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets-auto; git commit -q -m "Assets auto output, workflow run ${{ github.run_id }}" || { echo "nothing new"; exit 0; }
+          for TRY in 1 2 3 4 5; do
+            if git push -q origin test-results; then echo "Published to test-results: assets-auto/"; exit 0; fi
+            echo "push try $TRY failed"; sleep $((15 * TRY))
+            git fetch -q --depth 1 origin test-results && git rebase -q FETCH_HEAD || true
+          done
+          exit 1

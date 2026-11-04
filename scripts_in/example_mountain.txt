@@ -1,0 +1,12 @@
+# EXAMPLE only (written by Claude to test the asset loop again with new items).
+TITLE: The Last Climb
+VOICE: am_fenrir
+CAST: animation/cast/example_bomb.json
+
+SCENE
+bg: snowy mountain pass
+who: chief
+pose: stand
+props: treasure chest
+say: The *chest* was buried deep.
+camera: push
