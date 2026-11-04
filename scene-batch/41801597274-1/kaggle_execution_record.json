@@ -1,0 +1,54 @@
+{
+  "identity": {
+    "run_id": "d7bdb0d4efd843d487efae529425155e",
+    "run_token": "bbe35fdd2e87388d49a1efa05dd31af2",
+    "commit_sha": "6988931301b9d772d262bfd0ad2cf88fe3a115c8",
+    "workflow_run_id": "41801597274",
+    "workflow_run_attempt": "1",
+    "created_utc": "2026-11-04T08:43:17+00:00"
+  },
+  "kernel": "narasimhadamarla/stickman-motion-studio-scene-batch",
+  "pushed_version": 14,
+  "push_attempts": 1,
+  "observations": [
+    {
+      "at": "2026-11-04T08:43:17+00:00",
+      "event": "notebook_stamped",
+      "run_token_written": true
+    },
+    {
+      "at": "2026-11-04T08:43:19+00:00",
+      "event": "push_response",
+      "attempt": 1,
+      "exit_code": 0,
+      "text": "Kernel version 14 successfully pushed.  Please check progress at https://www.kaggle.com/code/narasimhadamarla/stickman-motion-studio-scene-batch"
+    },
+    {
+      "at": "2026-11-04T08:43:19+00:00",
+      "event": "push_accepted",
+      "version": 14
+    },
+    {
+      "at": "2026-11-04T08:43:19+00:00",
+      "event": "status",
+      "state": "QUEUED"
+    },
+    {
+      "at": "2026-11-04T08:43:50+00:00",
+      "event": "status",
+      "state": "RUNNING"
+    },
+    {
+      "at": "2026-11-04T08:44:20+00:00",
+      "event": "status",
+      "state": "ERROR"
+    }
+  ],
+  "download_attempts": 0,
+  "validation": null,
+  "limitations": [
+    "The Kaggle CLI exposes the notebook version number, not a separate execution ID. Version tracking plus the run token in the output are used together."
+  ],
+  "result": "failed",
+  "error": "Kaggle execution of narasimhadamarla/stickman-motion-studio-scene-batch/14 ended in state ERROR."
+}

@@ -1,0 +1,118 @@
+[{"stream_name":"stderr","time":5.35664288,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":5.356683641,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":6.156447907,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":6.156479203,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":6.156483837,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":6.156486647,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":6.713218836,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":6.713246625,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":6.71325107,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":6.713254611,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":13.019668204,"data":"{\n"}
+,{"stream_name":"stdout","time":13.019688688,"data":"  \"status\": \"failed\",\n"}
+,{"stream_name":"stdout","time":13.019692133,"data":"  \"error_message\": \"RemoteDisconnected: Remote end closed connection without response\",\n"}
+,{"stream_name":"stdout","time":13.019694867,"data":"  \"files\": [],\n"}
+,{"stream_name":"stdout","time":13.019697321,"data":"  \"notebook_duration_seconds\": 5.3\n"}
+,{"stream_name":"stdout","time":13.019699702,"data":"}\n"}
+,{"stream_name":"stderr","time":13.020857602,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":13.02087866,"data":"  File \"/tmp/ipykernel_23/772717396.py\", line 3, in \u003ccell line: 0\u003e\n"}
+,{"stream_name":"stderr","time":13.020883986,"data":"    reference = fetch_reference()\n"}
+,{"stream_name":"stderr","time":13.020887494,"data":"  File \"/tmp/ipykernel_23/3771002563.py\", line 26, in fetch_reference\n"}
+,{"stream_name":"stderr","time":13.020891565,"data":"    urllib.request.urlretrieve(f\"https://codeload.github.com/{REPO}/tar.gz/{ref}\", tgz)\n"}
+,{"stream_name":"stderr","time":13.020895774,"data":"    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":13.020899468,"data":"  File \"/usr/lib/python3.13/urllib/request.py\", line 214, in urlretrieve\n"}
+,{"stream_name":"stderr","time":13.020903137,"data":"    with contextlib.closing(urlopen(url, data)) as fp:\n"}
+,{"stream_name":"stderr","time":13.020906604,"data":"                            ~~~~~~~^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":13.020909753,"data":"  File \"/usr/lib/python3.13/urllib/request.py\", line 189, in urlopen\n"}
+,{"stream_name":"stderr","time":13.020913332,"data":"    return opener.open(url, data, timeout)\n"}
+,{"stream_name":"stderr","time":13.02091675,"data":"           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":13.020920237,"data":"  File \"/usr/lib/python3.13/urllib/request.py\", line 489, in open\n"}
+,{"stream_name":"stderr","time":13.020923802,"data":"    response = self._open(req, data)\n"}
+,{"stream_name":"stderr","time":13.020937819,"data":"  File \"/usr/lib/python3.13/urllib/request.py\", line 506, in _open\n"}
+,{"stream_name":"stderr","time":13.02094174,"data":"    result = self._call_chain(self.handle_open, protocol, protocol +\n"}
+,{"stream_name":"stderr","time":13.020945259,"data":"                              '_open', req)\n"}
+,{"stream_name":"stderr","time":13.020948562,"data":"  File \"/usr/lib/python3.13/urllib/request.py\", line 466, in _call_chain\n"}
+,{"stream_name":"stderr","time":13.02095212,"data":"    result = func(*args)\n"}
+,{"stream_name":"stderr","time":13.020955519,"data":"  File \"/usr/lib/python3.13/urllib/request.py\", line 1379, in https_open\n"}
+,{"stream_name":"stderr","time":13.020959234,"data":"    return self.do_open(http.client.HTTPSConnection, req,\n"}
+,{"stream_name":"stderr","time":13.020962354,"data":"           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":13.020965632,"data":"                        context=self._context)\n"}
+,{"stream_name":"stderr","time":13.020969075,"data":"                        ^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":13.020972244,"data":"  File \"/usr/lib/python3.13/urllib/request.py\", line 1335, in do_open\n"}
+,{"stream_name":"stderr","time":13.020976694,"data":"    r = h.getresponse()\n"}
+,{"stream_name":"stderr","time":13.020980067,"data":"  File \"/usr/lib/python3.13/http/client.py\", line 1478, in getresponse\n"}
+,{"stream_name":"stderr","time":13.020983542,"data":"    response.begin()\n"}
+,{"stream_name":"stderr","time":13.020986559,"data":"    ~~~~~~~~~~~~~~^^\n"}
+,{"stream_name":"stderr","time":13.020990141,"data":"  File \"/usr/lib/python3.13/http/client.py\", line 343, in begin\n"}
+,{"stream_name":"stderr","time":13.020993775,"data":"    version, status, reason = self._read_status()\n"}
+,{"stream_name":"stderr","time":13.02099711,"data":"                              ~~~~~~~~~~~~~~~~~^^\n"}
+,{"stream_name":"stderr","time":13.021000322,"data":"  File \"/usr/lib/python3.13/http/client.py\", line 312, in _read_status\n"}
+,{"stream_name":"stderr","time":13.021004059,"data":"    raise RemoteDisconnected(\"Remote end closed connection without\"\n"}
+,{"stream_name":"stderr","time":13.021007557,"data":"                             \" response\")\n"}
+,{"stream_name":"stderr","time":13.021010962,"data":"http.client.RemoteDisconnected: Remote end closed connection without response\n"}
+,{"stream_name":"stderr","time":13.021014332,"data":"\n"}
+,{"stream_name":"stderr","time":13.021017458,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":13.02102169,"data":"  File \"/tmp/ipykernel_23/772717396.py\", line 3, in \u003ccell line: 0\u003e\n"}
+,{"stream_name":"stderr","time":13.021025574,"data":"    reference = fetch_reference()\n"}
+,{"stream_name":"stderr","time":13.021029683,"data":"  File \"/tmp/ipykernel_23/3771002563.py\", line 26, in fetch_reference\n"}
+,{"stream_name":"stderr","time":13.021033358,"data":"    urllib.request.urlretrieve(f\"https://codeload.github.com/{REPO}/tar.gz/{ref}\", tgz)\n"}
+,{"stream_name":"stderr","time":13.021037317,"data":"    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":13.021041204,"data":"  File \"/usr/lib/python3.13/urllib/request.py\", line 214, in urlretrieve\n"}
+,{"stream_name":"stderr","time":13.021044976,"data":"    with contextlib.closing(urlopen(url, data)) as fp:\n"}
+,{"stream_name":"stderr","time":13.021048513,"data":"                            ~~~~~~~^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":13.021055837,"data":"  File \"/usr/lib/python3.13/urllib/request.py\", line 189, in urlopen\n"}
+,{"stream_name":"stderr","time":13.021059158,"data":"    return opener.open(url, data, timeout)\n"}
+,{"stream_name":"stderr","time":13.021062535,"data":"           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":13.021065823,"data":"  File \"/usr/lib/python3.13/urllib/request.py\", line 489, in open\n"}
+,{"stream_name":"stderr","time":13.021069519,"data":"    response = self._open(req, data)\n"}
+,{"stream_name":"stderr","time":13.021073042,"data":"  File \"/usr/lib/python3.13/urllib/request.py\", line 506, in _open\n"}
+,{"stream_name":"stderr","time":13.021076589,"data":"    result = self._call_chain(self.handle_open, protocol, protocol +\n"}
+,{"stream_name":"stderr","time":13.021080106,"data":"                              '_open', req)\n"}
+,{"stream_name":"stderr","time":13.021083637,"data":"  File \"/usr/lib/python3.13/urllib/request.py\", line 466, in _call_chain\n"}
+,{"stream_name":"stderr","time":13.021087147,"data":"    result = func(*args)\n"}
+,{"stream_name":"stderr","time":13.021090609,"data":"  File \"/usr/lib/python3.13/urllib/request.py\", line 1379, in https_open\n"}
+,{"stream_name":"stderr","time":13.02109392,"data":"    return self.do_open(http.client.HTTPSConnection, req,\n"}
+,{"stream_name":"stderr","time":13.021097089,"data":"           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":13.021100459,"data":"                        context=self._context)\n"}
+,{"stream_name":"stderr","time":13.021103577,"data":"                        ^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":13.021106699,"data":"  File \"/usr/lib/python3.13/urllib/request.py\", line 1335, in do_open\n"}
+,{"stream_name":"stderr","time":13.021110366,"data":"    r = h.getresponse()\n"}
+,{"stream_name":"stderr","time":13.021113541,"data":"  File \"/usr/lib/python3.13/http/client.py\", line 1478, in getresponse\n"}
+,{"stream_name":"stderr","time":13.021117121,"data":"    response.begin()\n"}
+,{"stream_name":"stderr","time":13.021120152,"data":"    ~~~~~~~~~~~~~~^^\n"}
+,{"stream_name":"stderr","time":13.021123492,"data":"  File \"/usr/lib/python3.13/http/client.py\", line 343, in begin\n"}
+,{"stream_name":"stderr","time":13.021127094,"data":"    version, status, reason = self._read_status()\n"}
+,{"stream_name":"stderr","time":13.021130271,"data":"                              ~~~~~~~~~~~~~~~~~^^\n"}
+,{"stream_name":"stderr","time":13.021133255,"data":"  File \"/usr/lib/python3.13/http/client.py\", line 312, in _read_status\n"}
+,{"stream_name":"stderr","time":13.021136589,"data":"    raise RemoteDisconnected(\"Remote end closed connection without\"\n"}
+,{"stream_name":"stderr","time":13.021140064,"data":"                             \" response\")\n"}
+,{"stream_name":"stderr","time":13.021143619,"data":"http.client.RemoteDisconnected: Remote end closed connection without response\n"}
+,{"stream_name":"stderr","time":16.308304579,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":16.308934313,"data":"  File \"\u003cstring\u003e\", line 1, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":16.308947445,"data":"    import sys;import papermill as pm;pm.execute_notebook(\"__notebook__.ipynb\",\"__notebook__.ipynb\",progress_bar=False,log_output=True,stdout_file=sys.stdout,stderr_file=sys.stderr,allow_errors=False,timeout=7200)\n"}
+,{"stream_name":"stderr","time":16.308959936,"data":"                                      ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":16.308973409,"data":"  File \"/usr/local/lib/python3.13/dist-packages/papermill/execute.py\", line 131, in execute_notebook\n"}
+,{"stream_name":"stderr","time":16.308978446,"data":"    raise_for_execution_errors(nb, output_path)\n"}
+,{"stream_name":"stderr","time":16.308982385,"data":"    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":16.308986128,"data":"  File \"/usr/local/lib/python3.13/dist-packages/papermill/execute.py\", line 251, in raise_for_execution_errors\n"}
+,{"stream_name":"stderr","time":16.308990749,"data":"    raise error\n"}
+,{"stream_name":"stderr","time":16.308997791,"data":"papermill.exceptions.PapermillExecutionError: \n"}
+,{"stream_name":"stderr","time":16.309001325,"data":"---------------------------------------------------------------------------\n"}
+,{"stream_name":"stderr","time":16.309004752,"data":"Exception encountered at \"In [6]\":\n"}
+,{"stream_name":"stderr","time":16.309008077,"data":"---------------------------------------------------------------------------\n"}
+,{"stream_name":"stderr","time":16.309011889,"data":"AssertionError                            Traceback (most recent call last)\n"}
+,{"stream_name":"stderr","time":16.309017008,"data":"/tmp/ipykernel_23/2314155528.py in \u003ccell line: 0\u003e()\n"}
+,{"stream_name":"stderr","time":16.30902055,"data":"----\u003e 1 assert REPORT[\"status\"] == \"completed\", \"Poses did not complete: \" + str(REPORT[\"error_message\"])\n"}
+,{"stream_name":"stderr","time":16.309026592,"data":"      2 print(\"Drew\", len(REPORT[\"files\"]), \"of\", len(JOBS), \"pictures\")\n"}
+,{"stream_name":"stderr","time":16.309030819,"data":"\n"}
+,{"stream_name":"stderr","time":16.309034464,"data":"AssertionError: Poses did not complete: RemoteDisconnected: Remote end closed connection without response\n"}
+,{"stream_name":"stderr","time":16.309038035,"data":"\n"}
+,{"stream_name":"stderr","time":18.366043923,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":18.366067734,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":18.518191283,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":18.518214405,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":19.23934823,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":19.311390889,"data":"[NbConvertApp] Writing 21876 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":21.750271632,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":22.269762263,"data":"[NbConvertApp] Writing 318409 bytes to __results__.html\n"}
+]
