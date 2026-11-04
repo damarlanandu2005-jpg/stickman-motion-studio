@@ -79,6 +79,11 @@ for ROUND in 1 2 3; do
     python -m motion_studio.asset_store up --slug "$SLUG" --message "bases for $NAME round $ROUND (auto)" || echo "UP FAILED"
   fi
 done
+# 2b. whatever is still missing after the rounds: take the best picture drawn so far, labelled "accepted with warnings" (a short is never lost for a small flaw)
+if [ "$DONE" != true ] && [ "$NEED" != "0" ]; then
+  FIN=$(python -m motion_studio.asset_auto finalize --request "$REQ" --state "$STATE" --max-rounds 3) && echo "$FIN"
+  echo "$FIN" | grep -q "DONE=true" && DONE=true
+fi
 # 3. save everything accepted into the dataset, then prove it comes back (clean folder, own download, hash check, reader run)
 ACC=$(python -c "import json,os;p='$STATE/accepted.json';print(' '.join(json.load(open(p))) if os.path.exists(p) else '')")
 VERIFY="not needed"

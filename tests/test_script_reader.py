@@ -105,3 +105,17 @@ def test_reader_lists_continuations_with_their_base_and_the_change():
     assert needs["bg_rooftop_midday"]["base"] == "bg_roof" and needs["bg_rooftop_midday"]["change"] == "midday"
     assert needs["bg_rooftop_everything_wet_grey"]["base"] == "bg_roof"
     assert needs["bg_rooftop_midnight"]["base"] == "bg_roof"
+
+
+def test_next_and_previous_make_chains_with_modes_and_a_shared_root():
+    db = {"items": {}}; cast = {"characters": {"a": {"stages": {"n": {"costume": "civ"}}}}, "costumes": {"civ": {}}}
+    text = ("SCENE\nbg: market street, shops on both sides\nwho: a\nsay: One.\n\n"
+            "SCENE\nbg: market street, fruit stalls and street lamps\nnext: previous\nwho: a\nsay: Two.\n\n"
+            "SCENE\nbg: market street at night\nfrom: previous\nwho: a\nsay: Three.\n\n"
+            "SCENE\nbg: quiet park\nwho: a\nsay: Four.\n")
+    r = sr.resolve(sr.parse_script(text), cast, db); needs = {n["id"]: n for n in r["missing_assets"]}
+    first = "bg_market_street_shops_both_sides"; second = "bg_market_street_fruit_stalls_street_lamps"; third = "bg_market_street_night"
+    assert "base" not in needs[first] and needs[second]["base"] == first and needs[second]["mode"] == "next"
+    assert needs[third]["base"] == second and needs[third]["mode"] == "same" and needs[third]["root"] == first
+    assert "base" not in needs["bg_quiet_park"]                                # a new place takes no reference
+    assert any("not both" in e for e in sr.resolve(sr.parse_script("SCENE\nbg: x\nfrom: previous\nnext: previous\nwho: a\nsay: s\n"), cast, db)["errors"])

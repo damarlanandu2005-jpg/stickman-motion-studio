@@ -32,7 +32,7 @@ from pathlib import Path
 from . import asset_library as lib
 
 ROOT = Path(__file__).resolve().parents[1]
-KEYS = {"bg", "who", "pose", "props", "say", "text", "sound", "camera", "from"}
+KEYS = {"bg", "who", "pose", "props", "say", "text", "sound", "camera", "from", "next"}
 CAMERAS = {"push", "pull", "pan", "still"}
 STOP = {"a", "an", "the", "of", "at", "on", "with", "and", "in", "to"}
 HUES = {"green": (0.17, 0.45), "olive green": (0.17, 0.45), "yellow": (0.10, 0.20), "blue": (0.50, 0.70), "light blue": (0.50, 0.62),
@@ -145,7 +145,7 @@ def resolve(script: dict, cast: dict, db: dict | None = None, root: Path = ROOT)
     """Check every scene against the cast file and the library. Returns the checked scene list + errors + what is missing."""
     db = db if db is not None else lib.load()
     chars = {k.lower(): v for k, v in cast.get("characters", {}).items()}
-    errors = list(script["problems"]); needs_bg, needs_obj, costumes = [], [], {}
+    errors = list(script["problems"]); needs_bg, needs_obj, costumes = [], [], {}; prev_bg = None
     stage = {c: v.get("default_stage") or next(iter(v["stages"])) for c, v in chars.items()}
     changes = sorted(script["stage_changes"]); ci = 0; scenes = []
     for i, sc in enumerate(script["scenes"]):
@@ -174,11 +174,22 @@ def resolve(script: dict, cast: dict, db: dict | None = None, root: Path = ROOT)
         bg, bscore = (None, 0.0)
         if sc.get("bg"):
             bg, bscore, base = match_bg(db, sc["bg"])
-            if sc.get("from") and not bg:                                   # the author says: draw it from this picture
-                fb, fs, _ = match_bg(db, sc["from"])
-                base = fb or ("bg_" + "_".join(words(sc["from"]))[:40] if any(n["id"] == "bg_" + "_".join(words(sc["from"]))[:40] for n in needs_bg) else None)
-                if not base:
-                    errors.append(f"{tag}: 'from: {sc['from']}' is not in the library and not drawn earlier in this script")
+            mode = "same" if base else None
+            link = sc.get("from") or sc.get("next")                         # the author says: draw it from this picture ('previous' = the scene before)
+            if sc.get("from") and sc.get("next"):
+                errors.append(f"{tag}: use 'from:' OR 'next:', not both")
+            if link and not bg:
+                mode = "next" if sc.get("next") and not sc.get("from") else "same"
+                if link.strip().lower() in ("previous", "prev"):
+                    base = prev_bg
+                    if not base:
+                        errors.append(f"{tag}: '{'from' if sc.get('from') else 'next'}: previous' but this is the first scene")
+                else:
+                    fb, fs, _ = match_bg(db, link)
+                    fid = "bg_" + "_".join(words(link))[:40]
+                    base = fb or (fid if any(n["id"] == fid for n in needs_bg) else None)
+                    if not base:
+                        errors.append(f"{tag}: '{'from' if sc.get('from') else 'next'}: {link}' is not in the library and not drawn earlier in this script")
             nid = "bg_" + "_".join(words(sc["bg"]))[:40]
             if not bg and not base:                                          # no explicit base: an earlier missing picture of the same place?
                 pw = place_words(sc["bg"])
@@ -189,9 +200,11 @@ def resolve(script: dict, cast: dict, db: dict | None = None, root: Path = ROOT)
                 need = {"id": nid, "type": "background", "tags": words(sc["bg"]), "desc": sc["bg"], "scene": i + 1}
                 if base and base != nid:
                     bd = (db["items"].get(base) or {}).get("desc") or next((n["desc"] for n in needs_bg if n["id"] == base), "")
-                    need["base"] = base
-                    need["change"] = sc["bg"] if sc.get("from") else (" ".join(w for w in words(sc["bg"]) if w not in set(words(bd))) or sc["bg"])
+                    need["base"] = base; need["mode"] = mode or "same"
+                    need["root"] = (db["items"].get(base) or {}).get("root") or next((n.get("root") or n["id"] for n in needs_bg if n["id"] == base), base)
+                    need["change"] = sc["bg"] if link else (" ".join(w for w in words(sc["bg"]) if w not in set(words(bd))) or sc["bg"])
                 needs_bg.append(need)
+            prev_bg = bg or nid
         else:
             errors.append(f"{tag}: missing 'bg:'")
         props = []
@@ -268,7 +281,7 @@ def main(argv: list[str] | None = None) -> int:
     r = resolve(script, cast, db, Path(a.root) if a.root else ROOT)
     if a.write_request:
         Path(a.write_request).parent.mkdir(parents=True, exist_ok=True)
-        Path(a.write_request).write_text(json.dumps({"name": Path(a.script).stem, "needs": [{k: n[k] for k in ("id", "type", "tags", "desc", "base", "change") if k in n} for n in r["missing_assets"]]}, indent=1))
+        Path(a.write_request).write_text(json.dumps({"name": Path(a.script).stem, "needs": [{k: n[k] for k in ("id", "type", "tags", "desc", "base", "change", "mode", "root") if k in n} for n in r["missing_assets"]]}, indent=1))
     if a.write_specs:
         r["specs_written"] = write_specs(r, cast, Path(a.write_specs))
     if a.out:

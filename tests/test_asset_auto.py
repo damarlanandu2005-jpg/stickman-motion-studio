@@ -48,7 +48,8 @@ def test_background_gate(tmp_path):
     assert not aa.gate_background(tmp_path / "noise.png", style)["pass"]
 
 
-def test_plan_new_seeds_and_only_pending(tmp_path):
+def test_plan_new_seeds_and_only_pending(tmp_path, monkeypatch):
+    monkeypatch.setenv("ASSET_REFS", "1")      # the old behaviour is still available as a switch
     lib = _lib(tmp_path); req = {"name": "t", "needs": [{"id": "bg_x", "type": "background", "tags": ["room"], "desc": "a room"},
                                                          {"id": "obj_y", "type": "object", "tags": ["ball"], "desc": "a ball"}]}
     st = tmp_path / "st"; st.mkdir()
@@ -148,3 +149,49 @@ def test_judge_saves_a_continuation_with_its_base_and_asks_for_a_dataset_update(
     rep = aa.judge(req, 2, st, out2, lib)
     it = json.loads((lib / "index.json").read_text())["items"]["bg_new_sun"]
     assert rep["complete"] and it["base"] == "bg_new" and it["change"] == "sun"
+
+
+def test_a_new_place_takes_no_reference_by_default(tmp_path):
+    lib = _lib(tmp_path); st = tmp_path / "st"; st.mkdir()
+    r = aa.plan({"name": "t", "needs": [{"id": "bg_x", "type": "background", "tags": ["room"], "desc": "a room"}]}, 1, st, lib, tmp_path / "j.json")
+    assert not r["uses_dataset"] and all(j["refs"] == [] for j in json.loads((tmp_path / "j.json").read_text())["jobs"])
+
+
+def test_soft_issues_are_redrawn_then_accepted_with_warnings_and_hard_issues_never_used(tmp_path):
+    lib = _lib(tmp_path); st = tmp_path / "st"; out1 = tmp_path / "o1"; out1.mkdir()
+    req = {"name": "t", "needs": [{"id": "obj_y", "type": "object", "tags": ["ball"], "desc": "a ball"},
+                                  {"id": "obj_z", "type": "object", "tags": ["cube"], "desc": "a cube"}]}
+    _obj(out1 / "pose_obj_y_r1_c0.png", 900)                                   # too big: soft issue only
+    Image.new("RGB", (W, H), "white").save(out1 / "pose_obj_z_r1_c0.png")      # blank: hard issue
+    rep = aa.judge(req, 1, st, out1, lib, max_rounds=2)
+    assert rep["accepted"] == [] and (st / "fallback.json").exists()           # soft: kept as fallback, will be drawn again
+    out2 = tmp_path / "o2"; out2.mkdir(); Image.new("RGB", (W, H), "white").save(out2 / "pose_obj_z_r2_c0.png")
+    rep = aa.judge(req, 2, st, out2, lib, max_rounds=2)                        # last round
+    assert rep["accepted"] == ["obj_y"] and "obj_y" in rep["accepted_with_warnings"] and rep["still_missing"] == ["obj_z"]
+    assert json.loads((lib / "index.json").read_text())["items"]["obj_y"]["warnings"]
+
+
+def test_finalize_accepts_the_best_fallback_without_new_pictures(tmp_path):
+    lib = _lib(tmp_path); st = tmp_path / "st"; out = tmp_path / "o"; out.mkdir()
+    req = {"name": "t", "needs": [{"id": "obj_y", "type": "object", "tags": ["ball"], "desc": "a ball"}]}
+    _obj(out / "pose_obj_y_r1_c0.png", 900); aa.judge(req, 1, st, out, lib, max_rounds=3)
+    rep = aa.judge(req, 3, st, None, lib, max_rounds=3)
+    assert rep["complete"] and "obj_y" in rep["accepted_with_warnings"]
+
+
+def test_next_view_needs_the_same_colours_and_a_new_view(tmp_path):
+    lib = _lib(tmp_path); style = aa.library_style(json.loads((lib / "index.json").read_text()), lib)
+    _scene(tmp_path / "base.png"); _scene(tmp_path / "copy.png")
+    d = Image.new("RGB", (W, H), (200, 60, 60)); d.save(tmp_path / "red.png")                 # other colours, different picture
+    _scene(tmp_path / "next.png", seed=7)                                                       # same colours, other arrangement
+    ok = aa.gate_continuation(tmp_path / "next.png", tmp_path / "base.png", style, "next")
+    assert ok["palette"] > 0.8 and ok["changed"] > 0.1 and not any("continue" in w or "next view" in w for w in ok["why"])
+    cp = aa.gate_continuation(tmp_path / "copy.png", tmp_path / "base.png", style, "next"); assert any("not a next view" in w for w in cp["why"])
+    rd = aa.gate_continuation(tmp_path / "red.png", tmp_path / "base.png", style, "next"); assert any("colours do not continue" in w for w in rd["why"])
+
+
+def test_drift_from_the_first_picture_of_a_chain_is_noticed(tmp_path):
+    lib = _lib(tmp_path); style = aa.library_style(json.loads((lib / "index.json").read_text()), lib)
+    _scene(tmp_path / "first.png"); _scene(tmp_path / "second.png", sun=True); _scene(tmp_path / "third.png", sun=True, seed=5)
+    g = aa.gate_continuation(tmp_path / "third.png", tmp_path / "second.png", style, "same", tmp_path / "first.png")
+    assert "struct_root" in g and g["struct_root"] < aa.ROOT_MIN + 0.3

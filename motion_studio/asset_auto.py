@@ -60,8 +60,12 @@ def prompt_for(need: dict, refs: list[str]) -> str:
 
 
 def continuation_prompt(need: dict) -> str:
-    """Draw the new picture FROM the reference: same place, same camera, same layout; only the named thing changes."""
+    """Drawn FROM an earlier picture. mode 'same': same place and layout, only the named thing changes.
+    mode 'next': the next view of the same area: same kind of buildings, lamps, ground, colours and style, but a new view."""
     from .script_reader import VARIANT, words as _w
+    if need.get("mode") == "next":
+        return ("Draw the next view of the same area as the reference picture. Continue exactly the same art style, the same kind of buildings, shops, "
+                f"lamps, ground and the same colours as in the reference picture, but show a new view of the area: {need['desc']}. " + lib_mod.STYLE)
     change = need.get("change") or need["desc"]
     if change and set(_w(change)) <= VARIANT:                 # only look words (time of day, weather): say it as a change of light
         change = f"the time and light of day, it is now {change}, so the sky, light and shadows change as that time of day needs"
@@ -93,7 +97,7 @@ def plan(request: dict, round_no: int, state: Path, lib: Path = LIB, jobs_file: 
         if bs == "ready":                         # continuation: the earlier picture is the reference, the prompt says what changes
             refs = ["ds:" + store.flat_name(db["items"][n["base"]]["file"])]; prompt = continuation_prompt(n)
         else:
-            refs = style_refs(db, n) if n["type"] == "background" and os.environ.get("ASSET_REFS", "1") != "0" else []; prompt = prompt_for(n, refs)
+            refs = style_refs(db, n) if n["type"] == "background" and os.environ.get("ASSET_REFS", "0") == "1" else []; prompt = prompt_for(n, refs)
         for c in range(CANDIDATES):
             jobs.append({"id": f"{n['id']}_r{round_no}_c{c}", "prompt": prompt, "refs": refs,
                          "seed": 8100 + 1000 * round_no + 10 * ni + c, "width": W, "height": H})
@@ -219,32 +223,67 @@ def gate_background(path: Path, ref_style: dict, ref_paths: list[Path] | None = 
     return {"pass": not why, "why": why, "score": score, "text_check": tw is not None, **{k: round(v, 3) for k, v in s.items()}}
 
 
-STRUCT_MIN, CHANGED_MIN = 0.30, 0.02      # NOT calibrated on real pairs yet: the numbers are logged for every continuation so they can be set from real runs
+STRUCT_MIN, CHANGED_MIN = 0.30, 0.02      # NOT calibrated on many pairs: numbers are logged for every continuation. All of these are SOFT (warnings).
+ROOT_MIN = 0.20                           # a picture later in a chain must still look like the FIRST picture of the chain (drift check)
+PALETTE_MIN, NEXT_CHANGED_MIN = 0.35, 0.10
+
+
+def _edges(im: Image.Image):
+    from scipy import ndimage as ndi
+    g = ndi.gaussian_filter(np.asarray(im.convert("L").resize((144, 256))).astype(float), 1.0)
+    return ndi.gaussian_filter(np.hypot(*np.gradient(g)), 1.5).ravel()
+
+
+def _corr(a, b) -> float:
+    c = np.corrcoef(a, b)[0, 1]
+    return 0.0 if np.isnan(c) else float(c)       # a flat picture has no outlines: no match
+
+
+def palette_similarity(img: Image.Image, base: Image.Image) -> float:
+    """Do the two pictures use the same colours? Hue histogram (weighted by saturation) intersection, 1 = same palette."""
+    def hist(im):
+        a = np.asarray(im.convert("RGB").resize((72, 128))).astype(float) / 255
+        mx, mn = a.max(2), a.min(2); sat = np.where(mx > 0, (mx - mn) / np.maximum(mx, 1e-6), 0)
+        r, g, b = a[..., 0], a[..., 1], a[..., 2]; d = np.maximum(mx - mn, 1e-6)
+        h = np.where(mx == r, ((g - b) / d) % 6, np.where(mx == g, (b - r) / d + 2, (r - g) / d + 4)) / 6
+        hh, _ = np.histogram(h, bins=16, range=(0, 1), weights=sat * (mx > 0.15)); t = hh.sum()
+        return hh / t if t > 0 else np.ones(16) / 16
+    return float(np.minimum(hist(img), hist(base)).sum())
 
 
 def continuation_metrics(img: Image.Image, base: Image.Image) -> dict:
     """struct: do the outlines of the new picture sit where the base's outlines sit (1 = same layout).  changed: share of the picture whose colour moved."""
-    from scipy import ndimage as ndi
-    def edges(im):
-        g = ndi.gaussian_filter(np.asarray(im.convert("L").resize((144, 256))).astype(float), 1.0)
-        return ndi.gaussian_filter(np.hypot(*np.gradient(g)), 1.5)
-    a, b = edges(img).ravel(), edges(base).ravel()
-    struct = float(np.corrcoef(a, b)[0, 1])
+    struct = _corr(_edges(img), _edges(base))
     x = np.asarray(img.convert("RGB").resize((144, 256))).astype(int); y = np.asarray(base.convert("RGB").resize((144, 256))).astype(int)
     d = np.abs(x - y).max(2)
     return {"struct": round(struct, 3), "changed": round(float((d > 30).mean()), 3), "mean_diff": round(float(d.mean()), 2)}
 
 
-def gate_continuation(path: Path, base_path: Path, ref_style: dict) -> dict:
-    """A picture drawn FROM another one: normal picture checks (light and colour are allowed to change), plus: same layout, and a visible change."""
+def gate_continuation(path: Path, base_path: Path, ref_style: dict, mode: str = "same", root_path: Path | None = None) -> dict:
+    """A picture drawn FROM another one. Normal picture checks (light and colour may change) plus, by mode:
+    same: layout kept and something visibly changed, and still like the first picture of the chain.
+    next: same colours/style, and a new view (not a copy of the base)."""
     g = gate_background(path, ref_style, skip=("sat", "bright", "dark"))
-    m = continuation_metrics(Image.open(path), Image.open(base_path))
-    if m["struct"] < STRUCT_MIN:
-        g["why"].append(f"not the same place any more (layout match {m['struct']} < {STRUCT_MIN})")
-    if m["changed"] < CHANGED_MIN:
-        g["why"].append(f"nothing visible changed ({m['changed']:.0%} of the picture)")
+    img, base = Image.open(path), Image.open(base_path)
+    m = continuation_metrics(img, base)
+    if mode == "next":
+        m["palette"] = round(palette_similarity(img, base), 3)
+        if m["palette"] < PALETTE_MIN:
+            g["why"].append(f"colours do not continue from the earlier picture (palette match {m['palette']} < {PALETTE_MIN})")
+        if m["changed"] < NEXT_CHANGED_MIN:
+            g["why"].append(f"looks like the same view, not a next view ({m['changed']:.0%} changed)")
+        g["score"] = round(m["palette"] + min(m["changed"], 0.5), 3)
+    else:
+        if m["struct"] < STRUCT_MIN:
+            g["why"].append(f"not the same place any more (layout match {m['struct']} < {STRUCT_MIN})")
+        if m["changed"] < CHANGED_MIN:
+            g["why"].append(f"nothing visible changed ({m['changed']:.0%} of the picture)")
+        if root_path is not None and Path(root_path).is_file() and Path(root_path) != Path(base_path):
+            m["struct_root"] = round(_corr(_edges(img), _edges(Image.open(root_path))), 3)
+            if m["struct_root"] < ROOT_MIN:
+                g["why"].append(f"drifted away from the first picture of the chain (layout match {m['struct_root']} < {ROOT_MIN})")
+        g["score"] = round(m["struct"] + min(m["changed"], 0.5), 3)
     g.update(m); g["pass"] = not g["why"]
-    g["score"] = round(m["struct"] + min(m["changed"], 0.5), 3) if g["pass"] else g["score"]
     return g
 
 
@@ -283,14 +322,28 @@ def candidates_for(outputs: Path, item_id: str) -> list[Path]:
     return sorted(Path(outputs).rglob(f"pose_{item_id}_r*_c*.png"))
 
 
-def judge(request: dict, round_no: int, state: Path, outputs: Path, lib: Path = LIB, run: str = "") -> dict:
+HARD = ("size ", "blank picture", "no object found")      # a picture with one of these cannot be used at all; everything else is a soft warning
+
+
+def hard_issue(why: list[str]) -> bool:
+    return any(w.startswith(HARD) for w in why)
+
+
+def judge(request: dict, round_no: int, state: Path, outputs: Path | None, lib: Path = LIB, run: str = "", max_rounds: int = MAX_ROUNDS_DEFAULT) -> dict:
+    """Pick the best picture for every item that is still missing.
+    - a picture without any issue is accepted at once;
+    - a picture with only SOFT issues (style numbers, text, floor, layout...) is kept as the fallback and the item is drawn again;
+      in the last round the best fallback is accepted and labelled 'accepted with warnings' (a short is never lost for a small flaw);
+    - a picture with a HARD issue (wrong size, blank, no object) is never used."""
     state = Path(state); state.mkdir(parents=True, exist_ok=True)
     cand_dir = state / "candidates"; cand_dir.mkdir(exist_ok=True)
-    for f in Path(outputs).rglob("pose_*.png"):
+    for f in (Path(outputs).rglob("pose_*.png") if outputs else []):
         shutil.copy(f, cand_dir / f.name)
     db = json.loads((lib / "index.json").read_text()); style = library_style(db, lib)
     acc_file = state / "accepted.json"; accepted = json.loads(acc_file.read_text()) if acc_file.exists() else {}
-    log, new_items = {}, {}
+    fb_file = state / "fallback.json"; fallback = json.loads(fb_file.read_text()) if fb_file.exists() else {}
+    final = round_no >= max_rounds
+    log, new_items, with_warnings = {}, {}, {}
     for n in request["needs"]:
         if n["id"] in accepted:
             continue
@@ -302,46 +355,68 @@ def judge(request: dict, round_no: int, state: Path, outputs: Path, lib: Path = 
                 if fixed is not None:
                     fixed.save(c); note = "pale bottom band cut off and picture stretched back (code repair)"
             if n["type"] == "background" and n.get("base") and n["base"] in db["items"]:
-                g = gate_continuation(c, lib / db["items"][n["base"]]["file"], style)
+                root = db["items"][n["base"]].get("root") or n.get("root")
+                rp = lib / db["items"][root]["file"] if root and root in db["items"] else None
+                g = gate_continuation(c, lib / db["items"][n["base"]]["file"], style, n.get("mode") or "same", rp)
             else:
                 g = gate_background(c, style) if n["type"] == "background" else gate_object(c)
             if note:
                 g["repair"] = note
             scored.append((c, g))
         log[n["id"]] = [{"file": c.name, **g} for c, g in scored]
-        ok = [(c, g) for c, g in scored if g["pass"]]
-        if not ok:
+        usable = [(c, g) for c, g in scored if not hard_issue(g["why"])]
+        clean = [(c, g) for c, g in usable if not g["why"]]
+        if clean:
+            c, g = max(clean, key=lambda t: t[1]["score"])
+        elif usable:
+            c, g = min(usable, key=lambda t: (len(t[1]["why"]), -t[1]["score"]))
+            old = fallback.get(n["id"])
+            if not old or (len(g["why"]), -g["score"]) < (len(old["why"]), -old["score"]):
+                fallback[n["id"]] = {"file": c.name, "why": g["why"], "score": g["score"]}
+            if not final:
+                continue                                        # draw it again; the fallback is kept
+            f = fallback[n["id"]]; c = cand_dir / f["file"]; g = {"why": f["why"], "score": f["score"]}
+        elif final and n["id"] in fallback:
+            f = fallback[n["id"]]; c = cand_dir / f["file"]; g = {"why": f["why"], "score": f["score"]}
+        else:
             continue
-        c, g = max(ok, key=lambda t: t[1]["score"])
         sub = "backgrounds" if n["type"] == "background" else "objects"; dst = lib / sub / f"{n['id']}.png"
         if n["type"] == "object":
             lib_mod.cutout(c, dst)
         else:
             dst.parent.mkdir(parents=True, exist_ok=True); shutil.copy(c, dst)
-        new_items[n["id"]] = {"type": n["type"], "tags": sorted({t.lower() for t in n["tags"]}), "file": f"{sub}/{n['id']}.png", "desc": n["desc"],
-                              "run": run, "source": "auto", "gate_score": g["score"], "from_picture": c.name,
-                              **({"base": n["base"], "change": n.get("change", "")} if n.get("base") else {})}
+        item = {"type": n["type"], "tags": sorted({t.lower() for t in n["tags"]}), "file": f"{sub}/{n['id']}.png", "desc": n["desc"],
+                "run": run, "source": "auto", "gate_score": g["score"], "from_picture": c.name}
+        if n.get("base"):
+            base_root = (db["items"].get(n["base"]) or {}).get("root") or n.get("root") or n["base"]
+            item.update({"base": n["base"], "change": n.get("change", ""), "mode": n.get("mode") or "same", "root": base_root})
+        if g["why"]:
+            item["warnings"] = g["why"]; with_warnings[n["id"]] = g["why"]
+        new_items[n["id"]] = item
         accepted[n["id"]] = c.name
     if new_items:
         store.merge_index(lib, new_items); store.stamp_hashes(lib)
-    acc_file.write_text(json.dumps(accepted, indent=1))
+    acc_file.write_text(json.dumps(accepted, indent=1)); fb_file.write_text(json.dumps(fallback, indent=1))
     missing = [n["id"] for n in request["needs"] if n["id"] not in accepted]
     waiting_on_dataset = [n["id"] for n in request["needs"] if n["id"] in missing and n.get("base") in accepted]   # their base must reach the dataset before Kaggle can use it
+    old_ww = json.loads((state / "report.json").read_text()).get("accepted_with_warnings", {}) if (state / "report.json").exists() else {}
     report = {"request": request.get("name"), "round": round_no, "accepted": sorted(accepted), "still_missing": missing, "complete": not missing,
-              "gate_log": log, "human_reviewed": False, "style_reference": style, "needs_dataset_update": waiting_on_dataset}
+              "accepted_with_warnings": {**old_ww, **with_warnings}, "gate_log": log, "human_reviewed": False, "style_reference": style,
+              "needs_dataset_update": waiting_on_dataset}
     (state / "report.json").write_text(json.dumps(report, indent=1))
     return report
 
 
 def main(argv: list[str] | None = None) -> int:
-    p = argparse.ArgumentParser(); p.add_argument("cmd", choices=["plan", "judge"]); p.add_argument("--request", required=True)
-    p.add_argument("--round", type=int, required=True); p.add_argument("--state", required=True); p.add_argument("--outputs"); p.add_argument("--lib", default=str(LIB))
+    p = argparse.ArgumentParser(); p.add_argument("cmd", choices=["plan", "judge", "finalize"]); p.add_argument("--request", required=True)
+    p.add_argument("--round", type=int, default=0); p.add_argument("--state", required=True); p.add_argument("--outputs"); p.add_argument("--lib", default=str(LIB)); p.add_argument("--max-rounds", type=int, default=MAX_ROUNDS_DEFAULT)
     a = p.parse_args(argv); req = json.loads(Path(a.request).read_text(encoding="utf-8"))
     if a.cmd == "plan":
         r = plan(req, a.round, Path(a.state), Path(a.lib)); print(json.dumps(r))
         print(f"NOTHING_PENDING={'true' if not r['pending'] else 'false'}"); print(f"NOTHING_TO_DRAW={'true' if r['jobs'] == 0 else 'false'}"); print(f"USES_DATASET={'true' if r['uses_dataset'] else 'false'}")
     else:
-        r = judge(req, a.round, Path(a.state), Path(a.outputs), Path(a.lib), run=__import__("os").environ.get("GITHUB_RUN_ID", ""))
+        r = judge(req, a.round if a.cmd == "judge" else a.max_rounds, Path(a.state), Path(a.outputs) if a.outputs else None, Path(a.lib),
+                  run=__import__("os").environ.get("GITHUB_RUN_ID", ""), max_rounds=a.max_rounds)
         print(json.dumps({k: r[k] for k in ("round", "accepted", "still_missing", "complete")})); print(f"DONE={'true' if r['complete'] else 'false'}"); print(f"NEEDS_UP={'true' if r['needs_dataset_update'] else 'false'}")
     return 0
 
