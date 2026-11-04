@@ -1,0 +1,161 @@
+{
+  "identity": {
+    "run_id": "7249619e8b2f4789b601361dd6a52176",
+    "run_token": "a7a85fa2b24da9e5033e83dba55b7dc0",
+    "commit_sha": "8a4fb4612cafd8626163b2fa802364a11b69e4a6",
+    "workflow_run_id": "41785589378",
+    "workflow_run_attempt": "1",
+    "created_utc": "2026-11-04T06:27:33+00:00"
+  },
+  "kernel": "narasimhadamarla/stickman-motion-studio-scene-batch",
+  "pushed_version": 12,
+  "push_attempts": 1,
+  "observations": [
+    {
+      "at": "2026-11-04T06:27:33+00:00",
+      "event": "notebook_stamped",
+      "run_token_written": true
+    },
+    {
+      "at": "2026-11-04T06:27:35+00:00",
+      "event": "push_response",
+      "attempt": 1,
+      "exit_code": 0,
+      "text": "Kernel version 12 successfully pushed.  Please check progress at https://www.kaggle.com/code/narasimhadamarla/stickman-motion-studio-scene-batch"
+    },
+    {
+      "at": "2026-11-04T06:27:35+00:00",
+      "event": "push_accepted",
+      "version": 12
+    },
+    {
+      "at": "2026-11-04T06:27:35+00:00",
+      "event": "status",
+      "state": "QUEUED"
+    },
+    {
+      "at": "2026-11-04T06:28:05+00:00",
+      "event": "status",
+      "state": "RUNNING"
+    },
+    {
+      "at": "2026-11-04T06:40:46+00:00",
+      "event": "status",
+      "state": "COMPLETE"
+    },
+    {
+      "at": "2026-11-04T06:40:53+00:00",
+      "event": "download",
+      "attempt": 1,
+      "exit_code": 0,
+      "text": "ult_klein.json to kaggle-poses-output/outputs\n\n  0%|          | 0.00/6.61k [00:00<?, ?B/s]\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 6.61k/6.61k [00:00<00:00, 46.8MB/s]\n\nOutput file downloaded to kaggle-poses-output/outputs/result_klein.json\nKernel log downloaded to kaggle-poses-output/stickman-motion-studio-scene-batch.log"
+    }
+  ],
+  "download_attempts": 1,
+  "validation": {
+    "ok": true,
+    "failures": [],
+    "checks": {
+      "pictures": [
+        {
+          "file": "pose_bg_v3_street_barrier.png",
+          "valid": true
+        },
+        {
+          "file": "pose_bg_v3_garage.png",
+          "valid": true
+        },
+        {
+          "file": "pose_bg_v3_street_corner.png",
+          "valid": true
+        },
+        {
+          "file": "pose_bg_v3_hospital.png",
+          "valid": true
+        },
+        {
+          "file": "pose_bg_v3_bulletin.png",
+          "valid": true
+        },
+        {
+          "file": "pose_bg_v3_police_steps.png",
+          "valid": true
+        },
+        {
+          "file": "pose_bg_v3_night_study.png",
+          "valid": true
+        },
+        {
+          "file": "pose_bg_v3_dispatch.png",
+          "valid": true
+        },
+        {
+          "file": "pose_bg_v3_warehouse.png",
+          "valid": true
+        },
+        {
+          "file": "pose_bg_v3_classroom.png",
+          "valid": true
+        },
+        {
+          "file": "pose_bg_v3_skyline.png",
+          "valid": true
+        },
+        {
+          "file": "pose_ins_traffic_grey.png",
+          "valid": true
+        },
+        {
+          "file": "pose_ins_cards_orange.png",
+          "valid": true
+        },
+        {
+          "file": "pose_ins_calendar.png",
+          "valid": true
+        },
+        {
+          "file": "pose_ins_blueprints_orange.png",
+          "valid": true
+        },
+        {
+          "file": "pose_ins_blueprint_battery.png",
+          "valid": true
+        },
+        {
+          "file": "pose_ins_blueprint_circuit.png",
+          "valid": true
+        },
+        {
+          "file": "pose_ins_wires_straight_grey.png",
+          "valid": true
+        },
+        {
+          "file": "pose_ins_wires_cut_red_pliers.png",
+          "valid": true
+        },
+        {
+          "file": "pose_ins_wires_knot_grey.png",
+          "valid": true
+        },
+        {
+          "file": "pose_ins_timer_dark.png",
+          "valid": true
+        },
+        {
+          "file": "pose_ins_timer_red.png",
+          "valid": true
+        },
+        {
+          "file": "pose_ins_explosion.png",
+          "valid": true
+        }
+      ],
+      "drawn": 23,
+      "wanted": 23
+    }
+  },
+  "limitations": [
+    "The Kaggle CLI exposes the notebook version number, not a separate execution ID. Version tracking plus the run token in the output are used together."
+  ],
+  "result": "verified"
+}

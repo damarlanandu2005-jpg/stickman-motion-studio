@@ -1,0 +1,312 @@
+{
+  "run_token": "a7a85fa2b24da9e5033e83dba55b7dc0",
+  "run_id": "7249619e8b2f4789b601361dd6a52176",
+  "commit_sha": "8a4fb4612cafd8626163b2fa802364a11b69e4a6",
+  "workflow_run_id": "41785589378",
+  "status": "completed",
+  "error_message": null,
+  "poses": [
+    "bg_v3_street_barrier",
+    "bg_v3_garage",
+    "bg_v3_street_corner",
+    "bg_v3_hospital",
+    "bg_v3_bulletin",
+    "bg_v3_police_steps",
+    "bg_v3_night_study",
+    "bg_v3_dispatch",
+    "bg_v3_warehouse",
+    "bg_v3_classroom",
+    "bg_v3_skyline",
+    "ins_traffic_grey",
+    "ins_cards_orange",
+    "ins_calendar",
+    "ins_blueprints_orange",
+    "ins_blueprint_battery",
+    "ins_blueprint_circuit",
+    "ins_wires_straight_grey",
+    "ins_wires_cut_red_pliers",
+    "ins_wires_knot_grey",
+    "ins_timer_dark",
+    "ins_timer_red",
+    "ins_explosion"
+  ],
+  "seeds": [
+    0
+  ],
+  "reference": "animation/reference_art/",
+  "environment": {
+    "python": "3.13.16",
+    "torch": "2.11.0+cu130",
+    "cuda_available": true,
+    "gpu_names": [
+      "Tesla T4",
+      "Tesla T4"
+    ]
+  },
+  "klein": {
+    "stage": "klein",
+    "status": "success",
+    "error": null,
+    "pictures": [
+      {
+        "pose": "bg_v3_street_barrier",
+        "seed": 8000,
+        "status": "success",
+        "file": "pose_bg_v3_street_barrier.png",
+        "seconds": 29.2,
+        "width": 576,
+        "height": 1024,
+        "sha256": "d064b20b78facf05b3ac5769c56088ca62ae959fcbde64405f22824983e33214"
+      },
+      {
+        "pose": "bg_v3_garage",
+        "seed": 8001,
+        "status": "success",
+        "file": "pose_bg_v3_garage.png",
+        "seconds": 22.72,
+        "width": 576,
+        "height": 1024,
+        "sha256": "b2beedeb85e7b006881ca402c0840f0f4eb6c9de0a697e9660be6416de61a54c"
+      },
+      {
+        "pose": "bg_v3_street_corner",
+        "seed": 8002,
+        "status": "success",
+        "file": "pose_bg_v3_street_corner.png",
+        "seconds": 22.03,
+        "width": 576,
+        "height": 1024,
+        "sha256": "840220d985d44cacbe81364d6186619c43c56feb8c0cf4ba9a7749ffe32448ca"
+      },
+      {
+        "pose": "bg_v3_hospital",
+        "seed": 8003,
+        "status": "success",
+        "file": "pose_bg_v3_hospital.png",
+        "seconds": 21.17,
+        "width": 576,
+        "height": 1024,
+        "sha256": "fef1ec8580185fa244623f60eb7af710f24a2ec1f9942aa3820be9cf70497801"
+      },
+      {
+        "pose": "bg_v3_bulletin",
+        "seed": 8004,
+        "status": "success",
+        "file": "pose_bg_v3_bulletin.png",
+        "seconds": 20.7,
+        "width": 576,
+        "height": 1024,
+        "sha256": "7e6b6bc030eced100403375a28b28766e11a5df1e13dbee3a6a518c9d679fd83"
+      },
+      {
+        "pose": "bg_v3_police_steps",
+        "seed": 8005,
+        "status": "success",
+        "file": "pose_bg_v3_police_steps.png",
+        "seconds": 20.27,
+        "width": 576,
+        "height": 1024,
+        "sha256": "999e55a37cd44f63a79d20cb61de559bfc32843b328170b359b569d3d1bdf070"
+      },
+      {
+        "pose": "bg_v3_night_study",
+        "seed": 8006,
+        "status": "success",
+        "file": "pose_bg_v3_night_study.png",
+        "seconds": 20.32,
+        "width": 576,
+        "height": 1024,
+        "sha256": "bb7a0ef34009e18e0e8099bd5f9062bf06cef0d61a551f4d166b2dc4141f8a06"
+      },
+      {
+        "pose": "bg_v3_dispatch",
+        "seed": 8007,
+        "status": "success",
+        "file": "pose_bg_v3_dispatch.png",
+        "seconds": 20.52,
+        "width": 576,
+        "height": 1024,
+        "sha256": "b60fa9863bf62caf7593c4a010977f72b5b8c5cd480db58cc04482921df948f0"
+      },
+      {
+        "pose": "bg_v3_warehouse",
+        "seed": 8008,
+        "status": "success",
+        "file": "pose_bg_v3_warehouse.png",
+        "seconds": 20.45,
+        "width": 576,
+        "height": 1024,
+        "sha256": "a24a9bbae3dab47f5567e5134aaa5637c76e2ba80a598e26cdd3e3f0f52cf4a8"
+      },
+      {
+        "pose": "bg_v3_classroom",
+        "seed": 8009,
+        "status": "success",
+        "file": "pose_bg_v3_classroom.png",
+        "seconds": 20.42,
+        "width": 576,
+        "height": 1024,
+        "sha256": "e7c46e78c7ce4481e597277eaf50d29bc7060cefd7b7c2126025a548da948d10"
+      },
+      {
+        "pose": "bg_v3_skyline",
+        "seed": 8010,
+        "status": "success",
+        "file": "pose_bg_v3_skyline.png",
+        "seconds": 20.65,
+        "width": 576,
+        "height": 1024,
+        "sha256": "5cd80c5ec63ccfa7ec90faaa03600598543932f526379caa1fbfdb074a42a427"
+      },
+      {
+        "pose": "ins_traffic_grey",
+        "seed": 8011,
+        "status": "success",
+        "file": "pose_ins_traffic_grey.png",
+        "seconds": 20.8,
+        "width": 576,
+        "height": 1024,
+        "sha256": "cb7f5fc2d424aee874d41d7436605ff6b78e3a4155a96b62856a40c36b1b72cf"
+      },
+      {
+        "pose": "ins_cards_orange",
+        "seed": 8012,
+        "status": "success",
+        "file": "pose_ins_cards_orange.png",
+        "seconds": 20.91,
+        "width": 576,
+        "height": 1024,
+        "sha256": "610212e7876c84dfb613c8ae1a56b47ad56b694e12383e94c0682c62a2d3090f"
+      },
+      {
+        "pose": "ins_calendar",
+        "seed": 8013,
+        "status": "success",
+        "file": "pose_ins_calendar.png",
+        "seconds": 21.1,
+        "width": 576,
+        "height": 1024,
+        "sha256": "a8dcd3f5b4ea930842f8231a30e5b2100a03f9f2bbc9cf96a82643f001ec46b1"
+      },
+      {
+        "pose": "ins_blueprints_orange",
+        "seed": 8014,
+        "status": "success",
+        "file": "pose_ins_blueprints_orange.png",
+        "seconds": 21.03,
+        "width": 576,
+        "height": 1024,
+        "sha256": "054c2248258bae952e4d0fc0f01847890237733b0386b9c60cb172f80e8d5b95"
+      },
+      {
+        "pose": "ins_blueprint_battery",
+        "seed": 8015,
+        "status": "success",
+        "file": "pose_ins_blueprint_battery.png",
+        "seconds": 21.36,
+        "width": 576,
+        "height": 1024,
+        "sha256": "5ebd081bbd9c3da8b3a710fc8b6eba33bb54fe839fa28b0488e814c69befe6a8"
+      },
+      {
+        "pose": "ins_blueprint_circuit",
+        "seed": 8016,
+        "status": "success",
+        "file": "pose_ins_blueprint_circuit.png",
+        "seconds": 21.46,
+        "width": 576,
+        "height": 1024,
+        "sha256": "23f017fde42c32213e1cf8581bd4ec6b54f42c0c191abafd8d731815eca526f6"
+      },
+      {
+        "pose": "ins_wires_straight_grey",
+        "seed": 8017,
+        "status": "success",
+        "file": "pose_ins_wires_straight_grey.png",
+        "seconds": 21.39,
+        "width": 576,
+        "height": 1024,
+        "sha256": "b2aad21bc5dd179e3f8002e96b3c60bacc6bb4c5348f5e0480860dab233939e4"
+      },
+      {
+        "pose": "ins_wires_cut_red_pliers",
+        "seed": 8018,
+        "status": "success",
+        "file": "pose_ins_wires_cut_red_pliers.png",
+        "seconds": 21.46,
+        "width": 576,
+        "height": 1024,
+        "sha256": "fa9785f42d9f42be9aac312309c0c823ae7b4eebc47f02e65813072b26a1e8da"
+      },
+      {
+        "pose": "ins_wires_knot_grey",
+        "seed": 8019,
+        "status": "success",
+        "file": "pose_ins_wires_knot_grey.png",
+        "seconds": 21.11,
+        "width": 576,
+        "height": 1024,
+        "sha256": "7f2032b1aa4366d24bd1c2e3e791e8743ed2703d20ebca9ecaa095eccc2ae209"
+      },
+      {
+        "pose": "ins_timer_dark",
+        "seed": 8020,
+        "status": "success",
+        "file": "pose_ins_timer_dark.png",
+        "seconds": 21.27,
+        "width": 576,
+        "height": 1024,
+        "sha256": "2e6edef8dfaa51d2c5884d6a13420462180065e2efbf3a32f8051e86b0af8e41"
+      },
+      {
+        "pose": "ins_timer_red",
+        "seed": 8021,
+        "status": "success",
+        "file": "pose_ins_timer_red.png",
+        "seconds": 21.29,
+        "width": 576,
+        "height": 1024,
+        "sha256": "6de12cc9a5aca61162e96268b6bd2404c7a5e3a0bf3074aff079b33d96ce5acf"
+      },
+      {
+        "pose": "ins_explosion",
+        "seed": 8022,
+        "status": "success",
+        "file": "pose_ins_explosion.png",
+        "seconds": 21.46,
+        "width": 576,
+        "height": 1024,
+        "sha256": "64c1cdd0e81878c300ec02bcbfaf1e01e4a3b13d13f6442a8eb9fa61a1c4f9e8"
+      }
+    ],
+    "download_seconds": 113.6,
+    "load_seconds": 66.5,
+    "peak_vram_gib": 7.75
+  },
+  "files": [
+    "pose_bg_v3_street_barrier.png",
+    "pose_bg_v3_garage.png",
+    "pose_bg_v3_street_corner.png",
+    "pose_bg_v3_hospital.png",
+    "pose_bg_v3_bulletin.png",
+    "pose_bg_v3_police_steps.png",
+    "pose_bg_v3_night_study.png",
+    "pose_bg_v3_dispatch.png",
+    "pose_bg_v3_warehouse.png",
+    "pose_bg_v3_classroom.png",
+    "pose_bg_v3_skyline.png",
+    "pose_ins_traffic_grey.png",
+    "pose_ins_cards_orange.png",
+    "pose_ins_calendar.png",
+    "pose_ins_blueprints_orange.png",
+    "pose_ins_blueprint_battery.png",
+    "pose_ins_blueprint_circuit.png",
+    "pose_ins_wires_straight_grey.png",
+    "pose_ins_wires_cut_red_pliers.png",
+    "pose_ins_wires_knot_grey.png",
+    "pose_ins_timer_dark.png",
+    "pose_ins_timer_red.png",
+    "pose_ins_explosion.png"
+  ],
+  "notebook_duration_seconds": 742.6
+}
