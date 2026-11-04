@@ -130,7 +130,7 @@ def silhouette(drawn_cut: Image.Image, ref_cut: Image.Image) -> tuple[float, flo
     return float((f1 & d0).sum() / max(f1.sum(), 1)), float((f0 & d1).sum() / max(f0.sum(), 1))
 
 
-def score_sheet(drawn: Path, ref: Path, info: list[dict], target_hue: tuple[float, float]) -> list[dict]:
+def score_sheet(drawn: Path, ref: Path, info: list[dict], target_hue: tuple[float, float] | None) -> list[dict]:
     """check_sheet numbers + silhouette match + stray white limbs, per pose. Adds 'score' (higher = closer to the old pose)."""
     res = cc.check_sheet(drawn, ref, info, target_hue)
     im, rf = Image.open(drawn).convert("RGB").resize((cc.SHEET_W, cc.SHEET_H), Image.LANCZOS), Image.open(ref).convert("RGB")

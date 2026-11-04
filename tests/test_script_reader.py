@@ -73,16 +73,16 @@ def test_missing_costume_gets_spec_stub_from_cast_look_and_colour(tmp_path):
     assert "shins" in spec["prompt_first"] and spec["max_rounds"] >= 2
 
 
-def test_unsupported_colour_is_refused_not_guessed():
-    with pytest.raises(sr.ScriptError):
-        sr.make_costume_spec("x", "a brown coat", "brown")
+def test_unknown_or_missing_colour_means_no_hue_check():
+    assert sr.make_costume_spec("x", "a brown coat", "brown")["target_hue"] is None
+    assert sr.make_costume_spec("x", "a brown coat")["target_hue"] is None
 
 
 def test_missing_costume_without_look_is_an_error(tmp_path):
     cast = {"characters": {"a": {"stages": {"s": {"costume": "ghost"}}}}}
     r = sr.resolve(sr.parse_script("SCENE\nbg: x\nwho: a\nsay: hi\n"), cast, DB, tmp_path)
     sr.write_specs(r, cast, tmp_path / "specs")
-    assert any("no 'look' and 'colour'" in e for e in r["errors"])
+    assert any("no 'look'" in e for e in r["errors"])
 
 
 def test_look_words_make_a_continuation_not_a_close_match():

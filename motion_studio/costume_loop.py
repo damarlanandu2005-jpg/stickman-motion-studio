@@ -154,7 +154,7 @@ def judge(spec: dict, round_no: int, state: Path, outputs: Path, art: Path = ART
             ca.repair_sheet(p, info, cand / f"{p.stem}fix.png")
     sheets = {p.stem: p for p in sorted(list(cand.glob(f"{spec['name']}_r*_s*.png")) + list(cand.glob(f"{spec['name']}_p*_k*.png")))}
     ref = art / spec["old_sheet"]
-    scored = {k: ca.score_sheet(p, ref, info, tuple(spec["target_hue"])) for k, p in sheets.items()}
+    scored = {k: ca.score_sheet(p, ref, info, tuple(spec["target_hue"]) if spec.get("target_hue") else None) for k, p in sheets.items()}
     picks = ca.pick_best(scored) if scored else {}
     manifest = ca.save_accepted(spec["name"], picks, sheets, info, state / "out") if scored else {"missing": list(range(len(info))), "complete": False}
     why = {k: {str(r["pose"]): r["why"] for r in v if not r["pass"]} for k, v in scored.items()}

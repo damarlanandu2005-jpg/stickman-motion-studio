@@ -229,16 +229,14 @@ def resolve(script: dict, cast: dict, db: dict | None = None, root: Path = ROOT)
             "missing_costumes": missing_costumes, "missing_assets": list(seen.values()), "ok": not errors}
 
 
-def make_costume_spec(name: str, look: str, colour: str, template: Path | None = None) -> dict:
+def make_costume_spec(name: str, look: str, colour: str | None = None, template: Path | None = None) -> dict:
     """Spec for the automatic costume loop, from one line of words and a colour. Colours the hue check can judge only."""
-    colour = colour.lower().strip()
-    if colour not in HUES:
-        raise ScriptError(f"colour '{colour}' is not supported by the automatic hue check yet (use: {', '.join(HUES)})")
+    colour = (colour or "").lower().strip()   # unknown / missing colour: no hue check (the other checks still run)
     t = json.loads((template or ROOT / "animation" / "costume_specs" / "bombsuit.json").read_text())
     old = t["prompt_first"].split("Only the outfit changes:")[0]
     keep = " Keep the round white hands and the plain white neck stub exactly as in the reference. Do not draw any head, face, helmet or hat. No text, no letters, no numbers."
     first = (old + f"Only the outfit changes: every figure wears {look}, instead of the khaki explorer outfit. The legs, including the shins, are covered by the same outfit." + keep)
-    spec = dict(t); spec["name"] = name; spec["target_hue"] = list(HUES[colour]); spec["prompt_first"] = first
+    spec = dict(t); spec["name"] = name; spec["target_hue"] = list(HUES[colour]) if colour in HUES else None; spec["prompt_first"] = first
     spec["prompt_retry"] = (t["prompt_retry"].split("Image 2 shows the exact outfit design")[0] +
                             f"Image 2 shows the exact outfit design (some cells may be empty): {look}. Draw a new sheet with all 12 poses at the same layout, same positions, same size and same body proportions as image 1, every figure wearing exactly the same outfit as image 2, the legs and shins fully covered, same thick dark outlines and flat cartoon style. Keep the round white hands and the plain white neck stub. Do not draw any head, face, helmet or hat. No text, no letters, no numbers.")
     spec["prompt_pose"] = (f"Image 1 is a headless cartoon body in one pose on a plain white background. Image 2 is a headless cartoon body wearing {look}. Draw ONE figure in exactly the pose, body position, size and proportions of image 1, wearing exactly the same outfit as image 2. The legs and shins are fully covered. Front view like image 1. Round white hands, plain white neck stub, no head, no face, no helmet, plain white background, same thick dark outlines and flat cartoon style. No text.")
@@ -246,14 +244,14 @@ def make_costume_spec(name: str, look: str, colour: str, template: Path | None =
 
 
 def write_specs(result: dict, cast: dict, out_dir: Path) -> list[str]:
-    """For every costume that is missing: write its spec stub if the cast file gave a 'look' and a 'colour'. Nothing is drawn here."""
+    """For every costume that is missing: write its spec stub if the cast file gave a 'look' (colour is optional). Nothing is drawn here."""
     made = []
     for name in result["missing_costumes"]:
         if result["costume_status"].get(name) != "missing":
             continue
         info = cast.get("costumes", {}).get(name, {})
-        if not info.get("look") or not info.get("colour"):
-            result["errors"].append(f"costume '{name}' is missing and the cast file has no 'look' and 'colour' for it")
+        if not info.get("look"):
+            result["errors"].append(f"costume '{name}' is missing and the cast file has no 'look' for it")
             continue
         spec = make_costume_spec(name, info["look"], info["colour"])
         p = Path(out_dir) / f"{name}.json"; p.parent.mkdir(parents=True, exist_ok=True); p.write_text(json.dumps(spec, indent=1)); made.append(str(p))

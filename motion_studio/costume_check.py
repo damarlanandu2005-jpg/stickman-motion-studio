@@ -85,7 +85,7 @@ def _share(hues: np.ndarray, lo: float, hi: float) -> float:
     return float(((hues >= lo) & (hues <= hi)).mean()) if len(hues) else 0.0
 
 
-def check_sheet(drawn: Path, ref: Path, info: list[dict], target_hue: tuple[float, float], leftover_hue: tuple[float, float] = (0.06, 0.14)) -> list[dict]:
+def check_sheet(drawn: Path, ref: Path, info: list[dict], target_hue: tuple[float, float] | None, leftover_hue: tuple[float, float] = (0.06, 0.14)) -> list[dict]:
     """Per pose: size ratios against the old pose, headless check, outline ratio, share of target-coloured pixels, share of left-over old colour."""
     im, rf = Image.open(drawn).convert("RGB").resize((SHEET_W, SHEET_H), Image.LANCZOS), Image.open(ref).convert("RGB")
     out = []
@@ -97,14 +97,14 @@ def check_sheet(drawn: Path, ref: Path, info: list[dict], target_hue: tuple[floa
         r = {"pose": i, "h_ratio": round(new["h"] / old["h"], 3), "w_ratio": round(new["w"] / old["w"], 3),
              "cx_shift": round(abs(new["cx"] - old["cx"]), 3), "top_ratio": round(new["top_w"] / max(old["top_w"], 1), 2),
              "outline_ratio": round(new["dark"] / max(old["dark"], 1e-6), 2),
-             "target_share": round(_share(new["hues"], *target_hue), 2), "leftover_share": round(_share(new["hues"], *leftover_hue), 2)}
+             "target_share": round(_share(new["hues"], *target_hue), 2) if target_hue else None, "leftover_share": round(_share(new["hues"], *leftover_hue), 2)}
         why = []
         if not 0.88 <= r["h_ratio"] <= 1.12: why.append("height")
         if not 0.78 <= r["w_ratio"] <= 1.3: why.append("width")
         if r["cx_shift"] > 0.12: why.append("off-centre")
         if r["top_ratio"] > 1.7: why.append("head or hat on top")
         if not 0.55 <= r["outline_ratio"] <= 1.7: why.append("outline")
-        if r["target_share"] < 0.45: why.append("costume colour")
+        if target_hue and r["target_share"] < 0.45: why.append("costume colour")
         if r["leftover_share"] > 0.12: why.append("old outfit colour left")
         r["pass"], r["why"] = not why, why
         out.append(r)
