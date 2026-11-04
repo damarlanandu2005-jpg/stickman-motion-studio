@@ -1,0 +1,1 @@
+{"ok": true, "frames_in_video": 1211, "frames_expected": 1211, "parts": 2, "part_seconds": [31.5, 27.0], "slowest_part_s": 31.5, "sum_of_parts_s": 58.5, "out": "out/example_long.mp4", "error": null}

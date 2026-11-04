@@ -1,0 +1,17 @@
+{
+ "ok": true,
+ "title": "Long Render Test",
+ "wav": "voice.wav",
+ "frames": 1211,
+ "fps": 30,
+ "seconds": 40.37,
+ "shots": 24,
+ "warnings": [
+  "costume 'bombsuit' is spec_only: stand-in 'role_tech' used"
+ ],
+ "missing_assets": [],
+ "missing_costumes": [
+  "bombsuit"
+ ],
+ "human_reviewed": false
+}

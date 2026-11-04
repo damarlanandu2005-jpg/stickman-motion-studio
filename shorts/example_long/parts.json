@@ -1,0 +1,19 @@
+{
+ "frames": 1211,
+ "parts": 2,
+ "ranges": [
+  {
+   "index": 0,
+   "start": 0,
+   "end": 606
+  },
+  {
+   "index": 1,
+   "start": 606,
+   "end": 1211
+  }
+ ],
+ "estimated_render_s_per_part": 30.3,
+ "estimated_single_job_s": 60.6,
+ "chosen_by": "time model"
+}
