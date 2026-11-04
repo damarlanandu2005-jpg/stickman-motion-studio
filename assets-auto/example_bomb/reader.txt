@@ -2,6 +2,4 @@ He Defused 41 Bombs Without Seeing COLOR: 3 scenes, voice am_fenrir
   costume bombsuit: spec_only
   costume chief: ready
   costume civ: ready
-  to draw: background 'bomb squad office, inside' (scene 1)
-  to draw: background 'city street at night' (scene 2)
 OK
