@@ -229,9 +229,10 @@ def render_frame(lib: Library, shot: dict, local_t: float) -> Image.Image:
 
 
 _FONTS: dict = {}
+_FD = Path(__file__).resolve().parents[1] / "animation" / "fonts"          # fonts shipped in the repo, so any machine renders the same
 FONT_FILES = {"mono": "/usr/share/fonts/truetype/dejavu/DejaVuSansMono-Bold.ttf",
-              "hand": "/usr/share/fonts/truetype/google-fonts/Lora-Italic-Variable.ttf",
-              "bold": "/usr/share/fonts/truetype/google-fonts/Poppins-Bold.ttf",
+              "hand": str(_FD / "Lora-Italic-Variable.ttf"),
+              "bold": str(_FD / "Poppins-Bold.ttf"),
               "sym": "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"}
 
 
@@ -290,7 +291,7 @@ def _caption(im: Image.Image, text: str, red, y: float = 0.68) -> None:
     global _FONT
     from PIL import ImageDraw, ImageFont
     if _FONT is None:
-        _FONT = ImageFont.truetype("/usr/share/fonts/truetype/google-fonts/Poppins-Bold.ttf", 42)
+        _FONT = ImageFont.truetype(FONT_FILES["bold"], 42)
     d = ImageDraw.Draw(im)
     text = text.upper()
     if not isinstance(red, (list, tuple)):
