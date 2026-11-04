@@ -1,18 +1,21 @@
 {
  "costume": "bombsuit",
- "round": 3,
+ "round": 2,
  "sheets_drawn": [
   "bombsuit_r1_s0",
+  "bombsuit_r1_s0fix",
   "bombsuit_r1_s1",
+  "bombsuit_r1_s1fix",
   "bombsuit_r1_s2",
+  "bombsuit_r1_s2fix",
   "bombsuit_r2_s0",
+  "bombsuit_r2_s0fix",
   "bombsuit_r2_s1",
+  "bombsuit_r2_s1fix",
   "bombsuit_r2_s2",
+  "bombsuit_r2_s2fix",
   "bombsuit_r2_s3",
-  "bombsuit_r3_s0",
-  "bombsuit_r3_s1",
-  "bombsuit_r3_s2",
-  "bombsuit_r3_s3"
+  "bombsuit_r2_s3fix"
  ],
  "complete": true,
  "missing_poses": [],
@@ -36,6 +39,20 @@
     "white limb left (bare leg)"
    ]
   },
+  "bombsuit_r1_s0fix": {
+   "2": [
+    "extra white parts (bare arm or leg)"
+   ],
+   "3": [
+    "extra white parts (bare arm or leg)"
+   ],
+   "8": [
+    "head or hat on top"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)"
+   ]
+  },
   "bombsuit_r1_s1": {
    "7": [
     "white limb left (bare leg)"
@@ -43,6 +60,14 @@
    "10": [
     "extra white parts (bare arm or leg)",
     "white limb left (bare leg)"
+   ],
+   "11": [
+    "pale patch in suit"
+   ]
+  },
+  "bombsuit_r1_s1fix": {
+   "10": [
+    "extra white parts (bare arm or leg)"
    ]
   },
   "bombsuit_r1_s2": {
@@ -58,6 +83,15 @@
     "white limb left (bare leg)"
    ]
   },
+  "bombsuit_r1_s2fix": {
+   "5": [
+    "extra white parts (bare arm or leg)"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "white limb left (bare leg)"
+   ]
+  },
   "bombsuit_r2_s0": {
    "10": [
     "extra white parts (bare arm or leg)",
@@ -67,10 +101,8 @@
     "white limb left (bare leg)"
    ]
   },
+  "bombsuit_r2_s0fix": {},
   "bombsuit_r2_s1": {
-   "2": [
-    "silhouette"
-   ],
    "4": [
     "height"
    ],
@@ -90,6 +122,24 @@
    "11": [
     "silhouette",
     "white limb left (bare leg)"
+   ]
+  },
+  "bombsuit_r2_s1fix": {
+   "4": [
+    "height"
+   ],
+   "5": [
+    "height"
+   ],
+   "6": [
+    "height",
+    "silhouette"
+   ],
+   "7": [
+    "height"
+   ],
+   "11": [
+    "silhouette"
    ]
   },
   "bombsuit_r2_s2": {
@@ -107,12 +157,38 @@
     "silhouette"
    ],
    "7": [
-    "extra white parts (bare arm or leg)",
     "height"
+   ],
+   "10": [
+    "no white neck stub or hands (back view or hands missing)"
    ],
    "11": [
     "silhouette",
     "white limb left (bare leg)"
+   ]
+  },
+  "bombsuit_r2_s2fix": {
+   "3": [
+    "extra white parts (bare arm or leg)"
+   ],
+   "4": [
+    "height"
+   ],
+   "5": [
+    "height"
+   ],
+   "6": [
+    "height",
+    "silhouette"
+   ],
+   "7": [
+    "height"
+   ],
+   "10": [
+    "no white neck stub or hands (back view or hands missing)"
+   ],
+   "11": [
+    "silhouette"
    ]
   },
   "bombsuit_r2_s3": {
@@ -121,73 +197,24 @@
    ],
    "10": [
     "head or hat on top",
-    "height"
+    "height",
+    "no white neck stub or hands (back view or hands missing)",
+    "silhouette"
    ],
    "11": [
     "silhouette",
     "white limb left (bare leg)"
    ]
   },
-  "bombsuit_r3_s0": {
+  "bombsuit_r2_s3fix": {
    "6": [
     "silhouette"
    ],
    "10": [
-    "extra white parts (bare arm or leg)",
     "head or hat on top",
-    "white limb left (bare leg)"
-   ],
-   "11": [
-    "silhouette",
-    "white limb left (bare leg)"
-   ]
-  },
-  "bombsuit_r3_s1": {
-   "10": [
-    "extra white parts (bare arm or leg)",
-    "white limb left (bare leg)"
-   ]
-  },
-  "bombsuit_r3_s2": {
-   "4": [
-    "height"
-   ],
-   "5": [
-    "height"
-   ],
-   "6": [
     "height",
+    "no white neck stub or hands (back view or hands missing)",
     "silhouette"
-   ],
-   "7": [
-    "height"
-   ],
-   "10": [
-    "white limb left (bare leg)"
-   ],
-   "11": [
-    "extra white parts (bare arm or leg)",
-    "silhouette",
-    "white limb left (bare leg)"
-   ]
-  },
-  "bombsuit_r3_s3": {
-   "4": [
-    "height"
-   ],
-   "5": [
-    "height"
-   ],
-   "6": [
-    "height",
-    "silhouette"
-   ],
-   "7": [
-    "height"
-   ],
-   "10": [
-    "extra white parts (bare arm or leg)",
-    "white limb left (bare leg)"
    ],
    "11": [
     "silhouette"
@@ -196,5 +223,5 @@
  },
  "status": "auto_accepted",
  "human_reviewed": false,
- "last_round": true
+ "last_round": false
 }

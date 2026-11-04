@@ -4,64 +4,64 @@
  "human_reviewed": false,
  "poses": {
   "0": {
-   "from": "bombsuit_r3_s1",
-   "sha256": "5e33c481eab0db39",
-   "score": 1.892
+   "from": "bombsuit_r2_s0fix",
+   "sha256": "d13fb5a7f3d292cb",
+   "score": 1.938
   },
   "1": {
-   "from": "bombsuit_r3_s1",
-   "sha256": "5e33c481eab0db39",
-   "score": 1.745
+   "from": "bombsuit_r2_s0fix",
+   "sha256": "d13fb5a7f3d292cb",
+   "score": 1.836
   },
   "2": {
-   "from": "bombsuit_r3_s1",
-   "sha256": "5e33c481eab0db39",
-   "score": 1.758
+   "from": "bombsuit_r2_s0fix",
+   "sha256": "d13fb5a7f3d292cb",
+   "score": 1.827
   },
   "3": {
-   "from": "bombsuit_r3_s1",
-   "sha256": "5e33c481eab0db39",
-   "score": 1.849
+   "from": "bombsuit_r2_s0fix",
+   "sha256": "d13fb5a7f3d292cb",
+   "score": 1.907
   },
   "4": {
-   "from": "bombsuit_r3_s1",
-   "sha256": "5e33c481eab0db39",
-   "score": 1.849
+   "from": "bombsuit_r2_s0fix",
+   "sha256": "d13fb5a7f3d292cb",
+   "score": 1.828
   },
   "5": {
-   "from": "bombsuit_r3_s1",
-   "sha256": "5e33c481eab0db39",
-   "score": 1.825
+   "from": "bombsuit_r2_s0fix",
+   "sha256": "d13fb5a7f3d292cb",
+   "score": 1.751
   },
   "6": {
-   "from": "bombsuit_r3_s1",
-   "sha256": "5e33c481eab0db39",
-   "score": 1.647
+   "from": "bombsuit_r2_s0fix",
+   "sha256": "d13fb5a7f3d292cb",
+   "score": 1.721
   },
   "7": {
-   "from": "bombsuit_r3_s1",
-   "sha256": "5e33c481eab0db39",
-   "score": 1.845
+   "from": "bombsuit_r2_s0fix",
+   "sha256": "d13fb5a7f3d292cb",
+   "score": 1.839
   },
   "8": {
-   "from": "bombsuit_r3_s1",
-   "sha256": "5e33c481eab0db39",
-   "score": 1.79
+   "from": "bombsuit_r2_s0fix",
+   "sha256": "d13fb5a7f3d292cb",
+   "score": 1.754
   },
   "9": {
-   "from": "bombsuit_r3_s1",
-   "sha256": "5e33c481eab0db39",
-   "score": 1.772
+   "from": "bombsuit_r2_s0fix",
+   "sha256": "d13fb5a7f3d292cb",
+   "score": 1.713
   },
   "10": {
-   "from": "bombsuit_r2_s2",
-   "sha256": "8527a73f2e2db407",
-   "score": 1.825
+   "from": "bombsuit_r2_s0fix",
+   "sha256": "d13fb5a7f3d292cb",
+   "score": 1.847
   },
   "11": {
-   "from": "bombsuit_r3_s1",
-   "sha256": "5e33c481eab0db39",
-   "score": 1.736
+   "from": "bombsuit_r2_s0fix",
+   "sha256": "d13fb5a7f3d292cb",
+   "score": 1.723
   }
  },
  "missing": [],
