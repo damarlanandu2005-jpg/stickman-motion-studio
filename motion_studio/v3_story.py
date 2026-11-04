@@ -46,36 +46,37 @@ def spec() -> list[dict]:
     S = []
     add = S.append
     # G1 technician kneeling at the bomb, timer counts 5 -> 3
-    add({"bg": "var_v3_barrier_bomb", "cam": PUSH, "actors": [A("tech", 0, 0.5, 0.42, "scared", 0.9, head=0.95)],
-         "texts": [T(count=[5, 3], x=0.52, y=0.58, size=0.03, font="mono", color=(255, 80, 60), bg=(0, 0, 0, 220))]})
-    add({"bg": "var_v3_barrier_bomb", "cam": PULL, "actors": [A("tech", 0, 0.5, 0.42, "surprised", 0.9, head=0.95)], "flash": [[0, 0.07, 0.9]]})  # G2 flash
+    add({"bg": "var_v3_barrier_bomb", "cam": PUSH, "actors": [A("tech", 0, 0.34, 0.36, "scared", 0.9)],
+         "texts": [T(count=[5, 3], x=0.76, y=0.66, size=0.028, font="mono", color=(255, 80, 60), bg=(0, 0, 0, 230))]})
+    add({"bg": "var_v3_barrier_bomb", "cam": PULL, "actors": [A("tech", 0, 0.34, 0.36, "surprised", 0.9)], "flash": [[0, 0.07, 0.9]],
+         "texts": [T("0:03", x=0.76, y=0.66, size=0.028, font="mono", color=(255, 80, 60), bg=(0, 0, 0, 230))]})  # G2 flash
     add({"bg": "ins_explosion", "cam": PULL})                                             # G3 fireball
-    add({"bg": "var_v3_barrier_smoke", "cam": PUSH, "actors": [A("tech", 3, 0.5, 0.4, "neutral", 0.9, head=0.95)]})  # G4 smoke
+    add({"bg": "var_v3_barrier_smoke", "cam": PUSH, "actors": [A("tech", 3, 0.5, 0.36, "neutral", 0.9)]})  # G4 smoke
     add({"bg": "bg_v3_garage", "cam": PUSH, "actors": [A("cop", 3, 0.2, 0.22, "smug", 0.9), A("chief", 0, 0.5, 0.2, "neutral", 0.88), A("cop", 3, 0.8, 0.22, "happy", 0.9)]})  # G5 team
     add({"bg": "var_v3_corner_light", "cam": PUSH, "actors": [A("civ", 0, 0.5, 0.25, "surprised", 0.92)]})  # G6
     add({"bg": "ins_traffic_grey", "cam": PUSH})                                           # G7
     add({"bg": "bg_v3_hospital", "cam": PAN, "actors": [A("civ", 0, 0.3, 0.27, "sad", 0.9)]})  # G8 (daughter missing)
     add({"bg": "bg_v3_hospital", "cam": PAN, "actors": [A("doc", 1, 0.28, 0.3, "neutral", 0.9), A("civ", 0, 0.72, 0.28, "scared", 0.9)]})  # G9
     add({"bg": "var_v3_bulletin_notes", "cam": PAN, "actors": [A("civ", 1, 0.3, 0.3, "neutral", 0.9)],
-         "texts": [T("TRAFFIC", x=0.22, y=0.36, size=0.018, font="hand", color=(60, 60, 60)), T("BOMB SQUAD", x=0.5, y=0.34, size=0.018, font="hand", color=(60, 60, 60)),
-                   T("PATROL", x=0.8, y=0.37, size=0.018, font="hand", color=(60, 60, 60))]})  # G10
+         "texts": [T("TRAFFIC $", x=0.27, y=0.3, size=0.014, font="hand", color=(50, 50, 50)), T("BOMB SQUAD", x=0.5, y=0.3, size=0.014, font="hand", color=(50, 50, 50)),
+                   T("PATROL $$", x=0.73, y=0.3, size=0.014, font="hand", color=(50, 50, 50))]})  # G10
     add({"bg": "bg_v3_police_steps", "cam": PUSH, "actors": [A("civ", 0, 0.25, 0.14, "angry", 0.74)],
-         "texts": [T("POLICE", x=0.5, y=0.47, size=0.035, font="bold", color=(50, 60, 80))]})  # G11
+         "texts": [T("POLICE", x=0.5, y=0.285, size=0.03, font="bold", color=(50, 60, 80))]})  # G11
     add({"bg": "bg_v3_garage", "cam": PUSH, "actors": [A("tech", 0, 0.5, 0.62, "neutral", 1.05, head=0.9)]})  # G12 close
     add({"bg": "bg_v3_garage", "cam": PUSH, "actors": [A("tech", 0, 0.5, 0.66, "surprised", 1.08, head=0.9)]})  # G13 close
     add({"bg": "bg_v3_hospital", "cam": PAN, "actors": [A("doc", 1, 0.3, 0.3, "neutral", 0.9), A("civ", 5, 0.72, 0.28, "scared", 0.9)]})  # G14
     add({"bg": "bg_v3_night_study", "cam": PUSH, "actors": [A("civ", 0, 0.62, 0.3, "neutral", 1.0)],
          "texts": [T("12", x=0.8, y=0.62, size=0.03, font="hand", color=(40, 40, 40), bg=(255, 255, 255, 235))]})  # G15
-    add({"bg": "ins_orange_blank", "cam": PUSH, "texts": [T("12", x=0.5, y=0.45, size=0.16, font="hand", color=(215, 90, 40), bg=(255, 255, 255, 255))]})  # G16 plate
+    add({"bg": "ins_orange_blank", "cam": PUSH, "texts": [T("12", x=0.5, y=0.47, size=0.12, font="hand", color=(215, 90, 40), disc=(255, 255, 255, 255))]})  # G16 plate
     add({"bg": "var_v3_hospital_desk", "cam": PUSH, "actors": [A("civ", 0, 0.38, 0.28, "smug", 0.9)]})  # G17
     add({"bg": "bg_v3_hospital", "cam": PAN, "actors": [A("doc", 1, 0.3, 0.3, "happy", 0.9), A("civ", 0, 0.72, 0.28, "smug", 0.9)],
          "texts": [T("74!", x=0.62, y=0.42, size=0.03, font="hand", color=(40, 40, 40), bg=(255, 255, 255, 240))]})  # G18
     add({"bg": "bg_v3_garage", "cam": PUSH, "actors": [A("cop", 3, 0.2, 0.22, "smug", 0.9), A("chief", 0, 0.5, 0.2, "neutral", 0.88), A("cop", 3, 0.8, 0.22, "happy", 0.9)]})  # G19
     add({"bg": "var_v3_corner_truck", "cam": PULL})                                        # G20
-    add({"bg": "var_v3_garage_truck", "cam": PUSH, "actors": [A("cop", 4, 0.5, 0.3, "scared", 0.95)]})  # G21
+    add({"bg": "var_v3_garage_truck", "cam": PUSH, "actors": [A("cop", 4, 0.66, 0.3, "scared", 0.95)]})  # G21
     add({"bg": "bg_v3_dispatch", "cam": PAN, "actors": [A("radio", 1, 0.5, 0.3, "happy", 0.95)]})  # G22
     add({"bg": "ins_timer_dark", "cam": PUSH, "texts": [T("0:30", x=0.5, y=0.27, size=0.035, font="mono", color=(255, 255, 255))]})  # G23
-    add({"bg": "ins_timer_dark", "cam": PUSH, "texts": [T("0:30", x=0.5, y=0.27, size=0.035, font="mono", color=(255, 255, 255))]})  # G24
+    add({"bg": "ins_timer_dark@gray", "cam": PULL, "texts": [T("0:30", x=0.5, y=0.27, size=0.035, font="mono", color=(255, 255, 255))]})  # G24
     add({"bg": "bg_v3_garage", "cam": PUSH, "actors": [A("cop", 0, 0.5, 0.7, "scared", 1.1, head=0.9)]})  # G25 close
     add({"bg": "bg_v3_night_study", "cam": PAN, "actors": [A("civ", 0, 0.62, 0.3, "sad", 1.0)]})  # G26
     add({"bg": "ins_blueprints_orange", "cam": PUSH, "texts": [T("TIMER MODEL 7", x=0.4, y=0.31, size=0.014, font="mono", color=(255, 255, 255), rot=8),
@@ -85,20 +86,22 @@ def spec() -> list[dict]:
     add({"bg": "ins_blueprint_circuit", "cam": PUSH, "texts": [T("CIRCUIT BOARD C-200", x=0.45, y=0.35, size=0.014, font="mono", color=(255, 255, 255))]})  # G30
     add({"bg": "ins_cards_orange", "cam": PULL})                                           # G31
     add({"bg": "bg_v3_garage", "cam": PUSH, "actors": [A("cop", 4, 0.5, 0.3, "smug", 0.96)],
-         "texts": [T("24", x=0.45, y=0.17, size=0.07, font="hand", color=(210, 40, 40), rot=-6)]})  # G32
+         "texts": [T("24", x=0.45, y=0.17, size=0.07, font="hand", color=(210, 40, 40), rot=-6),
+                   T("\u2713 \u2713 \u2713 \u2713 \u2713 \u2713 \u2713", x=0.5, y=0.31, size=0.05, font="sym", color=(30, 165, 75), stroke=2),
+                   T("\u2713 \u2713", x=0.2, y=0.37, size=0.05, font="sym", color=(30, 165, 75), stroke=2)]})  # G32
     add({"bg": "ins_calendar", "cam": PUSH, "texts": [T("YEAR 2", x=0.5, y=0.5, size=0.04, font="hand", color=(50, 50, 60))]})  # G33
-    add({"bg": "var_v3_warehouse_box", "cam": PUSH, "actors": [A("chief", 0, 0.15, 0.2, "scared", 0.95), A("cop", 0, 0.5, 0.3, "neutral", 0.96)]})  # G34
+    add({"bg": "var_v3_warehouse_box", "cam": PUSH, "actors": [A("chief", 0, 0.12, 0.2, "scared", 0.95), A("cop", 0, 0.4, 0.3, "neutral", 0.96)]})  # G34
     add({"bg": "ins_wires_straight_grey", "cam": PUSH})                                    # G35
     add({"bg": "bg_v3_street_barrier", "cam": PUSH, "actors": [A("chief", 6, 0.5, 0.42, "angry", 1.0)]})  # G36
     add({"bg": "bg_v3_street_barrier", "cam": PUSH, "actors": [A("chief", 6, 0.5, 0.55, "angry", 1.1)]})  # G37
     add({"bg": "ins_wires_cut_red_pliers", "cam": PUSH})                                   # G38
     add({"bg": "ins_timer_red", "cam": PUSH, "texts": [T("0:10", x=0.5, y=0.3, size=0.05, font="mono", color=(255, 130, 130))]})  # G39
-    add({"bg": "var_v3_warehouse_box", "cam": PUSH, "actors": [A("cop", 3, 0.5, 0.34, "angry", 0.98)],
+    add({"bg": "var_v3_warehouse_box", "cam": PUSH, "actors": [A("cop", 3, 0.4, 0.34, "angry", 0.98)],
          "texts": [T(count=[8, 8], x=0.1, y=0.09, size=0.03, font="mono", color=(255, 255, 255), stroke=3, screen=True)]})  # G40
     add({"bg": "bg_v3_warehouse", "cam": PUSH, "actors": [A("cop", 0, 0.5, 0.7, "neutral", 1.1, head=0.9)],
          "texts": [T("0:07", x=0.1, y=0.09, size=0.03, font="mono", color=(255, 255, 255), stroke=3, screen=True)]})  # G41
     add({"bg": "ins_wires_knot_grey", "cam": PUSH, "texts": [T("0:05", x=0.1, y=0.09, size=0.03, font="mono", color=(255, 255, 255), stroke=3, screen=True)]})  # G42
-    add({"bg": "ins_wires_knot_grey", "cam": PUSH, "texts": [T("0:03", x=0.1, y=0.09, size=0.03, font="mono", color=(255, 255, 255), stroke=3, screen=True)]})  # G43
+    add({"bg": "ins_wires_knot_grey", "cam": {"z0": 1.3, "z1": 1.42}, "texts": [T("0:03", x=0.1, y=0.09, size=0.03, font="mono", color=(255, 255, 255), stroke=3, screen=True)]})  # G43
     add({"bg": "ins_timer_dark", "cam": PUSH, "texts": [T("0:01", x=0.5, y=0.27, size=0.045, font="mono", color=(255, 255, 255))]})  # G44
     add({"bg": "bg_v3_garage", "cam": PUSH, "actors": [A("chief", 6, 0.35, 0.3, "surprised", 0.95), A("cop", 0, 0.75, 0.22, "sad", 0.95)]})  # G45
     add({"bg": "bg_v3_garage", "cam": PUSH, "actors": [A("chief", 6, 0.35, 0.3, "laugh", 0.95), A("cop", 0, 0.75, 0.22, "sad", 0.95)]})  # G46

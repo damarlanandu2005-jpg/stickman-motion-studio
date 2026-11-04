@@ -257,6 +257,17 @@
    ],
    "type": "background"
   },
+  "ins_orange_blank": {
+   "desc": "ins orange blank",
+   "file": "backgrounds/ins_orange_blank.png",
+   "run": "41787337952",
+   "tags": [
+    "blank",
+    "bomb",
+    "v3"
+   ],
+   "type": "background"
+  },
   "ins_timer_dark": {
    "desc": "ins timer dark",
    "file": "backgrounds/ins_timer_dark.png",
@@ -397,6 +408,125 @@
     "sofa"
    ],
    "type": "object"
+  },
+  "var_v3_barrier_bomb": {
+   "desc": "var v3 barrier bomb",
+   "file": "backgrounds/var_v3_barrier_bomb.png",
+   "run": "41787337952",
+   "tags": [
+    "barrier",
+    "bomb",
+    "v3"
+   ],
+   "type": "background"
+  },
+  "var_v3_barrier_smoke": {
+   "desc": "var v3 barrier smoke",
+   "file": "backgrounds/var_v3_barrier_smoke.png",
+   "run": "41787337952",
+   "tags": [
+    "barrier",
+    "bomb",
+    "smoke",
+    "v3"
+   ],
+   "type": "background"
+  },
+  "var_v3_bulletin_notes": {
+   "desc": "var v3 bulletin notes",
+   "file": "backgrounds/var_v3_bulletin_notes.png",
+   "run": "41787337952",
+   "tags": [
+    "bomb",
+    "bulletin",
+    "notes",
+    "v3"
+   ],
+   "type": "background"
+  },
+  "var_v3_classroom_bucket": {
+   "desc": "var v3 classroom bucket",
+   "file": "backgrounds/var_v3_classroom_bucket.png",
+   "run": "41787337952",
+   "tags": [
+    "bomb",
+    "bucket",
+    "classroom",
+    "v3"
+   ],
+   "type": "background"
+  },
+  "var_v3_corner_light": {
+   "desc": "var v3 corner light",
+   "file": "backgrounds/var_v3_corner_light.png",
+   "run": "41787337952",
+   "tags": [
+    "bomb",
+    "corner",
+    "light",
+    "v3"
+   ],
+   "type": "background"
+  },
+  "var_v3_corner_truck": {
+   "desc": "var v3 corner truck",
+   "file": "backgrounds/var_v3_corner_truck.png",
+   "run": "41787337952",
+   "tags": [
+    "bomb",
+    "corner",
+    "truck",
+    "v3"
+   ],
+   "type": "background"
+  },
+  "var_v3_garage_truck": {
+   "desc": "var v3 garage truck",
+   "file": "backgrounds/var_v3_garage_truck.png",
+   "run": "41787337952",
+   "tags": [
+    "bomb",
+    "garage",
+    "truck",
+    "v3"
+   ],
+   "type": "background"
+  },
+  "var_v3_hospital_desk": {
+   "desc": "var v3 hospital desk",
+   "file": "backgrounds/var_v3_hospital_desk.png",
+   "run": "41787337952",
+   "tags": [
+    "bomb",
+    "desk",
+    "hospital",
+    "v3"
+   ],
+   "type": "background"
+  },
+  "var_v3_night_files": {
+   "desc": "var v3 night files",
+   "file": "backgrounds/var_v3_night_files.png",
+   "run": "41787337952",
+   "tags": [
+    "bomb",
+    "files",
+    "night",
+    "v3"
+   ],
+   "type": "background"
+  },
+  "var_v3_warehouse_box": {
+   "desc": "var v3 warehouse box",
+   "file": "backgrounds/var_v3_warehouse_box.png",
+   "run": "41787337952",
+   "tags": [
+    "bomb",
+    "box",
+    "v3",
+    "warehouse"
+   ],
+   "type": "background"
   }
  }
 }

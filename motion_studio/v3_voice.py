@@ -13,20 +13,48 @@ import numpy as np
 
 SR = 24000
 
-# (start, end, text); *word* = red keyword. Spans come from the OCR of v3's caption track (approximate). The text is reconstructed from the
-# same OCR, so a few words (marked in the report) are my reading, not a transcript.
+# (start, end, text); *word* = red keyword. Chunk starts come from the OCR of v3's caption track (about +-0.1 s). The text is rebuilt from the
+# same OCR, so a few words (the last 10 s especially) are my reading, not a transcript. Each chunk is stretched to its span so voice and
+# caption changes line up with v3 at chunk level.
 SENTENCES = [
-    (0.40, 7.40, "This bomb squad technician could never ask which *wire* to cut, because his team would find out he was completely *colorblind*."),
-    (7.60, 14.00, "When his daughter needed heart surgery, Arthur applied for the highest-paying job in the police department: explosive ordnance disposal."),
-    (14.10, 20.80, "The medical exam? He memorized the colorblindness test backwards and forwards before walking into the room."),
-    (20.80, 24.00, "Once he was on the squad, every call was a nightmare."),
-    (24.10, 29.50, "When headquarters radioed instructions like cut the red wire, not the *green*, Arthur couldn't tell the difference."),
-    (29.60, 40.60, "To survive, he stayed up every night memorizing the factory blueprints of every timer, battery and circuit board on the market, tracing wires by which terminal they connected, never by their color."),
-    (40.70, 43.60, "He disarmed *forty-one* bombs in three years."),
-    (43.70, 49.40, "Then came a device built from scratch, with six identical-looking wires twisted together in a knot."),
-    (49.40, 53.90, "His commander screamed over the radio to cut the *blue* wire, with ten seconds left."),
-    (53.90, 63.00, "Arthur took off his headset, felt the thickness of the copper insulation with his bare fingers, and snipped the higher-gauge ground wire with one second on the clock."),
-    (63.00, 73.00, "The commander wanted to fire him, but made him head *instructor* instead, because he was the only man in the city who didn't rely on *paint* to read a bomb."),
+    (0.15, 2.97, "This bomb squad technician could never ask which"),
+    (2.97, 3.67, "*wire* to cut,"),
+    (3.67, 5.07, "because his team would find out"),
+    (5.07, 7.57, "he was completely *colorblind*."),
+    (7.57, 9.07, "When his daughter needed heart surgery,"),
+    (9.07, 10.97, "Arthur applied for the highest-paying job in the"),
+    (10.97, 14.05, "police department: explosive ordnance disposal."),
+    (14.05, 15.47, "The medical exam?"),
+    (15.47, 17.47, "He memorized the colorblindness test"),
+    (17.47, 19.37, "backwards and forwards before"),
+    (19.37, 20.80, "walking into the room."),
+    (20.80, 21.87, "Once he was on the squad,"),
+    (21.87, 24.05, "every call was a nightmare."),
+    (24.05, 25.57, "When headquarters radioed instructions"),
+    (25.57, 27.87, "like cut the red wire, not the *green*,"),
+    (27.87, 29.55, "Arthur couldn't tell the difference."),
+    (29.55, 31.37, "To survive, he stayed up every night"),
+    (31.37, 33.17, "memorizing the factory blueprints of"),
+    (33.17, 36.57, "every timer, battery and circuit board on the market,"),
+    (36.57, 39.27, "tracing wires by which terminal they connected,"),
+    (39.27, 40.65, "never by their color."),
+    (40.65, 42.47, "He disarmed *forty-one* bombs"),
+    (42.47, 43.65, "in three years."),
+    (43.65, 45.57, "Then came a device built from scratch,"),
+    (45.57, 47.17, "with six identical-looking"),
+    (47.17, 49.37, "wires twisted together in a knot."),
+    (49.37, 51.15, "His commander screamed over"),
+    (51.15, 52.77, "the radio to cut the *blue* wire with ten"),
+    (52.77, 53.90, "seconds left."),
+    (53.90, 55.67, "Arthur took off his headset,"),
+    (55.67, 57.77, "felt the thickness of the copper insulation with"),
+    (57.77, 59.67, "his bare fingers, and snipped the"),
+    (59.67, 61.27, "higher-gauge ground wire with"),
+    (61.27, 63.00, "one second on the clock."),
+    (63.00, 66.50, "The commander wanted to fire him,"),
+    (66.50, 69.37, "but made him head *instructor* instead,"),
+    (69.37, 70.90, "because he was the only man in the city"),
+    (70.90, 73.05, "who didn't rely on *paint* to read a bomb."),
 ]
 
 
@@ -40,7 +68,7 @@ def _atempo_chain(r: float) -> str:
     return ",".join(parts)
 
 
-def synth(models: Path, workdir: Path, total: float, voice: str = "am_fenrir", speed: float = 1.12, sentences=SENTENCES):
+def synth(models: Path, workdir: Path, total: float, voice: str = "am_fenrir", speed: float = 1.0, sentences=SENTENCES):
     """Return (wav_path, report, words) ; words = [(t0, t1, word, is_red)] on the whole-video timeline."""
     from kokoro_onnx import Kokoro
     k = Kokoro(str(models / "kokoro-v1.0.onnx"), str(models / "voices-v1.0.bin"))
@@ -53,7 +81,7 @@ def synth(models: Path, workdir: Path, total: float, voice: str = "am_fenrir", s
         x = x[nz[0]:nz[-1] + 1] if len(nz) else x
         d0 = len(x) / sr
         span = b - a
-        r = d0 / span                       # >1 means the sentence must be sped up to fit its v3 span
+        r = min(max(d0 / span, 0.80), 1.40)  # >1 means the chunk is sped up to fit its v3 span (clamped; overflow is cut with a short fade)
         raw, out = workdir / f"s{i}.wav", workdir / f"s{i}_fit.wav"
         pcm = (np.clip(x, -1, 1) * 32767).astype(np.int16)
         with wave.open(str(raw), "wb") as f:
@@ -62,17 +90,23 @@ def synth(models: Path, workdir: Path, total: float, voice: str = "am_fenrir", s
         with wave.open(str(out)) as f:
             y = np.frombuffer(f.readframes(f.getnframes()), np.int16).astype(np.float32) / 32768
         s0 = int(a * SR)
+        keep = int((span + 0.12) * SR)           # never run far into the next chunk
+        over = max(len(y) / SR - (span + 0.12), 0.0)
+        if len(y) > keep:
+            y = y[:keep].copy(); y[-int(0.04 * SR):] *= np.linspace(1, 0, int(0.04 * SR))
         timeline[s0:s0 + len(y)] += y[: len(timeline) - s0]
-        report.append({"sentence": i + 1, "span": [a, b], "natural_s": round(d0, 2), "fit_ratio": round(r, 2), "fitted_s": round(len(y) / SR, 2)})
+        report.append({"sentence": i + 1, "span": [a, b], "natural_s": round(d0, 2), "fit_ratio": round(r, 2), "fitted_s": round(len(y) / SR, 2), "cut_off_s": round(over, 2)})
         toks = text.split()
         wt = np.array([len(re.sub(r"\W", "", t)) + 0.6 for t in toks])
         edges = np.concatenate([[0], np.cumsum(wt) / wt.sum()]) * (len(y) / SR) + a
         for j, t in enumerate(toks):
             words.append((float(edges[j]), float(edges[j + 1]), t.replace("*", "").strip(), "*" in t))
-    wav = workdir / "voice.wav"
-    pcm = (np.clip(timeline, -1, 1) * 32767).astype(np.int16)
-    with wave.open(str(wav), "wb") as f:
+    raw = workdir / "voice_raw.wav"
+    pcm = (np.clip(timeline / max(float(np.abs(timeline).max()), 1.0), -1, 1) * 32767).astype(np.int16)
+    with wave.open(str(raw), "wb") as f:
         f.setnchannels(1); f.setsampwidth(2); f.setframerate(SR); f.writeframes(pcm.tobytes())
+    wav = workdir / "voice.wav"   # loudness about -16 LUFS, true peak <= -2 dB (the v3 voice measures -15.9 LUFS, peak -4.2 dB)
+    subprocess.run(["ffmpeg", "-nostdin", "-y", "-loglevel", "error", "-i", str(raw), "-af", "loudnorm=I=-16:TP=-2:LRA=7", "-ar", str(SR), "-ac", "1", str(wav)], check=True)
     return wav, report, words
 
 
@@ -88,4 +122,8 @@ def caption_groups(words, max_words: int = 3, max_chars: int = 16):
             groups.append(cur); cur = []
     if cur:
         groups.append(cur)
-    return [(g[0][0], g[-1][1], " ".join(x[2] for x in g).strip(".,:?!"), any(x[3] for x in g)) for g in groups]
+    out = [[g[0][0], g[-1][1], " ".join(x[2] for x in g).strip(".,:?!"), any(x[3] for x in g)] for g in groups]
+    for cur, nxt in zip(out, out[1:]):      # like v3: a caption stays on screen until the next one starts (short pauses only)
+        if 0 < nxt[0] - cur[1] < 1.6:
+            cur[1] = nxt[0]
+    return [tuple(g) for g in out]

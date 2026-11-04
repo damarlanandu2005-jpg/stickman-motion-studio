@@ -61,7 +61,11 @@ class Library:
         if name not in self._bg:
             if name.startswith("lib:"):  # a background from the asset library (same picture every time it is asked for)
                 from motion_studio import asset_library as al
-                im = Image.open(al.path_of(al.load(), name[4:])).convert("RGB")
+                lid = name[4:]
+                gray = lid.endswith("@gray")      # "id@gray": the same library picture in greys (a second look without a new picture)
+                im = Image.open(al.path_of(al.load(), lid[:-5] if gray else lid)).convert("RGB")
+                if gray:
+                    im = im.convert("L").convert("RGB")
             else:
                 im = Image.open(self.root / "places" / f"{name}.jpg").convert("RGB")
             self._bg[name] = im.resize((int(W * SS), int(H * SS)), Image.LANCZOS)
@@ -221,7 +225,8 @@ def render_frame(lib: Library, shot: dict, local_t: float) -> Image.Image:
 _FONTS: dict = {}
 FONT_FILES = {"mono": "/usr/share/fonts/truetype/dejavu/DejaVuSansMono-Bold.ttf",
               "hand": "/usr/share/fonts/truetype/google-fonts/Lora-Italic-Variable.ttf",
-              "bold": "/usr/share/fonts/truetype/google-fonts/Poppins-Bold.ttf"}
+              "bold": "/usr/share/fonts/truetype/google-fonts/Poppins-Bold.ttf",
+              "sym": "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"}
 
 
 def _fmt_clock(v: float) -> str:
@@ -250,6 +255,17 @@ def draw_text(im: Image.Image, tx: dict, t: float, dur: float) -> None:
     L = Image.new("RGBA", (int(px * (len(text) * 0.9 + 3)), int(px * 2.2)), (0, 0, 0, 0))
     d = ImageDraw.Draw(L)
     w = d.textlength(text, font=f)
+    if tx.get("disc"):  # round plate behind the text (e.g. the colour-blindness plate)
+        r = px * 1.6
+        big = Image.new("RGBA", (int(r * 2.4), int(r * 2.4)), (0, 0, 0, 0))
+        ImageDraw.Draw(big).ellipse([r * 0.2, r * 0.2, r * 2.2, r * 2.2], fill=tuple(tx["disc"]), outline=(20, 20, 20, 255), width=max(int(px * 0.1), 2))
+        L = Image.new("RGBA", (big.width, big.height), (0, 0, 0, 0))
+        L.alpha_composite(big)
+        d = ImageDraw.Draw(L)
+        w = d.textlength(text, font=f)
+        d.text((L.width / 2 - w / 2, L.height / 2 - px * 0.7), text, font=f, fill=tuple(tx.get("color", (255, 255, 255))))
+        im.alpha_composite(L, (int(tx.get("x", 0.5) * im.width - L.width / 2), int(tx.get("y", 0.5) * im.height - L.height / 2)))
+        return
     if tx.get("bg"):
         d.rounded_rectangle([L.width / 2 - w / 2 - px * 0.4, px * 0.2, L.width / 2 + w / 2 + px * 0.4, px * 1.9], radius=int(px * 0.2), fill=tuple(tx["bg"]))
     d.text((L.width / 2 - w / 2, px * 0.4), text, font=f, fill=tuple(tx.get("color", (255, 255, 255))),
@@ -267,12 +283,12 @@ def _caption(im: Image.Image, text: str, red: bool, y: float = 0.68) -> None:
     global _FONT
     from PIL import ImageDraw, ImageFont
     if _FONT is None:
-        _FONT = ImageFont.truetype("/usr/share/fonts/truetype/google-fonts/Poppins-Bold.ttf", 46)
+        _FONT = ImageFont.truetype("/usr/share/fonts/truetype/google-fonts/Poppins-Bold.ttf", 42)
     d = ImageDraw.Draw(im)
     text = text.upper()
     w = d.textlength(text, font=_FONT)
     d.text(((W - w) / 2, int(H * y)), text, font=_FONT, fill=(220, 30, 30) if red else (255, 255, 255),
-           stroke_width=4, stroke_fill=(0, 0, 0))
+           stroke_width=3, stroke_fill=(0, 0, 0))
 
 
 def render_video(shots: list[dict], out: Path, root: Path = ROOT, outfit: str = "explorer", audio: Path | None = None) -> dict:
