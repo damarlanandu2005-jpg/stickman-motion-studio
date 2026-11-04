@@ -1,0 +1,34 @@
+$ /usr/bin/python3 /tmp/scene_batch/klein_stage.py /tmp/scene_batch/klein_stage.json
+Fetching 25 files:   0%|          | 0/25 [00:00<?, ?it/s]Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Fetching 25 files:   4%|▍         | 1/25 [00:00<00:03,  6.39it/s]Fetching 25 files:  32%|███▏      | 8/25 [00:00<00:00, 29.61it/s]Fetching 25 files:  44%|████▍     | 11/25 [00:00<00:00, 25.67it/s]Fetching 25 files:  56%|█████▌    | 14/25 [00:00<00:00, 21.58it/s]Fetching 25 files:  68%|██████▊   | 17/25 [00:00<00:00, 14.14it/s]Fetching 25 files:  76%|███████▌  | 19/25 [00:02<00:01,  3.70it/s]Fetching 25 files:  80%|████████  | 20/25 [00:20<00:01,  3.70it/s]Fetching 25 files:  84%|████████▍ | 21/25 [01:27<00:43, 10.86s/it]Fetching 25 files:  92%|█████████▏| 23/25 [01:29<00:16,  8.25s/it]Fetching 25 files: 100%|██████████| 25/25 [01:52<00:00,  9.16s/it]Fetching 25 files: 100%|██████████| 25/25 [01:52<00:00,  4.49s/it]
+/usr/local/lib/python3.13/dist-packages/diffusers/utils/deprecation_utils.py:23: FutureWarning: `torch_dtype` is deprecated and will be removed in version 1.0.0. Please use `dtype` instead.
+  deprecate("torch_dtype", "1.0.0", _TORCH_DTYPE_DEPRECATION_MESSAGE)
+Loading pipeline components...:   0%|          | 0/5 [00:00<?, ?it/s]Loading pipeline components...:  20%|██        | 1/5 [00:30<02:03, 30.96s/it]Loading pipeline components...:  40%|████      | 2/5 [00:31<00:39, 13.16s/it]The config attributes {'force_upcast': True} were passed to AutoencoderKLFlux2, but are not expected and will be ignored. Please verify your config.json configuration file.
+Loading pipeline components...:  80%|████████  | 4/5 [00:32<00:05,  5.12s/it]
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s][A
+Loading weights:   0%|          | 1/398 [00:11<1:17:30, 11.71s/it][A
+Loading weights:  30%|███       | 121/398 [00:11<00:19, 14.45it/s][A
+Loading weights:  50%|█████     | 199/398 [00:17<00:13, 14.25it/s][A
+Loading weights:  58%|█████▊    | 232/398 [00:19<00:11, 14.13it/s][A
+Loading weights:  63%|██████▎   | 251/398 [00:21<00:10, 13.76it/s][A
+Loading weights:  66%|██████▌   | 263/398 [00:22<00:09, 13.91it/s][A
+Loading weights:  68%|██████▊   | 271/398 [00:22<00:09, 13.41it/s][A
+Loading weights:  70%|██████▉   | 278/398 [00:23<00:09, 12.66it/s][A
+Loading weights:  73%|███████▎  | 289/398 [00:24<00:08, 12.83it/s][A
+Loading weights:  75%|███████▌  | 300/398 [00:25<00:07, 13.04it/s][A
+Loading weights:  78%|███████▊  | 311/398 [00:26<00:06, 13.22it/s][A
+Loading weights:  81%|████████  | 322/398 [00:26<00:05, 13.37it/s][A
+Loading weights:  83%|████████▎ | 330/398 [00:27<00:04, 16.25it/s][A
+Loading weights:  84%|████████▍ | 334/398 [00:27<00:05, 12.76it/s][A
+Loading weights:  86%|████████▋ | 344/398 [00:28<00:04, 12.73it/s][A
+Loading weights:  89%|████████▉ | 355/398 [00:29<00:03, 13.16it/s][A
+Loading weights:  92%|█████████▏| 366/398 [00:30<00:02, 13.18it/s][A
+Loading weights:  95%|█████████▍| 377/398 [00:31<00:01, 13.34it/s][A
+Loading weights:  97%|█████████▋| 388/398 [00:31<00:00, 13.45it/s][ALoading weights: 100%|██████████| 398/398 [00:31<00:00, 12.50it/s]
+Loading pipeline components...: 100%|██████████| 5/5 [01:04<00:00, 13.50s/it]Loading pipeline components...: 100%|██████████| 5/5 [01:04<00:00, 12.91s/it]
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:09<00:29,  9.81s/it] 50%|█████     | 2/4 [00:18<00:18,  9.23s/it] 75%|███████▌  | 3/4 [00:27<00:09,  9.14s/it]100%|██████████| 4/4 [00:36<00:00,  9.16s/it]100%|██████████| 4/4 [00:36<00:00,  9.22s/it]
+klein drew pose_suit_B_s0.png in 64.24 s
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:09<00:28,  9.35s/it] 50%|█████     | 2/4 [00:18<00:18,  9.43s/it] 75%|███████▌  | 3/4 [00:28<00:09,  9.57s/it]100%|██████████| 4/4 [00:38<00:00,  9.69s/it]100%|██████████| 4/4 [00:38<00:00,  9.61s/it]
+klein drew pose_suit_B_s1.png in 59.73 s
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:09<00:27,  9.19s/it] 50%|█████     | 2/4 [00:19<00:19,  9.86s/it] 75%|███████▌  | 3/4 [00:30<00:10, 10.23s/it]100%|██████████| 4/4 [00:41<00:00, 10.57s/it]100%|██████████| 4/4 [00:41<00:00, 10.32s/it]
+klein drew pose_suit_B_s2.png in 63.36 s

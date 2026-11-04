@@ -1,0 +1,72 @@
+{
+  "run_token": "6112c68e8d30a0af62f9aab80e39a0b5",
+  "run_id": "fbb3161aa82642afae16809537359f00",
+  "commit_sha": "b4f2d7f1a4a167118e5198d027c5c8ff7bda186a",
+  "workflow_run_id": "41804595022",
+  "status": "completed",
+  "error_message": null,
+  "poses": [
+    "suit_B_s0",
+    "suit_B_s1",
+    "suit_B_s2"
+  ],
+  "seeds": [
+    0
+  ],
+  "reference": "animation/reference_art/",
+  "environment": {
+    "python": "3.13.16",
+    "torch": "2.11.0+cu130",
+    "cuda_available": true,
+    "gpu_names": [
+      "Tesla T4",
+      "Tesla T4"
+    ]
+  },
+  "klein": {
+    "stage": "klein",
+    "status": "success",
+    "error": null,
+    "pictures": [
+      {
+        "pose": "suit_B_s0",
+        "seed": 9500,
+        "status": "success",
+        "file": "pose_suit_B_s0.png",
+        "seconds": 64.24,
+        "width": 1440,
+        "height": 1088,
+        "sha256": "ed0472cd1cbe171a8e9d4146d9f1c86ccc409bf851d3baa7dab1a52d8fcd2536"
+      },
+      {
+        "pose": "suit_B_s1",
+        "seed": 9501,
+        "status": "success",
+        "file": "pose_suit_B_s1.png",
+        "seconds": 59.73,
+        "width": 1440,
+        "height": 1088,
+        "sha256": "dc6d9485645714455df21bd941946fcda0d65ebec16c2e6b167a10a9641434dc"
+      },
+      {
+        "pose": "suit_B_s2",
+        "seed": 9502,
+        "status": "success",
+        "file": "pose_suit_B_s2.png",
+        "seconds": 63.36,
+        "width": 1440,
+        "height": 1088,
+        "sha256": "cb11f7075d2ef205a09afc020f05cded46a77c6edb8b9d79ea6b9934d4f48a41"
+      }
+    ],
+    "download_seconds": 112.5,
+    "load_seconds": 64.6,
+    "peak_vram_gib": 8.96
+  },
+  "files": [
+    "pose_suit_B_s0.png",
+    "pose_suit_B_s1.png",
+    "pose_suit_B_s2.png"
+  ],
+  "notebook_duration_seconds": 435.5
+}
