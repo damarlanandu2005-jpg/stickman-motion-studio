@@ -1,0 +1,109 @@
+{
+  "identity": {
+    "run_id": "71df10c1d53b4d91b93dab28177eba12",
+    "run_token": "10f07c2f684f1e306c5d79554ef49c03",
+    "commit_sha": "a80cd44502c0bbc5fdf4f0083ebe2def0d7c8c61",
+    "workflow_run_id": "41777636094",
+    "workflow_run_attempt": "1",
+    "created_utc": "2026-11-04T05:13:29+00:00"
+  },
+  "kernel": "narasimhadamarla/stickman-motion-studio-scene-batch",
+  "pushed_version": 9,
+  "push_attempts": 1,
+  "observations": [
+    {
+      "at": "2026-11-04T05:13:29+00:00",
+      "event": "notebook_stamped",
+      "run_token_written": true
+    },
+    {
+      "at": "2026-11-04T05:13:32+00:00",
+      "event": "push_response",
+      "attempt": 1,
+      "exit_code": 0,
+      "text": "Kernel version 9 successfully pushed.  Please check progress at https://www.kaggle.com/code/narasimhadamarla/stickman-motion-studio-scene-batch"
+    },
+    {
+      "at": "2026-11-04T05:13:32+00:00",
+      "event": "push_accepted",
+      "version": 9
+    },
+    {
+      "at": "2026-11-04T05:13:32+00:00",
+      "event": "status",
+      "state": "QUEUED"
+    },
+    {
+      "at": "2026-11-04T05:14:03+00:00",
+      "event": "status",
+      "state": "RUNNING"
+    },
+    {
+      "at": "2026-11-04T05:22:11+00:00",
+      "event": "status",
+      "state": "COMPLETE"
+    },
+    {
+      "at": "2026-11-04T05:22:16+00:00",
+      "event": "download",
+      "attempt": 1,
+      "exit_code": 0,
+      "text": "ult_klein.json to kaggle-poses-output/outputs\n\n  0%|          | 0.00/2.83k [00:00<?, ?B/s]\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 2.83k/2.83k [00:00<00:00, 17.7MB/s]\n\nOutput file downloaded to kaggle-poses-output/outputs/result_klein.json\nKernel log downloaded to kaggle-poses-output/stickman-motion-studio-scene-batch.log"
+    }
+  ],
+  "download_attempts": 1,
+  "validation": {
+    "ok": true,
+    "failures": [],
+    "checks": {
+      "pictures": [
+        {
+          "file": "pose_bg_house_living.png",
+          "valid": true
+        },
+        {
+          "file": "pose_bg_house_study.png",
+          "valid": true
+        },
+        {
+          "file": "pose_bg_house_outside.png",
+          "valid": true
+        },
+        {
+          "file": "pose_obj_desk.png",
+          "valid": true
+        },
+        {
+          "file": "pose_obj_lamp.png",
+          "valid": true
+        },
+        {
+          "file": "pose_obj_map.png",
+          "valid": true
+        },
+        {
+          "file": "pose_obj_chest.png",
+          "valid": true
+        },
+        {
+          "file": "pose_obj_sofa.png",
+          "valid": true
+        },
+        {
+          "file": "pose_obj_key.png",
+          "valid": true
+        },
+        {
+          "file": "pose_obj_plant.png",
+          "valid": true
+        }
+      ],
+      "drawn": 10,
+      "wanted": 10
+    }
+  },
+  "limitations": [
+    "The Kaggle CLI exposes the notebook version number, not a separate execution ID. Version tracking plus the run token in the output are used together."
+  ],
+  "result": "verified"
+}

@@ -1,0 +1,156 @@
+{
+  "run_token": "10f07c2f684f1e306c5d79554ef49c03",
+  "run_id": "71df10c1d53b4d91b93dab28177eba12",
+  "commit_sha": "a80cd44502c0bbc5fdf4f0083ebe2def0d7c8c61",
+  "workflow_run_id": "41777636094",
+  "status": "completed",
+  "error_message": null,
+  "poses": [
+    "bg_house_living",
+    "bg_house_study",
+    "bg_house_outside",
+    "obj_desk",
+    "obj_lamp",
+    "obj_map",
+    "obj_chest",
+    "obj_sofa",
+    "obj_key",
+    "obj_plant"
+  ],
+  "seeds": [
+    0
+  ],
+  "reference": "animation/reference_art/",
+  "environment": {
+    "python": "3.13.16",
+    "torch": "2.11.0+cu130",
+    "cuda_available": true,
+    "gpu_names": [
+      "Tesla T4",
+      "Tesla T4"
+    ]
+  },
+  "klein": {
+    "stage": "klein",
+    "status": "success",
+    "error": null,
+    "pictures": [
+      {
+        "pose": "bg_house_living",
+        "seed": 7100,
+        "status": "success",
+        "file": "pose_bg_house_living.png",
+        "seconds": 28.77,
+        "width": 576,
+        "height": 1024,
+        "sha256": "838dc51b54f8b76bf541d4b7406cdcad8cfc6f9c5a7d948276ca84c51f126cad"
+      },
+      {
+        "pose": "bg_house_study",
+        "seed": 7101,
+        "status": "success",
+        "file": "pose_bg_house_study.png",
+        "seconds": 22.82,
+        "width": 576,
+        "height": 1024,
+        "sha256": "3b616af4e12e7d2df5cd368a8827cfcd8e4fffdfd214ea722658608e40afb809"
+      },
+      {
+        "pose": "bg_house_outside",
+        "seed": 7102,
+        "status": "success",
+        "file": "pose_bg_house_outside.png",
+        "seconds": 22.66,
+        "width": 576,
+        "height": 1024,
+        "sha256": "f7d2720c4637b6a0b6dbe8424356ec160b394f38f8e968d6b562e2d4ef82f727"
+      },
+      {
+        "pose": "obj_desk",
+        "seed": 7103,
+        "status": "success",
+        "file": "pose_obj_desk.png",
+        "seconds": 22.39,
+        "width": 576,
+        "height": 1024,
+        "sha256": "874028998908355395e06aebe0cd894eeba4563d71495df72df9c846a8cc786e"
+      },
+      {
+        "pose": "obj_lamp",
+        "seed": 7104,
+        "status": "success",
+        "file": "pose_obj_lamp.png",
+        "seconds": 21.92,
+        "width": 576,
+        "height": 1024,
+        "sha256": "1b784a6d349bada76388f1288bf3b92364b25a5dca119c545ef45ccc5060aa04"
+      },
+      {
+        "pose": "obj_map",
+        "seed": 7105,
+        "status": "success",
+        "file": "pose_obj_map.png",
+        "seconds": 21.83,
+        "width": 576,
+        "height": 1024,
+        "sha256": "736c95ebf7acb788d82f0a9c141e13cb2caf87f6d01868aec47caa671090fc0f"
+      },
+      {
+        "pose": "obj_chest",
+        "seed": 7106,
+        "status": "success",
+        "file": "pose_obj_chest.png",
+        "seconds": 21.47,
+        "width": 576,
+        "height": 1024,
+        "sha256": "befd5fb58bd227064fafeb127fee005a0689efd8bf0ea5aab66e4192093a9e07"
+      },
+      {
+        "pose": "obj_sofa",
+        "seed": 7107,
+        "status": "success",
+        "file": "pose_obj_sofa.png",
+        "seconds": 20.9,
+        "width": 576,
+        "height": 1024,
+        "sha256": "de70bfe828df8addaa43839e9770e8e0c5653c062bff78023891c551a58c5ec4"
+      },
+      {
+        "pose": "obj_key",
+        "seed": 7108,
+        "status": "success",
+        "file": "pose_obj_key.png",
+        "seconds": 20.84,
+        "width": 576,
+        "height": 1024,
+        "sha256": "a747628f95214e39059b5536b0fd804f236794e8da811de1aa56768a80162603"
+      },
+      {
+        "pose": "obj_plant",
+        "seed": 7109,
+        "status": "success",
+        "file": "pose_obj_plant.png",
+        "seconds": 20.9,
+        "width": 576,
+        "height": 1024,
+        "sha256": "768d2535967860cf92301d297a02a28c6ce399a8a1b32af8d9b717e2883402cc"
+      }
+    ],
+    "download_seconds": 112.6,
+    "load_seconds": 63.7,
+    "peak_vram_gib": 7.75
+  },
+  "files": [
+    "pose_bg_house_living.png",
+    "pose_bg_house_study.png",
+    "pose_bg_house_outside.png",
+    "pose_obj_desk.png",
+    "pose_obj_lamp.png",
+    "pose_obj_map.png",
+    "pose_obj_chest.png",
+    "pose_obj_sofa.png",
+    "pose_obj_key.png",
+    "pose_obj_plant.png"
+  ],
+  "notebook_duration_seconds": 467.7
+}

@@ -1,0 +1,39 @@
+[{"stream_name":"stderr","time":6.626605714,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":6.62665578,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":7.566020413,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.566050289,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.566054735,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.566063614,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":8.184106646,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.184137606,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.184142848,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.184147292,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":43.680475599,"data":"[install_klein] ok in 21.4 s\n"}
+,{"stream_name":"stdout","time":477.03811665,"data":"[klein] ok in 433.4 s\n"}
+,{"stream_name":"stdout","time":477.03960497,"data":"{\n"}
+,{"stream_name":"stdout","time":477.039626935,"data":"  \"status\": \"completed\",\n"}
+,{"stream_name":"stdout","time":477.039632068,"data":"  \"error_message\": null,\n"}
+,{"stream_name":"stdout","time":477.039649448,"data":"  \"files\": [\n"}
+,{"stream_name":"stdout","time":477.039654875,"data":"    \"pose_bg_house_living.png\",\n"}
+,{"stream_name":"stdout","time":477.039659568,"data":"    \"pose_bg_house_study.png\",\n"}
+,{"stream_name":"stdout","time":477.039664413,"data":"    \"pose_bg_house_outside.png\",\n"}
+,{"stream_name":"stdout","time":477.039669125,"data":"    \"pose_obj_desk.png\",\n"}
+,{"stream_name":"stdout","time":477.039673225,"data":"    \"pose_obj_lamp.png\",\n"}
+,{"stream_name":"stdout","time":477.039677356,"data":"    \"pose_obj_map.png\",\n"}
+,{"stream_name":"stdout","time":477.039681522,"data":"    \"pose_obj_chest.png\",\n"}
+,{"stream_name":"stdout","time":477.039685638,"data":"    \"pose_obj_sofa.png\",\n"}
+,{"stream_name":"stdout","time":477.039689722,"data":"    \"pose_obj_key.png\",\n"}
+,{"stream_name":"stdout","time":477.039693861,"data":"    \"pose_obj_plant.png\"\n"}
+,{"stream_name":"stdout","time":477.039697965,"data":"  ],\n"}
+,{"stream_name":"stdout","time":477.039702016,"data":"  \"notebook_duration_seconds\": 467.7\n"}
+,{"stream_name":"stdout","time":477.03970641,"data":"}\n"}
+,{"stream_name":"stdout","time":477.050340684,"data":"Drew 10 of 10 pictures\n"}
+,{"stream_name":"stderr","time":480.415653213,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":480.415683262,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":480.69241719,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":480.692458406,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":481.772463554,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":481.847335617,"data":"[NbConvertApp] Writing 21899 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":484.325308658,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":485.089671464,"data":"[NbConvertApp] Writing 321287 bytes to __results__.html\n"}
+]
