@@ -38,6 +38,11 @@
    "sha256": "88f894c0281b33bf",
    "score": 1.769
   },
+  "7": {
+   "from": "bombsuit_p7_k42",
+   "sha256": "ec920f32079ad39f",
+   "score": 1.858
+  },
   "8": {
    "from": "bombsuit_r1_s1fix",
    "sha256": "88f894c0281b33bf",
@@ -55,8 +60,15 @@
   }
  },
  "missing": [
-  7,
   10
  ],
- "complete": false
+ "complete": false,
+ "fallback": {
+  "10": {
+   "copied_from_pose": 0,
+   "old_pose_similarity": 0.55,
+   "note": "NOT a redrawn pose: closest accepted pose reused"
+  }
+ },
+ "usable": true
 }

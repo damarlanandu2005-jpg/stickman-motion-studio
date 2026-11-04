@@ -1,28 +1,1883 @@
 {
  "costume": "bombsuit",
- "round": 3,
+ "round": 5,
  "sheets_drawn": [
+  "bombsuit_p10_k30",
+  "bombsuit_p10_k30fix",
+  "bombsuit_p10_k31",
+  "bombsuit_p10_k31fix",
+  "bombsuit_p10_k32",
+  "bombsuit_p10_k32fix",
+  "bombsuit_p10_k40",
+  "bombsuit_p10_k40fix",
+  "bombsuit_p10_k41",
+  "bombsuit_p10_k41fix",
+  "bombsuit_p10_k42",
+  "bombsuit_p10_k42fix",
+  "bombsuit_p10_k50",
+  "bombsuit_p10_k50fix",
+  "bombsuit_p10_k51",
+  "bombsuit_p10_k51fix",
+  "bombsuit_p10_k52",
+  "bombsuit_p10_k52fix",
+  "bombsuit_p7_k30",
+  "bombsuit_p7_k30fix",
+  "bombsuit_p7_k31",
+  "bombsuit_p7_k31fix",
+  "bombsuit_p7_k32",
+  "bombsuit_p7_k32fix",
+  "bombsuit_p7_k40",
+  "bombsuit_p7_k40fix",
+  "bombsuit_p7_k41",
+  "bombsuit_p7_k41fix",
+  "bombsuit_p7_k42",
+  "bombsuit_p7_k42fix",
   "bombsuit_r1_s0",
   "bombsuit_r1_s0fix",
   "bombsuit_r1_s1",
   "bombsuit_r1_s1fix",
   "bombsuit_r1_s2",
   "bombsuit_r1_s2fix",
-  "bombsuit_r3_s0",
-  "bombsuit_r3_s0fix",
-  "bombsuit_r3_s1",
-  "bombsuit_r3_s1fix",
-  "bombsuit_r3_s2",
-  "bombsuit_r3_s2fix",
-  "bombsuit_r3_s3",
-  "bombsuit_r3_s3fix"
+  "bombsuit_r2_s0",
+  "bombsuit_r2_s0fix",
+  "bombsuit_r2_s1",
+  "bombsuit_r2_s1fix",
+  "bombsuit_r2_s2",
+  "bombsuit_r2_s2fix",
+  "bombsuit_r2_s3",
+  "bombsuit_r2_s3fix"
  ],
  "complete": false,
  "missing_poses": [
-  7,
   10
  ],
  "why_failed_per_sheet": {
+  "bombsuit_p10_k30": {
+   "0": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "1": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "2": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "3": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "4": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "5": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "6": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "7": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "8": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "9": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "10": [
+    "limb layout differs from the old pose (back view?)",
+    "silhouette",
+    "width"
+   ],
+   "11": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ]
+  },
+  "bombsuit_p10_k30fix": {
+   "0": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "1": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "2": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "3": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "4": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "5": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "6": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "7": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "8": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "9": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "10": [
+    "limb layout differs from the old pose (back view?)",
+    "silhouette",
+    "width"
+   ],
+   "11": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ]
+  },
+  "bombsuit_p10_k31": {
+   "0": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "1": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "2": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "3": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "4": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "5": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "6": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "7": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "8": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "9": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "10": [
+    "limb layout differs from the old pose (back view?)",
+    "silhouette",
+    "width"
+   ],
+   "11": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ]
+  },
+  "bombsuit_p10_k31fix": {
+   "0": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "1": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "2": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "3": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "4": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "5": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "6": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "7": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "8": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "9": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "10": [
+    "limb layout differs from the old pose (back view?)",
+    "silhouette",
+    "width"
+   ],
+   "11": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ]
+  },
+  "bombsuit_p10_k32": {
+   "0": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "1": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "2": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "3": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "4": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "5": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "6": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "7": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "8": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "9": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "10": [
+    "limb layout differs from the old pose (back view?)",
+    "silhouette",
+    "width"
+   ],
+   "11": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ]
+  },
+  "bombsuit_p10_k32fix": {
+   "0": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "1": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "2": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "3": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "4": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "5": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "6": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "7": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "8": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "9": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "10": [
+    "limb layout differs from the old pose (back view?)",
+    "silhouette",
+    "width"
+   ],
+   "11": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ]
+  },
+  "bombsuit_p10_k40": {
+   "0": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "1": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "2": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "3": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "4": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "5": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "6": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "7": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "8": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "9": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "10": [
+    "limb layout differs from the old pose (back view?)",
+    "silhouette",
+    "width"
+   ],
+   "11": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ]
+  },
+  "bombsuit_p10_k40fix": {
+   "0": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "1": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "2": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "3": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "4": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "5": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "6": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "7": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "8": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "9": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "10": [
+    "limb layout differs from the old pose (back view?)",
+    "silhouette",
+    "width"
+   ],
+   "11": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ]
+  },
+  "bombsuit_p10_k41": {
+   "0": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "1": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "2": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "3": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "4": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "5": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "6": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "7": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "8": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "9": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "10": [
+    "limb layout differs from the old pose (back view?)",
+    "silhouette",
+    "width"
+   ],
+   "11": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ]
+  },
+  "bombsuit_p10_k41fix": {
+   "0": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "1": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "2": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "3": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "4": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "5": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "6": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "7": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "8": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "9": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "10": [
+    "limb layout differs from the old pose (back view?)",
+    "silhouette",
+    "width"
+   ],
+   "11": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ]
+  },
+  "bombsuit_p10_k42": {
+   "0": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "1": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "2": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "3": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "4": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "5": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "6": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "7": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "8": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "9": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "10": [
+    "limb layout differs from the old pose (back view?)",
+    "silhouette",
+    "width"
+   ],
+   "11": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ]
+  },
+  "bombsuit_p10_k42fix": {
+   "0": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "1": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "2": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "3": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "4": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "5": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "6": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "7": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "8": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "9": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "10": [
+    "limb layout differs from the old pose (back view?)",
+    "silhouette",
+    "width"
+   ],
+   "11": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ]
+  },
+  "bombsuit_p10_k50": {
+   "0": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "1": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "2": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "3": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "4": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "5": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "6": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "7": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "8": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "9": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "10": [
+    "limb layout differs from the old pose (back view?)",
+    "silhouette",
+    "width"
+   ],
+   "11": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ]
+  },
+  "bombsuit_p10_k50fix": {
+   "0": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "1": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "2": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "3": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "4": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "5": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "6": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "7": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "8": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "9": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "10": [
+    "limb layout differs from the old pose (back view?)",
+    "silhouette",
+    "width"
+   ],
+   "11": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ]
+  },
+  "bombsuit_p10_k51": {
+   "0": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "1": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "2": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "3": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "4": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "5": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "6": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "7": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "8": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "9": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "10": [
+    "limb layout differs from the old pose (back view?)",
+    "silhouette",
+    "width"
+   ],
+   "11": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ]
+  },
+  "bombsuit_p10_k51fix": {
+   "0": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "1": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "2": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "3": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "4": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "5": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "6": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "7": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "8": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "9": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "10": [
+    "limb layout differs from the old pose (back view?)",
+    "silhouette",
+    "width"
+   ],
+   "11": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ]
+  },
+  "bombsuit_p10_k52": {
+   "0": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "1": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "2": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "3": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "4": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "5": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "6": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "7": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "8": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "9": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "10": [
+    "limb layout differs from the old pose (back view?)",
+    "silhouette",
+    "width"
+   ],
+   "11": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ]
+  },
+  "bombsuit_p10_k52fix": {
+   "0": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "1": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "2": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "3": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "4": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "5": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "6": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "7": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "8": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "9": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "10": [
+    "limb layout differs from the old pose (back view?)",
+    "silhouette",
+    "width"
+   ],
+   "11": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ]
+  },
+  "bombsuit_p7_k30": {
+   "0": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "1": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "2": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "3": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "4": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "5": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "6": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "7": [
+    "head or hat on top",
+    "limb layout differs from the old pose (back view?)"
+   ],
+   "8": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "9": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "10": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "11": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ]
+  },
+  "bombsuit_p7_k30fix": {
+   "0": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "1": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "2": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "3": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "4": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "5": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "6": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "7": [
+    "head or hat on top",
+    "limb layout differs from the old pose (back view?)"
+   ],
+   "8": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "9": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "10": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "11": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ]
+  },
+  "bombsuit_p7_k31": {
+   "0": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "1": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "2": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "3": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "4": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "5": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "6": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "8": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "9": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "10": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "11": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ]
+  },
+  "bombsuit_p7_k31fix": {
+   "0": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "1": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "2": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "3": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "4": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "5": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "6": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "8": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "9": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "10": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "11": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ]
+  },
+  "bombsuit_p7_k32": {
+   "0": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "1": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "2": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "3": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "4": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "5": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "6": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "7": [
+    "head or hat on top",
+    "limb layout differs from the old pose (back view?)"
+   ],
+   "8": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "9": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "10": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "11": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ]
+  },
+  "bombsuit_p7_k32fix": {
+   "0": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "1": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "2": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "3": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "4": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "5": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "6": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "7": [
+    "head or hat on top",
+    "limb layout differs from the old pose (back view?)"
+   ],
+   "8": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "9": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "10": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "11": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ]
+  },
+  "bombsuit_p7_k40": {
+   "0": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "1": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "2": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "3": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "4": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "5": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "6": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "8": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "9": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "10": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "11": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ]
+  },
+  "bombsuit_p7_k40fix": {
+   "0": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "1": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "2": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "3": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "4": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "5": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "6": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "8": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "9": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "10": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "11": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ]
+  },
+  "bombsuit_p7_k41": {
+   "0": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "1": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "2": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "3": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "4": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "5": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "6": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "7": [
+    "head or hat on top",
+    "limb layout differs from the old pose (back view?)",
+    "no white neck stub or hands (back view or hands missing)"
+   ],
+   "8": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "9": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "10": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "11": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ]
+  },
+  "bombsuit_p7_k41fix": {
+   "0": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "1": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "2": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "3": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "4": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "5": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "6": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "7": [
+    "head or hat on top",
+    "limb layout differs from the old pose (back view?)",
+    "no white neck stub or hands (back view or hands missing)"
+   ],
+   "8": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "9": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "10": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "11": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ]
+  },
+  "bombsuit_p7_k42": {
+   "0": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "1": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "2": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "3": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "4": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "5": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "6": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "8": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "9": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "10": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "11": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ]
+  },
+  "bombsuit_p7_k42fix": {
+   "0": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "1": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "2": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "3": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "4": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "5": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "6": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "8": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "9": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "10": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "11": [
+    "empty cut-out",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ]
+  },
   "bombsuit_r1_s0": {
    "2": [
     "extra white parts (bare arm or leg)"
@@ -113,62 +1968,35 @@
     "white limb left (bare leg)"
    ]
   },
-  "bombsuit_r3_s0": {
-   "6": [
-    "silhouette"
-   ],
-   "8": [
-    "limb layout differs from the old pose (back view?)"
-   ],
+  "bombsuit_r2_s0": {
    "10": [
     "extra white parts (bare arm or leg)",
-    "head or hat on top",
-    "no white neck stub or hands (back view or hands missing)",
+    "limb layout differs from the old pose (back view?)",
     "white limb left (bare leg)"
    ],
    "11": [
     "limb layout differs from the old pose (back view?)",
-    "silhouette",
     "white limb left (bare leg)"
    ]
   },
-  "bombsuit_r3_s0fix": {
-   "6": [
-    "silhouette"
-   ],
-   "8": [
+  "bombsuit_r2_s0fix": {
+   "10": [
+    "extra white parts (bare arm or leg)",
     "limb layout differs from the old pose (back view?)"
    ],
-   "10": [
-    "head or hat on top",
-    "no white neck stub or hands (back view or hands missing)",
-    "white limb left (bare leg)"
-   ],
    "11": [
+    "limb layout differs from the old pose (back view?)"
+   ]
+  },
+  "bombsuit_r2_s1": {
+   "1": [
+    "limb layout differs from the old pose (back view?)"
+   ],
+   "2": [
     "limb layout differs from the old pose (back view?)",
     "silhouette"
-   ]
-  },
-  "bombsuit_r3_s1": {
-   "10": [
-    "extra white parts (bare arm or leg)"
    ],
-   "11": [
-    "limb layout differs from the old pose (back view?)",
-    "white limb left (bare leg)"
-   ]
-  },
-  "bombsuit_r3_s1fix": {
-   "10": [
-    "extra white parts (bare arm or leg)"
-   ],
-   "11": [
-    "limb layout differs from the old pose (back view?)",
-    "white limb left (bare leg)"
-   ]
-  },
-  "bombsuit_r3_s2": {
-   "2": [
+   "3": [
     "limb layout differs from the old pose (back view?)"
    ],
    "4": [
@@ -194,7 +2022,6 @@
    ],
    "10": [
     "limb layout differs from the old pose (back view?)",
-    "no white neck stub or hands (back view or hands missing)",
     "white limb left (bare leg)"
    ],
    "11": [
@@ -203,8 +2030,15 @@
     "white limb left (bare leg)"
    ]
   },
-  "bombsuit_r3_s2fix": {
+  "bombsuit_r2_s1fix": {
+   "1": [
+    "limb layout differs from the old pose (back view?)"
+   ],
    "2": [
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "3": [
     "limb layout differs from the old pose (back view?)"
    ],
    "4": [
@@ -219,6 +2053,82 @@
     "silhouette"
    ],
    "7": [
+    "height",
+    "limb layout differs from the old pose (back view?)"
+   ],
+   "8": [
+    "limb layout differs from the old pose (back view?)"
+   ],
+   "9": [
+    "limb layout differs from the old pose (back view?)"
+   ],
+   "10": [
+    "limb layout differs from the old pose (back view?)"
+   ],
+   "11": [
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ]
+  },
+  "bombsuit_r2_s2": {
+   "2": [
+    "limb layout differs from the old pose (back view?)"
+   ],
+   "3": [
+    "extra white parts (bare arm or leg)"
+   ],
+   "4": [
+    "height"
+   ],
+   "5": [
+    "height"
+   ],
+   "6": [
+    "height",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "7": [
+    "extra white parts (bare arm or leg)",
+    "height",
+    "limb layout differs from the old pose (back view?)"
+   ],
+   "8": [
+    "limb layout differs from the old pose (back view?)"
+   ],
+   "9": [
+    "limb layout differs from the old pose (back view?)"
+   ],
+   "10": [
+    "limb layout differs from the old pose (back view?)",
+    "no white neck stub or hands (back view or hands missing)"
+   ],
+   "11": [
+    "limb layout differs from the old pose (back view?)",
+    "silhouette",
+    "white limb left (bare leg)"
+   ]
+  },
+  "bombsuit_r2_s2fix": {
+   "2": [
+    "limb layout differs from the old pose (back view?)"
+   ],
+   "3": [
+    "extra white parts (bare arm or leg)"
+   ],
+   "4": [
+    "height"
+   ],
+   "5": [
+    "height"
+   ],
+   "6": [
+    "height",
+    "limb layout differs from the old pose (back view?)",
+    "silhouette"
+   ],
+   "7": [
+    "extra white parts (bare arm or leg)",
     "height",
     "limb layout differs from the old pose (back view?)"
    ],
@@ -237,62 +2147,37 @@
     "silhouette"
    ]
   },
-  "bombsuit_r3_s3": {
-   "2": [
-    "limb layout differs from the old pose (back view?)"
-   ],
-   "4": [
-    "height"
-   ],
-   "5": [
-    "height"
-   ],
+  "bombsuit_r2_s3": {
    "6": [
-    "height",
     "silhouette"
    ],
-   "7": [
-    "height",
-    "limb layout differs from the old pose (back view?)"
-   ],
    "8": [
-    "limb layout differs from the old pose (back view?)"
-   ],
-   "9": [
     "limb layout differs from the old pose (back view?)"
    ],
    "10": [
-    "extra white parts (bare arm or leg)",
-    "white limb left (bare leg)"
+    "head or hat on top",
+    "height",
+    "limb layout differs from the old pose (back view?)",
+    "no white neck stub or hands (back view or hands missing)"
    ],
    "11": [
     "limb layout differs from the old pose (back view?)",
-    "silhouette"
+    "silhouette",
+    "white limb left (bare leg)"
    ]
   },
-  "bombsuit_r3_s3fix": {
-   "2": [
-    "limb layout differs from the old pose (back view?)"
-   ],
-   "4": [
-    "height"
-   ],
-   "5": [
-    "height"
-   ],
+  "bombsuit_r2_s3fix": {
    "6": [
-    "height",
     "silhouette"
-   ],
-   "7": [
-    "height",
-    "limb layout differs from the old pose (back view?)"
    ],
    "8": [
     "limb layout differs from the old pose (back view?)"
    ],
-   "9": [
-    "limb layout differs from the old pose (back view?)"
+   "10": [
+    "head or hat on top",
+    "height",
+    "limb layout differs from the old pose (back view?)",
+    "no white neck stub or hands (back view or hands missing)"
    ],
    "11": [
     "limb layout differs from the old pose (back view?)",
@@ -302,5 +2187,12 @@
  },
  "status": "auto_accepted",
  "human_reviewed": false,
- "last_round": true
+ "last_round": true,
+ "fallback_poses": {
+  "10": {
+   "copied_from_pose": 0,
+   "old_pose_similarity": 0.55,
+   "note": "NOT a redrawn pose: closest accepted pose reused"
+  }
+ }
 }
