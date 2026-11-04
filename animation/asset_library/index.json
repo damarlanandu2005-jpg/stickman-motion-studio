@@ -1,0 +1,110 @@
+{
+ "items": {
+  "bg_house_living": {
+   "desc": "the inside of a cosy house living room, back wall with a window and a door, wooden floor, warm evening light",
+   "file": "backgrounds/bg_house_living.png",
+   "run": "41777636094",
+   "tags": [
+    "house",
+    "inside",
+    "living",
+    "room"
+   ],
+   "type": "background"
+  },
+  "bg_house_outside": {
+   "desc": "the outside front of a small house with a front door and a path, green lawn, trees, blue sky",
+   "file": "backgrounds/bg_house_outside.png",
+   "run": "41777636094",
+   "tags": [
+    "house",
+    "outside",
+    "street"
+   ],
+   "type": "background"
+  },
+  "bg_house_study": {
+   "desc": "the inside of a small home study room, bookshelf wall, a window with night sky, wooden floor",
+   "file": "backgrounds/bg_house_study.png",
+   "run": "41777636094",
+   "tags": [
+    "house",
+    "inside",
+    "room",
+    "study"
+   ],
+   "type": "background"
+  },
+  "obj_chest": {
+   "desc": "a closed wooden treasure chest with gold bands",
+   "file": "objects/obj_chest.png",
+   "run": "41777636094",
+   "tags": [
+    "chest",
+    "treasure"
+   ],
+   "type": "object"
+  },
+  "obj_desk": {
+   "desc": "a wooden writing desk with a drawer",
+   "file": "objects/obj_desk.png",
+   "run": "41777636094",
+   "tags": [
+    "desk",
+    "furniture",
+    "wood"
+   ],
+   "type": "object"
+  },
+  "obj_key": {
+   "desc": "a big old golden key",
+   "file": "objects/obj_key.png",
+   "run": "41777636094",
+   "tags": [
+    "key"
+   ],
+   "type": "object"
+  },
+  "obj_lamp": {
+   "desc": "a tall floor lamp with a yellow shade",
+   "file": "objects/obj_lamp.png",
+   "run": "41777636094",
+   "tags": [
+    "furniture",
+    "lamp",
+    "light"
+   ],
+   "type": "object"
+  },
+  "obj_map": {
+   "desc": "an old rolled treasure map, half open",
+   "file": "objects/obj_map.png",
+   "run": "41777636094",
+   "tags": [
+    "map",
+    "paper"
+   ],
+   "type": "object"
+  },
+  "obj_plant": {
+   "desc": "a green potted plant",
+   "file": "objects/obj_plant.png",
+   "run": "41777636094",
+   "tags": [
+    "plant",
+    "pot"
+   ],
+   "type": "object"
+  },
+  "obj_sofa": {
+   "desc": "a red sofa",
+   "file": "objects/obj_sofa.png",
+   "run": "41777636094",
+   "tags": [
+    "furniture",
+    "sofa"
+   ],
+   "type": "object"
+  }
+ }
+}
