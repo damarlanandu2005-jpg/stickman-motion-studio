@@ -3,6 +3,9 @@ name: Render short (parallel parts, joined with ffmpeg)
 # -> merge job joins them with ffmpeg (no re-encode), adds the voice, checks the frame count -> video published to branch test-results (shorts/<name>/).
 # How many parts: "auto" uses the time model in motion_studio/split_render.py (choose_parts), or give a number.
 on:
+  push:
+    branches: [test/image-to-3d-objects]
+    paths: ['.github/workflows/render-short.yml']      # also makes GitHub know the workflow (it is not on the default branch)
   workflow_dispatch:
     inputs:
       script:
@@ -64,8 +67,8 @@ jobs:
         id: plan
         env:
           PYTHONPATH: .
-          SCRIPT: ${{ github.event.inputs.script }}
-          PARTS: ${{ github.event.inputs.parts }}
+          SCRIPT: ${{ github.event.inputs.script || 'scripts_in/example_long.txt' }}
+          PARTS: ${{ github.event.inputs.parts || 'auto' }}
         run: |
           START=$(date +%s)
           python -m motion_studio.split_render prepare "$SCRIPT" --models models --work work
