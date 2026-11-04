@@ -10,46 +10,48 @@
   "bg_snowy_mountain_pass": [
    {
     "file": "pose_bg_snowy_mountain_pass_r1_c0.png",
-    "pass": true,
-    "why": [],
-    "score": -0.437,
+    "pass": false,
+    "why": [
+     "the bottom of the picture is a pale sky-blue block, not a floor"
+    ],
+    "score": -0.457,
     "text_check": true,
-    "sat": 0.285,
-    "dark": 0.019,
-    "bright": 0.941,
-    "low_dark": 0.0,
-    "grad": 3.287
+    "sat": 0.281,
+    "dark": 0.022,
+    "bright": 0.921,
+    "low_dark": 0.006,
+    "grad": 4.925
    },
    {
     "file": "pose_bg_snowy_mountain_pass_r1_c1.png",
     "pass": true,
     "why": [],
-    "score": -0.529,
+    "score": -0.55,
     "text_check": true,
-    "sat": 0.204,
-    "dark": 0.019,
-    "bright": 0.951,
+    "sat": 0.194,
+    "dark": 0.023,
+    "bright": 0.932,
     "low_dark": 0.0,
-    "grad": 4.499
+    "grad": 4.191
    }
   ]
  },
  "human_reviewed": false,
  "style_reference": {
   "n": 21,
-  "sat": 0.32632172107696533,
+  "sat": 0.37198755145072937,
   "sat_lo": -0.016279444694519044,
   "sat_hi": 0.5432394599914551,
-  "dark": 0.05699327256944445,
+  "dark": 0.056633843315972224,
   "dark_lo": -0.055132921006944446,
   "dark_hi": 0.5481410047743056,
   "bright": 0.6493335366249084,
-  "bright_lo": 0.17193236827850342,
-  "bright_hi": 0.9655140948295593,
+  "bright_lo": 0.1739240765571594,
+  "bright_hi": 0.9469248175621032,
   "low_dark": 0.0,
   "low_dark_lo": -0.02044642857142857,
   "low_dark_hi": 0.19083333333333333,
-  "grad": 5.186107158660889,
+  "grad": 4.882946968078613,
   "grad_lo": 0.15250093460083014,
   "grad_hi": 8.140658431053161
  }
