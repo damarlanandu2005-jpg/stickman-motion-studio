@@ -1,0 +1,94 @@
+name: Costume auto (draw, judge, redraw, save)
+# One spec file in animation/costume_specs/ -> Kaggle draws a 12-pose body sheet in the new costume, code judges every pose,
+# failed poses are redrawn automatically (up to max_rounds), accepted poses are published to branch test-results under costumes/<name>/.
+# No person approves anything. The report says auto_accepted and human_reviewed false.
+on:
+  workflow_dispatch:
+    inputs:
+      spec:
+        description: "Spec file"
+        default: animation/costume_specs/bombsuit.json
+  push:
+    branches: [test/image-to-3d-objects]
+    paths: ['animation/costume_specs/**', '.github/workflows/costume-auto.yml']
+
+concurrency:
+  group: kaggle-notebook-scene-batch   # same Kaggle notebook as the scene batch: one run at a time
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  costume:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install numpy pillow scipy pytest kaggle==2.2.5 six
+      - name: Unit tests
+        run: python -m pytest -q
+        env:
+          PYTHONPATH: .
+      - name: Configure Kaggle credentials
+        env:
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+        run: |
+          if [ -z "$KAGGLE_USERNAME" ] || [ -z "$KAGGLE_KEY" ]; then echo "Missing Kaggle secrets"; exit 1; fi
+          mkdir -p "$HOME/.kaggle"
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          Path.home().joinpath(".kaggle", "kaggle.json").write_text(json.dumps({
+              "username": os.environ["KAGGLE_USERNAME"].strip(), "key": os.environ["KAGGLE_KEY"].strip()}))
+          PY
+          chmod 600 "$HOME/.kaggle/kaggle.json"
+      - name: Run the loop for every changed spec
+        env:
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+          PYTHONPATH: .
+          INPUT_SPEC: ${{ github.event.inputs.spec }}
+        run: |
+          if [ "${{ github.event_name }}" = "push" ]; then
+            SPECS=$(git diff --name-only HEAD^ HEAD -- animation/costume_specs | grep '\.json$' || true)
+            [ -z "$SPECS" ] && SPECS=$(ls animation/costume_specs/*.json)
+          else
+            SPECS="$INPUT_SPEC"
+          fi
+          for S in $SPECS; do scripts/run_costume_auto.sh "$S"; done
+      - name: Upload everything as an artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: costume-auto-output
+          path: costume-state/
+          if-no-files-found: warn
+          retention-days: 14
+      - name: Publish accepted poses to the test-results branch
+        if: always()
+        run: |
+          [ -d costume-state ] || { echo "nothing to publish"; exit 0; }
+          ROOT="$GITHUB_WORKSPACE/costume-state"
+          if git ls-remote --exit-code --heads origin test-results >/dev/null; then
+            git fetch --depth 1 origin test-results
+            git worktree add /tmp/results FETCH_HEAD
+            cd /tmp/results && git checkout -B test-results
+          else
+            git worktree add --detach /tmp/results
+            cd /tmp/results && git checkout --orphan test-results && git rm -rq --cached . && git clean -fdq
+          fi
+          for D in "$ROOT"/*/out/*; do
+            N=$(basename "$D"); mkdir -p "costumes/$N"; cp -r "$D"/. "costumes/$N"/
+            mkdir -p "costumes/$N/sheets_drawn"; cp "$ROOT/$N/candidates"/*.png "costumes/$N/sheets_drawn"/ 2>/dev/null || true
+          done
+          git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add costumes; git commit -q -m "Costume auto output, workflow run ${{ github.run_id }}" || { echo "nothing new"; exit 0; }
+          git push -q origin test-results
+          echo "Published to test-results: costumes/"

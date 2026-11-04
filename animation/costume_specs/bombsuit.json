@@ -1,0 +1,11 @@
+{
+ "name": "bombsuit",
+ "old_sheet": "cast/explorer_poses_sheet.png",
+ "old_info": "cast/explorer_poses_sheet.json",
+ "target_hue": [0.17, 0.45],
+ "first_round_seeds": 3,
+ "retry_seeds": 4,
+ "max_rounds": 3,
+ "prompt_first": "The exact same sheet layout as the reference image: 12 headless cartoon bodies in a grid of 4 columns and 3 rows on a plain white background, same poses, same positions, same size, same body proportions, same thick dark outlines and same flat cartoon style. Only the outfit changes: every figure wears a thick padded olive-green bomb disposal suit with a heavy chest plate, thick padded arms and legs and heavy black boots, instead of the khaki explorer outfit. The legs, including the shins, are covered by the same green padded suit. Keep the round white hands and the plain white neck stub exactly as in the reference. Do not draw any head, face, helmet or hat. No text, no letters, no numbers.",
+ "prompt_retry": "Two reference images. Image 1 shows the exact pose layout: 12 headless cartoon bodies in a grid of 4 columns and 3 rows on a plain white background. Image 2 shows the exact outfit design (some cells may be empty): a thick padded olive-green bomb disposal suit with a chest plate, padded arms and legs and heavy black boots. Draw a new sheet with all 12 poses at the same layout, same positions, same size and same body proportions as image 1, every figure wearing exactly the same suit as image 2, the legs and shins fully covered by the green suit, same thick dark outlines and flat cartoon style. Keep the round white hands and the plain white neck stub. Do not draw any head, face, helmet or hat. No text, no letters, no numbers."
+}

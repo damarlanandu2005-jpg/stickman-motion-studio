@@ -42,6 +42,11 @@ def stray_white(rgba: Image.Image) -> list[str]:
         el = float(np.sqrt(ev[0] / max(ev[1], 1e-6))); cy = (yy.mean() - y0) / h
         if (area > 0.02 and el > 2.5) or (cy > 0.6 and el > 1.4 and area > 0.004):
             why.append("white limb left (bare leg)")
+    raw = (a[:, :, :3].min(2) > 190) & m               # neck + two hands are the only white parts a suit figure may show
+    lab2, n2 = ndi.label(raw)
+    big = sum(1 for k in range(1, n2 + 1) if (lab2 == k).sum() / h / h >= 0.0025)
+    if big > 3:
+        why.append("extra white parts (bare arm or leg)")
     return sorted(set(why))
 
 
@@ -66,15 +71,41 @@ def score_sheet(drawn: Path, ref: Path, info: list[dict], target_hue: tuple[floa
         why += stray_white(cut)
         r["why"], r["pass"] = sorted(set(why)), not why
         r["score"] = round(iou + cov - abs(1 - r.get("h_ratio", 0)) - abs(1 - r.get("w_ratio", 0)), 3)
+        r["rgb"] = suit_rgb(cut)
     return res
 
 
-def pick_best(scored: dict[str, list[dict]]) -> dict[int, tuple[str, dict] | None]:
-    """scored: candidate name -> per-pose results. Per pose: the passing candidate with the highest score, else None (redraw)."""
-    best: dict[int, tuple[str, dict] | None] = {}
+def suit_rgb(rgba: Image.Image) -> list[float]:
+    """Mean colour of the coloured (suit) pixels: a cheap fingerprint of the suit design."""
+    a = np.asarray(rgba).astype(np.float32)
+    m = a[:, :, 3] > 0; rgb = a[:, :, :3] / 255.0
+    mx, mn = rgb.max(2), rgb.min(2); col = m & (mx > 0.2) & ((mx - mn) / np.maximum(mx, 1e-6) > 0.18)
+    return [round(float(x), 1) for x in (a[:, :, :3][col].mean(0) if col.any() else (0, 0, 0))]
+
+
+def pick_best(scored: dict[str, list[dict]], rgb_tol: float = 6.0, outline_tol: float = 0.25) -> dict[int, tuple[str, dict] | None]:
+    """scored: candidate name -> per-pose results. One ANCHOR sheet (most passing poses) keeps the suit design the same in every pose.
+    A failed anchor pose may be filled from another sheet only if that pose's suit colour and outline match the anchor's. Else None (redraw)."""
+    if not scored:
+        return {}
     n = max(len(v) for v in scored.values())
+    passing = lambda name: [r for r in scored[name] if r.get("pass")]
+    anchor = max(scored, key=lambda k: (len(passing(k)), sum(r["score"] for r in passing(k))))
+    ar = passing(anchor)
+    med_rgb = np.median([r["rgb"] for r in ar], axis=0) if ar else None
+    med_out = float(np.median([r["outline_ratio"] for r in ar])) if ar else None
+    best: dict[int, tuple[str, dict] | None] = {}
     for i in range(n):
-        ok = [(name, res[i]) for name, res in scored.items() if i < len(res) and res[i].get("pass")]
+        if i < len(scored[anchor]) and scored[anchor][i].get("pass"):
+            best[i] = (anchor, scored[anchor][i]); continue
+        ok = []
+        for name, res in scored.items():
+            if i >= len(res) or not res[i].get("pass"):
+                continue
+            r = res[i]
+            if med_rgb is not None and (np.abs(np.array(r["rgb"]) - med_rgb).max() > rgb_tol or abs(r["outline_ratio"] / med_out - 1) > outline_tol):
+                continue
+            ok.append((name, r))
         best[i] = max(ok, key=lambda t: t[1]["score"]) if ok else None
     return best
 
