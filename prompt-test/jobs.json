@@ -1,0 +1,180 @@
+{
+ "jobs": [
+  {
+   "id": "A_plain_s0",
+   "prompt": "A small village square at dusk. Three houses with red roofs stand on the left. One tall green tree stands on the right. A stone well is in the centre. A dirt road runs through the front of the picture. The sky is orange with two white clouds. Flat 2D vector cartoon, thick clean dark outlines, clean flat colours with soft simple shading, in the same style as a stickman explainer short. There is no character, no person, no face and no eyes in the picture. No text, no letters, no watermark, no frame.",
+   "refs": [],
+   "seed": 9100,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "A_plain_s1",
+   "prompt": "A small village square at dusk. Three houses with red roofs stand on the left. One tall green tree stands on the right. A stone well is in the centre. A dirt road runs through the front of the picture. The sky is orange with two white clouds. Flat 2D vector cartoon, thick clean dark outlines, clean flat colours with soft simple shading, in the same style as a stickman explainer short. There is no character, no person, no face and no eyes in the picture. No text, no letters, no watermark, no frame.",
+   "refs": [],
+   "seed": 9101,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "A_plain_s2",
+   "prompt": "A small village square at dusk. Three houses with red roofs stand on the left. One tall green tree stands on the right. A stone well is in the centre. A dirt road runs through the front of the picture. The sky is orange with two white clouds. Flat 2D vector cartoon, thick clean dark outlines, clean flat colours with soft simple shading, in the same style as a stickman explainer short. There is no character, no person, no face and no eyes in the picture. No text, no letters, no watermark, no frame.",
+   "refs": [],
+   "seed": 9102,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "B_list_s0",
+   "prompt": "Scene: village square at dusk. Left: three houses with red roofs. Right: one tall green tree. Centre: a stone well. Front: a dirt road. Sky: orange, two white clouds. Flat 2D vector cartoon, thick clean dark outlines, clean flat colours with soft simple shading, in the same style as a stickman explainer short. There is no character, no person, no face and no eyes in the picture. No text, no letters, no watermark, no frame.",
+   "refs": [],
+   "seed": 9100,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "B_list_s1",
+   "prompt": "Scene: village square at dusk. Left: three houses with red roofs. Right: one tall green tree. Centre: a stone well. Front: a dirt road. Sky: orange, two white clouds. Flat 2D vector cartoon, thick clean dark outlines, clean flat colours with soft simple shading, in the same style as a stickman explainer short. There is no character, no person, no face and no eyes in the picture. No text, no letters, no watermark, no frame.",
+   "refs": [],
+   "seed": 9101,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "B_list_s2",
+   "prompt": "Scene: village square at dusk. Left: three houses with red roofs. Right: one tall green tree. Centre: a stone well. Front: a dirt road. Sky: orange, two white clouds. Flat 2D vector cartoon, thick clean dark outlines, clean flat colours with soft simple shading, in the same style as a stickman explainer short. There is no character, no person, no face and no eyes in the picture. No text, no letters, no watermark, no frame.",
+   "refs": [],
+   "seed": 9102,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "C_long_s0",
+   "prompt": "A vertical picture of a small, quiet village square at dusk. On the left side of the picture there are three small houses in a row, each with a bright red roof, cream walls and one small window, the nearest house is the largest. On the right side there is one single tall green tree with a thick brown trunk. In the exact centre of the square stands an old round stone well with a small wooden roof. In the front of the picture a wide dirt road in light brown colour runs from the left edge to the right edge and fills the whole bottom of the picture down to the bottom edge. Behind the houses the sky is a warm orange colour that is lighter near the horizon, with two soft white clouds. The mood is calm and warm. Flat 2D vector cartoon, thick clean dark outlines, clean flat colours with soft simple shading, in the same style as a stickman explainer short. There is no character, no person, no face and no eyes in the picture. No text, no letters, no watermark, no frame.",
+   "refs": [],
+   "seed": 9100,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "C_long_s1",
+   "prompt": "A vertical picture of a small, quiet village square at dusk. On the left side of the picture there are three small houses in a row, each with a bright red roof, cream walls and one small window, the nearest house is the largest. On the right side there is one single tall green tree with a thick brown trunk. In the exact centre of the square stands an old round stone well with a small wooden roof. In the front of the picture a wide dirt road in light brown colour runs from the left edge to the right edge and fills the whole bottom of the picture down to the bottom edge. Behind the houses the sky is a warm orange colour that is lighter near the horizon, with two soft white clouds. The mood is calm and warm. Flat 2D vector cartoon, thick clean dark outlines, clean flat colours with soft simple shading, in the same style as a stickman explainer short. There is no character, no person, no face and no eyes in the picture. No text, no letters, no watermark, no frame.",
+   "refs": [],
+   "seed": 9101,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "C_long_s2",
+   "prompt": "A vertical picture of a small, quiet village square at dusk. On the left side of the picture there are three small houses in a row, each with a bright red roof, cream walls and one small window, the nearest house is the largest. On the right side there is one single tall green tree with a thick brown trunk. In the exact centre of the square stands an old round stone well with a small wooden roof. In the front of the picture a wide dirt road in light brown colour runs from the left edge to the right edge and fills the whole bottom of the picture down to the bottom edge. Behind the houses the sky is a warm orange colour that is lighter near the horizon, with two soft white clouds. The mood is calm and warm. Flat 2D vector cartoon, thick clean dark outlines, clean flat colours with soft simple shading, in the same style as a stickman explainer short. There is no character, no person, no face and no eyes in the picture. No text, no letters, no watermark, no frame.",
+   "refs": [],
+   "seed": 9102,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "D_json_s0",
+   "prompt": "{\"scene\": \"village square\", \"time\": \"dusk\", \"left\": \"three houses, red roofs\", \"right\": \"one tall green tree\", \"centre\": \"stone well\", \"front\": \"dirt road\", \"sky\": \"orange, two clouds\"} Flat 2D vector cartoon, thick clean dark outlines, clean flat colours with soft simple shading, in the same style as a stickman explainer short. There is no character, no person, no face and no eyes in the picture. No text, no letters, no watermark, no frame.",
+   "refs": [],
+   "seed": 9100,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "D_json_s1",
+   "prompt": "{\"scene\": \"village square\", \"time\": \"dusk\", \"left\": \"three houses, red roofs\", \"right\": \"one tall green tree\", \"centre\": \"stone well\", \"front\": \"dirt road\", \"sky\": \"orange, two clouds\"} Flat 2D vector cartoon, thick clean dark outlines, clean flat colours with soft simple shading, in the same style as a stickman explainer short. There is no character, no person, no face and no eyes in the picture. No text, no letters, no watermark, no frame.",
+   "refs": [],
+   "seed": 9101,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "D_json_s2",
+   "prompt": "{\"scene\": \"village square\", \"time\": \"dusk\", \"left\": \"three houses, red roofs\", \"right\": \"one tall green tree\", \"centre\": \"stone well\", \"front\": \"dirt road\", \"sky\": \"orange, two clouds\"} Flat 2D vector cartoon, thick clean dark outlines, clean flat colours with soft simple shading, in the same style as a stickman explainer short. There is no character, no person, no face and no eyes in the picture. No text, no letters, no watermark, no frame.",
+   "refs": [],
+   "seed": 9102,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "E1_short_s0",
+   "prompt": "Make it daytime.",
+   "refs": [
+    "ds:backgrounds__bg_rooftop_sunset.png"
+   ],
+   "seed": 9100,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "E1_short_s1",
+   "prompt": "Make it daytime.",
+   "refs": [
+    "ds:backgrounds__bg_rooftop_sunset.png"
+   ],
+   "seed": 9101,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "E2_keep_change_s0",
+   "prompt": "Keep all buildings, walls, windows, doors, the roof and the ground exactly the same. Change only the sky and the light: it is now daytime, with a bright blue sky and a big yellow sun disc in the sky.",
+   "refs": [
+    "ds:backgrounds__bg_rooftop_sunset.png"
+   ],
+   "seed": 9100,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "E2_keep_change_s1",
+   "prompt": "Keep all buildings, walls, windows, doors, the roof and the ground exactly the same. Change only the sky and the light: it is now daytime, with a bright blue sky and a big yellow sun disc in the sky.",
+   "refs": [
+    "ds:backgrounds__bg_rooftop_sunset.png"
+   ],
+   "seed": 9101,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "E3_sun_only_s0",
+   "prompt": "Same picture, but the sky is bright blue and a big round yellow sun shines in the upper right of the sky.",
+   "refs": [
+    "ds:backgrounds__bg_rooftop_sunset.png"
+   ],
+   "seed": 9100,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "E3_sun_only_s1",
+   "prompt": "Same picture, but the sky is bright blue and a big round yellow sun shines in the upper right of the sky.",
+   "refs": [
+    "ds:backgrounds__bg_rooftop_sunset.png"
+   ],
+   "seed": 9101,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "E4_donot_s0",
+   "prompt": "Do not change the buildings or the ground. Do not draw a sunset. Draw a normal sunny day.",
+   "refs": [
+    "ds:backgrounds__bg_rooftop_sunset.png"
+   ],
+   "seed": 9100,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "E4_donot_s1",
+   "prompt": "Do not change the buildings or the ground. Do not draw a sunset. Draw a normal sunny day.",
+   "refs": [
+    "ds:backgrounds__bg_rooftop_sunset.png"
+   ],
+   "seed": 9101,
+   "width": 576,
+   "height": 1024
+  }
+ ]
+}
