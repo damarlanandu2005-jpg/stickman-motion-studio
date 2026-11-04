@@ -7,20 +7,12 @@
    "text": "He found a *strange* house.",
    "bg": "bg_house_outside",
    "cam": "push",
-   "objects": [
-    {
-     "lib": "obj_plant",
-     "x": 0.14,
-     "feet": 0.87,
-     "height": 0.112,
-     "pop": 0.2
-    }
-   ],
+   "objects": [],
    "actors": [
     {
      "pose": 0,
      "x": 0.55,
-     "feet": 0.87,
+     "feet": 0.86,
      "height": 0.187,
      "faces": [
       [
@@ -35,24 +27,9 @@
   {
    "id": "h2",
    "text": "Inside, everything was *dusty*.",
-   "bg": "bg_house_living",
+   "bg": "bg_house_living_sofa",
    "cam": "drift",
-   "objects": [
-    {
-     "lib": "obj_sofa",
-     "x": 0.72,
-     "feet": 0.87,
-     "height": 0.136,
-     "pop": 0.1
-    },
-    {
-     "lib": "obj_lamp",
-     "x": 0.9,
-     "feet": 0.87,
-     "height": 0.224,
-     "pop": 0.3
-    }
-   ],
+   "objects": [],
    "actors": [
     {
      "pose": 0,
@@ -66,7 +43,7 @@
      ],
      "x": 0.12,
      "x1": 0.45,
-     "feet": 0.87,
+     "feet": 0.65,
      "height": 0.194,
      "faces": [
       [
@@ -85,27 +62,19 @@
      "every": 0.3
     }
    ],
-   "cap_y": 0.5
+   "cap_y": 0.8
   },
   {
    "id": "h3",
    "text": "A desk stood in the corner.",
-   "bg": "bg_house_study",
+   "bg": "bg_house_study_desk",
    "cam": "push",
-   "objects": [
-    {
-     "lib": "obj_desk",
-     "x": 0.68,
-     "feet": 0.87,
-     "height": 0.16,
-     "pop": 0.3
-    }
-   ],
+   "objects": [],
    "actors": [
     {
      "pose": 2,
      "x": 0.28,
-     "feet": 0.87,
+     "feet": 0.86,
      "height": 0.194,
      "faces": [
       [
@@ -127,28 +96,14 @@
   {
    "id": "h4",
    "text": "On it, an old *map*.",
-   "bg": "bg_house_study",
+   "bg": "bg_house_study_desk",
    "cam": "push",
-   "objects": [
-    {
-     "lib": "obj_desk",
-     "x": 0.68,
-     "feet": 0.87,
-     "height": 0.16
-    },
-    {
-     "lib": "obj_map",
-     "x": 0.66,
-     "feet": 0.73,
-     "height": 0.07,
-     "pop": 0.4
-    }
-   ],
+   "objects": [],
    "actors": [
     {
      "pose": 1,
      "x": 0.3,
-     "feet": 0.87,
+     "feet": 0.86,
      "height": 0.194,
      "faces": [
       [
@@ -162,29 +117,15 @@
   },
   {
    "id": "h5",
-   "text": "The map pointed to a *key*.",
-   "bg": "bg_house_study",
+   "text": "The map pointed to a *chest*.",
+   "bg": "bg_house_study_desk",
    "cam": "drift",
-   "objects": [
-    {
-     "lib": "obj_desk",
-     "x": 0.68,
-     "feet": 0.87,
-     "height": 0.16
-    },
-    {
-     "lib": "obj_key",
-     "x": 0.3,
-     "feet": 0.87,
-     "height": 0.072,
-     "pop": 0.5
-    }
-   ],
+   "objects": [],
    "actors": [
     {
      "pose": 0,
      "x": 0.5,
-     "feet": 0.87,
+     "feet": 0.86,
      "height": 0.194,
      "faces": [
       [
@@ -210,23 +151,9 @@
   {
    "id": "h6",
    "text": "He ran back to the *chest*.",
-   "bg": "bg_house_living",
+   "bg": "bg_house_living_chest",
    "cam": "drift",
-   "objects": [
-    {
-     "lib": "obj_sofa",
-     "x": 0.72,
-     "feet": 0.87,
-     "height": 0.136
-    },
-    {
-     "lib": "obj_chest",
-     "x": 0.85,
-     "feet": 0.87,
-     "height": 0.096,
-     "pop": 0.2
-    }
-   ],
+   "objects": [],
    "actors": [
     {
      "pose": 4,
@@ -240,8 +167,8 @@
      ],
      "cycle_fps": 10,
      "x": 0.1,
-     "x1": 0.6,
-     "feet": 0.87,
+     "x1": 0.5,
+     "feet": 0.65,
      "height": 0.194,
      "faces": [
       [
@@ -260,26 +187,19 @@
      "every": 0.2
     }
    ],
-   "cap_y": 0.5
+   "cap_y": 0.8
   },
   {
    "id": "h7",
    "text": "Click. The lid *opened*.",
-   "bg": "bg_house_living",
+   "bg": "bg_house_living_chest",
    "cam": "push",
-   "objects": [
-    {
-     "lib": "obj_chest",
-     "x": 0.6,
-     "feet": 0.87,
-     "height": 0.112
-    }
-   ],
+   "objects": [],
    "actors": [
     {
      "pose": 5,
      "x": 0.35,
-     "feet": 0.87,
+     "feet": 0.65,
      "height": 0.158,
      "faces": [
       [
@@ -300,26 +220,19 @@
      "gain": 0.4
     }
    ],
-   "cap_y": 0.5
+   "cap_y": 0.8
   },
   {
    "id": "h8",
    "text": "Gold! He was *rich*.",
-   "bg": "bg_house_living",
+   "bg": "bg_house_living_chest",
    "cam": "pull",
-   "objects": [
-    {
-     "lib": "obj_chest",
-     "x": 0.7,
-     "feet": 0.87,
-     "height": 0.112
-    }
-   ],
+   "objects": [],
    "actors": [
     {
      "pose": 0,
-     "x": 0.4,
-     "feet": 0.87,
+     "x": 0.35,
+     "feet": 0.65,
      "height": 0.194,
      "faces": [
       [
@@ -329,7 +242,7 @@
      ]
     }
    ],
-   "cap_y": 0.5
+   "cap_y": 0.8
   }
  ]
 }

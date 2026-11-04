@@ -12,6 +12,28 @@
    ],
    "type": "background"
   },
+  "bg_house_living_chest": {
+   "desc": "a closed wooden treasure chest with gold bands standing on the floor on the right side",
+   "file": "backgrounds/bg_house_living_chest.png",
+   "run": "41782088720",
+   "tags": [
+    "chest",
+    "house",
+    "living"
+   ],
+   "type": "background"
+  },
+  "bg_house_living_sofa": {
+   "desc": "a red sofa and a tall floor lamp with a yellow shade against the back wall",
+   "file": "backgrounds/bg_house_living_sofa.png",
+   "run": "41782088720",
+   "tags": [
+    "house",
+    "living",
+    "sofa"
+   ],
+   "type": "background"
+  },
   "bg_house_outside": {
    "desc": "the outside front of a small house with a front door and a path, green lawn, trees, blue sky",
    "file": "backgrounds/bg_house_outside.png",
@@ -31,6 +53,17 @@
     "house",
     "inside",
     "room",
+    "study"
+   ],
+   "type": "background"
+  },
+  "bg_house_study_desk": {
+   "desc": "a wooden writing desk standing against the right wall with an old rolled map lying on top of it",
+   "file": "backgrounds/bg_house_study_desk.png",
+   "run": "41782088720",
+   "tags": [
+    "desk",
+    "house",
     "study"
    ],
    "type": "background"
