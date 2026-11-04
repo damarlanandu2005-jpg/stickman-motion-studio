@@ -382,7 +382,7 @@ def validate_animation_proof_output(out_dir: Path, identity: dict[str, Any], exp
     return {"ok": not failures, "failures": failures, "checks": checks}
 
 
-POSES_PATTERN = r"(poses_report\.json|result_klein\.json|pose_[a-z0-9_]+\.png|[a-z_0-9]+\.log)$"
+POSES_PATTERN = r"(poses_report\.json|result_klein\.json|pose_[A-Za-z0-9_]+\.png|[a-z_0-9]+\.log)$"
 
 
 def validate_poses_output(out_dir: Path, identity: dict[str, Any], expected_model_sha256: str | None = None) -> dict[str, Any]:

@@ -47,3 +47,11 @@ class CostumeCheck(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+def test_poses_download_pattern_accepts_capital_letters_in_job_names():
+    import re
+    from motion_studio.kaggle_runner import POSES_PATTERN
+    for name in ("pose_suit_A_s0.png", "pose_suit_B_s2.png", "pose_walk_01.png", "poses_report.json", "result_klein.json"):
+        assert re.search(POSES_PATTERN, name), name
+    assert not re.search(POSES_PATTERN, "notes.txt")
