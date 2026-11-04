@@ -15,7 +15,8 @@ for ROUND in $(seq 1 "$MAX"); do
   echo "$PLAN"
   if echo "$PLAN" | grep -q "NEEDS_REF_COMMIT=true"; then
     # the Kaggle notebook downloads its references from a pushed commit, so the accepted sheet needs one
-    git add -f "animation/reference_art/cast/costume_${NAME}_accepted_r${ROUND}.png"
+    REFS=$(echo "$PLAN" | grep '^REF_FILES=' | cut -d= -f2- | tr ',' ' ')
+    for F in $REFS; do git add -f "$F"; done
     git commit -q -m "costume ${NAME}: accepted-so-far sheet for round ${ROUND} (automatic)"
     git push -q origin "HEAD:refs/heads/costume-refs-${RUN_ID}" || echo "ref push failed"
   fi
