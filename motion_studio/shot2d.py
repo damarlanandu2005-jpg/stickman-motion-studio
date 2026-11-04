@@ -45,6 +45,17 @@ class Library:
         self._body: dict[int, tuple] = {}
         self._head: dict[str, Image.Image] = {}
         self._cache: dict[tuple, Image.Image] = {}
+        self._sub: dict[str, "Library"] = {}
+
+    def for_outfit(self, name: str | None) -> "Library":
+        """Sprite library of another outfit (a role recolour); backgrounds are shared."""
+        if not name or name == self.outfit:
+            return self
+        if name not in self._sub:
+            sub = Library(self.root, name)
+            sub._bg = self._bg
+            self._sub[name] = sub
+        return self._sub[name]
 
     def bg(self, name: str) -> Image.Image:
         if name not in self._bg:
@@ -84,6 +95,7 @@ class Library:
 
 def draw_actor(lib: Library, scene: Image.Image, actor: dict, t: float, dur: float = 1.0) -> None:
     """Paint one character. actor: pose, x (0..1 of width), feet (0..1 of height), height (0..1 of height, headless body)."""
+    lib = lib.for_outfit(actor.get("outfit"))
     pose = actor.get("pose", 0)
     for at, ps in actor.get("pose_seq", []):  # pose changes inside one shot
         if t >= at:
@@ -180,6 +192,9 @@ def render_frame(lib: Library, shot: dict, local_t: float) -> Image.Image:
         draw_object(lib, scene, o, local_t)
     for actor in shot.get("actors", []):
         draw_actor(lib, scene, actor, local_t, shot["dur"])
+    for tx in shot.get("texts", []):
+        if not tx.get("screen"):
+            draw_text(scene, tx, local_t, shot["dur"])
     cam = shot.get("cam", {})
     u = min(max(local_t / shot["dur"], 0.0), 1.0)
     u = u * u * (3 - 2 * u)  # ease in and out
@@ -190,10 +205,58 @@ def render_frame(lib: Library, shot: dict, local_t: float) -> Image.Image:
     x0 = min(max(fx * scene.width - cw / 2, 0), scene.width - cw)
     y0 = min(max(fy * scene.height - ch / 2, 0), scene.height - ch)
     out = scene.convert("RGB").resize((W, H), Image.BICUBIC, box=(x0, y0, x0 + cw, y0 + ch))
+    for tx in shot.get("texts", []):
+        if tx.get("screen"):
+            out = out.convert("RGBA"); draw_text(out, tx, local_t, shot["dur"]); out = out.convert("RGB")
+    for a, b, peak in shot.get("flash", []):  # white flash: fades out between a and b
+        if a <= local_t < b:
+            al = peak * (1 - (local_t - a) / max(b - a, 1e-6))
+            out = Image.blend(out, Image.new("RGB", out.size, (255, 255, 255)), min(max(al, 0), 1))
     for a, b, text, red in shot.get("caps", []):
         if a <= local_t < b:
             _caption(out, text, red, shot.get("cap_y", 0.68))
     return out
+
+
+_FONTS: dict = {}
+FONT_FILES = {"mono": "/usr/share/fonts/truetype/dejavu/DejaVuSansMono-Bold.ttf",
+              "hand": "/usr/share/fonts/truetype/google-fonts/Lora-Italic-Variable.ttf",
+              "bold": "/usr/share/fonts/truetype/google-fonts/Poppins-Bold.ttf"}
+
+
+def _fmt_clock(v: float) -> str:
+    v = max(int(round(v)), 0)
+    return f"{v // 60}:{v % 60:02d}"
+
+
+def draw_text(im: Image.Image, tx: dict, t: float, dur: float) -> None:
+    """Text or numbers drawn by code (never by the picture model, which garbles text).
+    tx: text | count [from, to] (clock counting down over the shot), x, y (0..1 of the image), size (0..1 of height),
+    color, font (mono|hand|bold), stroke, bg (rgba box behind), rot (degrees), t0, t1, screen (fixed on the screen, not moving with the camera)."""
+    from PIL import ImageDraw, ImageFont
+    t0, t1 = tx.get("t0", 0.0), tx.get("t1", None)
+    if t < t0 or (t1 is not None and t >= t1):
+        return
+    text = tx.get("text", "")
+    if "count" in tx:
+        a, b = tx["count"]
+        u = min(max((t - t0) / max((t1 if t1 is not None else dur) - t0, 1e-6), 0), 1)
+        text = _fmt_clock(a + (b - a) * u)
+    px = max(int(tx.get("size", 0.04) * im.height), 8)
+    key = (tx.get("font", "bold"), px)
+    if key not in _FONTS:
+        _FONTS[key] = ImageFont.truetype(FONT_FILES[key[0]], px)
+    f = _FONTS[key]
+    L = Image.new("RGBA", (int(px * (len(text) * 0.9 + 3)), int(px * 2.2)), (0, 0, 0, 0))
+    d = ImageDraw.Draw(L)
+    w = d.textlength(text, font=f)
+    if tx.get("bg"):
+        d.rounded_rectangle([L.width / 2 - w / 2 - px * 0.4, px * 0.2, L.width / 2 + w / 2 + px * 0.4, px * 1.9], radius=int(px * 0.2), fill=tuple(tx["bg"]))
+    d.text((L.width / 2 - w / 2, px * 0.4), text, font=f, fill=tuple(tx.get("color", (255, 255, 255))),
+           stroke_width=tx.get("stroke", 0), stroke_fill=(0, 0, 0))
+    if tx.get("rot"):
+        L = L.rotate(tx["rot"], Image.BICUBIC, expand=True)
+    im.alpha_composite(L, (int(tx.get("x", 0.5) * im.width - L.width / 2), int(tx.get("y", 0.5) * im.height - L.height / 2)))
 
 
 _FONT = None

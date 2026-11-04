@@ -68,6 +68,265 @@
    ],
    "type": "background"
   },
+  "bg_v3_bulletin": {
+   "desc": "bg v3 bulletin",
+   "file": "backgrounds/bg_v3_bulletin.png",
+   "run": "41785589378",
+   "tags": [
+    "bomb",
+    "bulletin",
+    "v3"
+   ],
+   "type": "background"
+  },
+  "bg_v3_classroom": {
+   "desc": "bg v3 classroom",
+   "file": "backgrounds/bg_v3_classroom.png",
+   "run": "41785589378",
+   "tags": [
+    "bomb",
+    "classroom",
+    "v3"
+   ],
+   "type": "background"
+  },
+  "bg_v3_dispatch": {
+   "desc": "bg v3 dispatch",
+   "file": "backgrounds/bg_v3_dispatch.png",
+   "run": "41785589378",
+   "tags": [
+    "bomb",
+    "dispatch",
+    "v3"
+   ],
+   "type": "background"
+  },
+  "bg_v3_garage": {
+   "desc": "bg v3 garage",
+   "file": "backgrounds/bg_v3_garage.png",
+   "run": "41785589378",
+   "tags": [
+    "bomb",
+    "garage",
+    "v3"
+   ],
+   "type": "background"
+  },
+  "bg_v3_hospital": {
+   "desc": "bg v3 hospital",
+   "file": "backgrounds/bg_v3_hospital.png",
+   "run": "41785589378",
+   "tags": [
+    "bomb",
+    "hospital",
+    "v3"
+   ],
+   "type": "background"
+  },
+  "bg_v3_night_study": {
+   "desc": "bg v3 night study",
+   "file": "backgrounds/bg_v3_night_study.png",
+   "run": "41785589378",
+   "tags": [
+    "bomb",
+    "night",
+    "study",
+    "v3"
+   ],
+   "type": "background"
+  },
+  "bg_v3_police_steps": {
+   "desc": "bg v3 police steps",
+   "file": "backgrounds/bg_v3_police_steps.png",
+   "run": "41785589378",
+   "tags": [
+    "bomb",
+    "police",
+    "steps",
+    "v3"
+   ],
+   "type": "background"
+  },
+  "bg_v3_skyline": {
+   "desc": "bg v3 skyline",
+   "file": "backgrounds/bg_v3_skyline.png",
+   "run": "41785589378",
+   "tags": [
+    "bomb",
+    "skyline",
+    "v3"
+   ],
+   "type": "background"
+  },
+  "bg_v3_street_barrier": {
+   "desc": "bg v3 street barrier",
+   "file": "backgrounds/bg_v3_street_barrier.png",
+   "run": "41785589378",
+   "tags": [
+    "barrier",
+    "bomb",
+    "street",
+    "v3"
+   ],
+   "type": "background"
+  },
+  "bg_v3_street_corner": {
+   "desc": "bg v3 street corner",
+   "file": "backgrounds/bg_v3_street_corner.png",
+   "run": "41785589378",
+   "tags": [
+    "bomb",
+    "corner",
+    "street",
+    "v3"
+   ],
+   "type": "background"
+  },
+  "bg_v3_warehouse": {
+   "desc": "bg v3 warehouse",
+   "file": "backgrounds/bg_v3_warehouse.png",
+   "run": "41785589378",
+   "tags": [
+    "bomb",
+    "v3",
+    "warehouse"
+   ],
+   "type": "background"
+  },
+  "ins_blueprint_battery": {
+   "desc": "ins blueprint battery",
+   "file": "backgrounds/ins_blueprint_battery.png",
+   "run": "41785589378",
+   "tags": [
+    "battery",
+    "bomb",
+    "v3"
+   ],
+   "type": "background"
+  },
+  "ins_blueprint_circuit": {
+   "desc": "ins blueprint circuit",
+   "file": "backgrounds/ins_blueprint_circuit.png",
+   "run": "41785589378",
+   "tags": [
+    "bomb",
+    "circuit",
+    "v3"
+   ],
+   "type": "background"
+  },
+  "ins_blueprints_orange": {
+   "desc": "ins blueprints orange",
+   "file": "backgrounds/ins_blueprints_orange.png",
+   "run": "41785589378",
+   "tags": [
+    "bomb",
+    "orange",
+    "v3"
+   ],
+   "type": "background"
+  },
+  "ins_calendar": {
+   "desc": "ins calendar",
+   "file": "backgrounds/ins_calendar.png",
+   "run": "41785589378",
+   "tags": [
+    "bomb",
+    "v3"
+   ],
+   "type": "background"
+  },
+  "ins_cards_orange": {
+   "desc": "ins cards orange",
+   "file": "backgrounds/ins_cards_orange.png",
+   "run": "41785589378",
+   "tags": [
+    "bomb",
+    "orange",
+    "v3"
+   ],
+   "type": "background"
+  },
+  "ins_explosion": {
+   "desc": "ins explosion",
+   "file": "backgrounds/ins_explosion.png",
+   "run": "41785589378",
+   "tags": [
+    "bomb",
+    "v3"
+   ],
+   "type": "background"
+  },
+  "ins_timer_dark": {
+   "desc": "ins timer dark",
+   "file": "backgrounds/ins_timer_dark.png",
+   "run": "41785589378",
+   "tags": [
+    "bomb",
+    "dark",
+    "v3"
+   ],
+   "type": "background"
+  },
+  "ins_timer_red": {
+   "desc": "ins timer red",
+   "file": "backgrounds/ins_timer_red.png",
+   "run": "41785589378",
+   "tags": [
+    "bomb",
+    "red",
+    "v3"
+   ],
+   "type": "background"
+  },
+  "ins_traffic_grey": {
+   "desc": "ins traffic grey",
+   "file": "backgrounds/ins_traffic_grey.png",
+   "run": "41785589378",
+   "tags": [
+    "bomb",
+    "grey",
+    "v3"
+   ],
+   "type": "background"
+  },
+  "ins_wires_cut_red_pliers": {
+   "desc": "ins wires cut red pliers",
+   "file": "backgrounds/ins_wires_cut_red_pliers.png",
+   "run": "41785589378",
+   "tags": [
+    "bomb",
+    "cut",
+    "pliers",
+    "red",
+    "v3"
+   ],
+   "type": "background"
+  },
+  "ins_wires_knot_grey": {
+   "desc": "ins wires knot grey",
+   "file": "backgrounds/ins_wires_knot_grey.png",
+   "run": "41785589378",
+   "tags": [
+    "bomb",
+    "grey",
+    "knot",
+    "v3"
+   ],
+   "type": "background"
+  },
+  "ins_wires_straight_grey": {
+   "desc": "ins wires straight grey",
+   "file": "backgrounds/ins_wires_straight_grey.png",
+   "run": "41785589378",
+   "tags": [
+    "bomb",
+    "grey",
+    "straight",
+    "v3"
+   ],
+   "type": "background"
+  },
   "obj_chest": {
    "desc": "a closed wooden treasure chest with gold bands",
    "file": "objects/obj_chest.png",
