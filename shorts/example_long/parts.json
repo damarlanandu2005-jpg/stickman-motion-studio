@@ -1,39 +1,14 @@
 {
  "frames": 1211,
- "parts": 6,
+ "parts": 1,
  "ranges": [
   {
    "index": 0,
    "start": 0,
-   "end": 202
-  },
-  {
-   "index": 1,
-   "start": 202,
-   "end": 404
-  },
-  {
-   "index": 2,
-   "start": 404,
-   "end": 606
-  },
-  {
-   "index": 3,
-   "start": 606,
-   "end": 808
-  },
-  {
-   "index": 4,
-   "start": 808,
-   "end": 1010
-  },
-  {
-   "index": 5,
-   "start": 1010,
    "end": 1211
   }
  ],
- "estimated_render_s_per_part": 10.1,
+ "estimated_render_s_per_part": 60.6,
  "estimated_single_job_s": 60.6,
  "chosen_by": "user"
 }

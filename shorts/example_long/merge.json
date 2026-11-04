@@ -1,1 +1,1 @@
-{"ok": true, "frames_in_video": 1211, "frames_expected": 1211, "parts": 6, "part_seconds": [11.8, 12.7, 13.8, 8.7, 9.1, 12.8], "slowest_part_s": 13.8, "sum_of_parts_s": 68.9, "out": "out/example_long.mp4", "error": null}
+{"ok": true, "frames_in_video": 1211, "frames_expected": 1211, "parts": 1, "part_seconds": [35.1], "slowest_part_s": 35.1, "sum_of_parts_s": 35.1, "out": "out/example_long.mp4", "error": null}
