@@ -48,7 +48,11 @@ class Library:
 
     def bg(self, name: str) -> Image.Image:
         if name not in self._bg:
-            im = Image.open(self.root / "places" / f"{name}.jpg").convert("RGB")
+            if name.startswith("lib:"):  # a background from the asset library (same picture every time it is asked for)
+                from motion_studio import asset_library as al
+                im = Image.open(al.path_of(al.load(), name[4:])).convert("RGB")
+            else:
+                im = Image.open(self.root / "places" / f"{name}.jpg").convert("RGB")
             self._bg[name] = im.resize((int(W * SS), int(H * SS)), Image.LANCZOS)
         return self._bg[name]
 
@@ -61,6 +65,12 @@ class Library:
             lean = math.degrees(math.atan2(nx - xs.mean(), ys.mean() + sh + 10 - top)) if len(xs) else 0.0
             self._body[pose] = (b, top, sh, nx, lean)
         return self._body[pose]
+
+    def obj(self, lib_id: str) -> Image.Image:
+        if ("o", lib_id) not in self._cache:
+            from motion_studio import asset_library as al
+            self._cache[("o", lib_id)] = Image.open(al.path_of(al.load(), lib_id)).convert("RGBA")
+        return self._cache[("o", lib_id)]
 
     def head(self, expr: str) -> Image.Image:
         if expr not in self._head:
@@ -140,9 +150,34 @@ def draw_actor(lib: Library, scene: Image.Image, actor: dict, t: float, dur: flo
         scene.paste(h, (int(neck_x - h.width / 2), int(chin_y - h.height)), h)
 
 
+def draw_object(lib: Library, scene: Image.Image, o: dict, t: float) -> None:
+    """Paint one library object standing on the floor line. o: lib (id), x (0..1), feet (0..1), height (0..1 of scene height), pop (time it appears)."""
+    from PIL import ImageDraw
+    pop = o.get("pop", 0.0)
+    if t < pop:
+        return
+    im = lib.obj(o["lib"])
+    sw, sh = scene.size
+    grow = min((t - pop) / 0.18, 1.0)  # quick pop-in: grows from 70 % with a small overshoot
+    k0 = o.get("height", 0.2) * sh / im.height
+    k = k0 * (0.7 + 0.3 * grow + 0.04 * math.sin(grow * math.pi))
+    w, h = max(int(im.width * k), 1), max(int(im.height * k), 1)
+    pic = im.resize((w, h), Image.LANCZOS)
+    if o.get("flip"):
+        pic = pic.transpose(Image.FLIP_LEFT_RIGHT)
+    fx, fy = o.get("x", 0.5) * sw, o.get("feet", 0.8) * sh
+    sh_l = Image.new("RGBA", scene.size, (0, 0, 0, 0))
+    ImageDraw.Draw(sh_l).ellipse([fx - w * 0.5, fy - 10, fx + w * 0.5, fy + 12], fill=(0, 0, 0, 60))
+    scene.alpha_composite(sh_l)
+    pic.putalpha(pic.getchannel("A").point(lambda v: int(v * min(grow * 3, 1))))
+    scene.alpha_composite(pic, (int(fx - w / 2), int(fy - h)))
+
+
 def render_frame(lib: Library, shot: dict, local_t: float) -> Image.Image:
     bg = lib.bg(shot["bg"])
     scene = bg.copy().convert("RGBA")
+    for o in shot.get("objects", []):
+        draw_object(lib, scene, o, local_t)
     for actor in shot.get("actors", []):
         draw_actor(lib, scene, actor, local_t, shot["dur"])
     cam = shot.get("cam", {})
@@ -157,7 +192,7 @@ def render_frame(lib: Library, shot: dict, local_t: float) -> Image.Image:
     out = scene.convert("RGB").resize((W, H), Image.BICUBIC, box=(x0, y0, x0 + cw, y0 + ch))
     for a, b, text, red in shot.get("caps", []):
         if a <= local_t < b:
-            _caption(out, text, red)
+            _caption(out, text, red, shot.get("cap_y", 0.68))
     return out
 
 
