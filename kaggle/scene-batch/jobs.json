@@ -1,112 +1,34 @@
 {
  "jobs": [
   {
-   "id": "var_v3_barrier_bomb",
-   "prompt": "Keep this exact same picture, same walls, floor, colours and drawing style, and add only this: a black bomb box with a blank dark display window and thick coloured wires (red, green, yellow, blue) lying on the road in the lower right part of the picture, large and clearly visible. Do not add any character, person, face, writing or letters. Keep the lower third of the picture empty floor. Same flat cartoon style.",
+   "id": "suit_A_s0",
+   "prompt": "The exact same sheet layout as the reference image: 12 headless cartoon bodies in a grid of 4 columns and 3 rows on a plain white background, same poses, same positions, same size, same body proportions, same thick dark outlines and same flat cartoon style. Only the outfit changes: every figure wears a thick padded olive-green bomb disposal suit with a heavy chest plate, thick padded arms and legs and heavy black boots, instead of the khaki explorer outfit. Keep the round white hands and the plain white neck stub exactly as in the reference. Do not draw any head, face, helmet or hat. No text, no letters, no numbers.",
    "refs": [
-    "library/bg_v3_street_barrier.png"
+    "cast/explorer_poses_sheet.png"
    ],
-   "seed": 9000,
-   "width": 576,
-   "height": 1024
+   "seed": 9500,
+   "width": 1440,
+   "height": 1088
   },
   {
-   "id": "var_v3_barrier_smoke",
-   "prompt": "Keep this exact same picture, same walls, floor, colours and drawing style, and add only this: thick dark grey smoke clouds and a few scorch marks drifting over the road and barriers. Do not add any character, person, face, writing or letters. Keep the lower third of the picture empty floor. Same flat cartoon style.",
+   "id": "suit_A_s1",
+   "prompt": "The exact same sheet layout as the reference image: 12 headless cartoon bodies in a grid of 4 columns and 3 rows on a plain white background, same poses, same positions, same size, same body proportions, same thick dark outlines and same flat cartoon style. Only the outfit changes: every figure wears a thick padded olive-green bomb disposal suit with a heavy chest plate, thick padded arms and legs and heavy black boots, instead of the khaki explorer outfit. Keep the round white hands and the plain white neck stub exactly as in the reference. Do not draw any head, face, helmet or hat. No text, no letters, no numbers.",
    "refs": [
-    "library/bg_v3_street_barrier.png"
+    "cast/explorer_poses_sheet.png"
    ],
-   "seed": 9001,
-   "width": 576,
-   "height": 1024
+   "seed": 9501,
+   "width": 1440,
+   "height": 1088
   },
   {
-   "id": "var_v3_corner_light",
-   "prompt": "Keep this exact same picture, same walls, floor, colours and drawing style, and add only this: a tall black traffic light on a pole on the left sidewalk, its green lamp lit. Do not add any character, person, face, writing or letters. Keep the lower third of the picture empty floor. Same flat cartoon style.",
+   "id": "suit_A_s2",
+   "prompt": "The exact same sheet layout as the reference image: 12 headless cartoon bodies in a grid of 4 columns and 3 rows on a plain white background, same poses, same positions, same size, same body proportions, same thick dark outlines and same flat cartoon style. Only the outfit changes: every figure wears a thick padded olive-green bomb disposal suit with a heavy chest plate, thick padded arms and legs and heavy black boots, instead of the khaki explorer outfit. Keep the round white hands and the plain white neck stub exactly as in the reference. Do not draw any head, face, helmet or hat. No text, no letters, no numbers.",
    "refs": [
-    "library/bg_v3_street_corner.png"
+    "cast/explorer_poses_sheet.png"
    ],
-   "seed": 9002,
-   "width": 576,
-   "height": 1024
-  },
-  {
-   "id": "var_v3_corner_truck",
-   "prompt": "Keep this exact same picture, same walls, floor, colours and drawing style, and add only this: a dark blue armoured police truck with a flashing light bar parked on the road in the lower half of the picture. Do not add any character, person, face, writing or letters. Keep the lower third of the picture empty floor. Same flat cartoon style.",
-   "refs": [
-    "library/bg_v3_street_corner.png"
-   ],
-   "seed": 9003,
-   "width": 576,
-   "height": 1024
-  },
-  {
-   "id": "var_v3_garage_truck",
-   "prompt": "Keep this exact same picture, same walls, floor, colours and drawing style, and add only this: the front half of a dark blue armoured police truck parked on the left side, cut off by the left edge. Do not add any character, person, face, writing or letters. Keep the lower third of the picture empty floor. Same flat cartoon style.",
-   "refs": [
-    "library/bg_v3_garage.png"
-   ],
-   "seed": 9004,
-   "width": 576,
-   "height": 1024
-  },
-  {
-   "id": "var_v3_bulletin_notes",
-   "prompt": "Keep this exact same picture, same walls, floor, colours and drawing style, and add only this: three blank paper notes pinned on the cork board with red pins: a white one on the left, a yellow one in the middle, a white one on the right. Do not add any character, person, face, writing or letters. Keep the lower third of the picture empty floor. Same flat cartoon style.",
-   "refs": [
-    "library/bg_v3_bulletin.png"
-   ],
-   "seed": 9005,
-   "width": 576,
-   "height": 1024
-  },
-  {
-   "id": "var_v3_hospital_desk",
-   "prompt": "Keep this exact same picture, same walls, floor, colours and drawing style, and add only this: a wooden desk with a desk lamp and a clipboard on the right side, in place of the bed. Do not add any character, person, face, writing or letters. Keep the lower third of the picture empty floor. Same flat cartoon style.",
-   "refs": [
-    "library/bg_v3_hospital.png"
-   ],
-   "seed": 9006,
-   "width": 576,
-   "height": 1024
-  },
-  {
-   "id": "var_v3_night_files",
-   "prompt": "Keep this exact same picture, same walls, floor, colours and drawing style, and add only this: a tall stack of colourful file drawers on the left side, drawers coloured red, blue, orange, purple, yellow and green. Do not add any character, person, face, writing or letters. Keep the lower third of the picture empty floor. Same flat cartoon style.",
-   "refs": [
-    "library/bg_v3_night_study.png"
-   ],
-   "seed": 9007,
-   "width": 576,
-   "height": 1024
-  },
-  {
-   "id": "var_v3_warehouse_box",
-   "prompt": "Keep this exact same picture, same walls, floor, colours and drawing style, and add only this: a brown cardboard box with thick coloured wires (red, green, yellow, blue) coming out of the top, standing on the floor in the lower right part of the picture. Do not add any character, person, face, writing or letters. Keep the lower third of the picture empty floor. Same flat cartoon style.",
-   "refs": [
-    "library/bg_v3_warehouse.png"
-   ],
-   "seed": 9008,
-   "width": 576,
-   "height": 1024
-  },
-  {
-   "id": "var_v3_classroom_bucket",
-   "prompt": "Keep this exact same picture, same walls, floor, colours and drawing style, and add only this: a silver paint bucket with red paint dripping from its rim, standing on the wooden lectern. Do not add any character, person, face, writing or letters. Keep the lower third of the picture empty floor. Same flat cartoon style.",
-   "refs": [
-    "library/bg_v3_classroom.png"
-   ],
-   "seed": 9009,
-   "width": 576,
-   "height": 1024
-  },
-  {
-   "id": "ins_orange_blank",
-   "prompt": "A flat orange background with one big darker orange circle in the middle. Nothing else. Flat 2D vector cartoon, clean. No character, no person, no face, no text, no letters, no numbers, no watermark.",
-   "refs": [],
-   "seed": 9010,
-   "width": 576,
-   "height": 1024
+   "seed": 9502,
+   "width": 1440,
+   "height": 1088
   }
  ]
 }
