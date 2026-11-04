@@ -1,32 +1,186 @@
 {
  "jobs": [
   {
-   "id": "bg_house_study_desk",
-   "prompt": "Keep this exact same room, same walls, window, door, floor, colours and drawing style, and add only this: a wooden writing desk standing against the right wall with an old rolled map lying on top of it. Do not add any character, person or face. Keep the lower third of the picture empty floor.",
-   "refs": [
-    "library/bg_house_study.png"
-   ],
-   "seed": 7300,
+   "id": "bg_v3_street_barrier",
+   "prompt": "A grey city street in daylight with grey concrete road barriers across the middle and a yellow tape stretched along them, red brick buildings far behind, wide empty asphalt in front. Keep the lower third of the picture as empty floor or ground. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no numbers, no captions, no signs with writing, no watermark, no panel borders.",
+   "refs": [],
+   "seed": 8000,
    "width": 576,
    "height": 1024
   },
   {
-   "id": "bg_house_living_sofa",
-   "prompt": "Keep this exact same room, same walls, window, door, floor, colours and drawing style, and add only this: a red sofa and a tall floor lamp with a yellow shade against the back wall. Do not add any character, person or face. Keep the lower third of the picture empty floor.",
-   "refs": [
-    "library/bg_house_living.png"
-   ],
-   "seed": 7301,
+   "id": "bg_v3_garage",
+   "prompt": "The inside of a police station garage: a grey roller shutter door, two grey metal lockers on the right, a fluorescent ceiling light, light grey walls, concrete floor. Keep the lower third of the picture as empty floor or ground. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no numbers, no captions, no signs with writing, no watermark, no panel borders.",
+   "refs": [],
+   "seed": 8001,
    "width": 576,
    "height": 1024
   },
   {
-   "id": "bg_house_living_chest",
-   "prompt": "Keep this exact same room, same walls, window, door, floor, colours and drawing style, and add only this: a closed wooden treasure chest with gold bands standing on the floor on the right side. Do not add any character, person or face. Keep the lower third of the picture empty floor.",
-   "refs": [
-    "library/bg_house_living.png"
-   ],
-   "seed": 7302,
+   "id": "bg_v3_street_corner",
+   "prompt": "A city street corner in daylight: red brick apartment buildings with shop fronts and awnings, a grey sidewalk, a white zebra crossing in the foreground, blue sky. Keep the lower third of the picture as empty floor or ground. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no numbers, no captions, no signs with writing, no watermark, no panel borders.",
+   "refs": [],
+   "seed": 8002,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "bg_v3_hospital",
+   "prompt": "A hospital examination room: pale green and white walls, a height measuring chart on the wall, a round wall clock, a pink hospital bed on the left, light tiled floor. Keep the lower third of the picture as empty floor or ground. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no numbers, no captions, no signs with writing, no watermark, no panel borders.",
+   "refs": [],
+   "seed": 8003,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "bg_v3_bulletin",
+   "prompt": "A tan painted wall with a large empty cork board on it, a wooden bench on the right side, grey floor, indoor lighting. Keep the lower third of the picture as empty floor or ground. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no numbers, no captions, no signs with writing, no watermark, no panel borders.",
+   "refs": [],
+   "seed": 8004,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "bg_v3_police_steps",
+   "prompt": "The front of a grey stone government building with tall pillars, a wide staircase of steps in front, an empty blank sign panel above the double doors, blue sky with one cloud. Keep the lower third of the picture as empty floor or ground. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no numbers, no captions, no signs with writing, no watermark, no panel borders.",
+   "refs": [],
+   "seed": 8005,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "bg_v3_night_study",
+   "prompt": "A small room at night: a big window showing a night sky with stars and a crescent moon, a wooden desk on the right with a desk lamp glowing yellow, dark blue walls. Keep the lower third of the picture as empty floor or ground. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no numbers, no captions, no signs with writing, no watermark, no panel borders.",
+   "refs": [],
+   "seed": 8006,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "bg_v3_dispatch",
+   "prompt": "A police radio dispatch room: a big city street map on the wall, a desk with a radio set and a computer monitor, dark blue-grey walls. Keep the lower third of the picture as empty floor or ground. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no numbers, no captions, no signs with writing, no watermark, no panel borders.",
+   "refs": [],
+   "seed": 8007,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "bg_v3_warehouse",
+   "prompt": "A big dark empty warehouse with steel beams, tall windows letting in beams of light, wooden crates stacked at the back, concrete floor. Keep the lower third of the picture as empty floor or ground. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no numbers, no captions, no signs with writing, no watermark, no panel borders.",
+   "refs": [],
+   "seed": 8008,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "bg_v3_classroom",
+   "prompt": "A police academy classroom: a green chalkboard, wooden desks and a teacher lectern, a flag on a pole on the left, a round wall clock, light grey walls. Keep the lower third of the picture as empty floor or ground. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no numbers, no captions, no signs with writing, no watermark, no panel borders.",
+   "refs": [],
+   "seed": 8009,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "bg_v3_skyline",
+   "prompt": "A city skyline in silhouette at sunset, pink and orange sky, dark water in the foreground reflecting the skyline, a small boat at the bottom. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no numbers, no captions, no signs with writing, no watermark, no panel borders.",
+   "refs": [],
+   "seed": 8010,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "ins_traffic_grey",
+   "prompt": "A plain light grey background. One tall black traffic light on a pole in the middle, all three lamps switched off and dark grey. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no numbers, no captions, no signs with writing, no watermark, no panel borders.",
+   "refs": [],
+   "seed": 8011,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "ins_cards_orange",
+   "prompt": "A flat orange background with a big darker orange circle behind. Five playing-card shaped colour cards fanned out in the middle: red, green, blue, yellow, orange. The cards are blank. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no numbers, no captions, no signs with writing, no watermark, no panel borders.",
+   "refs": [],
+   "seed": 8012,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "ins_calendar",
+   "prompt": "A flat pale beige background. One tear-off wall calendar with a red header and two metal rings at the top, a blank white page. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no numbers, no captions, no signs with writing, no watermark, no panel borders.",
+   "refs": [],
+   "seed": 8013,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "ins_blueprints_orange",
+   "prompt": "A flat orange background with a darker orange circle. Three blue technical blueprint sheets lying slightly rotated over each other, white line drawings of electronic parts on blue grid paper, no writing. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no numbers, no captions, no signs with writing, no watermark, no panel borders.",
+   "refs": [],
+   "seed": 8014,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "ins_blueprint_battery",
+   "prompt": "A flat blue blueprint background with a fine grid. White outline drawing of four battery cells in a row inside a rectangular frame, no writing. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no numbers, no captions, no signs with writing, no watermark, no panel borders.",
+   "refs": [],
+   "seed": 8015,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "ins_blueprint_circuit",
+   "prompt": "A flat blue blueprint background with a fine grid. White outline drawing of a circuit board with chips and connecting lines inside a rectangular frame, no writing. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no numbers, no captions, no signs with writing, no watermark, no panel borders.",
+   "refs": [],
+   "seed": 8016,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "ins_wires_straight_grey",
+   "prompt": "A flat dark grey background. Five thick grey wires running horizontally across the middle, held at the left and right by dark metal clamps. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no numbers, no captions, no signs with writing, no watermark, no panel borders.",
+   "refs": [],
+   "seed": 8017,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "ins_wires_cut_red_pliers",
+   "prompt": "A flat dark grey background. A bundle of colourful wires, red, green, blue, yellow, orange and white, running left to right, with red-handled wire cutters closing on the blue wire at the right. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no numbers, no captions, no signs with writing, no watermark, no panel borders.",
+   "refs": [],
+   "seed": 8018,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "ins_wires_knot_grey",
+   "prompt": "A flat dark grey background. A bundle of thick grey wires twisted together in a tight knot in the middle, held by dark metal clamps left and right. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no numbers, no captions, no signs with writing, no watermark, no panel borders.",
+   "refs": [],
+   "seed": 8019,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "ins_timer_dark",
+   "prompt": "A flat dark grey background. A black bomb timer box with a blank dark display window at the top, three yellow and orange battery cells and red, green, yellow and blue wires connected below it. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no numbers, no captions, no signs with writing, no watermark, no panel borders.",
+   "refs": [],
+   "seed": 8020,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "ins_timer_red",
+   "prompt": "A flat dark red background. A black bomb timer box with a blank dark display window at the top, three orange battery cells and red, green and blue wires connected below it. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no numbers, no captions, no signs with writing, no watermark, no panel borders.",
+   "refs": [],
+   "seed": 8021,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "ins_explosion",
+   "prompt": "A big orange and yellow cartoon explosion fireball with dark grey smoke clouds, in front of a grey city street, bright flames filling the frame. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no numbers, no captions, no signs with writing, no watermark, no panel borders.",
+   "refs": [],
+   "seed": 8022,
    "width": 576,
    "height": 1024
   }
