@@ -15,27 +15,27 @@
     "why": [
      "the bottom of the picture is a pale sky-blue block, not a floor"
     ],
-    "score": -0.406,
+    "score": -0.1,
     "text_check": true,
-    "sat": 0.188,
-    "dark": 0.141,
-    "bright": 0.501,
+    "sat": 0.378,
+    "dark": 0.068,
+    "bright": 0.717,
     "low_dark": 0.0,
-    "grad": 4.0
+    "grad": 4.876
    },
    {
     "file": "pose_bg_old_warehouse_inside_r1_c1.png",
     "pass": false,
     "why": [
-     "the bottom of the picture is a pale sky-blue block, not a floor"
+     "picture is noisy is outside the library's range"
     ],
-    "score": -0.179,
+    "score": -0.095,
     "text_check": true,
-    "sat": 0.224,
-    "dark": 0.062,
-    "bright": 0.61,
-    "low_dark": 0.0,
-    "grad": 4.583
+    "sat": 0.391,
+    "dark": 0.097,
+    "bright": 0.629,
+    "low_dark": 0.059,
+    "grad": 9.278
    },
    {
     "file": "pose_bg_old_warehouse_inside_r2_c0.png",
@@ -43,28 +43,27 @@
     "why": [
      "the bottom of the picture is a pale sky-blue block, not a floor"
     ],
-    "score": -0.21,
+    "score": -0.164,
     "text_check": true,
-    "sat": 0.199,
-    "dark": 0.068,
-    "bright": 0.614,
+    "sat": 0.393,
+    "dark": 0.064,
+    "bright": 0.771,
     "low_dark": 0.0,
-    "grad": 3.971
+    "grad": 6.265
    },
    {
     "file": "pose_bg_old_warehouse_inside_r2_c1.png",
     "pass": false,
     "why": [
-     "the bottom of the picture is a pale sky-blue block, not a floor",
-     "text in the picture: KAZAA"
+     "the bottom of the picture is a pale sky-blue block, not a floor"
     ],
-    "score": -0.251,
+    "score": -0.108,
     "text_check": true,
-    "sat": 0.242,
-    "dark": 0.111,
-    "bright": 0.578,
+    "sat": 0.36,
+    "dark": 0.09,
+    "bright": 0.703,
     "low_dark": 0.0,
-    "grad": 4.244
+    "grad": 6.15
    },
    {
     "file": "pose_bg_old_warehouse_inside_r3_c0.png",
@@ -72,13 +71,13 @@
     "why": [
      "the bottom of the picture is a pale sky-blue block, not a floor"
     ],
-    "score": -0.054,
+    "score": -0.199,
     "text_check": true,
-    "sat": 0.348,
-    "dark": 0.069,
-    "bright": 0.623,
+    "sat": 0.475,
+    "dark": 0.067,
+    "bright": 0.72,
     "low_dark": 0.0,
-    "grad": 3.531
+    "grad": 5.302
    },
    {
     "file": "pose_bg_old_warehouse_inside_r3_c1.png",
@@ -86,13 +85,13 @@
     "why": [
      "the bottom of the picture is a pale sky-blue block, not a floor"
     ],
-    "score": -0.239,
+    "score": -0.157,
     "text_check": true,
-    "sat": 0.231,
-    "dark": 0.104,
-    "bright": 0.595,
+    "sat": 0.45,
+    "dark": 0.071,
+    "bright": 0.697,
     "low_dark": 0.0,
-    "grad": 4.743
+    "grad": 5.043
    }
   ],
   "bg_rooftop_sunset": [
@@ -102,13 +101,13 @@
     "why": [
      "the bottom of the picture is a pale sky-blue block, not a floor"
     ],
-    "score": -0.364,
+    "score": -0.426,
     "text_check": true,
-    "sat": 0.363,
-    "dark": 0.016,
-    "bright": 0.882,
+    "sat": 0.45,
+    "dark": 0.021,
+    "bright": 0.891,
     "low_dark": 0.0,
-    "grad": 1.012
+    "grad": 2.146
    },
    {
     "file": "pose_bg_rooftop_sunset_r1_c1.png",
@@ -116,13 +115,13 @@
     "why": [
      "the bottom of the picture is a pale sky-blue block, not a floor"
     ],
-    "score": -0.296,
+    "score": -0.371,
     "text_check": true,
-    "sat": 0.346,
-    "dark": 0.012,
-    "bright": 0.781,
-    "low_dark": 0.013,
-    "grad": 1.013
+    "sat": 0.516,
+    "dark": 0.04,
+    "bright": 0.831,
+    "low_dark": 0.0,
+    "grad": 2.991
    },
    {
     "file": "pose_bg_rooftop_sunset_r2_c0.png",
@@ -130,13 +129,13 @@
     "why": [
      "the bottom of the picture is a pale sky-blue block, not a floor"
     ],
-    "score": -0.213,
+    "score": -0.333,
     "text_check": true,
-    "sat": 0.37,
-    "dark": 0.025,
-    "bright": 0.768,
+    "sat": 0.49,
+    "dark": 0.04,
+    "bright": 0.82,
     "low_dark": 0.0,
-    "grad": 1.179
+    "grad": 3.026
    },
    {
     "file": "pose_bg_rooftop_sunset_r2_c1.png",
@@ -144,13 +143,13 @@
     "why": [
      "the bottom of the picture is a pale sky-blue block, not a floor"
     ],
-    "score": -0.402,
+    "score": -0.44,
     "text_check": true,
-    "sat": 0.445,
-    "dark": 0.013,
-    "bright": 0.824,
+    "sat": 0.523,
+    "dark": 0.034,
+    "bright": 0.879,
     "low_dark": 0.0,
-    "grad": 0.969
+    "grad": 3.165
    },
    {
     "file": "pose_bg_rooftop_sunset_r3_c0.png",
@@ -158,13 +157,13 @@
     "why": [
      "the bottom of the picture is a pale sky-blue block, not a floor"
     ],
-    "score": -0.325,
+    "score": -0.324,
     "text_check": true,
-    "sat": 0.377,
-    "dark": 0.018,
-    "bright": 0.842,
+    "sat": 0.472,
+    "dark": 0.035,
+    "bright": 0.816,
     "low_dark": 0.0,
-    "grad": 1.192
+    "grad": 3.461
    },
    {
     "file": "pose_bg_rooftop_sunset_r3_c1.png",
@@ -172,32 +171,32 @@
     "why": [
      "the bottom of the picture is a pale sky-blue block, not a floor"
     ],
-    "score": -0.359,
+    "score": -0.438,
     "text_check": true,
-    "sat": 0.41,
-    "dark": 0.022,
-    "bright": 0.861,
+    "sat": 0.446,
+    "dark": 0.023,
+    "bright": 0.915,
     "low_dark": 0.0,
-    "grad": 0.962
+    "grad": 2.134
    }
   ]
  },
  "human_reviewed": false,
  "style_reference": {
-  "n": 20,
-  "sat": 0.3575592637062073,
+  "n": 19,
+  "sat": 0.36565569043159485,
   "sat_lo": -0.016279444694519044,
   "sat_hi": 0.5432394599914551,
-  "dark": 0.056813557942708336,
+  "dark": 0.05699327256944445,
   "dark_lo": -0.055132921006944446,
   "dark_hi": 0.5481410047743056,
-  "bright": 0.6477049589157104,
+  "bright": 0.6460763812065125,
   "bright_lo": 0.16677571058273316,
   "bright_hi": 1.0136428999900817,
   "low_dark": 0.0,
   "low_dark_lo": -0.02044642857142857,
   "low_dark_hi": 0.19083333333333333,
-  "grad": 4.8580029010772705,
+  "grad": 4.882946968078613,
   "grad_lo": 0.15250093460083014,
   "grad_hi": 8.140658431053161
  }

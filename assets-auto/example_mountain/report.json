@@ -14,13 +14,13 @@
     "why": [
      "the bottom of the picture is a pale sky-blue block, not a floor"
     ],
-    "score": -0.411,
+    "score": -0.392,
     "text_check": true,
-    "sat": 0.253,
-    "dark": 0.036,
-    "bright": 0.895,
+    "sat": 0.307,
+    "dark": 0.03,
+    "bright": 0.912,
     "low_dark": 0.0,
-    "grad": 4.53
+    "grad": 5.563
    },
    {
     "file": "pose_bg_snowy_mountain_pass_r1_c1.png",
@@ -28,13 +28,13 @@
     "why": [
      "the bottom of the picture is a pale sky-blue block, not a floor"
     ],
-    "score": -0.542,
+    "score": -0.452,
     "text_check": true,
-    "sat": 0.203,
-    "dark": 0.024,
-    "bright": 0.941,
-    "low_dark": 0.006,
-    "grad": 3.77
+    "sat": 0.289,
+    "dark": 0.025,
+    "bright": 0.935,
+    "low_dark": 0.0,
+    "grad": 5.583
    },
    {
     "file": "pose_bg_snowy_mountain_pass_r2_c0.png",
@@ -42,27 +42,28 @@
     "why": [
      "the bottom of the picture is a pale sky-blue block, not a floor"
     ],
-    "score": -0.503,
+    "score": -0.455,
     "text_check": true,
-    "sat": 0.249,
-    "dark": 0.02,
-    "bright": 0.927,
+    "sat": 0.283,
+    "dark": 0.025,
+    "bright": 0.931,
     "low_dark": 0.0,
-    "grad": 3.902
+    "grad": 5.129
    },
    {
     "file": "pose_bg_snowy_mountain_pass_r2_c1.png",
     "pass": false,
     "why": [
+     "brightness is outside the library's range",
      "the bottom of the picture is a pale sky-blue block, not a floor"
     ],
-    "score": -0.448,
+    "score": -0.563,
     "text_check": true,
-    "sat": 0.178,
-    "dark": 0.04,
-    "bright": 0.868,
-    "low_dark": 0.001,
-    "grad": 5.451
+    "sat": 0.164,
+    "dark": 0.033,
+    "bright": 0.948,
+    "low_dark": 0.0,
+    "grad": 5.673
    },
    {
     "file": "pose_bg_snowy_mountain_pass_r3_c0.png",
@@ -70,13 +71,13 @@
     "why": [
      "the bottom of the picture is a pale sky-blue block, not a floor"
     ],
-    "score": -0.448,
+    "score": -0.413,
     "text_check": true,
-    "sat": 0.23,
-    "dark": 0.027,
-    "bright": 0.884,
+    "sat": 0.289,
+    "dark": 0.028,
+    "bright": 0.907,
     "low_dark": 0.0,
-    "grad": 4.827
+    "grad": 4.372
    },
    {
     "file": "pose_bg_snowy_mountain_pass_r3_c1.png",
@@ -84,32 +85,32 @@
     "why": [
      "the bottom of the picture is a pale sky-blue block, not a floor"
     ],
-    "score": -0.419,
+    "score": -0.351,
     "text_check": true,
-    "sat": 0.31,
-    "dark": 0.026,
-    "bright": 0.931,
-    "low_dark": 0.006,
-    "grad": 4.177
+    "sat": 0.379,
+    "dark": 0.03,
+    "bright": 0.932,
+    "low_dark": 0.0,
+    "grad": 5.318
    }
   ]
  },
  "human_reviewed": false,
  "style_reference": {
-  "n": 21,
-  "sat": 0.37198755145072937,
+  "n": 20,
+  "sat": 0.37409839034080505,
   "sat_lo": -0.016279444694519044,
   "sat_hi": 0.5432394599914551,
-  "dark": 0.056633843315972224,
+  "dark": 0.056813557942708336,
   "dark_lo": -0.055132921006944446,
   "dark_hi": 0.5481410047743056,
-  "bright": 0.6493335366249084,
-  "bright_lo": 0.1739240765571594,
-  "bright_hi": 0.9469248175621032,
+  "bright": 0.6477049589157104,
+  "bright_lo": 0.1744097352027893,
+  "bright_hi": 0.9423920035362243,
   "low_dark": 0.0,
   "low_dark_lo": -0.02044642857142857,
   "low_dark_hi": 0.19083333333333333,
-  "grad": 4.882946968078613,
+  "grad": 4.897511005401611,
   "grad_lo": 0.15250093460083014,
   "grad_hi": 8.140658431053161
  }
