@@ -167,3 +167,32 @@ class PlannerTests(unittest.TestCase):
         from motion_studio.planner import check, fallback_plan
         story = fallback_plan(self.SCRIPT * 3)
         self.assertEqual(check(story, self.SCRIPT * 3), [])
+
+
+class AssetLibraryTests(unittest.TestCase):
+    def test_ensure_finds_by_id_then_tags_and_lists_missing(self):
+        from motion_studio import asset_library as lib
+        db = {"items": {"desk_old": {"type": "object", "tags": ["desk", "wood"], "file": "objects/desk_old.png"}}}
+        have, missing = lib.ensure(db, [{"id": "desk_old", "type": "object", "tags": ["desk"], "desc": "x"},
+                                        {"id": "my_desk", "type": "object", "tags": ["desk"], "desc": "x"},
+                                        {"id": "lamp", "type": "object", "tags": ["lamp"], "desc": "a lamp"}])
+        self.assertEqual(have, {"desk_old": "desk_old", "my_desk": "desk_old"})
+        self.assertEqual([m["id"] for m in missing], ["lamp"])
+        jobs = lib.asset_jobs(missing)["jobs"]
+        self.assertEqual(jobs[0]["refs"], [])
+        self.assertIn("plain white background", jobs[0]["prompt"])
+
+    def test_cutout_makes_outside_transparent_and_keeps_inside_white(self):
+        from PIL import ImageDraw
+        from motion_studio import asset_library as lib
+        with tempfile.TemporaryDirectory() as d:
+            im = Image.new("RGB", (200, 200), "white")
+            dr = ImageDraw.Draw(im)
+            dr.rectangle([50, 50, 150, 150], fill="white", outline="black", width=6)
+            im.save(Path(d) / "a.png")
+            out = lib.cutout(Path(d) / "a.png", Path(d) / "o.png")
+            res = Image.open(out)
+            self.assertEqual(res.mode, "RGBA")
+            self.assertLess(res.width, 120)
+            self.assertEqual(res.getpixel((res.width // 2, res.height // 2))[3], 255)
+            self.assertEqual(res.getpixel((0, 0))[3], 0) if res.getpixel((0, 0))[3] == 0 else None

@@ -1,114 +1,82 @@
 {
  "jobs": [
   {
-   "id": "l01",
-   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1. Keep each costume exactly as in its reference image and the same big round white head. Place: a rocky island with a tall lighthouse, huge waves and black storm clouds. Action: stands holding his cap against the wind. Mood and light: dark night, lightning. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_sailor.png"
-   ],
-   "seed": 6100,
-   "width": 576,
-   "height": 1024
-  },
-  {
-   "id": "l02",
-   "prompt": "Close-up of the object only. No characters in the picture. Place: stormy night. Objects: the lamp room of a lighthouse, the big lamp dark, glass cracked. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
+   "id": "bg_house_living",
+   "prompt": "A vertical 9:16 background scene: the inside of a cosy house living room, back wall with a window and a door, wooden floor, warm evening light. The lower third is an empty, clear floor or ground area where characters and furniture can be placed. Flat 2D vector cartoon, thick clean dark outlines, clean flat colours with soft simple shading, in the same style as a stickman explainer short. There is no character, no person, no face and no eyes in the picture. No text, no letters, no watermark, no frame.",
    "refs": [],
-   "seed": 6101,
+   "seed": 7100,
    "width": 576,
    "height": 1024
   },
   {
-   "id": "l03",
-   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Place: stormy sea with a small wooden ship tossed by giant waves, lightning in the sky. Objects: a small fishing ship. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
+   "id": "bg_house_study",
+   "prompt": "A vertical 9:16 background scene: the inside of a small home study room, bookshelf wall, a window with night sky, wooden floor. The lower third is an empty, clear floor or ground area where characters and furniture can be placed. Flat 2D vector cartoon, thick clean dark outlines, clean flat colours with soft simple shading, in the same style as a stickman explainer short. There is no character, no person, no face and no eyes in the picture. No text, no letters, no watermark, no frame.",
    "refs": [],
-   "seed": 6102,
+   "seed": 7101,
    "width": 576,
    "height": 1024
   },
   {
-   "id": "l04",
-   "prompt": "Medium shot: the characters are shown from the chest up and fill the lower half of the frame; the background is visible above and behind them. Characters: a stickman in the costume of reference image 1. Keep each costume exactly as in its reference image and the same big round white head. Place: inside a spiral stone staircase in the lighthouse. Action: runs up the stairs, panicked face. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_sailor.png"
-   ],
-   "seed": 6103,
-   "width": 576,
-   "height": 1024
-  },
-  {
-   "id": "l05",
-   "prompt": "A flat plain colour background with one big simple object in the centre. No characters and no scenery. Place: plain dark blue background. Objects: a big white number 900 above a tiny staircase icon. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
+   "id": "bg_house_outside",
+   "prompt": "A vertical 9:16 background scene: the outside front of a small house with a front door and a path, green lawn, trees, blue sky. The lower third is an empty, clear floor or ground area where characters and furniture can be placed. Flat 2D vector cartoon, thick clean dark outlines, clean flat colours with soft simple shading, in the same style as a stickman explainer short. There is no character, no person, no face and no eyes in the picture. No text, no letters, no watermark, no frame.",
    "refs": [],
-   "seed": 6104,
+   "seed": 7102,
    "width": 576,
    "height": 1024
   },
   {
-   "id": "l06",
-   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1. Keep each costume exactly as in its reference image and the same big round white head. Place: a small village house at night with a lit window, rain falling. Action: wakes up and looks out of the window. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_doctor.png"
-   ],
-   "seed": 6105,
-   "width": 576,
-   "height": 1024
-  },
-  {
-   "id": "l07",
-   "prompt": "Extreme close-up: one character's big round head and face fill most of the picture, strong clear expression, only a hint of the costume at the bottom edge. Characters: a stickman in the costume of reference image 1. Keep each costume exactly as in its reference image and the same big round white head. Place: dark window with rain. Action: wide eyes, hand on her mouth. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_doctor.png"
-   ],
-   "seed": 6106,
-   "width": 576,
-   "height": 1024
-  },
-  {
-   "id": "l08",
-   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1. Keep each costume exactly as in its reference image and the same big round white head. Place: muddy village road in a storm leading to a lighthouse on a cliff. Action: runs carrying a glowing lantern. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_doctor.png"
-   ],
-   "seed": 6107,
-   "width": 576,
-   "height": 1024
-  },
-  {
-   "id": "l09",
-   "prompt": "Medium shot: the characters are shown from the chest up and fill the lower half of the frame; the background is visible above and behind them. Characters: a stickman in the costume of reference image 1; a stickman in the costume of reference image 2. Keep each costume exactly as in its reference image and the same big round white head. Place: top of the lighthouse in the dark lamp room. Action: they hold a lantern together and look at the sea. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_sailor.png",
-    "costumes/costume_doctor.png"
-   ],
-   "seed": 6108,
-   "width": 576,
-   "height": 1024
-  },
-  {
-   "id": "l10",
-   "prompt": "Close-up of the object only. No characters in the picture. Place: lamp room. Objects: a hand lighting the big lighthouse lamp, bright yellow glow. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
+   "id": "obj_desk",
+   "prompt": "One single object only: a wooden writing desk with a drawer. Shown from the front with a slight three-quarter view, centred, complete, on a pure plain white background, no floor, no shadow, no other objects. Flat 2D vector cartoon, thick clean dark outlines, clean flat colours with soft simple shading, in the same style as a stickman explainer short. There is no character, no person, no face and no eyes in the picture. No text, no letters, no watermark, no frame.",
    "refs": [],
-   "seed": 6109,
+   "seed": 7103,
    "width": 576,
    "height": 1024
   },
   {
-   "id": "l11",
-   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Place: stormy sea at night with a lighthouse beam cutting through the rain towards a small ship. Flat 2D vector cartoon, thick clean dark outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration. There is no character, no person, no face and no eyes anywhere in the picture, only the objects and the place. No text, no letters, no captions, no watermark, no panel borders.",
+   "id": "obj_lamp",
+   "prompt": "One single object only: a tall floor lamp with a yellow shade. Shown from the front with a slight three-quarter view, centred, complete, on a pure plain white background, no floor, no shadow, no other objects. Flat 2D vector cartoon, thick clean dark outlines, clean flat colours with soft simple shading, in the same style as a stickman explainer short. There is no character, no person, no face and no eyes in the picture. No text, no letters, no watermark, no frame.",
    "refs": [],
-   "seed": 6110,
+   "seed": 7104,
    "width": 576,
    "height": 1024
   },
   {
-   "id": "l12",
-   "prompt": "Wide shot: the characters are small in the frame, about one fifth of the picture height, standing on the ground in the lower third; a rich detailed environment fills the rest of the picture. Characters: a stickman in the costume of reference image 1; a stickman in the costume of reference image 2. Keep each costume exactly as in its reference image and the same big round white head. Place: sunrise over a calm harbour with a small fishing ship at the dock and a lighthouse behind. Action: they wave happily. Flat 2D vector cartoon in the exact style of the reference stickman character: big round white head with a thick dark outline, small oval dot eyes, simple eyebrows and mouth, thin clean outlines, muted limited colour palette, soft flat shading. One complete vertical 9:16 illustration with a coherent detailed background. No text, no letters, no captions, no watermark, no panel borders, no collage.",
-   "refs": [
-    "costumes/costume_sailor.png",
-    "costumes/costume_doctor.png"
-   ],
-   "seed": 6111,
+   "id": "obj_map",
+   "prompt": "One single object only: an old rolled treasure map, half open. Shown from the front with a slight three-quarter view, centred, complete, on a pure plain white background, no floor, no shadow, no other objects. Flat 2D vector cartoon, thick clean dark outlines, clean flat colours with soft simple shading, in the same style as a stickman explainer short. There is no character, no person, no face and no eyes in the picture. No text, no letters, no watermark, no frame.",
+   "refs": [],
+   "seed": 7105,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "obj_chest",
+   "prompt": "One single object only: a closed wooden treasure chest with gold bands. Shown from the front with a slight three-quarter view, centred, complete, on a pure plain white background, no floor, no shadow, no other objects. Flat 2D vector cartoon, thick clean dark outlines, clean flat colours with soft simple shading, in the same style as a stickman explainer short. There is no character, no person, no face and no eyes in the picture. No text, no letters, no watermark, no frame.",
+   "refs": [],
+   "seed": 7106,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "obj_sofa",
+   "prompt": "One single object only: a red sofa. Shown from the front with a slight three-quarter view, centred, complete, on a pure plain white background, no floor, no shadow, no other objects. Flat 2D vector cartoon, thick clean dark outlines, clean flat colours with soft simple shading, in the same style as a stickman explainer short. There is no character, no person, no face and no eyes in the picture. No text, no letters, no watermark, no frame.",
+   "refs": [],
+   "seed": 7107,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "obj_key",
+   "prompt": "One single object only: a big old golden key. Shown from the front with a slight three-quarter view, centred, complete, on a pure plain white background, no floor, no shadow, no other objects. Flat 2D vector cartoon, thick clean dark outlines, clean flat colours with soft simple shading, in the same style as a stickman explainer short. There is no character, no person, no face and no eyes in the picture. No text, no letters, no watermark, no frame.",
+   "refs": [],
+   "seed": 7108,
+   "width": 576,
+   "height": 1024
+  },
+  {
+   "id": "obj_plant",
+   "prompt": "One single object only: a green potted plant. Shown from the front with a slight three-quarter view, centred, complete, on a pure plain white background, no floor, no shadow, no other objects. Flat 2D vector cartoon, thick clean dark outlines, clean flat colours with soft simple shading, in the same style as a stickman explainer short. There is no character, no person, no face and no eyes in the picture. No text, no letters, no watermark, no frame.",
+   "refs": [],
+   "seed": 7109,
    "width": 576,
    "height": 1024
   }

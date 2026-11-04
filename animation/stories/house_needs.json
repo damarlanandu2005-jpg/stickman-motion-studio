@@ -1,0 +1,12 @@
+[
+ {"id":"bg_house_living","type":"background","tags":["house","living","room","inside"],"desc":"the inside of a cosy house living room, back wall with a window and a door, wooden floor, warm evening light"},
+ {"id":"bg_house_study","type":"background","tags":["house","study","room","inside"],"desc":"the inside of a small home study room, bookshelf wall, a window with night sky, wooden floor"},
+ {"id":"bg_house_outside","type":"background","tags":["house","outside","street"],"desc":"the outside front of a small house with a front door and a path, green lawn, trees, blue sky"},
+ {"id":"obj_desk","type":"object","tags":["desk","wood","furniture"],"desc":"a wooden writing desk with a drawer"},
+ {"id":"obj_lamp","type":"object","tags":["lamp","light","furniture"],"desc":"a tall floor lamp with a yellow shade"},
+ {"id":"obj_map","type":"object","tags":["map","paper"],"desc":"an old rolled treasure map, half open"},
+ {"id":"obj_chest","type":"object","tags":["chest","treasure"],"desc":"a closed wooden treasure chest with gold bands"},
+ {"id":"obj_sofa","type":"object","tags":["sofa","furniture"],"desc":"a red sofa"},
+ {"id":"obj_key","type":"object","tags":["key"],"desc":"a big old golden key"},
+ {"id":"obj_plant","type":"object","tags":["plant","pot"],"desc":"a green potted plant"}
+]
