@@ -59,6 +59,12 @@ class Library:
 
     def bg(self, name: str) -> Image.Image:
         if name not in self._bg:
+            if name.startswith("solid:"):  # placeholder for a background that is not drawn yet: a plain dark gradient, never a crash
+                top, bot = np.array([38, 44, 66], np.float32), np.array([18, 20, 30], np.float32)
+                col = (top[None, :] + (bot - top)[None, :] * np.linspace(0, 1, int(H * SS))[:, None])
+                im = Image.fromarray(np.repeat(col[:, None, :], int(W * SS), axis=1).astype(np.uint8), "RGB")
+                self._bg[name] = im
+                return im
             if name.startswith("lib:"):  # a background from the asset library (same picture every time it is asked for)
                 from motion_studio import asset_library as al
                 lid = name[4:]
@@ -278,17 +284,27 @@ def draw_text(im: Image.Image, tx: dict, t: float, dur: float) -> None:
 _FONT = None
 
 
-def _caption(im: Image.Image, text: str, red: bool, y: float = 0.68) -> None:
-    """One word or short phrase, white with a black outline (red for the key word), at 68 % height like the reference shorts."""
+def _caption(im: Image.Image, text: str, red, y: float = 0.68) -> None:
+    """One word or short phrase, white with a black outline, at 68 % height like the reference shorts.
+    red: True = the whole caption red (old behaviour) | list of words = only those words red | False = all white."""
     global _FONT
     from PIL import ImageDraw, ImageFont
     if _FONT is None:
         _FONT = ImageFont.truetype("/usr/share/fonts/truetype/google-fonts/Poppins-Bold.ttf", 42)
     d = ImageDraw.Draw(im)
     text = text.upper()
-    w = d.textlength(text, font=_FONT)
-    d.text(((W - w) / 2, int(H * y)), text, font=_FONT, fill=(220, 30, 30) if red else (255, 255, 255),
-           stroke_width=3, stroke_fill=(0, 0, 0))
+    if not isinstance(red, (list, tuple)):
+        w = d.textlength(text, font=_FONT)
+        d.text(((W - w) / 2, int(H * y)), text, font=_FONT, fill=(220, 30, 30) if red else (255, 255, 255), stroke_width=3, stroke_fill=(0, 0, 0))
+        return
+    redset = {r.upper() for r in red}
+    toks = text.split(); space = d.textlength(" ", font=_FONT)
+    total = sum(d.textlength(t, font=_FONT) for t in toks) + space * max(len(toks) - 1, 0)
+    x = (W - total) / 2
+    for t in toks:
+        key = "".join(c for c in t if c.isalnum())
+        d.text((x, int(H * y)), t, font=_FONT, fill=(220, 30, 30) if key in redset else (255, 255, 255), stroke_width=3, stroke_fill=(0, 0, 0))
+        x += d.textlength(t, font=_FONT) + space
 
 
 def render_video(shots: list[dict], out: Path, root: Path = ROOT, outfit: str = "explorer", audio: Path | None = None) -> dict:
