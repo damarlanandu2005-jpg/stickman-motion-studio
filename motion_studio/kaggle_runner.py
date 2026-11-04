@@ -628,6 +628,7 @@ def _cli(argv: list[str] | None = None) -> int:
     parser.add_argument("--timeout-minutes", type=float, default=85)
     parser.add_argument("--model-sha256", default=None)
     parser.add_argument("--profile", choices=sorted(PROFILES), default="image-smoke")
+    parser.add_argument("--dataset-source", action="append", default=[], help="<owner>/<slug> of a dataset to mount in the notebook (repeatable)")
     parser.add_argument("--kaggle-run-limit-seconds", type=int, default=3600,
                         help="Maximum run time Kaggle allows the notebook (kernels push -t)")
     args = parser.parse_args(argv)
@@ -635,7 +636,7 @@ def _cli(argv: list[str] | None = None) -> int:
     metadata = {
         "id": args.kernel, "title": args.title, "code_file": args.notebook, "language": "python",
         "kernel_type": "notebook", "is_private": "true", "enable_gpu": "true", "enable_internet": "true",
-        "machine_shape": "NvidiaTeslaT4", "dataset_sources": [], "competition_sources": [],
+        "machine_shape": "NvidiaTeslaT4", "dataset_sources": list(args.dataset_source), "competition_sources": [],
         "kernel_sources": [], "model_sources": [],
     }
     hide = [os.environ.get(k, "") for k in ("KAGGLE_KEY", "KAGGLE_API_TOKEN")]

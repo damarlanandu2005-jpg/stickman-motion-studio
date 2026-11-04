@@ -71,7 +71,8 @@ try:
         try:
             refs = []
             for r in job["refs"]:
-                im = Image.open(Path(cfg["refdir"]) / r).convert("RGB"); im.thumbnail((1024, 1024)); refs.append(im)
+                rp = Path(cfg["ds_map"][r]) if r.startswith("ds:") else Path(cfg["refdir"]) / r
+                im = Image.open(rp).convert("RGB"); im.thumbnail((1024, 1024)); refs.append(im)
             torch.cuda.synchronize(); t = time.monotonic()
             kw = {"image": refs} if refs else {}  # object-only pictures use no reference, so no mascot face leaks onto objects
             img = pipe(prompt=job["prompt"], width=job["width"], height=job["height"], num_inference_steps=cfg["steps"],
@@ -124,9 +125,31 @@ def fetch_reference():
         tf.extractall(WORK / "repo", filter="data")
     folder = next((WORK / "repo").iterdir()) / REFDIR
     for name, digest in REFS.items():
+        if name.startswith("ds:"):
+            continue
         if sha256_of(folder / name) != digest:
             raise RuntimeError(f"reference picture {name} does not match the approved file (hash differs)")
     return folder
+
+
+def find_input(flat_name):
+    """A file of the mounted asset dataset, found by its (flat) name anywhere under /kaggle/input."""
+    for root, _dirs, files in os.walk("/kaggle/input"):
+        if flat_name in files:
+            return os.path.join(root, flat_name)
+    raise RuntimeError(f"asset dataset file {flat_name} not found under /kaggle/input (is the dataset attached to the notebook?)")
+
+
+def dataset_refs():
+    """ds:<flat name> references -> real paths, each checked against the hash the run was stamped with."""
+    out = {}
+    for name, digest in REFS.items():
+        if name.startswith("ds:"):
+            p = find_input(name[3:])
+            if sha256_of(p) != digest:
+                raise RuntimeError(f"dataset picture {name} does not match the approved file (hash differs)")
+            out[name] = p
+    return out
 
 
 def environment():
@@ -147,7 +170,7 @@ MAIN = r'''try:
         raise RuntimeError("klein dependencies failed to install; see logs/install_klein.log")
     script, cfg, result = WORK / "klein_stage.py", WORK / "klein_stage.json", OUT / "result_klein.json"
     script.write_text(KLEIN_STAGE, encoding="utf-8")
-    cfg.write_text(json.dumps({"model_id": KLEIN_ID, "revision": KLEIN_REVISION, "refdir": str(reference), "jobs": JOBS,
+    cfg.write_text(json.dumps({"model_id": KLEIN_ID, "revision": KLEIN_REVISION, "refdir": str(reference), "ds_map": dataset_refs(), "jobs": JOBS,
                                "steps": STEPS, "guidance": GUIDANCE,
                                "result": str(result), "out_dir": str(OUT)}), encoding="utf-8")
     run_logged("klein", [sys.executable, str(script), str(cfg)], 3000)
@@ -187,7 +210,11 @@ def stamped_setup() -> str:
     import hashlib
     jobs = json.loads(JOBS_FILE.read_text(encoding="utf-8"))
     refs = sorted({r for j in jobs["jobs"] for r in j["refs"]})
-    shas = {r: hashlib.sha256((ROOT / "animation" / "reference_art" / r).read_bytes()).hexdigest() for r in refs}
+    def local(r: str) -> Path:
+        if r.startswith("ds:"):      # a picture of the asset dataset: the same file, synced into the library folder
+            return ROOT / "animation" / "asset_library" / r[3:].replace("__", "/")
+        return ROOT / "animation" / "reference_art" / r
+    shas = {r: hashlib.sha256(local(r).read_bytes()).hexdigest() for r in refs}
     table = {j["id"]: {"refs": j["refs"], "prompt": j["prompt"], "seed": j["seed"], "width": j.get("width", 576), "height": j.get("height", 1024)}
              for j in jobs["jobs"]}
     return SETUP.replace("__REFS__", json.dumps(shas, indent=1)).replace("__JOBS__", json.dumps(table, indent=1))

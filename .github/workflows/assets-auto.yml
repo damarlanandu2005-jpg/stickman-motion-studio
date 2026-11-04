@@ -1,0 +1,74 @@
+name: Assets auto (draw missing backgrounds and props, judge, redraw, save to Kaggle dataset, verify)
+# A script in scripts_in/*.txt -> the reader lists what the asset library lacks -> Kaggle draws it (style references come from the
+# Kaggle dataset) -> code judges every picture, failed ones are redrawn (3 rounds) -> accepted ones go into the dataset
+# -> the dataset is downloaded again into a clean folder and the new ids are verified. No person in the middle.
+on:
+  workflow_dispatch:
+    inputs:
+      script:
+        description: "Script file"
+        default: scripts_in/example_bomb.txt
+  push:
+    branches: [test/image-to-3d-objects]
+    paths: ['scripts_in/**', '.github/workflows/assets-auto.yml']
+
+concurrency:
+  group: kaggle-notebook-scene-batch
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  assets:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq tesseract-ocr
+      - run: python -m pip install numpy pillow scipy pytest kaggle==2.2.5 six
+      - name: Unit tests
+        run: python -m pytest -q
+        env:
+          PYTHONPATH: .
+      - name: Configure Kaggle credentials
+        env:
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+        run: |
+          if [ -z "$KAGGLE_USERNAME" ] || [ -z "$KAGGLE_KEY" ]; then echo "Missing Kaggle secrets"; exit 1; fi
+          mkdir -p "$HOME/.kaggle"
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          Path.home().joinpath(".kaggle", "kaggle.json").write_text(json.dumps({
+              "username": os.environ["KAGGLE_USERNAME"].strip(), "key": os.environ["KAGGLE_KEY"].strip()}))
+          PY
+          chmod 600 "$HOME/.kaggle/kaggle.json"
+      - name: Run the asset loop for every changed script
+        env:
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+          PYTHONPATH: .
+          INPUT_SCRIPT: ${{ github.event.inputs.script }}
+        run: |
+          if [ "${{ github.event_name }}" = "push" ]; then
+            SCRIPTS=$(git diff --name-only HEAD^ HEAD -- scripts_in | grep '\.txt$' || true)
+            [ -z "$SCRIPTS" ] && SCRIPTS=$(ls scripts_in/*.txt)
+          else
+            SCRIPTS="$INPUT_SCRIPT"
+          fi
+          for S in $SCRIPTS; do scripts/run_assets_auto.sh "$S"; done
+      - name: Upload everything as an artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: assets-auto-output
+          path: assets-state/
+          if-no-files-found: warn
+          retention-days: 14
