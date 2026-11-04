@@ -1,0 +1,34 @@
+{
+ "jungle": {
+  "floor": 0.66,
+  "light": "misty"
+ },
+ "cave": {
+  "floor": 0.66,
+  "light": "dark"
+ },
+ "desert": {
+  "floor": 0.62,
+  "light": "hot sun"
+ },
+ "ancient_egypt": {
+  "floor": 0.66,
+  "light": "hot sun"
+ },
+ "mine_tunnel": {
+  "floor": 0.7,
+  "light": "lamps"
+ },
+ "forest": {
+  "floor": 0.66,
+  "light": "day"
+ },
+ "snow_mountain": {
+  "floor": 0.66,
+  "light": "cold day"
+ },
+ "prehistoric_land": {
+  "floor": 0.7,
+  "light": "day"
+ }
+}
