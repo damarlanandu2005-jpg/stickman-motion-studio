@@ -1,0 +1,32 @@
+[
+ {
+  "id": "bg_house_study_desk",
+  "type": "background",
+  "tags": [
+   "house",
+   "study",
+   "desk"
+  ],
+  "desc": "a wooden writing desk standing against the right wall with an old rolled map lying on top of it"
+ },
+ {
+  "id": "bg_house_living_sofa",
+  "type": "background",
+  "tags": [
+   "house",
+   "living",
+   "sofa"
+  ],
+  "desc": "a red sofa and a tall floor lamp with a yellow shade against the back wall"
+ },
+ {
+  "id": "bg_house_living_chest",
+  "type": "background",
+  "tags": [
+   "house",
+   "living",
+   "chest"
+  ],
+  "desc": "a closed wooden treasure chest with gold bands standing on the floor on the right side"
+ }
+]

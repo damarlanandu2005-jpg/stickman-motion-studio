@@ -1,82 +1,32 @@
 {
  "jobs": [
   {
-   "id": "bg_house_living",
-   "prompt": "A vertical 9:16 background scene: the inside of a cosy house living room, back wall with a window and a door, wooden floor, warm evening light. The lower third is an empty, clear floor or ground area where characters and furniture can be placed. Flat 2D vector cartoon, thick clean dark outlines, clean flat colours with soft simple shading, in the same style as a stickman explainer short. There is no character, no person, no face and no eyes in the picture. No text, no letters, no watermark, no frame.",
-   "refs": [],
-   "seed": 7100,
+   "id": "bg_house_study_desk",
+   "prompt": "Keep this exact same room, same walls, window, door, floor, colours and drawing style, and add only this: a wooden writing desk standing against the right wall with an old rolled map lying on top of it. Do not add any character, person or face. Keep the lower third of the picture empty floor.",
+   "refs": [
+    "library/bg_house_study.png"
+   ],
+   "seed": 7300,
    "width": 576,
    "height": 1024
   },
   {
-   "id": "bg_house_study",
-   "prompt": "A vertical 9:16 background scene: the inside of a small home study room, bookshelf wall, a window with night sky, wooden floor. The lower third is an empty, clear floor or ground area where characters and furniture can be placed. Flat 2D vector cartoon, thick clean dark outlines, clean flat colours with soft simple shading, in the same style as a stickman explainer short. There is no character, no person, no face and no eyes in the picture. No text, no letters, no watermark, no frame.",
-   "refs": [],
-   "seed": 7101,
+   "id": "bg_house_living_sofa",
+   "prompt": "Keep this exact same room, same walls, window, door, floor, colours and drawing style, and add only this: a red sofa and a tall floor lamp with a yellow shade against the back wall. Do not add any character, person or face. Keep the lower third of the picture empty floor.",
+   "refs": [
+    "library/bg_house_living.png"
+   ],
+   "seed": 7301,
    "width": 576,
    "height": 1024
   },
   {
-   "id": "bg_house_outside",
-   "prompt": "A vertical 9:16 background scene: the outside front of a small house with a front door and a path, green lawn, trees, blue sky. The lower third is an empty, clear floor or ground area where characters and furniture can be placed. Flat 2D vector cartoon, thick clean dark outlines, clean flat colours with soft simple shading, in the same style as a stickman explainer short. There is no character, no person, no face and no eyes in the picture. No text, no letters, no watermark, no frame.",
-   "refs": [],
-   "seed": 7102,
-   "width": 576,
-   "height": 1024
-  },
-  {
-   "id": "obj_desk",
-   "prompt": "One single object only: a wooden writing desk with a drawer. Shown from the front with a slight three-quarter view, centred, complete, on a pure plain white background, no floor, no shadow, no other objects. Flat 2D vector cartoon, thick clean dark outlines, clean flat colours with soft simple shading, in the same style as a stickman explainer short. There is no character, no person, no face and no eyes in the picture. No text, no letters, no watermark, no frame.",
-   "refs": [],
-   "seed": 7103,
-   "width": 576,
-   "height": 1024
-  },
-  {
-   "id": "obj_lamp",
-   "prompt": "One single object only: a tall floor lamp with a yellow shade. Shown from the front with a slight three-quarter view, centred, complete, on a pure plain white background, no floor, no shadow, no other objects. Flat 2D vector cartoon, thick clean dark outlines, clean flat colours with soft simple shading, in the same style as a stickman explainer short. There is no character, no person, no face and no eyes in the picture. No text, no letters, no watermark, no frame.",
-   "refs": [],
-   "seed": 7104,
-   "width": 576,
-   "height": 1024
-  },
-  {
-   "id": "obj_map",
-   "prompt": "One single object only: an old rolled treasure map, half open. Shown from the front with a slight three-quarter view, centred, complete, on a pure plain white background, no floor, no shadow, no other objects. Flat 2D vector cartoon, thick clean dark outlines, clean flat colours with soft simple shading, in the same style as a stickman explainer short. There is no character, no person, no face and no eyes in the picture. No text, no letters, no watermark, no frame.",
-   "refs": [],
-   "seed": 7105,
-   "width": 576,
-   "height": 1024
-  },
-  {
-   "id": "obj_chest",
-   "prompt": "One single object only: a closed wooden treasure chest with gold bands. Shown from the front with a slight three-quarter view, centred, complete, on a pure plain white background, no floor, no shadow, no other objects. Flat 2D vector cartoon, thick clean dark outlines, clean flat colours with soft simple shading, in the same style as a stickman explainer short. There is no character, no person, no face and no eyes in the picture. No text, no letters, no watermark, no frame.",
-   "refs": [],
-   "seed": 7106,
-   "width": 576,
-   "height": 1024
-  },
-  {
-   "id": "obj_sofa",
-   "prompt": "One single object only: a red sofa. Shown from the front with a slight three-quarter view, centred, complete, on a pure plain white background, no floor, no shadow, no other objects. Flat 2D vector cartoon, thick clean dark outlines, clean flat colours with soft simple shading, in the same style as a stickman explainer short. There is no character, no person, no face and no eyes in the picture. No text, no letters, no watermark, no frame.",
-   "refs": [],
-   "seed": 7107,
-   "width": 576,
-   "height": 1024
-  },
-  {
-   "id": "obj_key",
-   "prompt": "One single object only: a big old golden key. Shown from the front with a slight three-quarter view, centred, complete, on a pure plain white background, no floor, no shadow, no other objects. Flat 2D vector cartoon, thick clean dark outlines, clean flat colours with soft simple shading, in the same style as a stickman explainer short. There is no character, no person, no face and no eyes in the picture. No text, no letters, no watermark, no frame.",
-   "refs": [],
-   "seed": 7108,
-   "width": 576,
-   "height": 1024
-  },
-  {
-   "id": "obj_plant",
-   "prompt": "One single object only: a green potted plant. Shown from the front with a slight three-quarter view, centred, complete, on a pure plain white background, no floor, no shadow, no other objects. Flat 2D vector cartoon, thick clean dark outlines, clean flat colours with soft simple shading, in the same style as a stickman explainer short. There is no character, no person, no face and no eyes in the picture. No text, no letters, no watermark, no frame.",
-   "refs": [],
-   "seed": 7109,
+   "id": "bg_house_living_chest",
+   "prompt": "Keep this exact same room, same walls, window, door, floor, colours and drawing style, and add only this: a closed wooden treasure chest with gold bands standing on the floor on the right side. Do not add any character, person or face. Keep the lower third of the picture empty floor.",
+   "refs": [
+    "library/bg_house_living.png"
+   ],
+   "seed": 7302,
    "width": 576,
    "height": 1024
   }
