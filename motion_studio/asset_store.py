@@ -28,6 +28,8 @@ from typing import Callable
 
 ROOT = Path(__file__).resolve().parents[1]
 LIB = ROOT / "animation" / "asset_library"
+SPRITES = ROOT / "animation" / "assets2d"      # character sprites + places: stored in the dataset as sprites__<path>
+SPRITE_PREFIX = "sprites" + "__"
 SLUG_DEFAULT = "stickman-assets"
 SEP = "__"
 KEEP_SUFFIX = (".png", ".json", ".jpg")
@@ -55,7 +57,11 @@ def library_files(lib: Path = LIB) -> list[Path]:
     return sorted(p for p in lib.rglob("*") if p.is_file() and p.suffix in KEEP_SUFFIX and p.name != "dataset-metadata.json")
 
 
-def stage_upload(lib: Path, stage: Path, owner: str, slug: str) -> dict:
+def sprite_files(sprites: Path) -> list[Path]:
+    return sorted(p for p in Path(sprites).rglob("*") if p.is_file() and p.suffix in KEEP_SUFFIX) if Path(sprites).is_dir() else []
+
+
+def stage_upload(lib: Path, stage: Path, owner: str, slug: str, sprites: Path | None = None) -> dict:
     """Flat copy of the whole library + dataset-metadata.json, ready for `kaggle datasets create/version`."""
     if stage.exists():
         shutil.rmtree(stage)
@@ -67,21 +73,31 @@ def stage_upload(lib: Path, stage: Path, owner: str, slug: str) -> dict:
             continue
         shutil.copy(p, stage / flat_name(rel)); names.append(flat_name(rel))
     idx = json.loads((lib / "index.json").read_text()) if (lib / "index.json").exists() else {"items": {}}
+    sp = sprite_files(sprites) if sprites else []
+    idx["sprites"] = {}
+    for p in sp:
+        rel = p.relative_to(sprites).as_posix()
+        shutil.copy(p, stage / (SPRITE_PREFIX + flat_name(rel))); idx["sprites"][rel] = sha(p)
     for k, v in idx["items"].items():                         # every indexed file must be in the upload
         if flat_name(v["file"]) not in names:
             raise FileNotFoundError(f"index entry {k} points to {v['file']} which is not in the library folder")
     (stage / "index.json").write_text(json.dumps(idx, indent=1, sort_keys=True), encoding="utf-8")
     (stage / "dataset-metadata.json").write_text(json.dumps({"title": "Stickman assets", "id": f"{owner}/{slug}", "licenses": [{"name": "other"}]}), encoding="utf-8")
-    return {"files": len(names), "items": len(idx["items"])}
+    return {"files": len(names), "items": len(idx["items"]), "sprites": len(sp)}
 
 
-def unstage(flat_dir: Path, lib: Path) -> int:
+def unstage(flat_dir: Path, lib: Path, sprites: Path | None = None) -> int:
     """Flat dataset folder -> library folder layout. Returns number of files placed."""
     n = 0
     for p in sorted(Path(flat_dir).iterdir()):
         if not p.is_file() or p.name == "dataset-metadata.json":
             continue
-        dst = lib / rel_path(p.name)
+        if p.name.startswith(SPRITE_PREFIX):
+            if sprites is None:
+                continue
+            dst = Path(sprites) / rel_path(p.name[len(SPRITE_PREFIX):])
+        else:
+            dst = lib / rel_path(p.name)
         dst.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy(p, dst); n += 1
     return n
@@ -118,21 +134,21 @@ def owner_of(env=os.environ) -> str:
     return (env.get("KAGGLE_USERNAME") or "").strip()
 
 
-def down(owner: str, slug: str, lib: Path = LIB, runner: Runner = _run) -> dict:
+def down(owner: str, slug: str, lib: Path = LIB, runner: Runner = _run, sprites: Path | None = None) -> dict:
     tmp = Path(tempfile.mkdtemp())
     code, out = runner(["kaggle", "datasets", "download", "-d", f"{owner}/{slug}", "-p", str(tmp), "--unzip", "-o"])
     if code != 0:
         # Kaggle answers 403 for a dataset that does not exist yet
         gone = any(w in out.lower() for w in ("404", "not found", "could not find", "403", "forbidden"))
         return {"ok": gone, "no_dataset": gone, "error": None if gone else out[-300:]}
-    n = unstage(tmp, lib)
+    n = unstage(tmp, lib, sprites)
     return {"ok": True, "no_dataset": False, "files": n}
 
 
-def up(owner: str, slug: str, message: str, lib: Path = LIB, runner: Runner = _run, sleep=time.sleep, wait_s: int = 600) -> dict:
+def up(owner: str, slug: str, message: str, lib: Path = LIB, runner: Runner = _run, sleep=time.sleep, wait_s: int = 600, sprites: Path | None = None) -> dict:
     stage = Path(tempfile.mkdtemp()) / "stage"
     stamp_hashes(lib)
-    info = stage_upload(lib, stage, owner, slug)
+    info = stage_upload(lib, stage, owner, slug, sprites)
     code, out = runner(["kaggle", "datasets", "version", "-p", str(stage), "-m", message, "--dir-mode", "skip"])
     if code != 0:
         code, out = runner(["kaggle", "datasets", "create", "-p", str(stage), "--dir-mode", "skip"])
@@ -148,7 +164,7 @@ def up(owner: str, slug: str, message: str, lib: Path = LIB, runner: Runner = _r
     return {"ok": False, "error": "dataset not ready after waiting", **info}
 
 
-def verify(lib: Path, ids: list[str]) -> dict:
+def verify(lib: Path, ids: list[str], sprites: Path | None = None) -> dict:
     """The saved drawings are really in the library the code reads: index entry, file exists, size > 0, hash equals the one in the index."""
     idx = json.loads((lib / "index.json").read_text())["items"]
     bad = []
@@ -161,16 +177,23 @@ def verify(lib: Path, ids: list[str]) -> dict:
             bad.append(f"{i}: file missing {v['file']}"); continue
         if v.get("sha256") and sha(f) != v["sha256"]:
             bad.append(f"{i}: hash differs from the index")
-    return {"ok": not bad, "checked": len(ids), "problems": bad}
+    n_sp = 0
+    if sprites is not None:                                   # every sprite listed in the index is here and intact
+        for rel, h in json.loads((lib / "index.json").read_text()).get("sprites", {}).items():
+            f = Path(sprites) / rel; n_sp += 1
+            if not f.is_file() or sha(f) != h:
+                bad.append(f"sprite {rel}: missing or changed")
+    return {"ok": not bad, "checked": len(ids), "sprites_checked": n_sp, "problems": bad[:20]}
 
 
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(); p.add_argument("cmd", choices=["down", "up", "verify"]); p.add_argument("--slug", default=SLUG_DEFAULT)
-    p.add_argument("--message", default="assets update"); p.add_argument("--lib", default=str(LIB)); p.add_argument("ids", nargs="*")
-    a = p.parse_args(argv); owner = owner_of(); lib = Path(a.lib)
+    p.add_argument("--message", default="assets update"); p.add_argument("--lib", default=str(LIB)); p.add_argument("--sprites", default=str(SPRITES)); p.add_argument("ids", nargs="*")
+    a = p.parse_intermixed_args(argv); owner = owner_of(); lib = Path(a.lib)
     if a.cmd != "verify" and not owner:
         print("KAGGLE_USERNAME is not set"); return 2
-    r = down(owner, a.slug, lib) if a.cmd == "down" else up(owner, a.slug, a.message, lib) if a.cmd == "up" else verify(lib, a.ids)
+    sp = Path(a.sprites)
+    r = down(owner, a.slug, lib, sprites=sp) if a.cmd == "down" else up(owner, a.slug, a.message, lib, sprites=sp) if a.cmd == "up" else verify(lib, a.ids, sp)
     print(json.dumps(r)); 
     if a.cmd == "down" and r.get("no_dataset"):
         print("NO_DATASET=true")

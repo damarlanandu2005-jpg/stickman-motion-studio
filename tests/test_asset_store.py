@@ -56,3 +56,14 @@ def test_up_fails_if_dataset_never_becomes_ready(tmp_path):
     lib = make_lib(tmp_path)
     r = st.up("me", "x", "m", lib, runner=lambda a: (0, "running"), sleep=lambda s: None, wait_s=30)
     assert not r["ok"]
+
+
+def test_sprites_travel_with_the_library(tmp_path):
+    lib = make_lib(tmp_path); sp = tmp_path / "sp"; (sp / "role_chief").mkdir(parents=True); Image.new("RGBA", (8, 8)).save(sp / "role_chief" / "body_00.png")
+    st.stamp_hashes(lib); stage = tmp_path / "stage"; info = st.stage_upload(lib, stage, "me", "a", sp)
+    assert info["sprites"] == 1 and (stage / "sprites__role_chief__body_00.png").exists()
+    lib2, sp2 = tmp_path / "lib2", tmp_path / "sp2"; st.unstage(stage, lib2, sp2)
+    assert (sp2 / "role_chief" / "body_00.png").exists() and not (lib2 / "sprites__role_chief__body_00.png").exists()
+    assert st.verify(lib2, ["bg_a"], sp2)["ok"]
+    (sp2 / "role_chief" / "body_00.png").unlink()
+    assert not st.verify(lib2, ["bg_a"], sp2)["ok"]

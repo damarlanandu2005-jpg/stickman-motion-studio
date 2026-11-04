@@ -13,6 +13,16 @@ DOWN=$(python -m motion_studio.asset_store down --slug "$SLUG"); echo "$DOWN"
 if echo "$DOWN" | grep -q "NO_DATASET=true"; then
   python -m motion_studio.asset_store up --slug "$SLUG" --message "bootstrap from repo library" || { echo "bootstrap failed"; exit 0; }
 fi
+# 1b. the character sprites (animation/assets2d) must live in the dataset too: first time, take them from the seed on branch test-results
+if ! python -c "import json,sys;sys.exit(0 if json.load(open('animation/asset_library/index.json')).get('sprites') else 1)"; then
+  if git ls-remote --exit-code --heads origin test-results >/dev/null 2>&1; then
+    git fetch -q --depth 1 origin test-results && git worktree add -q /tmp/seed FETCH_HEAD 2>/dev/null
+    if [ -d /tmp/seed/sprites-seed ]; then
+      mkdir -p animation/assets2d && cp -r /tmp/seed/sprites-seed/. animation/assets2d/
+      python -m motion_studio.asset_store up --slug "$SLUG" --message "seed character sprites" || echo "SPRITE SEED UP FAILED"
+    else echo "no sprites-seed on test-results"; fi
+  fi
+fi
 # 2. what does the script need that the library does not have
 python -m motion_studio.script_reader "$SCRIPT" --write-request "$REQ" --out "$STATE/reader.json" | tee "$STATE/reader.txt"
 NEED=$(python -c "import json,sys;print(len(json.load(open(sys.argv[1]))['needs']))" "$REQ")
@@ -39,15 +49,19 @@ for ROUND in 1 2 3; do
   JUDGE=$(python -m motion_studio.asset_auto judge --request "$REQ" --round "$ROUND" --state "$STATE" --outputs "$OUTDIR")
   echo "$JUDGE"; echo "$JUDGE" | grep -q "DONE=true" && DONE=true
 done
-# 3. save everything accepted into the dataset, then prove it comes back
+# 3. save everything accepted into the dataset, then prove it comes back (clean folder, own download, hash check, reader run)
 ACC=$(python -c "import json,os;p='$STATE/accepted.json';print(' '.join(json.load(open(p))) if os.path.exists(p) else '')")
 VERIFY="not needed"
 if [ -n "$ACC" ]; then
   python -m motion_studio.asset_store up --slug "$SLUG" --message "assets for $NAME (auto, run ${GITHUB_RUN_ID:-local})" || echo "UP FAILED"
-  FRESH=$(mktemp -d)
-  python -m motion_studio.asset_store down --slug "$SLUG" --lib "$FRESH" >/dev/null
-  if python -m motion_studio.asset_store verify --lib "$FRESH" $ACC; then VERIFY="ok: $ACC found again after a clean download"; else VERIFY="FAILED"; fi
-  python -m motion_studio.script_reader "$SCRIPT" --lib "$FRESH" --out "$STATE/reader_after.json" | tee "$STATE/reader_after.txt"
+  FRESH=$(mktemp -d); VERIFY="FAILED"
+  for TRY in 1 2 3; do
+    rm -rf "$FRESH"/*; sleep $((10 * TRY))
+    python -m motion_studio.asset_store down --slug "$SLUG" --lib "$FRESH/animation/asset_library" --sprites "$FRESH/animation/assets2d" || continue
+    if python -m motion_studio.asset_store verify --lib "$FRESH/animation/asset_library" --sprites "$FRESH/animation/assets2d" $ACC | tee "$STATE/verify.json" | grep -q '"ok": true'; then
+      VERIFY="ok: $ACC and all sprites found again after a clean download"; break; fi
+  done
+  python -m motion_studio.script_reader "$SCRIPT" --lib "$FRESH/animation/asset_library" --root "$FRESH" --out "$STATE/reader_after.json" | tee "$STATE/reader_after.txt"
 fi
-{ echo "assets $NAME: complete=$DONE, round files in $STATE"; echo "dataset verify: $VERIFY"; cat "$STATE/report.json" 2>/dev/null | head -40; } | tee -a "${GITHUB_STEP_SUMMARY:-/dev/null}"
+{ echo "assets $NAME: complete=$DONE, round files in $STATE"; echo "dataset verify: $VERIFY"; cat "$STATE/verify.json" 2>/dev/null; cat "$STATE/report.json" 2>/dev/null | head -40; } | tee -a "${GITHUB_STEP_SUMMARY:-/dev/null}"
 exit 0

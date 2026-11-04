@@ -210,14 +210,14 @@ def summary(r: dict) -> str:
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(); p.add_argument("script"); p.add_argument("--cast"); p.add_argument("--out")
     p.add_argument("--write-specs", metavar="DIR"); p.add_argument("--write-request", metavar="FILE", help="write the missing backgrounds/props as an asset request file")
-    p.add_argument("--lib", help="asset library folder (default: animation/asset_library)")
+    p.add_argument("--lib", help="asset library folder (default: animation/asset_library)"); p.add_argument("--root", help="project root to look for costumes/sprites in (default: this repo)")
     a = p.parse_args(argv); script = parse_script(Path(a.script).read_text(encoding="utf-8"))
     cast_path = Path(a.cast or script["cast"] or "")
     if not cast_path.is_file():
         print(f"cast file not found: {cast_path}"); return 2
     cast = json.loads(cast_path.read_text(encoding="utf-8"))
     db = json.loads((Path(a.lib) / "index.json").read_text()) if a.lib else None
-    r = resolve(script, cast, db)
+    r = resolve(script, cast, db, Path(a.root) if a.root else ROOT)
     if a.write_request:
         Path(a.write_request).parent.mkdir(parents=True, exist_ok=True)
         Path(a.write_request).write_text(json.dumps({"name": Path(a.script).stem, "needs": [{k: n[k] for k in ("id", "type", "tags", "desc")} for n in r["missing_assets"]]}, indent=1))
