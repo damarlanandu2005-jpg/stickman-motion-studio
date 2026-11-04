@@ -1,0 +1,20 @@
+# EXAMPLE only (written by Claude to test the asset loop with new items).
+TITLE: The Night Guard
+VOICE: am_fenrir
+CAST: animation/cast/example_bomb.json
+
+SCENE
+bg: old warehouse, inside
+who: chief
+pose: stand
+props: lantern
+say: The *guard* walked in alone.
+camera: push
+
+SCENE
+bg: rooftop at sunset
+who: doctor, chief
+pose: point
+props: golden key
+say: He found a *key* nobody wanted.
+camera: pan

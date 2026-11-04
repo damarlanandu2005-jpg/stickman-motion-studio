@@ -52,8 +52,8 @@ done
 # 3. save everything accepted into the dataset, then prove it comes back (clean folder, own download, hash check, reader run)
 ACC=$(python -c "import json,os;p='$STATE/accepted.json';print(' '.join(json.load(open(p))) if os.path.exists(p) else '')")
 VERIFY="not needed"
-if [ -n "$ACC" ]; then
-  python -m motion_studio.asset_store up --slug "$SLUG" --message "assets for $NAME (auto, run ${GITHUB_RUN_ID:-local})" || echo "UP FAILED"
+if [ -n "$ACC" ] || [ "$NEED" = "0" ]; then
+  if [ -n "$ACC" ]; then python -m motion_studio.asset_store up --slug "$SLUG" --message "assets for $NAME (auto, run ${GITHUB_RUN_ID:-local})" || echo "UP FAILED"; fi
   FRESH=$(mktemp -d); VERIFY="FAILED"
   for TRY in 1 2 3; do
     rm -rf "$FRESH"/*; sleep $((10 * TRY))
