@@ -22,7 +22,7 @@ from . import script_reader as sr, shot2d, voice_first
 from . import shot_planner as planner
 
 ROOT = Path(__file__).resolve().parents[1]
-SEC_PER_FRAME = 0.05        # measured on the build machine: 155 frames in 7.3 s with plain backgrounds; real backgrounds may cost more (the merge job prints the real numbers)
+SEC_PER_FRAME = 0.03        # measured on GitHub runners: 1211 frames in 35 s as one part (plain-ish backgrounds); the merge job prints real numbers
 JOB_OVERHEAD_S = 60         # a render job also needs: start, checkout, unpack the inputs
 MIN_GAIN_S = 15             # one more part must save at least this much, otherwise it is not worth a runner
 MAX_PARTS = 10
