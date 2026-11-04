@@ -53,6 +53,16 @@ for ROUND in 1 2 3; do
   # the notebook needs the dataset version that holds the style references: it is the one pulled in step 1 (or the bootstrap)
   python scripts/build_scene_batch_notebook.py
   OUTDIR="$STATE/kaggle-r$ROUND"
+  if [ "${REUSE:-0}" = "1" ] && [ "$ROUND" = "1" ] && git ls-remote --exit-code --heads origin test-results >/dev/null 2>&1; then
+    # judge the pictures an earlier run already drew (published on test-results) instead of drawing again
+    git fetch -q --depth 1 origin test-results && git worktree add -q /tmp/prev FETCH_HEAD 2>/dev/null
+    rm -rf "$OUTDIR"; mkdir -p "$OUTDIR"; cp /tmp/prev/assets-auto/"$NAME"/pose_*.png "$OUTDIR"/ 2>/dev/null
+    # old pictures are named ..._r1_c0 .. r3_c1: keep their names, the judge reads every pose_<id>_r*_c*.png
+    echo "reused $(ls "$OUTDIR" | wc -l) earlier pictures"
+    JUDGE=$(python -m motion_studio.asset_auto judge --request "$REQ" --round "$ROUND" --state "$STATE" --outputs "$OUTDIR")
+    echo "$JUDGE"; echo "$JUDGE" | grep -q "DONE=true" && DONE=true
+    continue
+  fi
   for TRY in 1 2; do
     rm -rf "$OUTDIR"
     if python -m motion_studio.kaggle_runner --kernel "$OWNER/stickman-motion-studio-scene-batch" \

@@ -117,7 +117,7 @@ def band_start(img: Image.Image) -> int | None:
     return y + 1 if y < H - 1 else None
 
 
-MIN_KEEP = 0.70      # the part above the band must be at least this share of the picture, else stretching it back would distort too much
+MIN_KEEP = 0.60      # the part above the band must be at least this share of the picture, else stretching it back would distort too much
 
 
 def repair_bottom(img: Image.Image) -> Image.Image | None:
@@ -133,7 +133,7 @@ def repair_bottom(img: Image.Image) -> Image.Image | None:
 
 def library_style(db: dict, lib: Path = LIB) -> dict:
     """Median style numbers of the plain library backgrounds (the pictures already accepted as the channel's look)."""
-    rows = [stats(Image.open(lib / v["file"])) for i, v in db["items"].items() if v["type"] == "background" and i.startswith("bg_") and (lib / v["file"]).exists()]
+    rows = [stats(Image.open(lib / v["file"])) for i, v in db["items"].items() if v["type"] == "background" and i.startswith("bg_") and v.get("source") != "auto" and (lib / v["file"]).exists()]
     out = {"n": len(rows)}
     for k in ("sat", "dark", "bright", "low_dark", "grad"):
         v = [r[k] for r in rows]; span = max(max(v) - min(v), 0.02)

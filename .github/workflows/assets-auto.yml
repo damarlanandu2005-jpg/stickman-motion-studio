@@ -11,6 +11,9 @@ on:
       refs:
         description: "Use style reference pictures for backgrounds (1) or draw from words only (0)"
         default: "1"
+      reuse:
+        description: "1 = judge the pictures an earlier run drew (no new drawing)"
+        default: "0"
       redo:
         description: "Drawing ids to replace (space separated), optional"
         default: ""
@@ -64,6 +67,7 @@ jobs:
           INPUT_SCRIPT: ${{ github.event.inputs.script }}
           REDO: ${{ github.event.inputs.redo }}
           ASSET_REFS: ${{ github.event.inputs.refs || '1' }}
+          REUSE: ${{ github.event.inputs.reuse || '0' }}
         run: |
           if [ "${{ github.event_name }}" = "push" ]; then
             SCRIPTS=$(git diff --name-only HEAD^ HEAD -- scripts_in | grep '\.txt$' || true)
