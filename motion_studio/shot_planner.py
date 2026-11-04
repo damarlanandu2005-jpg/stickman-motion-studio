@@ -87,7 +87,7 @@ def plan_shots(ir: dict, durs: list[float], words: list, cast: dict, root: Path 
             if pose is None:
                 warns.append(f"scene {sc['n']}: pose word not known, stand used"); pose = 0
             actors.append({"outfit": of, "pose": pose, "x": xs[i], "feet": feet, "height": h, "faces": [[0, face]]})
-        objects = [{"lib": p["library_id"], "x": 0.82 + 0.0 * j, "feet": feet, "height": 0.16, "pop": 0.2 + 0.25 * j} for j, p in enumerate(props[:2])]
+        objects = [{"lib": p["library_id"], "x": 0.82 - 0.2 * j, "feet": feet, "height": 0.16, "pop": 0.2 + 0.25 * j} for j, p in enumerate(props[:2])]
         texts = [{"text": sc["text"], "x": 0.5, "y": 0.2, "size": 0.07, "font": "bold", "color": (255, 255, 255), "stroke": 3, "screen": True}] if sc["text"] else []
         caps = [[round(max(a - t, 0), 3), round(min(b - t, d), 3), txt, key_words(txt, allred)] for a, b, txt, red in groups if b > t + 0.05 and a < t + d - 0.05]
         cam = CAMS.get(sc["camera"], AUTO_CAMS[(sc["n"] - 1) % 3])
