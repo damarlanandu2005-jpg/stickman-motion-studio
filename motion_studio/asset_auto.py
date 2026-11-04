@@ -59,6 +59,24 @@ def prompt_for(need: dict, refs: list[str]) -> str:
     return base
 
 
+def continuation_prompt(need: dict) -> str:
+    """Draw the new picture FROM the reference: same place, same camera, same layout; only the named thing changes."""
+    from .script_reader import VARIANT, words as _w
+    change = need.get("change") or need["desc"]
+    if change and set(_w(change)) <= VARIANT:                 # only look words (time of day, weather): say it as a change of light
+        change = f"the time and light of day, it is now {change}, so the sky, light and shadows change as that time of day needs"
+    return ("Edit the reference picture. Keep exactly the same place: the same camera view, the same layout, the same objects "
+            f"and the same art style. Change only this: {change}. " + lib_mod.STYLE)
+
+
+def base_state(need: dict, db: dict, state: Path) -> str:
+    """'none' (no base) | 'ready' (base picture is in the library) | 'waiting' (base is itself still to be drawn)."""
+    b = need.get("base")
+    if not b:
+        return "none"
+    return "ready" if b in db["items"] else "waiting"
+
+
 def pending(request: dict, state: Path) -> list[dict]:
     done = json.loads((state / "accepted.json").read_text()) if (state / "accepted.json").exists() else {}
     return [n for n in request["needs"] if n["id"] not in done]
@@ -67,14 +85,21 @@ def pending(request: dict, state: Path) -> list[dict]:
 def plan(request: dict, round_no: int, state: Path, lib: Path = LIB, jobs_file: Path | None = None) -> dict:
     db = json.loads((lib / "index.json").read_text())
     jobs, needs = [], pending(request, Path(state))
+    waiting = []
     for ni, n in enumerate(needs):
-        refs = style_refs(db, n) if n["type"] == "background" and os.environ.get("ASSET_REFS", "1") != "0" else []
+        bs = base_state(n, db, Path(state))
+        if bs == "waiting":                       # its base picture is not drawn yet: wait for a later round
+            waiting.append(n["id"]); continue
+        if bs == "ready":                         # continuation: the earlier picture is the reference, the prompt says what changes
+            refs = ["ds:" + store.flat_name(db["items"][n["base"]]["file"])]; prompt = continuation_prompt(n)
+        else:
+            refs = style_refs(db, n) if n["type"] == "background" and os.environ.get("ASSET_REFS", "1") != "0" else []; prompt = prompt_for(n, refs)
         for c in range(CANDIDATES):
-            jobs.append({"id": f"{n['id']}_r{round_no}_c{c}", "prompt": prompt_for(n, refs), "refs": refs,
+            jobs.append({"id": f"{n['id']}_r{round_no}_c{c}", "prompt": prompt, "refs": refs,
                          "seed": 8100 + 1000 * round_no + 10 * ni + c, "width": W, "height": H})
     jf = jobs_file or ROOT / "kaggle" / "scene-batch" / "jobs.json"
     jf.write_text(json.dumps({"jobs": jobs}, indent=1), encoding="utf-8")
-    return {"round": round_no, "pending": [n["id"] for n in needs], "jobs": len(jobs), "uses_dataset": any(j["refs"] for j in jobs)}
+    return {"round": round_no, "pending": [n["id"] for n in needs], "waiting": waiting, "jobs": len(jobs), "uses_dataset": any(j["refs"] for j in jobs)}
 
 
 # ---------------------------------------------------------------- checks
@@ -171,7 +196,7 @@ def text_words(path: Path) -> list[str] | None:
     return found
 
 
-def gate_background(path: Path, ref_style: dict, ref_paths: list[Path] | None = None) -> dict:
+def gate_background(path: Path, ref_style: dict, ref_paths: list[Path] | None = None, skip: tuple = ()) -> dict:
     im = Image.open(path).convert("RGB"); why = []
     if im.size != (W, H):
         why.append(f"size {im.size}")
@@ -179,7 +204,7 @@ def gate_background(path: Path, ref_style: dict, ref_paths: list[Path] | None = 
     if np.asarray(im).std() < 12:
         why.append("blank picture")
     for key, label in (("sat", "colour style"), ("dark", "outline weight"), ("bright", "brightness"), ("low_dark", "lower part is busy (floor not clear)"), ("grad", "picture is noisy")):
-        if not ref_style[key + "_lo"] <= s[key] <= ref_style[key + "_hi"]:
+        if key not in skip and not ref_style[key + "_lo"] <= s[key] <= ref_style[key + "_hi"]:
             why.append(f"{label} is outside the library's range" if key != "low_dark" else label)
     if pale_blue_bottom(im):
         why.append("the bottom of the picture is a pale sky-blue block, not a floor")
@@ -192,6 +217,35 @@ def gate_background(path: Path, ref_style: dict, ref_paths: list[Path] | None = 
         why.append("text in the picture: " + " ".join(tw[:4]))
     score = round(-abs(s["sat"] - ref_style["sat"]) - abs(np.log((s["dark"] + 1e-3) / (ref_style["dark"] + 1e-3))) * 0.1 - abs(s["bright"] - ref_style["bright"]), 3)
     return {"pass": not why, "why": why, "score": score, "text_check": tw is not None, **{k: round(v, 3) for k, v in s.items()}}
+
+
+STRUCT_MIN, CHANGED_MIN = 0.30, 0.02      # NOT calibrated on real pairs yet: the numbers are logged for every continuation so they can be set from real runs
+
+
+def continuation_metrics(img: Image.Image, base: Image.Image) -> dict:
+    """struct: do the outlines of the new picture sit where the base's outlines sit (1 = same layout).  changed: share of the picture whose colour moved."""
+    from scipy import ndimage as ndi
+    def edges(im):
+        g = ndi.gaussian_filter(np.asarray(im.convert("L").resize((144, 256))).astype(float), 1.0)
+        return ndi.gaussian_filter(np.hypot(*np.gradient(g)), 1.5)
+    a, b = edges(img).ravel(), edges(base).ravel()
+    struct = float(np.corrcoef(a, b)[0, 1])
+    x = np.asarray(img.convert("RGB").resize((144, 256))).astype(int); y = np.asarray(base.convert("RGB").resize((144, 256))).astype(int)
+    d = np.abs(x - y).max(2)
+    return {"struct": round(struct, 3), "changed": round(float((d > 30).mean()), 3), "mean_diff": round(float(d.mean()), 2)}
+
+
+def gate_continuation(path: Path, base_path: Path, ref_style: dict) -> dict:
+    """A picture drawn FROM another one: normal picture checks (light and colour are allowed to change), plus: same layout, and a visible change."""
+    g = gate_background(path, ref_style, skip=("sat", "bright", "dark"))
+    m = continuation_metrics(Image.open(path), Image.open(base_path))
+    if m["struct"] < STRUCT_MIN:
+        g["why"].append(f"not the same place any more (layout match {m['struct']} < {STRUCT_MIN})")
+    if m["changed"] < CHANGED_MIN:
+        g["why"].append(f"nothing visible changed ({m['changed']:.0%} of the picture)")
+    g.update(m); g["pass"] = not g["why"]
+    g["score"] = round(m["struct"] + min(m["changed"], 0.5), 3) if g["pass"] else g["score"]
+    return g
 
 
 def gate_object(path: Path) -> dict:
@@ -247,7 +301,10 @@ def judge(request: dict, round_no: int, state: Path, outputs: Path, lib: Path = 
                 fixed = repair_bottom(Image.open(c))
                 if fixed is not None:
                     fixed.save(c); note = "pale bottom band cut off and picture stretched back (code repair)"
-            g = gate_background(c, style) if n["type"] == "background" else gate_object(c)
+            if n["type"] == "background" and n.get("base") and n["base"] in db["items"]:
+                g = gate_continuation(c, lib / db["items"][n["base"]]["file"], style)
+            else:
+                g = gate_background(c, style) if n["type"] == "background" else gate_object(c)
             if note:
                 g["repair"] = note
             scored.append((c, g))
@@ -262,14 +319,16 @@ def judge(request: dict, round_no: int, state: Path, outputs: Path, lib: Path = 
         else:
             dst.parent.mkdir(parents=True, exist_ok=True); shutil.copy(c, dst)
         new_items[n["id"]] = {"type": n["type"], "tags": sorted({t.lower() for t in n["tags"]}), "file": f"{sub}/{n['id']}.png", "desc": n["desc"],
-                              "run": run, "source": "auto", "gate_score": g["score"], "from_picture": c.name}
+                              "run": run, "source": "auto", "gate_score": g["score"], "from_picture": c.name,
+                              **({"base": n["base"], "change": n.get("change", "")} if n.get("base") else {})}
         accepted[n["id"]] = c.name
     if new_items:
         store.merge_index(lib, new_items); store.stamp_hashes(lib)
     acc_file.write_text(json.dumps(accepted, indent=1))
     missing = [n["id"] for n in request["needs"] if n["id"] not in accepted]
+    waiting_on_dataset = [n["id"] for n in request["needs"] if n["id"] in missing and n.get("base") in accepted]   # their base must reach the dataset before Kaggle can use it
     report = {"request": request.get("name"), "round": round_no, "accepted": sorted(accepted), "still_missing": missing, "complete": not missing,
-              "gate_log": log, "human_reviewed": False, "style_reference": style}
+              "gate_log": log, "human_reviewed": False, "style_reference": style, "needs_dataset_update": waiting_on_dataset}
     (state / "report.json").write_text(json.dumps(report, indent=1))
     return report
 
@@ -280,10 +339,10 @@ def main(argv: list[str] | None = None) -> int:
     a = p.parse_args(argv); req = json.loads(Path(a.request).read_text(encoding="utf-8"))
     if a.cmd == "plan":
         r = plan(req, a.round, Path(a.state), Path(a.lib)); print(json.dumps(r))
-        print(f"NOTHING_PENDING={'true' if not r['pending'] else 'false'}"); print(f"USES_DATASET={'true' if r['uses_dataset'] else 'false'}")
+        print(f"NOTHING_PENDING={'true' if not r['pending'] else 'false'}"); print(f"NOTHING_TO_DRAW={'true' if r['jobs'] == 0 else 'false'}"); print(f"USES_DATASET={'true' if r['uses_dataset'] else 'false'}")
     else:
         r = judge(req, a.round, Path(a.state), Path(a.outputs), Path(a.lib), run=__import__("os").environ.get("GITHUB_RUN_ID", ""))
-        print(json.dumps({k: r[k] for k in ("round", "accepted", "still_missing", "complete")})); print(f"DONE={'true' if r['complete'] else 'false'}")
+        print(json.dumps({k: r[k] for k in ("round", "accepted", "still_missing", "complete")})); print(f"DONE={'true' if r['complete'] else 'false'}"); print(f"NEEDS_UP={'true' if r['needs_dataset_update'] else 'false'}")
     return 0
 
 

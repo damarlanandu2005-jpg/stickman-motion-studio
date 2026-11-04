@@ -1,0 +1,20 @@
+# TEST only (written by Claude): continuation scenes. Scene 2 and 3 are the SAME rooftop as scene 1 with one thing changed.
+TITLE: One Day On The Roof
+VOICE: am_fenrir
+CAST: animation/cast/example_bomb.json
+
+SCENE
+bg: rooftop at sunset
+who: chief
+say: It was *sunset* on the roof.
+
+SCENE
+bg: rooftop at midday
+who: chief
+say: Hours later the *sun* was high.
+
+SCENE
+bg: rooftop, everything wet from heavy rain, grey clouds
+from: rooftop at sunset
+who: chief
+say: Then the *rain* came.

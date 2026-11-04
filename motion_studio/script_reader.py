@@ -32,7 +32,7 @@ from pathlib import Path
 from . import asset_library as lib
 
 ROOT = Path(__file__).resolve().parents[1]
-KEYS = {"bg", "who", "pose", "props", "say", "text", "sound", "camera"}
+KEYS = {"bg", "who", "pose", "props", "say", "text", "sound", "camera", "from"}
 CAMERAS = {"push", "pull", "pan", "still"}
 STOP = {"a", "an", "the", "of", "at", "on", "with", "and", "in", "to"}
 HUES = {"green": (0.17, 0.45), "olive green": (0.17, 0.45), "yellow": (0.10, 0.20), "blue": (0.50, 0.70), "light blue": (0.50, 0.62),
@@ -82,6 +82,38 @@ def red_marks(say: str) -> tuple[str, list[str]]:
     """'Arthur was a *normal* man' -> ('Arthur was a normal man', ['normal'])"""
     red = re.findall(r"\*([^*]+)\*", say)
     return re.sub(r"\*([^*]+)\*", r"\1", say), red
+
+
+# Words that only change the LOOK of a place (time of day, light, weather). Same place + a different one of these words = a continuation of that
+# place, not a different place: it is drawn FROM the earlier picture. Anything else that changes a place is written by the author with `from:`.
+VARIANT = {"day", "daytime", "night", "nighttime", "morning", "midday", "noon", "afternoon", "evening", "sunset", "sunrise", "dawn", "dusk", "sun", "sunny",
+           "moon", "moonlit", "moonlight", "cloudy", "rain", "rainy", "storm", "stormy", "snow", "snowy", "fog", "foggy", "dark", "bright", "twilight", "midnight"}
+
+
+def place_words(text: str) -> set[str]:
+    return {w for w in words(text) if w not in VARIANT}
+
+
+def match_bg(db: dict, wanted: str) -> tuple[str | None, float, str | None]:
+    """(library id, score, base id).  A background counts as found only when its look words (night, sunset, rain...) match too;
+    otherwise the closest picture of the SAME place is returned as `base` to draw the new one from."""
+    want = set(words(wanted)); look = want & VARIANT; place = place_words(wanted)
+    best, bscore, base, base_s = None, 0.0, None, 0.0
+    for k, v in db["items"].items():
+        if v["type"] != "background":
+            continue
+        tags = set(v["tags"])
+        s = len(want & tags) / len(want) if want else 0.0
+        if look - tags:                                     # the script asks for a look (night, sunset, rain...) this picture does not have
+            ps = len(place & tags) / max(len(place), 1) if place else 0.0
+            if ps >= 0.99 and len(place_words(" ".join(tags))) <= len(place) + 1 and ps > base_s:
+                base, base_s = k, ps
+            continue
+        if s > bscore or (s == bscore and best and len(v["tags"]) < len(db["items"][best]["tags"])):
+            best, bscore = k, s
+    if bscore >= 0.6:
+        return best, bscore, None
+    return None, bscore, base
 
 
 def _match(db: dict, wanted: str, kind: str) -> tuple[str | None, float]:
@@ -141,9 +173,25 @@ def resolve(script: dict, cast: dict, db: dict | None = None, root: Path = ROOT)
             who.append({"character": c, "stage": s, "costume": cos, "costume_status": costumes[cos]})
         bg, bscore = (None, 0.0)
         if sc.get("bg"):
-            bg, bscore = _match(db, sc["bg"], "background")
-            if not bg:
-                needs_bg.append({"id": "bg_" + "_".join(words(sc["bg"]))[:40], "type": "background", "tags": words(sc["bg"]), "desc": sc["bg"], "scene": i + 1})
+            bg, bscore, base = match_bg(db, sc["bg"])
+            if sc.get("from") and not bg:                                   # the author says: draw it from this picture
+                fb, fs, _ = match_bg(db, sc["from"])
+                base = fb or ("bg_" + "_".join(words(sc["from"]))[:40] if any(n["id"] == "bg_" + "_".join(words(sc["from"]))[:40] for n in needs_bg) else None)
+                if not base:
+                    errors.append(f"{tag}: 'from: {sc['from']}' is not in the library and not drawn earlier in this script")
+            nid = "bg_" + "_".join(words(sc["bg"]))[:40]
+            if not bg and not base:                                          # no explicit base: an earlier missing picture of the same place?
+                pw = place_words(sc["bg"])
+                for n in needs_bg:
+                    if pw and place_words(n["desc"]) == pw and n["id"] != nid:
+                        base = n["id"]; break
+            if not bg and not any(n["id"] == nid for n in needs_bg):
+                need = {"id": nid, "type": "background", "tags": words(sc["bg"]), "desc": sc["bg"], "scene": i + 1}
+                if base and base != nid:
+                    bd = (db["items"].get(base) or {}).get("desc") or next((n["desc"] for n in needs_bg if n["id"] == base), "")
+                    need["base"] = base
+                    need["change"] = sc["bg"] if sc.get("from") else (" ".join(w for w in words(sc["bg"]) if w not in set(words(bd))) or sc["bg"])
+                needs_bg.append(need)
         else:
             errors.append(f"{tag}: missing 'bg:'")
         props = []
@@ -220,7 +268,7 @@ def main(argv: list[str] | None = None) -> int:
     r = resolve(script, cast, db, Path(a.root) if a.root else ROOT)
     if a.write_request:
         Path(a.write_request).parent.mkdir(parents=True, exist_ok=True)
-        Path(a.write_request).write_text(json.dumps({"name": Path(a.script).stem, "needs": [{k: n[k] for k in ("id", "type", "tags", "desc")} for n in r["missing_assets"]]}, indent=1))
+        Path(a.write_request).write_text(json.dumps({"name": Path(a.script).stem, "needs": [{k: n[k] for k in ("id", "type", "tags", "desc", "base", "change") if k in n} for n in r["missing_assets"]]}, indent=1))
     if a.write_specs:
         r["specs_written"] = write_specs(r, cast, Path(a.write_specs))
     if a.out:

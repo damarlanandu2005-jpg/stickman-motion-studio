@@ -49,6 +49,7 @@ for ROUND in 1 2 3; do
   PLAN=$(python -m motion_studio.asset_auto plan --request "$REQ" --round "$ROUND" --state "$STATE") || { echo "plan failed"; break; }
   echo "$PLAN"
   echo "$PLAN" | grep -q "NOTHING_PENDING=true" && { DONE=true; break; }
+  echo "$PLAN" | grep -q "NOTHING_TO_DRAW=true" && { echo "nothing can be drawn now (a base picture failed)"; break; }
   EXTRA=""; echo "$PLAN" | grep -q "USES_DATASET=true" && EXTRA="--dataset-source $OWNER/$SLUG"
   # the notebook needs the dataset version that holds the style references: it is the one pulled in step 1 (or the bootstrap)
   python scripts/build_scene_batch_notebook.py
@@ -73,6 +74,10 @@ for ROUND in 1 2 3; do
   mkdir -p "$OUTDIR"
   JUDGE=$(python -m motion_studio.asset_auto judge --request "$REQ" --round "$ROUND" --state "$STATE" --outputs "$OUTDIR")
   echo "$JUDGE"; echo "$JUDGE" | grep -q "DONE=true" && DONE=true
+  # a picture drawn FROM another one needs that base in the dataset first (Kaggle reads references from there): save it now
+  if echo "$JUDGE" | grep -q "NEEDS_UP=true"; then
+    python -m motion_studio.asset_store up --slug "$SLUG" --message "bases for $NAME round $ROUND (auto)" || echo "UP FAILED"
+  fi
 done
 # 3. save everything accepted into the dataset, then prove it comes back (clean folder, own download, hash check, reader run)
 ACC=$(python -c "import json,os;p='$STATE/accepted.json';print(' '.join(json.load(open(p))) if os.path.exists(p) else '')")

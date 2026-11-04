@@ -104,3 +104,47 @@ def test_judge_repairs_a_banded_picture_and_saves_the_repair(tmp_path, monkeypat
     rep = aa.judge(req, 1, st, out, lib)
     assert rep["complete"] and "repair" in rep["gate_log"]["bg_x"][0]
     assert not aa.pale_blue_bottom(Image.open(lib / "backgrounds" / "bg_x.png"))
+
+
+def _scene(path, sun=False, seed=0):
+    im = Image.new("RGB", (W, H), (130, 170, 230)); d = ImageDraw.Draw(im)
+    rng = np.random.RandomState(seed)
+    for i in range(6):
+        x = int(rng.randint(0, W - 150)); d.rectangle([x, 500 + i * 60, x + 140, 560 + i * 60], outline=(20, 20, 20), width=5, fill=(120, 110, 100))
+    if sun:
+        d.ellipse([330, 40, 560, 270], fill=(255, 220, 60), outline=(20, 20, 20), width=5)
+    im.save(path)
+
+
+def test_continuation_gate_wants_same_layout_and_a_visible_change(tmp_path):
+    lib = _lib(tmp_path); style = aa.library_style(json.loads((lib / "index.json").read_text()), lib)
+    _scene(tmp_path / "base.png", sun=False); _scene(tmp_path / "sun.png", sun=True); _scene(tmp_path / "same.png", sun=False); _scene(tmp_path / "other.png", sun=True, seed=5)
+    ok = aa.gate_continuation(tmp_path / "sun.png", tmp_path / "base.png", style)
+    assert ok["struct"] > 0.6 and ok["changed"] > 0.02
+    same = aa.gate_continuation(tmp_path / "same.png", tmp_path / "base.png", style); assert any("nothing visible changed" in w for w in same["why"])
+    other = aa.gate_continuation(tmp_path / "other.png", tmp_path / "base.png", style); assert any("not the same place" in w for w in other["why"])
+
+
+def test_plan_draws_a_continuation_from_its_base_and_waits_when_the_base_is_missing(tmp_path):
+    lib = _lib(tmp_path); st = tmp_path / "st"; st.mkdir()
+    need = {"id": "bg_room_sun", "type": "background", "tags": ["room", "sun"], "desc": "room with sun", "base": "bg_0", "change": "sun"}
+    waits = {"id": "bg_room_night", "type": "background", "tags": ["room", "night"], "desc": "room at night", "base": "bg_room_new", "change": "night"}
+    r = aa.plan({"name": "t", "needs": [need, waits]}, 1, st, lib, tmp_path / "j.json")
+    jobs = json.loads((tmp_path / "j.json").read_text())["jobs"]
+    assert r["waiting"] == ["bg_room_night"] and all(j["id"].startswith("bg_room_sun") for j in jobs)
+    assert all(j["refs"] == ["ds:backgrounds__bg_0.png"] and j["prompt"].startswith("Edit the reference picture") and "Change only this: sun" in j["prompt"] for j in jobs)
+
+
+def test_judge_saves_a_continuation_with_its_base_and_asks_for_a_dataset_update(tmp_path, monkeypatch):
+    lib = _lib(tmp_path); st = tmp_path / "st"; out = tmp_path / "out"; out.mkdir()
+    base = {"id": "bg_new", "type": "background", "tags": ["room"], "desc": "a room"}
+    cont = {"id": "bg_new_sun", "type": "background", "tags": ["room", "sun"], "desc": "a room with sun", "base": "bg_new", "change": "sun"}
+    req = {"name": "t", "needs": [base, cont]}
+    monkeypatch.setattr(aa, "gate_background", lambda c, style, refs=None, skip=(): {"pass": True, "why": [], "score": 0.0})
+    _scene(out / "pose_bg_new_r1_c0.png")
+    rep = aa.judge(req, 1, st, out, lib)
+    assert rep["accepted"] == ["bg_new"] and rep["needs_dataset_update"] == ["bg_new_sun"]
+    out2 = tmp_path / "out2"; out2.mkdir(); _scene(out2 / "pose_bg_new_sun_r2_c0.png", sun=True); (st / "candidates" / "pose_bg_new_r1_c0.png").exists()
+    rep = aa.judge(req, 2, st, out2, lib)
+    it = json.loads((lib / "index.json").read_text())["items"]["bg_new_sun"]
+    assert rep["complete"] and it["base"] == "bg_new" and it["change"] == "sun"

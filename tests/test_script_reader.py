@@ -83,3 +83,25 @@ def test_missing_costume_without_look_is_an_error(tmp_path):
     r = sr.resolve(sr.parse_script("SCENE\nbg: x\nwho: a\nsay: hi\n"), cast, DB, tmp_path)
     sr.write_specs(r, cast, tmp_path / "specs")
     assert any("no 'look' and 'colour'" in e for e in r["errors"])
+
+
+def test_look_words_make_a_continuation_not_a_close_match():
+    db = {"items": {"bg_roof": {"type": "background", "tags": ["rooftop", "sunset"], "desc": "rooftop at sunset", "file": "x"},
+                    "bg_street": {"type": "background", "tags": ["city", "street"], "desc": "city street", "file": "y"}}}
+    assert sr.match_bg(db, "rooftop at sunset")[0] == "bg_roof"                    # same place, same look: found
+    assert sr.match_bg(db, "rooftop")[0] == "bg_roof"                              # no look asked: any look will do
+    m, _, base = sr.match_bg(db, "rooftop at midday"); assert m is None and base == "bg_roof"
+    m, _, base = sr.match_bg(db, "city street at night"); assert m is None and base == "bg_street"
+    m, _, base = sr.match_bg(db, "volcano at night"); assert m is None and base is None
+
+
+def test_reader_lists_continuations_with_their_base_and_the_change():
+    db = {"items": {"bg_roof": {"type": "background", "tags": ["rooftop", "sunset"], "desc": "rooftop at sunset", "file": "x"}}}
+    cast = {"characters": {"a": {"stages": {"n": {"costume": "civ"}}}}, "costumes": {"civ": {}}}
+    text = ("SCENE\nbg: rooftop at sunset\nwho: a\nsay: One.\n\nSCENE\nbg: rooftop at midday\nwho: a\nsay: Two.\n\n"
+            "SCENE\nbg: rooftop, everything wet and grey\nfrom: rooftop at sunset\nwho: a\nsay: Three.\n\nSCENE\nbg: rooftop at midnight\nwho: a\nsay: Four.\n")
+    r = sr.resolve(sr.parse_script(text), cast, db)
+    needs = {n["id"]: n for n in r["missing_assets"]}
+    assert needs["bg_rooftop_midday"]["base"] == "bg_roof" and needs["bg_rooftop_midday"]["change"] == "midday"
+    assert needs["bg_rooftop_everything_wet_grey"]["base"] == "bg_roof"
+    assert needs["bg_rooftop_midnight"]["base"] == "bg_roof"

@@ -27,6 +27,7 @@ SCENE
 |---|---|---|
 | `say:` | yes | What the voice says. Put `*stars*` around the word that must be RED in the caption. |
 | `bg:` | yes | Words for the background. The reader looks in the library; if nothing fits, it is listed to be drawn. |
+| `from:` | no | Only with `bg:`. Draw this background FROM an earlier one (same place, same camera, same layout) and change only what `bg:` says. Example: `bg: rooftop, the sun is up` + `from: rooftop at sunset`. Not needed for look words (see below). |
 | `who:` | no | Characters in the scene, e.g. `arthur@normal` (a stage) or just `arthur` (his current stage). |
 | `pose:` | no | Free words for now (stand, point, run...). The next step maps them. |
 | `props:` | no | Objects in the scene. Missing ones are listed to be drawn. |
@@ -34,6 +35,11 @@ SCENE
 | `sound:` | no | Object sound for this scene (made by code). |
 | `camera:` | no | `push`, `pull`, `pan` or `still`. Leave out to let the machine choose. |
 | `CHANGE: arthur -> squad` | no | From the next scene on, Arthur wears his `squad` costume. |
+
+**Continuation scenes (same place, one thing changes).** If a background has the same place words as a picture that exists (or is drawn earlier in
+the script) but a different look word (`day`, `night`, `morning`, `sunset`, `sunrise`, `rain`, `snow`, `fog`, `dark`, `bright`, `sun`, `moon` ...), the reader
+draws it FROM that picture: the earlier picture goes in as the reference and the model is told to keep the place and change only the named thing.
+For any other change write `from:`. A picture drawn this way is checked by code for: same layout kept, and a visible change.
 
 Lines starting with `#` are notes. Nothing else is needed.
 
