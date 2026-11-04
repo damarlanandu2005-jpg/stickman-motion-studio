@@ -1,0 +1,200 @@
+{
+ "costume": "bombsuit",
+ "round": 3,
+ "sheets_drawn": [
+  "bombsuit_r1_s0",
+  "bombsuit_r1_s1",
+  "bombsuit_r1_s2",
+  "bombsuit_r2_s0",
+  "bombsuit_r2_s1",
+  "bombsuit_r2_s2",
+  "bombsuit_r2_s3",
+  "bombsuit_r3_s0",
+  "bombsuit_r3_s1",
+  "bombsuit_r3_s2",
+  "bombsuit_r3_s3"
+ ],
+ "complete": true,
+ "missing_poses": [],
+ "why_failed_per_sheet": {
+  "bombsuit_r1_s0": {
+   "2": [
+    "extra white parts (bare arm or leg)"
+   ],
+   "3": [
+    "extra white parts (bare arm or leg)"
+   ],
+   "8": [
+    "head or hat on top"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "extra white parts (bare arm or leg)",
+    "white limb left (bare leg)"
+   ]
+  },
+  "bombsuit_r1_s1": {
+   "7": [
+    "white limb left (bare leg)"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "white limb left (bare leg)"
+   ]
+  },
+  "bombsuit_r1_s2": {
+   "5": [
+    "extra white parts (bare arm or leg)"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "extra white parts (bare arm or leg)",
+    "white limb left (bare leg)"
+   ]
+  },
+  "bombsuit_r2_s0": {
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "white limb left (bare leg)"
+   ]
+  },
+  "bombsuit_r2_s1": {
+   "2": [
+    "silhouette"
+   ],
+   "4": [
+    "height"
+   ],
+   "5": [
+    "height"
+   ],
+   "6": [
+    "height",
+    "silhouette"
+   ],
+   "7": [
+    "height"
+   ],
+   "10": [
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "silhouette",
+    "white limb left (bare leg)"
+   ]
+  },
+  "bombsuit_r2_s2": {
+   "3": [
+    "extra white parts (bare arm or leg)"
+   ],
+   "4": [
+    "height"
+   ],
+   "5": [
+    "height"
+   ],
+   "6": [
+    "height",
+    "silhouette"
+   ],
+   "7": [
+    "extra white parts (bare arm or leg)",
+    "height"
+   ],
+   "11": [
+    "silhouette",
+    "white limb left (bare leg)"
+   ]
+  },
+  "bombsuit_r2_s3": {
+   "6": [
+    "silhouette"
+   ],
+   "10": [
+    "head or hat on top",
+    "height"
+   ],
+   "11": [
+    "silhouette",
+    "white limb left (bare leg)"
+   ]
+  },
+  "bombsuit_r3_s0": {
+   "6": [
+    "silhouette"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "head or hat on top",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "silhouette",
+    "white limb left (bare leg)"
+   ]
+  },
+  "bombsuit_r3_s1": {
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "white limb left (bare leg)"
+   ]
+  },
+  "bombsuit_r3_s2": {
+   "4": [
+    "height"
+   ],
+   "5": [
+    "height"
+   ],
+   "6": [
+    "height",
+    "silhouette"
+   ],
+   "7": [
+    "height"
+   ],
+   "10": [
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "extra white parts (bare arm or leg)",
+    "silhouette",
+    "white limb left (bare leg)"
+   ]
+  },
+  "bombsuit_r3_s3": {
+   "4": [
+    "height"
+   ],
+   "5": [
+    "height"
+   ],
+   "6": [
+    "height",
+    "silhouette"
+   ],
+   "7": [
+    "height"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "silhouette"
+   ]
+  }
+ },
+ "status": "auto_accepted",
+ "human_reviewed": false,
+ "last_round": true
+}

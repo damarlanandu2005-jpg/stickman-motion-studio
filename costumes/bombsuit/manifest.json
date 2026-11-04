@@ -1,0 +1,69 @@
+{
+ "costume": "bombsuit",
+ "status": "auto_accepted",
+ "human_reviewed": false,
+ "poses": {
+  "0": {
+   "from": "bombsuit_r3_s1",
+   "sha256": "5e33c481eab0db39",
+   "score": 1.892
+  },
+  "1": {
+   "from": "bombsuit_r3_s1",
+   "sha256": "5e33c481eab0db39",
+   "score": 1.745
+  },
+  "2": {
+   "from": "bombsuit_r3_s1",
+   "sha256": "5e33c481eab0db39",
+   "score": 1.758
+  },
+  "3": {
+   "from": "bombsuit_r3_s1",
+   "sha256": "5e33c481eab0db39",
+   "score": 1.849
+  },
+  "4": {
+   "from": "bombsuit_r3_s1",
+   "sha256": "5e33c481eab0db39",
+   "score": 1.849
+  },
+  "5": {
+   "from": "bombsuit_r3_s1",
+   "sha256": "5e33c481eab0db39",
+   "score": 1.825
+  },
+  "6": {
+   "from": "bombsuit_r3_s1",
+   "sha256": "5e33c481eab0db39",
+   "score": 1.647
+  },
+  "7": {
+   "from": "bombsuit_r3_s1",
+   "sha256": "5e33c481eab0db39",
+   "score": 1.845
+  },
+  "8": {
+   "from": "bombsuit_r3_s1",
+   "sha256": "5e33c481eab0db39",
+   "score": 1.79
+  },
+  "9": {
+   "from": "bombsuit_r3_s1",
+   "sha256": "5e33c481eab0db39",
+   "score": 1.772
+  },
+  "10": {
+   "from": "bombsuit_r2_s2",
+   "sha256": "8527a73f2e2db407",
+   "score": 1.825
+  },
+  "11": {
+   "from": "bombsuit_r3_s1",
+   "sha256": "5e33c481eab0db39",
+   "score": 1.736
+  }
+ },
+ "missing": [],
+ "complete": true
+}
