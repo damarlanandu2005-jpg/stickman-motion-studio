@@ -1,0 +1,96 @@
+{
+ "request": "example_continue",
+ "round": 1,
+ "accepted": [
+  "bg_rooftop_everything_wet_from_heavy_rain_g",
+  "bg_rooftop_midday"
+ ],
+ "still_missing": [],
+ "complete": true,
+ "gate_log": {
+  "bg_rooftop_midday": [
+   {
+    "file": "pose_bg_rooftop_midday_r1_c0.png",
+    "pass": true,
+    "why": [],
+    "score": 1.464,
+    "text_check": true,
+    "sat": 0.327,
+    "dark": 0.026,
+    "bright": 0.888,
+    "low_dark": 0.036,
+    "grad": 2.898,
+    "struct": 0.964,
+    "changed": 0.976,
+    "mean_diff": 108.06
+   },
+   {
+    "file": "pose_bg_rooftop_midday_r1_c1.png",
+    "pass": true,
+    "why": [],
+    "score": 1.479,
+    "text_check": true,
+    "sat": 0.272,
+    "dark": 0.026,
+    "bright": 0.881,
+    "low_dark": 0.035,
+    "grad": 2.781,
+    "struct": 0.979,
+    "changed": 0.972,
+    "mean_diff": 104.27
+   }
+  ],
+  "bg_rooftop_everything_wet_from_heavy_rain_g": [
+   {
+    "file": "pose_bg_rooftop_everything_wet_from_heavy_rain_g_r1_c0.png",
+    "pass": true,
+    "why": [],
+    "score": 1.441,
+    "text_check": true,
+    "sat": 0.136,
+    "dark": 0.027,
+    "bright": 0.598,
+    "low_dark": 0.036,
+    "grad": 4.538,
+    "struct": 0.941,
+    "changed": 0.618,
+    "mean_diff": 52.79
+   },
+   {
+    "file": "pose_bg_rooftop_everything_wet_from_heavy_rain_g_r1_c1.png",
+    "pass": true,
+    "why": [],
+    "score": 1.379,
+    "text_check": true,
+    "sat": 0.126,
+    "dark": 0.029,
+    "bright": 0.56,
+    "low_dark": 0.035,
+    "grad": 5.243,
+    "struct": 0.879,
+    "changed": 0.672,
+    "mean_diff": 64.22
+   }
+  ]
+ },
+ "human_reviewed": false,
+ "style_reference": {
+  "n": 17,
+  "sat": 0.36565569043159485,
+  "sat_lo": -0.016279444694519044,
+  "sat_hi": 0.5432394599914551,
+  "dark": 0.05699327256944445,
+  "dark_lo": -0.055132921006944446,
+  "dark_hi": 0.5481410047743056,
+  "bright": 0.6460763812065125,
+  "bright_lo": 0.17511705875396727,
+  "bright_hi": 0.9357903170585632,
+  "low_dark": 0.0,
+  "low_dark_lo": -0.02044642857142857,
+  "low_dark_hi": 0.19083333333333333,
+  "grad": 4.882946968078613,
+  "grad_lo": 0.15250093460083014,
+  "grad_hi": 8.140658431053161
+ },
+ "needs_dataset_update": []
+}

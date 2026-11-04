@@ -1,0 +1,5 @@
+One Day On The Roof: 3 scenes, voice am_fenrir
+  costume chief: ready
+  to draw: background 'rooftop at midday' (scene 2)
+  to draw: background 'rooftop, everything wet from heavy rain, grey clouds' (scene 3)
+OK
