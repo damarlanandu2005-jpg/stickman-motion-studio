@@ -6,8 +6,11 @@ on:
   workflow_dispatch:
     inputs:
       script:
-        description: "Script file"
+        description: "Script file(s), space separated"
         default: scripts_in/example_bomb.txt
+      redo:
+        description: "Drawing ids to replace (space separated), optional"
+        default: ""
   push:
     branches: [test/image-to-3d-objects]
     paths: ['scripts_in/**', '.github/workflows/assets-auto.yml']
@@ -56,6 +59,7 @@ jobs:
           KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
           PYTHONPATH: .
           INPUT_SCRIPT: ${{ github.event.inputs.script }}
+          REDO: ${{ github.event.inputs.redo }}
         run: |
           if [ "${{ github.event_name }}" = "push" ]; then
             SCRIPTS=$(git diff --name-only HEAD^ HEAD -- scripts_in | grep '\.txt$' || true)

@@ -88,6 +88,19 @@ def stats(img: Image.Image) -> dict:
     return {"sat": float(sat.mean()), "dark": float(dark.mean()), "bright": float(mx.mean()), "low_dark": float(low.mean()), "grad": grad}
 
 
+def bottom_hsv(img: Image.Image) -> tuple[float, float, float]:
+    a = np.asarray(img.convert("RGB").resize((W // 2, H // 2))).astype(np.float32)
+    r, g, b = np.median(a[int(a.shape[0] * 0.85):].reshape(-1, 3), 0) / 255
+    return colorsys.rgb_to_hsv(float(r), float(g), float(b))
+
+
+def pale_blue_bottom(img: Image.Image) -> bool:
+    """The failure seen on drawn rooms: the bottom of the picture is a bright pale sky-blue block that does not belong to the room.
+    Library backgrounds never have a bottom like that (checked on all 17). It is a NARROW check, not a general floor judge."""
+    h, s, v = bottom_hsv(img)
+    return 0.45 <= h <= 0.58 and 0.08 <= s <= 0.30 and v >= 0.93
+
+
 def library_style(db: dict, lib: Path = LIB) -> dict:
     """Median style numbers of the plain library backgrounds (the pictures already accepted as the channel's look)."""
     rows = [stats(Image.open(lib / v["file"])) for i, v in db["items"].items() if v["type"] == "background" and i.startswith("bg_") and (lib / v["file"]).exists()]
@@ -138,6 +151,8 @@ def gate_background(path: Path, ref_style: dict, ref_paths: list[Path] | None = 
     for key, label in (("sat", "colour style"), ("dark", "outline weight"), ("bright", "brightness"), ("low_dark", "lower part is busy (floor not clear)"), ("grad", "picture is noisy")):
         if not ref_style[key + "_lo"] <= s[key] <= ref_style[key + "_hi"]:
             why.append(f"{label} is outside the library's range" if key != "low_dark" else label)
+    if pale_blue_bottom(im):
+        why.append("the bottom of the picture is a pale sky-blue block, not a floor")
     for rp in ref_paths or []:
         r = Image.open(rp).convert("RGB").resize(im.size)
         if float(np.abs(np.asarray(im).astype(int) - np.asarray(r).astype(int)).mean()) < 8:

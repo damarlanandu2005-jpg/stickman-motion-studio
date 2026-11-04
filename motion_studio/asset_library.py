@@ -21,7 +21,7 @@ INDEX = ROOT / "index.json"
 STYLE = ("Flat 2D vector cartoon, thick clean dark outlines, clean flat colours with soft simple shading, in the same style as a stickman "
          "explainer short. There is no character, no person, no face and no eyes in the picture. No text, no letters, no watermark, no frame.")
 PROMPTS = {
-    "background": "A vertical 9:16 background scene: {desc}. The lower third is an empty, clear floor or ground area where characters and furniture can be placed. " + STYLE,
+    "background": "A vertical 9:16 background scene: {desc}. The lower third is a clear floor or ground area (no furniture) where characters can stand: it is the SAME floor or ground of this place, in colours that belong to the scene, and it continues down to the bottom edge of the picture. Never leave a flat empty band or a plain pale blue block at the bottom, and never paint the sky or the wall colour on the floor. " + STYLE,
     "object": "One single object only: {desc}. Shown from the front with a slight three-quarter view, centred, complete, on a pure plain white background, no floor, no shadow, no other objects. " + STYLE,
 }
 

@@ -23,6 +23,21 @@ if ! python -c "import json,sys;sys.exit(0 if json.load(open('animation/asset_li
     else echo "no sprites-seed on test-results"; fi
   fi
 fi
+# 1c. REDO="id1 id2": drawings to replace (e.g. a flaw found later). The ones this script uses are removed so they count as missing again.
+if [ -n "${REDO:-}" ]; then
+  python -m motion_studio.script_reader "$SCRIPT" --out "$STATE/reader_pre.json" >/dev/null
+  python - "$STATE/reader_pre.json" $REDO <<'PY'
+import json, sys
+from pathlib import Path
+r = json.load(open(sys.argv[1])); redo = set(sys.argv[2:])
+used = {s["bg"]["library_id"] for s in r["scenes"]} | {p["library_id"] for s in r["scenes"] for p in s["props"]}
+lib = Path("animation/asset_library"); idx = json.load(open(lib / "index.json"))
+for i in sorted(redo & used):
+    f = idx["items"].pop(i, None)
+    if f: (lib / f["file"]).unlink(missing_ok=True); print("redo: removed", i)
+json.dump(idx, open(lib / "index.json", "w"), indent=1, sort_keys=True)
+PY
+fi
 # 2. what does the script need that the library does not have
 python -m motion_studio.script_reader "$SCRIPT" --write-request "$REQ" --out "$STATE/reader.json" | tee "$STATE/reader.txt"
 NEED=$(python -c "import json,sys;print(len(json.load(open(sys.argv[1]))['needs']))" "$REQ")

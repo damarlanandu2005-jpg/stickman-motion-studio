@@ -77,3 +77,11 @@ def test_judge_saves_best_and_redraws_failed(tmp_path):
     rep = aa.judge(req, 2, st, out2, lib)
     assert rep["complete"] and "obj_y" in json.loads((lib / "index.json").read_text())["items"]
     assert (lib / "objects" / "obj_y.png").is_file() and store.verify(lib, ["bg_x", "obj_y"])["ok"]
+
+
+def test_pale_blue_bottom_is_rejected_and_library_style_floor_is_not(tmp_path):
+    lib = _lib(tmp_path); style = aa.library_style(json.loads((lib / "index.json").read_text()), lib)
+    bad = Image.open(lib / "backgrounds" / "bg_0.png").convert("RGB"); d = ImageDraw.Draw(bad); d.rectangle([0, 760, W, H], fill=(205, 245, 253))
+    assert aa.pale_blue_bottom(bad); bad.save(tmp_path / "bad.png")
+    r = aa.gate_background(tmp_path / "bad.png", style); assert any("pale sky-blue" in w for w in r["why"])
+    assert not aa.pale_blue_bottom(Image.open(lib / "backgrounds" / "bg_1.png"))
