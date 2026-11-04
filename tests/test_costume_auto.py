@@ -69,3 +69,18 @@ def test_pale_patch_is_measured():
     assert ca.pale_share(im, ca.sheet_median_v([im])) > 0.04
     b = a.copy(); b[200:260, 60:100] = (40, 90, 40, 255)
     assert ca.pale_share(Image.fromarray(b, "RGBA"), 0.35) == 0.0
+
+
+def test_outline_cover_same_vs_shifted_layout():
+    a = Image.new("RGB", (200, 300), "white"); b = Image.new("RGB", (200, 300), "white")
+    from PIL import ImageDraw
+    ImageDraw.Draw(a).rectangle([60, 40, 140, 260], outline="black", width=4)
+    ImageDraw.Draw(b).rectangle([20, 40, 100, 260], outline="black", width=4)
+    assert ca.outline_cover(a, a) > 0.95 and ca.outline_cover(b, a) < 0.6
+
+
+def test_repair_keeps_round_hand_low_in_the_picture():
+    a = np.zeros((300, 200, 4), np.uint8); a[40:260, 60:140] = (60, 85, 40, 255)
+    yy, xx = np.mgrid[0:300, 0:200]; a[((yy - 230) ** 2 + (xx - 50) ** 2) < 18 ** 2] = (255, 255, 255, 255)   # round white hand low down
+    out = np.asarray(ca.repair_cut(Image.fromarray(a, "RGBA"), 0.35))
+    assert out[230, 50, :3].min() > 240

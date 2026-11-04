@@ -91,7 +91,8 @@ def repair_cut(rgba: Image.Image, median_v: float) -> Image.Image:
         el = float(np.sqrt(ev[0] / max(ev[1], 1e-6))); cy = (yy.mean() - y0) / h
         if cy < 0.25:                                                    # neck stub
             continue
-        if (area > 0.02 and el > 2.5) or (cy > 0.65 and el > 1.35):     # bare shin / white leg stick (hands are round)
+        bw, bh = xx.max() - xx.min() + 1, yy.max() - yy.min() + 1
+        if (area > 0.02 and el > 2.5) or (cy > 0.65 and el > 1.35 and bh / bw >= 1.5):   # bare shin / upright white leg stick (hands are round)
             fix |= ndi.binary_dilation(lab == k, iterations=1) & (mx > 0.5)
     a[fix, :3] = suit.astype(np.uint8)
     return Image.fromarray(a, "RGBA")
@@ -107,6 +108,19 @@ def repair_sheet(drawn: Path, info: list[dict], out: Path) -> Path:
         sheet.paste(cell, box[:2])
     sheet.save(out)
     return out
+
+
+OUTLINE_COVER = 0.82
+
+
+def outline_cover(drawn_cell: Image.Image, ref_cell: Image.Image, tol: int = 9) -> float:
+    """Share of the OLD pose's dark outline that has a dark outline of the new drawing within `tol` px: limbs in the same places.
+    A back view or a different arm / leg layout scores clearly lower than the same pose in another outfit."""
+    d = np.asarray(drawn_cell.convert("RGB")).astype(int).max(2) < 70
+    r = np.asarray(ref_cell.convert("RGB")).astype(int).max(2) < 70
+    if not r.any() or not d.any():
+        return 0.0
+    return float((ndi.distance_transform_edt(~d)[r] <= tol).mean())
 
 
 def silhouette(drawn_cut: Image.Image, ref_cut: Image.Image) -> tuple[float, float]:
@@ -130,6 +144,9 @@ def score_sheet(drawn: Path, ref: Path, info: list[dict], target_hue: tuple[floa
         if iou < SIL_OVERLAP or cov < SIL_COVER:
             why.append("silhouette")
         why += stray_white(cut)
+        r["outline_cover"] = round(outline_cover(im.crop(box), rf.crop(box)), 3)
+        if r["outline_cover"] < OUTLINE_COVER:
+            why.append("limb layout differs from the old pose (back view?)")
         r["pale_share"] = round(pale_share(cut, med_v), 3)
         if r["pale_share"] > 0.04:
             why.append("pale patch in suit")
