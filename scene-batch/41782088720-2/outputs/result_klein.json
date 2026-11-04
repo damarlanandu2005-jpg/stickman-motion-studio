@@ -1,0 +1,40 @@
+{
+  "stage": "klein",
+  "status": "success",
+  "error": null,
+  "pictures": [
+    {
+      "pose": "bg_house_study_desk",
+      "seed": 7300,
+      "status": "success",
+      "file": "pose_bg_house_study_desk.png",
+      "seconds": 33.22,
+      "width": 576,
+      "height": 1024,
+      "sha256": "ce09003d661704fecf3bd04bc464da14c1b370cbc782fe44ba39b7d0f0884a20"
+    },
+    {
+      "pose": "bg_house_living_sofa",
+      "seed": 7301,
+      "status": "success",
+      "file": "pose_bg_house_living_sofa.png",
+      "seconds": 28.73,
+      "width": 576,
+      "height": 1024,
+      "sha256": "2b52509a1ded649845dc2f12a40c0b0e4232e8c72e9f686573d73c7c91304656"
+    },
+    {
+      "pose": "bg_house_living_chest",
+      "seed": 7302,
+      "status": "success",
+      "file": "pose_bg_house_living_chest.png",
+      "seconds": 28.66,
+      "width": 576,
+      "height": 1024,
+      "sha256": "93144400124ec5aac27da64fb728c5eb809c597fc286ff3fe7817d300e50d312"
+    }
+  ],
+  "download_seconds": 116.3,
+  "load_seconds": 65.2,
+  "peak_vram_gib": 8.51
+}
