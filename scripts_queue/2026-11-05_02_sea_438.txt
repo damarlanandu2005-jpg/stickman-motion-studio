@@ -1,0 +1,51 @@
+# FINAL TEST 2 (written by Claude, new topic: 438 days adrift at sea, Jose Salvador Alvarenga, 2012 to 2014).
+TITLE: 438 Days Lost At Sea
+VOICE: am_fenrir
+CAST: animation/cast/final_sea.json
+
+SCENE
+bg: small fishing harbour at dawn
+who: jose
+pose: stand
+say: In *2012* a fisherman set out from Mexico for a short trip.
+text: MEXICO, 2012
+camera: push
+
+SCENE
+bg: small fishing boat on a dark stormy sea, heavy rain
+who: jose
+pose: crouch
+say: A *storm* hit, and the engine died.
+sound: thunder
+camera: push
+
+SCENE
+bg: small fishing boat on a calm open sea, endless blue water
+who: jose
+pose: stand
+say: For *months* there was only water in every direction.
+camera: pull
+
+SCENE
+bg: small fishing boat on a calm open sea at night, full of stars
+from: small fishing boat on a calm open sea, endless blue water
+who: jose
+pose: think
+say: He drank *rainwater* and ate fish he caught with his hands.
+camera: still
+
+SCENE
+bg: underwater, blue sea with fish
+who: jose
+pose: fall
+sound: he falls into the water
+say: Once he fell *overboard* and swam back to the boat.
+camera: push
+
+SCENE
+bg: tiny tropical island beach, palm trees
+who: jose
+pose: arms_up
+say: After *438* days he reached a tiny island.
+text: 438 DAYS
+camera: pull

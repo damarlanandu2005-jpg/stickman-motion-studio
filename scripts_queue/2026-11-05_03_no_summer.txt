@@ -1,0 +1,50 @@
+# FINAL TEST 3 (written by Claude, new topic: 1816, the Year Without a Summer after the Tambora eruption in 1815).
+TITLE: The Year Without A Summer
+VOICE: am_fenrir
+CAST: animation/cast/final_summer.json
+
+SCENE
+bg: huge volcano erupting at night, glowing lava
+who: farmer
+pose: point
+say: In *1815* a volcano called Tambora exploded.
+text: TAMBORA, 1815
+sound: he hears an explosion
+camera: push
+
+SCENE
+bg: grey ash cloud covering a village sky
+who: farmer
+pose: arms_up
+say: Its *ash* floated around the whole world.
+camera: pull
+
+SCENE
+bg: green farm field in June, bright sun
+who: farmer
+pose: stand
+say: Then came *1816*, and the summer never arrived.
+text: 1816
+camera: push
+
+SCENE
+bg: green farm field in June, covered in snow
+from: green farm field in June, bright sun
+who: farmer
+pose: kneel
+say: It *snowed* in June, and the crops froze.
+camera: still
+
+SCENE
+bg: foggy country road, cold grey morning
+who: farmer
+pose: walk
+say: Hungry families left their *farms* and walked away.
+camera: pan
+
+SCENE
+bg: candle lit study with a stormy window
+who: writer
+pose: think
+say: A young writer stuck indoors invented *Frankenstein*.
+camera: push

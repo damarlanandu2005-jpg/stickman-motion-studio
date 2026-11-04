@@ -1,0 +1,9 @@
+{
+ "characters": {
+  "arthur": {"default_stage": "normal", "stages": {"normal": {"costume": "civ"}, "squad": {"costume": "bombsuit"}}},
+  "chief": {"stages": {"main": {"costume": "chief"}}}
+ },
+ "costumes": {
+  "bombsuit": {"look": "a thick padded olive-green bomb disposal suit with a heavy chest plate, padded arms and legs and heavy black boots", "colour": "olive green", "stand_in": "tech"}
+ }
+}

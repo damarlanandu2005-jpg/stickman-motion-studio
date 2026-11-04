@@ -1,0 +1,6 @@
+{
+ "characters": {"jose": {"stages": {"main": {"costume": "fisher"}}}},
+ "costumes": {
+  "fisher": {"look": "a faded blue fisherman shirt, tan shorts and bare feet", "colour": "blue", "stand_in": "civ"}
+ }
+}

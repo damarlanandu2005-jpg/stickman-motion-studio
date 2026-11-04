@@ -1,0 +1,65 @@
+# FINAL TEST 1 (written by Claude, reference topic: bomb squad hero who cannot see colour).
+TITLE: He Could Not See Red
+VOICE: am_fenrir
+CAST: animation/cast/final_bomb.json
+
+SCENE
+bg: bomb squad office, inside
+who: arthur
+pose: stand
+props: bomb
+say: Arthur was a *bomb* expert, and he could not tell red from green.
+text: COLOUR BLIND
+camera: push
+
+SCENE
+bg: city street at night
+who: arthur, chief
+pose: point
+say: One night the chief called him, because a *bomb* sat under the bridge.
+sound: siren
+camera: pan
+
+CHANGE: arthur -> squad
+
+SCENE
+bg: concrete bunker, dim light
+who: arthur
+pose: crouch
+props: red wire, blue wire
+say: Two wires. One *red*, one blue, and to him both looked grey.
+sound: tick
+camera: push
+
+SCENE
+bg: concrete bunker, dim light, a flashing red timer on the wall
+from: concrete bunker, dim light
+who: arthur
+pose: think
+say: Ten *seconds* left, and the whole city waited.
+sound: tick
+camera: push
+
+SCENE
+bg: bomb squad office, inside
+who: arthur, chief
+pose: hands_on_hips
+say: So he trusted his *ears*, not his eyes.
+camera: still
+
+SCENE
+bg: city street at night, wet from heavy rain
+from: city street at night
+who: arthur
+pose: arms_up
+say: He cut the wire, and nothing *exploded*.
+sound: rain
+camera: pull
+
+SCENE
+bg: sunny city street in the morning
+next: city street at night
+who: arthur, chief
+pose: cheer
+say: By morning the whole city knew his *name*.
+camera: push

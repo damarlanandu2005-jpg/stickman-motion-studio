@@ -1,0 +1,6 @@
+{
+ "characters": {"farmer": {"stages": {"main": {"costume": "farmerwear"}}}, "writer": {"stages": {"main": {"costume": "civ"}}}},
+ "costumes": {
+  "farmerwear": {"look": "a brown wool coat, a straw hat and dark trousers", "colour": "brown", "stand_in": "civ"}
+ }
+}

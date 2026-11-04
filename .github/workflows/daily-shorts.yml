@@ -1,4 +1,5 @@
 name: Daily shorts (next scripts from scripts_queue, one after another)
+# (registered by a push so that "gh workflow run" works from the feature branch)
 # Started every day at 5 AM IST by the owner's scheduled task (it runs `gh workflow run daily-shorts.yml`).
 # One job, one short at a time: costumes -> assets -> voice -> render -> code check -> published to branch test-results (shorts/, daily/).
 # Bounded tries, no endless loops: whatever cannot be fixed is skipped and written in daily/MORNING_NOTE.md.
