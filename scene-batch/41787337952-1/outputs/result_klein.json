@@ -1,0 +1,120 @@
+{
+  "stage": "klein",
+  "status": "success",
+  "error": null,
+  "pictures": [
+    {
+      "pose": "var_v3_barrier_bomb",
+      "seed": 9000,
+      "status": "success",
+      "file": "pose_var_v3_barrier_bomb.png",
+      "seconds": 34.63,
+      "width": 576,
+      "height": 1024,
+      "sha256": "500ce824515f681ab304a34d95a2cea0bad4d7e5e33195ff492ad01c2e40da52"
+    },
+    {
+      "pose": "var_v3_barrier_smoke",
+      "seed": 9001,
+      "status": "success",
+      "file": "pose_var_v3_barrier_smoke.png",
+      "seconds": 28.09,
+      "width": 576,
+      "height": 1024,
+      "sha256": "699107347af130cf99ecde449650cadcc913d4ffd7a60b2ec48b772fcd2274a3"
+    },
+    {
+      "pose": "var_v3_corner_light",
+      "seed": 9002,
+      "status": "success",
+      "file": "pose_var_v3_corner_light.png",
+      "seconds": 28.41,
+      "width": 576,
+      "height": 1024,
+      "sha256": "3acfb33119f06f32876c0457008492d5f5f08729d9cdd44da9189d6b2e13c88e"
+    },
+    {
+      "pose": "var_v3_corner_truck",
+      "seed": 9003,
+      "status": "success",
+      "file": "pose_var_v3_corner_truck.png",
+      "seconds": 29.01,
+      "width": 576,
+      "height": 1024,
+      "sha256": "4a1ccc6f163bfa8d322ac7bf72fdf0feeb1b869d59a792750e53d3bc8ab2b70c"
+    },
+    {
+      "pose": "var_v3_garage_truck",
+      "seed": 9004,
+      "status": "success",
+      "file": "pose_var_v3_garage_truck.png",
+      "seconds": 29.55,
+      "width": 576,
+      "height": 1024,
+      "sha256": "0d2e083a5b9e04e6a3a1f4515ccbe948a44fa05dfed898249eac017c8666e272"
+    },
+    {
+      "pose": "var_v3_bulletin_notes",
+      "seed": 9005,
+      "status": "success",
+      "file": "pose_var_v3_bulletin_notes.png",
+      "seconds": 29.61,
+      "width": 576,
+      "height": 1024,
+      "sha256": "5d0f37e91ad0f70158355d0790730572bb6c168f002ba9018becbc72325ae354"
+    },
+    {
+      "pose": "var_v3_hospital_desk",
+      "seed": 9006,
+      "status": "success",
+      "file": "pose_var_v3_hospital_desk.png",
+      "seconds": 28.91,
+      "width": 576,
+      "height": 1024,
+      "sha256": "0597d97221b5eb5c67408234c63873b1217906d05f7082f013f8326cdc3478db"
+    },
+    {
+      "pose": "var_v3_night_files",
+      "seed": 9007,
+      "status": "success",
+      "file": "pose_var_v3_night_files.png",
+      "seconds": 29.08,
+      "width": 576,
+      "height": 1024,
+      "sha256": "09952ba70be844d5c80100a95c71ce1d4f6c1f35359d1a142f870c74a3fceb5a"
+    },
+    {
+      "pose": "var_v3_warehouse_box",
+      "seed": 9008,
+      "status": "success",
+      "file": "pose_var_v3_warehouse_box.png",
+      "seconds": 28.71,
+      "width": 576,
+      "height": 1024,
+      "sha256": "5593df7cdccb0fc547e2ff1ef895d85707e764b1a5a203f196721342b4f10593"
+    },
+    {
+      "pose": "var_v3_classroom_bucket",
+      "seed": 9009,
+      "status": "success",
+      "file": "pose_var_v3_classroom_bucket.png",
+      "seconds": 27.43,
+      "width": 576,
+      "height": 1024,
+      "sha256": "27326ada3456e0ad650536a2c8d9e80a6e316ca1f92de599f0c84197e6c30e88"
+    },
+    {
+      "pose": "ins_orange_blank",
+      "seed": 9010,
+      "status": "success",
+      "file": "pose_ins_orange_blank.png",
+      "seconds": 21.04,
+      "width": 576,
+      "height": 1024,
+      "sha256": "203cc5276bfaa8f49359b11a75ef6a8fd41519c71aac3dbef94972bd7a8a7ed4"
+    }
+  ],
+  "download_seconds": 112.0,
+  "load_seconds": 65.5,
+  "peak_vram_gib": 8.51
+}
