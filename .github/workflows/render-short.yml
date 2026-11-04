@@ -1,0 +1,166 @@
+name: Render short (parallel parts, joined with ffmpeg)
+# script (scripts_in/*.txt) -> prepare (asset dataset, voice, shots) -> N render jobs at the same time, each draws its own frame range
+# -> merge job joins them with ffmpeg (no re-encode), adds the voice, checks the frame count -> video published to branch test-results (shorts/<name>/).
+# How many parts: "auto" uses the time model in motion_studio/split_render.py (choose_parts), or give a number.
+on:
+  workflow_dispatch:
+    inputs:
+      script:
+        description: "Script file"
+        default: scripts_in/example_long.txt
+      parts:
+        description: "Number of parts (auto or 1-10)"
+        default: "auto"
+
+permissions:
+  contents: write
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    outputs:
+      matrix: ${{ steps.plan.outputs.matrix }}
+      parts: ${{ steps.plan.outputs.parts }}
+      name: ${{ steps.plan.outputs.name }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install numpy pillow scipy kokoro-onnx soundfile kaggle==2.2.5 six
+      - name: Configure Kaggle credentials
+        env:
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+        run: |
+          mkdir -p "$HOME/.kaggle"
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          Path.home().joinpath(".kaggle", "kaggle.json").write_text(json.dumps({
+              "username": os.environ["KAGGLE_USERNAME"].strip(), "key": os.environ["KAGGLE_KEY"].strip()}))
+          PY
+          chmod 600 "$HOME/.kaggle/kaggle.json"
+      - name: Pull pictures and sprites from the Kaggle dataset
+        env:
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          PYTHONPATH: .
+        run: python -m motion_studio.asset_store down
+      - uses: actions/cache@v4
+        id: models
+        with:
+          path: models
+          key: kokoro-v1.0
+      - name: Download Kokoro voice model
+        if: steps.models.outputs.cache-hit != 'true'
+        run: |
+          mkdir -p models
+          for F in kokoro-v1.0.onnx voices-v1.0.bin; do
+            curl -sSL --retry 4 -o "models/$F" "https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/$F"
+          done
+          ls -la models
+      - name: Script -> voice -> shots, then plan the parts
+        id: plan
+        env:
+          PYTHONPATH: .
+          SCRIPT: ${{ github.event.inputs.script }}
+          PARTS: ${{ github.event.inputs.parts }}
+        run: |
+          START=$(date +%s)
+          python -m motion_studio.split_render prepare "$SCRIPT" --models models --work work
+          ARGS=""; [ "$PARTS" != "auto" ] && ARGS="--parts $PARTS"
+          OUT=$(python -m motion_studio.split_render plan --work work $ARGS); echo "$OUT"
+          IDX=$(echo "$OUT" | grep '^MATRIX=' | cut -d= -f2-)
+          echo "matrix=$IDX" >> "$GITHUB_OUTPUT"
+          echo "parts=$(python -c "import json;print(json.load(open('work/parts.json'))['parts'])")" >> "$GITHUB_OUTPUT"
+          echo "name=$(basename "$SCRIPT" .txt)" >> "$GITHUB_OUTPUT"
+          echo "prepare took $(( $(date +%s) - START )) s" | tee -a "$GITHUB_STEP_SUMMARY"
+          tar cf prep.tar animation/asset_library animation/assets2d work
+      - uses: actions/upload-artifact@v4
+        with:
+          name: prep
+          path: prep.tar
+          compression-level: 0
+          retention-days: 3
+
+  render:
+    needs: prepare
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.prepare.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install numpy pillow scipy
+      - uses: actions/download-artifact@v4
+        with:
+          name: prep
+      - run: tar xf prep.tar
+      - name: Render this part
+        env:
+          PYTHONPATH: .
+        run: python -m motion_studio.split_render part --work work --index ${{ matrix.index }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: part-${{ matrix.index }}
+          path: |
+            work/part_${{ matrix.index }}.mp4
+            work/part_${{ matrix.index }}.json
+          compression-level: 0
+          retention-days: 3
+
+  merge:
+    needs: [prepare, render]
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/download-artifact@v4
+        with:
+          name: prep
+      - run: tar xf prep.tar work
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: part-*
+          path: work
+          merge-multiple: true
+      - name: Join the parts and check
+        env:
+          PYTHONPATH: .
+          NAME: ${{ needs.prepare.outputs.name }}
+        run: |
+          python -m motion_studio.split_render merge --work work --out "out/$NAME.mp4" | tee merge.json
+          { echo "### Parallel render of $NAME"; echo '```'; cat work/parts.json | head -30; cat merge.json; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+          grep -q '"ok": true' merge.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: short-video
+          path: out/
+          retention-days: 14
+      - name: Publish the video to the test-results branch
+        if: always()
+        env:
+          NAME: ${{ needs.prepare.outputs.name }}
+        run: |
+          [ -f "out/$NAME.mp4" ] || { echo "no video"; exit 0; }
+          if git ls-remote --exit-code --heads origin test-results >/dev/null; then
+            git fetch --depth 1 origin test-results
+            git worktree add /tmp/results FETCH_HEAD
+            cd /tmp/results && git checkout -B test-results
+          else exit 0; fi
+          mkdir -p "shorts/$NAME"; cp "$GITHUB_WORKSPACE/out/$NAME.mp4" "$GITHUB_WORKSPACE/merge.json" "$GITHUB_WORKSPACE/work/parts.json" "$GITHUB_WORKSPACE/work/meta.json" "shorts/$NAME/"
+          git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add shorts; git commit -q -m "Short $NAME, render run ${{ github.run_id }}" || { echo "nothing new"; exit 0; }
+          for TRY in 1 2 3 4 5; do
+            if git push -q origin test-results; then echo "Published shorts/$NAME"; exit 0; fi
+            sleep $((15 * TRY)); git fetch -q --depth 1 origin test-results && git rebase -q FETCH_HEAD || true
+          done
+          exit 1

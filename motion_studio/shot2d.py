@@ -308,10 +308,14 @@ def _caption(im: Image.Image, text: str, red, y: float = 0.68) -> None:
         x += d.textlength(t, font=_FONT) + space
 
 
-def render_video(shots: list[dict], out: Path, root: Path = ROOT, outfit: str = "explorer", audio: Path | None = None) -> dict:
+def render_video(shots: list[dict], out: Path, root: Path = ROOT, outfit: str = "explorer", audio: Path | None = None,
+                 frame_start: int = 0, frame_end: int | None = None) -> dict:
+    """Render frames [frame_start, frame_end) of the whole video. Every frame depends only on its own time, so any range can be
+    rendered alone (that is how parallel parts work). With audio, the video is cut to its length ('-shortest')."""
     lib = Library(root, outfit)
     total = sum(s["dur"] for s in shots)
-    frames = int(round(total * FPS))
+    all_frames = int(round(total * FPS))
+    frame_end = all_frames if frame_end is None else min(frame_end, all_frames)
     cmd = ["ffmpeg", "-nostdin", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS),
            "-i", "-", *(["-i", str(audio)] if audio else []), "-c:v", "libx264", "-preset", "veryfast", "-crf", "20", "-pix_fmt", "yuv420p", *(["-c:a", "aac", "-b:a", "160k", "-shortest"] if audio else []), "-movflags", "+faststart", str(out)]
     proc = subprocess.Popen(cmd, stdin=subprocess.PIPE)
@@ -321,14 +325,14 @@ def render_video(shots: list[dict], out: Path, root: Path = ROOT, outfit: str = 
         starts.append(acc)
         acc += s["dur"]
     si = 0
-    for f in range(frames):
+    for f in range(frame_start, frame_end):
         t = f / FPS
         while si + 1 < len(shots) and t >= starts[si + 1] - 1e-9:
             si += 1
         proc.stdin.write(np.asarray(render_frame(lib, shots[si], t - starts[si])).tobytes())
     proc.stdin.close()
     proc.wait()
-    return {"frames": frames, "seconds": round(total, 2), "shots": len(shots), "fps": FPS}
+    return {"frames": frame_end - frame_start, "seconds": round((frame_end - frame_start) / FPS, 2), "shots": len(shots), "fps": FPS, "all_frames": all_frames}
 
 
 if __name__ == "__main__":
