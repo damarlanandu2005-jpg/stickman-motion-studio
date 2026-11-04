@@ -13,85 +13,28 @@
     "file": "pose_bg_bomb_squad_office_inside_r1_c0.png",
     "pass": true,
     "why": [],
-    "score": -0.102,
+    "score": -0.358,
     "text_check": true,
-    "sat": 0.401,
-    "dark": 0.1,
-    "bright": 0.657,
-    "low_dark": 0.122,
-    "grad": 6.648,
+    "sat": 0.116,
+    "dark": 0.047,
+    "bright": 0.735,
+    "low_dark": 0.012,
+    "grad": 3.61,
     "repair": "pale bottom band cut off and picture stretched back (code repair)"
    },
    {
     "file": "pose_bg_bomb_squad_office_inside_r1_c1.png",
     "pass": false,
     "why": [
-     "picture is noisy is outside the library's range"
+     "the bottom of the picture is a pale sky-blue block, not a floor"
     ],
-    "score": -0.196,
+    "score": -0.34,
     "text_check": true,
-    "sat": 0.363,
-    "dark": 0.076,
-    "bright": 0.81,
-    "low_dark": 0.081,
-    "grad": 8.702,
-    "repair": "pale bottom band cut off and picture stretched back (code repair)"
-   },
-   {
-    "file": "pose_bg_bomb_squad_office_inside_r2_c0.png",
-    "pass": false,
-    "why": [
-     "picture is noisy is outside the library's range"
-    ],
-    "score": -0.209,
-    "text_check": true,
-    "sat": 0.412,
-    "dark": 0.078,
-    "bright": 0.777,
-    "low_dark": 0.084,
-    "grad": 8.214,
-    "repair": "pale bottom band cut off and picture stretched back (code repair)"
-   },
-   {
-    "file": "pose_bg_bomb_squad_office_inside_r2_c1.png",
-    "pass": false,
-    "why": [
-     "picture is noisy is outside the library's range"
-    ],
-    "score": -0.167,
-    "text_check": true,
-    "sat": 0.4,
-    "dark": 0.098,
-    "bright": 0.725,
-    "low_dark": 0.113,
-    "grad": 8.202,
-    "repair": "pale bottom band cut off and picture stretched back (code repair)"
-   },
-   {
-    "file": "pose_bg_bomb_squad_office_inside_r3_c0.png",
-    "pass": true,
-    "why": [],
-    "score": -0.26,
-    "text_check": true,
-    "sat": 0.492,
-    "dark": 0.082,
-    "bright": 0.744,
-    "low_dark": 0.097,
-    "grad": 7.033,
-    "repair": "pale bottom band cut off and picture stretched back (code repair)"
-   },
-   {
-    "file": "pose_bg_bomb_squad_office_inside_r3_c1.png",
-    "pass": true,
-    "why": [],
-    "score": -0.141,
-    "text_check": true,
-    "sat": 0.441,
-    "dark": 0.098,
-    "bright": 0.658,
-    "low_dark": 0.118,
-    "grad": 6.881,
-    "repair": "pale bottom band cut off and picture stretched back (code repair)"
+    "sat": 0.204,
+    "dark": 0.059,
+    "bright": 0.821,
+    "low_dark": 0.0,
+    "grad": 6.622
    }
   ],
   "bg_city_street_night": [
@@ -99,76 +42,26 @@
     "file": "pose_bg_city_street_night_r1_c0.png",
     "pass": true,
     "why": [],
-    "score": -0.162,
+    "score": -0.489,
     "text_check": true,
-    "sat": 0.456,
-    "dark": 0.094,
-    "bright": 0.624,
-    "low_dark": 0.0,
-    "grad": 4.912
+    "sat": 0.429,
+    "dark": 0.239,
+    "bright": 0.362,
+    "low_dark": 0.026,
+    "grad": 5.324,
+    "repair": "pale bottom band cut off and picture stretched back (code repair)"
    },
    {
     "file": "pose_bg_city_street_night_r1_c1.png",
     "pass": true,
     "why": [],
-    "score": -0.25,
+    "score": -0.543,
     "text_check": true,
-    "sat": 0.46,
-    "dark": 0.083,
-    "bright": 0.527,
-    "low_dark": 0.018,
-    "grad": 3.923
-   },
-   {
-    "file": "pose_bg_city_street_night_r2_c0.png",
-    "pass": true,
-    "why": [],
-    "score": -0.522,
-    "text_check": true,
-    "sat": 0.423,
-    "dark": 0.248,
-    "bright": 0.327,
-    "low_dark": 0.076,
-    "grad": 6.147,
-    "repair": "pale bottom band cut off and picture stretched back (code repair)"
-   },
-   {
-    "file": "pose_bg_city_street_night_r2_c1.png",
-    "pass": true,
-    "why": [],
-    "score": -0.482,
-    "text_check": true,
-    "sat": 0.427,
-    "dark": 0.164,
-    "bright": 0.33,
-    "low_dark": 0.027,
-    "grad": 5.086,
-    "repair": "pale bottom band cut off and picture stretched back (code repair)"
-   },
-   {
-    "file": "pose_bg_city_street_night_r3_c0.png",
-    "pass": true,
-    "why": [],
-    "score": -0.555,
-    "text_check": true,
-    "sat": 0.466,
-    "dark": 0.208,
-    "bright": 0.319,
-    "low_dark": 0.086,
-    "grad": 6.496,
-    "repair": "pale bottom band cut off and picture stretched back (code repair)"
-   },
-   {
-    "file": "pose_bg_city_street_night_r3_c1.png",
-    "pass": true,
-    "why": [],
-    "score": -0.569,
-    "text_check": true,
-    "sat": 0.461,
-    "dark": 0.219,
-    "bright": 0.307,
-    "low_dark": 0.052,
-    "grad": 5.145,
+    "sat": 0.459,
+    "dark": 0.294,
+    "bright": 0.359,
+    "low_dark": 0.035,
+    "grad": 4.638,
     "repair": "pale bottom band cut off and picture stretched back (code repair)"
    }
   ]
