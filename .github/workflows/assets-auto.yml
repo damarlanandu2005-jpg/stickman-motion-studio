@@ -8,6 +8,9 @@ on:
       script:
         description: "Script file(s), space separated"
         default: scripts_in/example_bomb.txt
+      refs:
+        description: "Use style reference pictures for backgrounds (1) or draw from words only (0)"
+        default: "1"
       redo:
         description: "Drawing ids to replace (space separated), optional"
         default: ""
@@ -60,6 +63,7 @@ jobs:
           PYTHONPATH: .
           INPUT_SCRIPT: ${{ github.event.inputs.script }}
           REDO: ${{ github.event.inputs.redo }}
+          ASSET_REFS: ${{ github.event.inputs.refs || '1' }}
         run: |
           if [ "${{ github.event_name }}" = "push" ]; then
             SCRIPTS=$(git diff --name-only HEAD^ HEAD -- scripts_in | grep '\.txt$' || true)

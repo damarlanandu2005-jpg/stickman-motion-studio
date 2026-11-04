@@ -43,8 +43,9 @@ def test_stage_refuses_an_index_entry_without_a_file(tmp_path):
 
 def test_down_reports_no_dataset_and_up_creates_when_version_fails(tmp_path):
     lib = make_lib(tmp_path)
-    assert st.down("me", "x", tmp_path / "l", runner=lambda a: (1, "404 Not Found"))["no_dataset"]
-    assert not st.down("me", "x", tmp_path / "l", runner=lambda a: (1, "network error"))["ok"]
+    nodata = lambda a: (1, "404 Not Found") if a[2] == "download" else (0, "ref,title\n")
+    assert st.down("me", "x", tmp_path / "l", runner=nodata, sleep=lambda s: None)["no_dataset"]
+    assert not st.down("me", "x", tmp_path / "l", runner=lambda a: (1, "network error"), sleep=lambda s: None)["ok"]
     calls = []
     def run(a):
         calls.append(a[2]); return (1, "no such dataset") if a[2] == "version" else (0, "ready" if a[2] == "status" else "ok")
@@ -67,3 +68,17 @@ def test_sprites_travel_with_the_library(tmp_path):
     assert st.verify(lib2, ["bg_a"], sp2)["ok"]
     (sp2 / "role_chief" / "body_00.png").unlink()
     assert not st.verify(lib2, ["bg_a"], sp2)["ok"]
+
+
+def test_403_is_not_believed_without_the_list_confirming_it(tmp_path):
+    calls = []
+    def listed(args):
+        calls.append(args[2])
+        if args[2] == "download": return 1, "403 Client Error: Forbidden"
+        return 0, "ref,title\nme/assets,Stickman assets\n"          # the list says the dataset exists
+    r = st.down("me", "assets", tmp_path / "lib", runner=listed, sleep=lambda s: None)
+    assert not r["ok"] and not r["no_dataset"] and calls.count("download") == 4
+    def gone(args):
+        return (1, "403 Forbidden") if args[2] == "download" else (0, "ref,title\n")
+    r = st.down("me", "assets", tmp_path / "lib", runner=gone, sleep=lambda s: None)
+    assert r["ok"] and r["no_dataset"]

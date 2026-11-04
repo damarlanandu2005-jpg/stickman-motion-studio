@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import argparse
 import colorsys
+import os
 import json
 import re
 import shutil
@@ -46,7 +47,7 @@ def style_refs(db: dict, need: dict, k: int = 2) -> list[str]:
     want = words(need["desc"]) | {t.lower() for t in need["tags"]}
     cands = []
     for i, v in db["items"].items():
-        if v["type"] == "background" and i.startswith("bg_"):
+        if v["type"] == "background" and i.startswith("bg_") and v.get("source") != "auto":     # never copy the style of a picture the loop drew itself
             cands.append((-len(want & (set(v["tags"]) | words(v.get("desc", "")))), i))
     return ["ds:" + store.flat_name(db["items"][i]["file"]) for _, i in sorted(cands)[:k]]
 
@@ -67,7 +68,7 @@ def plan(request: dict, round_no: int, state: Path, lib: Path = LIB, jobs_file: 
     db = json.loads((lib / "index.json").read_text())
     jobs, needs = [], pending(request, Path(state))
     for ni, n in enumerate(needs):
-        refs = style_refs(db, n) if n["type"] == "background" else []
+        refs = style_refs(db, n) if n["type"] == "background" and os.environ.get("ASSET_REFS", "1") != "0" else []
         for c in range(CANDIDATES):
             jobs.append({"id": f"{n['id']}_r{round_no}_c{c}", "prompt": prompt_for(n, refs), "refs": refs,
                          "seed": 8100 + 1000 * round_no + 10 * ni + c, "width": W, "height": H})
@@ -98,7 +99,7 @@ def pale_blue_bottom(img: Image.Image) -> bool:
     """The failure seen on drawn rooms: the bottom of the picture is a bright pale sky-blue block that does not belong to the room.
     Library backgrounds never have a bottom like that (checked on all 17). It is a NARROW check, not a general floor judge."""
     h, s, v = bottom_hsv(img)
-    return 0.45 <= h <= 0.58 and 0.08 <= s <= 0.30 and v >= 0.93
+    return 0.45 <= h <= 0.60 and 0.08 <= s <= 0.50 and v >= 0.95
 
 
 def library_style(db: dict, lib: Path = LIB) -> dict:

@@ -134,15 +134,31 @@ def owner_of(env=os.environ) -> str:
     return (env.get("KAGGLE_USERNAME") or "").strip()
 
 
-def down(owner: str, slug: str, lib: Path = LIB, runner: Runner = _run, sprites: Path | None = None) -> dict:
-    tmp = Path(tempfile.mkdtemp())
-    code, out = runner(["kaggle", "datasets", "download", "-d", f"{owner}/{slug}", "-p", str(tmp), "--unzip", "-o"])
+def exists(owner: str, slug: str, runner: Runner = _run) -> bool | None:
+    """Is the dataset in my own list?  True / False / None (could not ask)."""
+    code, out = runner(["kaggle", "datasets", "list", "--mine", "-s", slug, "--csv"])
     if code != 0:
-        # Kaggle answers 403 for a dataset that does not exist yet
-        gone = any(w in out.lower() for w in ("404", "not found", "could not find", "403", "forbidden"))
-        return {"ok": gone, "no_dataset": gone, "error": None if gone else out[-300:]}
-    n = unstage(tmp, lib, sprites)
-    return {"ok": True, "no_dataset": False, "files": n}
+        return None
+    return f"{owner}/{slug}".lower() in out.lower()
+
+
+def down(owner: str, slug: str, lib: Path = LIB, runner: Runner = _run, sprites: Path | None = None, sleep=time.sleep) -> dict:
+    """Pull the dataset. 'No dataset' is only believed when Kaggle's own list of my datasets confirms it: Kaggle also answers 403
+    for a dataset that is only briefly unavailable (right after a new version), and a wrong 'no dataset' would start a bootstrap upload
+    that overwrites the real dataset."""
+    tmp = Path(tempfile.mkdtemp()); out = ""
+    for attempt in range(4):
+        code, out = runner(["kaggle", "datasets", "download", "-d", f"{owner}/{slug}", "-p", str(tmp), "--unzip", "-o"])
+        if code == 0:
+            n = unstage(tmp, lib, sprites)
+            return {"ok": True, "no_dataset": False, "files": n}
+        if not any(w in out.lower() for w in ("404", "not found", "could not find", "403", "forbidden")):
+            break
+        if attempt < 3:
+            sleep(20)
+    if any(w in out.lower() for w in ("404", "not found", "could not find", "403", "forbidden")) and exists(owner, slug, runner) is False:
+        return {"ok": True, "no_dataset": True, "error": None}
+    return {"ok": False, "no_dataset": False, "error": out[-300:]}
 
 
 def up(owner: str, slug: str, message: str, lib: Path = LIB, runner: Runner = _run, sleep=time.sleep, wait_s: int = 600, sprites: Path | None = None) -> dict:
@@ -166,6 +182,8 @@ def up(owner: str, slug: str, message: str, lib: Path = LIB, runner: Runner = _r
 
 def verify(lib: Path, ids: list[str], sprites: Path | None = None) -> dict:
     """The saved drawings are really in the library the code reads: index entry, file exists, size > 0, hash equals the one in the index."""
+    if not (lib / "index.json").is_file():
+        return {"ok": False, "checked": 0, "sprites_checked": 0, "problems": ["no index.json in the downloaded library"]}
     idx = json.loads((lib / "index.json").read_text())["items"]
     bad = []
     for i in ids:
