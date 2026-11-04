@@ -55,6 +55,8 @@ def plan(scene: dict, dur: float) -> tuple[list[dict], list[dict]]:
                     e["dur"] = extra["dur"]
                 sfx_list.append(e)
     for e in auto_sfx({"action": seen + " " + spoken}):
+        if e["type"] == "thud" and ("splash", "s") in used:       # a fall into water is a splash, not a thud
+            continue
         if (e["type"], "s") not in used and e["type"] not in ("wind", "step"):   # wind handled above; steps only if the author asks
             used.add((e["type"], "s")); sfx_list.append(e)
     if "step" in sound or "walk" in sound:

@@ -1,0 +1,26 @@
+# EXAMPLE only: tests sounds and live effects (rain, snow, water).
+TITLE: Weather Test
+VOICE: am_fenrir
+CAST: animation/cast/example_bomb.json
+
+SCENE
+bg: city street in the rain
+who: arthur
+pose: stand
+say: The *rain* would not stop that night, and the whole street went quiet.
+camera: push
+
+SCENE
+bg: snowy mountain pass
+who: chief
+pose: stand
+say: Up high, the *snow* fell so thick that nobody could see the path ahead of them.
+camera: pull
+
+SCENE
+bg: wooden dock on a lake
+who: arthur
+pose: stand
+sound: he falls into the water
+say: Then he slipped, and fell into the *water* with a loud splash and a rush of bubbles.
+camera: push

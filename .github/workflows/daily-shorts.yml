@@ -1,0 +1,71 @@
+name: Daily shorts (next scripts from scripts_queue, one after another)
+# Started every day at 5 AM IST by the owner's scheduled task (it runs `gh workflow run daily-shorts.yml`).
+# One job, one short at a time: costumes -> assets -> voice -> render -> code check -> published to branch test-results (shorts/, daily/).
+# Bounded tries, no endless loops: whatever cannot be fixed is skipped and written in daily/MORNING_NOTE.md.
+on:
+  push:
+    branches: [test/image-to-3d-objects]
+    paths: ['.github/workflows/daily-shorts.yml']      # only makes GitHub know the workflow; the job below does not run on push
+  workflow_dispatch:
+    inputs:
+      count:
+        description: "How many shorts today (3 or 4)"
+        default: "3"
+
+concurrency:
+  group: kaggle-notebook-scene-batch
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  daily:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg tesseract-ocr
+      - run: python -m pip install numpy pillow scipy pytest kokoro-onnx soundfile kaggle==2.2.5 six
+      - name: Quick unit tests (information only)
+        continue-on-error: true
+        run: python -m pytest -q -x
+        env:
+          PYTHONPATH: .
+      - name: Configure Kaggle credentials
+        env:
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+        run: |
+          if [ -z "$KAGGLE_USERNAME" ] || [ -z "$KAGGLE_KEY" ]; then echo "Missing Kaggle secrets"; exit 1; fi
+          mkdir -p "$HOME/.kaggle"
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          Path.home().joinpath(".kaggle", "kaggle.json").write_text(json.dumps({
+              "username": os.environ["KAGGLE_USERNAME"].strip(), "key": os.environ["KAGGLE_KEY"].strip()}))
+          PY
+          chmod 600 "$HOME/.kaggle/kaggle.json"
+      - name: Make today's shorts, one after another
+        env:
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+          PYTHONPATH: .
+          COUNT: ${{ github.event.inputs.count || '3' }}
+        run: scripts/daily.sh "$COUNT"
+      - name: Keep the work files
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: daily-output
+          path: |
+            daily-out/
+            daily-state/
+          if-no-files-found: warn
+          retention-days: 7
