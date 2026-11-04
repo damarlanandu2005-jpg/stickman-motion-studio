@@ -1,0 +1,365 @@
+{
+  "story": "animation/stories/space_adventure.json",
+  "shots": [
+    {
+      "id": "01_earth_plan",
+      "status": "completed",
+      "frames": 72,
+      "expected_frames": 72,
+      "seconds_per_frame_mean": 1.438,
+      "events": [],
+      "warnings": [
+        "rocket and pad overlap at their start positions (0.00 m apart)",
+        "rocket and tower overlap at their start positions (5.50 m apart)",
+        "pad and tower overlap at their start positions (5.50 m apart)",
+        "fence1 and fence2 overlap at their start positions (1.60 m apart)",
+        "fence2 and fence3 overlap at their start positions (1.60 m apart)"
+      ],
+      "error": null
+    },
+    {
+      "id": "02_suit_preparation",
+      "status": "completed",
+      "frames": 78,
+      "expected_frames": 78,
+      "seconds_per_frame_mean": 2.149,
+      "events": [],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "id": "03_walk_to_launchpad",
+      "status": "completed",
+      "frames": 78,
+      "expected_frames": 78,
+      "seconds_per_frame_mean": 3.672,
+      "events": [],
+      "warnings": [
+        "pad and rocket overlap at their start positions (0.00 m apart)",
+        "pad and tower overlap at their start positions (6.00 m apart)",
+        "fence0 and fence1 overlap at their start positions (1.60 m apart)",
+        "fence1 and fence2 overlap at their start positions (1.60 m apart)",
+        "fence2 and fence3 overlap at their start positions (1.60 m apart)",
+        "fence3 and fence4 overlap at their start positions (1.60 m apart)",
+        "rocket and tower overlap at their start positions (6.00 m apart)",
+        "fl0 and fl1 overlap at their start positions (1.60 m apart)",
+        "fl1 and fl2 overlap at their start positions (1.60 m apart)",
+        "fl2 and fl3 overlap at their start positions (1.60 m apart)",
+        "fl3 and fl4 overlap at their start positions (1.60 m apart)",
+        "fr0 and fr1 overlap at their start positions (1.60 m apart)",
+        "fr1 and fr2 overlap at their start positions (1.60 m apart)",
+        "fr2 and fr3 overlap at their start positions (1.60 m apart)",
+        "fr3 and fr4 overlap at their start positions (1.60 m apart)"
+      ],
+      "error": null
+    },
+    {
+      "id": "04_enter_rocket",
+      "status": "completed",
+      "frames": 90,
+      "expected_frames": 90,
+      "seconds_per_frame_mean": 2.372,
+      "events": [],
+      "warnings": [
+        "rocket and ladder overlap at their start positions (1.45 m apart)",
+        "rocket and gantry overlap at their start positions (5.59 m apart)",
+        "rocket and pad overlap at their start positions (0.00 m apart)",
+        "ladder and gantry overlap at their start positions (7.02 m apart)",
+        "ladder and pad overlap at their start positions (1.45 m apart)",
+        "gantry and pad overlap at their start positions (5.59 m apart)",
+        "gantry and tank overlap at their start positions (6.10 m apart)",
+        "gantry and hq overlap at their start positions (6.50 m apart)"
+      ],
+      "error": null
+    },
+    {
+      "id": "05_inside_rocket",
+      "status": "completed",
+      "frames": 72,
+      "expected_frames": 72,
+      "seconds_per_frame_mean": 1.803,
+      "events": [],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "id": "06_countdown",
+      "status": "completed",
+      "frames": 78,
+      "expected_frames": 78,
+      "seconds_per_frame_mean": 1.357,
+      "events": [],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "id": "07_liftoff",
+      "status": "completed",
+      "frames": 90,
+      "expected_frames": 90,
+      "seconds_per_frame_mean": 1.487,
+      "events": [],
+      "warnings": [
+        "pad and rocket overlap at their start positions (0.00 m apart)",
+        "pad and gantry overlap at their start positions (5.50 m apart)",
+        "rocket and gantry overlap at their start positions (5.50 m apart)",
+        "f0 and f1 overlap at their start positions (1.60 m apart)",
+        "f1 and f2 overlap at their start positions (1.60 m apart)",
+        "f2 and f3 overlap at their start positions (1.60 m apart)",
+        "f3 and f4 overlap at their start positions (1.60 m apart)"
+      ],
+      "error": null
+    },
+    {
+      "id": "08_through_clouds",
+      "status": "completed",
+      "frames": 72,
+      "expected_frames": 72,
+      "seconds_per_frame_mean": 2.367,
+      "events": [],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "id": "09_leave_atmosphere",
+      "status": "completed",
+      "frames": 72,
+      "expected_frames": 72,
+      "seconds_per_frame_mean": 1.63,
+      "events": [],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "id": "10_earth_behind",
+      "status": "completed",
+      "frames": 72,
+      "expected_frames": 72,
+      "seconds_per_frame_mean": 1.632,
+      "events": [],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "id": "11_sun_and_stars",
+      "status": "completed",
+      "frames": 72,
+      "expected_frames": 72,
+      "seconds_per_frame_mean": 1.072,
+      "events": [],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "id": "12_weightlessness",
+      "status": "completed",
+      "frames": 78,
+      "expected_frames": 78,
+      "seconds_per_frame_mean": 1.497,
+      "events": [],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "id": "13_turbulence",
+      "status": "completed",
+      "frames": 72,
+      "expected_frames": 72,
+      "seconds_per_frame_mean": 2.409,
+      "events": [],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "id": "14_stabilize_rocket",
+      "status": "completed",
+      "frames": 72,
+      "expected_frames": 72,
+      "seconds_per_frame_mean": 1.846,
+      "events": [],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "id": "15_system_stable",
+      "status": "completed",
+      "frames": 66,
+      "expected_frames": 66,
+      "seconds_per_frame_mean": 2.021,
+      "events": [],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "id": "16_radar_signal",
+      "status": "completed",
+      "frames": 78,
+      "expected_frames": 78,
+      "seconds_per_frame_mean": 1.065,
+      "events": [],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "id": "17_alien_planet_first_sight",
+      "status": "completed",
+      "frames": 78,
+      "expected_frames": 78,
+      "seconds_per_frame_mean": 1.549,
+      "events": [],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "id": "18_approach_planet",
+      "status": "completed",
+      "frames": 78,
+      "expected_frames": 78,
+      "seconds_per_frame_mean": 1.05,
+      "events": [],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "id": "19_land_on_planet",
+      "status": "completed",
+      "frames": 90,
+      "expected_frames": 90,
+      "seconds_per_frame_mean": 3.2,
+      "events": [],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "id": "20_step_out",
+      "status": "completed",
+      "frames": 84,
+      "expected_frames": 84,
+      "seconds_per_frame_mean": 3.142,
+      "events": [],
+      "warnings": [
+        "rocket and ladder overlap at their start positions (1.45 m apart)",
+        "rocket and hero overlap at their start positions (1.95 m apart)",
+        "ladder and hero overlap at their start positions (0.50 m apart)"
+      ],
+      "error": null
+    },
+    {
+      "id": "21_explore_alien_world",
+      "status": "completed",
+      "frames": 84,
+      "expected_frames": 84,
+      "seconds_per_frame_mean": 1.366,
+      "events": [],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "id": "22_crystal_discovery",
+      "status": "completed",
+      "frames": 78,
+      "expected_frames": 78,
+      "seconds_per_frame_mean": 3.213,
+      "events": [],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "id": "23_aliens_in_distance",
+      "status": "completed",
+      "frames": 78,
+      "expected_frames": 78,
+      "seconds_per_frame_mean": 2.982,
+      "events": [],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "id": "24_first_contact",
+      "status": "completed",
+      "frames": 84,
+      "expected_frames": 84,
+      "seconds_per_frame_mean": 2.99,
+      "events": [],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "id": "25_aliens_turn_hostile",
+      "status": "completed",
+      "frames": 78,
+      "expected_frames": 78,
+      "seconds_per_frame_mean": 2.11,
+      "events": [],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "id": "26_aliens_attack",
+      "status": "completed",
+      "frames": 84,
+      "expected_frames": 84,
+      "seconds_per_frame_mean": 2.477,
+      "events": [],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "id": "27_run_for_rocket",
+      "status": "completed",
+      "frames": 84,
+      "expected_frames": 84,
+      "seconds_per_frame_mean": 1.765,
+      "events": [],
+      "warnings": [
+        "rocket and ladder overlap at their start positions (1.45 m apart)"
+      ],
+      "error": null
+    },
+    {
+      "id": "28_reach_rocket",
+      "status": "completed",
+      "frames": 84,
+      "expected_frames": 84,
+      "seconds_per_frame_mean": 3.397,
+      "events": [],
+      "warnings": [
+        "rocket and ladder overlap at their start positions (1.45 m apart)"
+      ],
+      "error": null
+    },
+    {
+      "id": "29_escape_takeoff",
+      "status": "completed",
+      "frames": 90,
+      "expected_frames": 90,
+      "seconds_per_frame_mean": 1.688,
+      "events": [],
+      "warnings": [],
+      "error": null
+    },
+    {
+      "id": "30_leave_planet",
+      "status": "completed",
+      "frames": 78,
+      "expected_frames": 78,
+      "seconds_per_frame_mean": 1.463,
+      "events": [],
+      "warnings": [],
+      "error": null
+    }
+  ],
+  "status": "completed",
+  "problems": [],
+  "video": {
+    "codec": "h264",
+    "width": 1080,
+    "height": 1920,
+    "fps": "30/1",
+    "frames": 2364,
+    "duration_s": 78.8,
+    "bytes": 16447599,
+    "sha256": "4750a723d581a75b281bc73aa9a597b0ed475010c058727150d49ff72f2189c7",
+    "audio": "none (paused)"
+  }
+}
