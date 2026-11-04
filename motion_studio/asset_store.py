@@ -122,7 +122,8 @@ def down(owner: str, slug: str, lib: Path = LIB, runner: Runner = _run) -> dict:
     tmp = Path(tempfile.mkdtemp())
     code, out = runner(["kaggle", "datasets", "download", "-d", f"{owner}/{slug}", "-p", str(tmp), "--unzip", "-o"])
     if code != 0:
-        gone = any(w in out.lower() for w in ("404", "not found", "could not find", "403", "forbidden")   # Kaggle answers 403 for a dataset that does not exist yet)
+        # Kaggle answers 403 for a dataset that does not exist yet
+        gone = any(w in out.lower() for w in ("404", "not found", "could not find", "403", "forbidden"))
         return {"ok": gone, "no_dataset": gone, "error": None if gone else out[-300:]}
     n = unstage(tmp, lib)
     return {"ok": True, "no_dataset": False, "files": n}
