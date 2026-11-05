@@ -1,0 +1,26 @@
+{
+ "file": "daily-out/2026-11-05/2026-11-05_02_sea_438/2026-11-05_02_sea_438.mp4",
+ "fails": [],
+ "warnings": [],
+ "seconds": 19.0,
+ "size": [
+  720,
+  1280
+ ],
+ "frame_means": [
+  152.3,
+  82.5,
+  48.0,
+  133.5,
+  185.9
+ ],
+ "frame_changes": [
+  88.4,
+  49.1,
+  96.9,
+  75.6
+ ],
+ "audio_rms": 0.1394,
+ "ok": true
+}
+VIDEO_OK=true

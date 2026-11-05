@@ -1,0 +1,2 @@
+{"costume": "fisher", "stand_in": "role_civ", "bodies_from_loop": [], "bodies_borrowed": [], "heads_borrowed": [], "ok": false, "warnings": ["loop made no body at all"]}
+ASSEMBLED=false

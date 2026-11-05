@@ -1,0 +1,25 @@
+{
+ "name": "2026-11-05_02_sea_438",
+ "needs": [
+  {
+   "id": "bg_small_fishing_boat_calm_open_sea_night_f",
+   "type": "background",
+   "tags": [
+    "small",
+    "fishing",
+    "boat",
+    "calm",
+    "open",
+    "sea",
+    "night",
+    "full",
+    "stars"
+   ],
+   "desc": "small fishing boat on a calm open sea at night, full of stars",
+   "base": "bg_small_fishing_boat_calm_open_sea_endless",
+   "change": "small fishing boat on a calm open sea at night, full of stars",
+   "mode": "same",
+   "root": "bg_small_fishing_boat_calm_open_sea_endless"
+  }
+ ]
+}

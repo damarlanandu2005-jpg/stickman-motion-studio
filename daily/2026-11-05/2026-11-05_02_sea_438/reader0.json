@@ -1,0 +1,270 @@
+{
+ "title": "438 Days Lost At Sea",
+ "voice": "am_fenrir",
+ "scenes": [
+  {
+   "n": 1,
+   "voice": "In 2012 a fisherman set out from Mexico for a short trip.",
+   "red": [
+    "2012"
+   ],
+   "bg": {
+    "wanted": "small fishing harbour at dawn",
+    "library_id": null,
+    "match": 0.0
+   },
+   "who": [
+    {
+     "character": "jose",
+     "stage": "main",
+     "costume": "fisher",
+     "costume_status": "missing"
+    }
+   ],
+   "pose": [
+    "stand"
+   ],
+   "props": [],
+   "text": "MEXICO, 2012",
+   "sound": "",
+   "camera": "push"
+  },
+  {
+   "n": 2,
+   "voice": "A storm hit, and the engine died.",
+   "red": [
+    "storm"
+   ],
+   "bg": {
+    "wanted": "small fishing boat on a dark stormy sea, heavy rain",
+    "library_id": null,
+    "match": 0.0
+   },
+   "who": [
+    {
+     "character": "jose",
+     "stage": "main",
+     "costume": "fisher",
+     "costume_status": "missing"
+    }
+   ],
+   "pose": [
+    "crouch"
+   ],
+   "props": [],
+   "text": "",
+   "sound": "thunder",
+   "camera": "push"
+  },
+  {
+   "n": 3,
+   "voice": "For months there was only water in every direction.",
+   "red": [
+    "months"
+   ],
+   "bg": {
+    "wanted": "small fishing boat on a calm open sea, endless blue water",
+    "library_id": null,
+    "match": 0.0
+   },
+   "who": [
+    {
+     "character": "jose",
+     "stage": "main",
+     "costume": "fisher",
+     "costume_status": "missing"
+    }
+   ],
+   "pose": [
+    "stand"
+   ],
+   "props": [],
+   "text": "",
+   "sound": "",
+   "camera": "pull"
+  },
+  {
+   "n": 4,
+   "voice": "He drank rainwater and ate fish he caught with his hands.",
+   "red": [
+    "rainwater"
+   ],
+   "bg": {
+    "wanted": "small fishing boat on a calm open sea at night, full of stars",
+    "library_id": null,
+    "match": 0.11
+   },
+   "who": [
+    {
+     "character": "jose",
+     "stage": "main",
+     "costume": "fisher",
+     "costume_status": "missing"
+    }
+   ],
+   "pose": [
+    "think"
+   ],
+   "props": [],
+   "text": "",
+   "sound": "",
+   "camera": "still"
+  },
+  {
+   "n": 5,
+   "voice": "Once he fell overboard and swam back to the boat.",
+   "red": [
+    "overboard"
+   ],
+   "bg": {
+    "wanted": "underwater, blue sea with fish",
+    "library_id": null,
+    "match": 0.0
+   },
+   "who": [
+    {
+     "character": "jose",
+     "stage": "main",
+     "costume": "fisher",
+     "costume_status": "missing"
+    }
+   ],
+   "pose": [
+    "fall"
+   ],
+   "props": [],
+   "text": "",
+   "sound": "he falls into the water",
+   "camera": "push"
+  },
+  {
+   "n": 6,
+   "voice": "After 438 days he reached a tiny island.",
+   "red": [
+    "438"
+   ],
+   "bg": {
+    "wanted": "tiny tropical island beach, palm trees",
+    "library_id": null,
+    "match": 0.0
+   },
+   "who": [
+    {
+     "character": "jose",
+     "stage": "main",
+     "costume": "fisher",
+     "costume_status": "missing"
+    }
+   ],
+   "pose": [
+    "arms_up"
+   ],
+   "props": [],
+   "text": "438 DAYS",
+   "sound": "",
+   "camera": "pull"
+  }
+ ],
+ "errors": [],
+ "costume_status": {
+  "fisher": "missing"
+ },
+ "missing_costumes": [
+  "fisher"
+ ],
+ "missing_assets": [
+  {
+   "id": "bg_small_fishing_harbour_dawn",
+   "type": "background",
+   "tags": [
+    "small",
+    "fishing",
+    "harbour",
+    "dawn"
+   ],
+   "desc": "small fishing harbour at dawn",
+   "scene": 1
+  },
+  {
+   "id": "bg_small_fishing_boat_dark_stormy_sea_heavy",
+   "type": "background",
+   "tags": [
+    "small",
+    "fishing",
+    "boat",
+    "dark",
+    "stormy",
+    "sea",
+    "heavy",
+    "rain"
+   ],
+   "desc": "small fishing boat on a dark stormy sea, heavy rain",
+   "scene": 2
+  },
+  {
+   "id": "bg_small_fishing_boat_calm_open_sea_endless",
+   "type": "background",
+   "tags": [
+    "small",
+    "fishing",
+    "boat",
+    "calm",
+    "open",
+    "sea",
+    "endless",
+    "blue",
+    "water"
+   ],
+   "desc": "small fishing boat on a calm open sea, endless blue water",
+   "scene": 3
+  },
+  {
+   "id": "bg_small_fishing_boat_calm_open_sea_night_f",
+   "type": "background",
+   "tags": [
+    "small",
+    "fishing",
+    "boat",
+    "calm",
+    "open",
+    "sea",
+    "night",
+    "full",
+    "stars"
+   ],
+   "desc": "small fishing boat on a calm open sea at night, full of stars",
+   "scene": 4,
+   "base": "bg_small_fishing_boat_calm_open_sea_endless",
+   "mode": "same",
+   "root": "bg_small_fishing_boat_calm_open_sea_endless",
+   "change": "small fishing boat on a calm open sea at night, full of stars"
+  },
+  {
+   "id": "bg_underwater_blue_sea_fish",
+   "type": "background",
+   "tags": [
+    "underwater",
+    "blue",
+    "sea",
+    "fish"
+   ],
+   "desc": "underwater, blue sea with fish",
+   "scene": 5
+  },
+  {
+   "id": "bg_tiny_tropical_island_beach_palm_trees",
+   "type": "background",
+   "tags": [
+    "tiny",
+    "tropical",
+    "island",
+    "beach",
+    "palm",
+    "trees"
+   ],
+   "desc": "tiny tropical island beach, palm trees",
+   "scene": 6
+  }
+ ],
+ "ok": true
+}

@@ -1,0 +1,9 @@
+438 Days Lost At Sea: 6 scenes, voice am_fenrir
+  costume fisher: missing
+  to draw: background 'small fishing harbour at dawn' (scene 1)
+  to draw: background 'small fishing boat on a dark stormy sea, heavy rain' (scene 2)
+  to draw: background 'small fishing boat on a calm open sea, endless blue water' (scene 3)
+  to draw: background 'small fishing boat on a calm open sea at night, full of stars' (scene 4)
+  to draw: background 'underwater, blue sea with fish' (scene 5)
+  to draw: background 'tiny tropical island beach, palm trees' (scene 6)
+OK

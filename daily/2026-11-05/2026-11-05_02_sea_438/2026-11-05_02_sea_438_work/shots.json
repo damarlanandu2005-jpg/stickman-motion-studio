@@ -1,0 +1,418 @@
+[
+ {
+  "bg": "lib:bg_small_fishing_harbour_dawn",
+  "dur": 4.602,
+  "cam": {
+   "z0": 1.0,
+   "z1": 1.16
+  },
+  "actors": [
+   {
+    "outfit": "role_civ",
+    "pose": 0,
+    "x": 0.5,
+    "feet": 0.9,
+    "height": 0.36,
+    "faces": [
+     [
+      0,
+      "neutral"
+     ]
+    ]
+   }
+  ],
+  "objects": [],
+  "texts": [
+   {
+    "text": "MEXICO, 2012",
+    "x": 0.5,
+    "y": 0.2,
+    "size": 0.07,
+    "font": "bold",
+    "color": [
+     255,
+     255,
+     255
+    ],
+    "stroke": 3,
+    "screen": true
+   }
+  ],
+  "caps": [
+   [
+    0.15,
+    0.85,
+    "In 2012 a",
+    [
+     "2012"
+    ]
+   ],
+   [
+    0.85,
+    1.9,
+    "fisherman set",
+    []
+   ],
+   [
+    1.9,
+    3.077,
+    "out from Mexico",
+    []
+   ],
+   [
+    3.077,
+    3.936,
+    "for a short",
+    []
+   ],
+   [
+    3.936,
+    4.602,
+    "trip",
+    []
+   ]
+  ],
+  "cap_y": 0.68,
+  "sfx": [],
+  "fx": [],
+  "fx_seed": 1
+ },
+ {
+  "bg": "lib:bg_small_fishing_boat_dark_stormy_sea_heavy",
+  "dur": 2.0,
+  "cam": {
+   "z0": 1.0,
+   "z1": 1.16
+  },
+  "actors": [
+   {
+    "outfit": "role_civ",
+    "pose": 10,
+    "x": 0.5,
+    "feet": 0.9,
+    "height": 0.36,
+    "faces": [
+     [
+      0,
+      "sad"
+     ]
+    ]
+   }
+  ],
+  "objects": [],
+  "texts": [],
+  "caps": [
+   [
+    0.0,
+    0.629,
+    "A storm hit",
+    [
+     "storm"
+    ]
+   ],
+   [
+    0.629,
+    1.432,
+    "and the engine",
+    []
+   ],
+   [
+    1.432,
+    2.0,
+    "died",
+    []
+   ]
+  ],
+  "cap_y": 0.68,
+  "sfx": [
+   {
+    "type": "rain",
+    "t": 0.0,
+    "gain": 0.18,
+    "dur": 2.0
+   },
+   {
+    "type": "thunder",
+    "t": 0.6,
+    "gain": 0.45
+   }
+  ],
+  "fx": [
+   {
+    "type": "rain",
+    "strength": 1.0
+   }
+  ],
+  "fx_seed": 2
+ },
+ {
+  "bg": "lib:bg_small_fishing_boat_calm_open_sea_endless",
+  "dur": 2.783,
+  "cam": {
+   "z0": 1.16,
+   "z1": 1.0
+  },
+  "actors": [
+   {
+    "outfit": "role_civ",
+    "pose": 0,
+    "x": 0.5,
+    "feet": 0.9,
+    "height": 0.36,
+    "faces": [
+     [
+      0,
+      "neutral"
+     ]
+    ]
+   }
+  ],
+  "objects": [],
+  "texts": [],
+  "caps": [
+   [
+    0.0,
+    0.828,
+    "For months there",
+    [
+     "months"
+    ]
+   ],
+   [
+    0.828,
+    1.55,
+    "was only water",
+    []
+   ],
+   [
+    1.55,
+    1.98,
+    "in every",
+    []
+   ],
+   [
+    1.98,
+    2.783,
+    "direction",
+    []
+   ]
+  ],
+  "cap_y": 0.68,
+  "sfx": [],
+  "fx": [],
+  "fx_seed": 3
+ },
+ {
+  "bg": "solid:placeholder",
+  "dur": 3.193,
+  "cam": {
+   "z0": 1.0,
+   "z1": 1.0
+  },
+  "actors": [
+   {
+    "outfit": "role_civ",
+    "pose": 6,
+    "x": 0.5,
+    "feet": 0.9,
+    "height": 0.36,
+    "faces": [
+     [
+      0,
+      "neutral"
+     ]
+    ]
+   }
+  ],
+  "objects": [],
+  "texts": [],
+  "caps": [
+   [
+    0.0,
+    0.451,
+    "He drank",
+    []
+   ],
+   [
+    0.451,
+    1.177,
+    "rainwater and",
+    [
+     "rainwater"
+    ]
+   ],
+   [
+    1.177,
+    1.771,
+    "ate fish he",
+    []
+   ],
+   [
+    1.771,
+    2.585,
+    "caught with his",
+    []
+   ],
+   [
+    2.585,
+    3.193,
+    "hands",
+    []
+   ]
+  ],
+  "cap_y": 0.68,
+  "sfx": [],
+  "fx": [],
+  "fx_seed": 4
+ },
+ {
+  "bg": "lib:bg_underwater_blue_sea_fish",
+  "dur": 2.704,
+  "cam": {
+   "z0": 1.0,
+   "z1": 1.16
+  },
+  "actors": [
+   {
+    "outfit": "role_civ",
+    "pose": 11,
+    "x": 0.5,
+    "feet": 0.9,
+    "height": 0.36,
+    "faces": [
+     [
+      0,
+      "neutral"
+     ]
+    ]
+   }
+  ],
+  "objects": [],
+  "texts": [],
+  "caps": [
+   [
+    0.0,
+    0.63,
+    "Once he fell",
+    []
+   ],
+   [
+    0.63,
+    1.336,
+    "overboard and",
+    [
+     "overboard"
+    ]
+   ],
+   [
+    1.336,
+    1.966,
+    "swam back to",
+    []
+   ],
+   [
+    1.966,
+    2.704,
+    "the boat",
+    []
+   ]
+  ],
+  "cap_y": 0.68,
+  "sfx": [
+   {
+    "type": "bubbles",
+    "t": 0.0,
+    "gain": 0.3,
+    "dur": 2.7
+   },
+   {
+    "type": "splash",
+    "t": 0.27,
+    "gain": 0.55
+   },
+   {
+    "type": "bubbles",
+    "t": 1.35,
+    "gain": 0.3,
+    "dur": 1.5
+   }
+  ],
+  "fx": [
+   {
+    "type": "bubbles",
+    "strength": 1.0
+   },
+   {
+    "type": "ripples",
+    "strength": 1.0
+   }
+  ],
+  "fx_seed": 5
+ },
+ {
+  "bg": "lib:bg_tiny_tropical_island_beach_palm_trees",
+  "dur": 3.731,
+  "cam": {
+   "z0": 1.16,
+   "z1": 1.0
+  },
+  "actors": [
+   {
+    "outfit": "role_civ",
+    "pose": 3,
+    "x": 0.5,
+    "feet": 0.9,
+    "height": 0.36,
+    "faces": [
+     [
+      0,
+      "neutral"
+     ]
+    ]
+   }
+  ],
+  "objects": [],
+  "texts": [
+   {
+    "text": "438 DAYS",
+    "x": 0.5,
+    "y": 0.2,
+    "size": 0.07,
+    "font": "bold",
+    "color": [
+     255,
+     255,
+     255
+    ],
+    "stroke": 3,
+    "screen": true
+   }
+  ],
+  "caps": [
+   [
+    0.0,
+    1.287,
+    "After 438 days",
+    [
+     "438"
+    ]
+   ],
+   [
+    1.287,
+    2.387,
+    "he reached a",
+    []
+   ],
+   [
+    2.387,
+    3.431,
+    "tiny island",
+    []
+   ]
+  ],
+  "cap_y": 0.68,
+  "sfx": [],
+  "fx": [],
+  "fx_seed": 6
+ }
+]
