@@ -10,7 +10,12 @@ RUN="${GITHUB_RUN_ID:-local} $(date -u +%F)"
 ST="daily-state/$NAME"; mkdir -p "$ST" "$OUT/$NAME"; : > "$ST/warnings.txt"
 rec() { python -m motion_studio.daily record --ledger "$LEDGER" --name "$NAME" --status "$1" --note "${2:-}" --run "$RUN" ${3:+--video "$3"}; }
 warn() { echo "WARN: $1" | tee -a "$ST/warnings.txt"; }
-finish() { cp "$ST"/*.txt "$ST"/*.json "$OUT/$NAME"/ 2>/dev/null; exit 0; }
+finish() {
+  cp "$ST"/*.txt "$ST"/*.json "$OUT/$NAME"/ 2>/dev/null
+  for L in "$ST"/*.log; do [ -f "$L" ] && tail -n 120 "$L" > "$OUT/$NAME/$(basename "$L").tail"; done   # last lines of every step log, so a failure can be read in the morning
+  for C in costume-state/*/out/*/report.json; do [ -f "$C" ] && cp "$C" "$OUT/$NAME/costume_$(basename "$(dirname "$C")")_report.json"; done
+  exit 0
+}
 
 # 1. the script itself must be readable (author mistakes are not retried; the note tells what to fix)
 python -m motion_studio.script_reader "$SCRIPT" --out "$ST/reader0.json" > "$ST/reader0.txt" 2>&1
