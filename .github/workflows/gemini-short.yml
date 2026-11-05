@@ -63,7 +63,12 @@ jobs:
         run: |
           if [ -z "$GEMINI_API_KEY" ]; then echo "Secret GEMINI_API_KEY is missing"; exit 1; fi
           cd project
-          timeout 200m gemini -m "$MODEL" --yolo --skip-trust -p "$(cat ../tools/gemini_task.md)" 2>&1 | tee ../gemini.log || true
+          for TRY in 1 2 3 4; do                 # the free tier is sometimes "busy" (503): wait and try again, the files written so far are kept
+            echo "=== Gemini try $TRY ===" | tee -a ../gemini.log
+            timeout 200m gemini -m "$MODEL" --yolo --skip-trust -p "$(cat ../tools/gemini_task.md) If work/ already has files from an earlier try, continue from them." 2>&1 | tee -a ../gemini.log || true
+            [ -f work/DONE.txt ] && break
+            grep -q "high demand\|503\|fetch failed" ../gemini.log && { echo "Gemini busy, waiting 6 minutes"; sleep 360; } || break
+          done
           ls work stills 2>/dev/null || true
           if [ ! -f work/DONE.txt ]; then echo "Gemini did not finish (no work/DONE.txt): stopping, so the kit's example is never rendered by mistake"; tail -40 ../gemini.log; exit 1; fi
       - name: Plan the parallel render
