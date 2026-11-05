@@ -23,4 +23,4 @@ MUSIC:      what the music does (starts, stops, changes)
 
 Rules: one visual idea per sentence, cut on sentence breaks, one camera move and one face change per shot,
 loudest sound on the key action with the music silent just before it, the biggest picture on the last three words.
-Fields you leave empty are decided by the AI. A CAST section (who wears what) at the top of SHOTS helps keep characters the same.
+You write the scenes; the AI only writes the code for them and must follow your shots exactly. (If you leave a field empty, it picks something simple and notes it.) A CAST section (who wears what) at the top of SHOTS helps keep characters the same.
