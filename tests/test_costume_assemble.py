@@ -39,3 +39,14 @@ def test_assemble_falls_back_to_explorer_and_refuses_empty(tmp_path):
 def test_no_stand_in_at_all(tmp_path):
     loop = tmp_path / "loop"; png(loop / "body_00.png")
     assert not ca.assemble(loop, "x", tmp_path / "none", None)["ok"]
+
+
+def test_soft_picks_takes_colour_failures_only():
+    from motion_studio import costume_auto as ca
+    r = lambda ok, why, sc=1.0: {"pass": ok, "why": why, "score": sc}
+    scored = {"a": [r(False, ["old outfit colour left"]), r(False, ["silhouette"]), r(True, [])],
+              "b": [r(False, ["height"]), r(False, ["costume colour"]), r(False, ["costume colour", "pale patch in suit"])]}
+    picks = {0: None, 1: None, 2: ("a", scored["a"][2])}
+    out, filled = ca.soft_picks(scored, picks)
+    assert filled == [0] and out[0][0] == "a" and out[1] is None
+    assert ca.soft_picks(scored, {0: ("a", {}), 1: ("a", {}), 2: ("a", {})}) == ({0: ("a", {}), 1: ("a", {}), 2: ("a", {})}, [])

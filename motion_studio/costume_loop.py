@@ -156,11 +156,14 @@ def judge(spec: dict, round_no: int, state: Path, outputs: Path, art: Path = ART
     ref = art / spec["old_sheet"]
     scored = {k: ca.score_sheet(p, ref, info, tuple(spec["target_hue"]) if spec.get("target_hue") else None) for k, p in sheets.items()}
     picks = ca.pick_best(scored) if scored else {}
+    soft = []
+    if scored and round_no >= spec["max_rounds"]:
+        picks, soft = ca.soft_picks(scored, picks)       # last round: colour-type failures are accepted, marked in the report
     manifest = ca.save_accepted(spec["name"], picks, sheets, info, state / "out") if scored else {"missing": list(range(len(info))), "complete": False}
     why = {k: {str(r["pose"]): r["why"] for r in v if not r["pass"]} for k, v in scored.items()}
     report = {"costume": spec["name"], "round": round_no, "sheets_drawn": sorted(sheets), "complete": manifest["complete"],
               "missing_poses": manifest["missing"], "why_failed_per_sheet": why, "status": "auto_accepted", "human_reviewed": False,
-              "last_round": round_no >= spec["max_rounds"]}
+              "last_round": round_no >= spec["max_rounds"], "soft_accepted_poses": soft}
     manifest_file = state / "out" / spec["name"] / "manifest.json"
     out = state / "out" / spec["name"]; out.mkdir(parents=True, exist_ok=True)
     if round_no >= spec["max_rounds"] and manifest["missing"] and scored:

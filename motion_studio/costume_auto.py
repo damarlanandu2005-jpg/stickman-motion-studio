@@ -164,6 +164,24 @@ def suit_rgb(rgba: Image.Image) -> list[float]:
     return [round(float(x), 1) for x in (a[:, :, :3][col].mean(0) if col.any() else (0, 0, 0))]
 
 
+SOFT_WHY = {"costume colour", "old outfit colour left", "pale patch in suit", "outline"}   # colour-type complaints only; shape / size / limb problems stay hard
+
+
+def soft_picks(scored: dict[str, list[dict]], picks: dict) -> tuple[dict, list[int]]:
+    """Last round only. Poses still missing: take them from ONE sheet (the one with the most poses that fail only soft, colour-type checks),
+    so the suit design stays the same. Returns (new picks, poses filled this way). Shape/size/limb failures are never taken."""
+    missing = [i for i, v in picks.items() if v is None] + [i for i in range(max((len(v) for v in scored.values()), default=0)) if i not in picks]
+    if not missing or not scored:
+        return picks, []
+    soft_ok = lambda r: r.get("pass") or (r.get("why") and set(r["why"]) <= SOFT_WHY and "silhouette" not in r["why"])
+    anchor = max(scored, key=lambda k: sum(1 for i in missing if i < len(scored[k]) and soft_ok(scored[k][i])))
+    filled, out = [], dict(picks)
+    for i in missing:
+        if i < len(scored[anchor]) and soft_ok(scored[anchor][i]) and "score" in scored[anchor][i]:
+            out[i] = (anchor, scored[anchor][i]); filled.append(i)
+    return out, filled
+
+
 def pick_best(scored: dict[str, list[dict]], rgb_tol: float = 6.0, outline_tol: float = 0.25) -> dict[int, tuple[str, dict] | None]:
     """scored: candidate name -> per-pose results. One ANCHOR sheet (most passing poses) keeps the suit design the same in every pose.
     A failed anchor pose may be filled from another sheet only if that pose's suit colour and outline match the anchor's. Else None (redraw)."""
