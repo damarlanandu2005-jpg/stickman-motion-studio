@@ -1,0 +1,1970 @@
+{
+ "costume": "farmerwear",
+ "round": 5,
+ "sheets_drawn": [
+  "farmerwear_r1_s0",
+  "farmerwear_r1_s0fix",
+  "farmerwear_r1_s1",
+  "farmerwear_r1_s1fix",
+  "farmerwear_r1_s2",
+  "farmerwear_r1_s2fix",
+  "farmerwear_r2_s0",
+  "farmerwear_r2_s0fix",
+  "farmerwear_r2_s1",
+  "farmerwear_r2_s1fix",
+  "farmerwear_r2_s2",
+  "farmerwear_r2_s2fix",
+  "farmerwear_r2_s3",
+  "farmerwear_r2_s3fix",
+  "farmerwear_r3_s0",
+  "farmerwear_r3_s0fix",
+  "farmerwear_r3_s1",
+  "farmerwear_r3_s1fix",
+  "farmerwear_r3_s2",
+  "farmerwear_r3_s2fix",
+  "farmerwear_r3_s3",
+  "farmerwear_r3_s3fix",
+  "farmerwear_r4_s0",
+  "farmerwear_r4_s0fix",
+  "farmerwear_r4_s1",
+  "farmerwear_r4_s1fix",
+  "farmerwear_r4_s2",
+  "farmerwear_r4_s2fix",
+  "farmerwear_r4_s3",
+  "farmerwear_r4_s3fix",
+  "farmerwear_r5_s0",
+  "farmerwear_r5_s0fix",
+  "farmerwear_r5_s1",
+  "farmerwear_r5_s1fix",
+  "farmerwear_r5_s2",
+  "farmerwear_r5_s2fix",
+  "farmerwear_r5_s3",
+  "farmerwear_r5_s3fix"
+ ],
+ "complete": false,
+ "missing_poses": [
+  10,
+  11
+ ],
+ "why_failed_per_sheet": {
+  "farmerwear_r1_s0": {
+   "0": [
+    "old outfit colour left"
+   ],
+   "1": [
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "2": [
+    "old outfit colour left"
+   ],
+   "3": [
+    "old outfit colour left"
+   ],
+   "4": [
+    "old outfit colour left"
+   ],
+   "5": [
+    "old outfit colour left"
+   ],
+   "6": [
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "7": [
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "8": [
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "9": [
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ]
+  },
+  "farmerwear_r1_s0fix": {
+   "0": [
+    "old outfit colour left"
+   ],
+   "1": [
+    "old outfit colour left"
+   ],
+   "2": [
+    "old outfit colour left"
+   ],
+   "3": [
+    "old outfit colour left"
+   ],
+   "4": [
+    "old outfit colour left"
+   ],
+   "5": [
+    "old outfit colour left"
+   ],
+   "6": [
+    "old outfit colour left"
+   ],
+   "7": [
+    "old outfit colour left"
+   ],
+   "8": [
+    "old outfit colour left"
+   ],
+   "9": [
+    "old outfit colour left"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ]
+  },
+  "farmerwear_r1_s1": {
+   "0": [
+    "old outfit colour left"
+   ],
+   "1": [
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left"
+   ],
+   "2": [
+    "old outfit colour left"
+   ],
+   "3": [
+    "old outfit colour left"
+   ],
+   "4": [
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "5": [
+    "old outfit colour left"
+   ],
+   "6": [
+    "old outfit colour left"
+   ],
+   "7": [
+    "head or hat on top",
+    "old outfit colour left"
+   ],
+   "8": [
+    "old outfit colour left"
+   ],
+   "9": [
+    "head or hat on top",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "head or hat on top",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ]
+  },
+  "farmerwear_r1_s1fix": {
+   "0": [
+    "old outfit colour left"
+   ],
+   "1": [
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left"
+   ],
+   "2": [
+    "old outfit colour left"
+   ],
+   "3": [
+    "old outfit colour left"
+   ],
+   "4": [
+    "old outfit colour left"
+   ],
+   "5": [
+    "old outfit colour left"
+   ],
+   "6": [
+    "old outfit colour left"
+   ],
+   "7": [
+    "head or hat on top",
+    "old outfit colour left"
+   ],
+   "8": [
+    "old outfit colour left"
+   ],
+   "9": [
+    "head or hat on top",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "head or hat on top",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left"
+   ]
+  },
+  "farmerwear_r1_s2": {
+   "0": [
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "1": [
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "2": [
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left"
+   ],
+   "3": [
+    "old outfit colour left"
+   ],
+   "4": [
+    "height",
+    "old outfit colour left"
+   ],
+   "5": [
+    "height",
+    "old outfit colour left"
+   ],
+   "6": [
+    "height",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "7": [
+    "height",
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "8": [
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "9": [
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "height",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ]
+  },
+  "farmerwear_r1_s2fix": {
+   "0": [
+    "old outfit colour left"
+   ],
+   "1": [
+    "old outfit colour left"
+   ],
+   "2": [
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left"
+   ],
+   "3": [
+    "old outfit colour left"
+   ],
+   "4": [
+    "height",
+    "old outfit colour left"
+   ],
+   "5": [
+    "height",
+    "old outfit colour left"
+   ],
+   "6": [
+    "height",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left"
+   ],
+   "7": [
+    "height",
+    "old outfit colour left"
+   ],
+   "8": [
+    "old outfit colour left"
+   ],
+   "9": [
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "height",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ]
+  },
+  "farmerwear_r2_s0": {
+   "0": [
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "head or hat on top",
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "2": [
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "3": [
+    "old outfit colour left"
+   ],
+   "4": [
+    "old outfit colour left"
+   ],
+   "5": [
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left"
+   ],
+   "6": [
+    "old outfit colour left"
+   ],
+   "7": [
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "8": [
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "9": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "height",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "extra white parts (bare arm or leg)",
+    "head or hat on top",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ]
+  },
+  "farmerwear_r2_s0fix": {
+   "0": [
+    "old outfit colour left"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "head or hat on top",
+    "old outfit colour left"
+   ],
+   "2": [
+    "old outfit colour left"
+   ],
+   "3": [
+    "old outfit colour left"
+   ],
+   "4": [
+    "old outfit colour left"
+   ],
+   "5": [
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left"
+   ],
+   "6": [
+    "old outfit colour left"
+   ],
+   "7": [
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left"
+   ],
+   "8": [
+    "old outfit colour left"
+   ],
+   "9": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "10": [
+    "height",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "extra white parts (bare arm or leg)",
+    "head or hat on top",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ]
+  },
+  "farmerwear_r2_s1": {
+   "0": [
+    "old outfit colour left"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "2": [
+    "head or hat on top",
+    "old outfit colour left"
+   ],
+   "3": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "5": [
+    "old outfit colour left"
+   ],
+   "6": [
+    "old outfit colour left"
+   ],
+   "7": [
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "8": [
+    "old outfit colour left"
+   ],
+   "9": [
+    "head or hat on top",
+    "limb layout differs from the old pose (back view?)",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ]
+  },
+  "farmerwear_r2_s1fix": {
+   "0": [
+    "old outfit colour left"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "2": [
+    "head or hat on top",
+    "old outfit colour left"
+   ],
+   "3": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "5": [
+    "old outfit colour left"
+   ],
+   "6": [
+    "old outfit colour left"
+   ],
+   "7": [
+    "old outfit colour left"
+   ],
+   "8": [
+    "old outfit colour left"
+   ],
+   "9": [
+    "head or hat on top",
+    "limb layout differs from the old pose (back view?)",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "old outfit colour left"
+   ]
+  },
+  "farmerwear_r2_s2": {
+   "0": [
+    "old outfit colour left"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "2": [
+    "extra white parts (bare arm or leg)",
+    "head or hat on top",
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "3": [
+    "old outfit colour left"
+   ],
+   "4": [
+    "old outfit colour left"
+   ],
+   "5": [
+    "height",
+    "old outfit colour left"
+   ],
+   "6": [
+    "height",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left"
+   ],
+   "7": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "8": [
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "9": [
+    "head or hat on top",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "height",
+    "limb layout differs from the old pose (back view?)",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "silhouette"
+   ]
+  },
+  "farmerwear_r2_s2fix": {
+   "0": [
+    "old outfit colour left"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "2": [
+    "extra white parts (bare arm or leg)",
+    "head or hat on top",
+    "old outfit colour left"
+   ],
+   "3": [
+    "old outfit colour left"
+   ],
+   "4": [
+    "old outfit colour left"
+   ],
+   "5": [
+    "height",
+    "old outfit colour left"
+   ],
+   "6": [
+    "height",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left"
+   ],
+   "7": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "8": [
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left"
+   ],
+   "9": [
+    "head or hat on top",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left"
+   ],
+   "10": [
+    "height",
+    "limb layout differs from the old pose (back view?)",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left"
+   ],
+   "11": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "silhouette"
+   ]
+  },
+  "farmerwear_r2_s3": {
+   "0": [
+    "head or hat on top",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "head or hat on top",
+    "old outfit colour left"
+   ],
+   "2": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "3": [
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "4": [
+    "old outfit colour left"
+   ],
+   "5": [
+    "old outfit colour left"
+   ],
+   "6": [
+    "old outfit colour left",
+    "silhouette",
+    "white limb left (bare leg)"
+   ],
+   "7": [
+    "head or hat on top",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "8": [
+    "old outfit colour left"
+   ],
+   "9": [
+    "head or hat on top",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "10": [
+    "height",
+    "limb layout differs from the old pose (back view?)",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ]
+  },
+  "farmerwear_r2_s3fix": {
+   "0": [
+    "head or hat on top",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "head or hat on top",
+    "old outfit colour left"
+   ],
+   "2": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "3": [
+    "old outfit colour left"
+   ],
+   "4": [
+    "old outfit colour left"
+   ],
+   "5": [
+    "old outfit colour left"
+   ],
+   "6": [
+    "old outfit colour left",
+    "silhouette",
+    "white limb left (bare leg)"
+   ],
+   "7": [
+    "head or hat on top",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left"
+   ],
+   "8": [
+    "old outfit colour left"
+   ],
+   "9": [
+    "head or hat on top",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left"
+   ],
+   "10": [
+    "height",
+    "limb layout differs from the old pose (back view?)",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left"
+   ]
+  },
+  "farmerwear_r3_s0": {
+   "0": [
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left"
+   ],
+   "1": [
+    "old outfit colour left"
+   ],
+   "2": [
+    "old outfit colour left"
+   ],
+   "3": [
+    "old outfit colour left"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "5": [
+    "old outfit colour left"
+   ],
+   "6": [
+    "old outfit colour left"
+   ],
+   "7": [
+    "old outfit colour left",
+    "outline"
+   ],
+   "8": [
+    "old outfit colour left"
+   ],
+   "9": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "old outfit colour left"
+   ]
+  },
+  "farmerwear_r3_s0fix": {
+   "0": [
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left"
+   ],
+   "1": [
+    "old outfit colour left"
+   ],
+   "2": [
+    "old outfit colour left"
+   ],
+   "3": [
+    "old outfit colour left"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "5": [
+    "old outfit colour left"
+   ],
+   "6": [
+    "old outfit colour left"
+   ],
+   "7": [
+    "old outfit colour left",
+    "outline"
+   ],
+   "8": [
+    "old outfit colour left"
+   ],
+   "9": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "old outfit colour left"
+   ]
+  },
+  "farmerwear_r3_s1": {
+   "0": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "2": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "3": [
+    "old outfit colour left"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "5": [
+    "old outfit colour left"
+   ],
+   "6": [
+    "old outfit colour left"
+   ],
+   "7": [
+    "old outfit colour left"
+   ],
+   "8": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "9": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "head or hat on top",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ]
+  },
+  "farmerwear_r3_s1fix": {
+   "0": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "2": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "3": [
+    "old outfit colour left"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "5": [
+    "old outfit colour left"
+   ],
+   "6": [
+    "old outfit colour left"
+   ],
+   "7": [
+    "old outfit colour left"
+   ],
+   "8": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "9": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "head or hat on top",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ]
+  },
+  "farmerwear_r3_s2": {
+   "0": [
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "1": [
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "2": [
+    "old outfit colour left"
+   ],
+   "3": [
+    "old outfit colour left"
+   ],
+   "4": [
+    "height",
+    "old outfit colour left"
+   ],
+   "5": [
+    "height",
+    "old outfit colour left"
+   ],
+   "6": [
+    "height",
+    "old outfit colour left"
+   ],
+   "7": [
+    "height",
+    "old outfit colour left"
+   ],
+   "8": [
+    "old outfit colour left"
+   ],
+   "9": [
+    "old outfit colour left"
+   ],
+   "10": [
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ]
+  },
+  "farmerwear_r3_s2fix": {
+   "0": [
+    "old outfit colour left"
+   ],
+   "1": [
+    "old outfit colour left"
+   ],
+   "2": [
+    "old outfit colour left"
+   ],
+   "3": [
+    "old outfit colour left"
+   ],
+   "4": [
+    "height",
+    "old outfit colour left"
+   ],
+   "5": [
+    "height",
+    "old outfit colour left"
+   ],
+   "6": [
+    "height",
+    "old outfit colour left"
+   ],
+   "7": [
+    "height",
+    "old outfit colour left"
+   ],
+   "8": [
+    "old outfit colour left"
+   ],
+   "9": [
+    "old outfit colour left"
+   ],
+   "10": [
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left"
+   ],
+   "11": [
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ]
+  },
+  "farmerwear_r3_s3": {
+   "0": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "2": [
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "3": [
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "4": [
+    "head or hat on top",
+    "height",
+    "old outfit colour left"
+   ],
+   "5": [
+    "height",
+    "limb layout differs from the old pose (back view?)",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "6": [
+    "height",
+    "old outfit colour left",
+    "pale patch in suit",
+    "silhouette"
+   ],
+   "7": [
+    "extra white parts (bare arm or leg)",
+    "height",
+    "old outfit colour left",
+    "outline"
+   ],
+   "8": [
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "9": [
+    "old outfit colour left"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "old outfit colour left",
+    "pale patch in suit",
+    "silhouette"
+   ]
+  },
+  "farmerwear_r3_s3fix": {
+   "0": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "2": [
+    "old outfit colour left"
+   ],
+   "3": [
+    "old outfit colour left"
+   ],
+   "4": [
+    "head or hat on top",
+    "height",
+    "old outfit colour left"
+   ],
+   "5": [
+    "height",
+    "limb layout differs from the old pose (back view?)",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left"
+   ],
+   "6": [
+    "height",
+    "old outfit colour left",
+    "silhouette"
+   ],
+   "7": [
+    "extra white parts (bare arm or leg)",
+    "height",
+    "old outfit colour left",
+    "outline"
+   ],
+   "8": [
+    "old outfit colour left"
+   ],
+   "9": [
+    "old outfit colour left"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "old outfit colour left",
+    "silhouette"
+   ]
+  },
+  "farmerwear_r4_s0": {
+   "0": [
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "1": [
+    "old outfit colour left"
+   ],
+   "2": [
+    "old outfit colour left"
+   ],
+   "3": [
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "5": [
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "6": [
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "7": [
+    "old outfit colour left"
+   ],
+   "8": [
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "9": [
+    "limb layout differs from the old pose (back view?)",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "limb layout differs from the old pose (back view?)",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "silhouette"
+   ]
+  },
+  "farmerwear_r4_s0fix": {
+   "0": [
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left"
+   ],
+   "1": [
+    "old outfit colour left"
+   ],
+   "2": [
+    "old outfit colour left"
+   ],
+   "3": [
+    "old outfit colour left"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "5": [
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left"
+   ],
+   "6": [
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left"
+   ],
+   "7": [
+    "old outfit colour left"
+   ],
+   "8": [
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left"
+   ],
+   "9": [
+    "limb layout differs from the old pose (back view?)",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left"
+   ],
+   "10": [
+    "limb layout differs from the old pose (back view?)",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "limb layout differs from the old pose (back view?)",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left",
+    "silhouette"
+   ]
+  },
+  "farmerwear_r4_s1": {
+   "0": [
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "head or hat on top",
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "2": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "3": [
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "5": [
+    "old outfit colour left"
+   ],
+   "6": [
+    "old outfit colour left"
+   ],
+   "7": [
+    "old outfit colour left"
+   ],
+   "8": [
+    "head or hat on top",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "9": [
+    "old outfit colour left"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left",
+    "pale patch in suit"
+   ]
+  },
+  "farmerwear_r4_s1fix": {
+   "0": [
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "head or hat on top",
+    "old outfit colour left"
+   ],
+   "2": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "3": [
+    "old outfit colour left"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "5": [
+    "old outfit colour left"
+   ],
+   "6": [
+    "old outfit colour left"
+   ],
+   "7": [
+    "old outfit colour left"
+   ],
+   "8": [
+    "head or hat on top",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left"
+   ],
+   "9": [
+    "old outfit colour left"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left"
+   ]
+  },
+  "farmerwear_r4_s2": {
+   "0": [
+    "old outfit colour left"
+   ],
+   "1": [
+    "old outfit colour left"
+   ],
+   "2": [
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left"
+   ],
+   "3": [
+    "old outfit colour left"
+   ],
+   "4": [
+    "old outfit colour left"
+   ],
+   "5": [
+    "old outfit colour left"
+   ],
+   "6": [
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "silhouette"
+   ],
+   "7": [
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "8": [
+    "old outfit colour left"
+   ],
+   "9": [
+    "old outfit colour left"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "old outfit colour left"
+   ]
+  },
+  "farmerwear_r4_s2fix": {
+   "0": [
+    "old outfit colour left"
+   ],
+   "1": [
+    "old outfit colour left"
+   ],
+   "2": [
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left"
+   ],
+   "3": [
+    "old outfit colour left"
+   ],
+   "4": [
+    "old outfit colour left"
+   ],
+   "5": [
+    "old outfit colour left"
+   ],
+   "6": [
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "silhouette"
+   ],
+   "7": [
+    "old outfit colour left"
+   ],
+   "8": [
+    "old outfit colour left"
+   ],
+   "9": [
+    "old outfit colour left"
+   ],
+   "10": [
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left"
+   ],
+   "11": [
+    "old outfit colour left"
+   ]
+  },
+  "farmerwear_r4_s3": {
+   "0": [
+    "old outfit colour left"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "head or hat on top",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "2": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "3": [
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "5": [
+    "old outfit colour left"
+   ],
+   "6": [
+    "old outfit colour left"
+   ],
+   "7": [
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left"
+   ],
+   "8": [
+    "old outfit colour left"
+   ],
+   "9": [
+    "old outfit colour left"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "limb layout differs from the old pose (back view?)",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left",
+    "pale patch in suit"
+   ]
+  },
+  "farmerwear_r4_s3fix": {
+   "0": [
+    "old outfit colour left"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "head or hat on top",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "2": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "3": [
+    "old outfit colour left"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "5": [
+    "old outfit colour left"
+   ],
+   "6": [
+    "old outfit colour left"
+   ],
+   "7": [
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left"
+   ],
+   "8": [
+    "old outfit colour left"
+   ],
+   "9": [
+    "old outfit colour left"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "limb layout differs from the old pose (back view?)",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left"
+   ]
+  },
+  "farmerwear_r5_s0": {
+   "0": [
+    "old outfit colour left"
+   ],
+   "1": [
+    "old outfit colour left"
+   ],
+   "2": [
+    "old outfit colour left"
+   ],
+   "3": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "5": [
+    "old outfit colour left"
+   ],
+   "6": [
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left"
+   ],
+   "7": [
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left"
+   ],
+   "8": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "9": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "old outfit colour left"
+   ]
+  },
+  "farmerwear_r5_s0fix": {
+   "0": [
+    "old outfit colour left"
+   ],
+   "1": [
+    "old outfit colour left"
+   ],
+   "2": [
+    "old outfit colour left"
+   ],
+   "3": [
+    "old outfit colour left"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "5": [
+    "old outfit colour left"
+   ],
+   "6": [
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left"
+   ],
+   "7": [
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left"
+   ],
+   "8": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "9": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "old outfit colour left"
+   ]
+  },
+  "farmerwear_r5_s1": {
+   "0": [
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "1": [
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "2": [
+    "old outfit colour left"
+   ],
+   "3": [
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "4": [
+    "old outfit colour left"
+   ],
+   "5": [
+    "old outfit colour left"
+   ],
+   "6": [
+    "old outfit colour left"
+   ],
+   "7": [
+    "old outfit colour left"
+   ],
+   "8": [
+    "limb layout differs from the old pose (back view?)",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left"
+   ],
+   "9": [
+    "limb layout differs from the old pose (back view?)",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "old outfit colour left",
+    "pale patch in suit"
+   ]
+  },
+  "farmerwear_r5_s1fix": {
+   "0": [
+    "old outfit colour left"
+   ],
+   "1": [
+    "old outfit colour left"
+   ],
+   "2": [
+    "old outfit colour left"
+   ],
+   "3": [
+    "old outfit colour left"
+   ],
+   "4": [
+    "old outfit colour left"
+   ],
+   "5": [
+    "old outfit colour left"
+   ],
+   "6": [
+    "old outfit colour left"
+   ],
+   "7": [
+    "old outfit colour left"
+   ],
+   "8": [
+    "limb layout differs from the old pose (back view?)",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left"
+   ],
+   "9": [
+    "limb layout differs from the old pose (back view?)",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left"
+   ],
+   "10": [
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left"
+   ],
+   "11": [
+    "old outfit colour left"
+   ]
+  },
+  "farmerwear_r5_s2": {
+   "0": [
+    "old outfit colour left"
+   ],
+   "1": [
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "2": [
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "3": [
+    "old outfit colour left"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "5": [
+    "old outfit colour left"
+   ],
+   "6": [
+    "old outfit colour left"
+   ],
+   "7": [
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left"
+   ],
+   "8": [
+    "old outfit colour left"
+   ],
+   "9": [
+    "limb layout differs from the old pose (back view?)",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "old outfit colour left"
+   ]
+  },
+  "farmerwear_r5_s2fix": {
+   "0": [
+    "old outfit colour left"
+   ],
+   "1": [
+    "old outfit colour left"
+   ],
+   "2": [
+    "old outfit colour left"
+   ],
+   "3": [
+    "old outfit colour left"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "5": [
+    "old outfit colour left"
+   ],
+   "6": [
+    "old outfit colour left"
+   ],
+   "7": [
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left"
+   ],
+   "8": [
+    "old outfit colour left"
+   ],
+   "9": [
+    "limb layout differs from the old pose (back view?)",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left"
+   ],
+   "10": [
+    "limb layout differs from the old pose (back view?)",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left"
+   ],
+   "11": [
+    "old outfit colour left"
+   ]
+  },
+  "farmerwear_r5_s3": {
+   "0": [
+    "head or hat on top",
+    "old outfit colour left"
+   ],
+   "1": [
+    "old outfit colour left"
+   ],
+   "2": [
+    "old outfit colour left"
+   ],
+   "3": [
+    "old outfit colour left"
+   ],
+   "4": [
+    "old outfit colour left"
+   ],
+   "5": [
+    "old outfit colour left"
+   ],
+   "6": [
+    "old outfit colour left"
+   ],
+   "7": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "8": [
+    "old outfit colour left"
+   ],
+   "9": [
+    "head or hat on top",
+    "old outfit colour left"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "old outfit colour left"
+   ]
+  },
+  "farmerwear_r5_s3fix": {
+   "0": [
+    "head or hat on top",
+    "old outfit colour left"
+   ],
+   "1": [
+    "old outfit colour left"
+   ],
+   "2": [
+    "old outfit colour left"
+   ],
+   "3": [
+    "old outfit colour left"
+   ],
+   "4": [
+    "old outfit colour left"
+   ],
+   "5": [
+    "old outfit colour left"
+   ],
+   "6": [
+    "old outfit colour left"
+   ],
+   "7": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "8": [
+    "old outfit colour left"
+   ],
+   "9": [
+    "head or hat on top",
+    "old outfit colour left"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "11": [
+    "old outfit colour left"
+   ]
+  }
+ },
+ "status": "auto_accepted",
+ "human_reviewed": false,
+ "last_round": true,
+ "soft_accepted_poses": [
+  0,
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9
+ ],
+ "fallback_poses": {
+  "10": {
+   "copied_from_pose": 0,
+   "old_pose_similarity": 0.55,
+   "note": "NOT a redrawn pose: closest accepted pose reused"
+  },
+  "11": {
+   "copied_from_pose": 0,
+   "old_pose_similarity": 0.42,
+   "note": "NOT a redrawn pose: closest accepted pose reused"
+  }
+ }
+}

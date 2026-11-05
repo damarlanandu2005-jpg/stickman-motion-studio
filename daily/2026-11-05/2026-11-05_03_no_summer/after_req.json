@@ -1,22 +1,4 @@
 {
  "name": "2026-11-05_03_no_summer",
- "needs": [
-  {
-   "id": "bg_green_farm_field_june_covered_snow",
-   "type": "background",
-   "tags": [
-    "green",
-    "farm",
-    "field",
-    "june",
-    "covered",
-    "snow"
-   ],
-   "desc": "green farm field in June, covered in snow",
-   "base": "bg_green_farm_field_june_bright_sun",
-   "change": "green farm field in June, covered in snow",
-   "mode": "same",
-   "root": "bg_green_farm_field_june_bright_sun"
-  }
- ]
+ "needs": []
 }

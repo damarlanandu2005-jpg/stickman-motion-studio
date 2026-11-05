@@ -1,4 +1,1 @@
-WARN: 1 background/prop pictures still missing: plain placeholders in the video
-WARN: costume 'farmerwear' could not be built: stand-in used
-render: costume 'farmerwear' is spec_only: stand-in 'role_civ' used
-render: scene 4: background 'green farm field in June, covered in snow' not in the library yet: plain placeholder
+WARN: costume 'farmerwear': drawn automatically, heads borrowed from 'civ', not reviewed by a person

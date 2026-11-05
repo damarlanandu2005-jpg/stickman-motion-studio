@@ -1,5 +1,5 @@
 The Year Without A Summer: 6 scenes, voice am_fenrir
-  costume civ: ready
+  costume civ: missing
   costume farmerwear: missing
   to draw: background 'huge volcano erupting at night, glowing lava' (scene 1)
   to draw: background 'grey ash cloud covering a village sky' (scene 2)

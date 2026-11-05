@@ -1,0 +1,120 @@
+{"round": 2, "mode": "sheet", "refs": ["cast/explorer_poses_sheet.png", "cast/costume_farmerwear_accepted_r2.png"], "jobs": ["farmerwear_r2_s0", "farmerwear_r2_s1", "farmerwear_r2_s2", "farmerwear_r2_s3"], "needs_ref_commit": true, "ref_files": ["animation/reference_art/cast/costume_farmerwear_accepted_r2.png"]}
+NEEDS_REF_COMMIT=true
+REF_FILES=animation/reference_art/cast/costume_farmerwear_accepted_r2.png
+remote: 
+remote: Create a pull request for 'costume-refs-41952847481' on GitHub by visiting:        
+remote:      https://github.com/damarlanandu2005-jpg/stickman-motion-studio/pull/new/costume-refs-41952847481        
+remote: 
+Wrote /home/runner/work/stickman-motion-studio/stickman-motion-studio/kaggle/scene-batch/scene_batch.ipynb
+run_id=b1cd8121eefb4551a3e2e2087a66078c workflow_run=41952847481-1 commit=d0233a1702f1
+VERIFIED: version 99 produced output matching run token (poses).
+  environment: {'python': '3.13.16', 'torch': '2.11.0+cu130', 'cuda_available': True, 'gpu_names': ['Tesla T4', 'Tesla T4']}
+  klein: success load 67.4 s, peak VRAM 8.96 GiB
+  pictures drawn: 4 of 4; seconds each: min 60.4 max 66.73
+  failed: []
+  notebook_duration_seconds: 536.2
+{"round": 2, "complete": false, "missing_poses": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], "sheets_drawn": ["farmerwear_r1_s0", "farmerwear_r1_s0fix", "farmerwear_r1_s1", "farmerwear_r1_s1fix", "farmerwear_r1_s2", "farmerwear_r1_s2fix", "farmerwear_r2_s0", "farmerwear_r2_s0fix", "farmerwear_r2_s1", "farmerwear_r2_s1fix", "farmerwear_r2_s2", "farmerwear_r2_s2fix", "farmerwear_r2_s3", "farmerwear_r2_s3fix"]}
+DONE=false
+=== farmerwear round 3 of 5 ===
+{"round": 3, "mode": "sheet", "refs": ["cast/explorer_poses_sheet.png", "cast/costume_farmerwear_accepted_r3.png"], "jobs": ["farmerwear_r3_s0", "farmerwear_r3_s1", "farmerwear_r3_s2", "farmerwear_r3_s3"], "needs_ref_commit": true, "ref_files": ["animation/reference_art/cast/costume_farmerwear_accepted_r3.png"]}
+NEEDS_REF_COMMIT=true
+REF_FILES=animation/reference_art/cast/costume_farmerwear_accepted_r3.png
+Wrote /home/runner/work/stickman-motion-studio/stickman-motion-studio/kaggle/scene-batch/scene_batch.ipynb
+run_id=96fec357075e4d1ab54db2071f4acecb workflow_run=41952847481-1 commit=0f3fec97313b
+VERIFIED: version 100 produced output matching run token (poses).
+  environment: {'python': '3.13.16', 'torch': '2.11.0+cu130', 'cuda_available': True, 'gpu_names': ['Tesla T4', 'Tesla T4']}
+  klein: success load 65.6 s, peak VRAM 8.96 GiB
+  pictures drawn: 4 of 4; seconds each: min 57.95 max 65.33
+  failed: []
+  notebook_duration_seconds: 487.3
+{"round": 3, "complete": false, "missing_poses": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], "sheets_drawn": ["farmerwear_r1_s0", "farmerwear_r1_s0fix", "farmerwear_r1_s1", "farmerwear_r1_s1fix", "farmerwear_r1_s2", "farmerwear_r1_s2fix", "farmerwear_r2_s0", "farmerwear_r2_s0fix", "farmerwear_r2_s1", "farmerwear_r2_s1fix", "farmerwear_r2_s2", "farmerwear_r2_s2fix", "farmerwear_r2_s3", "farmerwear_r2_s3fix", "farmerwear_r3_s0", "farmerwear_r3_s0fix", "farmerwear_r3_s1", "farmerwear_r3_s1fix", "farmerwear_r3_s2", "farmerwear_r3_s2fix", "farmerwear_r3_s3", "farmerwear_r3_s3fix"]}
+DONE=false
+=== farmerwear round 4 of 5 ===
+{"round": 4, "mode": "sheet", "refs": ["cast/explorer_poses_sheet.png", "cast/costume_farmerwear_accepted_r4.png"], "jobs": ["farmerwear_r4_s0", "farmerwear_r4_s1", "farmerwear_r4_s2", "farmerwear_r4_s3"], "needs_ref_commit": true, "ref_files": ["animation/reference_art/cast/costume_farmerwear_accepted_r4.png"]}
+NEEDS_REF_COMMIT=true
+REF_FILES=animation/reference_art/cast/costume_farmerwear_accepted_r4.png
+Wrote /home/runner/work/stickman-motion-studio/stickman-motion-studio/kaggle/scene-batch/scene_batch.ipynb
+run_id=12762537173341bb9fb644ad74deed6d workflow_run=41952847481-1 commit=41f323168b61
+VERIFIED: version 101 produced output matching run token (poses).
+  environment: {'python': '3.13.16', 'torch': '2.11.0+cu130', 'cuda_available': True, 'gpu_names': ['Tesla T4', 'Tesla T4']}
+  klein: success load 68.3 s, peak VRAM 8.96 GiB
+  pictures drawn: 4 of 4; seconds each: min 56.75 max 66.98
+  failed: []
+  notebook_duration_seconds: 526.9
+{"round": 4, "complete": false, "missing_poses": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], "sheets_drawn": ["farmerwear_r1_s0", "farmerwear_r1_s0fix", "farmerwear_r1_s1", "farmerwear_r1_s1fix", "farmerwear_r1_s2", "farmerwear_r1_s2fix", "farmerwear_r2_s0", "farmerwear_r2_s0fix", "farmerwear_r2_s1", "farmerwear_r2_s1fix", "farmerwear_r2_s2", "farmerwear_r2_s2fix", "farmerwear_r2_s3", "farmerwear_r2_s3fix", "farmerwear_r3_s0", "farmerwear_r3_s0fix", "farmerwear_r3_s1", "farmerwear_r3_s1fix", "farmerwear_r3_s2", "farmerwear_r3_s2fix", "farmerwear_r3_s3", "farmerwear_r3_s3fix", "farmerwear_r4_s0", "farmerwear_r4_s0fix", "farmerwear_r4_s1", "farmerwear_r4_s1fix", "farmerwear_r4_s2", "farmerwear_r4_s2fix", "farmerwear_r4_s3", "farmerwear_r4_s3fix"]}
+DONE=false
+=== farmerwear round 5 of 5 ===
+{"round": 5, "mode": "sheet", "refs": ["cast/explorer_poses_sheet.png", "cast/costume_farmerwear_accepted_r5.png"], "jobs": ["farmerwear_r5_s0", "farmerwear_r5_s1", "farmerwear_r5_s2", "farmerwear_r5_s3"], "needs_ref_commit": true, "ref_files": ["animation/reference_art/cast/costume_farmerwear_accepted_r5.png"]}
+NEEDS_REF_COMMIT=true
+REF_FILES=animation/reference_art/cast/costume_farmerwear_accepted_r5.png
+Wrote /home/runner/work/stickman-motion-studio/stickman-motion-studio/kaggle/scene-batch/scene_batch.ipynb
+run_id=b63f0cc73555442e972f567fea030993 workflow_run=41952847481-1 commit=e99b9426334b
+VERIFIED: version 102 produced output matching run token (poses).
+  environment: {'python': '3.13.16', 'torch': '2.11.0+cu130', 'cuda_available': True, 'gpu_names': ['Tesla T4', 'Tesla T4']}
+  klein: success load 63.9 s, peak VRAM 8.96 GiB
+  pictures drawn: 4 of 4; seconds each: min 61.25 max 61.89
+  failed: []
+  notebook_duration_seconds: 485.8
+{"round": 5, "complete": false, "missing_poses": [10, 11], "sheets_drawn": ["farmerwear_r1_s0", "farmerwear_r1_s0fix", "farmerwear_r1_s1", "farmerwear_r1_s1fix", "farmerwear_r1_s2", "farmerwear_r1_s2fix", "farmerwear_r2_s0", "farmerwear_r2_s0fix", "farmerwear_r2_s1", "farmerwear_r2_s1fix", "farmerwear_r2_s2", "farmerwear_r2_s2fix", "farmerwear_r2_s3", "farmerwear_r2_s3fix", "farmerwear_r3_s0", "farmerwear_r3_s0fix", "farmerwear_r3_s1", "farmerwear_r3_s1fix", "farmerwear_r3_s2", "farmerwear_r3_s2fix", "farmerwear_r3_s3", "farmerwear_r3_s3fix", "farmerwear_r4_s0", "farmerwear_r4_s0fix", "farmerwear_r4_s1", "farmerwear_r4_s1fix", "farmerwear_r4_s2", "farmerwear_r4_s2fix", "farmerwear_r4_s3", "farmerwear_r4_s3fix", "farmerwear_r5_s0", "farmerwear_r5_s0fix", "farmerwear_r5_s1", "farmerwear_r5_s1fix", "farmerwear_r5_s2", "farmerwear_r5_s2fix", "farmerwear_r5_s3", "farmerwear_r5_s3fix"]}
+DONE=false
+costume farmerwear complete=false
+{
+ "costume": "farmerwear",
+ "round": 5,
+ "sheets_drawn": [
+  "farmerwear_r1_s0",
+  "farmerwear_r1_s0fix",
+  "farmerwear_r1_s1",
+  "farmerwear_r1_s1fix",
+  "farmerwear_r1_s2",
+  "farmerwear_r1_s2fix",
+  "farmerwear_r2_s0",
+  "farmerwear_r2_s0fix",
+  "farmerwear_r2_s1",
+  "farmerwear_r2_s1fix",
+  "farmerwear_r2_s2",
+  "farmerwear_r2_s2fix",
+  "farmerwear_r2_s3",
+  "farmerwear_r2_s3fix",
+  "farmerwear_r3_s0",
+  "farmerwear_r3_s0fix",
+  "farmerwear_r3_s1",
+  "farmerwear_r3_s1fix",
+  "farmerwear_r3_s2",
+  "farmerwear_r3_s2fix",
+  "farmerwear_r3_s3",
+  "farmerwear_r3_s3fix",
+  "farmerwear_r4_s0",
+  "farmerwear_r4_s0fix",
+  "farmerwear_r4_s1",
+  "farmerwear_r4_s1fix",
+  "farmerwear_r4_s2",
+  "farmerwear_r4_s2fix",
+  "farmerwear_r4_s3",
+  "farmerwear_r4_s3fix",
+  "farmerwear_r5_s0",
+  "farmerwear_r5_s0fix",
+  "farmerwear_r5_s1",
+  "farmerwear_r5_s1fix",
+  "farmerwear_r5_s2",
+  "farmerwear_r5_s2fix",
+  "farmerwear_r5_s3",
+  "farmerwear_r5_s3fix"
+ ],
+ "complete": false,
+ "missing_poses": [
+  10,
+  11
+ ],
+ "why_failed_per_sheet": {
+  "farmerwear_r1_s0": {
+   "0": [
+    "old outfit colour left"
+   ],
+   "1": [
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "2": [
+    "old outfit colour left"
+   ],

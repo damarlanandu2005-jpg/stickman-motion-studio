@@ -1,0 +1,104 @@
+{"ok": true, "no_dataset": false, "files": 339}
+The Year Without A Summer: 6 scenes, voice am_fenrir
+  costume civ: ready
+  costume farmerwear: missing
+  to draw: background 'green farm field in June, covered in snow' (scene 4)
+OK
+missing assets: 1
+=== 2026-11-05_03_no_summer assets round 1 of 3 ===
+{"round": 1, "pending": ["bg_green_farm_field_june_covered_snow"], "waiting": [], "jobs": 2, "uses_dataset": true}
+NOTHING_PENDING=false
+NOTHING_TO_DRAW=false
+USES_DATASET=true
+Wrote /home/runner/work/stickman-motion-studio/stickman-motion-studio/kaggle/scene-batch/scene_batch.ipynb
+run_id=5576f5cc26ec464bb8169a88c8b7b51a workflow_run=41952847481-1 commit=2c22d17b1824
+VERIFIED: version 95 produced output matching run token (poses).
+  environment: {'python': '3.13.16', 'torch': '2.11.0+cu130', 'cuda_available': True, 'gpu_names': ['Tesla T4', 'Tesla T4']}
+  klein: success load 60.5 s, peak VRAM 8.51 GiB
+  pictures drawn: 2 of 2; seconds each: min 27.57 max 33.37
+  failed: []
+  notebook_duration_seconds: 301.9
+{"round": 1, "accepted": [], "still_missing": ["bg_green_farm_field_june_covered_snow"], "complete": false}
+DONE=false
+NEEDS_UP=false
+=== 2026-11-05_03_no_summer assets round 2 of 3 ===
+{"round": 2, "pending": ["bg_green_farm_field_june_covered_snow"], "waiting": [], "jobs": 2, "uses_dataset": true}
+NOTHING_PENDING=false
+NOTHING_TO_DRAW=false
+USES_DATASET=true
+Wrote /home/runner/work/stickman-motion-studio/stickman-motion-studio/kaggle/scene-batch/scene_batch.ipynb
+run_id=bc61505ea2164980a55b8229c149f393 workflow_run=41952847481-1 commit=2c22d17b1824
+VERIFIED: version 96 produced output matching run token (poses).
+  environment: {'python': '3.13.16', 'torch': '2.11.0+cu130', 'cuda_available': True, 'gpu_names': ['Tesla T4', 'Tesla T4']}
+  klein: success load 66.5 s, peak VRAM 8.51 GiB
+  pictures drawn: 2 of 2; seconds each: min 27.91 max 34.53
+  failed: []
+  notebook_duration_seconds: 308.2
+{"round": 2, "accepted": [], "still_missing": ["bg_green_farm_field_june_covered_snow"], "complete": false}
+DONE=false
+NEEDS_UP=false
+=== 2026-11-05_03_no_summer assets round 3 of 3 ===
+{"round": 3, "pending": ["bg_green_farm_field_june_covered_snow"], "waiting": [], "jobs": 2, "uses_dataset": true}
+NOTHING_PENDING=false
+NOTHING_TO_DRAW=false
+USES_DATASET=true
+Wrote /home/runner/work/stickman-motion-studio/stickman-motion-studio/kaggle/scene-batch/scene_batch.ipynb
+run_id=3bcec5daa8e04b37bb576c2b72c09b1a workflow_run=41952847481-1 commit=2c22d17b1824
+VERIFIED: version 97 produced output matching run token (poses).
+  environment: {'python': '3.13.16', 'torch': '2.11.0+cu130', 'cuda_available': True, 'gpu_names': ['Tesla T4', 'Tesla T4']}
+  klein: success load 64.4 s, peak VRAM 8.51 GiB
+  pictures drawn: 2 of 2; seconds each: min 27.86 max 33.93
+  failed: []
+  notebook_duration_seconds: 306.7
+{"round": 3, "accepted": ["bg_green_farm_field_june_covered_snow"], "still_missing": [], "complete": true}
+DONE=true
+NEEDS_UP=false
+{"ok": true, "files": 74, "items": 74, "sprites": 265}
+{"ok": true, "no_dataset": false, "files": 340}
+The Year Without A Summer: 6 scenes, voice am_fenrir
+  costume civ: ready
+  costume farmerwear: missing
+OK
+assets 2026-11-05_03_no_summer: complete=true, round files in assets-state/2026-11-05_03_no_summer
+dataset verify: ok: bg_green_farm_field_june_covered_snow and all sprites found again after a clean download
+{"ok": true, "checked": 1, "sprites_checked": 265, "problems": []}
+{
+ "request": "2026-11-05_03_no_summer",
+ "round": 3,
+ "accepted": [
+  "bg_green_farm_field_june_covered_snow"
+ ],
+ "still_missing": [],
+ "complete": true,
+ "accepted_with_warnings": {
+  "bg_green_farm_field_june_covered_snow": [
+   "picture is noisy is outside the library's range"
+  ]
+ },
+ "gate_log": {
+  "bg_green_farm_field_june_covered_snow": [
+   {
+    "file": "pose_bg_green_farm_field_june_covered_snow_r1_c0.png",
+    "pass": false,
+    "why": [
+     "picture is noisy is outside the library's range"
+    ],
+    "score": 1.314,
+    "text_check": true,
+    "sat": 0.331,
+    "dark": 0.066,
+    "bright": 0.866,
+    "low_dark": 0.166,
+    "grad": 8.158,
+    "struct": 0.945,
+    "changed": 0.369,
+    "mean_diff": 71.25
+   },
+   {
+    "file": "pose_bg_green_farm_field_june_covered_snow_r1_c1.png",
+    "pass": false,
+    "why": [
+     "picture is noisy is outside the library's range"
+    ],
+    "score": 1.443,
+    "text_check": true,

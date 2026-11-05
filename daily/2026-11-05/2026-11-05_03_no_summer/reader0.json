@@ -146,14 +146,14 @@
    "bg": {
     "wanted": "candle lit study with a stormy window",
     "library_id": null,
-    "match": 0.2
+    "match": 0.0
    },
    "who": [
     {
      "character": "writer",
      "stage": "main",
      "costume": "civ",
-     "costume_status": "ready"
+     "costume_status": "missing"
     }
    ],
    "pose": [
@@ -168,9 +168,10 @@
  "errors": [],
  "costume_status": {
   "farmerwear": "missing",
-  "civ": "ready"
+  "civ": "missing"
  },
  "missing_costumes": [
+  "civ",
   "farmerwear"
  ],
  "missing_assets": [

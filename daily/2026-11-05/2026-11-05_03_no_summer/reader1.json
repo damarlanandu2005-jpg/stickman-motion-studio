@@ -91,8 +91,8 @@
    ],
    "bg": {
     "wanted": "green farm field in June, covered in snow",
-    "library_id": null,
-    "match": 0.0
+    "library_id": "bg_green_farm_field_june_covered_snow",
+    "match": 1.0
    },
    "who": [
     {
@@ -173,25 +173,6 @@
  "missing_costumes": [
   "farmerwear"
  ],
- "missing_assets": [
-  {
-   "id": "bg_green_farm_field_june_covered_snow",
-   "type": "background",
-   "tags": [
-    "green",
-    "farm",
-    "field",
-    "june",
-    "covered",
-    "snow"
-   ],
-   "desc": "green farm field in June, covered in snow",
-   "scene": 4,
-   "base": "bg_green_farm_field_june_bright_sun",
-   "mode": "same",
-   "root": "bg_green_farm_field_june_bright_sun",
-   "change": "green farm field in June, covered in snow"
-  }
- ],
+ "missing_assets": [],
  "ok": true
 }

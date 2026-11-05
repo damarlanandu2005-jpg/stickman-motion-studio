@@ -1,5 +1,4 @@
 The Year Without A Summer: 6 scenes, voice am_fenrir
   costume civ: ready
   costume farmerwear: missing
-  to draw: background 'green farm field in June, covered in snow' (scene 4)
 OK
