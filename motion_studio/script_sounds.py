@@ -61,6 +61,9 @@ def plan(scene: dict, dur: float) -> tuple[list[dict], list[dict]]:
             used.add((e["type"], "s")); sfx_list.append(e)
     if "step" in sound or "walk" in sound:
         sfx_list.append({"type": "step", "t": 0.0, "gain": 0.3, "repeat": max(int(dur / 0.35), 1), "every": 0.35})
+    if scene.get("shot", 1) > 1:                        # later shots of one scene: only the steady background sounds go on; one-time events were in shot 1
+        sfx_list = [e for e in sfx_list if e["type"] in ("rain", "wind", "crackle", "crowd")]
+        fx_list = [f for f in fx_list if f["type"] != "ripples"]
     for f in fx_list:                                   # t0 given as seconds-fraction -> seconds
         if "t0" in f:
             f["t0"] = round(f["t0"] * dur, 2)

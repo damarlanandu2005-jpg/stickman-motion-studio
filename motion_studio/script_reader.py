@@ -32,7 +32,10 @@ from pathlib import Path
 from . import asset_library as lib
 
 ROOT = Path(__file__).resolve().parents[1]
-KEYS = {"bg", "who", "pose", "props", "say", "text", "sound", "camera", "from", "next", "draw"}
+KEYS = {"bg", "who", "pose", "props", "say", "text", "sound", "camera", "from", "next", "draw", "frame", "split"}
+FRAMES = {"wide", "medium", "close", "insert", "card"}
+AUTO_SPLIT_WORDS = 11          # a voice line with at least this many words is cut into 2-3 quick shots (unless `split: no`)
+INHERIT = ("bg", "who", "pose", "props")
 CAMERAS = {"push", "pull", "pan", "still"}
 STOP = {"a", "an", "the", "of", "at", "on", "with", "and", "in", "to"}
 HUES = {"green": (0.17, 0.45), "olive green": (0.17, 0.45), "yellow": (0.10, 0.20), "blue": (0.50, 0.70), "light blue": (0.50, 0.62),
@@ -57,7 +60,11 @@ def parse_script(text: str) -> dict:
         if not line or line.startswith("#"):
             continue
         if line.upper() == "SCENE":
-            cur = {"line": n}; out["scenes"].append(cur); continue
+            cur = {"line": n, "shots": []}; out["scenes"].append(cur); continue
+        if line.upper() == "SHOT":
+            if not out["scenes"] or cur is None:
+                out["problems"].append(f"line {n}: SHOT outside a SCENE"); continue
+            parent = out["scenes"][-1]; cur = {"line": n, "_shot": True}; parent["shots"].append(cur); continue
         m = re.match(r"^CHANGE\s*:\s*(\w+)\s*->\s*(\w+)\s*$", line, re.I)
         if m:
             stage_changes.append((len(out["scenes"]), m.group(1).lower(), m.group(2).lower())); cur = None; continue
@@ -75,6 +82,75 @@ def parse_script(text: str) -> dict:
             out["problems"].append(f"line {n}: unknown field '{key}' (allowed: {', '.join(sorted(KEYS))})"); continue
         cur[key] = val
     out["stage_changes"] = stage_changes
+    shift = {}                                   # old scene index -> first new index (CHANGE: lines are placed before scenes)
+    flat = []
+    for i, sc in enumerate(out["scenes"]):
+        shift[i] = len(flat); flat += expand_shots(sc, out["problems"])
+    shift[len(out["scenes"])] = len(flat)
+    out["scenes"] = flat
+    out["stage_changes"] = [(shift.get(i, len(flat)), c, st) for i, c, st in stage_changes]
+    return out
+
+
+def split_say(say: str, n: int) -> list[str]:
+    """Cut a voice line into n pieces of about equal words, at a comma / full stop when one is near the cut, else between words.
+    The *red* marks stay with their words (a marked word is never cut in two)."""
+    toks = say.split()
+    if n <= 1 or len(toks) < n * 2:
+        return [say]
+    cuts, per = [], len(toks) / n
+    for k in range(1, n):
+        target = round(per * k); best = target
+        for d in range(0, 3):                    # look 2 words either side for a natural pause
+            for cand in (target - d, target + d):
+                if 2 <= cand <= len(toks) - 2 and re.search(r"[,;:.!?]\**$", toks[cand - 1]):
+                    best = cand; break
+            else:
+                continue
+            break
+        cuts.append(max(best, (cuts[-1] + 2) if cuts else 2))
+    cuts = [c for c in cuts if c <= len(toks) - 2]
+    parts, a = [], 0
+    for c in cuts + [len(toks)]:
+        parts.append(" ".join(toks[a:c])); a = c
+    return [p for p in parts if p]
+
+
+FRAME_CYCLE = ["wide", "medium", "close"]       # reference shorts: a wide shot, then closer, then a detail
+
+
+def expand_shots(sc: dict, problems: list) -> list[dict]:
+    """One SCENE -> one or more shots (each shot is a scene dict for the rest of the pipeline).
+    SHOT blocks inherit bg/who/pose/props from the scene. Without SHOT blocks a long voice line is cut automatically."""
+    base = {k: v for k, v in sc.items() if k not in ("shots",)}
+    shots = sc.get("shots") or []
+    say = sc.get("say", "")
+    if shots:
+        missing = [h for h in shots if not h.get("say")]
+        if missing and say:
+            parts = split_say(say, len(shots))
+            for h, part in zip(shots, parts):             # fewer pieces than shots: the last shots are silent beats (picture only)
+                h.setdefault("say", part)
+            for h in shots:
+                h.setdefault("say", "")
+    elif sc.get("split", "").lower() not in ("no", "off", "false") and len(say.split()) >= AUTO_SPLIT_WORDS and say:
+        n = 3 if len(say.split()) >= 22 else 2
+        parts = split_say(say, n)
+        shots = [{"line": sc["line"], "say": part, "_auto": True} for part in parts]
+    if not shots:
+        return [{**base, "group": id(sc), "shot": 1}]
+    out = []
+    for k, h in enumerate(shots):
+        m = {key: base[key] for key in INHERIT if key in base}
+        if k == 0:                                # one-time things belong to the first shot: new picture links, big text, sound
+            for key in ("from", "next", "draw", "text", "sound"):
+                if key in base:
+                    m[key] = base[key]
+        m.update({key: v for key, v in h.items() if key != "_shot" and key != "_auto"})
+        m["line"] = h.get("line", sc["line"]); m["group"] = id(sc); m["shot"] = k + 1; m["_member"] = True
+        if "frame" not in m and h.get("_auto"):
+            m["frame"] = FRAME_CYCLE[k % len(FRAME_CYCLE)]
+        out.append(m)
     return out
 
 
@@ -158,7 +234,7 @@ def resolve(script: dict, cast: dict, db: dict | None = None, root: Path = ROOT)
             else:
                 stage[c] = s
         tag = f"scene {i + 1} (line {sc['line']})"
-        if not sc.get("say"):
+        if not sc.get("say") and not sc.get("_member"):
             errors.append(f"{tag}: missing 'say:' (the voice line)")
         voice, red = red_marks(sc.get("say", ""))
         who = []
@@ -215,12 +291,15 @@ def resolve(script: dict, cast: dict, db: dict | None = None, root: Path = ROOT)
             props.append({"wanted": p, "library_id": hit, "match": round(s, 2)})
             if not hit:
                 needs_obj.append({"id": "obj_" + "_".join(words(p))[:40], "type": "object", "tags": words(p), "desc": p, "scene": i + 1})
+        if sc.get("frame") and sc["frame"].lower() not in FRAMES:
+            errors.append(f"{tag}: frame '{sc['frame']}' not known (use: {', '.join(sorted(FRAMES))})")
         cam = sc.get("camera", "").lower()
         if cam and cam not in CAMERAS:
             errors.append(f"{tag}: camera '{cam}' not known (use: {', '.join(sorted(CAMERAS))})")
         scenes.append({"n": i + 1, "voice": voice, "red": red, "bg": {"wanted": sc.get("bg", ""), "library_id": bg, "match": round(bscore, 2)},
                        "who": who, "pose": [p.strip() for p in sc.get("pose", "").split(",") if p.strip()], "props": props,
-                       "text": sc.get("text", ""), "sound": sc.get("sound", ""), "camera": cam or "auto"})
+                       "text": sc.get("text", ""), "sound": sc.get("sound", ""), "camera": cam or "auto",
+                       "frame": sc.get("frame", "").lower(), "group": sc.get("group"), "shot": sc.get("shot", 1)})
     seen = {}
     for n in needs_bg + needs_obj:
         seen.setdefault(n["id"], n)

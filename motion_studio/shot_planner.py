@@ -78,8 +78,19 @@ def plan_shots(ir: dict, durs: list[float], words: list, cast: dict, root: Path 
         xs, h = LAYOUT[min(max(n, 1), 4)]
         if props and n:
             xs = [0.22 + (0.38 * i / max(n - 1, 1) if n > 1 else 0.18) for i in range(n)]; h = min(h, 0.32)
+        frame = sc.get("frame") or "wide"
+        if frame == "insert" and not props:
+            warns.append(f"scene {sc['n']}: frame 'insert' needs props: wide shot used instead"); frame = "wide"
+        who_list = sc["who"][:4]
+        if frame in ("medium", "close") and who_list:
+            who_list = who_list[:1] if frame == "close" else who_list[:2]            # closer shots show the speaker(s) only
+            xs, h = ([0.5], 0.52) if len(who_list) == 1 else ([0.32, 0.68], 0.46)
+            if frame == "close":
+                xs, h, feet = [0.5], 0.80, 1.18                                       # big, feet below the picture: head and chest fill it
+        elif frame == "insert":
+            who_list = []
         actors, face = [], face_for(sc["voice"])
-        for i, w in enumerate(sc["who"][:4]):
+        for i, w in enumerate(who_list):
             of, warn = outfit_for(w["costume"], w["costume_status"], cast, root)
             if warn and warn not in warns:
                 warns.append(warn)
@@ -88,6 +99,8 @@ def plan_shots(ir: dict, durs: list[float], words: list, cast: dict, root: Path 
                 warns.append(f"scene {sc['n']}: pose word not known, stand used"); pose = 0
             actors.append({"outfit": of, "pose": pose, "x": xs[i], "feet": feet, "height": h, "faces": [[0, face]]})
         objects = [{"lib": p["library_id"], "x": 0.82 - 0.2 * j, "feet": feet, "height": 0.16, "pop": 0.2 + 0.25 * j} for j, p in enumerate(props[:2])]
+        if frame == "insert":                                                         # detail shot: the object alone, big, in the middle
+            objects = [{"lib": p["library_id"], "x": 0.5 if len(props) == 1 else 0.3 + 0.4 * j, "feet": 0.62, "height": 0.34, "pop": 0.0} for j, p in enumerate(props[:2])]
         texts = [{"text": sc["text"], "x": 0.5, "y": 0.2, "size": 0.07, "font": "bold", "color": (255, 255, 255), "stroke": 3, "screen": True}] if sc["text"] else []
         caps = [[round(max(a - t, 0), 3), round(min(b - t, d), 3), txt, key_words(txt, allred)] for a, b, txt, red in groups if b > t + 0.05 and a < t + d - 0.05]
         cam = CAMS.get(sc["camera"], AUTO_CAMS[(sc["n"] - 1) % 3])

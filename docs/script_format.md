@@ -71,3 +71,21 @@ It prints plain errors with the line number, the costume status (ready / bodies_
 
 ## Style text (once a week)
 `animation/style/house_style.txt` is added to the end of EVERY picture prompt. Replace its text when your style changes.
+
+## Quick shots inside a scene (SHOT blocks, `frame:`, `split:`)
+
+Reference shorts change the picture every 1 to 2 seconds. One SCENE can therefore hold several SHOTs.
+The voice line is spoken ONCE (natural), and its time is shared between the shots by word count.
+
+| Field | Meaning |
+|---|---|
+| `SHOT` | starts a quick shot inside the scene. It inherits `bg`, `who`, `pose`, `props` from the SCENE; write a field again only to change it. |
+| `frame:` | `wide` (small characters, whole place) · `medium` (speaker, bigger) · `close` (huge head and chest) · `insert` (only the prop, big; needs `props:`) · `card` (reserved) |
+| `say:` in a SHOT | the part of the sentence for that shot. Leave it out and the scene's `say:` is cut for you. Fewer pieces than shots = the last shots are silent beats. |
+| `split: no` | in a SCENE: do not cut the voice line automatically. |
+
+`text:`, `sound:`, `from:`, `next:`, `draw:` of the SCENE belong to the FIRST shot only (one big text, one-time sounds, one new picture).
+A SHOT can have its own `bg:` (new picture in the middle of the scene; use `from:`/`next:` in that SHOT to link it).
+
+**Automatic cutting:** a SCENE without SHOT blocks whose `say:` has 11 or more words is cut into 2 shots (22 or more words: 3 shots)
+at a comma or full stop. Shot 1 is `wide`, shot 2 `medium`, shot 3 `close`. Short lines stay one shot.

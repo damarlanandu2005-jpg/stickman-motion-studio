@@ -16,6 +16,7 @@ import numpy as np
 
 SR = 24000
 LEAD, BREATH, MIN_SCENE = 0.15, 0.30, 1.4
+MIN_SHOT = 0.9
 
 
 def _trim(x: np.ndarray) -> np.ndarray:
@@ -43,20 +44,39 @@ def synth_scenes(models: Path, workdir: Path, scenes: list[dict], voice: str = "
     from kokoro_onnx import Kokoro
     k = Kokoro(str(Path(models) / "kokoro-v1.0.onnx"), str(Path(models) / "voices-v1.0.bin"))
     Path(workdir).mkdir(parents=True, exist_ok=True)
+    # shots of one scene (same "group") are spoken in ONE go, so the sentence sounds natural; the time is then split between the shots
+    groups, order = {}, []
+    for i, sc in enumerate(scenes):
+        g = sc.get("group", ("solo", i)) if sc.get("group") is not None else ("solo", i)
+        if g not in groups:
+            groups[g] = []; order.append(g)
+        groups[g].append(i)
+    units = [{"idx": groups[g], "voice": " ".join(scenes[i]["voice"] for i in groups[g]).strip(),
+              "red": [r for i in groups[g] for r in scenes[i].get("red", [])]} for g in order]
     clips = []
-    for sc in scenes:
-        x, sr = k.create(sc["voice"], voice=voice, speed=speed, lang="en-us")
+    for u in units:
+        x, sr = k.create(u["voice"], voice=voice, speed=speed, lang="en-us")
         assert sr == SR, sr
         clips.append(_trim(x))
-    durs = scene_durations([len(c) / SR for c in clips])
+    udurs = scene_durations([len(c) / SR for c in clips])
+    durs = [0.0] * len(scenes)
+    for u, d in zip(units, udurs):
+        n = len(u["idx"])
+        if n == 1:
+            durs[u["idx"][0]] = d; continue
+        wc = np.array([max(len(scenes[i]["voice"].split()), 1) for i in u["idx"]], float)
+        share = np.maximum(d * wc / wc.sum(), MIN_SHOT)
+        share = share * d / share.sum()
+        for i, v in zip(u["idx"], share):
+            durs[i] = round(float(v), 3)
     total = sum(durs)
     timeline = np.zeros(int(total * SR) + SR, np.float32)
     words, report, t = [], [], 0.0
-    for i, (sc, c, d) in enumerate(zip(scenes, clips, durs)):
-        s0 = t + (LEAD if i == 0 else 0.0)
+    for j, (u, c, d) in enumerate(zip(units, clips, udurs)):
+        s0 = t + (LEAD if j == 0 else 0.0)
         timeline[int(s0 * SR):int(s0 * SR) + len(c)] += c
-        words += word_times(sc["voice"], s0, len(c) / SR, sc.get("red", []))
-        report.append({"scene": i + 1, "voice_s": round(len(c) / SR, 2), "scene_s": d, "stretched": False})
+        words += word_times(u["voice"], s0, len(c) / SR, u["red"])
+        report.append({"scene": j + 1, "shots": len(u["idx"]), "voice_s": round(len(c) / SR, 2), "scene_s": round(d, 2), "stretched": False})
         t += d
     raw, wav = Path(workdir) / "voice_raw.wav", Path(workdir) / "voice.wav"
     pcm = (np.clip(timeline / max(float(np.abs(timeline).max()), 1.0), -1, 1) * 32767).astype(np.int16)

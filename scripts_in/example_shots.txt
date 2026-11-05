@@ -1,0 +1,25 @@
+# EXAMPLE only (written by Claude): tests multi-shot scenes. Scene 1 is cut by hand, scene 2 is cut automatically.
+TITLE: Shots Test
+VOICE: am_fenrir
+CAST: animation/cast/example_bomb.json
+
+SCENE
+bg: bomb squad office, inside
+who: arthur, chief
+pose: stand
+props: bomb
+say: Arthur looked at the *bomb*, and the chief looked at Arthur.
+SHOT
+frame: wide
+SHOT
+frame: close
+who: arthur
+pose: think
+SHOT
+frame: insert
+
+SCENE
+bg: city street at night
+who: arthur
+pose: point
+say: One night the chief called him, because a *bomb* sat under the old bridge in the middle of the city.
