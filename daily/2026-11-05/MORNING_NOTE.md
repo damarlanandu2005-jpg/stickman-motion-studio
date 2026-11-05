@@ -1,4 +1,4 @@
-# Morning note 2026-11-05 (in progress)
+# Morning note 2026-11-05
 
 3 of 3 shorts finished.
 - 2026-11-05_01_bomb_colour: done_with_warnings, video shorts/2026-11-05_01_bomb_colour/2026-11-05_01_bomb_colour.mp4
