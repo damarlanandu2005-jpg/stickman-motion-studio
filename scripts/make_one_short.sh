@@ -47,6 +47,8 @@ for C in $MISSING; do
   ASM=$(python -m motion_studio.costume_assemble --loop-dir "costume-state/$C/out/$C" --name "$C" ${STAND:+--stand-in "$STAND"} | tail -2)
   echo "$ASM" | tee "$ST/costume_${C}_assemble.txt"
   if echo "$ASM" | grep -q "ASSEMBLED=true"; then BUILT=true; warn "costume '$C': drawn automatically, heads borrowed from '${STAND:-explorer}', not reviewed by a person"
+    DET=$(python -c "import json,sys;r=json.load(open(sys.argv[1]));print('poses with colour-type flaws accepted: %s; poses copied from another pose (not redrawn): %s' % (r.get('soft_accepted_poses') or 'none', list((r.get('fallback_poses') or {}).keys()) or 'none'))" "costume-state/$C/out/$C/report.json" 2>/dev/null || true)
+    [ -n "$DET" ] && warn "costume '$C': $DET"
   else warn "costume '$C' could not be built: stand-in used"; fi
 done
 if [ "$BUILT" = true ]; then
