@@ -63,6 +63,7 @@ jobs:
           GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
           GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
           GCP_LOCATION: ${{ secrets.GCP_LOCATION }}
+          GCP_API_KEY: ${{ secrets.GCP_API_KEY }}
         run: |
           if [ -n "$GCP_SA_KEY" ] && [ -n "$GCP_PROJECT_ID" ]; then
             # Google Cloud (Vertex AI): paid from the $300 free-trial credit, higher limits than the free API key
@@ -70,6 +71,11 @@ jobs:
             export GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/sa.json" GOOGLE_CLOUD_PROJECT="$GCP_PROJECT_ID" GOOGLE_CLOUD_LOCATION="${GCP_LOCATION:-global}" GOOGLE_GENAI_USE_VERTEXAI=true
             unset GEMINI_API_KEY
             echo "Using Vertex AI, project $GCP_PROJECT_ID, location ${GCP_LOCATION:-global}"
+          elif [ -n "$GCP_API_KEY" ] && [ -n "$GCP_PROJECT_ID" ]; then
+            # Google Cloud (Vertex AI) with an API key (used when the organisation blocks service-account key files)
+            export GOOGLE_API_KEY="$GCP_API_KEY" GOOGLE_CLOUD_PROJECT="$GCP_PROJECT_ID" GOOGLE_CLOUD_LOCATION="${GCP_LOCATION:-global}" GOOGLE_GENAI_USE_VERTEXAI=true
+            unset GEMINI_API_KEY
+            echo "Using Vertex AI with an API key, project $GCP_PROJECT_ID"
           elif [ -z "$GEMINI_API_KEY" ]; then echo "No GCP_SA_KEY/GCP_PROJECT_ID and no GEMINI_API_KEY secret"; exit 1
           else echo "Using the free Gemini API key"; fi
           cd project
