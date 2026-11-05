@@ -23,7 +23,8 @@ LEDGER="daily-state/ledger.json"; mkdir -p daily-state
 if git ls-remote --exit-code --heads origin test-results >/dev/null 2>&1; then
   git fetch -q --depth 1 origin test-results && git show FETCH_HEAD:daily/ledger.json > "$LEDGER" 2>/dev/null || echo '{}' > "$LEDGER"
 else echo '{}' > "$LEDGER"; fi
-LIST=$(python -m motion_studio.daily pick --queue scripts_queue --ledger "$LEDGER" -n "$N")
+if [ -n "${ONLY:-}" ]; then LIST="scripts_queue/$ONLY.txt"      # redo one named script (ignores the ledger)
+else LIST=$(python -m motion_studio.daily pick --queue scripts_queue --ledger "$LEDGER" -n "$N"); fi
 echo "Today's scripts:"; echo "${LIST:-<none>}"
 START=$(date +%s); NAMES=""
 for S in $LIST; do

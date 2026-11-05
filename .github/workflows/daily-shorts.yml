@@ -12,6 +12,9 @@ on:
       count:
         description: "How many shorts today (3 or 4)"
         default: "3"
+      only:
+        description: "Redo ONE script (name without .txt) even if it was done before; empty = normal daily pick"
+        default: ""
 
 concurrency:
   group: kaggle-notebook-scene-batch
@@ -59,6 +62,7 @@ jobs:
           KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
           PYTHONPATH: .
           COUNT: ${{ github.event.inputs.count || '3' }}
+          ONLY: ${{ github.event.inputs.only }}
         run: scripts/daily.sh "$COUNT"
       - name: Keep the work files
         if: always()
