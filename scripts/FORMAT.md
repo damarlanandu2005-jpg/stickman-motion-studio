@@ -1,32 +1,26 @@
-# How to write a script for this branch
+# Script format (the same format that made the Pig War video)
 
-One script = one `.txt` file in `scripts/`. Two parts: the NARRATION (spoken, exactly as it should sound)
-and optional SHOT NOTES (your wishes for the pictures). The AI plans the shots itself from the narration;
-your notes make it follow you.
+Full worked example: `docs/pig_war_script_and_shot_plan.md`. Copy `scripts/TEMPLATE.txt` for a new story.
+
+A script file has three parts:
+1. `TITLE:` one line.
+2. `NARRATION:` the exact words the voice says (about 3.7 words per second; 40 s is about 150 words).
+   Order: HOOK (the strange fact) > SETUP (place) > INCIDENT > ESCALATION > STANDOFF / TIME JUMP > RESOLUTION > TWIST (the last words).
+   Numbers as words. No stage directions in the narration.
+3. `SHOTS:` one block per shot. You do NOT write frame numbers: the voice timing gives them.
 
 ```
-TITLE: The Pig War
-LENGTH: 40 seconds
-
-NARRATION:
-In eighteen fifty nine, America and Britain almost went to war over a pig.
-On a tiny island, an American farmer found a British pig eating his potatoes.
-So he shot it.
-...
-
-SHOT NOTES:
-1. "almost went to war over a pig" - close on a pink pig in a farmyard, warm morning light, slow push in.
-2. "a tiny island" - wide aerial view of a green island in a blue sea, camera glides down.
-3. "eating his potatoes" - farmer in a blue coat and flat cap, angry, pig in his potato patch.
+SHOT 1
+WORDS:      "the exact phrase spoken in this shot"
+PLACE:      where it is, what is in the frame
+LIGHT:      day | dawn | golden | night | indoor | cycle
+CAMERA:     start framing > end framing; push-in / pull-back / orbit / static / snap-zoom; wide or tight; tilt; shake on impact
+CHARACTERS: who | outfit | pose (arms) | face | where they stand / which way they face
+EFFECTS:    bubbles, smoke, stars, steam, flash, props that change
+SFX:        what you hear and on which word
+MUSIC:      what the music does (starts, stops, changes)
 ```
 
-Narration rules (from the skill):
-- About 3.7 spoken words per second: 20 s ~ 75 words, 30 s ~ 110, 45 s ~ 165, 60 s ~ 220.
-- Sentence 1 is the hook (the strange fact, no setup). Then setting, 2-4 bigger beats, a "but" turn, and a short twist as the last words.
-- Plain spoken English, sentences of 8-15 words, numbers written as words. Never describe what the viewer already sees.
-
-Shot notes rules:
-- Start each note with the words of the narration it belongs to, in quotes.
-- Say: place, light (day / golden / night), camera (wide / close on X / push in / pull back / glide), who is there,
-  what they wear, what they do, their face, and what moves (smoke, flags, water, a coin flying).
-- Anything you leave out, the AI decides.
+Rules: one visual idea per sentence, cut on sentence breaks, one camera move and one face change per shot,
+loudest sound on the key action with the music silent just before it, the biggest picture on the last three words.
+Fields you leave empty are decided by the AI. A CAST section (who wears what) at the top of SHOTS helps keep characters the same.

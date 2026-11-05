@@ -1,23 +1,189 @@
 TITLE: The Pig War
-LENGTH: 40 seconds
 
 NARRATION:
-In eighteen fifty nine, America and Britain almost started a war over one pig.
-Both countries claimed the same tiny island between Canada and the United States.
-One morning, an American farmer found a British pig eating his potatoes.
-So he shot it.
-He offered the owner ten dollars. The British owner wanted one hundred.
-Soon soldiers arrived. Then warships. Then cannons, all pointed at each other.
-Hundreds of men waited for the first shot.
-But nobody fired. Officers on both sides refused to fight over a pig.
-The island was finally settled by a German emperor, twelve years later.
-The only casualty of the whole war was the pig.
+In eighteen fifty-nine, two empires nearly went to war over one pig.
+It lived on San Juan Island, where nobody agreed which country owned the land. One morning, it wandered into an American farmer's potato garden. Again. So he shot it.
+The pig's British owner demanded a hundred dollars. The farmer offered ten. Soon came threats of arrest, soldiers, and warships.
+Both sides camped on opposite ends of the island, ordered never to fire first. They waited twelve years.
+Finally, a German emperor drew the border. The island went to America. And the only casualty of the Pig War... was the pig.
 
-SHOT NOTES:
-1. "over one pig" - close on a pink pig in a farmyard, warm light, slow push in.
-2. "tiny island" - wide aerial view of a green island in a blue sea, camera glides down.
-3. "eating his potatoes" - American farmer in a blue coat and flat cap, angry, the pig in his potato patch.
-4. "ten dollars / one hundred" - farmer and the British owner in a red coat, price bubbles above them.
-5. "warships / cannons" - two camps with American and British flags facing each other across a field.
-6. "a German emperor" - an old emperor with a white beard drawing a line on a big map table, golden light.
-7. "was the pig" - the pig on a small brick memorial with a halo, flowers around, golden light.
+SHOTS:
+CAST:
+- Pig: pink side view, curly tail, chews a potato; KO = on its back with X eyes, halo, stars.
+- Farmer (US): blue tunic, yellow hair, no hat.
+- Brit (pig owner): tall black top hat, dark green coat, red face when angry.
+- US soldier: blue coat, dark shako hat, musket. UK soldier: red coat, tall shako, musket.
+- Old soldiers (after the time jump): same uniforms, long white beards.
+- Emperor: spiked pickelhaube helmet, blue coat, cape, white beard.
+- Guards: stern, flank the throne.
+
+SHOT 1 (pighead)
+WORDS: "In eighteen fifty-nine,"
+PLACE: farmhouse wall and fence, lawn in front, potato bushes.
+LIGHT: dawn (pink sky, low warm sun).
+CAMERA: tight close-up on the pig's head, slight drift, fov 34 > 33. Shallow depth of field (background soft).
+CHARACTERS: Pig, side view, chewing a potato, eye = guilty (sideways glance).
+EFFECTS: drifting autumn leaves (orange, red, yellow).
+SFX: none. MUSIC: playful oom-pah starts (bass pluck, brass off-beats, marimba).
+
+SHOT 2 (armies)
+WORDS: "two empires nearly went to war over one pig."
+PLACE: same garden, camera pulls back to show the fence line.
+LIGHT: day (blue sky, white sun).
+CAMERA: pull back from the pig head to a wide shot (fov 33 > 40), easing out.
+CHARACTERS: Pig (chewing, then eye = alert at f128). Three US soldiers on the left (blue, stern), three UK soldiers on the right (red, stern), all facing the pig. At f100 (on "war") they raise muskets and point at each other.
+EFFECTS: none.
+SFX: whoosh at f62 (pull-back), two gun clicks at f100–103, pig oink at f131 ("one pig"). MUSIC: continues.
+
+SHOT 3 (aerial)
+WORDS: "It lived on San Juan Island,"
+PLACE: the whole island seen from the sky: green top, brown cliff edge, white-foam sea, mountains behind. (No statue yet, so the ending stays a surprise.)
+LIGHT: day.
+CAMERA: very high and far away (-150, 62, 150) flying in to (-92, 44, 112), looking down at the island, fov 44 > 42.
+CHARACTERS: none.
+EFFECTS: animated sea; waving water.
+SFX: whoosh (f162), sea ambience under it. MUSIC: continues.
+
+SHOT 4 (claim)
+WORDS: "where nobody agreed which country owned the land."
+PLACE: grass hill with two flag poles (US left, UK right) planted side by side at the island's middle.
+LIGHT: day.
+CAMERA: wide, static, very slow push-in (fov 46 > 44). A 3-frame white flash on the cut (f240).
+CHARACTERS: Farmer (left, blue, right arm pointing, left hand on hip, face = shout then stubborn) and Brit (right, top hat, green coat, left arm pointing, face = shout, red cheeks). They take turns shouting: farmer f246–282, Brit f281–318. They bob and tilt their heads when they shout.
+EFFECTS: flags waving.
+SFX: whoosh (f239), boing at f246 and f281 (each argues). MUSIC: continues until the shot.
+
+SHOT 5 (porch)
+WORDS: "One morning, it wandered into an American farmer's potato garden."
+PLACE: farmhouse porch, fence, potato rows behind the lawn.
+LIGHT: dawn.
+CAMERA: starts on the farmer sipping from a mug (fov 34), then at f372 cuts wider to follow the pig as it walks across the garden (fov 44), drifting left.
+CHARACTERS: Farmer (blue tunic, mug in hand, eyes closed, face = smile). He notices the pig at f440: arm drops, face = nervous, eyes wide. Pig walks in from the right (f346–428), eye = happy, then stops and chews a potato (f430).
+EFFECTS: steam rising from the mug until f440; potato bushes disappear along the pig's path (the pig is "eating").
+SFX: rooster at f334 ("One morning"), oink at f360, little footsteps f358–428, munching f430 on. MUSIC: tense bed (B section) fades in near the end of this part.
+
+SHOT 6 (again)
+WORDS: "Again."
+PLACE: same porch, very tight.
+LIGHT: dawn.
+CAMERA: extreme close-up on the farmer's face (fov 24 > 22), then snap-zoom out at f474 (fov 42).
+CHARACTERS: Farmer face = stubborn, squinting twitch every 3 frames, head shaking. From f476 he grabs his musket (right arm "spear" pose). Pig in the background still chewing, eye = happy.
+EFFECTS: none.
+SFX: low drone swell. MUSIC: pauses; the drone carries the tension.
+
+SHOT 7 (shot)
+WORDS: "So he shot it."
+PLACE: porch, medium wide.
+LIGHT: dawn.
+CAMERA: static medium wide (fov 44 > 42). Camera kick (shake) at f506, smaller kick at f519. White flash f505–508.
+CHARACTERS: Farmer aims musket (f489–522), face = stern, then shock at f523. Recoil lean at f505–512. Pig: chewing > eye alert (f490) > shot at f505: hops 1.15 units, spins upside down (f505–516) > lands KO (X eyes, halo from f522, stars circling).
+EFFECTS: yellow BANG star-burst at the gun muzzle (f505–511), then a smoke puff drifting up (f507–540), spinning stars around the pig's head (f522+).
+SFX: gun cocks f489 and f495, BANG at f504 (loudest sound in the film), squeal f506, thud f516, ting f523. MUSIC: stops dead at the shot (about 16.7 s) and stays silent about 1.3 s.
+
+SHOT 8 (owner)
+WORDS: "The pig's British owner demanded a hundred dollars."
+PLACE: same garden, camera now centred between the farmer and the pig.
+LIGHT: day (it is later in the morning).
+CAMERA: medium shot, slow push-in (fov 50 > 48).
+CHARACTERS: Brit (top hat, dark green coat) storms in from the right (f541–578), face turns redder the longer he speaks (flush 0.1 > 0.5), then shouts with a bounce, left arm reaching out, palm up. Farmer (left, blue) stands frozen with arms hanging, face = shock. KO pig on the ground between them, halo on.
+EFFECTS: steam from the Brit's ears from f590, speech bubble "$100" (green on white) pops in at f596 above his head.
+SFX: stomping footsteps f545–578, steam hiss f592, pop f596, coin ring f601. MUSIC: tense bed returns about 18 s.
+
+SHOT 9 (offer)
+WORDS: "The farmer offered ten."
+PLACE: same spot, camera swung to the farmer.
+LIGHT: day.
+CAMERA: whip-cut at f634 (whoosh), then slow push-in (fov 48 > 46).
+CHARACTERS: Farmer face = nervous, arms low. Brit behind him still steaming, left arm reaching out.
+EFFECTS: small "$10" bubble at f664 plus a tiny coin bobbing at his hand; the Brit steams.
+SFX: whoosh at f634, pop f664, small coin at f668. MUSIC: tense bed.
+
+SHOT 10 (threat)
+WORDS: "Soon came threats of arrest,"
+PLACE: same garden, camera back to a three-shot.
+LIGHT: day.
+CAMERA: slow push-in with a 2-degree roll tilt (fov 48 > 44).
+CHARACTERS: Brit points at the farmer (left arm out, shouting, red face). Farmer face = nervous, sweating.
+EFFECTS: floating handcuffs (grey ring pair) hover between them from f696; steam from the Brit's ears; a sweat drop falls from the farmer.
+SFX: five clinks f702–f734, steam f710. MUSIC: tense bed.
+
+SHOT 11 (march)
+WORDS: "soldiers,"
+PLACE: open lawn at the middle of the island.
+LIGHT: day.
+CAMERA: medium-wide, low, static (fov 38).
+CHARACTERS: A line of 7 soldiers alternating US blue / UK red, marching left to right across the frame, stern faces, bobbing steps (stride cycle).
+EFFECTS: none.
+SFX: boot thumps every 0.25 s. MUSIC: switches to the marching section (kick, snare roll, fife) about 27 s.
+
+SHOT 12 (ship)
+WORDS: "and warships."
+PLACE: open sea at the horizon with a dark warship sailing in from the left; snowy mountains behind.
+LIGHT: day.
+CAMERA: low and wide on the water (fov 46 > 44), a camera kick at f795 (cannon).
+CHARACTERS: none. Ship slides in (x -30 > 1) with two masts and a black funnel.
+EFFECTS: white cannon smoke puff on the ship's side (f790–812).
+SFX: ship horn f781, sea ambience f782+, cannon BOOM f791. MUSIC: marching bed.
+
+SHOT 13 (campUS)
+WORDS: "Both sides camped on opposite ends of the island,"  (first half)
+PLACE: west end of the island: cream tents with red tips, US flag on a tall pole, campfire, hills and mountains behind.
+LIGHT: day.
+CAMERA: wide, slight drift toward the flag (fov 46 > 44).
+CHARACTERS: Four US soldiers (blue coat, dark shako) standing at ease facing the flag; two smile, two look neutral.
+EFFECTS: campfire smoke curling up; flag waving.
+SFX: fire crackle starts f814. MUSIC: marching bed.
+
+SHOT 14 (campUK)
+WORDS: "...on opposite ends of the island," (second half)
+PLACE: east end: mirror image of the US camp, Union Jack flag, red-tipped tents.
+LIGHT: day.
+CAMERA: mirrored from the US camp.
+CHARACTERS: Four UK soldiers (red coat, tall shako) mirroring the US soldiers.
+EFFECTS: campfire smoke; flag waving.
+SFX: whoosh at f849 (cut across the island), fire crackle continues. MUSIC: marching bed.
+
+SHOT 15 (stare)
+WORDS: "ordered never to fire first."
+PLACE: the middle of the island, two soldiers face to face, the disputed hill.
+LIGHT: day.
+CAMERA: slow push-in from medium to tight (fov 40 > 34), growing tilt (roll -2 then +3) to build tension.
+CHARACTERS: One US soldier (left) and one UK soldier (right), muskets aimed at each other. Faces go stern > stubborn > nervous (twitching every 4 frames from f940).
+EFFECTS: sweat drops falling from both faces.
+SFX: low drone, a heartbeat that speeds up (0.85 s > 0.45 s between beats), small drips. MUSIC: all music drops out and the bed holds only the drone.
+
+SHOT 16 (wait)
+WORDS: "They waited twelve years."
+PLACE: same two soldiers, same spot; the sky cycles day > golden > night > dawn about three times (the passing years).
+LIGHT: cycle (the four lights blend continuously).
+CAMERA: starts tight (fov 34), then pulls back and rises slowly (fov 40).
+CHARACTERS: same two soldiers, rifles lowering, drooping and leaning to the side as they get sleepy (face = dazed, then snore). From f1004 they grow long white beards (old versions).
+EFFECTS: calendar pages blow across the screen from left to right (the years), dust flakes, leaves.
+SFX: clock ticking that speeds up from 0.2 s to 0.05 s between ticks, two wind whooshes (f975, f1005), a snore at f1022. MUSIC: wood-block ticking only.
+
+SHOT 17 (throne)
+WORDS: "Finally, a German emperor drew the border."
+PLACE: throne room at the island's far side: marble floor, red carpet, columns, black-white-red flags on the walls, a big table with a map of the island.
+LIGHT: indoor (warm cream).
+CAMERA: starts back and high (z 312), flies in toward the emperor and the map (z 303 > 302) with a gentle fov narrowing (40 > 36). White flash on the cut (f1039).
+CHARACTERS: Emperor behind the table (spiked helmet, blue coat, cape, white beard) writing with a quill (right arm pointing down, head tilted, face = smile with eyes closed). Two guards in the back, stern.
+EFFECTS: a red border line draws itself on the map (f1062–1114) following the quill; the quill moves with it.
+SFX: harp glissando f1037 on "Finally,", quill scratching f1062–1114. MUSIC: pompous waltz (brass, bass) about 34.6 s.
+
+SHOT 18 (stamp)
+WORDS: "The island went to America."
+PLACE: close on the map.
+LIGHT: indoor.
+CAMERA: push-in on the map (fov 36 > 30), camera kick at f1148 when the stamp lands.
+CHARACTERS: Emperor's right arm (pointing) brings a stamp down; from f1160 he cheers (face = grin, arm up).
+EFFECTS: a big wooden stamp slams down f1138–1147, a dust puff at the impact (f1147–1159), a yellow star-burst at f1160, and the American side of the map fills with the US flag (f1149–1172).
+SFX: stamp THUNK f1147, brass fanfare f1158, ting f1166. MUSIC: the waltz stops at the stamp.
+
+SHOT 19 (park)
+WORDS: "And the only casualty of the Pig War... was the pig."
+PLACE: a small memorial plaza on the island at golden hour: a brick pedestal with a grey stone pig on top, flower garlands, two flag poles (US left, UK right).
+LIGHT: golden (orange sunset, long shadows).
+CAMERA: starts wide (fov 46), white flash on the cut (f1177), slow push-in on the pig statue (fov 38 > 36), final slow push to a tight shot of the statue's face with a tiny roll tilt (fov 31, roll 2). Depth of field blurs the background more over time.
+CHARACTERS: Stone pig statue (moss spots, flower wreath, eye = alert). Four mourners with hats off, hands crossed, face = pained: US soldier and UK soldier, farmer and Brit (they stand side by side, the two enemies together).
+EFFECTS: petals falling; on "was the pig" (f1269) a gold halo appears over the pig's head; sparkle star at f1266–1294.
+SFX: ting at f1269 and f1273 (halo), small oink at f1281. MUSIC: solemn fife and soft pad; a major chord on "was the pig"; ends with a 40 ms fade.

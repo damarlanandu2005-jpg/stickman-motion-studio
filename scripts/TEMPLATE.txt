@@ -1,0 +1,28 @@
+TITLE: 
+
+NARRATION:
+
+
+SHOTS:
+CAST:
+- Name: outfit, hair/hat, colours
+
+SHOT 1
+WORDS:      ""
+PLACE:      
+LIGHT:      
+CAMERA:     
+CHARACTERS: 
+EFFECTS:    
+SFX:        
+MUSIC:      
+
+SHOT 2
+WORDS:      ""
+PLACE:      
+LIGHT:      
+CAMERA:     
+CHARACTERS: 
+EFFECTS:    
+SFX:        
+MUSIC:      

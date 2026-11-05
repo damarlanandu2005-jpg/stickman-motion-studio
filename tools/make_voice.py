@@ -10,12 +10,12 @@ models = Path(sys.argv[3] if len(sys.argv) > 3 else "models")
 voice = sys.argv[4] if len(sys.argv) > 4 else "am_fenrir"
 speed = float(sys.argv[5]) if len(sys.argv) > 5 else 1.05
 text = src.read_text(encoding="utf-8")
-m = re.search(r"^NARRATION:\s*\n(.*?)(?=^\s*SHOT NOTES:|\Z)", text, re.S | re.M)
+m = re.search(r"^NARRATION:\s*\n(.*?)(?=^\s*(?:SHOTS|SHOT NOTES):|\Z)", text, re.S | re.M)
 narr = (m.group(1) if m else text).strip()
 narr = " ".join(l.strip() for l in narr.splitlines() if l.strip() and not l.strip().startswith("#"))
 proj.mkdir(parents=True, exist_ok=True)
 (proj / "script.txt").write_text(narr + "\n", encoding="utf-8")
-notes = re.search(r"^\s*SHOT NOTES:\s*\n(.*)\Z", text, re.S | re.M)
+notes = re.search(r"^\s*(?:SHOTS|SHOT NOTES):\s*\n(.*)\Z", text, re.S | re.M)
 if notes and notes.group(1).strip():
     (proj / "shot_notes.txt").write_text(notes.group(1).strip() + "\n", encoding="utf-8")
 from kokoro_onnx import Kokoro
