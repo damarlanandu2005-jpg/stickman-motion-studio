@@ -16,5 +16,14 @@
   "status": "done_with_warnings",
   "tries": 0,
   "video": "shorts/2026-11-05_02_sea_438/2026-11-05_02_sea_438.mp4"
+ },
+ "2026-11-05_03_no_summer": {
+  "last_run": "41918688366 2026-11-05",
+  "notes": [
+   "WARN: 1 background/prop pictures still missing: plain placeholders in the video WARN: costume 'farmerwear' could not be built: stand-in used render: costume 'farmerwear' is spec_only: stand-in 'role_civ' used render: scene 4: background 'green farm field in June, covered in snow' not in the library yet: plain placeholder  (4 warnings in total)"
+  ],
+  "status": "done_with_warnings",
+  "tries": 0,
+  "video": "shorts/2026-11-05_03_no_summer/2026-11-05_03_no_summer.mp4"
  }
 }

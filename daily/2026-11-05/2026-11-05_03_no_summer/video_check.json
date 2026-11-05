@@ -1,0 +1,26 @@
+{
+ "file": "daily-out/2026-11-05/2026-11-05_03_no_summer/2026-11-05_03_no_summer.mp4",
+ "fails": [],
+ "warnings": [],
+ "seconds": 19.63,
+ "size": [
+  720,
+  1280
+ ],
+ "frame_means": [
+  76.9,
+  139.1,
+  160.8,
+  166.2,
+  78.9
+ ],
+ "frame_changes": [
+  77.4,
+  65.1,
+  43.6,
+  97.9
+ ],
+ "audio_rms": 0.1386,
+ "ok": true
+}
+VIDEO_OK=true

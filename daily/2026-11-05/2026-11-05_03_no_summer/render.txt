@@ -1,0 +1,41 @@
+[0;93m2026-11-05 02:02:22.858299009 [W:onnxruntime:Default, device_discovery.cc:95 GetPciBusId] Skipping pci_bus_id for PCI path at "/sys/devices/LNXSYSTM:00/LNXSYBUS:00/ACPI0004:00/MSFT1000:00/5620e0c7-8062-4dce-aeb7-520c7ef76171" because filename "5620e0c7-8062-4dce-aeb7-520c7ef76171" did not match expected pattern of [0-9a-f]+:[0-9a-f]+:[0-9a-f]+[.][0-9a-f]+[m
+{
+ "ok": true,
+ "video": "daily-out/2026-11-05/2026-11-05_03_no_summer/2026-11-05_03_no_summer.mp4",
+ "render": {
+  "frames": 589,
+  "seconds": 19.63,
+  "shots": 6,
+  "fps": 30,
+  "all_frames": 589
+ },
+ "scenes": 6,
+ "warnings": [
+  "costume 'farmerwear' is spec_only: stand-in 'role_civ' used",
+  "scene 4: background 'green farm field in June, covered in snow' not in the library yet: plain placeholder"
+ ],
+ "missing_assets": [
+  {
+   "id": "bg_green_farm_field_june_covered_snow",
+   "type": "background",
+   "tags": [
+    "green",
+    "farm",
+    "field",
+    "june",
+    "covered",
+    "snow"
+   ],
+   "desc": "green farm field in June, covered in snow",
+   "scene": 4,
+   "base": "bg_green_farm_field_june_bright_sun",
+   "mode": "same",
+   "root": "bg_green_farm_field_june_bright_sun",
+   "change": "green farm field in June, covered in snow"
+  }
+ ],
+ "missing_costumes": [
+  "farmerwear"
+ ],
+ "human_reviewed": false
+}

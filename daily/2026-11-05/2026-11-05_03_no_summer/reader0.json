@@ -1,0 +1,266 @@
+{
+ "title": "The Year Without A Summer",
+ "voice": "am_fenrir",
+ "scenes": [
+  {
+   "n": 1,
+   "voice": "In 1815 a volcano called Tambora exploded.",
+   "red": [
+    "1815"
+   ],
+   "bg": {
+    "wanted": "huge volcano erupting at night, glowing lava",
+    "library_id": null,
+    "match": 0.17
+   },
+   "who": [
+    {
+     "character": "farmer",
+     "stage": "main",
+     "costume": "farmerwear",
+     "costume_status": "missing"
+    }
+   ],
+   "pose": [
+    "point"
+   ],
+   "props": [],
+   "text": "TAMBORA, 1815",
+   "sound": "he hears an explosion",
+   "camera": "push"
+  },
+  {
+   "n": 2,
+   "voice": "Its ash floated around the whole world.",
+   "red": [
+    "ash"
+   ],
+   "bg": {
+    "wanted": "grey ash cloud covering a village sky",
+    "library_id": null,
+    "match": 0.17
+   },
+   "who": [
+    {
+     "character": "farmer",
+     "stage": "main",
+     "costume": "farmerwear",
+     "costume_status": "missing"
+    }
+   ],
+   "pose": [
+    "arms_up"
+   ],
+   "props": [],
+   "text": "",
+   "sound": "",
+   "camera": "pull"
+  },
+  {
+   "n": 3,
+   "voice": "Then came 1816, and the summer never arrived.",
+   "red": [
+    "1816"
+   ],
+   "bg": {
+    "wanted": "green farm field in June, bright sun",
+    "library_id": null,
+    "match": 0.0
+   },
+   "who": [
+    {
+     "character": "farmer",
+     "stage": "main",
+     "costume": "farmerwear",
+     "costume_status": "missing"
+    }
+   ],
+   "pose": [
+    "stand"
+   ],
+   "props": [],
+   "text": "1816",
+   "sound": "",
+   "camera": "push"
+  },
+  {
+   "n": 4,
+   "voice": "It snowed in June, and the crops froze.",
+   "red": [
+    "snowed"
+   ],
+   "bg": {
+    "wanted": "green farm field in June, covered in snow",
+    "library_id": null,
+    "match": 0.0
+   },
+   "who": [
+    {
+     "character": "farmer",
+     "stage": "main",
+     "costume": "farmerwear",
+     "costume_status": "missing"
+    }
+   ],
+   "pose": [
+    "kneel"
+   ],
+   "props": [],
+   "text": "",
+   "sound": "",
+   "camera": "still"
+  },
+  {
+   "n": 5,
+   "voice": "Hungry families left their farms and walked away.",
+   "red": [
+    "farms"
+   ],
+   "bg": {
+    "wanted": "foggy country road, cold grey morning",
+    "library_id": null,
+    "match": 0.0
+   },
+   "who": [
+    {
+     "character": "farmer",
+     "stage": "main",
+     "costume": "farmerwear",
+     "costume_status": "missing"
+    }
+   ],
+   "pose": [
+    "walk"
+   ],
+   "props": [],
+   "text": "",
+   "sound": "",
+   "camera": "pan"
+  },
+  {
+   "n": 6,
+   "voice": "A young writer stuck indoors invented Frankenstein.",
+   "red": [
+    "Frankenstein"
+   ],
+   "bg": {
+    "wanted": "candle lit study with a stormy window",
+    "library_id": null,
+    "match": 0.2
+   },
+   "who": [
+    {
+     "character": "writer",
+     "stage": "main",
+     "costume": "civ",
+     "costume_status": "ready"
+    }
+   ],
+   "pose": [
+    "think"
+   ],
+   "props": [],
+   "text": "",
+   "sound": "",
+   "camera": "push"
+  }
+ ],
+ "errors": [],
+ "costume_status": {
+  "farmerwear": "missing",
+  "civ": "ready"
+ },
+ "missing_costumes": [
+  "farmerwear"
+ ],
+ "missing_assets": [
+  {
+   "id": "bg_huge_volcano_erupting_night_glowing_lava",
+   "type": "background",
+   "tags": [
+    "huge",
+    "volcano",
+    "erupting",
+    "night",
+    "glowing",
+    "lava"
+   ],
+   "desc": "huge volcano erupting at night, glowing lava",
+   "scene": 1
+  },
+  {
+   "id": "bg_grey_ash_cloud_covering_village_sky",
+   "type": "background",
+   "tags": [
+    "grey",
+    "ash",
+    "cloud",
+    "covering",
+    "village",
+    "sky"
+   ],
+   "desc": "grey ash cloud covering a village sky",
+   "scene": 2
+  },
+  {
+   "id": "bg_green_farm_field_june_bright_sun",
+   "type": "background",
+   "tags": [
+    "green",
+    "farm",
+    "field",
+    "june",
+    "bright",
+    "sun"
+   ],
+   "desc": "green farm field in June, bright sun",
+   "scene": 3
+  },
+  {
+   "id": "bg_green_farm_field_june_covered_snow",
+   "type": "background",
+   "tags": [
+    "green",
+    "farm",
+    "field",
+    "june",
+    "covered",
+    "snow"
+   ],
+   "desc": "green farm field in June, covered in snow",
+   "scene": 4,
+   "base": "bg_green_farm_field_june_bright_sun",
+   "mode": "same",
+   "root": "bg_green_farm_field_june_bright_sun",
+   "change": "green farm field in June, covered in snow"
+  },
+  {
+   "id": "bg_foggy_country_road_cold_grey_morning",
+   "type": "background",
+   "tags": [
+    "foggy",
+    "country",
+    "road",
+    "cold",
+    "grey",
+    "morning"
+   ],
+   "desc": "foggy country road, cold grey morning",
+   "scene": 5
+  },
+  {
+   "id": "bg_candle_lit_study_stormy_window",
+   "type": "background",
+   "tags": [
+    "candle",
+    "lit",
+    "study",
+    "stormy",
+    "window"
+   ],
+   "desc": "candle lit study with a stormy window",
+   "scene": 6
+  }
+ ],
+ "ok": true
+}
