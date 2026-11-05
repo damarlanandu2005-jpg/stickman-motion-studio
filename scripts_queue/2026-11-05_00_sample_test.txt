@@ -1,0 +1,24 @@
+# SAMPLE TEST (written by Claude): small script to prove the second Kaggle account works end to end (new kernel, shared dataset, drawing, save).
+TITLE: The Lantern On The Hill
+VOICE: am_fenrir
+CAST: animation/cast/final_bomb.json
+
+SCENE
+bg: green hill with a small wooden hut at dusk
+who: arthur
+pose: stand
+say: Arthur climbed the hill at dusk, because he saw a *lantern* glowing in the hut.
+
+SCENE
+bg: green hill with a small wooden hut at night, stars in the sky
+from: green hill with a small wooden hut at dusk
+who: arthur
+pose: think
+say: Hours later the *stars* came out, and the lantern still glowed.
+
+SCENE
+bg: inside a small wooden hut, one oil lantern on a table
+who: arthur, chief
+pose: stand
+props: lantern
+say: Inside, the chief was waiting with a *map* of the whole valley.

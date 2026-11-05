@@ -75,10 +75,12 @@ def test_403_is_not_believed_without_the_list_confirming_it(tmp_path):
     def listed(args):
         calls.append(args[2])
         if args[2] == "download": return 1, "403 Client Error: Forbidden"
-        return 0, "ref,title\nme/assets,Stickman assets\n"          # the list says the dataset exists
+        if args[2] == "status": return 0, "ready"                      # Kaggle says the dataset exists
+        return 0, "ref,title\nme/assets,Stickman assets\n"
     r = st.down("me", "assets", tmp_path / "lib", runner=listed, sleep=lambda s: None)
     assert not r["ok"] and not r["no_dataset"] and calls.count("download") == 4
     def gone(args):
+        if args[2] == "status": return 1, "404 Not Found"
         return (1, "403 Forbidden") if args[2] == "download" else (0, "ref,title\n")
     r = st.down("me", "assets", tmp_path / "lib", runner=gone, sleep=lambda s: None)
     assert r["ok"] and r["no_dataset"]

@@ -4,7 +4,8 @@
 # Usage: scripts/run_assets_auto.sh scripts_in/<name>.txt
 set -u
 SCRIPT="$1"; NAME=$(basename "$SCRIPT" .txt)
-OWNER=$(echo "${KAGGLE_USERNAME:-}" | tr -d '[:space:]'); SLUG=stickman-assets
+. scripts/kaggle_accounts.sh; ka_init
+SLUG=stickman-assets
 STATE="assets-state/$NAME"; mkdir -p "$STATE" animation/asset_requests
 REQ="animation/asset_requests/$NAME.json"
 export PYTHONPATH=.
@@ -50,7 +51,7 @@ for ROUND in 1 2 3; do
   echo "$PLAN"
   echo "$PLAN" | grep -q "NOTHING_PENDING=true" && { DONE=true; break; }
   echo "$PLAN" | grep -q "NOTHING_TO_DRAW=true" && { echo "nothing can be drawn now (a base picture failed)"; break; }
-  EXTRA=""; echo "$PLAN" | grep -q "USES_DATASET=true" && EXTRA="--dataset-source $OWNER/$SLUG"
+  EXTRA=""; echo "$PLAN" | grep -q "USES_DATASET=true" && EXTRA="--dataset-source $DATASET_OWNER/$SLUG"
   # the notebook needs the dataset version that holds the style references: it is the one pulled in step 1 (or the bootstrap)
   python scripts/build_scene_batch_notebook.py
   OUTDIR="$STATE/kaggle-r$ROUND"
@@ -66,10 +67,10 @@ for ROUND in 1 2 3; do
   fi
   for TRY in 1 2; do
     rm -rf "$OUTDIR"
-    if python -m motion_studio.kaggle_runner --kernel "$OWNER/stickman-motion-studio-scene-batch" \
+    if python -m motion_studio.kaggle_runner --kernel "$(ka_user)/stickman-motion-studio-scene-batch" \
          --title "Stickman Motion Studio Scene Batch" --kernel-dir kaggle/scene-batch --notebook scene_batch.ipynb --out "$OUTDIR" \
          --profile poses --timeout-minutes 60 --kaggle-run-limit-seconds 3600 $EXTRA; then break; fi
-    echo "Kaggle try $TRY failed"; sleep 20
+    echo "Kaggle try $TRY failed"; ka_swap; sleep 20
   done
   mkdir -p "$OUTDIR"
   JUDGE=$(python -m motion_studio.asset_auto judge --request "$REQ" --round "$ROUND" --state "$STATE" --outputs "$OUTDIR")

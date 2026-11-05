@@ -131,11 +131,17 @@ def _run(args: list[str]) -> tuple[int, str]:
 
 
 def owner_of(env=os.environ) -> str:
-    return (env.get("KAGGLE_USERNAME") or "").strip()
+    """Owner of the dataset: DATASET_OWNER when set (the second Kaggle account is only a collaborator), else the logged-in account."""
+    return (env.get("DATASET_OWNER") or env.get("KAGGLE_USERNAME") or "").strip()
 
 
 def exists(owner: str, slug: str, runner: Runner = _run) -> bool | None:
-    """Is the dataset in my own list?  True / False / None (could not ask)."""
+    """Does the dataset exist?  True / False / None (could not ask). Asks for the dataset itself first (works for a shared dataset too)."""
+    code, out = runner(["kaggle", "datasets", "status", f"{owner}/{slug}"])
+    if code == 0 and "ready" in out.lower():
+        return True
+    if any(w in out.lower() for w in ("404", "not found", "could not find")):
+        return False
     code, out = runner(["kaggle", "datasets", "list", "--mine", "-s", slug, "--csv"])
     if code != 0:
         return None
@@ -214,6 +220,9 @@ def main(argv: list[str] | None = None) -> int:
     r = down(owner, a.slug, lib, sprites=sp) if a.cmd == "down" else up(owner, a.slug, a.message, lib, sprites=sp) if a.cmd == "up" else verify(lib, a.ids, sp)
     print(json.dumps(r)); 
     if a.cmd == "down" and r.get("no_dataset"):
+        me = (os.environ.get("KAGGLE_USERNAME") or "").strip()
+        if me and owner and me != owner:                # a collaborator account must never start (and overwrite) the owner's dataset
+            print("REFUSED: dataset not visible to this account, not starting a new one"); return 1
         print("NO_DATASET=true")
     return 0 if r.get("ok") else 1
 

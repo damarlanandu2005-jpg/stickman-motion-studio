@@ -2,6 +2,7 @@
 # Automatic costume loop for ONE spec file: Kaggle draws -> code judges -> failed poses redrawn (new seeds, accepted poses as reference)
 # -> accepted poses saved. No person in the middle. Usage: scripts/run_costume_auto.sh animation/costume_specs/<name>.json
 set -u
+. scripts/kaggle_accounts.sh; ka_init
 SPEC="$1"
 NAME=$(python -c "import json,sys;print(json.load(open(sys.argv[1]))['name'])" "$SPEC")
 MAX=$(python -c "import json,sys;print(json.load(open(sys.argv[1]))['max_rounds'])" "$SPEC")
@@ -25,10 +26,10 @@ for ROUND in $(seq 1 "$MAX"); do
   OUTDIR="$STATE/kaggle-r${ROUND}"
   for TRY in 1 2; do
     rm -rf "$OUTDIR"
-    if python -m motion_studio.kaggle_runner --kernel "$(echo "$KAGGLE_USERNAME" | tr -d '[:space:]')/stickman-motion-studio-scene-batch" \
+    if python -m motion_studio.kaggle_runner --kernel "$(ka_user)/stickman-motion-studio-scene-batch" \
          --title "Stickman Motion Studio Scene Batch" --kernel-dir kaggle/scene-batch --notebook scene_batch.ipynb --out "$OUTDIR" \
          --profile poses --timeout-minutes 60 --kaggle-run-limit-seconds 3600; then break; fi
-    echo "Kaggle try $TRY failed"; sleep 20
+    echo "Kaggle try $TRY failed"; ka_swap; sleep 20
   done
   mkdir -p "$OUTDIR"
   JUDGE=$(PYTHONPATH=. python -m motion_studio.costume_loop judge --spec "$SPEC" --round "$ROUND" --state "$STATE" --outputs "$OUTDIR")

@@ -5,6 +5,7 @@
 set -u
 N="${1:-3}"; BUDGET_MIN="${BUDGET_MIN:-270}"
 export PYTHONPATH=.
+. scripts/kaggle_accounts.sh; ka_preflight
 RUN="${GITHUB_RUN_ID:-local}"; DAY=$(TZ=Asia/Kolkata date +%F); OUT="daily-out/$DAY"; mkdir -p "$OUT"
 git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 publish() {   # copy $OUT + ledger to test-results/daily/<day>/ ; several tries, never fatal

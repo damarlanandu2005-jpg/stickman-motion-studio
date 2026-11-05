@@ -49,6 +49,9 @@ jobs:
         env:
           KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
           KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+          KAGGLE_USERNAME_2: ${{ secrets.KAGGLE_USERNAME_2 }}
+          KAGGLE_KEY_2: ${{ secrets.KAGGLE_KEY_2 }}
+          KAGGLE_FIRST: "2"
         run: |
           if [ -z "$KAGGLE_USERNAME" ] || [ -z "$KAGGLE_KEY" ]; then echo "Missing Kaggle secrets"; exit 1; fi
           mkdir -p "$HOME/.kaggle"
@@ -63,6 +66,9 @@ jobs:
         env:
           KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
           KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+          KAGGLE_USERNAME_2: ${{ secrets.KAGGLE_USERNAME_2 }}
+          KAGGLE_KEY_2: ${{ secrets.KAGGLE_KEY_2 }}
+          KAGGLE_FIRST: "2"
           PYTHONPATH: .
           INPUT_SCRIPT: ${{ github.event.inputs.script }}
           REDO: ${{ github.event.inputs.redo }}
