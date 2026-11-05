@@ -97,13 +97,9 @@ jobs:
           [ -f mix_raw.wav ] || python3 mix.py voice.mp3        # voice only if the sound step was not done
           N=$(node -e "import('./web/story.js').then(m=>console.log(m.TOTAL))")
           P=$(( (N + 149) / 150 )); [ "$P" -gt 10 ] && P=10; [ "$P" -lt 1 ] && P=1
-          python3 - "$N" "$P" > ../matrix.json <<'PY'
-          import json, sys
-          n, p = int(sys.argv[1]), int(sys.argv[2]); step = -(-n // p)
-          print(json.dumps({"include": [{"i": i, "a": i * step, "b": min(n, (i + 1) * step) - 1} for i in range(p) if i * step < n]}))
-          PY
-          echo "frames $N in $P parts: $(cat ../matrix.json)"
-          echo "matrix=$(cat ../matrix.json)" >> "$GITHUB_OUTPUT"
+          IDX=$(python3 -c "print(list(range($P)))")      # no curly braces: GitHub hides output that contains a character of a secret
+          echo "frames $N in $P parts"
+          echo "idx=$IDX" >> "$GITHUB_OUTPUT"; echo "n=$N" >> "$GITHUB_OUTPUT"; echo "p=$P" >> "$GITHUB_OUTPUT"
           cd .. && tar --exclude=project/node_modules -cf project.tar project gemini.log
       - uses: actions/upload-artifact@v4
         with:
@@ -111,7 +107,9 @@ jobs:
           path: project.tar
           retention-days: 3
     outputs:
-      matrix: ${{ steps.plan.outputs.matrix }}
+      idx: ${{ steps.plan.outputs.idx }}
+      n: ${{ steps.plan.outputs.n }}
+      p: ${{ steps.plan.outputs.p }}
 
   render:
     needs: short
@@ -119,7 +117,7 @@ jobs:
     timeout-minutes: 240
     strategy:
       fail-fast: false
-      matrix: ${{ fromJSON(needs.short.outputs.matrix) }}
+      i: ${{ fromJSON(needs.short.outputs.idx) }}
     steps:
       - uses: actions/setup-node@v4
         with:
@@ -128,11 +126,14 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: project
-      - name: Render frames ${{ matrix.a }}-${{ matrix.b }}
+      - name: Render part ${{ matrix.i }}
         run: |
           tar xf project.tar && cd project
           mkdir -p node_modules && ln -sf "$(npm root -g)/playwright" node_modules/playwright
-          node render.mjs frames "${{ matrix.a }}-${{ matrix.b }}"
+          N=${{ needs.short.outputs.n }}; P=${{ needs.short.outputs.p }}; I=${{ matrix.i }}
+          STEP=$(( (N + P - 1) / P )); A=$(( I * STEP )); B=$(( (I + 1) * STEP - 1 )); [ "$B" -gt $((N-1)) ] && B=$((N-1))
+          echo "rendering frames $A-$B"
+          node render.mjs frames "$A-$B"
       - uses: actions/upload-artifact@v4
         with:
           name: frames-${{ matrix.i }}
