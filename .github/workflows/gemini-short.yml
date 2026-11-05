@@ -65,15 +65,75 @@ jobs:
           timeout 200m gemini -m "$MODEL" --yolo -p "$(cat ../tools/gemini_task.md)" 2>&1 | tee ../gemini.log || true
           ls work stills 2>/dev/null || true
           test -f work/DONE.txt || echo "WARNING: Gemini did not write work/DONE.txt (see gemini.log)"
-      - name: Render all frames and finish (no AI here)
+      - name: Plan the parallel render
+        id: plan
         run: |
           cd project
           [ -f mix_raw.wav ] || python3 mix.py voice.mp3        # voice only if the sound step was not done
           N=$(node -e "import('./web/story.js').then(m=>console.log(m.TOTAL))")
-          echo "frames: $N"
-          node render.mjs frames "0-$((N-1))"
-          mkdir -p out
-          bash finish.sh "short"
+          P=$(( (N + 149) / 150 )); [ "$P" -gt 10 ] && P=10; [ "$P" -lt 1 ] && P=1
+          python3 - "$N" "$P" > ../matrix.json <<'PY'
+          import json, sys
+          n, p = int(sys.argv[1]), int(sys.argv[2]); step = -(-n // p)
+          print(json.dumps({"include": [{"i": i, "a": i * step, "b": min(n, (i + 1) * step) - 1} for i in range(p) if i * step < n]}))
+          PY
+          echo "frames $N in $P parts: $(cat ../matrix.json)"
+          echo "matrix=$(cat ../matrix.json)" >> "$GITHUB_OUTPUT"
+          cd .. && tar --exclude=project/node_modules -cf project.tar project gemini.log
+      - uses: actions/upload-artifact@v4
+        with:
+          name: project
+          path: project.tar
+          retention-days: 3
+    outputs:
+      matrix: ${{ steps.plan.outputs.matrix }}
+
+  render:
+    needs: short
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.short.outputs.matrix) }}
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm install -g playwright && npx playwright install --with-deps chromium
+      - uses: actions/download-artifact@v4
+        with:
+          name: project
+      - name: Render frames ${{ matrix.a }}-${{ matrix.b }}
+        run: |
+          tar xf project.tar && cd project
+          mkdir -p node_modules && ln -sf "$(npm root -g)/playwright" node_modules/playwright
+          node render.mjs frames "${{ matrix.a }}-${{ matrix.b }}"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: frames-${{ matrix.i }}
+          path: project/frames/
+          retention-days: 3
+
+  finish:
+    needs: [short, render]
+    if: always() && needs.short.result == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+      - uses: actions/download-artifact@v4
+        with:
+          name: project
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: frames-*
+          path: project/frames
+          merge-multiple: true
+      - name: Join frames + sound into the mp4 and check it
+        run: |
+          tar xf project.tar --skip-old-files
+          cd project && ls frames | wc -l && mkdir -p out && bash finish.sh "short"
       - name: Publish the result to results/<script name>/ on this branch
         if: always()
         env:
