@@ -60,8 +60,18 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           MODEL: ${{ github.event.inputs.model }}
           GEMINI_CLI_TRUST_WORKSPACE: "true"
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+          GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+          GCP_LOCATION: ${{ secrets.GCP_LOCATION }}
         run: |
-          if [ -z "$GEMINI_API_KEY" ]; then echo "Secret GEMINI_API_KEY is missing"; exit 1; fi
+          if [ -n "$GCP_SA_KEY" ] && [ -n "$GCP_PROJECT_ID" ]; then
+            # Google Cloud (Vertex AI): paid from the $300 free-trial credit, higher limits than the free API key
+            printf '%s' "$GCP_SA_KEY" > "$RUNNER_TEMP/sa.json"
+            export GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/sa.json" GOOGLE_CLOUD_PROJECT="$GCP_PROJECT_ID" GOOGLE_CLOUD_LOCATION="${GCP_LOCATION:-global}" GOOGLE_GENAI_USE_VERTEXAI=true
+            unset GEMINI_API_KEY
+            echo "Using Vertex AI, project $GCP_PROJECT_ID, location ${GCP_LOCATION:-global}"
+          elif [ -z "$GEMINI_API_KEY" ]; then echo "No GCP_SA_KEY/GCP_PROJECT_ID and no GEMINI_API_KEY secret"; exit 1
+          else echo "Using the free Gemini API key"; fi
           cd project
           for TRY in 1 2 3 4; do                 # the free tier is sometimes "busy" (503): wait and try again, the files written so far are kept
             echo "=== Gemini try $TRY ===" | tee -a ../gemini.log
