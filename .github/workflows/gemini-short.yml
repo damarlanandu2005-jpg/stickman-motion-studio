@@ -59,12 +59,13 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           MODEL: ${{ github.event.inputs.model }}
+          GEMINI_CLI_TRUST_WORKSPACE: "true"
         run: |
           if [ -z "$GEMINI_API_KEY" ]; then echo "Secret GEMINI_API_KEY is missing"; exit 1; fi
           cd project
-          timeout 200m gemini -m "$MODEL" --yolo -p "$(cat ../tools/gemini_task.md)" 2>&1 | tee ../gemini.log || true
+          timeout 200m gemini -m "$MODEL" --yolo --skip-trust -p "$(cat ../tools/gemini_task.md)" 2>&1 | tee ../gemini.log || true
           ls work stills 2>/dev/null || true
-          test -f work/DONE.txt || echo "WARNING: Gemini did not write work/DONE.txt (see gemini.log)"
+          if [ ! -f work/DONE.txt ]; then echo "Gemini did not finish (no work/DONE.txt): stopping, so the kit's example is never rendered by mistake"; tail -40 ../gemini.log; exit 1; fi
       - name: Plan the parallel render
         id: plan
         run: |
@@ -146,4 +147,10 @@ jobs:
           tail -200 gemini.log > "$D/gemini_log_tail.txt" 2>/dev/null || true
           git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add results; git commit -q -m "Result $NAME, run ${{ github.run_id }} [skip ci]" || exit 0
-          for T in 1 2 3; do git pull -q --rebase origin gemini-cartoon && git push -q origin HEAD:gemini-cartoon && exit 0; sleep 10; done
+          for T in 1 2 3; do git pull -q --rebase origin gemini-cartoon && git push -q origin HEAD:gemini-cartoon && break; sleep 10; done
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: result
+          path: results/
+          retention-days: 14
