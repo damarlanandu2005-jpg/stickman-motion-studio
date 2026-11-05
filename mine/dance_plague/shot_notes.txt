@@ -1,0 +1,131 @@
+CAST:
+- Woman (Troffea): red dress, white cap, brown hair, barefoot.
+- Dancers: medieval peasants in brown, grey, green clothes, many sizes, all barefoot.
+- Councilman: tall black hat, long purple robe, gold chain, grey beard.
+- Musicians: three men in red caps with a drum, a flute, a horn.
+
+SHOT 1 (hook)
+WORDS: "In fifteen eighteen,"
+PLACE: narrow medieval town street, timber houses, cobblestones, a well.
+LIGHT: dawn (pale yellow sky).
+CAMERA: low and tight on the woman's bare feet, then rise to her face, fov 36 > 32.
+CHARACTERS: Woman standing still, face = blank, eyes wide.
+EFFECTS: morning mist at the ground.
+SFX: a single church bell. MUSIC: none.
+
+SHOT 2 (dance)
+WORDS: "a woman stepped into a street in France and began to dance."
+PLACE: same street, wider.
+LIGHT: day.
+CAMERA: pull back to wide (fov 32 > 42); small tilt left and right with her dance.
+CHARACTERS: Woman dances alone: arms up, swinging, body tilts; people at windows watch, face = confused.
+EFFECTS: dust at her feet.
+SFX: soft steps. MUSIC: a single plucked string starts to play a dance beat.
+
+SHOT 3 (days)
+WORDS: "She did not stop for days."
+PLACE: same street, the sun and moon moving across the sky.
+LIGHT: cycle (day to night to day).
+CAMERA: static wide, fov 42.
+CHARACTERS: Woman keeps dancing; hair messy, face = tired but still moving.
+EFFECTS: sky cycle three times, stars at night.
+SFX: steps fade out and in. MUSIC: plucked beat continues.
+
+SHOT 4 (join)
+WORDS: "Within a week, thirty-four people had joined her."
+PLACE: the street full of timber houses, fountain in the middle.
+LIGHT: day.
+CAMERA: high crane, wide, slow orbit right, fov 46.
+CHARACTERS: About thirty peasants dancing, same loose rhythm, faces = blank.
+EFFECTS: dust cloud, leaves.
+SFX: many steps. MUSIC: adds a drum.
+
+SHOT 5 (four hundred)
+WORDS: "Soon there were four hundred."
+PLACE: big town square, church at the back, packed with dancers to the edges.
+LIGHT: golden.
+CAMERA: very high, top-down, static, then slow zoom out; fov 40 > 54.
+CHARACTERS: A huge crowd of dancers (at least one hundred in view) all swaying.
+EFFECTS: dust haze, flying hats.
+SFX: crowd stamping, big beat. MUSIC: full band.
+
+SHOT 6 (nobody)
+WORDS: "Nobody knew why."
+PLACE: window of the town hall.
+LIGHT: indoor (warm candle).
+CAMERA: tight on the councilman looking out, fov 32.
+CHARACTERS: Councilman scratching his head, face = confused; sweat drop.
+EFFECTS: candle flicker.
+SFX: soft murmurs. MUSIC: drops to a low drone.
+
+SHOT 7 (cure)
+WORDS: "The city leaders decided the cure was more dancing."
+PLACE: council hall with a long table, three councilmen.
+LIGHT: indoor.
+CAMERA: wide static, then snap-zoom to the main councilman on "dancing", fov 44 > 30.
+CHARACTERS: The councilman bangs the table, face = proud; others nod.
+EFFECTS: scrolls on table.
+SFX: table bang, boing on "dancing". MUSIC: drone continues.
+
+SHOT 8 (stage)
+WORDS: "They built a stage and hired musicians."
+PLACE: the square, carpenters building a wooden stage, three musicians climb up.
+LIGHT: day.
+CAMERA: wide pull-back, fov 40 > 48.
+CHARACTERS: Musicians with drum, flute, horn start to play; dancers keep dancing around.
+EFFECTS: wood dust, hammer sparks.
+SFX: hammering then music burst. MUSIC: fast folk music begins.
+
+SHOT 9 (worse)
+WORDS: "It only made things worse."
+PLACE: same square, stage in the middle.
+LIGHT: golden to dusk (orange-red).
+CAMERA: static wide, shake that grows, fov 44.
+CHARACTERS: Dancers move faster and wilder, face = scared; some fall.
+EFFECTS: red tint in the sky, dust.
+SFX: music speeds up. MUSIC: rises in speed.
+
+SHOT 10 (feet)
+WORDS: "People danced until their feet bled."
+PLACE: close on cobblestones.
+LIGHT: dusk.
+CAMERA: very low, tight, tracking sideways, fov 34.
+CHARACTERS: Bare feet stamping; drops of red on the stones.
+EFFECTS: red drops, dust.
+SFX: slap steps. MUSIC: continues.
+
+SHOT 11 (collapse)
+WORDS: "Some collapsed and never got up."
+PLACE: the square at night, many lying people.
+LIGHT: night (blue, moon).
+CAMERA: slow push-in, fov 46 > 40.
+CHARACTERS: A few dancers fall one by one and lie still; others keep dancing, face = scared.
+EFFECTS: moonlight, soft dust.
+SFX: thud on each fall. MUSIC: single low note.
+
+SHOT 12 (stop)
+WORDS: "Then, one day, the music stopped."
+PLACE: stage, musicians lower their instruments.
+LIGHT: dawn.
+CAMERA: tight on the drummer's hand stopping, fov 30.
+CHARACTERS: Musicians still, faces = tired.
+EFFECTS: none.
+SFX: the last drum hit, then silence. MUSIC: stops.
+
+SHOT 13 (quiet)
+WORDS: "And so did the dancing."
+PLACE: the empty square at dawn, a lone shoe on the stones.
+LIGHT: dawn.
+CAMERA: slow pull-back, fov 34 > 46.
+CHARACTERS: A few people sit on the ground, heads down; others walk away.
+EFFECTS: mist.
+SFX: wind. MUSIC: none.
+
+SHOT 14 (end)
+WORDS: "To this day, nobody knows why."
+PLACE: same square, huge question mark in the sky.
+LIGHT: golden.
+CAMERA: push-in to the lone shoe, biggest picture on the last three words, fov 46 > 30.
+CHARACTERS: Lone shoe, a single red thread beside it.
+EFFECTS: question mark glows.
+SFX: soft bell. MUSIC: single plucked note.

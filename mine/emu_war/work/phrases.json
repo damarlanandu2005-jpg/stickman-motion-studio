@@ -1,0 +1,81 @@
+{
+ "duration": 19.905306,
+ "frames30": 597,
+ "source": "silence-align (cost 1.14)",
+ "segments": [
+  [
+   0.0,
+   3.24376
+  ],
+  [
+   3.53932,
+   7.66703
+  ],
+  [
+   8.11388,
+   10.5558
+  ],
+  [
+   10.7472,
+   11.7882
+  ],
+  [
+   11.9407,
+   12.8365
+  ],
+  [
+   13.0333,
+   14.7576
+  ],
+  [
+   14.9683,
+   17.3839
+  ],
+  [
+   17.725,
+   19.7339
+  ]
+ ],
+ "phrases": [
+  {
+   "text": "In nineteen thirty-two, the Australian army went to war against birds. And lost.",
+   "s": 0.0,
+   "e": 3.244
+  },
+  {
+   "text": "Twenty thousand emus were eating the farmers' wheat. So soldiers arrived with machine guns and a truck.",
+   "s": 3.539,
+   "e": 7.667
+  },
+  {
+   "text": "The emus split into small groups and ran in every direction.",
+   "s": 8.114,
+   "e": 10.556
+  },
+  {
+   "text": "The truck could not catch them.",
+   "s": 10.747,
+   "e": 11.788
+  },
+  {
+   "text": "The guns could not hit them.",
+   "s": 11.941,
+   "e": 12.836
+  },
+  {
+   "text": "After a month, the army gave up and went home.",
+   "s": 13.033,
+   "e": 14.758
+  },
+  {
+   "text": "The birds were still there. Today the emus are still eating wheat.",
+   "s": 14.968,
+   "e": 17.384
+  },
+  {
+   "text": "The final score was birds one, army zero.",
+   "s": 17.725,
+   "e": 19.734
+  }
+ ]
+}

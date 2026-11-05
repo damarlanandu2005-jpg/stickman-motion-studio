@@ -1,0 +1,99 @@
+{
+ "duration": 28.865306,
+ "frames30": 866,
+ "source": "silence-align (cost 1.30)",
+ "segments": [
+  [
+   0.0,
+   4.41698
+  ],
+  [
+   4.69939,
+   6.3473
+  ],
+  [
+   6.63628,
+   9.03887
+  ],
+  [
+   9.21263,
+   10.6086
+  ],
+  [
+   10.8926,
+   14.749
+  ],
+  [
+   15.1575,
+   17.486
+  ],
+  [
+   17.7155,
+   19.2946
+  ],
+  [
+   19.558,
+   23.4273
+  ],
+  [
+   23.6838,
+   26.6517
+  ],
+  [
+   26.983,
+   28.865306
+  ]
+ ],
+ "phrases": [
+  {
+   "text": "In fifteen eighteen, a woman stepped into a street in France and began to dance.",
+   "s": 0.0,
+   "e": 4.417
+  },
+  {
+   "text": "She did not stop for days.",
+   "s": 4.699,
+   "e": 6.347
+  },
+  {
+   "text": "Within a week, thirty-four people had joined her.",
+   "s": 6.636,
+   "e": 9.039
+  },
+  {
+   "text": "Soon there were four hundred.",
+   "s": 9.213,
+   "e": 10.609
+  },
+  {
+   "text": "Nobody knew why. The city leaders decided the cure was more dancing.",
+   "s": 10.893,
+   "e": 14.749
+  },
+  {
+   "text": "They built a stage and hired musicians.",
+   "s": 15.158,
+   "e": 17.486
+  },
+  {
+   "text": "It only made things worse.",
+   "s": 17.715,
+   "e": 19.295
+  },
+  {
+   "text": "People danced until their feet bled. Some collapsed and never got up.",
+   "s": 19.558,
+   "e": 23.427
+  },
+  {
+   "text": "Then, one day, the music stopped. And so did the dancing.",
+   "s": 23.684,
+   "e": 26.652
+  },
+  {
+   "text": "To this day, nobody knows why.",
+   "s": 26.983,
+   "e": 28.865
+  }
+ ]
+}
