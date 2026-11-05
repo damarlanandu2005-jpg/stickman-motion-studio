@@ -1,0 +1,26 @@
+{
+ "file": "daily-out/2026-11-05/2026-11-05_10_bomb_ref_full/2026-11-05_10_bomb_ref_full.mp4",
+ "fails": [],
+ "warnings": [],
+ "seconds": 23.23,
+ "size": [
+  720,
+  1280
+ ],
+ "frame_means": [
+  117.8,
+  131.4,
+  145.6,
+  185.5,
+  185.5
+ ],
+ "frame_changes": [
+  46.7,
+  57.8,
+  81.2,
+  58.5
+ ],
+ "audio_rms": 0.1334,
+ "ok": true
+}
+VIDEO_OK=true

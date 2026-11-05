@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/runner/work/stickman-motion-studio/stickman-motion-studio/motion_studio/script_reader.py", line 382, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/runner/work/stickman-motion-studio/stickman-motion-studio/motion_studio/script_reader.py", line 375, in main
+    r["specs_written"] = write_specs(r, cast, Path(a.write_specs))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/stickman-motion-studio/stickman-motion-studio/motion_studio/script_reader.py", line 345, in write_specs
+    spec = make_costume_spec(name, info["look"], info["colour"])
+                                                 ~~~~^^^^^^^^^^
+KeyError: 'colour'

@@ -1,0 +1,23 @@
+[kaggle] using account 1 (narasimharaodamarla), dataset owner narasimharaodamarla
+{"ok": true, "no_dataset": false, "files": 296}
+He Defused 41 Bombs (first 20 s, full cast): 17 scenes, voice am_fenrir
+  costume arthur_sweater: missing
+  costume bombsuit: spec_only
+  costume chief: ready
+  costume cop_squad: missing
+  costume doctor: ready
+  costume girl_gown: missing
+OK
+missing assets: 0
+{"ok": true, "no_dataset": false, "files": 296}
+He Defused 41 Bombs (first 20 s, full cast): 17 scenes, voice am_fenrir
+  costume arthur_sweater: missing
+  costume bombsuit: missing
+  costume chief: ready
+  costume cop_squad: missing
+  costume doctor: missing
+  costume girl_gown: missing
+OK
+assets 2026-11-05_10_bomb_ref_full: complete=true, round files in assets-state/2026-11-05_10_bomb_ref_full
+dataset verify: ok:  and all sprites found again after a clean download
+{"ok": true, "checked": 0, "sprites_checked": 244, "problems": []}

@@ -1,0 +1,624 @@
+{
+ "title": "He Defused 41 Bombs (first 20 s, full cast)",
+ "voice": "am_fenrir",
+ "scenes": [
+  {
+   "n": 1,
+   "voice": "This bomb squad technician could never ask which",
+   "red": [],
+   "bg": {
+    "wanted": "lib:var_v3_barrier_bomb",
+    "library_id": "var_v3_barrier_bomb",
+    "match": 1.0
+   },
+   "who": [
+    {
+     "character": "arthur",
+     "stage": "squad",
+     "costume": "bombsuit",
+     "costume_status": "spec_only"
+    },
+    {
+     "character": "cop",
+     "stage": "main",
+     "costume": "cop_squad",
+     "costume_status": "missing"
+    },
+    {
+     "character": "cop2",
+     "stage": "main",
+     "costume": "cop_squad",
+     "costume_status": "missing"
+    }
+   ],
+   "pose": [
+    "kneel with both hands forward on a box",
+    "stand",
+    "stand"
+   ],
+   "props": [],
+   "text": "",
+   "sound": "",
+   "camera": "still",
+   "frame": "",
+   "group": 139668845879936,
+   "shot": 1,
+   "see": "",
+   "where": "arthur centre near, cop right far, cop2 far right far",
+   "face": "arthur: neutral -> worried -> angry, cop: neutral, cop2: neutral",
+   "move": "timer 0:05 -> 0:00 at 0.76 0.66, sweat, spark",
+   "view": "",
+   "pose_raw": "kneel with both hands forward on a box, stand, stand"
+  },
+  {
+   "n": 2,
+   "voice": "wire to cut,",
+   "red": [
+    "wire"
+   ],
+   "bg": {
+    "wanted": "lib:ins_explosion",
+    "library_id": "ins_explosion",
+    "match": 1.0
+   },
+   "who": [],
+   "pose": [
+    "kneel with both hands forward on a box",
+    "stand",
+    "stand"
+   ],
+   "props": [],
+   "text": "",
+   "sound": "",
+   "camera": "still",
+   "frame": "",
+   "group": 139668845879936,
+   "shot": 2,
+   "see": "",
+   "where": "",
+   "face": "",
+   "move": "flash, shake, smoke",
+   "view": "",
+   "pose_raw": "kneel with both hands forward on a box, stand, stand"
+  },
+  {
+   "n": 3,
+   "voice": "because his team would find out",
+   "red": [],
+   "bg": {
+    "wanted": "lib:bg_v3_garage",
+    "library_id": "bg_v3_garage",
+    "match": 1.0
+   },
+   "who": [
+    {
+     "character": "cop",
+     "stage": "main",
+     "costume": "cop_squad",
+     "costume_status": "missing"
+    },
+    {
+     "character": "chief",
+     "stage": "main",
+     "costume": "chief",
+     "costume_status": "missing"
+    },
+    {
+     "character": "cop2",
+     "stage": "main",
+     "costume": "cop_squad",
+     "costume_status": "missing"
+    },
+    {
+     "character": "cop3",
+     "stage": "main",
+     "costume": "cop_squad",
+     "costume_status": "missing"
+    }
+   ],
+   "pose": [
+    "stand",
+    "stand",
+    "hands_on_hips",
+    "stand"
+   ],
+   "props": [],
+   "text": "",
+   "sound": "",
+   "camera": "still",
+   "frame": "medium",
+   "group": 139668856149184,
+   "shot": 1,
+   "see": "",
+   "where": "cop far left near, chief left near, cop2 right near, cop3 far right near",
+   "face": "cop: laugh, chief: smug, cop2: happy -> laugh, cop3: smug",
+   "move": "",
+   "view": "",
+   "pose_raw": "stand, stand, hands_on_hips, stand"
+  },
+  {
+   "n": 4,
+   "voice": "he was completely",
+   "red": [],
+   "bg": {
+    "wanted": "lib:var_v3_corner_light",
+    "library_id": "var_v3_corner_light",
+    "match": 1.0
+   },
+   "who": [
+    {
+     "character": "arthur",
+     "stage": "normal",
+     "costume": "arthur_sweater",
+     "costume_status": "missing"
+    }
+   ],
+   "pose": [
+    "stand -> point"
+   ],
+   "props": [],
+   "text": "",
+   "sound": "",
+   "camera": "still",
+   "frame": "",
+   "group": 139668856148224,
+   "shot": 1,
+   "see": "",
+   "where": "arthur centre near",
+   "face": "neutral -> surprised",
+   "move": "",
+   "view": "",
+   "pose_raw": "stand -> point"
+  },
+  {
+   "n": 5,
+   "voice": "colorblind.",
+   "red": [
+    "colorblind"
+   ],
+   "bg": {
+    "wanted": "lib:ins_traffic_grey",
+    "library_id": "ins_traffic_grey",
+    "match": 1.0
+   },
+   "who": [],
+   "pose": [],
+   "props": [],
+   "text": "",
+   "sound": "",
+   "camera": "slow push",
+   "frame": "",
+   "group": 139668856667648,
+   "shot": 1,
+   "see": "",
+   "where": "",
+   "face": "",
+   "move": "",
+   "view": "",
+   "pose_raw": ""
+  },
+  {
+   "n": 6,
+   "voice": "When his daughter needed",
+   "red": [],
+   "bg": {
+    "wanted": "lib:bg_v3_hospital",
+    "library_id": "bg_v3_hospital",
+    "match": 1.0
+   },
+   "who": [
+    {
+     "character": "arthur",
+     "stage": "normal",
+     "costume": "arthur_sweater",
+     "costume_status": "missing"
+    },
+    {
+     "character": "daughter",
+     "stage": "main",
+     "costume": "girl_gown",
+     "costume_status": "missing"
+    }
+   ],
+   "pose": [
+    "stand",
+    "sit up in a hospital bed"
+   ],
+   "props": [],
+   "text": "",
+   "sound": "",
+   "camera": "still",
+   "frame": "",
+   "group": 139668856146816,
+   "shot": 1,
+   "see": "",
+   "where": "arthur left near, daughter right mid",
+   "face": "arthur: sad, daughter: sad",
+   "move": "",
+   "view": "",
+   "pose_raw": "stand, sit up in a hospital bed"
+  },
+  {
+   "n": 7,
+   "voice": "heart surgery,",
+   "red": [],
+   "bg": {
+    "wanted": "lib:bg_v3_hospital",
+    "library_id": "bg_v3_hospital",
+    "match": 1.0
+   },
+   "who": [
+    {
+     "character": "doctor",
+     "stage": "main",
+     "costume": "doctor",
+     "costume_status": "ready"
+    },
+    {
+     "character": "arthur",
+     "stage": "normal",
+     "costume": "arthur_sweater",
+     "costume_status": "missing"
+    }
+   ],
+   "pose": [
+    "hold a paper up in one hand",
+    "stand"
+   ],
+   "props": [],
+   "text": "",
+   "sound": "",
+   "camera": "still",
+   "frame": "",
+   "group": 139668857182144,
+   "shot": 1,
+   "see": "",
+   "where": "doctor left near, arthur right near",
+   "face": "doctor: neutral, arthur: surprised",
+   "move": "sweat",
+   "view": "",
+   "pose_raw": "hold a paper up in one hand, stand"
+  },
+  {
+   "n": 8,
+   "voice": "Arthur applied for the highest-paying job in the",
+   "red": [],
+   "bg": {
+    "wanted": "lib:var_v3_bulletin_notes",
+    "library_id": "var_v3_bulletin_notes",
+    "match": 1.0
+   },
+   "who": [
+    {
+     "character": "arthur",
+     "stage": "normal",
+     "costume": "arthur_sweater",
+     "costume_status": "missing"
+    }
+   ],
+   "pose": [
+    "stand -> point"
+   ],
+   "props": [],
+   "text": "",
+   "sound": "",
+   "camera": "still",
+   "frame": "",
+   "group": 139668857190144,
+   "shot": 1,
+   "see": "",
+   "where": "arthur left near",
+   "face": "neutral -> happy",
+   "move": "",
+   "view": "",
+   "pose_raw": "stand -> point"
+  },
+  {
+   "n": 9,
+   "voice": "police department:",
+   "red": [],
+   "bg": {
+    "wanted": "lib:bg_v3_police_steps",
+    "library_id": "bg_v3_police_steps",
+    "match": 1.0
+   },
+   "who": [
+    {
+     "character": "arthur",
+     "stage": "normal",
+     "costume": "arthur_sweater",
+     "costume_status": "missing"
+    }
+   ],
+   "pose": [],
+   "props": [],
+   "text": "",
+   "sound": "",
+   "camera": "still",
+   "frame": "",
+   "group": 139668856235712,
+   "shot": 1,
+   "see": "",
+   "where": "arthur left mid",
+   "face": "angry",
+   "move": "",
+   "view": "",
+   "pose_raw": ""
+  },
+  {
+   "n": 10,
+   "voice": "explosive ordnance disposal.",
+   "red": [],
+   "bg": {
+    "wanted": "lib:bg_v3_garage",
+    "library_id": "bg_v3_garage",
+    "match": 1.0
+   },
+   "who": [
+    {
+     "character": "arthur",
+     "stage": "squad",
+     "costume": "bombsuit",
+     "costume_status": "spec_only"
+    }
+   ],
+   "pose": [],
+   "props": [],
+   "text": "",
+   "sound": "",
+   "camera": "slow push",
+   "frame": "close",
+   "group": 139668845877376,
+   "shot": 1,
+   "see": "",
+   "where": "",
+   "face": "neutral -> surprised",
+   "move": "sweat",
+   "view": "",
+   "pose_raw": ""
+  },
+  {
+   "n": 11,
+   "voice": "The medical exam?",
+   "red": [],
+   "bg": {
+    "wanted": "lib:bg_v3_hospital",
+    "library_id": "bg_v3_hospital",
+    "match": 1.0
+   },
+   "who": [
+    {
+     "character": "doctor",
+     "stage": "main",
+     "costume": "doctor",
+     "costume_status": "ready"
+    },
+    {
+     "character": "arthur",
+     "stage": "normal",
+     "costume": "arthur_sweater",
+     "costume_status": "missing"
+    }
+   ],
+   "pose": [
+    "hold a paper up in one hand",
+    "think"
+   ],
+   "props": [],
+   "text": "",
+   "sound": "",
+   "camera": "still",
+   "frame": "",
+   "group": 139668845877632,
+   "shot": 1,
+   "see": "",
+   "where": "doctor left near, arthur right near",
+   "face": "doctor: neutral, arthur: scared",
+   "move": "sweat",
+   "view": "",
+   "pose_raw": "hold a paper up in one hand, think"
+  },
+  {
+   "n": 12,
+   "voice": "He memorized the colorblindness test",
+   "red": [],
+   "bg": {
+    "wanted": "lib:bg_v3_night_study",
+    "library_id": "bg_v3_night_study",
+    "match": 1.0
+   },
+   "who": [
+    {
+     "character": "arthur",
+     "stage": "normal",
+     "costume": "arthur_sweater",
+     "costume_status": "missing"
+    }
+   ],
+   "pose": [
+    "hold a paper up in one hand"
+   ],
+   "props": [],
+   "text": "",
+   "sound": "",
+   "camera": "slow push",
+   "frame": "",
+   "group": 139668845877760,
+   "shot": 1,
+   "see": "",
+   "where": "arthur centre near",
+   "face": "neutral",
+   "move": "",
+   "view": "",
+   "pose_raw": "hold a paper up in one hand"
+  },
+  {
+   "n": 13,
+   "voice": "backwards and",
+   "red": [],
+   "bg": {
+    "wanted": "lib:ins_orange_blank",
+    "library_id": "ins_orange_blank",
+    "match": 1.0
+   },
+   "who": [],
+   "pose": [],
+   "props": [],
+   "text": "29",
+   "sound": "",
+   "camera": "auto",
+   "frame": "",
+   "group": 139668845877568,
+   "shot": 1,
+   "see": "",
+   "where": "",
+   "face": "",
+   "move": "",
+   "view": "card",
+   "pose_raw": ""
+  },
+  {
+   "n": 14,
+   "voice": "",
+   "red": [],
+   "bg": {
+    "wanted": "lib:ins_orange_blank",
+    "library_id": "ins_orange_blank",
+    "match": 1.0
+   },
+   "who": [],
+   "pose": [],
+   "props": [],
+   "text": "12",
+   "sound": "",
+   "camera": "auto",
+   "frame": "",
+   "group": 139668845877568,
+   "shot": 2,
+   "see": "",
+   "where": "",
+   "face": "",
+   "move": "",
+   "view": "card",
+   "pose_raw": ""
+  },
+  {
+   "n": 15,
+   "voice": "forwards",
+   "red": [],
+   "bg": {
+    "wanted": "lib:ins_orange_blank",
+    "library_id": "ins_orange_blank",
+    "match": 1.0
+   },
+   "who": [],
+   "pose": [],
+   "props": [],
+   "text": "74",
+   "sound": "",
+   "camera": "auto",
+   "frame": "",
+   "group": 139668845877568,
+   "shot": 3,
+   "see": "",
+   "where": "",
+   "face": "",
+   "move": "",
+   "view": "card",
+   "pose_raw": ""
+  },
+  {
+   "n": 16,
+   "voice": "before",
+   "red": [],
+   "bg": {
+    "wanted": "lib:var_v3_hospital_desk",
+    "library_id": "var_v3_hospital_desk",
+    "match": 1.0
+   },
+   "who": [
+    {
+     "character": "arthur",
+     "stage": "normal",
+     "costume": "arthur_sweater",
+     "costume_status": "missing"
+    }
+   ],
+   "pose": [
+    "stand"
+   ],
+   "props": [],
+   "text": "",
+   "sound": "",
+   "camera": "auto",
+   "frame": "",
+   "group": 139668845878144,
+   "shot": 1,
+   "see": "",
+   "where": "arthur centre near",
+   "face": "smug",
+   "move": "",
+   "view": "",
+   "pose_raw": "stand"
+  },
+  {
+   "n": 17,
+   "voice": "walking into the room.",
+   "red": [],
+   "bg": {
+    "wanted": "lib:bg_v3_hospital",
+    "library_id": "bg_v3_hospital",
+    "match": 1.0
+   },
+   "who": [
+    {
+     "character": "doctor",
+     "stage": "main",
+     "costume": "doctor",
+     "costume_status": "ready"
+    },
+    {
+     "character": "arthur",
+     "stage": "normal",
+     "costume": "arthur_sweater",
+     "costume_status": "missing"
+    }
+   ],
+   "pose": [
+    "stand",
+    "stand"
+   ],
+   "props": [],
+   "text": "PASSED",
+   "sound": "",
+   "camera": "auto",
+   "frame": "",
+   "group": 139668845878144,
+   "shot": 2,
+   "see": "",
+   "where": "doctor left near, arthur right near",
+   "face": "doctor: surprised, arthur: smug",
+   "move": "",
+   "view": "",
+   "pose_raw": "stand, stand"
+  }
+ ],
+ "errors": [],
+ "costume_status": {
+  "bombsuit": "spec_only",
+  "cop_squad": "missing",
+  "chief": "missing",
+  "arthur_sweater": "missing",
+  "girl_gown": "missing",
+  "doctor": "ready"
+ },
+ "missing_costumes": [
+  "arthur_sweater",
+  "bombsuit",
+  "chief",
+  "cop_squad",
+  "girl_gown"
+ ],
+ "missing_assets": [],
+ "ok": true
+}

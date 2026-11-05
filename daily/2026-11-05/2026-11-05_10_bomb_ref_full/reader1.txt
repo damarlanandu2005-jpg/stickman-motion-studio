@@ -1,0 +1,8 @@
+He Defused 41 Bombs (first 20 s, full cast): 17 scenes, voice am_fenrir
+  costume arthur_sweater: missing
+  costume bombsuit: spec_only
+  costume chief: ready
+  costume cop_squad: missing
+  costume doctor: ready
+  costume girl_gown: missing
+OK

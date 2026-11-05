@@ -1,0 +1,900 @@
+[
+ {
+  "bg": "lib:var_v3_barrier_bomb",
+  "dur": 2.721,
+  "cam": {
+   "z0": 1.0,
+   "z1": 1.0
+  },
+  "actors": [
+   {
+    "outfit": "role_tech",
+    "pose": 0,
+    "x": 0.5,
+    "feet": 0.95,
+    "height": 0.44,
+    "faces": [
+     [
+      0.0,
+      "neutral"
+     ],
+     [
+      0.91,
+      "sad"
+     ],
+     [
+      1.81,
+      "angry"
+     ]
+    ],
+    "sweat": 0.2
+   },
+   {
+    "outfit": "role_cop",
+    "pose": 0,
+    "x": 0.73,
+    "feet": 0.8,
+    "height": 0.2,
+    "faces": [
+     [
+      0.0,
+      "neutral"
+     ]
+    ]
+   },
+   {
+    "outfit": "role_cop",
+    "pose": 0,
+    "x": 0.87,
+    "feet": 0.8,
+    "height": 0.2,
+    "faces": [
+     [
+      0.0,
+      "neutral"
+     ]
+    ]
+   }
+  ],
+  "objects": [],
+  "texts": [
+   {
+    "count": [
+     5,
+     0
+    ],
+    "x": 0.76,
+    "y": 0.66,
+    "size": 0.05,
+    "font": "mono",
+    "color": [
+     255,
+     80,
+     60
+    ],
+    "bg": [
+     0,
+     0,
+     0,
+     230
+    ],
+    "screen": false
+   }
+  ],
+  "caps": [
+   [
+    0.15,
+    1.01,
+    "This bomb squad",
+    []
+   ],
+   [
+    1.01,
+    1.952,
+    "technician could",
+    []
+   ],
+   [
+    1.952,
+    2.721,
+    "never ask which",
+    []
+   ]
+  ],
+  "cap_y": 0.68,
+  "sfx": [
+   {
+    "type": "tick",
+    "t": 0.0,
+    "gain": 0.35,
+    "repeat": 6,
+    "every": 0.5
+   }
+  ],
+  "fx": [
+   {
+    "type": "spark",
+    "strength": 1.0,
+    "t0": 2.271
+   }
+  ],
+  "fx_seed": 1
+ },
+ {
+  "bg": "lib:ins_explosion",
+  "dur": 1.02,
+  "cam": {
+   "z0": 1.0,
+   "z1": 1.0,
+   "shake": 0.012
+  },
+  "actors": [],
+  "objects": [],
+  "texts": [],
+  "caps": [
+   [
+    0,
+    0.092,
+    "never ask which",
+    []
+   ],
+   [
+    0.092,
+    1.02,
+    "wire to cut",
+    [
+     "wire"
+    ]
+   ]
+  ],
+  "cap_y": 0.68,
+  "sfx": [],
+  "fx": [
+   {
+    "type": "smoke",
+    "strength": 1.0
+   }
+  ],
+  "fx_seed": 2,
+  "flash": [
+   [
+    0.0,
+    0.12,
+    0.9
+   ]
+  ]
+ },
+ {
+  "bg": "lib:bg_v3_garage",
+  "dur": 1.618,
+  "cam": {
+   "z0": 1.0,
+   "z1": 1.0
+  },
+  "actors": [
+   {
+    "outfit": "role_cop",
+    "pose": 0,
+    "x": 0.13,
+    "feet": 0.95,
+    "height": 0.44,
+    "faces": [
+     [
+      0.0,
+      "laugh"
+     ]
+    ]
+   },
+   {
+    "outfit": "role_chief",
+    "pose": 0,
+    "x": 0.27,
+    "feet": 0.95,
+    "height": 0.44,
+    "faces": [
+     [
+      0.0,
+      "smug"
+     ]
+    ]
+   }
+  ],
+  "objects": [],
+  "texts": [],
+  "caps": [
+   [
+    0.0,
+    0.703,
+    "because his team",
+    []
+   ],
+   [
+    0.703,
+    1.618,
+    "would find out",
+    []
+   ]
+  ],
+  "cap_y": 0.68,
+  "sfx": [],
+  "fx": [],
+  "fx_seed": 3
+ },
+ {
+  "bg": "lib:var_v3_corner_light",
+  "dur": 1.4,
+  "cam": {
+   "z0": 1.0,
+   "z1": 1.0
+  },
+  "actors": [
+   {
+    "outfit": "role_civ",
+    "pose": 0,
+    "x": 0.5,
+    "feet": 0.95,
+    "height": 0.44,
+    "faces": [
+     [
+      0.0,
+      "neutral"
+     ],
+     [
+      0.7,
+      "surprised"
+     ]
+    ],
+    "pose_seq": [
+     [
+      0.0,
+      0
+     ],
+     [
+      0.7,
+      1
+     ]
+    ]
+   }
+  ],
+  "objects": [],
+  "texts": [],
+  "caps": [
+   [
+    0.0,
+    0.358,
+    "he was",
+    []
+   ],
+   [
+    0.358,
+    1.4,
+    "completely",
+    []
+   ]
+  ],
+  "cap_y": 0.68,
+  "sfx": [],
+  "fx": [],
+  "fx_seed": 4
+ },
+ {
+  "bg": "lib:ins_traffic_grey",
+  "dur": 1.4,
+  "cam": {
+   "z0": 1.0,
+   "z1": 1.07
+  },
+  "actors": [],
+  "objects": [],
+  "texts": [],
+  "caps": [
+   [
+    0.0,
+    1.4,
+    "colorblind",
+    [
+     "colorblind"
+    ]
+   ]
+  ],
+  "cap_y": 0.68,
+  "sfx": [],
+  "fx": [],
+  "fx_seed": 5
+ },
+ {
+  "bg": "lib:bg_v3_hospital",
+  "dur": 1.4,
+  "cam": {
+   "z0": 1.0,
+   "z1": 1.0
+  },
+  "actors": [
+   {
+    "outfit": "role_civ",
+    "pose": 0,
+    "x": 0.27,
+    "feet": 0.95,
+    "height": 0.44,
+    "faces": [
+     [
+      0.0,
+      "sad"
+     ]
+    ]
+   },
+   {
+    "outfit": "role_civ",
+    "pose": 0,
+    "x": 0.73,
+    "feet": 0.9,
+    "height": 0.32,
+    "faces": [
+     [
+      0.0,
+      "sad"
+     ]
+    ]
+   }
+  ],
+  "objects": [],
+  "texts": [],
+  "caps": [
+   [
+    0.0,
+    0.334,
+    "When his",
+    []
+   ],
+   [
+    0.334,
+    1.4,
+    "daughter needed",
+    []
+   ]
+  ],
+  "cap_y": 0.68,
+  "sfx": [],
+  "fx": [],
+  "fx_seed": 6
+ },
+ {
+  "bg": "lib:bg_v3_hospital",
+  "dur": 1.4,
+  "cam": {
+   "z0": 1.0,
+   "z1": 1.0
+  },
+  "actors": [
+   {
+    "outfit": "doctor",
+    "pose": "pose_hold_a_paper_up_in_one_hand",
+    "x": 0.27,
+    "feet": 0.95,
+    "height": 0.44,
+    "faces": [
+     [
+      0.0,
+      "neutral"
+     ]
+    ],
+    "sweat": 0.2
+   },
+   {
+    "outfit": "role_civ",
+    "pose": 0,
+    "x": 0.73,
+    "feet": 0.95,
+    "height": 0.44,
+    "faces": [
+     [
+      0.0,
+      "surprised"
+     ]
+    ]
+   }
+  ],
+  "objects": [],
+  "texts": [],
+  "caps": [
+   [
+    0.0,
+    1.4,
+    "heart surgery",
+    []
+   ]
+  ],
+  "cap_y": 0.68,
+  "sfx": [],
+  "fx": [],
+  "fx_seed": 7
+ },
+ {
+  "bg": "lib:var_v3_bulletin_notes",
+  "dur": 2.51,
+  "cam": {
+   "z0": 1.0,
+   "z1": 1.0
+  },
+  "actors": [
+   {
+    "outfit": "role_civ",
+    "pose": 0,
+    "x": 0.27,
+    "feet": 0.95,
+    "height": 0.44,
+    "faces": [
+     [
+      0.0,
+      "neutral"
+     ],
+     [
+      1.25,
+      "happy"
+     ]
+    ],
+    "pose_seq": [
+     [
+      0.0,
+      0
+     ],
+     [
+      1.25,
+      1
+     ]
+    ]
+   }
+  ],
+  "objects": [],
+  "texts": [],
+  "caps": [
+   [
+    0.0,
+    0.7,
+    "Arthur applied",
+    []
+   ],
+   [
+    0.7,
+    1.055,
+    "for the",
+    []
+   ],
+   [
+    1.055,
+    1.726,
+    "highest-paying",
+    []
+   ],
+   [
+    1.726,
+    2.51,
+    "job in the",
+    []
+   ]
+  ],
+  "cap_y": 0.68,
+  "sfx": [],
+  "fx": [],
+  "fx_seed": 8
+ },
+ {
+  "bg": "lib:bg_v3_police_steps",
+  "dur": 1.4,
+  "cam": {
+   "z0": 1.0,
+   "z1": 1.0
+  },
+  "actors": [
+   {
+    "outfit": "role_civ",
+    "pose": 0,
+    "x": 0.27,
+    "feet": 0.9,
+    "height": 0.32,
+    "faces": [
+     [
+      0.0,
+      "angry"
+     ]
+    ]
+   }
+  ],
+  "objects": [],
+  "texts": [],
+  "caps": [
+   [
+    0.0,
+    0.365,
+    "police",
+    []
+   ],
+   [
+    0.365,
+    1.4,
+    "department",
+    []
+   ]
+  ],
+  "cap_y": 0.68,
+  "sfx": [],
+  "fx": [],
+  "fx_seed": 9
+ },
+ {
+  "bg": "lib:bg_v3_garage",
+  "dur": 1.915,
+  "cam": {
+   "z0": 1.0,
+   "z1": 1.07
+  },
+  "actors": [
+   {
+    "outfit": "role_tech",
+    "pose": 0,
+    "x": 0.5,
+    "feet": 1.18,
+    "height": 0.8,
+    "faces": [
+     [
+      0.0,
+      "neutral"
+     ],
+     [
+      0.96,
+      "surprised"
+     ]
+    ],
+    "sweat": 0.2
+   }
+  ],
+  "objects": [],
+  "texts": [],
+  "caps": [
+   [
+    0.0,
+    0.579,
+    "explosive",
+    []
+   ],
+   [
+    0.579,
+    1.097,
+    "ordnance",
+    []
+   ],
+   [
+    1.097,
+    1.915,
+    "disposal",
+    []
+   ]
+  ],
+  "cap_y": 0.68,
+  "sfx": [],
+  "fx": [],
+  "fx_seed": 10
+ },
+ {
+  "bg": "lib:bg_v3_hospital",
+  "dur": 1.4,
+  "cam": {
+   "z0": 1.0,
+   "z1": 1.0
+  },
+  "actors": [
+   {
+    "outfit": "doctor",
+    "pose": "pose_hold_a_paper_up_in_one_hand",
+    "x": 0.27,
+    "feet": 0.95,
+    "height": 0.44,
+    "faces": [
+     [
+      0.0,
+      "neutral"
+     ]
+    ],
+    "sweat": 0.2
+   },
+   {
+    "outfit": "role_civ",
+    "pose": 6,
+    "x": 0.73,
+    "feet": 0.95,
+    "height": 0.44,
+    "faces": [
+     [
+      0.0,
+      "scared"
+     ]
+    ]
+   }
+  ],
+  "objects": [],
+  "texts": [],
+  "caps": [
+   [
+    0.0,
+    0.665,
+    "The medical",
+    []
+   ],
+   [
+    0.665,
+    1.4,
+    "exam",
+    []
+   ]
+  ],
+  "cap_y": 0.68,
+  "sfx": [],
+  "fx": [],
+  "fx_seed": 11
+ },
+ {
+  "bg": "lib:bg_v3_night_study",
+  "dur": 2.048,
+  "cam": {
+   "z0": 1.0,
+   "z1": 1.07
+  },
+  "actors": [
+   {
+    "outfit": "role_civ",
+    "pose": 0,
+    "x": 0.5,
+    "feet": 0.95,
+    "height": 0.44,
+    "faces": [
+     [
+      0.0,
+      "neutral"
+     ]
+    ]
+   }
+  ],
+  "objects": [],
+  "texts": [],
+  "caps": [
+   [
+    0.0,
+    0.789,
+    "He memorized the",
+    []
+   ],
+   [
+    0.789,
+    1.519,
+    "colorblindness",
+    []
+   ],
+   [
+    1.519,
+    2.048,
+    "test backwards",
+    []
+   ]
+  ],
+  "cap_y": 0.68,
+  "sfx": [],
+  "fx": [],
+  "fx_seed": 12
+ },
+ {
+  "bg": "solid:card",
+  "dur": 0.467,
+  "cam": {
+   "z0": 1.0,
+   "z1": 1.0
+  },
+  "actors": [],
+  "objects": [],
+  "texts": [
+   {
+    "text": "29",
+    "x": 0.5,
+    "y": 0.45,
+    "size": 0.1,
+    "font": "bold",
+    "color": [
+     255,
+     255,
+     255
+    ],
+    "stroke": 3,
+    "screen": true
+   }
+  ],
+  "caps": [
+   [
+    0,
+    0.467,
+    "test backwards",
+    []
+   ]
+  ],
+  "cap_y": 0.68,
+  "sfx": [],
+  "fx": [],
+  "fx_seed": 13
+ },
+ {
+  "bg": "solid:card",
+  "dur": 0.467,
+  "cam": {
+   "z0": 1.0,
+   "z1": 1.07
+  },
+  "actors": [],
+  "objects": [],
+  "texts": [
+   {
+    "text": "12",
+    "x": 0.5,
+    "y": 0.45,
+    "size": 0.1,
+    "font": "bold",
+    "color": [
+     255,
+     255,
+     255
+    ],
+    "stroke": 3,
+    "screen": true
+   }
+  ],
+  "caps": [
+   [
+    0.001,
+    0.467,
+    "and forwards",
+    []
+   ]
+  ],
+  "cap_y": 0.68,
+  "sfx": [],
+  "fx": [],
+  "fx_seed": 14
+ },
+ {
+  "bg": "solid:card",
+  "dur": 0.467,
+  "cam": {
+   "z0": 1.0,
+   "z1": 1.0
+  },
+  "actors": [],
+  "objects": [],
+  "texts": [
+   {
+    "text": "74",
+    "x": 0.5,
+    "y": 0.45,
+    "size": 0.1,
+    "font": "bold",
+    "color": [
+     255,
+     255,
+     255
+    ],
+    "stroke": 3,
+    "screen": true
+   }
+  ],
+  "caps": [
+   [
+    0,
+    0.466,
+    "and forwards",
+    []
+   ]
+  ],
+  "cap_y": 0.68,
+  "sfx": [],
+  "fx": [],
+  "fx_seed": 15
+ },
+ {
+  "bg": "lib:var_v3_hospital_desk",
+  "dur": 0.66,
+  "cam": {
+   "z0": 1.0,
+   "z1": 1.07
+  },
+  "actors": [
+   {
+    "outfit": "role_civ",
+    "pose": 0,
+    "x": 0.5,
+    "feet": 0.95,
+    "height": 0.44,
+    "faces": [
+     [
+      0.0,
+      "smug"
+     ]
+    ]
+   }
+  ],
+  "objects": [],
+  "texts": [],
+  "caps": [
+   [
+    0,
+    0.66,
+    "before walking",
+    []
+   ]
+  ],
+  "cap_y": 0.68,
+  "sfx": [],
+  "fx": [],
+  "fx_seed": 16
+ },
+ {
+  "bg": "lib:bg_v3_hospital",
+  "dur": 0.939,
+  "cam": {
+   "z0": 1.0,
+   "z1": 1.0
+  },
+  "actors": [
+   {
+    "outfit": "doctor",
+    "pose": 0,
+    "x": 0.27,
+    "feet": 0.95,
+    "height": 0.44,
+    "faces": [
+     [
+      0.0,
+      "surprised"
+     ]
+    ]
+   },
+   {
+    "outfit": "role_civ",
+    "pose": 0,
+    "x": 0.73,
+    "feet": 0.95,
+    "height": 0.44,
+    "faces": [
+     [
+      0.0,
+      "smug"
+     ]
+    ]
+   }
+  ],
+  "objects": [],
+  "texts": [
+   {
+    "text": "PASSED",
+    "x": 0.5,
+    "y": 0.2,
+    "size": 0.07,
+    "font": "bold",
+    "color": [
+     255,
+     255,
+     255
+    ],
+    "stroke": 3,
+    "screen": true
+   }
+  ],
+  "caps": [
+   [
+    0.022,
+    0.638,
+    "into the room",
+    []
+   ]
+  ],
+  "cap_y": 0.68,
+  "sfx": [],
+  "fx": [],
+  "fx_seed": 17
+ }
+]

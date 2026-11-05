@@ -1,0 +1,38 @@
+[kaggle] using account 1 (narasimharaodamarla), dataset owner narasimharaodamarla
+{"heads": ["chief", "doctor"], "poses": ["doctor: hold a paper up in one hand"], "skipped": ["head of 'bombsuit': its body is not made yet (costume step first)", "pose 'kneel with both hands forward on a box' of 'bombsuit': its body is not made yet", "head of 'cop_squad': its body is not made yet (costume step first)", "head of 'arthur_sweater': its body is not made yet (costume step first)", "head of 'girl_gown': its body is not made yet (costume step first)", "pose 'sit up in a hospital bed' of 'girl_gown': its body is not made yet", "pose 'hold a paper up in one hand' of 'arthur_sweater': its body is not made yet"]}
+CAST_NEEDS=3
+{"ok": true, "files": 51, "items": 51, "sprites": 330}
+{"round": 1, "pending": ["head_chief", "head_doctor", "pose_doctor_hold_a_paper_up_in_one_hand"], "jobs": 6, "uses_dataset": true}
+NOTHING_PENDING=false
+USES_DATASET=true
+Wrote /home/runner/work/stickman-motion-studio/stickman-motion-studio/kaggle/scene-batch/scene_batch.ipynb
+FAILED: Kaggle execution of narasimharaodamarla/stickman-motion-studio-scene-batch/3 ended in state ERROR.
+run_id=565f68d436664c33b45de8696176fc90 workflow_run=42021874773-1 commit=8c3922336772
+Kaggle try 1 failed
+[kaggle] no second account configured
+run_id=d5ce95cf2a824db180934115eafda0fe workflow_run=42021874773-1 commit=8c3922336772
+VERIFIED: version 4 produced output matching run token (poses).
+  environment: {'python': '3.13.16', 'torch': '2.11.0+cu130', 'cuda_available': True, 'gpu_names': ['Tesla T4', 'Tesla T4']}
+  klein: success load 64.8 s, peak VRAM 8.87 GiB
+  pictures drawn: 6 of 6; seconds each: min 23.94 max 48.72
+  failed: []
+  notebook_duration_seconds: 484.2
+{"round": 1, "accepted": ["pose_doctor_hold_a_paper_up_in_one_hand"], "still_missing": ["head_chief", "head_doctor"], "complete": false}
+DONE=false
+{"round": 2, "pending": ["head_chief", "head_doctor"], "jobs": 6, "uses_dataset": false}
+NOTHING_PENDING=false
+USES_DATASET=false
+Wrote /home/runner/work/stickman-motion-studio/stickman-motion-studio/kaggle/scene-batch/scene_batch.ipynb
+run_id=86c3b12960814bc9a8f9844af7e8c774 workflow_run=42021874773-1 commit=8c3922336772
+VERIFIED: version 5 produced output matching run token (poses).
+  environment: {'python': '3.13.16', 'torch': '2.11.0+cu130', 'cuda_available': True, 'gpu_names': ['Tesla T4', 'Tesla T4']}
+  klein: success load 62.5 s, peak VRAM 8.87 GiB
+  pictures drawn: 6 of 6; seconds each: min 44.05 max 54.6
+  failed: []
+  notebook_duration_seconds: 561.7
+{"round": 2, "accepted": ["head_chief", "head_doctor", "pose_doctor_hold_a_paper_up_in_one_hand"], "still_missing": [], "complete": true}
+DONE=true
+{"complete": true, "notes": ["head of 'chief' drawn automatically (short grey hair, a thick black mustache and a black headset with a small microphone)", "head of 'doctor' drawn automatically (bald head, small round glasses and a grey mustache)", "pose 'hold a paper up in one hand' of 'doctor' drawn automatically"]}
+DONE=true
+{"ok": true, "files": 51, "items": 51, "sprites": 341}
+cast 2026-11-05_10_bomb_ref_full complete=true

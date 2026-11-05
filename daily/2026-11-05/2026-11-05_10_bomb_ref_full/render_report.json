@@ -1,0 +1,122 @@
+{
+ "ok": true,
+ "video": "daily-out/2026-11-05/2026-11-05_10_bomb_ref_full/2026-11-05_10_bomb_ref_full.mp4",
+ "render": {
+  "frames": 697,
+  "seconds": 23.23,
+  "shots": 17,
+  "fps": 30,
+  "all_frames": 697
+ },
+ "scenes": 17,
+ "warnings": [
+  "costume 'bombsuit' is spec_only: stand-in 'role_tech' used",
+  "scene 1: pose word 'kneel_with_both_hands_forward_on_a_box' not known, stand used",
+  "costume 'cop_squad' is spec_only: stand-in 'role_cop' used",
+  "costume 'arthur_sweater' is spec_only: stand-in 'role_civ' used",
+  "costume 'girl_gown' is missing: stand-in 'role_civ' used",
+  "scene 6: pose word 'sit_up_in_a_hospital_bed' not known, stand used",
+  "scene 12: pose word 'hold_a_paper_up_in_one_hand' not known, stand used"
+ ],
+ "missing_assets": [],
+ "missing_costumes": [
+  "arthur_sweater",
+  "bombsuit",
+  "cop_squad",
+  "girl_gown"
+ ],
+ "voice": [
+  {
+   "scene": 1,
+   "shots": 2,
+   "voice_s": 3.29,
+   "scene_s": 3.74,
+   "stretched": false
+  },
+  {
+   "scene": 2,
+   "shots": 1,
+   "voice_s": 1.32,
+   "scene_s": 1.62,
+   "stretched": false
+  },
+  {
+   "scene": 3,
+   "shots": 1,
+   "voice_s": 0.97,
+   "scene_s": 1.4,
+   "stretched": false
+  },
+  {
+   "scene": 4,
+   "shots": 1,
+   "voice_s": 0.66,
+   "scene_s": 1.4,
+   "stretched": false
+  },
+  {
+   "scene": 5,
+   "shots": 1,
+   "voice_s": 0.95,
+   "scene_s": 1.4,
+   "stretched": false
+  },
+  {
+   "scene": 6,
+   "shots": 1,
+   "voice_s": 0.87,
+   "scene_s": 1.4,
+   "stretched": false
+  },
+  {
+   "scene": 7,
+   "shots": 1,
+   "voice_s": 2.21,
+   "scene_s": 2.51,
+   "stretched": false
+  },
+  {
+   "scene": 8,
+   "shots": 1,
+   "voice_s": 0.95,
+   "scene_s": 1.4,
+   "stretched": false
+  },
+  {
+   "scene": 9,
+   "shots": 1,
+   "voice_s": 1.62,
+   "scene_s": 1.92,
+   "stretched": false
+  },
+  {
+   "scene": 10,
+   "shots": 1,
+   "voice_s": 0.94,
+   "scene_s": 1.4,
+   "stretched": false
+  },
+  {
+   "scene": 11,
+   "shots": 1,
+   "voice_s": 1.75,
+   "scene_s": 2.05,
+   "stretched": false
+  },
+  {
+   "scene": 12,
+   "shots": 3,
+   "voice_s": 1.06,
+   "scene_s": 1.4,
+   "stretched": false
+  },
+  {
+   "scene": 13,
+   "shots": 2,
+   "voice_s": 1.3,
+   "scene_s": 1.6,
+   "stretched": false
+  }
+ ],
+ "human_reviewed": false
+}

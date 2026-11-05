@@ -1,0 +1,2 @@
+{"complete": true, "notes": ["head of 'chief' drawn automatically (short grey hair, a thick black mustache and a black headset with a small microphone)", "head of 'doctor' drawn automatically (bald head, small round glasses and a grey mustache)", "pose 'hold a paper up in one hand' of 'doctor' drawn automatically"]}
+DONE=true
