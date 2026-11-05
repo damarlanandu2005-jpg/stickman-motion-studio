@@ -10,7 +10,7 @@ on:
         default: scripts/example_pig_war.txt
       model:
         description: "Gemini model (a free API key allows Flash models only)"
-        default: gemini-2.5-flash
+        default: gemini-3.8-flash
 
 permissions:
   contents: write
