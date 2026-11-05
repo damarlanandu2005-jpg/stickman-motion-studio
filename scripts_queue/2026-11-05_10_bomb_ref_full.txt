@@ -1,0 +1,145 @@
+# TEST (written by Claude): the first 20 seconds of the reference "He Defused 41 Bombs Without Seeing COLOR", shot by shot from the reference frames.
+# Every person, place, size, face and moving thing is written here; the pipeline draws whatever is missing (costumes, heads, poses) by itself.
+TITLE: He Defused 41 Bombs (first 20 s, full cast)
+VOICE: am_fenrir
+CAST: animation/cast/bomb_ref.json
+
+SCENE
+bg: lib:var_v3_barrier_bomb
+who: arthur@squad, cop, cop2
+pose: kneel with both hands forward on a box, stand, stand
+say: This bomb squad technician could never ask which *wire* to cut,
+SHOT
+say: This bomb squad technician could never ask which
+where: arthur centre near, cop right far, cop2 far right far
+face: arthur: neutral -> worried -> angry, cop: neutral, cop2: neutral
+move: timer 0:05 -> 0:00 at 0.76 0.66, sweat, spark
+camera: still
+SHOT
+bg: lib:ins_explosion
+who: none
+say: *wire* to cut,
+move: flash, shake, smoke
+camera: still
+
+SCENE
+bg: lib:bg_v3_garage
+who: cop, chief, cop2, cop3
+pose: stand, stand, hands_on_hips, stand
+say: because his team would find out
+frame: medium
+where: cop far left near, chief left near, cop2 right near, cop3 far right near
+face: cop: laugh, chief: smug, cop2: happy -> laugh, cop3: smug
+camera: still
+
+SCENE
+bg: lib:var_v3_corner_light
+who: arthur
+pose: stand -> point
+say: he was completely
+where: arthur centre near
+face: neutral -> surprised
+camera: still
+
+SCENE
+bg: lib:ins_traffic_grey
+who: none
+say: *colorblind*.
+camera: slow push
+
+SCENE
+bg: lib:bg_v3_hospital
+who: arthur, daughter
+pose: stand, sit up in a hospital bed
+say: When his daughter needed
+where: arthur left near, daughter right mid
+face: arthur: sad, daughter: sad
+camera: still
+
+SCENE
+bg: lib:bg_v3_hospital
+who: doctor, arthur
+pose: hold a paper up in one hand, stand
+say: heart surgery,
+where: doctor left near, arthur right near
+face: doctor: neutral, arthur: surprised
+move: sweat
+camera: still
+
+SCENE
+bg: lib:var_v3_bulletin_notes
+who: arthur
+pose: stand -> point
+say: Arthur applied for the highest-paying job in the
+where: arthur left near
+face: neutral -> happy
+camera: still
+
+SCENE
+bg: lib:bg_v3_police_steps
+who: arthur
+say: police department:
+where: arthur left mid
+face: angry
+camera: still
+
+SCENE
+bg: lib:bg_v3_garage
+who: arthur@squad
+say: explosive ordnance disposal.
+frame: close
+face: neutral -> surprised
+move: sweat
+camera: slow push
+
+SCENE
+bg: lib:bg_v3_hospital
+who: doctor, arthur
+pose: hold a paper up in one hand, think
+say: The medical exam?
+where: doctor left near, arthur right near
+face: doctor: neutral, arthur: scared
+move: sweat
+camera: still
+
+SCENE
+bg: lib:bg_v3_night_study
+who: arthur
+pose: hold a paper up in one hand
+say: He memorized the colorblindness test
+where: arthur centre near
+face: neutral
+camera: slow push
+
+SCENE
+bg: lib:ins_orange_blank
+say: backwards and forwards
+SHOT
+say: backwards and
+view: card
+text: 29
+SHOT
+view: card
+text: 12
+SHOT
+say: forwards
+view: card
+text: 74
+
+SCENE
+bg: lib:var_v3_hospital_desk
+who: arthur
+pose: stand
+say: before walking into the room.
+SHOT
+say: before
+where: arthur centre near
+face: smug
+SHOT
+bg: lib:bg_v3_hospital
+who: doctor, arthur
+pose: stand, stand
+say: walking into the room.
+where: doctor left near, arthur right near
+face: doctor: surprised, arthur: smug
+text: PASSED

@@ -55,6 +55,15 @@ if [ "$BUILT" = true ]; then
   python -m motion_studio.asset_store up --slug stickman-assets --message "costumes for $NAME (auto)" || warn "costume upload to the dataset failed (they exist only in this run)"
 fi
 
+# 3b. heads (cast file 'head:') and extra pose words for every character in the script
+timeout 120m scripts/run_cast_auto.sh "$SCRIPT" > "$ST/cast.log" 2>&1 || warn "cast step (heads/poses) ended abnormally"
+tail -3 "$ST/cast.log"
+python - "cast-state/$NAME/cast_notes.json" >> "$ST/warnings.txt" 2>/dev/null <<'PY'
+import json, sys
+for n in json.load(open(sys.argv[1])): print("WARN: " + n + ("" if "not made" in n else ", not reviewed by a person"))
+PY
+cp "cast-state/$NAME/finalize.txt" "$ST/cast_finalize.txt" 2>/dev/null || true
+
 # 4. voice + render (single job: parallel parts did not make it faster)
 mkdir -p models
 if [ ! -f models/kokoro-v1.0.onnx ]; then

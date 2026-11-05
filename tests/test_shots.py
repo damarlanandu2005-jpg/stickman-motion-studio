@@ -63,3 +63,10 @@ def test_pose_can_be_an_expression():
     shots, warns = sp.plan_shots(r, [2.0], [], {})
     assert shots[0]["actors"][0]["faces"] == [[0, "scared"]] and shots[0]["actors"][0]["pose"] == 0
     assert not any("pose word" in w for w in warns)
+
+
+def test_pose_change_inside_a_shot():
+    t = sr.parse_script("SCENE\nbg: room\nwho: a\npose: stand -> point\nsay: Look there.\n")
+    r = sr.resolve(t, CAST, {"items": {}})
+    shots, warns = sp.plan_shots(r, [2.0], [], {})
+    assert shots[0]["actors"][0]["pose_seq"] == [[0.0, 0], [1.0, 1]] and not any("pose word" in w for w in warns)

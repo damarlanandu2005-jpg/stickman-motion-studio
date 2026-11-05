@@ -211,6 +211,8 @@ def stamped_setup() -> str:
     jobs = json.loads(JOBS_FILE.read_text(encoding="utf-8"))
     refs = sorted({r for j in jobs["jobs"] for r in j["refs"]})
     def local(r: str) -> Path:
+        if r.startswith("ds:sprites__"):   # a character sprite of the asset dataset (synced into animation/assets2d)
+            return ROOT / "animation" / "assets2d" / r[len("ds:sprites__"):].replace("__", "/")
         if r.startswith("ds:"):      # a picture of the asset dataset: the same file, synced into the library folder
             return ROOT / "animation" / "asset_library" / r[3:].replace("__", "/")
         return ROOT / "animation" / "reference_art" / r

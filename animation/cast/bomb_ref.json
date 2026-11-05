@@ -1,10 +1,23 @@
 {
  "characters": {
-  "arthur": {"default_stage": "normal", "stages": {"normal": {"costume": "civ"}, "squad": {"costume": "tech"}}},
+  "arthur": {"default_stage": "normal", "stages": {"normal": {"costume": "arthur_sweater"}, "squad": {"costume": "bombsuit"}}},
+  "daughter": {"stages": {"main": {"costume": "girl_gown"}}},
   "doctor": {"stages": {"main": {"costume": "doctor"}}},
   "chief": {"stages": {"main": {"costume": "chief"}}},
-  "cop": {"stages": {"main": {"costume": "cop"}}},
-  "cop2": {"stages": {"main": {"costume": "cop"}}}
+  "cop": {"stages": {"main": {"costume": "cop_squad"}}},
+  "cop2": {"stages": {"main": {"costume": "cop_squad"}}},
+  "cop3": {"stages": {"main": {"costume": "cop_squad"}}}
  },
- "costumes": {}
+ "costumes": {
+  "arthur_sweater": {"look": "a mustard-yellow knitted sweater and brown trousers with dark brown shoes", "colour": "yellow", "stand_in": "civ",
+                     "head": "short brown hair parted on the side, no hat"},
+  "bombsuit": {"look": "a thick padded olive-green bomb disposal suit with a heavy chest plate, padded arms and legs and heavy black boots", "colour": "olive green", "stand_in": "tech",
+               "head": "a big round olive-green padded hood that covers the hair and frames the face"},
+  "girl_gown": {"look": "a light pink hospital gown down to the knees and bare legs with white socks", "stand_in": "civ",
+                "head": "long straight brown hair down to the shoulders, a young girl"},
+  "doctor": {"head": "bald head, small round glasses and a grey mustache"},
+  "chief": {"head": "short grey hair, a thick black mustache and a black headset with a small microphone"},
+  "cop_squad": {"look": "a dark navy police tactical vest over a navy blue uniform with black boots", "colour": "navy", "stand_in": "cop",
+                "head": "short dark hair and a black headset with a small microphone"}
+ }
 }

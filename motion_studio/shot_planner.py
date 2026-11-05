@@ -38,6 +38,10 @@ FEET_DEFAULT = 0.9
 EXPRESSIONS = {"scared": "scared", "surprised": "surprised", "shocked": "surprised", "sad": "sad", "happy": "happy", "smug": "smug", "angry": "angry", "laugh": "laugh", "laughing": "laugh", "neutral": "neutral"}
 
 
+def _slug(words: str) -> str:
+    return "_".join(re.findall(r"[a-z0-9]+", words.lower().replace("_", " ")))[:48]
+
+
 def key_words(caption: str, allred: set[str]) -> list[str]:
     """Only the keyword(s) of a caption are red, not the whole phrase. Empty list = all white."""
     return [w for w in caption.split() if re.sub(r"\W", "", w).lower() in allred]
@@ -103,12 +107,14 @@ def plan_shots(ir: dict, durs: list[float], words: list, cast: dict, root: Path 
             if warn and warn not in warns:
                 warns.append(warn)
             raw = sc["pose"][i] if i < len(sc["pose"]) else (sc["pose"][-1] if sc["pose"] else "stand")
-            steps = [p.lower().replace(" ", "_") for p in re.split(r"->|→", raw) if p.strip()] or ["stand"]
+            steps = [p.strip().lower().replace(" ", "_") for p in re.split(r"->|→", raw) if p.strip()] or ["stand"]
             who_face, seq = face, []
             for k, pw in enumerate(steps):
                 if pw in EXPRESSIONS:                               # "pose: scared" = a standing pose with that face
                     who_face, pw = EXPRESSIONS[pw], "stand"
                 pose = POSES.get(pw)
+                if pose is None and (root / "animation" / "assets2d" / of / f"pose_{_slug(pw)}.png").exists():
+                    pose = f"pose_{_slug(pw)}"                       # an extra pose drawn for this character by the cast loop
                 if pose is None:
                     warns.append(f"scene {sc['n']}: pose word '{pw}' not known, stand used"); pose = 0
                 seq.append([round(d * k / len(steps), 2), pose])
