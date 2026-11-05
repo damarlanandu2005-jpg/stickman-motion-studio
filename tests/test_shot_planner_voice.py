@@ -32,7 +32,7 @@ def test_plan_placeholder_standin_pose_and_camera(tmp_path):
     assert shots[0]["objects"][0]["lib"] == "obj_b" and shots[0]["texts"][0]["text"] == "41"
     assert shots[1]["cam"] == pl.PULL and shots[1]["actors"][0]["outfit"] == "explorer" and len(shots[1]["actors"]) == 2
     text = " ".join(warns)
-    assert "not in the library" in text and "bodies_only" in text and "pose word not known" in text
+    assert "not in the library" in text and "bodies_only" in text and "not known, stand used" in text
 
 
 def test_captions_are_cut_into_the_right_shot(tmp_path):

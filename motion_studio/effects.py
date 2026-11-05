@@ -10,7 +10,7 @@ import math
 import numpy as np
 from PIL import Image, ImageDraw
 
-TYPES = ("rain", "snow", "bubbles", "ripples", "dust", "fog")
+TYPES = ("rain", "snow", "bubbles", "ripples", "dust", "fog", "tracers", "smoke", "spark", "scope")
 
 
 def _rng(seed: int) -> np.random.Generator:
@@ -66,4 +66,30 @@ def draw(im: Image.Image, fx: list[dict], t: float, dur: float, seed: int = 0) -
             for j in range(4):
                 y = H * (0.45 + 0.12 * j) + math.sin(t * 0.3 + j) * 25
                 d.ellipse([-W * 0.3 + math.sin(t * 0.2 + j) * 60, y - 90, W * 1.3, y + 90], fill=(235, 240, 245, a))
+        elif typ == "tracers":                    # gunfire: short bright streaks crossing the picture, each lives 0.15 s
+            n = int(10 * s)
+            for i in range(n):
+                period = 0.55 + 0.3 * (i % 3); ph = (t + i * 0.37) % period
+                if ph > 0.15:
+                    continue
+                y = H * (0.25 + 0.45 * ((i * 0.618) % 1)); u = ph / 0.15
+                x = -60 + u * (W + 120) if i % 2 else W + 60 - u * (W + 120)
+                d.line([(x - 40, y), (x + 40, y - 6)], fill=(255, 230, 120, 230), width=4)
+        elif typ == "smoke":                      # dark puffs rising slowly
+            n = int(9 * s)
+            for i in range(n):
+                u = ((t * 0.18) + i / n) % 1.0
+                cx = W * (0.3 + 0.4 * ((i * 0.53) % 1)) + math.sin(t + i) * 20; cy = H * (0.8 - 0.6 * u); rr = 40 + 90 * u
+                d.ellipse([cx - rr, cy - rr, cx + rr, cy + rr], fill=(60, 60, 64, int(130 * (1 - u))))
+        elif typ == "spark":                      # a small yellow burst (wire cut, impact); starts at t0
+            cx, cy = e.get("x", 0.5) * W, e.get("y", 0.62) * H; u = min((t - e.get("t0", 0.0)) / 0.3, 1.0)
+            for j in range(10):
+                a = j * 2 * math.pi / 10; r0, r1 = 8 + 30 * u, 20 + 70 * u
+                d.line([(cx + r0 * math.cos(a), cy + r0 * math.sin(a)), (cx + r1 * math.cos(a), cy + r1 * math.sin(a))], fill=(255, 220, 60, int(255 * (1 - 0.6 * u))), width=5)
+            d.ellipse([cx - 14, cy - 14, cx + 14, cy + 14], fill=(255, 250, 200, 255))
+        elif typ == "scope":                      # round night-vision scope: green picture inside a black circle
+            g = im.convert("L")
+            green = Image.merge("RGB", (g.point(lambda v: int(v * 0.35)), g.point(lambda v: min(int(v * 1.1 + 25), 255)), g.point(lambda v: int(v * 0.4))))
+            mask = Image.new("L", im.size, 0); ImageDraw.Draw(mask).ellipse([W * 0.02, H * 0.5 - W * 0.48, W * 0.98, H * 0.5 + W * 0.48], fill=255)
+            im = Image.composite(green, Image.new("RGB", im.size, (0, 0, 0)), mask)
     return Image.alpha_composite(im.convert("RGBA"), layer).convert("RGB")

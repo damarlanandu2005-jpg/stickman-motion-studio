@@ -1,0 +1,125 @@
+# Remake of the first 20 seconds of the reference "He Defused 41 Bombs Without Seeing COLOR" in the shot-direction format.
+# Pictures: the library pictures drawn earlier for this story (lib:...). Written by Claude to test the format; compare with the reference.
+TITLE: He Defused 41 Bombs (first 20 s)
+VOICE: am_fenrir
+CAST: animation/cast/bomb_ref.json
+
+SCENE
+bg: lib:var_v3_barrier_bomb
+who: arthur@squad
+say: This bomb squad technician could never ask which *wire* to cut,
+SHOT
+say: This bomb squad technician could never ask which
+where: arthur left mid
+face: worried -> scared -> shocked
+move: timer 0:05 -> 0:01 at 0.76 0.66, sweat
+camera: slow push
+SHOT
+bg: lib:ins_explosion
+who: none
+say: *wire* to cut,
+move: flash, shake
+camera: still
+
+SCENE
+bg: lib:var_v3_barrier_smoke
+who: arthur@squad
+pose: arms_up
+say: because his team would find out
+where: arthur centre mid
+face: surprised
+move: smoke
+camera: still
+
+SCENE
+bg: lib:bg_v3_garage
+who: cop, chief, cop2
+pose: arms_up, stand, arms_up
+say: he was completely *colorblind*.
+SHOT
+say: he was completely
+where: cop left mid, chief centre far, cop2 right mid
+face: cop: laugh, chief: smug, cop2: happy
+camera: slow push
+SHOT
+bg: lib:var_v3_corner_light
+who: arthur
+say: *colorblind*.
+where: arthur centre near
+face: surprised
+camera: still
+
+SCENE
+bg: lib:ins_traffic_grey
+say: When his daughter needed heart surgery,
+SHOT
+say: When his daughter
+who: none
+camera: slow push
+SHOT
+bg: lib:bg_v3_hospital
+who: doctor, arthur
+say: needed heart surgery,
+where: doctor left mid, arthur right mid
+pose: point, stand
+face: doctor: neutral, arthur: sad
+camera: still
+
+SCENE
+bg: lib:var_v3_bulletin_notes
+who: arthur
+pose: point
+say: Arthur applied for the highest-paying job in the police department:
+SHOT
+say: Arthur applied for the highest-paying job
+where: arthur left mid
+face: neutral -> smug
+camera: slow push
+SHOT
+bg: lib:bg_v3_police_steps
+say: in the police department:
+where: arthur left far
+face: angry
+camera: still
+
+SCENE
+bg: lib:bg_v3_garage
+who: arthur@squad
+say: explosive ordnance disposal.
+frame: close
+face: neutral -> surprised
+move: sweat
+camera: slow push
+
+SCENE
+bg: lib:bg_v3_hospital
+who: doctor, arthur
+pose: point, arms_crossed
+say: The medical exam?
+where: doctor left mid, arthur right mid
+face: doctor: neutral, arthur: scared
+camera: still
+
+SCENE
+bg: lib:bg_v3_night_study
+who: arthur
+say: He memorized the colorblindness test backwards and forwards before walking into the room.
+SHOT
+say: He memorized the colorblindness test
+where: arthur right mid
+face: neutral
+move: sweat
+camera: slow push
+SHOT
+bg: lib:ins_orange_blank
+say: backwards and forwards
+view: card
+text: 29
+camera: still
+SHOT
+bg: lib:var_v3_hospital_desk
+who: arthur
+say: before walking into the room.
+move: arthur walks left -> centre
+face: smug
+camera: still

@@ -59,6 +59,8 @@ class Library:
 
     def bg(self, name: str) -> Image.Image:
         if name not in self._bg:
+            if name == "solid:card":       # flat colour card (one symbol / number / word drawn by code on top)
+                im = Image.new("RGB", (int(W * SS), int(H * SS)), (232, 140, 60)); self._bg[name] = im; return im
             if name.startswith("solid:"):  # placeholder for a background that is not drawn yet: a plain dark gradient, never a crash
                 top, bot = np.array([38, 44, 66], np.float32), np.array([18, 20, 30], np.float32)
                 col = (top[None, :] + (bot - top)[None, :] * np.linspace(0, 1, int(H * SS))[:, None])
@@ -170,6 +172,15 @@ def draw_actor(lib: Library, scene: Image.Image, actor: dict, t: float, dur: flo
         scene.paste(h, (int(neck_x - h.width / 2), int(chin_y - h.height / 2)), h)  # pivot is the canvas centre
     else:
         scene.paste(h, (int(neck_x - h.width / 2), int(chin_y - h.height)), h)
+    if actor.get("sweat") is not None and t >= actor["sweat"]:     # a blue sweat drop at the side of the head, sliding down slowly
+        from PIL import ImageDraw
+        u = min((t - actor["sweat"]) / 1.6, 1.0)
+        r = max(fw * 0.055, 3)
+        sx = neck_x + (-1 if flip else 1) * fw * 0.36
+        sy = chin_y - h.height * 0.78 + u * fw * 0.18
+        d = ImageDraw.Draw(scene)
+        d.polygon([(sx, sy - r * 2.2), (sx - r, sy), (sx + r, sy)], fill=(120, 190, 245, 255))
+        d.ellipse([sx - r, sy - r, sx + r, sy + r], fill=(120, 190, 245, 255), outline=(40, 90, 150, 255), width=max(int(r * 0.25), 1))
 
 
 def draw_object(lib: Library, scene: Image.Image, o: dict, t: float) -> None:
@@ -211,6 +222,9 @@ def render_frame(lib: Library, shot: dict, local_t: float) -> Image.Image:
     z = cam.get("z0", 1.0) + (cam.get("z1", 1.05) - cam.get("z0", 1.0)) * u
     fx = cam.get("x0", 0.5) + (cam.get("x1", 0.5) - cam.get("x0", 0.5)) * u
     fy = cam.get("y0", 0.5) + (cam.get("y1", 0.5) - cam.get("y0", 0.5)) * u
+    if cam.get("shake"):                         # hand-held shake: smooth, time-only (any frame can be rendered alone)
+        a = cam["shake"]; z = max(z, 1.0 + 2.2 * a)
+        fx += a * (math.sin(local_t * 31.0) + 0.6 * math.sin(local_t * 17.3)); fy += a * (math.cos(local_t * 27.0) + 0.5 * math.sin(local_t * 13.1))
     cw, ch = scene.width / z, scene.height / z
     x0 = min(max(fx * scene.width - cw / 2, 0), scene.width - cw)
     y0 = min(max(fy * scene.height - ch / 2, 0), scene.height - ch)

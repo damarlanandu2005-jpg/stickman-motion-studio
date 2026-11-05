@@ -40,7 +40,9 @@ def test_all_new_sounds_make_audio():
 def test_effects_change_frame_and_are_deterministic():
     base = Image.new("RGB", (720, 1280), (90, 120, 150))
     for typ in effects.TYPES:
-        a = effects.draw(base, [{"type": typ}], 0.7, 3.0, 5); b = effects.draw(base, [{"type": typ}], 0.7, 3.0, 5)
+        tt = 0.75 if typ == "tracers" else 0.7          # gunfire flickers: streaks are not on screen every moment
+        tt = next((x / 20 for x in range(10, 40) if typ == "tracers" and not np.array_equal(np.asarray(effects.draw(base, [{"type": typ}], x / 20, 3.0, 5)), np.asarray(base))), tt)
+        a = effects.draw(base, [{"type": typ}], tt, 3.0, 5); b = effects.draw(base, [{"type": typ}], tt, 3.0, 5)
         assert np.array_equal(np.asarray(a), np.asarray(b)) and not np.array_equal(np.asarray(a), np.asarray(base)), typ
     c = effects.draw(base, [{"type": "rain"}], 0.9, 3.0, 5)
     assert not np.array_equal(np.asarray(a), np.asarray(c))

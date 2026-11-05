@@ -1,0 +1,10 @@
+{
+ "characters": {
+  "arthur": {"default_stage": "normal", "stages": {"normal": {"costume": "civ"}, "squad": {"costume": "tech"}}},
+  "doctor": {"stages": {"main": {"costume": "doc"}}},
+  "chief": {"stages": {"main": {"costume": "chief"}}},
+  "cop": {"stages": {"main": {"costume": "cop"}}},
+  "cop2": {"stages": {"main": {"costume": "cop"}}}
+ },
+ "costumes": {}
+}

@@ -32,11 +32,11 @@ from pathlib import Path
 from . import asset_library as lib
 
 ROOT = Path(__file__).resolve().parents[1]
-KEYS = {"bg", "who", "pose", "props", "say", "text", "sound", "camera", "from", "next", "draw", "frame", "split"}
+KEYS = {"bg", "who", "pose", "props", "say", "text", "sound", "camera", "from", "next", "draw", "frame", "split", "see", "where", "face", "move", "view"}
 FRAMES = {"wide", "medium", "close", "insert", "card"}
 AUTO_SPLIT_WORDS = 11          # a voice line with at least this many words is cut into 2-3 quick shots (unless `split: no`)
 INHERIT = ("bg", "who", "pose", "props")
-CAMERAS = {"push", "pull", "pan", "still"}
+CAMERAS = {"push", "pull", "pan", "still", "slow push", "slow pull", "shake"}
 STOP = {"a", "an", "the", "of", "at", "on", "with", "and", "in", "to"}
 HUES = {"green": (0.17, 0.45), "olive green": (0.17, 0.45), "yellow": (0.10, 0.20), "blue": (0.50, 0.70), "light blue": (0.50, 0.62),
         "navy": (0.55, 0.72), "purple": (0.72, 0.85), "red": (0.0, 0.05)}
@@ -240,7 +240,8 @@ def resolve(script: dict, cast: dict, db: dict | None = None, root: Path = ROOT)
             errors.append(f"{tag}: missing 'say:' (the voice line)")
         voice, red = red_marks(sc.get("say", ""))
         who = []
-        for part in [p.strip() for p in sc.get("who", "").split(",") if p.strip()]:
+        who_txt = "" if sc.get("who", "").strip().lower() in ("none", "nobody", "-", "empty") else sc.get("who", "")   # 'who: none' = nobody in this shot
+        for part in [p.strip() for p in who_txt.split(",") if p.strip()]:
             c, _, s = part.lower().partition("@"); s = s or stage.get(c, "")
             if c not in chars:
                 errors.append(f"{tag}: unknown character '{c}' (cast has: {', '.join(chars) or 'nobody'})"); continue
@@ -250,7 +251,12 @@ def resolve(script: dict, cast: dict, db: dict | None = None, root: Path = ROOT)
             costumes.setdefault(cos, costume_status(cos, root))
             who.append({"character": c, "stage": s, "costume": cos, "costume_status": costumes[cos]})
         bg, bscore = (None, 0.0)
-        if sc.get("bg"):
+        if sc.get("bg", "").lower().startswith("lib:"):               # the author names an exact library picture
+            bg, bscore = sc["bg"][4:].strip(), 1.0
+            if bg not in db["items"]:
+                errors.append(f"{tag}: library picture '{bg}' does not exist"); bg = None
+            prev_bg = bg
+        elif sc.get("bg"):
             bg, bscore, base = match_bg(db, sc["bg"])
             mode = "same" if base else None
             link = sc.get("from") or sc.get("next")                         # the author says: draw it from this picture ('previous' = the scene before)
@@ -301,7 +307,9 @@ def resolve(script: dict, cast: dict, db: dict | None = None, root: Path = ROOT)
         scenes.append({"n": i + 1, "voice": voice, "red": red, "bg": {"wanted": sc.get("bg", ""), "library_id": bg, "match": round(bscore, 2)},
                        "who": who, "pose": [p.strip() for p in sc.get("pose", "").split(",") if p.strip()], "props": props,
                        "text": sc.get("text", ""), "sound": sc.get("sound", ""), "camera": cam or "auto",
-                       "frame": sc.get("frame", "").lower(), "group": sc.get("group"), "shot": sc.get("shot", 1)})
+                       "frame": sc.get("frame", "").lower(), "group": sc.get("group"), "shot": sc.get("shot", 1),
+                       "see": sc.get("see", ""), "where": sc.get("where", ""), "face": sc.get("face", ""), "move": sc.get("move", ""), "view": sc.get("view", "").lower(),
+                       "pose_raw": sc.get("pose", "")})
     seen = {}
     for n in needs_bg + needs_obj:
         seen.setdefault(n["id"], n)
