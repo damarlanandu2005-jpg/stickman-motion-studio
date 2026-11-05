@@ -1,0 +1,123 @@
+TITLE: The Great Molasses Flood
+
+NARRATION:
+In nineteen nineteen, a wave of sweet brown goo killed twenty-one people in Boston.
+A huge tank held over two million gallons of molasses. It stood in the middle of a busy neighborhood. It was built fast, and it was never tested.
+On a warm January afternoon, the tank groaned. Rivets popped like bullets. Then it burst.
+A wave eight meters tall rushed down the street at fifty kilometers an hour. It flattened trains, houses, and horses.
+It took weeks to clean. And on hot days, locals say the area still smells sweet.
+
+SHOTS:
+CAST:
+- Workers: grey caps, dark wool coats, mustaches.
+- Kids: small, wool caps, short coats.
+- Horse: brown, with a cart.
+- Fireman: dark blue coat, tall hat.
+
+SHOT 1 (hook)
+WORDS: "In nineteen nineteen,"
+PLACE: old Boston street, brick buildings, a horse cart, an elevated train track.
+LIGHT: golden.
+CAMERA: close on a jar being tilted, brown syrup dripping slowly, fov 30.
+CHARACTERS: None.
+EFFECTS: slow thick drops.
+SFX: drip. MUSIC: soft ragtime piano starts.
+
+SHOT 2 (wave)
+WORDS: "a wave of sweet brown goo killed twenty-one people in Boston."
+PLACE: same street, camera pulls back from the drip to a wide view of the street.
+LIGHT: day.
+CAMERA: pull back, fov 30 > 44; a small snap-zoom at "Boston".
+CHARACTERS: Street people walking, faces = calm.
+EFFECTS: text "21" briefly in the sky.
+SFX: whoosh. MUSIC: continues.
+
+SHOT 3 (tank)
+WORDS: "A huge tank held over two million gallons of molasses."
+PLACE: giant round steel tank, 15 meters tall, near the harbor, with brick houses around.
+LIGHT: day.
+CAMERA: low angle, tilt up the tank, fov 46.
+CHARACTERS: Two tiny workers at the foot of the tank, face = calm.
+EFFECTS: steam from the top.
+SFX: deep metal hum. MUSIC: soft.
+
+SHOT 4 (neighborhood)
+WORDS: "It stood in the middle of a busy neighborhood."
+PLACE: aerial view of the tank among houses, train track, market and a fire station.
+LIGHT: day.
+CAMERA: high crane, slow orbit right, fov 50.
+CHARACTERS: Tiny walking people and carts.
+EFFECTS: smoke from chimneys.
+SFX: city ambience. MUSIC: continues.
+
+SHOT 5 (built)
+WORDS: "It was built fast, and it was never tested."
+PLACE: tank under construction, scaffold and workers rushing.
+LIGHT: day.
+CAMERA: static medium, fov 40.
+CHARACTERS: Workers hammer fast; one worker nods and waves "okay"; a rivet leaks syrup.
+EFFECTS: sparks.
+SFX: hammering, a short boing. MUSIC: comic bounce.
+
+SHOT 6 (groan)
+WORDS: "On a warm January afternoon, the tank groaned."
+PLACE: street under the tank, children playing, thermometer showing a warm number.
+LIGHT: golden.
+CAMERA: low, tight on the tank wall, small shake, fov 36.
+CHARACTERS: Kids playing, then stopping and looking up, face = surprised.
+EFFECTS: tank wall bulges, ripples.
+SFX: deep groan. MUSIC: stops.
+
+SHOT 7 (rivets)
+WORDS: "Rivets popped like bullets."
+PLACE: close on the tank wall with rivets flying out.
+LIGHT: golden.
+CAMERA: static, extreme close, shake on each pop, fov 28.
+CHARACTERS: None.
+EFFECTS: rivets flying at the camera, brown spray.
+SFX: sharp pops. MUSIC: none.
+
+SHOT 8 (burst)
+WORDS: "Then it burst."
+PLACE: the tank tears open; syrup bursts out.
+LIGHT: day with a 3-frame white flash.
+CAMERA: snap-zoom out, big shake, fov 28 > 54.
+CHARACTERS: Tiny people running, face = scared.
+EFFECTS: brown wave starts, steel debris.
+SFX: giant boom. MUSIC: none.
+
+SHOT 9 (wave)
+WORDS: "A wave eight meters tall rushed down the street at fifty kilometers an hour."
+PLACE: the street with the wave rolling towards the camera.
+LIGHT: day.
+CAMERA: low in front of the wave, retreating fast, fov 40.
+CHARACTERS: Horse and cart running, workers running, face = scared; the horse's eyes wide.
+EFFECTS: thick brown wave, foam, flying debris.
+SFX: rolling roar. MUSIC: fast chase drums.
+
+SHOT 10 (flatten)
+WORDS: "It flattened trains, houses, and horses."
+PLACE: side view of the street, train track bent, houses falling.
+LIGHT: day.
+CAMERA: wide static, shake, fov 48.
+CHARACTERS: Fireman standing, face = shocked, is lifted by the wave.
+EFFECTS: wave flattening a house and bending the elevated track.
+SFX: crashes, splash. MUSIC: drums stop.
+
+SHOT 11 (clean)
+WORDS: "It took weeks to clean."
+PLACE: sticky street, workers with brushes and hoses, brown stains.
+LIGHT: dawn.
+CAMERA: slow wide pull-back, fov 40 > 48.
+CHARACTERS: Workers scrub, faces = tired.
+EFFECTS: brown floor shine, calendar pages flipping.
+SFX: scrub, water. MUSIC: slow piano.
+
+SHOT 12 (smell)
+WORDS: "And on hot days, locals say the area still smells sweet."
+PLACE: the same street today, with a small park and a plaque.
+LIGHT: golden.
+CAMERA: push-in to the plaque, biggest picture on the last three words, fov 46 > 30.
+CHARACTERS: A man in modern clothes sniffs the air, face = surprised.
+EFFECTS: heart-shaped sweet smell swirls in the air.
+SFX: sniff, soft chime. MUSIC: piano finishes.

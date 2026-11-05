@@ -1,0 +1,113 @@
+TITLE: The Emu War
+
+NARRATION:
+In nineteen thirty-two, the Australian army went to war against birds. And lost.
+Twenty thousand emus were eating the farmers' wheat. So soldiers arrived with machine guns and a truck.
+The emus split into small groups and ran in every direction. The truck could not catch them. The guns could not hit them.
+After a month, the army gave up and went home. The birds were still there.
+Today the emus are still eating wheat. The final score was birds one, army zero.
+
+SHOTS:
+CAST:
+- Emu: tall, grey-brown shaggy body, long thin neck, long legs, small head, orange eye.
+- Soldier: khaki uniform, wide-brim hat folded up on one side, rifle or machine gun.
+- Farmer: straw hat, brown overalls, white shirt.
+
+SHOT 1 (hook)
+WORDS: "In nineteen thirty-two,"
+PLACE: dusty red outback road, dry fence, one dead tree.
+LIGHT: golden (low orange sun).
+CAMERA: low and tight on a soldier's boots marching, then tilt up to his face, fov 38 > 34.
+CHARACTERS: Soldier, tall, khaki, wide hat, face = serious.
+EFFECTS: dust puffs at each step.
+SFX: marching boots. MUSIC: military snare drum starts.
+
+SHOT 2 (war)
+WORDS: "the Australian army went to war against birds. And lost."
+PLACE: wide wheat field, a big army truck, a row of soldiers, and a line of emus facing them.
+LIGHT: day.
+CAMERA: pull back to a wide shot (fov 34 > 46); hard snap-zoom to one emu on the word "lost".
+CHARACTERS: Six soldiers in a line, rifles up; five emus facing them, necks high, eye = calm. On "lost" the emu turns its head and looks at the camera.
+EFFECTS: wheat swaying.
+SFX: whoosh on pull-back, one silly honk on "lost". MUSIC: snare continues, then trumpet slides down.
+
+SHOT 3 (wheat)
+WORDS: "Twenty thousand emus were eating the farmers' wheat."
+PLACE: huge golden wheat field to the horizon, fence and a small farmhouse.
+LIGHT: day.
+CAMERA: high crane, wide, slow push-in, fov 48 > 44.
+CHARACTERS: Farmer on the left, hat in hands, face = desperate. A huge crowd of emus (at least forty) eat wheat and bob their heads.
+EFFECTS: wheat bits flying from the beaks.
+SFX: crunching, crowd of low emu drums. MUSIC: continues.
+
+SHOT 4 (guns)
+WORDS: "So soldiers arrived with machine guns and a truck."
+PLACE: dirt road at the field edge, truck arriving, soldiers jumping out.
+LIGHT: day.
+CAMERA: low side tracking shot, moving right, fov 40.
+CHARACTERS: Truck with a machine gun on the back; three soldiers jump off, face = proud, one holds the gun.
+EFFECTS: big dust cloud behind the truck.
+SFX: engine, whoosh, metal clank. MUSIC: continues, brass fanfare.
+
+SHOT 5 (split)
+WORDS: "The emus split into small groups and ran in every direction."
+PLACE: wheat field, view from above.
+LIGHT: day.
+CAMERA: high top-down, static, fov 50.
+CHARACTERS: One big group of emus bursts into six small groups running in six directions; legs move fast; soldiers stand in the middle, heads turning left and right, face = confused.
+EFFECTS: dust trails behind each emu, sweat drop on one soldier.
+SFX: burst of footsteps, comic spring sound. MUSIC: fast chase music starts.
+
+SHOT 6 (truck)
+WORDS: "The truck could not catch them."
+PLACE: dirt road with wheat on both sides.
+LIGHT: day.
+CAMERA: side tracking shot following an emu running fast, fov 36.
+CHARACTERS: One emu running at full speed in front; the truck behind it, bouncing; soldiers hold their hats; the emu looks back, eye = smug.
+EFFECTS: dust, bouncing truck, flying hat.
+SFX: engine strain, emu whoop. MUSIC: chase continues.
+
+SHOT 7 (miss)
+WORDS: "The guns could not hit them."
+PLACE: open field with a sandy ridge behind.
+LIGHT: day.
+CAMERA: wide, static, shake on each shot, fov 44.
+CHARACTERS: Soldier at the gun, face = angry, firing; bullets kick up sand far behind; emus zigzag and are safe; one emu does a little hop.
+EFFECTS: muzzle flash, sand puffs, smoke.
+SFX: gun bursts, boing. MUSIC: stops one beat before the bursts.
+
+SHOT 8 (month)
+WORDS: "After a month, the army gave up and went home."
+PLACE: dusty road at dusk, the truck driving away to the horizon.
+LIGHT: dawn (grey-pink sky).
+CAMERA: wide pull-back, slow, fov 40 > 48.
+CHARACTERS: Soldiers sit slumped in the truck, hats down, face = sad. Calendar page flips (text: 30 days) drawn in the sky.
+EFFECTS: dust trail, falling calendar pages.
+SFX: page flips, sad trombone. MUSIC: slow minor melody.
+
+SHOT 9 (birds)
+WORDS: "The birds were still there."
+PLACE: the same wheat field, empty of people, a flag pole with a torn flag.
+LIGHT: golden.
+CAMERA: low, close, slow push-in on one emu, fov 36 > 32.
+CHARACTERS: One emu stands tall, eye = smug; others eat wheat behind.
+EFFECTS: none.
+SFX: soft honk. MUSIC: ends.
+
+SHOT 10 (today)
+WORDS: "Today the emus are still eating wheat."
+PLACE: modern farm, same wheat, a tractor far away.
+LIGHT: day.
+CAMERA: wide, static, fov 44.
+CHARACTERS: Many emus eating; one wears a small toy soldier hat.
+EFFECTS: wheat swaying.
+SFX: crunching. MUSIC: light playful pluck.
+
+SHOT 11 (score)
+WORDS: "The final score was birds one, army zero."
+PLACE: big scoreboard on a post standing in the wheat (text: BIRDS 1 - ARMY 0).
+LIGHT: golden.
+CAMERA: slow push-in to the scoreboard, biggest picture on the last three words, fov 46 > 36.
+CHARACTERS: Emu in front of the board, head high, eye = smug.
+EFFECTS: confetti, stars.
+SFX: crowd cheer, final honk on "zero". MUSIC: victory trumpet.
