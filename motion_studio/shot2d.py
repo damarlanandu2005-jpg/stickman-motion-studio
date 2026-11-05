@@ -23,18 +23,40 @@ ROOT = Path(__file__).resolve().parents[1] / "animation" / "assets2d"
 
 
 def _neck(body: Image.Image) -> tuple[int, int, int]:
-    """(top row, shoulder row, neck centre x) of a headless body sprite."""
+    """(top row, shoulder row, neck centre x) of a headless body sprite.
+    The neck is searched above the TORSO centre, so raised hands, a held paper or a sign above the shoulders are not taken for the neck."""
     a = np.array(body)[:, :, 3] > 0
-    rows = a.sum(1)
-    top = int(np.argmax(rows > 0))
-    w0 = max(int(rows[top + 3]), 1)
-    shoulder = top + 40
-    for y in range(top + 3, len(rows)):
-        if rows[y] > w0 * 2.2:
+    hgt, wid = a.shape
+    band = a[int(hgt * 0.35):int(hgt * 0.6)]
+    ys, xs = np.nonzero(band)
+    cx = int(np.median(xs)) if len(xs) else wid // 2
+    win = max(int(wid * 0.1), 6)
+    centre = a[:, max(cx - win, 0):cx + win]
+    rows_c = centre.any(1)
+    top = int(np.argmax(rows_c)) if rows_c.any() else 0
+
+    def run(y: int) -> int:                       # width of the solid run that contains the neck column in row y
+        r = a[y]; x0 = x1 = min(max(cx, 0), wid - 1)
+        if not r[x0]:
+            nz = np.nonzero(r[max(cx - win, 0):cx + win])[0]
+            if not len(nz):
+                return 0
+            x0 = x1 = max(cx - win, 0) + int(nz[len(nz) // 2])
+        while x0 > 0 and r[x0 - 1]:
+            x0 -= 1
+        while x1 < wid - 1 and r[x1 + 1]:
+            x1 += 1
+        return x1 - x0 + 1
+    w0 = max(run(min(top + 3, hgt - 1)), 1)
+    shoulder = min(top + 40, hgt - 1)
+    for y in range(top + 3, hgt):
+        if run(y) > w0 * 2.2:
             shoulder = y
             break
-    xs = np.nonzero(a[top + 2])[0]
-    return top, shoulder, int(xs.mean())
+    seg = centre[top + 2] if top + 2 < hgt else centre[top]
+    nzs = np.nonzero(seg)[0]
+    nx = max(cx - win, 0) + int(nzs.mean()) if len(nzs) else cx
+    return top, shoulder, nx
 
 
 class Library:

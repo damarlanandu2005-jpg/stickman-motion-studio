@@ -342,7 +342,7 @@ def write_specs(result: dict, cast: dict, out_dir: Path) -> list[str]:
         if not info.get("look"):
             result["errors"].append(f"costume '{name}' is missing and the cast file has no 'look' for it")
             continue
-        spec = make_costume_spec(name, info["look"], info["colour"])
+        spec = make_costume_spec(name, info["look"], info.get("colour"))
         p = Path(out_dir) / f"{name}.json"; p.parent.mkdir(parents=True, exist_ok=True); p.write_text(json.dumps(spec, indent=1)); made.append(str(p))
     result["ok"] = not result["errors"]
     return made

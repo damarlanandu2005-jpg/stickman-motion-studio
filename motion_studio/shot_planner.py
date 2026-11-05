@@ -88,9 +88,11 @@ def plan_shots(ir: dict, durs: list[float], words: list, cast: dict, root: Path 
         if frame == "insert" and not props:
             warns.append(f"scene {sc['n']}: frame 'insert' needs props: wide shot used instead"); frame = "wide"
         who_list = sc["who"][:4]
+        has_where = bool(sc.get("where", "").strip())
         if frame in ("medium", "close") and who_list:
-            who_list = who_list[:1] if frame == "close" else who_list[:2]            # closer shots show the speaker(s) only
-            xs, h = ([0.5], 0.52) if len(who_list) == 1 else ([0.32, 0.68], 0.46)
+            if not (frame == "medium" and has_where):                                  # the author placed everyone: keep them all
+                who_list = who_list[:1] if frame == "close" else who_list[:2]            # closer shots show the speaker(s) only
+            xs, h = ([0.5], 0.52) if len(who_list) == 1 else ([0.32, 0.68], 0.46) if len(who_list) == 2 else (LAYOUT[min(len(who_list), 4)][0], 0.42)
             if frame == "close":
                 xs, h, feet = [0.5], 0.80, 1.18                                       # big, feet below the picture: head and chest fill it
         elif frame == "insert":
