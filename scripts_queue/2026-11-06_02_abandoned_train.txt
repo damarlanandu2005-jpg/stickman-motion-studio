@@ -1,0 +1,172 @@
+
+
+TITLE: The Mystery of the Abandoned Train
+VOICE: am_fenrir
+CAST: animation/cast/final_bomb.json
+
+SCENE
+bg: abandoned railway station, foggy evening
+who: arthur, chief
+pose: stand
+props: railway platform, old train, flashlight
+say: Arthur and the chief entered an abandoned *station* after receiving a strange emergency message.
+
+SHOT
+frame: wide
+
+SHOT
+frame: medium
+who: arthur
+pose: think
+
+SHOT
+frame: close
+who: chief
+pose: stand
+
+SCENE
+bg: abandoned railway platform, foggy evening
+who: arthur, chief
+pose: stand
+props: old train, railway tracks, station clock
+say: An old black train stood completely still, even though its lights were strangely glowing.
+
+SHOT
+frame: wide
+
+SHOT
+frame: insert
+props: old train headlights
+
+SHOT
+frame: close
+who: arthur
+pose: surprised
+
+SCENE
+bg: abandoned railway platform, foggy evening
+who: arthur
+pose: walk
+props: flashlight, train
+say: Arthur walked towards the *train*, noticing that every window was covered with dust.
+
+SHOT
+frame: medium
+who: arthur
+pose: walk
+
+SHOT
+frame: close
+who: arthur
+pose: think
+
+SCENE
+bg: inside an abandoned passenger train, dark evening
+who: arthur
+pose: stand
+props: passenger seats, broken windows, old suitcase
+say: Inside the last carriage, he discovered a small *suitcase* sitting alone on an empty seat.
+
+SHOT
+frame: wide
+
+SHOT
+frame: medium
+who: arthur
+pose: surprised
+
+SHOT
+frame: insert
+props: old suitcase
+
+SCENE
+bg: inside an abandoned passenger train, dark evening
+who: arthur
+pose: crouch
+props: suitcase, old photograph, envelope
+say: Arthur opened the suitcase and found an old *photograph* showing the same railway station many years earlier.
+
+SHOT
+frame: close
+who: arthur
+pose: think
+
+SHOT
+frame: insert
+props: old photograph
+
+SCENE
+bg: inside an abandoned passenger train, dark evening
+who: arthur, chief
+pose: stand
+props: radio, photograph
+say: The chief suddenly recognized the photograph, because it showed a train that disappeared twenty years ago.
+
+SHOT
+frame: close
+who: chief
+pose: surprised
+
+SHOT
+frame: insert
+props: old photograph
+
+SHOT
+frame: close
+who: arthur
+pose: surprised
+
+SCENE
+bg: abandoned railway platform, thick fog at night
+from: abandoned railway platform, foggy evening
+who: arthur, chief
+pose: stand
+props: old train, railway tracks
+say: Suddenly, the old *train* started moving without a driver inside.
+
+SHOT
+frame: wide
+
+SHOT
+frame: medium
+who: arthur
+pose: scared
+
+SHOT
+frame: insert
+props: moving train wheels
+
+SCENE
+bg: abandoned railway tracks, thick fog at night
+who: arthur, chief
+pose: stand
+props: railway tracks, flashlight
+say: Arthur watched the train disappear into the fog, leaving behind two fresh footprints on the empty tracks.
+
+SHOT
+frame: wide
+
+SHOT
+frame: insert
+props: footprints
+
+SHOT
+frame: close
+who: chief
+pose: think
+
+SCENE
+bg: abandoned railway station, foggy night
+who: arthur, chief
+pose: stand
+props: station clock, flashlight
+say: The chief checked the old *clock*, but its hands were moving backwards.
+
+SHOT
+frame: insert
+props: station clock
+
+SHOT
+frame: close
+who: arthur
+pose: surprised

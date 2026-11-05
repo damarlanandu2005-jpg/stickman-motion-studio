@@ -1,0 +1,177 @@
+
+
+TITLE: The Last Message from Space
+VOICE: am_fenrir
+CAST: animation/cast/final_bomb.json
+
+SCENE
+bg: space research control room, late night
+who: arthur, chief
+pose: stand
+props: computer monitors, Earth display, satellite signal screen
+say: Arthur was watching the space monitors when an unusual *signal* suddenly appeared.
+
+SHOT
+frame: wide
+
+SHOT
+frame: medium
+who: arthur
+pose: think
+
+SHOT
+frame: insert
+props: satellite signal screen
+
+SCENE
+bg: space research control room, late night
+who: arthur, chief
+pose: stand
+props: computer monitors, signal screen
+say: The signal was coming from a satellite that had disappeared twelve years earlier.
+
+SHOT
+frame: medium
+
+SHOT
+frame: close
+who: chief
+pose: surprised
+
+SHOT
+frame: insert
+props: satellite signal screen
+
+SCENE
+bg: space research control room, late night
+who: arthur
+pose: think
+props: computer monitors, Earth map
+say: Arthur discovered that the *satellite* was transmitting coordinates from the dark side of the Moon.
+
+SHOT
+frame: close
+who: arthur
+pose: think
+
+SHOT
+frame: insert
+props: Earth map, Moon map
+
+SCENE
+bg: inside a futuristic spacecraft, Earth visible through window
+who: arthur, chief
+pose: stand
+props: spacecraft control panel, Earth, Moon
+say: Hours later, Arthur and the chief travelled towards the *Moon* to investigate the mysterious signal.
+
+SHOT
+frame: wide
+
+SHOT
+frame: medium
+who: arthur
+pose: stand
+
+SHOT
+frame: insert
+props: Moon through spacecraft window
+
+SCENE
+bg: lunar surface, dark space, distant Earth
+who: arthur, chief
+pose: stand
+props: astronaut equipment, lunar rocks, flashlight
+say: They landed on the dark lunar surface, where strange glowing marks covered the ground.
+
+SHOT
+frame: wide
+
+SHOT
+frame: medium
+who: arthur
+pose: think
+
+SHOT
+frame: insert
+props: glowing marks, lunar rocks
+
+SCENE
+bg: lunar surface, dark space, distant Earth
+who: arthur
+pose: crouch
+props: mysterious metal object, flashlight
+say: Arthur discovered a small metal *object* buried beneath the lunar dust.
+
+SHOT
+frame: medium
+who: arthur
+pose: crouch
+
+SHOT
+frame: close
+who: arthur
+pose: surprised
+
+SHOT
+frame: insert
+props: mysterious metal object
+
+SCENE
+bg: lunar surface, dark space, distant Earth
+who: arthur, chief
+pose: stand
+props: metal object, signal device
+say: The object began transmitting the exact same *signal* they had received back on Earth.
+
+SHOT
+frame: insert
+props: signal device
+
+SHOT
+frame: close
+who: chief
+pose: surprised
+
+SHOT
+frame: close
+who: arthur
+pose: scared
+
+SCENE
+bg: lunar surface, distant Earth, dark space
+who: arthur, chief
+pose: stand
+props: Earth, glowing metal object
+say: Then something incredible happened, as a second blue light appeared above the Moon.
+
+SHOT
+frame: wide
+
+SHOT
+frame: medium
+who: arthur
+pose: surprised
+
+SHOT
+frame: insert
+props: glowing blue light
+
+SCENE
+bg: lunar surface, distant Earth, mysterious blue light
+who: arthur, chief
+pose: stand
+props: glowing blue light, metal object
+say: Arthur looked towards the *light*, and realized that something was watching them from space.
+
+SHOT
+frame: close
+who: arthur
+pose: scared
+
+SHOT
+frame: wide
+
+SHOT
+frame: insert
+props: glowing blue light

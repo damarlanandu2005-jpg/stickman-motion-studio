@@ -56,7 +56,7 @@ def parse_script(text: str) -> dict:
     cur: dict | None = None
     stage_changes: list[tuple[int, str, str]] = []                 # (before scene index, character, stage)
     for n, raw in enumerate(text.splitlines(), 1):
-        line = raw.strip()
+        line = raw.strip().rstrip("\\").strip()          # a trailing backslash comes from pasting markdown: ignore it
         if not line or line.startswith("#"):
             continue
         if line.upper() == "SCENE":
@@ -70,12 +70,14 @@ def parse_script(text: str) -> dict:
             stage_changes.append((len(out["scenes"]), m.group(1).lower(), m.group(2).lower())); cur = None; continue
         m = re.match(r"^(\w+)\s*:\s*(.*)$", line)
         if not m:
-            out["problems"].append(f"line {n}: cannot read '{line[:40]}'"); continue
+            if out["scenes"]:                                   # before the first SCENE any stray text is just ignored
+                out["problems"].append(f"line {n}: cannot read '{line[:40]}'")
+            continue
         key, val = m.group(1).lower(), m.group(2).strip()
         if cur is None:
             if key in ("title", "voice", "cast"):
                 out[key] = val
-            else:
+            elif out["scenes"]:
                 out["problems"].append(f"line {n}: '{key}' is outside a SCENE block")
             continue
         if key not in KEYS:

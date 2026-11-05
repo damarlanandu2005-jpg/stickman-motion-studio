@@ -34,6 +34,7 @@ FACES = [("scared", r"\b(scared|afraid|fear|bomb|explod|danger|ten seconds|secon
          ("smug", r"\b(only man|never|best|clever|trick)\w*")]
 LAYOUT = {1: ([0.5], 0.36), 2: ([0.3, 0.7], 0.31), 3: ([0.2, 0.5, 0.8], 0.26), 4: ([0.13, 0.38, 0.62, 0.87], 0.22)}
 FEET_DEFAULT = 0.9
+EXPRESSIONS = {"scared": "scared", "surprised": "surprised", "shocked": "surprised", "sad": "sad", "happy": "happy", "smug": "smug", "angry": "angry", "laugh": "laugh", "laughing": "laugh", "neutral": "neutral"}
 
 
 def key_words(caption: str, allred: set[str]) -> list[str]:
@@ -94,10 +95,14 @@ def plan_shots(ir: dict, durs: list[float], words: list, cast: dict, root: Path 
             of, warn = outfit_for(w["costume"], w["costume_status"], cast, root)
             if warn and warn not in warns:
                 warns.append(warn)
-            pose = POSES.get((sc["pose"][i] if i < len(sc["pose"]) else (sc["pose"][-1] if sc["pose"] else "stand")).lower().replace(" ", "_"), None)
+            pw = (sc["pose"][i] if i < len(sc["pose"]) else (sc["pose"][-1] if sc["pose"] else "stand")).lower().replace(" ", "_")
+            who_face = face
+            if pw in EXPRESSIONS:                                   # "pose: scared" = a standing pose with that face
+                who_face, pw = EXPRESSIONS[pw], "stand"
+            pose = POSES.get(pw, None)
             if pose is None:
                 warns.append(f"scene {sc['n']}: pose word not known, stand used"); pose = 0
-            actors.append({"outfit": of, "pose": pose, "x": xs[i], "feet": feet, "height": h, "faces": [[0, face]]})
+            actors.append({"outfit": of, "pose": pose, "x": xs[i], "feet": feet, "height": h, "faces": [[0, who_face]]})
         objects = [{"lib": p["library_id"], "x": 0.82 - 0.2 * j, "feet": feet, "height": 0.16, "pop": 0.2 + 0.25 * j} for j, p in enumerate(props[:2])]
         if frame == "insert":                                                         # detail shot: the object alone, big, in the middle
             objects = [{"lib": p["library_id"], "x": 0.5 if len(props) == 1 else 0.3 + 0.4 * j, "feet": 0.62, "height": 0.34, "pop": 0.0} for j, p in enumerate(props[:2])]

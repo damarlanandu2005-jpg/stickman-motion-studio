@@ -1,0 +1,152 @@
+
+
+TITLE: The Bomb Under the Bridge
+VOICE: am_fenrir
+CAST: animation/cast/final_bomb.json
+
+SCENE
+bg: old stone bridge, city at night
+who: arthur, chief
+pose: stand
+props: bridge, radio, flashlight
+say: Arthur arrived at the old bridge, and the chief pointed towards something strange beneath it.
+
+SHOT
+frame: wide
+
+SHOT
+frame: medium
+who: arthur
+pose: think
+
+SHOT
+frame: insert
+props: flashlight
+
+SCENE
+bg: underneath an old stone bridge, dark night
+from: old stone bridge, city at night
+who: arthur, chief
+pose: stand
+props: black bomb, wires, digital timer
+say: A small black *bomb* was hidden between the bridge pillars, and its timer was already running.
+
+SHOT
+frame: wide
+
+SHOT
+frame: close
+who: arthur
+pose: think
+
+SHOT
+frame: insert
+props: black bomb, digital timer
+
+SCENE
+bg: underneath the bridge, dark night
+who: arthur
+pose: crouch
+props: bomb, flashlight, wires
+say: Arthur slowly approached the device, while the red numbers continued counting down.
+
+SHOT
+frame: medium
+
+SHOT
+frame: close
+who: arthur
+pose: think
+
+SHOT
+frame: insert
+props: digital timer
+
+SCENE
+bg: underneath the bridge, dark night
+who: arthur, chief
+pose: stand
+props: bomb, radio
+say: The chief shouted through the *radio*, warning Arthur that only thirty seconds remained.
+
+SHOT
+frame: close
+who: chief
+pose: stand
+
+SHOT
+frame: close
+who: arthur
+pose: surprised
+
+SCENE
+bg: underneath the bridge, heavy rain at night
+from: underneath the bridge, dark night
+who: arthur
+pose: crouch
+props: bomb, wires, wire cutters
+say: Then the heavy *rain* began falling, making the exposed wires even harder to see.
+
+SHOT
+frame: wide
+
+SHOT
+frame: insert
+props: wires, wire cutters
+
+SHOT
+frame: close
+who: arthur
+pose: scared
+
+SCENE
+bg: underneath the bridge, heavy rain at night
+who: arthur
+pose: crouch
+props: bomb, red wire, blue wire, wire cutters
+say: Arthur noticed one loose *wire*, and carefully reached towards the device.
+
+SHOT
+frame: close
+who: arthur
+pose: think
+
+SHOT
+frame: insert
+props: red wire, blue wire, wire cutters
+
+SCENE
+bg: underneath the bridge, rainy night
+who: arthur, chief
+pose: stand
+props: bomb, digital timer
+say: The timer stopped at one second, and the entire bridge suddenly became silent.
+
+SHOT
+frame: insert
+props: digital timer
+
+SHOT
+frame: close
+who: arthur
+pose: surprised
+
+SCENE
+bg: old stone bridge, city at night after rain
+who: arthur, chief
+pose: stand
+props: radio, flashlight
+say: Arthur had saved the city, but the chief noticed another mysterious *signal* coming from somewhere nearby.
+
+SHOT
+frame: wide
+
+SHOT
+frame: close
+who: chief
+pose: think
+
+SHOT
+frame: close
+who: arthur
+pose: surprised
