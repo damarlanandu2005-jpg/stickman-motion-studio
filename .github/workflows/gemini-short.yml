@@ -79,6 +79,7 @@ jobs:
           elif [ -z "$GEMINI_API_KEY" ]; then echo "No GCP_SA_KEY/GCP_PROJECT_ID and no GEMINI_API_KEY secret"; exit 1
           else echo "Using the free Gemini API key"; fi
           cd project
+          mkdir -p ~/.gemini && cp "$GITHUB_WORKSPACE/.gemini/settings.json" ~/.gemini/settings.json   # stops the 400 "ending with a model turn" crash
           for TRY in 1 2 3 4 5 6; do                 # the free tier is sometimes "busy" (503): wait and try again, the files written so far are kept
             echo "=== Gemini try $TRY ===" | tee -a ../gemini.log
             timeout 200m gemini -m "$MODEL" --yolo --skip-trust -p "$(cat ../tools/gemini_task.md) If work/ already has files from an earlier try, continue from them." 2>&1 | tee -a ../gemini.log || true
