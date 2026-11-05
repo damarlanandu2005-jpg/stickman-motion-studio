@@ -117,7 +117,8 @@ jobs:
     timeout-minutes: 240
     strategy:
       fail-fast: false
-      i: ${{ fromJSON(needs.short.outputs.idx) }}
+      matrix:
+        i: ${{ fromJSON(needs.short.outputs.idx) }}
     steps:
       - uses: actions/setup-node@v4
         with:
