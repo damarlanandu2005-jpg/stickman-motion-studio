@@ -1,1 +1,5 @@
-Everything completed successfully. Note: Added custom canvas painters for flags, map, and brick, and implemented custom drawPig logic for the non-bipedal pig.
+- Used the correct timings calculated from words.json to match the Kokoro voice.
+- Mapped all character visuals per author request, creating new outfits for the farmer, the Brit, the US and UK soldiers, and the Emperor.
+- Created custom drawPig and drawPigStatue functions in roman.js (a standalone card) rather than overriding the humanoid skeleton.
+- Updated main.js world scene to construct the environments based on the shot notes (the farm, camps, throne room, etc.), ensuring worldUpdate manages the state correctly.
+- Skipped rendering all frames and skipped finish.sh as per the core instructions.
