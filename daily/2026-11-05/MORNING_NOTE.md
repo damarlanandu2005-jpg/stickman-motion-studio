@@ -1,4 +1,4 @@
-# Morning note 2026-11-05 (in progress)
+# Morning note 2026-11-05
 
 1 of 1 shorts finished.
 - 2026-11-05_02_sea_438: done_with_warnings, video shorts/2026-11-05_02_sea_438/2026-11-05_02_sea_438.mp4
