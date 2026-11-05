@@ -1,0 +1,358 @@
+[
+ {
+  "bg": "lib:bg_green_hill_small_wooden_hut_dusk",
+  "dur": 1.8,
+  "cam": {
+   "z0": 1.0,
+   "z1": 1.16
+  },
+  "actors": [
+   {
+    "outfit": "role_civ",
+    "pose": 0,
+    "x": 0.5,
+    "feet": 0.9,
+    "height": 0.36,
+    "faces": [
+     [
+      0,
+      "neutral"
+     ]
+    ]
+   }
+  ],
+  "objects": [],
+  "texts": [],
+  "caps": [
+   [
+    0.15,
+    0.971,
+    "Arthur climbed",
+    []
+   ],
+   [
+    0.971,
+    1.596,
+    "the hill at",
+    []
+   ],
+   [
+    1.596,
+    1.8,
+    "dusk",
+    []
+   ]
+  ],
+  "cap_y": 0.68,
+  "sfx": [],
+  "fx": [],
+  "fx_seed": 1
+ },
+ {
+  "bg": "lib:bg_green_hill_small_wooden_hut_dusk",
+  "dur": 2.699,
+  "cam": {
+   "z0": 1.06,
+   "z1": 1.06,
+   "x0": 0.45,
+   "x1": 0.55
+  },
+  "actors": [
+   {
+    "outfit": "role_civ",
+    "pose": 0,
+    "x": 0.5,
+    "feet": 0.9,
+    "height": 0.52,
+    "faces": [
+     [
+      0,
+      "neutral"
+     ]
+    ]
+   }
+  ],
+  "objects": [],
+  "texts": [],
+  "caps": [
+   [
+    0,
+    0.062,
+    "dusk",
+    []
+   ],
+   [
+    0.062,
+    0.861,
+    "because he saw",
+    []
+   ],
+   [
+    0.861,
+    1.393,
+    "a lantern",
+    [
+     "lantern"
+    ]
+   ],
+   [
+    1.393,
+    2.191,
+    "glowing in the",
+    []
+   ],
+   [
+    2.191,
+    2.699,
+    "hut",
+    []
+   ]
+  ],
+  "cap_y": 0.68,
+  "sfx": [],
+  "fx": [],
+  "fx_seed": 2
+ },
+ {
+  "bg": "lib:bg_green_hill_small_wooden_hut_night_stars_",
+  "dur": 1.821,
+  "cam": {
+   "z0": 1.16,
+   "z1": 1.0
+  },
+  "actors": [
+   {
+    "outfit": "role_civ",
+    "pose": 6,
+    "x": 0.5,
+    "feet": 0.9,
+    "height": 0.36,
+    "faces": [
+     [
+      0,
+      "neutral"
+     ]
+    ]
+   }
+  ],
+  "objects": [],
+  "texts": [],
+  "caps": [
+   [
+    0.0,
+    0.809,
+    "Hours later the",
+    []
+   ],
+   [
+    0.809,
+    1.563,
+    "stars came out",
+    [
+     "stars"
+    ]
+   ],
+   [
+    1.563,
+    1.821,
+    "and the lantern",
+    [
+     "lantern"
+    ]
+   ]
+  ],
+  "cap_y": 0.68,
+  "sfx": [],
+  "fx": [],
+  "fx_seed": 3
+ },
+ {
+  "bg": "lib:bg_green_hill_small_wooden_hut_night_stars_",
+  "dur": 1.518,
+  "cam": {
+   "z0": 1.0,
+   "z1": 1.16
+  },
+  "actors": [
+   {
+    "outfit": "role_civ",
+    "pose": 6,
+    "x": 0.5,
+    "feet": 0.9,
+    "height": 0.52,
+    "faces": [
+     [
+      0,
+      "neutral"
+     ]
+    ]
+   }
+  ],
+  "objects": [],
+  "texts": [],
+  "caps": [
+   [
+    0,
+    0.551,
+    "and the lantern",
+    [
+     "lantern"
+    ]
+   ],
+   [
+    0.551,
+    1.518,
+    "still glowed",
+    []
+   ]
+  ],
+  "cap_y": 0.68,
+  "sfx": [],
+  "fx": [],
+  "fx_seed": 4
+ },
+ {
+  "bg": "lib:bg_inside_small_wooden_hut_one_oil_lantern_",
+  "dur": 1.639,
+  "cam": {
+   "z0": 1.06,
+   "z1": 1.06,
+   "x0": 0.45,
+   "x1": 0.55
+  },
+  "actors": [
+   {
+    "outfit": "role_civ",
+    "pose": 0,
+    "x": 0.22,
+    "feet": 0.9,
+    "height": 0.31,
+    "faces": [
+     [
+      0,
+      "neutral"
+     ]
+    ]
+   },
+   {
+    "outfit": "role_chief",
+    "pose": 0,
+    "x": 0.6,
+    "feet": 0.9,
+    "height": 0.31,
+    "faces": [
+     [
+      0,
+      "neutral"
+     ]
+    ]
+   }
+  ],
+  "objects": [
+   {
+    "lib": "obj_lantern",
+    "x": 0.82,
+    "feet": 0.9,
+    "height": 0.16,
+    "pop": 0.2
+   }
+  ],
+  "texts": [],
+  "caps": [
+   [
+    0.0,
+    0.356,
+    "Inside",
+    []
+   ],
+   [
+    0.356,
+    1.046,
+    "the chief was",
+    []
+   ],
+   [
+    1.046,
+    1.639,
+    "waiting with a",
+    []
+   ]
+  ],
+  "cap_y": 0.68,
+  "sfx": [],
+  "fx": [],
+  "fx_seed": 5
+ },
+ {
+  "bg": "lib:bg_inside_small_wooden_hut_one_oil_lantern_",
+  "dur": 1.639,
+  "cam": {
+   "z0": 1.16,
+   "z1": 1.0
+  },
+  "actors": [
+   {
+    "outfit": "role_civ",
+    "pose": 0,
+    "x": 0.32,
+    "feet": 0.9,
+    "height": 0.46,
+    "faces": [
+     [
+      0,
+      "neutral"
+     ]
+    ]
+   },
+   {
+    "outfit": "role_chief",
+    "pose": 0,
+    "x": 0.68,
+    "feet": 0.9,
+    "height": 0.46,
+    "faces": [
+     [
+      0,
+      "neutral"
+     ]
+    ]
+   }
+  ],
+  "objects": [
+   {
+    "lib": "obj_lantern",
+    "x": 0.82,
+    "feet": 0.9,
+    "height": 0.16,
+    "pop": 0.2
+   }
+  ],
+  "texts": [],
+  "caps": [
+   [
+    0,
+    0.152,
+    "waiting with a",
+    []
+   ],
+   [
+    0.152,
+    0.68,
+    "map of the",
+    [
+     "map"
+    ]
+   ],
+   [
+    0.68,
+    1.338,
+    "whole valley",
+    []
+   ]
+  ],
+  "cap_y": 0.68,
+  "sfx": [],
+  "fx": [],
+  "fx_seed": 6
+ }
+]

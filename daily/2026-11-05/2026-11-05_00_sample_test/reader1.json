@@ -1,0 +1,212 @@
+{
+ "title": "The Lantern On The Hill",
+ "voice": "am_fenrir",
+ "scenes": [
+  {
+   "n": 1,
+   "voice": "Arthur climbed the hill at dusk,",
+   "red": [],
+   "bg": {
+    "wanted": "green hill with a small wooden hut at dusk",
+    "library_id": "bg_green_hill_small_wooden_hut_dusk",
+    "match": 1.0
+   },
+   "who": [
+    {
+     "character": "arthur",
+     "stage": "normal",
+     "costume": "civ",
+     "costume_status": "ready"
+    }
+   ],
+   "pose": [
+    "stand"
+   ],
+   "props": [],
+   "text": "",
+   "sound": "",
+   "camera": "auto",
+   "frame": "wide",
+   "group": 140199949638976,
+   "shot": 1
+  },
+  {
+   "n": 2,
+   "voice": "because he saw a lantern glowing in the hut.",
+   "red": [
+    "lantern"
+   ],
+   "bg": {
+    "wanted": "green hill with a small wooden hut at dusk",
+    "library_id": "bg_green_hill_small_wooden_hut_dusk",
+    "match": 1.0
+   },
+   "who": [
+    {
+     "character": "arthur",
+     "stage": "normal",
+     "costume": "civ",
+     "costume_status": "ready"
+    }
+   ],
+   "pose": [
+    "stand"
+   ],
+   "props": [],
+   "text": "",
+   "sound": "",
+   "camera": "auto",
+   "frame": "medium",
+   "group": 140199949638976,
+   "shot": 2
+  },
+  {
+   "n": 3,
+   "voice": "Hours later the stars came out,",
+   "red": [
+    "stars"
+   ],
+   "bg": {
+    "wanted": "green hill with a small wooden hut at night, stars in the sky",
+    "library_id": "bg_green_hill_small_wooden_hut_night_stars_",
+    "match": 1.0
+   },
+   "who": [
+    {
+     "character": "arthur",
+     "stage": "normal",
+     "costume": "civ",
+     "costume_status": "ready"
+    }
+   ],
+   "pose": [
+    "think"
+   ],
+   "props": [],
+   "text": "",
+   "sound": "",
+   "camera": "auto",
+   "frame": "wide",
+   "group": 140199949637952,
+   "shot": 1
+  },
+  {
+   "n": 4,
+   "voice": "and the lantern still glowed.",
+   "red": [],
+   "bg": {
+    "wanted": "green hill with a small wooden hut at night, stars in the sky",
+    "library_id": "bg_green_hill_small_wooden_hut_night_stars_",
+    "match": 1.0
+   },
+   "who": [
+    {
+     "character": "arthur",
+     "stage": "normal",
+     "costume": "civ",
+     "costume_status": "ready"
+    }
+   ],
+   "pose": [
+    "think"
+   ],
+   "props": [],
+   "text": "",
+   "sound": "",
+   "camera": "auto",
+   "frame": "medium",
+   "group": 140199949637952,
+   "shot": 2
+  },
+  {
+   "n": 5,
+   "voice": "Inside, the chief was waiting with",
+   "red": [],
+   "bg": {
+    "wanted": "inside a small wooden hut, one oil lantern on a table",
+    "library_id": "bg_inside_small_wooden_hut_one_oil_lantern_",
+    "match": 1.0
+   },
+   "who": [
+    {
+     "character": "arthur",
+     "stage": "normal",
+     "costume": "civ",
+     "costume_status": "ready"
+    },
+    {
+     "character": "chief",
+     "stage": "main",
+     "costume": "chief",
+     "costume_status": "ready"
+    }
+   ],
+   "pose": [
+    "stand"
+   ],
+   "props": [
+    {
+     "wanted": "lantern",
+     "library_id": "obj_lantern",
+     "match": 1.0
+    }
+   ],
+   "text": "",
+   "sound": "",
+   "camera": "auto",
+   "frame": "wide",
+   "group": 140199959912384,
+   "shot": 1
+  },
+  {
+   "n": 6,
+   "voice": "a map of the whole valley.",
+   "red": [
+    "map"
+   ],
+   "bg": {
+    "wanted": "inside a small wooden hut, one oil lantern on a table",
+    "library_id": "bg_inside_small_wooden_hut_one_oil_lantern_",
+    "match": 1.0
+   },
+   "who": [
+    {
+     "character": "arthur",
+     "stage": "normal",
+     "costume": "civ",
+     "costume_status": "ready"
+    },
+    {
+     "character": "chief",
+     "stage": "main",
+     "costume": "chief",
+     "costume_status": "ready"
+    }
+   ],
+   "pose": [
+    "stand"
+   ],
+   "props": [
+    {
+     "wanted": "lantern",
+     "library_id": "obj_lantern",
+     "match": 1.0
+    }
+   ],
+   "text": "",
+   "sound": "",
+   "camera": "auto",
+   "frame": "medium",
+   "group": 140199959912384,
+   "shot": 2
+  }
+ ],
+ "errors": [],
+ "costume_status": {
+  "civ": "ready",
+  "chief": "ready"
+ },
+ "missing_costumes": [],
+ "missing_assets": [],
+ "ok": true
+}

@@ -1,0 +1,275 @@
+{
+ "title": "The Lantern On The Hill",
+ "voice": "am_fenrir",
+ "scenes": [
+  {
+   "n": 1,
+   "voice": "Arthur climbed the hill at dusk,",
+   "red": [],
+   "bg": {
+    "wanted": "green hill with a small wooden hut at dusk",
+    "library_id": null,
+    "match": 0.0
+   },
+   "who": [
+    {
+     "character": "arthur",
+     "stage": "normal",
+     "costume": "civ",
+     "costume_status": "missing"
+    }
+   ],
+   "pose": [
+    "stand"
+   ],
+   "props": [],
+   "text": "",
+   "sound": "",
+   "camera": "auto",
+   "frame": "wide",
+   "group": 139691031682304,
+   "shot": 1
+  },
+  {
+   "n": 2,
+   "voice": "because he saw a lantern glowing in the hut.",
+   "red": [
+    "lantern"
+   ],
+   "bg": {
+    "wanted": "green hill with a small wooden hut at dusk",
+    "library_id": null,
+    "match": 0.0
+   },
+   "who": [
+    {
+     "character": "arthur",
+     "stage": "normal",
+     "costume": "civ",
+     "costume_status": "missing"
+    }
+   ],
+   "pose": [
+    "stand"
+   ],
+   "props": [],
+   "text": "",
+   "sound": "",
+   "camera": "auto",
+   "frame": "medium",
+   "group": 139691031682304,
+   "shot": 2
+  },
+  {
+   "n": 3,
+   "voice": "Hours later the stars came out,",
+   "red": [
+    "stars"
+   ],
+   "bg": {
+    "wanted": "green hill with a small wooden hut at night, stars in the sky",
+    "library_id": null,
+    "match": 0.12
+   },
+   "who": [
+    {
+     "character": "arthur",
+     "stage": "normal",
+     "costume": "civ",
+     "costume_status": "missing"
+    }
+   ],
+   "pose": [
+    "think"
+   ],
+   "props": [],
+   "text": "",
+   "sound": "",
+   "camera": "auto",
+   "frame": "wide",
+   "group": 139691031681280,
+   "shot": 1
+  },
+  {
+   "n": 4,
+   "voice": "and the lantern still glowed.",
+   "red": [],
+   "bg": {
+    "wanted": "green hill with a small wooden hut at night, stars in the sky",
+    "library_id": null,
+    "match": 0.12
+   },
+   "who": [
+    {
+     "character": "arthur",
+     "stage": "normal",
+     "costume": "civ",
+     "costume_status": "missing"
+    }
+   ],
+   "pose": [
+    "think"
+   ],
+   "props": [],
+   "text": "",
+   "sound": "",
+   "camera": "auto",
+   "frame": "medium",
+   "group": 139691031681280,
+   "shot": 2
+  },
+  {
+   "n": 5,
+   "voice": "Inside, the chief was waiting with",
+   "red": [],
+   "bg": {
+    "wanted": "inside a small wooden hut, one oil lantern on a table",
+    "library_id": null,
+    "match": 0.12
+   },
+   "who": [
+    {
+     "character": "arthur",
+     "stage": "normal",
+     "costume": "civ",
+     "costume_status": "missing"
+    },
+    {
+     "character": "chief",
+     "stage": "main",
+     "costume": "chief",
+     "costume_status": "missing"
+    }
+   ],
+   "pose": [
+    "stand"
+   ],
+   "props": [
+    {
+     "wanted": "lantern",
+     "library_id": null,
+     "match": 0.0
+    }
+   ],
+   "text": "",
+   "sound": "",
+   "camera": "auto",
+   "frame": "wide",
+   "group": 139691042791104,
+   "shot": 1
+  },
+  {
+   "n": 6,
+   "voice": "a map of the whole valley.",
+   "red": [
+    "map"
+   ],
+   "bg": {
+    "wanted": "inside a small wooden hut, one oil lantern on a table",
+    "library_id": null,
+    "match": 0.12
+   },
+   "who": [
+    {
+     "character": "arthur",
+     "stage": "normal",
+     "costume": "civ",
+     "costume_status": "missing"
+    },
+    {
+     "character": "chief",
+     "stage": "main",
+     "costume": "chief",
+     "costume_status": "missing"
+    }
+   ],
+   "pose": [
+    "stand"
+   ],
+   "props": [
+    {
+     "wanted": "lantern",
+     "library_id": null,
+     "match": 0.0
+    }
+   ],
+   "text": "",
+   "sound": "",
+   "camera": "auto",
+   "frame": "medium",
+   "group": 139691042791104,
+   "shot": 2
+  }
+ ],
+ "errors": [],
+ "costume_status": {
+  "civ": "missing",
+  "chief": "missing"
+ },
+ "missing_costumes": [
+  "chief",
+  "civ"
+ ],
+ "missing_assets": [
+  {
+   "id": "bg_green_hill_small_wooden_hut_dusk",
+   "type": "background",
+   "tags": [
+    "green",
+    "hill",
+    "small",
+    "wooden",
+    "hut",
+    "dusk"
+   ],
+   "desc": "green hill with a small wooden hut at dusk",
+   "scene": 1
+  },
+  {
+   "id": "bg_green_hill_small_wooden_hut_night_stars_",
+   "type": "background",
+   "tags": [
+    "green",
+    "hill",
+    "small",
+    "wooden",
+    "hut",
+    "night",
+    "stars",
+    "sky"
+   ],
+   "desc": "green hill with a small wooden hut at night, stars in the sky",
+   "scene": 3,
+   "base": "bg_green_hill_small_wooden_hut_dusk",
+   "mode": "same",
+   "root": "bg_green_hill_small_wooden_hut_dusk",
+   "change": "green hill with a small wooden hut at night, stars in the sky"
+  },
+  {
+   "id": "bg_inside_small_wooden_hut_one_oil_lantern_",
+   "type": "background",
+   "tags": [
+    "inside",
+    "small",
+    "wooden",
+    "hut",
+    "one",
+    "oil",
+    "lantern",
+    "table"
+   ],
+   "desc": "inside a small wooden hut, one oil lantern on a table",
+   "scene": 5
+  },
+  {
+   "id": "obj_lantern",
+   "type": "object",
+   "tags": [
+    "lantern"
+   ],
+   "desc": "lantern",
+   "scene": 5
+  }
+ ],
+ "ok": true
+}

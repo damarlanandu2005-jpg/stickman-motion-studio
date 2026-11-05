@@ -1,0 +1,39 @@
+{
+ "ok": true,
+ "video": "daily-out/2026-11-05/2026-11-05_00_sample_test/2026-11-05_00_sample_test.mp4",
+ "render": {
+  "frames": 333,
+  "seconds": 11.1,
+  "shots": 6,
+  "fps": 30,
+  "all_frames": 333
+ },
+ "scenes": 6,
+ "warnings": [],
+ "missing_assets": [],
+ "missing_costumes": [],
+ "voice": [
+  {
+   "scene": 1,
+   "shots": 2,
+   "voice_s": 4.05,
+   "scene_s": 4.5,
+   "stretched": false
+  },
+  {
+   "scene": 2,
+   "shots": 2,
+   "voice_s": 3.04,
+   "scene_s": 3.34,
+   "stretched": false
+  },
+  {
+   "scene": 3,
+   "shots": 2,
+   "voice_s": 2.98,
+   "scene_s": 3.28,
+   "stretched": false
+  }
+ ],
+ "human_reviewed": false
+}

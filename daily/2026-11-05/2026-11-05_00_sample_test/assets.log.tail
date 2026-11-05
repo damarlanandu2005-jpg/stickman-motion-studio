@@ -1,0 +1,96 @@
+[kaggle] using account 1 (narasimharaodamarla), dataset owner narasimharaodamarla
+{"ok": true, "no_dataset": true, "error": null}
+NO_DATASET=true
+{"ok": true, "files": 47, "items": 47, "sprites": 52, "created": true}
+{"ok": true, "files": 47, "items": 47, "sprites": 244}
+The Lantern On The Hill: 6 scenes, voice am_fenrir
+  costume chief: ready
+  costume civ: ready
+  to draw: background 'green hill with a small wooden hut at dusk' (scene 1)
+  to draw: background 'green hill with a small wooden hut at night, stars in the sky' (scene 3)
+  to draw: background 'inside a small wooden hut, one oil lantern on a table' (scene 5)
+  to draw: object 'lantern' (scene 5)
+OK
+missing assets: 4
+=== 2026-11-05_00_sample_test assets round 1 of 3 ===
+{"round": 1, "pending": ["bg_green_hill_small_wooden_hut_dusk", "bg_green_hill_small_wooden_hut_night_stars_", "bg_inside_small_wooden_hut_one_oil_lantern_", "obj_lantern"], "waiting": ["bg_green_hill_small_wooden_hut_night_stars_"], "jobs": 6, "uses_dataset": false}
+NOTHING_PENDING=false
+NOTHING_TO_DRAW=false
+USES_DATASET=false
+Wrote /home/runner/work/stickman-motion-studio/stickman-motion-studio/kaggle/scene-batch/scene_batch.ipynb
+run_id=cd8729040f824c3aa3dda0078faf2cab workflow_run=41998572557-1 commit=bee6623b6109
+VERIFIED: version 1 produced output matching run token (poses).
+  environment: {'python': '3.13.16', 'torch': '2.11.0+cu130', 'cuda_available': True, 'gpu_names': ['Tesla T4', 'Tesla T4']}
+  klein: success load 65.4 s, peak VRAM 7.75 GiB
+  pictures drawn: 6 of 6; seconds each: min 21.07 max 29.75
+  failed: []
+  notebook_duration_seconds: 388.9
+{"round": 1, "accepted": ["bg_green_hill_small_wooden_hut_dusk", "bg_inside_small_wooden_hut_one_oil_lantern_", "obj_lantern"], "still_missing": ["bg_green_hill_small_wooden_hut_night_stars_"], "complete": false}
+DONE=false
+NEEDS_UP=true
+{"ok": true, "files": 50, "items": 50, "sprites": 244}
+=== 2026-11-05_00_sample_test assets round 2 of 3 ===
+{"round": 2, "pending": ["bg_green_hill_small_wooden_hut_night_stars_"], "waiting": [], "jobs": 2, "uses_dataset": true}
+NOTHING_PENDING=false
+NOTHING_TO_DRAW=false
+USES_DATASET=true
+Wrote /home/runner/work/stickman-motion-studio/stickman-motion-studio/kaggle/scene-batch/scene_batch.ipynb
+run_id=6ae05d647ad74bd5af51b1984c4a3a8f workflow_run=41998572557-1 commit=bee6623b6109
+VERIFIED: version 2 produced output matching run token (poses).
+  environment: {'python': '3.13.16', 'torch': '2.11.0+cu130', 'cuda_available': True, 'gpu_names': ['Tesla T4', 'Tesla T4']}
+  klein: success load 65.1 s, peak VRAM 8.51 GiB
+  pictures drawn: 2 of 2; seconds each: min 28.59 max 32.76
+  failed: []
+  notebook_duration_seconds: 297.6
+{"round": 2, "accepted": ["bg_green_hill_small_wooden_hut_dusk", "bg_green_hill_small_wooden_hut_night_stars_", "bg_inside_small_wooden_hut_one_oil_lantern_", "obj_lantern"], "still_missing": [], "complete": true}
+DONE=true
+NEEDS_UP=false
+{"ok": true, "files": 51, "items": 51, "sprites": 244}
+{"ok": true, "no_dataset": false, "files": 296}
+The Lantern On The Hill: 6 scenes, voice am_fenrir
+  costume chief: ready
+  costume civ: ready
+OK
+assets 2026-11-05_00_sample_test: complete=true, round files in assets-state/2026-11-05_00_sample_test
+dataset verify: ok: bg_green_hill_small_wooden_hut_dusk bg_inside_small_wooden_hut_one_oil_lantern_ obj_lantern bg_green_hill_small_wooden_hut_night_stars_ and all sprites found again after a clean download
+{"ok": true, "checked": 4, "sprites_checked": 244, "problems": []}
+{
+ "request": "2026-11-05_00_sample_test",
+ "round": 2,
+ "accepted": [
+  "bg_green_hill_small_wooden_hut_dusk",
+  "bg_green_hill_small_wooden_hut_night_stars_",
+  "bg_inside_small_wooden_hut_one_oil_lantern_",
+  "obj_lantern"
+ ],
+ "still_missing": [],
+ "complete": true,
+ "accepted_with_warnings": {},
+ "gate_log": {
+  "bg_green_hill_small_wooden_hut_night_stars_": [
+   {
+    "file": "pose_bg_green_hill_small_wooden_hut_night_stars__r2_c0.png",
+    "pass": false,
+    "why": [
+     "nothing visible changed (0% of the picture)"
+    ],
+    "score": 0.966,
+    "text_check": true,
+    "sat": 0.487,
+    "dark": 0.016,
+    "bright": 0.567,
+    "low_dark": 0.0,
+    "grad": 1.142,
+    "struct": 0.962,
+    "changed": 0.004,
+    "mean_diff": 12.67
+   },
+   {
+    "file": "pose_bg_green_hill_small_wooden_hut_night_stars__r2_c1.png",
+    "pass": true,
+    "why": [],
+    "score": 1.316,
+    "text_check": true,
+    "sat": 0.51,
+    "dark": 0.016,
+    "bright": 0.555,

@@ -1,0 +1,4 @@
+The Lantern On The Hill: 6 scenes, voice am_fenrir
+  costume chief: ready
+  costume civ: ready
+OK

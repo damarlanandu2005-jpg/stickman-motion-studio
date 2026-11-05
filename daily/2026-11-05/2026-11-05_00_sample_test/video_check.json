@@ -1,0 +1,26 @@
+{
+ "file": "daily-out/2026-11-05/2026-11-05_00_sample_test/2026-11-05_00_sample_test.mp4",
+ "fails": [],
+ "warnings": [],
+ "seconds": 11.1,
+ "size": [
+  720,
+  1280
+ ],
+ "frame_means": [
+  117.0,
+  120.3,
+  110.9,
+  103.9,
+  113.7
+ ],
+ "frame_changes": [
+  38.5,
+  52.7,
+  48.7,
+  63.8
+ ],
+ "audio_rms": 0.1384,
+ "ok": true
+}
+VIDEO_OK=true

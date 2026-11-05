@@ -1,0 +1,8 @@
+The Lantern On The Hill: 6 scenes, voice am_fenrir
+  costume chief: missing
+  costume civ: missing
+  to draw: background 'green hill with a small wooden hut at dusk' (scene 1)
+  to draw: background 'green hill with a small wooden hut at night, stars in the sky' (scene 3)
+  to draw: background 'inside a small wooden hut, one oil lantern on a table' (scene 5)
+  to draw: object 'lantern' (scene 5)
+OK
