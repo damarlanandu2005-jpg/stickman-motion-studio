@@ -122,7 +122,7 @@ def draw_actor(lib: Library, scene: Image.Image, actor: dict, t: float, dur: flo
     body, ntop, nshoulder, nx, lean = lib.body(pose)
     sw, sh = scene.size
     body_h = actor.get("height", 0.36) * sh
-    k = body_h / body.height
+    k = body_h / lib.body(0)[0].height      # one scale per character (from the standing pose): kneeling and falling bodies stay smaller
     bob = math.sin(t * 2 * math.pi / 2.6) * 0.004 * sh
     flip = actor.get("flip", False)
     x_pos = actor.get("x", 0.5)

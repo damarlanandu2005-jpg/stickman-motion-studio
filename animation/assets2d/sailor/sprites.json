@@ -1,0 +1,23 @@
+{
+ "from_sheet": "sailor_poses.png",
+ "bodies": 12,
+ "heads": [
+  "angry",
+  "annoyed",
+  "blush",
+  "crying",
+  "dizzy",
+  "happy",
+  "laugh",
+  "neutral",
+  "sad",
+  "scared",
+  "shocked",
+  "sleepy",
+  "sly",
+  "smug",
+  "surprised",
+  "worried"
+ ],
+ "note": "made by code from the reference sheets; not reviewed by a person"
+}
