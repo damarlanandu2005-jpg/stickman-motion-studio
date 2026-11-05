@@ -77,6 +77,7 @@ jobs:
             echo "=== Gemini try $TRY ===" | tee -a ../gemini.log
             timeout 200m gemini -m "$MODEL" --yolo --skip-trust -p "$(cat ../tools/gemini_task.md) If work/ already has files from an earlier try, continue from them." 2>&1 | tee -a ../gemini.log || true
             [ -f work/DONE.txt ] && break
+            if grep -q "exhausted your daily quota" ../gemini.log; then echo "Daily quota used up: stopping (no point waiting)"; break; fi
             grep -q "high demand\|503\|fetch failed" ../gemini.log && { echo "Gemini busy, waiting 6 minutes"; sleep 360; } || break
           done
           ls work stills 2>/dev/null || true
