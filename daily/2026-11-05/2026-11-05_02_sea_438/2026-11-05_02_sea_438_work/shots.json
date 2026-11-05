@@ -8,7 +8,7 @@
   },
   "actors": [
    {
-    "outfit": "role_civ",
+    "outfit": "fisher",
     "pose": 0,
     "x": 0.5,
     "feet": 0.9,
@@ -86,7 +86,7 @@
   },
   "actors": [
    {
-    "outfit": "role_civ",
+    "outfit": "fisher",
     "pose": 10,
     "x": 0.5,
     "feet": 0.9,
@@ -154,7 +154,7 @@
   },
   "actors": [
    {
-    "outfit": "role_civ",
+    "outfit": "fisher",
     "pose": 0,
     "x": 0.5,
     "feet": 0.9,
@@ -203,7 +203,7 @@
   "fx_seed": 3
  },
  {
-  "bg": "solid:placeholder",
+  "bg": "lib:bg_small_fishing_boat_calm_open_sea_night_f",
   "dur": 3.193,
   "cam": {
    "z0": 1.0,
@@ -211,7 +211,7 @@
   },
   "actors": [
    {
-    "outfit": "role_civ",
+    "outfit": "fisher",
     "pose": 6,
     "x": 0.5,
     "feet": 0.9,
@@ -274,7 +274,7 @@
   },
   "actors": [
    {
-    "outfit": "role_civ",
+    "outfit": "fisher",
     "pose": 11,
     "x": 0.5,
     "feet": 0.9,
@@ -358,7 +358,7 @@
   },
   "actors": [
    {
-    "outfit": "role_civ",
+    "outfit": "fisher",
     "pose": 3,
     "x": 0.5,
     "feet": 0.9,

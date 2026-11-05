@@ -1,0 +1,120 @@
+{"round": 2, "mode": "sheet", "refs": ["cast/explorer_poses_sheet.png", "cast/costume_fisher_accepted_r2.png"], "jobs": ["fisher_r2_s0", "fisher_r2_s1", "fisher_r2_s2", "fisher_r2_s3"], "needs_ref_commit": true, "ref_files": ["animation/reference_art/cast/costume_fisher_accepted_r2.png"]}
+NEEDS_REF_COMMIT=true
+REF_FILES=animation/reference_art/cast/costume_fisher_accepted_r2.png
+remote: 
+remote: Create a pull request for 'costume-refs-41961430358' on GitHub by visiting:        
+remote:      https://github.com/damarlanandu2005-jpg/stickman-motion-studio/pull/new/costume-refs-41961430358        
+remote: 
+Wrote /home/runner/work/stickman-motion-studio/stickman-motion-studio/kaggle/scene-batch/scene_batch.ipynb
+run_id=4499dd3ce6aa4858ae8581448a0cb522 workflow_run=41961430358-1 commit=1501ca49d9b0
+VERIFIED: version 105 produced output matching run token (poses).
+  environment: {'python': '3.13.16', 'torch': '2.11.0+cu130', 'cuda_available': True, 'gpu_names': ['Tesla T4', 'Tesla T4']}
+  klein: success load 65.3 s, peak VRAM 8.96 GiB
+  pictures drawn: 4 of 4; seconds each: min 57.73 max 63.43
+  failed: []
+  notebook_duration_seconds: 479.8
+{"round": 2, "complete": false, "missing_poses": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], "sheets_drawn": ["fisher_r1_s0", "fisher_r1_s0fix", "fisher_r1_s1", "fisher_r1_s1fix", "fisher_r1_s2", "fisher_r1_s2fix", "fisher_r2_s0", "fisher_r2_s0fix", "fisher_r2_s1", "fisher_r2_s1fix", "fisher_r2_s2", "fisher_r2_s2fix", "fisher_r2_s3", "fisher_r2_s3fix"]}
+DONE=false
+=== fisher round 3 of 5 ===
+{"round": 3, "mode": "sheet", "refs": ["cast/explorer_poses_sheet.png", "cast/costume_fisher_accepted_r3.png"], "jobs": ["fisher_r3_s0", "fisher_r3_s1", "fisher_r3_s2", "fisher_r3_s3"], "needs_ref_commit": true, "ref_files": ["animation/reference_art/cast/costume_fisher_accepted_r3.png"]}
+NEEDS_REF_COMMIT=true
+REF_FILES=animation/reference_art/cast/costume_fisher_accepted_r3.png
+Wrote /home/runner/work/stickman-motion-studio/stickman-motion-studio/kaggle/scene-batch/scene_batch.ipynb
+run_id=3e78649a1b0a462094f80dcb515cd47d workflow_run=41961430358-1 commit=f0094f50a4ff
+VERIFIED: version 106 produced output matching run token (poses).
+  environment: {'python': '3.13.16', 'torch': '2.11.0+cu130', 'cuda_available': True, 'gpu_names': ['Tesla T4', 'Tesla T4']}
+  klein: success load 66.0 s, peak VRAM 8.96 GiB
+  pictures drawn: 4 of 4; seconds each: min 59.03 max 63.85
+  failed: []
+  notebook_duration_seconds: 493.1
+{"round": 3, "complete": false, "missing_poses": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], "sheets_drawn": ["fisher_r1_s0", "fisher_r1_s0fix", "fisher_r1_s1", "fisher_r1_s1fix", "fisher_r1_s2", "fisher_r1_s2fix", "fisher_r2_s0", "fisher_r2_s0fix", "fisher_r2_s1", "fisher_r2_s1fix", "fisher_r2_s2", "fisher_r2_s2fix", "fisher_r2_s3", "fisher_r2_s3fix", "fisher_r3_s0", "fisher_r3_s0fix", "fisher_r3_s1", "fisher_r3_s1fix", "fisher_r3_s2", "fisher_r3_s2fix", "fisher_r3_s3", "fisher_r3_s3fix"]}
+DONE=false
+=== fisher round 4 of 5 ===
+{"round": 4, "mode": "sheet", "refs": ["cast/explorer_poses_sheet.png", "cast/costume_fisher_accepted_r4.png"], "jobs": ["fisher_r4_s0", "fisher_r4_s1", "fisher_r4_s2", "fisher_r4_s3"], "needs_ref_commit": true, "ref_files": ["animation/reference_art/cast/costume_fisher_accepted_r4.png"]}
+NEEDS_REF_COMMIT=true
+REF_FILES=animation/reference_art/cast/costume_fisher_accepted_r4.png
+Wrote /home/runner/work/stickman-motion-studio/stickman-motion-studio/kaggle/scene-batch/scene_batch.ipynb
+run_id=25f6b8e0b6e147848cc03999a4726657 workflow_run=41961430358-1 commit=e35cb947cfdd
+VERIFIED: version 107 produced output matching run token (poses).
+  environment: {'python': '3.13.16', 'torch': '2.11.0+cu130', 'cuda_available': True, 'gpu_names': ['Tesla T4', 'Tesla T4']}
+  klein: success load 66.8 s, peak VRAM 8.96 GiB
+  pictures drawn: 4 of 4; seconds each: min 57.31 max 65.48
+  failed: []
+  notebook_duration_seconds: 502.5
+{"round": 4, "complete": false, "missing_poses": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], "sheets_drawn": ["fisher_r1_s0", "fisher_r1_s0fix", "fisher_r1_s1", "fisher_r1_s1fix", "fisher_r1_s2", "fisher_r1_s2fix", "fisher_r2_s0", "fisher_r2_s0fix", "fisher_r2_s1", "fisher_r2_s1fix", "fisher_r2_s2", "fisher_r2_s2fix", "fisher_r2_s3", "fisher_r2_s3fix", "fisher_r3_s0", "fisher_r3_s0fix", "fisher_r3_s1", "fisher_r3_s1fix", "fisher_r3_s2", "fisher_r3_s2fix", "fisher_r3_s3", "fisher_r3_s3fix", "fisher_r4_s0", "fisher_r4_s0fix", "fisher_r4_s1", "fisher_r4_s1fix", "fisher_r4_s2", "fisher_r4_s2fix", "fisher_r4_s3", "fisher_r4_s3fix"]}
+DONE=false
+=== fisher round 5 of 5 ===
+{"round": 5, "mode": "sheet", "refs": ["cast/explorer_poses_sheet.png", "cast/costume_fisher_accepted_r5.png"], "jobs": ["fisher_r5_s0", "fisher_r5_s1", "fisher_r5_s2", "fisher_r5_s3"], "needs_ref_commit": true, "ref_files": ["animation/reference_art/cast/costume_fisher_accepted_r5.png"]}
+NEEDS_REF_COMMIT=true
+REF_FILES=animation/reference_art/cast/costume_fisher_accepted_r5.png
+Wrote /home/runner/work/stickman-motion-studio/stickman-motion-studio/kaggle/scene-batch/scene_batch.ipynb
+run_id=07b94bc912214f3ea9164a8c26fb3b9e workflow_run=41961430358-1 commit=d7f15284feae
+VERIFIED: version 108 produced output matching run token (poses).
+  environment: {'python': '3.13.16', 'torch': '2.11.0+cu130', 'cuda_available': True, 'gpu_names': ['Tesla T4', 'Tesla T4']}
+  klein: success load 65.7 s, peak VRAM 8.96 GiB
+  pictures drawn: 4 of 4; seconds each: min 59.58 max 66.19
+  failed: []
+  notebook_duration_seconds: 497.0
+{"round": 5, "complete": false, "missing_poses": [1, 2, 4, 8, 9, 10, 11], "sheets_drawn": ["fisher_r1_s0", "fisher_r1_s0fix", "fisher_r1_s1", "fisher_r1_s1fix", "fisher_r1_s2", "fisher_r1_s2fix", "fisher_r2_s0", "fisher_r2_s0fix", "fisher_r2_s1", "fisher_r2_s1fix", "fisher_r2_s2", "fisher_r2_s2fix", "fisher_r2_s3", "fisher_r2_s3fix", "fisher_r3_s0", "fisher_r3_s0fix", "fisher_r3_s1", "fisher_r3_s1fix", "fisher_r3_s2", "fisher_r3_s2fix", "fisher_r3_s3", "fisher_r3_s3fix", "fisher_r4_s0", "fisher_r4_s0fix", "fisher_r4_s1", "fisher_r4_s1fix", "fisher_r4_s2", "fisher_r4_s2fix", "fisher_r4_s3", "fisher_r4_s3fix", "fisher_r5_s0", "fisher_r5_s0fix", "fisher_r5_s1", "fisher_r5_s1fix", "fisher_r5_s2", "fisher_r5_s2fix", "fisher_r5_s3", "fisher_r5_s3fix"]}
+DONE=false
+costume fisher complete=false
+{
+ "costume": "fisher",
+ "round": 5,
+ "sheets_drawn": [
+  "fisher_r1_s0",
+  "fisher_r1_s0fix",
+  "fisher_r1_s1",
+  "fisher_r1_s1fix",
+  "fisher_r1_s2",
+  "fisher_r1_s2fix",
+  "fisher_r2_s0",
+  "fisher_r2_s0fix",
+  "fisher_r2_s1",
+  "fisher_r2_s1fix",
+  "fisher_r2_s2",
+  "fisher_r2_s2fix",
+  "fisher_r2_s3",
+  "fisher_r2_s3fix",
+  "fisher_r3_s0",
+  "fisher_r3_s0fix",
+  "fisher_r3_s1",
+  "fisher_r3_s1fix",
+  "fisher_r3_s2",
+  "fisher_r3_s2fix",
+  "fisher_r3_s3",
+  "fisher_r3_s3fix",
+  "fisher_r4_s0",
+  "fisher_r4_s0fix",
+  "fisher_r4_s1",
+  "fisher_r4_s1fix",
+  "fisher_r4_s2",
+  "fisher_r4_s2fix",
+  "fisher_r4_s3",
+  "fisher_r4_s3fix",
+  "fisher_r5_s0",
+  "fisher_r5_s0fix",
+  "fisher_r5_s1",
+  "fisher_r5_s1fix",
+  "fisher_r5_s2",
+  "fisher_r5_s2fix",
+  "fisher_r5_s3",
+  "fisher_r5_s3fix"
+ ],
+ "complete": false,
+ "missing_poses": [
+  1,
+  2,
+  4,
+  8,
+  9,
+  10,
+  11
+ ],
+ "why_failed_per_sheet": {
+  "fisher_r1_s0": {
+   "0": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],

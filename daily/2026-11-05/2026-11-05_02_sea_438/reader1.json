@@ -91,8 +91,8 @@
    ],
    "bg": {
     "wanted": "small fishing boat on a calm open sea at night, full of stars",
-    "library_id": null,
-    "match": 0.11
+    "library_id": "bg_small_fishing_boat_calm_open_sea_night_f",
+    "match": 1.0
    },
    "who": [
     {
@@ -172,28 +172,6 @@
  "missing_costumes": [
   "fisher"
  ],
- "missing_assets": [
-  {
-   "id": "bg_small_fishing_boat_calm_open_sea_night_f",
-   "type": "background",
-   "tags": [
-    "small",
-    "fishing",
-    "boat",
-    "calm",
-    "open",
-    "sea",
-    "night",
-    "full",
-    "stars"
-   ],
-   "desc": "small fishing boat on a calm open sea at night, full of stars",
-   "scene": 4,
-   "base": "bg_small_fishing_boat_calm_open_sea_endless",
-   "mode": "same",
-   "root": "bg_small_fishing_boat_calm_open_sea_endless",
-   "change": "small fishing boat on a calm open sea at night, full of stars"
-  }
- ],
+ "missing_assets": [],
  "ok": true
 }

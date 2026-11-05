@@ -1,0 +1,70 @@
+{"ok": true, "no_dataset": false, "files": 361}
+438 Days Lost At Sea: 6 scenes, voice am_fenrir
+  costume fisher: missing
+  to draw: background 'small fishing boat on a calm open sea at night, full of stars' (scene 4)
+OK
+missing assets: 1
+=== 2026-11-05_02_sea_438 assets round 1 of 3 ===
+{"round": 1, "pending": ["bg_small_fishing_boat_calm_open_sea_night_f"], "waiting": [], "jobs": 2, "uses_dataset": true}
+NOTHING_PENDING=false
+NOTHING_TO_DRAW=false
+USES_DATASET=true
+Wrote /home/runner/work/stickman-motion-studio/stickman-motion-studio/kaggle/scene-batch/scene_batch.ipynb
+run_id=c8e4a16d97e5467786915214a6792d34 workflow_run=41961430358-1 commit=66fd59f2e69c
+VERIFIED: version 103 produced output matching run token (poses).
+  environment: {'python': '3.13.16', 'torch': '2.11.0+cu130', 'cuda_available': True, 'gpu_names': ['Tesla T4', 'Tesla T4']}
+  klein: success load 66.3 s, peak VRAM 8.51 GiB
+  pictures drawn: 2 of 2; seconds each: min 28.25 max 32.94
+  failed: []
+  notebook_duration_seconds: 302.3
+{"round": 1, "accepted": ["bg_small_fishing_boat_calm_open_sea_night_f"], "still_missing": [], "complete": true}
+DONE=true
+NEEDS_UP=false
+{"ok": true, "files": 75, "items": 75, "sprites": 286}
+{"ok": true, "no_dataset": false, "files": 362}
+438 Days Lost At Sea: 6 scenes, voice am_fenrir
+  costume fisher: missing
+OK
+assets 2026-11-05_02_sea_438: complete=true, round files in assets-state/2026-11-05_02_sea_438
+dataset verify: ok: bg_small_fishing_boat_calm_open_sea_night_f and all sprites found again after a clean download
+{"ok": true, "checked": 1, "sprites_checked": 286, "problems": []}
+{
+ "request": "2026-11-05_02_sea_438",
+ "round": 1,
+ "accepted": [
+  "bg_small_fishing_boat_calm_open_sea_night_f"
+ ],
+ "still_missing": [],
+ "complete": true,
+ "accepted_with_warnings": {},
+ "gate_log": {
+  "bg_small_fishing_boat_calm_open_sea_night_f": [
+   {
+    "file": "pose_bg_small_fishing_boat_calm_open_sea_night_f_r1_c0.png",
+    "pass": true,
+    "why": [],
+    "score": 1.362,
+    "text_check": true,
+    "sat": 0.772,
+    "dark": 0.01,
+    "bright": 0.596,
+    "low_dark": 0.0,
+    "grad": 2.489,
+    "struct": 0.862,
+    "changed": 0.919,
+    "mean_diff": 84.08
+   },
+   {
+    "file": "pose_bg_small_fishing_boat_calm_open_sea_night_f_r1_c1.png",
+    "pass": true,
+    "why": [],
+    "score": 1.374,
+    "text_check": true,
+    "sat": 0.698,
+    "dark": 0.012,
+    "bright": 0.584,
+    "low_dark": 0.0,
+    "grad": 2.468,
+    "struct": 0.874,
+    "changed": 0.92,
+    "mean_diff": 86.58

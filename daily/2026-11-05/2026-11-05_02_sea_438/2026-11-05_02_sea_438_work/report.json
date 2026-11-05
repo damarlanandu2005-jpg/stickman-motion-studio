@@ -9,36 +9,9 @@
   "all_frames": 570
  },
  "scenes": 6,
- "warnings": [
-  "costume 'fisher' is spec_only: stand-in 'role_civ' used",
-  "scene 4: background 'small fishing boat on a calm open sea at night, full of stars' not in the library yet: plain placeholder"
- ],
- "missing_assets": [
-  {
-   "id": "bg_small_fishing_boat_calm_open_sea_night_f",
-   "type": "background",
-   "tags": [
-    "small",
-    "fishing",
-    "boat",
-    "calm",
-    "open",
-    "sea",
-    "night",
-    "full",
-    "stars"
-   ],
-   "desc": "small fishing boat on a calm open sea at night, full of stars",
-   "scene": 4,
-   "base": "bg_small_fishing_boat_calm_open_sea_endless",
-   "mode": "same",
-   "root": "bg_small_fishing_boat_calm_open_sea_endless",
-   "change": "small fishing boat on a calm open sea at night, full of stars"
-  }
- ],
- "missing_costumes": [
-  "fisher"
- ],
+ "warnings": [],
+ "missing_assets": [],
+ "missing_costumes": [],
  "voice": [
   {
    "scene": 1,

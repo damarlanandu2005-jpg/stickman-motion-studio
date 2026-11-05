@@ -1,0 +1,2623 @@
+{
+ "costume": "fisher",
+ "round": 5,
+ "sheets_drawn": [
+  "fisher_r1_s0",
+  "fisher_r1_s0fix",
+  "fisher_r1_s1",
+  "fisher_r1_s1fix",
+  "fisher_r1_s2",
+  "fisher_r1_s2fix",
+  "fisher_r2_s0",
+  "fisher_r2_s0fix",
+  "fisher_r2_s1",
+  "fisher_r2_s1fix",
+  "fisher_r2_s2",
+  "fisher_r2_s2fix",
+  "fisher_r2_s3",
+  "fisher_r2_s3fix",
+  "fisher_r3_s0",
+  "fisher_r3_s0fix",
+  "fisher_r3_s1",
+  "fisher_r3_s1fix",
+  "fisher_r3_s2",
+  "fisher_r3_s2fix",
+  "fisher_r3_s3",
+  "fisher_r3_s3fix",
+  "fisher_r4_s0",
+  "fisher_r4_s0fix",
+  "fisher_r4_s1",
+  "fisher_r4_s1fix",
+  "fisher_r4_s2",
+  "fisher_r4_s2fix",
+  "fisher_r4_s3",
+  "fisher_r4_s3fix",
+  "fisher_r5_s0",
+  "fisher_r5_s0fix",
+  "fisher_r5_s1",
+  "fisher_r5_s1fix",
+  "fisher_r5_s2",
+  "fisher_r5_s2fix",
+  "fisher_r5_s3",
+  "fisher_r5_s3fix"
+ ],
+ "complete": false,
+ "missing_poses": [
+  1,
+  2,
+  4,
+  8,
+  9,
+  10,
+  11
+ ],
+ "why_failed_per_sheet": {
+  "fisher_r1_s0": {
+   "0": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "2": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "3": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "5": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "6": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "7": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "8": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "9": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ]
+  },
+  "fisher_r1_s0fix": {
+   "0": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "2": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "3": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "5": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "6": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "7": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "8": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "9": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ]
+  },
+  "fisher_r1_s1": {
+   "0": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "2": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "3": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "5": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "6": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "7": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "8": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "9": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ]
+  },
+  "fisher_r1_s1fix": {
+   "0": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "2": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "3": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "5": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "6": [
+    "costume colour",
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "7": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "8": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "9": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ]
+  },
+  "fisher_r1_s2": {
+   "0": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "2": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "3": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "5": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "6": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "7": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "8": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "9": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ]
+  },
+  "fisher_r1_s2fix": {
+   "0": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "2": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "3": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "5": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "6": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "7": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left"
+   ],
+   "8": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "9": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ]
+  },
+  "fisher_r2_s0": {
+   "0": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "2": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "3": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "5": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "6": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "7": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "8": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "9": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ]
+  },
+  "fisher_r2_s0fix": {
+   "0": [
+    "old outfit colour left"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left"
+   ],
+   "2": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "3": [
+    "old outfit colour left"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "5": [
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left"
+   ],
+   "6": [
+    "old outfit colour left"
+   ],
+   "7": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "8": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "9": [
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ]
+  },
+  "fisher_r2_s1": {
+   "0": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "2": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "3": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "5": [
+    "costume colour",
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "6": [
+    "costume colour",
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "7": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "8": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "9": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "costume colour",
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ]
+  },
+  "fisher_r2_s1fix": {
+   "0": [
+    "old outfit colour left"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "2": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "3": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "5": [
+    "costume colour",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "6": [
+    "costume colour",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left"
+   ],
+   "7": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "8": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "9": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "costume colour",
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ]
+  },
+  "fisher_r2_s2": {
+   "0": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "2": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "3": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "5": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "6": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "7": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "8": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "9": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "head or hat on top",
+    "limb layout differs from the old pose (back view?)",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ]
+  },
+  "fisher_r2_s2fix": {
+   "0": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "2": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "3": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "5": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "6": [
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left"
+   ],
+   "7": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "8": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "9": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "head or hat on top",
+    "limb layout differs from the old pose (back view?)",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ]
+  },
+  "fisher_r2_s3": {
+   "0": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "2": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "3": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "5": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "6": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "silhouette",
+    "white limb left (bare leg)"
+   ],
+   "7": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "8": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "9": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ]
+  },
+  "fisher_r2_s3fix": {
+   "0": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "2": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "3": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "5": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "pale patch in suit"
+   ],
+   "6": [
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "silhouette"
+   ],
+   "7": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left"
+   ],
+   "8": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "9": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "costume colour",
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ]
+  },
+  "fisher_r3_s0": {
+   "0": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "2": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "3": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "5": [
+    "costume colour",
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "6": [
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "7": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "8": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "9": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ]
+  },
+  "fisher_r3_s0fix": {
+   "0": [
+    "old outfit colour left"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "2": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "3": [
+    "old outfit colour left"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "5": [
+    "costume colour",
+    "old outfit colour left"
+   ],
+   "6": [
+    "old outfit colour left"
+   ],
+   "7": [
+    "old outfit colour left"
+   ],
+   "8": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "9": [
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "costume colour",
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ]
+  },
+  "fisher_r3_s1": {
+   "0": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "2": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "3": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "5": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "6": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "7": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "8": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "9": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ]
+  },
+  "fisher_r3_s1fix": {
+   "0": [
+    "old outfit colour left"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "2": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "3": [
+    "old outfit colour left"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "5": [
+    "old outfit colour left"
+   ],
+   "6": [
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left"
+   ],
+   "7": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "8": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "9": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ]
+  },
+  "fisher_r3_s2": {
+   "0": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "2": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "3": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "height",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "5": [
+    "extra white parts (bare arm or leg)",
+    "height",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "6": [
+    "extra white parts (bare arm or leg)",
+    "height",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "7": [
+    "extra white parts (bare arm or leg)",
+    "height",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "8": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "9": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ]
+  },
+  "fisher_r3_s2fix": {
+   "0": [
+    "old outfit colour left"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "2": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "3": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "height",
+    "old outfit colour left"
+   ],
+   "5": [
+    "extra white parts (bare arm or leg)",
+    "height",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "6": [
+    "extra white parts (bare arm or leg)",
+    "height",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "7": [
+    "height",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left"
+   ],
+   "8": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "9": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ]
+  },
+  "fisher_r3_s3": {
+   "0": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "2": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "3": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "5": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "6": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "7": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "8": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "9": [
+    "extra white parts (bare arm or leg)",
+    "head or hat on top",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ]
+  },
+  "fisher_r3_s3fix": {
+   "0": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "2": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "3": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "5": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "6": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "7": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "8": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "9": [
+    "extra white parts (bare arm or leg)",
+    "head or hat on top",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "costume colour",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ]
+  },
+  "fisher_r4_s0": {
+   "0": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "2": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "3": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "5": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "6": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "7": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "8": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "9": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ]
+  },
+  "fisher_r4_s0fix": {
+   "0": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "2": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "3": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "5": [
+    "costume colour",
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "6": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "7": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "8": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "9": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ]
+  },
+  "fisher_r4_s1": {
+   "0": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "2": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "3": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "5": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "6": [
+    "costume colour",
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "7": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "8": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "9": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ]
+  },
+  "fisher_r4_s1fix": {
+   "0": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "2": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "3": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "5": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "6": [
+    "costume colour",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "7": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "8": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "9": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ]
+  },
+  "fisher_r4_s2": {
+   "0": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "2": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "3": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "5": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "6": [
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "silhouette",
+    "white limb left (bare leg)"
+   ],
+   "7": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "8": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "9": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ]
+  },
+  "fisher_r4_s2fix": {
+   "0": [
+    "old outfit colour left"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "2": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "3": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "5": [
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "6": [
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "silhouette",
+    "white limb left (bare leg)"
+   ],
+   "7": [
+    "old outfit colour left"
+   ],
+   "8": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "9": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ]
+  },
+  "fisher_r4_s3": {
+   "0": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "2": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "3": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "5": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "6": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "7": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "8": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "9": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ]
+  },
+  "fisher_r4_s3fix": {
+   "0": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "2": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "3": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left"
+   ],
+   "5": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "6": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "7": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left"
+   ],
+   "8": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "9": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ]
+  },
+  "fisher_r5_s0": {
+   "0": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "2": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "3": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "5": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "6": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "7": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "8": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "9": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ]
+  },
+  "fisher_r5_s0fix": {
+   "0": [
+    "old outfit colour left"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "2": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "3": [
+    "old outfit colour left"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "5": [
+    "old outfit colour left"
+   ],
+   "6": [
+    "old outfit colour left"
+   ],
+   "7": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "8": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "9": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ]
+  },
+  "fisher_r5_s1": {
+   "0": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "2": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "3": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "5": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "6": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "7": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "8": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "9": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ]
+  },
+  "fisher_r5_s1fix": {
+   "0": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "2": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "3": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "5": [
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "6": [
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left"
+   ],
+   "7": [
+    "old outfit colour left"
+   ],
+   "8": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "9": [
+    "limb layout differs from the old pose (back view?)",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ]
+  },
+  "fisher_r5_s2": {
+   "0": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "2": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "3": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "5": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "6": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "7": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "8": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "9": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "pale patch in suit",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ]
+  },
+  "fisher_r5_s2fix": {
+   "0": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "2": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "3": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "5": [
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left"
+   ],
+   "6": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "7": [
+    "limb layout differs from the old pose (back view?)",
+    "no white neck stub or hands (back view or hands missing)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "8": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "9": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "costume colour",
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ]
+  },
+  "fisher_r5_s3": {
+   "0": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "2": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "3": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "5": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "6": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "7": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "8": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "9": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ]
+  },
+  "fisher_r5_s3fix": {
+   "0": [
+    "old outfit colour left"
+   ],
+   "1": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "2": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "3": [
+    "old outfit colour left"
+   ],
+   "4": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "5": [
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left"
+   ],
+   "6": [
+    "old outfit colour left"
+   ],
+   "7": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left"
+   ],
+   "8": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "9": [
+    "extra white parts (bare arm or leg)",
+    "limb layout differs from the old pose (back view?)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "10": [
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ],
+   "11": [
+    "costume colour",
+    "extra white parts (bare arm or leg)",
+    "old outfit colour left",
+    "white limb left (bare leg)"
+   ]
+  }
+ },
+ "status": "auto_accepted",
+ "human_reviewed": false,
+ "last_round": true,
+ "soft_accepted_poses": [
+  0,
+  3,
+  5,
+  6,
+  7
+ ],
+ "fallback_poses": {
+  "1": {
+   "copied_from_pose": 7,
+   "old_pose_similarity": 0.51,
+   "note": "NOT a redrawn pose: closest accepted pose reused"
+  },
+  "2": {
+   "copied_from_pose": 0,
+   "old_pose_similarity": 0.44,
+   "note": "NOT a redrawn pose: closest accepted pose reused"
+  },
+  "4": {
+   "copied_from_pose": 5,
+   "old_pose_similarity": 0.86,
+   "note": "NOT a redrawn pose: closest accepted pose reused"
+  },
+  "8": {
+   "copied_from_pose": 7,
+   "old_pose_similarity": 0.58,
+   "note": "NOT a redrawn pose: closest accepted pose reused"
+  },
+  "9": {
+   "copied_from_pose": 7,
+   "old_pose_similarity": 0.47,
+   "note": "NOT a redrawn pose: closest accepted pose reused"
+  },
+  "10": {
+   "copied_from_pose": 0,
+   "old_pose_similarity": 0.55,
+   "note": "NOT a redrawn pose: closest accepted pose reused"
+  },
+  "11": {
+   "copied_from_pose": 0,
+   "old_pose_similarity": 0.42,
+   "note": "NOT a redrawn pose: closest accepted pose reused"
+  }
+ }
+}
