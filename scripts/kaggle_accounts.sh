@@ -25,9 +25,9 @@ ka_preflight() {
   for n in $order; do
     if [ "$n" = "2" ] && ! ka_have2; then echo "[kaggle] account 2: not configured (secrets KAGGLE_USERNAME_2 / KAGGLE_KEY_2 are empty)"; continue; fi
     ka_use "$n" >/dev/null
-    out=$(kaggle datasets status "$DATASET_OWNER/stickman-assets" 2>&1 | tail -1)
+    out=$(kaggle datasets status "$DATASET_OWNER/stickman-assets" 2>&1)
     if echo "$out" | grep -qi ready; then echo "[kaggle] account $n ($(ka_user)): dataset visible"; [ -z "$ok" ] && ok="$n"
-    else echo "[kaggle] account $n ($(ka_user)): dataset NOT visible: $out"; fi
+    else echo "[kaggle] account $n ($(ka_user)): dataset NOT visible: $(echo "$out" | tail -2 | tr '\n' ' ')"; fi
   done
   if [ -n "$ok" ]; then ka_use "$ok"; else echo "[kaggle] NO account can see the dataset"; ka_use "${KAGGLE_FIRST:-1}"; fi
 }
