@@ -79,11 +79,12 @@ jobs:
           elif [ -z "$GEMINI_API_KEY" ]; then echo "No GCP_SA_KEY/GCP_PROJECT_ID and no GEMINI_API_KEY secret"; exit 1
           else echo "Using the free Gemini API key"; fi
           cd project
-          for TRY in 1 2 3 4; do                 # the free tier is sometimes "busy" (503): wait and try again, the files written so far are kept
+          for TRY in 1 2 3 4 5 6; do                 # the free tier is sometimes "busy" (503): wait and try again, the files written so far are kept
             echo "=== Gemini try $TRY ===" | tee -a ../gemini.log
             timeout 200m gemini -m "$MODEL" --yolo --skip-trust -p "$(cat ../tools/gemini_task.md) If work/ already has files from an earlier try, continue from them." 2>&1 | tee -a ../gemini.log || true
             [ -f work/DONE.txt ] && break
             if grep -q "exhausted your daily quota" ../gemini.log; then echo "Daily quota used up: stopping (no point waiting)"; break; fi
+            if tail -n 40 ../gemini.log | grep -q "ending with a model turn"; then echo "Gemini CLI hiccup (400): starting again from the saved files"; sleep 20; continue; fi
             grep -q "high demand\|503\|fetch failed" ../gemini.log && { echo "Gemini busy, waiting 6 minutes"; sleep 360; } || break
           done
           ls work stills 2>/dev/null || true
