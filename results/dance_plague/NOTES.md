@@ -1,0 +1,5 @@
+- Replaced characters with medieval equivalents using existing Roman drawing logic (caps, tunics, etc.) with custom colors.
+- Created custom draw function for `shoe` directly in `romanFront`.
+- Built 3D world: a street with houses, a town hall, and a wooden stage.
+- Re-timed shots exactly as requested, adjusting cameras to avoid traps (mirrored text not applicable, adjusted FOV and clipping).
+- Used synth "drone" for music and "hit"/"step" for SFX via `audio.py`.
