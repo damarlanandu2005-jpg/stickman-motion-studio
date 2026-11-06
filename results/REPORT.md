@@ -9,3 +9,11 @@
 Gemini notes: substitutes missing faces (angry->stern, sad->nervous), simplifies hard 3D things, no crowds.
 Cloud credit used: NOT measured (Gemini CLI prints no tokens; Billing not read). Check Google Cloud Billing.
 Models: gemini-3.1-pro-preview works. 3.8-flash (400 error), 3.5-flash (no finish), 2.5-pro (not found) unusable here.
+
+## Round 2: API pipeline (tools/gen_api.py, direct Vertex calls, stills feedback loop, 3 fix rounds)
+| Video | Calls | Input tok | Output tok | Thinking tok | Result |
+|---|---|---|---|---|---|
+| Emu War | 4 | 240k | 35k | 37k | ~ my version (kit example IS Emu War: not a fair test) |
+| Dance Plague | 4 | 248k (155k cached) | 37k | 68k | much better than CLI version: crowd, stage, council; some dark/black shots, odd roofs |
+| Molasses | 4 | 243k (0 cached) | 34k | 65k | weak: dark, giant grey walls, missing street/train/horse; fix loop did not repair it |
+CLI version used ~6M input tokens per video. Cost estimate (unverified, check Billing): ~$1-1.5 per video.
