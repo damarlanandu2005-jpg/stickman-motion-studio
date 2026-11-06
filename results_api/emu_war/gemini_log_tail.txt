@@ -1,0 +1,44 @@
+11 shots, 597 frames, words used 83/83
+prompt chars: static 88353, task 6490
+usage {'label': 'write', 'model': 'gemini-3.1-pro-preview', 'prompt': 46250, 'cached': 0, 'output': 13380, 'thoughts': 23700}
+first answer files: ['work/PLAN.md', 'work/NOTES.md', 'web/world.js', 'web/story.js', 'web/cast.js', 'audio.py']
+music vs voice: -6.0 dB   sfx vs voice: -5.1 dB
+
+round 0: build_err=False audio_err=False sheet=False msgs="PAGE ERR Uncaught SyntaxError: Identifier 'fxStars' has already been declared\nERR Identifier 'fxStar"
+usage {'label': 'fix1', 'model': 'gemini-3.1-pro-preview', 'prompt': 59758, 'cached': 0, 'output': 109, 'thoughts': 1804}
+fix files: ['web/cast.js'] 
+PROBLEMS: PROBLEMS:
+- Uncaught SyntaxError: Identifier 'fxStars' has already been declared (it is already in the kit's toonbase).
+
+
+music vs voice: -6.0 dB   sfx vs voice: -5.1 dB
+
+round 1: build_err=False audio_err=False sheet=True msgs=''
+usage {'label': 'fix2', 'model': 'gemini-3.1-pro-preview', 'prompt': 61056, 'cached': 0, 'output': 10939, 'thoughts': 5108}
+fix files: ['web/world.js', 'web/story.js'] 
+PROBLEMS: PROBLEMS:
+- s1_hook: The camera is too high at the start, cutting off the soldier's boots.
+- s2_war: The army truck is not visible in the shot.
+- s3_wheat: The truck from the previous shot is visible in the foreground, but shouldn't be.
+- s8_month: The calendar effect is too large and cut off at the top of the frame.
+- s9_birds: The flag pole is not visible in the shot.
+
+
+music vs voice: -6.0 dB   sfx vs voice: -5.1 dB
+
+round 2: build_err=False audio_err=False sheet=True msgs=''
+usage {'label': 'fix3', 'model': 'gemini-3.1-pro-preview', 'prompt': 73184, 'cached': 57295, 'output': 10931, 'thoughts': 6065}
+fix files: ['web/world.js', 'web/story.js'] 
+PROBLEMS: PROBLEMS:
+- s1_hook: The camera is too high at the start, cutting off the soldier's boots.
+- s2_war: The army truck is mostly off-screen to the left.
+- s8_month: The calendar effect is too large and cut off at the top of the frame.
+- s9_birds: The flag pole is not visible because it is too tall and too far left for the narrow FOV.
+
+
+music vs voice: -6.0 dB   sfx vs voice: -5.1 dB
+
+round 3: build_err=False audio_err=False sheet=True msgs=''
+music vs voice: -6.0 dB   sfx vs voice: -5.1 dB
+
+DONE [{"label": "write", "model": "gemini-3.1-pro-preview", "prompt": 46250, "cached": 0, "output": 13380, "thoughts": 23700}, {"label": "fix1", "model": "gemini-3.1-pro-preview", "prompt": 59758, "cached": 0, "output": 109, "thoughts": 1804}, {"label": "fix2", "model": "gemini-3.1-pro-preview", "prompt": 61056, "cached": 0, "output": 10939, "thoughts": 5108}, {"label": "fix3", "model": "gemini-3.1-pro-preview", "prompt": 73184, "cached": 57295, "output": 10931, "thoughts": 6065}]
