@@ -39,7 +39,7 @@ anything vague, missing or impossible in the script becomes a mistake in the vid
 - Moves: static, push-in, pull-back, orbit, snap-zoom, whip, crane-up, crane-down.
 
 ## 6. Kit list (use exactly these names)
-- FACES: neutral, stern, grin, laugh, whistle, nervous, shock, relief, dazed, pained, smile, lick, snore, stubborn, squint, sad, angry, scared, proud, tired, shout, desperate.
+- FACES: determined (same as stubborn), worried (same as nervous), neutral, stern, grin, laugh, whistle, nervous, shock, relief, dazed, pained, smile, lick, snore, stubborn, squint, sad, angry, scared, proud, tired, shout, desperate.
 - ARM POSES: hang, spear, point, up, wave, hip, belly, temple, lift, reach, cheek, shield, cross, thumb, sit.
   (`spear` = holding a long stick or spear. It is NOT a rifle.) No other poses exist yet: no crouch, kneel, run, lie, salute.
 - HATS: shako, shako_tall, cap, hair, tophat, bonnet, slouch (army hat), straw, fire (tall fire-fighter hat), none.
@@ -47,9 +47,10 @@ anything vague, missing or impossible in the script becomes a mistake in the vid
 - LIGHT: day, dawn, golden, night, indoor.
 - READY-MADE: crowd (many people in one card), emu and emu herd, horse with cart, dust, smoke, stars, steam, sparks, flash, question mark, hearts, confetti, calendar page, score board, text label.
 - If a thing is not here, it must be a `NEW:` item (section 7). Faces and poses cannot be NEW: choose the nearest listed one
-  (determined = stubborn or stern, worried = nervous, crouching = shield or hang with a lower camera).
+  (crouching = shield or hang with a lower camera).
 
 ## 7. NEW items (anything not in the kit list: outfits, hats, props, vehicles, rooms)
+The code writer (Gemini) builds every PLACE and every NEW item from your description, then a tool renders each one alone with a person for scale and checks it. So write real sizes in meters and clear shapes and colors.
 Write one line each under NEW OBJECTS with: name | size in meters | colors | shape | what it does.
 ```
 - NEW: rifle | 0.9 m long | black metal, brown stock | held by the right hand | SEALs and enemy carry it

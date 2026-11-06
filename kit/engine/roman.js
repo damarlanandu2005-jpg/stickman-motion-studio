@@ -452,3 +452,6 @@ export const fxJar = (p, t) => {
 };
 export const fxWaveSplash = (p, t) => { for (let i = 0; i < 9; i++) { const a = i / 9 * Math.PI, r = 80 + t * 240; p.ell(300 + Math.cos(a) * r, 700 - Math.sin(a) * r * 1.1, 46 - t * 14, 40, "#7a4220", 9); } };
 export const fxHeart = (p, t) => { const g = p.g; g.save(); g.globalAlpha = Math.min(1, (1 - t) * 3); for (let i = 0; i < 4; i++) { const y = 760 - t * 420 - i * 70, x = 220 + i * 55 + Math.sin(t * 7 + i) * 24; p.poly([[x, y + 50], [x - 50, y - 6], [x - 36, y - 38], [x, y - 14], [x + 36, y - 38], [x + 50, y - 6]], "#ff7a9a", 7); } g.restore(); };
+
+// aliases so scripts may use these two faces
+FACE.determined = { ...(FACE.stubborn || FACE.stern) }; FACE.worried = { ...(FACE.nervous || FACE.neutral) };

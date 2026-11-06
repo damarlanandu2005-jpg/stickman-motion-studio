@@ -1,0 +1,212 @@
+TITLE: The Staircase That Bankrupted a King
+
+NARRATION:
+A king wanted to build something nobody had ever seen before.
+He summoned the finest builder in the kingdom.
+His request was simple.
+Build me a staircase that will make everyone jealous.
+The builder began constructing a magnificent tower and staircase.
+But the king wanted more.
+He demanded expensive materials and extravagant details.
+The palace filled with workers, craftsmen and royal guests.
+The costs kept rising.
+Even the materials had to be specially prepared.
+The staircase became more expensive with every step.
+Soon, the kingdom's money began disappearing.
+The king had spent a fortune on one staircase.
+And his treasury was nearly empty.
+His greatest masterpiece had become his biggest financial disaster.
+
+SHOTS:
+
+CAST:
+- KING | royal red coat, white turban with red top | light skin, dark beard | proud
+- BUILDER | blue worker robe, white turban with red top | light skin, short beard | neutral
+- ROYAL-ADVISOR | green royal robe, white tall hat | light skin, dark beard | stern
+- COURTIER-1 | royal red and gold outfit, white turban | light skin | neutral
+- COURTIER-2 | royal blue and gold outfit, white turban | light skin | neutral
+- WORKERS | plain worker clothes, simple hats | varied skin and hair | neutral
+
+PLACES:
+- ROYAL-PALACE | grand historic palace courtyard | 35 m wide | curved palace wall on left, tall tower in middle, stone staircase on right
+- CONSTRUCTION-YARD | open building site | 30 m wide | unfinished tower in middle, wooden beams on left, stone blocks on right
+- GRAND-STAIRCASE | huge stone staircase | 20 m tall | broad steps in middle, stone wall on left, tower wall on right
+- ROYAL-HALL | decorated palace interior | 20 m wide | patterned blue wall on left, large arched window in middle, royal carpet on floor
+- FURNACE-ROOM | stone workshop with large furnace | 12 m wide | glowing furnace in middle, stone walls on both sides, metal tools near right
+- TREASURY | royal stone vault | 15 m wide | arched doorway in middle, storage shelves on left, treasury chest on right
+
+NEW OBJECTS:
+- NEW: royal construction plans | 0.8 m wide | cream parchment with brown drawings | builder presents the staircase design
+- NEW: piles of gold coins | 0.5 m high | bright gold | represent royal spending
+- NEW: expensive decorative staircase material | 2 m long | polished bronze and gold | used in staircase construction
+
+SHOT 1
+WORDS: "A king wanted to build something nobody had ever seen before."
+PLACE: ROYAL-PALACE
+LIGHT: golden
+CAMERA: wide palace courtyard > slow push-in | far (15 m) | wide
+CHARACTERS: KING | up | proud | left | near | facing right
+            COURTIER-1 | hang | neutral | right | mid | facing king
+EFFECTS: none
+MUST SEE: king's full royal outfit, palace architecture, tower, staircase on right
+MUST NOT: staircase missing, cropped palace, modern buildings
+SFX: royal orchestral accent, on "king"
+MUSIC: grand royal theme
+
+SHOT 2
+WORDS: "He summoned the finest builder in the kingdom."
+PLACE: ROYAL-PALACE
+LIGHT: golden
+CAMERA: medium two-character shot > static | mid (6 m) | medium
+CHARACTERS: KING | point | stern | right | near | facing left
+            BUILDER | hang | neutral | left | near | facing right
+EFFECTS: none
+MUST SEE: both complete faces, king's red outfit, builder's blue outfit, palace wall
+MUST NOT: swapped outfits, missing turbans, extra characters between them
+SFX: footsteps, on "builder"
+MUSIC: royal theme continues
+
+SHOT 3
+WORDS: "His request was simple. Build me a staircase that will make everyone jealous."
+PLACE: ROYAL-PALACE
+LIGHT: day
+CAMERA: medium shot of king pointing toward staircase > slow push-in | mid (6 m) | medium
+CHARACTERS: KING | point | proud | left | near | facing right
+            BUILDER | temple | neutral | right | mid | facing left
+EFFECTS: none
+MUST SEE: king pointing toward staircase, builder listening, visible staircase location
+MUST NOT: builder looking away, staircase hidden, incorrect character positions
+SFX: dramatic musical hit, on "staircase"
+MUSIC: ambitious royal music
+
+SHOT 4
+WORDS: "The builder began constructing a magnificent tower and staircase."
+PLACE: CONSTRUCTION-YARD
+LIGHT: day
+CAMERA: wide construction site > slow push-in | far (15 m) | wide
+CHARACTERS: BUILDER | point | proud | left | near | facing right
+            WORKERS | hang | neutral | middle | mid | facing tower
+EFFECTS: light construction dust
+MUST SEE: unfinished tower, staircase construction, wooden beams, stone blocks, workers
+MUST NOT: empty construction site, missing tower, floating building materials
+SFX: hammering, on "constructing"
+MUSIC: rhythmic building percussion
+
+SHOT 5
+WORDS: "But the king wanted more."
+PLACE: GRAND-STAIRCASE
+LIGHT: day
+CAMERA: medium shot of king looking up the staircase > slow push-in | mid (6 m) | medium
+CHARACTERS: KING | temple | stern | left | near | facing right
+            BUILDER | hang | nervous | right | mid | facing king
+EFFECTS: none
+MUST SEE: king's face, builder's face, broad stone staircase extending upward
+MUST NOT: staircase reduced to a small set of steps, faces hidden, incorrect costumes
+SFX: low dramatic hit, on "more"
+MUSIC: darker royal theme
+
+SHOT 6
+WORDS: "He demanded expensive materials and extravagant details."
+PLACE: ROYAL-HALL
+LIGHT: indoor
+CAMERA: medium shot of royal advisor displaying expensive materials > slow push-in | near (2 m) | medium
+CHARACTERS: ROYAL-ADVISOR | lift | stern | middle | near | facing camera
+            KING | point | proud | right | mid | facing advisor
+EFFECTS: none
+MUST SEE: decorative materials, royal clothing, advisor's face, palace interior
+MUST NOT: cheap wooden materials replacing gold decoration, missing hands, blank background
+SFX: metallic sparkle, on "expensive"
+MUSIC: lavish orchestral music
+
+SHOT 7
+WORDS: "The palace filled with workers, craftsmen and royal guests."
+PLACE: ROYAL-PALACE
+LIGHT: golden
+CAMERA: wide courtyard shot > slow crane-up | far (15 m) | wide
+CHARACTERS: KING | up | proud | middle | near | facing crowd
+            WORKERS | hang | neutral | left | mid | facing staircase
+            COURTIER-1 | hang | neutral | right | mid | facing king
+            COURTIER-2 | hang | neutral | right | far | facing king
+            crowd of 30 workers and royal guests | middle and far background
+EFFECTS: light construction dust
+MUST SEE: king, crowd of 30 people, workers, royal guests, tower, staircase
+MUST NOT: empty courtyard, crowd reduced to two people, cloned identical foreground faces
+SFX: crowd ambience, on "filled"
+MUSIC: busy orchestral rhythm
+
+SHOT 8
+WORDS: "The costs kept rising. Even the materials had to be specially prepared."
+PLACE: FURNACE-ROOM
+LIGHT: indoor
+CAMERA: close view of glowing furnace > slow push-in | near (2 m) | tight
+CHARACTERS: WORKERS | lift | stern | right | mid | facing furnace
+EFFECTS: orange furnace glow, rising heat waves, small sparks
+MUST SEE: full furnace opening, visible fire, metal container, workers handling materials
+MUST NOT: furnace missing, fire covering all objects, workers standing inside flames
+SFX: roaring furnace, on "prepared"
+MUSIC: tense low percussion
+
+SHOT 9
+WORDS: "The staircase became more expensive with every step."
+PLACE: GRAND-STAIRCASE
+LIGHT: golden
+CAMERA: low-angle view along staircase > slow crane-up | near (2 m) | wide
+CHARACTERS: BUILDER | hang | tired | right | mid | facing staircase
+EFFECTS: subtle golden reflections
+MUST SEE: long staircase, individual steps, decorative material, builder for scale
+MUST NOT: staircase cut off at top, floating steps, ordinary small staircase
+SFX: heavy stone placement, on "every step"
+MUSIC: rising tension
+
+SHOT 10
+WORDS: "Soon, the kingdom's money began disappearing."
+PLACE: ROYAL-HALL
+LIGHT: indoor
+CAMERA: close-up of gold coins on table > slow pull-back | near (2 m) | medium
+CHARACTERS: ROYAL-ADVISOR | belly | worried | left | mid | facing coins
+            KING | temple | dazed | right | mid | facing coins
+EFFECTS: none
+MUST SEE: gold coins, royal advisor, king, decorated palace room
+MUST NOT: coins turning into unrelated objects, missing king, empty table
+SFX: coins dropping, on "money"
+MUSIC: ominous low strings
+
+SHOT 11
+WORDS: "The king had spent a fortune on one staircase."
+PLACE: GRAND-STAIRCASE
+LIGHT: golden
+CAMERA: full staircase view > slow pull-back | far (15 m) | wide
+CHARACTERS: KING | belly | dazed | left | near | facing staircase
+            BUILDER | hang | tired | right | mid | facing king
+            crowd of 10 royal guests | far background
+EFFECTS: none
+MUST SEE: complete staircase, king, builder, royal guests, tower architecture
+MUST NOT: staircase cropped, missing characters, staircase replaced with a small ladder
+SFX: dramatic low impact, on "fortune"
+MUSIC: tragic orchestral swell
+
+SHOT 12
+WORDS: "And his treasury was nearly empty."
+PLACE: TREASURY
+LIGHT: indoor
+CAMERA: wide view of treasury vault > slow push-in | mid (6 m) | wide
+CHARACTERS: ROYAL-ADVISOR | belly | desperate | middle | near | facing empty storage
+EFFECTS: subtle dust
+MUST SEE: arched doorway, treasury shelves, empty storage, advisor's complete face
+MUST NOT: shelves filled with gold, modern bank vault, missing doorway
+SFX: hollow metallic echo, on "empty"
+MUSIC: quiet dramatic ending
+
+SHOT 13
+WORDS: "His greatest masterpiece had become his biggest financial disaster."
+PLACE: ROYAL-PALACE
+LIGHT: golden
+CAMERA: king standing before staircase > slow pull-back | far (15 m) | wide
+CHARACTERS: KING | tired | dazed | middle | near | facing camera
+            BUILDER | hang | sad | left | mid | facing staircase
+            ROYAL-ADVISOR | hang | stern | right | mid | facing king
+EFFECTS: none
+MUST SEE: king, builder, advisor, complete staircase, palace tower
+MUST NOT: happy king, missing staircase, modern objects, cropped characters
+SFX: deep final impact, on "disaster"
+MUSIC: tragic orchestral finish

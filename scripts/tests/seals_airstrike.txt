@@ -1,0 +1,161 @@
+TITLE: Why These SEALs Called an Airstrike on THEMSELVES
+
+NARRATION:
+A Navy SEAL team was trapped in enemy territory.
+Enemy fighters were closing in, and there was nowhere left to hide.
+So they made a terrifying decision.
+They called in an airstrike directly on their own position.
+The enemy was firing from just meters away.
+Their own team was caught in the middle of the attack.
+But they had no other choice.
+The strike hit.
+And somehow, they survived.
+A helicopter arrived to get them out.
+But the mission nearly cost them everything.
+
+SHOTS:
+
+CAST:
+- SEAL-LEADER | modern Navy SEAL uniform, tan helmet, tactical vest | light skin, no visible hair | stern
+- SEAL-2 | modern Navy SEAL uniform, tan helmet, tactical vest | light skin | nervous
+- SEAL-3 | modern Navy SEAL uniform, tan helmet, tactical vest | light skin | determined
+- ENEMY-SOLDIER | dark military clothing, light tactical helmet | face partly shadowed | angry
+- PILOT | modern flight suit, pilot helmet | face partly visible | neutral
+
+PLACES:
+- NIGHT-FOREST | dense dark forest with tall trees | 40 m wide | narrow dirt path in middle, trees on left and right, dark bushes in background
+- ENEMY-FIELD | open battlefield surrounded by tall grass | 30 m wide | large rock on left, tall grass in middle, tree line far right
+- HELICOPTER-ZONE | open military extraction area | 25 m wide | flat ground in middle, dark trees far left, open sky above
+
+NEW OBJECTS:
+- NEW: military airstrike explosion | 8 m wide | bright orange fire, yellow center, dark smoke | explosion on battlefield
+- NEW: military radio | 0.15 m | black rectangular device with antenna | SEAL-LEADER uses it to request support
+- NEW: military helicopter | 15 m long | dark green body, black rotor | extraction aircraft
+
+SHOT 1
+WORDS: "A Navy SEAL team was trapped in enemy territory."
+PLACE: NIGHT-FOREST
+LIGHT: night
+CAMERA: close-up of SEAL-LEADER > slow push-in | near (2 m) | tight
+CHARACTERS: SEAL-LEADER | hang | stern | middle | near | facing camera
+EFFECTS: subtle night mist
+MUST SEE: full helmet, both eyes, tactical vest, dark forest behind him
+MUST NOT: missing face, cropped helmet, bright daylight, extra characters
+SFX: night insects, continuous
+MUSIC: low suspense drone
+
+SHOT 2
+WORDS: "Enemy fighters were closing in, and there was nowhere left to hide."
+PLACE: NIGHT-FOREST
+LIGHT: night
+CAMERA: wide shot of enemy soldiers moving through vegetation > slow push-in | far (15 m) | wide
+CHARACTERS: ENEMY-SOLDIER | spear | angry | middle | far | facing left
+EFFECTS: flashlight beams through leaves
+MUST SEE: enemy soldier, weapon, tall grass, multiple trees, dark forest depth
+MUST NOT: empty forest, missing weapon, enemy soldiers floating, camera inside vegetation
+SFX: footsteps through grass, on "closing in"
+MUSIC: tension gradually rising
+
+SHOT 3
+WORDS: "So they made a terrifying decision."
+PLACE: NIGHT-FOREST
+LIGHT: night
+CAMERA: medium shot of three SEALs > static | mid (6 m) | medium
+CHARACTERS: SEAL-LEADER | temple | stern | middle | near | facing right
+            SEAL-2 | shield | nervous | left | mid | facing middle
+            SEAL-3 | cross | stern | right | mid | facing middle
+EFFECTS: none
+MUST SEE: all three complete faces, three tactical helmets, weapons, forest background
+MUST NOT: swapped faces, missing soldiers, merged bodies, cropped heads
+SFX: radio static, soft
+MUSIC: low dramatic pulse
+
+SHOT 4
+WORDS: "They called in an airstrike directly on their own position."
+PLACE: NIGHT-FOREST
+LIGHT: night
+CAMERA: close-up of SEAL-LEADER using radio > slow push-in | near (2 m) | tight
+CHARACTERS: SEAL-LEADER | reach | desperate | middle | near | facing left
+EFFECTS: faint radio signal indicator
+MUST SEE: SEAL-LEADER face, radio in hand, antenna, tactical gloves
+MUST NOT: radio missing, radio replacing his hand, face obscured
+SFX: radio transmission, on "airstrike"
+MUSIC: suspense builds
+
+SHOT 5
+WORDS: "The enemy was firing from just meters away."
+PLACE: ENEMY-FIELD
+LIGHT: night
+CAMERA: medium battlefield shot > static | mid (6 m) | wide
+CHARACTERS: ENEMY-SOLDIER | spear | angry | middle | mid | facing left
+            SEAL-2 | shield | scared | left | near | facing right
+            SEAL-3 | spear | stern | right | mid | facing left
+EFFECTS: muzzle flashes, smoke
+MUST SEE: all three soldiers, visible weapons, opposing positions, tall grass
+MUST NOT: missing soldiers, weapons pointing randomly, faces hidden, empty battlefield
+SFX: automatic gunfire, on "firing"
+MUSIC: fast tense percussion
+
+SHOT 6
+WORDS: "Their own team was caught in the middle of the attack."
+PLACE: ENEMY-FIELD
+LIGHT: night
+CAMERA: overhead battlefield view > slow pull-back | far (15 m) | wide
+CHARACTERS: SEAL-LEADER | shield | desperate | middle | mid | facing left
+            SEAL-2 | crouching | scared | left | mid | facing right
+            SEAL-3 | crouching | stern | right | mid | facing left
+EFFECTS: tracer fire, dust
+MUST SEE: three SEALs together, enemy firing positions, open strike zone
+MUST NOT: SEALs outside the battlefield, missing team members, camera below ground
+SFX: incoming fire, on "middle"
+MUSIC: tension peaks
+
+SHOT 7
+WORDS: "But they had no other choice. The strike hit."
+PLACE: ENEMY-FIELD
+LIGHT: night
+CAMERA: wide battlefield view > slow pull-back | far (15 m) | wide
+CHARACTERS: SEAL-LEADER | shield | scared | middle | far | facing away
+EFFECTS: NEW military airstrike explosion, orange fireball, expanding smoke, dust wave
+MUST SEE: explosion on the battlefield, ground, fire, thick smoke, distant trees
+MUST NOT: explosion covering the entire frame, soldiers inside the fireball, cartoon fire replacing the environment
+SFX: powerful explosion, exactly on "hit"
+MUSIC: music cuts briefly, then deep impact
+
+SHOT 8
+WORDS: "And somehow, they survived."
+PLACE: ENEMY-FIELD
+LIGHT: dawn
+CAMERA: medium shot of surviving SEALs > slow push-in | mid (6 m) | medium
+CHARACTERS: SEAL-LEADER | tired | dazed | middle | near | facing camera
+            SEAL-2 | hang | pained | left | mid | facing camera
+            SEAL-3 | hang | relief | right | mid | facing camera
+EFFECTS: smoke drifting, light dust
+MUST SEE: three surviving SEALs, intact faces, damaged battlefield, smoke behind them
+MUST NOT: extra limbs, missing faces, destroyed bodies, cheerful expressions
+SFX: distant rumble, soft
+MUSIC: suspense changes to emotional relief
+
+SHOT 9
+WORDS: "A helicopter arrived to get them out."
+PLACE: HELICOPTER-ZONE
+LIGHT: dawn
+CAMERA: wide shot of helicopter approaching > slow push-in | far (15 m) | wide
+CHARACTERS: SEAL-LEADER | wave | tired | left | near | facing right
+EFFECTS: helicopter rotor dust
+MUST SEE: complete helicopter, rotor, tail, three SEALs, open landing area
+MUST NOT: helicopter cropped, missing rotor, aircraft floating unnaturally
+SFX: helicopter blades, on "helicopter"
+MUSIC: hopeful cinematic rise
+
+SHOT 10
+WORDS: "But the mission nearly cost them everything."
+PLACE: HELICOPTER-ZONE
+LIGHT: indoor
+CAMERA: medium hospital bed shot > slow push-in | near (2 m) | tight
+CHARACTERS: SEAL-LEADER | hang | tired | middle | near | facing camera
+EFFECTS: none
+MUST SEE: SEAL-LEADER lying in hospital bed, complete face, medical monitor, IV stand
+MUST NOT: missing face, extra medical equipment covering character, smiling expression
+SFX: heart monitor beep, on "everything"
+MUSIC: quiet emotional ending

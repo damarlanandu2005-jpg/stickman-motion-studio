@@ -13,6 +13,15 @@ pg.on('console', m => console.log('PAGE', m.text())); pg.on('pageerror', e => co
 await pg.goto(`http://localhost:${srv.address().port}/index.html${process.env.HASH||""}`);
 await pg.waitForFunction(() => window.ready || window.err, null, { timeout: 180000 });
 if (await pg.evaluate(() => window.err)) { console.log('page error'); process.exit(1); }
+if (process.env.TESTJSON) {   // asset test mode: node render.mjs <outdir> 0 ; env TESTJSON=<file with [{name,kind,view,light}, ...]>
+  const specs = JSON.parse(fs.readFileSync(process.env.TESTJSON, 'utf8')); let i = 0;
+  for (const s of specs) {
+    const info = await pg.evaluate((sp) => window.setupTest(sp), s); console.log('TESTINFO ' + JSON.stringify(info));
+    if (info.ok) { const d = await pg.evaluate(() => { window.renderFrame(0); return document.getElementById('c').toDataURL('image/jpeg', 0.9); }); fs.writeFileSync(path.join(outdir, `t${String(i).padStart(3, '0')}.jpg`), Buffer.from(d.split(',')[1], 'base64')); }
+    i++;
+  }
+  await b.close(); srv.close(); process.exit(0);
+}
 const t0 = Date.now();
 for (const f of frames) {
   if (process.env.RESUME && fs.existsSync(path.join(outdir, `f${String(f).padStart(4, '0')}.jpg`))) continue;

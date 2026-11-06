@@ -1,6 +1,12 @@
 // ---------- world ----------
 const DECK = 0;
 const world = new THREE.Group(); scene.add(world);
+// ASSETS: one builder per PLACE and per NEW object of the script (key = the exact name used in the script).
+// A builder returns a THREE.Group in real meters, origin on the ground at the centre, parts added with add(geo, mat, x, y, z, group).
+// The tool renders each builder alone (3 views + a person card for scale) and you fix it before the shots are checked. Put every world object under `world` (never directly in scene).
+const ASSETS = {
+  'signpost': () => { const g = new THREE.Group(); add(new THREE.CylinderGeometry(0.06, 0.07, 2.2, 8), M.wood, 0, 1.1, 0, g); add(tbox(1.2, 0.5, 0.08, 1), M.wood, 0, 2.0, 0, g); return g; },
+};
 const waterU = { t: { value: 0 }, deep: { value: new THREE.Color('#2f6f8f') }, shal: { value: new THREE.Color('#5fa8bf') }, glint: { value: new THREE.Color('#e9f6ff') } };
 const clouds = cloudsInit();
 // ground: red outback dirt everywhere, golden wheat behind the fence

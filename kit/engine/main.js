@@ -299,14 +299,40 @@ const swapForNd = (on) => {
   });
 };
 
+// ---------- asset test mode (used by tools/gen_api.py to check every ASSETS builder alone, with a person card for scale) ----------
+let testObj = null, testGround = null;
+window.setupTest = (spec) => {
+  if (testObj) { scene.remove(testObj); testObj = null; }
+  if (!testGround) { testGround = add(new THREE.PlaneGeometry(600, 600), toon({ color: '#9a9486' }), 0, -0.02, 0, scene, { cast: false }); testGround.rotation.x = -Math.PI / 2; }
+  world.visible = false; testGround.visible = true;
+  const info = { name: spec.name, view: spec.view, ok: false };
+  try {
+    const mk = typeof ASSETS !== 'undefined' ? ASSETS[spec.name] : null; if (!mk) throw new Error('no ASSETS entry named "' + spec.name + '"');
+    testObj = mk(); scene.add(testObj); testObj.updateMatrixWorld(true);
+    const b = new THREE.Box3().setFromObject(testObj), sz = b.getSize(new THREE.Vector3()), ct = b.getCenter(new THREE.Vector3());
+    info.ok = true; info.size = [sz.x, sz.y, sz.z].map((v) => +v.toFixed(2)); info.min_y = +b.min.y.toFixed(2);
+    const hx = Math.max(sz.x, sz.z), place = spec.kind === 'place', v = spec.view || 'front';
+    const small = hx < 1.2 && !place;
+    let d = Math.max((hx / 2 + (small ? 0.1 : 1.3)) / 0.26, 1.4 * sz.y, 0.5), pos, look = [ct.x, Math.max(ct.y, 0.3), ct.z], fov = 50, px = b.max.x + 0.6, pz = b.max.z;
+    if (v === 'front') pos = [ct.x, Math.max(1.4, ct.y), b.max.z + d];
+    else if (v === 'side') pos = [b.max.x + d, Math.max(1.4, ct.y), ct.z];
+    else if (v === 'high') pos = [ct.x + d * 0.7, ct.y + d * 0.55, b.max.z + d * 0.7];
+    else if (v === 'in1') { pos = [ct.x, 1.6, ct.z + Math.min(sz.z * 0.35, 8)]; look = [ct.x, 1.5, ct.z - sz.z]; fov = 62; px = ct.x; pz = ct.z - 4; }
+    else { pos = [ct.x - Math.min(sz.x * 0.3, 8), 1.6, ct.z]; look = [ct.x + sz.x, 1.5, ct.z]; fov = 62; px = ct.x + 4; pz = ct.z; }
+    window.TEST = { light: spec.light || 'day', cam: { pos, look, fov }, dist: d, actors: small ? [] : [{ key: 'scale', draw: (p) => T.romanFront(p, 'civA', {}), x: px, y: DECK, z: pz, s: 0.8 }] };
+    if (small) info.note = 'no person card (object smaller than 1.2 m); sizes printed';
+  } catch (e) { info.err = String(e && e.message || e); window.TEST = null; }
+  return info;
+};
 window.renderFrame = (f) => {
-  const S = shotAt(f), L = lightFor(S, f), C = camAt(f);
+  const T0 = window.TEST;
+  const S = T0 ? { light: T0.light } : shotAt(f), L = T0 ? { ...(LIGHTS[T0.light] || LIGHTS.day || Object.values(LIGHTS)[0]) } : lightFor(S, f), C = T0 ? T0.cam : camAt(f);
   applyLight(L, f);
   camera.position.set(...C.pos); camera.up.set(0, 1, 0); camera.lookAt(...C.look); camera.rotateZ(rx(C.roll || 0));
   camera.fov = C.fov; camera.updateProjectionMatrix(); camera.updateMatrixWorld();
-  const W_ = worldAt(f); worldState(W_, f);
+  if (!T0) { world.visible = true; if (testGround) testGround.visible = false; const W_ = worldAt(f); worldState(W_, f); }
   placeSun(L, new THREE.Vector3(...(C.shadowAt || C.look)));
-  drawActors([...actorsAt(f, T), ...fxAt(f, T)], camera);
+  drawActors(T0 ? T0.actors : [...actorsAt(f, T), ...fxAt(f, T)], camera);
   sky.position.copy(camera.position);
   for (const c of clouds) c.quaternion.copy(camera.quaternion);
   // pass A: colour
@@ -317,7 +343,7 @@ window.renderFrame = (f) => {
   scene.fog = fog; renderer.shadowMap.enabled = sm; renderer.shadowMap.autoUpdate = true;
   if (window.DEBUG_ND) { const dm = new THREE.MeshBasicMaterial({ map: rtNd.texture }); const ds = fs(dm); renderer.setRenderTarget(null); renderer.render(ds, fsCam); return true; }
   // ink + grade
-  const D = dofAt(f);
+  const D = T0 ? { focus: T0.dist, cinf: 0, near: 1 } : dofAt(f);
   inkU.px.value = 2.5; inkU.flash.value = window.DEBUG_E ? -1 : (C.flash || 0); inkU.vig.value = L.vig ?? 0.22;
   renderer.setRenderTarget(rtInk); renderer.render(inkScene, fsCam);
   // lens
