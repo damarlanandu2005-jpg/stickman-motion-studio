@@ -30,6 +30,11 @@ Sources: the MIT repo mromidev/claude-animated-shorts (measured numbers) and a f
 - Use the kit's moving effects (fxBubbles fxSparkle fxRings fxSpeed fxDebris fxGlow fxMotes fxSnow fxRain fxSmoke fxSweat fxClock) and the face extras ("shock+sweat", "sad+tears", "dazed+spiral"); change the face every beat.
 - Colour: references have a richer palette and stronger saturation than a plain grey-brown set: use several distinct hues per place (see REFERENCE NUMBERS), not one tint.
 
+## 3c. Pipeline-owned look (do NOT write or remove it)
+- story.js always ends with `export const LOOK = { sat, vibr, drift, push }`, added and tuned by the pipeline. `sat` = colour strength multiplier (auto-tuned from measured stills until the picture sits inside the reference range), `vibr` lifts dull colours, `drift` = slow sway of the camera, `push` = slow push-in in every shot. Old stories without LOOK render exactly as before.
+- Because of drift and push the camera never freezes, but real camera design is still yours: use big framing changes between shots, glides, whips on punch words.
+- Colour variety is YOUR job (code cannot invent hues): every place needs 4 or more distinct hues (wall, floor, trim, accent colour, props). The check flags a picture with few colours (see REFERENCE NUMBERS: palette size).
+
 ## 4. Camera
 - Every shot has a different angle than the shot before: close face, medium, wide, low angle, from above, cut-away (section through the ground), first-person, insert close-up of a prop.
 - Hard cut on big changes. Glide 18 to 40 frames between framings. Never a fully static hold longer than 4 frames: add a slow push-in 0.15 to 0.35 percent per frame.

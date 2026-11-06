@@ -195,8 +195,29 @@ def take(text):
     FILES.update(got); return got
 
 
+# ------------------------------------------------------------------ look (colour strength, drift, push) tuned from reference ranges
+import re as _re
+def _refs():
+    try:
+        st = json.loads((KIT / "reference/ref_stats.json").read_text())["metrics"]
+        return dict(sat=st["sat"]["refs"], palette=st["palette"]["refs"], edge=st["edge"]["refs"], mean=st["mean"]["refs"])
+    except Exception:
+        return None
+REFS = _refs()
+LOOKSAT = 1.0
+def ensure_look():
+    """story.js always exports LOOK (colour strength auto-tuned, slow drift + push so nothing is frozen). Pipeline-owned: the model need not write it."""
+    t = FILES.get("web/story.js")
+    if not t: return
+    line = "export const LOOK = { sat: %.2f, vibr: 0.25, drift: 1, push: 1 };" % LOOKSAT
+    if _re.search(r"export const LOOK\s*=\s*\{[^}]*\};?", t): t = _re.sub(r"export const LOOK\s*=\s*\{[^}]*\};?", line, t, count=1)
+    else: t = t.rstrip() + "\n" + line
+    FILES["web/story.js"] = t
+
+
 def build():
     """write files into the project; return error text or ''"""
+    ensure_look()
     for path in ("web/story.js", "audio.py", "work/PLAN.md", "work/NOTES.md"):
         if path in FILES: (P / path).write_text(FILES[path] + "\n", encoding="utf-8")
     main = rd(KIT / "engine/main.js"); a = main.index(MARK_A); b = main.index(MARK_B)
@@ -316,6 +337,22 @@ def stills(tag):
         if h: hard_shots.append(id_); rep.append(f"{id_} f{f}: BLACK or FLAT picture (brightness {m[0]:.0f}, black {m[1]:.0%}, one flat colour {m[2]:.0%})")
         elif s_: soft_shots.append(id_); rep.append(f"{id_} f{f}: dark or mostly one colour (brightness {m[0]:.0f}, black {m[1]:.0%}, flat {m[2]:.0%})")
     if not tiles: return None, [], msgs or "no stills were rendered", [], []
+    global LOOKSAT
+    if REFS:
+        try:
+            sys.path.insert(0, str(KIT / "tools")); import ref_measure as RM
+            st_ = {(i, f): RM.still_stats(str(p)) for i, f, p in tiles}
+            sats = sorted(v["sat"] for v in st_.values()); med = sats[len(sats) // 2]; lo, mid, hi = REFS["sat"]["lo"], REFS["sat"]["mid"], REFS["sat"]["hi"]
+            if med < lo or med > hi:
+                new_sat = max(0.7, min(1.7, LOOKSAT * (mid / max(med, 0.05)) ** 0.8)); rep.append(f"AUTO COLOUR: median colour strength {med:.2f}, reference range {lo:.2f}-{hi:.2f}: pipeline sets LOOK.sat {LOOKSAT:.2f} -> {new_sat:.2f} (you do not need to do this)"); LOOKSAT = new_sat
+            for (i, f), v in st_.items():
+                bits = []
+                if v["palette"] < 0.6 * REFS["palette"]["lo"]: bits.append(f"few colours (palette {v['palette']}, references {REFS['palette']['lo']:.0f}+): give the place 4 or more distinct hues (wall, floor, trim, accent, props)")
+                if v["edge"] < 0.5 * REFS["edge"]["lo"]: bits.append(f"plain, little detail (detail {v['edge']:.3f}, references {REFS['edge']['lo']:.3f}+): add dressing pieces, textures, signs, small props")
+                if bits and i not in hard_shots and i not in soft_shots: soft_shots.append(i)
+                if bits: rep.append(f"{i} f{f}: " + "; ".join(bits))
+        except Exception as e_:
+            rep.append(f"(reference colour check skipped: {e_})")
     sheet = jpg(grid([tile(p, f"{i} f{f}") for i, f, p in tiles], 6), P / "stills" / f"sheet_{tag}.jpg")
     return sheet, tiles, msgs + ("\n" if msgs else "") + "\n".join(rep), hard_shots, soft_shots
 

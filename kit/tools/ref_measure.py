@@ -106,6 +106,18 @@ def summarize(fps, rows):
     return out, shots
 
 
+def still_stats(path):
+    """same measures as one video frame (brightness, saturation, palette, detail) for a single picture"""
+    im = cv2.imread(path); im = cv2.cvtColor(cv2.resize(im, (W, H), interpolation=cv2.INTER_AREA), cv2.COLOR_BGR2RGB)
+    x = im.astype(np.float32) / 255.0; L = x @ np.array([0.2126, 0.7152, 0.0722], np.float32)
+    mx, mn = x.max(-1), x.min(-1); sat = np.where(mx > 0.06, (mx - mn) / np.maximum(mx, 1e-6), 0)
+    q = (im >> 4).astype(np.int32); code = (q[..., 0] << 8) | (q[..., 1] << 4) | q[..., 2]
+    palette = int(((np.bincount(code.ravel(), minlength=4096) / code.size) > 0.005).sum())
+    g = cv2.cvtColor(im, cv2.COLOR_RGB2GRAY).astype(np.float32)
+    edge = float((np.hypot(cv2.Sobel(g, cv2.CV_32F, 1, 0, ksize=3), cv2.Sobel(g, cv2.CV_32F, 0, 1, ksize=3)) > 120).mean())
+    return dict(mean=float(L.mean()), sat=float(sat.mean()), palette=palette, edge=edge)
+
+
 def cmd_add(path, name, group):
     fps, rows = measure(path); s, shots = summarize(fps, rows)
     s.update(name=name, group=group, source=os.path.basename(path), shot_list=shots)
