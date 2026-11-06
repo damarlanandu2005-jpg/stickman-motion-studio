@@ -72,7 +72,7 @@ jobs:
           cd project
           [ -f mix_raw.wav ] || python3 mix.py voice.mp3        # voice only if the sound step was not done
           N=$(node -e "import('./web/story.js').then(m=>console.log(m.TOTAL))")
-          P=$(( (N + 149) / 150 )); [ "$P" -gt 10 ] && P=10; [ "$P" -lt 1 ] && P=1
+          P=$(( (N + 79) / 80 )); [ "$P" -gt 10 ] && P=10; [ "$P" -lt 1 ] && P=1
           IDX=$(python3 -c "print(list(range($P)))")      # no curly braces: GitHub hides output that contains a character of a secret
           echo "frames $N in $P parts"
           echo "idx=$IDX" >> "$GITHUB_OUTPUT"; echo "n=$N" >> "$GITHUB_OUTPUT"; echo "p=$P" >> "$GITHUB_OUTPUT"
@@ -110,7 +110,7 @@ jobs:
           N=${{ needs.short.outputs.n }}; P=${{ needs.short.outputs.p }}; I=${{ matrix.i }}
           STEP=$(( (N + P - 1) / P )); A=$(( I * STEP )); B=$(( (I + 1) * STEP - 1 )); [ "$B" -gt $((N-1)) ] && B=$((N-1))
           echo "rendering frames $A-$B"
-          node render.mjs frames "$A-$B"
+          timeout 1100 node render.mjs frames "$A-$B" || { echo "part hung or failed: retry once, keeping finished frames"; RESUME=1 timeout 1100 node render.mjs frames "$A-$B"; }
       - uses: actions/upload-artifact@v4
         with:
           name: frames-${{ matrix.i }}
