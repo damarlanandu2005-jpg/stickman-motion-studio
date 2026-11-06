@@ -22,7 +22,8 @@ if "v" not in rep["node_before"][:2] or int(rep["node_before"][1:].split(".")[0]
 rep["node"] = sh("node -v").strip()
 sh("cd /tmp/proj && npm init -y >/dev/null 2>&1; npm install playwright 2>&1 | tail -2; npx playwright install chromium 2>&1 | tail -2; npx playwright install-deps chromium 2>&1 | tail -2", timeout=1500)
 sh("mkdir -p /tmp/proj/web/lib /tmp/_three && cd /tmp/_three && npm pack three@0.160.0 >/dev/null 2>&1 && tar xzf three-0.160.0.tgz && cp package/build/three.module.js /tmp/proj/web/lib/")
-N = int(sh("cd /tmp/proj && node -e \"import('./web/story.js').then(m=>console.log(m.TOTAL))\"").strip().split()[-1])
+_o = sh("cd /tmp/proj && node -e \"import('./web/story.js').then(m=>console.log('TOTALFRAMES '+m.TOTAL))\" 2>/dev/null")
+N = int([l for l in _o.splitlines() if l.startswith("TOTALFRAMES ")][-1].split()[1])
 rep["total_frames"] = N
 # 3. GPU render of a sample, then CPU render of a few frames on the same machine
 def run(env, out, spec, step):
