@@ -17,3 +17,11 @@ Models: gemini-3.1-pro-preview works. 3.8-flash (400 error), 3.5-flash (no finis
 | Dance Plague | 4 | 248k (155k cached) | 37k | 68k | much better than CLI version: crowd, stage, council; some dark/black shots, odd roofs |
 | Molasses | 4 | 243k (0 cached) | 34k | 65k | weak: dark, giant grey walls, missing street/train/horse; fix loop did not repair it |
 CLI version used ~6M input tokens per video. Cost estimate (unverified, check Billing): ~$1-1.5 per video.
+
+## Round 3: new pipeline (asset test + per-shot PASS/FAIL checklist + brightness metrics)
+| Video | Calls | Input tok (cached) | Output | Thinking | Result |
+|---|---|---|---|---|---|
+| Bomb/Colorblind (writer's script) | 9 | 722k (115k) | 37k | 45k | readable story: suit, bomb, circuit, 6 wires, crowd; rooms plain grey, timer static |
+| SEALs airstrike (writer's script) | 9 | 729k (270k) | 63k | 57k | dark night scenes, radio, explosion smoke, helicopter; characters generic (no helmet/vest) |
+| Molasses | 6 | 436k (0) | 43k | 54k | better than before (tank, houses, horse, wave) but dark shots + dull tank |
+Estimated cost ~ $2-2.5 per video (unverified; check Billing). Still below Claude-made versions in richness.
