@@ -1,0 +1,158 @@
+name: Gemini API short (script -> voice -> Gemini API writes + fixes the scenes by looking at stills -> render -> mp4)
+on:
+  push:
+    branches: [gemini-cartoon]
+    paths: ['.github/workflows/gemini-api-short.yml']     # only registers the workflow; the job runs on "Run workflow"
+  workflow_dispatch:
+    inputs:
+      script:
+        description: "Script file"
+        default: scripts/example_pig_war.txt
+      model:
+        description: "Gemini model (3.1-pro-preview is the one that works)"
+        default: gemini-3.1-pro-preview
+
+permissions:
+  contents: write
+
+jobs:
+  short:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: for T in 1 2 3; do timeout 240 sudo apt-get update -qq && timeout 300 sudo apt-get install -y -qq ffmpeg && break; sleep 5; done
+      - run: python -m pip install -q numpy pillow kokoro-onnx soundfile google-genai
+      - name: Playwright Chromium
+        run: |
+          npm install -g playwright
+          npx playwright install --with-deps chromium
+      - uses: actions/cache@v4
+        id: models
+        with:
+          path: models
+          key: kokoro-v1.0
+      - name: Kokoro voice model
+        if: steps.models.outputs.cache-hit != 'true'
+        run: |
+          mkdir -p models
+          for F in kokoro-v1.0.onnx voices-v1.0.bin; do curl -sSL --retry 4 -o "models/$F" "https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/$F"; done
+      - name: New project + voice
+        env:
+          SCRIPT: ${{ github.event.inputs.script }}
+        run: |
+          bash kit/tools/setup.sh "$PWD/project"
+          cp kit/tools/mix.py kit/tools/finish.sh project/
+          cp -r kit project/kit
+          python tools/make_voice.py "$SCRIPT" project models
+      - name: Gemini API writes the scenes, looks at stills, fixes them (no CLI)
+        env:
+          MODEL: ${{ github.event.inputs.model }}
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+          GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+          GCP_LOCATION: ${{ secrets.GCP_LOCATION }}
+        run: |
+          [ -n "$GCP_SA_KEY" ] && [ -n "$GCP_PROJECT_ID" ] || { echo "GCP_SA_KEY / GCP_PROJECT_ID secrets missing"; exit 1; }
+          printf '%s' "$GCP_SA_KEY" > "$RUNNER_TEMP/sa.json"
+          export GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/sa.json" GOOGLE_CLOUD_PROJECT="$GCP_PROJECT_ID" GOOGLE_CLOUD_LOCATION="${GCP_LOCATION:-global}" GOOGLE_GENAI_USE_VERTEXAI=true
+          cd project
+          python3 timing.py voice.mp3 script.txt --out work
+          python3 ../tools/gen_api.py . --model "$MODEL" --rounds 3 2>&1 | tee ../gemini.log
+          test -f work/DONE.txt || { echo "gen_api did not finish: stopping"; exit 1; }
+      - name: Plan the parallel render
+        id: plan
+        run: |
+          cd project
+          [ -f mix_raw.wav ] || python3 mix.py voice.mp3        # voice only if the sound step was not done
+          N=$(node -e "import('./web/story.js').then(m=>console.log(m.TOTAL))")
+          P=$(( (N + 149) / 150 )); [ "$P" -gt 10 ] && P=10; [ "$P" -lt 1 ] && P=1
+          IDX=$(python3 -c "print(list(range($P)))")      # no curly braces: GitHub hides output that contains a character of a secret
+          echo "frames $N in $P parts"
+          echo "idx=$IDX" >> "$GITHUB_OUTPUT"; echo "n=$N" >> "$GITHUB_OUTPUT"; echo "p=$P" >> "$GITHUB_OUTPUT"
+          cd .. && tar --exclude=project/node_modules -cf project.tar project gemini.log
+      - uses: actions/upload-artifact@v4
+        with:
+          name: project
+          path: project.tar
+          retention-days: 3
+    outputs:
+      idx: ${{ steps.plan.outputs.idx }}
+      n: ${{ steps.plan.outputs.n }}
+      p: ${{ steps.plan.outputs.p }}
+
+  render:
+    needs: short
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    strategy:
+      fail-fast: false
+      matrix:
+        i: ${{ fromJSON(needs.short.outputs.idx) }}
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm install -g playwright && npx playwright install --with-deps chromium
+      - uses: actions/download-artifact@v4
+        with:
+          name: project
+      - name: Render part ${{ matrix.i }}
+        run: |
+          tar xf project.tar && cd project
+          mkdir -p node_modules && ln -sf "$(npm root -g)/playwright" node_modules/playwright
+          N=${{ needs.short.outputs.n }}; P=${{ needs.short.outputs.p }}; I=${{ matrix.i }}
+          STEP=$(( (N + P - 1) / P )); A=$(( I * STEP )); B=$(( (I + 1) * STEP - 1 )); [ "$B" -gt $((N-1)) ] && B=$((N-1))
+          echo "rendering frames $A-$B"
+          node render.mjs frames "$A-$B"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: frames-${{ matrix.i }}
+          path: project/frames/
+          retention-days: 3
+
+  finish:
+    needs: [short, render]
+    if: always() && needs.short.result == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - run: for T in 1 2 3; do timeout 240 sudo apt-get update -qq && timeout 300 sudo apt-get install -y -qq ffmpeg && break; sleep 5; done
+      - uses: actions/download-artifact@v4
+        with:
+          name: project
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: frames-*
+          path: project/frames
+          merge-multiple: true
+      - name: Join frames + sound into the mp4 and check it
+        run: |
+          tar xf project.tar --skip-old-files
+          cd project && ls frames | wc -l && mkdir -p out && bash finish.sh "short"
+      - name: Publish the result to results_api/<script name>/ on this branch
+        if: always()
+        env:
+          SCRIPT: ${{ github.event.inputs.script }}
+        run: |
+          NAME=$(basename "$SCRIPT" .txt); D="results_api/$NAME"; mkdir -p "$D"
+          cp project/out/*.mp4 project/out/qa_sheet.jpg "$D"/ 2>/dev/null || true
+          cp project/stills/sheet_*.jpg project/work/PLAN.md project/work/DONE.txt project/work/NOTES.md project/work/usage.json "$D"/ 2>/dev/null || true
+          cp project/web/story.js "$D/story.js" 2>/dev/null || true
+          tail -200 gemini.log > "$D/gemini_log_tail.txt" 2>/dev/null || true
+          git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add results_api; git commit -q -m "Result $NAME, run ${{ github.run_id }} [skip ci]" || exit 0
+          for T in 1 2 3; do git pull -q --rebase origin gemini-cartoon && git push -q origin HEAD:gemini-cartoon && break; sleep 10; done
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: result
+          path: results_api/
+          retention-days: 14

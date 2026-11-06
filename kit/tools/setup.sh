@@ -5,8 +5,8 @@ set -e
 KIT="$(cd "$(dirname "$0")/.." && pwd)"; P="${1:?project dir}"
 mkdir -p "$P/web/lib" "$P/work" "$P/stills" "$P/out"
 cp "$KIT"/engine/*.js "$KIT"/engine/index.html "$P/web/"
-cp "$KIT"/example/soldier/story.js "$P/web/story.js"        # starting point: rewrite for the new story
-cp "$KIT"/example/soldier/audio.py "$P/audio.py"            # starting point: rewrite the cue table
+cp "$KIT"/example/emu_war/story.js "$P/web/story.js"        # starting point: rewrite for the new story
+cp "$KIT"/example/emu_war/audio.py "$P/audio.py"            # starting point: rewrite the cue table
 cp "$KIT"/tools/*.mjs "$KIT"/tools/*.py "$P/" 2>/dev/null || true
 # three.js r160 (module build). npm first, then a sparse git clone (works where only GitHub is reachable).
 if [ ! -f "$P/web/lib/three.module.js" ]; then
