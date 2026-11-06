@@ -142,7 +142,7 @@ def task_text(total, rows, assets):
 from google import genai
 from google.genai import types
 
-client = None if os.environ.get("GEN_FAKE") else genai.Client(vertexai=True, project=os.environ["GOOGLE_CLOUD_PROJECT"], location=os.environ.get("GOOGLE_CLOUD_LOCATION", "global"))
+client = None if os.environ.get("GEN_FAKE") else genai.Client(vertexai=True, project=os.environ["GOOGLE_CLOUD_PROJECT"], location=os.environ.get("GOOGLE_CLOUD_LOCATION", "global"), http_options=types.HttpOptions(timeout=900000))
 USAGE = []
 
 
@@ -157,8 +157,8 @@ def call(contents, label):
         except Exception as e:
             s = str(e)
             log(f"[{label}] API error try {k + 1}: {s[:200]}")
-            if k == 6 or not any(x in s for x in ("429", "500", "503", "504", "RESOURCE_EXHAUSTED", "UNAVAILABLE", "DEADLINE")): raise
-            time.sleep(30 * (k + 1))
+            if k == 6 or any(x in s for x in ("400 ", "401", "403", "404", "INVALID_ARGUMENT", "PERMISSION_DENIED", "NOT_FOUND")): raise   # everything else (disconnects, timeouts, 429/5xx) is retried
+            time.sleep(20 * (k + 1))
     u = r.usage_metadata
     rec = dict(label=label, model=A.model, prompt=u.prompt_token_count, cached=getattr(u, "cached_content_token_count", 0) or 0,
                output=u.candidates_token_count, thoughts=getattr(u, "thoughts_token_count", 0) or 0)
