@@ -7,4 +7,5 @@ ffprobe -v error -show_entries format=duration -show_entries stream=width,height
 echo "--- QA (empty = no black/frozen spans)"; ffmpeg -i "$F" -vf "freezedetect=n=0.0005:d=0.4,blackdetect=d=0.05" -an -f null - 2>&1 | grep -E "freeze_start|black_start" || true
 ffmpeg -i "$F" -af ebur128 -f null - 2>&1 | grep -E "^\s+I:" | tail -1
 python3 frame_qa.py "$F" out/qa > out/qa_report.txt 2>&1 || true; tail -n 12 out/qa_report.txt || true
+python3 ref_measure.py compare "$F" --json out/ref_compare.json > out/ref_compare.txt 2>&1 || true; tail -n 25 out/ref_compare.txt || true
 ffmpeg -v error -y -i "$F" -vf "fps=2,scale=180:-1,tile=10x4" -frames:v 1 out/qa_sheet.jpg; echo "$F"

@@ -212,7 +212,7 @@ export const romanFront = (p, key, opts = {}) => {
   faceFront(p, cx, hc, W, expr, facing, look, lid, helmet, skin, O.beard ? O.beard : O.moustache, !!O.stout);
   if (O.brows) for (const s of [-1, 1]) p.ell(cx + 7 * u * facing + s * 14 * u, hc - 20 * u, 11 * u, 5 * u, O.brows, 2 * u);
   if (O.beard) { // re-draw the mouth over the beard for open mouths
-    if (expr === "shock" || expr === "snore") p.ell(cx + 8 * u * facing, hc + 22 * u, 6 * u, 7 * u, "#5a1e28", 2 * u);
+    if (String(expr).split("+")[0] === "shock" || String(expr).split("+")[0] === "snore") p.ell(cx + 8 * u * facing, hc + 22 * u, 6 * u, 7 * u, "#5a1e28", 2 * u);
   }
   p.rot = null;
   if (arms.some((a) => a.swirl)) { // cuckoo swirl next to the temple
@@ -455,3 +455,108 @@ export const fxHeart = (p, t) => { const g = p.g; g.save(); g.globalAlpha = Math
 
 // aliases so scripts may use these two faces
 FACE.determined = { ...(FACE.stubborn || FACE.stern) }; FACE.worried = { ...(FACE.nervous || FACE.neutral) };
+
+// =====================================================================================================================
+// KIT ADDITION (backward compatible): FACE EXTRAS and MOVING EFFECTS.
+// Face extras: write the expression as "base+extra" or "base+extra+extra", e.g. "shock+sweat", "nervous+sweat2", "sad+tears",
+// "angry+vein", "dazed+spiral", "laugh+tears", "smile+blush", "grin+sparkle", "shock+iris", "snore+zzz". Plain names work as before.
+// Moving effects (cards, t = 0..1 progress or loop phase; all deterministic, no random per frame): fxBubbles fxSparkle fxRings fxSpeed
+// fxDebris fxGlow fxMotes fxSnow fxRain fxSmoke fxSweat fxClock.
+// =====================================================================================================================
+const _rnd = (i) => { const x = Math.sin(i * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); };
+const _star = (p, x, y, r, col) => p.poly([[x, y - r], [x + r * 0.28, y - r * 0.28], [x + r, y], [x + r * 0.28, y + r * 0.28], [x, y + r], [x - r * 0.28, y + r * 0.28], [x - r, y], [x - r * 0.28, y - r * 0.28]], col, Math.max(2, r * 0.12));
+const _drop = (p, x, y, u, s = 1) => { p.poly([[x - 3.2 * u * s, y - 1 * u * s], [x, y - 10 * u * s], [x + 3.2 * u * s, y - 1 * u * s]], "#9fd4ff", 1.8 * u); p.ell(x, y + 1.5 * u * s, 4.2 * u * s, 4.8 * u * s, "#9fd4ff", 1.8 * u); p.ell(x - 1.2 * u * s, y + 0.5 * u * s, 1.1 * u * s, 1.6 * u * s, "#ffffff", 0); };
+const _eyeXs = (cx, cy, W, facing, side) => { const u = W / 100; return side ? [cx + 27 * u] : [cx + 7 * u * facing - 13 * u, cx + 7 * u * facing + 13 * u]; };
+Object.assign(FACEX, {
+  sweat: (p, cx, cy, W, facing, skin, side) => { const u = W / 100, s = side ? -1 : (facing || 1); _drop(p, cx + 40 * u * s, cy - 24 * u, u, 1.25); },
+  sweat2: (p, cx, cy, W, facing, skin, side) => { const u = W / 100, s = side ? -1 : (facing || 1); _drop(p, cx + 40 * u * s, cy - 26 * u, u, 1.2); _drop(p, cx + 47 * u * s, cy - 6 * u, u, 0.8); },
+  tears: (p, cx, cy, W, facing, skin, side) => { const u = W / 100; for (const x of _eyeXs(cx, cy, W, facing, side)) { p.ell(x, cy + 12 * u, 3.2 * u, 9 * u, "#9fd4ff", 1.8 * u); p.ell(x + 1.5 * u, cy + 27 * u, 3.4 * u, 5.2 * u, "#9fd4ff", 1.8 * u); } },
+  blush: (p, cx, cy, W, facing, skin, side) => { const u = W / 100; for (const x of _eyeXs(cx, cy, W, facing, side)) p.ell(x + (side ? 4 * u : 0), cy + 13 * u, 8.5 * u, 4.6 * u, "#f2a29a", 0); },
+  vein: (p, cx, cy, W, facing, skin, side) => { const u = W / 100, s = side ? -1 : (facing || 1), x = cx + 34 * u * s, y = cy - 34 * u; for (const a of [15, 105, 195, 285]) p.arc(x, y, 9 * u, 9 * u, a, a + 60, 3.4 * u, "#d23a3a"); },
+  sparkle: (p, cx, cy, W, facing, skin, side) => { const u = W / 100, s = side ? -1 : (facing || 1); _star(p, cx - 34 * u * s, cy - 34 * u, 8 * u, "#ffe27a"); _star(p, cx + 40 * u * s, cy - 18 * u, 5.5 * u, "#fff3b0"); },
+  iris: (p, cx, cy, W, facing, skin, side) => { const u = W / 100; for (const x of _eyeXs(cx, cy, W, facing, side)) { p.ell(x, cy, 12 * u, 12.5 * u, "#ffffff", 2.6 * u); p.ell(x, cy + u, 6.6 * u, 6.8 * u, "#4a86c8", 0); p.dot(x, cy + u, 3.2 * u); } },
+  spiral: (p, cx, cy, W, facing, skin, side) => { const u = W / 100, s = side ? -1 : (facing || 1), x = cx - 34 * u * s, y = cy - 52 * u, pts = [];
+    for (let t = 0; t < 26; t++) pts.push([x + Math.cos(t * 0.7) * t * 0.62 * u, y + Math.sin(t * 0.7) * t * 0.62 * u]);
+    p.stroke(pts, 5.2 * u); p.stroke(pts, 2.6 * u, "#f1f1f6"); },
+  zzz: (p, cx, cy, W, facing, skin, side) => { const u = W / 100, s = side ? -1 : (facing || 1), g = p.g; g.save(); g.lineJoin = "round"; g.font = `900 ${20 * u}px Arial Black, Arial`;
+    [["z", 34, -30, 0.7], ["Z", 44, -46, 1]].forEach(([c, dx, dy, k]) => { g.save(); g.translate(cx + dx * u * s, cy + dy * u); g.scale(k, k); g.lineWidth = 4 * u; g.strokeStyle = INK; g.strokeText(c, 0, 0); g.fillStyle = "#ffffff"; g.fillText(c, 0, 0); g.restore(); }); g.restore(); },
+});
+
+/** rising bubbles (loop phase t) */
+export const fxBubbles = (p, t, col = "#ffd9a8") => {
+  const g = p.g; g.save();
+  for (let i = 0; i < 16; i++) {
+    const sp = 0.6 + _rnd(i + 1) * 0.8, k = (t * sp + _rnd(i + 40)) % 1, x = 50 + _rnd(i + 80) * 500 + Math.sin(k * 12 + i) * 16, y = 1020 - k * 1080, r = 14 + _rnd(i + 120) * 34;
+    g.globalAlpha = 0.55 * Math.min(1, k * 6) * Math.min(1, (1 - k) * 4); p.ell(x, y, r, r, col, 4); g.globalAlpha *= 1.4; p.ell(x - r * 0.35, y - r * 0.35, r * 0.22, r * 0.3, "#ffffff", 0);
+  }
+  g.restore();
+};
+/** twinkling 4-point stars (loop phase t) */
+export const fxSparkle = (p, t, col = "#fff2a8") => {
+  for (let i = 0; i < 10; i++) { const k = Math.max(0, Math.sin((t * (1 + (i % 3) * 0.5) + _rnd(i)) * Math.PI * 2)); const r = (10 + _rnd(i + 20) * 40) * k * k; if (r > 2) _star(p, 60 + _rnd(i + 5) * 480, 80 + _rnd(i + 9) * 800, r, col); }
+};
+/** expanding shock rings (t 0..1) */
+export const fxRings = (p, t, col = "#ffffff") => {
+  const g = p.g; g.save();
+  for (let i = 0; i < 3; i++) { const k = (t + i / 3) % 1, r = 40 + k * 380; g.globalAlpha = Math.max(0, 1 - k); g.lineWidth = 3 + 18 * (1 - k); g.strokeStyle = col; g.beginPath(); g.ellipse(300, 500, r, r * 0.9, 0, 0, Math.PI * 2); g.stroke(); }
+  g.restore();
+};
+/** radial speed / focus lines (loop phase t) */
+export const fxSpeed = (p, t, col = "#ffffff") => {
+  const g = p.g; g.save(); g.strokeStyle = col; g.lineCap = "round";
+  for (let i = 0; i < 22; i++) { const a = (i / 22) * Math.PI * 2 + _rnd(i) * 0.2, k = (t * 3 + _rnd(i + 7)) % 1, r0 = 150 + k * 200, r1 = r0 + 120 + 160 * _rnd(i + 3); g.globalAlpha = 0.9 * (1 - k); g.lineWidth = 4 + 8 * _rnd(i + 11);
+    g.beginPath(); g.moveTo(300 + Math.cos(a) * r0, 500 + Math.sin(a) * r0 * 1.1); g.lineTo(300 + Math.cos(a) * r1, 500 + Math.sin(a) * r1 * 1.1); g.stroke(); }
+  g.restore();
+};
+/** flying debris chunks on arcs (t 0..1) */
+export const fxDebris = (p, t, col = "#8a6a4a") => {
+  const g = p.g; g.save();
+  for (let i = 0; i < 14; i++) { const a = -Math.PI * (0.1 + 0.8 * _rnd(i)), v = 380 + 420 * _rnd(i + 30), x = 300 + Math.cos(a) * v * t, y = 560 + Math.sin(a) * v * t + 950 * t * t, s = 12 + 22 * _rnd(i + 60), r = t * (4 + 6 * _rnd(i + 90)) + i;
+    g.globalAlpha = Math.min(1, (1 - t) * 3); p.poly([[x + Math.cos(r) * s, y + Math.sin(r) * s], [x + Math.cos(r + 1.9) * s, y + Math.sin(r + 1.9) * s], [x + Math.cos(r + 3.6) * s * 0.8, y + Math.sin(r + 3.6) * s * 0.8]], col, 4); }
+  g.restore();
+};
+/** pulsing soft glow (loop phase t) */
+export const fxGlow = (p, t, col = "#ffd36a") => {
+  const g = p.g; g.save(); const k = 0.5 + 0.5 * Math.sin(t * Math.PI * 2 * 2), r = 230 + 50 * k, gr = g.createRadialGradient(300, 500, 10, 300, 500, r);
+  gr.addColorStop(0, col); gr.addColorStop(1, "rgba(255,255,255,0)"); g.globalAlpha = 0.45 + 0.35 * k; g.fillStyle = gr; g.beginPath(); g.arc(300, 500, r, 0, Math.PI * 2); g.fill(); g.restore();
+};
+/** floating dust motes / fireflies (loop phase t) */
+export const fxMotes = (p, t, col = "#fff6d8") => {
+  const g = p.g; g.save();
+  for (let i = 0; i < 26; i++) { const x = 40 + _rnd(i) * 520 + Math.sin(t * 6.28 + i) * 22, y = 40 + _rnd(i + 50) * 900 + Math.cos(t * 6.28 * 2 + i * 1.7) * 16; g.globalAlpha = 0.35 + 0.65 * Math.abs(Math.sin(t * 6.28 + i)); p.dot(x, y, 3 + 4 * _rnd(i + 80), col); }
+  g.restore();
+};
+/** falling snow (loop phase t) */
+export const fxSnow = (p, t) => {
+  const g = p.g; g.save();
+  for (let i = 0; i < 44; i++) { const k = (t * (0.7 + _rnd(i) * 0.6) + _rnd(i + 30)) % 1; g.globalAlpha = 0.9; p.dot(30 + _rnd(i + 60) * 540 + Math.sin(k * 10 + i) * 18, -20 + k * 1040, 4 + 6 * _rnd(i + 90), "#ffffff"); }
+  g.restore();
+};
+/** falling rain streaks (loop phase t) */
+export const fxRain = (p, t, col = "#cfe6ff") => {
+  const g = p.g; g.save(); g.strokeStyle = col; g.lineCap = "round";
+  for (let i = 0; i < 36; i++) { const k = (t * 3 * (0.8 + _rnd(i) * 0.4) + _rnd(i + 30)) % 1, x = 20 + _rnd(i + 60) * 580 + k * -90, y = -60 + k * 1100; g.globalAlpha = 0.75; g.lineWidth = 4 + 3 * _rnd(i + 5); g.beginPath(); g.moveTo(x, y); g.lineTo(x - 22, y + 70); g.stroke(); }
+  g.restore();
+};
+/** rising smoke puffs (loop phase t) */
+export const fxSmoke = (p, t, col = "#cfcfd6") => {
+  const g = p.g; g.save();
+  for (let i = 0; i < 6; i++) { const k = (t + i / 6) % 1; g.globalAlpha = Math.min(1, k * 5) * (1 - k) * 0.95; p.ell(300 + Math.sin(k * 5 + i) * 50, 900 - k * 760, 40 + k * 100, 36 + k * 92, col, 8); }
+  g.restore();
+};
+/** comic sweat drops flying off the head (t 0..1) */
+export const fxSweat = (p, t) => {
+  const g = p.g; g.save();
+  for (let i = 0; i < 4; i++) { const s = i % 2 ? 1 : -1, a = -Math.PI / 2 + s * (0.5 + 0.25 * i), v = 260 + 70 * i, x = 300 + Math.cos(a) * v * t, y = 420 + Math.sin(a) * v * t + 520 * t * t; g.globalAlpha = Math.min(1, (1 - t) * 3); _drop(p, x, y, 3, 2.4); }
+  g.restore();
+};
+/** clock face with moving hands: t 0..1 = `turns` full minute-hand turns (hour hand 1/12 as fast) */
+export const fxClock = (p, t, turns = 1) => {
+  const g = p.g; g.save(); const cx = 300, cy = 500, R = 270;
+  p.ell(cx, cy, R, R, "#f7f2e6", 14);
+  g.font = "900 56px Arial Black, Arial"; g.textAlign = "center"; g.textBaseline = "middle"; g.fillStyle = INK;
+  for (let h = 1; h <= 12; h++) { const a = (h / 12) * Math.PI * 2 - Math.PI / 2; g.fillText(String(h), cx + Math.cos(a) * R * 0.78, cy + Math.sin(a) * R * 0.78); }
+  const am = t * turns * Math.PI * 2 - Math.PI / 2, ah = (t * turns / 12) * Math.PI * 2 - Math.PI / 3;
+  p.stroke([[cx, cy], [cx + Math.cos(ah) * R * 0.5, cy + Math.sin(ah) * R * 0.5]], 18); p.stroke([[cx, cy], [cx + Math.cos(am) * R * 0.74, cy + Math.sin(am) * R * 0.74]], 11);
+  p.dot(cx, cy, 16); g.restore();
+};

@@ -40,14 +40,17 @@ anything vague, missing or impossible in the script becomes a mistake in the vid
 
 ## 6. Kit list (use exactly these names)
 - FACES: determined (same as stubborn), worried (same as nervous), neutral, stern, grin, laugh, whistle, nervous, shock, relief, dazed, pained, smile, lick, snore, stubborn, squint, sad, angry, scared, proud, tired, shout, desperate.
+- FACE EXTRAS (optional, add with a plus sign to any face): `sweat`, `sweat2` (two drops), `tears`, `blush`, `vein` (anger mark), `sparkle`, `iris` (big white eyes with a blue iris), `spiral` (swirl above the head), `zzz`.
+  Write `shock+sweat`, `sad+tears`, `angry+vein`, `dazed+spiral`, `grin+sparkle`. One base face plus up to two extras. A plain face name works as before.
 - ARM POSES: hang, spear, point, up, wave, hip, belly, temple, lift, reach, cheek, shield, cross, thumb, sit.
   (`spear` = holding a long stick or spear. It is NOT a rifle.) No other poses exist yet: no crouch, kneel, run, lie, salute.
 - HATS: shako, shako_tall, cap, hair, tophat, bonnet, slouch (army hat), straw, fire (tall fire-fighter hat), none.
 - OUTFITS (base): legion, old, toga, civA, civB, civC, workA, workB, digger, farmer, troffea, peasA to peasE, councilman, council2, musician, carpenter, worker1, worker2, kid1, fireman, modern, walker, walkerB.
 - LIGHT: day, dawn, golden, night, indoor.
 - READY-MADE: crowd (many people in one card), emu and emu herd, horse with cart, dust, smoke, stars, steam, sparks, flash, question mark, hearts, confetti, calendar page, score board, text label.
-- If a thing is not here, it must be a `NEW:` item (section 7). Faces and poses cannot be NEW: choose the nearest listed one
-  (crouching = shield or hang with a lower camera).
+- MOVING EFFECTS (ready-made, they animate by themselves): bubbles rising, sparkle stars, shock rings, speed lines, flying debris, pulsing glow, floating dust motes, snow, rain, rising smoke, flying sweat drops, clock with moving hands. Use them in EFFECTS (for example `bubbles`, `rain`, `clock 2 turns`).
+- If a thing is not here, it must be a `NEW:` item (section 7). Poses cannot be NEW: choose the nearest listed one
+  (crouching = shield or hang with a lower camera). For a face, combine a listed face with a face extra.
 
 ## 7. NEW items (anything not in the kit list: outfits, hats, props, vehicles, rooms)
 The code writer (Gemini) builds every PLACE and every NEW item from your description, then a tool renders each one alone with a person for scale and checks it. So write real sizes in meters and clear shapes and colors.

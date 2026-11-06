@@ -25,6 +25,11 @@ Sources: the MIT repo mromidev/claude-animated-shorts (measured numbers) and a f
 - Each cast member keeps the same outfit, hat, hair and colours in every shot.
 - A crowd is background only and drawn small. Never more than 4 named characters per shot.
 
+## 3b. Something moves in every frame (the references have under 8 percent held frames; ours had 23 to 34)
+- Every shot: a slow camera push or drift, characters blink and sway, and at least one ambient moving effect fits the place (dust motes in a room, bubbles in a liquid, smoke over a fire, rain or snow outside, glints on metal, a clock hand).
+- Use the kit's moving effects (fxBubbles fxSparkle fxRings fxSpeed fxDebris fxGlow fxMotes fxSnow fxRain fxSmoke fxSweat fxClock) and the face extras ("shock+sweat", "sad+tears", "dazed+spiral"); change the face every beat.
+- Colour: references have a richer palette and stronger saturation than a plain grey-brown set: use several distinct hues per place (see REFERENCE NUMBERS), not one tint.
+
 ## 4. Camera
 - Every shot has a different angle than the shot before: close face, medium, wide, low angle, from above, cut-away (section through the ground), first-person, insert close-up of a prop.
 - Hard cut on big changes. Glide 18 to 40 frames between framings. Never a fully static hold longer than 4 frames: add a slow push-in 0.15 to 0.35 percent per frame.

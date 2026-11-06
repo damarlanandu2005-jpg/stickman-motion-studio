@@ -303,10 +303,17 @@ const mouth = (p: Pen, kind: MouthK, mx: number, my: number, u: number, k = 1) =
   }
 };
 
+/** KIT ADDITION (face extras): an expression may be written "base+extra+extra", e.g. "shock+sweat". The base face is drawn as before;
+ *  each extra is drawn on top by FACEX[extra] (filled in by roman.js). Plain names behave exactly as before. */
+type FaceExtra = (p: Pen, cx: number, cy: number, W: number, facing: number, skin: string, side: boolean) => void;
+const FACEX: Record<string, FaceExtra> = {};
+const splitExpr = (e: string): [Expr, string[]] => { const [b, ...x] = String(e).split("+"); return [b as Expr, x]; };
+
 /** face v2 (front / 3-4). u = 1 % of the head path width W. Eyes 26u apart on the centre line, brows 20u up, mouth 20u
  *  down, everything slid toward the facing side. No blush, no catchlights. */
-const faceFront = (p: Pen, cx: number, cy: number, W: number, expr: Expr, facing: number, look: number, lid: number, brim: boolean,
+const faceFront = (p: Pen, cx: number, cy: number, W: number, exprIn: Expr, facing: number, look: number, lid: number, brim: boolean,
   skin: string, moustache?: string, stout = false) => {
+  const [expr, extras] = splitExpr(exprIn as string);
   const u = W / 100, F = FACE[expr], fx = cx + 7 * u * facing;
   const ex = (F.eye[0] === "shock" ? 12 : 13) * u, ey = cy;
   for (const side of [-1, 1]) {
@@ -322,10 +329,12 @@ const faceFront = (p: Pen, cx: number, cy: number, W: number, expr: Expr, facing
   if (moustache) for (const s of [-1, 1])
     taper(p, [mx + s * 1.5 * u, cy + 12.5 * u], [mx + s * (stout ? 19 : 15) * u, cy + (stout ? 10.5 : 15) * u], stout ? 5.5 * u : 4.5 * u, 1.6 * u, moustache);
   if (expr === "nervous") p.ell(cx + 40 * u * (facing || 1), cy - 22 * u, 3 * u, 5 * u, "#9fd4ff", 2 * u);
+  for (const x of extras) if (FACEX[x]) FACEX[x](p, cx, cy, W, facing, skin, false);
 };
 
 /** profile face (facing screen-right): one eye, brow, nose tick, mouth near the front edge; no skin bump nose, no ear */
-const faceSide = (p: Pen, hx: number, hy: number, W: number, expr: Expr, lid: number, brim: boolean, skin: string, moustache?: string, stout = false) => {
+const faceSide = (p: Pen, hx: number, hy: number, W: number, exprIn: Expr, lid: number, brim: boolean, skin: string, moustache?: string, stout = false) => {
+  const [expr, extras] = splitExpr(exprIn as string);
   const u = W / 100, F = FACE[expr], ex = hx + 27 * u, ey = hy;
   const kind = eyeKind(F.eye[1], lid);
   eye(p, kind, ex, ey, u, 1, 0.6, skin);
@@ -336,6 +345,7 @@ const faceSide = (p: Pen, hx: number, hy: number, W: number, expr: Expr, lid: nu
   mouth(p, F.mouth, hx + 33 * u, hy + 21 * u, u, 0.62);
   if (moustache) taper(p, [hx + 41 * u, hy + 13.5 * u], [hx + 25 * u, hy + (stout ? 11.5 : 16) * u], stout ? 5.5 * u : 4.5 * u, 1.6 * u, moustache);
   if (expr === "nervous") p.ell(hx - 30 * u, hy - 24 * u, 3 * u, 5 * u, "#9fd4ff", 2 * u);
+  for (const x of extras) if (FACEX[x]) FACEX[x](p, hx, hy, W, 1, skin, true);
 };
 
 // ---------------- hats ----------------
