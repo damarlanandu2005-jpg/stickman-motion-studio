@@ -28,14 +28,14 @@ export const LIGHTS = {
   indoor: { az: 45, el: 45, sky: '#ffffff', ground: '#bbbbbb', hemi: 1.2, sun: '#ffffff', sunI: 1.2, fog: '#6a7690', fogNear: 14, fogFar: 70, skyTop: '#6a7690', skyHor: '#6a7690', sat: 1.0, vig: 0.25, shadowExt: 10 },
   day: { az: 130, el: 55, sky: '#cfe3ff', ground: '#c9a070', hemi: 1.3, sun: '#fff1d2', sunI: 2.6, fog: '#e6d8c0', fogNear: 60, fogFar: 600, skyTop: '#3d86e0', skyHor: '#e0ecf6', sat: 1.12, vig: 0.2, shadowExt: 26 },
   police: { az: 50, el: 50, sky: '#fff3dc', ground: '#cfa878', hemi: 1.4, sun: '#fff0cc', sunI: 1.1, fog: '#c9b08a', fogNear: 14, fogFar: 70, skyTop: '#c9b08a', skyHor: '#c9b08a', sat: 1.0, vig: 0.28, shadowExt: 10 },
-  bomb: { az: 60, el: 60, sky: '#eaf2ff', ground: '#a8b0c8', hemi: 1.35, sun: '#fff0d8', sunI: 1.4, fog: '#5c6a88', fogNear: 14, fogFar: 70, skyTop: '#5c6a88', skyHor: '#5c6a88', sat: 1.05, vig: 0.3, shadowExt: 10 },
-  circuit: { az: 40, el: 65, sky: '#f2fff6', ground: '#7ab092', hemi: 1.7, sun: '#ffffff', sunI: 1.1, fog: '#1f4a3a', fogNear: 10, fogFar: 40, skyTop: '#1f4a3a', skyHor: '#1f4a3a', sat: 1.05, vig: 0.3, shadowExt: 4 },
+  bomb: { az: 60, el: 60, sky: '#f4f8ff', ground: '#d4dae8', hemi: 1.9, sun: '#fff0d8', sunI: 1.7, fog: '#9aa8c8', fogNear: 14, fogFar: 70, skyTop: '#9aa8c8', skyHor: '#9aa8c8', sat: 1.0, vig: 0.22, shadowExt: 10 },
+  circuit: { az: 40, el: 65, sky: '#f2fff6', ground: '#8cc4a4', hemi: 1.9, sun: '#ffffff', sunI: 1.2, fog: '#3f7a62', fogNear: 10, fogFar: 40, skyTop: '#3f7a62', skyHor: '#3f7a62', sat: 1.0, vig: 0.24, shadowExt: 4 },
   control: { az: 70, el: 55, sky: '#e9f1ff', ground: '#9ab0d8', hemi: 1.4, sun: '#f4f8ff', sunI: 1.1, fog: '#4a6a9a', fogNear: 16, fogFar: 80, skyTop: '#4a6a9a', skyHor: '#4a6a9a', sat: 1.05, vig: 0.28, shadowExt: 12 }
 };
 const KEY = { 'POLICE-OFFICE': 'police', 'CITY-STREET': 'day', 'BOMB-ROOM': 'bomb', 'CIRCUIT-VIEW': 'circuit', 'CONTROL-ROOM': 'control' };
 export const lightFor = (S, f) => {
   const L = { ...LIGHTS[KEY[S.place]] || LIGHTS[S.light] };
-  const red = { s4: [0.14, 0.2], s10: [0.4, 0.3], s11: [0.55, 0.9], s6: [0.08, 0.15], s7: [0.08, 0.15] }[S.id];
+  const red = { s4: [0.1, 0.2], s10: [0.25, 0.3], s11: [0.35, 0.9], s6: [0.06, 0.15], s7: [0.06, 0.15] }[S.id];
   if (red) { const k = red[0] * (0.5 + 0.5 * Math.sin(f * red[1] * 2)); L.sky = mixHex(L.sky, '#ff5040', k); L.ground = mixHex(L.ground, '#ff3a30', k); }
   if (S.id === 's14' && f < 940) { const k = 0.25 * (1 - (f - 918) / 22); L.sky = mixHex(L.sky, '#ff5040', Math.max(0, k)); }
   return L;
@@ -49,7 +49,7 @@ const CAMS = {
        sg(81, 112, [3.4, 1.3, 0.8], [-0.5, 1.45, -2.2], 46, [2.8, 1.35, 0.5], [-0.5, 1.45, -2.2], 46),
        sg(113, 143, [0.3, 1.62, 0.2], [0, 1.58, -2], 28, [0.15, 1.62, -0.1], [0, 1.58, -2], 28)],
   s3: [sg(144, 185, [1.5, 0.9, 10], [0, 1.6, -8], 52, [1.2, 1.2, 9], [0, 1.6, -8], 52),
-       sg(186, 217, [-1, 2.5, 9], [0, 1.2, -7], 55, [0.5, 6.5, 9], [0, 1.2, -7], 55),
+       sg(186, 217, [-1, 1.8, 9.5], [0, 1.2, -7], 56, [0.5, 15, 7.5], [0, 0.4, -10], 60),
        sg(218, 249, [-0.8, 1.5, 1.6], [-2, 1.5, -2], 36, [-0.9, 1.55, 1.2], [-2, 1.5, -2], 36)],
   s4: [sg(250, 285, [0.5, 1.2, -0.6], [0, 1.0, -1.85], 34, [0.4, 1.15, -0.7], [0, 1.0, -1.85], 34),
        sg(286, 315, [-1.4, 1.4, 0.6], [0.3, 1.1, -2.2], 42, [-1.1, 1.35, 0.3], [0.3, 1.1, -2.2], 42),
@@ -111,7 +111,8 @@ export const actorsAt = (f, T) => {
   } else if (id === 's3') {
     out.push(BOMB_SUIT({ expr: 'stern', L: 'hang', R: 'hang', facing: 1, ...B('a', 1) }, [0, 0, -2]));
     out.push(R('police', { expr: 'stern', L: 'point', R: 'hang', facing: 1, ...B('p', 2) }, [-2, 0, -2]));
-    out.push({ key: 'crowd', draw: (p) => T.crowd(p, { n: 12, mode: 'stand', t: 0 }), x: 0, y: 0, z: -13, s: 2.4 });
+    for (const [k, z, n, sd, sc, dx] of [[0, -10.5, 14, 0, 3.6, -0.6], [1, -12.5, 16, 4, 4.4, 0.8], [2, -15, 16, 8, 5.2, -0.3]])
+      out.push({ key: 'crowd' + k, draw: (p) => T.crowd(p, { n, mode: 'stand', t: 0, seed: sd, expr: 'nervous' }), x: dx, y: 0, z, s: sc });
   } else if (id === 's4') out.push(BOMB_SUIT({ expr: 'nervous+sweat', L: 'hang', R: 'hang', facing: -1, ...B('a', 1) }, [0.8, 0, -2.6]));
   else if (id === 's6') out.push(BOMB_SUIT({ expr: 'nervous+sweat', L: 'hang', R: 'hang', facing: 1, headTilt: 8, ...B('a', 1) }, [0, 0, -3]));
   else if (id === 's7') out.push(BOMB_SUIT({ expr: 'stern', L: 'temple', R: 'hang', facing: 1, headTilt: 8, ...B('a', 1) }, [0, 0, -3]));
@@ -137,4 +138,4 @@ export const fxAt = (f, T) => {
   if (S.id === 's3') out.push(FX('mote' + (f >> 1), (p) => T.fxMotes(p, ((f - S.a) % 90) / 90, '#fff6d8'), [0, 1.6, 6], 3.0, { alpha: 0.7 }));
   return out;
 };
-export const LOOK = { sat: 1.25, vibr: 0.35, drift: 1, push: 1 };
+export const LOOK = { sat: 1.0, vibr: 0.35, drift: 1, push: 1 };

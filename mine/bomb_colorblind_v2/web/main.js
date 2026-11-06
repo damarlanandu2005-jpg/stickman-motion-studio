@@ -218,7 +218,7 @@ const ASSETS = {
     const g = new THREE.Group();
     plane(10, 10, toon({ map: P.tex(P.stone(4), 4, 4), color: '#aeb3bf' }), 0, 0, 0, g);
     const wallMat = toon({ map: P.tex(P.plaster(8), 4, 2), color: '#9db3d0' });
-    add(tbox(10, 4, 0.2), wallMat, 0, 2, -5, g); add(tbox(0.2, 4, 10), mat('#343a4c'), -5, 2, 0, g); add(tbox(0.2, 4, 10), wallMat, 5, 2, 0, g);
+    add(tbox(10, 4, 0.2), wallMat, 0, 2, -5, g); add(tbox(0.2, 4, 10), mat('#5b86b0'), -5, 2, 0, g); add(tbox(0.2, 4, 10), wallMat, 5, 2, 0, g);
     add(tbox(10, 0.15, 10), mat('#d6dbe6'), 0, 4.1, 0, g);
     for (let i = -5; i < 5; i++) add(tbox(0.5, 0.3, 0.12), mat(i % 2 ? '#e8b822' : '#22242c'), i + 0.5, 1.0, -4.88, g);     // hazard stripe
     for (let i = -5; i < 5; i++) add(tbox(0.12, 0.3, 0.5), mat(i % 2 ? '#e8b822' : '#22242c'), -4.88, 1.0, i + 0.5, g);
@@ -242,6 +242,13 @@ const ASSETS = {
     cyl(0.04, 1.6, mat('#222'), -3.2, 0.8, -1.2, g, 6); add(tbox(0.3, 0.2, 0.2), mat('#2a2a30'), -3.2, 1.65, -1.2, g);
     beacons.push(add(new THREE.SphereGeometry(0.18, 12, 10), bas('#ff3030'), 4.6, 3.0, -4.7, g));
     for (const x of [-2.5, 0, 2.5]) add(tbox(1.5, 0.06, 0.4), bas('#fff6dc'), x, 3.98, -2, g);
+    // v2.1: more colour in the bomb room (teal band, lockers, barrels, cones, signs, poster)
+    add(tbox(10, 0.28, 0.22), mat('#2fa8a0'), 0, 3.55, -4.9, g);
+    for (const [lz, c] of [[-1.6, '#2fa8a0'], [-0.6, '#e8643a'], [0.4, '#7a4fc8'], [1.4, '#e8b822']]) { add(tbox(0.5, 1.9, 0.8), mat(c), -4.65, 0.95, lz, g); add(tbox(0.04, 0.5, 0.5), mat('#f4f4f4'), -4.38, 1.4, lz, g); }
+    cyl(0.28, 0.9, mat('#7a4fc8'), 4.0, 0.45, -4.2, g, 14); cyl(0.28, 0.9, mat('#2fa8a0'), 4.5, 0.45, -3.3, g, 14);
+    for (const [cx, cz] of [[-2.2, -0.4], [2.3, -0.5], [-3.3, -1.5]]) { cyl(0.2, 0.5, mat('#f07a1a'), cx, 0.25, cz, g, 12); cyl(0.205, 0.08, mat('#f6f6f6'), cx, 0.3, cz, g, 12); }
+    add(tbox(0.9, 0.9, 0.06), mat('#ffd21a'), 3.9, 2.5, -4.86, g); add(tbox(0.12, 0.5, 0.07), mat('#22242c'), 3.9, 2.55, -4.83, g); add(tbox(0.12, 0.12, 0.07), mat('#22242c'), 3.9, 2.2, -4.83, g);
+    add(tbox(1.0, 1.4, 0.06), mat('#c2457a'), -0.2, 2.45, -4.86, g);
     return g;
   },
   'CIRCUIT-VIEW': () => {
@@ -260,7 +267,7 @@ const ASSETS = {
     add(tbox(BW + 0.02, 0.012, BL + 0.02), mat('#0c5a32'), 0, 0.008, 0, g);
     const top = 0.03;
     // timer unit at the top (screen up = -z)
-    add(tbox(0.3, 0.05, 0.12), mat('#15171c'), 0, top + 0.025, -0.33, g); const ts = add(new THREE.PlaneGeometry(0.26, 0.085), timerMat, 0, top + 0.0525, -0.33, g, { cast: false }); ts.rotation.x = -Math.PI / 2;
+    add(tbox(0.3, 0.05, 0.12), mat('#6e7890'), 0, top + 0.025, -0.33, g); const ts = add(new THREE.PlaneGeometry(0.26, 0.085), timerMat, 0, top + 0.0525, -0.33, g, { cast: false }); ts.rotation.x = -Math.PI / 2;
     for (const [lx, c] of [[-0.12, '#ff2a2a'], [0.12, '#2aff5a']]) add(new THREE.SphereGeometry(0.008, 8, 6), bas(c), lx, top + 0.055, -0.385, g);
     // terminal block at the bottom
     const cols = ['#e02424', '#1fae2e', '#2a6be0', '#f2d21c', '#f08a14', '#f6f6f6'], wires = [];
@@ -315,16 +322,19 @@ const ASSETS = {
   // the bomb. front (the display) faces +z. Built at ~2x real size so the timer reads on a phone.
   'bomb device': () => {
     const g = new THREE.Group();
-    add(tbox(0.66, 0.2, 0.42), mat('#272b35'), 0, 0.1, 0, g);
-    for (const sx of [-1, 1]) for (const sz of [-1, 1]) add(tbox(0.06, 0.22, 0.06), mat('#9aa0ac'), sx * 0.31, 0.11, sz * 0.19, g);
+    add(tbox(0.66, 0.2, 0.42), mat('#8d97ad'), 0, 0.1, 0, g);                       // v2.1: lighter steel case (was near black)
+    add(tbox(0.665, 0.035, 0.425), mat('#e8b822'), 0, 0.045, 0, g);                 // yellow warning band along the bottom
+    add(tbox(0.2, 0.06, 0.012), mat('#d8352f'), -0.2, 0.12, 0.215, g);              // red label on the front
+    add(tbox(0.12, 0.06, 0.012), mat('#2a6be0'), 0.22, 0.12, 0.215, g);             // blue label on the front
+    for (const sx of [-1, 1]) for (const sz of [-1, 1]) add(tbox(0.06, 0.22, 0.06), mat('#c8cfdc'), sx * 0.31, 0.11, sz * 0.19, g);
     add(tbox(0.62, 0.02, 0.1), mat('#e8b822'), 0, 0.205, 0.14, g);
-    const lid = add(tbox(0.66, 0.025, 0.42), mat('#30343f'), 0, 0.38, -0.3, g); lid.rotation.x = -1.15; lid.position.set(0, 0.34, -0.3);
-    add(tbox(0.58, 0.012, 0.36), mat('#555b68'), 0, 0.203, -0.01, g);
+    const lid = add(tbox(0.66, 0.025, 0.42), mat('#a3adc2'), 0, 0.38, -0.3, g); lid.rotation.x = -1.15; lid.position.set(0, 0.34, -0.3);
+    add(tbox(0.58, 0.012, 0.36), mat('#c4cad8'), 0, 0.203, -0.01, g);
     for (let i = 0; i < 4; i++) { const d = cyl(0.036, 0.3, mat('#d8352f'), -0.1 + i * 0.075, 0.25, -0.04, g, 10); d.rotation.z = Math.PI / 2; d.position.x = -0.12; d.position.z = -0.12 + i * 0.075; }
     add(tbox(0.04, 0.2, 0.34), mat('#d9c58a'), -0.12, 0.25, -0.04, g);
     add(tbox(0.18, 0.06, 0.12), mat('#2fa84a'), 0.2, 0.235, -0.1, g);
     cyl(0.025, 0.1, mat('#e8c660'), 0.24, 0.26, 0.04, g, 8);
-    const disp = new THREE.Group(); add(tbox(0.36, 0.13, 0.05), mat('#16181e'), 0, 0, 0, disp); add(new THREE.PlaneGeometry(0.32, 0.1), timerMat, 0, 0, 0.027, disp, { cast: false });
+    const disp = new THREE.Group(); add(tbox(0.36, 0.13, 0.05), mat('#2c3242'), 0, 0, 0, disp); add(new THREE.PlaneGeometry(0.32, 0.1), timerMat, 0, 0, 0.027, disp, { cast: false });
     for (const [lx, c] of [[-0.14, '#ff2a2a'], [0.14, '#2aff5a']]) add(new THREE.SphereGeometry(0.014, 8, 6), bas(c), lx, 0.082, 0.02, disp);
     disp.position.set(0, 0.235, 0.17); disp.rotation.x = -0.25; g.add(disp);
     // six exposed wires from the front panel into the box's front pocket
