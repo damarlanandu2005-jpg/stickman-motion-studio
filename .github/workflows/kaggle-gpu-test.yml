@@ -54,6 +54,7 @@ jobs:
           mkdir -p results_kaggle
           cp out/result.json results_kaggle/gpu_webgl_result.json 2>/dev/null || echo '{"note":"no result.json"}' > results_kaggle/gpu_webgl_result.json
           git config user.name "github-actions"; git config user.email "actions@users.noreply.github.com"
+          git checkout -- kaggle 2>/dev/null || true
           git add results_kaggle; git commit -m "Kaggle GPU WebGL result [skip ci]" || exit 0
           git pull --rebase -X theirs origin gemini-cartoon || true
           git push origin HEAD:gemini-cartoon || true

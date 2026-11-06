@@ -49,7 +49,7 @@ jobs:
           SCRIPT: ${{ github.event.inputs.script }}
         run: |
           bash kit/tools/setup.sh "$PWD/project"
-          cp kit/tools/mix.py kit/tools/finish.sh project/
+          cp kit/tools/mix.py kit/tools/finish.sh kit/tools/frame_qa.py project/
           cp -r kit project/kit
           python tools/make_voice.py "$SCRIPT" project models
       - name: Gemini API writes the scenes, looks at stills, fixes them (no CLI)
@@ -136,6 +136,7 @@ jobs:
       - name: Join frames + sound into the mp4 and check it
         run: |
           tar xf project.tar --skip-old-files
+          pip install -q numpy pillow || true
           cd project && ls frames | wc -l && mkdir -p out && bash finish.sh "short"
       - name: Publish the result to results_api/<script name>/ on this branch
         if: always()
@@ -143,7 +144,7 @@ jobs:
           SCRIPT: ${{ github.event.inputs.script }}
         run: |
           NAME=$(basename "$SCRIPT" .txt); D="results_api/$NAME"; mkdir -p "$D"
-          cp project/out/*.mp4 project/out/qa_sheet.jpg "$D"/ 2>/dev/null || true
+          cp project/out/*.mp4 project/out/qa_sheet.jpg project/out/qa_report.txt "$D"/ 2>/dev/null || true
           cp project/stills/sheet_*.jpg project/work/PLAN.md project/work/DONE.txt project/work/NOTES.md project/work/usage.json "$D"/ 2>/dev/null || true
           cp project/web/story.js "$D/story.js" 2>/dev/null || true
           tail -200 gemini.log > "$D/gemini_log_tail.txt" 2>/dev/null || true

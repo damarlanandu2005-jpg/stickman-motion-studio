@@ -117,6 +117,7 @@ def static_context():
     main = rd(KIT / "engine/main.js"); head = main[: main.index(MARK_A)]
     parts = [
         ("SCRIPT FORMAT AND KIT NAME LIST (what the author may write)", rd(ROOT / "scripts/FORMAT.md")),
+        ("LOOK RULES (quality targets: sets, light, ink, camera)", rd(KIT / "docs/LOOK_RULES.md")),
         ("KIT METHOD (rules from the skill)", sk[a:b] + "\n" + sk[g:]),
         ("main.js, everything BEFORE the world section (materials M, toon(), add, tbox, helpers) - for reference, do not output", head),
         ("EXAMPLE web/world.js (works with the example story.js)", rd(KIT / "example/emu_war/world.js")),
