@@ -1,0 +1,89 @@
+10 shots, 594 frames, words used 83/83; assets to test: ['NIGHT-FOREST', 'ENEMY-FIELD', 'HELICOPTER-ZONE', 'military airstrike explosion', 'military radio', 'military helicopter']
+prompt chars: static 95745, task 8831
+usage {'label': 'write', 'model': 'gemini-3.1-pro-preview', 'prompt': 49229, 'cached': 0, 'output': 8691, 'thoughts': 24908}
+first answer files: ['work/PLAN.md', 'work/NOTES.md', 'web/story.js', 'web/world.js', 'web/cast.js', 'audio.py']
+/home/runner/work/stickman-motion-studio/stickman-motion-studio/project/../tools/gen_api.py:223: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  im = Image.open(path).convert("RGB").resize((108, 192)); px = list(im.getdata()); n = len(px)
+asset round 0: build_err=False hard=False
+NIGHT-FOREST: measured size 43.51 x 14 x 43.67 m (x, height, z), declared 40.0 m  <-- front: dark or mostly one colour (brightness 33, black 53%, flat 53%); high: flat/black picture; in1: dark or mostly one colour (brightness 23, black 60%, flat 95%); in2: dark or mostly one colour (brightness 15, black 68%, flat 98%)
+ENEMY-FIELD: measured size 30.79 x 11.37 x 33.79 m (x, height, z), declared 30.0 m  <-- front: dark or mostly one colour (brightness 33, black 50%, flat 51%); high: dark or mostly one colour (brightness 15, black 82%, flat 78%); in1: dark or mostly one colour (brightness 30, black 65%, flat 70%); in2: dark or mostly one colour (brightness 15, black 78%, flat 80%)
+HELICOPTER-ZONE: measured size 26.24 x 10.5 x 25.11 m (x, height, z), declared 25.0 m
+military airstrike explosion: measured size 12.41 x 10.83 x 13.43 m (x, height, z), declared 8.0 m  <-- front: dark or mostly one colour (brightness 32, black 57%, flat 56%); side: dark or mostly one colour (brightness 34, black 62%, flat 61%); high: dark or mostly one colour (brightness 16, black 68%, flat 62%)
+military radio: measured size 0.06 x 0.22 x 0.03 m (x, height, z), declared 0.15 m  <-- front: dark or mostly one colour (brightness 29, black 7%, flat 54%); side: dark or mostly one colour (brightness 29, black 6%, flat 53%); high: dark or mostly one colour (brightness 21, black 42%, flat 48%)
+military helicopter: measured size 18 x 3.83 x 2.6 m (x, height, z), declared 15.0 m  <-- front: dark or mostly one co
+usage {'label': 'asset1', 'model': 'gemini-3.1-pro-preview', 'prompt': 60826, 'cached': 0, 'output': 3707, 'thoughts': 4076}
+asset fix files: ['web/world.js'] fails: ['NIGHT-FOREST', 'ENEMY-FIELD', 'military airstrike explosion', 'military radio', 'military helicopter']
+/home/runner/work/stickman-motion-studio/stickman-motion-studio/project/../tools/gen_api.py:223: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  im = Image.open(path).convert("RGB").resize((108, 192)); px = list(im.getdata()); n = len(px)
+asset round 1: build_err=False hard=False
+NIGHT-FOREST: measured size 41.93 x 14.49 x 43.09 m (x, height, z), declared 40.0 m  <-- front: dark or mostly one colour (brightness 33, black 53%, flat 52%); high: flat/black picture; in1: dark or mostly one colour (brightness 28, black 61%, flat 93%); in2: flat/black picture
+ENEMY-FIELD: measured size 30.57 x 9.87 x 32.6 m (x, height, z), declared 30.0 m  <-- front: dark or mostly one colour (brightness 33, black 51%, flat 51%); high: dark or mostly one colour (brightness 15, black 81%, flat 77%); in1: flat/black picture; in2: flat/black picture
+HELICOPTER-ZONE: measured size 26.36 x 10.5 x 25.86 m (x, height, z), declared 25.0 m
+military airstrike explosion: measured size 13.25 x 12.59 x 12.94 m (x, height, z), declared 8.0 m  <-- front: dark or mostly one colour (brightness 32, black 58%, flat 56%); side: dark or mostly one colour (brightness 35, black 61%, flat 59%); high: dark or mostly one colour (brightness 16, black 71%, flat 65%)
+military radio: measured size 0.06 x 0.22 x 0.03 m (x, height, z), declared 0.15 m  <-- front: dark or mostly one colour (brightness 29, black 7%, flat 54%); side: dark or mostly one colour (brightness 29, black 6%, flat 53%); high: dark or mostly one colour (brightness 21, black 42%, flat 47%)
+military helicopter: measured size 16.1 x 4.4 x 14 m (x, height, z), declared 15.0 m  <-- front: dark or mostly one colour (brightness 34, black 49%, flat 50%); side: dark or mostly one colour (brightness 40, black 46%, flat 48%); high: dark or most
+usage {'label': 'asset2', 'model': 'gemini-3.1-pro-preview', 'prompt': 65219, 'cached': 57298, 'output': 3756, 'thoughts': 3757}
+asset fix files: ['web/world.js'] fails: ['NIGHT-FOREST', 'ENEMY-FIELD', 'military airstrike explosion', 'military radio', 'military helicopter']
+/home/runner/work/stickman-motion-studio/stickman-motion-studio/project/../tools/gen_api.py:223: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  im = Image.open(path).convert("RGB").resize((108, 192)); px = list(im.getdata()); n = len(px)
+asset round 2: build_err=False hard=True
+NIGHT-FOREST: measured size 41.93 x 14.49 x 43.09 m (x, height, z), declared 40.0 m  <-- front: dark or mostly one colour (brightness 33, black 53%, flat 52%); high: flat/black picture; in1: dark or mostly one colour (brightness 30, black 59%, flat 93%); in2: flat/black picture
+ENEMY-FIELD: measured size 30.57 x 9.87 x 32.6 m (x, height, z), declared 30.0 m  <-- front: dark or mostly one colour (brightness 34, black 50%, flat 51%); high: dark or mostly one colour (brightness 16, black 81%, flat 77%); in1: dark or mostly one colour (brightness 29, black 87%, flat 92%); in2: dark or mostly one colour (brightness 17, black 74%, flat 88%)
+HELICOPTER-ZONE: measured size 26.36 x 10.5 x 25.86 m (x, height, z), declared 25.0 m
+military airstrike explosion: measured size 9.55 x 9.15 x 9.3 m (x, height, z), declared 8.0 m  <-- front: dark or mostly one colour (brightness 34, black 50%, flat 49%); side: dark or mostly one colour (brightness 37, black 58%, flat 56%); high: dark or mostly one colour (brightness 19, black 56%, flat 51%)
+military radio: measured size 0.05 x 0.14 x 0.02 m (x, height, z), declared 0.15 m  <-- SIZE MISMATCH  <-- front: dark or mostly one colour (brightness 29, black 5%, flat 54%); side: dark or mostly one colour (brightness 29, black 5%, flat 55%); high: dark or mostly one colour (brightness 20, black 48%, flat 53%)
+military helicopter: measured size 16.1 x 4.4 x 14 m (x, height, z), declared 15.0 m  <-- front: dark or mostly one colour (brightness 34, black 4
+usage {'label': 'asset3', 'model': 'gemini-3.1-pro-preview', 'prompt': 69696, 'cached': 57292, 'output': 7916, 'thoughts': 3969}
+asset fix files: ['web/story.js', 'web/world.js'] fails: ['NIGHT-FOREST', 'ENEMY-FIELD', 'military airstrike explosion', 'military radio', 'military helicopter']
+/home/runner/work/stickman-motion-studio/stickman-motion-studio/project/../tools/gen_api.py:223: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  im = Image.open(path).convert("RGB").resize((108, 192)); px = list(im.getdata()); n = len(px)
+asset round 3: build_err=False hard=True
+NIGHT-FOREST: measured size 41.93 x 14.49 x 43.09 m (x, height, z), declared 40.0 m  <-- high: dark or mostly one colour (brightness 39, black 1%, flat 46%)
+ENEMY-FIELD: measured size 30.57 x 9.87 x 32.6 m (x, height, z), declared 30.0 m  <-- high: dark or mostly one colour (brightness 42, black 7%, flat 33%); in2: dark or mostly one colour (brightness 43, black 25%, flat 23%)
+HELICOPTER-ZONE: measured size 26.36 x 10.5 x 25.86 m (x, height, z), declared 25.0 m
+military airstrike explosion: measured size 6.37 x 7.69 x 6.2 m (x, height, z), declared 8.0 m
+military radio: measured size 0.05 x 0.15 x 0.02 m (x, height, z), declared 0.15 m  <-- SIZE MISMATCH
+military helicopter: measured size 16.1 x 4.4 x 14 m (x, height, z), declared 15.0 m
+music vs voice: -5.4 dB   sfx vs voice: -5.1 dB
+
+/home/runner/work/stickman-motion-studio/stickman-motion-studio/project/../tools/gen_api.py:223: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  im = Image.open(path).convert("RGB").resize((108, 192)); px = list(im.getdata()); n = len(px)
+shot round 0: build_err=False audio_err=False sheet=True hard=[] soft=['s2', 's2', 's2', 's6', 's6', 's6', 's7', 's7', 's7']
+usage {'label': 'shot1', 'model': 'gemini-3.1-pro-preview', 'prompt': 80222, 'cached': 0, 'output': 7899, 'thoughts': 4324}
+shot fix files: ['web/story.js', 'web/world.js'] fails: ['s2', 's4', 's7']
+music vs voice: -5.4 dB   sfx vs voice: -5.1 dB
+
+/home/runner/work/stickman-motion-studio/stickman-motion-studio/project/../tools/gen_api.py:223: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  im = Image.open(path).convert("RGB").resize((108, 192)); px = list(im.getdata()); n = len(px)
+shot round 1: build_err=False audio_err=False sheet=True hard=[] soft=['s2', 's2', 's2', 's6', 's6', 's6', 's7', 's7']
+usage {'label': 'shot2', 'model': 'gemini-3.1-pro-preview', 'prompt': 89607, 'cached': 73655, 'output': 7870, 'thoughts': 4308}
+shot fix files: ['web/story.js', 'web/world.js'] fails: ['s2', 's4', 's7']
+music vs voice: -5.4 dB   sfx vs voice: -5.1 dB
+
+/home/runner/work/stickman-motion-studio/stickman-motion-studio/project/../tools/gen_api.py:223: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  im = Image.open(path).convert("RGB").resize((108, 192)); px = list(im.getdata()); n = len(px)
+shot round 2: build_err=False audio_err=False sheet=True hard=[] soft=['s2', 's2', 's2', 's7', 's7']
+usage {'label': 'shot3', 'model': 'gemini-3.1-pro-preview', 'prompt': 96677, 'cached': 81837, 'output': 7873, 'thoughts': 2906}
+shot fix files: ['web/story.js', 'web/world.js'] fails: ['s2', 's4', 's7']
+music vs voice: -5.4 dB   sfx vs voice: -5.1 dB
+
+/home/runner/work/stickman-motion-studio/stickman-motion-studio/project/../tools/gen_api.py:223: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  im = Image.open(path).convert("RGB").resize((108, 192)); px = list(im.getdata()); n = len(px)
+shot round 3: build_err=False audio_err=False sheet=True hard=[] soft=['s2', 's2', 's2', 's7', 's7']
+usage {'label': 'shot4', 'model': 'gemini-3.1-pro-preview', 'prompt': 104846, 'cached': 0, 'output': 7881, 'thoughts': 4398}
+shot fix files: ['web/story.js', 'web/world.js'] fails: ['s2', 's4', 's7']
+music vs voice: -5.4 dB   sfx vs voice: -5.1 dB
+
+/home/runner/work/stickman-motion-studio/stickman-motion-studio/project/../tools/gen_api.py:223: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  im = Image.open(path).convert("RGB").resize((108, 192)); px = list(im.getdata()); n = len(px)
+shot round 4: build_err=False audio_err=False sheet=True hard=[] soft=['s2', 's2', 's2', 's4', 's4', 's4', 's7', 's7']
+usage {'label': 'shot5', 'model': 'gemini-3.1-pro-preview', 'prompt': 113110, 'cached': 0, 'output': 7872, 'thoughts': 4037}
+shot fix files: ['web/story.js', 'web/world.js'] fails: ['s2', 's4', 's7']
+music vs voice: -5.4 dB   sfx vs voice: -5.1 dB
+
+/home/runner/work/stickman-motion-studio/stickman-motion-studio/project/../tools/gen_api.py:223: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  im = Image.open(path).convert("RGB").resize((108, 192)); px = list(im.getdata()); n = len(px)
+shot round 5: build_err=False audio_err=False sheet=True hard=[] soft=['s2', 's2', 's4', 's4', 's4', 's7', 's7']
+music vs voice: -5.4 dB   sfx vs voice: -5.1 dB
+
+DONE [{"label": "write", "model": "gemini-3.1-pro-preview", "prompt": 49229, "cached": 0, "output": 8691, "thoughts": 24908}, {"label": "asset1", "model": "gemini-3.1-pro-preview", "prompt": 60826, "cached": 0, "output": 3707, "thoughts": 4076}, {"label": "asset2", "model": "gemini-3.1-pro-preview", "prompt": 65219, "cached": 57298, "output": 3756, "thoughts": 3757}, {"label": "asset3", "model": "gemini-3.1-pro-preview", "prompt": 69696, "cached": 57292, "output": 7916, "thoughts": 3969}, {"label": "shot1", "model": "gemini-3.1-pro-preview", "prompt": 80222, "cached": 0, "output": 7899, "thoughts": 4324}, {"label": "shot2", "model": "gemini-3.1-pro-preview", "prompt": 89607, "cached": 73655, "output": 7870, "thoughts": 4308}, {"label": "shot3", "model": "gemini-3.1-pro-preview", "prompt": 96677, "cached": 81837, "output": 7873, "thoughts": 2906}, {"label": "shot4", "model": "gemini-3.1-pro-preview", "prompt": 104846, "cached": 0, "output": 7881, "thoughts": 4398}, {"label": "shot5", "model": "gemini-3.1-pro-preview", "prompt": 113110, "cached": 0, "output": 7872, "thoughts": 4037}]
