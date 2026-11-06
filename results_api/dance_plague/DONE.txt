@@ -1,0 +1,14 @@
+s1_hook: In fifteen eighteen,
+s2_dance: a woman stepped into a street in France and began to dance.
+s3_days: She did not stop for days.
+s4_join: Within a week, thirty-four people had joined her.
+s5_fourhundred: Soon there were four hundred.
+s6_nobody: Nobody knew why.
+s7_cure: The city leaders decided the cure was more dancing.
+s8_stage: They built a stage and hired musicians.
+s9_worse: It only made things worse.
+s10_feet: People danced until their feet bled.
+s11_collapse: Some collapsed and never got up.
+s12_stop: Then, one day, the music stopped.
+s13_quiet: And so did the dancing.
+s14_end: To this day, nobody knows why.

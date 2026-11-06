@@ -1,0 +1,54 @@
+14 shots, 866 frames, words used 87/87
+prompt chars: static 88353, task 6938
+usage {'label': 'write', 'model': 'gemini-3.1-pro-preview', 'prompt': 46431, 'cached': 0, 'output': 10324, 'thoughts': 26093}
+first answer files: ['work/PLAN.md', 'work/NOTES.md', 'web/world.js', 'web/story.js', 'web/cast.js', 'audio.py']
+music vs voice: -6.0 dB   sfx vs voice: -10.3 dB
+
+round 0: build_err=False audio_err=False sheet=False msgs="PAGE ERR Uncaught SyntaxError: Identifier 'fxStars' has already been declared\nERR Identifier 'fxStar"
+[fix1] API error try 1: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more de
+usage {'label': 'fix1', 'model': 'gemini-3.1-pro-preview', 'prompt': 56883, 'cached': 40932, 'output': 8829, 'thoughts': 12895}
+fix files: ['web/world.js', 'web/story.js', 'web/cast.js'] 
+PROBLEMS: PROBLEMS:
+- `fxStars` is already declared in the kit (`toonbase.js`), causing a SyntaxError. Renamed to `fxNightStars`.
+- The houses and square layout didn't match the camera positions and actor placements in `story.js`. Rebuilt the world layout to have the square at `z=0`, fountain at `z=20`, and street at `z=30`, and updated all cameras and actors to match.
+- `plasterDouble` material was referencing `M.plaster.map` which is safer to recreate.
+- Added people at the windows in `s2_dance` as requested in the notes.
+
+
+music vs voice: -6.0 dB   sfx vs voice: -10.3 dB
+
+round 1: build_err=False audio_err=False sheet=True msgs="page.evaluate: TypeError: Cannot read properties of undefined (reading 'eye')"
+usage {'label': 'fix2', 'model': 'gemini-3.1-pro-preview', 'prompt': 66928, 'cached': 49115, 'output': 9324, 'thoughts': 13430}
+fix files: ['web/world.js', 'web/story.js', 'web/cast.js'] 
+PROBLEMS: PROBLEMS:
+- `fxStars` is already declared in the kit (`toonbase.js`), causing a SyntaxError. Renamed to `fxNightStars`.
+- The `confused` expression was missing from the `FACE` dictionary, causing a `TypeError`. Added it in `cast.js`.
+- The camera in the first shots was too close to the character, cutting off the face and feet. Pulled the camera back.
+- The houses and square layout didn't match the camera positions and actor placements in `story.js`. Rebuilt the world layout to have the square at `z=0`, fountain at `z=20`, and street at `z=30`, and updated all cameras and actors to match.
+- `plasterDouble` material was referencing `M.plaster.map` which is safer to recreate.
+- The council hall was a solid box, blocking the camera from seeing the councilman through the window. Rebuilt it with individual walls and a proper window hole.
+- Added people at the windows in `s2_dance` as requested in the notes.
+
+
+music vs voice: -6.0 dB   sfx vs voice: -10.3 dB
+
+round 2: build_err=False audio_err=False sheet=True msgs=''
+usage {'label': 'fix3', 'model': 'gemini-3.1-pro-preview', 'prompt': 77441, 'cached': 65482, 'output': 8842, 'thoughts': 15639}
+fix files: ['web/world.js', 'web/story.js'] 
+PROBLEMS: PROBLEMS:
+- The camera in the first shots was too close to the character, cutting off the face and feet. Pulled the camera back.
+- The fountain was huge and blocking the view in `join`. Scaled it down.
+- The camera in `fourhundred` was clipping through the roofs. Raised it higher.
+- The background in `nobody` and `cure` was black because the council hall walls were built with `tbox` and `DoubleSide` which caused lighting issues, and there was no light inside. Rebuilt the walls with individual boxes and added a point light inside.
+- The camera in `cure` was outside the hall. Moved it inside.
+- The camera in `stage`, `worse`, `feet`, `collapse`, `stop`, `quiet`, and `end` was too close. Pulled it back.
+- The people at the windows in `dance` were not positioned correctly. Moved them to the window locations.
+- The question mark in `end` was not visible because it was placed too high. Lowered it.
+
+
+music vs voice: -6.0 dB   sfx vs voice: -10.3 dB
+
+round 3: build_err=False audio_err=False sheet=True msgs=''
+music vs voice: -6.0 dB   sfx vs voice: -10.3 dB
+
+DONE [{"label": "write", "model": "gemini-3.1-pro-preview", "prompt": 46431, "cached": 0, "output": 10324, "thoughts": 26093}, {"label": "fix1", "model": "gemini-3.1-pro-preview", "prompt": 56883, "cached": 40932, "output": 8829, "thoughts": 12895}, {"label": "fix2", "model": "gemini-3.1-pro-preview", "prompt": 66928, "cached": 49115, "output": 9324, "thoughts": 13430}, {"label": "fix3", "model": "gemini-3.1-pro-preview", "prompt": 77441, "cached": 65482, "output": 8842, "thoughts": 15639}]
