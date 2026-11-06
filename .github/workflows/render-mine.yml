@@ -67,7 +67,17 @@ jobs:
     timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
-      - run: (which ffmpeg || (sudo timeout 120 apt-get install -y -qq ffmpeg || true)) && python3 -m pip install -q numpy pillow opencv-python-headless
+      - name: ffmpeg + ffprobe (npm static builds when the runner image has none; apt hangs)
+        run: |
+          if ! command -v ffmpeg >/dev/null || ! command -v ffprobe >/dev/null; then
+            mkdir -p "$RUNNER_TEMP/ff" && cd "$RUNNER_TEMP/ff" && npm init -y >/dev/null && npm install --no-audit --no-fund ffmpeg-static ffprobe-static >/dev/null
+            mkdir -p "$HOME/bin"
+            ln -sf "$RUNNER_TEMP/ff/node_modules/ffmpeg-static/ffmpeg" "$HOME/bin/ffmpeg"
+            ln -sf "$RUNNER_TEMP/ff/node_modules/ffprobe-static/bin/linux/x64/ffprobe" "$HOME/bin/ffprobe"
+            echo "$HOME/bin" >> "$GITHUB_PATH"
+            "$HOME/bin/ffmpeg" -version | head -1; "$HOME/bin/ffprobe" -version | head -1
+          fi
+          python3 -m pip install -q numpy pillow opencv-python-headless
       - uses: actions/download-artifact@v4
         with:
           pattern: frames-*
