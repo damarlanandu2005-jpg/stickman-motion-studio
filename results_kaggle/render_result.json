@@ -1,1 +1,13 @@
-{"note":"no result"}
+{
+ "gpu": "Tesla T4, 580.178.04\nTesla T4, 580.178.04",
+ "node_before": "v22.23.4",
+ "node": "v22.23.4",
+ "total_frames": 597,
+ "gpu_total_s": 183.9,
+ "gpu_frames": 597,
+ "gpu_s_per_frame": 0.308,
+ "gl_renderer": "GL_RENDERER ANGLE (NVIDIA Corporation, Tesla T4/PCIe/SSE2, OpenGL ES 3.2)",
+ "cpu_frames": 20,
+ "cpu_total_s": 123.1,
+ "cpu_s_per_frame": 6.155
+}
