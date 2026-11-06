@@ -1,28 +1,34 @@
-TITLE: 
+TITLE: <one line>
 
 NARRATION:
-
+<The exact words the voice says. Numbers as words. About 3.7 words per second. Hook > setup > incident > escalation > resolution > twist.>
 
 SHOTS:
+
 CAST:
-- Name: outfit, hair/hat, colours
+- NAME | outfit (kit name or NEW item) + hat | skin, hair, beard | usual face
+- NAME-2 | ... | ... | ...
+
+PLACES:
+- PLACE-A | what it is | width in meters | 3 landmarks and where (left/middle/right, near/far)
+- PLACE-B | ... | ... | ...
+
+NEW OBJECTS:
+- NEW: <name> | size in meters | colors | shape | what it does
 
 SHOT 1
-WORDS:      ""
-PLACE:      
-LIGHT:      
-CAMERA:     
-CHARACTERS: 
-EFFECTS:    
-SFX:        
-MUSIC:      
+WORDS:      "exact phrase from the narration (copy-paste)"
+PLACE:      PLACE-A
+LIGHT:      day | dawn | golden | night | indoor
+CAMERA:     start framing > end framing | ONE move (static, push-in, pull-back, orbit, snap-zoom, whip, crane-up, crane-down) | near (2 m) / mid (6 m) / far (15 m), or "camera 0.4 m" for small objects | wide or tight
+CHARACTERS: NAME | POSE | FACE | left/middle/right | near/mid/far | facing camera/left/right/away/<name>
+            crowd of 30 | background
+EFFECTS:    dust, smoke, stars, steam, sparks, flash (or none)
+MUST SEE:   3 or 4 things that must be visible (all defined above or in the kit list)
+MUST NOT:   what must not happen (camera inside a wall, people cut off, empty frame)
+SFX:        sound and the exact word it hits on
+MUSIC:      what the music does
 
 SHOT 2
-WORDS:      ""
-PLACE:      
-LIGHT:      
-CAMERA:     
-CHARACTERS: 
-EFFECTS:    
-SFX:        
-MUSIC:      
+WORDS:      "next exact phrase"
+...
