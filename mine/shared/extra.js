@@ -166,3 +166,28 @@ export const crowd = (p, o = {}) => {
   }
 };
 export const fxBlood = (p, t) => { for (let i = 0; i < 4; i++) { const y = 500 + t * 300 + i * 50; p.ell(200 + i * 70, y, 14, 22, "#b3262b", 5); } };
+
+/** horse pulling a small cart, side view, faces right. step 0..1, fear = wide eye + rear */
+export const horseCart = (p, o = {}) => {
+  const { step = 0, fear = 0 } = o, BR = "#7a4a2a", gy = 975, bx = 400, by = 700 - fear * 30;
+  // cart (behind, left)
+  p.poly(rrect(20, 640, 250, 760, 10), "#8a6a3a", 9); p.poly(rrect(10, 610, 260, 650, 8), "#6a4a2a", 8);
+  p.ell(110, 800, 62, 62, "#3a2a1c", 10); p.ell(110, 800, 18, 18, "#b08a4a", 6); p.stroke([[250, 720], [330, by + 30]], 12, "#5a3a22");
+  const leg = (dx, ph) => { const s = Math.sin((step + ph) * 6.283) * 60, lift = Math.max(0, Math.cos((step + ph) * 6.283)) * 40; const hx = bx + dx, fx = hx + s, fy = gy - lift; p.stroke(curve([hx, by + 60], [hx + s * 0.5 + 8, by + 190], [fx, fy]), 30, INK); p.stroke(curve([hx, by + 60], [hx + s * 0.5 + 8, by + 190], [fx, fy]), 22, BR); p.ell(fx + 6, fy, 20, 11, "#2a1c14", 6); };
+  leg(-70, 0.5); leg(60, 0.5);
+  p.ell(bx, by, 150, 85, BR, 11);
+  p.stroke([[bx + 100, by - 30], [bx + 150, by - 120], [bx + 190, by - 150]], 62, INK); p.stroke([[bx + 100, by - 30], [bx + 150, by - 120], [bx + 190, by - 150]], 54, BR);
+  p.ell(bx + 215, by - 150, 52, 34, BR, 10, 0, 360, 0.25); p.ell(bx + 250, by - 138, 12, 10, "#2a1c14", 4);
+  const ew = fear ? 14 : 9; p.ell(bx + 200, by - 164, ew, ew, "#fff", 5); p.dot(bx + 203, by - 164, ew * 0.5, INK);
+  p.poly([[bx + 170, by - 190], [bx + 192, by - 232], [bx + 205, by - 184]], BR, 7);
+  p.stroke([[bx + 120, by - 130], [bx + 100, by - 70], [bx + 120, by - 30]], 22, "#2a1c14");
+  p.stroke(curve([bx - 150, by - 30], [bx - 195, by + 10 + Math.sin(step * 6.283) * 14], [bx - 175, by + 110]), 20, "#2a1c14");
+  leg(-40, 0); leg(90, 0);
+};
+export const fxJar = (p, t) => {
+  const g = p.g; p.poly(rrect(170, 300, 430, 760, 40), "#e8f2f0", 10); p.poly(rrect(190, 520, 410, 750, 30), "#8a4a1a", 0); p.poly(rrect(210, 270, 390, 320, 12), "#c0302c", 9);
+  p.poly([[250, 330], [350, 330], [346, 380], [254, 380]], "#fff7", 0);
+  const y = 800 + t * 380; p.stroke([[300, 760], [300, y]], 24, INK); p.stroke([[300, 760], [300, y]], 16, "#8a4a1a"); p.ell(300, y + 8, 22, 28, "#8a4a1a", 8);
+};
+export const fxWaveSplash = (p, t) => { for (let i = 0; i < 9; i++) { const a = i / 9 * Math.PI, r = 80 + t * 240; p.ell(300 + Math.cos(a) * r, 700 - Math.sin(a) * r * 1.1, 46 - t * 14, 40, "#7a4220", 9); } };
+export const fxHeart = (p, t) => { const g = p.g; g.save(); g.globalAlpha = Math.min(1, (1 - t) * 3); for (let i = 0; i < 4; i++) { const y = 760 - t * 420 - i * 70, x = 220 + i * 55 + Math.sin(t * 7 + i) * 24; p.poly([[x, y + 50], [x - 50, y - 6], [x - 36, y - 38], [x, y - 14], [x + 36, y - 38], [x + 50, y - 6]], "#ff7a9a", 7); } g.restore(); };

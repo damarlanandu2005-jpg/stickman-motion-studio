@@ -1,0 +1,108 @@
+{
+ "duration": 31.555918,
+ "frames30": 947,
+ "source": "silence-align (cost 1.36)",
+ "segments": [
+  [
+   0.0,
+   2.12898
+  ],
+  [
+   2.28902,
+   4.97914
+  ],
+  [
+   5.30365,
+   8.6149
+  ],
+  [
+   8.83118,
+   10.7039
+  ],
+  [
+   10.9459,
+   13.0891
+  ],
+  [
+   13.5153,
+   16.3632
+  ],
+  [
+   16.7477,
+   18.3592
+  ],
+  [
+   18.5458,
+   19.317
+  ],
+  [
+   19.63,
+   23.8761
+  ],
+  [
+   24.076,
+   27.9432
+  ],
+  [
+   28.2441,
+   31.555918
+  ]
+ ],
+ "phrases": [
+  {
+   "text": "In nineteen nineteen,",
+   "s": 0.0,
+   "e": 2.129
+  },
+  {
+   "text": "a wave of sweet brown goo killed twenty-one people in Boston.",
+   "s": 2.289,
+   "e": 4.979
+  },
+  {
+   "text": "A huge tank held over two million gallons of molasses.",
+   "s": 5.304,
+   "e": 8.615
+  },
+  {
+   "text": "It stood in the middle of a busy neighborhood.",
+   "s": 8.831,
+   "e": 10.704
+  },
+  {
+   "text": "It was built fast, and it was never tested.",
+   "s": 10.946,
+   "e": 13.089
+  },
+  {
+   "text": "On a warm January afternoon, the tank groaned.",
+   "s": 13.515,
+   "e": 16.363
+  },
+  {
+   "text": "Rivets popped like bullets.",
+   "s": 16.748,
+   "e": 18.359
+  },
+  {
+   "text": "Then it burst.",
+   "s": 18.546,
+   "e": 19.317
+  },
+  {
+   "text": "A wave eight meters tall rushed down the street at fifty kilometers an hour.",
+   "s": 19.63,
+   "e": 23.876
+  },
+  {
+   "text": "It flattened trains, houses, and horses. It took weeks to clean.",
+   "s": 24.076,
+   "e": 27.943
+  },
+  {
+   "text": "And on hot days, locals say the area still smells sweet.",
+   "s": 28.244,
+   "e": 31.556
+  }
+ ]
+}
