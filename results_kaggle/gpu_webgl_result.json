@@ -1,0 +1,6 @@
+{
+ "nvidia_smi": "Tesla T4, 580.178.04, 15360 MiB\nTesla T4, 580.178.04, 15360 MiB\n",
+ "vulkan_icd": "ls: cannot access '/usr/share/vulkan/icd.d': No such file or directory\n/etc/vulkan/icd.d:\n50_mesa.json\n",
+ "nvidia_libs": "\tlibvulkan.so.1 (libc6,x86-64) => /lib/x86_64-linux-gnu/libvulkan.so.1\n",
+ "results": []
+}
