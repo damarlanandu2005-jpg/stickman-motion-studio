@@ -29,7 +29,7 @@ jobs:
         with:
           python-version: "3.11"
       - run: for T in 1 2 3; do timeout 240 sudo apt-get update -qq && timeout 300 sudo apt-get install -y -qq ffmpeg && break; sleep 5; done
-      - run: python -m pip install -q numpy pillow kokoro-onnx soundfile google-genai
+      - run: python -m pip install -q numpy pillow kokoro-onnx soundfile google-genai opencv-python-headless
       - name: Playwright Chromium
         run: |
           npm install -g playwright

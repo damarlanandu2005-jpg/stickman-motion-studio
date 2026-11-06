@@ -352,7 +352,7 @@ def stills(tag):
                 if bits and i not in hard_shots and i not in soft_shots: soft_shots.append(i)
                 if bits: rep.append(f"{i} f{f}: " + "; ".join(bits))
         except Exception as e_:
-            rep.append(f"(reference colour check skipped: {e_})")
+            print("WARNING reference colour check skipped:", repr(e_), flush=True); rep.append(f"(reference colour check skipped: {e_})")
     sheet = jpg(grid([tile(p, f"{i} f{f}") for i, f, p in tiles], 6), P / "stills" / f"sheet_{tag}.jpg")
     return sheet, tiles, msgs + ("\n" if msgs else "") + "\n".join(rep), hard_shots, soft_shots
 
