@@ -1,6 +1,120 @@
 {
  "nvidia_smi": "Tesla T4, 580.178.04, 15360 MiB\nTesla T4, 580.178.04, 15360 MiB\n",
- "vulkan_icd": "ls: cannot access '/usr/share/vulkan/icd.d': No such file or directory\n/etc/vulkan/icd.d:\n50_mesa.json\n",
- "nvidia_libs": "\tlibvulkan.so.1 (libc6,x86-64) => /lib/x86_64-linux-gnu/libvulkan.so.1\n",
- "results": []
+ "env_caps": "NVIDIA_DRIVER_CAPABILITIES=compute,utility\n",
+ "libs_before": "ls: cannot access '/usr/share/vulkan/icd.d': No such file or directory\n/etc/vulkan/icd.d:\n\n/usr/share/glvnd/egl_vendor.d:\n50_mesa.json\n\tlibnvidia-glcore.so.580.178.04 (libc6,x86-64) => /usr/local/nvidia/lib64/libnvidia-glcore.so.580.178.04\n\tlibGLX_nvidia.so.0 (libc6,x86-64) => /usr/local/nvidia/lib64/libGLX_nvidia.so.0\n\tlibEGL_nvidia.so.0 (libc6,x86-64) => /usr/local/nvidia/lib64/libEGL_nvidia.so.0\n",
+ "results_before": [
+  {
+   "variant": "default_headless",
+   "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+   "vendor": "Google Inc. (Google)",
+   "ms_per_fullframe_pass": 1228.6,
+   "wall_s": 8.5,
+   "phase": "before_driver_install"
+  },
+  {
+   "variant": "headless_egl",
+   "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+   "vendor": "Google Inc. (Google)",
+   "ms_per_fullframe_pass": 1172.2,
+   "wall_s": 7.7,
+   "phase": "before_driver_install"
+  },
+  {
+   "variant": "newheadless_egl",
+   "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+   "vendor": "Google Inc. (Google)",
+   "ms_per_fullframe_pass": 1096.9,
+   "wall_s": 7.8,
+   "phase": "before_driver_install"
+  },
+  {
+   "variant": "newheadless_vulkan",
+   "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+   "vendor": "Google Inc. (Google)",
+   "ms_per_fullframe_pass": 1243.1,
+   "wall_s": 8.8,
+   "phase": "before_driver_install"
+  },
+  {
+   "variant": "newheadless_angle_gles",
+   "renderer": "ANGLE (Mesa, llvmpipe (LLVM 20.1.2 256 bits), OpenGL ES 3.2)",
+   "vendor": "Google Inc. (Mesa)",
+   "ms_per_fullframe_pass": 1066.6,
+   "wall_s": 9.5,
+   "phase": "before_driver_install"
+  },
+  {
+   "variant": "xvfb_angle_gl",
+   "renderer": "ANGLE (Mesa, llvmpipe (LLVM 20.1.2 256 bits), OpenGL 4.5)",
+   "vendor": "Google Inc. (Mesa)",
+   "ms_per_fullframe_pass": 1029,
+   "wall_s": 9.5,
+   "phase": "before_driver_install"
+  },
+  {
+   "variant": "xvfb_vulkan",
+   "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+   "vendor": "Google Inc. (Google)",
+   "ms_per_fullframe_pass": 1505.9,
+   "wall_s": 10.4,
+   "phase": "before_driver_install"
+  }
+ ],
+ "driver_download": "-rw-r--r-- 1 root root 397214534 Jul 13 16:20 nv.run\n",
+ "driver_install": "WARNING: You specified the '--no-kernel-modules' command line option, nvidia-installer will not install any kernel modules as part of this driver installation, and it will not remove existing NVIDIA kernel modules not part of an earlier NVIDIA driver installation.  Please ensure that NVIDIA kernel modules matching this driver version are installed separately.\n\n\nWARNING: nvidia-installer was forced to guess the X library path '/usr/lib64' and X module path '/usr/lib64/xorg/modules'; these paths were not queryable from the system.  If X fails to find the NVIDIA X driver module, please install the `pkg-config` utility and the X.Org SDK/development package for your distribution and reinstall the driver.\n\n\nWARNING: Unable to find a suitable destination to install 32-bit compatibility libraries. Your system may not be set up for 32-bit compatibility. 32-bit compatibility files will not be installed; if you wish to install them, re-run the installation and set a valid directory with the --compat32-libdir option.\n\n\nWARNING: Unable to determine the path to install the libglvnd EGL vendor library config files. Check that you have pkg-config and the libglvnd development libraries installed, or specify a path with --glvnd-egl-config-path.\n\n\nERROR: Failed to execute `/usr/bin/systemctl daemon-reload`: System has not been booted with systemd as init system (PID 1). Can't operate.\nFailed to connect to bus: Host is down\n\n",
+ "libs_after": "ls: cannot access '/usr/share/vulkan/icd.d': No such file or directory\n/etc/vulkan/icd.d:\nnvidia_icd.json\n\n/usr/share/glvnd/egl_vendor.d:\n10_nvidia.json\n50_mesa.json\n\tlibnvidia-glcore.so.580.178.04 (libc6,x86-64) => /usr/local/nvidia/lib64/libnvidia-glcore.so.580.178.04\n\tlibnvidia-glcore.so.580.178.04 (libc6,x86-64) => /lib/x86_64-linux-gnu/libnvidia-glcore.so.580.178.04\n\tlibGLX_nvidia.so.0 (libc6,x86-64) => /usr/local/nvidia/lib64/libGLX_nvidia.so.0\n\tlibGLX_nvidia.so.0 (libc6,x86-64) => /lib/x86_64-linux-gnu/libGLX_nvidia.so.0\n\tlibEGL_nvidia.so.0 (libc6,x86-64) => /usr/local/nvidia/lib64/libEGL_nvidia.so.0\n\tlibEGL_nvidia.so.0 (libc6,x86-64) => /lib/x86_64-linux-gnu/libEGL_nvidia.so.0\n",
+ "results_after": [
+  {
+   "variant": "default_headless",
+   "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+   "vendor": "Google Inc. (Google)",
+   "ms_per_fullframe_pass": 1248.5,
+   "wall_s": 8.2,
+   "phase": "after_driver_install"
+  },
+  {
+   "variant": "headless_egl",
+   "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+   "vendor": "Google Inc. (Google)",
+   "ms_per_fullframe_pass": 1096,
+   "wall_s": 7.3,
+   "phase": "after_driver_install"
+  },
+  {
+   "variant": "newheadless_egl",
+   "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+   "vendor": "Google Inc. (Google)",
+   "ms_per_fullframe_pass": 1118.9,
+   "wall_s": 7.8,
+   "phase": "after_driver_install"
+  },
+  {
+   "variant": "newheadless_vulkan",
+   "renderer": "ANGLE (NVIDIA, Vulkan 1.4.312 (NVIDIA Tesla T4 (0x00001EB8)), NVIDIA)",
+   "vendor": "Google Inc. (NVIDIA)",
+   "ms_per_fullframe_pass": 2.1,
+   "wall_s": 2.4,
+   "phase": "after_driver_install"
+  },
+  {
+   "variant": "newheadless_angle_gles",
+   "renderer": "ANGLE (NVIDIA Corporation, Tesla T4/PCIe/SSE2, OpenGL ES 3.2)",
+   "vendor": "Google Inc. (NVIDIA Corporation)",
+   "ms_per_fullframe_pass": 3.7,
+   "wall_s": 4.5,
+   "phase": "after_driver_install"
+  },
+  {
+   "variant": "xvfb_angle_gl",
+   "error": "BrowserType.launch: Target page, context or browser has been closed\nBrowser logs:\n\n\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557\n\u2551 Looks like you launched a headed browser without having a XServer running.                     \u2551\n\u2551 Set either 'headl",
+   "wall_s": 0.6,
+   "phase": "after_driver_install"
+  },
+  {
+   "variant": "xvfb_vulkan",
+   "error": "BrowserType.launch: Target page, context or browser has been closed\nBrowser logs:\n\n\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557\n\u2551 Looks like you launched a headed browser without having a XServer running.                     \u2551\n\u2551 Set either 'headl",
+   "wall_s": 0.6,
+   "phase": "after_driver_install"
+  }
+ ]
 }
