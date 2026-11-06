@@ -1,9 +1,9 @@
-- Added `kid2` outfit in `cast.js` to provide a second child character.
-- Used a rotated `CylinderGeometry` for the rolling molasses wave, scaling it up during the burst and moving it along the Z axis to chase the camera.
-- The elevated train track and falling house are animated in `worldState` based on the frame number during the `s10_flatten` shot.
-- Used 2D FX cards for the thermometer, plaque, steam, sparks, and the dripping jar.
-- Adjusted the wave speed to `0.05` units per frame so it perfectly hits the house at `z=0` exactly at the start of `s10_flatten`.
+- **Poses**: Since `run` is not a valid human arm pose in the kit, I used `step` and `tilt` combined with `L: 'up', R: 'up'` to simulate the running/scared motion for the workers in the burst and wave shots.
+- **Assets**: The notes did not explicitly use the `NEW OBJECTS` format, but I defined `tank`, `broken_tank`, `track`, `house`, `scaffold`, and `plaque` in the `ASSETS` dictionary to strictly follow the ASSETS rule.
+- **Wave**: Built as a deformed sphere mesh in 3D that scales and moves dynamically in `worldState`.
+- **Thermometer**: Built as a 2D `fxThermo` card in `cast.js` so it can clearly display the warm number as requested.
+- **Sparks**: Added `fxSparks` to `cast.js` for the construction shot.
 
 
 ## pipeline
-rounds: 3 fix calls. final build error: none. audio: ok.
+calls: 6. final build error: none. audio: ok.

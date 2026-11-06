@@ -2,33 +2,49 @@
  {
   "label": "write",
   "model": "gemini-3.1-pro-preview",
-  "prompt": 46137,
+  "prompt": 48745,
   "cached": 0,
-  "output": 9680,
-  "thoughts": 30314
+  "output": 9260,
+  "thoughts": 18753
  },
  {
-  "label": "fix1",
+  "label": "shot1",
   "model": "gemini-3.1-pro-preview",
-  "prompt": 57006,
+  "prompt": 64107,
   "cached": 0,
-  "output": 7493,
-  "thoughts": 16852
+  "output": 9012,
+  "thoughts": 19250
  },
  {
-  "label": "fix2",
+  "label": "shot2",
   "model": "gemini-3.1-pro-preview",
-  "prompt": 65688,
+  "prompt": 67797,
   "cached": 0,
-  "output": 8465,
-  "thoughts": 13069
+  "output": 5582,
+  "thoughts": 1944
  },
  {
-  "label": "fix3",
+  "label": "shot3",
   "model": "gemini-3.1-pro-preview",
-  "prompt": 74283,
+  "prompt": 79568,
   "cached": 0,
-  "output": 8392,
-  "thoughts": 5189
+  "output": 5260,
+  "thoughts": 4915
+ },
+ {
+  "label": "shot4",
+  "model": "gemini-3.1-pro-preview",
+  "prompt": 85342,
+  "cached": 0,
+  "output": 5201,
+  "thoughts": 2731
+ },
+ {
+  "label": "shot5",
+  "model": "gemini-3.1-pro-preview",
+  "prompt": 90907,
+  "cached": 0,
+  "output": 8276,
+  "thoughts": 6169
  }
 ]
