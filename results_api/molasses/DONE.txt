@@ -1,0 +1,12 @@
+s1_hook: In nineteen nineteen,
+s2_wave: a wave of sweet brown goo killed twenty-one people in Boston.
+s3_tank: A huge tank held over two million gallons of molasses.
+s4_neighborhood: It stood in the middle of a busy neighborhood.
+s5_built: It was built fast, and it was never tested.
+s6_groan: On a warm January afternoon, the tank groaned.
+s7_rivets: Rivets popped like bullets.
+s8_burst: Then it burst.
+s9_wave: A wave eight meters tall rushed down the street at fifty kilometers an hour.
+s10_flatten: It flattened trains, houses, and horses.
+s11_clean: It took weeks to clean.
+s12_smell: And on hot days, locals say the area still smells sweet.

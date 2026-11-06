@@ -1,0 +1,34 @@
+[
+ {
+  "label": "write",
+  "model": "gemini-3.1-pro-preview",
+  "prompt": 46137,
+  "cached": 0,
+  "output": 9680,
+  "thoughts": 30314
+ },
+ {
+  "label": "fix1",
+  "model": "gemini-3.1-pro-preview",
+  "prompt": 57006,
+  "cached": 0,
+  "output": 7493,
+  "thoughts": 16852
+ },
+ {
+  "label": "fix2",
+  "model": "gemini-3.1-pro-preview",
+  "prompt": 65688,
+  "cached": 0,
+  "output": 8465,
+  "thoughts": 13069
+ },
+ {
+  "label": "fix3",
+  "model": "gemini-3.1-pro-preview",
+  "prompt": 74283,
+  "cached": 0,
+  "output": 8392,
+  "thoughts": 5189
+ }
+]

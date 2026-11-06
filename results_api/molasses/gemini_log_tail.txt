@@ -1,0 +1,45 @@
+12 shots, 947 frames, words used 93/93
+prompt chars: static 88353, task 6109
+usage {'label': 'write', 'model': 'gemini-3.1-pro-preview', 'prompt': 46137, 'cached': 0, 'output': 9680, 'thoughts': 30314}
+first answer files: ['work/PLAN.md', 'work/NOTES.md', 'web/story.js', 'web/world.js', 'web/cast.js', 'audio.py']
+music vs voice: -6.0 dB   sfx vs voice: -5.6 dB
+
+round 0: build_err=False audio_err=False sheet=True msgs=''
+usage {'label': 'fix1', 'model': 'gemini-3.1-pro-preview', 'prompt': 57006, 'cached': 0, 'output': 7493, 'thoughts': 16852}
+fix files: ['web/story.js', 'web/world.js'] 
+PROBLEMS: PROBLEMS:
+- s1_hook, s2_wave: Camera is looking away from the street, so the background is empty.
+- s3_tank, s5_built, s6_groan, s7_rivets: Camera is placed exactly on or inside the tank wall (z=-10 to -20), causing the tank to be invisible or fill the screen.
+- s8_burst, s9_wave, s10_flatten: The molasses wave is too large and moves too fast, engulfing the camera and turning the screen completely dark brown.
+- s12_smell: The park tree is placed at z=10, but the camera is at z=25 looking at z=10, so the tree is too far away.
+
+
+music vs voice: -6.0 dB   sfx vs voice: -5.6 dB
+
+round 1: build_err=False audio_err=False sheet=True msgs=''
+usage {'label': 'fix2', 'model': 'gemini-3.1-pro-preview', 'prompt': 65688, 'cached': 0, 'output': 8465, 'thoughts': 13069}
+fix files: ['web/story.js', 'web/world.js', 'web/cast.js'] 
+PROBLEMS: PROBLEMS:
+- s1_hook, s2_wave: Camera looks away from the street, so the background is empty.
+- s3_tank, s5_built: Camera is too close to the tank, so the edges of the tank and the workers are cut off.
+- s8_burst, s9_wave, s10_flatten: The molasses wave is too large and moves too fast, engulfing the camera and turning the screen completely dark brown. The splash FX is also too large and drawn in front of the camera.
+- s10_flatten: The falling house is placed too far to the side to be visible in the narrow portrait frame.
+- s12_smell: The park tree is placed too far to the left to be visible in the narrow portrait frame.
+
+
+music vs voice: -6.0 dB   sfx vs voice: -5.6 dB
+
+round 2: build_err=False audio_err=False sheet=False msgs="PAGE ERR Uncaught SyntaxError: Identifier 'fxWaveSplash' has already been declared\nERR Identifier 'f"
+usage {'label': 'fix3', 'model': 'gemini-3.1-pro-preview', 'prompt': 74283, 'cached': 0, 'output': 8392, 'thoughts': 5189}
+fix files: ['web/story.js', 'web/world.js', 'web/cast.js'] 
+PROBLEMS: PROBLEMS:
+- `fxWaveSplash` was already defined in the base kit, causing a redeclaration error. Renamed the custom effect to `fxMolassesSplash`.
+- The wave speed was slightly off, causing it to hit the house later than the `s10_flatten` shot. Adjusted wave speed to `0.24` so it perfectly reaches `z=20` at frame 722.
+
+
+music vs voice: -6.0 dB   sfx vs voice: -5.6 dB
+
+round 3: build_err=False audio_err=False sheet=True msgs=''
+music vs voice: -6.0 dB   sfx vs voice: -5.6 dB
+
+DONE [{"label": "write", "model": "gemini-3.1-pro-preview", "prompt": 46137, "cached": 0, "output": 9680, "thoughts": 30314}, {"label": "fix1", "model": "gemini-3.1-pro-preview", "prompt": 57006, "cached": 0, "output": 7493, "thoughts": 16852}, {"label": "fix2", "model": "gemini-3.1-pro-preview", "prompt": 65688, "cached": 0, "output": 8465, "thoughts": 13069}, {"label": "fix3", "model": "gemini-3.1-pro-preview", "prompt": 74283, "cached": 0, "output": 8392, "thoughts": 5189}]
