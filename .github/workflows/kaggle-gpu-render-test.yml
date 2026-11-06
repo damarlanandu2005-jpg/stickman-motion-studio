@@ -1,0 +1,64 @@
+name: Kaggle GPU render speed test (emu_war, whole video on a T4 vs CPU)
+on:
+  workflow_dispatch:
+  push:
+    branches: [gemini-cartoon]
+    paths: ['kaggle/gpu-render-test/**', '.github/workflows/kaggle-gpu-render-test.yml', 'kit/tools/render.mjs']
+permissions:
+  contents: write
+concurrency:
+  group: kaggle-gpu-render-test
+  cancel-in-progress: false
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - run: python -m pip install kaggle==2.2.5 six
+      - name: Build the kernel script with the project inside
+        run: |
+          tar czf /tmp/p.tgz -C mine/emu_war web -C "$GITHUB_WORKSPACE/kit/tools" render.mjs
+          python3 - <<'PY'
+          import base64
+          b=base64.b64encode(open('/tmp/p.tgz','rb').read()).decode()
+          p='kaggle/gpu-render-test/render_test.py'; s=open(p).read().replace('__B64__',b); open(p,'w').write(s)
+          print('script bytes',len(s))
+          PY
+      - name: Push and wait
+        env:
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+        run: |
+          set -u
+          U=$(echo "$KAGGLE_USERNAME" | tr -d '[:space:]'); export KAGGLE_USERNAME="$U"; export KAGGLE_KEY=$(echo "$KAGGLE_KEY" | tr -d '[:space:]')
+          sed -i "s/USERNAME/$U/" kaggle/gpu-render-test/kernel-metadata.json
+          kaggle kernels push -p kaggle/gpu-render-test 2>&1 | tee push.txt
+          for i in $(seq 1 200); do
+            sleep 20
+            S=$(kaggle kernels status "$U/gpu-render-test" 2>&1 | tail -1); echo "$i $S"
+            case "$S" in *COMPLETE*|*ERROR*|*CANCEL*) break;; esac
+          done
+          mkdir -p out && kaggle kernels output "$U/gpu-render-test" -p out 2>&1 | tail -3 || true
+          ls -R out | head -30
+          python3 - <<'PY'
+          import json,glob
+          for f in glob.glob('out/*.log'):
+              try: txt=''.join(x.get('data','') for x in json.load(open(f)))
+              except Exception: txt=open(f).read()
+              print(txt[-5000:])
+          for f in glob.glob('out/render_result.json'): print(open(f).read())
+          PY
+      - name: Save result to branch
+        if: always()
+        run: |
+          mkdir -p results_kaggle/render_sample
+          cp out/render_result.json results_kaggle/ 2>/dev/null || echo '{"note":"no result"}' > results_kaggle/render_result.json
+          cp out/sample/* results_kaggle/render_sample/ 2>/dev/null || true
+          git checkout -- kaggle 2>/dev/null || true
+          git config user.name "github-actions"; git config user.email "actions@users.noreply.github.com"
+          git add results_kaggle; git commit -m "Kaggle GPU render result [skip ci]" || exit 0
+          git pull --rebase -X theirs origin gemini-cartoon || true
+          git push origin HEAD:gemini-cartoon || true
