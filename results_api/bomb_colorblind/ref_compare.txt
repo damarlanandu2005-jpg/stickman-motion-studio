@@ -1,17 +1,20 @@
-short.mp4: 1082 frames, 16 shots
-  brightness       0.3444   ref 0.4175 .. 0.5901  LOW
-  saturation       0.2239   ref 0.4204 .. 0.5825  LOW
-  palette size     19.0     ref 28.0 .. 38.5  LOW
-  detail           0.0908   ref 0.1004 .. 0.2039  ok
-  held frames      0.0139   ref 0.0103 .. 0.0722  ok
-  object motion    1.0699   ref 2.4847 .. 12.9695  ok
+short.mp4: 1082 frames, 14 shots
+  brightness       0.2301   ref 0.4175 .. 0.5901  LOW
+  saturation       0.4226   ref 0.4204 .. 0.5825  ok
+  palette size     15.0     ref 28.0 .. 38.5  LOW
+  detail           0.0595   ref 0.1004 .. 0.2039  LOW
+  held frames      0.0601   ref 0.0103 .. 0.0722  ok
+  object motion    0.8682   ref 2.4847 .. 12.9695  LOW
   shot length (s)  2.3667   ref 0.9167 .. 1.5417  HIGH
   weak shots: 
-    {'shot': 4, 'frames': '339-436', 'seconds': '11.3-14.5', 'problems': ['dark']}
-    {'shot': 5, 'frames': '436-499', 'seconds': '14.5-16.6', 'problems': ['few colours']}
-    {'shot': 6, 'frames': '499-547', 'seconds': '16.6-18.2', 'problems': ['few colours']}
-    {'shot': 7, 'frames': '547-616', 'seconds': '18.2-20.5', 'problems': ['dark']}
-    {'shot': 8, 'frames': '616-696', 'seconds': '20.5-23.2', 'problems': ['dark']}
-    {'shot': 9, 'frames': '696-772', 'seconds': '23.2-25.7', 'problems': ['dark']}
-    {'shot': 10, 'frames': '772-780', 'seconds': '25.7-26.0', 'problems': ['dark', 'few colours']}
-    {'shot': 11, 'frames': '780-792', 'seconds': '26.0-26.4', 'problems': ['few colours']}
+    {'shot': 2, 'frames': '250-339', 'seconds': '8.3-11.3', 'problems': ['dark', 'few colours']}
+    {'shot': 3, 'frames': '339-436', 'seconds': '11.3-14.5', 'problems': ['dark', 'few colours']}
+    {'shot': 4, 'frames': '436-499', 'seconds': '14.5-16.6', 'problems': ['dark']}
+    {'shot': 6, 'frames': '547-616', 'seconds': '18.2-20.5', 'problems': ['dark']}
+    {'shot': 7, 'frames': '616-696', 'seconds': '20.5-23.2', 'problems': ['dark', 'plain (little detail)', 'few colours']}
+    {'shot': 8, 'frames': '696-772', 'seconds': '23.2-25.7', 'problems': ['dark', 'plain (little detail)']}
+    {'shot': 9, 'frames': '772-797', 'seconds': '25.7-26.6', 'problems': ['dark', 'few colours']}
+    {'shot': 10, 'frames': '797-858', 'seconds': '26.6-28.6', 'problems': ['plain (little detail)', 'few colours']}
+    {'shot': 11, 'frames': '858-918', 'seconds': '28.6-30.6', 'problems': ['plain (little detail)', 'few colours']}
+    {'shot': 12, 'frames': '918-991', 'seconds': '30.6-33.0', 'problems': ['dark']}
+    {'shot': 13, 'frames': '991-1082', 'seconds': '33.0-36.1', 'problems': ['plain (little detail)', 'few colours']}

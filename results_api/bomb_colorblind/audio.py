@@ -4,34 +4,38 @@ exec(open(os.path.join(D, "audiolib.py")).read())
 F = lambda f: f / 30
 music = np.zeros(N, np.float32); sfx = np.zeros(N, np.float32)
 
-# Music
-# s1-s3: curious/confident
-place(music, folk(100, F(250)), 0, 0.4)
-# s4-s11: tense electronic pulse
-for i in range(int((F(796)-F(250))/0.5)):
-    place(music, pluck(midi(45), 0.2, 0.8), F(250) + i*0.5, 0.3)
-    if i % 4 == 0: place(music, pluck(midi(57), 0.4, 0.6), F(250) + i*0.5, 0.3)
-# s12-s13: sustained suspense
-place(music, brass([midi(45), midi(52)], F(917)-F(797)), F(797), 0.2)
-# s14-s15: triumphant
-place(music, ragtime(DUR - F(918), 60, 120), F(918), 0.6)
+beat = 60 / 120
+t = 0.0
+while t < F(1082):
+    if t < F(250):
+        if int(t/beat) % 4 == 0: place(music, pluck(midi(55), 0.5, 0.3), t, 0.4)
+    elif t < F(772):
+        place(music, drum("kick"), t, 0.3)
+        if int(t/(beat/2)) % 2 == 0: place(music, pluck(midi(60), 0.1, 0.6), t, 0.2)
+    elif t < F(918):
+        place(music, drum("kick"), t, 0.6)
+        place(music, drum("kick"), t + 0.15, 0.4)
+    else:
+        if int(t/beat) % 2 == 0: place(music, brass([midi(60), midi(64), midi(67)], beat), t, 0.3)
+        place(music, drum("snare"), t, 0.2)
+    t += beat if t < F(772) else (beat/2 if t < F(918) else beat)
 
-# SFX
-place(sfx, thunk(80, 0.5), F(20), 0.6) # s1 hit
-place(sfx, click(), F(100), 0.5) # s2 click
-place(sfx, murmur(2.0), F(150), 0.3) # s3 radio/chatter
-for i in range(3): place(sfx, ting(), F(260) + i, 0.4) # s4 beeps
-place(sfx, scrape(1.0), F(350), 0.3) # s5 buzz
-place(sfx, drum("kick"), F(450), 0.5) # s6 heartbeat
-place(sfx, drum("kick"), F(475), 0.5)
-place(sfx, click(), F(510), 0.4) # s7 tick
-place(sfx, whoosh(0.5), F(560), 0.4) # s8 scan
-place(sfx, whoosh(0.5), F(630), 0.4) # s9 trace
-place(sfx, ting(), F(710), 0.6) # s10 warning
-for i in range(3): place(sfx, ting(), F(772) + i*0.3, 0.8) # s11 loud beeps
-place(sfx, noise(1.0), F(810), 0.1) # s12 static
-place(sfx, bell(600, 1.0), F(870), 0.5) # s13 chime
-place(sfx, click(), F(930), 0.6) # s14 final click
-place(sfx, brass([midi(60), midi(64), midi(67)], 1.0), F(1000), 0.4) # s15 accent
+place(sfx, thunk(80, 0.4), F(20), 0.8)
+place(sfx, click(), F(120), 0.8)
+place(sfx, murmur(1.0), F(160), 0.5)
+place(sfx, ting(), F(310), 0.8)
+place(sfx, engine(0.5, 60), F(400), 0.5)
+place(sfx, thunk(50, 0.3), F(470), 0.8)
+place(sfx, click(), F(530), 0.8)
+place(sfx, scrape(0.5), F(590), 0.6)
+place(sfx, scrape(0.5), F(670), 0.6)
+place(sfx, ting(), F(750), 0.8)
+place(sfx, ting(), F(772), 0.9)
+place(sfx, ting(), F(782), 0.9)
+place(sfx, ting(), F(792), 0.9)
+place(sfx, whoosh(0.5), F(830), 0.5)
+place(sfx, bell(800, 1.0), F(890), 0.8)
+place(sfx, click(), F(970), 0.8)
+place(sfx, brass([midi(60), midi(64), midi(67)], 1.0), F(1030), 0.8)
 
 write_stems(music, sfx)
