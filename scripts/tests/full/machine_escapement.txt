@@ -1,0 +1,4 @@
+TITLE: How a Clock Actually Ticks
+
+NARRATION:
+How does a mechanical clock tick? Inside is a spring, pulling a stack of gears. If nothing stopped it, they would spin free in seconds. The trick is a small part called the escapement. A toothed wheel wants to turn, but an anchor-shaped piece catches one tooth, and holds it. Then a swinging pendulum rocks the anchor sideways, releasing the tooth. The wheel jumps forward one step, and the other end of the anchor catches the next tooth. Tick. Rock back, tock. Each swing lets exactly one tooth through, and the pendulum's length sets how long a swing takes. The spring supplies the push. The pendulum supplies the patience.
