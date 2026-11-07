@@ -1,0 +1,2106 @@
+{
+ "schema_version": "1.2.0",
+ "project": {
+  "id": "project",
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "source": "gemini (tools/make_beats.py)"
+ },
+ "narration": {
+  "text": "How does a mechanical clock tick? Inside is a spring, pulling a stack of gears. If nothing stopped it, they would spin free in seconds. The trick is a small part called the escapement. A toothed wheel wants to turn, but an anchor-shaped piece catches one tooth, and holds it. Then a swinging pendulum rocks the anchor sideways, releasing the tooth. The wheel jumps forward one step, and the other end of the anchor catches the next tooth. Tick. Rock back, tock. Each swing lets exactly one tooth through, and the pendulum's length sets how long a swing takes. The spring supplies the push. The pendulum supplies the patience.",
+  "words": [
+   {
+    "w": "How",
+    "s": 0.0,
+    "e": 0.172
+   },
+   {
+    "w": "does",
+    "s": 0.172,
+    "e": 0.344
+   },
+   {
+    "w": "a",
+    "s": 0.344,
+    "e": 0.515
+   },
+   {
+    "w": "mechanical",
+    "s": 0.515,
+    "e": 1.202
+   },
+   {
+    "w": "clock",
+    "s": 1.202,
+    "e": 1.374
+   },
+   {
+    "w": "tick?",
+    "s": 1.374,
+    "e": 1.546
+   },
+   {
+    "w": "Inside",
+    "s": 1.846,
+    "e": 2.291
+   },
+   {
+    "w": "is",
+    "s": 2.291,
+    "e": 2.514
+   },
+   {
+    "w": "a",
+    "s": 2.514,
+    "e": 2.736
+   },
+   {
+    "w": "spring,",
+    "s": 2.736,
+    "e": 2.959
+   },
+   {
+    "w": "pulling",
+    "s": 2.959,
+    "e": 3.404
+   },
+   {
+    "w": "a",
+    "s": 3.404,
+    "e": 3.626
+   },
+   {
+    "w": "stack",
+    "s": 3.626,
+    "e": 3.849
+   },
+   {
+    "w": "of",
+    "s": 3.849,
+    "e": 4.071
+   },
+   {
+    "w": "gears.",
+    "s": 4.071,
+    "e": 4.294
+   },
+   {
+    "w": "If",
+    "s": 4.528,
+    "e": 4.713
+   },
+   {
+    "w": "nothing",
+    "s": 4.713,
+    "e": 5.083
+   },
+   {
+    "w": "stopped",
+    "s": 5.083,
+    "e": 5.453
+   },
+   {
+    "w": "it,",
+    "s": 5.453,
+    "e": 5.638
+   },
+   {
+    "w": "they",
+    "s": 5.638,
+    "e": 5.823
+   },
+   {
+    "w": "would",
+    "s": 5.823,
+    "e": 6.008
+   },
+   {
+    "w": "spin",
+    "s": 6.008,
+    "e": 6.193
+   },
+   {
+    "w": "free",
+    "s": 6.193,
+    "e": 6.378
+   },
+   {
+    "w": "in",
+    "s": 6.378,
+    "e": 6.563
+   },
+   {
+    "w": "seconds.",
+    "s": 6.563,
+    "e": 6.933
+   },
+   {
+    "w": "The",
+    "s": 7.11,
+    "e": 7.279
+   },
+   {
+    "w": "trick",
+    "s": 7.279,
+    "e": 7.448
+   },
+   {
+    "w": "is",
+    "s": 7.448,
+    "e": 7.617
+   },
+   {
+    "w": "a",
+    "s": 7.617,
+    "e": 7.786
+   },
+   {
+    "w": "small",
+    "s": 7.786,
+    "e": 7.955
+   },
+   {
+    "w": "part",
+    "s": 7.955,
+    "e": 8.124
+   },
+   {
+    "w": "called",
+    "s": 8.124,
+    "e": 8.462
+   },
+   {
+    "w": "the",
+    "s": 8.462,
+    "e": 8.631
+   },
+   {
+    "w": "escapement.",
+    "s": 8.631,
+    "e": 9.307
+   },
+   {
+    "w": "A",
+    "s": 9.686,
+    "e": 9.885
+   },
+   {
+    "w": "toothed",
+    "s": 9.885,
+    "e": 10.283
+   },
+   {
+    "w": "wheel",
+    "s": 10.283,
+    "e": 10.482
+   },
+   {
+    "w": "wants",
+    "s": 10.482,
+    "e": 10.681
+   },
+   {
+    "w": "to",
+    "s": 10.681,
+    "e": 10.88
+   },
+   {
+    "w": "turn,",
+    "s": 10.88,
+    "e": 11.079
+   },
+   {
+    "w": "but",
+    "s": 11.079,
+    "e": 11.278
+   },
+   {
+    "w": "an",
+    "s": 11.278,
+    "e": 11.477
+   },
+   {
+    "w": "anchor-shaped",
+    "s": 11.477,
+    "e": 12.273
+   },
+   {
+    "w": "piece",
+    "s": 12.273,
+    "e": 12.472
+   },
+   {
+    "w": "catches",
+    "s": 12.472,
+    "e": 12.87
+   },
+   {
+    "w": "one",
+    "s": 12.87,
+    "e": 13.069
+   },
+   {
+    "w": "tooth,",
+    "s": 13.069,
+    "e": 13.268
+   },
+   {
+    "w": "and",
+    "s": 13.268,
+    "e": 13.467
+   },
+   {
+    "w": "holds",
+    "s": 13.467,
+    "e": 13.666
+   },
+   {
+    "w": "it.",
+    "s": 13.666,
+    "e": 13.865
+   },
+   {
+    "w": "Then",
+    "s": 14.223,
+    "e": 14.407
+   },
+   {
+    "w": "a",
+    "s": 14.407,
+    "e": 14.59
+   },
+   {
+    "w": "swinging",
+    "s": 14.59,
+    "e": 14.957
+   },
+   {
+    "w": "pendulum",
+    "s": 14.957,
+    "e": 15.508
+   },
+   {
+    "w": "rocks",
+    "s": 15.508,
+    "e": 15.691
+   },
+   {
+    "w": "the",
+    "s": 15.691,
+    "e": 15.875
+   },
+   {
+    "w": "anchor",
+    "s": 15.875,
+    "e": 16.242
+   },
+   {
+    "w": "sideways,",
+    "s": 16.242,
+    "e": 16.792
+   },
+   {
+    "w": "releasing",
+    "s": 16.792,
+    "e": 17.343
+   },
+   {
+    "w": "the",
+    "s": 17.343,
+    "e": 17.526
+   },
+   {
+    "w": "tooth.",
+    "s": 17.526,
+    "e": 17.71
+   },
+   {
+    "w": "The",
+    "s": 18.104,
+    "e": 18.303
+   },
+   {
+    "w": "wheel",
+    "s": 18.303,
+    "e": 18.503
+   },
+   {
+    "w": "jumps",
+    "s": 18.503,
+    "e": 18.703
+   },
+   {
+    "w": "forward",
+    "s": 18.703,
+    "e": 19.103
+   },
+   {
+    "w": "one",
+    "s": 19.103,
+    "e": 19.302
+   },
+   {
+    "w": "step,",
+    "s": 19.302,
+    "e": 19.502
+   },
+   {
+    "w": "and",
+    "s": 19.502,
+    "e": 19.702
+   },
+   {
+    "w": "the",
+    "s": 19.702,
+    "e": 19.902
+   },
+   {
+    "w": "other",
+    "s": 19.902,
+    "e": 20.301
+   },
+   {
+    "w": "end",
+    "s": 20.301,
+    "e": 20.501
+   },
+   {
+    "w": "of",
+    "s": 20.501,
+    "e": 20.701
+   },
+   {
+    "w": "the",
+    "s": 20.701,
+    "e": 20.9
+   },
+   {
+    "w": "anchor",
+    "s": 20.9,
+    "e": 21.3
+   },
+   {
+    "w": "catches",
+    "s": 21.3,
+    "e": 21.699
+   },
+   {
+    "w": "the",
+    "s": 21.699,
+    "e": 21.899
+   },
+   {
+    "w": "next",
+    "s": 21.899,
+    "e": 22.099
+   },
+   {
+    "w": "tooth.",
+    "s": 22.099,
+    "e": 22.299
+   },
+   {
+    "w": "Tick.",
+    "s": 22.603,
+    "e": 22.883
+   },
+   {
+    "w": "Rock",
+    "s": 23.05,
+    "e": 23.462
+   },
+   {
+    "w": "back,",
+    "s": 23.462,
+    "e": 23.873
+   },
+   {
+    "w": "tock.",
+    "s": 23.873,
+    "e": 24.285
+   },
+   {
+    "w": "Each",
+    "s": 24.429,
+    "e": 24.66
+   },
+   {
+    "w": "swing",
+    "s": 24.66,
+    "e": 24.891
+   },
+   {
+    "w": "lets",
+    "s": 24.891,
+    "e": 25.121
+   },
+   {
+    "w": "exactly",
+    "s": 25.121,
+    "e": 25.814
+   },
+   {
+    "w": "one",
+    "s": 25.814,
+    "e": 26.044
+   },
+   {
+    "w": "tooth",
+    "s": 26.044,
+    "e": 26.275
+   },
+   {
+    "w": "through,",
+    "s": 26.275,
+    "e": 26.506
+   },
+   {
+    "w": "and",
+    "s": 26.506,
+    "e": 26.737
+   },
+   {
+    "w": "the",
+    "s": 26.737,
+    "e": 26.967
+   },
+   {
+    "w": "pendulum's",
+    "s": 26.967,
+    "e": 27.66
+   },
+   {
+    "w": "length",
+    "s": 27.66,
+    "e": 27.89
+   },
+   {
+    "w": "sets",
+    "s": 27.89,
+    "e": 28.121
+   },
+   {
+    "w": "how",
+    "s": 28.121,
+    "e": 28.352
+   },
+   {
+    "w": "long",
+    "s": 28.352,
+    "e": 28.583
+   },
+   {
+    "w": "a",
+    "s": 28.583,
+    "e": 28.814
+   },
+   {
+    "w": "swing",
+    "s": 28.814,
+    "e": 29.044
+   },
+   {
+    "w": "takes.",
+    "s": 29.044,
+    "e": 29.506
+   },
+   {
+    "w": "The",
+    "s": 29.85,
+    "e": 30.092
+   },
+   {
+    "w": "spring",
+    "s": 30.092,
+    "e": 30.335
+   },
+   {
+    "w": "supplies",
+    "s": 30.335,
+    "e": 30.821
+   },
+   {
+    "w": "the",
+    "s": 30.821,
+    "e": 31.064
+   },
+   {
+    "w": "push.",
+    "s": 31.064,
+    "e": 31.307
+   },
+   {
+    "w": "The",
+    "s": 31.569,
+    "e": 31.791
+   },
+   {
+    "w": "pendulum",
+    "s": 31.791,
+    "e": 32.457
+   },
+   {
+    "w": "supplies",
+    "s": 32.457,
+    "e": 32.901
+   },
+   {
+    "w": "the",
+    "s": 32.901,
+    "e": 33.123
+   },
+   {
+    "w": "patience.",
+    "s": 33.123,
+    "e": 33.567
+   }
+  ]
+ },
+ "entities": {
+  "characters": [
+   {
+    "id": "CLOCKMAKER",
+    "outfit": "worker1",
+    "hat": "cap",
+    "skin_hair": "light skin, white hair, white beard",
+    "default_face": "neutral",
+    "identity_lock": [
+     "worker1 outfit",
+     "cap",
+     "light skin, white hair, white beard"
+    ],
+    "status": "kit"
+   }
+  ],
+  "objects": [
+   {
+    "id": "MECHANICAL-CLOCK",
+    "label": "mechanical clock",
+    "size_m": 0.6,
+    "representation": "3d_mesh",
+    "material_ids": [
+     "M01",
+     "M07"
+    ],
+    "aliases": [
+     "clock",
+     "it"
+    ],
+    "status": "new_item"
+   },
+   {
+    "id": "MAINSPRING",
+    "label": "mainspring",
+    "size_m": 0.2,
+    "representation": "3d_mesh",
+    "material_ids": [
+     "M02"
+    ],
+    "aliases": [
+     "spring",
+     "push"
+    ],
+    "status": "new_item"
+   },
+   {
+    "id": "GEAR-STACK",
+    "label": "gear stack",
+    "size_m": 0.4,
+    "representation": "3d_mesh",
+    "material_ids": [
+     "M02"
+    ],
+    "aliases": [
+     "gears",
+     "they"
+    ],
+    "status": "new_item"
+   },
+   {
+    "id": "ESCAPEMENT-WHEEL",
+    "label": "escapement wheel",
+    "size_m": 0.15,
+    "representation": "3d_mesh",
+    "material_ids": [
+     "M02"
+    ],
+    "aliases": [
+     "escapement",
+     "toothed wheel",
+     "wheel",
+     "tooth",
+     "next tooth",
+     "step"
+    ],
+    "status": "new_item"
+   },
+   {
+    "id": "ANCHOR-PIECE",
+    "label": "anchor piece",
+    "size_m": 0.2,
+    "representation": "3d_mesh",
+    "material_ids": [
+     "M02"
+    ],
+    "aliases": [
+     "anchor-shaped piece",
+     "anchor",
+     "other end of the anchor",
+     "piece"
+    ],
+    "status": "new_item"
+   },
+   {
+    "id": "SWINGING-PENDULUM",
+    "label": "swinging pendulum",
+    "size_m": 0.5,
+    "representation": "3d_mesh",
+    "material_ids": [
+     "M02"
+    ],
+    "aliases": [
+     "pendulum",
+     "pendulum's length",
+     "swing",
+     "patience"
+    ],
+    "status": "new_item"
+   }
+  ],
+  "environments": [
+   {
+    "id": "WORKSHOP",
+    "width_m": 8,
+    "light": "indoor",
+    "lighting_profile_id": "L01",
+    "landmarks": [
+     "wooden workbench",
+     "tools on left wall",
+     "window on right"
+    ],
+    "material_ids": [
+     "M01",
+     "M07"
+    ],
+    "depth_layers": {
+     "foreground": "workbench edge",
+     "midground": "clockmaker and clock",
+     "background": "tools and window"
+    }
+   },
+   {
+    "id": "CLOCK-INTERIOR",
+    "width_m": 1,
+    "light": "indoor",
+    "lighting_profile_id": "L04",
+    "landmarks": [
+     "brass gears",
+     "metal springs",
+     "pendulum rod"
+    ],
+    "material_ids": [
+     "M02"
+    ],
+    "depth_layers": {
+     "foreground": "gear edges",
+     "midground": "gears and springs",
+     "background": "dark clock case interior"
+    }
+   },
+   {
+    "id": "ESCAPEMENT-VIEW",
+    "width_m": 0.3,
+    "light": "indoor",
+    "lighting_profile_id": "L04",
+    "landmarks": [
+     "toothed wheel",
+     "anchor piece",
+     "pendulum rod"
+    ],
+    "material_ids": [
+     "M02"
+    ],
+    "depth_layers": {
+     "foreground": "anchor hooks",
+     "midground": "wheel and anchor",
+     "background": "clock plate"
+    }
+   }
+  ]
+ },
+ "beats": [
+  {
+   "id": "s1",
+   "index": 1,
+   "time": {
+    "start_s": 0.0,
+    "end_s": 1.8333
+   },
+   "narration": {
+    "text": "How does a mechanical clock tick?",
+    "word_range": [
+     0,
+     5
+    ]
+   },
+   "intent": "hook",
+   "visual_purpose": "Show the clockmaker and the mechanical clock to introduce the topic.",
+   "subject": {
+    "main_id": "MECHANICAL-CLOCK",
+    "character_ids": [
+     "CLOCKMAKER"
+    ]
+   },
+   "environment_id": "WORKSHOP",
+   "character_actions": [
+    {
+     "character_id": "CLOCKMAKER",
+     "action": "stands at workbench",
+     "pose": "hip",
+     "face": "neutral",
+     "phase": "attention",
+     "start_s": 0.0,
+     "duration_s": 1.8
+    }
+   ],
+   "shot": {
+    "recipe_id": "S01",
+    "framing": "medium",
+    "distance_m": 6,
+    "composition": {
+     "primary_id": "CLOCKMAKER",
+     "secondary_ids": [
+      "MECHANICAL-CLOCK"
+     ],
+     "focal_point_norm": [
+      0.5,
+      0.4
+     ]
+    }
+   },
+   "camera": {
+    "purpose": "establish",
+    "mode": "push-in",
+    "from": {
+     "framing": "medium",
+     "distance_m": 6,
+     "height": "eye",
+     "side": "front"
+    },
+    "to": {
+     "framing": "medium",
+     "distance_m": 4,
+     "height": "eye",
+     "side": "front"
+    },
+    "duration_s": 1.83,
+    "ease": "smooth",
+    "rationale": "Push in to introduce the clockmaker and the clock.",
+    "confidence": "designed"
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "music",
+     "event": "curious, precise classical strings",
+     "time_s": 0.0,
+     "trigger": "beat_start"
+    },
+    {
+     "track": "sfx",
+     "event": "rhythmic ticking",
+     "time_s": 1.374,
+     "trigger": "word",
+     "word_index": 5
+    }
+   ],
+   "transition_in": {
+    "type": "start",
+    "reason": "start"
+   },
+   "validation": {
+    "gates": [
+     "Q01",
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q05",
+     "Q06",
+     "Q07",
+     "Q08",
+     "Q09",
+     "Q10"
+    ],
+    "must_see": [
+     "MECHANICAL-CLOCK",
+     "CLOCKMAKER"
+    ]
+   },
+   "rule_refs": [
+    "SCR-03",
+    "CAM-04"
+   ]
+  },
+  {
+   "id": "s2",
+   "index": 2,
+   "time": {
+    "start_s": 1.8333,
+    "end_s": 4.5333
+   },
+   "narration": {
+    "text": "Inside is a spring, pulling a stack of gears.",
+    "word_range": [
+     6,
+     14
+    ]
+   },
+   "intent": "explain_mechanism",
+   "visual_purpose": "Reveal the inside of the clock showing the spring and gears.",
+   "subject": {
+    "main_id": "MAINSPRING",
+    "hero_object_id": "GEAR-STACK"
+   },
+   "environment_id": "CLOCK-INTERIOR",
+   "object_events": [
+    {
+     "object_id": "MAINSPRING",
+     "event": "settle",
+     "motion_profile": "rigid",
+     "start_s": 0.0,
+     "duration_s": 2.7
+    }
+   ],
+   "shot": {
+    "recipe_id": "S03",
+    "framing": "detail",
+    "distance_m": 0.5,
+    "composition": {
+     "primary_id": "MAINSPRING",
+     "secondary_ids": [
+      "GEAR-STACK"
+     ],
+     "focal_point_norm": [
+      0.5,
+      0.5
+     ]
+    }
+   },
+   "camera": {
+    "purpose": "inspect",
+    "mode": "pull-back",
+    "from": {
+     "framing": "detail",
+     "distance_m": 0.5,
+     "height": "eye",
+     "side": "front"
+    },
+    "to": {
+     "framing": "close",
+     "distance_m": 0.8,
+     "height": "eye",
+     "side": "front"
+    },
+    "duration_s": 2.7,
+    "ease": "easeOut",
+    "rationale": "Pull back to reveal the inner workings of the clock.",
+    "confidence": "designed"
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "music",
+     "event": "steady mechanical rhythm begins",
+     "time_s": 1.83,
+     "trigger": "beat_start"
+    },
+    {
+     "track": "sfx",
+     "event": "metallic winding tension",
+     "time_s": 2.736,
+     "trigger": "word",
+     "word_index": 9
+    }
+   ],
+   "transition_in": {
+    "type": "dissolve",
+    "reason": "new_place",
+    "frames": 8
+   },
+   "validation": {
+    "gates": [
+     "Q01",
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q05",
+     "Q06",
+     "Q07",
+     "Q08",
+     "Q09",
+     "Q10"
+    ],
+    "must_see": [
+     "MAINSPRING",
+     "GEAR-STACK"
+    ]
+   },
+   "rule_refs": [
+    "WLD-06",
+    "CAM-04"
+   ]
+  },
+  {
+   "id": "s3",
+   "index": 3,
+   "time": {
+    "start_s": 4.5333,
+    "end_s": 7.1
+   },
+   "narration": {
+    "text": "If nothing stopped it, they would spin free in seconds.",
+    "word_range": [
+     15,
+     24
+    ]
+   },
+   "intent": "physical_action",
+   "visual_purpose": "Show the gears spinning rapidly out of control.",
+   "subject": {
+    "main_id": "GEAR-STACK"
+   },
+   "environment_id": "CLOCK-INTERIOR",
+   "object_events": [
+    {
+     "object_id": "GEAR-STACK",
+     "event": "spin",
+     "motion_profile": "rigid",
+     "start_s": 0.0,
+     "duration_s": 2.5
+    }
+   ],
+   "shot": {
+    "recipe_id": "S06",
+    "framing": "close",
+    "distance_m": 0.8,
+    "composition": {
+     "primary_id": "GEAR-STACK",
+     "focal_point_norm": [
+      0.5,
+      0.5
+     ]
+    }
+   },
+   "camera": {
+    "purpose": "impact",
+    "mode": "snap-zoom",
+    "from": {
+     "framing": "close",
+     "distance_m": 0.8,
+     "height": "eye",
+     "side": "front"
+    },
+    "to": {
+     "framing": "detail",
+     "distance_m": 0.4,
+     "height": "eye",
+     "side": "front"
+    },
+    "duration_s": 2.57,
+    "ease": "easeIn",
+    "rationale": "Snap zoom to emphasize the out-of-control spinning gears.",
+    "confidence": "designed"
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "music",
+     "event": "sudden fast tempo",
+     "time_s": 4.53,
+     "trigger": "beat_start"
+    },
+    {
+     "track": "sfx",
+     "event": "fast whirring metal",
+     "time_s": 6.008,
+     "trigger": "word",
+     "word_index": 21
+    }
+   ],
+   "transition_in": {
+    "type": "cut",
+    "reason": "emphasis"
+   },
+   "validation": {
+    "gates": [
+     "Q01",
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q05",
+     "Q06",
+     "Q07",
+     "Q08",
+     "Q09",
+     "Q10"
+    ],
+    "must_see": [
+     "GEAR-STACK"
+    ]
+   },
+   "rule_refs": [
+    "FX-03",
+    "PHY-03"
+   ]
+  },
+  {
+   "id": "s4",
+   "index": 4,
+   "time": {
+    "start_s": 7.1,
+    "end_s": 9.7
+   },
+   "narration": {
+    "text": "The trick is a small part called the escapement.",
+    "word_range": [
+     25,
+     33
+    ]
+   },
+   "intent": "explain_mechanism",
+   "visual_purpose": "Introduce the escapement mechanism clearly.",
+   "subject": {
+    "main_id": "ESCAPEMENT-WHEEL",
+    "hero_object_id": "ANCHOR-PIECE"
+   },
+   "environment_id": "ESCAPEMENT-VIEW",
+   "shot": {
+    "recipe_id": "S03",
+    "framing": "detail",
+    "distance_m": 0.3,
+    "composition": {
+     "primary_id": "ESCAPEMENT-WHEEL",
+     "secondary_ids": [
+      "ANCHOR-PIECE"
+     ],
+     "focal_point_norm": [
+      0.5,
+      0.5
+     ]
+    }
+   },
+   "camera": {
+    "purpose": "hold_for_performance",
+    "mode": "static",
+    "from": {
+     "framing": "detail",
+     "distance_m": 0.3,
+     "height": "eye",
+     "side": "front"
+    },
+    "to": {
+     "framing": "detail",
+     "distance_m": 0.3,
+     "height": "eye",
+     "side": "front"
+    },
+    "duration_s": 2.6,
+    "ease": "smooth",
+    "rationale": "Hold to let the viewer clearly see the escapement mechanism.",
+    "confidence": "designed"
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "music",
+     "event": "tempo slows to a precise beat",
+     "time_s": 7.1,
+     "trigger": "beat_start"
+    },
+    {
+     "track": "sfx",
+     "event": "sharp metallic click",
+     "time_s": 8.631,
+     "trigger": "word",
+     "word_index": 33
+    }
+   ],
+   "transition_in": {
+    "type": "dissolve",
+    "reason": "scale_change",
+    "frames": 8
+   },
+   "validation": {
+    "gates": [
+     "Q01",
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q05",
+     "Q06",
+     "Q07",
+     "Q08",
+     "Q09",
+     "Q10"
+    ],
+    "must_see": [
+     "ESCAPEMENT-WHEEL",
+     "ANCHOR-PIECE"
+    ]
+   },
+   "rule_refs": [
+    "CAM-13",
+    "PRP-05"
+   ]
+  },
+  {
+   "id": "s5",
+   "index": 5,
+   "time": {
+    "start_s": 9.7,
+    "end_s": 14.2333
+   },
+   "narration": {
+    "text": "A toothed wheel wants to turn, but an anchor-shaped piece catches one tooth, and holds it.",
+    "word_range": [
+     34,
+     49
+    ]
+   },
+   "intent": "explain_mechanism",
+   "visual_purpose": "Demonstrate the anchor catching the wheel tooth.",
+   "subject": {
+    "main_id": "ANCHOR-PIECE",
+    "hero_object_id": "ESCAPEMENT-WHEEL"
+   },
+   "environment_id": "ESCAPEMENT-VIEW",
+   "object_events": [
+    {
+     "object_id": "ESCAPEMENT-WHEEL",
+     "event": "move",
+     "motion_profile": "rigid",
+     "start_s": 0.0,
+     "duration_s": 4.5
+    },
+    {
+     "object_id": "ANCHOR-PIECE",
+     "event": "impact",
+     "motion_profile": "rigid",
+     "contact_target_id": "ESCAPEMENT-WHEEL",
+     "secondary_effects": [
+      "sound"
+     ],
+     "start_s": 0.0,
+     "duration_s": 4.5
+    }
+   ],
+   "shot": {
+    "recipe_id": "S06",
+    "framing": "detail",
+    "distance_m": 0.2,
+    "composition": {
+     "primary_id": "ANCHOR-PIECE",
+     "secondary_ids": [
+      "ESCAPEMENT-WHEEL"
+     ],
+     "focal_point_norm": [
+      0.5,
+      0.5
+     ]
+    }
+   },
+   "camera": {
+    "purpose": "inspect",
+    "mode": "orbit",
+    "from": {
+     "framing": "detail",
+     "distance_m": 0.2,
+     "height": "eye",
+     "side": "front"
+    },
+    "to": {
+     "framing": "detail",
+     "distance_m": 0.2,
+     "height": "eye",
+     "side": "front"
+    },
+    "duration_s": 4.53,
+    "ease": "smooth",
+    "rationale": "Orbit slowly to show the 3D shape of the anchor catching the tooth.",
+    "confidence": "designed"
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "music",
+     "event": "suspenseful held note",
+     "time_s": 9.7,
+     "trigger": "beat_start"
+    },
+    {
+     "track": "sfx",
+     "event": "heavy metallic lock",
+     "time_s": 13.467,
+     "trigger": "word",
+     "word_index": 48
+    }
+   ],
+   "transition_in": {
+    "type": "blend_fly",
+    "reason": "continuity",
+    "frames": 8
+   },
+   "validation": {
+    "gates": [
+     "Q01",
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q05",
+     "Q06",
+     "Q07",
+     "Q08",
+     "Q09",
+     "Q10"
+    ],
+    "must_see": [
+     "ESCAPEMENT-WHEEL",
+     "ANCHOR-PIECE"
+    ]
+   },
+   "rule_refs": [
+    "CAM-03",
+    "PHY-03"
+   ]
+  },
+  {
+   "id": "s6",
+   "index": 6,
+   "time": {
+    "start_s": 14.2333,
+    "end_s": 18.1
+   },
+   "narration": {
+    "text": "Then a swinging pendulum rocks the anchor sideways, releasing the tooth.",
+    "word_range": [
+     50,
+     60
+    ]
+   },
+   "intent": "explain_mechanism",
+   "visual_purpose": "Show the pendulum rocking the anchor to release the wheel.",
+   "subject": {
+    "main_id": "SWINGING-PENDULUM",
+    "hero_object_id": "ANCHOR-PIECE"
+   },
+   "environment_id": "ESCAPEMENT-VIEW",
+   "object_events": [
+    {
+     "object_id": "SWINGING-PENDULUM",
+     "event": "swing",
+     "motion_profile": "rigid",
+     "start_s": 0.0,
+     "duration_s": 3.8
+    },
+    {
+     "object_id": "ANCHOR-PIECE",
+     "event": "move",
+     "motion_profile": "rigid",
+     "start_s": 0.0,
+     "duration_s": 3.8
+    }
+   ],
+   "shot": {
+    "recipe_id": "S03",
+    "framing": "close",
+    "distance_m": 0.4,
+    "composition": {
+     "primary_id": "SWINGING-PENDULUM",
+     "secondary_ids": [
+      "ANCHOR-PIECE",
+      "ESCAPEMENT-WHEEL"
+     ],
+     "focal_point_norm": [
+      0.5,
+      0.5
+     ]
+    }
+   },
+   "camera": {
+    "purpose": "emphasize",
+    "mode": "push-in",
+    "from": {
+     "framing": "close",
+     "distance_m": 0.4,
+     "height": "eye",
+     "side": "front"
+    },
+    "to": {
+     "framing": "detail",
+     "distance_m": 0.2,
+     "height": "eye",
+     "side": "front"
+    },
+    "duration_s": 3.87,
+    "ease": "easeOut",
+    "rationale": "Push in to emphasize the pendulum releasing the anchor.",
+    "confidence": "designed"
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "music",
+     "event": "rhythmic swaying melody",
+     "time_s": 14.23,
+     "trigger": "beat_start"
+    },
+    {
+     "track": "sfx",
+     "event": "smooth sliding metal",
+     "time_s": 16.792,
+     "trigger": "word",
+     "word_index": 58
+    }
+   ],
+   "transition_in": {
+    "type": "blend_fly",
+    "reason": "continuity",
+    "frames": 8
+   },
+   "validation": {
+    "gates": [
+     "Q01",
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q05",
+     "Q06",
+     "Q07",
+     "Q08",
+     "Q09",
+     "Q10"
+    ],
+    "must_see": [
+     "SWINGING-PENDULUM",
+     "ANCHOR-PIECE",
+     "ESCAPEMENT-WHEEL"
+    ]
+   },
+   "rule_refs": [
+    "PHY-03",
+    "CAM-05"
+   ]
+  },
+  {
+   "id": "s7",
+   "index": 7,
+   "time": {
+    "start_s": 18.1,
+    "end_s": 22.6
+   },
+   "narration": {
+    "text": "The wheel jumps forward one step, and the other end of the anchor catches the next tooth.",
+    "word_range": [
+     61,
+     77
+    ]
+   },
+   "intent": "explain_mechanism",
+   "visual_purpose": "Show the wheel advancing and the opposite anchor hook catching it.",
+   "subject": {
+    "main_id": "ESCAPEMENT-WHEEL",
+    "hero_object_id": "ANCHOR-PIECE"
+   },
+   "environment_id": "ESCAPEMENT-VIEW",
+   "object_events": [
+    {
+     "object_id": "ESCAPEMENT-WHEEL",
+     "event": "move",
+     "motion_profile": "rigid",
+     "start_s": 0.0,
+     "duration_s": 4.5
+    },
+    {
+     "object_id": "ANCHOR-PIECE",
+     "event": "impact",
+     "motion_profile": "rigid",
+     "contact_target_id": "ESCAPEMENT-WHEEL",
+     "secondary_effects": [
+      "sound"
+     ],
+     "start_s": 0.0,
+     "duration_s": 4.5
+    }
+   ],
+   "shot": {
+    "recipe_id": "S06",
+    "framing": "detail",
+    "distance_m": 0.2,
+    "composition": {
+     "primary_id": "ANCHOR-PIECE",
+     "secondary_ids": [
+      "ESCAPEMENT-WHEEL"
+     ],
+     "focal_point_norm": [
+      0.5,
+      0.5
+     ]
+    }
+   },
+   "camera": {
+    "purpose": "hold_for_performance",
+    "mode": "static",
+    "from": {
+     "framing": "detail",
+     "distance_m": 0.2,
+     "height": "eye",
+     "side": "front"
+    },
+    "to": {
+     "framing": "detail",
+     "distance_m": 0.2,
+     "height": "eye",
+     "side": "front"
+    },
+    "duration_s": 4.5,
+    "ease": "smooth",
+    "rationale": "Hold to clearly show the step-by-step catching mechanism.",
+    "confidence": "designed"
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "music",
+     "event": "precise staccato notes",
+     "time_s": 18.1,
+     "trigger": "beat_start"
+    },
+    {
+     "track": "sfx",
+     "event": "ratchet click",
+     "time_s": 21.3,
+     "trigger": "word",
+     "word_index": 74
+    }
+   ],
+   "transition_in": {
+    "type": "cut",
+    "reason": "emphasis"
+   },
+   "validation": {
+    "gates": [
+     "Q01",
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q05",
+     "Q06",
+     "Q07",
+     "Q08",
+     "Q09",
+     "Q10"
+    ],
+    "must_see": [
+     "ESCAPEMENT-WHEEL",
+     "ANCHOR-PIECE"
+    ]
+   },
+   "rule_refs": [
+    "CAM-13",
+    "PHY-03"
+   ]
+  },
+  {
+   "id": "s8",
+   "index": 8,
+   "time": {
+    "start_s": 22.6,
+    "end_s": 23.0667
+   },
+   "narration": {
+    "text": "Tick.",
+    "word_range": [
+     78,
+     78
+    ]
+   },
+   "intent": "physical_action",
+   "visual_purpose": "Emphasize the exact moment of the tick with a sharp impact.",
+   "subject": {
+    "main_id": "ANCHOR-PIECE",
+    "hero_object_id": "ESCAPEMENT-WHEEL"
+   },
+   "environment_id": "ESCAPEMENT-VIEW",
+   "object_events": [
+    {
+     "object_id": "ANCHOR-PIECE",
+     "event": "impact",
+     "motion_profile": "rigid",
+     "contact_target_id": "ESCAPEMENT-WHEEL",
+     "secondary_effects": [
+      "sparks",
+      "camera_kick",
+      "sound"
+     ],
+     "start_s": 0.0,
+     "duration_s": 0.4
+    }
+   ],
+   "shot": {
+    "recipe_id": "S03",
+    "framing": "detail",
+    "distance_m": 0.15,
+    "composition": {
+     "primary_id": "ANCHOR-PIECE",
+     "secondary_ids": [
+      "ESCAPEMENT-WHEEL"
+     ],
+     "focal_point_norm": [
+      0.5,
+      0.5
+     ]
+    }
+   },
+   "camera": {
+    "purpose": "impact",
+    "mode": "snap-zoom",
+    "from": {
+     "framing": "detail",
+     "distance_m": 0.15,
+     "height": "eye",
+     "side": "front"
+    },
+    "to": {
+     "framing": "detail",
+     "distance_m": 0.1,
+     "height": "eye",
+     "side": "front"
+    },
+    "duration_s": 0.47,
+    "ease": "easeIn",
+    "kicks": [
+     {
+      "time_s": 22.6,
+      "amp": 1.5
+     }
+    ],
+    "rationale": "Snap zoom to emphasize the exact moment of the tick.",
+    "confidence": "designed"
+   },
+   "captions": {
+    "mode": "one_word",
+    "emphasis_word_indexes": [
+     78
+    ]
+   },
+   "audio_events": [
+    {
+     "track": "music",
+     "event": "music silent just before the tick",
+     "time_s": 22.6,
+     "trigger": "beat_start"
+    },
+    {
+     "track": "sfx",
+     "event": "loud crisp tick",
+     "time_s": 22.603,
+     "trigger": "word",
+     "word_index": 78
+    }
+   ],
+   "transition_in": {
+    "type": "cut",
+    "reason": "emphasis"
+   },
+   "validation": {
+    "gates": [
+     "Q01",
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q05",
+     "Q06",
+     "Q07",
+     "Q08",
+     "Q09",
+     "Q10"
+    ],
+    "must_see": [
+     "ANCHOR-PIECE",
+     "ESCAPEMENT-WHEEL"
+    ]
+   },
+   "rule_refs": [
+    "FX-02",
+    "FX-05"
+   ]
+  },
+  {
+   "id": "s9",
+   "index": 9,
+   "time": {
+    "start_s": 23.0667,
+    "end_s": 24.4333
+   },
+   "narration": {
+    "text": "Rock back, tock.",
+    "word_range": [
+     79,
+     81
+    ]
+   },
+   "intent": "physical_action",
+   "visual_purpose": "Show the reverse motion of the anchor creating the tock.",
+   "subject": {
+    "main_id": "ANCHOR-PIECE",
+    "hero_object_id": "ESCAPEMENT-WHEEL"
+   },
+   "environment_id": "ESCAPEMENT-VIEW",
+   "object_events": [
+    {
+     "object_id": "ANCHOR-PIECE",
+     "event": "swing",
+     "motion_profile": "rigid",
+     "start_s": 0.0,
+     "duration_s": 1.3
+    }
+   ],
+   "shot": {
+    "recipe_id": "S06",
+    "framing": "close",
+    "distance_m": 0.2,
+    "composition": {
+     "primary_id": "ANCHOR-PIECE",
+     "secondary_ids": [
+      "ESCAPEMENT-WHEEL"
+     ],
+     "focal_point_norm": [
+      0.5,
+      0.5
+     ]
+    }
+   },
+   "camera": {
+    "purpose": "follow",
+    "mode": "pull-back",
+    "from": {
+     "framing": "detail",
+     "distance_m": 0.2,
+     "height": "eye",
+     "side": "front"
+    },
+    "to": {
+     "framing": "close",
+     "distance_m": 0.4,
+     "height": "eye",
+     "side": "front"
+    },
+    "duration_s": 1.36,
+    "ease": "easeOut",
+    "rationale": "Pull back to follow the anchor rocking back for the tock.",
+    "confidence": "designed"
+   },
+   "captions": {
+    "mode": "one_word",
+    "emphasis_word_indexes": [
+     81
+    ]
+   },
+   "audio_events": [
+    {
+     "track": "music",
+     "event": "rhythm resumes",
+     "time_s": 23.07,
+     "trigger": "beat_start"
+    },
+    {
+     "track": "sfx",
+     "event": "loud crisp tock",
+     "time_s": 23.873,
+     "trigger": "word",
+     "word_index": 81
+    }
+   ],
+   "transition_in": {
+    "type": "blend_fly",
+    "reason": "continuity",
+    "frames": 8
+   },
+   "validation": {
+    "gates": [
+     "Q01",
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q05",
+     "Q06",
+     "Q07",
+     "Q08",
+     "Q09",
+     "Q10"
+    ],
+    "must_see": [
+     "ANCHOR-PIECE",
+     "ESCAPEMENT-WHEEL"
+    ]
+   },
+   "rule_refs": [
+    "PHY-01",
+    "CAM-07"
+   ]
+  },
+  {
+   "id": "s10",
+   "index": 10,
+   "time": {
+    "start_s": 24.4333,
+    "end_s": 29.8667
+   },
+   "narration": {
+    "text": "Each swing lets exactly one tooth through, and the pendulum's length sets how long a swing takes.",
+    "word_range": [
+     82,
+     98
+    ]
+   },
+   "intent": "explain_mechanism",
+   "visual_purpose": "Show the full pendulum swinging and regulating the gears. The individual tooth is not shown in this wider view.",
+   "subject": {
+    "main_id": "SWINGING-PENDULUM",
+    "hero_object_id": "GEAR-STACK"
+   },
+   "environment_id": "CLOCK-INTERIOR",
+   "object_events": [
+    {
+     "object_id": "SWINGING-PENDULUM",
+     "event": "swing",
+     "motion_profile": "rigid",
+     "start_s": 0.0,
+     "duration_s": 5.4
+    }
+   ],
+   "shot": {
+    "recipe_id": "S07",
+    "framing": "medium",
+    "distance_m": 0.6,
+    "composition": {
+     "primary_id": "SWINGING-PENDULUM",
+     "secondary_ids": [
+      "GEAR-STACK"
+     ],
+     "focal_point_norm": [
+      0.5,
+      0.5
+     ]
+    }
+   },
+   "camera": {
+    "purpose": "reveal",
+    "mode": "crane-down",
+    "from": {
+     "framing": "medium",
+     "distance_m": 0.6,
+     "height": "high",
+     "side": "front"
+    },
+    "to": {
+     "framing": "wide",
+     "distance_m": 1.0,
+     "height": "eye",
+     "side": "front"
+    },
+    "duration_s": 5.44,
+    "ease": "smooth",
+    "rationale": "Crane down to reveal how the pendulum regulates the gears.",
+    "confidence": "designed"
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "music",
+     "event": "steady waltz tempo",
+     "time_s": 24.43,
+     "trigger": "beat_start"
+    },
+    {
+     "track": "sfx",
+     "event": "steady rhythmic swoosh",
+     "time_s": 24.66,
+     "trigger": "word",
+     "word_index": 83
+    }
+   ],
+   "transition_in": {
+    "type": "dissolve",
+    "reason": "scale_change",
+    "frames": 8
+   },
+   "validation": {
+    "not_shown": [
+     "ESCAPEMENT-WHEEL"
+    ],
+    "gates": [
+     "Q01",
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q05",
+     "Q06",
+     "Q07",
+     "Q08",
+     "Q09",
+     "Q10"
+    ],
+    "must_see": [
+     "SWINGING-PENDULUM",
+     "GEAR-STACK"
+    ]
+   },
+   "rule_refs": [
+    "WLD-06",
+    "CAM-04"
+   ]
+  },
+  {
+   "id": "s11",
+   "index": 11,
+   "time": {
+    "start_s": 29.8667,
+    "end_s": 31.5667
+   },
+   "narration": {
+    "text": "The spring supplies the push.",
+    "word_range": [
+     99,
+     103
+    ]
+   },
+   "intent": "summarize_or_conclude",
+   "visual_purpose": "Remind the viewer of the spring's role as the power source.",
+   "subject": {
+    "main_id": "MAINSPRING"
+   },
+   "environment_id": "CLOCK-INTERIOR",
+   "object_events": [
+    {
+     "object_id": "MAINSPRING",
+     "event": "bend",
+     "motion_profile": "elastic",
+     "start_s": 0.0,
+     "duration_s": 1.7
+    }
+   ],
+   "shot": {
+    "recipe_id": "S03",
+    "framing": "close",
+    "distance_m": 0.5,
+    "composition": {
+     "primary_id": "MAINSPRING",
+     "focal_point_norm": [
+      0.5,
+      0.5
+     ]
+    }
+   },
+   "camera": {
+    "purpose": "emphasize",
+    "mode": "push-in",
+    "from": {
+     "framing": "close",
+     "distance_m": 0.5,
+     "height": "eye",
+     "side": "front"
+    },
+    "to": {
+     "framing": "detail",
+     "distance_m": 0.3,
+     "height": "eye",
+     "side": "front"
+    },
+    "duration_s": 1.7,
+    "ease": "easeOut",
+    "rationale": "Push in to emphasize the spring as the power source.",
+    "confidence": "designed"
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "music",
+     "event": "building harmonic chord",
+     "time_s": 29.87,
+     "trigger": "beat_start"
+    },
+    {
+     "track": "sfx",
+     "event": "tight metallic creak",
+     "time_s": 31.064,
+     "trigger": "word",
+     "word_index": 103
+    }
+   ],
+   "transition_in": {
+    "type": "blend_fly",
+    "reason": "continuity",
+    "frames": 8
+   },
+   "validation": {
+    "gates": [
+     "Q01",
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q05",
+     "Q06",
+     "Q07",
+     "Q08",
+     "Q09",
+     "Q10"
+    ],
+    "must_see": [
+     "MAINSPRING"
+    ]
+   },
+   "rule_refs": [
+    "CAM-05",
+    "END-01"
+   ]
+  },
+  {
+   "id": "s12",
+   "index": 12,
+   "time": {
+    "start_s": 31.5667,
+    "end_s": 33.5667
+   },
+   "narration": {
+    "text": "The pendulum supplies the patience.",
+    "word_range": [
+     104,
+     108
+    ]
+   },
+   "intent": "summarize_or_conclude",
+   "visual_purpose": "Return to the clockmaker and the whole clock, concluding the explanation. The pendulum is inside the clock and not shown directly.",
+   "subject": {
+    "main_id": "MECHANICAL-CLOCK",
+    "character_ids": [
+     "CLOCKMAKER"
+    ]
+   },
+   "environment_id": "WORKSHOP",
+   "character_actions": [
+    {
+     "character_id": "CLOCKMAKER",
+     "action": "looks at clock",
+     "pose": "hang",
+     "face": "smile",
+     "phase": "settle",
+     "start_s": 0.0,
+     "duration_s": 2.0
+    }
+   ],
+   "shot": {
+    "recipe_id": "S02",
+    "framing": "medium",
+    "distance_m": 6,
+    "composition": {
+     "primary_id": "CLOCKMAKER",
+     "secondary_ids": [
+      "MECHANICAL-CLOCK"
+     ],
+     "focal_point_norm": [
+      0.5,
+      0.4
+     ]
+    }
+   },
+   "camera": {
+    "purpose": "establish",
+    "mode": "pull-back",
+    "from": {
+     "framing": "medium",
+     "distance_m": 6,
+     "height": "eye",
+     "side": "front"
+    },
+    "to": {
+     "framing": "wide",
+     "distance_m": 8,
+     "height": "eye",
+     "side": "front"
+    },
+    "duration_s": 2.0,
+    "ease": "easeOut",
+    "rationale": "Pull back to return to the clockmaker and conclude the explanation.",
+    "confidence": "designed"
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "music",
+     "event": "warm satisfying resolution",
+     "time_s": 31.57,
+     "trigger": "beat_start"
+    },
+    {
+     "track": "sfx",
+     "event": "gentle continuous ticking",
+     "time_s": 33.123,
+     "trigger": "word",
+     "word_index": 108
+    }
+   ],
+   "transition_in": {
+    "type": "dissolve",
+    "reason": "new_place",
+    "frames": 8
+   },
+   "validation": {
+    "not_shown": [
+     "SWINGING-PENDULUM"
+    ],
+    "gates": [
+     "Q01",
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q05",
+     "Q06",
+     "Q07",
+     "Q08",
+     "Q09",
+     "Q10"
+    ],
+    "must_see": [
+     "CLOCKMAKER",
+     "MECHANICAL-CLOCK"
+    ]
+   },
+   "rule_refs": [
+    "END-01",
+    "CAM-11"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,74 @@
+[
+ {
+  "label": "write",
+  "model": "gemini-3.1-pro-preview",
+  "prompt": 94020,
+  "cached": 0,
+  "output": 7490,
+  "thoughts": 13288
+ },
+ {
+  "label": "asset1",
+  "model": "gemini-3.1-pro-preview",
+  "prompt": 105185,
+  "cached": 90073,
+  "output": 4648,
+  "thoughts": 8793
+ },
+ {
+  "label": "asset2",
+  "model": "gemini-3.1-pro-preview",
+  "prompt": 110313,
+  "cached": 98255,
+  "output": 4703,
+  "thoughts": 1241
+ },
+ {
+  "label": "asset3",
+  "model": "gemini-3.1-pro-preview",
+  "prompt": 115469,
+  "cached": 106436,
+  "output": 4727,
+  "thoughts": 1169
+ },
+ {
+  "label": "shot1",
+  "model": "gemini-3.1-pro-preview",
+  "prompt": 124833,
+  "cached": 106429,
+  "output": 6292,
+  "thoughts": 5106
+ },
+ {
+  "label": "shot2",
+  "model": "gemini-3.1-pro-preview",
+  "prompt": 132989,
+  "cached": 114611,
+  "output": 7665,
+  "thoughts": 6294
+ },
+ {
+  "label": "shot3",
+  "model": "gemini-3.1-pro-preview",
+  "prompt": 141854,
+  "cached": 0,
+  "output": 8140,
+  "thoughts": 4819
+ },
+ {
+  "label": "shot4",
+  "model": "gemini-3.1-pro-preview",
+  "prompt": 151182,
+  "cached": 0,
+  "output": 9302,
+  "thoughts": 5614
+ },
+ {
+  "label": "shot5",
+  "model": "gemini-3.1-pro-preview",
+  "prompt": 161589,
+  "cached": 0,
+  "output": 9488,
+  "thoughts": 4252
+ }
+]
