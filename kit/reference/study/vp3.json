@@ -1,0 +1,240 @@
+{
+ "name": "vp3",
+ "group": "refs",
+ "source": "d2f7132b-videoplayback_3.mp4",
+ "frames": 1351,
+ "fps": 30.0,
+ "cuts": [],
+ "summary": {
+  "seconds": 45.03,
+  "shots": 1,
+  "cuts_per_min": 1.3,
+  "shot_len_s": {
+   "min": 45.033,
+   "p10": 45.033,
+   "p50": 45.033,
+   "p90": 45.033,
+   "max": 45.033,
+   "std": 0.0
+  },
+  "kind_share": {
+   "push_in+tilt": 1.0
+  },
+  "static_or_creep_share": 0,
+  "move_3d_share": 0,
+  "push_pull_share": 1.0,
+  "zoom_pct_abs": {
+   "p10": 5074.58,
+   "p50": 5074.58,
+   "p90": 5074.58
+  },
+  "zoom_pct_per_s_abs": {
+   "p10": 112.69,
+   "p50": 112.69,
+   "p90": 112.69
+  },
+  "push_vs_pull": {
+   "push": 1,
+   "pull": 0
+  },
+  "pan_travel_frac_width": {
+   "p50": 0.879,
+   "p90": 0.879
+  },
+  "ease_share_of_moving_shots": {
+   "decelerate": 1.0
+  },
+  "camera_repeat_next_shot": 0.0,
+  "camera_run_len_mean": 1.0,
+  "camera_run_len_max": 1,
+  "flow_px_per_frame_mean": 1.89,
+  "jitter_mean": 0.0006,
+  "hard_cuts_per_min": 0.0,
+  "pure_push_pull_share": 0,
+  "flights": {
+   "count": 8,
+   "per_min": 10.7,
+   "seconds_p50": 0.79,
+   "seconds_p90": 2.21,
+   "peak_px_p50": 4.2,
+   "with_cut_inside": 0.0,
+   "parallax_ratio_p50": 0.46,
+   "ease_share": {
+    "constant": 1.0
+   },
+   "gap_between_s": {
+    "p10": 0.61,
+    "p50": 1.57,
+    "p90": 7.09
+   }
+  },
+  "time_share": {
+   "moving_fast": 0.166,
+   "moving_some": 0.302,
+   "nearly_still": 0.532
+  }
+ },
+ "audio": {
+  "onset_rate_per_s": 3.18,
+  "pauses_per_min": 0.0,
+  "silent_share": 0.002,
+  "flight_start_near_voice_onset": 0.875,
+  "flight_onset_lift": 1.33
+ },
+ "flights": [
+  {
+   "a": 4,
+   "b": 22,
+   "seconds": 0.6,
+   "peak_px_per_frame": 3.2,
+   "mean_px_per_frame": 2.2,
+   "zoom_pct": 15.5,
+   "cam_x": 0.017,
+   "cam_y": 0.027,
+   "parallax_ratio": 0.49,
+   "ease": "constant",
+   "has_cut_inside": false
+  },
+  {
+   "a": 69,
+   "b": 128,
+   "seconds": 1.97,
+   "peak_px_per_frame": 5.6,
+   "mean_px_per_frame": 3.9,
+   "zoom_pct": -52.2,
+   "cam_x": -0.02,
+   "cam_y": -0.131,
+   "parallax_ratio": 0.51,
+   "ease": "constant",
+   "has_cut_inside": false
+  },
+  {
+   "a": 139,
+   "b": 222,
+   "seconds": 2.77,
+   "peak_px_per_frame": 8.9,
+   "mean_px_per_frame": 4.2,
+   "zoom_pct": 261.9,
+   "cam_x": -0.026,
+   "cam_y": -0.383,
+   "parallax_ratio": 0.43,
+   "ease": "constant",
+   "has_cut_inside": false
+  },
+  {
+   "a": 245,
+   "b": 297,
+   "seconds": 1.73,
+   "peak_px_per_frame": 4.1,
+   "mean_px_per_frame": 3.0,
+   "zoom_pct": 82.3,
+   "cam_x": 0.068,
+   "cam_y": -0.298,
+   "parallax_ratio": 0.39,
+   "ease": "constant",
+   "has_cut_inside": false
+  },
+  {
+   "a": 470,
+   "b": 494,
+   "seconds": 0.8,
+   "peak_px_per_frame": 3.9,
+   "mean_px_per_frame": 2.6,
+   "zoom_pct": 1.8,
+   "cam_x": 0.141,
+   "cam_y": 0.021,
+   "parallax_ratio": 0.46,
+   "ease": "constant",
+   "has_cut_inside": false
+  },
+  {
+   "a": 766,
+   "b": 774,
+   "seconds": 0.27,
+   "peak_px_per_frame": 4.2,
+   "mean_px_per_frame": 3.4,
+   "zoom_pct": 3.1,
+   "cam_x": -0.013,
+   "cam_y": -0.011,
+   "parallax_ratio": 0.36,
+   "ease": "constant",
+   "has_cut_inside": false
+  },
+  {
+   "a": 820,
+   "b": 843,
+   "seconds": 0.77,
+   "peak_px_per_frame": 5.3,
+   "mean_px_per_frame": 2.6,
+   "zoom_pct": 20.6,
+   "cam_x": 0.123,
+   "cam_y": 0.032,
+   "parallax_ratio": 0.47,
+   "ease": "constant",
+   "has_cut_inside": false
+  },
+  {
+   "a": 933,
+   "b": 953,
+   "seconds": 0.67,
+   "peak_px_per_frame": 3.1,
+   "mean_px_per_frame": 2.5,
+   "zoom_pct": 22.5,
+   "cam_x": 0.027,
+   "cam_y": -0.013,
+   "parallax_ratio": 0.57,
+   "ease": "constant",
+   "has_cut_inside": false
+  }
+ ],
+ "shots": [
+  {
+   "a": 0,
+   "b": 1351,
+   "frames": 1351,
+   "seconds": 45.033,
+   "kind": "push_in+tilt",
+   "zoom_pct": 5074.58,
+   "zoom_pct_per_s": 112.69,
+   "cam_x": 0.3528,
+   "cam_y": -0.8055,
+   "travel": 0.8794,
+   "travel_per_s": 0.0195,
+   "roll_deg": -20.94,
+   "ease": "decelerate",
+   "moving_frac": 0.94,
+   "jitter": 0.0006,
+   "flow_px_per_frame": 1.89,
+   "parallax_ratio": 0.48,
+   "luma": 0.339,
+   "sat": 0.506,
+   "palette": 40.0,
+   "edge": 0.1133
+  }
+ ],
+ "scenes": {
+  "count": 13,
+  "per_min": 17.3,
+  "times_s": [
+   2.05,
+   4.62,
+   6.65,
+   8.12,
+   10.55,
+   13.88,
+   16.38,
+   18.95,
+   24.05,
+   26.88,
+   37.15,
+   40.78,
+   43.55
+  ],
+  "median_scene_s": 2.57,
+  "p10_scene_s": 1.65,
+  "p90_scene_s": 4.66,
+  "thr": 0.075,
+  "lag_s": 0.5,
+  "duration_s": 45.03
+ }
+}

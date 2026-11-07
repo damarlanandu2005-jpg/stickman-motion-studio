@@ -3,6 +3,37 @@
 Read `kit/docs/PLAYBOOK.md` for the rules. This file is the history: which videos were studied, how, what was found, what is not known yet.
 We keep NUMBERS and RULES only. The reference video files and their frames are NOT stored in this repo (it is public).
 
+## 2026-11-07, session 3: 9 more reference shorts (17 camera-studied in total)
+Videos: vp3 (Japan pachinko hall), vp4 (lottery ticket), vp5 (two kingdoms and a blacksmith), slot_machines, winning_tickets, idea_zone (sleep and ideas), random_numbers,
+knight_loophole, grave_bell. vp3-vp5 are 360x640, the others 720x1280; all 30 fps, 31-78 s.
+How: `ref_study.py study` + `ref_measure.py add` on each, picture sheets (`ref_sheet.py`) read by eye for 8 of them, then the new `ref_scenes.py` on all 17 refs and on our v2.1.
+Genre groups were written by hand into `knowledge/topic_profiles.json` (per-video values and per-group medians).
+
+What changed in our understanding
+- CORRECTION: the hard-cut counter MISSES dissolves and fly-through changes. vp3 showed "0 cuts, 1 shot" while the sheet shows 6+ places. The new counter (`ref_scenes.py`)
+  finds scene changes: 17-27 per minute in all 17 references (median 23.6, one every 2.1 s). Ours has 28, so our PACE is close (slightly high). Ours has 58 hard cuts, the references 2-15:
+  our extra cuts are angle changes inside a scene. Rules CUT-02, CUT-03, TRN-05.
+- Stable across topics (PRF-01): scene pace, parallax 0.32-0.44, palette 36-46, saturation 0.39-0.57. Changes with topic (PRF-02, PRF-03, inferred, small groups):
+  action and machine stories fly the camera about half the time; talk, trick and money stories hold about half the time; dark moods go to brightness 0.23-0.38.
+- New rules: CAM-13 (when NOT to move), WLD-06 (cutaway view), PRF-04 (number props), recipe number_data. Old numbers in CAM-01..03, CAM-09, CAM-10, CUT-01, LIT-01, checks refreshed to 17 videos.
+
+How sure
+- Camera, flight, scene numbers: measured on every frame. Scene counter checked against the picture sheets of vp3, grave_bell and vp4 (times match, a few extra counts from very big camera moves): about +-20 %.
+- Topic profiles: groups of 1 to 6 videos, labelled by me. Single examples (science_mind, night_horror) are not ranges.
+- Character, prop and world rules: seen by eye with times. Not re-checked on all 9 new videos frame by frame by eye (sheets of 8 read, 1 s step).
+
+Not known yet
+1. Not studied: outline thickness (px), exact colours per scene, physics numbers, character animation timing, music and effect timing, caption font/pop, depth of field.
+2. The 6 older reference videos have colour numbers only (no camera study, files not kept).
+3. More topics: space, nature, kitchen, sport, underwater, school. A disliked video (what to avoid).
+4. Nothing here has been tested by building a new video yet. The next test is a v2.2 using the playbook.
+
+Known limits of the tools
+- `ref_study.py` expects burned-in captions in the band 60-78 % of frame height. A video with captions elsewhere needs `CAP0/CAP1` changed.
+- Very fast motion blur can look like a cut or hide one. Flights that contain a cut are marked `has_cut_inside`.
+- `ref_scenes.py` can count one extra change on a very big camera move (crane across a whole city).
+- The 6 older videos use an older cut rule, so their `cuts_per_min` is not comparable.
+
 ## 2026-11-07, session 2: 8 new reference shorts
 Videos (720x1280, 30 fps, 56-78 s each): pirate_cannonballs, memory_price, second_draw, mirror_horse_race, storm_oil, perfect_railroads, roller_coasters, town_button.
 (Original titles: Levels of Pirate Cannonballs, Every Memory Has a Price, Why the Second Draw Always Wins, How a Mirror Rigged a Horse Race, Why Sailors Carried Storm Oil,

@@ -278,8 +278,15 @@ def build_study(path, name, group):
     return dict(name=name, group=group, source=os.path.basename(path), frames=n, fps=fps, cuts=cuts, summary=sm, audio=au, flights=fls, shots=shots)
 
 
+def add_scenes(d, path):
+    """scene changes incl. dissolves and fly-throughs (kit/tools/ref_scenes.py); stored beside the hard-cut numbers"""
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import ref_scenes
+    d["scenes"] = ref_scenes.scenes(path); d["summary"]["scenes_per_min"] = d["scenes"]["per_min"]; d["summary"]["scene_median_s"] = d["scenes"]["median_scene_s"]
+
+
 def cmd_study(path, name, group):
-    d = build_study(path, name, group); s = d["summary"]; au = d["audio"]
+    d = build_study(path, name, group); s = d["summary"]; au = d["audio"]; add_scenes(d, path)
     os.makedirs(OUT, exist_ok=True)
     json.dump(d, open(os.path.join(OUT, name + ".json"), "w"), indent=1)
     print(f"{name}: {d['frames']} frames, {s['shots']} shots, hard cuts/min {s['hard_cuts_per_min']}, flights/min {s['flights']['per_min']}, fast-move time {s['time_share']['moving_fast']:.0%}, "
@@ -299,6 +306,8 @@ METRICS = [
     ("time_nearly_still", "share of time nearly still", lambda s: s["time_share"]["nearly_still"]),
     ("pure_push_pull_share", "share of shots that are only a zoom (no pan/tilt/orbit)", lambda s: s["pure_push_pull_share"]),
     ("camera_repeat_next_shot", "share of shots whose move repeats in the next shot", lambda s: s["camera_repeat_next_shot"]),
+    ("scenes_per_min", "scene changes per minute (new place or set-up, incl. dissolves and fly-throughs)", lambda s: s.get("scenes_per_min")),
+    ("scene_median_s", "median length of a scene (s)", lambda s: s.get("scene_median_s")),
 ]
 
 
@@ -307,6 +316,7 @@ def cmd_rules():
     for f in sorted(os.listdir(OUT)):
         if f.endswith(".json") and not f.startswith("_"):
             d = json.load(open(os.path.join(OUT, f))); D[d["name"]] = d
+            if d.get("scenes"): d["summary"]["scenes_per_min"] = d["scenes"]["per_min"]; d["summary"]["scene_median_s"] = d["scenes"]["median_scene_s"]
     refs = [d for d in D.values() if d["group"] == "refs"]; ours = [d for d in D.values() if d["group"] == "ours"]
     out = dict(note="Rebuilt by ref_study.py rules. Ranges are p10..p90 over the per-video values of group refs (min/max kept too). Not targets: habits of the references.",
                videos_in_refs=[d["name"] for d in refs], videos_in_ours=[d["name"] for d in ours], metrics={}, flights_pooled={})
@@ -328,7 +338,7 @@ def cmd_rules():
 
 def cmd_compare(path):
     sm = json.load(open(os.path.join(OUT, "_summary.json")))
-    d = build_study(path, "candidate", "ours"); s = d["summary"]
+    d = build_study(path, "candidate", "ours"); add_scenes(d, path); s = d["summary"]
     print(f"{'measure':58s} {'this video':>10s}   reference p10..p90 (min..max)")
     bad = 0
     for key, label, g in METRICS:

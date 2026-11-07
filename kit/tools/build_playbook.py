@@ -19,7 +19,7 @@ except Exception: ST = None
 
 ORDER = [("camera", "CAMERA (how it moves, and why)"), ("cuts", "CUTS"), ("transition", "TRANSITIONS"), ("structure", "STORY SHAPE"), ("script", "SCRIPT TO PICTURE"),
          ("light", "LIGHT"), ("colour", "COLOUR AND TEXTURE"), ("world", "WORLD, SETS, TEXTURES"), ("character", "CHARACTERS"), ("face", "FACES AND EMOTION"),
-         ("props", "PROPS, TEXT, NUMBERS"), ("fx", "EFFECTS"), ("physics", "PHYSICS"), ("captions", "CAPTIONS"), ("sound", "SOUND")]
+         ("profile", "TOPIC PROFILES (what stays the same, what changes with the topic)"), ("props", "PROPS, TEXT, NUMBERS"), ("fx", "EFFECTS"), ("physics", "PHYSICS"), ("captions", "CAPTIONS"), ("sound", "SOUND")]
 
 
 def f(r, k):
@@ -43,7 +43,7 @@ def main():
         if fp: L += ["", f"All {fp['count']} flights together: length p10/p50/p90 = {fp['seconds']['p10']}/{fp['seconds']['p50']}/{fp['seconds']['p90']} s, peak speed {fp['peak_px_per_frame']['p10']}/{fp['peak_px_per_frame']['p50']}/{fp['peak_px_per_frame']['p90']} px per frame at 270 px width (x11.1 = percent of width per second), easing {fp['ease_share']}."]
         L.append("")
     if ST:
-        L += ["## Measured picture habits (14 reference videos, p10 .. p90; ours in brackets)", "", "| measure | references | ours |", "|---|---|---|"]
+        L += [f"## Measured picture habits ({len(ST['videos_in_refs'])} reference videos, p10 .. p90; ours in brackets)", "", "| measure | references | ours |", "|---|---|---|"]
         for k in ("mean", "std", "p2", "sat", "palette", "edge", "motion_diff_p50", "held_frac"):
             m = ST["metrics"].get(k)
             if not m or not m.get("refs"): continue
@@ -57,6 +57,7 @@ def main():
         L += [f"### {title}"]
         for r in rs:
             line = f"- [{r['id']} | {r['conf']} | for: {', '.join(r['tags'])}] {r['rule']}"
+            if r.get("why"): line += " WHY: " + r["why"]
             if r.get("do"): line += " DO: " + " ".join(x if x.endswith((".", "!", "?")) else x + "." for x in r["do"])
             if r.get("numbers"):
                 n = r["numbers"]; line += " NUMBERS: " + "; ".join(f"{k} {v}" for k, v in n.items()) + "."

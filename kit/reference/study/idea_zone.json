@@ -1,0 +1,327 @@
+{
+ "name": "idea_zone",
+ "group": "refs",
+ "source": "b596cd84-Your_Brains_Secret_Idea_Zone.mp4",
+ "frames": 1173,
+ "fps": 30.0,
+ "cuts": [
+  858
+ ],
+ "summary": {
+  "seconds": 39.1,
+  "shots": 2,
+  "cuts_per_min": 3.1,
+  "shot_len_s": {
+   "min": 10.5,
+   "p10": 12.31,
+   "p50": 19.55,
+   "p90": 26.79,
+   "max": 28.6,
+   "std": 9.05
+  },
+  "kind_share": {
+   "pull_out+tilt": 0.5,
+   "push_in+tilt": 0.5
+  },
+  "static_or_creep_share": 0,
+  "move_3d_share": 0,
+  "push_pull_share": 1.0,
+  "zoom_pct_abs": {
+   "p10": 56.597,
+   "p50": 223.545,
+   "p90": 390.493
+  },
+  "zoom_pct_per_s_abs": {
+   "p10": 2.78,
+   "p50": 8.26,
+   "p90": 13.74
+  },
+  "push_vs_pull": {
+   "push": 1,
+   "pull": 1
+  },
+  "pan_travel_frac_width": {
+   "p50": 0.899,
+   "p90": 1.091
+  },
+  "ease_share_of_moving_shots": {
+   "accelerate": 0.5,
+   "decelerate": 0.5
+  },
+  "camera_repeat_next_shot": 0.0,
+  "camera_run_len_mean": 1.0,
+  "camera_run_len_max": 1,
+  "flow_px_per_frame_mean": 3.63,
+  "jitter_mean": 0.00118,
+  "hard_cuts_per_min": 1.5,
+  "pure_push_pull_share": 0,
+  "flights": {
+   "count": 12,
+   "per_min": 18.4,
+   "seconds_p50": 0.97,
+   "seconds_p90": 1.65,
+   "peak_px_p50": 8.6,
+   "with_cut_inside": 0.08,
+   "parallax_ratio_p50": 0.31,
+   "ease_share": {
+    "constant": 0.42,
+    "decelerate": 0.17,
+    "ease_in_out": 0.25,
+    "varying": 0.17
+   },
+   "gap_between_s": {
+    "p10": 0.27,
+    "p50": 1.6,
+    "p90": 5.17
+   }
+  },
+  "time_share": {
+   "moving_fast": 0.248,
+   "moving_some": 0.302,
+   "nearly_still": 0.45
+  }
+ },
+ "audio": {
+  "onset_rate_per_s": 3.66,
+  "pauses_per_min": 0.0,
+  "silent_share": 0.007,
+  "cut_near_voice_onset": 1.0,
+  "chance_near_onset": 0.733,
+  "onset_lift": 1.37,
+  "flight_start_near_voice_onset": 0.583,
+  "flight_onset_lift": 0.8
+ },
+ "flights": [
+  {
+   "a": 3,
+   "b": 32,
+   "seconds": 0.97,
+   "peak_px_per_frame": 7.6,
+   "mean_px_per_frame": 4.9,
+   "zoom_pct": -37.3,
+   "cam_x": 0.018,
+   "cam_y": 0.426,
+   "parallax_ratio": 0.31,
+   "ease": "ease_in_out",
+   "has_cut_inside": false
+  },
+  {
+   "a": 80,
+   "b": 109,
+   "seconds": 0.97,
+   "peak_px_per_frame": 9.7,
+   "mean_px_per_frame": 4.0,
+   "zoom_pct": 35.6,
+   "cam_x": 0.001,
+   "cam_y": -0.292,
+   "parallax_ratio": 0.33,
+   "ease": "decelerate",
+   "has_cut_inside": false
+  },
+  {
+   "a": 333,
+   "b": 364,
+   "seconds": 1.03,
+   "peak_px_per_frame": 10.7,
+   "mean_px_per_frame": 4.6,
+   "zoom_pct": 0.9,
+   "cam_x": 0.001,
+   "cam_y": -0.008,
+   "parallax_ratio": 0.21,
+   "ease": "varying",
+   "has_cut_inside": false
+  },
+  {
+   "a": 369,
+   "b": 382,
+   "seconds": 0.43,
+   "peak_px_per_frame": 12.5,
+   "mean_px_per_frame": 4.0,
+   "zoom_pct": -0.1,
+   "cam_x": -0.0,
+   "cam_y": 0.001,
+   "parallax_ratio": 0.26,
+   "ease": "ease_in_out",
+   "has_cut_inside": false
+  },
+  {
+   "a": 537,
+   "b": 587,
+   "seconds": 1.67,
+   "peak_px_per_frame": 32.5,
+   "mean_px_per_frame": 3.8,
+   "zoom_pct": 26.9,
+   "cam_x": -0.005,
+   "cam_y": -0.199,
+   "parallax_ratio": 0.24,
+   "ease": "ease_in_out",
+   "has_cut_inside": false
+  },
+  {
+   "a": 629,
+   "b": 653,
+   "seconds": 0.8,
+   "peak_px_per_frame": 5.8,
+   "mean_px_per_frame": 4.1,
+   "zoom_pct": -33.9,
+   "cam_x": -0.034,
+   "cam_y": 0.187,
+   "parallax_ratio": 0.48,
+   "ease": "constant",
+   "has_cut_inside": false
+  },
+  {
+   "a": 719,
+   "b": 822,
+   "seconds": 3.43,
+   "peak_px_per_frame": 11.6,
+   "mean_px_per_frame": 4.6,
+   "zoom_pct": 145.6,
+   "cam_x": -0.141,
+   "cam_y": -0.275,
+   "parallax_ratio": 0.41,
+   "ease": "varying",
+   "has_cut_inside": false
+  },
+  {
+   "a": 854,
+   "b": 897,
+   "seconds": 1.43,
+   "peak_px_per_frame": 29.0,
+   "mean_px_per_frame": 9.9,
+   "zoom_pct": -16.0,
+   "cam_x": 0.081,
+   "cam_y": 0.78,
+   "parallax_ratio": 0.48,
+   "ease": "decelerate",
+   "has_cut_inside": true
+  },
+  {
+   "a": 905,
+   "b": 934,
+   "seconds": 0.97,
+   "peak_px_per_frame": 4.9,
+   "mean_px_per_frame": 3.6,
+   "zoom_pct": 51.7,
+   "cam_x": 0.0,
+   "cam_y": 0.234,
+   "parallax_ratio": 0.24,
+   "ease": "constant",
+   "has_cut_inside": false
+  },
+  {
+   "a": 971,
+   "b": 980,
+   "seconds": 0.3,
+   "peak_px_per_frame": 3.3,
+   "mean_px_per_frame": 3.0,
+   "zoom_pct": 0.4,
+   "cam_x": -0.0,
+   "cam_y": 0.009,
+   "parallax_ratio": 0.3,
+   "ease": "constant",
+   "has_cut_inside": false
+  },
+  {
+   "a": 1049,
+   "b": 1059,
+   "seconds": 0.33,
+   "peak_px_per_frame": 3.4,
+   "mean_px_per_frame": 2.7,
+   "zoom_pct": 0.8,
+   "cam_x": 0.008,
+   "cam_y": 0.003,
+   "parallax_ratio": 0.31,
+   "ease": "constant",
+   "has_cut_inside": false
+  },
+  {
+   "a": 1133,
+   "b": 1148,
+   "seconds": 0.5,
+   "peak_px_per_frame": 2.7,
+   "mean_px_per_frame": 2.4,
+   "zoom_pct": -10.4,
+   "cam_x": -0.045,
+   "cam_y": 0.088,
+   "parallax_ratio": 0.47,
+   "ease": "constant",
+   "has_cut_inside": false
+  }
+ ],
+ "shots": [
+  {
+   "a": 0,
+   "b": 858,
+   "frames": 858,
+   "seconds": 28.6,
+   "kind": "push_in+tilt",
+   "zoom_pct": 432.23,
+   "zoom_pct_per_s": 15.11,
+   "cam_x": -0.3405,
+   "cam_y": -0.5643,
+   "travel": 0.6591,
+   "travel_per_s": 0.023,
+   "roll_deg": -3.16,
+   "ease": "accelerate",
+   "moving_frac": 0.75,
+   "jitter": 0.00092,
+   "flow_px_per_frame": 3.57,
+   "parallax_ratio": 0.37,
+   "luma": 0.237,
+   "sat": 0.411,
+   "palette": 32.9,
+   "edge": 0.0698
+  },
+  {
+   "a": 858,
+   "b": 1173,
+   "frames": 315,
+   "seconds": 10.5,
+   "kind": "pull_out+tilt",
+   "zoom_pct": -14.86,
+   "zoom_pct_per_s": -1.41,
+   "cam_x": 0.1523,
+   "cam_y": 1.1285,
+   "travel": 1.1387,
+   "travel_per_s": 0.1085,
+   "roll_deg": 0.53,
+   "ease": "decelerate",
+   "moving_frac": 0.9,
+   "jitter": 0.00144,
+   "flow_px_per_frame": 3.69,
+   "parallax_ratio": 0.47,
+   "luma": 0.276,
+   "sat": 0.506,
+   "palette": 32.1,
+   "edge": 0.0938
+  }
+ ],
+ "scenes": {
+  "count": 15,
+  "per_min": 23.0,
+  "times_s": [
+   0.45,
+   4.02,
+   6.32,
+   10.65,
+   12.42,
+   18.72,
+   21.15,
+   23.98,
+   26.75,
+   28.88,
+   31.45,
+   32.68,
+   34.88,
+   36.45,
+   37.75
+  ],
+  "median_scene_s": 2.25,
+  "p10_scene_s": 1.26,
+  "p90_scene_s": 3.95,
+  "thr": 0.075,
+  "lag_s": 0.5,
+  "duration_s": 39.07
+ }
+}
