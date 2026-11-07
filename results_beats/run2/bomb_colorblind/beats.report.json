@@ -1,0 +1,104 @@
+{
+ "file": "/home/runner/work/_temp/bomb_colorblind/beats.candidate.json",
+ "ok": true,
+ "errors": [],
+ "warnings": [
+  [
+   "warn",
+   "Q01",
+   "character COMMANDER",
+   "hat 'NEW:cap' is a kit hat: write 'cap'"
+  ],
+  [
+   "warn",
+   "Q08",
+   "plan",
+   "62% of scene changes are hard cuts (CHK-11 range 0-45 %, TRN-06)"
+  ]
+ ],
+ "gates": {
+  "Q01": {
+   "status": "PASS (with warnings)",
+   "errors": 0,
+   "warnings": 1,
+   "not_run": [
+    "[ai_assisted] head, face, costume look the same across the preview frames",
+    "[human] final approval of the look"
+   ]
+  },
+  "Q02": {
+   "status": "PASS",
+   "errors": 0,
+   "warnings": 0,
+   "not_run": [
+    "[ai_assisted] hero object and action readable at phone size in the preview frames",
+    "[human] does the picture say what the words say"
+   ]
+  },
+  "Q03": {
+   "status": "PASS",
+   "errors": 0,
+   "warnings": 0,
+   "not_run": [
+    "[human] the move helps the story"
+   ]
+  },
+  "Q04": {
+   "status": "PASS",
+   "errors": 0,
+   "warnings": 0,
+   "not_run": [
+    "[ai_assisted] each named noun is visible within 0.3 s of its word (CHK-07)"
+   ]
+  },
+  "Q05": {
+   "status": "PASS",
+   "errors": 0,
+   "warnings": 0,
+   "not_run": [
+    "[human] the motion looks causal and has weight"
+   ]
+  },
+  "Q06": {
+   "status": "PASS",
+   "errors": 0,
+   "warnings": 0,
+   "not_run": [
+    "[automatic] parallax and soft-edge share on rendered frames"
+   ]
+  },
+  "Q07": {
+   "status": "PASS",
+   "errors": 0,
+   "warnings": 0,
+   "not_run": [
+    "[ai_assisted] the surface reads as that material in the preview"
+   ]
+  },
+  "Q08": {
+   "status": "PASS (with warnings)",
+   "errors": 0,
+   "warnings": 1,
+   "not_run": [
+    "[human] each cut is on a meaning beat"
+   ]
+  },
+  "Q09": {
+   "status": "PASS",
+   "errors": 0,
+   "warnings": 0,
+   "not_run": [
+    "[automatic] mix level and loudness",
+    "[human] sound quality and taste"
+   ]
+  },
+  "Q10": {
+   "status": "PASS",
+   "errors": 0,
+   "warnings": 0,
+   "not_run": [
+    "[automatic] a build check of the real code (assets render, no errors)"
+   ]
+  }
+ }
+}
