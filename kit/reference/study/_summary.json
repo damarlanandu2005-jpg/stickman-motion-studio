@@ -22,6 +22,8 @@
  "videos_in_ours": [
   "claude_bomb_v21",
   "claude_bomb_v22",
+  "claude_rail_v1",
+  "claude_rail_v2",
   "gemini_bomb_v1"
  ],
  "metrics": {
@@ -37,6 +39,8 @@
    "ours": {
     "claude_bomb_v21": 58.2,
     "claude_bomb_v22": 13.3,
+    "claude_rail_v1": 19.1,
+    "claude_rail_v2": 7.4,
     "gemini_bomb_v1": 25.0
    }
   },
@@ -52,6 +56,8 @@
    "ours": {
     "claude_bomb_v21": 1.0,
     "claude_bomb_v22": 2.867,
+    "claude_rail_v1": 2.633,
+    "claude_rail_v2": 5.066,
     "gemini_bomb_v1": 2.067
    }
   },
@@ -67,6 +73,8 @@
    "ours": {
     "claude_bomb_v21": 15.0,
     "claude_bomb_v22": 16.6,
+    "claude_rail_v1": 3.2,
+    "claude_rail_v2": 15.9,
     "gemini_bomb_v1": 6.7
    }
   },
@@ -82,6 +90,8 @@
    "ours": {
     "claude_bomb_v21": 0.57,
     "claude_bomb_v22": 1.38,
+    "claude_rail_v1": 1.33,
+    "claude_rail_v2": 1.27,
     "gemini_bomb_v1": 1.42
    }
   },
@@ -97,6 +107,8 @@
    "ours": {
     "claude_bomb_v21": 8.9,
     "claude_bomb_v22": 15.6,
+    "claude_rail_v1": 16.1,
+    "claude_rail_v2": 9.4,
     "gemini_bomb_v1": 23.6
    }
   },
@@ -112,6 +124,8 @@
    "ours": {
     "claude_bomb_v21": 2.28,
     "claude_bomb_v22": 1.23,
+    "claude_rail_v1": 9.47,
+    "claude_rail_v2": 1.35,
     "gemini_bomb_v1": 0.83
    }
   },
@@ -127,6 +141,8 @@
    "ours": {
     "claude_bomb_v21": 0.27,
     "claude_bomb_v22": 0.47,
+    "claude_rail_v1": 0.38,
+    "claude_rail_v2": 0.43,
     "gemini_bomb_v1": 0.3
    }
   },
@@ -142,6 +158,8 @@
    "ours": {
     "claude_bomb_v21": 0.209,
     "claude_bomb_v22": 0.371,
+    "claude_rail_v1": 0.085,
+    "claude_rail_v2": 0.34,
     "gemini_bomb_v1": 0.162
    }
   },
@@ -157,6 +175,8 @@
    "ours": {
     "claude_bomb_v21": 0.428,
     "claude_bomb_v22": 0.306,
+    "claude_rail_v1": 0.804,
+    "claude_rail_v2": 0.427,
     "gemini_bomb_v1": 0.636
    }
   },
@@ -172,6 +192,8 @@
    "ours": {
     "claude_bomb_v21": 0.778,
     "claude_bomb_v22": 0,
+    "claude_rail_v1": 0.158,
+    "claude_rail_v2": 0,
     "gemini_bomb_v1": 0.25
    }
   },
@@ -187,6 +209,8 @@
    "ours": {
     "claude_bomb_v21": 0.886,
     "claude_bomb_v22": 0.375,
+    "claude_rail_v1": 0.278,
+    "claude_rail_v2": 0.714,
     "gemini_bomb_v1": 0.333
    }
   },
@@ -202,6 +226,8 @@
    "ours": {
     "claude_bomb_v21": 28.3,
     "claude_bomb_v22": 20.0,
+    "claude_rail_v1": 19.1,
+    "claude_rail_v2": 18.0,
     "gemini_bomb_v1": null
    }
   },
@@ -217,6 +243,8 @@
    "ours": {
     "claude_bomb_v21": 1.96,
     "claude_bomb_v22": 2.93,
+    "claude_rail_v1": 2.63,
+    "claude_rail_v2": 2.99,
     "gemini_bomb_v1": null
    }
   }

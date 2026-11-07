@@ -91,3 +91,9 @@ Hand-applied rules (render code still does NOT read rules.json): continuous came
 Now inside reference range: hard cuts/min (13 vs refs 2-15), scene changes/min (20), flights/min, flight length, pause, pure zoom (0%), shake/min, ramp times, line width, caption pop.
 Still outside: flat surface share 55% (refs 35-48), gradient 7% (refs 14-20), palette 27 (refs 32-45), foreground soft edge 10% (refs 24-61), head size 0.116 (refs 0.12-0.21), parallax 0.47 (slightly high), word stay 0.23 s, caption speed slightly high.
 Missing in engine: rules wired into code, richer materials/textures, depth-of-field blur, bigger head framing, physics/animation of objects, classifier labels fly-through/flash as cut/dissolve.
+
+## Session 3d - railroads (unseen topic), script words only
+- Script words were read from the burned-in captions of a reference (no frames copied). Pipeline ran from words alone after adding tools/make_notes.py (Gemini writes shot notes, checked word for word).
+- v1 (Gemini only, old engine): 19.1 hard cuts/min, 3.2 flights/min, 80% nearly still, 16% zoom-only shots, no captions.
+- v2 (Claude polish, rules applied BY HAND in the project; engine still does not read rules.json): hard cuts 7.4, flights 15.9, pause 1.35 s, parallax 0.43, zoom-only 0%, soft-edge frames 36%, shake decay 0.2 s - all inside the reference range.
+- Still outside: scene changes/min 18 (low), scene length 3.0 s (high), repeat-move share 0.71 (high), flat colour 49% (high), gradient 10.5% (low), warm share 0.87 (high), cool 0 (low), head size 0.102 (low), line width 0.0047 (low), caption words/s 3.5 (high) and stay 0.2 s (low).

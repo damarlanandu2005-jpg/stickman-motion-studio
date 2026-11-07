@@ -1,0 +1,158 @@
+{
+ "name": "claude_rail_v1",
+ "group": "ours",
+ "source": "short.mp4",
+ "frames": 1700,
+ "fps": 30.0,
+ "seconds": 56.67,
+ "height_px": 1920,
+ "width_px": 1080,
+ "heads": {
+  "found_per_sampled_frame": 0.09,
+  "size_d_over_h": {
+   "p10": 0.149,
+   "p50": 0.177,
+   "p90": 0.217
+  },
+  "outline_over_d_all": 0.1893,
+  "outline_uneven": 0.59,
+  "outline_over_d_big_heads": 0.1894,
+  "eye_d_over_head": null,
+  "eye_y_in_head": null,
+  "eyes_per_head": 0.0,
+  "sample": 10
+ },
+ "outline": {
+  "stroke_over_frame_w": {
+   "p10": 0.0025,
+   "p50": 0.0035,
+   "p90": 0.0053
+  },
+  "spread_within_frame_p25_p75": [
+   0.0025,
+   0.0035
+  ],
+  "frames": 56,
+  "note": "line width of thin dark shapes (outlines and limbs), share of frame width"
+ },
+ "colour": {
+  "palette8": [
+   {
+    "hex": "#5e3912",
+    "share": 0.226,
+    "hue": 30,
+    "sat": 0.81,
+    "val": 0.37
+   },
+   {
+    "hex": "#3f3f3b",
+    "share": 0.219,
+    "hue": 60,
+    "sat": 0.06,
+    "val": 0.25
+   },
+   {
+    "hex": "#1d1409",
+    "share": 0.126,
+    "hue": 34,
+    "sat": 0.69,
+    "val": 0.11
+   },
+   {
+    "hex": "#ccdbe6",
+    "share": 0.119,
+    "hue": 206,
+    "sat": 0.11,
+    "val": 0.9
+   },
+   {
+    "hex": "#95846f",
+    "share": 0.11,
+    "hue": 34,
+    "sat": 0.25,
+    "val": 0.58
+   },
+   {
+    "hex": "#eba36a",
+    "share": 0.11,
+    "hue": 26,
+    "sat": 0.55,
+    "val": 0.92
+   },
+   {
+    "hex": "#a06532",
+    "share": 0.056,
+    "hue": 28,
+    "sat": 0.69,
+    "val": 0.63
+   },
+   {
+    "hex": "#aabcd5",
+    "share": 0.033,
+    "hue": 214,
+    "sat": 0.2,
+    "val": 0.84
+   }
+  ],
+  "warm_share": 0.628,
+  "cool_share": 0,
+  "hue_bins_30deg": [
+   0.166,
+   0.462,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "surface": {
+   "flat": 0.589,
+   "smooth_gradient": 0.08,
+   "detailed": 0.132,
+   "edge": 0.199
+  }
+ },
+ "captions": {
+  "words": 6,
+  "words_per_s": 0.11,
+  "word_on_screen_s": {
+   "p10": 0.48,
+   "p50": 1.53,
+   "p90": 4.35
+  },
+  "text_height_over_frame_h": 0.0922,
+  "centre_y_over_frame_h": 0.69,
+  "centre_x_over_frame_w": 0.504,
+  "width_over_frame_w_p50": 0.432,
+  "pop_first3_over_steady": 1.126,
+  "share_of_time_with_caption": 0.225
+ },
+ "blur": {
+  "edge_over_centre_sharpness_median": 1.468,
+  "frames_with_soft_edges": 0.131,
+  "flight_peak_sharpness_over_median": null
+ },
+ "camera_curves": {},
+ "shake": {
+  "events_per_min": 10.6,
+  "amp_pct_width_p50": 1.35,
+  "decay_s_p50": 0.03,
+  "threshold_pct_width": 0.6,
+  "background_jitter_pct_width_median": 0.003,
+  "note": "estimate: jitter found after removing a 9-frame running mean of the camera shift; a fast whip can also show up here"
+ },
+ "sound": {
+  "scene_change_near_sound_onset": null,
+  "chance": null,
+  "lift": null,
+  "onset_rate_per_s": null,
+  "shake_events_near_sound_onset": 0.9,
+  "shake_chance": 0.739,
+  "shake_lift": 1.22
+ }
+}
