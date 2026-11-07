@@ -1,0 +1,10 @@
+SPECS 1080x1920 30/1 fps, 1082 frames, 36.075 s; audio: aac 48000 Hz 2ch
+LOUDNESS I:         -13.9 LUFS | LRA:         1.7 LU | Peak:       -2.6 dBFS
+SILENCES none
+FRAMES 1082; black []; unplanned white [919]; frozen spans >=12f []
+DARK seconds (mean brightness < 0.25; shots should be 0.4-0.6 unless the script says dark): []
+POPS (unplanned frame-diff spikes > 3x local median): [772, 774, 775, 858, 917]
+MOTION mean diff 9.90; frames with diff<0.3 (held): 0 (0%)
+
+PER SHOT  (luma mean / std / p2 / p98 / saturation mean, medians over the shot)
+  shot  0 f0-1081: 0.368 / 0.180 / 0.087 / 0.816 / 0.487

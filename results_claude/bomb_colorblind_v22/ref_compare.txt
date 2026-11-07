@@ -1,0 +1,9 @@
+short.mp4: 1082 frames, 12 shots
+  brightness       0.3616   ref 0.3143 .. 0.5642  ok
+  saturation       0.5199   ref 0.3941 .. 0.5839  ok
+  palette size     27.0     ref 32.0 .. 45.0  LOW
+  detail           0.1575   ref 0.1059 .. 0.2185  ok
+  held frames      0.0046   ref 0.0019 .. 0.0585  ok
+  object motion    5.2737   ref 3.2115 .. 8.4144  ok
+  shot length (s)  1.9      ref 0.99 .. 10.59  ok
+  weak shots: none
