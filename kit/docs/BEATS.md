@@ -16,6 +16,7 @@ It is a plan. It does not replace shot_notes.txt yet. Code that reads it is not 
 - camera.mode: static, creep, push-in, pull-back, pan, tilt, crane-up, crane-down, orbit, track, fly-through, snap-zoom, whip, top-down
 - camera.ease: smooth, easeOut, easeIn, back, anticip, spring
 - shot.framing: wide, medium_wide, medium, close, detail, top_down, pov
+- camera from/to view: framing wide, medium_wide, medium, close, detail, top_down, pov; height low, eye, high, top; side front, left, right, back, above (only these words; distance_m is a number)
 - transition_in.type: start, cut, dissolve, blend_fly, fly_through, flash, whip, in_place
 - transition_in.reason: start, new_place, time_shift, memory_or_thought, scale_change, emphasis, continuity
 - object event: appear, move, swing, roll, slide, drop, impact, break, launch, spin, glow, heat, bend, change_value, settle

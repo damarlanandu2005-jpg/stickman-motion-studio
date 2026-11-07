@@ -67,7 +67,9 @@ def run(path):
     for c in chars.values():
         o = c["outfit"]
         if not (o.startswith("NEW:") or o in outfits): err("Q01", f"character {c['id']}", f"outfit '{o}' is not a kit outfit and not NEW:<name>")
+        if o.startswith("NEW:") and o[4:].strip() in outfits: warn("Q01", f"character {c['id']}", f"outfit '{o}' is a kit outfit: write '{o[4:].strip()}' (a NEW item would be rebuilt)")
         h = c.get("hat")
+        if h and h.startswith("NEW:") and h[4:].strip() in hats: warn("Q01", f"character {c['id']}", f"hat '{h}' is a kit hat: write '{h[4:].strip()}'")
         if h and not (h.startswith("NEW:") or h in hats): err("Q01", f"character {c['id']}", f"hat '{h}' is not a kit hat and not NEW:<name>")
     for o in objs.values():
         for m in o.get("material_ids", []):

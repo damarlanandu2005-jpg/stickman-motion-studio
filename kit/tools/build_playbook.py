@@ -124,6 +124,7 @@ def write_beats_doc():
          "- Keep each character's identity lock the same in every beat (rule CON-01).", "",
          "## Values", f"- intent: {en('intent')}", f"- camera.purpose: {en('camera','properties','purpose')}", f"- camera.mode: {en('camera','properties','mode')}",
          f"- camera.ease: {en('camera','properties','ease')}", f"- shot.framing: {en('shot','properties','framing')}",
+         f"- camera from/to view: framing {', '.join(SC['$defs']['view']['properties']['framing']['enum'])}; height {', '.join(SC['$defs']['view']['properties']['height']['enum'])}; side {', '.join(SC['$defs']['view']['properties']['side']['enum'])} (only these words; distance_m is a number)",
          f"- transition_in.type: {en('transition_in','properties','type')}", f"- transition_in.reason: {en('transition_in','properties','reason')}",
          f"- object event: {en('object_events','items','properties','event')}", f"- motion_profile: {en('object_events','items','properties','motion_profile')}",
          f"- action phase: {en('character_actions','items','properties','phase')}", f"- confidence: {', '.join(SC['$defs']['confidence']['enum'])}", "",

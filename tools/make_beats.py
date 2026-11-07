@@ -68,8 +68,8 @@ HOW TO DECIDE (this is the point of the plan; read the PLAYBOOK below, especiall
 BEAT PLAN FORMAT (generated from the schema):
 {rd(KIT / 'docs' / 'BEATS.md')}
 
-JSON SCHEMA OF ONE BEAT (the tool adds time, narration, index):
-{json.dumps(SCHEMA['$defs']['beat'], indent=None)[:14000]}
+JSON SCHEMA (all definitions; every enum is a closed list; the tool adds time, narration, index to each beat):
+{json.dumps({k: v for k, v in SCHEMA.items() if k in ('$defs',)}, separators=(',', ':'))}
 
 EXAMPLE (other story, first 3 beats, copy the style only):
 {example}
