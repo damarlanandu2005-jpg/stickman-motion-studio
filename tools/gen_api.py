@@ -264,12 +264,13 @@ def metrics(path):
     mean = sum(lum) / n; dark = sum(1 for l in lum if l < 25) / n
     from collections import Counter
     top = Counter((r // 32, g // 32, b // 32) for r, g, b in px).most_common(1)[0][1] / n
-    return mean, dark, top
+    white = sum(1 for l in lum if l > 235) / n          # blown-out share (overexposure)
+    return mean, dark, top, white
 
 
-def flags_for(mean, dark, top):
-    hard = dark > 0.9 or top > 0.88
-    soft = mean < 45 or dark > 0.55 or top > 0.7
+def flags_for(mean, dark, top, white=0.0):
+    hard = dark > 0.9 or top > 0.88 or white > 0.7
+    soft = mean < 45 or dark > 0.55 or top > 0.7 or white > 0.3 or mean > 200
     return hard, soft
 
 
@@ -350,8 +351,11 @@ def stills(tag):
         p = out / f"f{f:04d}.jpg"
         if not p.exists(): continue
         m = metrics(p); h, s_ = flags_for(*m); tiles.append((id_, f, p))
-        if h: hard_shots.append(id_); rep.append(f"{id_} f{f}: BLACK or FLAT picture (brightness {m[0]:.0f}, black {m[1]:.0%}, one flat colour {m[2]:.0%})")
-        elif s_: soft_shots.append(id_); rep.append(f"{id_} f{f}: dark or mostly one colour (brightness {m[0]:.0f}, black {m[1]:.0%}, flat {m[2]:.0%})")
+        if m[3] > 0.3 or m[0] > 200:
+            (hard_shots if h else soft_shots).append(id_); rep.append(f"{id_} f{f}: OVEREXPOSED / WASHED OUT: {m[3]:.0%} of the picture is near white (brightness {m[0]:.0f} of 255; references are 80-145). Fix the cause, not the symptom: the background or sky colour is white or too light, a light intensity is far too high, or tone mapping/exposure is too bright. Use a mid-dark coloured background behind the hero object, lower light intensities, keep one soft key light, and check material colours are not pure white/yellow (use mid-tone hues with a darker edge).")
+        elif h: hard_shots.append(id_); rep.append(f"{id_} f{f}: BLACK or FLAT picture (brightness {m[0]:.0f}, black {m[1]:.0%}, one flat colour {m[2]:.0%})")
+        elif s_ and m[0] < 70 and m[1] > 0.45: soft_shots.append(id_); rep.append(f"{id_} f{f}: TOO DARK (brightness {m[0]:.0f} of 255, {m[1]:.0%} black; references are 80-145). Raise ambient and fill light, brighten the wall/floor/background colours, add a rim light on the subject; keep the mood but make the hero object and the face clearly readable.")
+        elif s_: soft_shots.append(id_); rep.append(f"{id_} f{f}: mostly one colour (brightness {m[0]:.0f}, black {m[1]:.0%}, flat {m[2]:.0%}): add background layers, props and colour variety")
     if not tiles: return None, [], msgs or "no stills were rendered", [], []
     global LOOKSAT
     if REFS:
