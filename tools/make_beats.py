@@ -3,7 +3,7 @@
 
 Usage: python3 tools/make_beats.py <project_dir> [--fake a.json,b.json]
   needs project/script.txt, project/shot_notes.txt, project/work/words.json, project/work/phrases.json (same inputs as tools/gen_api.py)
-  writes project/beats.json (only if it passes the validator; up to 3 tries, the errors are sent back). Exit 1 if no valid plan: the pipeline goes on without it.
+  writes project/beats.json (only if it passes the validator; up to 4 tries, the errors are sent back). Exit 1 if no valid plan: the pipeline goes on without it.
 
 Gemini writes ONLY the creative fields (entities, intent, subject, camera, character actions, audio, transitions, validation ...). The tool itself fills everything that is mechanical,
 so Gemini cannot get it wrong: beat times from the shot table, the narration text and word ranges, the project block, the word list, indexes and audio times of word triggers.
@@ -68,6 +68,7 @@ HOW TO DECIDE (this is the point of the plan; read the PLAYBOOK below, especiall
 - Name things the way the narration does: give every character and object an "aliases" list with the other words the narration uses for it. Every thing the words name must be in that beat's frame (must_see, subject or composition). If a named word is deliberately not pictured (a number, a job title), list its id in validation.not_shown and say why in visual_purpose.
 - A camera purpose and the camera mode must agree: hold_for_performance = static or creep only; follow = track/pan/push-in/pull-back/tilt; impact = snap-zoom, whip, static, push-in, creep or pull-back; a move that reveals is purpose reveal, not hold. Allowed combinations are checked by the validator (error).
 - Physical things need object_events: every physical_action beat has at least one (cause: move/swing/roll/slide/drop/launch; contact: impact/break with contact_target_id; reaction: secondary_effects and a character reaction; settling: a settle event). Hero objects that the words act on (timer, wires, cutters, a coin, a train) get events too. A significant collision gets an impact plan: camera purpose impact, or a kick, or secondary effects. A camera kick is optional; the impact is not.
+- Camera ease is ONLY one of: smooth, easeOut, easeIn, back, anticip, spring (not 'decelerate', not 'linear').
 - Scene changes: at most 45 % hard cuts (error above that with 6 or more changes). Use dissolve for new place/time, blend_fly for a continuous travel, and a hard cut only for emphasis or scale. Do not replace cuts at random; the reason must fit.
 - Every id you use in a beat must exist in entities. Objects: real size_m, representation (3d_mesh, 2d_card, 2_5d_layer, billboard_fx), material_ids from M01-M07. Environments: depth_layers (foreground, midground, background), lighting_profile_id L01-L04.
 - Keep the focal point (focal_point_norm) out of the caption band (y 0.62-0.78): captions sit at about 70 % of frame height (CMP-01).
@@ -124,7 +125,7 @@ if fake is None:
     client = genai.Client(vertexai=True, project=os.environ["GOOGLE_CLOUD_PROJECT"], location=os.environ.get("GOOGLE_CLOUD_LOCATION", "global"), http_options=types.HttpOptions(timeout=900000))
     model = os.environ.get("MODEL", "gemini-3.1-pro-preview")
 msg, last = base, ""
-for t in range(3):
+for t in range(4):
     if fake is not None:
         if t >= len(fake): break
         txt = rd(fake[t])
@@ -144,5 +145,5 @@ for t in range(3):
         (P / "beats.json").write_text(json.dumps(d, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
         (P / "beats.candidate.json").unlink(missing_ok=True)
         print(f"beats.json written: {len(d['beats'])} beats (try {t + 1}); report in beats.report.json"); sys.exit(0)
-    last = "\n".join(errs[:25]); msg = base + "\n\nYOUR LAST ANSWER FAILED THE VALIDATOR (fix these and return the whole JSON again):\n" + last
-sys.exit("make_beats: no valid beat plan after 3 tries; the pipeline continues without beats.json\n" + last)
+    last = "\n".join(errs[:25]); msg = base + "\n\nYOUR LAST ANSWER (the JSON you returned):\n" + txt + "\n\nIT FAILED THE VALIDATOR. Change ONLY what these errors name and keep everything else exactly as it is; return the whole corrected JSON:\n" + last
+sys.exit("make_beats: no valid beat plan after 4 tries; the pipeline continues without beats.json\n" + last)
