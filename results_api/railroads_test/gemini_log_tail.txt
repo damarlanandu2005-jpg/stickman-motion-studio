@@ -1,0 +1,96 @@
+19 shots, 1701 frames, words used 212/212; assets to test: ['CANYON-EDGE', 'RAIL-CLOSEUP', 'BRIDGE-WIDE', 'OFFICE', 'steel rail', 'handsaw', 'steam train', 'newspaper', 'gold coin', 'sheet of paper', 'bent rail']
+prompt chars: static 172587, task 13613
+usage {'label': 'write', 'model': 'gemini-3.1-pro-preview', 'prompt': 79147, 'cached': 0, 'output': 10187, 'thoughts': 18531}
+first answer files: ['web/story.js', 'web/world.js', 'web/cast.js', 'audio.py', 'work/PLAN.md', 'work/NOTES.md']
+/home/runner/work/stickman-motion-studio/stickman-motion-studio/project/../tools/gen_api.py:247: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  im = Image.open(path).convert("RGB").resize((108, 192)); px = list(im.getdata()); n = len(px)
+asset round 0: build_err=False hard=False
+CANYON-EDGE: measured size 26 x 13 x 15 m (x, height, z), declared 20.0 m
+RAIL-CLOSEUP: measured size 4 x 0.3 x 4.2 m (x, height, z), declared 2.0 m
+BRIDGE-WIDE: measured size 55 x 40.5 x 40 m (x, height, z), declared 25.0 m
+OFFICE: measured size 13.5 x 6.2 x 12.1 m (x, height, z), declared 10.0 m  <-- in2: dark or mostly one colour (brightness 59, black 60%, flat 60%)
+steel rail: measured size 0.15 x 0.2 x 2 m (x, height, z), declared 2.0 m
+handsaw: measured size 0.1 x 0.15 x 0.6 m (x, height, z), declared 0.6 m
+steam train: measured size 3.1 x 4.1 x 9.4 m (x, height, z), declared 10.0 m
+newspaper: measured size 0.5 x 0.03 x 0.4 m (x, height, z), declared 0.5 m
+gold coin: measured size 0.05 x 0.01 x 0.05 m (x, height, z), declared 0.05 m
+sheet of paper: measured size 0.3 x 0 x 0.4 m (x, height, z), declared 0.3 m
+bent rail: measured size 0.72 x 0.2 x 1.96 m (x, height, z), declared 2.0 m
+usage {'label': 'asset1', 'model': 'gemini-3.1-pro-preview', 'prompt': 93120, 'cached': 0, 'output': 4239, 'thoughts': 5286}
+asset fix files: ['web/world.js'] fails: ['CANYON-EDGE', 'RAIL-CLOSEUP', 'BRIDGE-WIDE', 'OFFICE', 'newspaper']
+/home/runner/work/stickman-motion-studio/stickman-motion-studio/project/../tools/gen_api.py:247: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  im = Image.open(path).convert("RGB").resize((108, 192)); px = list(im.getdata()); n = len(px)
+asset round 1: build_err=False hard=True
+CANYON-EDGE: measured size 23.68 x 7.67 x 17.45 m (x, height, z), declared 20.0 m
+RAIL-CLOSEUP: measured size 6 x 0.55 x 6 m (x, height, z), declared 2.0 m  <-- SIZE MISMATCH
+BRIDGE-WIDE: measured size 57.56 x 33.38 x 40 m (x, height, z), declared 25.0 m
+OFFICE: measured size 12.2 x 6.2 x 10.1 m (x, height, z), declared 10.0 m
+steel rail: measured size 0.15 x 0.2 x 2 m (x, height, z), declared 2.0 m
+handsaw: measured size 0.1 x 0.15 x 0.6 m (x, height, z), declared 0.6 m
+steam train: measured size 3.1 x 4.1 x 9.4 m (x, height, z), declared 10.0 m
+newspaper: measured size 0.5 x 0.02 x 0.4 m (x, height, z), declared 0.5 m
+gold coin: measured size 0.05 x 0.01 x 0.05 m (x, height, z), declared 0.05 m
+sheet of paper: measured size 0.3 x 0 x 0.4 m (x, height, z), declared 0.3 m
+bent rail: measured size 0.72 x 0.2 x 1.96 m (x, height, z), declared 2.0 m
+usage {'label': 'asset2', 'model': 'gemini-3.1-pro-preview', 'prompt': 97877, 'cached': 81874, 'output': 4201, 'thoughts': 1058}
+asset fix files: ['web/world.js'] fails: ['RAIL-CLOSEUP']
+/home/runner/work/stickman-motion-studio/stickman-motion-studio/project/../tools/gen_api.py:247: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  im = Image.open(path).convert("RGB").resize((108, 192)); px = list(im.getdata()); n = len(px)
+asset round 2: build_err=False hard=False
+CANYON-EDGE: measured size 23 x 7.23 x 15 m (x, height, z), declared 20.0 m
+RAIL-CLOSEUP: measured size 2.5 x 0.55 x 3 m (x, height, z), declared 2.0 m
+BRIDGE-WIDE: measured size 57.56 x 33.38 x 40 m (x, height, z), declared 25.0 m
+OFFICE: measured size 12.2 x 6.2 x 10.1 m (x, height, z), declared 10.0 m
+steel rail: measured size 0.15 x 0.2 x 2 m (x, height, z), declared 2.0 m
+handsaw: measured size 0.1 x 0.15 x 0.6 m (x, height, z), declared 0.6 m
+steam train: measured size 3.1 x 4.1 x 9.4 m (x, height, z), declared 10.0 m
+newspaper: measured size 0.5 x 0.02 x 0.4 m (x, height, z), declared 0.5 m
+gold coin: measured size 0.05 x 0.01 x 0.05 m (x, height, z), declared 0.05 m
+sheet of paper: measured size 0.3 x 0 x 0.4 m (x, height, z), declared 0.3 m
+bent rail: measured size 0.72 x 0.2 x 1.96 m (x, height, z), declared 2.0 m
+usage {'label': 'asset3', 'model': 'gemini-3.1-pro-preview', 'prompt': 102586, 'cached': 90055, 'output': 141, 'thoughts': 203}
+asset fix files: [] fails: []
+music vs voice: -6.0 dB   sfx vs voice: -6.1 dB
+
+/home/runner/work/stickman-motion-studio/stickman-motion-studio/project/../tools/gen_api.py:247: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  im = Image.open(path).convert("RGB").resize((108, 192)); px = list(im.getdata()); n = len(px)
+shot round 0: build_err=False audio_err=False sheet=True hard=['s13', 's13', 's13', 's14', 's14', 's14'] soft=['s3', 's3', 's3', 's16', 's18', 's19', 's11', 's12']
+usage {'label': 'shot1', 'model': 'gemini-3.1-pro-preview', 'prompt': 107065, 'cached': 98231, 'output': 10109, 'thoughts': 7042}
+shot fix files: ['web/story.js', 'web/world.js'] fails: ['s3', 's10', 's11', 's13', 's14', 's16', 's18', 's19']
+music vs voice: -6.0 dB   sfx vs voice: -6.1 dB
+
+/home/runner/work/stickman-motion-studio/stickman-motion-studio/project/../tools/gen_api.py:247: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  im = Image.open(path).convert("RGB").resize((108, 192)); px = list(im.getdata()); n = len(px)
+shot round 1: build_err=False audio_err=False sheet=True hard=[] soft=['s16', 's3', 's11', 's12', 's13', 's14', 's18', 's19']
+usage {'label': 'shot2', 'model': 'gemini-3.1-pro-preview', 'prompt': 118745, 'cached': 98230, 'output': 10623, 'thoughts': 3115}
+shot fix files: ['web/story.js', 'web/world.js'] fails: ['s3', 's11', 's12', 's13', 's14', 's16', 's18', 's19']
+music vs voice: -6.0 dB   sfx vs voice: -6.1 dB
+
+/home/runner/work/stickman-motion-studio/stickman-motion-studio/project/../tools/gen_api.py:247: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  im = Image.open(path).convert("RGB").resize((108, 192)); px = list(im.getdata()); n = len(px)
+shot round 2: build_err=False audio_err=False sheet=True hard=[] soft=['s3', 's11', 's12', 's13', 's14', 's16', 's18', 's19']
+usage {'label': 'shot3', 'model': 'gemini-3.1-pro-preview', 'prompt': 130493, 'cached': 0, 'output': 11420, 'thoughts': 3660}
+shot fix files: ['web/story.js', 'web/world.js'] fails: ['s3', 's11', 's12', 's13', 's14', 's16', 's18', 's19']
+music vs voice: -6.0 dB   sfx vs voice: -6.1 dB
+
+/home/runner/work/stickman-motion-studio/stickman-motion-studio/project/../tools/gen_api.py:247: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  im = Image.open(path).convert("RGB").resize((108, 192)); px = list(im.getdata()); n = len(px)
+shot round 3: build_err=False audio_err=False sheet=True hard=[] soft=['s3', 's11', 's12', 's13', 's16', 's18']
+usage {'label': 'shot4', 'model': 'gemini-3.1-pro-preview', 'prompt': 142834, 'cached': 106414, 'output': 11952, 'thoughts': 2877}
+shot fix files: ['web/story.js', 'web/world.js'] fails: ['s3', 's11', 's12', 's13', 's14', 's16', 's18']
+music vs voice: -6.0 dB   sfx vs voice: -6.1 dB
+
+/home/runner/work/stickman-motion-studio/stickman-motion-studio/project/../tools/gen_api.py:247: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  im = Image.open(path).convert("RGB").resize((108, 192)); px = list(im.getdata()); n = len(px)
+shot round 4: build_err=False audio_err=False sheet=True hard=[] soft=['s11', 's12', 's13', 's14', 's16', 's18', 's19']
+[shot5] API error try 1: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more de
+usage {'label': 'shot5', 'model': 'gemini-3.1-pro-preview', 'prompt': 155608, 'cached': 130971, 'output': 7448, 'thoughts': 7269}
+shot fix files: ['web/world.js'] fails: ['s11', 's12', 's13', 's14', 's16', 's18', 's19']
+music vs voice: -6.0 dB   sfx vs voice: -6.1 dB
+
+/home/runner/work/stickman-motion-studio/stickman-motion-studio/project/../tools/gen_api.py:247: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  im = Image.open(path).convert("RGB").resize((108, 192)); px = list(im.getdata()); n = len(px)
+shot round 5: build_err=False audio_err=False sheet=True hard=[] soft=['s11', 's19']
+music vs voice: -6.0 dB   sfx vs voice: -6.1 dB
+
+DONE [{"label": "write", "model": "gemini-3.1-pro-preview", "prompt": 79147, "cached": 0, "output": 10187, "thoughts": 18531}, {"label": "asset1", "model": "gemini-3.1-pro-preview", "prompt": 93120, "cached": 0, "output": 4239, "thoughts": 5286}, {"label": "asset2", "model": "gemini-3.1-pro-preview", "prompt": 97877, "cached": 81874, "output": 4201, "thoughts": 1058}, {"label": "asset3", "model": "gemini-3.1-pro-preview", "prompt": 102586, "cached": 90055, "output": 141, "thoughts": 203}, {"label": "shot1", "model": "gemini-3.1-pro-preview", "prompt": 107065, "cached": 98231, "output": 10109, "thoughts": 7042}, {"label": "shot2", "model": "gemini-3.1-pro-preview", "prompt": 118745, "cached": 98230, "output": 10623, "thoughts": 3115}, {"label": "shot3", "model": "gemini-3.1-pro-preview", "prompt": 130493, "cached": 0, "output": 11420, "thoughts": 3660}, {"label": "shot4", "model": "gemini-3.1-pro-preview", "prompt": 142834, "cached": 106414, "output": 11952, "thoughts": 2877}, {"label": "shot5", "model": "gemini-3.1-pro-preview", "prompt": 155608, "cached": 130971, "output": 7448, "thoughts": 7269}]
