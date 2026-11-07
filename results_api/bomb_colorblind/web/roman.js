@@ -561,51 +561,46 @@ export const fxClock = (p, t, turns = 1) => {
   p.dot(cx, cy, 16); g.restore();
 };
 
-export const drawArthur = (p, o) => {
-  const H = headBlob(o.seed||3, 118, o.facing||0);
-  const HH = 2 * H.b, u = 2 * H.a / 100;
-  const torsoL = 1.12, legsL = 1.38, sole = 975;
-  const torsoBot = sole - legsL * HH - (o.bob||0) * HH, chin = torsoBot - torsoL * HH, hc = chin - H.b;
+export const bombSuit = (p, opts = {}) => {
+  const O = { tunic: "#4a6b4a", skin: "#f5c9a0", stout: true, armor: false };
+  romanFront(p, O, opts);
+  
+  const seed = opts.seed || 3;
+  const H = headBlob(seed, 118, opts.facing || 0);
+  const HH = 2 * H.b;
+  const bob = opts.bob || 0;
+  const torsoBot = 975 - 1.38 * HH - bob * HH;
+  const chin = torsoBot - 1.12 * HH;
+  const hc = chin - H.b;
   const cx = 300;
+  const u = 2 * H.a / 100;
   
-  p.ell(cx, hc - 10*u, 60*u, 55*u, '#4a5d23', 5*u);
+  // Helmet dome
+  p.ell(cx, hc - H.b * 0.2, H.a * 1.25, H.b * 1.25, "#3a5a3a", 4 * u);
+  // Neck guard
+  p.poly([
+    [cx - H.a * 1.2, hc], [cx + H.a * 1.2, hc],
+    [cx + H.a * 1.4, hc + H.b * 1.2], [cx - H.a * 1.4, hc + H.b * 1.2]
+  ], "#3a5a3a", 4 * u);
   
-  romanFront(p, 'NEW:bomb suit', {...o, nohelmet: true, hair: null});
-  
-  p.stroke([[cx-50*u, hc-30*u], [cx+50*u, hc-30*u]], 10*u, '#3a4d13');
-  p.stroke([[cx-50*u, hc-30*u], [cx-50*u, hc+20*u]], 10*u, '#3a4d13');
-  p.stroke([[cx+50*u, hc-30*u], [cx+50*u, hc+20*u]], 10*u, '#3a4d13');
-  
-  p.g.save();
-  p.g.globalAlpha = 0.4;
-  p.poly([[cx-45*u, hc-25*u], [cx+45*u, hc-25*u], [cx+45*u, hc+15*u], [cx-45*u, hc+15*u]], '#aaddff', 0);
-  p.g.restore();
-}
-
-export const drawOfficer = (p, o) => {
-  romanFront(p, 'NEW:police uniform', o);
-  const H = headBlob(o.seed||3, 118, o.facing||0);
-  const HH = 2 * H.b, u = 2 * H.a / 100;
-  const torsoL = 1.08, legsL = 1.38, sole = 975;
-  const torsoBot = sole - legsL * HH - (o.bob||0) * HH, chin = torsoBot - torsoL * HH, hc = chin - H.b;
-  const cx = 300;
-  
-  p.ell(cx - 15*u, torsoBot - 0.5*HH, 6*u, 8*u, '#c0c0c0', 2*u);
-  p.stroke([[cx - 40*u, hc - 35*u], [cx + 40*u + (o.facing||0)*20*u, hc - 35*u]], 6*u, '#111111');
-}
-
-export const fxTimerText = (p, timeStr) => {
+  // Visor (semi-transparent)
   const g = p.g;
   g.save();
-  g.font = 'bold 120px monospace';
-  g.textAlign = 'center';
-  g.textBaseline = 'bottom';
-  g.fillStyle = '#ff3333';
-  g.fillText(timeStr, 300, 975);
+  g.fillStyle = "#aaddff66";
+  g.beginPath();
+  g.moveTo(cx - H.a * 1.0, hc - H.b * 0.5);
+  g.lineTo(cx + H.a * 1.0, hc - H.b * 0.5);
+  g.lineTo(cx + H.a * 0.8, hc + H.b * 0.5);
+  g.lineTo(cx - H.a * 0.8, hc + H.b * 0.5);
+  g.closePath();
+  g.fill();
+  g.lineWidth = 3 * u;
+  g.strokeStyle = INK;
+  g.stroke();
   g.restore();
-}
+};
 
-Object.assign(OUTFITS, {
-  'NEW:bomb suit': { tunic: '#4a5d23', skin: '#f5c9a0', stout: true },
-  'NEW:police uniform': { tunic: '#1a242f', skin: '#4a3020', cap: '#1a242f' }
-});
+export const policeChief = (p, opts = {}) => {
+  const O = { tunic: "#223355", skin: "#8a5a4a", beard: "#aaaaaa", cap: "#112244" };
+  romanFront(p, O, opts);
+};

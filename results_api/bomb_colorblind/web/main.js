@@ -122,317 +122,258 @@ const DECK = 0;
 const world = new THREE.Group(); scene.add(world);
 
 const ASSETS = {
-  'STREET': () => {
+  'POLICE-OFFICE': () => {
     const g = new THREE.Group();
-    // Road
-    const roadTex = canvasTex(512, 512, (ctx, w, h) => {
-      ctx.fillStyle = '#444444'; ctx.fillRect(0, 0, w, h);
-      ctx.fillStyle = '#dddddd'; ctx.fillRect(w/2 - 5, 0, 10, h);
-    }, 10, 10);
-    add(new THREE.PlaneGeometry(20, 20), toon({map: roadTex}), 0, 0, 0, g).rotation.x = -Math.PI/2;
-    
-    // Brick building (right)
-    const brickTex = canvasTex(512, 512, (ctx, w, h) => {
-      ctx.fillStyle = '#8b4513'; ctx.fillRect(0, 0, w, h);
-      ctx.fillStyle = '#cccccc';
-      for(let y=0; y<h; y+=32) {
-        ctx.fillRect(0, y, w, 4);
-        for(let x=0; x<w; x+=64) {
-          ctx.fillRect(x + (y%64===0?0:32), y, 4, 32);
-        }
-      }
-    }, 4, 4);
-    add(tbox(8, 15, 8, 2), toon({map: brickTex}), 8, 7.5, -5, g);
-    
-    // Concrete barricade (left)
-    add(tbox(3, 1, 1, 1), M.stone, -4, 0.5, 2, g);
-    
-    // Police car (middle)
-    const car = new THREE.Group();
-    add(tbox(4, 0.8, 1.8, 1), toon({color: '#111111'}), 0, 0.6, 0, car);
-    add(tbox(2, 0.7, 1.6, 1), toon({color: '#ffffff'}), 0, 1.35, 0, car);
-    add(tbox(0.5, 0.15, 0.4, 1), toon({color: '#ff0000'}), -0.5, 1.775, 0, car);
-    add(tbox(0.5, 0.15, 0.4, 1), toon({color: '#0000ff'}), 0.5, 1.775, 0, car);
-    for(let x of [-1.2, 1.2]) {
-      for(let z of [-0.9, 0.9]) {
-        const w = add(new THREE.CylinderGeometry(0.35, 0.35, 0.2, 16), toon({color: '#222222'}), x, 0.35, z, car);
-        w.rotation.x = Math.PI/2;
-      }
+    add(tbox(8, 4, 8, 2), M.plaster, 0, 2, 0, g, {cast: false}).material.side = THREE.BackSide;
+    // desk
+    add(tbox(2, 0.1, 1, 1), M.wood, 0, 0.8, -1, g); // top
+    add(tbox(0.1, 0.8, 0.9, 1), M.wood, -0.9, 0.4, -1, g); // left leg
+    add(tbox(0.1, 0.8, 0.9, 1), M.wood, 0.9, 0.4, -1, g); // right leg
+    // papers on desk
+    add(tbox(0.3, 0.02, 0.4, 1), toon({color:'#ffffff'}), -0.5, 0.86, -1, g);
+    add(tbox(0.4, 0.02, 0.3, 1), toon({color:'#eeeeee'}), 0.4, 0.86, -0.9, g).rotation.y = 0.2;
+    // whiteboard
+    add(tbox(3, 2, 0.1, 1), toon({color:'#ffffff'}), 0, 2, -3.9, g);
+    add(tbox(3.2, 2.2, 0.05, 1), M.iron, 0, 2, -3.95, g);
+    // door
+    add(tbox(1.2, 2.4, 0.1, 1), M.door, 2.5, 1.2, -3.9, g);
+    // corkboard
+    add(tbox(1.5, 1, 0.1, 1), toon({color:'#c29a6a'}), -2.5, 2, -3.9, g);
+    // corkboard notes
+    add(tbox(0.2, 0.2, 0.02, 1), toon({color:'#ff8888'}), -2.2, 2.2, -3.85, g);
+    add(tbox(0.2, 0.15, 0.02, 1), toon({color:'#88ff88'}), -2.7, 1.8, -3.85, g);
+    add(tbox(0.15, 0.2, 0.02, 1), toon({color:'#8888ff'}), -2.4, 1.7, -3.85, g);
+    add(tbox(0.25, 0.2, 0.02, 1), toon({color:'#ffff88'}), -2.8, 2.3, -3.85, g);
+    // bin
+    add(new THREE.CylinderGeometry(0.2, 0.15, 0.4, 8), toon({color:'#444444'}), 1.2, 0.2, -1, g);
+    return g;
+  },
+  'CITY-STREET': () => {
+    const g = new THREE.Group();
+    add(new THREE.PlaneGeometry(20, 20), toon({color:'#333333'}), 0, 0, 0, g, {cast: false}).rotation.x = -Math.PI/2;
+    // road lines
+    for(let i=-8; i<8; i+=2) {
+      add(new THREE.PlaneGeometry(0.2, 1), toon({color:'#eeeeee'}), 0, 0.01, i, g, {cast: false}).rotation.x = -Math.PI/2;
     }
-    car.position.set(2, 0, -4);
+    // sidewalks
+    add(tbox(4, 0.2, 20, 2), M.stone, -8, 0.1, 0, g);
+    add(tbox(4, 0.2, 20, 2), M.stone, 8, 0.1, 0, g);
+    
+    // barricades (multiple)
+    for (let i = -2; i <= 2; i += 2) {
+      const bx = -1.5;
+      const bz = -2 + i;
+      add(tbox(3, 0.2, 0.1, 1), toon({color:'#ddaa22'}), bx, 0.9, bz, g); // top rail
+      add(tbox(3, 0.2, 0.1, 1), toon({color:'#ddaa22'}), bx, 0.5, bz, g); // bottom rail
+      add(tbox(0.1, 1, 0.6, 1), toon({color:'#ddaa22'}), bx - 1.4, 0.5, bz, g); // left stand
+      add(tbox(0.1, 1, 0.6, 1), toon({color:'#ddaa22'}), bx + 1.4, 0.5, bz, g); // right stand
+    }
+
+    // traffic cones
+    for (let i = -3; i <= 3; i += 1.5) {
+      add(new THREE.ConeGeometry(0.2, 0.6, 8), toon({color:'#ff5500'}), i, 0.3, -1, g);
+      add(new THREE.CylinderGeometry(0.15, 0.18, 0.2, 8), toon({color:'#ffffff'}), i, 0.3, -1, g);
+    }
+
+    // police car (simple)
+    const car = new THREE.Group();
+    add(tbox(2, 0.8, 4, 1), toon({color:'#ffffff'}), 0, 0.6, 0, car);
+    add(tbox(1.8, 0.6, 2, 1), toon({color:'#111122'}), 0, 1.3, -0.5, car);
+    add(tbox(0.4, 0.1, 0.8, 1), toon({color:'#ff0000'}), -0.4, 1.65, -0.5, car);
+    add(tbox(0.4, 0.1, 0.8, 1), toon({color:'#0000ff'}), 0.4, 1.65, -0.5, car);
+    add(new THREE.CylinderGeometry(0.4, 0.4, 0.2, 16), toon({color:'#111111'}), -1, 0.4, 1, car).rotation.z = Math.PI/2;
+    add(new THREE.CylinderGeometry(0.4, 0.4, 0.2, 16), toon({color:'#111111'}), 1, 0.4, 1, car).rotation.z = Math.PI/2;
+    add(new THREE.CylinderGeometry(0.4, 0.4, 0.2, 16), toon({color:'#111111'}), -1, 0.4, -1, car).rotation.z = Math.PI/2;
+    add(new THREE.CylinderGeometry(0.4, 0.4, 0.2, 16), toon({color:'#111111'}), 1, 0.4, -1, car).rotation.z = Math.PI/2;
+    car.position.set(-4, 0, 3);
+    car.rotation.y = 0.3;
     g.add(car);
+
+    // street lamp
+    add(new THREE.CylinderGeometry(0.05, 0.05, 4, 8), M.iron, -6.5, 2, -4, g);
+    add(tbox(0.8, 0.1, 0.2, 1), M.iron, -6.1, 4, -4, g);
+    
+    // trash can
+    add(new THREE.CylinderGeometry(0.3, 0.3, 0.8, 8), toon({color:'#445544'}), 6.5, 0.4, -3, g);
+
+    // buildings
+    add(tbox(6, 15, 6, 2), M.plaster2, 12, 7.5, -5, g);
+    add(tbox(5, 20, 5, 2), M.stoneMoss, 10, 10, -12, g);
+    add(tbox(6, 12, 6, 2), M.plaster, -12, 6, -8, g);
+    
+    // signs on buildings
+    add(tbox(0.1, 2, 4, 1), toon({color:'#aa3333'}), 8.9, 3, -5, g);
+    add(tbox(0.1, 1.5, 3, 1), toon({color:'#33aa33'}), 7.4, 4, -12, g);
+
     return g;
   },
-  'BOMB-TENT': () => {
+  'BOMB-ROOM': () => {
     const g = new THREE.Group();
-    // Floor
-    const floorTex = canvasTex(512, 512, (ctx, w, h) => {
-      ctx.fillStyle = '#6a7d43'; ctx.fillRect(0, 0, w, h);
-      ctx.fillStyle = '#5a6d33';
-      for(let i=0; i<700; i++) {
-        ctx.beginPath(); ctx.arc(Math.random()*w, Math.random()*h, 2+Math.random()*5, 0, Math.PI*2); ctx.fill();
-      }
-    }, 4, 4);
-    add(new THREE.PlaneGeometry(6, 6), toon({map: floorTex}), 0, 0, 0, g).rotation.x = -Math.PI/2;
-    
-    // Walls
-    const wallTex = canvasTex(512, 512, (ctx, w, h) => {
-      const grd = ctx.createLinearGradient(0, 0, 0, h);
-      grd.addColorStop(0, '#7a8d53');
-      grd.addColorStop(1, '#4a5d23');
-      ctx.fillStyle = grd; ctx.fillRect(0, 0, w, h);
-      ctx.strokeStyle = '#3a4d13'; ctx.lineWidth = 4;
-      for(let i=0; i<w; i+=64) { ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, h); ctx.stroke(); }
-    }, 2, 1);
-    const wallMat = toon({map: wallTex, side: THREE.DoubleSide});
-    add(new THREE.PlaneGeometry(6, 3), wallMat, 0, 1.5, -3, g);
-    add(new THREE.PlaneGeometry(6, 3), wallMat, -3, 1.5, 0, g).rotation.y = Math.PI/2;
-    add(new THREE.PlaneGeometry(6, 3), wallMat, 3, 1.5, 0, g).rotation.y = -Math.PI/2;
-    
-    // Warning Sign on back wall
-    const signTex = canvasTex(256, 128, (ctx, w, h) => {
-      ctx.fillStyle = '#ffcc00'; ctx.fillRect(0, 0, w, h);
-      ctx.fillStyle = '#000000'; ctx.fillRect(10, 10, w-20, h-20);
-      ctx.fillStyle = '#ffcc00'; ctx.fillRect(15, 15, w-30, h-30);
-      ctx.fillStyle = '#000000';
-      ctx.font = 'bold 40px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('DANGER', w/2, 55);
-      ctx.font = 'bold 20px sans-serif'; ctx.fillText('EXPLOSIVES', w/2, 90);
-    }, 1, 1);
-    add(new THREE.PlaneGeometry(1.5, 0.75), toon({map: signTex}), 0, 2, -2.9, g);
-
-    // Blueprint on side wall
-    const bpTex = canvasTex(256, 256, (ctx, w, h) => {
-      ctx.fillStyle = '#2244aa'; ctx.fillRect(0, 0, w, h);
-      ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 2;
-      ctx.strokeRect(10, 10, w-20, h-20);
-      ctx.beginPath(); ctx.arc(w/2, h/2, 50, 0, Math.PI*2); ctx.stroke();
-      ctx.beginPath(); ctx.moveTo(20, 20); ctx.lineTo(w-20, h-20); ctx.stroke();
-    }, 1, 1);
-    add(new THREE.PlaneGeometry(1.5, 1.5), toon({map: bpTex}), -2.9, 1.8, -1, g).rotation.y = Math.PI/2;
-
-    // Fire extinguisher
-    const fe = new THREE.Group();
-    add(new THREE.CylinderGeometry(0.15, 0.15, 0.6), M.red, 0, 0.3, 0, fe);
-    add(new THREE.CylinderGeometry(0.05, 0.15, 0.15), M.red, 0, 0.675, 0, fe);
-    add(new THREE.CylinderGeometry(0.03, 0.03, 0.1), toon({color: '#222222'}), 0, 0.8, 0, fe);
-    add(tbox(0.1, 0.3, 0.1, 1), toon({color: '#dddddd'}), 0, 0.3, 0.16, fe);
-    fe.position.set(2.5, 0, -2.5);
-    g.add(fe);
-
-    // Table
-    const tableTex = canvasTex(256, 256, (ctx, w, h) => {
-      ctx.fillStyle = '#777777'; ctx.fillRect(0, 0, w, h);
-      ctx.fillStyle = '#888888';
-      for(let i=0; i<100; i++) {
-        ctx.fillRect(Math.random()*w, Math.random()*h, 2, 2);
-      }
-    }, 2, 2);
-    const tableMat = toon({map: tableTex});
-    add(tbox(1.5, 0.05, 0.8, 1), tableMat, 0, 0.9, 0, g);
-    add(new THREE.CylinderGeometry(0.05, 0.05, 0.9), M.iron, -0.6, 0.45, -0.3, g);
-    add(new THREE.CylinderGeometry(0.05, 0.05, 0.9), M.iron, 0.6, 0.45, -0.3, g);
-    add(new THREE.CylinderGeometry(0.05, 0.05, 0.9), M.iron, -0.6, 0.45, 0.3, g);
-    add(new THREE.CylinderGeometry(0.05, 0.05, 0.9), M.iron, 0.6, 0.45, 0.3, g);
-    
-    // Spotlight
-    add(new THREE.CylinderGeometry(0.05, 0.05, 2.5), M.iron, 2, 1.25, -2, g);
-    add(new THREE.CylinderGeometry(0.2, 0.4, 0.4), toon({color: '#444444'}), 1.8, 2.5, -1.8, g).rotation.x = Math.PI/4;
-    add(new THREE.CylinderGeometry(0.18, 0.38, 0.41), toon({color: '#ffffff'}), 1.8, 2.5, -1.8, g).rotation.x = Math.PI/4;
-    
-    // Tool case
-    add(tbox(0.5, 0.2, 0.3, 1), toon({color: '#333333'}), -1.5, 0.1, -1, g);
-    add(tbox(0.1, 0.05, 0.31, 1), M.iron, -1.5, 0.1, -1, g);
-    
-    // Crates
-    add(tbox(0.8, 0.8, 0.8, 1), M.wood, 2, 0.4, -2.5, g);
-    add(tbox(0.6, 0.6, 0.6, 1), M.wood, 2.2, 1.1, -2.5, g);
-    
-    // Tools on table
-    add(tbox(0.2, 0.05, 0.1, 1), toon({color: '#cc2222'}), -0.4, 0.925, 0.2, g);
-    add(tbox(0.15, 0.04, 0.08, 1), toon({color: '#2222cc'}), -0.2, 0.92, 0.25, g);
-    add(tbox(0.3, 0.02, 0.2, 1), toon({color: '#dddddd'}), 0.4, 0.91, 0.15, g);
-    
+    add(tbox(10, 5, 10, 2), M.stone, 0, 2.5, 0, g, {cast: false}).material.side = THREE.BackSide;
+    add(tbox(1, 5, 1, 1), M.stoneMoss, -3, 2.5, -2, g);
+    // table
+    add(tbox(2, 0.1, 1, 1), M.iron, 0, 1, -1, g); // top
+    add(tbox(0.1, 1, 0.1, 1), M.iron, -0.9, 0.5, -1.4, g);
+    add(tbox(0.1, 1, 0.1, 1), M.iron, 0.9, 0.5, -1.4, g);
+    add(tbox(0.1, 1, 0.1, 1), M.iron, -0.9, 0.5, -0.6, g);
+    add(tbox(0.1, 1, 0.1, 1), M.iron, 0.9, 0.5, -0.6, g);
+    // door
+    add(tbox(1.5, 2.5, 0.1, 1), M.iron, 3, 1.25, -4.9, g);
+    // crates
+    add(tbox(1, 1, 1, 1), M.wood, 3, 0.5, -2, g);
+    add(tbox(0.8, 0.8, 0.8, 1), M.wood, 3.5, 0.4, -1, g);
+    // pipes
+    add(new THREE.CylinderGeometry(0.1, 0.1, 10, 8), M.iron, 0, 4, -4.9, g).rotation.z = Math.PI/2;
+    // warning sign
+    add(tbox(1, 0.5, 0.05, 1), toon({color:'#eeaa00'}), -1.5, 2.5, -4.9, g);
+    // toolbox
+    add(tbox(0.6, 0.3, 0.3, 1), toon({color:'#cc2222'}), -2, 0.15, -1, g);
+    // loose cables
+    add(new THREE.CylinderGeometry(0.02, 0.02, 2, 8), toon({color:'#2222cc'}), -1, 0.02, -2, g).rotation.x = Math.PI/2;
+    add(new THREE.CylinderGeometry(0.02, 0.02, 1.5, 8), toon({color:'#cccc22'}), -1.5, 0.02, -1.5, g).rotation.x = Math.PI/2;
     return g;
   },
-  'COMMAND-POST': () => {
+  'CIRCUIT-VIEW': () => {
     const g = new THREE.Group();
-    const floorTex = canvasTex(512, 512, (ctx, w, h) => {
-      ctx.fillStyle = '#555566'; ctx.fillRect(0, 0, w, h);
-      ctx.fillStyle = '#666677';
-      for(let i=0; i<w; i+=64) {
-        for(let j=0; j<h; j+=64) {
-          if((i/64 + j/64) % 2 === 0) ctx.fillRect(i, j, 64, 64);
-        }
-      }
-    }, 4, 4);
-    add(new THREE.PlaneGeometry(10, 10), toon({map: floorTex}), 0, 0, 0, g).rotation.x = -Math.PI/2;
-    
-    const wallTex = canvasTex(512, 512, (ctx, w, h) => {
-      const grd = ctx.createLinearGradient(0, 0, 0, h);
-      grd.addColorStop(0, '#888899');
-      grd.addColorStop(1, '#555566');
-      ctx.fillStyle = grd; ctx.fillRect(0, 0, w, h);
-    }, 1, 1);
-    add(new THREE.PlaneGeometry(10, 4), toon({map: wallTex}), 0, 2, -5, g);
-    add(new THREE.PlaneGeometry(10, 4), toon({map: wallTex}), -5, 2, 0, g).rotation.y = Math.PI/2;
-    
-    // Poster
-    const posterTex = canvasTex(256, 512, (ctx, w, h) => {
-      ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, w, h);
-      ctx.fillStyle = '#ff0000'; ctx.fillRect(20, 20, w-40, 60);
-      ctx.fillStyle = '#000000'; ctx.fillRect(20, 100, w-40, 20);
-      ctx.fillRect(20, 140, w-40, 20);
-      ctx.fillRect(20, 180, w-40, 20);
-    }, 1, 1);
-    add(new THREE.PlaneGeometry(1, 2), toon({map: posterTex}), -2, 2, -4.9, g);
-    
-    // Radio desk
-    add(tbox(2, 1, 1, 1), M.wood, -3, 0.5, -2, g);
-    add(tbox(0.8, 0.4, 0.4, 1), toon({color: '#222222'}), -3, 1.2, -2, g);
-    add(new THREE.CylinderGeometry(0.05, 0.05, 0.1), M.iron, -2.8, 1.3, -1.75, g).rotation.x = Math.PI/2;
-    
-    // Screens
-    add(tbox(4, 1.5, 0.2, 1), toon({color: '#222222'}), 0, 2, -4.8, g);
-    add(new THREE.PlaneGeometry(1.2, 0.8), toon({color: '#66aaff'}), -1.3, 2, -4.69, g);
-    add(new THREE.PlaneGeometry(1.2, 0.8), toon({color: '#66aaff'}), 0, 2, -4.69, g);
-    add(new THREE.PlaneGeometry(1.2, 0.8), toon({color: '#66aaff'}), 1.3, 2, -4.69, g);
-    add(new THREE.PlaneGeometry(1.2, 0.8), toon({color: '#ffaa66'}), -1.3, 1.1, -4.69, g);
-    add(new THREE.PlaneGeometry(1.2, 0.8), toon({color: '#ffaa66'}), 0, 1.1, -4.69, g);
-    add(new THREE.PlaneGeometry(1.2, 0.8), toon({color: '#ffaa66'}), 1.3, 1.1, -4.69, g);
-    
-    // Coffee cups table
-    add(tbox(1.5, 1, 1, 1), M.wood, 3, 0.5, -2, g);
-    add(new THREE.CylinderGeometry(0.05, 0.04, 0.15), toon({color: '#ffffff'}), 3, 1.075, -2, g);
-    add(new THREE.CylinderGeometry(0.05, 0.04, 0.15), toon({color: '#ffffff'}), 3.2, 1.075, -1.9, g);
+    add(tbox(1.5, 0.05, 1.5, 1), M.wood, 0, -0.025, 0, g); // Changed to wood desk
+    // battery
+    const bat = add(new THREE.CylinderGeometry(0.1, 0.1, 0.4, 16), toon({color:'#cc2222'}), -0.4, 0.1, 0, g);
+    bat.rotation.x = Math.PI/2;
+    add(new THREE.CylinderGeometry(0.03, 0.03, 0.42, 16), toon({color:'#dddddd'}), -0.4, 0.1, 0, g).rotation.x = Math.PI/2;
+    // extra components
+    add(tbox(0.1, 0.1, 0.1, 1), toon({color:'#2222cc'}), -0.2, 0.05, 0.3, g);
+    add(tbox(0.05, 0.15, 0.05, 1), toon({color:'#ccaa22'}), 0.3, 0.075, 0.4, g);
+    add(new THREE.CylinderGeometry(0.05, 0.05, 0.2, 8), toon({color:'#22cc22'}), 0.4, 0.1, -0.2, g);
+    // copper coil
+    add(new THREE.CylinderGeometry(0.08, 0.08, 0.15, 16), toon({color:'#b87333'}), -0.3, 0.075, -0.3, g);
+    // blue capacitor
+    add(new THREE.CylinderGeometry(0.04, 0.04, 0.1, 16), toon({color:'#3366cc'}), 0.2, 0.05, 0.3, g);
+    // Add more large components to the base board to increase palette
+    add(tbox(0.15, 0.08, 0.15, 1), toon({color:'#882288'}), 0.3, 0.04, -0.4, g); // purple block
+    add(new THREE.CylinderGeometry(0.06, 0.06, 0.12, 16), toon({color:'#22aaaa'}), -0.2, 0.06, -0.4, g); // cyan cylinder
+    add(tbox(0.2, 0.05, 0.1, 1), toon({color:'#aa5522'}), 0.4, 0.025, 0.1, g); // orange block
+    // Add some metallic traces on the board
+    add(tbox(0.1, 0.005, 0.005, 1), toon({color:'#dddddd'}), 0, 0.02, 0.08, g);
+    add(tbox(0.005, 0.005, 0.1, 1), toon({color:'#dddddd'}), -0.05, 0.02, 0.03, g);
     return g;
   },
   'bomb suit': () => {
     const g = new THREE.Group();
-    add(tbox(0.6, 1.8, 0.4, 1), toon({color: '#4a5d23'}), 0, 0.9, 0, g);
+    const m = toon({color:'#4a6b4a'});
+    // torso
+    add(tbox(0.6, 0.9, 0.4, 1), m, 0, 1.35, 0, g);
+    // legs
+    add(tbox(0.25, 0.9, 0.25, 1), m, -0.15, 0.45, 0, g);
+    add(tbox(0.25, 0.9, 0.25, 1), m, 0.15, 0.45, 0, g);
+    // arms
+    add(tbox(0.2, 0.8, 0.2, 1), m, -0.4, 1.3, 0, g);
+    add(tbox(0.2, 0.8, 0.2, 1), m, 0.4, 1.3, 0, g);
     return g;
   },
   'bomb helmet': () => {
     const g = new THREE.Group();
-    add(new THREE.SphereGeometry(0.2, 16, 16), toon({color: '#4a5d23'}), 0, 0.2, 0, g);
-    add(box(0.3, 0.15, 0.1), toon({color: '#88ccff'}), 0, 0.2, 0.15, g);
+    add(new THREE.SphereGeometry(0.2, 16, 16), toon({color:'#3a5a3a'}), 0, 0.2, 0, g);
+    // visor
+    add(tbox(0.3, 0.15, 0.1, 1), toon({color:'#88ccff', transparent: true, opacity: 0.7}), 0, 0.2, 0.16, g);
     return g;
   },
-  'police uniform': () => {
+  'bomb device': () => {
     const g = new THREE.Group();
-    add(tbox(0.5, 1.8, 0.25, 1), toon({color: '#2a3b5c'}), 0, 0.9, 0, g);
-    add(box(0.1, 0.1, 0.05), toon({color: '#c0c0c0'}), -0.1, 1.4, 0.15, g);
-    return g;
-  },
-  'police cap': () => {
-    const g = new THREE.Group();
-    add(new THREE.CylinderGeometry(0.15, 0.15, 0.1, 8), toon({color: '#2a3b5c'}), 0, 0.05, 0, g);
-    add(box(0.3, 0.02, 0.15), toon({color: '#111111'}), 0, 0.01, 0.1, g);
-    return g;
-  },
-  'bomb': () => {
-    const g = new THREE.Group();
-    const bombTex = canvasTex(512, 512, (ctx, w, h) => {
-      ctx.fillStyle = '#444444'; ctx.fillRect(0, 0, w, h);
-      // Hazard stripes on edges
-      ctx.fillStyle = '#ffcc00';
-      for(let i=-w; i<w*2; i+=40) {
-        ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i+20, 0); ctx.lineTo(i+h+20, h); ctx.lineTo(i+h, h); ctx.fill();
-      }
-      ctx.fillStyle = '#222222'; ctx.fillRect(20, 20, w-40, h-40); // Inner dark area
-      
-      // Panel lines
-      ctx.strokeStyle = '#111111'; ctx.lineWidth = 4;
-      ctx.strokeRect(30, 30, w-60, h-60);
-      ctx.beginPath(); ctx.moveTo(w/2, 30); ctx.lineTo(w/2, h-30); ctx.stroke();
-    }, 1, 1);
-    add(tbox(0.4, 0.2, 0.3, 1), toon({map: bombTex}), 0, 0.1, 0, g);
-    
-    // Keypad
-    const kp = new THREE.Group();
-    add(tbox(0.1, 0.02, 0.1, 1), toon({color: '#cccccc'}), 0, 0, 0, kp);
-    for(let i=0; i<3; i++) {
-      for(let j=0; j<3; j++) {
-        add(tbox(0.02, 0.03, 0.02, 1), toon({color: '#333333'}), -0.03 + i*0.03, 0, -0.03 + j*0.03, kp);
-      }
-    }
-    kp.position.set(-0.1, 0.2, 0.05);
-    g.add(kp);
-
-    // Bolts
-    for(let x of [-0.18, 0.18]) {
-      for(let z of [-0.13, 0.13]) {
-        add(new THREE.CylinderGeometry(0.01, 0.01, 0.02), M.iron, x, 0.2, z, g);
-      }
-    }
-
-    return g;
-  },
-  'circuit board': () => {
-    const g = new THREE.Group();
-    const pcbTex = canvasTex(256, 256, (ctx, w, h) => {
-      ctx.fillStyle = '#228822'; ctx.fillRect(0, 0, w, h);
-      ctx.strokeStyle = '#44aa44'; ctx.lineWidth = 3;
-      for(let i=0; i<30; i++) {
-        ctx.beginPath();
-        ctx.moveTo(Math.random()*w, Math.random()*h);
-        ctx.lineTo(Math.random()*w, Math.random()*h);
-        ctx.stroke();
-      }
-      // Gold pins on edge
-      ctx.fillStyle = '#ffcc00';
-      for(let i=0; i<w; i+=10) {
-        ctx.fillRect(i, h-10, 6, 10);
-      }
-    }, 1, 1);
-    add(tbox(0.2, 0.02, 0.15, 1), toon({map: pcbTex}), 0, 0.01, 0, g);
-    
-    // Chips
-    add(tbox(0.04, 0.03, 0.04, 1), toon({color: '#111111'}), -0.05, 0.02, -0.03, g);
-    add(tbox(0.06, 0.03, 0.03, 1), toon({color: '#111111'}), 0.04, 0.02, 0.02, g);
-    
-    // Capacitors
-    add(new THREE.CylinderGeometry(0.01, 0.01, 0.03), toon({color: '#2244cc'}), -0.08, 0.025, 0.04, g);
-    add(new THREE.CylinderGeometry(0.01, 0.01, 0.03), toon({color: '#2244cc'}), -0.05, 0.025, 0.04, g);
-    add(new THREE.CylinderGeometry(0.015, 0.015, 0.04), toon({color: '#cc4422'}), 0.07, 0.03, -0.04, g);
-
-    return g;
-  },
-  'wire bundle': () => {
-    const g = new THREE.Group();
-    const cols = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff8800', '#ffffff'];
-    cols.forEach((c, i) => {
-      const w = add(new THREE.CylinderGeometry(0.005, 0.005, 0.15), toon({color: c}), (i-2.5)*0.015, 0.01, 0, g);
-      w.rotation.x = Math.PI/2;
-      w.rotation.z = (Math.random()-0.5)*0.2;
-      w.name = `wire_${i}`;
-    });
-    return g;
-  },
-  'wire snips': () => {
-    const g = new THREE.Group();
-    const handleTex = canvasTex(64, 256, (ctx, w, h) => {
-      ctx.fillStyle = '#cc0000'; ctx.fillRect(0, 0, w, h);
-      ctx.fillStyle = '#aa0000';
-      for(let y=0; y<h; y+=10) { ctx.fillRect(0, y, w, 5); }
-    }, 1, 1);
-    const handleMat = toon({map: handleTex});
-    add(tbox(0.02, 0.08, 0.01, 1), handleMat, -0.015, 0.04, 0, g).rotation.z = -0.2;
-    add(tbox(0.02, 0.08, 0.01, 1), handleMat, 0.015, 0.04, 0, g).rotation.z = 0.2;
-    add(tbox(0.01, 0.05, 0.01, 1), M.iron, -0.01, 0.1, 0, g).rotation.z = 0.2;
-    add(tbox(0.01, 0.05, 0.01, 1), M.iron, 0.01, 0.1, 0, g).rotation.z = -0.2;
-    add(new THREE.CylinderGeometry(0.005, 0.005, 0.012), toon({color: '#333333'}), 0, 0.08, 0, g).rotation.x = Math.PI/2;
+    // main box
+    add(tbox(0.5, 0.3, 0.3, 1), toon({color:'#333333'}), 0, 0.15, 0, g);
+    // dynamite sticks
+    add(new THREE.CylinderGeometry(0.04, 0.04, 0.2, 8), toon({color:'#cc2222'}), -0.15, 0.3, 0, g).rotation.x = Math.PI/2;
+    add(new THREE.CylinderGeometry(0.04, 0.04, 0.2, 8), toon({color:'#cc2222'}), -0.05, 0.3, 0, g).rotation.x = Math.PI/2;
+    // a wire
+    add(new THREE.CylinderGeometry(0.01, 0.01, 0.15, 8), toon({color:'#2222cc'}), 0.1, 0.35, 0, g).rotation.z = Math.PI/4;
+    // warning label
+    add(tbox(0.2, 0.1, 0.01, 1), toon({color:'#eeaa00'}), 0, 0.15, 0.15, g);
+    // some metallic bits
+    add(tbox(0.1, 0.05, 0.05, 1), M.iron, -0.2, 0.15, 0.15, g);
+    add(tbox(0.05, 0.05, 0.1, 1), M.iron, 0.2, 0.15, 0.15, g);
+    // some extra wires on the front
+    add(new THREE.CylinderGeometry(0.005, 0.005, 0.2, 8), toon({color:'#22cc22'}), -0.1, 0.1, 0.16, g).rotation.z = 0.5;
+    add(new THREE.CylinderGeometry(0.005, 0.005, 0.2, 8), toon({color:'#cccc22'}), 0.1, 0.2, 0.16, g).rotation.z = -0.5;
+    // glowing light
+    add(new THREE.SphereGeometry(0.03, 8, 8), toon({color:'#55ff55'}), -0.2, 0.35, 0.1, g);
+    // blue wire
+    add(new THREE.CylinderGeometry(0.01, 0.01, 0.2, 8), toon({color:'#2222ff'}), 0.2, 0.3, 0.1, g).rotation.z = Math.PI/3;
     return g;
   },
   'digital timer': () => {
     const g = new THREE.Group();
-    // Bezel
-    add(tbox(0.12, 0.04, 0.04, 1), toon({color: '#333333'}), 0, 0.02, 0, g);
-    // Screen bg
-    const screenBg = add(new THREE.PlaneGeometry(0.09, 0.03), toon({color: '#220000'}), 0, 0.041, -0.005, g);
-    screenBg.rotation.x = -Math.PI/2;
-    // Buttons
-    add(new THREE.CylinderGeometry(0.005, 0.005, 0.01), toon({color: '#00ff00'}), -0.03, 0.04, 0.015, g);
-    add(new THREE.CylinderGeometry(0.005, 0.005, 0.01), toon({color: '#ff0000'}), 0.03, 0.04, 0.015, g);
+    add(tbox(0.2, 0.1, 0.05, 1), toon({color:'#050505'}), 0, 0.05, 0, g);
+    const canvas = document.createElement('canvas');
+    canvas.width = 256; canvas.height = 128;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#050505'; ctx.fillRect(0,0,256,128);
+    ctx.fillStyle = '#ff2222'; ctx.font = 'bold 80px monospace'; ctx.fillText('00:07', 20, 90);
+    const tex = new THREE.CanvasTexture(canvas);
+    tex.colorSpace = THREE.SRGBColorSpace;
+    add(new THREE.PlaneGeometry(0.18, 0.09), new THREE.MeshBasicMaterial({map: tex}), 0, 0.05, 0.026, g);
+    g.userData.ctx = ctx;
+    g.userData.tex = tex;
+    return g;
+  },
+  'six colored wires': () => {
+    const g = new THREE.Group();
+    const colors = ['#cc2222', '#2222cc', '#22cc22', '#cccc22', '#eeeeee', '#ee8822'];
+    for(let i=0; i<6; i++) {
+      const w = add(new THREE.CylinderGeometry(0.01, 0.01, 0.3, 8), toon({color: colors[i]}), -0.1 + i*0.04, 0.05, 0, g);
+      w.rotation.x = Math.PI/2;
+      const wCut = add(new THREE.CylinderGeometry(0.01, 0.01, 0.14, 8), toon({color: colors[i]}), -0.1 + i*0.04, 0.05, 0.08, g);
+      wCut.rotation.x = Math.PI/2;
+      wCut.visible = false;
+      g.userData[`wire_${i}`] = w;
+      g.userData[`wireCut_${i}`] = wCut;
+    }
+    return g;
+  },
+  'circuit board': () => {
+    const g = new THREE.Group();
+    add(tbox(0.3, 0.02, 0.2, 1), toon({color:'#226622'}), 0, 0.01, 0, g);
+    // solder paths and chips
+    add(tbox(0.2, 0.03, 0.01, 1), toon({color:'#cccccc'}), 0, 0.015, -0.05, g);
+    add(tbox(0.01, 0.03, 0.1, 1), toon({color:'#cccccc'}), 0.05, 0.015, 0, g);
+    add(tbox(0.04, 0.03, 0.04, 1), toon({color:'#111111'}), -0.05, 0.015, 0.05, g); // chip
+    add(tbox(0.06, 0.03, 0.03, 1), toon({color:'#111111'}), 0.1, 0.015, 0.05, g); // chip
+    
+    // Add more colorful components to increase palette
+    add(new THREE.CylinderGeometry(0.015, 0.015, 0.04, 8), toon({color:'#ff4444'}), -0.1, 0.03, -0.05, g); // Red capacitor
+    add(tbox(0.04, 0.015, 0.015, 1), toon({color:'#4444ff'}), -0.1, 0.02, 0.02, g); // Blue resistor
+    add(tbox(0.03, 0.02, 0.03, 1), toon({color:'#ffff44'}), 0.1, 0.02, -0.05, g); // Yellow component
+    add(new THREE.CylinderGeometry(0.01, 0.01, 0.03, 8), toon({color:'#ff8844'}), 0.05, 0.02, 0.05, g).rotation.z = Math.PI/2; // Orange component
+    add(tbox(0.02, 0.02, 0.02, 1), toon({color:'#aa44ff'}), -0.02, 0.02, -0.08, g); // Purple component
+    add(tbox(0.02, 0.03, 0.02, 1), toon({color:'#44ffff'}), 0.12, 0.025, 0.02, g); // Cyan component
+    // Add some metallic traces on the board
+    add(tbox(0.1, 0.005, 0.005, 1), toon({color:'#dddddd'}), 0, 0.02, 0.08, g);
+    add(tbox(0.005, 0.005, 0.1, 1), toon({color:'#dddddd'}), -0.05, 0.02, 0.03, g);
+    return g;
+  },
+  'wire cutters': () => {
+    const g = new THREE.Group();
+    const h1 = add(tbox(0.02, 0.02, 0.1), toon({color:'#cc2222'}), -0.02, 0, 0.05, g);
+    const h2 = add(tbox(0.02, 0.02, 0.1), toon({color:'#cc2222'}), 0.02, 0, 0.05, g);
+    h1.rotation.y = 0.2; h2.rotation.y = -0.2;
+    const b1 = add(tbox(0.01, 0.02, 0.05), toon({color:'#cccccc'}), -0.01, 0, -0.025, g);
+    const b2 = add(tbox(0.01, 0.02, 0.05), toon({color:'#cccccc'}), 0.01, 0, -0.025, g);
+    b1.rotation.y = -0.2; b2.rotation.y = 0.2;
+    g.userData = { h1, h2, b1, b2 };
+    return g;
+  },
+  'tally board': () => {
+    const g = new THREE.Group();
+    add(tbox(2, 1.5, 0.05, 1), toon({color:'#ffffff'}), 0, 0.75, 0, g);
+    add(tbox(2.1, 1.6, 0.02, 1), M.iron, 0, 0.75, -0.02, g);
+    const canvas = document.createElement('canvas');
+    canvas.width = 512; canvas.height = 256;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#ffffff'; ctx.fillRect(0,0,512,256);
+    ctx.fillStyle = '#111111'; ctx.font = 'bold 120px sans-serif'; 
+    ctx.fillText('41', 200, 160);
+    const tex = new THREE.CanvasTexture(canvas);
+    tex.colorSpace = THREE.SRGBColorSpace;
+    add(new THREE.PlaneGeometry(1.8, 0.9), new THREE.MeshBasicMaterial({map: tex}), 0, 0.75, 0.03, g);
     return g;
   }
 };
@@ -440,54 +381,59 @@ const ASSETS = {
 const waterU = { t: { value: 0 }, deep: { value: new THREE.Color('#2f6f8f') }, shal: { value: new THREE.Color('#5fa8bf') }, glint: { value: new THREE.Color('#e9f6ff') } };
 const clouds = cloudsInit();
 
-const envStreet = ASSETS['STREET']();
-const envTent = ASSETS['BOMB-TENT']();
-const envPost = ASSETS['COMMAND-POST']();
-world.add(envStreet);
-world.add(envTent);
-world.add(envPost);
+const envPolice = ASSETS['POLICE-OFFICE'](); envPolice.position.set(0, 0, 0); world.add(envPolice);
+const tally = ASSETS['tally board'](); tally.position.set(0, 1.5, -3.9); envPolice.add(tally);
 
-const theBomb = ASSETS['bomb']();
-const theTimer = ASSETS['digital timer']();
-const theCircuit = ASSETS['circuit board']();
-const theWires = ASSETS['wire bundle']();
-const theSnips = ASSETS['wire snips']();
+const envStreet = ASSETS['CITY-STREET'](); envStreet.position.set(100, 0, 0); world.add(envStreet);
 
-theBomb.add(theTimer);
-theTimer.position.set(0, 0.2, 0.1);
-theBomb.add(theCircuit);
-theCircuit.position.set(0, 0.2, -0.05);
-theBomb.add(theWires);
-theWires.position.set(0, 0.22, -0.05);
+const envBombRoom = ASSETS['BOMB-ROOM'](); envBombRoom.position.set(200, 0, 0); world.add(envBombRoom);
+const bombDevice1 = ASSETS['bomb device'](); bombDevice1.position.set(0, 1.05, -1); envBombRoom.add(bombDevice1);
+const timer1 = ASSETS['digital timer'](); timer1.position.set(0, 1.35, -1); envBombRoom.add(timer1);
 
-envTent.add(theBomb);
-theBomb.position.set(0, 0.95, 0);
+const envCircuit = ASSETS['CIRCUIT-VIEW'](); envCircuit.position.set(300, 0, 0); world.add(envCircuit);
+const circuitBoard = ASSETS['circuit board'](); circuitBoard.position.set(0, 0.01, 0); envCircuit.add(circuitBoard);
+const wires = ASSETS['six colored wires'](); wires.position.set(0, 0.01, 0); envCircuit.add(wires);
+const timer2 = ASSETS['digital timer'](); timer2.position.set(0, 0.1, -0.1); envCircuit.add(timer2);
+const cutters = ASSETS['wire cutters'](); cutters.position.set(0, 0.05, 0.15); envCircuit.add(cutters);
 
-envTent.add(theSnips);
-theSnips.position.set(0.3, 0.95, 0.2);
-
-envStreet.position.set(0, 0, 0);
-envTent.position.set(100, 0, 0);
-envPost.position.set(200, 0, 0);
+const dummySuit = ASSETS['bomb suit'](); dummySuit.visible = false; world.add(dummySuit);
+const dummyHelmet = ASSETS['bomb helmet'](); dummyHelmet.visible = false; world.add(dummyHelmet);
 
 function worldState(S, f) {
-  waterU.t.value = f / 30;
+  envPolice.visible = S.place === 'POLICE-OFFICE';
+  envStreet.visible = S.place === 'CITY-STREET';
+  envBombRoom.visible = S.place === 'BOMB-ROOM';
+  envCircuit.visible = S.place === 'CIRCUIT-VIEW';
   
-  if (S.shotId === 's8') {
-    theSnips.position.set(0.1, 1.15, 0.1);
-    theSnips.rotation.set(-Math.PI/4, 0, 0);
-  } else if (S.shotId === 's12') {
-    theSnips.position.set(0, 1.17, -0.05);
-    theSnips.rotation.set(-Math.PI/2, 0, 0);
+  const sec = Math.max(0, 7 - Math.floor(f / 30));
+  [timer1, timer2].forEach(t => {
+    const ctx = t.userData.ctx;
+    ctx.fillStyle = '#050505'; ctx.fillRect(0,0,256,128);
+    ctx.fillStyle = '#ff2222'; ctx.font = 'bold 80px monospace';
+    ctx.fillText(`00:0${sec}`, 20, 90);
+    t.userData.tex.needsUpdate = true;
+  });
+  
+  if (S.id === 's14') {
+    const t = Math.max(0, Math.min(1, (f - 918) / 15));
+    cutters.position.z = 0.15 - (0.15 * t);
+    
+    const close = Math.max(0, Math.min(1, (f - 938) / 10));
+    cutters.userData.h1.rotation.y = 0.2 - (0.2 * close);
+    cutters.userData.h2.rotation.y = -0.2 + (0.2 * close);
+    cutters.userData.b1.rotation.y = -0.2 + (0.2 * close);
+    cutters.userData.b2.rotation.y = 0.2 - (0.2 * close);
+    
+    const cut = f >= 948;
+    wires.userData.wire_0.visible = !cut;
+    wires.userData.wireCut_0.visible = cut;
   } else {
-    theSnips.position.set(0.3, 0.95, 0.2);
-    theSnips.rotation.set(0, 0, 0);
+    cutters.position.z = 0.15;
+    wires.userData.wire_0.visible = true;
+    wires.userData.wireCut_0.visible = false;
   }
   
-  const redWire = theWires.getObjectByName('wire_0');
-  if (redWire) {
-    redWire.visible = f < 960;
-  }
+  waterU.t.value = f / 30;
 }
 
 // ---------- cards ----------

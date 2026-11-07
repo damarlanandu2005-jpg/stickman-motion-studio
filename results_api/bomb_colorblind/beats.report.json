@@ -6,32 +6,44 @@
   [
    "warn",
    "Q06",
-   "beat s1",
+   "beat s2",
    "the narration names 'bomb' and it is in the beat, but it is not in validation.must_see"
   ],
   [
    "warn",
    "Q06",
-   "beat s12",
+   "beat s3",
+   "the narration names 'device' and it is in the beat, but it is not in validation.must_see"
+  ],
+  [
+   "warn",
+   "Q06",
+   "beat s10",
+   "the narration names 'wire' and it is in the beat, but it is not in validation.must_see"
+  ],
+  [
+   "warn",
+   "Q06",
+   "beat s10",
+   "the narration names 'cut' and it is in the beat, but it is not in validation.must_see"
+  ],
+  [
+   "warn",
+   "Q06",
+   "beat s14",
    "the narration names 'bomb' and it is in the beat, but it is not in validation.must_see"
   ],
   [
    "warn",
    "Q05",
-   "beat s12",
-   "break of WIRE_SNIPS has no reaction or settling afterwards (a character reaction, a second object event or a settle)"
+   "beat s14",
+   "break of WIRES has no reaction or settling afterwards (a character reaction, a second object event or a settle)"
   ],
   [
    "warn",
    "Q06",
-   "beat s13",
+   "beat s15",
    "the narration names 'bomb' and it is in the beat, but it is not in validation.must_see"
-  ],
-  [
-   "warn",
-   "Q03",
-   "beat s9",
-   "same shot recipe 'S03' three beats in a row (CAM-10: vary the moves)"
   ]
  ],
  "gates": {
@@ -54,9 +66,9 @@
    ]
   },
   "Q03": {
-   "status": "PASS (with warnings)",
+   "status": "PASS",
    "errors": 0,
-   "warnings": 1,
+   "warnings": 0,
    "not_run": [
     "[human] the move helps the story"
    ]
@@ -80,7 +92,7 @@
   "Q06": {
    "status": "PASS (with warnings)",
    "errors": 0,
-   "warnings": 3,
+   "warnings": 6,
    "not_run": [
     "[automatic] parallax and soft-edge share on rendered frames"
    ]

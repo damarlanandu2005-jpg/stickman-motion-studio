@@ -1,13 +1,15 @@
-s1: Arthur was colorblind. But that didn't stop him from becoming a bomb disposal expert.
-s2: He was called whenever a dangerous device needed to be defused.
-s3: One day, he faced a bomb with only seconds remaining.
-s4: The instructions depended on identifying colored wires.
-s5: But Arthur couldn't see the difference between them. He had to find another way.
-s6: Instead of guessing, he carefully studied the circuit.
-s7: He traced every wire and followed its connections.
-s8: There were six wires, and one wrong cut could kill him.
-s9: The countdown kept ticking.
-s10: Everyone was waiting for an answer.
-s11: Then Arthur noticed something others had missed. He understood the circuit.
-s12: And he defused the bomb. He had done it again.
-s13: Forty-one bombs, without relying on color.
+s1: Arthur was colorblind.
+s2: But that didn't stop him from becoming a bomb disposal expert.
+s3: He was called whenever a dangerous device needed to be defused.
+s4: One day, he faced a bomb with only seconds remaining.
+s5: The instructions depended on identifying colored wires.
+s6: But Arthur couldn't see the difference between them.
+s7: He had to find another way.
+s8: Instead of guessing, he carefully studied the circuit.
+s9: He traced every wire and followed its connections.
+s10: There were six wires, and one wrong cut could kill him.
+s11: The countdown kept ticking.
+s12: Everyone was waiting for an answer.
+s13: Then Arthur noticed something others had missed.
+s14: He understood the circuit. And he defused the bomb.
+s15: He had done it again. Forty-one bombs, without relying on color.

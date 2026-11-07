@@ -1,113 +1,98 @@
-13 shots, 1083 frames, words used 120/120; assets to test: ['STREET', 'BOMB-TENT', 'COMMAND-POST', 'bomb suit', 'bomb helmet', 'police uniform', 'police cap', 'bomb', 'circuit board', 'wire bundle', 'wire snips', 'digital timer']
-prompt chars: static 195535, task 42658
-usage {'label': 'write', 'model': 'gemini-3.1-pro-preview', 'prompt': 94109, 'cached': 0, 'output': 9809, 'thoughts': 32205}
-first answer files: ['work/PLAN.md', 'work/NOTES.md', 'web/story.js', 'web/world.js', 'web/cast.js', 'audio.py']
+15 shots, 1083 frames, words used 120/120; assets to test: ['POLICE-OFFICE', 'CITY-STREET', 'BOMB-ROOM', 'CIRCUIT-VIEW', 'bomb suit', 'bomb helmet', 'bomb device', 'digital timer', 'six colored wires', 'circuit board', 'wire cutters', 'tally board']
+prompt chars: static 195535, task 48060
+usage {'label': 'write', 'model': 'gemini-3.1-pro-preview', 'prompt': 95840, 'cached': 0, 'output': 10693, 'thoughts': 14599}
+first answer files: ['web/story.js', 'web/world.js', 'web/cast.js', 'audio.py', 'work/PLAN.md', 'work/NOTES.md']
 /home/runner/work/stickman-motion-studio/stickman-motion-studio/project/../tools/gen_api.py:262: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
   im = Image.open(path).convert("RGB").resize((108, 192)); px = list(im.getdata()); n = len(px)
 asset round 0: build_err=False hard=True
-STREET: measured size 40 x 15 x 40 m (x, height, z), declared 20.0 m
-BOMB-TENT: measured size 12 x 4 x 12 m (x, height, z), declared 6.0 m  <-- in2: dark or mostly one colour (brightness 44, black 32%, flat 47%)
-COMMAND-POST: measured size 15 x 4 x 15 m (x, height, z), declared 10.0 m  <-- in2: dark or mostly one colour (brightness 31, black 24%, flat 69%)
-bomb suit: measured size 0 x 0 x 0 m (x, height, z), declared 1.8 m  <-- SIZE MISMATCH  <-- front: flat/black picture; side: flat/black picture; high: flat/black picture
-bomb helmet: measured size 0 x 0 x 0 m (x, height, z), declared 0.4 m  <-- SIZE MISMATCH  <-- front: flat/black picture; side: flat/black picture; high: flat/black picture
-police uniform: measured size 0 x 0 x 0 m (x, height, z), declared 1.8 m  <-- SIZE MISMATCH  <-- front: flat/black picture; side: flat/black picture; high: flat/black picture
-police cap: measured size 0 x 0 x 0 m (x, height, z), declared 0.3 m  <-- SIZE MISMATCH  <-- front: flat/black picture; side: flat/black picture; high: flat/black picture
-bomb: measured size 0.4 x 0.2 x 0.3 m (x, height, z), declared 0.4 m
-circuit board: measured size 0.2 x 0.03 x 0.15 m (x, height, z), declared 0.2 m
-wire bundle: measured size 0.1 x 0.01 x 0.15 m (x, height, z), declared 0.1 m
-wire snips: measured size 0.07 x 0.13 x 0.01 m (x, height, z), declared 0.15 m
-digital timer: measured size 0.1 x 0.04 x 0.02 m (x, height, z), declared 0.1 m
-usage {'label': 'asset1', 'model': 'gemini-3.1-pro-preview', 'prompt': 107822, 'cached': 90074, 'output': 4483, 'thoughts': 10135}
-asset fix files: ['web/world.js'] fails: ['STREET', 'BOMB-TENT', 'COMMAND-POST', 'bomb suit', 'bomb helmet', 'police uniform', 'police cap', 'bomb', 'digital timer']
-/home/runner/work/stickman-motion-studio/stickman-motion-studio/project/../tools/gen_api.py:262: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
-  im = Image.open(path).convert("RGB").resize((108, 192)); px = list(im.getdata()); n = len(px)
-asset round 1: build_err=False hard=True
-STREET: measured size 22 x 15 x 20 m (x, height, z), declared 20.0 m
-BOMB-TENT: measured size 6 x 3 x 6 m (x, height, z), declared 6.0 m  <-- in1: dark or mostly one colour (brightness 9, black 75%, flat 75%); in2: dark or mostly one colour (brightness 8, black 76%, flat 76%)
-COMMAND-POST: measured size 10 x 4 x 10 m (x, height, z), declared 10.0 m  <-- in2: dark or mostly one colour (brightness 35, black 24%, flat 51%)
-bomb suit: measured size 0.8 x 1.8 x 0.8 m (x, height, z), declared 1.8 m
-bomb helmet: measured size 0.4 x 0.4 x 0.4 m (x, height, z), declared 0.4 m
-police uniform: measured size 0.6 x 1.8 x 0.63 m (x, height, z), declared 1.8 m  <-- SIZE MISMATCH
-police cap: measured size 0.3 x 0.1 x 0.33 m (x, height, z), declared 0.3 m
-bomb: measured size 0.42 x 0.2 x 0.32 m (x, height, z), declared 0.4 m
-circuit board: measured size 0.2 x 0.03 x 0.15 m (x, height, z), declared 0.2 m
-wire bundle: measured size 0.09 x 0.01 x 0.15 m (x, height, z), declared 0.1 m
-wire snips: measured size 0.07 x 0.13 x 0.01 m (x, height, z), declared 0.15 m
-digital timer: measured size 0.1 x 0.04 x 0.03 m (x, height, z), declared 0.1 m
-usage {'label': 'asset2', 'model': 'gemini-3.1-pro-preview', 'prompt': 112919, 'cached': 0, 'output': 4430, 'thoughts': 4009}
-asset fix files: ['web/world.js'] fails: ['BOMB-TENT', 'COMMAND-POST', 'police uniform', 'police cap']
-/home/runner/work/stickman-motion-studio/stickman-motion-studio/project/../tools/gen_api.py:262: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
-  im = Image.open(path).convert("RGB").resize((108, 192)); px = list(im.getdata()); n = len(px)
-asset round 2: build_err=False hard=True
-STREET: measured size 22 x 15 x 20 m (x, height, z), declared 20.0 m
-BOMB-TENT: measured size 6 x 3 x 6 m (x, height, z), declared 6.0 m
-COMMAND-POST: measured size 10 x 4 x 10 m (x, height, z), declared 10.0 m  <-- in2: dark or mostly one colour (brightness 43, black 24%, flat 51%)
-bomb suit: measured size 0.8 x 1.8 x 0.8 m (x, height, z), declared 1.8 m
-bomb helmet: measured size 0.4 x 0.4 x 0.4 m (x, height, z), declared 0.4 m
-police uniform: measured size 0.6 x 1.8 x 0.63 m (x, height, z), declared 1.8 m  <-- SIZE MISMATCH
-police cap: measured size 0.3 x 0.1 x 0.33 m (x, height, z), declared 0.3 m
-bomb: measured size 0.42 x 0.2 x 0.32 m (x, height, z), declared 0.4 m
-circuit board: measured size 0.2 x 0.03 x 0.15 m (x, height, z), declared 0.2 m
-wire bundle: measured size 0.09 x 0.01 x 0.15 m (x, height, z), declared 0.1 m
-wire snips: measured size 0.07 x 0.13 x 0.01 m (x, height, z), declared 0.15 m
-digital timer: measured size 0.1 x 0.04 x 0.03 m (x, height, z), declared 0.1 m
-usage {'label': 'asset3', 'model': 'gemini-3.1-pro-preview', 'prompt': 117914, 'cached': 98250, 'output': 4669, 'thoughts': 2340}
-asset fix files: ['web/world.js'] fails: ['COMMAND-POST', 'police uniform']
-/home/runner/work/stickman-motion-studio/stickman-motion-studio/project/../tools/gen_api.py:262: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
-  im = Image.open(path).convert("RGB").resize((108, 192)); px = list(im.getdata()); n = len(px)
-asset round 3: build_err=False hard=True
-STREET: measured size 22 x 15 x 20 m (x, height, z), declared 20.0 m
-BOMB-TENT: measured size 6 x 3 x 6 m (x, height, z), declared 6.0 m
-COMMAND-POST: measured size 10 x 4 x 10 m (x, height, z), declared 10.0 m  <-- in2: dark or mostly one colour (brightness 45, black 24%, flat 51%)
+POLICE-OFFICE: measured size 8 x 4 x 8 m (x, height, z), declared 8.0 m
+CITY-STREET: measured size 25 x 20 x 24.5 m (x, height, z), declared 20.0 m
+BOMB-ROOM: measured size 10 x 5 x 10 m (x, height, z), declared 10.0 m
+CIRCUIT-VIEW: measured size 1.5 x 0.35 x 1.5 m (x, height, z), declared 1.0 m
 bomb suit: measured size 0.6 x 1.8 x 0.4 m (x, height, z), declared 1.8 m  <-- SIZE MISMATCH
 bomb helmet: measured size 0.4 x 0.4 x 0.4 m (x, height, z), declared 0.4 m
-police uniform: measured size 0.5 x 1.8 x 0.3 m (x, height, z), declared 1.8 m  <-- SIZE MISMATCH
-police cap: measured size 0.3 x 0.1 x 0.33 m (x, height, z), declared 0.3 m
-bomb: measured size 0.42 x 0.2 x 0.32 m (x, height, z), declared 0.4 m
-circuit board: measured size 0.2 x 0.03 x 0.15 m (x, height, z), declared 0.2 m
-wire bundle: measured size 0.09 x 0.01 x 0.15 m (x, height, z), declared 0.1 m
-wire snips: measured size 0.07 x 0.13 x 0.01 m (x, height, z), declared 0.15 m
-digital timer: measured size 0.1 x 0.04 x 0.03 m (x, height, z), declared 0.1 m
-music vs voice: -5.8 dB   sfx vs voice: -5.9 dB
+bomb device: measured size 0.51 x 0.51 x 0.3 m (x, height, z), declared 0.5 m
+digital timer: measured size 0.2 x 0.1 x 0.05 m (x, height, z), declared 0.2 m
+six colored wires: measured size 0.22 x 0.02 x 0.3 m (x, height, z), declared 0.3 m
+circuit board: measured size 0.3 x 0.03 x 0.2 m (x, height, z), declared 0.3 m
+wire cutters: measured size 0.08 x 0.02 x 0.15 m (x, height, z), declared 0.2 m
+tally board: measured size 2.1 x 1.6 x 0.06 m (x, height, z), declared 2.0 m
+usage {'label': 'asset1', 'model': 'gemini-3.1-pro-preview', 'prompt': 110311, 'cached': 73697, 'output': 5097, 'thoughts': 5018}
+asset fix files: ['web/world.js'] fails: ['bomb suit', 'bomb helmet', 'bomb device']
+/home/runner/work/stickman-motion-studio/stickman-motion-studio/project/../tools/gen_api.py:262: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  im = Image.open(path).convert("RGB").resize((108, 192)); px = list(im.getdata()); n = len(px)
+asset round 1: build_err=False hard=False
+POLICE-OFFICE: measured size 8 x 4 x 8 m (x, height, z), declared 8.0 m
+CITY-STREET: measured size 25 x 20 x 24.5 m (x, height, z), declared 20.0 m
+BOMB-ROOM: measured size 10 x 5 x 10 m (x, height, z), declared 10.0 m
+CIRCUIT-VIEW: measured size 1.5 x 0.25 x 1.5 m (x, height, z), declared 1.0 m
+bomb suit: measured size 1 x 1.5 x 0.4 m (x, height, z), declared 1.8 m
+bomb helmet: measured size 0.4 x 0.4 x 0.41 m (x, height, z), declared 0.4 m
+bomb device: measured size 0.5 x 0.41 x 0.3 m (x, height, z), declared 0.5 m
+digital timer: measured size 0.2 x 0.1 x 0.05 m (x, height, z), declared 0.2 m
+six colored wires: measured size 0.22 x 0.02 x 0.3 m (x, height, z), declared 0.3 m
+circuit board: measured size 0.3 x 0.03 x 0.2 m (x, height, z), declared 0.3 m
+wire cutters: measured size 0.08 x 0.02 x 0.15 m (x, height, z), declared 0.2 m
+tally board: measured size 2.1 x 1.6 x 0.06 m (x, height, z), declared 2.0 m
+usage {'label': 'asset2', 'model': 'gemini-3.1-pro-preview', 'prompt': 115949, 'cached': 0, 'output': 4901, 'thoughts': 1448}
+asset fix files: ['web/world.js'] fails: ['bomb suit']
+/home/runner/work/stickman-motion-studio/stickman-motion-studio/project/../tools/gen_api.py:262: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  im = Image.open(path).convert("RGB").resize((108, 192)); px = list(im.getdata()); n = len(px)
+asset round 2: build_err=False hard=False
+POLICE-OFFICE: measured size 8 x 4 x 8 m (x, height, z), declared 8.0 m
+CITY-STREET: measured size 25 x 20 x 24.5 m (x, height, z), declared 20.0 m
+BOMB-ROOM: measured size 10 x 5 x 10 m (x, height, z), declared 10.0 m
+CIRCUIT-VIEW: measured size 1.5 x 0.25 x 1.5 m (x, height, z), declared 1.0 m
+bomb suit: measured size 1 x 1.8 x 0.4 m (x, height, z), declared 1.8 m
+bomb helmet: measured size 0.4 x 0.4 x 0.41 m (x, height, z), declared 0.4 m
+bomb device: measured size 0.5 x 0.41 x 0.3 m (x, height, z), declared 0.5 m
+digital timer: measured size 0.2 x 0.1 x 0.05 m (x, height, z), declared 0.2 m
+six colored wires: measured size 0.22 x 0.02 x 0.3 m (x, height, z), declared 0.3 m
+circuit board: measured size 0.3 x 0.03 x 0.2 m (x, height, z), declared 0.3 m
+wire cutters: measured size 0.08 x 0.02 x 0.15 m (x, height, z), declared 0.2 m
+tally board: measured size 2.1 x 1.6 x 0.06 m (x, height, z), declared 2.0 m
+usage {'label': 'asset3', 'model': 'gemini-3.1-pro-preview', 'prompt': 121391, 'cached': 106439, 'output': 159, 'thoughts': 241}
+asset fix files: [] fails: []
+music vs voice: -6.0 dB   sfx vs voice: -6.7 dB
 
 /home/runner/work/stickman-motion-studio/stickman-motion-studio/project/../tools/gen_api.py:262: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
   im = Image.open(path).convert("RGB").resize((108, 192)); px = list(im.getdata()); n = len(px)
-shot round 0: build_err=False audio_err=False sheet=True hard=['s9', 's9'] soft=['s2', 's2', 's3', 's7', 's7', 's8', 's8', 's8', 's9', 's12', 's12', 's12', 's4', 's6', 's11']
-usage {'label': 'shot1', 'model': 'gemini-3.1-pro-preview', 'prompt': 126935, 'cached': 106429, 'output': 9421, 'thoughts': 6516}
-shot fix files: ['web/story.js', 'web/world.js'] fails: ['s2', 's3', 's4', 's6', 's7', 's8', 's9', 's12']
-music vs voice: -5.8 dB   sfx vs voice: -5.9 dB
+shot round 0: build_err=False audio_err=False sheet=True hard=[] soft=[]
+usage {'label': 'shot1', 'model': 'gemini-3.1-pro-preview', 'prompt': 119545, 'cached': 114620, 'output': 9825, 'thoughts': 6386}
+shot fix files: ['web/cast.js', 'web/world.js', 'web/story.js'] fails: ['s1', 's2', 's3', 's4', 's5', 's6', 's7', 's8', 's9', 's10', 's11', 's12', 's13', 's14', 's15']
+music vs voice: -6.0 dB   sfx vs voice: -6.7 dB
 
 /home/runner/work/stickman-motion-studio/stickman-motion-studio/project/../tools/gen_api.py:262: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
   im = Image.open(path).convert("RGB").resize((108, 192)); px = list(im.getdata()); n = len(px)
-shot round 1: build_err=False audio_err=False sheet=True hard=[] soft=['s2', 's2', 's2', 's7', 's8', 's8', 's8', 's9', 's9', 's9', 's12', 's12', 's12', 's3', 's4', 's6', 's11']
-usage {'label': 'shot2', 'model': 'gemini-3.1-pro-preview', 'prompt': 138196, 'cached': 114614, 'output': 11005, 'thoughts': 6141}
-shot fix files: ['web/story.js', 'web/world.js', 'web/cast.js'] fails: ['s2', 's7', 's8', 's9', 's12']
-music vs voice: -5.8 dB   sfx vs voice: -5.9 dB
+shot round 1: build_err=False audio_err=False sheet=True hard=['s4'] soft=['s4', 's4', 's8', 's11', 's11', 's11', 's1', 's2', 's3', 's9', 's10', 's14']
+usage {'label': 'shot2', 'model': 'gemini-3.1-pro-preview', 'prompt': 135360, 'cached': 114613, 'output': 9875, 'thoughts': 3442}
+shot fix files: ['web/story.js', 'web/world.js'] fails: ['s4', 's11']
+music vs voice: -6.0 dB   sfx vs voice: -6.7 dB
 
 /home/runner/work/stickman-motion-studio/stickman-motion-studio/project/../tools/gen_api.py:262: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
   im = Image.open(path).convert("RGB").resize((108, 192)); px = list(im.getdata()); n = len(px)
-shot round 2: build_err=False audio_err=False sheet=True hard=[] soft=['s2', 's2', 's2', 's7', 's7', 's8', 's8', 's8', 's9', 's9', 's4', 's6', 's12']
-usage {'label': 'shot3', 'model': 'gemini-3.1-pro-preview', 'prompt': 150960, 'cached': 122799, 'output': 11615, 'thoughts': 6477}
-shot fix files: ['web/story.js', 'web/world.js'] fails: ['s2', 's7', 's8', 's9', 's12']
-music vs voice: -5.8 dB   sfx vs voice: -5.9 dB
+shot round 2: build_err=False audio_err=False sheet=True hard=[] soft=['s4', 's11', 's11', 's2', 's3', 's8']
+usage {'label': 'shot3', 'model': 'gemini-3.1-pro-preview', 'prompt': 146117, 'cached': 122796, 'output': 11179, 'thoughts': 4612}
+shot fix files: ['web/story.js', 'web/world.js'] fails: ['s2', 's3', 's4', 's8', 's11']
+music vs voice: -6.0 dB   sfx vs voice: -6.7 dB
 
 /home/runner/work/stickman-motion-studio/stickman-motion-studio/project/../tools/gen_api.py:262: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
   im = Image.open(path).convert("RGB").resize((108, 192)); px = list(im.getdata()); n = len(px)
-shot round 3: build_err=False audio_err=False sheet=True hard=[] soft=['s7', 's2', 's5', 's8', 's9', 's12']
-usage {'label': 'shot4', 'model': 'gemini-3.1-pro-preview', 'prompt': 163409, 'cached': 0, 'output': 3970, 'thoughts': 1860}
-shot fix files: ['web/story.js'] fails: ['s7']
-music vs voice: -5.8 dB   sfx vs voice: -5.9 dB
+shot round 3: build_err=False audio_err=False sheet=True hard=[] soft=['s1', 's4', 's8', 's9', 's11']
+usage {'label': 'shot4', 'model': 'gemini-3.1-pro-preview', 'prompt': 157843, 'cached': 106422, 'output': 11984, 'thoughts': 4631}
+shot fix files: ['web/story.js', 'web/world.js'] fails: ['s1', 's4', 's8', 's9', 's11']
+music vs voice: -6.0 dB   sfx vs voice: -6.7 dB
 
 /home/runner/work/stickman-motion-studio/stickman-motion-studio/project/../tools/gen_api.py:262: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
   im = Image.open(path).convert("RGB").resize((108, 192)); px = list(im.getdata()); n = len(px)
-shot round 4: build_err=False audio_err=False sheet=True hard=[] soft=['s7', 's2', 's5', 's8', 's9', 's12']
-usage {'label': 'shot5', 'model': 'gemini-3.1-pro-preview', 'prompt': 168171, 'cached': 155538, 'output': 4006, 'thoughts': 2089}
-shot fix files: ['web/story.js'] fails: ['s7']
-music vs voice: -5.8 dB   sfx vs voice: -5.9 dB
+shot round 4: build_err=False audio_err=False sheet=True hard=[] soft=['s8', 's11', 's11', 's11', 's1', 's4']
+usage {'label': 'shot5', 'model': 'gemini-3.1-pro-preview', 'prompt': 170317, 'cached': 0, 'output': 12540, 'thoughts': 5284}
+shot fix files: ['web/story.js', 'web/world.js'] fails: ['s1', 's4', 's8', 's11']
+music vs voice: -6.0 dB   sfx vs voice: -6.7 dB
 
 /home/runner/work/stickman-motion-studio/stickman-motion-studio/project/../tools/gen_api.py:262: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
   im = Image.open(path).convert("RGB").resize((108, 192)); px = list(im.getdata()); n = len(px)
-shot round 5: build_err=False audio_err=False sheet=True hard=[] soft=['s7', 's8', 's2', 's5', 's9', 's12']
-music vs voice: -5.8 dB   sfx vs voice: -5.9 dB
+shot round 5: build_err=False audio_err=False sheet=True hard=[] soft=['s1', 's4', 's8', 's11']
+music vs voice: -6.0 dB   sfx vs voice: -6.7 dB
 
-DONE [{"label": "write", "model": "gemini-3.1-pro-preview", "prompt": 94109, "cached": 0, "output": 9809, "thoughts": 32205}, {"label": "asset1", "model": "gemini-3.1-pro-preview", "prompt": 107822, "cached": 90074, "output": 4483, "thoughts": 10135}, {"label": "asset2", "model": "gemini-3.1-pro-preview", "prompt": 112919, "cached": 0, "output": 4430, "thoughts": 4009}, {"label": "asset3", "model": "gemini-3.1-pro-preview", "prompt": 117914, "cached": 98250, "output": 4669, "thoughts": 2340}, {"label": "shot1", "model": "gemini-3.1-pro-preview", "prompt": 126935, "cached": 106429, "output": 9421, "thoughts": 6516}, {"label": "shot2", "model": "gemini-3.1-pro-preview", "prompt": 138196, "cached": 114614, "output": 11005, "thoughts": 6141}, {"label": "shot3", "model": "gemini-3.1-pro-preview", "prompt": 150960, "cached": 122799, "output": 11615, "thoughts": 6477}, {"label": "shot4", "model": "gemini-3.1-pro-preview", "prompt": 163409, "cached": 0, "output": 3970, "thoughts": 1860}, {"label": "shot5", "model": "gemini-3.1-pro-preview", "prompt": 168171, "cached": 155538, "output": 4006, "thoughts": 2089}]
+DONE [{"label": "write", "model": "gemini-3.1-pro-preview", "prompt": 95840, "cached": 0, "output": 10693, "thoughts": 14599}, {"label": "asset1", "model": "gemini-3.1-pro-preview", "prompt": 110311, "cached": 73697, "output": 5097, "thoughts": 5018}, {"label": "asset2", "model": "gemini-3.1-pro-preview", "prompt": 115949, "cached": 0, "output": 4901, "thoughts": 1448}, {"label": "asset3", "model": "gemini-3.1-pro-preview", "prompt": 121391, "cached": 106439, "output": 159, "thoughts": 241}, {"label": "shot1", "model": "gemini-3.1-pro-preview", "prompt": 119545, "cached": 114620, "output": 9825, "thoughts": 6386}, {"label": "shot2", "model": "gemini-3.1-pro-preview", "prompt": 135360, "cached": 114613, "output": 9875, "thoughts": 3442}, {"label": "shot3", "model": "gemini-3.1-pro-preview", "prompt": 146117, "cached": 122796, "output": 11179, "thoughts": 4612}, {"label": "shot4", "model": "gemini-3.1-pro-preview", "prompt": 157843, "cached": 106422, "output": 11984, "thoughts": 4631}, {"label": "shot5", "model": "gemini-3.1-pro-preview", "prompt": 170317, "cached": 0, "output": 12540, "thoughts": 5284}]
