@@ -119,6 +119,7 @@ def static_context():
         ("SCRIPT FORMAT AND KIT NAME LIST (what the author may write)", rd(ROOT / "scripts/FORMAT.md")),
         ("LOOK RULES (quality targets: sets, light, ink, camera)", rd(KIT / "docs/LOOK_RULES.md")),
         ("REFERENCE NUMBERS (measured ranges + style grammar from real shorts; adaptive, read the notes)", rd(KIT / "docs/REFERENCE_NUMBERS.md")),
+        ("PLAYBOOK (how real shorts handle camera, cuts, light, characters, props, effects, script to picture; rules with numbers and evidence, use the recipe for each beat)", rd(KIT / "docs/PLAYBOOK.md")),
         ("KIT METHOD (rules from the skill)", sk[a:b] + "\n" + sk[g:]),
         ("main.js, everything BEFORE the world section (materials M, toon(), add, tbox, helpers) - for reference, do not output", head),
         ("EXAMPLE web/world.js (works with the example story.js)", rd(KIT / "example/emu_war/world.js")),

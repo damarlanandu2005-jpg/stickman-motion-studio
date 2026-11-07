@@ -1,0 +1,200 @@
+{
+ "note": "Rebuilt by ref_study.py rules. Ranges are p10..p90 over the per-video values of group refs (min/max kept too). Not targets: habits of the references.",
+ "videos_in_refs": [
+  "memory_price",
+  "mirror_horse_race",
+  "perfect_railroads",
+  "pirate_cannonballs",
+  "roller_coasters",
+  "second_draw",
+  "storm_oil",
+  "town_button"
+ ],
+ "videos_in_ours": [
+  "claude_bomb_v21",
+  "gemini_bomb_v1"
+ ],
+ "metrics": {
+  "hard_cuts_per_min": {
+   "label": "hard cuts per minute",
+   "refs": {
+    "min": 3.1,
+    "p10": 4.22,
+    "median": 9.85,
+    "p90": 15.17,
+    "max": 17.9
+   },
+   "ours": {
+    "claude_bomb_v21": 58.2,
+    "gemini_bomb_v1": 25.0
+   }
+  },
+  "shot_len_median_s": {
+   "label": "median length between hard cuts (s)",
+   "refs": {
+    "min": 1.2,
+    "p10": 1.27,
+    "median": 1.734,
+    "p90": 11.75,
+    "max": 15.833
+   },
+   "ours": {
+    "claude_bomb_v21": 1.0,
+    "gemini_bomb_v1": 2.067
+   }
+  },
+  "flights_per_min": {
+   "label": "camera flights per minute",
+   "refs": {
+    "min": 13.9,
+    "p10": 15.09,
+    "median": 20.1,
+    "p90": 23.39,
+    "max": 27.8
+   },
+   "ours": {
+    "claude_bomb_v21": 15.0,
+    "gemini_bomb_v1": 6.7
+   }
+  },
+  "flight_seconds_median": {
+   "label": "length of a camera flight (s, median)",
+   "refs": {
+    "min": 0.83,
+    "p10": 0.83,
+    "median": 1.185,
+    "p90": 1.6,
+    "max": 1.6
+   },
+   "ours": {
+    "claude_bomb_v21": 0.57,
+    "gemini_bomb_v1": 1.42
+   }
+  },
+  "flight_peak_px": {
+   "label": "peak flight speed (px per frame at 270 px width)",
+   "refs": {
+    "min": 6.3,
+    "p10": 6.65,
+    "median": 11.1,
+    "p90": 16.03,
+    "max": 16.1
+   },
+   "ours": {
+    "claude_bomb_v21": 8.9,
+    "gemini_bomb_v1": 23.6
+   }
+  },
+  "hold_gap_median_s": {
+   "label": "pause between flights (s, median)",
+   "refs": {
+    "min": 0.47,
+    "p10": 0.61,
+    "median": 1.1,
+    "p90": 1.536,
+    "max": 1.55
+   },
+   "ours": {
+    "claude_bomb_v21": 2.28,
+    "gemini_bomb_v1": 0.83
+   }
+  },
+  "parallax_ratio": {
+   "label": "depth parallax in flights (0 flat .. 1 strong)",
+   "refs": {
+    "min": 0.33,
+    "p10": 0.358,
+    "median": 0.4,
+    "p90": 0.436,
+    "max": 0.45
+   },
+   "ours": {
+    "claude_bomb_v21": 0.27,
+    "gemini_bomb_v1": 0.3
+   }
+  },
+  "time_moving_fast": {
+   "label": "share of time the picture moves fast",
+   "refs": {
+    "min": 0.286,
+    "p10": 0.329,
+    "median": 0.487,
+    "p90": 0.588,
+    "max": 0.597
+   },
+   "ours": {
+    "claude_bomb_v21": 0.209,
+    "gemini_bomb_v1": 0.162
+   }
+  },
+  "time_nearly_still": {
+   "label": "share of time nearly still",
+   "refs": {
+    "min": 0.187,
+    "p10": 0.188,
+    "median": 0.265,
+    "p90": 0.436,
+    "max": 0.491
+   },
+   "ours": {
+    "claude_bomb_v21": 0.428,
+    "gemini_bomb_v1": 0.636
+   }
+  },
+  "pure_push_pull_share": {
+   "label": "share of shots that are only a zoom (no pan/tilt/orbit)",
+   "refs": {
+    "min": 0.0,
+    "p10": 0.0,
+    "median": 0.0,
+    "p90": 0.088,
+    "max": 0.1
+   },
+   "ours": {
+    "claude_bomb_v21": 0.778,
+    "gemini_bomb_v1": 0.25
+   }
+  },
+  "camera_repeat_next_shot": {
+   "label": "share of shots whose move repeats in the next shot",
+   "refs": {
+    "min": 0.25,
+    "p10": 0.262,
+    "median": 0.406,
+    "p90": 0.749,
+    "max": 0.8
+   },
+   "ours": {
+    "claude_bomb_v21": 0.886,
+    "gemini_bomb_v1": 0.333
+   }
+  }
+ },
+ "flights_pooled": {
+  "count": 172,
+  "seconds": {
+   "p10": 0.53,
+   "p50": 1.11,
+   "p90": 3.03
+  },
+  "peak_px_per_frame": {
+   "p10": 4.6,
+   "p50": 9.85,
+   "p90": 23.99
+  },
+  "zoom_pct": {
+   "p10": -37.87,
+   "p50": 9.45,
+   "p90": 150.19
+  },
+  "ease_share": {
+   "accelerate": 0.01,
+   "constant": 0.5,
+   "decelerate": 0.08,
+   "ease_in_out": 0.23,
+   "hold_then_move": 0.01,
+   "move_then_hold": 0.07,
+   "varying": 0.1
+  }
+ }
+}

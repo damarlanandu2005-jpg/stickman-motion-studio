@@ -181,7 +181,7 @@ def write_doc(st, vids):
         L.append(f"| {v['name']} | {v['group']} | {v['seconds']:.0f} | {v['shots']} | {v['held_frac']:.0%} | {v['mean']['p50']:.2f} | {v['sat']['p50']:.2f} | {v['palette']['p50']:.0f} | {v['edge']['p50']:.3f} |")
     L += ["", "## Notes on reading the numbers",
           "- Videos differ in resolution (360p / 720p / 1080p) and compression. Frame-to-frame change is noisy for low-resolution files, so trust 'held frames', camera share and shot length more than the raw change numbers.",
-          "- Biggest measured gaps of our videos against the references: saturation, palette size (variety of colours in the picture), share of held frames, and whip/glide camera moves. Brightness and detail are inside the range for some of our videos and far outside for others.",
+          "- Camera, cut, texture and story habits (what to do, with numbers and evidence) are in docs/PLAYBOOK.md, generated from reference/knowledge/rules.json. The biggest measured gaps of our videos are listed at its top.",
           "- Captions (lower-middle band) are ignored in every measure."]
     L += ["", "## How to extend (adaptive)", "Add any new reference short: `python3 kit/tools/ref_measure.py add video.mp4 --name NAME --group refs`. The ranges and this file rebuild themselves.",
           "Compare a finished video: `python3 kit/tools/ref_measure.py compare video.mp4` (add `--dark` if the script is meant to be dark)."]
