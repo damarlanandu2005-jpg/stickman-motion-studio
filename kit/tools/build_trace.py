@@ -39,8 +39,17 @@ for r in T["rules"]:
     for a in r["checked_after_render"]:
         m = re.match(r"(CHK-\d+)", a)
         if m and m.group(1) not in chk: bad.append(f"{i}: unknown check {m.group(1)}")
+    m = r["maturity"]
+    if m["capability_exists"] != r["state"].startswith("code"): bad.append(f"{i}: maturity.capability_exists disagrees with state")
+    if m["tested"] != r["production_test"]["status"]: bad.append(f"{i}: maturity.tested disagrees with production_test")
+    if m["automatically_selected"] or m["consumed_by_renderer"]: bad.append(f"{i}: automatically_selected / consumed_by_renderer is true: verify and extend this tool")
     if r["render_code_reads_rule"]: bad.append(f"{i}: render_code_reads_rule is true: verify and extend this tool")
 
+for cp in T["capability_registry"]:
+    if cp["exists"] != bool(cp["where"]): bad.append(f"{cp['id']}: exists flag disagrees with its code references")
+    for c in cp["where"]:
+        p = os.path.join(ROOT, c["file"])
+        if not os.path.exists(p) or c["symbol"] not in open(p, encoding="utf-8", errors="ignore").read(): bad.append(f"{cp['id']}: '{c['symbol']}' not found in {c['file']}")
 # nothing in render code may read the knowledge files
 readers = []
 for pat in ("kit/engine/*.js", "mine/*/web/*.js", "mine/*/render.mjs", "kit/tools/render.mjs"):
@@ -59,11 +68,15 @@ L = ["# TRACEABILITY: which rule is really used (generated from kit/reference/kn
      "- production test: " + ", ".join(f"{k} {ct.get(k, 0)}" for k in T["test_status"]),
      "- render code that reads rules.json or beats.json: " + (", ".join(readers) if readers else "none (checked by this tool)"), "",
      "## States", ""] + [f"- **{k}**: {v}" for k, v in T["states"].items()]
-L += ["", "## Rule table", "", "| id | area | source | state | coverage | where / code | Gemini (code step / notes step) | test | what is missing |", "|---|---|---|---|---|---|---|---|---|"]
+L += ["", "## Four levels of maturity (kept separate on purpose)", ""] + [f"{n}. **{k}**: {v}" for n, (k, v) in enumerate(T["maturity_levels"].items(), 1)]
+L += ["", "## Capabilities that are easy to confuse", "", "| id | what | exists | where | auto-selected | consumed by renderer | tested | note |", "|---|---|---|---|---|---|---|---|"]
+for cp in T["capability_registry"]:
+    L.append(f"| {cp['id']} | {cp['what']} | {'yes' if cp['exists'] else 'NO'} | {cp['scope']} | {'yes' if cp['automatically_selected'] else 'no'} | {'yes' if cp['consumed_by_renderer'] else 'no'} | {cp['tested']} | {cp['note']} |")
+L += ["", "## Rule table", "", "| id | area | source | state | coverage | where / code | Gemini (code step / notes step) | 1 exists | 2 auto-selected | 3 consumed by renderer | 4 tested | what is missing |", "|---|---|---|---|---|---|---|---|---|---|---|---|"]
 for r in T["rules"]:
     code = "; ".join(f"{c['file'].replace('kit/engine/', 'engine/')}:{c['symbol']}" for c in r["code"]) or "-"
     src = r["source"]["origin"].replace("our_", "") + "/" + r["source"]["values"]
-    L.append(f"| {r['id']} | {r['area']} | {src} | {r['state']} | {r['coverage']} | {code} | playbook / {r['gemini']['notes_step']} | {r['production_test']['status']} | {short(r['not_implemented_parts'] or r['note'], 110)} |")
+    L.append(f"| {r['id']} | {r['area']} | {src} | {r['state']} | {r['coverage']} | {code} | playbook / {r['gemini']['notes_step']} | {'yes' if r['maturity']['capability_exists'] else 'no'} | no | no | {r['production_test']['status']} | {short(r['not_implemented_parts'] or r['note'], 110)} |")
 L += ["", "## Test evidence (only rules with a test result)", ""]
 for r in T["rules"]:
     if r["production_test"]["status"] != "none": L.append(f"- {r['id']} [{r['production_test']['status']}]: {r['production_test']['where']}")

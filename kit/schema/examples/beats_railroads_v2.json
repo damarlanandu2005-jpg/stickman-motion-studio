@@ -1,5 +1,5 @@
 {
- "schema_version": "1.0.0",
+ "schema_version": "1.1.0",
  "project": {
   "id": "railroads_v2",
   "title": "Why Perfect Railroads Don't Work",
@@ -1711,7 +1711,7 @@
     }
    ],
    "transition_in": {
-    "type": "fly_through",
+    "type": "blend_fly",
     "reason": "new_place",
     "frames": 10
    },
@@ -2470,7 +2470,7 @@
     }
    ],
    "transition_in": {
-    "type": "fly_through",
+    "type": "blend_fly",
     "reason": "time_shift",
     "frames": 10
    },
@@ -3109,7 +3109,7 @@
     }
    ],
    "transition_in": {
-    "type": "fly_through",
+    "type": "blend_fly",
     "reason": "scale_change",
     "frames": 10
    },
@@ -3341,7 +3341,7 @@
     }
    ],
    "transition_in": {
-    "type": "fly_through",
+    "type": "blend_fly",
     "reason": "scale_change",
     "frames": 10
    },

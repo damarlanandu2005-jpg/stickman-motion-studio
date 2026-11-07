@@ -13,6 +13,7 @@ model = os.environ.get("MODEL", "gemini-3.1-pro-preview")
 narr = (P / "script.txt").read_text(encoding="utf-8").strip()
 fmt = (ROOT / "scripts" / "FORMAT.md").read_text(encoding="utf-8")
 tpl = (ROOT / "scripts" / "TEMPLATE.txt").read_text(encoding="utf-8")
+pb = (ROOT / "kit" / "docs" / "PLAYBOOK.md").read_text(encoding="utf-8")
 ex = (ROOT / "scripts" / "tests" / "bomb_colorblind.txt").read_text(encoding="utf-8")
 ex = ex[ex.find("SHOTS:"):][:6000]
 norm = lambda s: re.findall(r"[a-z0-9']+", s.lower())
@@ -23,8 +24,18 @@ Follow the format rules exactly. Plan for a fast, varied edit: one shot = 1 or 2
 Keep characters simple (2 to 4 named people, bean-head cartoon people). Everything not in the kit list must be a NEW item with real sizes in meters.
 No text before CAST and nothing after the last shot.
 
+PLANNING GUIDE (this is where the picture is decided, so use the PLAYBOOK below):
+- For every sentence first ask what the WORDS are doing (hook, new place, meet a character, explain a mechanism, a number, an action, suspense, a reveal, a reaction, an argument, time passing, a gag, a crowd, an ending) and choose the picture and the camera from that, using the intent map, the situation recipes and the rules in the PLAYBOOK. Show every important noun when it is spoken.
+- Every camera choice has a reason, and a hold is a choice too: hold for a reaction, a talking person or a number; move to reveal, land on a prop, follow something that travels, or show power. Do not move the camera just to be busy and do not freeze it by habit.
+- A flight in the first second is only a suggested way to open. A sudden object reveal, a face reaction or a held dramatic frame can open a story just as well.
+- Vary place, distance and move from shot to shot (no three alike in a row without a reason); keep each character's look the same in every shot; do not invent assets that the format cannot express.
+- Only the FORMAT RULES decide what you may WRITE (kit names, one camera move per shot, MUST SEE, etc.). The PLAYBOOK decides what you should CHOOSE.
+
 FORMAT RULES:
 {fmt}
+
+PLAYBOOK (rules with numbers, intent map, shot recipes; habits to apply, not shots to copy):
+{pb}
 
 TEMPLATE:
 {tpl}

@@ -50,7 +50,13 @@
     "status": "partial",
     "where": "bomb_v22 and railroads_v2: flights per minute inside the reference range; the share of time moving fast was not reported"
    },
-   "note": "The mix of holds and flights is a RESULT of the camera keys in story.js; nothing plans it. Measured after rendering."
+   "note": "The mix of holds and flights is a RESULT of the camera keys in story.js; nothing plans it. Measured after rendering.",
+   "maturity": {
+    "capability_exists": false,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "partial"
+   }
   },
   {
    "id": "CAM-02",
@@ -84,7 +90,13 @@
     "status": "in_range",
     "where": "bomb_v22: flights/min, length, pause in range; railroads_v2: flights 15.9/min, pause 1.35 s in range"
    },
-   "note": "One flight per scene is built with a local helper fl() in mine/railroads_v2/web/story.js (not in kit)."
+   "note": "One flight per scene is built with a local helper fl() in mine/railroads_v2/web/story.js (not in kit).",
+   "maturity": {
+    "capability_exists": true,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "in_range"
+   }
   },
   {
    "id": "CAM-03",
@@ -126,7 +138,13 @@
     "status": "in_range",
     "where": "bomb_v22 and railroads_v2: zoom-only shots 0 %"
    },
-   "note": ""
+   "note": "",
+   "maturity": {
+    "capability_exists": true,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "in_range"
+   }
   },
   {
    "id": "CAM-04",
@@ -157,7 +175,13 @@
     "status": "none",
     "where": "used by hand in railroads_v2 c5/c11, not measured as a rule"
    },
-   "note": "Reveal flights are authored per scene (railroads_v2 c5, c11)."
+   "note": "Reveal flights are authored per scene (railroads_v2 c5, c11).",
+   "maturity": {
+    "capability_exists": false,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "CAM-05",
@@ -188,7 +212,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": "Land-on-prop is authored by hand with easeOut keys."
+   "note": "Land-on-prop is authored by hand with easeOut keys.",
+   "maturity": {
+    "capability_exists": false,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "CAM-06",
@@ -217,7 +247,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": ""
+   "note": "",
+   "maturity": {
+    "capability_exists": false,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "CAM-07",
@@ -252,7 +288,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": "railroads_v2 c8/c19 track along rails by hand."
+   "note": "railroads_v2 c8/c19 track along rails by hand.",
+   "maturity": {
+    "capability_exists": true,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "CAM-08",
@@ -282,7 +324,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": ""
+   "note": "",
+   "maturity": {
+    "capability_exists": false,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "CAM-09",
@@ -316,7 +364,13 @@
     "status": "in_range",
     "where": "bomb_v22: ramp-up and ramp-down times in range"
    },
-   "note": "Ease functions smooth/easeOut/easeIn/back/anticip/spring exist; which one a flight uses is chosen by hand."
+   "note": "Ease functions smooth/easeOut/easeIn/back/anticip/spring exist; which one a flight uses is chosen by hand.",
+   "maturity": {
+    "capability_exists": true,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "in_range"
+   }
   },
   {
    "id": "CAM-10",
@@ -345,7 +399,13 @@
     "status": "failed",
     "where": "railroads_v2: repeat-move share 0.71 (reference lower)"
    },
-   "note": "Nothing checks that moves differ between beats (validate_beats.py warns on the plan only)."
+   "note": "Nothing checks that moves differ between beats (validate_beats.py warns on the plan only).",
+   "maturity": {
+    "capability_exists": false,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "failed"
+   }
   },
   {
    "id": "CAM-11",
@@ -375,7 +435,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": "FORMAT.md gives near/mid/far distances; shot size as a language is not enforced."
+   "note": "FORMAT.md gives near/mid/far distances; shot size as a language is not enforced.",
+   "maturity": {
+    "capability_exists": false,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "CAM-12",
@@ -406,7 +472,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": "Soft foreground objects are built by hand; the blur itself is CAM-15."
+   "note": "Soft foreground objects are built by hand; the blur itself is CAM-15.",
+   "maturity": {
+    "capability_exists": false,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "CUT-01",
@@ -437,7 +509,13 @@
     "status": "in_range",
     "where": "bomb_v22 13 hard cuts/min; railroads_v2 7.4 (reference 1.8-14.6)"
    },
-   "note": ""
+   "note": "",
+   "maturity": {
+    "capability_exists": false,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "in_range"
+   }
   },
   {
    "id": "TRN-01",
@@ -465,7 +543,7 @@
      "symbol": "window.snap"
     }
    ],
-   "not_implemented_parts": "fly-through is a 10-frame cross-blend of two rendered scenes, not a camera that passes through geometry; not in kit/engine",
+   "not_implemented_parts": "NOT a true fly-through: in snap() the kinds dissolve and fly run the same alpha cross-blend of two rendered scenes (only the frame count differs). A camera that passes through geometry into the next place does not exist. The real 3D camera flights are camFromKeys paths (CAM-02/CAM-07), which carry the viewer INSIDE a scene.",
    "gemini": {
     "code_step_playbook": true,
     "notes_step": "no"
@@ -476,7 +554,13 @@
     "status": "partial",
     "where": "bomb_v22 and railroads_v2 use STORY.TRANS fly; classifier cannot tell fly-through from dissolve reliably"
    },
-   "note": ""
+   "note": "",
+   "maturity": {
+    "capability_exists": true,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "partial"
+   }
   },
   {
    "id": "TRN-02",
@@ -516,7 +600,13 @@
     "status": "partial",
     "where": "used in both videos; type shares not independently verified"
    },
-   "note": ""
+   "note": "",
+   "maturity": {
+    "capability_exists": true,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "partial"
+   }
   },
   {
    "id": "TRN-03",
@@ -546,7 +636,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": ""
+   "note": "",
+   "maturity": {
+    "capability_exists": false,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "TRN-04",
@@ -575,7 +671,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": ""
+   "note": "",
+   "maturity": {
+    "capability_exists": false,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "END-01",
@@ -605,7 +707,13 @@
     "status": "none",
     "where": "not applied in railroads_v2"
    },
-   "note": ""
+   "note": "",
+   "maturity": {
+    "capability_exists": false,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "LIT-01",
@@ -639,7 +747,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": "Gemini-project pipeline only."
+   "note": "Gemini-project pipeline only.",
+   "maturity": {
+    "capability_exists": true,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "LIT-02",
@@ -675,7 +789,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": ""
+   "note": "",
+   "maturity": {
+    "capability_exists": true,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "LIT-03",
@@ -710,7 +830,13 @@
     "status": "partial",
     "where": "railroads_v2 uses golden light from c11 (summer)"
    },
-   "note": ""
+   "note": "",
+   "maturity": {
+    "capability_exists": true,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "partial"
+   }
   },
   {
    "id": "LIT-04",
@@ -741,7 +867,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": ""
+   "note": "",
+   "maturity": {
+    "capability_exists": false,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "COL-01",
@@ -777,7 +909,13 @@
     "status": "failed",
     "where": "bomb_v22 palette 27 (refs 32-45)"
    },
-   "note": ""
+   "note": "",
+   "maturity": {
+    "capability_exists": true,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "failed"
+   }
   },
   {
    "id": "WLD-01",
@@ -808,7 +946,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": "FORMAT.md asks for 3 landmarks per place; 6-10 pieces and one hero object are not enforced. gen_api asset round checks each builder alone."
+   "note": "FORMAT.md asks for 3 landmarks per place; 6-10 pieces and one hero object are not enforced. gen_api asset round checks each builder alone.",
+   "maturity": {
+    "capability_exists": false,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "WLD-02",
@@ -847,7 +991,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": ""
+   "note": "",
+   "maturity": {
+    "capability_exists": true,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "WLD-03",
@@ -882,7 +1032,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": ""
+   "note": "",
+   "maturity": {
+    "capability_exists": true,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "WLD-04",
@@ -917,7 +1073,13 @@
     "status": "partial",
     "where": "line width 3.2 in range in bomb_v22; railroads_v2 0.0047 low"
    },
-   "note": ""
+   "note": "",
+   "maturity": {
+    "capability_exists": true,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "partial"
+   }
   },
   {
    "id": "WLD-05",
@@ -952,7 +1114,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": "FORMAT.md: crowd of more than 6 is background only."
+   "note": "FORMAT.md: crowd of more than 6 is background only.",
+   "maturity": {
+    "capability_exists": true,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "CHR-01",
@@ -986,7 +1154,13 @@
     "status": "failed",
     "where": "bomb_v22 head 0.116; railroads_v2 0.102 (refs 0.12-0.21)"
    },
-   "note": ""
+   "note": "",
+   "maturity": {
+    "capability_exists": true,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "failed"
+   }
   },
   {
    "id": "CHR-02",
@@ -1020,7 +1194,13 @@
     "status": "partial",
     "where": "railroads_v2 uses outfit overrides via ov helper"
    },
-   "note": "FORMAT.md lists outfits and hats; new ones go to cast.js."
+   "note": "FORMAT.md lists outfits and hats; new ones go to cast.js.",
+   "maturity": {
+    "capability_exists": true,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "partial"
+   }
   },
   {
    "id": "CHR-03",
@@ -1055,7 +1235,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": ""
+   "note": "",
+   "maturity": {
+    "capability_exists": true,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "CHR-04",
@@ -1090,7 +1276,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": ""
+   "note": "",
+   "maturity": {
+    "capability_exists": true,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "FAC-01",
@@ -1125,7 +1317,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": ""
+   "note": "",
+   "maturity": {
+    "capability_exists": true,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "FAC-02",
@@ -1165,7 +1363,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": "Face extras sweat, tears, vein, spiral, blush, sparkle, iris, zzz exist. Purple head comes from a skin override by hand (railroads_v2)."
+   "note": "Face extras sweat, tears, vein, spiral, blush, sparkle, iris, zzz exist. Purple head comes from a skin override by hand (railroads_v2).",
+   "maturity": {
+    "capability_exists": true,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "PRP-01",
@@ -1196,7 +1400,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": "FORMAT.md NEW OBJECTS asks for text on props only by example."
+   "note": "FORMAT.md NEW OBJECTS asks for text on props only by example.",
+   "maturity": {
+    "capability_exists": false,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "PRP-02",
@@ -1228,7 +1438,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": "CHK-07 (noun appears within 0.3 s of the word) is manual; no program checks it."
+   "note": "CHK-07 (noun appears within 0.3 s of the word) is manual; no program checks it.",
+   "maturity": {
+    "capability_exists": false,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "PRP-03",
@@ -1258,7 +1474,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": "FORMAT.md: numbers on screen stay consistent; the counter itself is coded by hand."
+   "note": "FORMAT.md: numbers on screen stay consistent; the counter itself is coded by hand.",
+   "maturity": {
+    "capability_exists": false,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "PRP-04",
@@ -1288,7 +1510,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": ""
+   "note": "",
+   "maturity": {
+    "capability_exists": false,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "PRP-05",
@@ -1318,7 +1546,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": ""
+   "note": "",
+   "maturity": {
+    "capability_exists": false,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "FX-01",
@@ -1356,7 +1590,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": ""
+   "note": "",
+   "maturity": {
+    "capability_exists": true,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "FX-02",
@@ -1394,7 +1634,13 @@
     "status": "partial",
     "where": "railroads_v2 c19 uses debris and dust"
    },
-   "note": ""
+   "note": "",
+   "maturity": {
+    "capability_exists": true,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "partial"
+   }
   },
   {
    "id": "FX-03",
@@ -1428,7 +1674,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": ""
+   "note": "",
+   "maturity": {
+    "capability_exists": true,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "FX-04",
@@ -1466,7 +1718,13 @@
     "status": "partial",
     "where": "motes and smoke used in railroads_v2"
    },
-   "note": ""
+   "note": "",
+   "maturity": {
+    "capability_exists": true,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "partial"
+   }
   },
   {
    "id": "PHY-01",
@@ -1497,7 +1755,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": ""
+   "note": "",
+   "maturity": {
+    "capability_exists": false,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "PHY-02",
@@ -1526,7 +1790,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": ""
+   "note": "",
+   "maturity": {
+    "capability_exists": false,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "SCR-01",
@@ -1555,7 +1825,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": "FORMAT.md: one shot = one or two sentences, one place, one camera move."
+   "note": "FORMAT.md: one shot = one or two sentences, one place, one camera move.",
+   "maturity": {
+    "capability_exists": false,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "SCR-02",
@@ -1586,12 +1862,18 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": "MUST SEE lines name every important noun; gen_api shot phase asks Gemini to compare stills with them (AI check, untested for accuracy)."
+   "note": "MUST SEE lines name every important noun; gen_api shot phase asks Gemini to compare stills with them (AI check, untested for accuracy).",
+   "maturity": {
+    "capability_exists": false,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "SCR-03",
    "area": "script",
-   "purpose": "Hook in the first 2-3 seconds: a face reacts, the main prop or place is in frame, and the first flight starts within the first second.",
+   "purpose": "Hook in the first 2-3 seconds: a face reacts, or the main prop or place is in frame. A camera flight in the first second is one common way to open (suggested technique, not required).",
    "source": {
     "origin": "our_observed",
     "values": "observed",
@@ -1617,7 +1899,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": ""
+   "note": "",
+   "maturity": {
+    "capability_exists": false,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "SCR-04",
@@ -1648,7 +1936,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": "FORMAT.md gives the order hook > setup > incident > escalation > resolution > twist."
+   "note": "FORMAT.md gives the order hook > setup > incident > escalation > resolution > twist.",
+   "maturity": {
+    "capability_exists": false,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "CAP-01",
@@ -1688,7 +1982,13 @@
     "status": "partial",
     "where": "bomb_v22 pop in range; railroads_v2 3.5 words/s high, stay 0.2 s low"
    },
-   "note": ""
+   "note": "",
+   "maturity": {
+    "capability_exists": true,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "partial"
+   }
   },
   {
    "id": "SND-01",
@@ -1722,7 +2022,13 @@
     "status": "passed",
     "where": "runs on every render; finish.sh prints the loudness (not asserted)"
    },
-   "note": ""
+   "note": "",
+   "maturity": {
+    "capability_exists": true,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "passed"
+   }
   },
   {
    "id": "CUT-02",
@@ -1754,7 +2060,13 @@
     "status": "partial",
     "where": "bomb_v22 20 scene changes/min in range; railroads_v2 18 slightly low and scene length 3.0 s high"
    },
-   "note": ""
+   "note": "",
+   "maturity": {
+    "capability_exists": false,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "partial"
+   }
   },
   {
    "id": "CUT-03",
@@ -1785,7 +2097,13 @@
     "status": "in_range",
     "where": "hard cuts inside a scene low in both hand-made videos (v1 Gemini: 19/min)"
    },
-   "note": ""
+   "note": "",
+   "maturity": {
+    "capability_exists": false,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "in_range"
+   }
   },
   {
    "id": "TRN-05",
@@ -1812,7 +2130,7 @@
      "symbol": "window.snap"
     }
    ],
-   "not_implemented_parts": "",
+   "not_implemented_parts": "its \"fly-through\" share is produced only by cross-blends here, not by real 3D pass-throughs",
    "gemini": {
     "code_step_playbook": true,
     "notes_step": "no"
@@ -1825,7 +2143,13 @@
     "status": "partial",
     "where": "mix applied by hand in STORY.TRANS of both videos"
    },
-   "note": ""
+   "note": "",
+   "maturity": {
+    "capability_exists": true,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "partial"
+   }
   },
   {
    "id": "CAM-13",
@@ -1857,7 +2181,13 @@
     "status": "none",
     "where": "holds used by hand (railroads_v2 c3, c7, c10, c15); not measured as a rule"
    },
-   "note": ""
+   "note": "",
+   "maturity": {
+    "capability_exists": false,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "WLD-06",
@@ -1888,7 +2218,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": ""
+   "note": "",
+   "maturity": {
+    "capability_exists": false,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "PRF-01",
@@ -1922,7 +2258,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": ""
+   "note": "",
+   "maturity": {
+    "capability_exists": true,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "PRF-02",
@@ -1951,7 +2293,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": ""
+   "note": "",
+   "maturity": {
+    "capability_exists": false,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "PRF-03",
@@ -1982,7 +2330,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": ""
+   "note": "",
+   "maturity": {
+    "capability_exists": false,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "PRF-04",
@@ -2014,7 +2368,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": ""
+   "note": "",
+   "maturity": {
+    "capability_exists": false,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "TRN-06",
@@ -2052,7 +2412,13 @@
     "status": "partial",
     "where": "railroads_v2: 9 dissolve, 4 fly, 5 hard cut of 18"
    },
-   "note": ""
+   "note": "",
+   "maturity": {
+    "capability_exists": true,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "partial"
+   }
   },
   {
    "id": "CAM-14",
@@ -2086,7 +2452,13 @@
     "status": "in_range",
     "where": "bomb_v22: ramp times in range"
    },
-   "note": "easeOut gives a quick attack and soft release; the exact 0.28 s / 0.47 s shape is not parameterised."
+   "note": "easeOut gives a quick attack and soft release; the exact 0.28 s / 0.47 s shape is not parameterised.",
+   "maturity": {
+    "capability_exists": true,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "in_range"
+   }
   },
   {
    "id": "CAM-15",
@@ -2124,7 +2496,13 @@
     "status": "partial",
     "where": "railroads_v2 soft-edge share 36 % in range; bomb_v22 10 % outside (reference 24-61 %)"
    },
-   "note": ""
+   "note": "",
+   "maturity": {
+    "capability_exists": true,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "partial"
+   }
   },
   {
    "id": "CHR-05",
@@ -2162,7 +2540,13 @@
     "status": "partial",
     "where": "bomb_v22 in range; railroads_v2 low"
    },
-   "note": ""
+   "note": "",
+   "maturity": {
+    "capability_exists": true,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "partial"
+   }
   },
   {
    "id": "COL-02",
@@ -2202,7 +2586,13 @@
     "status": "failed",
     "where": "bomb_v22 flat 55 %, gradient 7 %; railroads_v2 flat 49 %, gradient 10.5 % (reference flat 35-48, gradient 14-20)"
    },
-   "note": ""
+   "note": "",
+   "maturity": {
+    "capability_exists": true,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "failed"
+   }
   },
   {
    "id": "COL-03",
@@ -2231,7 +2621,13 @@
     "status": "failed",
     "where": "railroads_v2 warm share 0.87, cool 0"
    },
-   "note": ""
+   "note": "",
+   "maturity": {
+    "capability_exists": false,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "failed"
+   }
   },
   {
    "id": "CAP-02",
@@ -2269,7 +2665,13 @@
     "status": "partial",
     "where": "as CAP-01"
    },
-   "note": ""
+   "note": "",
+   "maturity": {
+    "capability_exists": true,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "partial"
+   }
   },
   {
    "id": "FX-05",
@@ -2305,7 +2707,13 @@
     "status": "in_range",
     "where": "bomb_v22 and railroads_v2: shake per minute and decay in range"
    },
-   "note": ""
+   "note": "",
+   "maturity": {
+    "capability_exists": true,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "in_range"
+   }
   },
   {
    "id": "SND-02",
@@ -2334,7 +2742,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": "A property of the references (no snapping to voice onsets), not a feature."
+   "note": "A property of the references (no snapping to voice onsets), not a feature.",
+   "maturity": {
+    "capability_exists": false,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "SCR-05",
@@ -2363,7 +2777,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": "NEW (Step 1). intent field in beat schema; Gemini reads BEATS.md only if beats.json exists (tools/make_beats.py, untested with real Gemini)"
+   "note": "NEW (Step 1). intent field in beat schema; Gemini reads BEATS.md only if beats.json exists (tools/make_beats.py, untested with real Gemini)",
+   "maturity": {
+    "capability_exists": false,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "CAM-16",
@@ -2393,7 +2813,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": "NEW. Schema field camera.purpose + validator Q03 exist (Step 1). Nothing in story.js or Gemini output carries a purpose yet."
+   "note": "NEW. Schema field camera.purpose + validator Q03 exist (Step 1). Nothing in story.js or Gemini output carries a purpose yet.",
+   "maturity": {
+    "capability_exists": false,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "CMP-01",
@@ -2422,7 +2848,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": "NEW (Step 1). composition object in beat schema; validate_beats.py Q02 warns if the focal point is inside the caption zone; plan only"
+   "note": "NEW (Step 1). composition object in beat schema; validate_beats.py Q02 warns if the focal point is inside the caption zone; plan only",
+   "maturity": {
+    "capability_exists": false,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "CON-01",
@@ -2451,7 +2883,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": "NEW (Step 1). identity_lock and continuity_change in beat schema; validate_beats.py checks ids; nothing checks rendered frames"
+   "note": "NEW (Step 1). identity_lock and continuity_change in beat schema; validate_beats.py checks ids; nothing checks rendered frames",
+   "maturity": {
+    "capability_exists": false,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "ACT-01",
@@ -2493,7 +2931,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": "NEW (Step 1). NEW (Step 1). character_actions.phase and gaze_target_id in beat schema; no animation code uses them"
+   "note": "NEW (Step 1). NEW (Step 1). character_actions.phase and gaze_target_id in beat schema; no animation code uses them",
+   "maturity": {
+    "capability_exists": true,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "PHY-03",
@@ -2522,7 +2966,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": "NEW (Step 1). object_events with contact target and secondary effects in the schema; validate_beats.py Q05 warns; no animation code uses them"
+   "note": "NEW (Step 1). object_events with contact target and secondary effects in the schema; validate_beats.py Q05 warns; no animation code uses them",
+   "maturity": {
+    "capability_exists": false,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "PHY-04",
@@ -2551,7 +3001,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": "NEW (Step 1). motion_profile in the schema; no code"
+   "note": "NEW (Step 1). motion_profile in the schema; no code",
+   "maturity": {
+    "capability_exists": false,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "MAT-01",
@@ -2580,7 +3036,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": "NEW (Step 1). material_ids in the schema; validate_beats.py checks they exist; no material library in the kit"
+   "note": "NEW (Step 1). material_ids in the schema; validate_beats.py checks they exist; no material library in the kit",
+   "maturity": {
+    "capability_exists": false,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "MAT-02",
@@ -2609,7 +3071,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": "NEW (Step 1). no field; documentation for authors"
+   "note": "NEW (Step 1). no field; documentation for authors",
+   "maturity": {
+    "capability_exists": false,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "LIT-05",
@@ -2638,7 +3106,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": "NEW (Step 1). no field; applyLight gives one sun per place but the key side is not checked"
+   "note": "NEW (Step 1). no field; applyLight gives one sun per place but the key side is not checked",
+   "maturity": {
+    "capability_exists": false,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "LIT-06",
@@ -2667,7 +3141,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": "NEW (Step 1). no field; fxGlow exists as a building block"
+   "note": "NEW (Step 1). no field; fxGlow exists as a building block",
+   "maturity": {
+    "capability_exists": false,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "SND-03",
@@ -2696,7 +3176,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": "NEW (Step 1). audio_events in the schema; validate_beats.py Q09 checks triggers; audio.py is still written by Gemini from the SFX lines"
+   "note": "NEW (Step 1). audio_events in the schema; validate_beats.py Q09 checks triggers; audio.py is still written by Gemini from the SFX lines",
+   "maturity": {
+    "capability_exists": false,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "QC-01",
@@ -2738,7 +3224,13 @@
     "status": "partial",
     "where": "ran inside the Gemini runs for bomb and railroads (results_api/*/qa files); pass/fail accuracy not verified"
    },
-   "note": "NEW (Step 1). A pre-render check already exists in part (Gemini asset and shot phases)."
+   "note": "NEW (Step 1). A pre-render check already exists in part (Gemini asset and shot phases).",
+   "maturity": {
+    "capability_exists": true,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "partial"
+   }
   },
   {
    "id": "ADP-01",
@@ -2767,7 +3259,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": "NEW (Step 1). no code"
+   "note": "NEW (Step 1). no code",
+   "maturity": {
+    "capability_exists": false,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   },
   {
    "id": "ARC-01",
@@ -2805,7 +3303,13 @@
     "status": "none",
     "where": "not applied or not measured"
    },
-   "note": "NEW (Step 1). The kit already builds people as 2D cards in a 3D world."
+   "note": "NEW (Step 1). The kit already builds people as 2D cards in a 3D world.",
+   "maturity": {
+    "capability_exists": true,
+    "automatically_selected": false,
+    "consumed_by_renderer": false,
+    "tested": "none"
+   }
   }
  ],
  "unimplemented_capabilities": [
@@ -3056,6 +3560,93 @@
      "implemented_in": "existing: tools/gen_api.py asset phase (each builder rendered alone, size and look checked by Gemini; Gemini projects only)"
     }
    ]
+  }
+ ],
+ "maturity_levels": {
+  "capability_exists": "code exists that can do it when something tells it to (kit/engine, kit/tools, or only a project copy: see state)",
+  "automatically_selected": "a planner or selector chooses it from the narration, the beat plan or the rules without a person or Gemini writing the choice by hand (nothing does yet; Step 2B adds the first selector)",
+  "consumed_by_renderer": "the render code reads rule or plan DATA (rules.json, beats.json) and acts on it; today it only reads story.js written per project",
+  "tested": "production_test status: in a real video, measured (not a claim that the system knows when to use it)"
+ },
+ "capability_registry": [
+  {
+   "id": "CAP-3D-FLIGHT",
+   "what": "real 3D camera flight inside a scene (position, look-at, fov, ease, via-points)",
+   "where": [
+    {
+     "file": "kit/engine/motion.js",
+     "symbol": "camFromKeys"
+    }
+   ],
+   "exists": true,
+   "scope": "kit/engine",
+   "automatically_selected": false,
+   "consumed_by_renderer": false,
+   "tested": "in_range",
+   "note": "keys are written by hand or by Gemini in story.js"
+  },
+  {
+   "id": "CAP-BLEND",
+   "what": "cross-blend of two rendered scenes (dissolve, and the kind called fly, which runs the same code)",
+   "where": [
+    {
+     "file": "mine/railroads_v2/web/main.js",
+     "symbol": "window.snap"
+    },
+    {
+     "file": "mine/bomb_colorblind_v22/web/main.js",
+     "symbol": "window.snap"
+    }
+   ],
+   "exists": true,
+   "scope": "project copies only",
+   "automatically_selected": false,
+   "consumed_by_renderer": false,
+   "tested": "partial",
+   "note": "a visual blend, not a camera travelling through geometry"
+  },
+  {
+   "id": "CAP-FLY-THROUGH",
+   "what": "scene change where the camera passes through geometry into the next place on one continuous 3D path",
+   "where": [],
+   "exists": false,
+   "scope": "-",
+   "automatically_selected": false,
+   "consumed_by_renderer": false,
+   "tested": "none",
+   "note": "not implemented anywhere; the validator warns if a plan asks for transition type fly_through"
+  },
+  {
+   "id": "CAP-HARD-CUT",
+   "what": "hard cut between scenes",
+   "where": [
+    {
+     "file": "kit/engine/main.js",
+     "symbol": "window.renderFrame"
+    }
+   ],
+   "exists": true,
+   "scope": "kit/engine",
+   "automatically_selected": false,
+   "consumed_by_renderer": false,
+   "tested": "in_range",
+   "note": "default behaviour at a shot boundary"
+  },
+  {
+   "id": "CAP-CAMERA-KICK",
+   "what": "impact camera kick",
+   "where": [
+    {
+     "file": "kit/engine/motion.js",
+     "symbol": "kicks"
+    }
+   ],
+   "exists": true,
+   "scope": "kit/engine",
+   "automatically_selected": false,
+   "consumed_by_renderer": false,
+   "tested": "in_range",
+   "note": "frames listed by hand in story.js KICKS"
   }
  ]
 }

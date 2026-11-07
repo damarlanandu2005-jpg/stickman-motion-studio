@@ -1,0 +1,55 @@
+name: Step 2A beat plan test with real Gemini (no render)
+on:
+  push:
+    branches: [gemini-cartoon]
+    paths: ['.github/workflows/beats-test.yml']     # only registers the workflow; the job runs on "Run workflow"
+  workflow_dispatch:
+    inputs:
+      model:
+        description: "Gemini model"
+        default: gemini-3.1-pro-preview
+      out:
+        description: "Result folder name under results_beats/"
+        default: run1
+
+permissions:
+  contents: write
+
+jobs:
+  test:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install -q google-genai jsonschema
+      - name: Narration only -> shot notes (with PLAYBOOK) -> beat plan, for both stories
+        env:
+          MODEL: ${{ github.event.inputs.model }}
+          OUT: ${{ github.event.inputs.out }}
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+          GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+          GCP_LOCATION: ${{ secrets.GCP_LOCATION }}
+        run: |
+          [ -n "$GCP_SA_KEY" ] && [ -n "$GCP_PROJECT_ID" ] || { echo "GCP secrets missing"; exit 1; }
+          printf '%s' "$GCP_SA_KEY" > "$RUNNER_TEMP/sa.json"
+          export GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/sa.json" GOOGLE_CLOUD_PROJECT="$GCP_PROJECT_ID" GOOGLE_CLOUD_LOCATION="${GCP_LOCATION:-global}" GOOGLE_GENAI_USE_VERTEXAI=true
+          for N in bomb_colorblind railroads; do
+            P="$RUNNER_TEMP/$N"; mkdir -p "$P/work"; D="$GITHUB_WORKSPACE/results_beats/$OUT/$N"; mkdir -p "$D"
+            cp scripts/tests/beats_inputs/$N/script.txt "$P/"; cp scripts/tests/beats_inputs/$N/words.json scripts/tests/beats_inputs/$N/phrases.json "$P/work/"
+            ( cd "$P"
+              echo "== $N: make_notes"; date; python3 "$GITHUB_WORKSPACE/tools/make_notes.py" . 2>&1 | tee "$D/make_notes.log" || true
+              echo "== $N: make_beats"; date; [ -f shot_notes.txt ] && python3 "$GITHUB_WORKSPACE/tools/make_beats.py" . 2>&1 | tee "$D/make_beats.log" || true
+              date ) 
+            cp "$P"/shot_notes.txt "$P"/beats.json "$P"/beats.report.json "$P"/beats.candidate.json "$D"/ 2>/dev/null || true
+          done
+      - name: Publish results to results_beats/ on this branch
+        env:
+          OUT: ${{ github.event.inputs.out }}
+        run: |
+          git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add results_beats; git commit -q -m "Step 2A beat test results $OUT, run ${{ github.run_id }} [skip ci]" || exit 0
+          for T in 1 2 3; do git pull -q --rebase origin gemini-cartoon && git push -q origin HEAD:gemini-cartoon && break; sleep 4; done

@@ -1,6 +1,6 @@
 # kit/schema: the beat plan
 
-`beat.v1.schema.json` (JSON Schema 2020-12, version **1.0.0**) describes one file per video, `beats.json`: the narration turned into structured picture instructions
+`beat.v1.schema.json` (JSON Schema 2020-12, version **1.1.0** (1.0.0 plans stay valid)) describes one file per video, `beats.json`: the narration turned into structured picture instructions
 (intent, subject, hero object, actions, shot and composition, camera purpose and move, material and light, captions, audio events, transition, validation).
 Readable summary for models: `kit/docs/BEATS.md` (generated). Examples from the two real stories: `examples/beats_railroads_v2.json`, `examples/beats_bomb_v22.json`.
 

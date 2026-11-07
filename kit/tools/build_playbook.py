@@ -114,7 +114,7 @@ def write_beats_doc():
     B = SC["$defs"]["beat"]["properties"]
     en = lambda *p: ", ".join(_dig(B, p)["enum"])
     L = ["# BEATS: the beat plan (generated from kit/schema/beat.v1.schema.json and rules.json; do not edit by hand)", "",
-         f"Schema version {SC['properties']['schema_version']['const']}. One JSON file per video (beats.json). It turns the narration into structured picture instructions: what the words do, what must be seen, how the camera and the cut serve that, and which checks apply.",
+         f"Schema version {SC['properties']['schema_version']['enum'][-1]}. One JSON file per video (beats.json). It turns the narration into structured picture instructions: what the words do, what must be seen, how the camera and the cut serve that, and which checks apply.",
          "It is a plan. It does not replace shot_notes.txt yet. Code that reads it is not built in this step (see kit/docs/TRACEABILITY.md).", "",
          "## Rules for the author of a beats file",
          "- Every beat covers consecutive WORDS of the narration; all beats together cover every word once, in order. Times follow the word times.",

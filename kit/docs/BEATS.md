@@ -1,6 +1,6 @@
 # BEATS: the beat plan (generated from kit/schema/beat.v1.schema.json and rules.json; do not edit by hand)
 
-Schema version 1.0.0. One JSON file per video (beats.json). It turns the narration into structured picture instructions: what the words do, what must be seen, how the camera and the cut serve that, and which checks apply.
+Schema version 1.1.0. One JSON file per video (beats.json). It turns the narration into structured picture instructions: what the words do, what must be seen, how the camera and the cut serve that, and which checks apply.
 It is a plan. It does not replace shot_notes.txt yet. Code that reads it is not built in this step (see kit/docs/TRACEABILITY.md).
 
 ## Rules for the author of a beats file
@@ -16,7 +16,7 @@ It is a plan. It does not replace shot_notes.txt yet. Code that reads it is not 
 - camera.mode: static, creep, push-in, pull-back, pan, tilt, crane-up, crane-down, orbit, track, fly-through, snap-zoom, whip, top-down
 - camera.ease: smooth, easeOut, easeIn, back, anticip, spring
 - shot.framing: wide, medium_wide, medium, close, detail, top_down, pov
-- transition_in.type: start, cut, dissolve, fly_through, flash, whip, in_place
+- transition_in.type: start, cut, dissolve, blend_fly, fly_through, flash, whip, in_place
 - transition_in.reason: start, new_place, time_shift, memory_or_thought, scale_change, emphasis, continuity
 - object event: appear, move, swing, roll, slide, drop, impact, break, launch, spin, glow, heat, bend, change_value, settle
 - motion_profile: rigid, elastic, fluid, smoke, flame, rope_lag, none
@@ -47,7 +47,7 @@ It is a plan. It does not replace shot_notes.txt yet. Code that reads it is not 
 - `extensions`
 
 ## Intent to recipe (candidates, not a sequence)
-- hook: S04, S03, S05 (First 2-3 s: a reacting face or the hero object in frame, first flight inside 1 s.)
+- hook: S04, S03, S05 (First 2-3 s: a reacting face, the hero object or the place in frame. The camera may fly, reveal suddenly or hold, whichever the story needs (a flight inside 1 s is only a suggested technique).)
 - introduce_place_or_time: S01, S05 (Environment, a scale anchor and one key prop.)
 - introduce_character: S02, S04 (The character readable by hat and clothes, expression first.)
 - explain_mechanism: S03, S07, S06 (The hero object, its moving part and the cause and effect state.)

@@ -175,7 +175,8 @@ def run(path):
         tr = b["transition_in"]
         if k == 0 and tr["type"] != "start": err("Q08", w, "first beat transition_in.type must be 'start'")
         if k > 0 and tr["type"] == "start": err("Q08", w, "only the first beat may use type 'start'")
-        if tr["type"] in ("dissolve", "fly_through", "flash") and "frames" not in tr: err("Q08", w, f"{tr['type']} needs frames")
+        if tr["type"] == "fly_through": warn("Q08", w, "transition fly_through (camera passes through geometry into the next place) is not implemented in the renderer; use blend_fly (a cross-blend) or a camera flight inside the scene, and do not report a blend as a 3D fly-through")
+        if tr["type"] in ("dissolve", "blend_fly", "fly_through", "flash") and "frames" not in tr: err("Q08", w, f"{tr['type']} needs frames")
     if nxt != len(W): err("Q04", "beats", f"beats cover {nxt} of {len(W)} words")
     if B and B[-1]["time"]["end_s"] < W[-1]["e"] - 0.1: err("Q04", "beats", "the last beat ends before the last word")
 

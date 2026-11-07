@@ -1,13 +1,13 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "stickman-motion-studio/beat-plan/1.0.0",
+  "$id": "stickman-motion-studio/beat-plan/1.1.0",
   "title": "Beat plan (narration -> structured visual instructions)",
-  "description": "One file per video. Stable and versioned: 1.x only ADDS optional fields; a renamed or removed field or a changed meaning is 2.0. Unknown data goes into `extensions` (any object), never into new top-level keys. Time is in seconds; the renderer converts with project.fps. Every `*_id` must resolve to an entry in `entities` (checked by kit/tools/validate_beats.py, not by this file).",
+  "description": "One file per video. Version 1.1.0. Stable and versioned: 1.x only ADDS optional fields; a renamed or removed field or a changed meaning is 2.0. Unknown data goes into `extensions` (any object), never into new top-level keys. Time is in seconds; the renderer converts with project.fps. Every `*_id` must resolve to an entry in `entities` (checked by kit/tools/validate_beats.py, not by this file).",
   "type": "object",
   "additionalProperties": false,
   "required": ["schema_version", "project", "narration", "entities", "beats"],
   "properties": {
-    "schema_version": { "const": "1.0.0" },
+    "schema_version": { "enum": ["1.0.0", "1.1.0"], "description": "1.1.0 adds the transition type blend_fly and clarifies fly_through; 1.0.0 plans stay valid" },
     "project": {
       "type": "object", "additionalProperties": false, "required": ["id", "fps", "width", "height"],
       "properties": {
@@ -152,7 +152,7 @@
           "trigger": { "enum": ["word", "animation_event", "transition", "beat_start"] },
           "word_index": { "type": "integer", "minimum": 0, "description": "required when trigger = word; index into narration.words" } } } },
         "transition_in": { "type": "object", "additionalProperties": false, "required": ["type", "reason"], "properties": {
-          "type": { "enum": ["start", "cut", "dissolve", "fly_through", "flash", "whip", "in_place"] },
+          "type": { "enum": ["start", "cut", "dissolve", "blend_fly", "fly_through", "flash", "whip", "in_place"], "description": "dissolve = cross-blend of two rendered scenes. blend_fly = also a 2D cross-blend (the renderer's STORY.TRANS kind fly is the same code as dissolve with other frame counts); it is NOT a camera travelling through geometry. fly_through = the camera really passes into the next place along one continuous 3D path: NOT implemented in the renderer today (a camera flight inside one scene is camera.mode, which IS implemented)." },
           "reason": { "enum": ["start", "new_place", "time_shift", "memory_or_thought", "scale_change", "emphasis", "continuity"] },
           "frames": { "type": "integer", "minimum": 0 } } },
         "continuity_change": { "type": "array", "items": { "type": "string" }, "description": "identity_lock items that the script changes on purpose in this beat (rule CON-01)" },

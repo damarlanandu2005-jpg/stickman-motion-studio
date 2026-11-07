@@ -60,5 +60,7 @@ d = copy.deepcopy(EX["railroads_v2"]); d["beats"][0]["shot"]["composition"]["foc
 F, _ = check(d); expect("focal point inside the caption zone gives a warning, not an error", any(f[0] == "warn" and f[1] == "Q02" for f in F) and not errs(F))
 d = copy.deepcopy(EX["railroads_v2"]); del d["entities"]["environments"][0]["depth_layers"]
 F, _ = check(d); expect("missing depth_layers gives a Q06 warning", any(f[0] == "warn" and f[1] == "Q06" for f in F) and not errs(F))
+d = copy.deepcopy(EX["railroads_v2"]); d["beats"][3]["transition_in"].update(type="fly_through")
+F, _ = check(d); expect("transition fly_through is flagged as not implemented (a blend is not a 3D fly-through)", any(f[0] == "warn" and f[1] == "Q08" and "not implemented" in f[3] for f in F) and not errs(F))
 print(f"\n{'ALL PASSED' if not fails else str(fails) + ' FAILED'}")
 sys.exit(1 if fails else 0)

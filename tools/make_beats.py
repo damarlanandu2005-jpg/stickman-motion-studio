@@ -57,7 +57,7 @@ Beat times (seconds, absolute) and words, to place audio events and kicks (for t
 HOW TO DECIDE (this is the point of the plan; read the PLAYBOOK below, especially CAM-16, SCR-05, CON-01, CMP-01, ACT-01, PHY-03):
 - Intent first: what are the WORDS doing? Then choose the shot recipe from the candidates for that intent (intent_map), the assets that exist and the previous beat. Do not repeat one recipe or one camera move three beats in a row (CAM-10). There is no fixed order of recipes.
 - Every camera choice, including a hold, has a purpose and a short rationale (CAM-16). A camera move needs from, to, duration_s and ease; static and creep need only purpose and rationale. Flights and holds should mix like the measured references (CAM-01): about 2-5 flights per 10 s of video, holds for dialogue, reaction, numbers.
-- Scene changes: mostly dissolve (reason new_place, time_shift, memory_or_thought), some fly_through, few hard cuts (at most 45 %); a hard cut inside the same place needs reason emphasis, scale_change or continuity.
+- Scene changes: mostly dissolve (reason new_place, time_shift, memory_or_thought), some blend_fly, few hard cuts (at most 45 %); NEVER fly_through (a real 3D pass-through is not implemented; blend_fly is only a cross-blend, say so honestly); a hard cut inside the same place needs reason emphasis, scale_change or continuity.
 - Each character gets an identity_lock (things that must not change); list a deliberate change in continuity_change as "ID:what".
 - Use ONLY kit names for outfits, hats, faces (base or base+extra), arm poses and light (FORMAT.md section 6). A face name is never a pose. Anything not in the kit is "NEW:<name>" and status new_item.
 - Every id you use in a beat must exist in entities. Objects: real size_m, representation (3d_mesh, 2d_card, 2_5d_layer, billboard_fx), material_ids from M01-M07. Environments: depth_layers (foreground, midground, background), lighting_profile_id L01-L04.
@@ -97,7 +97,7 @@ def assemble(ans):
         beats.append(g)
     order = ["id", "index", "time", "narration"]
     beats = [{**{k: g[k] for k in order}, **{k: v for k, v in g.items() if k not in order}} for g in beats]
-    return {"schema_version": "1.0.0", "project": {"id": P.name, "fps": 30, "width": 1080, "height": 1920, "source": "gemini (tools/make_beats.py)"},
+    return {"schema_version": "1.1.0", "project": {"id": P.name, "fps": 30, "width": 1080, "height": 1920, "source": "gemini (tools/make_beats.py)"},
             "narration": {"text": " ".join(narr.split()), "words": W}, "entities": {"characters": e.get("characters", []), "objects": e.get("objects", []), "environments": e.get("environments", [])}, "beats": beats}
 
 
@@ -120,6 +120,8 @@ for t in range(3):
     else:
         r = client.models.generate_content(model=model, contents=msg, config=types.GenerateContentConfig(temperature=0.4, max_output_tokens=60000, response_mime_type="application/json"))
         txt = (r.text or "").strip()
+        um = getattr(r, "usage_metadata", None)
+        if um: print("tokens: prompt", um.prompt_token_count, "answer", um.candidates_token_count, flush=True)
     txt = re.sub(r"^```\w*\n|\n```$", "", txt.strip()).strip()
     try: ans = json.loads(txt)
     except Exception as e:
