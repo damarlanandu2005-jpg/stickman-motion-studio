@@ -1,0 +1,11 @@
+tokens: prompt 38157 answer 11090
+try 1: 14 errors, 1 warnings
+tokens: prompt 39192 answer 11480
+try 2: 14 errors, 11 warnings
+tokens: prompt 38739 answer 11064
+try 3: 4 errors, 1 warnings
+make_beats: no valid beat plan after 3 tries; the pipeline continues without beats.json
+ERROR Q06  beat s2: the narration names 'bomb' (BOMB) but none of them is in this beat's frame (add it to must_see / composition, or list it in validation.not_shown with the reason in visual_purpose if the word is not meant to be pictured, e.g. a number)
+ERROR Q06  beat s4: the narration names 'bomb' (BOMB) but none of them is in this beat's frame (add it to must_see / composition, or list it in validation.not_shown with the reason in visual_purpose if the word is not meant to be pictured, e.g. a number)
+ERROR Q06  beat s12: the narration names 'bomb' (BOMB) but none of them is in this beat's frame (add it to must_see / composition, or list it in validation.not_shown with the reason in visual_purpose if the word is not meant to be pictured, e.g. a number)
+ERROR Q06  beat s14: the narration names 'bomb' (BOMB) but none of them is in this beat's frame (add it to must_see / composition, or list it in validation.not_shown with the reason in visual_purpose if the word is not meant to be pictured, e.g. a number)

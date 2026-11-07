@@ -1,0 +1,116 @@
+{
+ "file": "/home/runner/work/_temp/railroads/beats.candidate.json",
+ "ok": false,
+ "errors": [
+  [
+   "error",
+   "Q10",
+   "beats/2/camera/ease",
+   "schema: 'decelerate' is not one of ['smooth', 'easeOut', 'easeIn', 'back', 'anticip', 'spring']"
+  ],
+  [
+   "error",
+   "Q10",
+   "beats/7/camera/ease",
+   "schema: 'decelerate' is not one of ['smooth', 'easeOut', 'easeIn', 'back', 'anticip', 'spring']"
+  ],
+  [
+   "error",
+   "Q10",
+   "beats/12/camera/ease",
+   "schema: 'decelerate' is not one of ['smooth', 'easeOut', 'easeIn', 'back', 'anticip', 'spring']"
+  ],
+  [
+   "error",
+   "Q10",
+   "beats/17/camera/ease",
+   "schema: 'decelerate' is not one of ['smooth', 'easeOut', 'easeIn', 'back', 'anticip', 'spring']"
+  ]
+ ],
+ "warnings": [],
+ "gates": {
+  "Q01": {
+   "status": "NOT RUN (schema invalid)",
+   "errors": 0,
+   "warnings": 0,
+   "not_run": [
+    "[ai_assisted] head, face, costume look the same across the preview frames",
+    "[human] final approval of the look"
+   ]
+  },
+  "Q02": {
+   "status": "NOT RUN (schema invalid)",
+   "errors": 0,
+   "warnings": 0,
+   "not_run": [
+    "[ai_assisted] hero object and action readable at phone size in the preview frames",
+    "[human] does the picture say what the words say"
+   ]
+  },
+  "Q03": {
+   "status": "NOT RUN (schema invalid)",
+   "errors": 0,
+   "warnings": 0,
+   "not_run": [
+    "[human] the move helps the story"
+   ]
+  },
+  "Q04": {
+   "status": "NOT RUN (schema invalid)",
+   "errors": 0,
+   "warnings": 0,
+   "not_run": [
+    "[ai_assisted] each named noun is visible within 0.3 s of its word (CHK-07)"
+   ]
+  },
+  "Q05": {
+   "status": "NOT RUN (schema invalid)",
+   "errors": 0,
+   "warnings": 0,
+   "not_run": [
+    "[human] the motion looks causal and has weight"
+   ]
+  },
+  "Q06": {
+   "status": "NOT RUN (schema invalid)",
+   "errors": 0,
+   "warnings": 0,
+   "not_run": [
+    "[automatic] parallax and soft-edge share on rendered frames"
+   ]
+  },
+  "Q07": {
+   "status": "NOT RUN (schema invalid)",
+   "errors": 0,
+   "warnings": 0,
+   "not_run": [
+    "[ai_assisted] the surface reads as that material in the preview"
+   ]
+  },
+  "Q08": {
+   "status": "NOT RUN (schema invalid)",
+   "errors": 0,
+   "warnings": 0,
+   "not_run": [
+    "[human] each cut is on a meaning beat"
+   ]
+  },
+  "Q09": {
+   "status": "NOT RUN (schema invalid)",
+   "errors": 0,
+   "warnings": 0,
+   "not_run": [
+    "[automatic] mix level and loudness",
+    "[human] sound quality and taste"
+   ]
+  },
+  "Q10": {
+   "status": "FAIL",
+   "errors": 4,
+   "warnings": 0,
+   "not_run": [
+    "[automatic] a build check of the real code (assets render, no errors)"
+   ]
+  }
+ }
+}

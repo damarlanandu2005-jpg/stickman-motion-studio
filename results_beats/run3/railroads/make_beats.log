@@ -1,0 +1,11 @@
+tokens: prompt 40446 answer 14712
+try 1: 2 errors, 0 warnings
+tokens: prompt 40588 answer 9957
+try 2: 37 errors, 7 warnings
+tokens: prompt 41011 answer 14899
+try 3: 4 errors, 0 warnings
+make_beats: no valid beat plan after 3 tries; the pipeline continues without beats.json
+ERROR Q10  beats/2/camera/ease: schema: 'decelerate' is not one of ['smooth', 'easeOut', 'easeIn', 'back', 'anticip', 'spring']
+ERROR Q10  beats/7/camera/ease: schema: 'decelerate' is not one of ['smooth', 'easeOut', 'easeIn', 'back', 'anticip', 'spring']
+ERROR Q10  beats/12/camera/ease: schema: 'decelerate' is not one of ['smooth', 'easeOut', 'easeIn', 'back', 'anticip', 'spring']
+ERROR Q10  beats/17/camera/ease: schema: 'decelerate' is not one of ['smooth', 'easeOut', 'easeIn', 'back', 'anticip', 'spring']
