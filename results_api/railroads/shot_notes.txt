@@ -1,0 +1,260 @@
+CAST:
+- ENGINEER | worker1 + cap | light skin, no beard | determined
+- BOSS | worker2 + tophat | dark skin, beard | angry
+- RIVAL | workA + slouch | light skin, moustache | grin
+
+PLACES:
+- TRACK-VIEW | close up of steel rails on wooden sleepers | 2 m wide | steel rail in middle, wooden sleeper far left, gap near right
+- CANYON-EDGE | steep cliff overlooking a deep canyon | 30 m wide | cliff edge near left, wooden bridge starting middle, deep drop far right
+- STATION | bustling train platform | 20 m wide | train cars back, platform middle, ticket office left
+- BRIDGE-WIDE | massive wooden bridge over canyon | 50 m wide | bridge middle, canyon walls left and right, deep drop below
+
+NEW OBJECTS:
+- NEW: steel rail | 12 m long | grey metallic | long track for trains
+- NEW: hand saw | 0.6 m long | silver blade, brown handle | used to cut metal
+- NEW: train | 15 m long | black and red metal | steam locomotive that runs on rails
+- NEW: newspaper | 0.4 m wide | white paper with black text | headline reads CLICKETY CLACK LINE
+- NEW: gold coin | 0.05 m wide | shiny gold | fits inside a small rail gap
+- NEW: sheet of paper | 0.3 m wide | white | thin sheet fitting in tiny gap
+
+SHOT 1
+WORDS:      "He sawed gaps into a railroad every thirty-nine feet."
+PLACE:      TRACK-VIEW
+LIGHT:      day
+CAMERA:     close-up of saw cutting rail > short push-in | push-in | near (2 m) | tight
+CHARACTERS: ENGINEER | spear | determined | middle | near | facing right
+EFFECTS:    sparks
+MUST SEE:   hand saw, steel rail, ENGINEER
+MUST NOT:   missing gap, empty frame
+SFX:        metal sawing sound, on "sawed"
+MUSIC:      energetic acoustic rhythm
+
+SHOT 2
+WORDS:      "See, two companies are racing to build a railroad across a canyon so deep you can't see the bottom."
+PLACE:      CANYON-EDGE
+LIGHT:      day
+CAMERA:     wide shot of canyon > crane-down | crane-down | far (15 m) | wide
+CHARACTERS: 6 workers | background
+EFFECTS:    dust
+MUST SEE:   wooden bridge, cliff edge
+MUST NOT:   flat ground, missing bridge
+SFX:        distant construction hammering, on "racing"
+MUSIC:      grand adventurous theme
+
+SHOT 3
+WORDS:      "And whoever finishes first gets the whole country's business."
+PLACE:      STATION
+LIGHT:      day
+CAMERA:     wide shot of platform > pull-back | pull-back | far (15 m) | wide
+CHARACTERS: crowd of 20 | background
+EFFECTS:    steam
+MUST SEE:   train, station platform
+MUST NOT:   empty station
+SFX:        train whistle, on "finishes"
+MUSIC:      continues grand and busy
+
+SHOT 4
+WORDS:      "He's the youngest engineer on the job."
+PLACE:      CANYON-EDGE
+LIGHT:      day
+CAMERA:     medium shot > slow push-in | push-in | mid (6 m) | tight
+CHARACTERS: ENGINEER | point | proud | middle | near | facing camera
+EFFECTS:    none
+MUST SEE:   ENGINEER, wooden bridge
+MUST NOT:   missing hat, wrong character
+SFX:        confident footstep, on "youngest"
+MUSIC:      light optimistic beat
+
+SHOT 5
+WORDS:      "And when his boss sees a finger wide gap between every single rail, his face turns purple."
+PLACE:      TRACK-VIEW
+LIGHT:      day
+CAMERA:     close up on BOSS > snap-zoom | snap-zoom | near (2 m) | tight
+CHARACTERS: BOSS | hip | angry+vein | middle | near | facing left
+EFFECTS:    steam
+MUST SEE:   BOSS, steel rail
+MUST NOT:   missing rail gap
+SFX:        cartoon boiling sound, on "purple"
+MUSIC:      comedic tension
+
+SHOT 6
+WORDS:      "You're wrecking my railroad. But he won't close a single one."
+PLACE:      TRACK-VIEW
+LIGHT:      day
+CAMERA:     two-shot > static | static | mid (6 m) | tight
+CHARACTERS: BOSS | point | angry | left | near | facing right
+            ENGINEER | cross | stubborn | right | near | facing left
+EFFECTS:    none
+MUST SEE:   BOSS, ENGINEER, steel rail
+MUST NOT:   characters overlapping
+SFX:        angry foot stomp, on "wrecking"
+MUSIC:      stubborn standoff
+
+SHOT 7
+WORDS:      "The other one lays rails end to end, perfectly smooth, and finishes first."
+PLACE:      CANYON-EDGE
+LIGHT:      day
+CAMERA:     track along smooth rail > push-in | push-in | mid (6 m) | tight
+CHARACTERS: RIVAL | point | grin | middle | near | facing right
+EFFECTS:    flash
+MUST SEE:   RIVAL, steel rail
+MUST NOT:   gaps in the rail
+SFX:        smooth sliding sound, on "smooth"
+MUSIC:      slick triumphant melody
+
+SHOT 8
+WORDS:      "Their trains glide across the canyon without a sound, while his go clickety clack over every gap."
+PLACE:      BRIDGE-WIDE
+LIGHT:      day
+CAMERA:     follow train > orbit | orbit | far (15 m) | wide
+CHARACTERS: none
+EFFECTS:    steam
+MUST SEE:   train, bridge
+MUST NOT:   missing canyon
+SFX:        loud clacking train wheels, on "clickety clack"
+MUSIC:      contrasting bumpy rhythm
+
+SHOT 9
+WORDS:      "The newspapers start calling it the Clickety Clack Line, and everyone switches to the quiet trains."
+PLACE:      STATION
+LIGHT:      day
+CAMERA:     close up on newspaper > pull-back | pull-back | camera 0.5 m | tight
+CHARACTERS: crowd of 15 | background
+EFFECTS:    dust
+MUST SEE:   newspaper, train
+MUST NOT:   unreadable newspaper
+SFX:        paper rustle, on "newspapers"
+MUSIC:      fast passing of time
+
+SHOT 10
+WORDS:      "Then summer comes, and something weird happens."
+PLACE:      CANYON-EDGE
+LIGHT:      golden
+CAMERA:     low angle looking at sun > tilt-up | tilt-up | far (15 m) | wide
+CHARACTERS: none
+EFFECTS:    dust
+MUST SEE:   cliff edge, wooden bridge
+MUST NOT:   night sky
+SFX:        subtle desert wind, on "summer"
+MUSIC:      mysterious shift
+
+SHOT 11
+WORDS:      "His gaps start shrinking in May."
+PLACE:      TRACK-VIEW
+LIGHT:      golden
+CAMERA:     close up on gap > slow push-in | push-in | camera 0.4 m | tight
+CHARACTERS: none
+EFFECTS:    none
+MUST SEE:   steel rail
+MUST NOT:   completely closed gap
+SFX:        deep metal groaning, on "shrinking"
+MUSIC:      slow building tension
+
+SHOT 12
+WORDS:      "You can fit a coin in them by July."
+PLACE:      TRACK-VIEW
+LIGHT:      golden
+CAMERA:     macro view of gap > static | static | camera 0.2 m | tight
+CHARACTERS: ENGINEER | point | neutral | middle | mid | facing right
+EFFECTS:    none
+MUST SEE:   gold coin, steel rail
+MUST NOT:   missing coin
+SFX:        metallic clink, on "coin"
+MUSIC:      ticking clock rhythm
+
+SHOT 13
+WORDS:      "Barely a sheet of paper, and his boss is thrilled."
+PLACE:      TRACK-VIEW
+LIGHT:      golden
+CAMERA:     close up > pull-back | pull-back | near (2 m) | tight
+CHARACTERS: BOSS | up | laugh | right | near | facing left
+EFFECTS:    flash
+MUST SEE:   sheet of paper, steel rail, BOSS
+MUST NOT:   missing paper
+SFX:        paper slide, on "paper"
+MUSIC:      joyful realization
+
+SHOT 14
+WORDS:      "See, even your gaps know you were wrong."
+PLACE:      TRACK-VIEW
+LIGHT:      golden
+CAMERA:     two-shot > static | static | mid (6 m) | tight
+CHARACTERS: BOSS | point | grin | left | near | facing right
+            ENGINEER | cross | neutral | right | near | facing left
+EFFECTS:    none
+MUST SEE:   BOSS, ENGINEER, steel rail
+MUST NOT:   characters missing
+SFX:        smug chuckle, on "See"
+MUSIC:      brief pause in tension
+
+SHOT 15
+WORDS:      "Meanwhile, on the perfect railroad, the rails started groaning in the afternoon sun,"
+PLACE:      BRIDGE-WIDE
+LIGHT:      golden
+CAMERA:     track along smooth rails > push-in | push-in | mid (6 m) | tight
+CHARACTERS: none
+EFFECTS:    dust
+MUST SEE:   steel rail, bridge
+MUST NOT:   gaps in rail
+SFX:        loud metal stress sound, on "groaning"
+MUSIC:      dark heavy suspense
+
+SHOT 16
+WORDS:      "pushing against each other like they want out."
+PLACE:      TRACK-VIEW
+LIGHT:      golden
+CAMERA:     close up on tight joint > snap-zoom | snap-zoom | camera 0.5 m | tight
+CHARACTERS: none
+EFFECTS:    sparks
+MUST SEE:   steel rail
+MUST NOT:   flat unmoving rails
+SFX:        sharp metal creak, on "pushing"
+MUSIC:      urgent pulse
+
+SHOT 17
+WORDS:      "On the hottest day anyone can remember."
+PLACE:      CANYON-EDGE
+LIGHT:      golden
+CAMERA:     medium shot > static | static | near (2 m) | tight
+CHARACTERS: RIVAL | cheek | nervous+sweat | middle | near | facing camera
+EFFECTS:    dust
+MUST SEE:   RIVAL, wooden bridge
+MUST NOT:   missing sweat
+SFX:        intense heat sizzle, on "hottest"
+MUSIC:      high pitched drone
+
+SHOT 18
+WORDS:      "His gaps finally close. Rail touching rail."
+PLACE:      TRACK-VIEW
+LIGHT:      golden
+CAMERA:     macro view of rails meeting > push-in | push-in | camera 0.3 m | tight
+CHARACTERS: none
+EFFECTS:    none
+MUST SEE:   steel rail
+MUST NOT:   gap remaining
+SFX:        solid metal clunk, on "close"
+MUSIC:      sudden silence
+
+SHOT 19
+WORDS:      "Halfway across the canyon, the perfect railroad kicks sideways like a snake,"
+PLACE:      BRIDGE-WIDE
+LIGHT:      golden
+CAMERA:     wide shot of track warping > whip | whip | far (15 m) | wide
+CHARACTERS: none
+EFFECTS:    dust
+MUST SEE:   steel rail, bridge
+MUST NOT:   straight rails
+SFX:        massive metal snap, on "kicks"
+MUSIC:      explosive danger
+
+SHOT 20
+WORDS:      "right as a train rolls onto it."
+PLACE:      BRIDGE-WIDE
+LIGHT:      golden
+CAMERA:     follow train > orbit | orbit | far (15 m) | wide
+CHARACTERS: none
+EFFECTS:    smoke
+MUST SEE:   train, steel rail, bridge
+MUST NOT:   train on straight track
+SFX:        train brakes screeching, on "rolls"
+MUSIC:      dramatic orchestral hit

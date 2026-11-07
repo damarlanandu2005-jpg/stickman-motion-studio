@@ -1,0 +1,77 @@
+20 shots, 1701 frames, words used 212/212; assets to test: ['TRACK-VIEW', 'CANYON-EDGE', 'STATION', 'BRIDGE-WIDE', 'steel rail', 'hand saw', 'train', 'newspaper', 'gold coin', 'sheet of paper']
+prompt chars: static 195535, task 56838
+usage {'label': 'write', 'model': 'gemini-3.1-pro-preview', 'prompt': 98645, 'cached': 0, 'output': 11153, 'thoughts': 15793}
+first answer files: ['web/story.js', 'web/world.js', 'web/cast.js', 'audio.py', 'work/PLAN.md', 'work/NOTES.md']
+/home/runner/work/stickman-motion-studio/stickman-motion-studio/project/../tools/gen_api.py:262: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  im = Image.open(path).convert("RGB").resize((108, 192)); px = list(im.getdata()); n = len(px)
+asset round 0: build_err=False hard=True
+TRACK-VIEW: measured size 12.2 x 0.2 x 4 m (x, height, z), declared 2.0 m  <-- SIZE MISMATCH
+CANYON-EDGE: measured size 23.15 x 20.3 x 30 m (x, height, z), declared 30.0 m
+STATION: measured size 20 x 5.05 x 11 m (x, height, z), declared 20.0 m
+BRIDGE-WIDE: measured size 70 x 40.2 x 20 m (x, height, z), declared 50.0 m
+steel rail: measured size 12 x 0.15 x 0.15 m (x, height, z), declared 12.0 m
+hand saw: measured size 0.6 x 0.15 x 0.04 m (x, height, z), declared 0.6 m
+train: measured size 13 x 4.5 x 3 m (x, height, z), declared 15.0 m
+newspaper: measured size 0.4 x 0.2 x 0 m (x, height, z), declared 0.4 m
+gold coin: measured size 0.05 x 0.05 x 0 m (x, height, z), declared 0.05 m
+sheet of paper: measured size 0.3 x 0.2 x 0 m (x, height, z), declared 0.3 m
+usage {'label': 'asset1', 'model': 'gemini-3.1-pro-preview', 'prompt': 113497, 'cached': 98265, 'output': 3972, 'thoughts': 9586}
+asset fix files: ['web/world.js'] fails: ['TRACK-VIEW', 'CANYON-EDGE', 'STATION', 'BRIDGE-WIDE', 'hand saw', 'train']
+/home/runner/work/stickman-motion-studio/stickman-motion-studio/project/../tools/gen_api.py:262: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  im = Image.open(path).convert("RGB").resize((108, 192)); px = list(im.getdata()); n = len(px)
+asset round 1: build_err=False hard=False
+TRACK-VIEW: measured size 2.6 x 0.2 x 4 m (x, height, z), declared 2.0 m
+CANYON-EDGE: measured size 23 x 20.2 x 30 m (x, height, z), declared 30.0 m
+STATION: measured size 20.1 x 5.75 x 13 m (x, height, z), declared 20.0 m
+BRIDGE-WIDE: measured size 65 x 40.2 x 30 m (x, height, z), declared 50.0 m
+steel rail: measured size 12 x 0.15 x 0.15 m (x, height, z), declared 12.0 m
+hand saw: measured size 0.57 x 0.18 x 0.04 m (x, height, z), declared 0.6 m
+train: measured size 16.82 x 7.02 x 3.8 m (x, height, z), declared 15.0 m
+newspaper: measured size 0.4 x 0.2 x 0 m (x, height, z), declared 0.4 m
+gold coin: measured size 0.05 x 0.05 x 0 m (x, height, z), declared 0.05 m
+sheet of paper: measured size 0.3 x 0.2 x 0 m (x, height, z), declared 0.3 m
+usage {'label': 'asset2', 'model': 'gemini-3.1-pro-preview', 'prompt': 117929, 'cached': 106446, 'output': 149, 'thoughts': 769}
+asset fix files: [] fails: []
+music vs voice: -6.0 dB   sfx vs voice: -5.4 dB
+
+/home/runner/work/stickman-motion-studio/stickman-motion-studio/project/../tools/gen_api.py:262: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  im = Image.open(path).convert("RGB").resize((108, 192)); px = list(im.getdata()); n = len(px)
+shot round 0: build_err=False audio_err=False sheet=True hard=[] soft=['s1']
+usage {'label': 'shot1', 'model': 'gemini-3.1-pro-preview', 'prompt': 117318, 'cached': 106439, 'output': 10427, 'thoughts': 14741}
+shot fix files: ['web/story.js', 'web/world.js'] fails: ['s1', 's2', 's3', 's4', 's5', 's6', 's7', 's8', 's9', 's10', 's11', 's12', 's13', 's14', 's15', 's16', 's17', 's18', 's19', 's20']
+music vs voice: -6.0 dB   sfx vs voice: -5.4 dB
+
+/home/runner/work/stickman-motion-studio/stickman-motion-studio/project/../tools/gen_api.py:262: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  im = Image.open(path).convert("RGB").resize((108, 192)); px = list(im.getdata()); n = len(px)
+shot round 1: build_err=False audio_err=False sheet=True hard=['s16', 's18', 's18'] soft=['s11', 's12', 's12', 's12', 's16', 's16', 's2', 's7', 's10', 's15', 's17']
+usage {'label': 'shot2', 'model': 'gemini-3.1-pro-preview', 'prompt': 132868, 'cached': 114619, 'output': 11163, 'thoughts': 4151}
+shot fix files: ['web/story.js', 'web/world.js'] fails: ['s2', 's7', 's10', 's11', 's12', 's16', 's18']
+music vs voice: -6.0 dB   sfx vs voice: -5.4 dB
+
+/home/runner/work/stickman-motion-studio/stickman-motion-studio/project/../tools/gen_api.py:262: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  im = Image.open(path).convert("RGB").resize((108, 192)); px = list(im.getdata()); n = len(px)
+shot round 2: build_err=False audio_err=False sheet=True hard=[] soft=['s16', 's18', 's18', 's18', 's2', 's7', 's10', 's11', 's12', 's15', 's17']
+usage {'label': 'shot3', 'model': 'gemini-3.1-pro-preview', 'prompt': 145554, 'cached': 0, 'output': 6354, 'thoughts': 2756}
+shot fix files: ['web/story.js'] fails: ['s2', 's7', 's10', 's11', 's12', 's16', 's18']
+music vs voice: -6.0 dB   sfx vs voice: -5.4 dB
+
+/home/runner/work/stickman-motion-studio/stickman-motion-studio/project/../tools/gen_api.py:262: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  im = Image.open(path).convert("RGB").resize((108, 192)); px = list(im.getdata()); n = len(px)
+shot round 3: build_err=False audio_err=False sheet=True hard=[] soft=['s10', 's11', 's12', 's15', 's16', 's18']
+usage {'label': 'shot4', 'model': 'gemini-3.1-pro-preview', 'prompt': 152699, 'cached': 0, 'output': 11389, 'thoughts': 2843}
+shot fix files: ['web/story.js', 'web/world.js'] fails: ['s10', 's11', 's12', 's15', 's16', 's18']
+music vs voice: -6.0 dB   sfx vs voice: -5.4 dB
+
+/home/runner/work/stickman-motion-studio/stickman-motion-studio/project/../tools/gen_api.py:262: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  im = Image.open(path).convert("RGB").resize((108, 192)); px = list(im.getdata()); n = len(px)
+shot round 4: build_err=False audio_err=False sheet=True hard=[] soft=['s10', 's11', 's12', 's16', 's18']
+usage {'label': 'shot5', 'model': 'gemini-3.1-pro-preview', 'prompt': 164753, 'cached': 0, 'output': 6268, 'thoughts': 3351}
+shot fix files: ['web/story.js'] fails: ['s10', 's11', 's12', 's16', 's18']
+music vs voice: -6.0 dB   sfx vs voice: -5.4 dB
+
+/home/runner/work/stickman-motion-studio/stickman-motion-studio/project/../tools/gen_api.py:262: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  im = Image.open(path).convert("RGB").resize((108, 192)); px = list(im.getdata()); n = len(px)
+shot round 5: build_err=False audio_err=False sheet=True hard=[] soft=['s11', 's12', 's16', 's18']
+music vs voice: -6.0 dB   sfx vs voice: -5.4 dB
+
+DONE [{"label": "write", "model": "gemini-3.1-pro-preview", "prompt": 98645, "cached": 0, "output": 11153, "thoughts": 15793}, {"label": "asset1", "model": "gemini-3.1-pro-preview", "prompt": 113497, "cached": 98265, "output": 3972, "thoughts": 9586}, {"label": "asset2", "model": "gemini-3.1-pro-preview", "prompt": 117929, "cached": 106446, "output": 149, "thoughts": 769}, {"label": "shot1", "model": "gemini-3.1-pro-preview", "prompt": 117318, "cached": 106439, "output": 10427, "thoughts": 14741}, {"label": "shot2", "model": "gemini-3.1-pro-preview", "prompt": 132868, "cached": 114619, "output": 11163, "thoughts": 4151}, {"label": "shot3", "model": "gemini-3.1-pro-preview", "prompt": 145554, "cached": 0, "output": 6354, "thoughts": 2756}, {"label": "shot4", "model": "gemini-3.1-pro-preview", "prompt": 152699, "cached": 0, "output": 11389, "thoughts": 2843}, {"label": "shot5", "model": "gemini-3.1-pro-preview", "prompt": 164753, "cached": 0, "output": 6268, "thoughts": 3351}]
