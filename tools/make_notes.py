@@ -16,6 +16,10 @@ tpl = (ROOT / "scripts" / "TEMPLATE.txt").read_text(encoding="utf-8")
 pb = (ROOT / "kit" / "docs" / "PLAYBOOK.md").read_text(encoding="utf-8")
 ex = (ROOT / "scripts" / "tests" / "bomb_colorblind.txt").read_text(encoding="utf-8")
 ex = ex[ex.find("SHOTS:"):][:6000]
+try: _dur = json.load(open(P / "work" / "phrases.json"))["duration"]
+except Exception: _dur = 0
+_lo, _hi = (round(_dur * 18 / 60) + 1, round(_dur * 24 / 60) + 1) if _dur else (0, 0)
+PACE = (f"- PACING: the narration is {_dur:.0f} s. The 17 measured reference videos change scene 18-24 times per minute, so plan about {_lo} to {_hi} shots. Cut a long sentence into two shots at a natural beat (a clause, a new noun, a reaction) when the picture changes; keep a shot long only for dialogue, a number or a held reaction. Never split a word or speed up the voice." if _dur else "")
 norm = lambda s: re.findall(r"[a-z0-9']+", s.lower())
 client = genai.Client(vertexai=True, project=os.environ["GOOGLE_CLOUD_PROJECT"], location=os.environ.get("GOOGLE_CLOUD_LOCATION", "global"), http_options=types.HttpOptions(timeout=900000))
 base = f"""You are the script author for a vertical animated cartoon short. The narration below is final; do not change a word.
@@ -28,6 +32,7 @@ PLANNING GUIDE (this is where the picture is decided, so use the PLAYBOOK below)
 - For every sentence first ask what the WORDS are doing (hook, new place, meet a character, explain a mechanism, a number, an action, suspense, a reveal, a reaction, an argument, time passing, a gag, a crowd, an ending) and choose the picture and the camera from that, using the intent map, the situation recipes and the rules in the PLAYBOOK. Show every important noun when it is spoken.
 - Every camera choice has a reason, and a hold is a choice too: hold for a reaction, a talking person or a number; move to reveal, land on a prop, follow something that travels, or show power. Do not move the camera just to be busy and do not freeze it by habit.
 - A flight in the first second is only a suggested way to open. A sudden object reveal, a face reaction or a held dramatic frame can open a story just as well.
+{PACE}
 - Vary place, distance and move from shot to shot (no three alike in a row without a reason); keep each character's look the same in every shot; do not invent assets that the format cannot express.
 - Only the FORMAT RULES decide what you may WRITE (kit names, one camera move per shot, MUST SEE, etc.). The PLAYBOOK decides what you should CHOOSE.
 

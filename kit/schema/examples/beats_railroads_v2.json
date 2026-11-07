@@ -1825,7 +1825,7 @@
     "reason": "emphasis"
    },
    "continuity_change": [
-    "BOSS:skin"
+    "BOSS:face_colour=purple"
    ],
    "validation": {
     "gates": [
@@ -3299,7 +3299,7 @@
     "distance_m": 15
    },
    "camera": {
-    "purpose": "impact",
+    "purpose": "follow",
     "mode": "track",
     "rationale": "Follow the train onto the track; two kicks on the buckle and the crash (FX-05).",
     "confidence": "designed",

@@ -946,7 +946,7 @@
     ]
    },
    "intent": "introduce_character",
-   "visual_purpose": "Arthur in his protective suit: he became a bomb disposal expert.",
+   "visual_purpose": "Arthur in his protective suit: he became a bomb disposal expert. (the word \"bomb\" is part of the job title here; the bomb itself is not pictured)",
    "subject": {
     "main_id": "ARTHUR-BOMB-SUIT",
     "character_ids": [
@@ -1016,6 +1016,9 @@
     "must_see": [
      "ARTHUR-BOMB-SUIT",
      "POLICE-OFFICER"
+    ],
+    "not_shown": [
+     "BOMB"
     ]
    },
    "rule_refs": [
@@ -2326,7 +2329,7 @@
     ]
    },
    "intent": "summarize_or_conclude",
-   "visual_purpose": "He did it again: forty-one bombs. Proud face beside the commander.",
+   "visual_purpose": "He did it again: forty-one bombs. Proud face beside the commander. (the word \"bomb\" is part of the job title here; the bomb itself is not pictured)",
    "subject": {
     "main_id": "ARTHUR",
     "character_ids": [
@@ -2422,6 +2425,9 @@
     "must_see": [
      "ARTHUR",
      "COMMANDER"
+    ],
+    "not_shown": [
+     "BOMB"
     ]
    },
    "rule_refs": [

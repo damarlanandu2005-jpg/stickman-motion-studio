@@ -14,6 +14,24 @@ HERE = os.path.dirname(os.path.abspath(__file__)); KIT = os.path.dirname(HERE); 
 FPS = 30
 CAP_ZONE = [0.1, 0.62, 0.9, 0.78]       # rule CAP-01 (measured: captions at about 70 % of frame height)
 STILL = ("static", "creep")
+# UNIVERSAL: which camera modes can serve which purpose (checked as an error; a heuristic table, not a measured one)
+PURPOSE_MODES = {
+    "hold_for_performance": {"static", "creep"},
+    "establish": {"static", "creep", "pull-back", "crane-up", "crane-down", "pan", "top-down", "orbit", "push-in"},
+    "reveal": {"pull-back", "pan", "tilt", "crane-up", "crane-down", "orbit", "push-in", "top-down", "track", "static", "creep"},
+    "follow": {"track", "pan", "push-in", "pull-back", "tilt"},
+    "inspect": {"static", "creep", "push-in", "orbit", "pan", "tilt", "pull-back", "crane-up", "crane-down", "track"},
+    "emphasize": {"push-in", "snap-zoom", "creep", "orbit", "crane-down", "static"},
+    "compare": {"static", "creep", "pan", "tilt", "track", "orbit", "pull-back", "crane-up", "crane-down"},
+    "land_on_prop": {"push-in", "snap-zoom", "crane-down", "tilt", "creep", "static"},
+    "power_angle": {"static", "creep", "crane-up", "crane-down", "push-in", "tilt", "orbit"},
+    "carry_to_next_place": {"pan", "track", "whip", "crane-up", "crane-down", "pull-back", "push-in", "fly-through"},
+    "impact": {"snap-zoom", "whip", "static", "push-in", "creep", "pull-back"},
+}
+COLOUR = r"red|purple|green|blue|pale|white|yellow|grey|gray|black|orange|pink|violet|crimson"
+CHANGE_ATTRS = {"outfit", "hat", "skin", "hair", "beard", "face_colour", "outline", "size", "other"}
+PACE_RANGE = (18, 24)     # scene changes per minute, measured in the 17 reference videos (CHK-11)
+DEFAULT_MOTION = {"move", "swing", "roll", "slide", "drop", "launch", "spin", "bend", "heat", "glow", "change_value"}
 
 
 def norm(s): return re.findall(r"[a-z0-9']+", s.lower())
@@ -32,6 +50,77 @@ def kit_names():
     outl = re.sub(r"peasA to peasE", "peasA, peasB, peasC, peasD, peasE", outl)
     outfits = set(re.findall(r"\b([A-Za-z0-9]+)\b", outl))
     return faces, extras, poses, hats, outfits
+
+
+def stem(x): return x[:-1] if len(x) > 3 and x.endswith("s") and not x.endswith("ss") else x
+
+
+def aliases_of(e):
+    """phrases (token tuples) by which the narration can name an entity: the id, the label, the declared aliases"""
+    out = []
+    for s in [e["id"].replace("-", " ").replace("_", " "), e.get("label", "")] + list(e.get("aliases", [])):
+        tk = tuple(stem(x) for x in norm(s))
+        if tk: out.append(tk)
+    return out
+
+
+def story_checks(D, err, warn, chars, objs):
+    """UNIVERSAL checks that read only the plan: nouns vs must_see, object events, continuity, impact, pacing. No topic words except the colour list."""
+    B = D["beats"]; ents = {**chars, **objs}
+    # a head noun that names exactly one entity may stand alone ('gaps' -> RAIL-GAP), unless an alias list says more
+    heads = {}
+    idphrase = {i: tuple(stem(x) for x in norm(i.replace("-", " ").replace("_", " "))) for i in ents}
+    for i, ph in idphrase.items(): heads.setdefault(ph[-1], set()).add(i)
+    for k, b in enumerate(B):
+        w = f"beat {b['id']}"; s = b["subject"]
+        present = {s["main_id"], *s.get("character_ids", []), *s.get("required_asset_ids", []), b["shot"]["composition"]["primary_id"], *b["shot"]["composition"].get("secondary_ids", []),
+                   *b["validation"]["must_see"], *[o["object_id"] for o in b.get("object_events", [])], *[c["character_id"] for c in b.get("character_actions", [])]}
+        if "hero_object_id" in s: present.add(s["hero_object_id"])
+        toks = {stem(x) for x in norm(b["narration"]["text"])}
+        # group by the phrase that matched: if several entities share it, one of them in frame is enough
+        groups = {}
+        for i, e in ents.items():
+            for ph in aliases_of(e):
+                full = all(x in toks for x in ph)
+                single = ph == idphrase[i] and len(ph) > 1 and ph[-1] in toks and heads.get(ph[-1]) == {i}
+                if full or single: groups.setdefault(ph if full else (ph[-1],), set()).add(i)
+        for ph in list(groups):           # a phrase also names the entities whose own phrase starts with it (ARTHUR -> ARTHUR-SUIT)
+            for i, e in ents.items():
+                if any(len(a) > len(ph) and a[:len(ph)] == ph for a in aliases_of(e)): groups[ph].add(i)
+        for ph, ids in groups.items():
+            nm = " ".join(ph)
+            if not (ids & present) and not (ids & set(b["validation"].get("not_shown", []))): err("Q06", w, f"the narration names '{nm}' ({', '.join(sorted(ids))}) but none of them is in this beat's frame (add it to must_see / composition, or list it in validation.not_shown with the reason in visual_purpose if the word is not meant to be pictured, e.g. a number)")
+            elif not (ids & set(b["validation"]["must_see"])): warn("Q06", w, f"the narration names '{nm}' and it is in the beat, but it is not in validation.must_see")
+        # object events
+        ev = b.get("object_events", [])
+        if b["intent"] == "physical_action" and not ev:
+            err("Q05", w, "intent physical_action needs object_events: what moves, what it touches (contact_target_id), what happens next")
+        for o in ev:
+            if o["event"] in ("impact", "break", "drop", "launch"):
+                later = [x for x in ev if x["start_s"] >= o["start_s"] and x is not o and (x["event"] in ("settle", "bend", "move", "slide", "roll", "break", "glow", "change_value") or x["object_id"] != o["object_id"])]
+                reacts = [c for c in b.get("character_actions", []) if c["start_s"] + 1e-6 >= o["start_s"] - 0.3]
+                if not later and not reacts: warn("Q05", w, f"{o['event']} of {o['object_id']} has no reaction or settling afterwards (a character reaction, a second object event or a settle)")
+            if o["event"] in ("impact", "break"):
+                cam = b["camera"]
+                planned = cam.get("kicks") or cam["purpose"] == "impact" or set(o.get("secondary_effects", [])) & {"camera_kick", "recoil", "debris", "dust", "sparks", "sound"}
+                if not planned: warn("Q05", w, f"{o['event']} of {o['object_id']}: no impact behaviour planned (camera purpose impact, a kick, or secondary effects). A camera kick is optional, but the hit needs some reaction")
+        # appearance change must be recorded
+        for cc in b.get("continuity_change", []):
+            m = re.fullmatch(r"([A-Za-z0-9_-]+):([a-z_]+)=(.+)", cc)
+            if not m: err("Q01", w, f"continuity_change '{cc}' must look like ID:attribute=value, attribute one of {sorted(CHANGE_ATTRS)}")
+            elif m.group(2) not in CHANGE_ATTRS: err("Q01", w, f"continuity_change attribute '{m.group(2)}' is not one of {sorted(CHANGE_ATTRS)}")
+        if re.search(r"\b(turns?|turned|turning|goes|went|becomes?|became|flushes|flushed)\s+(\w+\s+)?(" + COLOUR + r")\b", b["narration"]["text"].lower()) and not b.get("continuity_change"):
+            warn("Q01", w, "the narration says something changes colour but the beat has no continuity_change (heuristic; ignore it if the thing is an object)")
+    # object events across the plan
+    heroes = [b for b in B if b["subject"].get("hero_object_id")]
+    if heroes and not any(b.get("object_events") for b in B):
+        warn("Q05", "plan", "the plan has hero objects but no object_events at all (nothing physical is planned)")
+    # pacing
+    if len(B) > 1:
+        dur = B[-1]["time"]["end_s"]; per_min = (len(B) - 1) / (dur / 60)
+        lo, hi = PACE_RANGE
+        if per_min < lo: warn("Q08", "plan", f"pacing {per_min:.1f} scene changes per minute is below the measured reference range {lo}-{hi} (CHK-11). Fix it in the shot notes (more shots) unless the story is dialogue or numbers heavy")
+        elif per_min > hi + 4: warn("Q08", "plan", f"pacing {per_min:.1f} scene changes per minute is far above the reference range {lo}-{hi}")
 
 
 def run(path):
@@ -67,9 +156,9 @@ def run(path):
     for c in chars.values():
         o = c["outfit"]
         if not (o.startswith("NEW:") or o in outfits): err("Q01", f"character {c['id']}", f"outfit '{o}' is not a kit outfit and not NEW:<name>")
-        if o.startswith("NEW:") and o[4:].strip() in outfits: warn("Q01", f"character {c['id']}", f"outfit '{o}' is a kit outfit: write '{o[4:].strip()}' (a NEW item would be rebuilt)")
+        if o.startswith("NEW:") and o[4:].strip() in outfits: err("Q01", f"character {c['id']}", f"outfit '{o}' is a kit outfit: write '{o[4:].strip()}' (a NEW item would be rebuilt and the identity would drift)")
         h = c.get("hat")
-        if h and h.startswith("NEW:") and h[4:].strip() in hats: warn("Q01", f"character {c['id']}", f"hat '{h}' is a kit hat: write '{h[4:].strip()}'")
+        if h and h.startswith("NEW:") and h[4:].strip() in hats: err("Q01", f"character {c['id']}", f"hat '{h}' is a kit hat: write '{h[4:].strip()}'")
         if h and not (h.startswith("NEW:") or h in hats): err("Q01", f"character {c['id']}", f"hat '{h}' is not a kit hat and not NEW:<name>")
     for o in objs.values():
         for m in o.get("material_ids", []):
@@ -158,7 +247,8 @@ def run(path):
             if cam.get("duration_s", 0) > L + 0.1: warn("Q03", w, "camera duration is longer than the beat")
         elif cam["purpose"] not in ("hold_for_performance", "establish", "inspect", "emphasize", "compare", "reveal", "follow", "land_on_prop", "power_angle", "impact", "carry_to_next_place"):
             err("Q03", w, "bad purpose")
-        if cam["purpose"] == "hold_for_performance" and cam["mode"] not in STILL: warn("Q03", w, "purpose hold_for_performance but the mode moves")
+        if cam["mode"] not in PURPOSE_MODES[cam["purpose"]]:
+            err("Q03", w, f"camera purpose '{cam['purpose']}' does not fit mode '{cam['mode']}' (allowed: {', '.join(sorted(PURPOSE_MODES[cam['purpose']]))}); change the mode or write the purpose the move really serves")
         if cam["mode"] == "static" and L > 6: warn("Q03", w, f"a fully static camera for {L:.1f} s (CAM-01: almost always alive; use creep)")
         for kk in cam.get("kicks", []):
             if kk["time_s"] > t1 + 0.1 or kk["time_s"] < t0 - 0.1: err("Q03", w, "camera kick outside the beat (kicks use absolute time)")
@@ -179,6 +269,7 @@ def run(path):
         if k > 0 and tr["type"] == "start": err("Q08", w, "only the first beat may use type 'start'")
         if tr["type"] == "fly_through": warn("Q08", w, "transition fly_through (camera passes through geometry into the next place) is not implemented in the renderer; use blend_fly (a cross-blend) or a camera flight inside the scene, and do not report a blend as a 3D fly-through")
         if tr["type"] in ("dissolve", "blend_fly", "fly_through", "flash") and "frames" not in tr: err("Q08", w, f"{tr['type']} needs frames")
+    story_checks(D, err, warn, chars, objs)
     if nxt != len(W): err("Q04", "beats", f"beats cover {nxt} of {len(W)} words")
     if B and B[-1]["time"]["end_s"] < W[-1]["e"] - 0.1: err("Q04", "beats", "the last beat ends before the last word")
 
@@ -186,7 +277,7 @@ def run(path):
     tt = [b["transition_in"]["type"] for b in B[1:]]
     if tt:
         cut = tt.count("cut") / len(tt)
-        if cut > 0.45: warn("Q08", "plan", f"{cut:.0%} of scene changes are hard cuts (CHK-11 range 0-45 %, TRN-06)")
+        if cut > 0.45: (err if len(tt) >= 6 else warn)("Q08", "plan", f"{cut:.0%} of scene changes are hard cuts (CHK-11 range 0-45 %, TRN-06): use dissolves, blend_fly, or a continuous camera move where the place is the same")
         if "dissolve" not in tt: warn("Q08", "plan", "no dissolve at all (TRN-06: dissolve is the default)")
     for key, nm in (("recipe", "shot recipe"), ("mode", "camera mode")):
         seq = [(b["shot"]["recipe_id"] if key == "recipe" else b["camera"]["mode"]) for b in B]

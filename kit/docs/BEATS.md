@@ -1,6 +1,6 @@
 # BEATS: the beat plan (generated from kit/schema/beat.v1.schema.json and rules.json; do not edit by hand)
 
-Schema version 1.1.0. One JSON file per video (beats.json). It turns the narration into structured picture instructions: what the words do, what must be seen, how the camera and the cut serve that, and which checks apply.
+Schema version 1.2.0. One JSON file per video (beats.json). It turns the narration into structured picture instructions: what the words do, what must be seen, how the camera and the cut serve that, and which checks apply.
 It is a plan. It does not replace shot_notes.txt yet. Code that reads it is not built in this step (see kit/docs/TRACEABILITY.md).
 
 ## Rules for the author of a beats file
@@ -42,7 +42,7 @@ It is a plan. It does not replace shot_notes.txt yet. Code that reads it is not 
 - `captions` (required)
 - `audio_events`
 - `transition_in` (required)
-- `continuity_change`: identity_lock items that the script changes on purpose in this beat (rule CON-01)
+- `continuity_change`: deliberate appearance changes in this beat (rule CON-01), written ID:attribute=value, e.g. BOSS:face_colour=purple. attribute: outfit, hat, skin, hair, beard, face_colour, outline, size, other. The character keeps its id and its other locked items.
 - `validation` (required)
 - `rule_refs`
 - `extensions`

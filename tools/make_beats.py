@@ -39,6 +39,10 @@ for j, r in enumerate(rows):
     r["a"] = 0 if j == 0 else r["a"]
     r["start_s"] = round(r["a"] / FPS, 4); r["end_s"] = round((r["b"] + 1) / FPS, 4)
 
+sys.path.insert(0, str(KIT / "tools"))
+import validate_beats as VB
+_f, _x, _p, _h, _o = VB.kit_names()
+KITNAMES = f"KIT NAMES (write exactly these; anything else is a NEW item):\n  outfits: {', '.join(sorted(_o))}\n  hats: {', '.join(sorted(_h))}\n  faces: {', '.join(sorted(_f))} (+ extras {', '.join(sorted(_x))})\n  arm poses: {', '.join(sorted(_p))}"
 SCHEMA = json.load(open(KIT / "schema" / "beat.v1.schema.json"))
 ex = json.load(open(KIT / "schema" / "examples" / "beats_bomb_v22.json"))
 ex_beats = [{k: v for k, v in b.items() if k not in ("time", "narration", "index")} for b in ex["beats"][:3]]
@@ -59,7 +63,12 @@ HOW TO DECIDE (this is the point of the plan; read the PLAYBOOK below, especiall
 - Every camera choice, including a hold, has a purpose and a short rationale (CAM-16). A camera move needs from, to, duration_s and ease; static and creep need only purpose and rationale. Flights and holds should mix like the measured references (CAM-01): about 2-5 flights per 10 s of video, holds for dialogue, reaction, numbers.
 - Scene changes: mostly dissolve (reason new_place, time_shift, memory_or_thought), some blend_fly, few hard cuts (at most 45 %); NEVER fly_through (a real 3D pass-through is not implemented; blend_fly is only a cross-blend, say so honestly); a hard cut inside the same place needs reason emphasis, scale_change or continuity.
 - Each character gets an identity_lock (things that must not change); list a deliberate change in continuity_change as "ID:what".
-- Use ONLY kit names for outfits, hats, faces (base or base+extra), arm poses and light (FORMAT.md section 6). A face name is never a pose. Anything not in the kit is "NEW:<name>" and status new_item.
+- Use ONLY kit names for outfits, hats, faces (base or base+extra), arm poses and light (list below). A face name is never a pose. NEVER write NEW:<name> for something that is in the kit list: write the kit name. Only a thing that is truly not in the kit is "NEW:<name>" with status new_item. A character's id, outfit, hat and identity_lock are its fixed identity: copy them exactly in every use.
+- Appearance changes that the WORDS describe (a face turns purple, a hat falls off, a suit is put on) are recorded in that beat's continuity_change as "ID:attribute=value", e.g. "BOSS:face_colour=purple" (attribute: outfit, hat, skin, hair, beard, face_colour, outline, size, other). The character keeps its id. Do not change identity any other way.
+- Name things the way the narration does: give every character and object an "aliases" list with the other words the narration uses for it. Every thing the words name must be in that beat's frame (must_see, subject or composition). If a named word is deliberately not pictured (a number, a job title), list its id in validation.not_shown and say why in visual_purpose.
+- A camera purpose and the camera mode must agree: hold_for_performance = static or creep only; follow = track/pan/push-in/pull-back/tilt; impact = snap-zoom, whip, static, push-in, creep or pull-back; a move that reveals is purpose reveal, not hold. Allowed combinations are checked by the validator (error).
+- Physical things need object_events: every physical_action beat has at least one (cause: move/swing/roll/slide/drop/launch; contact: impact/break with contact_target_id; reaction: secondary_effects and a character reaction; settling: a settle event). Hero objects that the words act on (timer, wires, cutters, a coin, a train) get events too. A significant collision gets an impact plan: camera purpose impact, or a kick, or secondary effects. A camera kick is optional; the impact is not.
+- Scene changes: at most 45 % hard cuts (error above that with 6 or more changes). Use dissolve for new place/time, blend_fly for a continuous travel, and a hard cut only for emphasis or scale. Do not replace cuts at random; the reason must fit.
 - Every id you use in a beat must exist in entities. Objects: real size_m, representation (3d_mesh, 2d_card, 2_5d_layer, billboard_fx), material_ids from M01-M07. Environments: depth_layers (foreground, midground, background), lighting_profile_id L01-L04.
 - Keep the focal point (focal_point_norm) out of the caption band (y 0.62-0.78): captions sit at about 70 % of frame height (CMP-01).
 - validation.gates: choose from Q01-Q10; validation.must_see = entity ids that must be visible (from the notes MUST SEE).
@@ -70,6 +79,8 @@ BEAT PLAN FORMAT (generated from the schema):
 
 JSON SCHEMA (all definitions; every enum is a closed list; the tool adds time, narration, index to each beat):
 {json.dumps({k: v for k, v in SCHEMA.items() if k in ('$defs',)}, separators=(',', ':'))}
+
+{KITNAMES}
 
 EXAMPLE (other story, first 3 beats, copy the style only):
 {example}
@@ -97,7 +108,7 @@ def assemble(ans):
         beats.append(g)
     order = ["id", "index", "time", "narration"]
     beats = [{**{k: g[k] for k in order}, **{k: v for k, v in g.items() if k not in order}} for g in beats]
-    return {"schema_version": "1.1.0", "project": {"id": P.name, "fps": 30, "width": 1080, "height": 1920, "source": "gemini (tools/make_beats.py)"},
+    return {"schema_version": "1.2.0", "project": {"id": P.name, "fps": 30, "width": 1080, "height": 1920, "source": "gemini (tools/make_beats.py)"},
             "narration": {"text": " ".join(narr.split()), "words": W}, "entities": {"characters": e.get("characters", []), "objects": e.get("objects", []), "environments": e.get("environments", [])}, "beats": beats}
 
 

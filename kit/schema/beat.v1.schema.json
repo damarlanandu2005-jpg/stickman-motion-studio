@@ -7,7 +7,7 @@
   "additionalProperties": false,
   "required": ["schema_version", "project", "narration", "entities", "beats"],
   "properties": {
-    "schema_version": { "enum": ["1.0.0", "1.1.0"], "description": "1.1.0 adds the transition type blend_fly and clarifies fly_through; 1.0.0 plans stay valid" },
+    "schema_version": { "enum": ["1.0.0", "1.1.0", "1.2.0"], "description": "1.2.0 adds optional aliases on characters and objects; 1.1.0 adds the transition type blend_fly and clarifies fly_through; older plans stay valid" },
     "project": {
       "type": "object", "additionalProperties": false, "required": ["id", "fps", "width", "height"],
       "properties": {
@@ -52,6 +52,7 @@
         "skin_hair": { "type": "string" },
         "default_face": { "type": "string" },
         "status": { "enum": ["kit", "new_item", "needs_build"], "default": "kit" },
+        "aliases": { "type": "array", "items": { "type": "string" }, "description": "other words the narration uses for this entity (plurals are handled): the validator uses them to check that a named thing is in the frame (gate Q06)" },
         "identity_lock": {
           "type": "array", "minItems": 1, "items": { "type": "string" },
           "description": "What must NOT change between beats (rule CON-01): e.g. hat, outfit colours, skin, beard, outline weight. Changing any of these needs a beat with `continuity_change`."
@@ -66,6 +67,7 @@
         "size_m": { "type": "number", "exclusiveMinimum": 0 },
         "representation": { "enum": ["3d_mesh", "2d_card", "2_5d_layer", "billboard_fx"], "description": "rule ARC-01: hero objects that the camera orbits are 3d_mesh; people are 2d_card; far scenery is 2_5d_layer; effects are billboard_fx" },
         "material_ids": { "type": "array", "items": { "type": "string", "pattern": "^M0[1-9]$" } },
+        "aliases": { "type": "array", "items": { "type": "string" }, "description": "other words the narration uses for this entity (plurals are handled): the validator uses them to check that a named thing is in the frame (gate Q06)" },
         "text_on_object": { "type": "string", "description": "words or numbers the viewer must be able to read (rule PRP-01)" },
         "status": { "enum": ["kit", "new_item", "needs_build"], "default": "new_item" }
       }
@@ -155,8 +157,9 @@
           "type": { "enum": ["start", "cut", "dissolve", "blend_fly", "fly_through", "flash", "whip", "in_place"], "description": "dissolve = cross-blend of two rendered scenes. blend_fly = also a 2D cross-blend (the renderer's STORY.TRANS kind fly is the same code as dissolve with other frame counts); it is NOT a camera travelling through geometry. fly_through = the camera really passes into the next place along one continuous 3D path: NOT implemented in the renderer today (a camera flight inside one scene is camera.mode, which IS implemented)." },
           "reason": { "enum": ["start", "new_place", "time_shift", "memory_or_thought", "scale_change", "emphasis", "continuity"] },
           "frames": { "type": "integer", "minimum": 0 } } },
-        "continuity_change": { "type": "array", "items": { "type": "string" }, "description": "identity_lock items that the script changes on purpose in this beat (rule CON-01)" },
+        "continuity_change": { "type": "array", "items": { "type": "string" }, "description": "deliberate appearance changes in this beat (rule CON-01), written ID:attribute=value, e.g. BOSS:face_colour=purple. attribute: outfit, hat, skin, hair, beard, face_colour, outline, size, other. The character keeps its id and its other locked items." },
         "validation": { "type": "object", "additionalProperties": false, "required": ["gates", "must_see"], "properties": {
+          "not_shown": { "type": "array", "items": { "$ref": "#/$defs/id" }, "description": "entities the narration names but that are deliberately not pictured in this beat (say why in visual_purpose); silences the Q06 noun check" },
           "gates": { "type": "array", "minItems": 1, "items": { "type": "string", "pattern": "^Q(0[1-9]|10)$" }, "description": "quality gates that apply to this beat (rules.json quality_gates)" },
           "must_see": { "type": "array", "items": { "$ref": "#/$defs/id" }, "description": "entity ids that must be visible and readable in the beat's frames" },
           "must_not": { "type": "array", "items": { "type": "string" } } } },

@@ -62,7 +62,31 @@ d = copy.deepcopy(EX["railroads_v2"]); del d["entities"]["environments"][0]["dep
 F, _ = check(d); expect("missing depth_layers gives a Q06 warning", any(f[0] == "warn" and f[1] == "Q06" for f in F) and not errs(F))
 d = copy.deepcopy(EX["railroads_v2"]); d["beats"][3]["transition_in"].update(type="fly_through")
 F, _ = check(d); expect("transition fly_through is flagged as not implemented (a blend is not a 3D fly-through)", any(f[0] == "warn" and f[1] == "Q08" and "not implemented" in f[3] for f in F) and not errs(F))
-d = copy.deepcopy(EX["railroads_v2"]); d["entities"]["characters"][0]["outfit"] = "NEW:worker1"
-F, _ = check(d); expect("a kit outfit written as NEW: gives a warning", any(f[0] == "warn" and f[1] == "Q01" and "kit outfit" in f[3] for f in F) and not errs(F))
+
+# --- Step 2A universal checks
+def unframe(d):
+    """name the first object of beat 0 by an alias that the beat narration uses, then take it out of the frame"""
+    b = d["beats"][0]; ch = d["entities"]["characters"][0]["id"]; word = b["narration"]["text"].split()[1].strip(".,").lower()   # 'sawed'
+    o = next(o for o in d["entities"]["objects"]); o.setdefault("aliases", []).append(word); oid = o["id"]
+    s = b["subject"]; s["main_id"] = ch; s["character_ids"] = [ch]; s["required_asset_ids"] = []; s.pop("hero_object_id", None)
+    b["shot"]["composition"].update(primary_id=ch, secondary_ids=[]); b["validation"]["must_see"] = [ch]; b["object_events"] = []
+    b["character_actions"] = [a for a in b.get("character_actions", []) if a["character_id"] == ch]
+
+more = [
+ ("a kit outfit written as NEW: is an error", lambda d: d["entities"]["characters"][0].update(outfit="NEW:worker1"), "Q01"),
+ ("a kit hat written as NEW: is an error", lambda d: d["entities"]["characters"][0].update(hat="NEW:cap"), "Q01"),
+ ("purpose hold_for_performance with a moving camera", lambda d: d["beats"][1]["camera"].update(purpose="hold_for_performance", mode="push-in"), "Q03"),
+ ("a thing named in the words is missing from the frame", lambda d: unframe(d), "Q06"),
+ ("physical_action with no object_events", lambda d: [b.update(object_events=[]) for b in d["beats"] if b["intent"] == "physical_action"], "Q05"),
+ ("continuity_change in the wrong format", lambda d: d["beats"][0].update(continuity_change=["BOSS purple"]), "Q01"),
+ ("too many hard cuts", lambda d: [b["transition_in"].update(type="cut", reason="emphasis") or b["transition_in"].pop("frames", None) for b in d["beats"][1:]], "Q08"),
+]
+for name, fn, gate in more:
+    F, bad = mut(fn)
+    expect(f"break caught by {gate}: {name}", bool(errs(F, gate)), f"gates with errors: {sorted({f[1] for f in errs(F)})}")
+d = copy.deepcopy(EX["bomb_v22"])
+F, _ = check(d); expect("not_shown silences the noun check (example bomb s2)", not [f for f in errs(F, "Q06")])
+d = copy.deepcopy(EX["railroads_v2"]); d["beats"][-1]["time"]["end_s"] += 60
+F, _ = check(d); expect("pacing below the reference range gives a Q08 warning", any(f[0] == "warn" and f[1] == "Q08" and "pacing" in f[3] for f in F))
 print(f"\n{'ALL PASSED' if not fails else str(fails) + ' FAILED'}")
 sys.exit(1 if fails else 0)
