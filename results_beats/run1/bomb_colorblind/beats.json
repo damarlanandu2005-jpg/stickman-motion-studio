@@ -1,0 +1,2143 @@
+{
+ "schema_version": "1.1.0",
+ "project": {
+  "id": "bomb_colorblind",
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "source": "gemini (tools/make_beats.py)"
+ },
+ "narration": {
+  "text": "Arthur was colorblind. But that didn't stop him from becoming a bomb disposal expert. He was called whenever a dangerous device needed to be defused. One day, he faced a bomb with only seconds remaining. The instructions depended on identifying colored wires. But Arthur couldn't see the difference between them. He had to find another way. Instead of guessing, he carefully studied the circuit. He traced every wire and followed its connections. There were six wires, and one wrong cut could kill him. The countdown kept ticking. Everyone was waiting for an answer. Then Arthur noticed something others had missed. He understood the circuit. And he defused the bomb. He had done it again. Forty-one bombs, without relying on color.",
+  "words": [
+   {
+    "w": "Arthur",
+    "s": 0.0,
+    "e": 0.432
+   },
+   {
+    "w": "was",
+    "s": 0.432,
+    "e": 0.648
+   },
+   {
+    "w": "colorblind.",
+    "s": 0.648,
+    "e": 1.297
+   },
+   {
+    "w": "But",
+    "s": 1.424,
+    "e": 1.617
+   },
+   {
+    "w": "that",
+    "s": 1.617,
+    "e": 1.81
+   },
+   {
+    "w": "didn't",
+    "s": 1.81,
+    "e": 2.002
+   },
+   {
+    "w": "stop",
+    "s": 2.002,
+    "e": 2.195
+   },
+   {
+    "w": "him",
+    "s": 2.195,
+    "e": 2.388
+   },
+   {
+    "w": "from",
+    "s": 2.388,
+    "e": 2.581
+   },
+   {
+    "w": "becoming",
+    "s": 2.581,
+    "e": 3.159
+   },
+   {
+    "w": "a",
+    "s": 3.159,
+    "e": 3.352
+   },
+   {
+    "w": "bomb",
+    "s": 3.352,
+    "e": 3.544
+   },
+   {
+    "w": "disposal",
+    "s": 3.544,
+    "e": 4.123
+   },
+   {
+    "w": "expert.",
+    "s": 4.123,
+    "e": 4.508
+   },
+   {
+    "w": "He",
+    "s": 4.809,
+    "e": 4.967
+   },
+   {
+    "w": "was",
+    "s": 4.967,
+    "e": 5.125
+   },
+   {
+    "w": "called",
+    "s": 5.125,
+    "e": 5.441
+   },
+   {
+    "w": "whenever",
+    "s": 5.441,
+    "e": 5.915
+   },
+   {
+    "w": "a",
+    "s": 5.915,
+    "e": 6.073
+   },
+   {
+    "w": "dangerous",
+    "s": 6.073,
+    "e": 6.547
+   },
+   {
+    "w": "device",
+    "s": 6.547,
+    "e": 6.863
+   },
+   {
+    "w": "needed",
+    "s": 6.863,
+    "e": 7.18
+   },
+   {
+    "w": "to",
+    "s": 7.18,
+    "e": 7.338
+   },
+   {
+    "w": "be",
+    "s": 7.338,
+    "e": 7.496
+   },
+   {
+    "w": "defused.",
+    "s": 7.496,
+    "e": 7.97
+   },
+   {
+    "w": "One",
+    "s": 8.342,
+    "e": 8.52
+   },
+   {
+    "w": "day,",
+    "s": 8.52,
+    "e": 8.698
+   },
+   {
+    "w": "he",
+    "s": 8.698,
+    "e": 8.876
+   },
+   {
+    "w": "faced",
+    "s": 8.876,
+    "e": 9.232
+   },
+   {
+    "w": "a",
+    "s": 9.232,
+    "e": 9.41
+   },
+   {
+    "w": "bomb",
+    "s": 9.41,
+    "e": 9.588
+   },
+   {
+    "w": "with",
+    "s": 9.588,
+    "e": 9.766
+   },
+   {
+    "w": "only",
+    "s": 9.766,
+    "e": 10.123
+   },
+   {
+    "w": "seconds",
+    "s": 10.123,
+    "e": 10.479
+   },
+   {
+    "w": "remaining.",
+    "s": 10.479,
+    "e": 11.013
+   },
+   {
+    "w": "The",
+    "s": 11.299,
+    "e": 11.475
+   },
+   {
+    "w": "instructions",
+    "s": 11.475,
+    "e": 12.002
+   },
+   {
+    "w": "depended",
+    "s": 12.002,
+    "e": 12.53
+   },
+   {
+    "w": "on",
+    "s": 12.53,
+    "e": 12.706
+   },
+   {
+    "w": "identifying",
+    "s": 12.706,
+    "e": 13.41
+   },
+   {
+    "w": "colored",
+    "s": 13.41,
+    "e": 13.938
+   },
+   {
+    "w": "wires.",
+    "s": 13.938,
+    "e": 14.29
+   },
+   {
+    "w": "But",
+    "s": 14.529,
+    "e": 14.689
+   },
+   {
+    "w": "Arthur",
+    "s": 14.689,
+    "e": 15.01
+   },
+   {
+    "w": "couldn't",
+    "s": 15.01,
+    "e": 15.171
+   },
+   {
+    "w": "see",
+    "s": 15.171,
+    "e": 15.331
+   },
+   {
+    "w": "the",
+    "s": 15.331,
+    "e": 15.491
+   },
+   {
+    "w": "difference",
+    "s": 15.491,
+    "e": 15.973
+   },
+   {
+    "w": "between",
+    "s": 15.973,
+    "e": 16.294
+   },
+   {
+    "w": "them.",
+    "s": 16.294,
+    "e": 16.454
+   },
+   {
+    "w": "He",
+    "s": 16.65,
+    "e": 16.8
+   },
+   {
+    "w": "had",
+    "s": 16.8,
+    "e": 16.949
+   },
+   {
+    "w": "to",
+    "s": 16.949,
+    "e": 17.099
+   },
+   {
+    "w": "find",
+    "s": 17.099,
+    "e": 17.248
+   },
+   {
+    "w": "another",
+    "s": 17.248,
+    "e": 17.697
+   },
+   {
+    "w": "way.",
+    "s": 17.697,
+    "e": 17.846
+   },
+   {
+    "w": "Instead",
+    "s": 18.226,
+    "e": 18.496
+   },
+   {
+    "w": "of",
+    "s": 18.496,
+    "e": 18.632
+   },
+   {
+    "w": "guessing,",
+    "s": 18.632,
+    "e": 18.902
+   },
+   {
+    "w": "he",
+    "s": 18.902,
+    "e": 19.037
+   },
+   {
+    "w": "carefully",
+    "s": 19.037,
+    "e": 19.577
+   },
+   {
+    "w": "studied",
+    "s": 19.577,
+    "e": 19.847
+   },
+   {
+    "w": "the",
+    "s": 19.847,
+    "e": 19.982
+   },
+   {
+    "w": "circuit.",
+    "s": 19.982,
+    "e": 20.252
+   },
+   {
+    "w": "He",
+    "s": 20.523,
+    "e": 20.68
+   },
+   {
+    "w": "traced",
+    "s": 20.68,
+    "e": 20.996
+   },
+   {
+    "w": "every",
+    "s": 20.996,
+    "e": 21.469
+   },
+   {
+    "w": "wire",
+    "s": 21.469,
+    "e": 21.627
+   },
+   {
+    "w": "and",
+    "s": 21.627,
+    "e": 21.784
+   },
+   {
+    "w": "followed",
+    "s": 21.784,
+    "e": 22.257
+   },
+   {
+    "w": "its",
+    "s": 22.257,
+    "e": 22.415
+   },
+   {
+    "w": "connections.",
+    "s": 22.415,
+    "e": 22.888
+   },
+   {
+    "w": "There",
+    "s": 23.191,
+    "e": 23.376
+   },
+   {
+    "w": "were",
+    "s": 23.376,
+    "e": 23.561
+   },
+   {
+    "w": "six",
+    "s": 23.561,
+    "e": 23.746
+   },
+   {
+    "w": "wires,",
+    "s": 23.746,
+    "e": 24.116
+   },
+   {
+    "w": "and",
+    "s": 24.116,
+    "e": 24.3
+   },
+   {
+    "w": "one",
+    "s": 24.3,
+    "e": 24.485
+   },
+   {
+    "w": "wrong",
+    "s": 24.485,
+    "e": 24.67
+   },
+   {
+    "w": "cut",
+    "s": 24.67,
+    "e": 24.855
+   },
+   {
+    "w": "could",
+    "s": 24.855,
+    "e": 25.04
+   },
+   {
+    "w": "kill",
+    "s": 25.04,
+    "e": 25.225
+   },
+   {
+    "w": "him.",
+    "s": 25.225,
+    "e": 25.41
+   },
+   {
+    "w": "The",
+    "s": 25.738,
+    "e": 25.856
+   },
+   {
+    "w": "countdown",
+    "s": 25.856,
+    "e": 26.093
+   },
+   {
+    "w": "kept",
+    "s": 26.093,
+    "e": 26.211
+   },
+   {
+    "w": "ticking.",
+    "s": 26.211,
+    "e": 26.448
+   },
+   {
+    "w": "Everyone",
+    "s": 26.572,
+    "e": 27.128
+   },
+   {
+    "w": "was",
+    "s": 27.128,
+    "e": 27.314
+   },
+   {
+    "w": "waiting",
+    "s": 27.314,
+    "e": 27.685
+   },
+   {
+    "w": "for",
+    "s": 27.685,
+    "e": 27.87
+   },
+   {
+    "w": "an",
+    "s": 27.87,
+    "e": 28.055
+   },
+   {
+    "w": "answer.",
+    "s": 28.055,
+    "e": 28.426
+   },
+   {
+    "w": "Then",
+    "s": 28.61,
+    "e": 28.741
+   },
+   {
+    "w": "Arthur",
+    "s": 28.741,
+    "e": 29.004
+   },
+   {
+    "w": "noticed",
+    "s": 29.004,
+    "e": 29.397
+   },
+   {
+    "w": "something",
+    "s": 29.397,
+    "e": 29.791
+   },
+   {
+    "w": "others",
+    "s": 29.791,
+    "e": 30.053
+   },
+   {
+    "w": "had",
+    "s": 30.053,
+    "e": 30.184
+   },
+   {
+    "w": "missed.",
+    "s": 30.184,
+    "e": 30.446
+   },
+   {
+    "w": "He",
+    "s": 30.595,
+    "e": 30.735
+   },
+   {
+    "w": "understood",
+    "s": 30.735,
+    "e": 31.156
+   },
+   {
+    "w": "the",
+    "s": 31.156,
+    "e": 31.296
+   },
+   {
+    "w": "circuit.",
+    "s": 31.296,
+    "e": 31.577
+   },
+   {
+    "w": "And",
+    "s": 31.71,
+    "e": 31.901
+   },
+   {
+    "w": "he",
+    "s": 31.901,
+    "e": 32.092
+   },
+   {
+    "w": "defused",
+    "s": 32.092,
+    "e": 32.664
+   },
+   {
+    "w": "the",
+    "s": 32.664,
+    "e": 32.855
+   },
+   {
+    "w": "bomb.",
+    "s": 32.855,
+    "e": 33.046
+   },
+   {
+    "w": "He",
+    "s": 33.046,
+    "e": 33.237
+   },
+   {
+    "w": "had",
+    "s": 33.237,
+    "e": 33.428
+   },
+   {
+    "w": "done",
+    "s": 33.428,
+    "e": 33.619
+   },
+   {
+    "w": "it",
+    "s": 33.619,
+    "e": 33.81
+   },
+   {
+    "w": "again.",
+    "s": 33.81,
+    "e": 34.192
+   },
+   {
+    "w": "Forty-one",
+    "s": 34.192,
+    "e": 34.574
+   },
+   {
+    "w": "bombs,",
+    "s": 34.574,
+    "e": 34.765
+   },
+   {
+    "w": "without",
+    "s": 34.765,
+    "e": 35.147
+   },
+   {
+    "w": "relying",
+    "s": 35.147,
+    "e": 35.528
+   },
+   {
+    "w": "on",
+    "s": 35.528,
+    "e": 35.719
+   },
+   {
+    "w": "color.",
+    "s": 35.719,
+    "e": 36.101
+   }
+  ]
+ },
+ "entities": {
+  "characters": [
+   {
+    "id": "ARTHUR",
+    "outfit": "civA",
+    "skin_hair": "light skin, brown hair, no beard",
+    "default_face": "neutral",
+    "identity_lock": [
+     "outfit: civilian A",
+     "skin: light",
+     "hair: brown, no beard"
+    ]
+   },
+   {
+    "id": "ARTHUR-SUIT",
+    "outfit": "NEW:bomb suit",
+    "hat": "NEW:bomb helmet",
+    "skin_hair": "light skin, brown hair, no beard",
+    "default_face": "stern",
+    "identity_lock": [
+     "suit: thick dark green padded",
+     "helmet: dark green with thick glass visor",
+     "same face as ARTHUR"
+    ]
+   },
+   {
+    "id": "COMMANDER",
+    "outfit": "modern",
+    "hat": "NEW:cap",
+    "skin_hair": "dark skin, black hair, beard",
+    "default_face": "stern",
+    "identity_lock": [
+     "outfit: modern police",
+     "hat: cap",
+     "skin: dark",
+     "hair: black, beard"
+    ]
+   }
+  ],
+  "objects": [
+   {
+    "id": "BOMB",
+    "label": "black metal box with digital timer",
+    "size_m": 0.5,
+    "representation": "3d_mesh",
+    "material_ids": [
+     "M02"
+    ],
+    "status": "new_item"
+   },
+   {
+    "id": "BOMB-WIRES",
+    "label": "bundle of 6 wires: red, blue, green, yellow, white, black",
+    "size_m": 0.3,
+    "representation": "3d_mesh",
+    "material_ids": [
+     "M02"
+    ],
+    "status": "new_item"
+   },
+   {
+    "id": "CIRCUIT-BOARD",
+    "label": "green board with silver solder lines",
+    "size_m": 0.2,
+    "representation": "3d_mesh",
+    "material_ids": [
+     "M02"
+    ],
+    "status": "new_item"
+   },
+   {
+    "id": "WIRE-CUTTERS",
+    "label": "silver metal with red handles",
+    "size_m": 0.2,
+    "representation": "3d_mesh",
+    "material_ids": [
+     "M02"
+    ],
+    "status": "new_item"
+   },
+   {
+    "id": "DIGITAL-TIMER",
+    "label": "black screen with red glowing numbers",
+    "size_m": 0.15,
+    "representation": "3d_mesh",
+    "material_ids": [
+     "M02",
+     "M07"
+    ],
+    "status": "new_item"
+   },
+   {
+    "id": "POLICE-CAR",
+    "label": "white and blue police car with red lights",
+    "size_m": 4.0,
+    "representation": "3d_mesh",
+    "material_ids": [
+     "M02"
+    ],
+    "status": "new_item"
+   },
+   {
+    "id": "POLICE-BARRICADE",
+    "label": "yellow and black striped wood barricade",
+    "size_m": 2.0,
+    "representation": "3d_mesh",
+    "material_ids": [
+     "M01"
+    ],
+    "status": "new_item"
+   },
+   {
+    "id": "WOODEN-TABLE",
+    "label": "brown wooden table",
+    "size_m": 1.5,
+    "representation": "3d_mesh",
+    "material_ids": [
+     "M01"
+    ],
+    "status": "new_item"
+   }
+  ],
+  "environments": [
+   {
+    "id": "STREET",
+    "width_m": 20,
+    "light": "day",
+    "lighting_profile_id": "L02",
+    "landmarks": [
+     "police barricade on left",
+     "police car in middle",
+     "brick building on right"
+    ],
+    "material_ids": [
+     "M03",
+     "M04"
+    ],
+    "depth_layers": {
+     "foreground": "barricade",
+     "midground": "street and cars",
+     "background": "brick building"
+    }
+   },
+   {
+    "id": "BOMB-ROOM",
+    "width_m": 10,
+    "light": "indoor",
+    "lighting_profile_id": "L01",
+    "landmarks": [
+     "concrete pillar left",
+     "wooden table middle",
+     "metal door right"
+    ],
+    "material_ids": [
+     "M01",
+     "M03"
+    ],
+    "depth_layers": {
+     "foreground": "table edge",
+     "midground": "bomb on table",
+     "background": "concrete pillar and door"
+    }
+   },
+   {
+    "id": "COMMAND-TENT",
+    "width_m": 8,
+    "light": "indoor",
+    "lighting_profile_id": "L01",
+    "landmarks": [
+     "radio desk left",
+     "tactical map middle",
+     "folding chairs right"
+    ],
+    "material_ids": [
+     "M01",
+     "M02"
+    ],
+    "depth_layers": {
+     "foreground": "chairs",
+     "midground": "desk and map",
+     "background": "tent wall"
+    }
+   }
+  ]
+ },
+ "beats": [
+  {
+   "id": "s1",
+   "index": 1,
+   "time": {
+    "start_s": 0.0,
+    "end_s": 1.4333
+   },
+   "narration": {
+    "text": "Arthur was colorblind.",
+    "word_range": [
+     0,
+     2
+    ]
+   },
+   "intent": "hook",
+   "visual_purpose": "Introduce Arthur and his colorblindness.",
+   "subject": {
+    "main_id": "ARTHUR",
+    "character_ids": [
+     "ARTHUR"
+    ]
+   },
+   "environment_id": "STREET",
+   "character_actions": [
+    {
+     "character_id": "ARTHUR",
+     "action": "stands, looks at the viewer",
+     "pose": "hang",
+     "face": "neutral",
+     "phase": "attention",
+     "start_s": 0.0,
+     "duration_s": 1.43
+    }
+   ],
+   "shot": {
+    "recipe_id": "S04",
+    "framing": "close",
+    "composition": {
+     "primary_id": "ARTHUR",
+     "focal_point_norm": [
+      0.5,
+      0.4
+     ]
+    },
+    "situation": "HOOK",
+    "distance_m": 2
+   },
+   "camera": {
+    "purpose": "emphasize",
+    "mode": "push-in",
+    "rationale": "Push to his face on the key word.",
+    "confidence": "designed",
+    "duration_s": 1.43,
+    "ease": "easeOut",
+    "from": {
+     "framing": "medium",
+     "distance_m": 3,
+     "height": "eye",
+     "side": "front"
+    },
+    "to": {
+     "framing": "close",
+     "distance_m": 2,
+     "height": "eye",
+     "side": "front"
+    }
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "sfx",
+     "event": "soft dramatic hit",
+     "time_s": 0.648,
+     "trigger": "word",
+     "word_index": 2
+    },
+    {
+     "track": "music",
+     "event": "curious mysterious opening",
+     "time_s": 0.0,
+     "trigger": "beat_start"
+    }
+   ],
+   "transition_in": {
+    "type": "start",
+    "reason": "start"
+   },
+   "validation": {
+    "gates": [
+     "Q01",
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q10"
+    ],
+    "must_see": [
+     "ARTHUR"
+    ],
+    "must_not": [
+     "Arthur wearing bomb suit"
+    ]
+   }
+  },
+  {
+   "id": "s2",
+   "index": 2,
+   "time": {
+    "start_s": 1.4333,
+    "end_s": 4.8
+   },
+   "narration": {
+    "text": "But that didn't stop him from becoming a bomb disposal expert.",
+    "word_range": [
+     3,
+     13
+    ]
+   },
+   "intent": "introduce_character",
+   "visual_purpose": "Show Arthur in his bomb suit.",
+   "subject": {
+    "main_id": "ARTHUR-SUIT",
+    "character_ids": [
+     "ARTHUR-SUIT"
+    ]
+   },
+   "environment_id": "STREET",
+   "character_actions": [
+    {
+     "character_id": "ARTHUR-SUIT",
+     "action": "stands proudly",
+     "pose": "hip",
+     "face": "stern",
+     "phase": "settle",
+     "start_s": 0.0,
+     "duration_s": 3.37
+    }
+   ],
+   "shot": {
+    "recipe_id": "S02",
+    "framing": "medium_wide",
+    "composition": {
+     "primary_id": "ARTHUR-SUIT",
+     "focal_point_norm": [
+      0.5,
+      0.45
+     ]
+    },
+    "distance_m": 6
+   },
+   "camera": {
+    "purpose": "reveal",
+    "mode": "push-in",
+    "rationale": "Push in to reveal his bomb suit.",
+    "confidence": "designed",
+    "duration_s": 3.37,
+    "ease": "easeOut",
+    "from": {
+     "framing": "wide",
+     "distance_m": 8,
+     "height": "eye",
+     "side": "front"
+    },
+    "to": {
+     "framing": "medium_wide",
+     "distance_m": 6,
+     "height": "eye",
+     "side": "front"
+    }
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "sfx",
+     "event": "heavy footsteps",
+     "time_s": 4.123,
+     "trigger": "word",
+     "word_index": 13
+    },
+    {
+     "track": "music",
+     "event": "confident cinematic rhythm",
+     "time_s": 1.43,
+     "trigger": "beat_start"
+    }
+   ],
+   "transition_in": {
+    "type": "dissolve",
+    "reason": "continuity",
+    "frames": 8
+   },
+   "validation": {
+    "gates": [
+     "Q01",
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q10"
+    ],
+    "must_see": [
+     "ARTHUR-SUIT"
+    ],
+    "must_not": [
+     "missing helmet"
+    ]
+   }
+  },
+  {
+   "id": "s3",
+   "index": 3,
+   "time": {
+    "start_s": 4.8,
+    "end_s": 8.3333
+   },
+   "narration": {
+    "text": "He was called whenever a dangerous device needed to be defused.",
+    "word_range": [
+     14,
+     24
+    ]
+   },
+   "intent": "introduce_place_or_time",
+   "visual_purpose": "Show the dangerous situation with the commander calling him.",
+   "subject": {
+    "main_id": "ARTHUR-SUIT",
+    "character_ids": [
+     "ARTHUR-SUIT",
+     "COMMANDER"
+    ]
+   },
+   "environment_id": "STREET",
+   "light": "night",
+   "character_actions": [
+    {
+     "character_id": "COMMANDER",
+     "action": "points at Arthur",
+     "pose": "point",
+     "face": "stern",
+     "phase": "action",
+     "start_s": 0.0,
+     "duration_s": 3.53
+    }
+   ],
+   "shot": {
+    "recipe_id": "S05",
+    "framing": "wide",
+    "composition": {
+     "primary_id": "ARTHUR-SUIT",
+     "secondary_ids": [
+      "COMMANDER",
+      "POLICE-CAR",
+      "POLICE-BARRICADE"
+     ],
+     "focal_point_norm": [
+      0.5,
+      0.5
+     ]
+    },
+    "distance_m": 15
+   },
+   "camera": {
+    "purpose": "establish",
+    "mode": "crane-up",
+    "rationale": "Rise to show the scale of the scene and the police presence.",
+    "confidence": "designed",
+    "duration_s": 3.53,
+    "ease": "easeOut",
+    "from": {
+     "framing": "medium_wide",
+     "distance_m": 10,
+     "height": "eye",
+     "side": "front"
+    },
+    "to": {
+     "framing": "wide",
+     "distance_m": 15,
+     "height": "high",
+     "side": "front"
+    }
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "sfx",
+     "event": "police radio chatter",
+     "time_s": 5.125,
+     "trigger": "word",
+     "word_index": 16
+    },
+    {
+     "track": "music",
+     "event": "suspense begins",
+     "time_s": 4.8,
+     "trigger": "beat_start"
+    }
+   ],
+   "transition_in": {
+    "type": "flash",
+    "reason": "time_shift",
+    "frames": 6
+   },
+   "validation": {
+    "gates": [
+     "Q01",
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q10"
+    ],
+    "must_see": [
+     "POLICE-CAR",
+     "POLICE-BARRICADE",
+     "COMMANDER"
+    ],
+    "must_not": [
+     "empty street"
+    ]
+   }
+  },
+  {
+   "id": "s4",
+   "index": 4,
+   "time": {
+    "start_s": 8.3333,
+    "end_s": 11.3
+   },
+   "narration": {
+    "text": "One day, he faced a bomb with only seconds remaining.",
+    "word_range": [
+     25,
+     34
+    ]
+   },
+   "intent": "create_suspense",
+   "visual_purpose": "Show the bomb and the ticking timer.",
+   "subject": {
+    "main_id": "BOMB",
+    "hero_object_id": "BOMB"
+   },
+   "environment_id": "BOMB-ROOM",
+   "shot": {
+    "recipe_id": "S03",
+    "framing": "detail",
+    "composition": {
+     "primary_id": "BOMB",
+     "secondary_ids": [
+      "DIGITAL-TIMER"
+     ],
+     "focal_point_norm": [
+      0.5,
+      0.5
+     ]
+    },
+    "distance_m": 0.5
+   },
+   "camera": {
+    "purpose": "inspect",
+    "mode": "push-in",
+    "rationale": "Push in close to the bomb and timer to build suspense.",
+    "confidence": "designed",
+    "duration_s": 2.97,
+    "ease": "easeOut",
+    "from": {
+     "framing": "close",
+     "distance_m": 1.0,
+     "height": "eye",
+     "side": "front"
+    },
+    "to": {
+     "framing": "detail",
+     "distance_m": 0.5,
+     "height": "eye",
+     "side": "front"
+    }
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "sfx",
+     "event": "fast beeping",
+     "time_s": 10.123,
+     "trigger": "word",
+     "word_index": 33
+    },
+    {
+     "track": "music",
+     "event": "fast ticking suspense",
+     "time_s": 8.33,
+     "trigger": "beat_start"
+    }
+   ],
+   "transition_in": {
+    "type": "cut",
+    "reason": "new_place"
+   },
+   "validation": {
+    "gates": [
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q10"
+    ],
+    "must_see": [
+     "BOMB",
+     "DIGITAL-TIMER"
+    ],
+    "must_not": [
+     "timer missing"
+    ]
+   }
+  },
+  {
+   "id": "s5",
+   "index": 5,
+   "time": {
+    "start_s": 11.3,
+    "end_s": 14.5333
+   },
+   "narration": {
+    "text": "The instructions depended on identifying colored wires.",
+    "word_range": [
+     35,
+     41
+    ]
+   },
+   "intent": "explain_mechanism",
+   "visual_purpose": "Show the colored wires that need to be identified.",
+   "subject": {
+    "main_id": "BOMB-WIRES",
+    "hero_object_id": "BOMB-WIRES"
+   },
+   "environment_id": "BOMB-ROOM",
+   "shot": {
+    "recipe_id": "S03",
+    "framing": "detail",
+    "composition": {
+     "primary_id": "BOMB-WIRES",
+     "focal_point_norm": [
+      0.5,
+      0.5
+     ]
+    },
+    "distance_m": 0.4
+   },
+   "camera": {
+    "purpose": "inspect",
+    "mode": "orbit",
+    "rationale": "Orbit around the wires to show their colors.",
+    "confidence": "designed",
+    "duration_s": 3.23,
+    "ease": "smooth",
+    "from": {
+     "framing": "detail",
+     "distance_m": 0.4,
+     "height": "eye",
+     "side": "front"
+    },
+    "to": {
+     "framing": "detail",
+     "distance_m": 0.4,
+     "height": "eye",
+     "side": "left"
+    }
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "sfx",
+     "event": "radio static",
+     "time_s": 13.41,
+     "trigger": "word",
+     "word_index": 40
+    },
+    {
+     "track": "music",
+     "event": "tense electronic pulse",
+     "time_s": 11.3,
+     "trigger": "beat_start"
+    }
+   ],
+   "transition_in": {
+    "type": "dissolve",
+    "reason": "continuity",
+    "frames": 8
+   },
+   "validation": {
+    "gates": [
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q10"
+    ],
+    "must_see": [
+     "BOMB-WIRES"
+    ],
+    "must_not": [
+     "wires all same color"
+    ]
+   }
+  },
+  {
+   "id": "s6",
+   "index": 6,
+   "time": {
+    "start_s": 14.5333,
+    "end_s": 16.6333
+   },
+   "narration": {
+    "text": "But Arthur couldn't see the difference between them.",
+    "word_range": [
+     42,
+     49
+    ]
+   },
+   "intent": "emotional_reaction",
+   "visual_purpose": "Show Arthur's worry because he can't see the colors.",
+   "subject": {
+    "main_id": "ARTHUR-SUIT",
+    "character_ids": [
+     "ARTHUR-SUIT"
+    ]
+   },
+   "environment_id": "BOMB-ROOM",
+   "character_actions": [
+    {
+     "character_id": "ARTHUR-SUIT",
+     "action": "touches temple, worried",
+     "pose": "temple",
+     "face": "worried+sweat",
+     "phase": "action",
+     "start_s": 0.0,
+     "duration_s": 2.1
+    }
+   ],
+   "shot": {
+    "recipe_id": "S04",
+    "framing": "close",
+    "composition": {
+     "primary_id": "ARTHUR-SUIT",
+     "focal_point_norm": [
+      0.5,
+      0.4
+     ]
+    },
+    "distance_m": 2
+   },
+   "camera": {
+    "purpose": "hold_for_performance",
+    "mode": "static",
+    "rationale": "Hold on Arthur's worried face.",
+    "confidence": "designed"
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "sfx",
+     "event": "low heartbeat",
+     "time_s": 15.491,
+     "trigger": "word",
+     "word_index": 47
+    },
+    {
+     "track": "music",
+     "event": "suspenseful drone",
+     "time_s": 14.53,
+     "trigger": "beat_start"
+    }
+   ],
+   "transition_in": {
+    "type": "cut",
+    "reason": "emphasis"
+   },
+   "validation": {
+    "gates": [
+     "Q01",
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q10"
+    ],
+    "must_see": [
+     "ARTHUR-SUIT"
+    ],
+    "must_not": [
+     "face hidden"
+    ]
+   }
+  },
+  {
+   "id": "s7",
+   "index": 7,
+   "time": {
+    "start_s": 16.6333,
+    "end_s": 20.5333
+   },
+   "narration": {
+    "text": "He had to find another way. Instead of guessing, he carefully studied the circuit.",
+    "word_range": [
+     50,
+     63
+    ]
+   },
+   "intent": "physical_action",
+   "visual_purpose": "Arthur carefully studies the circuit instead of guessing.",
+   "subject": {
+    "main_id": "ARTHUR-SUIT",
+    "character_ids": [
+     "ARTHUR-SUIT"
+    ]
+   },
+   "environment_id": "BOMB-ROOM",
+   "character_actions": [
+    {
+     "character_id": "ARTHUR-SUIT",
+     "action": "reaches toward the bomb",
+     "pose": "reach",
+     "face": "determined",
+     "phase": "action",
+     "start_s": 0.0,
+     "duration_s": 3.9
+    }
+   ],
+   "shot": {
+    "recipe_id": "S06",
+    "framing": "medium_wide",
+    "composition": {
+     "primary_id": "ARTHUR-SUIT",
+     "secondary_ids": [
+      "BOMB",
+      "WOODEN-TABLE"
+     ],
+     "focal_point_norm": [
+      0.5,
+      0.5
+     ]
+    },
+    "distance_m": 6
+   },
+   "camera": {
+    "purpose": "emphasize",
+    "mode": "push-in",
+    "rationale": "Push in as he studies the bomb.",
+    "confidence": "designed",
+    "duration_s": 3.9,
+    "ease": "easeOut",
+    "from": {
+     "framing": "wide",
+     "distance_m": 8,
+     "height": "eye",
+     "side": "right"
+    },
+    "to": {
+     "framing": "medium_wide",
+     "distance_m": 6,
+     "height": "eye",
+     "side": "right"
+    }
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "sfx",
+     "event": "fabric rustle",
+     "time_s": 19.577,
+     "trigger": "word",
+     "word_index": 61
+    },
+    {
+     "track": "music",
+     "event": "tension transitions into thoughtful suspense",
+     "time_s": 16.63,
+     "trigger": "beat_start"
+    }
+   ],
+   "transition_in": {
+    "type": "dissolve",
+    "reason": "continuity",
+    "frames": 8
+   },
+   "validation": {
+    "gates": [
+     "Q01",
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q10"
+    ],
+    "must_see": [
+     "ARTHUR-SUIT",
+     "BOMB",
+     "WOODEN-TABLE"
+    ],
+    "must_not": [
+     "Arthur touching wires"
+    ]
+   }
+  },
+  {
+   "id": "s8",
+   "index": 8,
+   "time": {
+    "start_s": 20.5333,
+    "end_s": 23.2
+   },
+   "narration": {
+    "text": "He traced every wire and followed its connections.",
+    "word_range": [
+     64,
+     71
+    ]
+   },
+   "intent": "explain_mechanism",
+   "visual_purpose": "Show the circuit board and wires he is tracing.",
+   "subject": {
+    "main_id": "CIRCUIT-BOARD",
+    "hero_object_id": "CIRCUIT-BOARD"
+   },
+   "environment_id": "BOMB-ROOM",
+   "shot": {
+    "recipe_id": "S03",
+    "framing": "detail",
+    "composition": {
+     "primary_id": "CIRCUIT-BOARD",
+     "secondary_ids": [
+      "BOMB-WIRES"
+     ],
+     "focal_point_norm": [
+      0.5,
+      0.5
+     ]
+    },
+    "distance_m": 0.3
+   },
+   "camera": {
+    "purpose": "inspect",
+    "mode": "pull-back",
+    "rationale": "Pull back slightly to reveal the connections.",
+    "confidence": "designed",
+    "duration_s": 2.67,
+    "ease": "easeOut",
+    "from": {
+     "framing": "detail",
+     "distance_m": 0.3,
+     "height": "eye",
+     "side": "above"
+    },
+    "to": {
+     "framing": "close",
+     "distance_m": 0.6,
+     "height": "eye",
+     "side": "above"
+    }
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "sfx",
+     "event": "electronic hum",
+     "time_s": 22.415,
+     "trigger": "word",
+     "word_index": 71
+    },
+    {
+     "track": "music",
+     "event": "analytical electronic rhythm",
+     "time_s": 20.53,
+     "trigger": "beat_start"
+    }
+   ],
+   "transition_in": {
+    "type": "cut",
+    "reason": "emphasis"
+   },
+   "validation": {
+    "gates": [
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q10"
+    ],
+    "must_see": [
+     "CIRCUIT-BOARD",
+     "BOMB-WIRES"
+    ],
+    "must_not": [
+     "missing circuit board"
+    ]
+   }
+  },
+  {
+   "id": "s9",
+   "index": 9,
+   "time": {
+    "start_s": 23.2,
+    "end_s": 25.7333
+   },
+   "narration": {
+    "text": "There were six wires, and one wrong cut could kill him.",
+    "word_range": [
+     72,
+     82
+    ]
+   },
+   "intent": "create_suspense",
+   "visual_purpose": "Show Arthur holding wire cutters, nervous about making the wrong cut.",
+   "subject": {
+    "main_id": "ARTHUR-SUIT",
+    "character_ids": [
+     "ARTHUR-SUIT"
+    ]
+   },
+   "environment_id": "BOMB-ROOM",
+   "character_actions": [
+    {
+     "character_id": "ARTHUR-SUIT",
+     "action": "reaches with cutters",
+     "pose": "reach",
+     "face": "nervous+sweat",
+     "phase": "anticipation",
+     "start_s": 0.0,
+     "duration_s": 2.53
+    }
+   ],
+   "shot": {
+    "recipe_id": "S06",
+    "framing": "close",
+    "composition": {
+     "primary_id": "ARTHUR-SUIT",
+     "secondary_ids": [
+      "WIRE-CUTTERS",
+      "BOMB-WIRES"
+     ],
+     "focal_point_norm": [
+      0.5,
+      0.5
+     ]
+    },
+    "distance_m": 2
+   },
+   "camera": {
+    "purpose": "emphasize",
+    "mode": "crane-down",
+    "rationale": "Crane down to emphasize the danger of the cut.",
+    "confidence": "designed",
+    "duration_s": 2.53,
+    "ease": "easeOut",
+    "from": {
+     "framing": "medium",
+     "distance_m": 3,
+     "height": "high",
+     "side": "right"
+    },
+    "to": {
+     "framing": "close",
+     "distance_m": 2,
+     "height": "eye",
+     "side": "right"
+    }
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "sfx",
+     "event": "metallic click",
+     "time_s": 24.67,
+     "trigger": "word",
+     "word_index": 79
+    },
+    {
+     "track": "music",
+     "event": "high tension drone",
+     "time_s": 23.2,
+     "trigger": "beat_start"
+    }
+   ],
+   "transition_in": {
+    "type": "cut",
+    "reason": "emphasis"
+   },
+   "validation": {
+    "gates": [
+     "Q01",
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q10"
+    ],
+    "must_see": [
+     "ARTHUR-SUIT",
+     "WIRE-CUTTERS",
+     "BOMB-WIRES"
+    ],
+    "must_not": [
+     "missing wire cutters"
+    ]
+   }
+  },
+  {
+   "id": "s10",
+   "index": 10,
+   "time": {
+    "start_s": 25.7333,
+    "end_s": 28.6
+   },
+   "narration": {
+    "text": "The countdown kept ticking. Everyone was waiting for an answer.",
+    "word_range": [
+     83,
+     92
+    ]
+   },
+   "intent": "create_suspense",
+   "visual_purpose": "Show the commander and crowd waiting anxiously in the tent.",
+   "subject": {
+    "main_id": "COMMANDER",
+    "character_ids": [
+     "COMMANDER"
+    ],
+    "crowd": 8
+   },
+   "environment_id": "COMMAND-TENT",
+   "light": "night",
+   "character_actions": [
+    {
+     "character_id": "COMMANDER",
+     "action": "touches temple, worried",
+     "pose": "temple",
+     "face": "worried+sweat",
+     "phase": "action",
+     "start_s": 0.0,
+     "duration_s": 2.87
+    }
+   ],
+   "shot": {
+    "recipe_id": "S04",
+    "framing": "medium_wide",
+    "composition": {
+     "primary_id": "COMMANDER",
+     "focal_point_norm": [
+      0.5,
+      0.4
+     ]
+    },
+    "distance_m": 6
+   },
+   "camera": {
+    "purpose": "emphasize",
+    "mode": "push-in",
+    "rationale": "Push in on the commander's worried face.",
+    "confidence": "designed",
+    "duration_s": 2.87,
+    "ease": "easeOut",
+    "from": {
+     "framing": "wide",
+     "distance_m": 8,
+     "height": "eye",
+     "side": "right"
+    },
+    "to": {
+     "framing": "medium_wide",
+     "distance_m": 6,
+     "height": "eye",
+     "side": "right"
+    }
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "sfx",
+     "event": "fast ticking",
+     "time_s": 26.211,
+     "trigger": "word",
+     "word_index": 86
+    },
+    {
+     "track": "music",
+     "event": "building climax",
+     "time_s": 25.73,
+     "trigger": "beat_start"
+    }
+   ],
+   "transition_in": {
+    "type": "dissolve",
+    "reason": "new_place",
+    "frames": 8
+   },
+   "validation": {
+    "gates": [
+     "Q01",
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q10"
+    ],
+    "must_see": [
+     "COMMANDER"
+    ],
+    "must_not": [
+     "empty room"
+    ]
+   }
+  },
+  {
+   "id": "s11",
+   "index": 11,
+   "time": {
+    "start_s": 28.6,
+    "end_s": 31.7
+   },
+   "narration": {
+    "text": "Then Arthur noticed something others had missed. He understood the circuit.",
+    "word_range": [
+     93,
+     103
+    ]
+   },
+   "intent": "surprising_reveal",
+   "visual_purpose": "Arthur realizes something and understands the circuit.",
+   "subject": {
+    "main_id": "ARTHUR-SUIT",
+    "character_ids": [
+     "ARTHUR-SUIT"
+    ]
+   },
+   "environment_id": "BOMB-ROOM",
+   "character_actions": [
+    {
+     "character_id": "ARTHUR-SUIT",
+     "action": "points, shocked realization",
+     "pose": "point",
+     "face": "shock+sparkle",
+     "phase": "response",
+     "start_s": 0.0,
+     "duration_s": 3.1
+    }
+   ],
+   "shot": {
+    "recipe_id": "S04",
+    "framing": "close",
+    "composition": {
+     "primary_id": "ARTHUR-SUIT",
+     "focal_point_norm": [
+      0.5,
+      0.4
+     ]
+    },
+    "distance_m": 2
+   },
+   "camera": {
+    "purpose": "emphasize",
+    "mode": "snap-zoom",
+    "rationale": "Snap zoom to emphasize his sudden realization.",
+    "confidence": "designed",
+    "duration_s": 3.1,
+    "ease": "easeOut",
+    "from": {
+     "framing": "medium",
+     "distance_m": 4,
+     "height": "eye",
+     "side": "right"
+    },
+    "to": {
+     "framing": "close",
+     "distance_m": 2,
+     "height": "eye",
+     "side": "right"
+    }
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "sfx",
+     "event": "high pitched ding",
+     "time_s": 30.735,
+     "trigger": "word",
+     "word_index": 101
+    },
+    {
+     "track": "music",
+     "event": "moment of realization",
+     "time_s": 28.6,
+     "trigger": "beat_start"
+    }
+   ],
+   "transition_in": {
+    "type": "dissolve",
+    "reason": "new_place",
+    "frames": 8
+   },
+   "validation": {
+    "gates": [
+     "Q01",
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q10"
+    ],
+    "must_see": [
+     "ARTHUR-SUIT"
+    ],
+    "must_not": [
+     "Arthur looking away"
+    ]
+   }
+  },
+  {
+   "id": "s12",
+   "index": 12,
+   "time": {
+    "start_s": 31.7,
+    "end_s": 33.0333
+   },
+   "narration": {
+    "text": "And he defused the bomb.",
+    "word_range": [
+     104,
+     108
+    ]
+   },
+   "intent": "physical_action",
+   "visual_purpose": "Arthur cuts the wire and defuses the bomb.",
+   "subject": {
+    "main_id": "WIRE-CUTTERS",
+    "hero_object_id": "WIRE-CUTTERS"
+   },
+   "environment_id": "BOMB-ROOM",
+   "object_events": [
+    {
+     "object_id": "WIRE-CUTTERS",
+     "event": "impact",
+     "start_s": 0.5,
+     "duration_s": 0.5,
+     "secondary_effects": [
+      "sparks"
+     ]
+    }
+   ],
+   "shot": {
+    "recipe_id": "S03",
+    "framing": "detail",
+    "composition": {
+     "primary_id": "WIRE-CUTTERS",
+     "secondary_ids": [
+      "BOMB-WIRES",
+      "DIGITAL-TIMER"
+     ],
+     "focal_point_norm": [
+      0.5,
+      0.5
+     ]
+    },
+    "distance_m": 0.4
+   },
+   "camera": {
+    "purpose": "impact",
+    "mode": "static",
+    "rationale": "Hold on the wire being cut for impact.",
+    "confidence": "designed"
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "sfx",
+     "event": "sharp snip",
+     "time_s": 32.092,
+     "trigger": "word",
+     "word_index": 106
+    },
+    {
+     "track": "music",
+     "event": "sudden silence then relief",
+     "time_s": 31.7,
+     "trigger": "beat_start"
+    }
+   ],
+   "transition_in": {
+    "type": "cut",
+    "reason": "emphasis"
+   },
+   "validation": {
+    "gates": [
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q10"
+    ],
+    "must_see": [
+     "WIRE-CUTTERS",
+     "BOMB-WIRES",
+     "DIGITAL-TIMER"
+    ],
+    "must_not": [
+     "Arthur's face visible"
+    ]
+   }
+  },
+  {
+   "id": "s13",
+   "index": 13,
+   "time": {
+    "start_s": 33.0333,
+    "end_s": 36.1
+   },
+   "narration": {
+    "text": "He had done it again. Forty-one bombs, without relying on color.",
+    "word_range": [
+     109,
+     119
+    ]
+   },
+   "intent": "summarize_or_conclude",
+   "visual_purpose": "Arthur and the commander celebrate another successful defusal.",
+   "subject": {
+    "main_id": "ARTHUR-SUIT",
+    "character_ids": [
+     "ARTHUR-SUIT",
+     "COMMANDER"
+    ]
+   },
+   "environment_id": "STREET",
+   "light": "dawn",
+   "character_actions": [
+    {
+     "character_id": "ARTHUR-SUIT",
+     "action": "thumbs up, proud",
+     "pose": "thumb",
+     "face": "proud",
+     "phase": "settle",
+     "start_s": 0.0,
+     "duration_s": 3.07
+    },
+    {
+     "character_id": "COMMANDER",
+     "action": "waves, smiling",
+     "pose": "wave",
+     "face": "smile",
+     "phase": "settle",
+     "start_s": 0.0,
+     "duration_s": 3.07
+    }
+   ],
+   "shot": {
+    "recipe_id": "S05",
+    "framing": "wide",
+    "composition": {
+     "primary_id": "ARTHUR-SUIT",
+     "secondary_ids": [
+      "COMMANDER",
+      "POLICE-CAR"
+     ],
+     "focal_point_norm": [
+      0.5,
+      0.5
+     ]
+    },
+    "distance_m": 6
+   },
+   "camera": {
+    "purpose": "reveal",
+    "mode": "pull-back",
+    "rationale": "Pull back to show the celebration and the safe street.",
+    "confidence": "designed",
+    "duration_s": 3.07,
+    "ease": "easeOut",
+    "from": {
+     "framing": "medium_wide",
+     "distance_m": 4,
+     "height": "eye",
+     "side": "front"
+    },
+    "to": {
+     "framing": "wide",
+     "distance_m": 6,
+     "height": "eye",
+     "side": "front"
+    }
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "sfx",
+     "event": "crowd cheering",
+     "time_s": 34.192,
+     "trigger": "word",
+     "word_index": 114
+    },
+    {
+     "track": "music",
+     "event": "triumphant heroic finish",
+     "time_s": 33.03,
+     "trigger": "beat_start"
+    }
+   ],
+   "transition_in": {
+    "type": "dissolve",
+    "reason": "time_shift",
+    "frames": 8
+   },
+   "validation": {
+    "gates": [
+     "Q01",
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q10"
+    ],
+    "must_see": [
+     "ARTHUR-SUIT",
+     "COMMANDER",
+     "POLICE-CAR"
+    ],
+    "must_not": [
+     "bomb exploding"
+    ]
+   }
+  }
+ ]
+}

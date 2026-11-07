@@ -1,0 +1,9 @@
+tokens: prompt 38296 answer 11357
+try 1: 2 errors, 0 warnings
+tokens: prompt 38432 answer 10869
+try 2: 1 errors, 4 warnings
+tokens: prompt 38336 answer 10979
+try 3: 2 errors, 0 warnings
+make_beats: no valid beat plan after 3 tries; the pipeline continues without beats.json
+ERROR Q10  beats/6/camera/to/side: schema: 'side' is not one of ['front', 'left', 'right', 'back', 'above']
+ERROR Q10  beats/13/camera/to/side: schema: 'side' is not one of ['front', 'left', 'right', 'back', 'above']

@@ -1,0 +1,180 @@
+CAST:
+- ARTHUR | civA + none | light skin, brown hair, no beard | neutral
+- ARTHUR-SUIT | NEW: bomb suit + NEW: bomb helmet | light skin, brown hair, no beard | stern
+- COMMANDER | modern + cap | dark skin, black hair, beard | stern
+
+PLACES:
+- STREET | urban street block | 20 m wide | police barricade on left, police car in middle, brick building on right
+- BOMB-ROOM | dark basement room | 10 m wide | concrete pillar left, wooden table middle, metal door right
+- COMMAND-TENT | police command post | 8 m wide | radio desk left, tactical map middle, folding chairs right
+
+NEW OBJECTS:
+- NEW: bomb suit | 1.8 m tall | thick dark green padded fabric | worn by ARTHUR-SUIT as full body protection
+- NEW: bomb helmet | 0.4 m wide | dark green with thick glass visor | worn on head by ARTHUR-SUIT
+- NEW: bomb | 0.5 m wide | black metal box with digital timer | sits on table
+- NEW: bomb wires | 0.3 m long | red, blue, green, yellow, white, black | bundle of 6 wires on the bomb
+- NEW: circuit board | 0.2 m wide | green board with silver solder lines | part of the bomb
+- NEW: wire cutters | 0.2 m long | silver metal with red handles | held in hand to cut wires
+- NEW: digital timer | 0.15 m wide | black screen with red glowing numbers | shows countdown on the bomb
+- NEW: police car | 4 m long | white and blue with red lights | parked on street
+- NEW: police barricade | 2 m wide | yellow and black striped wood | blocks the street
+- NEW: wooden table | 1.5 m wide | brown wood | holds the bomb
+
+SHOT 1
+WORDS:      "Arthur was colorblind."
+PLACE:      STREET
+LIGHT:      day
+CAMERA:     static | near (2 m) | tight
+CHARACTERS: ARTHUR | hang | neutral | middle | near | facing camera
+EFFECTS:    none
+MUST SEE:   ARTHUR
+MUST NOT:   Arthur wearing bomb suit
+SFX:        soft dramatic hit on "colorblind"
+MUSIC:      curious mysterious opening
+
+SHOT 2
+WORDS:      "But that didn't stop him from becoming a bomb disposal expert."
+PLACE:      STREET
+LIGHT:      day
+CAMERA:     push-in | mid (6 m) | wide
+CHARACTERS: ARTHUR-SUIT | hip | proud | middle | near | facing camera
+EFFECTS:    none
+MUST SEE:   ARTHUR-SUIT, bomb suit, bomb helmet
+MUST NOT:   missing helmet
+SFX:        heavy footsteps on "expert"
+MUSIC:      confident cinematic rhythm
+
+SHOT 3
+WORDS:      "He was called whenever a dangerous device needed to be defused."
+PLACE:      STREET
+LIGHT:      night
+CAMERA:     crane-up | far (15 m) | wide
+CHARACTERS: ARTHUR-SUIT | hang | stern | middle | mid | facing away
+            COMMANDER | point | stern | left | near | facing ARTHUR-SUIT
+EFFECTS:    flash
+MUST SEE:   police car, police barricade, COMMANDER
+MUST NOT:   empty street
+SFX:        police radio chatter on "called"
+MUSIC:      suspense begins
+
+SHOT 4
+WORDS:      "One day, he faced a bomb with only seconds remaining."
+PLACE:      BOMB-ROOM
+LIGHT:      indoor
+CAMERA:     push-in | camera 0.5 m | tight
+CHARACTERS: none
+EFFECTS:    none
+MUST SEE:   bomb, digital timer
+MUST NOT:   timer missing
+SFX:        fast beeping on "seconds"
+MUSIC:      fast ticking suspense
+
+SHOT 5
+WORDS:      "The instructions depended on identifying colored wires."
+PLACE:      BOMB-ROOM
+LIGHT:      indoor
+CAMERA:     orbit | camera 0.4 m | tight
+CHARACTERS: none
+EFFECTS:    none
+MUST SEE:   bomb wires
+MUST NOT:   wires all same color
+SFX:        radio static on "colored"
+MUSIC:      tense electronic pulse
+
+SHOT 6
+WORDS:      "But Arthur couldn't see the difference between them."
+PLACE:      BOMB-ROOM
+LIGHT:      indoor
+CAMERA:     static | near (2 m) | tight
+CHARACTERS: ARTHUR-SUIT | temple | worried+sweat | middle | near | facing camera
+EFFECTS:    none
+MUST SEE:   ARTHUR-SUIT, bomb helmet
+MUST NOT:   face hidden
+SFX:        low heartbeat on "difference"
+MUSIC:      suspenseful drone
+
+SHOT 7
+WORDS:      "He had to find another way. Instead of guessing, he carefully studied the circuit."
+PLACE:      BOMB-ROOM
+LIGHT:      indoor
+CAMERA:     push-in | mid (6 m) | wide
+CHARACTERS: ARTHUR-SUIT | reach | determined | middle | near | facing right
+EFFECTS:    none
+MUST SEE:   ARTHUR-SUIT, bomb, wooden table
+MUST NOT:   Arthur touching wires
+SFX:        fabric rustle on "studied"
+MUSIC:      tension transitions into thoughtful suspense
+
+SHOT 8
+WORDS:      "He traced every wire and followed its connections."
+PLACE:      BOMB-ROOM
+LIGHT:      indoor
+CAMERA:     pull-back | camera 0.3 m | tight
+CHARACTERS: none
+EFFECTS:    none
+MUST SEE:   circuit board, bomb wires
+MUST NOT:   missing circuit board
+SFX:        electronic hum on "connections"
+MUSIC:      analytical electronic rhythm
+
+SHOT 9
+WORDS:      "There were six wires, and one wrong cut could kill him."
+PLACE:      BOMB-ROOM
+LIGHT:      indoor
+CAMERA:     crane-down | near (2 m) | tight
+CHARACTERS: ARTHUR-SUIT | reach | nervous+sweat | middle | near | facing right
+EFFECTS:    none
+MUST SEE:   ARTHUR-SUIT, wire cutters, bomb wires
+MUST NOT:   missing wire cutters
+SFX:        metallic click on "cut"
+MUSIC:      high tension drone
+
+SHOT 10
+WORDS:      "The countdown kept ticking. Everyone was waiting for an answer."
+PLACE:      COMMAND-TENT
+LIGHT:      night
+CAMERA:     push-in | mid (6 m) | wide
+CHARACTERS: COMMANDER | temple | worried+sweat | middle | near | facing right
+            crowd of 8 | background
+EFFECTS:    none
+MUST SEE:   COMMANDER, COMMAND-TENT
+MUST NOT:   empty room
+SFX:        fast ticking on "ticking"
+MUSIC:      building climax
+
+SHOT 11
+WORDS:      "Then Arthur noticed something others had missed. He understood the circuit."
+PLACE:      BOMB-ROOM
+LIGHT:      indoor
+CAMERA:     snap-zoom | near (2 m) | tight
+CHARACTERS: ARTHUR-SUIT | point | shock+sparkle | middle | near | facing right
+EFFECTS:    none
+MUST SEE:   ARTHUR-SUIT
+MUST NOT:   Arthur looking away
+SFX:        high pitched ding on "understood"
+MUSIC:      moment of realization
+
+SHOT 12
+WORDS:      "And he defused the bomb."
+PLACE:      BOMB-ROOM
+LIGHT:      indoor
+CAMERA:     static | camera 0.4 m | tight
+CHARACTERS: none
+EFFECTS:    sparks
+MUST SEE:   wire cutters, bomb wires, digital timer
+MUST NOT:   Arthur's face visible
+SFX:        sharp snip on "defused"
+MUSIC:      sudden silence then relief
+
+SHOT 13
+WORDS:      "He had done it again. Forty-one bombs, without relying on color."
+PLACE:      STREET
+LIGHT:      dawn
+CAMERA:     pull-back | mid (6 m) | wide
+CHARACTERS: ARTHUR-SUIT | thumb | proud | middle | near | facing camera
+            COMMANDER | wave | smile | left | mid | facing ARTHUR-SUIT
+EFFECTS:    confetti
+MUST SEE:   ARTHUR-SUIT, COMMANDER, police car
+MUST NOT:   bomb exploding
+SFX:        crowd cheering on "Forty-one"
+MUSIC:      triumphant heroic finish
