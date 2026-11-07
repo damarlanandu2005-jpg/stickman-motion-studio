@@ -64,6 +64,8 @@ jobs:
           export GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/sa.json" GOOGLE_CLOUD_PROJECT="$GCP_PROJECT_ID" GOOGLE_CLOUD_LOCATION="${GCP_LOCATION:-global}" GOOGLE_GENAI_USE_VERTEXAI=true
           cd project
           python3 timing.py voice.mp3 script.txt --out work
+          [ -f shot_notes.txt ] || python3 ../tools/make_notes.py . 2>&1 | tee ../notes.log
+          test -f shot_notes.txt || { echo "no shot notes"; exit 1; }
           python3 ../tools/gen_api.py . --model "$MODEL" --asset-rounds 3 --shot-rounds 5 2>&1 | tee ../gemini.log
           test -f work/DONE.txt || { echo "gen_api did not finish: stopping"; exit 1; }
       - name: Plan the parallel render
