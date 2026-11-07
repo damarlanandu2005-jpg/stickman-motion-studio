@@ -1,0 +1,3061 @@
+{
+ "built": "2026-11-08",
+ "states": {
+  "code-integrated": "a capability exists in kit/engine or kit/tools that a new project gets without hand work (the choice to use it is still made by hand or by Gemini)",
+  "code-project-only": "implemented only inside the project copies mine/bomb_colorblind_v22 and mine/railroads_v2; a new Gemini project does NOT get it",
+  "prompt-only": "the rule text reaches Gemini through PLAYBOOK.md (tools/gen_api.py code step) or FORMAT.md, but no render code implements it",
+  "documentation-only": "only in docs or the learning log, not in any prompt (none left after the playbook update)",
+  "unimplemented": "listed under unimplemented_capabilities: a part of a rule that no code, prompt or check covers"
+ },
+ "coverage": {
+  "full": "the whole rule is implemented as a capability",
+  "partial": "part of it; see not_implemented_parts",
+  "none": "nothing implemented"
+ },
+ "test_status": {
+  "none": "never applied or measured",
+  "in_range": "applied by hand in a real video and measured inside the reference range",
+  "partial": "some measures in range, some not",
+  "failed": "applied by hand and measured outside the reference range",
+  "passed": "runs every render and works"
+ },
+ "how_to_read": "No row has render_code_reads_rule = true: nothing in the renderer reads rules.json or beats.json. \"Gemini consumes\" means PLAYBOOK.md is part of the gen_api.py prompt (code step). The shot-planning step (tools/make_notes.py) does NOT receive the PLAYBOOK, only FORMAT.md, TEMPLATE.txt and one example. Whether Gemini obeys a rule in its output is untested.",
+ "rules": [
+  {
+   "id": "CAM-01",
+   "area": "camera",
+   "purpose": "The camera is almost always alive, but not always flying.",
+   "source": {
+    "origin": "our_measured",
+    "values": "measured",
+    "conf": "measured",
+    "evidence": [
+     "all 17 references"
+    ]
+   },
+   "state": "prompt-only",
+   "coverage": "none",
+   "scope": "-",
+   "code": [],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [
+    "CHK-03 ref_study.py compare"
+   ],
+   "production_test": {
+    "status": "partial",
+    "where": "bomb_v22 and railroads_v2: flights per minute inside the reference range; the share of time moving fast was not reported"
+   },
+   "note": "The mix of holds and flights is a RESULT of the camera keys in story.js; nothing plans it. Measured after rendering."
+  },
+  {
+   "id": "CAM-02",
+   "area": "camera",
+   "purpose": "A flight is about one second long, one every 3 seconds, followed by a short hold.",
+   "source": {
+    "origin": "our_measured",
+    "values": "measured",
+    "conf": "measured",
+    "evidence": [
+     "299 flights in 17 references"
+    ]
+   },
+   "state": "code-integrated",
+   "coverage": "partial",
+   "scope": "kit/engine",
+   "code": [
+    {
+     "file": "kit/engine/motion.js",
+     "symbol": "camFromKeys"
+    }
+   ],
+   "not_implemented_parts": "no planner decides when a flight starts or how long it is; keys are written by hand or by Gemini",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "in_range",
+    "where": "bomb_v22: flights/min, length, pause in range; railroads_v2: flights 15.9/min, pause 1.35 s in range"
+   },
+   "note": "One flight per scene is built with a local helper fl() in mine/railroads_v2/web/story.js (not in kit)."
+  },
+  {
+   "id": "CAM-03",
+   "area": "camera",
+   "purpose": "Move the camera through the 3D world. Do not just zoom.",
+   "source": {
+    "origin": "our_measured",
+    "values": "measured",
+    "conf": "measured",
+    "evidence": [
+     "pirate_cannonballs 0-1.2 s (orbit around the cannon, sea and island revealed)",
+     "memory_price 4-7 s (fly down an alley into the shop)"
+    ]
+   },
+   "state": "code-integrated",
+   "coverage": "partial",
+   "scope": "kit/engine",
+   "code": [
+    {
+     "file": "kit/engine/motion.js",
+     "symbol": "camFromKeys"
+    },
+    {
+     "file": "kit/engine/main.js",
+     "symbol": "LK.push"
+    }
+   ],
+   "not_implemented_parts": "camFromKeys adds a slow push-in during holds by default (creep 0.0012); the two hand-made videos pass creep: 0 in story.js; engine LK.push is optional (off unless set)",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [
+    "CHK-02 ref_study.py compare",
+    "CHK-04 parallax"
+   ],
+   "production_test": {
+    "status": "in_range",
+    "where": "bomb_v22 and railroads_v2: zoom-only shots 0 %"
+   },
+   "note": ""
+  },
+  {
+   "id": "CAM-04",
+   "area": "camera",
+   "purpose": "REVEAL: start tight on a detail or a face, then fly out, up or around until the place or its size is clear.",
+   "source": {
+    "origin": "our_observed",
+    "values": "observed",
+    "conf": "seen",
+    "evidence": [
+     "town_button 4-7 s (crane up to a top view of the circular town)",
+     "roller_coasters 1-3 s (tilt up the loop)",
+     "mirror_horse_race 12-14 s (street and hill revealed)"
+    ]
+   },
+   "state": "prompt-only",
+   "coverage": "none",
+   "scope": "-",
+   "code": [],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "used by hand in railroads_v2 c5/c11, not measured as a rule"
+   },
+   "note": "Reveal flights are authored per scene (railroads_v2 c5, c11)."
+  },
+  {
+   "id": "CAM-05",
+   "area": "camera",
+   "purpose": "LAND ON THE PROP: a fast push toward the named prop that slows down as it arrives, timed to the word.",
+   "source": {
+    "origin": "our_observed",
+    "values": "observed",
+    "conf": "seen",
+    "evidence": [
+     "second_draw 14-15 s (push to the gun while yellow streaks fly)",
+     "town_button 23-25 s (button under the glass dome)",
+     "memory_price 28-31 s (HAPPINESS gauge)"
+    ]
+   },
+   "state": "prompt-only",
+   "coverage": "none",
+   "scope": "-",
+   "code": [],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": "Land-on-prop is authored by hand with easeOut keys."
+  },
+  {
+   "id": "CAM-06",
+   "area": "camera",
+   "purpose": "Power and danger: low angle, big object in the foreground.",
+   "source": {
+    "origin": "our_observed",
+    "values": "observed",
+    "conf": "seen",
+    "evidence": [
+     "second_draw 0-4 s (bullet and holster in the foreground, camera tilts up to the face)"
+    ]
+   },
+   "state": "prompt-only",
+   "coverage": "none",
+   "scope": "-",
+   "code": [],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": ""
+  },
+  {
+   "id": "CAM-07",
+   "area": "camera",
+   "purpose": "FOLLOW: when something travels, the camera pans or tracks with it and the background streams by.",
+   "source": {
+    "origin": "our_observed",
+    "values": "observed",
+    "conf": "seen",
+    "evidence": [
+     "mirror_horse_race 27-31 s (horse gallops, camera tracks)",
+     "pirate_cannonballs 4-5 s (ball flies past)"
+    ]
+   },
+   "state": "code-integrated",
+   "coverage": "partial",
+   "scope": "kit/engine",
+   "code": [
+    {
+     "file": "kit/engine/motion.js",
+     "symbol": "camFromKeys"
+    }
+   ],
+   "not_implemented_parts": "follow targets are keyed by hand; no tracking of a moving actor",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": "railroads_v2 c8/c19 track along rails by hand."
+  },
+  {
+   "id": "CAM-08",
+   "area": "camera",
+   "purpose": "Dialogue and reaction beats are HELD: two-shot or close-up, slow creep, 1.5-4 s.",
+   "source": {
+    "origin": "our_observed",
+    "values": "observed",
+    "conf": "seen",
+    "evidence": [
+     "second_draw 9-13 s (four seconds on one medium shot)",
+     "storm_oil 7-11 s (captain and chef two-shot)"
+    ]
+   },
+   "state": "prompt-only",
+   "coverage": "none",
+   "scope": "-",
+   "code": [],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "format_partial"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": ""
+  },
+  {
+   "id": "CAM-09",
+   "area": "camera",
+   "purpose": "Ease every flight. Half are steady, a quarter ease in and out.",
+   "source": {
+    "origin": "our_measured",
+    "values": "measured",
+    "conf": "measured",
+    "evidence": [
+     "172 flights"
+    ]
+   },
+   "state": "code-integrated",
+   "coverage": "full",
+   "scope": "kit/engine",
+   "code": [
+    {
+     "file": "kit/engine/motion.js",
+     "symbol": "M = {"
+    }
+   ],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "in_range",
+    "where": "bomb_v22: ramp-up and ramp-down times in range"
+   },
+   "note": "Ease functions smooth/easeOut/easeIn/back/anticip/spring exist; which one a flight uses is chosen by hand."
+  },
+  {
+   "id": "CAM-10",
+   "area": "camera",
+   "purpose": "Do not repeat the same move beat after beat. Vary push, pull, orbit, tilt, pan, top-down, low angle, first person.",
+   "source": {
+    "origin": "our_measured",
+    "values": "measured",
+    "conf": "measured",
+    "evidence": [
+     "8 references"
+    ]
+   },
+   "state": "prompt-only",
+   "coverage": "none",
+   "scope": "-",
+   "code": [],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "failed",
+    "where": "railroads_v2: repeat-move share 0.71 (reference lower)"
+   },
+   "note": "Nothing checks that moves differ between beats (validate_beats.py warns on the plan only)."
+  },
+  {
+   "id": "CAM-11",
+   "area": "camera",
+   "purpose": "Use shot size as a language: tiny people in a wide world, medium two-shots, face close-ups, extreme close-ups of props.",
+   "source": {
+    "origin": "our_observed",
+    "values": "observed",
+    "conf": "seen",
+    "evidence": [
+     "pirate_cannonballs 0-20 s",
+     "memory_price 19-31 s"
+    ]
+   },
+   "state": "prompt-only",
+   "coverage": "none",
+   "scope": "-",
+   "code": [],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "format_partial"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": "FORMAT.md gives near/mid/far distances; shot size as a language is not enforced."
+  },
+  {
+   "id": "CAM-12",
+   "area": "camera",
+   "purpose": "Frame with something blurred in the foreground at an edge (rope, pole, rail, mast, leaves) to build depth.",
+   "source": {
+    "origin": "our_observed",
+    "values": "observed",
+    "conf": "seen",
+    "evidence": [
+     "perfect_railroads 14-17 s",
+     "pirate_cannonballs 12-14 s",
+     "roller_coasters 10-15 s"
+    ]
+   },
+   "state": "prompt-only",
+   "coverage": "none",
+   "scope": "-",
+   "code": [],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": "Soft foreground objects are built by hand; the blur itself is CAM-15."
+  },
+  {
+   "id": "CUT-01",
+   "area": "cuts",
+   "purpose": "Hard cuts are rare: a few per minute. The camera and dissolves carry most scene changes (see CUT-02).",
+   "source": {
+    "origin": "our_measured",
+    "values": "measured",
+    "conf": "measured",
+    "evidence": [
+     "17 references"
+    ]
+   },
+   "state": "prompt-only",
+   "coverage": "none",
+   "scope": "-",
+   "code": [],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [
+    "CHK-01 ref_study.py compare"
+   ],
+   "production_test": {
+    "status": "in_range",
+    "where": "bomb_v22 13 hard cuts/min; railroads_v2 7.4 (reference 1.8-14.6)"
+   },
+   "note": ""
+  },
+  {
+   "id": "TRN-01",
+   "area": "transition",
+   "purpose": "Carry the viewer to the next beat with the camera: fly through, into or under the next place. Do NOT add heavy blur: measured sharpness at the flight peak is the same as at a hold.",
+   "source": {
+    "origin": "our_measured",
+    "values": "measured",
+    "conf": "measured",
+    "evidence": [
+     "memory_price 4-8 s (alley, light-lined corridor, shop interior in one move)",
+     "perfect_railroads 7-10 s (bridge, blur, station)"
+    ]
+   },
+   "state": "code-project-only",
+   "coverage": "partial",
+   "scope": "project copies only",
+   "code": [
+    {
+     "file": "mine/railroads_v2/web/main.js",
+     "symbol": "window.snap"
+    },
+    {
+     "file": "mine/bomb_colorblind_v22/web/main.js",
+     "symbol": "window.snap"
+    }
+   ],
+   "not_implemented_parts": "fly-through is a 10-frame cross-blend of two rendered scenes, not a camera that passes through geometry; not in kit/engine",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "partial",
+    "where": "bomb_v22 and railroads_v2 use STORY.TRANS fly; classifier cannot tell fly-through from dissolve reliably"
+   },
+   "note": ""
+  },
+  {
+   "id": "TRN-02",
+   "area": "transition",
+   "purpose": "Cross-dissolve 4-10 frames, with a ghost of the old picture, for memory, thought, time shift or a change of speaker.",
+   "source": {
+    "origin": "our_observed",
+    "values": "observed",
+    "conf": "seen",
+    "evidence": [
+     "memory_price 42-46 s (ghost of the hooded buyer over the boy)",
+     "mirror_horse_race 3 s and 27 s",
+     "second_draw 13.6 s (dissolve to the quick-draw man)"
+    ]
+   },
+   "state": "code-project-only",
+   "coverage": "full",
+   "scope": "project copies only",
+   "code": [
+    {
+     "file": "mine/railroads_v2/web/main.js",
+     "symbol": "window.snap"
+    },
+    {
+     "file": "mine/bomb_colorblind_v22/web/main.js",
+     "symbol": "window.snap"
+    }
+   ],
+   "not_implemented_parts": "ghost of the old picture is a plain alpha blend",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "partial",
+    "where": "used in both videos; type shares not independently verified"
+   },
+   "note": ""
+  },
+  {
+   "id": "TRN-03",
+   "area": "transition",
+   "purpose": "Round masks: spyglass circle on black for looking at something far, round windows as frames, a black circle closing as an eye.",
+   "source": {
+    "origin": "our_observed",
+    "values": "observed",
+    "conf": "seen",
+    "evidence": [
+     "mirror_horse_race 18 s (spyglass on the race)",
+     "second_draw 44-53 s (black circle, then round windows)"
+    ]
+   },
+   "state": "prompt-only",
+   "coverage": "none",
+   "scope": "-",
+   "code": [],
+   "not_implemented_parts": "round-mask transitions do not exist in any code",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": ""
+  },
+  {
+   "id": "TRN-04",
+   "area": "transition",
+   "purpose": "Smoke or cloud wipe: a puff fills the frame, the next place is behind it.",
+   "source": {
+    "origin": "our_observed",
+    "values": "observed",
+    "conf": "seen",
+    "evidence": [
+     "pirate_cannonballs 17.5-18.5 s (cannon smoke to open sea)"
+    ]
+   },
+   "state": "prompt-only",
+   "coverage": "none",
+   "scope": "-",
+   "code": [],
+   "not_implemented_parts": "smoke/cloud wipe does not exist in any code",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": ""
+  },
+  {
+   "id": "END-01",
+   "area": "structure",
+   "purpose": "End with a callback: return to the first place or object, changed.",
+   "source": {
+    "origin": "our_observed",
+    "values": "observed",
+    "conf": "seen",
+    "evidence": [
+     "second_draw 54-55 s (street scene like the opening)",
+     "town_button 64-65 s (crowd around the button from the first shot)"
+    ]
+   },
+   "state": "prompt-only",
+   "coverage": "none",
+   "scope": "-",
+   "code": [],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied in railroads_v2"
+   },
+   "note": ""
+  },
+  {
+   "id": "LIT-01",
+   "area": "light",
+   "purpose": "Every frame has a deep shadow and a near-white highlight. Mean brightness is 0.30-0.54 for most stories, down to 0.23 for a dark-room mind story.",
+   "source": {
+    "origin": "our_measured",
+    "values": "measured",
+    "conf": "measured",
+    "evidence": [
+     "8 references"
+    ]
+   },
+   "state": "code-integrated",
+   "coverage": "partial",
+   "scope": "kit/tools + tools/gen_api.py",
+   "code": [
+    {
+     "file": "tools/gen_api.py",
+     "symbol": "def stills"
+    }
+   ],
+   "not_implemented_parts": "gen_api flags black/flat stills only; brightness range 0.30-0.54 is not enforced",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": "Gemini-project pipeline only."
+  },
+  {
+   "id": "LIT-02",
+   "area": "light",
+   "purpose": "One dominant colour family per place, with warm against cool.",
+   "source": {
+    "origin": "our_observed",
+    "values": "observed",
+    "conf": "seen",
+    "evidence": [
+     "memory_price 5-15 s (blue street, yellow shop windows)",
+     "second_draw 26-30 s (orange sunset, long shadows)",
+     "roller_coasters 16-28 s (moonlit blue, warm lanterns and lights)"
+    ]
+   },
+   "state": "code-integrated",
+   "coverage": "partial",
+   "scope": "kit/engine",
+   "code": [
+    {
+     "file": "kit/engine/main.js",
+     "symbol": "function applyLight"
+    }
+   ],
+   "not_implemented_parts": "one light preset per place (LIGHTS in story.js); warm-against-cool is chosen by hand",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": ""
+  },
+  {
+   "id": "LIT-03",
+   "area": "light",
+   "purpose": "Colour follows feeling. Change the grade at the emotional turn.",
+   "source": {
+    "origin": "our_observed",
+    "values": "observed",
+    "conf": "seen",
+    "evidence": [
+     "memory_price 32-45 s (blue hospital against the golden lake)",
+     "second_draw 26-31 s"
+    ]
+   },
+   "state": "code-integrated",
+   "coverage": "partial",
+   "scope": "kit/engine",
+   "code": [
+    {
+     "file": "kit/engine/main.js",
+     "symbol": "function applyLight"
+    }
+   ],
+   "not_implemented_parts": "grade can change per scene via lightFor(); the change at the emotional turn is chosen by hand",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "partial",
+    "where": "railroads_v2 uses golden light from c11 (summer)"
+   },
+   "note": ""
+  },
+  {
+   "id": "LIT-04",
+   "area": "light",
+   "purpose": "Use light effects as scenery: bloom on lamps, windows and sun; god rays through glass; sun glare in the sky; rim light on night characters; string lights; wet-street reflections and rain streaks at night.",
+   "source": {
+    "origin": "our_observed",
+    "values": "observed",
+    "conf": "seen",
+    "evidence": [
+     "town_button 23-25 s (beams through the glass dome)",
+     "perfect_railroads 16 s (sun glare)",
+     "roller_coasters 21 s (string lights, lantern)"
+    ]
+   },
+   "state": "prompt-only",
+   "coverage": "none",
+   "scope": "-",
+   "code": [],
+   "not_implemented_parts": "no bloom, god rays or sun glare pass exists in the renderer",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": ""
+  },
+  {
+   "id": "COL-01",
+   "area": "colour",
+   "purpose": "The reference picture has 38-47 colours and soft gradients. Flat colour with an outline gives 23. Add gradient, texture and light, not more coloured boxes.",
+   "source": {
+    "origin": "our_measured",
+    "values": "measured",
+    "conf": "measured",
+    "evidence": [
+     "db for 14 references"
+    ]
+   },
+   "state": "code-integrated",
+   "coverage": "partial",
+   "scope": "tools/gen_api.py",
+   "code": [
+    {
+     "file": "tools/gen_api.py",
+     "symbol": "REFS"
+    }
+   ],
+   "not_implemented_parts": "gen_api measures palette/edge/saturation of stills against reference ranges and sets LOOK.sat automatically (Gemini projects only); no rule changes the picture beyond saturation",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [
+    "CHK-05 ref_measure.py compare"
+   ],
+   "production_test": {
+    "status": "failed",
+    "where": "bomb_v22 palette 27 (refs 32-45)"
+   },
+   "note": ""
+  },
+  {
+   "id": "WLD-01",
+   "area": "world",
+   "purpose": "Each place: 6-10 dressing pieces plus one HERO object or shape that is the topic.",
+   "source": {
+    "origin": "our_observed",
+    "values": "observed",
+    "conf": "seen",
+    "evidence": [
+     "perfect_railroads 3-6 s",
+     "roller_coasters 1-9 s",
+     "town_button 4-10 s"
+    ]
+   },
+   "state": "prompt-only",
+   "coverage": "none",
+   "scope": "-",
+   "code": [],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "format_partial"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": "FORMAT.md asks for 3 landmarks per place; 6-10 pieces and one hero object are not enforced. gen_api asset round checks each builder alone."
+  },
+  {
+   "id": "WLD-02",
+   "area": "world",
+   "purpose": "Surfaces have real texture.",
+   "source": {
+    "origin": "our_observed",
+    "values": "observed",
+    "conf": "seen",
+    "evidence": [
+     "perfect_railroads 16 s",
+     "second_draw 10 s",
+     "storm_oil 12 s",
+     "town_button 8 s",
+     "memory_price 16 s (pool caustics)",
+     "roller_coasters 21 s (grass blades)"
+    ]
+   },
+   "state": "code-integrated",
+   "coverage": "partial",
+   "scope": "kit/engine",
+   "code": [
+    {
+     "file": "kit/engine/paint.js",
+     "symbol": "export"
+    }
+   ],
+   "not_implemented_parts": "texture painters exist as a library; their use is hand-built per project (railroads_v2 added sand, gravel, strata, wood textures)",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": ""
+  },
+  {
+   "id": "WLD-03",
+   "area": "world",
+   "purpose": "Three depth layers: soft foreground, sharp middle, hazy background with silhouettes (islands, hills, skyline, ships).",
+   "source": {
+    "origin": "our_observed",
+    "values": "observed",
+    "conf": "seen",
+    "evidence": [
+     "pirate_cannonballs 1-5 s",
+     "storm_oil 2-3 s"
+    ]
+   },
+   "state": "code-integrated",
+   "coverage": "partial",
+   "scope": "kit/engine",
+   "code": [
+    {
+     "file": "kit/engine/main.js",
+     "symbol": "dofU"
+    }
+   ],
+   "not_implemented_parts": "fog and depth of field exist; the three layers are built by hand",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": ""
+  },
+  {
+   "id": "WLD-04",
+   "area": "world",
+   "purpose": "Outline: thin dark ink on the silhouettes of props and structures. No line on sky, water, clouds, ground joins.",
+   "source": {
+    "origin": "our_observed",
+    "values": "observed",
+    "conf": "seen",
+    "evidence": [
+     "storm_oil 12 s (pot, hull)",
+     "pirate_cannonballs 12 s"
+    ]
+   },
+   "state": "code-integrated",
+   "coverage": "partial",
+   "scope": "kit/engine",
+   "code": [
+    {
+     "file": "kit/engine/main.js",
+     "symbol": "inkU"
+    }
+   ],
+   "not_implemented_parts": "ink outline shader exists; width parameter LK.ink is read only in the project copies",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "partial",
+    "where": "line width 3.2 in range in bomb_v22; railroads_v2 0.0047 low"
+   },
+   "note": ""
+  },
+  {
+   "id": "WLD-05",
+   "area": "world",
+   "purpose": "Crowds are real: hundreds of tiny people with different hats and colours in stands and streets, and a few larger ones in front.",
+   "source": {
+    "origin": "our_observed",
+    "values": "observed",
+    "conf": "seen",
+    "evidence": [
+     "mirror_horse_race 18 s and 27-31 s",
+     "town_button 64-65 s"
+    ]
+   },
+   "state": "code-integrated",
+   "coverage": "full",
+   "scope": "kit/engine",
+   "code": [
+    {
+     "file": "kit/engine/roman.js",
+     "symbol": "export const crowd"
+    }
+   ],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "format"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": "FORMAT.md: crowd of more than 6 is background only."
+  },
+  {
+   "id": "CHR-01",
+   "area": "character",
+   "purpose": "Character anatomy: big near-white head, bean body with real clothing details, thin noodle limbs.",
+   "source": {
+    "origin": "our_observed",
+    "values": "observed",
+    "conf": "seen",
+    "evidence": [
+     "frames memory_price 20.5 s, perfect_railroads 18.2 s, second_draw 15.5 s, town_button 11.2 s, roller_coasters 5.2 s, storm_oil 10.2 s"
+    ]
+   },
+   "state": "code-integrated",
+   "coverage": "partial",
+   "scope": "kit/engine",
+   "code": [
+    {
+     "file": "kit/engine/roman.js",
+     "symbol": "export const romanFront"
+    }
+   ],
+   "not_implemented_parts": "head size in frame is below the reference (0.10-0.12 vs 0.12-0.21); no parameter pushes it",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "failed",
+    "where": "bomb_v22 head 0.116; railroads_v2 0.102 (refs 0.12-0.21)"
+   },
+   "note": ""
+  },
+  {
+   "id": "CHR-02",
+   "area": "character",
+   "purpose": "Identity from headwear and clothes: bowler, chef hat, striped cap, cowboy hat, bandana, tricorn, top hat, police cap.",
+   "source": {
+    "origin": "our_observed",
+    "values": "observed",
+    "conf": "seen",
+    "evidence": [
+     "8 references"
+    ]
+   },
+   "state": "code-integrated",
+   "coverage": "full",
+   "scope": "kit/engine",
+   "code": [
+    {
+     "file": "kit/engine/roman.js",
+     "symbol": "export const OUTFITS"
+    }
+   ],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "format"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "partial",
+    "where": "railroads_v2 uses outfit overrides via ov helper"
+   },
+   "note": "FORMAT.md lists outfits and hats; new ones go to cast.js."
+  },
+  {
+   "id": "CHR-03",
+   "area": "character",
+   "purpose": "Lit by the scene: skin takes a warm or cool tint, soft gradient, soft contact shadow on the ground.",
+   "source": {
+    "origin": "our_observed",
+    "values": "observed",
+    "conf": "seen",
+    "evidence": [
+     "memory_price 50-54 s (warm lamp on the face)",
+     "second_draw 26-30 s (long shadows)"
+    ]
+   },
+   "state": "code-integrated",
+   "coverage": "partial",
+   "scope": "kit/engine",
+   "code": [
+    {
+     "file": "kit/engine/main.js",
+     "symbol": "function drawActors"
+    }
+   ],
+   "not_implemented_parts": "skin tint by light and contact shadow exist; strength not tuned per place",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": ""
+  },
+  {
+   "id": "CHR-04",
+   "area": "character",
+   "purpose": "Characters hold props with their noodle arms and touch the set (ladle, hammer, telescope, mug, cane, gun, pole).",
+   "source": {
+    "origin": "our_observed",
+    "values": "observed",
+    "conf": "seen",
+    "evidence": [
+     "storm_oil 0-18 s",
+     "roller_coasters 0-9 s"
+    ]
+   },
+   "state": "code-integrated",
+   "coverage": "partial",
+   "scope": "kit/engine",
+   "code": [
+    {
+     "file": "kit/engine/roman.js",
+     "symbol": "export const romanFront"
+    }
+   ],
+   "not_implemented_parts": "arm poses exist (spear, point, hip, ...); no crouch, kneel, run, lie, salute",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "format"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": ""
+  },
+  {
+   "id": "FAC-01",
+   "area": "face",
+   "purpose": "Tiny face, strong emotion language.",
+   "source": {
+    "origin": "our_observed",
+    "values": "observed",
+    "conf": "seen",
+    "evidence": [
+     "second_draw 8-20 s",
+     "memory_price 58-63 s"
+    ]
+   },
+   "state": "code-integrated",
+   "coverage": "partial",
+   "scope": "kit/engine",
+   "code": [
+    {
+     "file": "kit/engine/roman.js",
+     "symbol": "FACE"
+    }
+   ],
+   "not_implemented_parts": "one face name per beat; no separate brow, pupil, mouth channels",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "format"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": ""
+  },
+  {
+   "id": "FAC-02",
+   "area": "face",
+   "purpose": "Emotion vocabulary with effects drawn on or around the head.",
+   "source": {
+    "origin": "our_observed",
+    "values": "observed",
+    "conf": "seen",
+    "evidence": [
+     "perfect_railroads 18 s (purple, steam)",
+     "second_draw 15 s (sweat, yellow eyes)",
+     "second_draw 19-20 s (knocked out)"
+    ]
+   },
+   "state": "code-integrated",
+   "coverage": "full",
+   "scope": "kit/engine",
+   "code": [
+    {
+     "file": "kit/engine/roman.js",
+     "symbol": "sweat2"
+    },
+    {
+     "file": "kit/engine/roman.js",
+     "symbol": "spiral"
+    }
+   ],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "format"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": "Face extras sweat, tears, vein, spiral, blush, sparkle, iris, zzz exist. Purple head comes from a skin override by hand (railroads_v2)."
+  },
+  {
+   "id": "PRP-01",
+   "area": "props",
+   "purpose": "The key idea of the story is a readable prop with text or numbers.",
+   "source": {
+    "origin": "our_observed",
+    "values": "observed",
+    "conf": "seen",
+    "evidence": [
+     "memory_price 20 s, 28-31 s, 56-57 s",
+     "mirror_horse_race 4-7 s",
+     "roller_coasters 10-15 s"
+    ]
+   },
+   "state": "prompt-only",
+   "coverage": "none",
+   "scope": "-",
+   "code": [],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "format_partial"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": "FORMAT.md NEW OBJECTS asks for text on props only by example."
+  },
+  {
+   "id": "PRP-02",
+   "area": "props",
+   "purpose": "A prop appears in frame within about 0.3 s of the word that names it, and its label can repeat the word.",
+   "source": {
+    "origin": "our_observed",
+    "values": "observed",
+    "conf": "seen",
+    "evidence": [
+     "pirate_cannonballs 15-18 s",
+     "mirror_horse_race 4 s"
+    ]
+   },
+   "state": "prompt-only",
+   "coverage": "none",
+   "scope": "-",
+   "code": [],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [
+    "CHK-07 manual"
+   ],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": "CHK-07 (noun appears within 0.3 s of the word) is manual; no program checks it."
+  },
+  {
+   "id": "PRP-03",
+   "area": "props",
+   "purpose": "Numbers move with the story: the needle swings, the glow grows, the ledger fills with SOLD stamps year after year.",
+   "source": {
+    "origin": "our_observed",
+    "values": "observed",
+    "conf": "seen",
+    "evidence": [
+     "memory_price 28-31 s",
+     "memory_price 56-57 s"
+    ]
+   },
+   "state": "prompt-only",
+   "coverage": "none",
+   "scope": "-",
+   "code": [],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "format_partial"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": "FORMAT.md: numbers on screen stay consistent; the counter itself is coded by hand."
+  },
+  {
+   "id": "PRP-04",
+   "area": "props",
+   "purpose": "Motifs: one recurring character or object (frog badge, hooded buyer, red button) returns at least three times, each time in a new light.",
+   "source": {
+    "origin": "our_observed",
+    "values": "observed",
+    "conf": "seen",
+    "evidence": [
+     "memory_price 0-63 s",
+     "town_button 0-65 s"
+    ]
+   },
+   "state": "prompt-only",
+   "coverage": "none",
+   "scope": "-",
+   "code": [],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": ""
+  },
+  {
+   "id": "PRP-05",
+   "area": "props",
+   "purpose": "Draw the idea inside the world: glowing ring with chalk arcs and numbers, blackboard with a sketch, map.",
+   "source": {
+    "origin": "our_observed",
+    "values": "observed",
+    "conf": "seen",
+    "evidence": [
+     "town_button 16-20 s (ring with 23 24 25 and arcs)",
+     "roller_coasters 7-8 s (blackboard)"
+    ]
+   },
+   "state": "prompt-only",
+   "coverage": "none",
+   "scope": "-",
+   "code": [],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": ""
+  },
+  {
+   "id": "FX-01",
+   "area": "fx",
+   "purpose": "Anticipation, action, follow-through.",
+   "source": {
+    "origin": "our_observed",
+    "values": "observed",
+    "conf": "seen",
+    "evidence": [
+     "mirror_horse_race 0.4-1.5 s (piggy bank)"
+    ]
+   },
+   "state": "code-integrated",
+   "coverage": "partial",
+   "scope": "kit/engine",
+   "code": [
+    {
+     "file": "kit/engine/motion.js",
+     "symbol": "anticip"
+    },
+    {
+     "file": "kit/engine/motion.js",
+     "symbol": "spring"
+    }
+   ],
+   "not_implemented_parts": "easing helpers only; anticipation of a body is animated by hand",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": ""
+  },
+  {
+   "id": "FX-02",
+   "area": "fx",
+   "purpose": "Impact starburst: radial spiky shards in 2-3 layers, smoke puff, flying splinters that spread for about 0.8 s, hole shows what is behind.",
+   "source": {
+    "origin": "our_observed",
+    "values": "observed",
+    "conf": "seen",
+    "evidence": [
+     "pirate_cannonballs 6.5-8 s (ball through the hull)"
+    ]
+   },
+   "state": "code-integrated",
+   "coverage": "partial",
+   "scope": "kit/engine",
+   "code": [
+    {
+     "file": "kit/engine/roman.js",
+     "symbol": "export const fxDebris"
+    },
+    {
+     "file": "kit/engine/roman.js",
+     "symbol": "export const fxRings"
+    }
+   ],
+   "not_implemented_parts": "no ready starburst of 2-3 layers; debris and rings exist",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "partial",
+    "where": "railroads_v2 c19 uses debris and dust"
+   },
+   "note": ""
+  },
+  {
+   "id": "FX-03",
+   "area": "fx",
+   "purpose": "Speed streaks: bright yellow vertical streaks, flying pebbles and dust around a fast draw or jump, with a quick push-in.",
+   "source": {
+    "origin": "our_observed",
+    "values": "observed",
+    "conf": "seen",
+    "evidence": [
+     "second_draw 13.6-16 s"
+    ]
+   },
+   "state": "code-integrated",
+   "coverage": "full",
+   "scope": "kit/engine",
+   "code": [
+    {
+     "file": "kit/engine/roman.js",
+     "symbol": "export const fxSpeed"
+    }
+   ],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": ""
+  },
+  {
+   "id": "FX-04",
+   "area": "fx",
+   "purpose": "Always a few particles: dust, pebbles, rain, confetti, coins, smoke puffs, steam, sparks, bubbles, floating motes.",
+   "source": {
+    "origin": "our_observed",
+    "values": "observed",
+    "conf": "seen",
+    "evidence": [
+     "8 references"
+    ]
+   },
+   "state": "code-integrated",
+   "coverage": "full",
+   "scope": "kit/engine",
+   "code": [
+    {
+     "file": "kit/engine/roman.js",
+     "symbol": "export const fxMotes"
+    },
+    {
+     "file": "kit/engine/roman.js",
+     "symbol": "export const fxSmoke"
+    }
+   ],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "partial",
+    "where": "motes and smoke used in railroads_v2"
+   },
+   "note": ""
+  },
+  {
+   "id": "PHY-01",
+   "area": "physics",
+   "purpose": "Things have weight.",
+   "source": {
+    "origin": "our_observed",
+    "values": "observed",
+    "conf": "seen",
+    "evidence": [
+     "second_draw 17-20 s (falls face-down, hat off)",
+     "pirate_cannonballs 7-9 s",
+     "mirror_horse_race 27-31 s"
+    ]
+   },
+   "state": "prompt-only",
+   "coverage": "none",
+   "scope": "-",
+   "code": [],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": ""
+  },
+  {
+   "id": "PHY-02",
+   "area": "physics",
+   "purpose": "Comedy: a visual gag after a hard beat (a knocked-out man whose face is stamped in the sand ring), exaggerated reaction faces, size contrast.",
+   "source": {
+    "origin": "our_observed",
+    "values": "observed",
+    "conf": "seen",
+    "evidence": [
+     "second_draw 19-20 s"
+    ]
+   },
+   "state": "prompt-only",
+   "coverage": "none",
+   "scope": "-",
+   "code": [],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": ""
+  },
+  {
+   "id": "SCR-01",
+   "area": "script",
+   "purpose": "One idea per sentence, one picture per idea. New place or angle at every sentence, new face or prop at every clause.",
+   "source": {
+    "origin": "our_observed",
+    "values": "observed",
+    "conf": "seen",
+    "evidence": [
+     "8 references"
+    ]
+   },
+   "state": "prompt-only",
+   "coverage": "none",
+   "scope": "-",
+   "code": [],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "format"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": "FORMAT.md: one shot = one or two sentences, one place, one camera move."
+  },
+  {
+   "id": "SCR-02",
+   "area": "script",
+   "purpose": "Show every important noun. Turn abstract ideas into an object: memory = ticket and shelves of boxes, happiness = gauge, time = ledger of years, rules = a button under glass.",
+   "source": {
+    "origin": "our_observed",
+    "values": "observed",
+    "conf": "seen",
+    "evidence": [
+     "memory_price",
+     "town_button",
+     "mirror_horse_race"
+    ]
+   },
+   "state": "prompt-only",
+   "coverage": "none",
+   "scope": "-",
+   "code": [],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "format"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": "MUST SEE lines name every important noun; gen_api shot phase asks Gemini to compare stills with them (AI check, untested for accuracy)."
+  },
+  {
+   "id": "SCR-03",
+   "area": "script",
+   "purpose": "Hook in the first 2-3 seconds: a face reacts, the main prop or place is in frame, and the first flight starts within the first second.",
+   "source": {
+    "origin": "our_observed",
+    "values": "observed",
+    "conf": "seen",
+    "evidence": [
+     "pirate_cannonballs 0 s",
+     "second_draw 0 s",
+     "memory_price 0 s"
+    ]
+   },
+   "state": "prompt-only",
+   "coverage": "none",
+   "scope": "-",
+   "code": [],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": ""
+  },
+  {
+   "id": "SCR-04",
+   "area": "script",
+   "purpose": "Story shape: hook, set up the world with a reveal flight, escalate with a new place every 3-6 s, twist or payoff with a gag, callback ending.",
+   "source": {
+    "origin": "our_observed",
+    "values": "observed",
+    "conf": "seen",
+    "evidence": [
+     "second_draw",
+     "memory_price",
+     "town_button"
+    ]
+   },
+   "state": "prompt-only",
+   "coverage": "none",
+   "scope": "-",
+   "code": [],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "format_partial"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": "FORMAT.md gives the order hook > setup > incident > escalation > resolution > twist."
+  },
+  {
+   "id": "CAP-01",
+   "area": "captions",
+   "purpose": "Captions: bold white, thick black outline, centred at about 70 % of frame height, 1-3 words at a time, changing with the voice.",
+   "source": {
+    "origin": "our_observed",
+    "values": "observed",
+    "conf": "seen",
+    "evidence": [
+     "8 references"
+    ]
+   },
+   "state": "code-project-only",
+   "coverage": "partial",
+   "scope": "project copies only",
+   "code": [
+    {
+     "file": "mine/railroads_v2/web/main.js",
+     "symbol": "WORDS"
+    },
+    {
+     "file": "mine/bomb_colorblind_v22/web/main.js",
+     "symbol": "WORDS"
+    }
+   ],
+   "not_implemented_parts": "captions are drawn by the project main.js from words.js; not in kit/engine; tools/gen_api.py SYSTEM prompt tells Gemini \"no captions\" (contradiction to resolve)",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [
+    "CHK-13 ref_look.py study"
+   ],
+   "production_test": {
+    "status": "partial",
+    "where": "bomb_v22 pop in range; railroads_v2 3.5 words/s high, stay 0.2 s low"
+   },
+   "note": ""
+  },
+  {
+   "id": "SND-01",
+   "area": "sound",
+   "purpose": "Final loudness about -14 LUFS, loudness range 1.7-3.2 LU.",
+   "source": {
+    "origin": "our_measured",
+    "values": "measured",
+    "conf": "measured",
+    "evidence": [
+     "8 references, ours -13.9"
+    ]
+   },
+   "state": "code-integrated",
+   "coverage": "full",
+   "scope": "kit/tools",
+   "code": [
+    {
+     "file": "kit/tools/finish.sh",
+     "symbol": "loudnorm=I=-14"
+    }
+   ],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "passed",
+    "where": "runs on every render; finish.sh prints the loudness (not asserted)"
+   },
+   "note": ""
+  },
+  {
+   "id": "CUT-02",
+   "area": "cuts",
+   "purpose": "The PLACE or set-up changes about every 2.4 seconds (18-24 times a minute). Four of every five scene changes are made WITHOUT a hard cut.",
+   "source": {
+    "origin": "our_measured",
+    "values": "measured",
+    "conf": "measured",
+    "evidence": [
+     "17 references (per-video table: kit/reference/knowledge/transition_audit.json)",
+     "hand check: scene_truth.json"
+    ]
+   },
+   "state": "prompt-only",
+   "coverage": "none",
+   "scope": "-",
+   "code": [],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [
+    "CHK-08 ref_study.py compare"
+   ],
+   "production_test": {
+    "status": "partial",
+    "where": "bomb_v22 20 scene changes/min in range; railroads_v2 18 slightly low and scene length 3.0 s high"
+   },
+   "note": ""
+  },
+  {
+   "id": "CUT-03",
+   "area": "cuts",
+   "purpose": "Do not cut to a new angle inside the same scene. Stay in the place and move the camera.",
+   "source": {
+    "origin": "our_measured",
+    "values": "measured",
+    "conf": "measured",
+    "evidence": [
+     "claude_bomb_v21 against 17 references"
+    ]
+   },
+   "state": "prompt-only",
+   "coverage": "none",
+   "scope": "-",
+   "code": [],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [
+    "CHK-09 / CHK-10 ref_transitions.py audit"
+   ],
+   "production_test": {
+    "status": "in_range",
+    "where": "hard cuts inside a scene low in both hand-made videos (v1 Gemini: 19/min)"
+   },
+   "note": ""
+  },
+  {
+   "id": "TRN-05",
+   "area": "transition",
+   "purpose": "Most scene changes are either a fly-through (the camera passes into the next place) or a short cross-dissolve where both places show for a moment.",
+   "source": {
+    "origin": "our_measured",
+    "values": "measured",
+    "conf": "measured",
+    "evidence": [
+     "vp3 10 s, 16 s, 24 s (dissolves between prize hall, counter and street)",
+     "random_numbers 10-11 s (ghost of the tower over the office)",
+     "knight_loophole 24 s",
+     "vp3 2-5 s (neon street seen from above, camera drops to the door)",
+     "strips at 0.1 s: grave_bell 10.1-10.3 s, 13.3-13.5 s, vp3 10.4-10.5 s"
+    ]
+   },
+   "state": "code-project-only",
+   "coverage": "partial",
+   "scope": "project copies only",
+   "code": [
+    {
+     "file": "mine/railroads_v2/web/main.js",
+     "symbol": "window.snap"
+    }
+   ],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [
+    "CHK-11 ref_transitions.py audit"
+   ],
+   "production_test": {
+    "status": "partial",
+    "where": "mix applied by hand in STORY.TRANS of both videos"
+   },
+   "note": ""
+  },
+  {
+   "id": "CAM-13",
+   "area": "camera",
+   "purpose": "WHEN NOT TO MOVE: hold the camera when a person talks, thinks, reacts, or when a number or a rule is being read.",
+   "source": {
+    "origin": "our_observed",
+    "values": "observed",
+    "conf": "seen",
+    "evidence": [
+     "idea_zone 0-10 s (one character on a chair under a lamp, almost still)",
+     "vp5 0-6 s (king, blacksmith and anvil)",
+     "random_numbers 15-23 s (clerk beside the elevator panel)",
+     "vp4 3-8 s (clerk and customer at the counter)"
+    ]
+   },
+   "state": "prompt-only",
+   "coverage": "none",
+   "scope": "-",
+   "code": [],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "holds used by hand (railroads_v2 c3, c7, c10, c15); not measured as a rule"
+   },
+   "note": ""
+  },
+  {
+   "id": "WLD-06",
+   "area": "world",
+   "purpose": "CUTAWAY: show hidden things (underground, inside a body, deep water) as a sliced side view with a scale or gauge.",
+   "source": {
+    "origin": "our_observed",
+    "values": "observed",
+    "conf": "seen",
+    "evidence": [
+     "grave_bell 4-9 s (grass, soil layers, coffin, rope up to the bell)",
+     "idea_zone 13-18 s (see-through body, brain, nerves)",
+     "idea_zone 24-27 s (sleep depth as underwater gauge)"
+    ]
+   },
+   "state": "prompt-only",
+   "coverage": "none",
+   "scope": "-",
+   "code": [],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": ""
+  },
+  {
+   "id": "PRF-01",
+   "area": "profile",
+   "purpose": "UNIVERSAL for every topic (stable across all 17 videos): scene pace, depth parallax, colour richness, surface mix.",
+   "source": {
+    "origin": "our_measured",
+    "values": "measured",
+    "conf": "measured",
+    "evidence": [
+     "kit/reference/knowledge/topic_profiles.json (per video values)"
+    ]
+   },
+   "state": "code-integrated",
+   "coverage": "partial",
+   "scope": "tools/gen_api.py",
+   "code": [
+    {
+     "file": "tools/gen_api.py",
+     "symbol": "REFS"
+    }
+   ],
+   "not_implemented_parts": "only saturation, palette and detail are compared; scene pace and parallax are not enforced",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": ""
+  },
+  {
+   "id": "PRF-02",
+   "area": "profile",
+   "purpose": "TOPIC DECIDES how busy the camera is. Action and machines: flying about half the time. Talk, tricks and money: holding about half the time.",
+   "source": {
+    "origin": "our_inferred",
+    "values": "inferred",
+    "conf": "inferred",
+    "evidence": [
+     "topic_profiles.json; the grouping into topics is my label, group sizes 3 to 6"
+    ]
+   },
+   "state": "prompt-only",
+   "coverage": "none",
+   "scope": "-",
+   "code": [],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": ""
+  },
+  {
+   "id": "PRF-03",
+   "area": "profile",
+   "purpose": "MOOD decides brightness. Day stories sit near 0.5, night and mind stories go down to 0.23-0.38 but keep bright accents.",
+   "source": {
+    "origin": "our_inferred",
+    "values": "inferred",
+    "conf": "inferred",
+    "evidence": [
+     "idea_zone 0-10 s (lamp cone on a dark room)",
+     "vp3 2-5 s (neon night street)",
+     "grave_bell 10-20 s (blue snow night, warm lit windows)"
+    ]
+   },
+   "state": "prompt-only",
+   "coverage": "none",
+   "scope": "-",
+   "code": [],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": ""
+  },
+  {
+   "id": "PRF-04",
+   "area": "profile",
+   "purpose": "MONEY, GAMBLING and NUMBER stories carry the idea on a big object with numbers: a register, a counter, a panel of lights, a scoreboard, a ticket.",
+   "source": {
+    "origin": "our_observed",
+    "values": "observed",
+    "conf": "seen",
+    "evidence": [
+     "vp4 3 s (register showing 1,000,000 dollars)",
+     "vp5 7-8 s (YEARS AT WAR counter rolls 099 to 100)",
+     "random_numbers 14-24 s (elevator panel of numbered lights)",
+     "vp3 5-8 s (endless row of machines in perspective)"
+    ]
+   },
+   "state": "prompt-only",
+   "coverage": "none",
+   "scope": "-",
+   "code": [],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": ""
+  },
+  {
+   "id": "TRN-06",
+   "area": "transition",
+   "purpose": "Mix the ways of changing scene. Dissolve is the default, a fly-through is the second choice, a hard cut is a choice for a new topic or a surprise.",
+   "source": {
+    "origin": "our_measured",
+    "values": "measured",
+    "conf": "measured",
+    "evidence": [
+     "kit/reference/knowledge/transition_audit.json (per video)",
+     "pirate_cannonballs 23.05 s (fly into the furnace)",
+     "perfect_railroads 21.3-21.7 s (whip pan then dissolve)"
+    ]
+   },
+   "state": "code-project-only",
+   "coverage": "partial",
+   "scope": "project copies only",
+   "code": [
+    {
+     "file": "mine/railroads_v2/web/main.js",
+     "symbol": "STORY.TRANS"
+    }
+   ],
+   "not_implemented_parts": "the mix is written by hand in story.js TRANS; no scheduler",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [
+    "CHK-11"
+   ],
+   "production_test": {
+    "status": "partial",
+    "where": "railroads_v2: 9 dissolve, 4 fly, 5 hard cut of 18"
+   },
+   "note": ""
+  },
+  {
+   "id": "CAM-14",
+   "area": "camera",
+   "purpose": "Shape every camera flight with a quick attack and a long, soft release.",
+   "source": {
+    "origin": "our_measured",
+    "values": "measured",
+    "conf": "measured",
+    "evidence": [
+     "259 flights in 17 references"
+    ]
+   },
+   "state": "code-integrated",
+   "coverage": "partial",
+   "scope": "kit/engine",
+   "code": [
+    {
+     "file": "kit/engine/motion.js",
+     "symbol": "easeOut"
+    }
+   ],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "in_range",
+    "where": "bomb_v22: ramp times in range"
+   },
+   "note": "easeOut gives a quick attack and soft release; the exact 0.28 s / 0.47 s shape is not parameterised."
+  },
+  {
+   "id": "CAM-15",
+   "area": "camera",
+   "purpose": "Use depth of field at the frame edges (soft foreground objects), not motion blur.",
+   "source": {
+    "origin": "our_measured",
+    "values": "measured",
+    "conf": "measured",
+    "evidence": [
+     "17 references (kit/reference/look/_summary.json)"
+    ]
+   },
+   "state": "code-integrated",
+   "coverage": "partial",
+   "scope": "kit/engine",
+   "code": [
+    {
+     "file": "kit/engine/main.js",
+     "symbol": "dofU"
+    },
+    {
+     "file": "mine/bomb_colorblind_v22/web/story.js",
+     "symbol": "dofAt"
+    }
+   ],
+   "not_implemented_parts": "depth-of-field amount is chosen per shot by hand in dofAt (cinf map)",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "partial",
+    "where": "railroads_v2 soft-edge share 36 % in range; bomb_v22 10 % outside (reference 24-61 %)"
+   },
+   "note": ""
+  },
+  {
+   "id": "CHR-05",
+   "area": "character",
+   "purpose": "Draw characters big with a thick uneven outline.",
+   "source": {
+    "origin": "our_measured",
+    "values": "measured",
+    "conf": "measured",
+    "evidence": [
+     "17 references, sampled every 0.5 s (kit/reference/look/*.json)"
+    ]
+   },
+   "state": "code-project-only",
+   "coverage": "partial",
+   "scope": "project copies only",
+   "code": [
+    {
+     "file": "mine/bomb_colorblind_v22/web/main.js",
+     "symbol": "LK.ink"
+    },
+    {
+     "file": "mine/railroads_v2/web/main.js",
+     "symbol": "LK.ink"
+    }
+   ],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "partial",
+    "where": "bomb_v22 in range; railroads_v2 low"
+   },
+   "note": ""
+  },
+  {
+   "id": "COL-02",
+   "area": "colour",
+   "purpose": "No big surface stays a single flat colour. Give every wall, floor and sky a gradient plus one texture or noise layer.",
+   "source": {
+    "origin": "our_measured",
+    "values": "measured",
+    "conf": "measured",
+    "evidence": [
+     "17 references"
+    ]
+   },
+   "state": "code-project-only",
+   "coverage": "partial",
+   "scope": "project copies only",
+   "code": [
+    {
+     "file": "mine/bomb_colorblind_v22/web/main.js",
+     "symbol": "grain"
+    },
+    {
+     "file": "mine/railroads_v2/web/main.js",
+     "symbol": "grain"
+    }
+   ],
+   "not_implemented_parts": "grain and a top-to-bottom gradient exist in the ink shader of the two project copies only; surfaces still read flat",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [
+    "CHK-12 ref_look.py study"
+   ],
+   "production_test": {
+    "status": "failed",
+    "where": "bomb_v22 flat 55 %, gradient 7 %; railroads_v2 flat 49 %, gradient 10.5 % (reference flat 35-48, gradient 14-20)"
+   },
+   "note": ""
+  },
+  {
+   "id": "COL-03",
+   "area": "colour",
+   "purpose": "Pick a warm-led or cool-led palette from the mood, but always show both: the second family is the accent.",
+   "source": {
+    "origin": "our_measured",
+    "values": "measured",
+    "conf": "measured",
+    "evidence": [
+     "kit/reference/look/*.json palette8 per video"
+    ]
+   },
+   "state": "prompt-only",
+   "coverage": "none",
+   "scope": "-",
+   "code": [],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "failed",
+    "where": "railroads_v2 warm share 0.87, cool 0"
+   },
+   "note": ""
+  },
+  {
+   "id": "CAP-02",
+   "area": "captions",
+   "purpose": "Burn in captions: one spoken word at a time, big white text with a dark outline, centred low, popping in.",
+   "source": {
+    "origin": "our_measured",
+    "values": "measured",
+    "conf": "measured",
+    "evidence": [
+     "17 references"
+    ]
+   },
+   "state": "code-project-only",
+   "coverage": "partial",
+   "scope": "project copies only",
+   "code": [
+    {
+     "file": "mine/railroads_v2/web/main.js",
+     "symbol": "WORDS"
+    },
+    {
+     "file": "mine/bomb_colorblind_v22/web/main.js",
+     "symbol": "WORDS"
+    }
+   ],
+   "not_implemented_parts": "same as CAP-01",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "partial",
+    "where": "as CAP-01"
+   },
+   "note": ""
+  },
+  {
+   "id": "FX-05",
+   "area": "fx",
+   "purpose": "Shake the camera only on impacts, a few times a minute, and let it ring out for about 0.17 s.",
+   "source": {
+    "origin": "our_inferred",
+    "values": "inferred",
+    "conf": "inferred",
+    "evidence": [
+     "17 references (estimate)"
+    ]
+   },
+   "state": "code-integrated",
+   "coverage": "full",
+   "scope": "kit/engine",
+   "code": [
+    {
+     "file": "kit/engine/motion.js",
+     "symbol": "kicks"
+    }
+   ],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [
+    "ref_look.py shake"
+   ],
+   "production_test": {
+    "status": "in_range",
+    "where": "bomb_v22 and railroads_v2: shake per minute and decay in range"
+   },
+   "note": ""
+  },
+  {
+   "id": "SND-02",
+   "area": "sound",
+   "purpose": "Do not snap scene changes to voice onsets. Tie picture to the MEANING of the word (the noun appears when it is spoken).",
+   "source": {
+    "origin": "our_measured",
+    "values": "measured",
+    "conf": "measured",
+    "evidence": [
+     "17 references, ref_look.py sound section"
+    ]
+   },
+   "state": "prompt-only",
+   "coverage": "none",
+   "scope": "-",
+   "code": [],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": "A property of the references (no snapping to voice onsets), not a feature."
+  },
+  {
+   "id": "SCR-05",
+   "area": "script",
+   "purpose": "Choose the picture from what the WORDS are doing (their intent), not only from the nouns they name.",
+   "source": {
+    "origin": "chatgpt",
+    "values": "designed",
+    "conf": "proposed",
+    "evidence": [
+     "chatgpt script_to_shot_mapping (9 intents), merged with our situations (hook, time passes, comedy, crowd, dialogue)"
+    ]
+   },
+   "state": "prompt-only",
+   "coverage": "none",
+   "scope": "-",
+   "code": [],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": "NEW (Step 1). intent field in beat schema; Gemini reads BEATS.md only if beats.json exists (tools/make_beats.py, untested with real Gemini)"
+  },
+  {
+   "id": "CAM-16",
+   "area": "camera",
+   "purpose": "Every camera choice has a written purpose, and a HOLD is a choice too. There is no default of moving and no default of holding.",
+   "source": {
+    "origin": "chatgpt",
+    "values": "designed",
+    "conf": "proposed",
+    "evidence": [
+     "chatgpt U06, U07, U12",
+     "our CAM-01, CAM-13 (measured mix)"
+    ]
+   },
+   "state": "prompt-only",
+   "coverage": "none",
+   "scope": "-",
+   "code": [],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": "NEW. Schema field camera.purpose + validator Q03 exist (Step 1). Nothing in story.js or Gemini output carries a purpose yet."
+  },
+  {
+   "id": "CMP-01",
+   "area": "composition",
+   "purpose": "Declare the composition of every shot: one primary subject, secondary context, a focal point, and a caption-clear zone.",
+   "source": {
+    "origin": "chatgpt",
+    "values": "designed",
+    "conf": "proposed",
+    "evidence": [
+     "chatgpt U08"
+    ]
+   },
+   "state": "prompt-only",
+   "coverage": "none",
+   "scope": "-",
+   "code": [],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": "NEW (Step 1). composition object in beat schema; validate_beats.py Q02 warns if the focal point is inside the caption zone; plan only"
+  },
+  {
+   "id": "CON-01",
+   "area": "continuity",
+   "purpose": "Lock each character, object and place once, and keep it the same in every beat unless the script changes it.",
+   "source": {
+    "origin": "chatgpt",
+    "values": "designed",
+    "conf": "proposed",
+    "evidence": [
+     "chatgpt U03, U25"
+    ]
+   },
+   "state": "prompt-only",
+   "coverage": "none",
+   "scope": "-",
+   "code": [],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": "NEW (Step 1). identity_lock and continuity_change in beat schema; validate_beats.py checks ids; nothing checks rendered frames"
+  },
+  {
+   "id": "ACT-01",
+   "area": "acting",
+   "purpose": "Play an action in order: attention (gaze), anticipation, action, contact, response, settle. Gaze leads the hand.",
+   "source": {
+    "origin": "chatgpt",
+    "values": "designed",
+    "conf": "proposed",
+    "evidence": [
+     "chatgpt U04, U05"
+    ]
+   },
+   "state": "code-integrated",
+   "coverage": "partial",
+   "scope": "kit/engine",
+   "code": [
+    {
+     "file": "kit/engine/motion.js",
+     "symbol": "export const idle"
+    },
+    {
+     "file": "kit/engine/motion.js",
+     "symbol": "blinkAt"
+    },
+    {
+     "file": "kit/engine/motion.js",
+     "symbol": "anticip"
+    }
+   ],
+   "not_implemented_parts": "no gaze-leads-hand, no contact/response phases; one face channel only",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": "NEW (Step 1). NEW (Step 1). character_actions.phase and gaze_target_id in beat schema; no animation code uses them"
+  },
+  {
+   "id": "PHY-03",
+   "area": "physics",
+   "purpose": "Show a physical event as a cause chain: start state, force, path, contact, response, settle. Add the secondary effects that belong to it.",
+   "source": {
+    "origin": "chatgpt",
+    "values": "designed",
+    "conf": "proposed",
+    "evidence": [
+     "chatgpt U18, U19"
+    ]
+   },
+   "state": "prompt-only",
+   "coverage": "none",
+   "scope": "-",
+   "code": [],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": "NEW (Step 1). object_events with contact target and secondary effects in the schema; validate_beats.py Q05 warns; no animation code uses them"
+  },
+  {
+   "id": "PHY-04",
+   "area": "physics",
+   "purpose": "Give each kind of thing its own motion: rigid, elastic, fluid, smoke, flame, rope with lag. Do not move everything at one speed.",
+   "source": {
+    "origin": "chatgpt",
+    "values": "designed",
+    "conf": "proposed",
+    "evidence": [
+     "chatgpt U20"
+    ]
+   },
+   "state": "prompt-only",
+   "coverage": "none",
+   "scope": "-",
+   "code": [],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": "NEW (Step 1). motion_profile in the schema; no code"
+  },
+  {
+   "id": "MAT-01",
+   "area": "materials",
+   "purpose": "Each material has its own shape and shading language (see material_recipes M01-M07).",
+   "source": {
+    "origin": "chatgpt",
+    "values": "designed",
+    "conf": "proposed",
+    "evidence": [
+     "chatgpt U14, M01-M07"
+    ]
+   },
+   "state": "prompt-only",
+   "coverage": "none",
+   "scope": "-",
+   "code": [],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": "NEW (Step 1). material_ids in the schema; validate_beats.py checks they exist; no material library in the kit"
+  },
+  {
+   "id": "MAT-02",
+   "area": "materials",
+   "purpose": "Big forms first, then a few purposeful details. Do not add small noise everywhere.",
+   "source": {
+    "origin": "chatgpt",
+    "values": "designed",
+    "conf": "proposed",
+    "evidence": [
+     "chatgpt U15"
+    ]
+   },
+   "state": "prompt-only",
+   "coverage": "none",
+   "scope": "-",
+   "code": [],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": "NEW (Step 1). no field; documentation for authors"
+  },
+  {
+   "id": "LIT-05",
+   "area": "light",
+   "purpose": "One motivated key light direction per place, the same on people, props and ground, with contact shadows.",
+   "source": {
+    "origin": "chatgpt",
+    "values": "designed",
+    "conf": "proposed",
+    "evidence": [
+     "chatgpt U16"
+    ]
+   },
+   "state": "prompt-only",
+   "coverage": "none",
+   "scope": "-",
+   "code": [],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": "NEW (Step 1). no field; applyLight gives one sun per place but the key side is not checked"
+  },
+  {
+   "id": "LIT-06",
+   "area": "light",
+   "purpose": "Use one practical glow, rim or spotlight to say what to look at. Do not glow everything.",
+   "source": {
+    "origin": "chatgpt",
+    "values": "designed",
+    "conf": "proposed",
+    "evidence": [
+     "chatgpt U17"
+    ]
+   },
+   "state": "prompt-only",
+   "coverage": "none",
+   "scope": "-",
+   "code": [],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": "NEW (Step 1). no field; fxGlow exists as a building block"
+  },
+  {
+   "id": "SND-03",
+   "area": "sound",
+   "purpose": "Sound effects are a separate track tied to picture events. The loudest sound lands on the key action; music stays under the voice.",
+   "source": {
+    "origin": "chatgpt",
+    "values": "designed",
+    "conf": "proposed",
+    "evidence": [
+     "chatgpt U24; SND-01, SND-02 (measured)"
+    ]
+   },
+   "state": "prompt-only",
+   "coverage": "none",
+   "scope": "-",
+   "code": [],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": "NEW (Step 1). audio_events in the schema; validate_beats.py Q09 checks triggers; audio.py is still written by Gemini from the SFX lines"
+  },
+  {
+   "id": "QC-01",
+   "area": "qc",
+   "purpose": "Check before you render: make a small preview of every beat and judge it against the quality gates, then fix or reject bad beats before the full render.",
+   "source": {
+    "origin": "chatgpt",
+    "values": "designed",
+    "conf": "proposed",
+    "evidence": [
+     "chatgpt U26, Q01-Q10"
+    ]
+   },
+   "state": "code-integrated",
+   "coverage": "partial",
+   "scope": "tools/gen_api.py + kit/tools",
+   "code": [
+    {
+     "file": "tools/gen_api.py",
+     "symbol": "def stills"
+    },
+    {
+     "file": "tools/gen_api.py",
+     "symbol": "def asset_round"
+    },
+    {
+     "file": "kit/tools/frame_qa.py",
+     "symbol": "contact sheets"
+    }
+   ],
+   "not_implemented_parts": "Gemini projects only: 3 stills per shot with brightness/flatness metrics and a Gemini PASS/FAIL against MUST SEE; it does not use beats or the gates Q01-Q10; no equivalent in the Claude-edited path; frame_qa.py runs after the full render",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "partial",
+    "where": "ran inside the Gemini runs for bomb and railroads (results_api/*/qa files); pass/fail accuracy not verified"
+   },
+   "note": "NEW (Step 1). A pre-render check already exists in part (Gemini asset and shot phases)."
+  },
+  {
+   "id": "ADP-01",
+   "area": "adapt",
+   "purpose": "For a new topic keep the universal habits (PRF-01) and choose the topic things fresh: place, props, materials, light, motion.",
+   "source": {
+    "origin": "chatgpt",
+    "values": "designed",
+    "conf": "proposed",
+    "evidence": [
+     "chatgpt U27; our PRF-01..03"
+    ]
+   },
+   "state": "prompt-only",
+   "coverage": "none",
+   "scope": "-",
+   "code": [],
+   "not_implemented_parts": "",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": "NEW (Step 1). no code"
+  },
+  {
+   "id": "ARC-01",
+   "area": "architecture",
+   "purpose": "Choose how each thing is built by what the camera does to it: people are 2D cards in a 3D world, hero objects the camera moves around are 3D, far scenery can be flat layers, effects are billboards.",
+   "source": {
+    "origin": "chatgpt",
+    "values": "designed",
+    "conf": "proposed",
+    "evidence": [
+     "chatgpt U02"
+    ]
+   },
+   "state": "code-integrated",
+   "coverage": "partial",
+   "scope": "kit/engine",
+   "code": [
+    {
+     "file": "kit/engine/roman.js",
+     "symbol": "export const romanFront"
+    },
+    {
+     "file": "kit/engine/main.js",
+     "symbol": "function drawActors"
+    }
+   ],
+   "not_implemented_parts": "the choice per object is made by hand",
+   "gemini": {
+    "code_step_playbook": true,
+    "notes_step": "no"
+   },
+   "render_code_reads_rule": false,
+   "checked_after_render": [],
+   "production_test": {
+    "status": "none",
+    "where": "not applied or not measured"
+   },
+   "note": "NEW (Step 1). The kit already builds people as 2D cards in a 3D world."
+  }
+ ],
+ "unimplemented_capabilities": [
+  {
+   "capability": "round-mask transition (spyglass, window, closing circle)",
+   "rules": "TRN-03"
+  },
+  {
+   "capability": "smoke / cloud wipe transition",
+   "rules": "TRN-04"
+  },
+  {
+   "capability": "bloom, god rays, sun glare pass",
+   "rules": "LIT-04"
+  },
+  {
+   "capability": "head size parameter that reaches 0.12-0.21 of frame height",
+   "rules": "CHR-01"
+  },
+  {
+   "capability": "separate brow, pupil and mouth channels; gaze leads the hand",
+   "rules": "FAC-01, ACT-01"
+  },
+  {
+   "capability": "poses: crouch, kneel, run, lie, salute",
+   "rules": "CHR-04"
+  },
+  {
+   "capability": "physics: cause chain, motion profiles (only hand-made fx cards)",
+   "rules": "PHY-03, PHY-04"
+  },
+  {
+   "capability": "material library (wood, metal, stone, water, foliage, glass) in kit/engine",
+   "rules": "MAT-01"
+  },
+  {
+   "capability": "camera planner that picks flights from purpose",
+   "rules": "CAM-16, CAM-02, CAM-04..08"
+  },
+  {
+   "capability": "transition scheduler that mixes dissolve / fly / cut by TRN-06",
+   "rules": "TRN-06"
+  },
+  {
+   "capability": "caption module in kit/engine (today only in two project copies)",
+   "rules": "CAP-01, CAP-02"
+  },
+  {
+   "capability": "shot-recipe selector that reads intent",
+   "rules": "SCR-05"
+  },
+  {
+   "capability": "pre-render gates Q01-Q10 on preview frames",
+   "rules": "QC-01"
+  },
+  {
+   "capability": "a loader that makes the render code read rules.json or beats.json",
+   "rules": "all"
+  },
+  {
+   "capability": "noun-within-0.3-s-of-word check",
+   "rules": "PRP-02"
+  },
+  {
+   "capability": "identity check across rendered frames",
+   "rules": "CON-01"
+  },
+  {
+   "capability": "Kaggle GPU path wired to the Gemini pipeline (speed test only)",
+   "rules": "-"
+  }
+ ],
+ "prompt_contradictions": [
+  "tools/gen_api.py SYSTEM says \"No captions\" while CAP-01/CAP-02 want one-word captions (captions are drawn by the project main.js, not by Gemini, so output is unaffected today)"
+ ],
+ "quality_gates": [
+  {
+   "id": "Q01",
+   "check": "Character identity",
+   "checks": [
+    {
+     "what": "character ids, outfit, hat and identity_lock are the same in every beat",
+     "class": "automatic",
+     "implemented_in": "validate_beats.py (implemented)"
+    },
+    {
+     "what": "head, face, costume look the same across the preview frames",
+     "class": "ai_assisted",
+     "implemented_in": "not implemented (step 2)"
+    },
+    {
+     "what": "final approval of the look",
+     "class": "human",
+     "implemented_in": "-"
+    }
+   ]
+  },
+  {
+   "id": "Q02",
+   "check": "Composition",
+   "checks": [
+    {
+     "what": "the focal point is not inside the caption clear zone (warning); the zone defaults to the measured caption band",
+     "class": "automatic",
+     "implemented_in": "validate_beats.py (implemented)"
+    },
+    {
+     "what": "hero object and action readable at phone size in the preview frames",
+     "class": "ai_assisted",
+     "implemented_in": "existing, partly: tools/gen_api.py shot phase (Gemini PASS/FAIL on 3 stills per shot against MUST SEE / MUST NOT, Gemini projects only); not run on beats; accuracy untested"
+    },
+    {
+     "what": "does the picture say what the words say",
+     "class": "human",
+     "implemented_in": "-"
+    }
+   ]
+  },
+  {
+   "id": "Q03",
+   "check": "Camera intent",
+   "checks": [
+    {
+     "what": "every beat has a camera purpose and mode; a move has duration, ease and from/to; a hold has a rationale",
+     "class": "automatic",
+     "implemented_in": "validate_beats.py (implemented)"
+    },
+    {
+     "what": "the move helps the story",
+     "class": "human",
+     "implemented_in": "-"
+    }
+   ]
+  },
+  {
+   "id": "Q04",
+   "check": "Narration match",
+   "checks": [
+    {
+     "what": "beat words joined equal the narration; word ranges cover all words in order; beat times follow the word times",
+     "class": "automatic",
+     "implemented_in": "validate_beats.py (implemented); make_notes.py checks the words for the shot notes"
+    },
+    {
+     "what": "each named noun is visible within 0.3 s of its word (CHK-07)",
+     "class": "ai_assisted",
+     "implemented_in": "existing, partly: tools/gen_api.py shot phase (Gemini PASS/FAIL on 3 stills per shot against MUST SEE / MUST NOT, Gemini projects only); not run on beats; accuracy untested"
+    }
+   ]
+  },
+  {
+   "id": "Q05",
+   "check": "Physics causality",
+   "checks": [
+    {
+     "what": "physical events name a contact target and fitting secondary effects",
+     "class": "automatic",
+     "implemented_in": "validate_beats.py (implemented, warnings)"
+    },
+    {
+     "what": "the motion looks causal and has weight",
+     "class": "human",
+     "implemented_in": "-"
+    }
+   ]
+  },
+  {
+   "id": "Q06",
+   "check": "Environment depth",
+   "checks": [
+    {
+     "what": "every environment declares foreground, midground, background",
+     "class": "automatic",
+     "implemented_in": "validate_beats.py (implemented, warnings)"
+    },
+    {
+     "what": "parallax and soft-edge share on rendered frames",
+     "class": "automatic",
+     "implemented_in": "existing, after rendering: kit/tools/ref_study.py compare, ref_look.py"
+    }
+   ]
+  },
+  {
+   "id": "Q07",
+   "check": "Material readability",
+   "checks": [
+    {
+     "what": "every declared material id exists in material_recipes",
+     "class": "automatic",
+     "implemented_in": "validate_beats.py (implemented, warnings)"
+    },
+    {
+     "what": "the surface reads as that material in the preview",
+     "class": "ai_assisted",
+     "implemented_in": "existing, partly: tools/gen_api.py shot phase (Gemini PASS/FAIL on 3 stills per shot against MUST SEE / MUST NOT, Gemini projects only); not run on beats; accuracy untested"
+    }
+   ]
+  },
+  {
+   "id": "Q08",
+   "check": "Edit purpose",
+   "checks": [
+    {
+     "what": "every beat has a transition type and reason (frames for dissolve, fly-through, flash); hard cuts at most 45 % of scene changes (CHK-11) and at least one dissolve (warnings)",
+     "class": "automatic",
+     "implemented_in": "validate_beats.py (implemented, warnings)"
+    },
+    {
+     "what": "each cut is on a meaning beat",
+     "class": "human",
+     "implemented_in": "-"
+    }
+   ]
+  },
+  {
+   "id": "Q09",
+   "check": "Audio events",
+   "checks": [
+    {
+     "what": "audio events have a valid trigger and fall inside the beat; word triggers point at real words",
+     "class": "automatic",
+     "implemented_in": "validate_beats.py (implemented)"
+    },
+    {
+     "what": "mix level and loudness",
+     "class": "automatic",
+     "implemented_in": "existing, after rendering: kit/tools/mix.py, finish.sh"
+    },
+    {
+     "what": "sound quality and taste",
+     "class": "human",
+     "implemented_in": "-"
+    }
+   ]
+  },
+  {
+   "id": "Q10",
+   "check": "Render preflight",
+   "checks": [
+    {
+     "what": "all ids resolve; every required asset is declared; beats cover the whole video without gaps or overlaps",
+     "class": "automatic",
+     "implemented_in": "validate_beats.py (implemented)"
+    },
+    {
+     "what": "a build check of the real code (assets render, no errors)",
+     "class": "automatic",
+     "implemented_in": "existing: tools/gen_api.py asset phase (each builder rendered alone, size and look checked by Gemini; Gemini projects only)"
+    }
+   ]
+  }
+ ]
+}

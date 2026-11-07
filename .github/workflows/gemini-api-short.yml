@@ -11,6 +11,9 @@ on:
       model:
         description: "Gemini model (3.1-pro-preview is the one that works)"
         default: gemini-3.1-pro-preview
+      beats:
+        description: "EXPERIMENTAL: also write a beat plan (beats.json, schema 1.0.0) and give it to Gemini. Default false = pipeline exactly as before"
+        default: "false"
 
 permissions:
   contents: write
@@ -29,7 +32,7 @@ jobs:
         with:
           python-version: "3.11"
       - run: for T in 1 2 3; do timeout 240 sudo apt-get update -qq && timeout 300 sudo apt-get install -y -qq ffmpeg && break; sleep 5; done
-      - run: python -m pip install -q numpy pillow kokoro-onnx soundfile google-genai opencv-python-headless
+      - run: python -m pip install -q numpy pillow kokoro-onnx soundfile google-genai opencv-python-headless jsonschema
       - name: Playwright Chromium
         run: |
           npm install -g playwright
@@ -55,6 +58,7 @@ jobs:
       - name: Gemini API writes the scenes, looks at stills, fixes them (no CLI)
         env:
           MODEL: ${{ github.event.inputs.model }}
+          BEATS: ${{ github.event.inputs.beats }}
           GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
           GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
           GCP_LOCATION: ${{ secrets.GCP_LOCATION }}
@@ -66,6 +70,7 @@ jobs:
           python3 timing.py voice.mp3 script.txt --out work
           [ -f shot_notes.txt ] || python3 ../tools/make_notes.py . 2>&1 | tee ../notes.log
           test -f shot_notes.txt || { echo "no shot notes"; exit 1; }
+          if [ "$BEATS" = "true" ]; then [ -f beats.json ] || python3 ../tools/make_beats.py . 2>&1 | tee ../beats.log || true; fi   # optional; a failure here never stops the run
           python3 ../tools/gen_api.py . --model "$MODEL" --asset-rounds 3 --shot-rounds 5 2>&1 | tee ../gemini.log
           test -f work/DONE.txt || { echo "gen_api did not finish: stopping"; exit 1; }
       - name: Plan the parallel render
@@ -149,7 +154,7 @@ jobs:
           cp project/out/*.mp4 project/out/qa_sheet.jpg project/out/qa_report.txt project/out/ref_compare.txt "$D"/ 2>/dev/null || true
           cp project/stills/sheet_*.jpg project/work/PLAN.md project/work/DONE.txt project/work/NOTES.md project/work/usage.json "$D"/ 2>/dev/null || true
           mkdir -p "$D/web"; cp project/web/story.js project/web/main.js project/web/roman.js "$D/web/" 2>/dev/null || true
-          cp project/audio.py project/work/words.json project/shot_notes.txt "$D/" 2>/dev/null || true
+          cp project/audio.py project/work/words.json project/shot_notes.txt project/beats.json project/beats.report.json "$D/" 2>/dev/null || true
           cp project/web/story.js "$D/story.js" 2>/dev/null || true
           tail -200 gemini.log > "$D/gemini_log_tail.txt" 2>/dev/null || true
           git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

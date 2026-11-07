@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "stickman-motion-studio/beat-plan/1.0.0",
+  "title": "Beat plan (narration -> structured visual instructions)",
+  "description": "One file per video. Stable and versioned: 1.x only ADDS optional fields; a renamed or removed field or a changed meaning is 2.0. Unknown data goes into `extensions` (any object), never into new top-level keys. Time is in seconds; the renderer converts with project.fps. Every `*_id` must resolve to an entry in `entities` (checked by kit/tools/validate_beats.py, not by this file).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "project", "narration", "entities", "beats"],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "project": {
+      "type": "object", "additionalProperties": false, "required": ["id", "fps", "width", "height"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "title": { "type": "string" },
+        "fps": { "const": 30 }, "width": { "type": "integer" }, "height": { "type": "integer" },
+        "source": { "type": "string", "description": "where the beats came from: author | gemini | claude | derived_from_story_js" }
+      }
+    },
+    "narration": {
+      "type": "object", "additionalProperties": false, "required": ["text", "words"],
+      "properties": {
+        "text": { "type": "string", "minLength": 1, "description": "The final narration, exactly as spoken." },
+        "words": {
+          "type": "array", "minItems": 1, "description": "Voice timing per spoken word (same as work/words.json).",
+          "items": { "type": "object", "additionalProperties": false, "required": ["w", "s", "e"],
+            "properties": { "w": { "type": "string" }, "s": { "type": "number", "minimum": 0 }, "e": { "type": "number", "minimum": 0 } } }
+        }
+      }
+    },
+    "entities": {
+      "type": "object", "additionalProperties": false, "required": ["characters", "objects", "environments"],
+      "properties": {
+        "characters": { "type": "array", "items": { "$ref": "#/$defs/character" } },
+        "objects": { "type": "array", "items": { "$ref": "#/$defs/object" } },
+        "environments": { "type": "array", "items": { "$ref": "#/$defs/environment" } }
+      }
+    },
+    "beats": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/beat" } },
+    "extensions": { "type": "object" }
+  },
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9_\\-]*$" },
+    "unit_pt": { "type": "array", "items": { "type": "number", "minimum": 0, "maximum": 1 }, "minItems": 2, "maxItems": 2 },
+    "confidence": { "enum": ["measured", "estimated", "designed"], "description": "measured = taken from our reference study; estimated = reasoned; designed = a starting value chosen for this video" },
+    "character": {
+      "type": "object", "additionalProperties": false, "required": ["id", "outfit", "identity_lock"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "outfit": { "type": "string", "description": "kit outfit name (see FORMAT.md section 6) or NEW:<name>" },
+        "hat": { "type": "string" },
+        "skin_hair": { "type": "string" },
+        "default_face": { "type": "string" },
+        "status": { "enum": ["kit", "new_item", "needs_build"], "default": "kit" },
+        "identity_lock": {
+          "type": "array", "minItems": 1, "items": { "type": "string" },
+          "description": "What must NOT change between beats (rule CON-01): e.g. hat, outfit colours, skin, beard, outline weight. Changing any of these needs a beat with `continuity_change`."
+        }
+      }
+    },
+    "object": {
+      "type": "object", "additionalProperties": false, "required": ["id", "representation"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "label": { "type": "string" },
+        "size_m": { "type": "number", "exclusiveMinimum": 0 },
+        "representation": { "enum": ["3d_mesh", "2d_card", "2_5d_layer", "billboard_fx"], "description": "rule ARC-01: hero objects that the camera orbits are 3d_mesh; people are 2d_card; far scenery is 2_5d_layer; effects are billboard_fx" },
+        "material_ids": { "type": "array", "items": { "type": "string", "pattern": "^M0[1-9]$" } },
+        "text_on_object": { "type": "string", "description": "words or numbers the viewer must be able to read (rule PRP-01)" },
+        "status": { "enum": ["kit", "new_item", "needs_build"], "default": "new_item" }
+      }
+    },
+    "environment": {
+      "type": "object", "additionalProperties": false, "required": ["id", "light"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "width_m": { "type": "number", "exclusiveMinimum": 0 },
+        "light": { "enum": ["day", "dawn", "golden", "night", "indoor"] },
+        "lighting_profile_id": { "type": "string", "pattern": "^L0[1-9]$" },
+        "landmarks": { "type": "array", "items": { "type": "string" } },
+        "material_ids": { "type": "array", "items": { "type": "string", "pattern": "^M0[1-9]$" } },
+        "depth_layers": { "type": "object", "additionalProperties": false, "properties": {
+          "foreground": { "type": "string" }, "midground": { "type": "string" }, "background": { "type": "string" } },
+          "description": "rule WLD-03: soft foreground, sharp middle, hazy background" }
+      }
+    },
+    "beat": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "index", "time", "narration", "intent", "visual_purpose", "subject", "environment_id", "shot", "camera", "captions", "transition_in", "validation"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "index": { "type": "integer", "minimum": 1 },
+        "time": { "type": "object", "additionalProperties": false, "required": ["start_s", "end_s"], "properties": {
+          "start_s": { "type": "number", "minimum": 0 }, "end_s": { "type": "number", "exclusiveMinimum": 0 } } },
+        "narration": { "type": "object", "additionalProperties": false, "required": ["text", "word_range"], "properties": {
+          "text": { "type": "string", "minLength": 1 },
+          "word_range": { "type": "array", "items": { "type": "integer", "minimum": 0 }, "minItems": 2, "maxItems": 2, "description": "[first, last] index into narration.words, inclusive" } } },
+        "intent": { "enum": ["hook", "introduce_place_or_time", "introduce_character", "explain_mechanism", "give_number_or_quantity", "physical_action", "create_suspense", "surprising_reveal", "emotional_reaction", "dialogue_or_argument", "time_passes", "comedic_beat", "crowd_or_scale", "summarize_or_conclude"],
+          "description": "What the WORDS are doing. The shot recipe and the camera are chosen from this plus the available assets and the previous beat; there is no fixed order." },
+        "visual_purpose": { "type": "string", "minLength": 8, "description": "One sentence: what the viewer must understand from the picture." },
+        "subject": { "type": "object", "additionalProperties": false, "required": ["main_id"], "properties": {
+          "main_id": { "$ref": "#/$defs/id", "description": "the character or object the shot is about" },
+          "character_ids": { "type": "array", "items": { "$ref": "#/$defs/id" }, "maxItems": 4 },
+          "hero_object_id": { "$ref": "#/$defs/id" },
+          "required_asset_ids": { "type": "array", "items": { "$ref": "#/$defs/id" } },
+          "crowd": { "type": "integer", "minimum": 0, "description": "background crowd size (more than 6 is background only)" } } },
+        "environment_id": { "$ref": "#/$defs/id" },
+        "light": { "enum": ["day", "dawn", "golden", "night", "indoor"], "description": "optional: overrides the environment light for this beat (a story can change the light in one place)" },
+        "character_actions": { "type": "array", "items": { "type": "object", "additionalProperties": false, "required": ["character_id", "action", "start_s", "duration_s"], "properties": {
+          "character_id": { "$ref": "#/$defs/id" },
+          "action": { "type": "string" },
+          "pose": { "type": "string", "description": "kit arm pose (FORMAT.md section 6)" },
+          "face": { "type": "string", "description": "kit face, optionally base+extra" },
+          "gaze_target_id": { "$ref": "#/$defs/id", "description": "rule ACT-01: gaze leads the hand" },
+          "phase": { "enum": ["attention", "anticipation", "action", "contact", "response", "settle"] },
+          "start_s": { "type": "number", "minimum": 0 }, "duration_s": { "type": "number", "exclusiveMinimum": 0 } } } },
+        "object_events": { "type": "array", "items": { "type": "object", "additionalProperties": false, "required": ["object_id", "event", "start_s", "duration_s"], "properties": {
+          "object_id": { "$ref": "#/$defs/id" },
+          "event": { "enum": ["appear", "move", "swing", "roll", "slide", "drop", "impact", "break", "launch", "spin", "glow", "heat", "bend", "change_value", "settle"] },
+          "motion_profile": { "enum": ["rigid", "elastic", "fluid", "smoke", "flame", "rope_lag", "none"], "description": "rule PHY-04" },
+          "contact_target_id": { "$ref": "#/$defs/id" },
+          "secondary_effects": { "type": "array", "items": { "enum": ["debris", "dust", "smoke", "sparks", "splash", "camera_kick", "recoil", "sound"] } },
+          "start_s": { "type": "number", "minimum": 0 }, "duration_s": { "type": "number", "exclusiveMinimum": 0 } } } },
+        "shot": { "type": "object", "additionalProperties": false, "required": ["recipe_id", "framing", "composition"], "properties": {
+          "recipe_id": { "type": "string", "pattern": "^S0[1-9]$", "description": "starting recipe from rules.json shot_recipes; the planner may adapt it" },
+          "situation": { "type": "string", "description": "optional: one of the situation recipes of the PLAYBOOK (HOOK, NEW_PLACE, KEY_PROP ...)" },
+          "framing": { "enum": ["wide", "medium_wide", "medium", "close", "detail", "top_down", "pov"] },
+          "distance_m": { "type": "number", "exclusiveMinimum": 0 },
+          "composition": { "type": "object", "additionalProperties": false, "required": ["primary_id", "focal_point_norm"], "properties": {
+            "primary_id": { "$ref": "#/$defs/id" },
+            "secondary_ids": { "type": "array", "items": { "$ref": "#/$defs/id" } },
+            "focal_point_norm": { "$ref": "#/$defs/unit_pt" },
+            "caption_clear_zone_norm": { "type": "array", "items": { "type": "number", "minimum": 0, "maximum": 1 }, "minItems": 4, "maxItems": 4, "description": "[x0,y0,x1,y1] kept free of key content. Default [0.1,0.62,0.9,0.78]: captions sit at about 70 % of frame height (rule CAP-01, measured)." },
+            "foreground_element": { "type": "string", "description": "rule CAM-12: soft element at the frame edge" } } } } },
+        "camera": { "type": "object", "additionalProperties": false, "required": ["purpose", "mode", "rationale", "confidence"], "properties": {
+          "purpose": { "enum": ["establish", "reveal", "follow", "inspect", "emphasize", "compare", "land_on_prop", "power_angle", "hold_for_performance", "carry_to_next_place", "impact"], "description": "REQUIRED even for a hold: a hold is a choice (rule CAM-13), never the default." },
+          "mode": { "enum": ["static", "creep", "push-in", "pull-back", "pan", "tilt", "crane-up", "crane-down", "orbit", "track", "fly-through", "snap-zoom", "whip", "top-down"], "description": "FORMAT.md moves plus creep (very slow push), pan, tilt, track, fly-through, top-down. Moves that the shot-notes format cannot write are still valid here." },
+          "from": { "$ref": "#/$defs/view" }, "to": { "$ref": "#/$defs/view" },
+          "look_at_id": { "$ref": "#/$defs/id" },
+          "duration_s": { "type": "number", "exclusiveMinimum": 0 },
+          "ease": { "enum": ["smooth", "easeOut", "easeIn", "back", "anticip", "spring"], "description": "names of kit/engine/motion.js M.*" },
+          "kicks": { "type": "array", "items": { "type": "object", "additionalProperties": false, "required": ["time_s", "amp"], "properties": { "time_s": { "type": "number", "minimum": 0 }, "amp": { "type": "number", "exclusiveMinimum": 0 } } }, "description": "impact camera kicks (rule FX-05)" },
+          "rationale": { "type": "string", "minLength": 8 },
+          "confidence": { "$ref": "#/$defs/confidence" } } },
+        "captions": { "type": "object", "additionalProperties": false, "required": ["mode"], "properties": {
+          "mode": { "enum": ["one_word", "phrase", "none"], "description": "one_word = rule CAP-02" },
+          "emphasis_word_indexes": { "type": "array", "items": { "type": "integer", "minimum": 0 } } } },
+        "audio_events": { "type": "array", "items": { "type": "object", "additionalProperties": false, "required": ["track", "event", "time_s", "trigger"], "properties": {
+          "track": { "enum": ["sfx", "music"] },
+          "event": { "type": "string" },
+          "time_s": { "type": "number", "minimum": 0, "description": "absolute project time" },
+          "trigger": { "enum": ["word", "animation_event", "transition", "beat_start"] },
+          "word_index": { "type": "integer", "minimum": 0, "description": "required when trigger = word; index into narration.words" } } } },
+        "transition_in": { "type": "object", "additionalProperties": false, "required": ["type", "reason"], "properties": {
+          "type": { "enum": ["start", "cut", "dissolve", "fly_through", "flash", "whip", "in_place"] },
+          "reason": { "enum": ["start", "new_place", "time_shift", "memory_or_thought", "scale_change", "emphasis", "continuity"] },
+          "frames": { "type": "integer", "minimum": 0 } } },
+        "continuity_change": { "type": "array", "items": { "type": "string" }, "description": "identity_lock items that the script changes on purpose in this beat (rule CON-01)" },
+        "validation": { "type": "object", "additionalProperties": false, "required": ["gates", "must_see"], "properties": {
+          "gates": { "type": "array", "minItems": 1, "items": { "type": "string", "pattern": "^Q(0[1-9]|10)$" }, "description": "quality gates that apply to this beat (rules.json quality_gates)" },
+          "must_see": { "type": "array", "items": { "$ref": "#/$defs/id" }, "description": "entity ids that must be visible and readable in the beat's frames" },
+          "must_not": { "type": "array", "items": { "type": "string" } } } },
+        "rule_refs": { "type": "array", "items": { "type": "string", "pattern": "^[A-Z]{2,3}-[0-9]{2}$" } },
+        "extensions": { "type": "object" }
+      }
+    },
+    "view": {
+      "type": "object", "additionalProperties": false, "required": ["framing"], "properties": {
+        "framing": { "enum": ["wide", "medium_wide", "medium", "close", "detail", "top_down", "pov"] },
+        "distance_m": { "type": "number", "exclusiveMinimum": 0 },
+        "height": { "enum": ["low", "eye", "high", "top"] },
+        "side": { "enum": ["front", "left", "right", "back", "above"] } }
+    }
+  }
+}

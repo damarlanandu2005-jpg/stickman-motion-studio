@@ -132,13 +132,27 @@ def static_context():
     return "\n\n".join(f"===== {t} =====\n{x}" for t, x in parts)
 
 
+def beats_text():
+    """Optional beat plan (tools/make_beats.py). Absent file = empty text = the prompt is exactly as before."""
+    f = P / "beats.json"
+    if not f.exists(): return ""
+    try:
+        d = json.loads(rd(f)); d.get("narration", {}).pop("words", None); d.pop("narration", None)
+    except Exception as e:
+        log("WARNING beats.json unreadable, ignored:", repr(e)); return ""
+    return ("===== BEAT PLAN (beats.json, format in the section below; it was checked by validate_beats.py) =====\n"
+            "Follow it per beat: camera.purpose, mode, from/to, duration_s, ease, kicks; transition_in (type, reason, frames); object_events; character_actions; audio_events; validation.must_see. "
+            "The shot notes stay the source of truth for shots, places, words and frames: if the plan conflicts with them, follow the notes and list the conflict in work/NOTES.md.\n\n"
+            + rd(KIT / "docs/BEATS.md") + "\n\nBEAT PLAN JSON:\n" + json.dumps(d, ensure_ascii=False, separators=(",", ":")) + "\n\n")
+
+
 def task_text(total, rows, assets):
     tab = "\n".join(f"{id_:14s} frames {a:4d}-{b:4d}  ({(b - a + 1) / 30:.1f}s)  words: {w}" for id_, a, b, w in rows)
     al = "\n".join(f"  ASSETS key '{x['name']}'  ({x['kind']}, declared size {x['declared']} m)" for x in assets) or "  (the notes list no PLACES / NEW OBJECTS: still define ASSETS = {} )"
     return (f"===== THIS VIDEO =====\nTOTAL = {total} frames.\n\nSHOT TABLE (use these ids and frame ranges in story.js SHOTS):\n{tab}\n\n"
             f"ASSETS you must define (one builder each, exact key):\n{al}\n\n"
             f"narration (script.txt):\n{rd(P / 'script.txt')}\n\nAUTHOR'S SHOT NOTES (shot_notes.txt):\n{NOTES}\n\n"
-            "Write all files now (first answer).")
+            + beats_text() + "Write all files now (first answer).")
 
 
 # ------------------------------------------------------------------ Gemini client
@@ -373,6 +387,7 @@ ASSETS = asset_list()
 log(f"{len(ROWS)} shots, {TOTAL} frames, words used {used}/{nwords}; assets to test: {[a['name'] for a in ASSETS]}")
 sctx, task = static_context(), task_text(TOTAL, ROWS, ASSETS)
 log(f"prompt chars: static {len(sctx)}, task {len(task)}")
+if A.dry and os.environ.get("DRY_DUMP"): Path(os.environ["DRY_DUMP"]).write_text(sctx + "\n\n#####TASK#####\n" + task, encoding="utf-8")
 if A.dry: sys.exit(0)
 hist = [types.Content(role="user", parts=[types.Part(text=sctx), types.Part(text=task)])]
 

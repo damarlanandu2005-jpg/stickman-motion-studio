@@ -1,6 +1,6 @@
 {
- "version": 3,
- "built": "2026-11-07",
+ "version": 4,
+ "built": "2026-11-08",
  "purpose": "How the reference shorts HANDLE each situation (camera, cuts, light, colour, characters, props, effects, physics, script-to-picture). Habits to learn from, not shots to copy. Single source of truth: kit/docs/PLAYBOOK.md is generated from this file by kit/tools/build_playbook.py. Numbers come from kit/reference/study/*.json (measured) and kit/reference/db/*.json. STATUS: the render code does NOT read this file. Only the Gemini prompt (tools/gen_api.py) includes the generated PLAYBOOK.md, and that is untested. A rule here is knowledge, not an engine feature, until it is listed as implemented under 'engine' below.",
  "studied": [
   "pirate_cannonballs",
@@ -24,7 +24,8 @@
  "confidence_key": {
   "measured": "computed from every frame of the reference videos by kit/tools/ref_study.py or ref_measure.py",
   "seen": "read by eye from frame sheets / full-size frames / 0.1 s strips; times are given as evidence",
-  "inferred": "reasoned from what was seen; check against the next references before trusting"
+  "inferred": "reasoned from what was seen; check against the next references before trusting",
+  "proposed": "designed by an independent study (ChatGPT, sampled frames at 2 fps); NOT measured or seen by us; treat as a starting value and test it before trusting"
  },
  "units": {
   "speed": "peak flight speed is stored in px per frame at 270 px frame width. Multiply by 11.1 for percent of frame width per second (9.85 px = 109 %/s).",
@@ -41,7 +42,8 @@
   "Sound: only loudness (-14 LUFS) and onset alignment (none beyond chance) are known. Music, voice and sound effects cannot be separated from the mixed track.",
   "The 6 older reference videos are in the colour database but NOT in the camera study (their video files were not kept).",
   "No script text for the references. Script-to-picture rules come from reading the captions on the frames.",
-  "These rules are NOT read by the render code. They reach Gemini only through the PLAYBOOK in its prompt (untested)."
+  "These rules are NOT read by the render code. They reach Gemini only through the PLAYBOOK in its prompt (untested).",
+  "Rules with conf \"proposed\" (15 rules, merged 2026-11-08 from an independent ChatGPT study) were not measured or seen by us and have not been applied in a video yet."
  ],
  "ours_now": {
   "source": "claude_bomb_v21 vs 17 references (kit/reference/study/_summary.json)",
@@ -100,7 +102,11 @@
     "all 17 references"
    ],
    "ours_now": "fast 21 %, still 43 %",
-   "applies": "universal"
+   "applies": "universal",
+   "provenance": {
+    "origin": "our_measured",
+    "values": "measured"
+   }
   },
   {
    "id": "CAM-02",
@@ -126,7 +132,11 @@
     "299 flights in 17 references"
    ],
    "ours_now": "flight 0.57 s, pause 2.3 s",
-   "applies": "universal"
+   "applies": "universal",
+   "provenance": {
+    "origin": "our_measured",
+    "values": "measured"
+   }
   },
   {
    "id": "CAM-03",
@@ -151,7 +161,11 @@
     "memory_price 4-7 s (fly down an alley into the shop)"
    ],
    "ours_now": "78 % pure push-in, parallax 0.27",
-   "applies": "universal"
+   "applies": "universal",
+   "provenance": {
+    "origin": "our_measured",
+    "values": "measured"
+   }
   },
   {
    "id": "CAM-04",
@@ -171,7 +185,11 @@
     "roller_coasters 1-3 s (tilt up the loop)",
     "mirror_horse_race 12-14 s (street and hill revealed)"
    ],
-   "applies": "universal"
+   "applies": "universal",
+   "provenance": {
+    "origin": "our_observed",
+    "values": "observed"
+   }
   },
   {
    "id": "CAM-05",
@@ -192,7 +210,11 @@
     "town_button 23-25 s (button under the glass dome)",
     "memory_price 28-31 s (HAPPINESS gauge)"
    ],
-   "applies": "universal"
+   "applies": "universal",
+   "provenance": {
+    "origin": "our_observed",
+    "values": "observed"
+   }
   },
   {
    "id": "CAM-06",
@@ -209,7 +231,11 @@
    "evidence": [
     "second_draw 0-4 s (bullet and holster in the foreground, camera tilts up to the face)"
    ],
-   "applies": "universal"
+   "applies": "universal",
+   "provenance": {
+    "origin": "our_observed",
+    "values": "observed"
+   }
   },
   {
    "id": "CAM-07",
@@ -227,7 +253,11 @@
     "mirror_horse_race 27-31 s (horse gallops, camera tracks)",
     "pirate_cannonballs 4-5 s (ball flies past)"
    ],
-   "applies": "universal"
+   "applies": "universal",
+   "provenance": {
+    "origin": "our_observed",
+    "values": "observed"
+   }
   },
   {
    "id": "CAM-08",
@@ -245,7 +275,11 @@
     "second_draw 9-13 s (four seconds on one medium shot)",
     "storm_oil 7-11 s (captain and chef two-shot)"
    ],
-   "applies": "universal"
+   "applies": "universal",
+   "provenance": {
+    "origin": "our_observed",
+    "values": "observed"
+   }
   },
   {
    "id": "CAM-09",
@@ -277,7 +311,11 @@
     "172 flights"
    ],
    "ours_now": "67 % constant, 22 % ease, 11 % accelerate",
-   "applies": "universal"
+   "applies": "universal",
+   "provenance": {
+    "origin": "our_measured",
+    "values": "measured"
+   }
   },
   {
    "id": "CAM-10",
@@ -298,7 +336,11 @@
     "8 references"
    ],
    "ours_now": "89 % repeat",
-   "applies": "universal"
+   "applies": "universal",
+   "provenance": {
+    "origin": "our_measured",
+    "values": "measured"
+   }
   },
   {
    "id": "CAM-11",
@@ -319,7 +361,11 @@
     "pirate_cannonballs 0-20 s",
     "memory_price 19-31 s"
    ],
-   "applies": "universal"
+   "applies": "universal",
+   "provenance": {
+    "origin": "our_observed",
+    "values": "observed"
+   }
   },
   {
    "id": "CAM-12",
@@ -337,7 +383,11 @@
     "pirate_cannonballs 12-14 s",
     "roller_coasters 10-15 s"
    ],
-   "applies": "universal"
+   "applies": "universal",
+   "provenance": {
+    "origin": "our_observed",
+    "values": "observed"
+   }
   },
   {
    "id": "CUT-01",
@@ -360,7 +410,11 @@
     "17 references"
    ],
    "ours_now": "58 per minute",
-   "applies": "universal"
+   "applies": "universal",
+   "provenance": {
+    "origin": "our_measured",
+    "values": "measured"
+   }
   },
   {
    "id": "TRN-01",
@@ -381,7 +435,11 @@
    "numbers": {
     "flight_peak_sharpness_over_median": "0.8884-1.1956 (median 1.049)"
    },
-   "applies": "universal"
+   "applies": "universal",
+   "provenance": {
+    "origin": "our_measured",
+    "values": "measured"
+   }
   },
   {
    "id": "TRN-02",
@@ -401,7 +459,11 @@
     "mirror_horse_race 3 s and 27 s",
     "second_draw 13.6 s (dissolve to the quick-draw man)"
    ],
-   "applies": "universal"
+   "applies": "universal",
+   "provenance": {
+    "origin": "our_observed",
+    "values": "observed"
+   }
   },
   {
    "id": "TRN-03",
@@ -418,7 +480,11 @@
     "mirror_horse_race 18 s (spyglass on the race)",
     "second_draw 44-53 s (black circle, then round windows)"
    ],
-   "applies": "universal"
+   "applies": "universal",
+   "provenance": {
+    "origin": "our_observed",
+    "values": "observed"
+   }
   },
   {
    "id": "TRN-04",
@@ -435,7 +501,11 @@
    "evidence": [
     "pirate_cannonballs 17.5-18.5 s (cannon smoke to open sea)"
    ],
-   "applies": "universal"
+   "applies": "universal",
+   "provenance": {
+    "origin": "our_observed",
+    "values": "observed"
+   }
   },
   {
    "id": "END-01",
@@ -452,7 +522,11 @@
     "second_draw 54-55 s (street scene like the opening)",
     "town_button 64-65 s (crowd around the button from the first shot)"
    ],
-   "applies": "universal_unless_profile"
+   "applies": "universal_unless_profile",
+   "provenance": {
+    "origin": "our_observed",
+    "values": "observed"
+   }
   },
   {
    "id": "LIT-01",
@@ -476,7 +550,11 @@
     "8 references"
    ],
    "ours_now": "mean 0.37, but flat",
-   "applies": "universal_unless_profile"
+   "applies": "universal_unless_profile",
+   "provenance": {
+    "origin": "our_measured",
+    "values": "measured"
+   }
   },
   {
    "id": "LIT-02",
@@ -498,7 +576,11 @@
     "second_draw 26-30 s (orange sunset, long shadows)",
     "roller_coasters 16-28 s (moonlit blue, warm lanterns and lights)"
    ],
-   "applies": "universal_unless_profile"
+   "applies": "universal_unless_profile",
+   "provenance": {
+    "origin": "our_observed",
+    "values": "observed"
+   }
   },
   {
    "id": "LIT-03",
@@ -518,7 +600,11 @@
     "memory_price 32-45 s (blue hospital against the golden lake)",
     "second_draw 26-31 s"
    ],
-   "applies": "universal_unless_profile"
+   "applies": "universal_unless_profile",
+   "provenance": {
+    "origin": "our_observed",
+    "values": "observed"
+   }
   },
   {
    "id": "LIT-04",
@@ -536,7 +622,11 @@
     "perfect_railroads 16 s (sun glare)",
     "roller_coasters 21 s (string lights, lantern)"
    ],
-   "applies": "universal_unless_profile"
+   "applies": "universal_unless_profile",
+   "provenance": {
+    "origin": "our_observed",
+    "values": "observed"
+   }
   },
   {
    "id": "COL-01",
@@ -563,7 +653,11 @@
     "db for 14 references"
    ],
    "ours_now": "palette 23, v2.1 added coloured props and palette did not rise",
-   "applies": "universal_unless_profile"
+   "applies": "universal_unless_profile",
+   "provenance": {
+    "origin": "our_measured",
+    "values": "measured"
+   }
   },
   {
    "id": "WLD-01",
@@ -581,7 +675,11 @@
     "roller_coasters 1-9 s",
     "town_button 4-10 s"
    ],
-   "applies": "universal_unless_profile"
+   "applies": "universal_unless_profile",
+   "provenance": {
+    "origin": "our_observed",
+    "values": "observed"
+   }
   },
   {
    "id": "WLD-02",
@@ -605,7 +703,11 @@
     "memory_price 16 s (pool caustics)",
     "roller_coasters 21 s (grass blades)"
    ],
-   "applies": "universal_unless_profile"
+   "applies": "universal_unless_profile",
+   "provenance": {
+    "origin": "our_observed",
+    "values": "observed"
+   }
   },
   {
    "id": "WLD-03",
@@ -622,7 +724,11 @@
     "pirate_cannonballs 1-5 s",
     "storm_oil 2-3 s"
    ],
-   "applies": "universal_unless_profile"
+   "applies": "universal_unless_profile",
+   "provenance": {
+    "origin": "our_observed",
+    "values": "observed"
+   }
   },
   {
    "id": "WLD-04",
@@ -639,7 +745,11 @@
     "storm_oil 12 s (pot, hull)",
     "pirate_cannonballs 12 s"
    ],
-   "applies": "universal_unless_profile"
+   "applies": "universal_unless_profile",
+   "provenance": {
+    "origin": "our_observed",
+    "values": "observed"
+   }
   },
   {
    "id": "WLD-05",
@@ -656,7 +766,11 @@
     "mirror_horse_race 18 s and 27-31 s",
     "town_button 64-65 s"
    ],
-   "applies": "universal_unless_profile"
+   "applies": "universal_unless_profile",
+   "provenance": {
+    "origin": "our_observed",
+    "values": "observed"
+   }
   },
   {
    "id": "CHR-01",
@@ -677,7 +791,11 @@
    "evidence": [
     "frames memory_price 20.5 s, perfect_railroads 18.2 s, second_draw 15.5 s, town_button 11.2 s, roller_coasters 5.2 s, storm_oil 10.2 s"
    ],
-   "applies": "universal_unless_profile"
+   "applies": "universal_unless_profile",
+   "provenance": {
+    "origin": "our_observed",
+    "values": "observed"
+   }
   },
   {
    "id": "CHR-02",
@@ -694,7 +812,11 @@
    "evidence": [
     "8 references"
    ],
-   "applies": "universal_unless_profile"
+   "applies": "universal_unless_profile",
+   "provenance": {
+    "origin": "our_observed",
+    "values": "observed"
+   }
   },
   {
    "id": "CHR-03",
@@ -711,7 +833,11 @@
     "memory_price 50-54 s (warm lamp on the face)",
     "second_draw 26-30 s (long shadows)"
    ],
-   "applies": "universal_unless_profile"
+   "applies": "universal_unless_profile",
+   "provenance": {
+    "origin": "our_observed",
+    "values": "observed"
+   }
   },
   {
    "id": "CHR-04",
@@ -728,7 +854,11 @@
     "storm_oil 0-18 s",
     "roller_coasters 0-9 s"
    ],
-   "applies": "universal_unless_profile"
+   "applies": "universal_unless_profile",
+   "provenance": {
+    "origin": "our_observed",
+    "values": "observed"
+   }
   },
   {
    "id": "FAC-01",
@@ -747,7 +877,11 @@
     "second_draw 8-20 s",
     "memory_price 58-63 s"
    ],
-   "applies": "universal_unless_profile"
+   "applies": "universal_unless_profile",
+   "provenance": {
+    "origin": "our_observed",
+    "values": "observed"
+   }
   },
   {
    "id": "FAC-02",
@@ -772,7 +906,11 @@
     "second_draw 15 s (sweat, yellow eyes)",
     "second_draw 19-20 s (knocked out)"
    ],
-   "applies": "universal_unless_profile"
+   "applies": "universal_unless_profile",
+   "provenance": {
+    "origin": "our_observed",
+    "values": "observed"
+   }
   },
   {
    "id": "PRP-01",
@@ -792,7 +930,11 @@
     "mirror_horse_race 4-7 s",
     "roller_coasters 10-15 s"
    ],
-   "applies": "universal_unless_profile"
+   "applies": "universal_unless_profile",
+   "provenance": {
+    "origin": "our_observed",
+    "values": "observed"
+   }
   },
   {
    "id": "PRP-02",
@@ -809,7 +951,11 @@
     "pirate_cannonballs 15-18 s",
     "mirror_horse_race 4 s"
    ],
-   "applies": "universal_unless_profile"
+   "applies": "universal_unless_profile",
+   "provenance": {
+    "origin": "our_observed",
+    "values": "observed"
+   }
   },
   {
    "id": "PRP-03",
@@ -826,7 +972,11 @@
     "memory_price 28-31 s",
     "memory_price 56-57 s"
    ],
-   "applies": "universal_unless_profile"
+   "applies": "universal_unless_profile",
+   "provenance": {
+    "origin": "our_observed",
+    "values": "observed"
+   }
   },
   {
    "id": "PRP-04",
@@ -843,7 +993,11 @@
     "memory_price 0-63 s",
     "town_button 0-65 s"
    ],
-   "applies": "universal_unless_profile"
+   "applies": "universal_unless_profile",
+   "provenance": {
+    "origin": "our_observed",
+    "values": "observed"
+   }
   },
   {
    "id": "PRP-05",
@@ -861,7 +1015,11 @@
     "town_button 16-20 s (ring with 23 24 25 and arcs)",
     "roller_coasters 7-8 s (blackboard)"
    ],
-   "applies": "universal_unless_profile"
+   "applies": "universal_unless_profile",
+   "provenance": {
+    "origin": "our_observed",
+    "values": "observed"
+   }
   },
   {
    "id": "FX-01",
@@ -879,7 +1037,11 @@
    "evidence": [
     "mirror_horse_race 0.4-1.5 s (piggy bank)"
    ],
-   "applies": "universal_unless_profile"
+   "applies": "universal_unless_profile",
+   "provenance": {
+    "origin": "our_observed",
+    "values": "observed"
+   }
   },
   {
    "id": "FX-02",
@@ -895,7 +1057,11 @@
    "evidence": [
     "pirate_cannonballs 6.5-8 s (ball through the hull)"
    ],
-   "applies": "universal_unless_profile"
+   "applies": "universal_unless_profile",
+   "provenance": {
+    "origin": "our_observed",
+    "values": "observed"
+   }
   },
   {
    "id": "FX-03",
@@ -912,7 +1078,11 @@
    "evidence": [
     "second_draw 13.6-16 s"
    ],
-   "applies": "universal_unless_profile"
+   "applies": "universal_unless_profile",
+   "provenance": {
+    "origin": "our_observed",
+    "values": "observed"
+   }
   },
   {
    "id": "FX-04",
@@ -928,7 +1098,11 @@
    "evidence": [
     "8 references"
    ],
-   "applies": "universal_unless_profile"
+   "applies": "universal_unless_profile",
+   "provenance": {
+    "origin": "our_observed",
+    "values": "observed"
+   }
   },
   {
    "id": "PHY-01",
@@ -947,7 +1121,11 @@
     "pirate_cannonballs 7-9 s",
     "mirror_horse_race 27-31 s"
    ],
-   "applies": "universal_unless_profile"
+   "applies": "universal_unless_profile",
+   "provenance": {
+    "origin": "our_observed",
+    "values": "observed"
+   }
   },
   {
    "id": "PHY-02",
@@ -963,7 +1141,11 @@
    "evidence": [
     "second_draw 19-20 s"
    ],
-   "applies": "universal_unless_profile"
+   "applies": "universal_unless_profile",
+   "provenance": {
+    "origin": "our_observed",
+    "values": "observed"
+   }
   },
   {
    "id": "SCR-01",
@@ -982,7 +1164,11 @@
    "evidence": [
     "8 references"
    ],
-   "applies": "universal_unless_profile"
+   "applies": "universal_unless_profile",
+   "provenance": {
+    "origin": "our_observed",
+    "values": "observed"
+   }
   },
   {
    "id": "SCR-02",
@@ -1000,7 +1186,11 @@
     "town_button",
     "mirror_horse_race"
    ],
-   "applies": "universal_unless_profile"
+   "applies": "universal_unless_profile",
+   "provenance": {
+    "origin": "our_observed",
+    "values": "observed"
+   }
   },
   {
    "id": "SCR-03",
@@ -1018,7 +1208,11 @@
     "second_draw 0 s",
     "memory_price 0 s"
    ],
-   "applies": "universal_unless_profile"
+   "applies": "universal_unless_profile",
+   "provenance": {
+    "origin": "our_observed",
+    "values": "observed"
+   }
   },
   {
    "id": "SCR-04",
@@ -1036,7 +1230,11 @@
     "memory_price",
     "town_button"
    ],
-   "applies": "universal_unless_profile"
+   "applies": "universal_unless_profile",
+   "provenance": {
+    "origin": "our_observed",
+    "values": "observed"
+   }
   },
   {
    "id": "CAP-01",
@@ -1052,7 +1250,11 @@
    "evidence": [
     "8 references"
    ],
-   "applies": "universal"
+   "applies": "universal",
+   "provenance": {
+    "origin": "our_observed",
+    "values": "observed"
+   }
   },
   {
    "id": "SND-01",
@@ -1068,7 +1270,11 @@
    "evidence": [
     "8 references, ours -13.9"
    ],
-   "applies": "universal"
+   "applies": "universal",
+   "provenance": {
+    "origin": "our_measured",
+    "values": "measured"
+   }
   },
   {
    "id": "CUT-02",
@@ -1102,7 +1308,11 @@
     "hand check: scene_truth.json"
    ],
    "ours_now": "28 per minute, all hard cuts",
-   "applies": "universal"
+   "applies": "universal",
+   "provenance": {
+    "origin": "our_measured",
+    "values": "measured"
+   }
   },
   {
    "id": "CUT-03",
@@ -1127,7 +1337,11 @@
     "claude_bomb_v21 against 17 references"
    ],
    "ours_now": "25 per minute inside scenes",
-   "applies": "universal"
+   "applies": "universal",
+   "provenance": {
+    "origin": "our_measured",
+    "values": "measured"
+   }
   },
   {
    "id": "TRN-05",
@@ -1155,7 +1369,11 @@
     "dissolve_per_min_range": "3.8-14.7 per video",
     "camera_move_share": 0.22
    },
-   "applies": "universal"
+   "applies": "universal",
+   "provenance": {
+    "origin": "our_measured",
+    "values": "measured"
+   }
   },
   {
    "id": "CAM-13",
@@ -1184,7 +1402,11 @@
     "random_numbers 15-23 s (clerk beside the elevator panel)",
     "vp4 3-8 s (clerk and customer at the counter)"
    ],
-   "applies": "universal"
+   "applies": "universal",
+   "provenance": {
+    "origin": "our_observed",
+    "values": "observed"
+   }
   },
   {
    "id": "WLD-06",
@@ -1205,7 +1427,11 @@
     "idea_zone 13-18 s (see-through body, brain, nerves)",
     "idea_zone 24-27 s (sleep depth as underwater gauge)"
    ],
-   "applies": "universal_unless_profile"
+   "applies": "universal_unless_profile",
+   "provenance": {
+    "origin": "our_observed",
+    "values": "observed"
+   }
   },
   {
    "id": "PRF-01",
@@ -1233,7 +1459,11 @@
    "evidence": [
     "kit/reference/knowledge/topic_profiles.json (per video values)"
    ],
-   "applies": "universal_unless_profile"
+   "applies": "universal_unless_profile",
+   "provenance": {
+    "origin": "our_measured",
+    "values": "measured"
+   }
   },
   {
    "id": "PRF-02",
@@ -1257,7 +1487,11 @@
    "evidence": [
     "topic_profiles.json; the grouping into topics is my label, group sizes 3 to 6"
    ],
-   "applies": "topic_dependent (preliminary: groups of 1-6 videos)"
+   "applies": "topic_dependent (preliminary: groups of 1-6 videos)",
+   "provenance": {
+    "origin": "our_inferred",
+    "values": "inferred"
+   }
   },
   {
    "id": "PRF-03",
@@ -1281,7 +1515,11 @@
     "vp3 2-5 s (neon night street)",
     "grave_bell 10-20 s (blue snow night, warm lit windows)"
    ],
-   "applies": "topic_dependent (preliminary: groups of 1-6 videos)"
+   "applies": "topic_dependent (preliminary: groups of 1-6 videos)",
+   "provenance": {
+    "origin": "our_inferred",
+    "values": "inferred"
+   }
   },
   {
    "id": "PRF-04",
@@ -1304,7 +1542,11 @@
     "random_numbers 14-24 s (elevator panel of numbered lights)",
     "vp3 5-8 s (endless row of machines in perspective)"
    ],
-   "applies": "topic_dependent (preliminary: groups of 1-6 videos)"
+   "applies": "topic_dependent (preliminary: groups of 1-6 videos)",
+   "provenance": {
+    "origin": "our_observed",
+    "values": "observed"
+   }
   },
   {
    "id": "TRN-06",
@@ -1335,7 +1577,11 @@
     "pirate_cannonballs 23.05 s (fly into the furnace)",
     "perfect_railroads 21.3-21.7 s (whip pan then dissolve)"
    ],
-   "ours_now": "100 % hard cut"
+   "ours_now": "100 % hard cut",
+   "provenance": {
+    "origin": "our_measured",
+    "values": "measured"
+   }
   },
   {
    "id": "CAM-14",
@@ -1377,7 +1623,11 @@
     "259 flights in 17 references"
    ],
    "ours_now": "ramp-up 0.17 s, ramp-down 0.4 s, peak 45 % per second. Close, a little too abrupt at the start.",
-   "unit_note": "speed here = median pixel motion of the whole frame (ref_look.py); CAM-02 peak speed is the edge motion of the fitted camera model, so its numbers are larger."
+   "unit_note": "speed here = median pixel motion of the whole frame (ref_look.py); CAM-02 peak speed is the edge motion of the fitted camera model, so its numbers are larger.",
+   "provenance": {
+    "origin": "our_measured",
+    "values": "measured"
+   }
   },
   {
    "id": "CAM-15",
@@ -1403,7 +1653,11 @@
    "evidence": [
     "17 references (kit/reference/look/_summary.json)"
    ],
-   "ours_now": "edge 0.82 of centre, soft edges in 20 % of frames"
+   "ours_now": "edge 0.82 of centre, soft edges in 20 % of frames",
+   "provenance": {
+    "origin": "our_measured",
+    "values": "measured"
+   }
   },
   {
    "id": "CHR-05",
@@ -1436,7 +1690,11 @@
    "evidence": [
     "17 references, sampled every 0.5 s (kit/reference/look/*.json)"
    ],
-   "ours_now": "head 13 % of frame height, line width 0.53 % of frame width"
+   "ours_now": "head 13 % of frame height, line width 0.53 % of frame width",
+   "provenance": {
+    "origin": "our_measured",
+    "values": "measured"
+   }
   },
   {
    "id": "COL-02",
@@ -1464,7 +1722,11 @@
    "evidence": [
     "17 references"
    ],
-   "ours_now": "flat 0.60, gradient 0.056"
+   "ours_now": "flat 0.60, gradient 0.056",
+   "provenance": {
+    "origin": "our_measured",
+    "values": "measured"
+   }
   },
   {
    "id": "COL-03",
@@ -1488,7 +1750,11 @@
    "evidence": [
     "kit/reference/look/*.json palette8 per video"
    ],
-   "ours_now": "warm 0.29, cool 0.27: only 56 % saturated colour"
+   "ours_now": "warm 0.29, cool 0.27: only 56 % saturated colour",
+   "provenance": {
+    "origin": "our_measured",
+    "values": "measured"
+   }
   },
   {
    "id": "CAP-02",
@@ -1518,7 +1784,11 @@
    "evidence": [
     "17 references"
    ],
-   "ours_now": "our engine draws no captions"
+   "ours_now": "our engine draws no captions",
+   "provenance": {
+    "origin": "our_measured",
+    "values": "measured"
+   }
   },
   {
    "id": "FX-05",
@@ -1545,7 +1815,11 @@
    "evidence": [
     "17 references (estimate)"
    ],
-   "ours_now": "35 per minute, decay 0.03 s"
+   "ours_now": "35 per minute, decay 0.03 s",
+   "provenance": {
+    "origin": "our_inferred",
+    "values": "inferred"
+   }
   },
   {
    "id": "SND-02",
@@ -1568,7 +1842,379 @@
    "evidence": [
     "17 references, ref_look.py sound section"
    ],
-   "limits": "mixed audio only"
+   "limits": "mixed audio only",
+   "provenance": {
+    "origin": "our_measured",
+    "values": "measured"
+   }
+  },
+  {
+   "id": "SCR-05",
+   "area": "script",
+   "tags": [
+    "any"
+   ],
+   "conf": "proposed",
+   "rule": "Choose the picture from what the WORDS are doing (their intent), not only from the nouns they name.",
+   "do": [
+    "Give every beat one intent: hook, introduce_place_or_time, introduce_character, explain_mechanism, give_number_or_quantity, physical_action, create_suspense, surprising_reveal, emotional_reaction, dialogue_or_argument, time_passes, comedic_beat, crowd_or_scale, summarize_or_conclude.",
+    "Pick the shot recipe (S01-S08) and the camera purpose from the intent, the assets that exist and the previous beat. Several recipes are allowed per intent (see intent_map); there is no fixed order of shots.",
+    "A number, a mechanism, a reaction and a place reveal must not get the same kind of shot."
+   ],
+   "why": "SCR-02 says show every noun; this says HOW to show it depends on what the sentence does.",
+   "evidence": [
+    "chatgpt script_to_shot_mapping (9 intents), merged with our situations (hook, time passes, comedy, crowd, dialogue)"
+   ],
+   "ours_now": "Gemini shot notes pick a camera move per shot but have no intent field; the PLAYBOOK situations are used only by Gemini reading prose.",
+   "applies": "universal",
+   "provenance": {
+    "origin": "chatgpt",
+    "values": "designed"
+   },
+   "reconciled_with": "SCR-02, SCR-04, PRF-04 and the situation recipes stay as they are; intent_map links them."
+  },
+  {
+   "id": "CAM-16",
+   "area": "camera",
+   "tags": [
+    "any"
+   ],
+   "conf": "proposed",
+   "rule": "Every camera choice has a written purpose, and a HOLD is a choice too. There is no default of moving and no default of holding.",
+   "do": [
+    "Write the purpose first: establish, reveal, follow, inspect, emphasize, compare, land_on_prop, power_angle, hold_for_performance, carry_to_next_place, impact.",
+    "Then pick the move (or static). A move needs a start view, an end view, a duration and an ease; a hold needs a reason (CAM-13).",
+    "Keep the mix of CAM-01 (flights 27-54 % of the time) as the reference; do not force more stillness or more motion than the story needs."
+   ],
+   "why": "ChatGPT said hold-first; our measurements show 15-24 flights per minute. Purpose-first satisfies both: the mix comes out of the purposes.",
+   "evidence": [
+    "chatgpt U06, U07, U12",
+    "our CAM-01, CAM-13 (measured mix)"
+   ],
+   "ours_now": "camera keys in story.js have no purpose; Gemini writes a free-text camera line per shot.",
+   "applies": "universal",
+   "provenance": {
+    "origin": "chatgpt",
+    "values": "designed"
+   },
+   "reconciled_with": "CAM-01 (measured mix) stays the numeric reference. CAM-13 lists when not to move."
+  },
+  {
+   "id": "CMP-01",
+   "area": "composition",
+   "tags": [
+    "any"
+   ],
+   "conf": "proposed",
+   "rule": "Declare the composition of every shot: one primary subject, secondary context, a focal point, and a caption-clear zone.",
+   "do": [
+    "Primary subject and hero object must be readable at phone size (about 360 px wide).",
+    "Keep key content out of the caption band: captions sit at about 70 % of frame height (CAP-01), so the default clear zone is x 0.1-0.9, y 0.62-0.78.",
+    "Put the focal point where the viewer should look after the camera lands (rule of thirds is a start, not a rule)."
+   ],
+   "why": "The planner and the preview check need a place to measure from.",
+   "evidence": [
+    "chatgpt U08"
+   ],
+   "ours_now": "none: composition is implicit in camera keys; nothing declares or checks it.",
+   "applies": "universal",
+   "provenance": {
+    "origin": "chatgpt",
+    "values": "designed"
+   },
+   "reconciled_with": "CONTRADICTION: ChatGPT proposed the caption safe zone y 0.78-0.95. Our measured caption band is about 70 % (CAP-01, CAP-02). We keep ours."
+  },
+  {
+   "id": "CON-01",
+   "area": "continuity",
+   "tags": [
+    "any"
+   ],
+   "conf": "proposed",
+   "rule": "Lock each character, object and place once, and keep it the same in every beat unless the script changes it.",
+   "do": [
+    "Write an identity lock per character: head shape, hat, outfit colours, skin, beard, outline weight, size.",
+    "Keep scale, screen side (who stands left or right) and position between beats of one place; change them only in a beat that lists continuity_change.",
+    "When a story changes a look on purpose (boss face turns purple, rail heats up) list it as continuity_change."
+   ],
+   "why": "Identity from headwear and clothes (CHR-02) only works if it does not drift between shots.",
+   "evidence": [
+    "chatgpt U03, U25"
+   ],
+   "ours_now": "cast is defined by Gemini in cast.js per project; nothing checks that beats keep it.",
+   "applies": "universal",
+   "provenance": {
+    "origin": "chatgpt",
+    "values": "designed"
+   },
+   "reconciled_with": "CHR-02 stays; this adds the lock and the screen-side rule."
+  },
+  {
+   "id": "ACT-01",
+   "area": "acting",
+   "tags": [
+    "any"
+   ],
+   "conf": "proposed",
+   "rule": "Play an action in order: attention (gaze), anticipation, action, contact, response, settle. Gaze leads the hand.",
+   "do": [
+    "Eyes move first to the target, then the arm, then the hand touches.",
+    "Give the body a small wind-up before a big action and a settle after it.",
+    "Keep small-talk beats quiet: blink, breath, a small gesture only when the words need it.",
+    "Our kit has one face name per beat and fixed arm poses (no separate brow, pupil, mouth channels): use the closest face and pose, and say so."
+   ],
+   "why": "FX-01 says anticipation, action, follow-through; this adds gaze and the contact and response steps.",
+   "evidence": [
+    "chatgpt U04, U05"
+   ],
+   "ours_now": "idle() and blinkAt() exist in kit/engine/motion.js; M.anticip exists; no gaze-leads-hand logic; one face channel only.",
+   "applies": "universal",
+   "provenance": {
+    "origin": "chatgpt",
+    "values": "designed"
+   },
+   "reconciled_with": "Extends FX-01. Limited by roman.js: no separate brow/pupil/mouth channels."
+  },
+  {
+   "id": "PHY-03",
+   "area": "physics",
+   "tags": [
+    "any"
+   ],
+   "conf": "proposed",
+   "rule": "Show a physical event as a cause chain: start state, force, path, contact, response, settle. Add the secondary effects that belong to it.",
+   "do": [
+    "Name the contact target. Add only fitting effects: debris, dust, smoke, sparks, splash, recoil, a camera kick (FX-05), a sound (SND-03).",
+    "Time them: effects start on the contact frame, not before."
+   ],
+   "why": "PHY-01 says things have weight; this makes the chain checkable.",
+   "evidence": [
+    "chatgpt U18, U19"
+   ],
+   "ours_now": "fx cards exist (fxDebris, fxSmoke, fxGlow in kit/engine/roman.js); chains are written by hand per scene.",
+   "applies": "universal",
+   "provenance": {
+    "origin": "chatgpt",
+    "values": "designed"
+   },
+   "reconciled_with": "Extends PHY-01, FX-02, FX-05."
+  },
+  {
+   "id": "PHY-04",
+   "area": "physics",
+   "tags": [
+    "any"
+   ],
+   "conf": "proposed",
+   "rule": "Give each kind of thing its own motion: rigid, elastic, fluid, smoke, flame, rope with lag. Do not move everything at one speed.",
+   "do": [
+    "Smoke rises and spreads, water flows in waves, flame flickers, rope lags behind its anchor, rigid things do not wobble.",
+    "Name the motion_profile of an object event in the beat plan."
+   ],
+   "why": "Uniform motion reads as fake.",
+   "evidence": [
+    "chatgpt U20"
+   ],
+   "ours_now": "fxSmoke, fxMotes, fxDebris exist; each has its own simple timing; no shared profile list.",
+   "applies": "universal",
+   "provenance": {
+    "origin": "chatgpt",
+    "values": "designed"
+   }
+  },
+  {
+   "id": "MAT-01",
+   "area": "materials",
+   "tags": [
+    "any"
+   ],
+   "conf": "proposed",
+   "rule": "Each material has its own shape and shading language (see material_recipes M01-M07).",
+   "do": [
+    "Wood: planks and seams with a grain direction. Metal: edge highlights and dark seams. Stone: block variation. Earth: layered strata and pebbles. Water: ripples and a bright glint. Foliage: clumps with value variation. Glass: reflection and a thin edge.",
+    "Choose the materials per place in the beat plan (material_ids), not per shot."
+   ],
+   "why": "Surfaces with real texture are a measured need (COL-02, WLD-02); this says which texture.",
+   "evidence": [
+    "chatgpt U14, M01-M07"
+   ],
+   "ours_now": "toonbase/paint.js and the railroads_v2 world.js have texture helpers (woodTex, sandTex, gravelTex, strataTex in mine/railroads_v2/web/main.js); no material list in the kit.",
+   "applies": "universal",
+   "provenance": {
+    "origin": "chatgpt",
+    "values": "designed"
+   },
+   "reconciled_with": "WLD-02 and COL-02 (measured) say that big surfaces are never flat; this says what each material looks like."
+  },
+  {
+   "id": "MAT-02",
+   "area": "materials",
+   "tags": [
+    "any"
+   ],
+   "conf": "proposed",
+   "rule": "Big forms first, then a few purposeful details. Do not add small noise everywhere.",
+   "do": [
+    "Silhouette and big structure must read first.",
+    "Add 3-5 details per hero object that say what it is: seams, bolts, labels, bevels, grain, wear."
+   ],
+   "why": "Detail should help the story, not hide it.",
+   "evidence": [
+    "chatgpt U15"
+   ],
+   "ours_now": "hand-built per project.",
+   "applies": "universal",
+   "provenance": {
+    "origin": "chatgpt",
+    "values": "designed"
+   },
+   "reconciled_with": "COL-02 still applies: gradient plus fine grain on every big surface (measured). MAT-02 limits the storytelling details, not the base surface."
+  },
+  {
+   "id": "LIT-05",
+   "area": "light",
+   "tags": [
+    "any"
+   ],
+   "conf": "proposed",
+   "rule": "One motivated key light direction per place, the same on people, props and ground, with contact shadows.",
+   "do": [
+    "Choose the key (sun, window, lamp) and keep its side in every shot of that place.",
+    "Soft contact shadow under every person and hero object (CHR-03)."
+   ],
+   "why": "A different light side on a character and its set breaks the cartoon world.",
+   "evidence": [
+    "chatgpt U16"
+   ],
+   "ours_now": "applyLight()/placeSun() in kit/engine/main.js give one sun per place; cards get skin tint from the light; the key side is not checked.",
+   "applies": "universal",
+   "provenance": {
+    "origin": "chatgpt",
+    "values": "designed"
+   },
+   "reconciled_with": "Extends LIT-02, LIT-03, CHR-03."
+  },
+  {
+   "id": "LIT-06",
+   "area": "light",
+   "tags": [
+    "any"
+   ],
+   "conf": "proposed",
+   "rule": "Use one practical glow, rim or spotlight to say what to look at. Do not glow everything.",
+   "do": [
+    "The glow marks the thing the words are about (hot rail, bomb timer, coin).",
+    "If everything glows, nothing is the subject."
+   ],
+   "why": "Directs attention.",
+   "evidence": [
+    "chatgpt U17"
+   ],
+   "ours_now": "fxGlow and LK.bloom-like effects exist; used by hand.",
+   "applies": "universal",
+   "provenance": {
+    "origin": "chatgpt",
+    "values": "designed"
+   },
+   "reconciled_with": "LIT-04 (light effects as scenery: bloom on lamps, windows, sun) is scenery; LIT-06 is about the subject."
+  },
+  {
+   "id": "SND-03",
+   "area": "sound",
+   "tags": [
+    "any"
+   ],
+   "conf": "proposed",
+   "rule": "Sound effects are a separate track tied to picture events. The loudest sound lands on the key action; music stays under the voice.",
+   "do": [
+    "List audio events per beat with a trigger: a word, an animation event or a transition.",
+    "Put an effect on the event frame (impact, appear, transition), not at the start of the word.",
+    "Keep the existing mix: music and effects at 50 % of the voice, loudness about -14 LUFS (SND-01)."
+   ],
+   "why": "SND-02 says do not snap scene changes to voice onsets; effects follow picture events, not voice.",
+   "evidence": [
+    "chatgpt U24; SND-01, SND-02 (measured)"
+   ],
+   "ours_now": "audio.py is written by Gemini per project from the SFX lines; mix.py does the levels.",
+   "applies": "universal",
+   "provenance": {
+    "origin": "chatgpt",
+    "values": "designed"
+   },
+   "reconciled_with": "ChatGPT audio peaks are amplitude only and unlabelled: not used as numbers."
+  },
+  {
+   "id": "QC-01",
+   "area": "qc",
+   "tags": [
+    "any"
+   ],
+   "conf": "proposed",
+   "rule": "Check before you render: make a small preview of every beat and judge it against the quality gates, then fix or reject bad beats before the full render.",
+   "do": [
+    "One low-resolution frame per beat (start, middle, end) in a contact sheet.",
+    "Run the gates Q01-Q10 (rules.json quality_gates): some are automatic, some need Gemini vision, some need a person.",
+    "Do not start a full render while a gate marked automatic fails."
+   ],
+   "why": "A full render costs minutes to hours; a preview costs seconds.",
+   "evidence": [
+    "chatgpt U26, Q01-Q10"
+   ],
+   "ours_now": "partly: tools/gen_api.py renders 3 stills per shot and asks Gemini for PASS/FAIL (Gemini projects only, does not use beats or the gates Q01-Q10). frame_qa.py, ref_measure.py compare and ref_study.py compare run only AFTER the full render.",
+   "applies": "universal",
+   "provenance": {
+    "origin": "chatgpt",
+    "values": "designed"
+   },
+   "reconciled_with": "Extends CHK-01..13 (post-render checks) with pre-render checks."
+  },
+  {
+   "id": "ADP-01",
+   "area": "adapt",
+   "tags": [
+    "any"
+   ],
+   "conf": "proposed",
+   "rule": "For a new topic keep the universal habits (PRF-01) and choose the topic things fresh: place, props, materials, light, motion.",
+   "do": [
+    "Never reuse a reference layout, prop set or shot order. Take the habit (how a reveal is built), not the picture.",
+    "Pick the topic profile (PRF-02, PRF-03) by what the story does: machine, money, mind, night."
+   ],
+   "why": "The goal is a toolkit for new topics, not a copy of 17 videos.",
+   "evidence": [
+    "chatgpt U27; our PRF-01..03"
+   ],
+   "ours_now": "tested once: Why Perfect Railroads Don't Work (railroads_v2) from words only.",
+   "applies": "universal",
+   "provenance": {
+    "origin": "chatgpt",
+    "values": "designed"
+   },
+   "reconciled_with": "Overlaps PRF-01..03; the new part is the ban on copying layouts."
+  },
+  {
+   "id": "ARC-01",
+   "area": "architecture",
+   "tags": [
+    "any"
+   ],
+   "conf": "proposed",
+   "rule": "Choose how each thing is built by what the camera does to it: people are 2D cards in a 3D world, hero objects the camera moves around are 3D, far scenery can be flat layers, effects are billboards.",
+   "do": [
+    "Orbit or close-up on it -> 3D mesh. Always front-facing -> 2D card. Far and static -> 2.5D layer. Smoke, sparks, glow -> billboard fx.",
+    "Write the representation per object in the beat plan."
+   ],
+   "why": "Keeps cost and look under control.",
+   "evidence": [
+    "chatgpt U02"
+   ],
+   "ours_now": "our kit already works this way (roman.js cards in a three.js world); the choice is made by hand.",
+   "applies": "universal",
+   "provenance": {
+    "origin": "chatgpt",
+    "values": "designed"
+   },
+   "reconciled_with": "Matches the existing kit; this is a decision guide, not a new engine."
   }
  ],
  "recipes": [
@@ -1894,6 +2540,1229 @@
    "heads small: 13 % of frame height (references 12-21 %, median 17 %) and skin-coloured, not near-white",
    "shake: 35 events per minute that die in 0.03 s (references 3-20 per minute, 0.12-0.28 s)",
    "camera ease: ramp-up 0.17 s, no long ease-out (references ramp-up 0.28 s, ramp-down 0.47 s)"
+  ]
+ },
+ "provenance_key": {
+  "origin": {
+   "our_measured": "computed by our tools from the reference videos",
+   "our_observed": "read by eye from frames by Claude",
+   "our_inferred": "reasoned by Claude",
+   "chatgpt": "proposed by the independent ChatGPT study bundle (2026-11-08)"
+  },
+  "values": {
+   "measured": "numbers in the rule were measured",
+   "observed": "times/examples were read by eye",
+   "inferred": "reasoned",
+   "designed": "starting values chosen by a person or model, not measured",
+   "none": "rule has no numbers"
+  },
+  "production_tested": "none | hand_applied (applied by hand in a project and measured) | code_tested (read by render code and measured). Details per rule: kit/reference/knowledge/traceability.json"
+ },
+ "shot_recipes": [
+  {
+   "id": "S01",
+   "name": "Establishing world",
+   "purpose": "Orient viewer to location, scale and key objects",
+   "framing": "wide or medium-wide; clear horizon / ground plane; one obvious focal point",
+   "camera_options": "hold or slow purposeful pan/dolly only if it reveals geography (starting suggestion; CAM-16 decides: a move needs a purpose, a hold needs a reason)",
+   "motion": "ambient environment motion plus subtle character action",
+   "transition_hint": "cut/dissolve/fly-through only if it conveys a location change",
+   "typical_seconds": [
+    1.5,
+    3.5
+   ],
+   "typical_seconds_status": "designed starting range from the ChatGPT bundle; our measured scene length is a median of 2.4 s with the camera and dissolves carrying changes (CUT-02), so tune per beat",
+   "fits_intents": [
+    "introduce_place_or_time",
+    "crowd_or_scale",
+    "summarize_or_conclude",
+    "time_passes"
+   ],
+   "maps_to_situations": [
+    "NEW_PLACE",
+    "CROWD",
+    "ENDING"
+   ],
+   "needs": [
+    "environment",
+    "scale anchor",
+    "one key prop"
+   ],
+   "rules": [
+    "CAM-04",
+    "WLD-01",
+    "WLD-03",
+    "CAM-16"
+   ],
+   "provenance": {
+    "origin": "chatgpt",
+    "values": "designed",
+    "production_tested": "none"
+   }
+  },
+  {
+   "id": "S02",
+   "name": "Narrator character hold",
+   "purpose": "Let the narration land while maintaining character presence",
+   "framing": "medium / medium-wide; character readable; supporting set dressing",
+   "camera_options": "locked or nearly locked (starting suggestion; CAM-16 decides: a move needs a purpose, a hold needs a reason)",
+   "motion": "blink, breath, small hand gesture or gaze shift only when motivated",
+   "transition_hint": "cut on next semantic beat",
+   "typical_seconds": [
+    1.0,
+    3.5
+   ],
+   "typical_seconds_status": "designed starting range from the ChatGPT bundle; our measured scene length is a median of 2.4 s with the camera and dissolves carrying changes (CUT-02), so tune per beat",
+   "fits_intents": [
+    "introduce_character",
+    "emotional_reaction",
+    "summarize_or_conclude"
+   ],
+   "maps_to_situations": [
+    "INTRODUCE_CHARACTER"
+   ],
+   "needs": [
+    "consistent character",
+    "role costume or accessory"
+   ],
+   "rules": [
+    "CHR-02",
+    "CAM-08",
+    "CAM-13",
+    "CON-01"
+   ],
+   "provenance": {
+    "origin": "chatgpt",
+    "values": "designed",
+    "production_tested": "none"
+   }
+  },
+  {
+   "id": "S03",
+   "name": "Object / mechanism insert",
+   "purpose": "Explain a mechanism, detail or evidence",
+   "framing": "close-up, top-down, POV or cutaway; object fills enough of frame to read",
+   "camera_options": "locked, short push or tracking move that follows the mechanism (starting suggestion; CAM-16 decides: a move needs a purpose, a hold needs a reason)",
+   "motion": "show component state changes in causal order",
+   "transition_hint": "return to wider context after explanation",
+   "typical_seconds": [
+    0.6,
+    2.0
+   ],
+   "typical_seconds_status": "designed starting range from the ChatGPT bundle; our measured scene length is a median of 2.4 s with the camera and dissolves carrying changes (CUT-02), so tune per beat",
+   "fits_intents": [
+    "explain_mechanism",
+    "give_number_or_quantity",
+    "create_suspense",
+    "hook",
+    "physical_action"
+   ],
+   "maps_to_situations": [
+    "KEY_PROP",
+    "NUMBER_DATA",
+    "HOOK"
+   ],
+   "needs": [
+    "hero object",
+    "moving part",
+    "cause and effect state"
+   ],
+   "rules": [
+    "CAM-05",
+    "PRP-01",
+    "PRP-02",
+    "PRP-03",
+    "PRF-04"
+   ],
+   "provenance": {
+    "origin": "chatgpt",
+    "values": "designed",
+    "production_tested": "none"
+   }
+  },
+  {
+   "id": "S04",
+   "name": "Character reaction close-up",
+   "purpose": "Emphasize recognition, fear, surprise, confidence or realization",
+   "framing": "head / upper body; eyebrows, pupils and mouth readable",
+   "camera_options": "cut to close-up or short push; avoid continuous generic zoom (starting suggestion; CAM-16 decides: a move needs a purpose, a hold needs a reason)",
+   "motion": "gaze, brow and mouth lead the pose; settle before next beat",
+   "transition_hint": "return to two-shot or action",
+   "typical_seconds": [
+    0.5,
+    1.5
+   ],
+   "typical_seconds_status": "designed starting range from the ChatGPT bundle; our measured scene length is a median of 2.4 s with the camera and dissolves carrying changes (CUT-02), so tune per beat",
+   "fits_intents": [
+    "emotional_reaction",
+    "hook",
+    "create_suspense",
+    "comedic_beat",
+    "dialogue_or_argument",
+    "surprising_reveal"
+   ],
+   "maps_to_situations": [
+    "EMOTION_SHIFT",
+    "COMEDY_GAG",
+    "HOOK"
+   ],
+   "needs": [
+    "face pose",
+    "trigger object"
+   ],
+   "rules": [
+    "FAC-01",
+    "FAC-02",
+    "CAM-08"
+   ],
+   "provenance": {
+    "origin": "chatgpt",
+    "values": "designed",
+    "production_tested": "none"
+   }
+  },
+  {
+   "id": "S05",
+   "name": "Scale reveal / pullback",
+   "purpose": "Reveal crowd, full machine, geography or surprising scale",
+   "framing": "start with partial/close view; end with the full subject/context visible",
+   "camera_options": "crane / dolly back / zoom only if perspective is not needed; use parallax when possible (starting suggestion; CAM-16 decides: a move needs a purpose, a hold needs a reason)",
+   "motion": "keep the focal subject anchored until reveal completes",
+   "transition_hint": "hold the revealed composition long enough to read",
+   "typical_seconds": [
+    1.0,
+    3.0
+   ],
+   "typical_seconds_status": "designed starting range from the ChatGPT bundle; our measured scene length is a median of 2.4 s with the camera and dissolves carrying changes (CUT-02), so tune per beat",
+   "fits_intents": [
+    "surprising_reveal",
+    "crowd_or_scale",
+    "introduce_place_or_time"
+   ],
+   "maps_to_situations": [
+    "NEW_PLACE",
+    "CROWD"
+   ],
+   "needs": [
+    "reveal target",
+    "before and after composition"
+   ],
+   "rules": [
+    "CAM-04",
+    "CAM-11",
+    "WLD-05",
+    "WLD-06"
+   ],
+   "provenance": {
+    "origin": "chatgpt",
+    "values": "designed",
+    "production_tested": "none"
+   }
+  },
+  {
+   "id": "S06",
+   "name": "Action demonstration",
+   "purpose": "Show how an action works and its consequence",
+   "framing": "wide enough to understand actor, prop and destination; insert details where needed",
+   "camera_options": "track/follow only if subject travels; maintain screen direction (starting suggestion; CAM-16 decides: a move needs a purpose, a hold needs a reason)",
+   "motion": "anticipation → action → contact → response → settle",
+   "transition_hint": "cut to impact or consequence only when it clarifies causality",
+   "typical_seconds": [
+    1.0,
+    3.0
+   ],
+   "typical_seconds_status": "designed starting range from the ChatGPT bundle; our measured scene length is a median of 2.4 s with the camera and dissolves carrying changes (CUT-02), so tune per beat",
+   "fits_intents": [
+    "physical_action",
+    "comedic_beat"
+   ],
+   "maps_to_situations": [
+    "ACTION_IMPACT"
+   ],
+   "needs": [
+    "actor",
+    "object",
+    "destination or impact"
+   ],
+   "rules": [
+    "FX-01",
+    "FX-02",
+    "FX-03",
+    "PHY-03",
+    "CAM-07"
+   ],
+   "provenance": {
+    "origin": "chatgpt",
+    "values": "designed",
+    "production_tested": "none"
+   }
+  },
+  {
+   "id": "S07",
+   "name": "Diagrammatic metaphor / cutaway",
+   "purpose": "Make abstract ideas visible",
+   "framing": "clean isolated diagram or transparent/cutaway body/object; simple composition",
+   "camera_options": "hold or subtle drift; avoid busy movement (starting suggestion; CAM-16 decides: a move needs a purpose, a hold needs a reason)",
+   "motion": "animate only the relevant concept (flow, balls, gauges, connections)",
+   "transition_hint": "dissolve or return to character/world",
+   "typical_seconds": [
+    1.0,
+    2.5
+   ],
+   "typical_seconds_status": "designed starting range from the ChatGPT bundle; our measured scene length is a median of 2.4 s with the camera and dissolves carrying changes (CUT-02), so tune per beat",
+   "fits_intents": [
+    "explain_mechanism",
+    "give_number_or_quantity",
+    "time_passes",
+    "create_suspense"
+   ],
+   "maps_to_situations": [
+    "EXPLAIN_SYSTEM",
+    "TIME_PASSES",
+    "NUMBER_DATA"
+   ],
+   "needs": [
+    "diagram or cutaway",
+    "legible values"
+   ],
+   "rules": [
+    "PRP-05",
+    "WLD-06",
+    "PRF-04"
+   ],
+   "provenance": {
+    "origin": "chatgpt",
+    "values": "designed",
+    "production_tested": "none"
+   }
+  },
+  {
+   "id": "S08",
+   "name": "Two-character dialogue",
+   "purpose": "Show an exchange or contrast",
+   "framing": "balanced two-shot; both faces readable; props placed between/near them",
+   "camera_options": "hold; change to close-up only when reaction matters (starting suggestion; CAM-16 decides: a move needs a purpose, a hold needs a reason)",
+   "motion": "alternating gaze, one speaker gesture, listener reaction",
+   "transition_hint": "cut when speaker/action focus changes",
+   "typical_seconds": [
+    1.0,
+    3.0
+   ],
+   "typical_seconds_status": "designed starting range from the ChatGPT bundle; our measured scene length is a median of 2.4 s with the camera and dissolves carrying changes (CUT-02), so tune per beat",
+   "fits_intents": [
+    "dialogue_or_argument",
+    "emotional_reaction"
+   ],
+   "maps_to_situations": [
+    "DIALOGUE"
+   ],
+   "needs": [
+    "two characters",
+    "reaction face"
+   ],
+   "rules": [
+    "CAM-08",
+    "CAM-13",
+    "CON-01"
+   ],
+   "provenance": {
+    "origin": "chatgpt",
+    "values": "designed",
+    "production_tested": "none"
+   }
+  }
+ ],
+ "intent_map": {
+  "hook": {
+   "required_visuals": "First 2-3 s: a reacting face or the hero object in frame, first flight inside 1 s.",
+   "candidate_recipes": [
+    "S04",
+    "S03",
+    "S05"
+   ],
+   "rules": [
+    "SCR-03",
+    "CAM-04",
+    "CAM-02"
+   ],
+   "note": "candidates, not a sequence: the planner scores them against assets, the previous beat and CAM-10 (vary the moves)"
+  },
+  "introduce_place_or_time": {
+   "required_visuals": "Environment, a scale anchor and one key prop.",
+   "candidate_recipes": [
+    "S01",
+    "S05"
+   ],
+   "rules": [
+    "CAM-04",
+    "WLD-01",
+    "WLD-03"
+   ],
+   "note": "candidates, not a sequence: the planner scores them against assets, the previous beat and CAM-10 (vary the moves)"
+  },
+  "introduce_character": {
+   "required_visuals": "The character readable by hat and clothes, expression first.",
+   "candidate_recipes": [
+    "S02",
+    "S04"
+   ],
+   "rules": [
+    "CHR-02",
+    "FAC-01",
+    "CAM-08"
+   ],
+   "note": "candidates, not a sequence: the planner scores them against assets, the previous beat and CAM-10 (vary the moves)"
+  },
+  "explain_mechanism": {
+   "required_visuals": "The hero object, its moving part and the cause and effect state.",
+   "candidate_recipes": [
+    "S03",
+    "S07",
+    "S06"
+   ],
+   "rules": [
+    "PRP-05",
+    "WLD-06",
+    "CAM-05"
+   ],
+   "note": "candidates, not a sequence: the planner scores them against assets, the previous beat and CAM-10 (vary the moves)"
+  },
+  "give_number_or_quantity": {
+   "required_visuals": "A large legible value on a prop plus context for scale.",
+   "candidate_recipes": [
+    "S03",
+    "S07"
+   ],
+   "rules": [
+    "PRF-04",
+    "PRP-01",
+    "PRP-03",
+    "CAM-05"
+   ],
+   "note": "candidates, not a sequence: the planner scores them against assets, the previous beat and CAM-10 (vary the moves)"
+  },
+  "physical_action": {
+   "required_visuals": "Actor, object and the destination or impact.",
+   "candidate_recipes": [
+    "S06",
+    "S03"
+   ],
+   "rules": [
+    "PHY-03",
+    "FX-01",
+    "FX-02",
+    "CAM-07"
+   ],
+   "note": "candidates, not a sequence: the planner scores them against assets, the previous beat and CAM-10 (vary the moves)"
+  },
+  "create_suspense": {
+   "required_visuals": "One clear focal point, controlled information, a slow creep or a hold.",
+   "candidate_recipes": [
+    "S03",
+    "S04",
+    "S07"
+   ],
+   "rules": [
+    "CAM-13",
+    "CAM-06",
+    "LIT-06"
+   ],
+   "note": "candidates, not a sequence: the planner scores them against assets, the previous beat and CAM-10 (vary the moves)"
+  },
+  "surprising_reveal": {
+   "required_visuals": "Before and after composition: start tight or on a reaction, widen to the truth.",
+   "candidate_recipes": [
+    "S05",
+    "S04"
+   ],
+   "rules": [
+    "CAM-04",
+    "CAM-11"
+   ],
+   "note": "candidates, not a sequence: the planner scores them against assets, the previous beat and CAM-10 (vary the moves)"
+  },
+  "emotional_reaction": {
+   "required_visuals": "Face pose plus the trigger object.",
+   "candidate_recipes": [
+    "S04",
+    "S02"
+   ],
+   "rules": [
+    "FAC-01",
+    "FAC-02",
+    "CAM-08"
+   ],
+   "note": "candidates, not a sequence: the planner scores them against assets, the previous beat and CAM-10 (vary the moves)"
+  },
+  "dialogue_or_argument": {
+   "required_visuals": "Two characters, reaction faces, held camera.",
+   "candidate_recipes": [
+    "S08",
+    "S04"
+   ],
+   "rules": [
+    "CAM-08",
+    "CAM-13",
+    "CON-01"
+   ],
+   "note": "candidates, not a sequence: the planner scores them against assets, the previous beat and CAM-10 (vary the moves)"
+  },
+  "time_passes": {
+   "required_visuals": "A clock, calendar, season or light change; a dissolve.",
+   "candidate_recipes": [
+    "S07",
+    "S01"
+   ],
+   "rules": [
+    "TRN-02",
+    "PRP-03",
+    "LIT-03"
+   ],
+   "note": "candidates, not a sequence: the planner scores them against assets, the previous beat and CAM-10 (vary the moves)"
+  },
+  "comedic_beat": {
+   "required_visuals": "Land a hard beat, then the gag picture with a small motion.",
+   "candidate_recipes": [
+    "S04",
+    "S06"
+   ],
+   "rules": [
+    "PHY-02",
+    "FAC-02"
+   ],
+   "note": "candidates, not a sequence: the planner scores them against assets, the previous beat and CAM-10 (vary the moves)"
+  },
+  "crowd_or_scale": {
+   "required_visuals": "Hundreds of tiny varied people or a huge object against a person.",
+   "candidate_recipes": [
+    "S05",
+    "S01"
+   ],
+   "rules": [
+    "WLD-05",
+    "CAM-11"
+   ],
+   "note": "candidates, not a sequence: the planner scores them against assets, the previous beat and CAM-10 (vary the moves)"
+  },
+  "summarize_or_conclude": {
+   "required_visuals": "Return to the first place or object, changed.",
+   "candidate_recipes": [
+    "S01",
+    "S02",
+    "S05"
+   ],
+   "rules": [
+    "END-01"
+   ],
+   "note": "candidates, not a sequence: the planner scores them against assets, the previous beat and CAM-10 (vary the moves)"
+  }
+ },
+ "material_recipes": [
+  {
+   "id": "M01",
+   "material": "painted_wood",
+   "shape_language": "planks, beams, posts, boards with clear seams and slightly softened edges",
+   "surface": "subtle grain direction, value variation, occasional knots/wear; do not over-noise",
+   "lighting": "broad warm highlight and soft contact shadow",
+   "use_cases": [
+    "decks",
+    "doors",
+    "furniture",
+    "counters",
+    "railway sleepers"
+   ],
+   "status": "production recipe inferred from visible stylized wood surfaces",
+   "provenance": {
+    "origin": "chatgpt",
+    "values": "designed",
+    "production_tested": "none"
+   },
+   "note": "shape-and-shading checklist inferred by ChatGPT from stylized surfaces; not measured"
+  },
+  {
+   "id": "M02",
+   "material": "painted_metal",
+   "shape_language": "simple bevelled plates, rims, bolts, hinges, rods and cylindrical forms",
+   "surface": "clean base colour, edge highlight, controlled roughness and small scratches",
+   "lighting": "directional specular highlight; stronger rim on round objects",
+   "use_cases": [
+    "cannons",
+    "machines",
+    "switches",
+    "rails",
+    "tools"
+   ],
+   "status": "production recipe",
+   "provenance": {
+    "origin": "chatgpt",
+    "values": "designed",
+    "production_tested": "none"
+   },
+   "note": "shape-and-shading checklist inferred by ChatGPT from stylized surfaces; not measured"
+  },
+  {
+   "id": "M03",
+   "material": "stone_brick_masonry",
+   "shape_language": "large readable blocks, irregular joints, bevelled corners",
+   "surface": "few hue/value shifts per block, restrained noise and shadow in seams",
+   "lighting": "directional light to reveal block depth",
+   "use_cases": [
+    "walls",
+    "castles",
+    "fireplaces",
+    "town buildings"
+   ],
+   "status": "production recipe",
+   "provenance": {
+    "origin": "chatgpt",
+    "values": "designed",
+    "production_tested": "none"
+   },
+   "note": "shape-and-shading checklist inferred by ChatGPT from stylized surfaces; not measured"
+  },
+  {
+   "id": "M04",
+   "material": "earth_sand_rock",
+   "shape_language": "layered ground planes, clumps, stones and uneven edges",
+   "surface": "clustered colour patches, sparse pebbles, broad value variation",
+   "lighting": "warm directional sunlight and contact shadows",
+   "use_cases": [
+    "deserts",
+    "tracks",
+    "shorelines",
+    "camps"
+   ],
+   "status": "production recipe",
+   "provenance": {
+    "origin": "chatgpt",
+    "values": "designed",
+    "production_tested": "none"
+   },
+   "note": "shape-and-shading checklist inferred by ChatGPT from stylized surfaces; not measured"
+  },
+  {
+   "id": "M05",
+   "material": "water",
+   "shape_language": "large coherent planes with wave silhouettes, reflections and foam accents",
+   "surface": "directional ripple bands; highlights follow wave direction; avoid random white noise",
+   "lighting": "environment reflection, blue/cyan palette shifts and brighter glints",
+   "use_cases": [
+    "sea",
+    "harbour",
+    "storm",
+    "pools"
+   ],
+   "status": "production recipe",
+   "provenance": {
+    "origin": "chatgpt",
+    "values": "designed",
+    "production_tested": "none"
+   },
+   "note": "shape-and-shading checklist inferred by ChatGPT from stylized surfaces; not measured"
+  },
+  {
+   "id": "M06",
+   "material": "foliage_grass",
+   "shape_language": "clustered leaf/grass silhouettes; vary scale and density by depth",
+   "surface": "controlled hue/value variation and layered shadow patches",
+   "lighting": "light through canopy, not uniform green fill",
+   "use_cases": [
+    "forest",
+    "park",
+    "field"
+   ],
+   "status": "production recipe",
+   "provenance": {
+    "origin": "chatgpt",
+    "values": "designed",
+    "production_tested": "none"
+   },
+   "note": "shape-and-shading checklist inferred by ChatGPT from stylized surfaces; not measured"
+  },
+  {
+   "id": "M07",
+   "material": "glass",
+   "shape_language": "simple transparent planes, bevels and clear frame edges",
+   "surface": "selective reflections/highlights; keep contents readable",
+   "lighting": "bright edge glints and restrained transparency",
+   "use_cases": [
+    "windows",
+    "mirrors",
+    "display cases",
+    "lenses"
+   ],
+   "status": "production recipe",
+   "provenance": {
+    "origin": "chatgpt",
+    "values": "designed",
+    "production_tested": "none"
+   },
+   "note": "shape-and-shading checklist inferred by ChatGPT from stylized surfaces; not measured"
+  }
+ ],
+ "lighting_profiles": [
+  {
+   "id": "L01",
+   "name": "warm_interior",
+   "palette": "amber, ochre, warm cream, wood brown; controlled saturated accents",
+   "key": "motivated lamp/window key",
+   "fill": "moderate, keep face readable",
+   "shadow": "soft but directional contact shadows",
+   "use_for": [
+    "shops",
+    "workshops",
+    "cabins",
+    "historical interiors"
+   ],
+   "provenance": {
+    "origin": "chatgpt",
+    "values": "designed",
+    "production_tested": "none"
+   },
+   "kit_light_presets": "our kit presets are day, dawn, golden, night, indoor (FORMAT.md section 6); map a profile to the nearest preset"
+  },
+  {
+   "id": "L02",
+   "name": "bright_daylight",
+   "palette": "clear sky blue, green, warm earth, high-value character heads",
+   "key": "broad directional sun",
+   "fill": "sky fill",
+   "shadow": "visible direction and ground contact",
+   "use_for": [
+    "towns",
+    "fields",
+    "railways",
+    "coaster parks"
+   ],
+   "provenance": {
+    "origin": "chatgpt",
+    "values": "designed",
+    "production_tested": "none"
+   },
+   "kit_light_presets": "our kit presets are day, dawn, golden, night, indoor (FORMAT.md section 6); map a profile to the nearest preset"
+  },
+  {
+   "id": "L03",
+   "name": "cool_night_storm",
+   "palette": "deep blue, indigo, violet, teal with warm practical lights",
+   "key": "moon/sky or motivated lantern",
+   "fill": "low; preserve character silhouette",
+   "shadow": "stronger contrast and selective rim",
+   "use_for": [
+    "night streets",
+    "ships",
+    "graveyard",
+    "storms"
+   ],
+   "provenance": {
+    "origin": "chatgpt",
+    "values": "designed",
+    "production_tested": "none"
+   },
+   "kit_light_presets": "our kit presets are day, dawn, golden, night, indoor (FORMAT.md section 6); map a profile to the nearest preset"
+  },
+  {
+   "id": "L04",
+   "name": "dramatic_hero_prop",
+   "palette": "restrained environment plus warm/cool accent on hero object",
+   "key": "spotlight, practical glow or emissive source",
+   "fill": "low-to-moderate",
+   "shadow": "object contact and local occlusion",
+   "use_for": [
+    "machines",
+    "gauges",
+    "cannonballs",
+    "important buttons"
+   ],
+   "provenance": {
+    "origin": "chatgpt",
+    "values": "designed",
+    "production_tested": "none"
+   },
+   "kit_light_presets": "our kit presets are day, dawn, golden, night, indoor (FORMAT.md section 6); map a profile to the nearest preset"
+  }
+ ],
+ "quality_gates": [
+  {
+   "id": "Q01",
+   "check": "Character identity",
+   "pass_condition": "Head proportions, face placement, costume, outline and accessories remain consistent across planned shots.",
+   "checks": [
+    {
+     "what": "character ids, outfit, hat and identity_lock are the same in every beat",
+     "class": "automatic",
+     "implemented_in": "validate_beats.py (implemented)"
+    },
+    {
+     "what": "head, face, costume look the same across the preview frames",
+     "class": "ai_assisted",
+     "implemented_in": "not implemented (step 2)"
+    },
+    {
+     "what": "final approval of the look",
+     "class": "human",
+     "implemented_in": "-"
+    }
+   ],
+   "provenance": {
+    "origin": "chatgpt",
+    "values": "designed",
+    "production_tested": "none"
+   }
+  },
+  {
+   "id": "Q02",
+   "check": "Composition",
+   "pass_condition": "One primary focal subject; key action and hero object readable at phone scale; caption safe zone does not obscure critical content.",
+   "checks": [
+    {
+     "what": "the focal point is not inside the caption clear zone (warning); the zone defaults to the measured caption band",
+     "class": "automatic",
+     "implemented_in": "validate_beats.py (implemented)"
+    },
+    {
+     "what": "hero object and action readable at phone size in the preview frames",
+     "class": "ai_assisted",
+     "implemented_in": "existing, partly: tools/gen_api.py shot phase (Gemini PASS/FAIL on 3 stills per shot against MUST SEE / MUST NOT, Gemini projects only); not run on beats; accuracy untested"
+    },
+    {
+     "what": "does the picture say what the words say",
+     "class": "human",
+     "implemented_in": "-"
+    }
+   ],
+   "provenance": {
+    "origin": "chatgpt",
+    "values": "designed",
+    "production_tested": "none"
+   }
+  },
+  {
+   "id": "Q03",
+   "check": "Camera intent",
+   "pass_condition": "Every non-static move has a written purpose, target, direction, duration and easing. HOLD is allowed.",
+   "checks": [
+    {
+     "what": "every beat has a camera purpose and mode; a move has duration, ease and from/to; a hold has a rationale",
+     "class": "automatic",
+     "implemented_in": "validate_beats.py (implemented)"
+    },
+    {
+     "what": "the move helps the story",
+     "class": "human",
+     "implemented_in": "-"
+    }
+   ],
+   "provenance": {
+    "origin": "chatgpt",
+    "values": "designed",
+    "production_tested": "none"
+   }
+  },
+  {
+   "id": "Q04",
+   "check": "Narration match",
+   "pass_condition": "Every sentence/beat has an explicit visual purpose and subject; no generic filler shots.",
+   "checks": [
+    {
+     "what": "beat words joined equal the narration; word ranges cover all words in order; beat times follow the word times",
+     "class": "automatic",
+     "implemented_in": "validate_beats.py (implemented); make_notes.py checks the words for the shot notes"
+    },
+    {
+     "what": "each named noun is visible within 0.3 s of its word (CHK-07)",
+     "class": "ai_assisted",
+     "implemented_in": "existing, partly: tools/gen_api.py shot phase (Gemini PASS/FAIL on 3 stills per shot against MUST SEE / MUST NOT, Gemini projects only); not run on beats; accuracy untested"
+    }
+   ],
+   "provenance": {
+    "origin": "chatgpt",
+    "values": "designed",
+    "production_tested": "none"
+   }
+  },
+  {
+   "id": "Q05",
+   "check": "Physics causality",
+   "pass_condition": "Object has initial state, action/force, trajectory, contact/response and settled state; no teleporting or weightless motion.",
+   "checks": [
+    {
+     "what": "physical events name a contact target and fitting secondary effects",
+     "class": "automatic",
+     "implemented_in": "validate_beats.py (implemented, warnings)"
+    },
+    {
+     "what": "the motion looks causal and has weight",
+     "class": "human",
+     "implemented_in": "-"
+    }
+   ],
+   "provenance": {
+    "origin": "chatgpt",
+    "values": "designed",
+    "production_tested": "none"
+   }
+  },
+  {
+   "id": "Q06",
+   "check": "Environment depth",
+   "pass_condition": "Foreground/midground/background, scale cues, contact shadows and perspective relationships are present where relevant.",
+   "checks": [
+    {
+     "what": "every environment declares foreground, midground, background",
+     "class": "automatic",
+     "implemented_in": "validate_beats.py (implemented, warnings)"
+    },
+    {
+     "what": "parallax and soft-edge share on rendered frames",
+     "class": "automatic",
+     "implemented_in": "existing, after rendering: kit/tools/ref_study.py compare, ref_look.py"
+    }
+   ],
+   "provenance": {
+    "origin": "chatgpt",
+    "values": "designed",
+    "production_tested": "none"
+   }
+  },
+  {
+   "id": "Q07",
+   "check": "Material readability",
+   "pass_condition": "Wood/metal/stone/water/cloth/glass read differently by geometry and shading, not colour alone.",
+   "checks": [
+    {
+     "what": "every declared material id exists in material_recipes",
+     "class": "automatic",
+     "implemented_in": "validate_beats.py (implemented, warnings)"
+    },
+    {
+     "what": "the surface reads as that material in the preview",
+     "class": "ai_assisted",
+     "implemented_in": "existing, partly: tools/gen_api.py shot phase (Gemini PASS/FAIL on 3 stills per shot against MUST SEE / MUST NOT, Gemini projects only); not run on beats; accuracy untested"
+    }
+   ],
+   "provenance": {
+    "origin": "chatgpt",
+    "values": "designed",
+    "production_tested": "none"
+   }
+  },
+  {
+   "id": "Q08",
+   "check": "Edit purpose",
+   "pass_condition": "Cuts and transitions correspond to semantic changes; adjacent shots do not repeat the same information.",
+   "checks": [
+    {
+     "what": "every beat has a transition type and reason (frames for dissolve, fly-through, flash); hard cuts at most 45 % of scene changes (CHK-11) and at least one dissolve (warnings)",
+     "class": "automatic",
+     "implemented_in": "validate_beats.py (implemented, warnings)"
+    },
+    {
+     "what": "each cut is on a meaning beat",
+     "class": "human",
+     "implemented_in": "-"
+    }
+   ],
+   "provenance": {
+    "origin": "chatgpt",
+    "values": "designed",
+    "production_tested": "none"
+   }
+  },
+  {
+   "id": "Q09",
+   "check": "Audio events",
+   "pass_condition": "SFX are linked to named visual events, and narration remains intelligible over music.",
+   "checks": [
+    {
+     "what": "audio events have a valid trigger and fall inside the beat; word triggers point at real words",
+     "class": "automatic",
+     "implemented_in": "validate_beats.py (implemented)"
+    },
+    {
+     "what": "mix level and loudness",
+     "class": "automatic",
+     "implemented_in": "existing, after rendering: kit/tools/mix.py, finish.sh"
+    },
+    {
+     "what": "sound quality and taste",
+     "class": "human",
+     "implemented_in": "-"
+    }
+   ],
+   "provenance": {
+    "origin": "chatgpt",
+    "values": "designed",
+    "production_tested": "none"
+   }
+  },
+  {
+   "id": "Q10",
+   "check": "Render preflight",
+   "pass_condition": "Low-resolution animatic and contact sheet reviewed before a full-resolution render.",
+   "checks": [
+    {
+     "what": "all ids resolve; every required asset is declared; beats cover the whole video without gaps or overlaps",
+     "class": "automatic",
+     "implemented_in": "validate_beats.py (implemented)"
+    },
+    {
+     "what": "a build check of the real code (assets render, no errors)",
+     "class": "automatic",
+     "implemented_in": "existing: tools/gen_api.py asset phase (each builder rendered alone, size and look checked by Gemini; Gemini projects only)"
+    }
+   ],
+   "provenance": {
+    "origin": "chatgpt",
+    "values": "designed",
+    "production_tested": "none"
+   }
+  }
+ ],
+ "quality_gate_classes": {
+  "automatic": "a program decides pass or fail from the plan or from rendered frames",
+  "ai_assisted": "Gemini (vision) looks at preview frames and says pass or fail with a reason; it can be wrong, so its fails are shown to a person",
+  "human": "only a person can decide"
+ },
+ "merge_ledger": {
+  "source": "STICKMAN_REFERENCE_STUDY_BUNDLE.zip (ChatGPT, 2026-11-08); not stored in this public repo",
+  "rule": "only new knowledge was added; no existing measured value was changed or replaced by a coarser one",
+  "entries": [
+   {
+    "source_id": "U01",
+    "status": "duplicate",
+    "target": "CHR-01, CHR-05, WLD-04",
+    "note": "cohesive illustrated look is already covered by measured character and outline rules"
+   },
+   {
+    "source_id": "U02",
+    "status": "new",
+    "target": "ARC-01",
+    "note": "decision guide for 2D / 2.5D / 3D"
+   },
+   {
+    "source_id": "U03",
+    "status": "new",
+    "target": "CON-01",
+    "note": "identity lock (merged with U25)"
+   },
+   {
+    "source_id": "U04",
+    "status": "new",
+    "target": "ACT-01",
+    "note": "action order (merged with U05); extends FX-01"
+   },
+   {
+    "source_id": "U05",
+    "status": "new",
+    "target": "ACT-01",
+    "note": "gaze leads the hand"
+   },
+   {
+    "source_id": "U06",
+    "status": "new",
+    "target": "CAM-16",
+    "note": "camera purpose first, hold allowed"
+   },
+   {
+    "source_id": "U07",
+    "status": "duplicate",
+    "target": "CAM-09, CAM-14, CAM-16",
+    "note": "eased trajectory is measured in CAM-09/CAM-14; planned start/end/duration is in the schema camera object"
+   },
+   {
+    "source_id": "U08",
+    "status": "new",
+    "target": "CMP-01",
+    "note": "composition declaration; caption zone CONTRADICTION resolved in favour of our measured 70 %"
+   },
+   {
+    "source_id": "U09",
+    "status": "duplicate",
+    "target": "CAM-04, SCR-04, recipe S01",
+    "note": "begin wide to show geography"
+   },
+   {
+    "source_id": "U10",
+    "status": "duplicate",
+    "target": "WLD-06, PRP-01, recipe S03",
+    "note": "object insert and cutaway"
+   },
+   {
+    "source_id": "U11",
+    "status": "duplicate",
+    "target": "CAM-04, recipe S05",
+    "note": "controlled reveal"
+   },
+   {
+    "source_id": "U12",
+    "status": "duplicate",
+    "target": "CAM-08, CAM-13, recipes S02 and S08",
+    "note": "stable medium shot; not adopted as a hold-first default"
+   },
+   {
+    "source_id": "U13",
+    "status": "duplicate",
+    "target": "WLD-03",
+    "note": "foreground, midground, background"
+   },
+   {
+    "source_id": "U14",
+    "status": "new",
+    "target": "MAT-01",
+    "note": "material shape and shading language"
+   },
+   {
+    "source_id": "U15",
+    "status": "new",
+    "target": "MAT-02",
+    "note": "big forms first, few purposeful details"
+   },
+   {
+    "source_id": "U16",
+    "status": "new",
+    "target": "LIT-05",
+    "note": "motivated key light"
+   },
+   {
+    "source_id": "U17",
+    "status": "new",
+    "target": "LIT-06",
+    "note": "one practical glow for attention"
+   },
+   {
+    "source_id": "U18",
+    "status": "new",
+    "target": "PHY-03",
+    "note": "cause chain"
+   },
+   {
+    "source_id": "U19",
+    "status": "new",
+    "target": "PHY-03",
+    "note": "secondary effects with contact; overlaps FX-02"
+   },
+   {
+    "source_id": "U20",
+    "status": "new",
+    "target": "PHY-04",
+    "note": "motion profiles"
+   },
+   {
+    "source_id": "U21",
+    "status": "duplicate",
+    "target": "CUT-02, TRN-01, TRN-06, SND-02",
+    "note": "cut on a meaning beat; transition reason is added to the schema"
+   },
+   {
+    "source_id": "U22",
+    "status": "duplicate",
+    "target": "CUT-03",
+    "note": "one coherent shot over repeated angle cuts"
+   },
+   {
+    "source_id": "U23",
+    "status": "duplicate",
+    "target": "CAP-02",
+    "note": "captions as a word timing track; its lower safe zone 0.78-0.95 contradicts our measured 70 %: kept ours"
+   },
+   {
+    "source_id": "U24",
+    "status": "new",
+    "target": "SND-03",
+    "note": "audio events as a track tied to picture events"
+   },
+   {
+    "source_id": "U25",
+    "status": "new",
+    "target": "CON-01",
+    "note": "continuity of identity, scale, screen direction"
+   },
+   {
+    "source_id": "U26",
+    "status": "new",
+    "target": "QC-01",
+    "note": "pre-render contact sheet and gates"
+   },
+   {
+    "source_id": "U27",
+    "status": "new",
+    "target": "ADP-01",
+    "note": "topic adaptation; overlaps PRF-01..03"
+   },
+   {
+    "source_id": "script_to_shot_mapping",
+    "status": "new",
+    "target": "SCR-05, intent_map",
+    "note": "intent to shot mapping"
+   },
+   {
+    "source_id": "shot_recipes S01-S08",
+    "status": "new",
+    "target": "shot_recipes",
+    "note": "kept as starting recipes; durations are designed, not measured"
+   },
+   {
+    "source_id": "material_recipes M01-M07",
+    "status": "new",
+    "target": "material_recipes",
+    "note": "checklist, not measured"
+   },
+   {
+    "source_id": "lighting_profiles L01-L04",
+    "status": "new",
+    "target": "lighting_profiles",
+    "note": "map to our 5 presets"
+   },
+   {
+    "source_id": "quality_gates Q01-Q10",
+    "status": "new",
+    "target": "quality_gates",
+    "note": "each check classified automatic / ai_assisted / human"
+   },
+   {
+    "source_id": "data_contract recommended_shot_object",
+    "status": "new",
+    "target": "kit/schema/beat.v1.schema.json",
+    "note": "redesigned to the kit vocabulary (frames/seconds, our faces, poses, moves, transitions), not copied"
+   },
+   {
+    "source_id": "topic_profiles_preliminary (5)",
+    "status": "not_merged",
+    "target": "-",
+    "note": "small guesses; we keep our own topic_profiles.json (measured, 17 videos)"
+   },
+   {
+    "source_id": "reference_video_metrics.csv, reference_flow_metrics.json, reference_visual_metrics.json",
+    "status": "not_merged",
+    "target": "-",
+    "note": "2 fps, 96x171 samples: coarser than our every-frame measurements; ours stay authoritative"
+   },
+   {
+    "source_id": "reference_audio_transients.json",
+    "status": "not_merged",
+    "target": "-",
+    "note": "amplitude peaks without labels"
+   }
+  ],
+  "contradictions": [
+   {
+    "topic": "caption position",
+    "chatgpt": "safe zone y 0.78-0.95",
+    "ours": "captions at about 70 % of height (CAP-01, CAP-02, measured)",
+    "decision": "keep ours"
+   },
+   {
+    "topic": "camera hold default",
+    "chatgpt": "hold unless purposeful (summary: \"holding is often better\")",
+    "ours": "flights 27-54 % of time, 15-24 per minute (CAM-01, measured)",
+    "decision": "CAM-16: purpose first, no default either way"
+   },
+   {
+    "topic": "Gemini prompt vs captions",
+    "ours": "tools/gen_api.py SYSTEM says \"no captions\" while CAP-01/CAP-02 want one-word captions",
+    "decision": "not changed in step 1 (captions are drawn by the engine copy from words, not by Gemini); noted in the traceability file"
+   }
   ]
  }
 }

@@ -1,0 +1,3372 @@
+{
+ "schema_version": "1.0.0",
+ "project": {
+  "id": "railroads_v2",
+  "title": "Why Perfect Railroads Don't Work",
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "source": "claude: annotated from mine/railroads_v2/shot_notes.txt, web/story.js (scenes, TRANS, KICKS) and the Gemini v1 plan; camera views are designed summaries of the story.js flights"
+ },
+ "narration": {
+  "text": "He sawed gaps into a railroad every thirty-nine feet. See, two companies are racing to build a railroad across a canyon so deep you can't see the bottom. And whoever finishes first gets the whole country's business. He's the youngest engineer on the job. And when his boss sees a finger wide gap between every single rail, his face turns purple. You're wrecking my railroad. But he won't close a single one. The other one lays rails end to end, perfectly smooth, and finishes first. Their trains glide across the canyon without a sound, while his go clickety clack over every gap. The newspapers start calling it the Clickety Clack Line, and everyone switches to the quiet trains. Then summer comes, and something weird happens. His gaps start shrinking in May. You can fit a coin in them by July. Barely a sheet of paper, and his boss is thrilled. See, even your gaps know you were wrong. Meanwhile, on the perfect railroad, the rails started groaning in the afternoon sun, pushing against each other like they want out. On the hottest day anyone can remember. His gaps finally close. Rail touching rail. Halfway across the canyon, the perfect railroad kicks sideways like a snake, right as a train rolls onto it.",
+  "words": [
+   {
+    "w": "He",
+    "s": 0.0,
+    "e": 0.167
+   },
+   {
+    "w": "sawed",
+    "s": 0.167,
+    "e": 0.502
+   },
+   {
+    "w": "gaps",
+    "s": 0.502,
+    "e": 0.669
+   },
+   {
+    "w": "into",
+    "s": 0.669,
+    "e": 1.003
+   },
+   {
+    "w": "a",
+    "s": 1.003,
+    "e": 1.17
+   },
+   {
+    "w": "railroad",
+    "s": 1.17,
+    "e": 1.505
+   },
+   {
+    "w": "every",
+    "s": 1.505,
+    "e": 2.006
+   },
+   {
+    "w": "thirty-nine",
+    "s": 2.006,
+    "e": 2.508
+   },
+   {
+    "w": "feet.",
+    "s": 2.508,
+    "e": 2.675
+   },
+   {
+    "w": "See,",
+    "s": 2.993,
+    "e": 3.148
+   },
+   {
+    "w": "two",
+    "s": 3.148,
+    "e": 3.303
+   },
+   {
+    "w": "companies",
+    "s": 3.303,
+    "e": 3.768
+   },
+   {
+    "w": "are",
+    "s": 3.768,
+    "e": 3.923
+   },
+   {
+    "w": "racing",
+    "s": 3.923,
+    "e": 4.233
+   },
+   {
+    "w": "to",
+    "s": 4.233,
+    "e": 4.388
+   },
+   {
+    "w": "build",
+    "s": 4.388,
+    "e": 4.543
+   },
+   {
+    "w": "a",
+    "s": 4.543,
+    "e": 4.698
+   },
+   {
+    "w": "railroad",
+    "s": 4.698,
+    "e": 5.007
+   },
+   {
+    "w": "across",
+    "s": 5.007,
+    "e": 5.317
+   },
+   {
+    "w": "a",
+    "s": 5.317,
+    "e": 5.472
+   },
+   {
+    "w": "canyon",
+    "s": 5.472,
+    "e": 5.782
+   },
+   {
+    "w": "so",
+    "s": 5.782,
+    "e": 5.937
+   },
+   {
+    "w": "deep",
+    "s": 5.937,
+    "e": 6.092
+   },
+   {
+    "w": "you",
+    "s": 6.092,
+    "e": 6.247
+   },
+   {
+    "w": "can't",
+    "s": 6.247,
+    "e": 6.402
+   },
+   {
+    "w": "see",
+    "s": 6.402,
+    "e": 6.557
+   },
+   {
+    "w": "the",
+    "s": 6.557,
+    "e": 6.712
+   },
+   {
+    "w": "bottom.",
+    "s": 6.712,
+    "e": 7.022
+   },
+   {
+    "w": "And",
+    "s": 7.306,
+    "e": 7.453
+   },
+   {
+    "w": "whoever",
+    "s": 7.453,
+    "e": 7.748
+   },
+   {
+    "w": "finishes",
+    "s": 7.748,
+    "e": 8.191
+   },
+   {
+    "w": "first",
+    "s": 8.191,
+    "e": 8.339
+   },
+   {
+    "w": "gets",
+    "s": 8.339,
+    "e": 8.486
+   },
+   {
+    "w": "the",
+    "s": 8.486,
+    "e": 8.634
+   },
+   {
+    "w": "whole",
+    "s": 8.634,
+    "e": 8.929
+   },
+   {
+    "w": "country's",
+    "s": 8.929,
+    "e": 9.224
+   },
+   {
+    "w": "business.",
+    "s": 9.224,
+    "e": 9.667
+   },
+   {
+    "w": "He's",
+    "s": 9.936,
+    "e": 10.097
+   },
+   {
+    "w": "the",
+    "s": 10.097,
+    "e": 10.257
+   },
+   {
+    "w": "youngest",
+    "s": 10.257,
+    "e": 10.578
+   },
+   {
+    "w": "engineer",
+    "s": 10.578,
+    "e": 11.06
+   },
+   {
+    "w": "on",
+    "s": 11.06,
+    "e": 11.22
+   },
+   {
+    "w": "the",
+    "s": 11.22,
+    "e": 11.381
+   },
+   {
+    "w": "job.",
+    "s": 11.381,
+    "e": 11.541
+   },
+   {
+    "w": "And",
+    "s": 11.759,
+    "e": 11.94
+   },
+   {
+    "w": "when",
+    "s": 11.94,
+    "e": 12.12
+   },
+   {
+    "w": "his",
+    "s": 12.12,
+    "e": 12.301
+   },
+   {
+    "w": "boss",
+    "s": 12.301,
+    "e": 12.482
+   },
+   {
+    "w": "sees",
+    "s": 12.482,
+    "e": 12.662
+   },
+   {
+    "w": "a",
+    "s": 12.662,
+    "e": 12.843
+   },
+   {
+    "w": "finger",
+    "s": 12.843,
+    "e": 13.204
+   },
+   {
+    "w": "wide",
+    "s": 13.204,
+    "e": 13.385
+   },
+   {
+    "w": "gap",
+    "s": 13.385,
+    "e": 13.566
+   },
+   {
+    "w": "between",
+    "s": 13.566,
+    "e": 13.927
+   },
+   {
+    "w": "every",
+    "s": 13.927,
+    "e": 14.469
+   },
+   {
+    "w": "single",
+    "s": 14.469,
+    "e": 14.83
+   },
+   {
+    "w": "rail,",
+    "s": 14.83,
+    "e": 15.011
+   },
+   {
+    "w": "his",
+    "s": 15.011,
+    "e": 15.192
+   },
+   {
+    "w": "face",
+    "s": 15.192,
+    "e": 15.372
+   },
+   {
+    "w": "turns",
+    "s": 15.372,
+    "e": 15.553
+   },
+   {
+    "w": "purple.",
+    "s": 15.553,
+    "e": 15.914
+   },
+   {
+    "w": "You're",
+    "s": 16.166,
+    "e": 16.351
+   },
+   {
+    "w": "wrecking",
+    "s": 16.351,
+    "e": 16.722
+   },
+   {
+    "w": "my",
+    "s": 16.722,
+    "e": 16.907
+   },
+   {
+    "w": "railroad.",
+    "s": 16.907,
+    "e": 17.278
+   },
+   {
+    "w": "But",
+    "s": 17.515,
+    "e": 17.68
+   },
+   {
+    "w": "he",
+    "s": 17.68,
+    "e": 17.845
+   },
+   {
+    "w": "won't",
+    "s": 17.845,
+    "e": 18.011
+   },
+   {
+    "w": "close",
+    "s": 18.011,
+    "e": 18.176
+   },
+   {
+    "w": "a",
+    "s": 18.176,
+    "e": 18.341
+   },
+   {
+    "w": "single",
+    "s": 18.341,
+    "e": 18.671
+   },
+   {
+    "w": "one.",
+    "s": 18.671,
+    "e": 18.836
+   },
+   {
+    "w": "The",
+    "s": 19.236,
+    "e": 19.43
+   },
+   {
+    "w": "other",
+    "s": 19.43,
+    "e": 19.819
+   },
+   {
+    "w": "one",
+    "s": 19.819,
+    "e": 20.014
+   },
+   {
+    "w": "lays",
+    "s": 20.014,
+    "e": 20.208
+   },
+   {
+    "w": "rails",
+    "s": 20.208,
+    "e": 20.403
+   },
+   {
+    "w": "end",
+    "s": 20.403,
+    "e": 20.597
+   },
+   {
+    "w": "to",
+    "s": 20.597,
+    "e": 20.792
+   },
+   {
+    "w": "end,",
+    "s": 20.792,
+    "e": 20.986
+   },
+   {
+    "w": "perfectly",
+    "s": 20.986,
+    "e": 21.57
+   },
+   {
+    "w": "smooth,",
+    "s": 21.57,
+    "e": 21.764
+   },
+   {
+    "w": "and",
+    "s": 21.764,
+    "e": 21.959
+   },
+   {
+    "w": "finishes",
+    "s": 21.959,
+    "e": 22.542
+   },
+   {
+    "w": "first.",
+    "s": 22.542,
+    "e": 22.737
+   },
+   {
+    "w": "Their",
+    "s": 23.065,
+    "e": 23.219
+   },
+   {
+    "w": "trains",
+    "s": 23.219,
+    "e": 23.374
+   },
+   {
+    "w": "glide",
+    "s": 23.374,
+    "e": 23.528
+   },
+   {
+    "w": "across",
+    "s": 23.528,
+    "e": 23.837
+   },
+   {
+    "w": "the",
+    "s": 23.837,
+    "e": 23.991
+   },
+   {
+    "w": "canyon",
+    "s": 23.991,
+    "e": 24.3
+   },
+   {
+    "w": "without",
+    "s": 24.3,
+    "e": 24.609
+   },
+   {
+    "w": "a",
+    "s": 24.609,
+    "e": 24.763
+   },
+   {
+    "w": "sound,",
+    "s": 24.763,
+    "e": 24.918
+   },
+   {
+    "w": "while",
+    "s": 24.918,
+    "e": 25.226
+   },
+   {
+    "w": "his",
+    "s": 25.226,
+    "e": 25.381
+   },
+   {
+    "w": "go",
+    "s": 25.381,
+    "e": 25.535
+   },
+   {
+    "w": "clickety",
+    "s": 25.535,
+    "e": 25.998
+   },
+   {
+    "w": "clack",
+    "s": 25.998,
+    "e": 26.153
+   },
+   {
+    "w": "over",
+    "s": 26.153,
+    "e": 26.462
+   },
+   {
+    "w": "every",
+    "s": 26.462,
+    "e": 26.925
+   },
+   {
+    "w": "gap.",
+    "s": 26.925,
+    "e": 27.079
+   },
+   {
+    "w": "The",
+    "s": 27.461,
+    "e": 27.635
+   },
+   {
+    "w": "newspapers",
+    "s": 27.635,
+    "e": 28.158
+   },
+   {
+    "w": "start",
+    "s": 28.158,
+    "e": 28.332
+   },
+   {
+    "w": "calling",
+    "s": 28.332,
+    "e": 28.68
+   },
+   {
+    "w": "it",
+    "s": 28.68,
+    "e": 28.854
+   },
+   {
+    "w": "the",
+    "s": 28.854,
+    "e": 29.028
+   },
+   {
+    "w": "Clickety",
+    "s": 29.028,
+    "e": 29.55
+   },
+   {
+    "w": "Clack",
+    "s": 29.55,
+    "e": 29.724
+   },
+   {
+    "w": "Line,",
+    "s": 29.724,
+    "e": 29.899
+   },
+   {
+    "w": "and",
+    "s": 29.899,
+    "e": 30.073
+   },
+   {
+    "w": "everyone",
+    "s": 30.073,
+    "e": 30.595
+   },
+   {
+    "w": "switches",
+    "s": 30.595,
+    "e": 30.943
+   },
+   {
+    "w": "to",
+    "s": 30.943,
+    "e": 31.117
+   },
+   {
+    "w": "the",
+    "s": 31.117,
+    "e": 31.291
+   },
+   {
+    "w": "quiet",
+    "s": 31.291,
+    "e": 31.465
+   },
+   {
+    "w": "trains.",
+    "s": 31.465,
+    "e": 31.639
+   },
+   {
+    "w": "Then",
+    "s": 31.868,
+    "e": 32.032
+   },
+   {
+    "w": "summer",
+    "s": 32.032,
+    "e": 32.361
+   },
+   {
+    "w": "comes,",
+    "s": 32.361,
+    "e": 32.69
+   },
+   {
+    "w": "and",
+    "s": 32.69,
+    "e": 32.854
+   },
+   {
+    "w": "something",
+    "s": 32.854,
+    "e": 33.347
+   },
+   {
+    "w": "weird",
+    "s": 33.347,
+    "e": 33.512
+   },
+   {
+    "w": "happens.",
+    "s": 33.512,
+    "e": 33.84
+   },
+   {
+    "w": "His",
+    "s": 34.128,
+    "e": 34.337
+   },
+   {
+    "w": "gaps",
+    "s": 34.337,
+    "e": 34.547
+   },
+   {
+    "w": "start",
+    "s": 34.547,
+    "e": 34.757
+   },
+   {
+    "w": "shrinking",
+    "s": 34.757,
+    "e": 35.176
+   },
+   {
+    "w": "in",
+    "s": 35.176,
+    "e": 35.386
+   },
+   {
+    "w": "May.",
+    "s": 35.386,
+    "e": 35.596
+   },
+   {
+    "w": "You",
+    "s": 35.884,
+    "e": 36.051
+   },
+   {
+    "w": "can",
+    "s": 36.051,
+    "e": 36.218
+   },
+   {
+    "w": "fit",
+    "s": 36.218,
+    "e": 36.384
+   },
+   {
+    "w": "a",
+    "s": 36.384,
+    "e": 36.551
+   },
+   {
+    "w": "coin",
+    "s": 36.551,
+    "e": 36.718
+   },
+   {
+    "w": "in",
+    "s": 36.718,
+    "e": 36.885
+   },
+   {
+    "w": "them",
+    "s": 36.885,
+    "e": 37.051
+   },
+   {
+    "w": "by",
+    "s": 37.051,
+    "e": 37.218
+   },
+   {
+    "w": "July.",
+    "s": 37.218,
+    "e": 37.551
+   },
+   {
+    "w": "Barely",
+    "s": 37.955,
+    "e": 38.413
+   },
+   {
+    "w": "a",
+    "s": 38.413,
+    "e": 38.566
+   },
+   {
+    "w": "sheet",
+    "s": 38.566,
+    "e": 38.719
+   },
+   {
+    "w": "of",
+    "s": 38.719,
+    "e": 38.872
+   },
+   {
+    "w": "paper,",
+    "s": 38.872,
+    "e": 39.177
+   },
+   {
+    "w": "and",
+    "s": 39.177,
+    "e": 39.33
+   },
+   {
+    "w": "his",
+    "s": 39.33,
+    "e": 39.482
+   },
+   {
+    "w": "boss",
+    "s": 39.482,
+    "e": 39.635
+   },
+   {
+    "w": "is",
+    "s": 39.635,
+    "e": 39.788
+   },
+   {
+    "w": "thrilled.",
+    "s": 39.788,
+    "e": 40.093
+   },
+   {
+    "w": "See,",
+    "s": 40.306,
+    "e": 40.477
+   },
+   {
+    "w": "even",
+    "s": 40.477,
+    "e": 40.819
+   },
+   {
+    "w": "your",
+    "s": 40.819,
+    "e": 40.99
+   },
+   {
+    "w": "gaps",
+    "s": 40.99,
+    "e": 41.161
+   },
+   {
+    "w": "know",
+    "s": 41.161,
+    "e": 41.332
+   },
+   {
+    "w": "you",
+    "s": 41.332,
+    "e": 41.503
+   },
+   {
+    "w": "were",
+    "s": 41.503,
+    "e": 41.674
+   },
+   {
+    "w": "wrong.",
+    "s": 41.674,
+    "e": 41.845
+   },
+   {
+    "w": "Meanwhile,",
+    "s": 42.129,
+    "e": 42.579
+   },
+   {
+    "w": "on",
+    "s": 42.579,
+    "e": 42.729
+   },
+   {
+    "w": "the",
+    "s": 42.729,
+    "e": 42.879
+   },
+   {
+    "w": "perfect",
+    "s": 42.879,
+    "e": 43.178
+   },
+   {
+    "w": "railroad,",
+    "s": 43.178,
+    "e": 43.478
+   },
+   {
+    "w": "the",
+    "s": 43.478,
+    "e": 43.628
+   },
+   {
+    "w": "rails",
+    "s": 43.628,
+    "e": 43.778
+   },
+   {
+    "w": "started",
+    "s": 43.778,
+    "e": 44.078
+   },
+   {
+    "w": "groaning",
+    "s": 44.078,
+    "e": 44.378
+   },
+   {
+    "w": "in",
+    "s": 44.378,
+    "e": 44.527
+   },
+   {
+    "w": "the",
+    "s": 44.527,
+    "e": 44.677
+   },
+   {
+    "w": "afternoon",
+    "s": 44.677,
+    "e": 45.127
+   },
+   {
+    "w": "sun,",
+    "s": 45.127,
+    "e": 45.277
+   },
+   {
+    "w": "pushing",
+    "s": 45.277,
+    "e": 45.577
+   },
+   {
+    "w": "against",
+    "s": 45.577,
+    "e": 45.876
+   },
+   {
+    "w": "each",
+    "s": 45.876,
+    "e": 46.026
+   },
+   {
+    "w": "other",
+    "s": 46.026,
+    "e": 46.326
+   },
+   {
+    "w": "like",
+    "s": 46.326,
+    "e": 46.476
+   },
+   {
+    "w": "they",
+    "s": 46.476,
+    "e": 46.626
+   },
+   {
+    "w": "want",
+    "s": 46.626,
+    "e": 46.776
+   },
+   {
+    "w": "out.",
+    "s": 46.776,
+    "e": 46.926
+   },
+   {
+    "w": "On",
+    "s": 47.285,
+    "e": 47.452
+   },
+   {
+    "w": "the",
+    "s": 47.452,
+    "e": 47.619
+   },
+   {
+    "w": "hottest",
+    "s": 47.619,
+    "e": 47.953
+   },
+   {
+    "w": "day",
+    "s": 47.953,
+    "e": 48.12
+   },
+   {
+    "w": "anyone",
+    "s": 48.12,
+    "e": 48.454
+   },
+   {
+    "w": "can",
+    "s": 48.454,
+    "e": 48.621
+   },
+   {
+    "w": "remember.",
+    "s": 48.621,
+    "e": 49.122
+   },
+   {
+    "w": "His",
+    "s": 49.122,
+    "e": 49.289
+   },
+   {
+    "w": "gaps",
+    "s": 49.289,
+    "e": 49.456
+   },
+   {
+    "w": "finally",
+    "s": 49.456,
+    "e": 49.957
+   },
+   {
+    "w": "close.",
+    "s": 49.957,
+    "e": 50.124
+   },
+   {
+    "w": "Rail",
+    "s": 50.355,
+    "e": 50.607
+   },
+   {
+    "w": "touching",
+    "s": 50.607,
+    "e": 51.112
+   },
+   {
+    "w": "rail.",
+    "s": 51.112,
+    "e": 51.365
+   },
+   {
+    "w": "Halfway",
+    "s": 51.633,
+    "e": 52.009
+   },
+   {
+    "w": "across",
+    "s": 52.009,
+    "e": 52.385
+   },
+   {
+    "w": "the",
+    "s": 52.385,
+    "e": 52.574
+   },
+   {
+    "w": "canyon,",
+    "s": 52.574,
+    "e": 52.95
+   },
+   {
+    "w": "the",
+    "s": 52.95,
+    "e": 53.138
+   },
+   {
+    "w": "perfect",
+    "s": 53.138,
+    "e": 53.514
+   },
+   {
+    "w": "railroad",
+    "s": 53.514,
+    "e": 53.89
+   },
+   {
+    "w": "kicks",
+    "s": 53.89,
+    "e": 54.078
+   },
+   {
+    "w": "sideways",
+    "s": 54.078,
+    "e": 54.643
+   },
+   {
+    "w": "like",
+    "s": 54.643,
+    "e": 54.831
+   },
+   {
+    "w": "a",
+    "s": 54.831,
+    "e": 55.019
+   },
+   {
+    "w": "snake,",
+    "s": 55.019,
+    "e": 55.207
+   },
+   {
+    "w": "right",
+    "s": 55.207,
+    "e": 55.395
+   },
+   {
+    "w": "as",
+    "s": 55.395,
+    "e": 55.583
+   },
+   {
+    "w": "a",
+    "s": 55.583,
+    "e": 55.771
+   },
+   {
+    "w": "train",
+    "s": 55.771,
+    "e": 55.959
+   },
+   {
+    "w": "rolls",
+    "s": 55.959,
+    "e": 56.148
+   },
+   {
+    "w": "onto",
+    "s": 56.148,
+    "e": 56.524
+   },
+   {
+    "w": "it.",
+    "s": 56.524,
+    "e": 56.712
+   }
+  ]
+ },
+ "entities": {
+  "characters": [
+   {
+    "id": "ENGINEER",
+    "outfit": "worker1",
+    "hat": "cap",
+    "skin_hair": "light skin, brown hair, no beard",
+    "default_face": "neutral",
+    "identity_lock": [
+     "hat: orange cap",
+     "outfit: worker1",
+     "skin: light",
+     "hair: brown"
+    ]
+   },
+   {
+    "id": "BOSS",
+    "outfit": "councilman",
+    "hat": "tophat",
+    "skin_hair": "light skin, grey hair, grey beard",
+    "default_face": "angry",
+    "identity_lock": [
+     "hat: tophat",
+     "outfit: councilman red robe",
+     "hair and beard: grey"
+    ]
+   },
+   {
+    "id": "RIVAL-BOSS",
+    "outfit": "council2",
+    "hat": "tophat",
+    "skin_hair": "dark skin, black hair, black beard",
+    "default_face": "proud",
+    "identity_lock": [
+     "hat: tophat",
+     "outfit: council2 green",
+     "skin: dark",
+     "beard: black"
+    ]
+   }
+  ],
+  "objects": [
+   {
+    "id": "HANDSAW",
+    "label": "handsaw",
+    "size_m": 0.6,
+    "representation": "3d_mesh",
+    "material_ids": [
+     "M02",
+     "M01"
+    ],
+    "status": "new_item"
+   },
+   {
+    "id": "RAIL_GAPPED",
+    "label": "his track: rails with a finger-wide gap every 39 feet",
+    "size_m": 2,
+    "representation": "3d_mesh",
+    "material_ids": [
+     "M02",
+     "M01"
+    ],
+    "status": "new_item"
+   },
+   {
+    "id": "RAIL_PERFECT",
+    "label": "the other track: rails laid end to end",
+    "size_m": 2,
+    "representation": "3d_mesh",
+    "material_ids": [
+     "M02",
+     "M01"
+    ],
+    "status": "new_item"
+   },
+   {
+    "id": "BRIDGES",
+    "label": "two parallel truss bridges over the canyon",
+    "size_m": 25,
+    "representation": "3d_mesh",
+    "material_ids": [
+     "M02",
+     "M01"
+    ],
+    "status": "new_item"
+   },
+   {
+    "id": "TRAIN_PERFECT",
+    "label": "steam train on the perfect track",
+    "size_m": 10,
+    "representation": "3d_mesh",
+    "material_ids": [
+     "M02"
+    ],
+    "status": "new_item"
+   },
+   {
+    "id": "TRAIN_GAPPED",
+    "label": "steam train on the gapped track",
+    "size_m": 10,
+    "representation": "3d_mesh",
+    "material_ids": [
+     "M02"
+    ],
+    "status": "new_item"
+   },
+   {
+    "id": "NEWSPAPER",
+    "label": "newspaper",
+    "size_m": 0.5,
+    "representation": "3d_mesh",
+    "text_on_object": "THE CLICKETY CLACK LINE!",
+    "status": "new_item"
+   },
+   {
+    "id": "COIN",
+    "label": "gold coin",
+    "size_m": 0.05,
+    "representation": "3d_mesh",
+    "material_ids": [
+     "M02"
+    ],
+    "status": "new_item"
+   },
+   {
+    "id": "PAPER_SHEET",
+    "label": "sheet of paper",
+    "size_m": 0.3,
+    "representation": "3d_mesh",
+    "status": "new_item"
+   },
+   {
+    "id": "BENT_RAIL",
+    "label": "perfect track kicked sideways",
+    "size_m": 2,
+    "representation": "3d_mesh",
+    "material_ids": [
+     "M02"
+    ],
+    "status": "new_item"
+   },
+   {
+    "id": "HEAT_GLOW",
+    "label": "orange heat glow on the rails",
+    "representation": "billboard_fx",
+    "status": "kit"
+   },
+   {
+    "id": "DEBRIS_SMOKE",
+    "label": "debris, dust and train smoke",
+    "representation": "billboard_fx",
+    "status": "kit"
+   }
+  ],
+  "environments": [
+   {
+    "id": "CANYON-EDGE",
+    "width_m": 20,
+    "light": "day",
+    "lighting_profile_id": "L02",
+    "landmarks": [
+     "cliff edge on the right",
+     "bridge starting in the middle",
+     "rocks on the left"
+    ],
+    "material_ids": [
+     "M04"
+    ],
+    "depth_layers": {
+     "foreground": "rocks and a cactus, soft",
+     "midground": "track, characters, flag",
+     "background": "hazy mesas and the far canyon wall"
+    }
+   },
+   {
+    "id": "RAIL-CLOSEUP",
+    "width_m": 2,
+    "light": "day",
+    "lighting_profile_id": "L02",
+    "landmarks": [
+     "steel rail left",
+     "steel rail right",
+     "wooden tie in the middle"
+    ],
+    "material_ids": [
+     "M02",
+     "M01",
+     "M04"
+    ],
+    "depth_layers": {
+     "foreground": "blurred gravel",
+     "midground": "rails and ties",
+     "background": "orange canyon wall"
+    }
+   },
+   {
+    "id": "BRIDGE-WIDE",
+    "width_m": 25,
+    "light": "day",
+    "lighting_profile_id": "L02",
+    "landmarks": [
+     "gap-bridge on the right",
+     "smooth-bridge on the left",
+     "deep canyon below"
+    ],
+    "material_ids": [
+     "M02",
+     "M01",
+     "M04"
+    ],
+    "depth_layers": {
+     "foreground": "cliff rock",
+     "midground": "two bridges",
+     "background": "hazy far cliffs"
+    }
+   },
+   {
+    "id": "OFFICE",
+    "width_m": 10,
+    "light": "indoor",
+    "lighting_profile_id": "L01",
+    "landmarks": [
+     "desk in the middle",
+     "window on the right",
+     "map on the left"
+    ],
+    "material_ids": [
+     "M01"
+    ],
+    "depth_layers": {
+     "foreground": "desk edge",
+     "midground": "boss and desk",
+     "background": "map wall"
+    }
+   }
+  ]
+ },
+ "beats": [
+  {
+   "id": "c1",
+   "index": 1,
+   "time": {
+    "start_s": 0.0,
+    "end_s": 3.0
+   },
+   "narration": {
+    "text": "He sawed gaps into a railroad every thirty-nine feet.",
+    "word_range": [
+     0,
+     8
+    ]
+   },
+   "intent": "hook",
+   "visual_purpose": "Show the odd act at once: a man sawing deliberate gaps into a steel rail.",
+   "subject": {
+    "main_id": "HANDSAW",
+    "character_ids": [
+     "ENGINEER"
+    ],
+    "hero_object_id": "HANDSAW"
+   },
+   "environment_id": "RAIL-CLOSEUP",
+   "character_actions": [
+    {
+     "character_id": "ENGINEER",
+     "action": "saws the rail",
+     "pose": "spear",
+     "face": "determined",
+     "gaze_target_id": "RAIL_GAPPED",
+     "phase": "action",
+     "start_s": 0.0,
+     "duration_s": 2.5
+    }
+   ],
+   "object_events": [
+    {
+     "object_id": "HANDSAW",
+     "event": "move",
+     "motion_profile": "rigid",
+     "contact_target_id": "RAIL_GAPPED",
+     "secondary_effects": [
+      "sparks",
+      "sound"
+     ],
+     "start_s": 0.0,
+     "duration_s": 2.5
+    }
+   ],
+   "shot": {
+    "recipe_id": "S03",
+    "framing": "close",
+    "composition": {
+     "primary_id": "HANDSAW",
+     "focal_point_norm": [
+      0.5,
+      0.45
+     ],
+     "secondary_ids": [
+      "RAIL_GAPPED",
+      "ENGINEER"
+     ]
+    },
+    "situation": "HOOK",
+    "distance_m": 1.5
+   },
+   "camera": {
+    "purpose": "inspect",
+    "mode": "crane-up",
+    "rationale": "Start on the saw in the cut (SCR-03: hero object in frame, first flight inside 1 s), rise to show the man who does it.",
+    "confidence": "designed",
+    "duration_s": 3.0,
+    "ease": "easeOut",
+    "from": {
+     "framing": "close",
+     "distance_m": 1.5,
+     "height": "low",
+     "side": "front"
+    },
+    "to": {
+     "framing": "medium",
+     "distance_m": 3.0,
+     "height": "eye",
+     "side": "front"
+    }
+   },
+   "captions": {
+    "mode": "one_word",
+    "emphasis_word_indexes": [
+     2
+    ]
+   },
+   "audio_events": [
+    {
+     "track": "sfx",
+     "event": "metal sawing",
+     "time_s": 0.167,
+     "trigger": "word",
+     "word_index": 1
+    }
+   ],
+   "transition_in": {
+    "type": "start",
+    "reason": "start"
+   },
+   "validation": {
+    "gates": [
+     "Q01",
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q10",
+     "Q05",
+     "Q09"
+    ],
+    "must_see": [
+     "ENGINEER",
+     "HANDSAW",
+     "RAIL_GAPPED"
+    ],
+    "must_not": [
+     "missing saw",
+     "empty frame"
+    ]
+   },
+   "rule_refs": [
+    "SCR-03",
+    "CAM-04",
+    "CAM-16",
+    "PHY-03",
+    "PRP-02"
+   ]
+  },
+  {
+   "id": "c2",
+   "index": 2,
+   "time": {
+    "start_s": 3.0,
+    "end_s": 7.3
+   },
+   "narration": {
+    "text": "See, two companies are racing to build a railroad across a canyon so deep you can't see the bottom.",
+    "word_range": [
+     9,
+     27
+    ]
+   },
+   "intent": "introduce_place_or_time",
+   "visual_purpose": "Show where and what is at stake: a very deep canyon with two bridges being built side by side.",
+   "subject": {
+    "main_id": "BRIDGES",
+    "hero_object_id": "BRIDGES",
+    "crowd": 10
+   },
+   "environment_id": "BRIDGE-WIDE",
+   "shot": {
+    "recipe_id": "S05",
+    "framing": "wide",
+    "composition": {
+     "primary_id": "BRIDGES",
+     "focal_point_norm": [
+      0.5,
+      0.4
+     ]
+    },
+    "situation": "NEW_PLACE",
+    "distance_m": 15
+   },
+   "camera": {
+    "purpose": "establish",
+    "mode": "crane-up",
+    "rationale": "Rise and widen so the depth of the canyon is felt before the word \"bottom\".",
+    "confidence": "designed",
+    "duration_s": 4.3,
+    "ease": "easeOut",
+    "from": {
+     "framing": "medium_wide",
+     "distance_m": 17,
+     "height": "eye",
+     "side": "front"
+    },
+    "to": {
+     "framing": "wide",
+     "distance_m": 25,
+     "height": "high",
+     "side": "above"
+    }
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "sfx",
+     "event": "distant construction hammering",
+     "time_s": 3.923,
+     "trigger": "word",
+     "word_index": 13
+    }
+   ],
+   "transition_in": {
+    "type": "dissolve",
+    "reason": "new_place",
+    "frames": 8
+   },
+   "validation": {
+    "gates": [
+     "Q01",
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q10",
+     "Q06",
+     "Q09"
+    ],
+    "must_see": [
+     "BRIDGES"
+    ],
+    "must_not": [
+     "canyon floor visible"
+    ]
+   },
+   "rule_refs": [
+    "CAM-04",
+    "WLD-01",
+    "WLD-03",
+    "TRN-06"
+   ]
+  },
+  {
+   "id": "c3",
+   "index": 3,
+   "time": {
+    "start_s": 7.3,
+    "end_s": 9.9333
+   },
+   "narration": {
+    "text": "And whoever finishes first gets the whole country's business.",
+    "word_range": [
+     28,
+     36
+    ]
+   },
+   "intent": "introduce_character",
+   "visual_purpose": "Meet the boss and the prize: whoever finishes first wins the country's business.",
+   "subject": {
+    "main_id": "BOSS",
+    "character_ids": [
+     "BOSS"
+    ]
+   },
+   "environment_id": "OFFICE",
+   "character_actions": [
+    {
+     "character_id": "BOSS",
+     "action": "points at the map",
+     "pose": "point",
+     "face": "proud",
+     "phase": "action",
+     "start_s": 0.5,
+     "duration_s": 1.5
+    }
+   ],
+   "shot": {
+    "recipe_id": "S02",
+    "framing": "medium",
+    "composition": {
+     "primary_id": "BOSS",
+     "focal_point_norm": [
+      0.5,
+      0.45
+     ]
+    },
+    "distance_m": 6
+   },
+   "camera": {
+    "purpose": "hold_for_performance",
+    "mode": "creep",
+    "rationale": "A person states the stakes: hold and creep (CAM-13, CAM-08).",
+    "confidence": "designed"
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "sfx",
+     "event": "heavy coin pouch dropping",
+     "time_s": 9.224,
+     "trigger": "word",
+     "word_index": 36
+    }
+   ],
+   "transition_in": {
+    "type": "dissolve",
+    "reason": "new_place",
+    "frames": 8
+   },
+   "validation": {
+    "gates": [
+     "Q01",
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q10",
+     "Q09"
+    ],
+    "must_see": [
+     "BOSS"
+    ],
+    "must_not": [
+     "missing map"
+    ]
+   },
+   "rule_refs": [
+    "CHR-02",
+    "CAM-08",
+    "CAM-13"
+   ]
+  },
+  {
+   "id": "c4",
+   "index": 4,
+   "time": {
+    "start_s": 9.9333,
+    "end_s": 11.7667
+   },
+   "narration": {
+    "text": "He's the youngest engineer on the job.",
+    "word_range": [
+     37,
+     43
+    ]
+   },
+   "intent": "introduce_character",
+   "visual_purpose": "Meet the young engineer in the canyon.",
+   "subject": {
+    "main_id": "ENGINEER",
+    "character_ids": [
+     "ENGINEER"
+    ]
+   },
+   "environment_id": "CANYON-EDGE",
+   "character_actions": [
+    {
+     "character_id": "ENGINEER",
+     "action": "stands proud",
+     "pose": "hip",
+     "face": "proud",
+     "phase": "settle",
+     "start_s": 0.0,
+     "duration_s": 1.8
+    }
+   ],
+   "shot": {
+    "recipe_id": "S02",
+    "framing": "close",
+    "composition": {
+     "primary_id": "ENGINEER",
+     "focal_point_norm": [
+      0.5,
+      0.42
+     ]
+    },
+    "distance_m": 2
+   },
+   "camera": {
+    "purpose": "inspect",
+    "mode": "track",
+    "rationale": "A short slide in to meet his face; hat identifies him (CHR-02).",
+    "confidence": "designed",
+    "duration_s": 1.8,
+    "ease": "easeOut",
+    "from": {
+     "framing": "medium",
+     "distance_m": 3,
+     "height": "eye",
+     "side": "left"
+    },
+    "to": {
+     "framing": "close",
+     "distance_m": 2,
+     "height": "eye",
+     "side": "front"
+    }
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "sfx",
+     "event": "wind",
+     "time_s": 10.257,
+     "trigger": "word",
+     "word_index": 39
+    }
+   ],
+   "transition_in": {
+    "type": "fly_through",
+    "reason": "new_place",
+    "frames": 10
+   },
+   "validation": {
+    "gates": [
+     "Q01",
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q10"
+    ],
+    "must_see": [
+     "ENGINEER"
+    ],
+    "must_not": [
+     "missing hat"
+    ]
+   },
+   "rule_refs": [
+    "CHR-02",
+    "FAC-01",
+    "CAM-16"
+   ]
+  },
+  {
+   "id": "c5",
+   "index": 5,
+   "time": {
+    "start_s": 11.7667,
+    "end_s": 16.1667
+   },
+   "narration": {
+    "text": "And when his boss sees a finger wide gap between every single rail, his face turns purple.",
+    "word_range": [
+     44,
+     60
+    ]
+   },
+   "intent": "comedic_beat",
+   "visual_purpose": "The boss sees the gap and his face turns purple: a visual gag with an effect on the head.",
+   "subject": {
+    "main_id": "BOSS",
+    "character_ids": [
+     "BOSS"
+    ],
+    "hero_object_id": "RAIL_GAPPED"
+   },
+   "environment_id": "RAIL-CLOSEUP",
+   "character_actions": [
+    {
+     "character_id": "BOSS",
+     "action": "looks down at the gap, then stares",
+     "pose": "point",
+     "face": "angry+vein",
+     "gaze_target_id": "RAIL_GAPPED",
+     "phase": "response",
+     "start_s": 1.5,
+     "duration_s": 2.5
+    }
+   ],
+   "shot": {
+    "recipe_id": "S04",
+    "framing": "close",
+    "composition": {
+     "primary_id": "BOSS",
+     "focal_point_norm": [
+      0.5,
+      0.38
+     ],
+     "secondary_ids": [
+      "RAIL_GAPPED"
+     ]
+    },
+    "situation": "COMEDY_GAG",
+    "distance_m": 2
+   },
+   "camera": {
+    "purpose": "reveal",
+    "mode": "crane-up",
+    "rationale": "Start on the gap, rise to the face, so the viewer sees cause and then reaction (CAM-04).",
+    "confidence": "designed",
+    "duration_s": 4.4,
+    "ease": "smooth",
+    "from": {
+     "framing": "detail",
+     "distance_m": 1.0,
+     "height": "low",
+     "side": "front"
+    },
+    "to": {
+     "framing": "close",
+     "distance_m": 2,
+     "height": "eye",
+     "side": "front"
+    }
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "sfx",
+     "event": "angry grunt",
+     "time_s": 15.553,
+     "trigger": "word",
+     "word_index": 60
+    }
+   ],
+   "transition_in": {
+    "type": "cut",
+    "reason": "emphasis"
+   },
+   "continuity_change": [
+    "BOSS:skin"
+   ],
+   "validation": {
+    "gates": [
+     "Q01",
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q10",
+     "Q09"
+    ],
+    "must_see": [
+     "BOSS",
+     "RAIL_GAPPED"
+    ],
+    "must_not": [
+     "smiling face"
+    ]
+   },
+   "rule_refs": [
+    "FAC-02",
+    "CAM-04",
+    "PHY-02",
+    "CON-01"
+   ]
+  },
+  {
+   "id": "c6",
+   "index": 6,
+   "time": {
+    "start_s": 16.1667,
+    "end_s": 17.5
+   },
+   "narration": {
+    "text": "You're wrecking my railroad.",
+    "word_range": [
+     61,
+     64
+    ]
+   },
+   "intent": "dialogue_or_argument",
+   "visual_purpose": "The boss accuses the engineer: two people, one pointing.",
+   "subject": {
+    "main_id": "BOSS",
+    "character_ids": [
+     "BOSS",
+     "ENGINEER"
+    ]
+   },
+   "environment_id": "CANYON-EDGE",
+   "character_actions": [
+    {
+     "character_id": "BOSS",
+     "action": "points at the engineer",
+     "pose": "point",
+     "face": "angry+vein",
+     "gaze_target_id": "ENGINEER",
+     "phase": "action",
+     "start_s": 0.2,
+     "duration_s": 1.0
+    },
+    {
+     "character_id": "ENGINEER",
+     "action": "stands, listens",
+     "pose": "hang",
+     "face": "neutral",
+     "gaze_target_id": "BOSS",
+     "phase": "attention",
+     "start_s": 0.0,
+     "duration_s": 1.3
+    }
+   ],
+   "shot": {
+    "recipe_id": "S08",
+    "framing": "medium",
+    "composition": {
+     "primary_id": "BOSS",
+     "focal_point_norm": [
+      0.4,
+      0.45
+     ],
+     "secondary_ids": [
+      "ENGINEER"
+     ]
+    },
+    "situation": "DIALOGUE",
+    "distance_m": 6
+   },
+   "camera": {
+    "purpose": "emphasize",
+    "mode": "push-in",
+    "rationale": "Small push on the accusation word; two-shot stays readable (CAM-08).",
+    "confidence": "designed",
+    "duration_s": 1.3,
+    "ease": "smooth",
+    "from": {
+     "framing": "medium",
+     "distance_m": 7,
+     "height": "eye",
+     "side": "left"
+    },
+    "to": {
+     "framing": "medium",
+     "distance_m": 5.5,
+     "height": "eye",
+     "side": "left"
+    }
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "sfx",
+     "event": "foot stomp",
+     "time_s": 16.351,
+     "trigger": "word",
+     "word_index": 62
+    }
+   ],
+   "transition_in": {
+    "type": "dissolve",
+    "reason": "new_place",
+    "frames": 8
+   },
+   "validation": {
+    "gates": [
+     "Q01",
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q10",
+     "Q09"
+    ],
+    "must_see": [
+     "BOSS",
+     "ENGINEER"
+    ],
+    "must_not": [
+     "characters overlapping"
+    ]
+   },
+   "rule_refs": [
+    "CAM-08",
+    "CAM-13",
+    "CON-01"
+   ]
+  },
+  {
+   "id": "c7",
+   "index": 7,
+   "time": {
+    "start_s": 17.5,
+    "end_s": 19.2333
+   },
+   "narration": {
+    "text": "But he won't close a single one.",
+    "word_range": [
+     65,
+     71
+    ]
+   },
+   "intent": "emotional_reaction",
+   "visual_purpose": "The engineer refuses: arms crossed, stubborn face.",
+   "subject": {
+    "main_id": "ENGINEER",
+    "character_ids": [
+     "ENGINEER"
+    ]
+   },
+   "environment_id": "CANYON-EDGE",
+   "character_actions": [
+    {
+     "character_id": "ENGINEER",
+     "action": "crosses his arms",
+     "pose": "cross",
+     "face": "stubborn",
+     "gaze_target_id": "BOSS",
+     "phase": "response",
+     "start_s": 0.2,
+     "duration_s": 1.3
+    }
+   ],
+   "shot": {
+    "recipe_id": "S04",
+    "framing": "close",
+    "composition": {
+     "primary_id": "ENGINEER",
+     "focal_point_norm": [
+      0.5,
+      0.42
+     ]
+    },
+    "distance_m": 2
+   },
+   "camera": {
+    "purpose": "hold_for_performance",
+    "mode": "creep",
+    "rationale": "Reaction beat is held (CAM-13); a slow creep keeps it alive.",
+    "confidence": "designed"
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "sfx",
+     "event": "fabric rustle",
+     "time_s": 18.011,
+     "trigger": "word",
+     "word_index": 68
+    }
+   ],
+   "transition_in": {
+    "type": "cut",
+    "reason": "continuity"
+   },
+   "validation": {
+    "gates": [
+     "Q01",
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q10",
+     "Q09"
+    ],
+    "must_see": [
+     "ENGINEER"
+    ],
+    "must_not": [
+     "missing arms"
+    ]
+   },
+   "rule_refs": [
+    "CAM-13",
+    "FAC-01",
+    "CAM-08"
+   ]
+  },
+  {
+   "id": "c8",
+   "index": 8,
+   "time": {
+    "start_s": 19.2333,
+    "end_s": 23.0667
+   },
+   "narration": {
+    "text": "The other one lays rails end to end, perfectly smooth, and finishes first.",
+    "word_range": [
+     72,
+     84
+    ]
+   },
+   "intent": "physical_action",
+   "visual_purpose": "The other company lays smooth rails end to end: the camera runs along the perfect track.",
+   "subject": {
+    "main_id": "RIVAL-BOSS",
+    "character_ids": [
+     "RIVAL-BOSS"
+    ],
+    "hero_object_id": "RAIL_PERFECT"
+   },
+   "environment_id": "RAIL-CLOSEUP",
+   "object_events": [
+    {
+     "object_id": "RAIL_PERFECT",
+     "event": "appear",
+     "motion_profile": "rigid",
+     "secondary_effects": [
+      "sound"
+     ],
+     "start_s": 0.5,
+     "duration_s": 2.0
+    }
+   ],
+   "shot": {
+    "recipe_id": "S06",
+    "framing": "close",
+    "composition": {
+     "primary_id": "RAIL_PERFECT",
+     "focal_point_norm": [
+      0.5,
+      0.55
+     ],
+     "secondary_ids": [
+      "RIVAL-BOSS"
+     ]
+    },
+    "distance_m": 1.5
+   },
+   "camera": {
+    "purpose": "follow",
+    "mode": "track",
+    "rationale": "Fly down the unbroken rails so their length and smoothness show (CAM-07).",
+    "confidence": "designed",
+    "duration_s": 3.8,
+    "ease": "easeOut",
+    "from": {
+     "framing": "close",
+     "distance_m": 1.5,
+     "height": "low",
+     "side": "left"
+    },
+    "to": {
+     "framing": "wide",
+     "distance_m": 16,
+     "height": "low",
+     "side": "front"
+    }
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "sfx",
+     "event": "solid metal thud",
+     "time_s": 21.57,
+     "trigger": "word",
+     "word_index": 81
+    }
+   ],
+   "transition_in": {
+    "type": "cut",
+    "reason": "new_place"
+   },
+   "validation": {
+    "gates": [
+     "Q01",
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q10",
+     "Q05",
+     "Q09"
+    ],
+    "must_see": [
+     "RAIL_PERFECT",
+     "RIVAL-BOSS"
+    ],
+    "must_not": [
+     "gaps between rails"
+    ]
+   },
+   "rule_refs": [
+    "CAM-07",
+    "CAM-03",
+    "CHR-02"
+   ]
+  },
+  {
+   "id": "c9",
+   "index": 9,
+   "time": {
+    "start_s": 23.0667,
+    "end_s": 27.4667
+   },
+   "narration": {
+    "text": "Their trains glide across the canyon without a sound, while his go clickety clack over every gap.",
+    "word_range": [
+     85,
+     101
+    ]
+   },
+   "intent": "explain_mechanism",
+   "visual_purpose": "Compare the two railroads: smooth silent train against the clickety-clack train.",
+   "subject": {
+    "main_id": "BRIDGES",
+    "hero_object_id": "BRIDGES"
+   },
+   "environment_id": "BRIDGE-WIDE",
+   "object_events": [
+    {
+     "object_id": "TRAIN_PERFECT",
+     "event": "move",
+     "motion_profile": "rigid",
+     "secondary_effects": [
+      "smoke"
+     ],
+     "start_s": 0.0,
+     "duration_s": 4.4
+    },
+    {
+     "object_id": "TRAIN_GAPPED",
+     "event": "move",
+     "motion_profile": "rigid",
+     "secondary_effects": [
+      "smoke",
+      "sound"
+     ],
+     "start_s": 0.0,
+     "duration_s": 4.4
+    }
+   ],
+   "shot": {
+    "recipe_id": "S07",
+    "framing": "top_down",
+    "composition": {
+     "primary_id": "BRIDGES",
+     "focal_point_norm": [
+      0.5,
+      0.4
+     ],
+     "secondary_ids": [
+      "TRAIN_PERFECT",
+      "TRAIN_GAPPED"
+     ]
+    },
+    "distance_m": 15
+   },
+   "camera": {
+    "purpose": "compare",
+    "mode": "crane-up",
+    "rationale": "A high view shows both tracks and both trains at once (EXPLAIN_SYSTEM recipe).",
+    "confidence": "designed",
+    "duration_s": 4.4,
+    "ease": "smooth",
+    "from": {
+     "framing": "wide",
+     "distance_m": 16,
+     "height": "high",
+     "side": "front"
+    },
+    "to": {
+     "framing": "top_down",
+     "distance_m": 20,
+     "height": "top",
+     "side": "above"
+    }
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "sfx",
+     "event": "rhythmic train clatter",
+     "time_s": 25.535,
+     "trigger": "word",
+     "word_index": 97
+    }
+   ],
+   "transition_in": {
+    "type": "dissolve",
+    "reason": "new_place",
+    "frames": 8
+   },
+   "validation": {
+    "gates": [
+     "Q01",
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q10",
+     "Q05",
+     "Q06",
+     "Q09"
+    ],
+    "must_see": [
+     "BRIDGES",
+     "TRAIN_PERFECT",
+     "TRAIN_GAPPED"
+    ]
+   },
+   "rule_refs": [
+    "PRP-05",
+    "CAM-04",
+    "PHY-04"
+   ]
+  },
+  {
+   "id": "c10",
+   "index": 10,
+   "time": {
+    "start_s": 27.4667,
+    "end_s": 31.8667
+   },
+   "narration": {
+    "text": "The newspapers start calling it the Clickety Clack Line, and everyone switches to the quiet trains.",
+    "word_range": [
+     102,
+     117
+    ]
+   },
+   "intent": "emotional_reaction",
+   "visual_purpose": "The boss reads the bad news in the paper: the Clickety Clack Line.",
+   "subject": {
+    "main_id": "BOSS",
+    "character_ids": [
+     "BOSS"
+    ],
+    "hero_object_id": "NEWSPAPER"
+   },
+   "environment_id": "OFFICE",
+   "character_actions": [
+    {
+     "character_id": "BOSS",
+     "action": "reads the paper, sags",
+     "pose": "temple",
+     "face": "sad+sweat",
+     "gaze_target_id": "NEWSPAPER",
+     "phase": "response",
+     "start_s": 0.5,
+     "duration_s": 2.5
+    }
+   ],
+   "shot": {
+    "recipe_id": "S04",
+    "framing": "close",
+    "composition": {
+     "primary_id": "BOSS",
+     "focal_point_norm": [
+      0.5,
+      0.4
+     ],
+     "secondary_ids": [
+      "NEWSPAPER"
+     ]
+    },
+    "distance_m": 2
+   },
+   "camera": {
+    "purpose": "hold_for_performance",
+    "mode": "creep",
+    "rationale": "Reaction beat: hold on the sad face; the headline is readable (PRP-01).",
+    "confidence": "designed"
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "sfx",
+     "event": "paper rustle",
+     "time_s": 27.635,
+     "trigger": "word",
+     "word_index": 103
+    }
+   ],
+   "transition_in": {
+    "type": "dissolve",
+    "reason": "new_place",
+    "frames": 8
+   },
+   "validation": {
+    "gates": [
+     "Q01",
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q10",
+     "Q09"
+    ],
+    "must_see": [
+     "BOSS",
+     "NEWSPAPER"
+    ]
+   },
+   "rule_refs": [
+    "PRP-01",
+    "FAC-02",
+    "CAM-13"
+   ]
+  },
+  {
+   "id": "c11",
+   "index": 11,
+   "time": {
+    "start_s": 31.8667,
+    "end_s": 34.1333
+   },
+   "narration": {
+    "text": "Then summer comes, and something weird happens.",
+    "word_range": [
+     118,
+     124
+    ]
+   },
+   "intent": "time_passes",
+   "visual_purpose": "Summer comes: the same place under hot golden light.",
+   "subject": {
+    "main_id": "ENGINEER",
+    "character_ids": [
+     "ENGINEER"
+    ]
+   },
+   "environment_id": "CANYON-EDGE",
+   "light": "golden",
+   "character_actions": [
+    {
+     "character_id": "ENGINEER",
+     "action": "looks at the canyon",
+     "pose": "point",
+     "face": "neutral",
+     "phase": "attention",
+     "start_s": 0.0,
+     "duration_s": 2.0
+    }
+   ],
+   "shot": {
+    "recipe_id": "S01",
+    "framing": "wide",
+    "composition": {
+     "primary_id": "ENGINEER",
+     "focal_point_norm": [
+      0.5,
+      0.5
+     ]
+    },
+    "situation": "TIME_PASSES",
+    "distance_m": 15
+   },
+   "camera": {
+    "purpose": "reveal",
+    "mode": "crane-up",
+    "rationale": "Rise to show sun, cliffs and heat: the season changes the light (LIT-03).",
+    "confidence": "designed",
+    "duration_s": 2.2,
+    "ease": "easeOut",
+    "from": {
+     "framing": "medium",
+     "distance_m": 6,
+     "height": "eye",
+     "side": "front"
+    },
+    "to": {
+     "framing": "wide",
+     "distance_m": 15,
+     "height": "high",
+     "side": "front"
+    }
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "sfx",
+     "event": "dry desert wind",
+     "time_s": 32.032,
+     "trigger": "word",
+     "word_index": 119
+    }
+   ],
+   "transition_in": {
+    "type": "fly_through",
+    "reason": "time_shift",
+    "frames": 10
+   },
+   "validation": {
+    "gates": [
+     "Q01",
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q10",
+     "Q09"
+    ],
+    "must_see": [
+     "ENGINEER"
+    ]
+   },
+   "rule_refs": [
+    "TRN-02",
+    "LIT-03",
+    "PRP-03"
+   ]
+  },
+  {
+   "id": "c12",
+   "index": 12,
+   "time": {
+    "start_s": 34.1333,
+    "end_s": 35.9
+   },
+   "narration": {
+    "text": "His gaps start shrinking in May.",
+    "word_range": [
+     125,
+     130
+    ]
+   },
+   "intent": "explain_mechanism",
+   "visual_purpose": "The gaps shrink as the rails warm: show it on the rail itself.",
+   "subject": {
+    "main_id": "RAIL_GAPPED",
+    "hero_object_id": "RAIL_GAPPED"
+   },
+   "environment_id": "RAIL-CLOSEUP",
+   "light": "golden",
+   "object_events": [
+    {
+     "object_id": "RAIL_GAPPED",
+     "event": "heat",
+     "motion_profile": "none",
+     "secondary_effects": [
+      "sound"
+     ],
+     "start_s": 0.0,
+     "duration_s": 1.7
+    }
+   ],
+   "shot": {
+    "recipe_id": "S03",
+    "framing": "detail",
+    "composition": {
+     "primary_id": "RAIL_GAPPED",
+     "focal_point_norm": [
+      0.5,
+      0.5
+     ]
+    },
+    "distance_m": 1.0
+   },
+   "camera": {
+    "purpose": "inspect",
+    "mode": "push-in",
+    "rationale": "Push to the gap as it narrows.",
+    "confidence": "designed",
+    "duration_s": 1.7,
+    "ease": "smooth",
+    "from": {
+     "framing": "close",
+     "distance_m": 1.2,
+     "height": "low",
+     "side": "front"
+    },
+    "to": {
+     "framing": "detail",
+     "distance_m": 0.9,
+     "height": "low",
+     "side": "front"
+    }
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "sfx",
+     "event": "subtle metal creak",
+     "time_s": 34.757,
+     "trigger": "word",
+     "word_index": 128
+    }
+   ],
+   "transition_in": {
+    "type": "dissolve",
+    "reason": "time_shift",
+    "frames": 8
+   },
+   "validation": {
+    "gates": [
+     "Q01",
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q10",
+     "Q05",
+     "Q09"
+    ],
+    "must_see": [
+     "RAIL_GAPPED"
+    ]
+   },
+   "rule_refs": [
+    "PRP-03",
+    "CAM-05",
+    "PHY-04"
+   ]
+  },
+  {
+   "id": "c13",
+   "index": 13,
+   "time": {
+    "start_s": 35.9,
+    "end_s": 37.9667
+   },
+   "narration": {
+    "text": "You can fit a coin in them by July.",
+    "word_range": [
+     131,
+     139
+    ]
+   },
+   "intent": "give_number_or_quantity",
+   "visual_purpose": "A coin fits into the gap: size of the gap in July.",
+   "subject": {
+    "main_id": "COIN",
+    "character_ids": [
+     "ENGINEER"
+    ],
+    "hero_object_id": "COIN"
+   },
+   "environment_id": "RAIL-CLOSEUP",
+   "light": "golden",
+   "character_actions": [
+    {
+     "character_id": "ENGINEER",
+     "action": "reaches a coin into the gap",
+     "pose": "reach",
+     "face": "neutral",
+     "gaze_target_id": "RAIL_GAPPED",
+     "phase": "contact",
+     "start_s": 0.5,
+     "duration_s": 1.0
+    }
+   ],
+   "object_events": [
+    {
+     "object_id": "COIN",
+     "event": "drop",
+     "motion_profile": "rigid",
+     "contact_target_id": "RAIL_GAPPED",
+     "secondary_effects": [
+      "sound"
+     ],
+     "start_s": 0.6,
+     "duration_s": 0.8
+    }
+   ],
+   "shot": {
+    "recipe_id": "S03",
+    "framing": "detail",
+    "composition": {
+     "primary_id": "COIN",
+     "focal_point_norm": [
+      0.5,
+      0.5
+     ],
+     "secondary_ids": [
+      "RAIL_GAPPED",
+      "ENGINEER"
+     ]
+    },
+    "distance_m": 0.4
+   },
+   "camera": {
+    "purpose": "land_on_prop",
+    "mode": "creep",
+    "rationale": "Hold on the coin in the gap: the object is the number (PRF-04).",
+    "confidence": "designed"
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "sfx",
+     "event": "metallic clink",
+     "time_s": 36.551,
+     "trigger": "word",
+     "word_index": 135
+    }
+   ],
+   "transition_in": {
+    "type": "cut",
+    "reason": "continuity"
+   },
+   "validation": {
+    "gates": [
+     "Q01",
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q10",
+     "Q05",
+     "Q09"
+    ],
+    "must_see": [
+     "COIN",
+     "RAIL_GAPPED"
+    ]
+   },
+   "rule_refs": [
+    "PRF-04",
+    "PRP-02",
+    "PHY-03"
+   ]
+  },
+  {
+   "id": "c14",
+   "index": 14,
+   "time": {
+    "start_s": 37.9667,
+    "end_s": 40.3
+   },
+   "narration": {
+    "text": "Barely a sheet of paper, and his boss is thrilled.",
+    "word_range": [
+     140,
+     149
+    ]
+   },
+   "intent": "give_number_or_quantity",
+   "visual_purpose": "Even less: a sheet of paper barely fits, and the boss is happy.",
+   "subject": {
+    "main_id": "PAPER_SHEET",
+    "character_ids": [
+     "BOSS"
+    ],
+    "hero_object_id": "PAPER_SHEET"
+   },
+   "environment_id": "RAIL-CLOSEUP",
+   "light": "golden",
+   "character_actions": [
+    {
+     "character_id": "BOSS",
+     "action": "slides a sheet into the gap, grins",
+     "pose": "reach",
+     "face": "grin",
+     "gaze_target_id": "RAIL_GAPPED",
+     "phase": "contact",
+     "start_s": 0.5,
+     "duration_s": 1.2
+    }
+   ],
+   "object_events": [
+    {
+     "object_id": "PAPER_SHEET",
+     "event": "slide",
+     "motion_profile": "rigid",
+     "contact_target_id": "RAIL_GAPPED",
+     "secondary_effects": [
+      "sound"
+     ],
+     "start_s": 0.6,
+     "duration_s": 0.8
+    }
+   ],
+   "shot": {
+    "recipe_id": "S03",
+    "framing": "detail",
+    "composition": {
+     "primary_id": "PAPER_SHEET",
+     "focal_point_norm": [
+      0.5,
+      0.5
+     ],
+     "secondary_ids": [
+      "RAIL_GAPPED",
+      "BOSS"
+     ]
+    },
+    "distance_m": 0.4
+   },
+   "camera": {
+    "purpose": "land_on_prop",
+    "mode": "creep",
+    "rationale": "Same object-number idea one step smaller; a grin tells the reaction.",
+    "confidence": "designed"
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "sfx",
+     "event": "paper rustle",
+     "time_s": 38.872,
+     "trigger": "word",
+     "word_index": 144
+    }
+   ],
+   "transition_in": {
+    "type": "dissolve",
+    "reason": "time_shift",
+    "frames": 8
+   },
+   "validation": {
+    "gates": [
+     "Q01",
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q10",
+     "Q05",
+     "Q09"
+    ],
+    "must_see": [
+     "PAPER_SHEET",
+     "BOSS"
+    ]
+   },
+   "rule_refs": [
+    "PRF-04",
+    "FAC-02"
+   ]
+  },
+  {
+   "id": "c15",
+   "index": 15,
+   "time": {
+    "start_s": 40.3,
+    "end_s": 42.1333
+   },
+   "narration": {
+    "text": "See, even your gaps know you were wrong.",
+    "word_range": [
+     150,
+     157
+    ]
+   },
+   "intent": "dialogue_or_argument",
+   "visual_purpose": "The boss laughs at the engineer: even his gaps say he was wrong.",
+   "subject": {
+    "main_id": "BOSS",
+    "character_ids": [
+     "BOSS",
+     "ENGINEER"
+    ]
+   },
+   "environment_id": "CANYON-EDGE",
+   "light": "golden",
+   "character_actions": [
+    {
+     "character_id": "BOSS",
+     "action": "laughs, hands on hips",
+     "pose": "hip",
+     "face": "laugh",
+     "gaze_target_id": "ENGINEER",
+     "phase": "response",
+     "start_s": 0.2,
+     "duration_s": 1.5
+    },
+    {
+     "character_id": "ENGINEER",
+     "action": "stands with crossed arms",
+     "pose": "cross",
+     "face": "neutral",
+     "gaze_target_id": "BOSS",
+     "phase": "settle",
+     "start_s": 0.0,
+     "duration_s": 1.8
+    }
+   ],
+   "shot": {
+    "recipe_id": "S08",
+    "framing": "medium",
+    "composition": {
+     "primary_id": "BOSS",
+     "focal_point_norm": [
+      0.4,
+      0.45
+     ],
+     "secondary_ids": [
+      "ENGINEER"
+     ]
+    },
+    "distance_m": 6
+   },
+   "camera": {
+    "purpose": "hold_for_performance",
+    "mode": "creep",
+    "rationale": "Two-shot with a laugh and crossed arms; hold (CAM-08).",
+    "confidence": "designed"
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "sfx",
+     "event": "hearty chuckle",
+     "time_s": 41.674,
+     "trigger": "word",
+     "word_index": 157
+    }
+   ],
+   "transition_in": {
+    "type": "cut",
+    "reason": "scale_change"
+   },
+   "validation": {
+    "gates": [
+     "Q01",
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q10",
+     "Q09"
+    ],
+    "must_see": [
+     "BOSS",
+     "ENGINEER"
+    ]
+   },
+   "rule_refs": [
+    "CAM-08",
+    "CAM-13",
+    "CON-01"
+   ]
+  },
+  {
+   "id": "c16",
+   "index": 16,
+   "time": {
+    "start_s": 42.1333,
+    "end_s": 47.3
+   },
+   "narration": {
+    "text": "Meanwhile, on the perfect railroad, the rails started groaning in the afternoon sun, pushing against each other like they want out.",
+    "word_range": [
+     158,
+     178
+    ]
+   },
+   "intent": "create_suspense",
+   "visual_purpose": "The perfect rails heat up and push against each other: glow and groan.",
+   "subject": {
+    "main_id": "RAIL_PERFECT",
+    "hero_object_id": "RAIL_PERFECT"
+   },
+   "environment_id": "RAIL-CLOSEUP",
+   "light": "golden",
+   "object_events": [
+    {
+     "object_id": "RAIL_PERFECT",
+     "event": "heat",
+     "motion_profile": "none",
+     "secondary_effects": [
+      "sound"
+     ],
+     "start_s": 0.0,
+     "duration_s": 5.1
+    },
+    {
+     "object_id": "HEAT_GLOW",
+     "event": "glow",
+     "motion_profile": "none",
+     "start_s": 0.0,
+     "duration_s": 5.1
+    }
+   ],
+   "shot": {
+    "recipe_id": "S03",
+    "framing": "close",
+    "composition": {
+     "primary_id": "RAIL_PERFECT",
+     "focal_point_norm": [
+      0.5,
+      0.55
+     ],
+     "secondary_ids": [
+      "HEAT_GLOW"
+     ]
+    },
+    "situation": "DANGER",
+    "distance_m": 1.0
+   },
+   "camera": {
+    "purpose": "inspect",
+    "mode": "track",
+    "rationale": "A slow track along the joint where the pressure builds.",
+    "confidence": "designed",
+    "duration_s": 5.1,
+    "ease": "smooth",
+    "from": {
+     "framing": "close",
+     "distance_m": 1.0,
+     "height": "low",
+     "side": "left"
+    },
+    "to": {
+     "framing": "close",
+     "distance_m": 1.2,
+     "height": "low",
+     "side": "left"
+    }
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "sfx",
+     "event": "heavy metal groaning",
+     "time_s": 44.078,
+     "trigger": "word",
+     "word_index": 166
+    }
+   ],
+   "transition_in": {
+    "type": "dissolve",
+    "reason": "new_place",
+    "frames": 8
+   },
+   "validation": {
+    "gates": [
+     "Q01",
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q10",
+     "Q05",
+     "Q09"
+    ],
+    "must_see": [
+     "RAIL_PERFECT",
+     "HEAT_GLOW"
+    ]
+   },
+   "rule_refs": [
+    "LIT-06",
+    "PHY-04",
+    "CAM-06"
+   ]
+  },
+  {
+   "id": "c17",
+   "index": 17,
+   "time": {
+    "start_s": 47.3,
+    "end_s": 49.1333
+   },
+   "narration": {
+    "text": "On the hottest day anyone can remember.",
+    "word_range": [
+     179,
+     185
+    ]
+   },
+   "intent": "create_suspense",
+   "visual_purpose": "The hottest day: heat shimmer over the long bridge.",
+   "subject": {
+    "main_id": "BRIDGES",
+    "hero_object_id": "BRIDGES"
+   },
+   "environment_id": "BRIDGE-WIDE",
+   "light": "golden",
+   "object_events": [
+    {
+     "object_id": "HEAT_GLOW",
+     "event": "glow",
+     "motion_profile": "none",
+     "start_s": 0.0,
+     "duration_s": 1.8
+    }
+   ],
+   "shot": {
+    "recipe_id": "S01",
+    "framing": "wide",
+    "composition": {
+     "primary_id": "BRIDGES",
+     "focal_point_norm": [
+      0.5,
+      0.45
+     ]
+    },
+    "distance_m": 15
+   },
+   "camera": {
+    "purpose": "emphasize",
+    "mode": "push-in",
+    "rationale": "Move toward the bridge as the heat builds.",
+    "confidence": "designed",
+    "duration_s": 1.8,
+    "ease": "smooth",
+    "from": {
+     "framing": "wide",
+     "distance_m": 25,
+     "height": "high",
+     "side": "front"
+    },
+    "to": {
+     "framing": "medium_wide",
+     "distance_m": 12,
+     "height": "eye",
+     "side": "left"
+    }
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "sfx",
+     "event": "scorching heat sizzle",
+     "time_s": 47.619,
+     "trigger": "word",
+     "word_index": 181
+    }
+   ],
+   "transition_in": {
+    "type": "fly_through",
+    "reason": "scale_change",
+    "frames": 10
+   },
+   "validation": {
+    "gates": [
+     "Q01",
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q10",
+     "Q09"
+    ],
+    "must_see": [
+     "BRIDGES"
+    ]
+   },
+   "rule_refs": [
+    "LIT-03",
+    "FX-04",
+    "CAM-05"
+   ]
+  },
+  {
+   "id": "c18",
+   "index": 18,
+   "time": {
+    "start_s": 49.1333,
+    "end_s": 51.6333
+   },
+   "narration": {
+    "text": "His gaps finally close. Rail touching rail.",
+    "word_range": [
+     186,
+     192
+    ]
+   },
+   "intent": "explain_mechanism",
+   "visual_purpose": "His gaps close: rail touches rail and nothing breaks.",
+   "subject": {
+    "main_id": "RAIL_GAPPED",
+    "hero_object_id": "RAIL_GAPPED"
+   },
+   "environment_id": "RAIL-CLOSEUP",
+   "light": "golden",
+   "object_events": [
+    {
+     "object_id": "RAIL_GAPPED",
+     "event": "slide",
+     "motion_profile": "rigid",
+     "start_s": 0.2,
+     "duration_s": 1.0
+    },
+    {
+     "object_id": "RAIL_GAPPED",
+     "event": "impact",
+     "motion_profile": "rigid",
+     "contact_target_id": "RAIL_GAPPED",
+     "secondary_effects": [
+      "sound"
+     ],
+     "start_s": 1.2,
+     "duration_s": 0.3
+    }
+   ],
+   "shot": {
+    "recipe_id": "S03",
+    "framing": "close",
+    "composition": {
+     "primary_id": "RAIL_GAPPED",
+     "focal_point_norm": [
+      0.5,
+      0.5
+     ],
+     "secondary_ids": [
+      "HEAT_GLOW"
+     ]
+    },
+    "distance_m": 1.0
+   },
+   "camera": {
+    "purpose": "land_on_prop",
+    "mode": "creep",
+    "rationale": "Hold where the two rail ends meet.",
+    "confidence": "designed"
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "sfx",
+     "event": "heavy metal clank",
+     "time_s": 50.607,
+     "trigger": "word",
+     "word_index": 191
+    }
+   ],
+   "transition_in": {
+    "type": "dissolve",
+    "reason": "continuity",
+    "frames": 8
+   },
+   "validation": {
+    "gates": [
+     "Q01",
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q10",
+     "Q05",
+     "Q09"
+    ],
+    "must_see": [
+     "RAIL_GAPPED"
+    ]
+   },
+   "rule_refs": [
+    "PRP-03",
+    "PHY-03"
+   ]
+  },
+  {
+   "id": "c19",
+   "index": 19,
+   "time": {
+    "start_s": 51.6333,
+    "end_s": 56.7
+   },
+   "narration": {
+    "text": "Halfway across the canyon, the perfect railroad kicks sideways like a snake, right as a train rolls onto it.",
+    "word_range": [
+     193,
+     211
+    ]
+   },
+   "intent": "physical_action",
+   "visual_purpose": "The perfect track buckles sideways like a snake just as a train rolls on.",
+   "subject": {
+    "main_id": "RAIL_PERFECT",
+    "hero_object_id": "BENT_RAIL"
+   },
+   "environment_id": "BRIDGE-WIDE",
+   "light": "golden",
+   "object_events": [
+    {
+     "object_id": "BENT_RAIL",
+     "event": "bend",
+     "motion_profile": "elastic",
+     "contact_target_id": "TRAIN_PERFECT",
+     "secondary_effects": [
+      "debris",
+      "dust",
+      "smoke",
+      "camera_kick",
+      "sound"
+     ],
+     "start_s": 2.5,
+     "duration_s": 2.0
+    },
+    {
+     "object_id": "TRAIN_PERFECT",
+     "event": "move",
+     "motion_profile": "rigid",
+     "contact_target_id": "BENT_RAIL",
+     "secondary_effects": [
+      "smoke"
+     ],
+     "start_s": 0.0,
+     "duration_s": 5.0
+    }
+   ],
+   "shot": {
+    "recipe_id": "S06",
+    "framing": "wide",
+    "composition": {
+     "primary_id": "BENT_RAIL",
+     "focal_point_norm": [
+      0.5,
+      0.45
+     ],
+     "secondary_ids": [
+      "TRAIN_PERFECT",
+      "DEBRIS_SMOKE"
+     ]
+    },
+    "situation": "ACTION_IMPACT",
+    "distance_m": 15
+   },
+   "camera": {
+    "purpose": "impact",
+    "mode": "track",
+    "rationale": "Follow the train onto the track; two kicks on the buckle and the crash (FX-05).",
+    "confidence": "designed",
+    "duration_s": 5.0,
+    "ease": "easeOut",
+    "from": {
+     "framing": "wide",
+     "distance_m": 16,
+     "height": "high",
+     "side": "front"
+    },
+    "to": {
+     "framing": "wide",
+     "distance_m": 20,
+     "height": "high",
+     "side": "front"
+    },
+    "kicks": [
+     {
+      "time_s": 55.0,
+      "amp": 0.05
+     },
+     {
+      "time_s": 56.267,
+      "amp": 0.06
+     }
+    ]
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "sfx",
+     "event": "massive metal screech and crash",
+     "time_s": 54.078,
+     "trigger": "word",
+     "word_index": 201
+    }
+   ],
+   "transition_in": {
+    "type": "fly_through",
+    "reason": "scale_change",
+    "frames": 10
+   },
+   "validation": {
+    "gates": [
+     "Q01",
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q10",
+     "Q05",
+     "Q09"
+    ],
+    "must_see": [
+     "BENT_RAIL",
+     "TRAIN_PERFECT"
+    ]
+   },
+   "rule_refs": [
+    "FX-02",
+    "FX-05",
+    "PHY-03",
+    "PHY-04",
+    "CAM-07"
+   ]
+  }
+ ]
+}
