@@ -55,12 +55,15 @@ def kit_names():
 def stem(x): return x[:-1] if len(x) > 3 and x.endswith("s") and not x.endswith("ss") else x
 
 
+STOP = {"he", "she", "it", "they", "them", "him", "her", "his", "its", "their", "one", "other", "another", "the", "a", "an", "this", "that", "who", "we", "you", "i", "everyone", "something", "thing"}
+
+
 def aliases_of(e):
     """phrases (token tuples) by which the narration can name an entity: the id, the label, the declared aliases"""
     out = []
     for s in [e["id"].replace("-", " ").replace("_", " "), e.get("label", "")] + list(e.get("aliases", [])):
         tk = tuple(stem(x) for x in norm(s))
-        if tk: out.append(tk)
+        if tk and not (len(tk) == 1 and tk[0] in STOP): out.append(tk)
     return out
 
 
@@ -157,6 +160,7 @@ def run(path):
         o = c["outfit"]
         if not (o.startswith("NEW:") or o in outfits): err("Q01", f"character {c['id']}", f"outfit '{o}' is not a kit outfit and not NEW:<name>")
         if o.startswith("NEW:") and o[4:].strip() in outfits: err("Q01", f"character {c['id']}", f"outfit '{o}' is a kit outfit: write '{o[4:].strip()}' (a NEW item would be rebuilt and the identity would drift)")
+        if (o.startswith("NEW:") or str(c.get("hat", "")).startswith("NEW:")) and c.get("status", "kit") == "kit": err("Q01", f"character {c['id']}", "a NEW: outfit or hat needs status new_item (or needs_build) on the character: it is not a kit item")
         h = c.get("hat")
         if h and h.startswith("NEW:") and h[4:].strip() in hats: err("Q01", f"character {c['id']}", f"hat '{h}' is a kit hat: write '{h[4:].strip()}'")
         if h and not (h.startswith("NEW:") or h in hats): err("Q01", f"character {c['id']}", f"hat '{h}' is not a kit hat and not NEW:<name>")
@@ -235,9 +239,9 @@ def run(path):
             ref(oe["object_id"], "object_events.object_id", set(objs))
             if "contact_target_id" in oe: ref(oe["contact_target_id"], "contact_target_id")
             if oe["event"] in ("impact", "drop", "break", "launch") and "contact_target_id" not in oe:
-                warn("Q05", w, f"{oe['event']} of {oe['object_id']} has no contact_target_id (PHY-03)")
+                err("Q05", w, f"{oe['event']} of {oe['object_id']} has no contact_target_id: what does it hit or land on? (PHY-03)")
             if oe["event"] in ("impact", "break") and not oe.get("secondary_effects"):
-                warn("Q05", w, f"{oe['event']} of {oe['object_id']} has no secondary_effects (PHY-03)")
+                err("Q05", w, f"{oe['event']} of {oe['object_id']} has no secondary_effects: what happens because of the hit (debris, dust, sparks, sound, recoil, camera_kick)? (PHY-03)")
             if oe["start_s"] + oe["duration_s"] > L + 0.3: warn("Q10", w, f"event of {oe['object_id']} ends after the beat")
         # ---- camera (Q03)
         cam = b["camera"]

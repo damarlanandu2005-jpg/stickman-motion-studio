@@ -70,7 +70,7 @@ class Ctx:
         self.new_place = k > 0 and (B[k - 1]["environment_id"] != b["environment_id"])
         self.first_in_env = all(x["environment_id"] != b["environment_id"] for x in B[:k])
         self.intent = b["intent"]; self.purpose = b["camera"]["purpose"]; self.mode = b["camera"]["mode"]; self.framing = sh["framing"]
-        self.planner = sh["recipe_id"]; self.trans = b["transition_in"]["type"]; self.k = k; self.id = b["id"]
+        self.primary = sh["composition"]["primary_id"]; self.planner = sh["recipe_id"]; self.trans = b["transition_in"]["type"]; self.k = k; self.id = b["id"]
         self.numeric = bool([o for o in self.objs_in if next((x for x in ents["objects"] if x["id"] == o), {}).get("text_on_object")])
 
 
@@ -121,13 +121,17 @@ def f_continuity(c, rid, prev):
 
 def f_variety(c, rid, prev):
     run = 0
-    for r, _ in reversed(prev):
+    for r, _, _ in reversed(prev):
         if r == rid: run += 1
         else: break
     fr_prev = prev[-1][1] if prev else None
     s = 1.0 - [0, 0.35, 0.8, 1.0][min(run, 3)]
-    why = [f"{rid} used {run}x just before" if run else "not used in the last beat"]
-    if run == 0 and sum(1 for r, _ in prev[-4:] if r == rid) >= 2: s -= 0.25; why.append("2+ times in the last 4")
+    fr_me = c.framing if (rid == c.planner and c.framing in FRAMING_OF[rid]) else FRAMING_OF[rid][0]
+    if prev and prev[-1][2] == c.primary and prev[-1][1] == fr_me:
+        s -= 0.35; run_note = "same subject and same framing as the previous beat (a near-identical picture)"
+    else: run_note = None
+    why = [f"{rid} used {run}x just before" if run else "not used in the last beat"] + ([run_note] if run_note else [])
+    if run == 0 and sum(1 for r, _, _ in prev[-4:] if r == rid) >= 2: s -= 0.25; why.append("2+ times in the last 4")
     if fr_prev and fr_prev in FRAMING_OF[rid] and run == 0 and len(FRAMING_OF[rid]) == 1: s -= 0.1
     return max(0.0, s), "; ".join(why)
 
@@ -210,7 +214,7 @@ def select(D, R, caps, profiles=()):
                "unavailable": {r: (v["missing_capabilities"] or ["needs two characters in frame"]) for r, v in ev.items() if v["unavailable"]}}
         rep.append(rec)
         b.setdefault("extensions", {})["selector"] = {k_: rec[k_] for k_ in ("planner_recipe", "chosen", "decision", "why", "alternatives", "notes")}
-        prev.append((chosen, sh["framing"]))
+        prev.append((chosen, sh["framing"], ctx.primary))
     if D.get("schema_version") == "1.0.0": D["schema_version"] = "1.1.0"
     return D, rep
 

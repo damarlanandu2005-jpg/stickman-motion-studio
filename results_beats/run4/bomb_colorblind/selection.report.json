@@ -1,0 +1,615 @@
+{
+ "summary": {
+  "beats": 15,
+  "planner_kept": 10,
+  "replaced": 5,
+  "recipes": {
+   "S01": 1,
+   "S02": 1,
+   "S03": 5,
+   "S04": 7,
+   "S05": 1
+  }
+ },
+ "weights": {
+  "intent": 0.26,
+  "assets": 0.22,
+  "action": 0.14,
+  "continuity": 0.12,
+  "variety": 0.14,
+  "camera": 0.08,
+  "duration": 0.04
+ },
+ "keep_margin": 0.07,
+ "capabilities": {
+  "CAP-3D-FLIGHT": true,
+  "CAP-BLEND": true,
+  "CAP-FLY-THROUGH": false,
+  "CAP-HARD-CUT": true,
+  "CAP-CAMERA-KICK": true,
+  "CAP-DIAGRAM-CARD": false
+ },
+ "profiles": [],
+ "beats": [
+  {
+   "beat": "s1",
+   "intent": "hook",
+   "planner_recipe": "S04",
+   "chosen": "S04",
+   "decision": "planner's choice kept (it is the best)",
+   "why": "S04 for intent hook: intent 1.00 (candidate #1 for intent hook); assets 1.00 (a character with a face action); action 1.00 (a face/reaction is planned)",
+   "alternatives": [
+    {
+     "recipe": "S05",
+     "score": 0.792
+    },
+    {
+     "recipe": "S03",
+     "score": 0.727
+    }
+   ],
+   "notes": [],
+   "scores": {
+    "S01": 0.662,
+    "S02": 0.69,
+    "S03": 0.727,
+    "S04": 0.976,
+    "S05": 0.792,
+    "S06": 0.592,
+    "S07": 0.538,
+    "S08": 0.442
+   },
+   "unavailable": {
+    "S07": [
+     "CAP-DIAGRAM-CARD"
+    ],
+    "S08": [
+     "needs two characters in frame"
+    ]
+   }
+  },
+  {
+   "beat": "s2",
+   "intent": "introduce_character",
+   "planner_recipe": "S02",
+   "chosen": "S02",
+   "decision": "planner's choice kept (it is the best)",
+   "why": "S02 for intent introduce_character: intent 1.00 (candidate #1 for intent introduce_character); assets 1.00 (1 character(s) in frame); variety 1.00 (not used in the last beat) | weak: camera (camera purpose reveal is not typical for S02)",
+   "alternatives": [
+    {
+     "recipe": "S04",
+     "score": 0.793
+    },
+    {
+     "recipe": "S01",
+     "score": 0.738
+    }
+   ],
+   "notes": [
+    "camera purpose reveal is unusual for S02: the planner's camera was left as written"
+   ],
+   "scores": {
+    "S01": 0.738,
+    "S02": 0.866,
+    "S03": 0.463,
+    "S04": 0.793,
+    "S05": 0.738,
+    "S06": 0.586,
+    "S07": 0.48,
+    "S08": 0.384
+   },
+   "unavailable": {
+    "S07": [
+     "CAP-DIAGRAM-CARD"
+    ],
+    "S08": [
+     "needs two characters in frame"
+    ]
+   }
+  },
+  {
+   "beat": "s3",
+   "intent": "create_suspense",
+   "planner_recipe": "S06",
+   "chosen": "S04",
+   "decision": "replaced planner's S06 (0.49 vs S04 0.86)",
+   "why": "S04 for intent create_suspense: assets 1.00 (a character with a face action); intent 0.80 (candidate #2 for intent create_suspense); action 1.00 (a face/reaction is planned) | weak: camera (camera purpose follow is not typical for S04)",
+   "alternatives": [
+    {
+     "recipe": "S01",
+     "score": 0.65
+    },
+    {
+     "recipe": "S05",
+     "score": 0.65
+    }
+   ],
+   "notes": [
+    "camera purpose follow is unusual for S04: the planner's camera was left as written"
+   ],
+   "scores": {
+    "S01": 0.65,
+    "S02": 0.601,
+    "S03": 0.594,
+    "S04": 0.86,
+    "S05": 0.65,
+    "S06": 0.494,
+    "S07": 0.54,
+    "S08": 0.402
+   },
+   "unavailable": {
+    "S07": [
+     "CAP-DIAGRAM-CARD"
+    ],
+    "S08": [
+     "needs two characters in frame"
+    ]
+   }
+  },
+  {
+   "beat": "s4",
+   "intent": "create_suspense",
+   "planner_recipe": "S03",
+   "chosen": "S03",
+   "decision": "planner's choice kept (it is the best)",
+   "why": "S03 for intent create_suspense: intent 1.00 (candidate #1 for intent create_suspense); assets 1.00 (hero object); variety 1.00 (not used in the last beat)",
+   "alternatives": [
+    {
+     "recipe": "S01",
+     "score": 0.644
+    },
+    {
+     "recipe": "S05",
+     "score": 0.644
+    }
+   ],
+   "notes": [],
+   "scores": {
+    "S01": 0.644,
+    "S02": 0.108,
+    "S03": 0.932,
+    "S04": 0.255,
+    "S05": 0.644,
+    "S06": 0.56,
+    "S07": 0.662,
+    "S08": 0.136
+   },
+   "unavailable": {
+    "S07": [
+     "CAP-DIAGRAM-CARD"
+    ],
+    "S08": [
+     "needs two characters in frame"
+    ]
+   }
+  },
+  {
+   "beat": "s5",
+   "intent": "explain_mechanism",
+   "planner_recipe": "S03",
+   "chosen": "S03",
+   "decision": "planner's choice kept (it is the best)",
+   "why": "S03 for intent explain_mechanism: intent 1.00 (candidate #1 for intent explain_mechanism); assets 1.00 (hero object); action 0.70 (hero object, no action)",
+   "alternatives": [
+    {
+     "recipe": "S01",
+     "score": 0.674
+    },
+    {
+     "recipe": "S05",
+     "score": 0.674
+    }
+   ],
+   "notes": [],
+   "scores": {
+    "S01": 0.674,
+    "S02": 0.13,
+    "S03": 0.873,
+    "S04": 0.059,
+    "S05": 0.674,
+    "S06": 0.624,
+    "S07": 0.732,
+    "S08": 0.102
+   },
+   "unavailable": {
+    "S07": [
+     "CAP-DIAGRAM-CARD"
+    ],
+    "S08": [
+     "needs two characters in frame"
+    ]
+   }
+  },
+  {
+   "beat": "s6",
+   "intent": "emotional_reaction",
+   "planner_recipe": "S04",
+   "chosen": "S04",
+   "decision": "planner's choice kept (it is the best)",
+   "why": "S04 for intent emotional_reaction: intent 1.00 (candidate #1 for intent emotional_reaction); assets 1.00 (a character with a face action); action 1.00 (a face/reaction is planned) | weak: camera (camera purpose reveal is not typical for S04)",
+   "alternatives": [
+    {
+     "recipe": "S02",
+     "score": 0.832
+    },
+    {
+     "recipe": "S01",
+     "score": 0.726
+    }
+   ],
+   "notes": [
+    "camera purpose reveal is unusual for S04: the planner's camera was left as written"
+   ],
+   "scores": {
+    "S01": 0.726,
+    "S02": 0.832,
+    "S03": 0.248,
+    "S04": 0.918,
+    "S05": 0.726,
+    "S06": 0.494,
+    "S07": 0.41,
+    "S08": 0.493
+   },
+   "unavailable": {
+    "S03": [
+     "would be the third identical recipe in a row (CAM-10)"
+    ],
+    "S07": [
+     "CAP-DIAGRAM-CARD"
+    ],
+    "S08": [
+     "needs two characters in frame"
+    ]
+   }
+  },
+  {
+   "beat": "s7",
+   "intent": "create_suspense",
+   "planner_recipe": "S02",
+   "chosen": "S04",
+   "decision": "replaced planner's S02 (0.65 vs S04 0.81)",
+   "why": "S04 for intent create_suspense: assets 1.00 (a character with a face action); intent 0.80 (candidate #2 for intent create_suspense); action 1.00 (a face/reaction is planned) | weak: camera (camera purpose establish is not typical for S04)",
+   "alternatives": [
+    {
+     "recipe": "S01",
+     "score": 0.726
+    },
+    {
+     "recipe": "S05",
+     "score": 0.726
+    }
+   ],
+   "notes": [
+    "camera purpose establish is unusual for S04: the planner's camera was left as written"
+   ],
+   "scores": {
+    "S01": 0.726,
+    "S02": 0.65,
+    "S03": 0.686,
+    "S04": 0.811,
+    "S05": 0.726,
+    "S06": 0.552,
+    "S07": 0.628,
+    "S08": 0.402
+   },
+   "unavailable": {
+    "S07": [
+     "CAP-DIAGRAM-CARD"
+    ],
+    "S08": [
+     "needs two characters in frame"
+    ]
+   }
+  },
+  {
+   "beat": "s8",
+   "intent": "explain_mechanism",
+   "planner_recipe": "S03",
+   "chosen": "S03",
+   "decision": "planner's choice kept (it is the best)",
+   "why": "S03 for intent explain_mechanism: intent 1.00 (candidate #1 for intent explain_mechanism); assets 1.00 (hero object); action 0.90 (hero object acts)",
+   "alternatives": [
+    {
+     "recipe": "S06",
+     "score": 0.708
+    },
+    {
+     "recipe": "S01",
+     "score": 0.632
+    }
+   ],
+   "notes": [],
+   "scores": {
+    "S01": 0.632,
+    "S02": 0.074,
+    "S03": 0.921,
+    "S04": -0.044,
+    "S05": 0.632,
+    "S06": 0.708,
+    "S07": 0.732,
+    "S08": 0.102
+   },
+   "unavailable": {
+    "S04": [
+     "would be the third identical recipe in a row (CAM-10)"
+    ],
+    "S07": [
+     "CAP-DIAGRAM-CARD"
+    ],
+    "S08": [
+     "needs two characters in frame"
+    ]
+   }
+  },
+  {
+   "beat": "s9",
+   "intent": "create_suspense",
+   "planner_recipe": "S04",
+   "chosen": "S04",
+   "decision": "planner's choice kept (it is the best)",
+   "why": "S04 for intent create_suspense: assets 1.00 (a character with a face action); intent 0.80 (candidate #2 for intent create_suspense); action 1.00 (a face/reaction is planned) | weak: camera (camera purpose impact is not typical for S04)",
+   "alternatives": [
+    {
+     "recipe": "S03",
+     "score": 0.718
+    },
+    {
+     "recipe": "S01",
+     "score": 0.674
+    }
+   ],
+   "notes": [
+    "camera purpose impact is unusual for S04: the planner's camera was left as written"
+   ],
+   "scores": {
+    "S01": 0.674,
+    "S02": 0.65,
+    "S03": 0.718,
+    "S04": 0.831,
+    "S05": 0.674,
+    "S06": 0.604,
+    "S07": 0.628,
+    "S08": 0.402
+   },
+   "unavailable": {
+    "S07": [
+     "CAP-DIAGRAM-CARD"
+    ],
+    "S08": [
+     "needs two characters in frame"
+    ]
+   }
+  },
+  {
+   "beat": "s10",
+   "intent": "give_number_or_quantity",
+   "planner_recipe": "S03",
+   "chosen": "S03",
+   "decision": "planner's choice kept (it is the best)",
+   "why": "S03 for intent give_number_or_quantity: intent 1.00 (candidate #1 for intent give_number_or_quantity); assets 1.00 (hero object); variety 1.00 (not used in the last beat) | weak: camera (camera purpose hold_for_performance is not typical for S03)",
+   "alternatives": [
+    {
+     "recipe": "S01",
+     "score": 0.632
+    },
+    {
+     "recipe": "S05",
+     "score": 0.632
+    }
+   ],
+   "notes": [
+    "camera purpose hold_for_performance is unusual for S03: the planner's camera was left as written"
+   ],
+   "scores": {
+    "S01": 0.632,
+    "S02": 0.126,
+    "S03": 0.904,
+    "S04": 0.091,
+    "S05": 0.632,
+    "S06": 0.526,
+    "S07": 0.68,
+    "S08": 0.154
+   },
+   "unavailable": {
+    "S07": [
+     "CAP-DIAGRAM-CARD"
+    ],
+    "S08": [
+     "needs two characters in frame"
+    ]
+   }
+  },
+  {
+   "beat": "s11",
+   "intent": "emotional_reaction",
+   "planner_recipe": "S04",
+   "chosen": "S04",
+   "decision": "planner's choice kept (it is the best)",
+   "why": "S04 for intent emotional_reaction: intent 1.00 (candidate #1 for intent emotional_reaction); assets 1.00 (a character with a face action); action 1.00 (a face/reaction is planned)",
+   "alternatives": [
+    {
+     "recipe": "S02",
+     "score": 0.866
+    },
+    {
+     "recipe": "S01",
+     "score": 0.686
+    }
+   ],
+   "notes": [],
+   "scores": {
+    "S01": 0.686,
+    "S02": 0.866,
+    "S03": 0.466,
+    "S04": 0.911,
+    "S05": 0.686,
+    "S06": 0.586,
+    "S07": 0.532,
+    "S08": 0.527
+   },
+   "unavailable": {
+    "S07": [
+     "CAP-DIAGRAM-CARD"
+    ],
+    "S08": [
+     "needs two characters in frame"
+    ]
+   }
+  },
+  {
+   "beat": "s12",
+   "intent": "surprising_reveal",
+   "planner_recipe": "S04",
+   "chosen": "S05",
+   "decision": "replaced planner's S04 (0.80 vs S05 0.90)",
+   "why": "S05 for intent surprising_reveal: intent 1.00 (candidate #1 for intent surprising_reveal); assets 1.00 (a place with depth and something to reveal); variety 1.00 (not used in the last beat) | weak: camera (camera purpose impact is not typical for S05)",
+   "alternatives": [
+    {
+     "recipe": "S04",
+     "score": 0.799
+    },
+    {
+     "recipe": "S01",
+     "score": 0.662
+    }
+   ],
+   "notes": [
+    "camera purpose impact is unusual for S05: the planner's camera was left as written",
+    "framing close -> wide to suit S05"
+   ],
+   "scores": {
+    "S01": 0.662,
+    "S02": 0.662,
+    "S03": 0.365,
+    "S04": 0.799,
+    "S05": 0.896,
+    "S06": 0.482,
+    "S07": 0.398,
+    "S08": 0.39
+   },
+   "unavailable": {
+    "S07": [
+     "CAP-DIAGRAM-CARD"
+    ],
+    "S08": [
+     "needs two characters in frame"
+    ]
+   }
+  },
+  {
+   "beat": "s13",
+   "intent": "physical_action",
+   "planner_recipe": "S06",
+   "chosen": "S03",
+   "decision": "replaced planner's S06 (0.80 vs S03 0.88)",
+   "why": "S03 for intent physical_action: assets 1.00 (hero object); intent 0.80 (candidate #2 for intent physical_action); variety 1.00 (not used in the last beat) | weak: camera (camera purpose hold_for_performance is not typical for S03)",
+   "alternatives": [
+    {
+     "recipe": "S06",
+     "score": 0.796
+    },
+    {
+     "recipe": "S01",
+     "score": 0.608
+    }
+   ],
+   "notes": [
+    "camera purpose hold_for_performance is unusual for S03: the planner's camera was left as written"
+   ],
+   "scores": {
+    "S01": 0.608,
+    "S02": 0.126,
+    "S03": 0.882,
+    "S04": 0.141,
+    "S05": 0.559,
+    "S06": 0.796,
+    "S07": 0.498,
+    "S08": 0.154
+   },
+   "unavailable": {
+    "S07": [
+     "CAP-DIAGRAM-CARD"
+    ],
+    "S08": [
+     "needs two characters in frame"
+    ]
+   }
+  },
+  {
+   "beat": "s14",
+   "intent": "emotional_reaction",
+   "planner_recipe": "S02",
+   "chosen": "S04",
+   "decision": "replaced planner's S02 (0.83 vs S04 0.92)",
+   "why": "S04 for intent emotional_reaction: intent 1.00 (candidate #1 for intent emotional_reaction); assets 1.00 (a character with a face action); action 1.00 (a face/reaction is planned) | weak: camera (camera purpose reveal is not typical for S04)",
+   "alternatives": [
+    {
+     "recipe": "S02",
+     "score": 0.832
+    },
+    {
+     "recipe": "S01",
+     "score": 0.726
+    }
+   ],
+   "notes": [
+    "camera purpose reveal is unusual for S04: the planner's camera was left as written"
+   ],
+   "scores": {
+    "S01": 0.726,
+    "S02": 0.832,
+    "S03": 0.432,
+    "S04": 0.918,
+    "S05": 0.726,
+    "S06": 0.604,
+    "S07": 0.498,
+    "S08": 0.493
+   },
+   "unavailable": {
+    "S07": [
+     "CAP-DIAGRAM-CARD"
+    ],
+    "S08": [
+     "needs two characters in frame"
+    ]
+   }
+  },
+  {
+   "beat": "s15",
+   "intent": "summarize_or_conclude",
+   "planner_recipe": "S01",
+   "chosen": "S01",
+   "decision": "planner's choice kept (it is the best)",
+   "why": "S01 for intent summarize_or_conclude: intent 1.00 (candidate #1 for intent summarize_or_conclude); assets 1.00 (environment with depth layers and a scale anchor); variety 1.00 (not used in the last beat)",
+   "alternatives": [
+    {
+     "recipe": "S05",
+     "score": 0.868
+    },
+    {
+     "recipe": "S02",
+     "score": 0.814
+    }
+   ],
+   "notes": [],
+   "scores": {
+    "S01": 0.972,
+    "S02": 0.814,
+    "S03": 0.463,
+    "S04": 0.611,
+    "S05": 0.868,
+    "S06": 0.534,
+    "S07": 0.48,
+    "S08": 0.384
+   },
+   "unavailable": {
+    "S07": [
+     "CAP-DIAGRAM-CARD"
+    ],
+    "S08": [
+     "needs two characters in frame"
+    ]
+   }
+  }
+ ]
+}

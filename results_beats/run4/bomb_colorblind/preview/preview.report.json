@@ -1,0 +1,162 @@
+{
+ "beats": "results_beats/run4/bomb_colorblind/beats.selected.json",
+ "sheet_pages": [
+  "results_beats/run4/bomb_colorblind/preview/preview_01.jpg",
+  "results_beats/run4/bomb_colorblind/preview/preview_02.jpg",
+  "results_beats/run4/bomb_colorblind/preview/preview_03.jpg"
+ ],
+ "sheet_px": [
+  1080,
+  1280
+ ],
+ "tile_source": "drawn from the plan (not a render)",
+ "checks": [
+  {
+   "id": "PV-A1",
+   "class": "automatic",
+   "check": "main subject does not cover the caption band",
+   "status": "pass",
+   "detail": ""
+  },
+  {
+   "id": "PV-A2",
+   "class": "automatic",
+   "check": "every thing the words name is in the frame (or listed as not shown)",
+   "status": "pass",
+   "detail": "beat s2: the narration names 'bomb' and it is in the beat, but it is not in val; beat s3: the narration names 'device' and it is in the beat, but it is not in v; beat s4: the narration names 'he' and it is in the beat, but it is not in valid; beat s6: the narration names 'them' and it is in the beat, but it is not in val"
+  },
+  {
+   "id": "PV-A3",
+   "class": "automatic",
+   "check": "every beat lists what must be visible",
+   "status": "pass",
+   "detail": ""
+  },
+  {
+   "id": "PV-A4",
+   "class": "automatic",
+   "check": "each character has one fixed identity (outfit, hat, identity_lock) and no unresolved NEW: placeholder",
+   "status": "fail",
+   "detail": "ARTHUR-SUIT"
+  },
+  {
+   "id": "PV-A5",
+   "class": "automatic",
+   "check": "deliberate appearance changes are recorded as continuity_change",
+   "status": "pass",
+   "detail": "0 recorded: "
+  },
+  {
+   "id": "PV-A6",
+   "class": "automatic",
+   "check": "consecutive tiles are not near-identical compositions",
+   "status": "pass",
+   "detail": ""
+  },
+  {
+   "id": "PV-A7",
+   "class": "automatic",
+   "check": "environment changes and transition reasons agree",
+   "status": "pass",
+   "detail": ""
+  },
+  {
+   "id": "PV-A8",
+   "class": "automatic",
+   "check": "camera framing agrees with the chosen shot recipe",
+   "status": "warn",
+   "detail": "1 framing change(s) made by the selector"
+  },
+  {
+   "id": "PV-A9",
+   "class": "automatic",
+   "check": "labels are readable at phone width (label height >= 2% of the sheet width, 3 tiles across)",
+   "status": "pass",
+   "detail": "label glyph height is 2.2% of the sheet width"
+  },
+  {
+   "id": "PV-A10",
+   "class": "automatic",
+   "check": "real stills are not black or flat",
+   "status": "not_run",
+   "detail": "no stills given: nothing is rendered yet"
+  },
+  {
+   "id": "PV-G1",
+   "class": "ai_assisted",
+   "check": "the same character looks the same in every still (hat, outfit, face shape)",
+   "status": "not_run",
+   "detail": "needs rendered stills"
+  },
+  {
+   "id": "PV-G2",
+   "class": "ai_assisted",
+   "check": "every must_see object is visible and recognisable in the still",
+   "status": "not_run",
+   "detail": "needs rendered stills"
+  },
+  {
+   "id": "PV-G3",
+   "class": "ai_assisted",
+   "check": "the picture shows what the narration says (narration-to-picture match)",
+   "status": "not_run",
+   "detail": "needs rendered stills"
+  },
+  {
+   "id": "PV-G4",
+   "class": "ai_assisted",
+   "check": "no important content is cut off or hidden behind the caption band",
+   "status": "not_run",
+   "detail": "needs rendered stills"
+  },
+  {
+   "id": "PV-G5",
+   "class": "ai_assisted",
+   "check": "the place looks like the same place across its beats (environment continuity)",
+   "status": "not_run",
+   "detail": "needs rendered stills"
+  },
+  {
+   "id": "PV-H1",
+   "class": "human",
+   "check": "the characters and the world are attractive and professional (taste)",
+   "status": "not_run",
+   "detail": "a person must look"
+  },
+  {
+   "id": "PV-H2",
+   "class": "human",
+   "check": "materials read as the right materials: wood, metal, stone, water",
+   "status": "not_run",
+   "detail": "a person must look"
+  },
+  {
+   "id": "PV-H3",
+   "class": "human",
+   "check": "motion, acting and timing feel right (needs the video, not stills)",
+   "status": "not_run",
+   "detail": "a person must look"
+  }
+ ],
+ "counts": {
+  "automatic": {
+   "pass": 7,
+   "warn": 1,
+   "fail": 1,
+   "not_run": 1
+  },
+  "ai_assisted": {
+   "pass": 0,
+   "warn": 0,
+   "fail": 0,
+   "not_run": 5
+  },
+  "human": {
+   "pass": 0,
+   "warn": 0,
+   "fail": 0,
+   "not_run": 3
+  }
+ },
+ "flagged_beats": {}
+}

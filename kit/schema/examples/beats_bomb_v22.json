@@ -624,7 +624,8 @@
      "coat: mustard yellow",
      "skin: light",
      "no hair"
-    ]
+    ],
+    "status": "new_item"
    },
    {
     "id": "ARTHUR-BOMB-SUIT",
@@ -636,7 +637,8 @@
      "suit: green padded",
      "helmet and visor",
      "same face as ARTHUR"
-    ]
+    ],
+    "status": "new_item"
    },
    {
     "id": "POLICE-OFFICER",
@@ -647,7 +649,8 @@
     "identity_lock": [
      "uniform: dark navy",
      "cap: navy"
-    ]
+    ],
+    "status": "new_item"
    },
    {
     "id": "COMMANDER",
@@ -659,7 +662,8 @@
      "uniform: white",
      "cap: navy",
      "moustache: dark"
-    ]
+    ],
+    "status": "new_item"
    },
    {
     "id": "BOMB-TECHNICIAN",
@@ -669,7 +673,8 @@
     "identity_lock": [
      "uniform: dark navy work",
      "headset"
-    ]
+    ],
+    "status": "new_item"
    }
   ],
   "objects": [

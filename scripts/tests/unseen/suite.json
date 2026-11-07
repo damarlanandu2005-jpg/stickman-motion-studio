@@ -1,0 +1,70 @@
+{
+  "status": "PREPARED, NOT RUN. Nothing in this suite has been generated, rendered or scored yet. Run it only after the user approves.",
+  "purpose": "Does the same engine adapt its visual decisions to topics it was never tuned on? Target visual language = the 17 reference videos. Bomb and railroads are the tuning cases and are NOT in this suite.",
+  "levels": {
+    "L1_story_intelligence": {
+      "what": "script understanding, beat generation, shot selection, narrative sync",
+      "runs_without_render": true,
+      "automatic": ["schema + validator pass (Q01-Q10)", "every narration word covered", "named things in frame (Q06)", "pacing 18-24 changes/min unless justified", "recipe sequence is not a copy of another topic's sequence", "selector records a reason per beat"],
+      "ai_assisted": ["Gemini/Claude reads plan + narration and flags beats whose picture does not do what the words do"],
+      "human": ["does the plan tell this story, and is each choice justified?"],
+      "pass_rule": "all automatic checks pass AND no human-flagged story mismatch"
+    },
+    "L2_visual_quality": {
+      "what": "character consistency, object visibility, composition, materials, lighting, environments",
+      "runs_without_render": false,
+      "needs": "rendered stills (not video)",
+      "automatic": ["pixel checks on stills (not black/flat, colour strength vs references)", "caption band free", "focal point placement"],
+      "ai_assisted": ["same character looks the same across stills", "must_see objects recognisable", "material reads as the right material", "lighting profile matches the plan"],
+      "human": ["attractive, professional look vs the references"],
+      "pass_rule": "never claimed from the plan or from a drawn storyboard"
+    },
+    "L3_animation_quality": {
+      "what": "acting, gestures, object physics, collisions, camera motion, transitions, timing",
+      "runs_without_render": false,
+      "needs": "rendered video, played at speed",
+      "automatic": ["frame-level motion/pop/freeze detection (frame_qa.py)", "transition timing vs plan", "camera path smoothness"],
+      "ai_assisted": ["Gemini/Claude reviews motion strips", "does the collision look like a collision"],
+      "human": ["motion, acting and timing feel right"],
+      "pass_rule": "never claimed from beat validation or still contact sheets"
+    }
+  },
+  "universal_vs_specialised": {
+    "universal_rules": ["character identity consistency (CON-01)", "camera purpose and mode agree (CAM-16)", "material readability", "caption-safe composition (CMP-01)", "named things in frame", "pacing", "transition reasons", "impact needs a planned reaction (PHY-03)"],
+    "specialised_profiles": "topic behaviours enter ONLY as profile files passed to shot_selector.py --profile (recipe bias, extra candidates, required capabilities). A profile may not change a universal rule. None is shipped; every behaviour below marked 'not implemented' is a gap, not a capability.",
+    "material_implementations": {"note": "readability is universal; implementation is per material", "wood": "not verified", "metal": "not verified", "stone": "not verified", "water": "not implemented", "fabric": "not verified", "fire_smoke": "billboard_fx exists in kit, not verified per topic"}
+  },
+  "topics": [
+    {"id": "science_entropy", "family": "science and abstract concepts", "file": "science_entropy.txt", "style": "second-person explainer with a question hook and a metaphor",
+     "environments": ["kitchen table", "abstract particle space", "starfield"], "characters": ["narrator-less: no required person; a cup as a character"], "objects": ["coffee cup", "particles (many)", "heat arrows", "stars"],
+     "interactions": ["many small bodies colliding", "energy passing between groups", "a number so large it is shown, not read"],
+     "tests": ["can the engine show an abstract idea with objects and no person?", "S07-type diagram: needs CAP-DIAGRAM-CARD, which does not exist", "scale of a huge number"],
+     "specialised_needed": [{"behaviour": "particle swarm", "status": "not implemented"}, {"behaviour": "diagram/cutaway card", "status": "not implemented (CAP-DIAGRAM-CARD)"}]},
+    {"id": "history_agincourt", "family": "history and battles", "file": "history_agincourt.txt", "style": "past-tense narrative, rising tension, outcome twist",
+     "environments": ["muddy field", "rainy night camp", "battlefield at midday"], "characters": ["English archer", "French knight (armour)", "king/commander optional"], "objects": ["longbow and arrows", "armour", "horses", "mud"],
+     "interactions": ["arrows in volleys", "horses slipping", "knights falling and piling up", "crowd scale"],
+     "tests": ["crowd/scale beats", "many characters of two sides readable apart", "mud as a material and a plot point"],
+     "specialised_needed": [{"behaviour": "horse gait / galloping", "status": "not implemented"}, {"behaviour": "arrow volley", "status": "not verified"}, {"behaviour": "mud/ground deformation", "status": "not implemented"}]},
+    {"id": "space_apollo13", "family": "space and exploration", "file": "space_apollo13.txt", "style": "documentary, procedural, numbers and objects on a table",
+     "environments": ["space capsule interior (cramped)", "mission control", "table with parts", "Earth/Moon view"], "characters": ["astronaut x3 (suits)", "engineer(s) on the ground"], "objects": ["lunar module", "square filter", "round socket", "sock, bag, tape", "oxygen tank"],
+     "interactions": ["explosion in space", "assembling an adapter step by step", "gauge numbers falling"],
+     "tests": ["low gravity vs ground gravity", "small-object assembly beats", "two places linked by radio (cross-cutting)"],
+     "specialised_needed": [{"behaviour": "zero-g floating", "status": "not implemented"}, {"behaviour": "assembly step sequence", "status": "not verified"}, {"behaviour": "gauge/number display", "status": "text_on_object exists; not verified"}]},
+    {"id": "machine_escapement", "family": "machines and mechanisms", "file": "machine_escapement.txt", "style": "how-it-works walkthrough, cause and effect chain",
+     "environments": ["workshop bench", "inside-the-clock cutaway"], "characters": ["optional watchmaker"], "objects": ["spring", "gear train", "escape wheel", "anchor", "pendulum"],
+     "interactions": ["gear mesh and release", "pendulum swing", "tick/tock sync with sound"],
+     "tests": ["hero object with moving parts at close range", "timing locked to audio ticks", "orbiting a mechanism (ARC-01 3d_mesh)"],
+     "specialised_needed": [{"behaviour": "gear and linkage motion", "status": "not verified"}, {"behaviour": "periodic motion synced to audio", "status": "not implemented"}]},
+    {"id": "animals_geese", "family": "animals and nature", "file": "animals_geese.txt", "style": "question hook, explanation, small moral",
+     "environments": ["open sky at dusk", "wetland", "air-flow diagram view"], "characters": ["goose flock (identical characters, one leader)"], "objects": ["wingtip vortex (effect)", "V formation"],
+     "interactions": ["flapping wings", "formation keeping", "leader swapping", "invisible air made visible"],
+     "tests": ["repeated identical characters stay distinct enough to follow the leader", "invisible force as a visual effect"],
+     "specialised_needed": [{"behaviour": "bird flapping / flight", "status": "not implemented"}, {"behaviour": "airflow visualisation", "status": "not implemented"}]},
+    {"id": "money_cobra", "family": "money and human behaviour", "file": "money_cobra.txt", "style": "ironic story with a cause-and-effect loop and a moral",
+     "environments": ["colonial street", "government office", "backyard breeding pens"], "characters": ["official", "snake catcher/breeder", "crowd"], "objects": ["cobra", "money/bounty coins", "ledger", "cages"],
+     "interactions": ["handing over coins", "releasing animals", "a loop that repeats and grows"],
+     "tests": ["abstract incentive shown as objects", "a loop/growth beat (many cobras)", "tone: ironic reveal"],
+     "specialised_needed": [{"behaviour": "snake locomotion", "status": "not implemented"}, {"behaviour": "coin/payment animation", "status": "not verified"}]}
+  ],
+  "how_to_run_when_approved": ["copy each .txt as script.txt into a project dir with Kokoro words.json and phrases.json", "tools/make_notes.py -> tools/make_beats.py -> kit/tools/shot_selector.py -> kit/tools/plan_preview.py (L1 and plan-level L2 only)", "L2 and L3 need a render: only on explicit approval", "report per topic: L1 pass/fail with evidence, L2/L3 'not tested' until rendered"]
+}
