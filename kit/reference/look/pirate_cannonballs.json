@@ -1,0 +1,262 @@
+{
+ "name": "pirate_cannonballs",
+ "group": "refs",
+ "source": "1c8d3d93-Levels_of_Pirate_Cannonballs.mp4",
+ "frames": 1905,
+ "fps": 30.0,
+ "seconds": 63.5,
+ "height_px": 1280,
+ "width_px": 720,
+ "heads": {
+  "found_per_sampled_frame": 0.07,
+  "size_d_over_h": {
+   "p10": 0.11,
+   "p50": 0.153,
+   "p90": 0.182
+  },
+  "outline_over_d_all": 0.0421,
+  "outline_uneven": 0.784,
+  "outline_over_d_big_heads": 0.0447,
+  "eye_d_over_head": 0.138,
+  "eye_y_in_head": 0.616,
+  "eyes_per_head": 0.33,
+  "sample": 9
+ },
+ "outline": {
+  "stroke_over_frame_w": {
+   "p10": 0.0053,
+   "p50": 0.0053,
+   "p90": 0.008
+  },
+  "spread_within_frame_p25_p75": [
+   0.0053,
+   0.008
+  ],
+  "frames": 122,
+  "note": "line width of thin dark shapes (outlines and limbs), share of frame width"
+ },
+ "colour": {
+  "palette8": [
+   {
+    "hex": "#4b4e66",
+    "share": 0.2,
+    "hue": 234,
+    "sat": 0.27,
+    "val": 0.4
+   },
+   {
+    "hex": "#985734",
+    "share": 0.189,
+    "hue": 22,
+    "sat": 0.66,
+    "val": 0.6
+   },
+   {
+    "hex": "#9c8a8b",
+    "share": 0.156,
+    "hue": 356,
+    "sat": 0.11,
+    "val": 0.61
+   },
+   {
+    "hex": "#d5905c",
+    "share": 0.116,
+    "hue": 26,
+    "sat": 0.57,
+    "val": 0.84
+   },
+   {
+    "hex": "#d8cbbd",
+    "share": 0.111,
+    "hue": 32,
+    "sat": 0.13,
+    "val": 0.85
+   },
+   {
+    "hex": "#392329",
+    "share": 0.083,
+    "hue": 344,
+    "sat": 0.38,
+    "val": 0.22
+   },
+   {
+    "hex": "#85c0ec",
+    "share": 0.077,
+    "hue": 206,
+    "sat": 0.44,
+    "val": 0.93
+   },
+   {
+    "hex": "#499ad1",
+    "share": 0.069,
+    "hue": 204,
+    "sat": 0.65,
+    "val": 0.82
+   }
+  ],
+  "warm_share": 0.388,
+  "cool_share": 0.346,
+  "hue_bins_30deg": [
+   0.305,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.146,
+   0.2,
+   0.0,
+   0.0,
+   0.0,
+   0.083
+  ],
+  "surface": {
+   "flat": 0.481,
+   "smooth_gradient": 0.136,
+   "detailed": 0.147,
+   "edge": 0.236
+  }
+ },
+ "captions": {
+  "words": 160,
+  "words_per_s": 2.52,
+  "word_on_screen_s": {
+   "p10": 0.13,
+   "p50": 0.35,
+   "p90": 0.67
+  },
+  "text_height_over_frame_h": 0.032,
+  "centre_y_over_frame_h": 0.704,
+  "centre_x_over_frame_w": 0.501,
+  "width_over_frame_w_p50": 0.278,
+  "pop_first3_over_steady": 1.135,
+  "share_of_time_with_caption": 1.0
+ },
+ "blur": {
+  "edge_over_centre_sharpness_median": 0.704,
+  "frames_with_soft_edges": 0.281,
+  "flight_peak_sharpness_over_median": 0.979
+ },
+ "camera_curves": {
+  "varying": {
+   "n": 3,
+   "mean": [
+    0.19,
+    0.32,
+    0.4,
+    0.58,
+    0.84,
+    0.63,
+    0.31,
+    0.37,
+    0.48,
+    0.14,
+    0.09
+   ]
+  },
+  "all": {
+   "n": 20,
+   "mean": [
+    0.32,
+    0.53,
+    0.51,
+    0.58,
+    0.65,
+    0.5,
+    0.44,
+    0.49,
+    0.39,
+    0.22,
+    0.09
+   ]
+  },
+  "move_then_hold": {
+   "n": 4,
+   "mean": [
+    0.35,
+    0.58,
+    0.53,
+    0.84,
+    0.81,
+    0.37,
+    0.28,
+    0.12,
+    0.07,
+    0.07,
+    0.05
+   ]
+  },
+  "constant": {
+   "n": 6,
+   "mean": [
+    0.37,
+    0.68,
+    0.54,
+    0.48,
+    0.61,
+    0.64,
+    0.69,
+    0.65,
+    0.56,
+    0.33,
+    0.12
+   ]
+  },
+  "decelerate": {
+   "n": 4,
+   "mean": [
+    0.3,
+    0.59,
+    0.52,
+    0.45,
+    0.36,
+    0.34,
+    0.31,
+    0.54,
+    0.34,
+    0.19,
+    0.07
+   ]
+  },
+  "ease_in_out": {
+   "n": 3,
+   "mean": [
+    0.33,
+    0.31,
+    0.54,
+    0.62,
+    0.7,
+    0.45,
+    0.48,
+    0.7,
+    0.42,
+    0.35,
+    0.09
+   ]
+  }
+ },
+ "camera_ramps": {
+  "n": 20,
+  "ramp_up_s_p50": 0.38,
+  "ramp_down_s_p50": 0.33,
+  "peak_pct_width_per_s_p50": 62.8,
+  "peak_position_in_flight_p50": 0.38
+ },
+ "shake": {
+  "events_per_min": 23.6,
+  "amp_pct_width_p50": 1.3,
+  "decay_s_p50": 0.3,
+  "threshold_pct_width": 0.6,
+  "background_jitter_pct_width_median": 0.063,
+  "note": "estimate: jitter found after removing a 9-frame running mean of the camera shift; a fast whip can also show up here"
+ },
+ "sound": {
+  "scene_change_near_sound_onset": 0.52,
+  "chance": 0.599,
+  "lift": 0.87,
+  "onset_rate_per_s": 2.77,
+  "shake_events_near_sound_onset": 0.68,
+  "shake_chance": 0.625,
+  "shake_lift": 1.09
+ }
+}

@@ -1,0 +1,262 @@
+{
+ "name": "vp5",
+ "group": "refs",
+ "source": "e3b1c6db-videoplayback_5.mp4",
+ "frames": 1350,
+ "fps": 30.0,
+ "seconds": 45.0,
+ "height_px": 640,
+ "width_px": 360,
+ "heads": {
+  "found_per_sampled_frame": 0.04,
+  "size_d_over_h": {
+   "p10": 0.123,
+   "p50": 0.132,
+   "p90": 0.14
+  },
+  "outline_over_d_all": 0.0287,
+  "outline_uneven": 1.019,
+  "outline_over_d_big_heads": 0.0287,
+  "eye_d_over_head": null,
+  "eye_y_in_head": null,
+  "eyes_per_head": 0.0,
+  "sample": 4
+ },
+ "outline": {
+  "stroke_over_frame_w": {
+   "p10": 0.0106,
+   "p50": 0.0106,
+   "p90": 0.0106
+  },
+  "spread_within_frame_p25_p75": [
+   0.0106,
+   0.0106
+  ],
+  "frames": 61,
+  "note": "line width of thin dark shapes (outlines and limbs), share of frame width"
+ },
+ "colour": {
+  "palette8": [
+   {
+    "hex": "#9b8b66",
+    "share": 0.24,
+    "hue": 42,
+    "sat": 0.34,
+    "val": 0.61
+   },
+   {
+    "hex": "#33273e",
+    "share": 0.174,
+    "hue": 272,
+    "sat": 0.37,
+    "val": 0.24
+   },
+   {
+    "hex": "#8badda",
+    "share": 0.154,
+    "hue": 214,
+    "sat": 0.36,
+    "val": 0.85
+   },
+   {
+    "hex": "#845132",
+    "share": 0.134,
+    "hue": 22,
+    "sat": 0.62,
+    "val": 0.52
+   },
+   {
+    "hex": "#cab69e",
+    "share": 0.095,
+    "hue": 32,
+    "sat": 0.22,
+    "val": 0.79
+   },
+   {
+    "hex": "#e2e3e7",
+    "share": 0.089,
+    "hue": 228,
+    "sat": 0.02,
+    "val": 0.91
+   },
+   {
+    "hex": "#39518c",
+    "share": 0.083,
+    "hue": 222,
+    "sat": 0.59,
+    "val": 0.55
+   },
+   {
+    "hex": "#da7238",
+    "share": 0.031,
+    "hue": 22,
+    "sat": 0.74,
+    "val": 0.85
+   }
+  ],
+  "warm_share": 0.5,
+  "cool_share": 0.411,
+  "hue_bins_30deg": [
+   0.165,
+   0.335,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.237,
+   0.0,
+   0.174,
+   0.0,
+   0.0
+  ],
+  "surface": {
+   "flat": 0.465,
+   "smooth_gradient": 0.2,
+   "detailed": 0.16,
+   "edge": 0.176
+  }
+ },
+ "captions": {
+  "words": 116,
+  "words_per_s": 2.58,
+  "word_on_screen_s": {
+   "p10": 0.17,
+   "p50": 0.35,
+   "p90": 0.6
+  },
+  "text_height_over_frame_h": 0.0393,
+  "centre_y_over_frame_h": 0.704,
+  "centre_x_over_frame_w": 0.501,
+  "width_over_frame_w_p50": 0.247,
+  "pop_first3_over_steady": 1.204,
+  "share_of_time_with_caption": 0.997
+ },
+ "blur": {
+  "edge_over_centre_sharpness_median": 0.942,
+  "frames_with_soft_edges": 0.211,
+  "flight_peak_sharpness_over_median": 0.883
+ },
+ "camera_curves": {
+  "constant": {
+   "n": 3,
+   "mean": [
+    0.8,
+    0.91,
+    0.84,
+    0.76,
+    0.7,
+    0.66,
+    0.63,
+    0.59,
+    0.52,
+    0.43,
+    0.28
+   ]
+  },
+  "all": {
+   "n": 9,
+   "mean": [
+    0.4,
+    0.53,
+    0.62,
+    0.58,
+    0.6,
+    0.73,
+    0.67,
+    0.52,
+    0.39,
+    0.3,
+    0.2
+   ]
+  },
+  "ease_in_out": {
+   "n": 3,
+   "mean": [
+    0.2,
+    0.49,
+    0.74,
+    0.65,
+    0.65,
+    0.99,
+    0.77,
+    0.5,
+    0.32,
+    0.19,
+    0.12
+   ]
+  },
+  "decelerate": {
+   "n": 1,
+   "mean": [
+    0.12,
+    0.18,
+    0.24,
+    0.27,
+    0.66,
+    0.99,
+    0.69,
+    0.5,
+    0.4,
+    0.25,
+    0.13
+   ]
+  },
+  "move_then_hold": {
+   "n": 1,
+   "mean": [
+    0.27,
+    0.24,
+    0.53,
+    0.05,
+    0.36,
+    0.48,
+    0.99,
+    0.8,
+    0.44,
+    0.42,
+    0.41
+   ]
+  },
+  "varying": {
+   "n": 1,
+   "mean": [
+    0.18,
+    0.13,
+    0.09,
+    0.65,
+    0.31,
+    0.17,
+    0.1,
+    0.12,
+    0.16,
+    0.16,
+    0.1
+   ]
+  }
+ },
+ "camera_ramps": {
+  "n": 9,
+  "ramp_up_s_p50": 0.8,
+  "ramp_down_s_p50": 0.6,
+  "peak_pct_width_per_s_p50": 40.5,
+  "peak_position_in_flight_p50": 0.49
+ },
+ "shake": {
+  "events_per_min": 5.3,
+  "amp_pct_width_p50": 1.04,
+  "decay_s_p50": 0.2,
+  "threshold_pct_width": 0.6,
+  "background_jitter_pct_width_median": 0.024,
+  "note": "estimate: jitter found after removing a 9-frame running mean of the camera shift; a fast whip can also show up here"
+ },
+ "sound": {
+  "scene_change_near_sound_onset": 0.571,
+  "chance": 0.67,
+  "lift": 0.85,
+  "onset_rate_per_s": 3.22,
+  "shake_events_near_sound_onset": 1.0,
+  "shake_chance": 0.689,
+  "shake_lift": 1.45
+ }
+}

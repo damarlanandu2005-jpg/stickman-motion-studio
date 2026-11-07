@@ -1,0 +1,246 @@
+{
+ "name": "idea_zone",
+ "group": "refs",
+ "source": "b596cd84-Your_Brains_Secret_Idea_Zone.mp4",
+ "frames": 1172,
+ "fps": 30.0,
+ "seconds": 39.07,
+ "height_px": 1280,
+ "width_px": 720,
+ "heads": {
+  "found_per_sampled_frame": 0.37,
+  "size_d_over_h": {
+   "p10": 0.138,
+   "p50": 0.21,
+   "p90": 0.344
+  },
+  "outline_over_d_all": 0.2272,
+  "outline_uneven": 0.382,
+  "outline_over_d_big_heads": 0.2272,
+  "eye_d_over_head": 0.147,
+  "eye_y_in_head": 0.435,
+  "eyes_per_head": 0.48,
+  "sample": 29
+ },
+ "outline": {
+  "stroke_over_frame_w": {
+   "p10": 0.0053,
+   "p50": 0.0078,
+   "p90": 0.0097
+  },
+  "spread_within_frame_p25_p75": [
+   0.0053,
+   0.0097
+  ],
+  "frames": 46,
+  "note": "line width of thin dark shapes (outlines and limbs), share of frame width"
+ },
+ "colour": {
+  "palette8": [
+   {
+    "hex": "#291d17",
+    "share": 0.303,
+    "hue": 20,
+    "sat": 0.44,
+    "val": 0.16
+   },
+   {
+    "hex": "#57392a",
+    "share": 0.216,
+    "hue": 20,
+    "sat": 0.52,
+    "val": 0.34
+   },
+   {
+    "hex": "#0c080c",
+    "share": 0.169,
+    "hue": 300,
+    "sat": 0.33,
+    "val": 0.05
+   },
+   {
+    "hex": "#375878",
+    "share": 0.097,
+    "hue": 210,
+    "sat": 0.54,
+    "val": 0.47
+   },
+   {
+    "hex": "#98653f",
+    "share": 0.094,
+    "hue": 26,
+    "sat": 0.58,
+    "val": 0.6
+   },
+   {
+    "hex": "#d8c6b5",
+    "share": 0.048,
+    "hue": 30,
+    "sat": 0.16,
+    "val": 0.85
+   },
+   {
+    "hex": "#7291a9",
+    "share": 0.038,
+    "hue": 206,
+    "sat": 0.33,
+    "val": 0.66
+   },
+   {
+    "hex": "#c29770",
+    "share": 0.035,
+    "hue": 28,
+    "sat": 0.42,
+    "val": 0.76
+   }
+  ],
+  "warm_share": 0.648,
+  "cool_share": 0.135,
+  "hue_bins_30deg": [
+   0.648,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.038,
+   0.097,
+   0.0,
+   0.0,
+   0.169,
+   0.0
+  ],
+  "surface": {
+   "flat": 0.603,
+   "smooth_gradient": 0.146,
+   "detailed": 0.104,
+   "edge": 0.147
+  }
+ },
+ "captions": {
+  "words": 102,
+  "words_per_s": 2.61,
+  "word_on_screen_s": {
+   "p10": 0.17,
+   "p50": 0.33,
+   "p90": 0.6
+  },
+  "text_height_over_frame_h": 0.0312,
+  "centre_y_over_frame_h": 0.706,
+  "centre_x_over_frame_w": 0.5,
+  "width_over_frame_w_p50": 0.253,
+  "pop_first3_over_steady": 1.082,
+  "share_of_time_with_caption": 1.0
+ },
+ "blur": {
+  "edge_over_centre_sharpness_median": 0.203,
+  "frames_with_soft_edges": 0.864,
+  "flight_peak_sharpness_over_median": 1.259
+ },
+ "camera_curves": {
+  "ease_in_out": {
+   "n": 2,
+   "mean": [
+    0.35,
+    0.62,
+    0.61,
+    0.84,
+    0.74,
+    0.73,
+    0.45,
+    0.31,
+    0.19,
+    0.18,
+    0.08
+   ]
+  },
+  "all": {
+   "n": 8,
+   "mean": [
+    0.46,
+    0.67,
+    0.72,
+    0.78,
+    0.73,
+    0.73,
+    0.63,
+    0.44,
+    0.38,
+    0.33,
+    0.15
+   ]
+  },
+  "decelerate": {
+   "n": 2,
+   "mean": [
+    0.36,
+    0.43,
+    0.86,
+    0.8,
+    0.66,
+    0.89,
+    0.83,
+    0.58,
+    0.33,
+    0.2,
+    0.13
+   ]
+  },
+  "constant": {
+   "n": 3,
+   "mean": [
+    0.69,
+    0.82,
+    0.93,
+    0.92,
+    0.89,
+    0.85,
+    0.73,
+    0.56,
+    0.43,
+    0.32,
+    0.21
+   ]
+  },
+  "varying": {
+   "n": 1,
+   "mean": [
+    0.21,
+    0.81,
+    0.02,
+    0.17,
+    0.34,
+    0.01,
+    0.26,
+    0.03,
+    0.74,
+    0.89,
+    0.14
+   ]
+  }
+ },
+ "camera_ramps": {
+  "n": 8,
+  "ramp_up_s_p50": 0.28,
+  "ramp_down_s_p50": 1.17,
+  "peak_pct_width_per_s_p50": 42.7,
+  "peak_position_in_flight_p50": 0.3
+ },
+ "shake": {
+  "events_per_min": 3.1,
+  "amp_pct_width_p50": 1.79,
+  "decay_s_p50": 0.27,
+  "threshold_pct_width": 0.6,
+  "background_jitter_pct_width_median": 0.016,
+  "note": "estimate: jitter found after removing a 9-frame running mean of the camera shift; a fast whip can also show up here"
+ },
+ "sound": {
+  "scene_change_near_sound_onset": 0.692,
+  "chance": 0.731,
+  "lift": 0.95,
+  "onset_rate_per_s": 3.66,
+  "shake_events_near_sound_onset": 1.0,
+  "shake_chance": 0.759,
+  "shake_lift": 1.32
+ }
+}

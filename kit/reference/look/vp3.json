@@ -1,0 +1,198 @@
+{
+ "name": "vp3",
+ "group": "refs",
+ "source": "d2f7132b-videoplayback_3.mp4",
+ "frames": 1351,
+ "fps": 30.0,
+ "seconds": 45.03,
+ "height_px": 640,
+ "width_px": 360,
+ "heads": {
+  "found_per_sampled_frame": 0.2,
+  "size_d_over_h": {
+   "p10": 0.098,
+   "p50": 0.111,
+   "p90": 0.166
+  },
+  "outline_over_d_all": 0.1638,
+  "outline_uneven": 0.436,
+  "outline_over_d_big_heads": 0.1481,
+  "eye_d_over_head": null,
+  "eye_y_in_head": null,
+  "eyes_per_head": 0.0,
+  "sample": 18
+ },
+ "outline": {
+  "stroke_over_frame_w": {
+   "p10": 0.0106,
+   "p50": 0.0106,
+   "p90": 0.0106
+  },
+  "spread_within_frame_p25_p75": [
+   0.0106,
+   0.0106
+  ],
+  "frames": 46,
+  "note": "line width of thin dark shapes (outlines and limbs), share of frame width"
+ },
+ "colour": {
+  "palette8": [
+   {
+    "hex": "#1b2148",
+    "share": 0.224,
+    "hue": 232,
+    "sat": 0.62,
+    "val": 0.28
+   },
+   {
+    "hex": "#caa993",
+    "share": 0.198,
+    "hue": 24,
+    "sat": 0.27,
+    "val": 0.79
+   },
+   {
+    "hex": "#3e3e6e",
+    "share": 0.188,
+    "hue": 240,
+    "sat": 0.44,
+    "val": 0.43
+   },
+   {
+    "hex": "#2f161a",
+    "share": 0.122,
+    "hue": 350,
+    "sat": 0.53,
+    "val": 0.18
+   },
+   {
+    "hex": "#8d6756",
+    "share": 0.115,
+    "hue": 18,
+    "sat": 0.39,
+    "val": 0.55
+   },
+   {
+    "hex": "#67332b",
+    "share": 0.11,
+    "hue": 8,
+    "sat": 0.58,
+    "val": 0.4
+   },
+   {
+    "hex": "#efe2d4",
+    "share": 0.035,
+    "hue": 32,
+    "sat": 0.11,
+    "val": 0.94
+   },
+   {
+    "hex": "#de681e",
+    "share": 0.01,
+    "hue": 24,
+    "sat": 0.87,
+    "val": 0.87
+   }
+  ],
+  "warm_share": 0.555,
+  "cool_share": 0.412,
+  "hue_bins_30deg": [
+   0.433,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.224,
+   0.188,
+   0.0,
+   0.0,
+   0.122
+  ],
+  "surface": {
+   "flat": 0.41,
+   "smooth_gradient": 0.204,
+   "detailed": 0.179,
+   "edge": 0.207
+  }
+ },
+ "captions": {
+  "words": 105,
+  "words_per_s": 2.33,
+  "word_on_screen_s": {
+   "p10": 0.2,
+   "p50": 0.37,
+   "p90": 0.6
+  },
+  "text_height_over_frame_h": 0.0307,
+  "centre_y_over_frame_h": 0.704,
+  "centre_x_over_frame_w": 0.501,
+  "width_over_frame_w_p50": 0.264,
+  "pop_first3_over_steady": 1.092,
+  "share_of_time_with_caption": 1.0
+ },
+ "blur": {
+  "edge_over_centre_sharpness_median": 0.641,
+  "frames_with_soft_edges": 0.42,
+  "flight_peak_sharpness_over_median": 1.134
+ },
+ "camera_curves": {
+  "constant": {
+   "n": 4,
+   "mean": [
+    0.81,
+    0.54,
+    0.53,
+    0.67,
+    0.7,
+    0.63,
+    0.6,
+    0.71,
+    0.71,
+    0.54,
+    0.25
+   ]
+  },
+  "all": {
+   "n": 4,
+   "mean": [
+    0.81,
+    0.54,
+    0.53,
+    0.67,
+    0.7,
+    0.63,
+    0.6,
+    0.71,
+    0.71,
+    0.54,
+    0.25
+   ]
+  }
+ },
+ "camera_ramps": {
+  "n": 4,
+  "ramp_up_s_p50": 0.0,
+  "ramp_down_s_p50": 0.03,
+  "peak_pct_width_per_s_p50": 18.5,
+  "peak_position_in_flight_p50": 0.17
+ },
+ "shake": {
+  "events_per_min": 1.3,
+  "amp_pct_width_p50": 1.59,
+  "decay_s_p50": 0.1,
+  "threshold_pct_width": 0.6,
+  "background_jitter_pct_width_median": 0.017,
+  "note": "estimate: jitter found after removing a 9-frame running mean of the camera shift; a fast whip can also show up here"
+ },
+ "sound": {
+  "scene_change_near_sound_onset": 0.667,
+  "chance": 0.655,
+  "lift": 1.02,
+  "onset_rate_per_s": 3.18,
+  "shake_events_near_sound_onset": 0.0,
+  "shake_chance": 0.679,
+  "shake_lift": 0.0
+ }
+}

@@ -3,6 +3,22 @@
 Read `kit/docs/PLAYBOOK.md` for the rules. This file is the history: which videos were studied, how, what was found, what is not known yet.
 We keep NUMBERS and RULES only. The reference video files and their frames are NOT stored in this repo (it is public).
 
+## 2026-11-07, session 3b: audit of the scene counter and the measurable look studies (same 17 videos)
+Tools added: `ref_transitions.py` (types of scene change, hand-check, audit), `ref_look.py` (outline, heads, colour and surface, captions, blur, camera speed curves, shake, sound), `build_profiles.py`.
+Files: `knowledge/scene_truth.json` (hand labels), `knowledge/transition_audit.json` (per-video table), `look/*.json` and `look/_summary.json`.
+
+Audit of the scene counter
+- Hand labels: 43 scene changes in the first 30 s of 4 videos (vp3, pirate_cannonballs, grave_bell, random_numbers). Detector: precision 0.84, recall 0.84 (+-0.75 s). First version had precision 0.73; a colour-layout filter fixed most extras (big camera moves inside one scene).
+- Type labels spot-checked on 0.1 s strips: 5 of 6 right. Real dissolves last about 0.2-0.4 s.
+- Counts changed: references 16-25 scene changes per minute (median 20.4, gap median 2.4 s, average 2.75 s). Before the filter I wrote 17-27 and 2.1 s: that was too high. Ours is 28.3, about 40 % above the median.
+- References: 43 % dissolve, 22 % camera fly-through, 21 % hard cut, 12 % in-place, 2 % whip. Ours: 100 % hard cut. Hard cuts inside a scene: references median 1.1 per minute, ours 25.
+- Correction of an older rule: TRN-01 said "motion blur at peak speed". Measured sharpness at the flight peak is 1.05 of the median: there is no motion blur. Fixed.
+
+New measured numbers (all ratios): head size, line width, outline, surface mix (flat / gradient / detail), warm and cool share, captions, edge blur, camera speed curve, shake, sound alignment. See PLAYBOOK tables.
+Biggest findings against ours: no captions in our engine; surfaces 60 % flat (refs 35-48 %); heads 13 % of frame height (refs 17 %); scene changes all hard cuts; shake 35 per minute (refs 10).
+Limits found: head finder only works on clean near-white heads; caption height is reliable in 8 of 17 videos; scene changes are not aligned to voice onsets (lift 1.0), music and effects cannot be separated from the mixed track; physics trajectories, limb thickness, body proportions and material types are NOT measured.
+STATUS: none of this is read by the render code yet.
+
 ## 2026-11-07, session 3: 9 more reference shorts (17 camera-studied in total)
 Videos: vp3 (Japan pachinko hall), vp4 (lottery ticket), vp5 (two kingdoms and a blacksmith), slot_machines, winning_tickets, idea_zone (sleep and ideas), random_numbers,
 knight_loophole, grave_bell. vp3-vp5 are 360x640, the others 720x1280; all 30 fps, 31-78 s.

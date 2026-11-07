@@ -1,0 +1,472 @@
+{
+ "note": "Audit of the scene-change counter (ref_scenes.py) and its type labels (ref_transitions.py). Words: shot = between hard cuts; scene change = new place or set-up (any way of making it); camera flight = camera motion, not an edit.",
+ "detector_accuracy_vs_hand_labels": {
+  "tp": 36,
+  "fp": 7,
+  "fn": 7,
+  "precision": 0.84,
+  "recall": 0.84,
+  "tol_s": 0.75
+ },
+ "hand_label_file": "kit/reference/knowledge/scene_truth.json (4 videos, first 30 s, 43 changes, +-0.75 s)",
+ "type_label_spot_check": "6 events checked on 0.1 s strips: grave_bell 10.08 dissolve ok, grave_bell 13.28 dissolve ok, vp3 10.55 dissolve ok, perfect_railroads 21.32 whip ok, pirate 23.05 camera_move ok, slot_machines 13.68 labelled whip but the real change is a dissolve 0.5 s later (time off). 5 of 6 right.",
+ "refs_summary": {
+  "videos": 17,
+  "scene_changes_per_min": {
+   "mean": 20.9,
+   "median": 20.4,
+   "min": 16.0,
+   "max": 24.9
+  },
+  "mean_gap_s_mean": 2.75,
+  "median_gap_s_median": 2.43,
+  "hard_cuts_per_min_median": 6.6,
+  "hard_cuts_inside_scene_per_min_median": 1.1,
+  "type_share_of_all_scene_changes": {
+   "hard_cut": 0.21,
+   "dissolve": 0.43,
+   "whip": 0.02,
+   "camera_move": 0.22,
+   "in_place": 0.12
+  }
+ },
+ "per_video": {
+  "claude_bomb_v21": {
+   "group": "ours",
+   "seconds": 36.1,
+   "scene_changes": 17,
+   "scene_changes_per_min": 28.3,
+   "mean_gap_s": 2.0,
+   "median_gap_s": 1.96,
+   "hard_cuts_per_min": 58.2,
+   "hard_cuts_inside_a_scene_per_min": 25.0,
+   "by_type_per_min": {
+    "hard_cut": 28.3,
+    "dissolve": 0.0,
+    "whip": 0.0,
+    "camera_move": 0.0,
+    "in_place": 0.0
+   },
+   "by_type_share": {
+    "hard_cut": 1.0,
+    "dissolve": 0.0,
+    "whip": 0.0,
+    "camera_move": 0.0,
+    "in_place": 0.0
+   }
+  },
+  "grave_bell": {
+   "group": "refs",
+   "seconds": 59.5,
+   "scene_changes": 23,
+   "scene_changes_per_min": 23.2,
+   "mean_gap_s": 2.48,
+   "median_gap_s": 2.4,
+   "hard_cuts_per_min": 2.0,
+   "hard_cuts_inside_a_scene_per_min": 0.0,
+   "by_type_per_min": {
+    "hard_cut": 2.0,
+    "dissolve": 10.1,
+    "whip": 1.0,
+    "camera_move": 6.1,
+    "in_place": 4.0
+   },
+   "by_type_share": {
+    "hard_cut": 0.09,
+    "dissolve": 0.43,
+    "whip": 0.04,
+    "camera_move": 0.26,
+    "in_place": 0.17
+   }
+  },
+  "idea_zone": {
+   "group": "refs",
+   "seconds": 39.1,
+   "scene_changes": 13,
+   "scene_changes_per_min": 20.0,
+   "mean_gap_s": 2.79,
+   "median_gap_s": 2.5,
+   "hard_cuts_per_min": 1.5,
+   "hard_cuts_inside_a_scene_per_min": 0.0,
+   "by_type_per_min": {
+    "hard_cut": 1.5,
+    "dissolve": 9.2,
+    "whip": 0.0,
+    "camera_move": 3.1,
+    "in_place": 6.1
+   },
+   "by_type_share": {
+    "hard_cut": 0.08,
+    "dissolve": 0.46,
+    "whip": 0.0,
+    "camera_move": 0.15,
+    "in_place": 0.31
+   }
+  },
+  "knight_loophole": {
+   "group": "refs",
+   "seconds": 40.6,
+   "scene_changes": 15,
+   "scene_changes_per_min": 22.1,
+   "mean_gap_s": 2.54,
+   "median_gap_s": 2.28,
+   "hard_cuts_per_min": 10.3,
+   "hard_cuts_inside_a_scene_per_min": 5.9,
+   "by_type_per_min": {
+    "hard_cut": 4.4,
+    "dissolve": 10.3,
+    "whip": 0.0,
+    "camera_move": 1.5,
+    "in_place": 5.9
+   },
+   "by_type_share": {
+    "hard_cut": 0.2,
+    "dissolve": 0.47,
+    "whip": 0.0,
+    "camera_move": 0.07,
+    "in_place": 0.27
+   }
+  },
+  "memory_price": {
+   "group": "refs",
+   "seconds": 77.8,
+   "scene_changes": 28,
+   "scene_changes_per_min": 21.6,
+   "mean_gap_s": 2.68,
+   "median_gap_s": 2.54,
+   "hard_cuts_per_min": 3.1,
+   "hard_cuts_inside_a_scene_per_min": 0.8,
+   "by_type_per_min": {
+    "hard_cut": 2.3,
+    "dissolve": 13.9,
+    "whip": 0.0,
+    "camera_move": 3.1,
+    "in_place": 2.3
+   },
+   "by_type_share": {
+    "hard_cut": 0.11,
+    "dissolve": 0.64,
+    "whip": 0.0,
+    "camera_move": 0.14,
+    "in_place": 0.11
+   }
+  },
+  "mirror_horse_race": {
+   "group": "refs",
+   "seconds": 64.1,
+   "scene_changes": 24,
+   "scene_changes_per_min": 22.5,
+   "mean_gap_s": 2.56,
+   "median_gap_s": 2.14,
+   "hard_cuts_per_min": 14.0,
+   "hard_cuts_inside_a_scene_per_min": 3.7,
+   "by_type_per_min": {
+    "hard_cut": 6.6,
+    "dissolve": 6.6,
+    "whip": 0.9,
+    "camera_move": 8.4,
+    "in_place": 0.0
+   },
+   "by_type_share": {
+    "hard_cut": 0.29,
+    "dissolve": 0.29,
+    "whip": 0.04,
+    "camera_move": 0.38,
+    "in_place": 0.0
+   }
+  },
+  "perfect_railroads": {
+   "group": "refs",
+   "seconds": 65.2,
+   "scene_changes": 27,
+   "scene_changes_per_min": 24.9,
+   "mean_gap_s": 2.33,
+   "median_gap_s": 2.24,
+   "hard_cuts_per_min": 13.8,
+   "hard_cuts_inside_a_scene_per_min": 0.9,
+   "by_type_per_min": {
+    "hard_cut": 8.3,
+    "dissolve": 8.3,
+    "whip": 1.8,
+    "camera_move": 6.4,
+    "in_place": 0.0
+   },
+   "by_type_share": {
+    "hard_cut": 0.33,
+    "dissolve": 0.33,
+    "whip": 0.07,
+    "camera_move": 0.26,
+    "in_place": 0.0
+   }
+  },
+  "pirate_cannonballs": {
+   "group": "refs",
+   "seconds": 63.5,
+   "scene_changes": 25,
+   "scene_changes_per_min": 23.6,
+   "mean_gap_s": 2.44,
+   "median_gap_s": 2.03,
+   "hard_cuts_per_min": 18.0,
+   "hard_cuts_inside_a_scene_per_min": 3.8,
+   "by_type_per_min": {
+    "hard_cut": 11.3,
+    "dissolve": 3.8,
+    "whip": 0.0,
+    "camera_move": 6.6,
+    "in_place": 1.9
+   },
+   "by_type_share": {
+    "hard_cut": 0.48,
+    "dissolve": 0.16,
+    "whip": 0.0,
+    "camera_move": 0.28,
+    "in_place": 0.08
+   }
+  },
+  "random_numbers": {
+   "group": "refs",
+   "seconds": 47.1,
+   "scene_changes": 14,
+   "scene_changes_per_min": 17.8,
+   "mean_gap_s": 3.14,
+   "median_gap_s": 2.67,
+   "hard_cuts_per_min": 3.8,
+   "hard_cuts_inside_a_scene_per_min": 1.3,
+   "by_type_per_min": {
+    "hard_cut": 2.5,
+    "dissolve": 8.9,
+    "whip": 1.3,
+    "camera_move": 3.8,
+    "in_place": 1.3
+   },
+   "by_type_share": {
+    "hard_cut": 0.14,
+    "dissolve": 0.5,
+    "whip": 0.07,
+    "camera_move": 0.21,
+    "in_place": 0.07
+   }
+  },
+  "roller_coasters": {
+   "group": "refs",
+   "seconds": 63.2,
+   "scene_changes": 21,
+   "scene_changes_per_min": 19.9,
+   "mean_gap_s": 2.87,
+   "median_gap_s": 2.55,
+   "hard_cuts_per_min": 4.7,
+   "hard_cuts_inside_a_scene_per_min": 1.9,
+   "by_type_per_min": {
+    "hard_cut": 2.8,
+    "dissolve": 9.5,
+    "whip": 0.0,
+    "camera_move": 5.7,
+    "in_place": 1.9
+   },
+   "by_type_share": {
+    "hard_cut": 0.14,
+    "dissolve": 0.48,
+    "whip": 0.0,
+    "camera_move": 0.29,
+    "in_place": 0.1
+   }
+  },
+  "second_draw": {
+   "group": "refs",
+   "seconds": 56.1,
+   "scene_changes": 19,
+   "scene_changes_per_min": 20.3,
+   "mean_gap_s": 2.8,
+   "median_gap_s": 2.43,
+   "hard_cuts_per_min": 9.6,
+   "hard_cuts_inside_a_scene_per_min": 1.1,
+   "by_type_per_min": {
+    "hard_cut": 4.3,
+    "dissolve": 6.4,
+    "whip": 0.0,
+    "camera_move": 7.5,
+    "in_place": 2.1
+   },
+   "by_type_share": {
+    "hard_cut": 0.21,
+    "dissolve": 0.32,
+    "whip": 0.0,
+    "camera_move": 0.37,
+    "in_place": 0.11
+   }
+  },
+  "slot_machines": {
+   "group": "refs",
+   "seconds": 30.9,
+   "scene_changes": 10,
+   "scene_changes_per_min": 19.4,
+   "mean_gap_s": 2.81,
+   "median_gap_s": 2.33,
+   "hard_cuts_per_min": 5.8,
+   "hard_cuts_inside_a_scene_per_min": 0.0,
+   "by_type_per_min": {
+    "hard_cut": 3.9,
+    "dissolve": 3.9,
+    "whip": 1.9,
+    "camera_move": 5.8,
+    "in_place": 3.9
+   },
+   "by_type_share": {
+    "hard_cut": 0.2,
+    "dissolve": 0.2,
+    "whip": 0.1,
+    "camera_move": 0.3,
+    "in_place": 0.2
+   }
+  },
+  "storm_oil": {
+   "group": "refs",
+   "seconds": 64.6,
+   "scene_changes": 22,
+   "scene_changes_per_min": 20.4,
+   "mean_gap_s": 2.81,
+   "median_gap_s": 2.66,
+   "hard_cuts_per_min": 8.4,
+   "hard_cuts_inside_a_scene_per_min": 3.7,
+   "by_type_per_min": {
+    "hard_cut": 3.7,
+    "dissolve": 6.5,
+    "whip": 0.9,
+    "camera_move": 7.4,
+    "in_place": 1.9
+   },
+   "by_type_share": {
+    "hard_cut": 0.18,
+    "dissolve": 0.32,
+    "whip": 0.05,
+    "camera_move": 0.36,
+    "in_place": 0.09
+   }
+  },
+  "town_button": {
+   "group": "refs",
+   "seconds": 65.5,
+   "scene_changes": 23,
+   "scene_changes_per_min": 21.1,
+   "mean_gap_s": 2.73,
+   "median_gap_s": 2.48,
+   "hard_cuts_per_min": 10.1,
+   "hard_cuts_inside_a_scene_per_min": 0.9,
+   "by_type_per_min": {
+    "hard_cut": 5.5,
+    "dissolve": 10.1,
+    "whip": 0.0,
+    "camera_move": 2.7,
+    "in_place": 2.7
+   },
+   "by_type_share": {
+    "hard_cut": 0.26,
+    "dissolve": 0.48,
+    "whip": 0.0,
+    "camera_move": 0.13,
+    "in_place": 0.13
+   }
+  },
+  "vp3": {
+   "group": "refs",
+   "seconds": 45.0,
+   "scene_changes": 12,
+   "scene_changes_per_min": 16.0,
+   "mean_gap_s": 3.46,
+   "median_gap_s": 2.57,
+   "hard_cuts_per_min": 0.0,
+   "hard_cuts_inside_a_scene_per_min": 0.0,
+   "by_type_per_min": {
+    "hard_cut": 0.0,
+    "dissolve": 14.7,
+    "whip": 0.0,
+    "camera_move": 0.0,
+    "in_place": 1.3
+   },
+   "by_type_share": {
+    "hard_cut": 0.0,
+    "dissolve": 0.92,
+    "whip": 0.0,
+    "camera_move": 0.0,
+    "in_place": 0.08
+   }
+  },
+  "vp4": {
+   "group": "refs",
+   "seconds": 57.7,
+   "scene_changes": 19,
+   "scene_changes_per_min": 19.7,
+   "mean_gap_s": 2.89,
+   "median_gap_s": 2.14,
+   "hard_cuts_per_min": 15.6,
+   "hard_cuts_inside_a_scene_per_min": 4.2,
+   "by_type_per_min": {
+    "hard_cut": 7.3,
+    "dissolve": 10.4,
+    "whip": 0.0,
+    "camera_move": 0.0,
+    "in_place": 2.1
+   },
+   "by_type_share": {
+    "hard_cut": 0.37,
+    "dissolve": 0.53,
+    "whip": 0.0,
+    "camera_move": 0.0,
+    "in_place": 0.11
+   }
+  },
+  "vp5": {
+   "group": "refs",
+   "seconds": 45.0,
+   "scene_changes": 14,
+   "scene_changes_per_min": 18.7,
+   "mean_gap_s": 3.0,
+   "median_gap_s": 2.7,
+   "hard_cuts_per_min": 2.7,
+   "hard_cuts_inside_a_scene_per_min": 0.0,
+   "by_type_per_min": {
+    "hard_cut": 2.7,
+    "dissolve": 8.0,
+    "whip": 0.0,
+    "camera_move": 2.7,
+    "in_place": 5.3
+   },
+   "by_type_share": {
+    "hard_cut": 0.14,
+    "dissolve": 0.43,
+    "whip": 0.0,
+    "camera_move": 0.14,
+    "in_place": 0.29
+   }
+  },
+  "winning_tickets": {
+   "group": "refs",
+   "seconds": 63.3,
+   "scene_changes": 25,
+   "scene_changes_per_min": 23.7,
+   "mean_gap_s": 2.43,
+   "median_gap_s": 2.01,
+   "hard_cuts_per_min": 6.6,
+   "hard_cuts_inside_a_scene_per_min": 3.8,
+   "by_type_per_min": {
+    "hard_cut": 2.8,
+    "dissolve": 12.3,
+    "whip": 0.0,
+    "camera_move": 5.7,
+    "in_place": 2.8
+   },
+   "by_type_share": {
+    "hard_cut": 0.12,
+    "dissolve": 0.52,
+    "whip": 0.0,
+    "camera_move": 0.24,
+    "in_place": 0.12
+   }
+  }
+ },
+ "limits": [
+  "Types are rules on frame data, about +-20 %. Dissolve length (6-12 frames) is the fitted window, real blends look 0.2-0.4 s on the strips.",
+  "'angle change inside the same scene' is NOT counted as a scene change (the layout filter removes it); hard cuts that are not scene changes are counted separately as hard_cuts_inside_a_scene.",
+  "Hand labels are mine and subjective for 'new framing' cases; labelled 4 of 17 videos, 30 s each."
+ ]
+}

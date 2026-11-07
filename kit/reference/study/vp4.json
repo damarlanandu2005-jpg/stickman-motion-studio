@@ -771,8 +771,8 @@
   }
  ],
  "scenes": {
-  "count": 21,
-  "per_min": 21.8,
+  "count": 19,
+  "per_min": 19.7,
   "times_s": [
    2.38,
    4.08,
@@ -781,7 +781,6 @@
    12.45,
    14.35,
    17.12,
-   18.88,
    21.78,
    23.05,
    25.65,
@@ -793,14 +792,207 @@
    49.32,
    51.32,
    54.48,
-   55.82,
-   57.38
+   55.82
   ],
-  "median_scene_s": 1.97,
-  "p10_scene_s": 1.35,
-  "p90_scene_s": 4.46,
+  "median_scene_s": 2.14,
+  "p10_scene_s": 1.46,
+  "p90_scene_s": 4.63,
   "thr": 0.075,
   "lag_s": 0.5,
+  "min_layout": 0.12,
   "duration_s": 57.73
+ },
+ "transitions": {
+  "events": [
+   {
+    "t": 2.38,
+    "kind": "hard_cut",
+    "size": "location_change",
+    "peak_flow": 18.2,
+    "sharp_ratio": 0.68,
+    "d_layout": 0.23
+   },
+   {
+    "t": 4.08,
+    "kind": "in_place",
+    "size": "location_change",
+    "peak_flow": 4.8,
+    "sharp_ratio": 0.75,
+    "d_layout": 0.153
+   },
+   {
+    "t": 6.02,
+    "kind": "dissolve",
+    "size": "location_change",
+    "peak_flow": 1.1,
+    "sharp_ratio": 0.49,
+    "d_layout": 0.231,
+    "dissolve_frames": 9,
+    "fit": 0.07
+   },
+   {
+    "t": 10.65,
+    "kind": "dissolve",
+    "size": "location_change",
+    "peak_flow": 1.3,
+    "sharp_ratio": 0.34,
+    "d_layout": 0.197,
+    "dissolve_frames": 9,
+    "fit": 0.06
+   },
+   {
+    "t": 12.45,
+    "kind": "dissolve",
+    "size": "location_change",
+    "peak_flow": 5.2,
+    "sharp_ratio": 0.38,
+    "d_layout": 0.248,
+    "dissolve_frames": 12,
+    "fit": 0.08
+   },
+   {
+    "t": 14.35,
+    "kind": "dissolve",
+    "size": "location_change",
+    "peak_flow": 5.6,
+    "sharp_ratio": 0.5,
+    "d_layout": 0.281,
+    "dissolve_frames": 9,
+    "fit": 0.09
+   },
+   {
+    "t": 17.12,
+    "kind": "dissolve",
+    "size": "location_change",
+    "peak_flow": 11.1,
+    "sharp_ratio": 0.36,
+    "d_layout": 0.318,
+    "dissolve_frames": 21,
+    "fit": 0.06
+   },
+   {
+    "t": 21.78,
+    "kind": "hard_cut",
+    "size": "location_change",
+    "peak_flow": 12.4,
+    "sharp_ratio": 0.53,
+    "d_layout": 0.165
+   },
+   {
+    "t": 23.05,
+    "kind": "dissolve",
+    "size": "location_change",
+    "peak_flow": 9.3,
+    "sharp_ratio": 0.2,
+    "d_layout": 0.352,
+    "dissolve_frames": 12,
+    "fit": 0.06
+   },
+   {
+    "t": 25.65,
+    "kind": "dissolve",
+    "size": "location_change",
+    "peak_flow": 3.8,
+    "sharp_ratio": 0.67,
+    "d_layout": 0.311,
+    "dissolve_frames": 9,
+    "fit": 0.06
+   },
+   {
+    "t": 28.02,
+    "kind": "in_place",
+    "size": "location_change",
+    "peak_flow": 3.4,
+    "sharp_ratio": 0.85,
+    "d_layout": 0.225
+   },
+   {
+    "t": 32.62,
+    "kind": "dissolve",
+    "size": "location_change",
+    "peak_flow": 1.0,
+    "sharp_ratio": 0.45,
+    "d_layout": 0.235,
+    "dissolve_frames": 21,
+    "fit": 0.04
+   },
+   {
+    "t": 43.78,
+    "kind": "hard_cut",
+    "size": "location_change",
+    "peak_flow": 12.2,
+    "sharp_ratio": 0.51,
+    "d_layout": 0.24
+   },
+   {
+    "t": 45.25,
+    "kind": "hard_cut",
+    "size": "location_change",
+    "peak_flow": 17.6,
+    "sharp_ratio": 0.73,
+    "d_layout": 0.186
+   },
+   {
+    "t": 47.52,
+    "kind": "hard_cut",
+    "size": "location_change",
+    "peak_flow": 17.3,
+    "sharp_ratio": 0.53,
+    "d_layout": 0.194
+   },
+   {
+    "t": 49.32,
+    "kind": "hard_cut",
+    "size": "location_change",
+    "peak_flow": 16.2,
+    "sharp_ratio": 0.75,
+    "d_layout": 0.236
+   },
+   {
+    "t": 51.32,
+    "kind": "dissolve",
+    "size": "location_change",
+    "peak_flow": 1.0,
+    "sharp_ratio": 0.42,
+    "d_layout": 0.332,
+    "dissolve_frames": 24,
+    "fit": 0.03
+   },
+   {
+    "t": 54.48,
+    "kind": "hard_cut",
+    "size": "location_change",
+    "peak_flow": 18.9,
+    "sharp_ratio": 0.01,
+    "d_layout": 0.229
+   },
+   {
+    "t": 55.82,
+    "kind": "dissolve",
+    "size": "location_change",
+    "peak_flow": 2.4,
+    "sharp_ratio": 0.48,
+    "d_layout": 0.323,
+    "dissolve_frames": 15,
+    "fit": 0.04
+   }
+  ],
+  "per_min": {
+   "hard_cut": 7.3,
+   "dissolve": 10.4,
+   "whip": 0.0,
+   "camera_move": 0.0,
+   "in_place": 2.1
+  },
+  "count": {
+   "hard_cut": 7,
+   "dissolve": 10,
+   "whip": 0,
+   "camera_move": 0,
+   "in_place": 2
+  },
+  "location_changes_per_min": 19.7,
+  "angle_changes_per_min": 0.0,
+  "note": "types are rules on frame data, estimate +-20 %; see kit/tools/ref_transitions.py header"
  }
 }

@@ -1,0 +1,246 @@
+{
+ "name": "slot_machines",
+ "group": "refs",
+ "source": "db338ec7-The_Science_Behind_Slot_Machines.mp4",
+ "frames": 928,
+ "fps": 30.0,
+ "seconds": 30.93,
+ "height_px": 1280,
+ "width_px": 720,
+ "heads": {
+  "found_per_sampled_frame": 0.35,
+  "size_d_over_h": {
+   "p10": 0.178,
+   "p50": 0.232,
+   "p90": 0.303
+  },
+  "outline_over_d_all": 0.0987,
+  "outline_uneven": 0.737,
+  "outline_over_d_big_heads": 0.0987,
+  "eye_d_over_head": 0.124,
+  "eye_y_in_head": 0.438,
+  "eyes_per_head": 0.23,
+  "sample": 22
+ },
+ "outline": {
+  "stroke_over_frame_w": {
+   "p10": 0.0053,
+   "p50": 0.0053,
+   "p90": 0.008
+  },
+  "spread_within_frame_p25_p75": [
+   0.0053,
+   0.008
+  ],
+  "frames": 62,
+  "note": "line width of thin dark shapes (outlines and limbs), share of frame width"
+ },
+ "colour": {
+  "palette8": [
+   {
+    "hex": "#432117",
+    "share": 0.282,
+    "hue": 14,
+    "sat": 0.65,
+    "val": 0.26
+   },
+   {
+    "hex": "#c77338",
+    "share": 0.144,
+    "hue": 24,
+    "sat": 0.72,
+    "val": 0.78
+   },
+   {
+    "hex": "#9a3918",
+    "share": 0.134,
+    "hue": 16,
+    "sat": 0.84,
+    "val": 0.6
+   },
+   {
+    "hex": "#efc978",
+    "share": 0.12,
+    "hue": 40,
+    "sat": 0.5,
+    "val": 0.94
+   },
+   {
+    "hex": "#715244",
+    "share": 0.112,
+    "hue": 18,
+    "sat": 0.4,
+    "val": 0.44
+   },
+   {
+    "hex": "#b29174",
+    "share": 0.109,
+    "hue": 28,
+    "sat": 0.35,
+    "val": 0.7
+   },
+   {
+    "hex": "#327678",
+    "share": 0.05,
+    "hue": 182,
+    "sat": 0.58,
+    "val": 0.47
+   },
+   {
+    "hex": "#f2ebd8",
+    "share": 0.048,
+    "hue": 44,
+    "sat": 0.11,
+    "val": 0.95
+   }
+  ],
+  "warm_share": 0.901,
+  "cool_share": 0.05,
+  "hue_bins_30deg": [
+   0.781,
+   0.12,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.05,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "surface": {
+   "flat": 0.275,
+   "smooth_gradient": 0.145,
+   "detailed": 0.168,
+   "edge": 0.412
+  }
+ },
+ "captions": {
+  "words": 74,
+  "words_per_s": 2.39,
+  "word_on_screen_s": {
+   "p10": 0.13,
+   "p50": 0.3,
+   "p90": 0.68
+  },
+  "text_height_over_frame_h": 0.0887,
+  "centre_y_over_frame_h": 0.688,
+  "centre_x_over_frame_w": 0.501,
+  "width_over_frame_w_p50": 0.429,
+  "pop_first3_over_steady": 1.028,
+  "share_of_time_with_caption": 1.0
+ },
+ "blur": {
+  "edge_over_centre_sharpness_median": 0.646,
+  "frames_with_soft_edges": 0.374,
+  "flight_peak_sharpness_over_median": 1.11
+ },
+ "camera_curves": {
+  "ease_in_out": {
+   "n": 3,
+   "mean": [
+    0.27,
+    0.39,
+    0.64,
+    0.87,
+    0.95,
+    0.94,
+    0.87,
+    0.7,
+    0.44,
+    0.22,
+    0.09
+   ]
+  },
+  "all": {
+   "n": 8,
+   "mean": [
+    0.42,
+    0.58,
+    0.64,
+    0.72,
+    0.77,
+    0.75,
+    0.62,
+    0.56,
+    0.51,
+    0.38,
+    0.22
+   ]
+  },
+  "constant": {
+   "n": 3,
+   "mean": [
+    0.74,
+    0.79,
+    0.74,
+    0.63,
+    0.59,
+    0.58,
+    0.41,
+    0.53,
+    0.68,
+    0.6,
+    0.4
+   ]
+  },
+  "varying": {
+   "n": 1,
+   "mean": [
+    0.29,
+    0.45,
+    0.55,
+    0.86,
+    0.9,
+    0.53,
+    0.22,
+    0.23,
+    0.26,
+    0.25,
+    0.13
+   ]
+  },
+  "decelerate": {
+   "n": 1,
+   "mean": [
+    0.09,
+    0.67,
+    0.41,
+    0.39,
+    0.61,
+    0.91,
+    0.88,
+    0.57,
+    0.47,
+    0.35,
+    0.12
+   ]
+  }
+ },
+ "camera_ramps": {
+  "n": 8,
+  "ramp_up_s_p50": 0.45,
+  "ramp_down_s_p50": 0.5,
+  "peak_pct_width_per_s_p50": 65.1,
+  "peak_position_in_flight_p50": 0.36
+ },
+ "shake": {
+  "events_per_min": 9.7,
+  "amp_pct_width_p50": 0.69,
+  "decay_s_p50": 0.13,
+  "threshold_pct_width": 0.6,
+  "background_jitter_pct_width_median": 0.044,
+  "note": "estimate: jitter found after removing a 9-frame running mean of the camera shift; a fast whip can also show up here"
+ },
+ "sound": {
+  "scene_change_near_sound_onset": 0.6,
+  "chance": 0.669,
+  "lift": 0.9,
+  "onset_rate_per_s": 3.23,
+  "shake_events_near_sound_onset": 0.6,
+  "shake_chance": 0.703,
+  "shake_lift": 0.85
+ }
+}

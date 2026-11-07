@@ -557,14 +557,13 @@
   }
  ],
  "scenes": {
-  "count": 30,
-  "per_min": 23.1,
+  "count": 28,
+  "per_min": 21.6,
   "times_s": [
    1.68,
    5.38,
    6.65,
    8.68,
-   9.92,
    13.28,
    15.82,
    18.65,
@@ -579,7 +578,6 @@
    44.28,
    47.22,
    49.98,
-   53.12,
    54.62,
    56.72,
    58.05,
@@ -591,11 +589,293 @@
    71.28,
    74.15
   ],
-  "median_scene_s": 2.33,
-  "p10_scene_s": 1.33,
-  "p90_scene_s": 3.7,
+  "median_scene_s": 2.54,
+  "p10_scene_s": 1.47,
+  "p90_scene_s": 4.24,
   "thr": 0.075,
   "lag_s": 0.5,
+  "min_layout": 0.12,
   "duration_s": 77.8
+ },
+ "transitions": {
+  "events": [
+   {
+    "t": 1.68,
+    "kind": "dissolve",
+    "size": "location_change",
+    "peak_flow": 12.9,
+    "sharp_ratio": 0.16,
+    "d_layout": 0.347,
+    "dissolve_frames": 15,
+    "fit": 0.13
+   },
+   {
+    "t": 5.38,
+    "kind": "camera_move",
+    "size": "location_change",
+    "peak_flow": 9.2,
+    "sharp_ratio": 0.55,
+    "d_layout": 0.204
+   },
+   {
+    "t": 6.65,
+    "kind": "dissolve",
+    "size": "location_change",
+    "peak_flow": 2.2,
+    "sharp_ratio": 0.39,
+    "d_layout": 0.202,
+    "dissolve_frames": 9,
+    "fit": 0.08
+   },
+   {
+    "t": 8.68,
+    "kind": "dissolve",
+    "size": "location_change",
+    "peak_flow": 0.8,
+    "sharp_ratio": 0.52,
+    "d_layout": 0.238,
+    "dissolve_frames": 9,
+    "fit": 0.05
+   },
+   {
+    "t": 13.28,
+    "kind": "camera_move",
+    "size": "location_change",
+    "peak_flow": 6.4,
+    "sharp_ratio": 0.69,
+    "d_layout": 0.149
+   },
+   {
+    "t": 15.82,
+    "kind": "hard_cut",
+    "size": "location_change",
+    "peak_flow": 4.3,
+    "sharp_ratio": 0.22,
+    "d_layout": 0.323
+   },
+   {
+    "t": 18.65,
+    "kind": "dissolve",
+    "size": "location_change",
+    "peak_flow": 9.0,
+    "sharp_ratio": 0.5,
+    "d_layout": 0.246,
+    "dissolve_frames": 9,
+    "fit": 0.09
+   },
+   {
+    "t": 20.22,
+    "kind": "camera_move",
+    "size": "location_change",
+    "peak_flow": 7.6,
+    "sharp_ratio": 0.61,
+    "d_layout": 0.188
+   },
+   {
+    "t": 23.98,
+    "kind": "dissolve",
+    "size": "location_change",
+    "peak_flow": 3.7,
+    "sharp_ratio": 0.01,
+    "d_layout": 0.298,
+    "dissolve_frames": 9,
+    "fit": 0.11
+   },
+   {
+    "t": 27.58,
+    "kind": "dissolve",
+    "size": "location_change",
+    "peak_flow": 3.7,
+    "sharp_ratio": 0.27,
+    "d_layout": 0.227,
+    "dissolve_frames": 18,
+    "fit": 0.11
+   },
+   {
+    "t": 29.72,
+    "kind": "dissolve",
+    "size": "angle_change",
+    "peak_flow": 0.6,
+    "sharp_ratio": 0.81,
+    "d_layout": 0.115,
+    "dissolve_frames": 9,
+    "fit": 0.13
+   },
+   {
+    "t": 31.65,
+    "kind": "dissolve",
+    "size": "location_change",
+    "peak_flow": 0.6,
+    "sharp_ratio": 0.52,
+    "d_layout": 0.195,
+    "dissolve_frames": 9,
+    "fit": 0.03
+   },
+   {
+    "t": 35.95,
+    "kind": "dissolve",
+    "size": "location_change",
+    "peak_flow": 4.8,
+    "sharp_ratio": 0.04,
+    "d_layout": 0.136,
+    "dissolve_frames": 9,
+    "fit": 0.03
+   },
+   {
+    "t": 38.88,
+    "kind": "hard_cut",
+    "size": "location_change",
+    "peak_flow": 10.4,
+    "sharp_ratio": 0.46,
+    "d_layout": 0.294
+   },
+   {
+    "t": 42.32,
+    "kind": "dissolve",
+    "size": "location_change",
+    "peak_flow": 13.2,
+    "sharp_ratio": 0.11,
+    "d_layout": 0.228,
+    "dissolve_frames": 18,
+    "fit": 0.09
+   },
+   {
+    "t": 44.28,
+    "kind": "dissolve",
+    "size": "location_change",
+    "peak_flow": 0.9,
+    "sharp_ratio": 0.54,
+    "d_layout": 0.163,
+    "dissolve_frames": 9,
+    "fit": 0.04
+   },
+   {
+    "t": 47.22,
+    "kind": "dissolve",
+    "size": "location_change",
+    "peak_flow": 9.2,
+    "sharp_ratio": 0.34,
+    "d_layout": 0.347,
+    "dissolve_frames": 18,
+    "fit": 0.01
+   },
+   {
+    "t": 49.98,
+    "kind": "dissolve",
+    "size": "location_change",
+    "peak_flow": 0.7,
+    "sharp_ratio": 0.46,
+    "d_layout": 0.241,
+    "dissolve_frames": 15,
+    "fit": 0.04
+   },
+   {
+    "t": 54.62,
+    "kind": "dissolve",
+    "size": "location_change",
+    "peak_flow": 1.5,
+    "sharp_ratio": 0.54,
+    "d_layout": 0.21,
+    "dissolve_frames": 9,
+    "fit": 0.07
+   },
+   {
+    "t": 56.72,
+    "kind": "camera_move",
+    "size": "location_change",
+    "peak_flow": 10.8,
+    "sharp_ratio": 0.45,
+    "d_layout": 0.284
+   },
+   {
+    "t": 58.05,
+    "kind": "dissolve",
+    "size": "location_change",
+    "peak_flow": 0.6,
+    "sharp_ratio": 0.45,
+    "d_layout": 0.323,
+    "dissolve_frames": 9,
+    "fit": 0.03
+   },
+   {
+    "t": 59.55,
+    "kind": "in_place",
+    "size": "location_change",
+    "peak_flow": 2.9,
+    "sharp_ratio": 0.88,
+    "d_layout": 0.134
+   },
+   {
+    "t": 61.65,
+    "kind": "dissolve",
+    "size": "location_change",
+    "peak_flow": 2.4,
+    "sharp_ratio": 0.91,
+    "d_layout": 0.128,
+    "dissolve_frames": 15,
+    "fit": 0.18
+   },
+   {
+    "t": 63.98,
+    "kind": "hard_cut",
+    "size": "location_change",
+    "peak_flow": 15.5,
+    "sharp_ratio": 0.01,
+    "d_layout": 0.208
+   },
+   {
+    "t": 65.25,
+    "kind": "dissolve",
+    "size": "location_change",
+    "peak_flow": 1.9,
+    "sharp_ratio": 0.15,
+    "d_layout": 0.493,
+    "dissolve_frames": 12,
+    "fit": 0.05
+   },
+   {
+    "t": 67.05,
+    "kind": "in_place",
+    "size": "location_change",
+    "peak_flow": 2.3,
+    "sharp_ratio": 0.88,
+    "d_layout": 0.138
+   },
+   {
+    "t": 71.28,
+    "kind": "dissolve",
+    "size": "location_change",
+    "peak_flow": 2.3,
+    "sharp_ratio": 0.58,
+    "d_layout": 0.299,
+    "dissolve_frames": 9,
+    "fit": 0.06
+   },
+   {
+    "t": 74.15,
+    "kind": "in_place",
+    "size": "location_change",
+    "peak_flow": 3.6,
+    "sharp_ratio": 0.91,
+    "d_layout": 0.176
+   }
+  ],
+  "per_min": {
+   "hard_cut": 2.3,
+   "dissolve": 13.9,
+   "whip": 0.0,
+   "camera_move": 3.1,
+   "in_place": 2.3
+  },
+  "count": {
+   "hard_cut": 3,
+   "dissolve": 18,
+   "whip": 0,
+   "camera_move": 4,
+   "in_place": 3
+  },
+  "location_changes_per_min": 20.8,
+  "angle_changes_per_min": 0.8,
+  "note": "types are rules on frame data, estimate +-20 %; see kit/tools/ref_transitions.py header"
  }
 }

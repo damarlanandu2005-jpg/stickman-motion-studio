@@ -32,6 +32,7 @@ def main():
          "READ THIS FIRST. These are HABITS measured and seen in real reference shorts. Learn the habit, do not copy a shot. A new topic needs its own world, props and",
          "story; use the habit for how to show it. Each rule says [id | how sure]: measured = computed from every frame, seen = read by eye with the time given, inferred = reasoned.",
          "Use the SITUATIONS list: find the beat you are planning (hook, new place, key prop, dialogue, impact, ...) and follow its recipe and rule ids.", "",
+         "STATUS: the render code does not read these rules yet. This file is knowledge for Gemini and for people; a rule is an engine feature only when listed under ENGINE below.", "",
          f"Studied: {', '.join(R['studied'])}.", ""]
     L += ["## What our videos do wrong now (measured against these references)"] + [f"- {x}" for x in R["ours_now"]["faults"]] + [""]
     if SM:
@@ -50,6 +51,13 @@ def main():
             r, o = m["refs"], m.get("ours")
             L.append(f"| {m['label']} | {r['lo']:.2f} .. {r['hi']:.2f} (mid {r['mid']:.2f}) | {('%.2f .. %.2f' % (o['lo'], o['hi'])) if o else '-'} |")
         L.append("")
+    try: LK = json.load(open(os.path.join(KIT, "reference", "look", "_summary.json")))
+    except Exception: LK = None
+    if LK:
+        L += ["## Measured look and timing habits (ratios; p10 .. p90 over the references, median; ours in brackets)", "", "| measure | references | ours (claude v2.1) |", "|---|---|---|"]
+        for k, m in LK["metrics"].items():
+            o = m["ours"].get("claude_bomb_v21"); L.append(f"| {m['label']} | {m['p10']} .. {m['p90']} (median {m['median']}) | {o if o is not None else '-'} |")
+        L.append("")
     L += ["## Rules", ""]
     for area, title in ORDER:
         rs = [r for r in R["rules"] if r["area"] == area]
@@ -57,17 +65,22 @@ def main():
         L += [f"### {title}"]
         for r in rs:
             line = f"- [{r['id']} | {r['conf']} | for: {', '.join(r['tags'])}] {r['rule']}"
+            if r.get("observed"): line += " OBSERVED: " + r["observed"]
             if r.get("why"): line += " WHY: " + r["why"]
             if r.get("do"): line += " DO: " + " ".join(x if x.endswith((".", "!", "?")) else x + "." for x in r["do"])
             if r.get("numbers"):
                 n = r["numbers"]; line += " NUMBERS: " + "; ".join(f"{k} {v}" for k, v in n.items()) + "."
             if r.get("evidence"): line += " SEEN IN: " + "; ".join(r["evidence"]) + "."
+            if r.get("estimate_note"): line += " (ESTIMATE NOTE: " + r["estimate_note"] + ")"
+            if r.get("applies") and r["applies"] != "universal_unless_profile": line += f" [applies: {r['applies']}]"
             if r.get("ours_now"): line += f" (ours now: {r['ours_now']})"
             L.append(line)
         L.append("")
     L += ["## Recipes by situation (shot plans)", ""]
     for rc in R["recipes"]:
         L.append(f"- {rc['situation'].upper()} ({rc['seconds']} s): " + " ".join(f"{i + 1}) {s}" for i, s in enumerate(rc["steps"])) + f" Rules: {', '.join(rc['rules'])}.")
+    eg = R.get("engine")
+    if eg: L += ["", "## ENGINE (what our renderer does with these rules)", f"- implemented from these rules: {', '.join(eg['implemented_from_these_rules']) or 'nothing yet'}. {eg['note']}"] + [f"- gap: {x}" for x in eg["known_gaps_in_our_engine_found_by_measuring_v2.1"]]
     L += ["", "## Checks (run on a finished video)"] + [f"- {c['id']}: {c['what']}" + (f" should be {c['range'][0]} .. {c['range'][1]}" if c.get("range") else "") + f" ({c['tool']})" for c in R["checks"]]
     L += ["", "## Limits of this knowledge"] + [f"- {x}" for x in R["limits"]]
     L += ["", "## How this grows", "Add a reference: `python3 kit/tools/ref_study.py study video.mp4 --name NAME --group refs`, `python3 kit/tools/ref_measure.py add video.mp4 --name NAME --group refs`, "

@@ -181,11 +181,11 @@
   "scenes_per_min": {
    "label": "scene changes per minute (new place or set-up, incl. dissolves and fly-throughs)",
    "refs": {
-    "min": 17.3,
-    "p10": 21.54,
-    "median": 23.6,
-    "p90": 26.9,
-    "max": 27.4
+    "min": 16.0,
+    "p10": 18.34,
+    "median": 20.4,
+    "p90": 23.64,
+    "max": 24.9
    },
    "ours": {
     "claude_bomb_v21": 28.3,
@@ -195,11 +195,11 @@
   "scene_median_s": {
    "label": "median length of a scene (s)",
    "refs": {
-    "min": 1.85,
-    "p10": 1.988,
-    "median": 2.1,
-    "p90": 2.388,
-    "max": 2.57
+    "min": 2.01,
+    "p10": 2.096,
+    "median": 2.43,
+    "p90": 2.664,
+    "max": 2.7
    },
    "ours": {
     "claude_bomb_v21": 1.96,

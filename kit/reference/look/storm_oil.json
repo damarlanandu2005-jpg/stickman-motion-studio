@@ -1,0 +1,262 @@
+{
+ "name": "storm_oil",
+ "group": "refs",
+ "source": "98f6a56e-Why_Sailors_Carried_Storm_Oil.mp4",
+ "frames": 1937,
+ "fps": 30.0,
+ "seconds": 64.57,
+ "height_px": 1280,
+ "width_px": 720,
+ "heads": {
+  "found_per_sampled_frame": 0.6,
+  "size_d_over_h": {
+   "p10": 0.107,
+   "p50": 0.164,
+   "p90": 0.209
+  },
+  "outline_over_d_all": 0.0513,
+  "outline_uneven": 0.801,
+  "outline_over_d_big_heads": 0.0501,
+  "eye_d_over_head": 0.18,
+  "eye_y_in_head": 0.683,
+  "eyes_per_head": 0.06,
+  "sample": 78
+ },
+ "outline": {
+  "stroke_over_frame_w": {
+   "p10": 0.0053,
+   "p50": 0.0065,
+   "p90": 0.008
+  },
+  "spread_within_frame_p25_p75": [
+   0.0053,
+   0.008
+  ],
+  "frames": 125,
+  "note": "line width of thin dark shapes (outlines and limbs), share of frame width"
+ },
+ "colour": {
+  "palette8": [
+   {
+    "hex": "#2638a5",
+    "share": 0.264,
+    "hue": 232,
+    "sat": 0.77,
+    "val": 0.65
+   },
+   {
+    "hex": "#a66437",
+    "share": 0.157,
+    "hue": 24,
+    "sat": 0.67,
+    "val": 0.65
+   },
+   {
+    "hex": "#3662e1",
+    "share": 0.133,
+    "hue": 224,
+    "sat": 0.76,
+    "val": 0.88
+   },
+   {
+    "hex": "#ebb76a",
+    "share": 0.102,
+    "hue": 36,
+    "sat": 0.55,
+    "val": 0.92
+   },
+   {
+    "hex": "#5e261a",
+    "share": 0.098,
+    "hue": 10,
+    "sat": 0.72,
+    "val": 0.37
+   },
+   {
+    "hex": "#181836",
+    "share": 0.095,
+    "hue": 240,
+    "sat": 0.56,
+    "val": 0.21
+   },
+   {
+    "hex": "#dce8ef",
+    "share": 0.076,
+    "hue": 202,
+    "sat": 0.08,
+    "val": 0.94
+   },
+   {
+    "hex": "#8a94bd",
+    "share": 0.075,
+    "hue": 228,
+    "sat": 0.27,
+    "val": 0.74
+   }
+  ],
+  "warm_share": 0.357,
+  "cool_share": 0.567,
+  "hue_bins_30deg": [
+   0.255,
+   0.102,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.472,
+   0.095,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "surface": {
+   "flat": 0.447,
+   "smooth_gradient": 0.181,
+   "detailed": 0.142,
+   "edge": 0.23
+  }
+ },
+ "captions": {
+  "words": 140,
+  "words_per_s": 2.17,
+  "word_on_screen_s": {
+   "p10": 0.13,
+   "p50": 0.37,
+   "p90": 0.67
+  },
+  "text_height_over_frame_h": 0.0555,
+  "centre_y_over_frame_h": 0.69,
+  "centre_x_over_frame_w": 0.501,
+  "width_over_frame_w_p50": 0.354,
+  "pop_first3_over_steady": 1.03,
+  "share_of_time_with_caption": 1.0
+ },
+ "blur": {
+  "edge_over_centre_sharpness_median": 0.548,
+  "frames_with_soft_edges": 0.45,
+  "flight_peak_sharpness_over_median": 1.049
+ },
+ "camera_curves": {
+  "constant": {
+   "n": 6,
+   "mean": [
+    0.35,
+    0.65,
+    0.57,
+    0.45,
+    0.45,
+    0.57,
+    0.48,
+    0.4,
+    0.41,
+    0.33,
+    0.1
+   ]
+  },
+  "all": {
+   "n": 13,
+   "mean": [
+    0.31,
+    0.58,
+    0.54,
+    0.46,
+    0.45,
+    0.53,
+    0.41,
+    0.26,
+    0.24,
+    0.28,
+    0.08
+   ]
+  },
+  "decelerate": {
+   "n": 2,
+   "mean": [
+    0.4,
+    0.93,
+    0.82,
+    0.55,
+    0.36,
+    0.21,
+    0.09,
+    0.05,
+    0.04,
+    0.03,
+    0.01
+   ]
+  },
+  "ease_in_out": {
+   "n": 1,
+   "mean": [
+    0.04,
+    0.03,
+    0.15,
+    0.23,
+    0.16,
+    0.99,
+    0.53,
+    0.1,
+    0.02,
+    0.01,
+    0.02
+   ]
+  },
+  "varying": {
+   "n": 3,
+   "mean": [
+    0.32,
+    0.5,
+    0.4,
+    0.35,
+    0.41,
+    0.4,
+    0.42,
+    0.19,
+    0.18,
+    0.5,
+    0.1
+   ]
+  },
+  "move_then_hold": {
+   "n": 1,
+   "mean": [
+    0.1,
+    0.3,
+    0.63,
+    0.91,
+    1.0,
+    0.83,
+    0.46,
+    0.19,
+    0.06,
+    0.04,
+    0.04
+   ]
+  }
+ },
+ "camera_ramps": {
+  "n": 13,
+  "ramp_up_s_p50": 0.4,
+  "ramp_down_s_p50": 0.42,
+  "peak_pct_width_per_s_p50": 71.6,
+  "peak_position_in_flight_p50": 0.27
+ },
+ "shake": {
+  "events_per_min": 12.1,
+  "amp_pct_width_p50": 0.88,
+  "decay_s_p50": 0.1,
+  "threshold_pct_width": 0.6,
+  "background_jitter_pct_width_median": 0.041,
+  "note": "estimate: jitter found after removing a 9-frame running mean of the camera shift; a fast whip can also show up here"
+ },
+ "sound": {
+  "scene_change_near_sound_onset": 0.909,
+  "chance": 0.641,
+  "lift": 1.42,
+  "onset_rate_per_s": 3.05,
+  "shake_events_near_sound_onset": 0.769,
+  "shake_chance": 0.643,
+  "shake_lift": 1.2
+ }
+}

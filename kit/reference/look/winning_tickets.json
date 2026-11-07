@@ -1,0 +1,230 @@
+{
+ "name": "winning_tickets",
+ "group": "refs",
+ "source": "85c41531-He_Could_Spot_Winning_Tickets_Just_by_Looking.mp4",
+ "frames": 1898,
+ "fps": 30.0,
+ "seconds": 63.27,
+ "height_px": 1280,
+ "width_px": 720,
+ "heads": {
+  "found_per_sampled_frame": 0.35,
+  "size_d_over_h": {
+   "p10": 0.104,
+   "p50": 0.204,
+   "p90": 0.283
+  },
+  "outline_over_d_all": 0.0629,
+  "outline_uneven": 0.681,
+  "outline_over_d_big_heads": 0.0641,
+  "eye_d_over_head": 0.234,
+  "eye_y_in_head": 0.506,
+  "eyes_per_head": 0.53,
+  "sample": 45
+ },
+ "outline": {
+  "stroke_over_frame_w": {
+   "p10": 0.0053,
+   "p50": 0.0065,
+   "p90": 0.0104
+  },
+  "spread_within_frame_p25_p75": [
+   0.0053,
+   0.008
+  ],
+  "frames": 127,
+  "note": "line width of thin dark shapes (outlines and limbs), share of frame width"
+ },
+ "colour": {
+  "palette8": [
+   {
+    "hex": "#2f2c4b",
+    "share": 0.233,
+    "hue": 246,
+    "sat": 0.41,
+    "val": 0.29
+   },
+   {
+    "hex": "#71514f",
+    "share": 0.193,
+    "hue": 4,
+    "sat": 0.3,
+    "val": 0.44
+   },
+   {
+    "hex": "#ddd8d8",
+    "share": 0.147,
+    "hue": 0,
+    "sat": 0.02,
+    "val": 0.87
+   },
+   {
+    "hex": "#1a1320",
+    "share": 0.142,
+    "hue": 272,
+    "sat": 0.41,
+    "val": 0.13
+   },
+   {
+    "hex": "#a0949b",
+    "share": 0.102,
+    "hue": 326,
+    "sat": 0.07,
+    "val": 0.63
+   },
+   {
+    "hex": "#bf742d",
+    "share": 0.098,
+    "hue": 30,
+    "sat": 0.76,
+    "val": 0.75
+   },
+   {
+    "hex": "#e6bf88",
+    "share": 0.061,
+    "hue": 36,
+    "sat": 0.41,
+    "val": 0.9
+   },
+   {
+    "hex": "#5085bc",
+    "share": 0.023,
+    "hue": 210,
+    "sat": 0.57,
+    "val": 0.74
+   }
+  ],
+  "warm_share": 0.352,
+  "cool_share": 0.398,
+  "hue_bins_30deg": [
+   0.193,
+   0.159,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.023,
+   0.233,
+   0.142,
+   0.0,
+   0.0
+  ],
+  "surface": {
+   "flat": 0.412,
+   "smooth_gradient": 0.15,
+   "detailed": 0.123,
+   "edge": 0.314
+  }
+ },
+ "captions": {
+  "words": 141,
+  "words_per_s": 2.23,
+  "word_on_screen_s": {
+   "p10": 0.13,
+   "p50": 0.37,
+   "p90": 0.67
+  },
+  "text_height_over_frame_h": 0.1164,
+  "centre_y_over_frame_h": 0.686,
+  "centre_x_over_frame_w": 0.501,
+  "width_over_frame_w_p50": 0.487,
+  "pop_first3_over_steady": 1.198,
+  "share_of_time_with_caption": 0.999
+ },
+ "blur": {
+  "edge_over_centre_sharpness_median": 0.687,
+  "frames_with_soft_edges": 0.328,
+  "flight_peak_sharpness_over_median": 1.17
+ },
+ "camera_curves": {
+  "constant": {
+   "n": 13,
+   "mean": [
+    0.51,
+    0.72,
+    0.77,
+    0.74,
+    0.71,
+    0.72,
+    0.8,
+    0.82,
+    0.67,
+    0.44,
+    0.16
+   ]
+  },
+  "all": {
+   "n": 17,
+   "mean": [
+    0.41,
+    0.64,
+    0.72,
+    0.69,
+    0.67,
+    0.65,
+    0.71,
+    0.73,
+    0.63,
+    0.39,
+    0.13
+   ]
+  },
+  "ease_in_out": {
+   "n": 3,
+   "mean": [
+    0.1,
+    0.29,
+    0.46,
+    0.71,
+    0.57,
+    0.53,
+    0.5,
+    0.54,
+    0.61,
+    0.29,
+    0.04
+   ]
+  },
+  "varying": {
+   "n": 1,
+   "mean": [
+    0.09,
+    0.67,
+    0.85,
+    0.06,
+    0.42,
+    0.13,
+    0.1,
+    0.08,
+    0.13,
+    0.08,
+    0.01
+   ]
+  }
+ },
+ "camera_ramps": {
+  "n": 17,
+  "ramp_up_s_p50": 0.23,
+  "ramp_down_s_p50": 0.5,
+  "peak_pct_width_per_s_p50": 55.7,
+  "peak_position_in_flight_p50": 0.53
+ },
+ "shake": {
+  "events_per_min": 14.2,
+  "amp_pct_width_p50": 1.06,
+  "decay_s_p50": 0.13,
+  "threshold_pct_width": 0.6,
+  "background_jitter_pct_width_median": 0.028,
+  "note": "estimate: jitter found after removing a 9-frame running mean of the camera shift; a fast whip can also show up here"
+ },
+ "sound": {
+  "scene_change_near_sound_onset": 0.8,
+  "chance": 0.688,
+  "lift": 1.16,
+  "onset_rate_per_s": 3.22,
+  "shake_events_near_sound_onset": 0.6,
+  "shake_chance": 0.717,
+  "shake_lift": 0.84
+ }
+}

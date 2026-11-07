@@ -1107,6 +1107,164 @@
   "p90_scene_s": 2.65,
   "thr": 0.075,
   "lag_s": 0.5,
+  "min_layout": 0.12,
   "duration_s": 36.07
+ },
+ "transitions": {
+  "events": [
+   {
+    "t": 1.58,
+    "kind": "hard_cut",
+    "size": "location_change",
+    "peak_flow": 14.7,
+    "sharp_ratio": 0.77,
+    "d_layout": 0.21
+   },
+   {
+    "t": 3.58,
+    "kind": "hard_cut",
+    "size": "location_change",
+    "peak_flow": 14.7,
+    "sharp_ratio": 0.85,
+    "d_layout": 0.197
+   },
+   {
+    "t": 4.95,
+    "kind": "hard_cut",
+    "size": "location_change",
+    "peak_flow": 10.6,
+    "sharp_ratio": 0.33,
+    "d_layout": 0.243
+   },
+   {
+    "t": 6.42,
+    "kind": "hard_cut",
+    "size": "location_change",
+    "peak_flow": 15.9,
+    "sharp_ratio": 0.98,
+    "d_layout": 0.19
+   },
+   {
+    "t": 8.48,
+    "kind": "hard_cut",
+    "size": "location_change",
+    "peak_flow": 7.7,
+    "sharp_ratio": 0.47,
+    "d_layout": 0.177
+   },
+   {
+    "t": 11.12,
+    "kind": "hard_cut",
+    "size": "location_change",
+    "peak_flow": 11.2,
+    "sharp_ratio": 0.39,
+    "d_layout": 0.219
+   },
+   {
+    "t": 14.68,
+    "kind": "hard_cut",
+    "size": "location_change",
+    "peak_flow": 15.5,
+    "sharp_ratio": 0.92,
+    "d_layout": 0.296
+   },
+   {
+    "t": 16.52,
+    "kind": "hard_cut",
+    "size": "location_change",
+    "peak_flow": 10.0,
+    "sharp_ratio": 0.75,
+    "d_layout": 0.222
+   },
+   {
+    "t": 18.22,
+    "kind": "hard_cut",
+    "size": "location_change",
+    "peak_flow": 13.7,
+    "sharp_ratio": 0.39,
+    "d_layout": 0.23
+   },
+   {
+    "t": 20.68,
+    "kind": "hard_cut",
+    "size": "location_change",
+    "peak_flow": 17.9,
+    "sharp_ratio": 0.62,
+    "d_layout": 0.161
+   },
+   {
+    "t": 23.35,
+    "kind": "hard_cut",
+    "size": "location_change",
+    "peak_flow": 13.7,
+    "sharp_ratio": 0.41,
+    "d_layout": 0.176
+   },
+   {
+    "t": 25.62,
+    "kind": "hard_cut",
+    "size": "location_change",
+    "peak_flow": 15.4,
+    "sharp_ratio": 0.31,
+    "d_layout": 0.222
+   },
+   {
+    "t": 27.38,
+    "kind": "hard_cut",
+    "size": "location_change",
+    "peak_flow": 16.6,
+    "sharp_ratio": 0.98,
+    "d_layout": 0.126
+   },
+   {
+    "t": 28.75,
+    "kind": "hard_cut",
+    "size": "location_change",
+    "peak_flow": 14.7,
+    "sharp_ratio": 0.83,
+    "d_layout": 0.304
+   },
+   {
+    "t": 30.68,
+    "kind": "hard_cut",
+    "size": "location_change",
+    "peak_flow": 20.1,
+    "sharp_ratio": 0.5,
+    "d_layout": 0.265
+   },
+   {
+    "t": 33.15,
+    "kind": "hard_cut",
+    "size": "location_change",
+    "peak_flow": 15.1,
+    "sharp_ratio": 0.89,
+    "d_layout": 0.201
+   },
+   {
+    "t": 35.48,
+    "kind": "hard_cut",
+    "size": "location_change",
+    "peak_flow": 11.8,
+    "sharp_ratio": 0.71,
+    "d_layout": 0.169
+   }
+  ],
+  "per_min": {
+   "hard_cut": 28.3,
+   "dissolve": 0.0,
+   "whip": 0.0,
+   "camera_move": 0.0,
+   "in_place": 0.0
+  },
+  "count": {
+   "hard_cut": 17,
+   "dissolve": 0,
+   "whip": 0,
+   "camera_move": 0,
+   "in_place": 0
+  },
+  "location_changes_per_min": 28.3,
+  "angle_changes_per_min": 0.0,
+  "note": "types are rules on frame data, estimate +-20 %; see kit/tools/ref_transitions.py header"
  }
 }

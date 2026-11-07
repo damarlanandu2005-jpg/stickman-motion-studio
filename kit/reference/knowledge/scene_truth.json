@@ -1,0 +1,10 @@
+{
+ "note": "Scene changes written BY EYE from 0.5 s picture sheets (kit/tools/ref_transitions.py sheet), before looking at the detector output for that video where possible. Definition: the place or set-up is replaced by a new one (new place, or a clearly new framing that is not one continuous camera move). Times are +-0.5 s. Subjective for 'new framing' cases. Only 0-30 s of each video was labelled.",
+ "labelled_by": "Claude, 2026-11-07",
+ "videos": {
+  "vp3": {"from_s": 0, "to_s": 30, "scene_changes_s": [2.2, 4.9, 10.5, 13.8, 16.5, 24.5, 26.0, 27.0]},
+  "pirate_cannonballs": {"from_s": 0, "to_s": 30, "scene_changes_s": [2.0, 2.5, 4.5, 7.0, 12.5, 14.0, 16.0, 18.0, 18.5, 19.5, 23.0, 24.5, 26.0, 27.0, 27.5]},
+  "grave_bell": {"from_s": 0, "to_s": 30, "scene_changes_s": [0.8, 2.5, 4.5, 10.3, 13.3, 17.2, 18.8, 22.0, 23.8, 27.3, 29.3]},
+  "random_numbers": {"from_s": 0, "to_s": 30, "scene_changes_s": [0.8, 3.8, 5.8, 9.8, 11.5, 14.3, 24.8, 25.8, 29.3]}
+ }
+}

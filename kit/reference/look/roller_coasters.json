@@ -1,0 +1,246 @@
+{
+ "name": "roller_coasters",
+ "group": "refs",
+ "source": "90d1e6ed-This_Shape_Saved_Roller_Coasters.mp4",
+ "frames": 1895,
+ "fps": 30.0,
+ "seconds": 63.17,
+ "height_px": 1280,
+ "width_px": 720,
+ "heads": {
+  "found_per_sampled_frame": 0.17,
+  "size_d_over_h": {
+   "p10": 0.099,
+   "p50": 0.134,
+   "p90": 0.334
+  },
+  "outline_over_d_all": 0.0533,
+  "outline_uneven": 0.657,
+  "outline_over_d_big_heads": 0.0436,
+  "eye_d_over_head": 0.129,
+  "eye_y_in_head": 0.498,
+  "eyes_per_head": 0.95,
+  "sample": 22
+ },
+ "outline": {
+  "stroke_over_frame_w": {
+   "p10": 0.0053,
+   "p50": 0.0053,
+   "p90": 0.008
+  },
+  "spread_within_frame_p25_p75": [
+   0.0053,
+   0.008
+  ],
+  "frames": 126,
+  "note": "line width of thin dark shapes (outlines and limbs), share of frame width"
+ },
+ "colour": {
+  "palette8": [
+   {
+    "hex": "#787b67",
+    "share": 0.191,
+    "hue": 70,
+    "sat": 0.16,
+    "val": 0.48
+   },
+   {
+    "hex": "#2f6fcd",
+    "share": 0.167,
+    "hue": 216,
+    "sat": 0.77,
+    "val": 0.8
+   },
+   {
+    "hex": "#859cb5",
+    "share": 0.125,
+    "hue": 212,
+    "sat": 0.27,
+    "val": 0.71
+   },
+   {
+    "hex": "#273e7c",
+    "share": 0.125,
+    "hue": 224,
+    "sat": 0.69,
+    "val": 0.49
+   },
+   {
+    "hex": "#1d2438",
+    "share": 0.113,
+    "hue": 224,
+    "sat": 0.48,
+    "val": 0.22
+   },
+   {
+    "hex": "#5d3e41",
+    "share": 0.105,
+    "hue": 354,
+    "sat": 0.33,
+    "val": 0.36
+   },
+   {
+    "hex": "#c5cbd8",
+    "share": 0.089,
+    "hue": 222,
+    "sat": 0.09,
+    "val": 0.85
+   },
+   {
+    "hex": "#457a3c",
+    "share": 0.086,
+    "hue": 112,
+    "sat": 0.51,
+    "val": 0.48
+   }
+  ],
+  "warm_share": 0.105,
+  "cool_share": 0.53,
+  "hue_bins_30deg": [
+   0.0,
+   0.0,
+   0.0,
+   0.086,
+   0.0,
+   0.0,
+   0.0,
+   0.53,
+   0.0,
+   0.0,
+   0.0,
+   0.105
+  ],
+  "surface": {
+   "flat": 0.42,
+   "smooth_gradient": 0.163,
+   "detailed": 0.164,
+   "edge": 0.253
+  }
+ },
+ "captions": {
+  "words": 159,
+  "words_per_s": 2.52,
+  "word_on_screen_s": {
+   "p10": 0.13,
+   "p50": 0.33,
+   "p90": 0.64
+  },
+  "text_height_over_frame_h": 0.0727,
+  "centre_y_over_frame_h": 0.693,
+  "centre_x_over_frame_w": 0.5,
+  "width_over_frame_w_p50": 0.364,
+  "pop_first3_over_steady": 1.062,
+  "share_of_time_with_caption": 1.0
+ },
+ "blur": {
+  "edge_over_centre_sharpness_median": 0.691,
+  "frames_with_soft_edges": 0.319,
+  "flight_peak_sharpness_over_median": 1.13
+ },
+ "camera_curves": {
+  "varying": {
+   "n": 1,
+   "mean": [
+    0.17,
+    0.56,
+    0.92,
+    0.75,
+    0.19,
+    0.0,
+    0.01,
+    0.31,
+    0.43,
+    0.45,
+    0.03
+   ]
+  },
+  "all": {
+   "n": 19,
+   "mean": [
+    0.41,
+    0.55,
+    0.64,
+    0.7,
+    0.71,
+    0.68,
+    0.68,
+    0.67,
+    0.52,
+    0.34,
+    0.16
+   ]
+  },
+  "constant": {
+   "n": 16,
+   "mean": [
+    0.45,
+    0.54,
+    0.63,
+    0.72,
+    0.76,
+    0.75,
+    0.74,
+    0.71,
+    0.54,
+    0.34,
+    0.18
+   ]
+  },
+  "ease_in_out": {
+   "n": 1,
+   "mean": [
+    0.39,
+    0.57,
+    0.28,
+    0.31,
+    0.72,
+    0.97,
+    0.96,
+    0.99,
+    0.78,
+    0.44,
+    0.09
+   ]
+  },
+  "move_then_hold": {
+   "n": 1,
+   "mean": [
+    0.15,
+    0.59,
+    0.84,
+    0.74,
+    0.35,
+    0.04,
+    0.16,
+    0.12,
+    0.03,
+    0.03,
+    0.02
+   ]
+  }
+ },
+ "camera_ramps": {
+  "n": 19,
+  "ramp_up_s_p50": 0.43,
+  "ramp_down_s_p50": 0.47,
+  "peak_pct_width_per_s_p50": 36.1,
+  "peak_position_in_flight_p50": 0.51
+ },
+ "shake": {
+  "events_per_min": 10.4,
+  "amp_pct_width_p50": 0.94,
+  "decay_s_p50": 0.2,
+  "threshold_pct_width": 0.6,
+  "background_jitter_pct_width_median": 0.03,
+  "note": "estimate: jitter found after removing a 9-frame running mean of the camera shift; a fast whip can also show up here"
+ },
+ "sound": {
+  "scene_change_near_sound_onset": 0.762,
+  "chance": 0.739,
+  "lift": 1.03,
+  "onset_rate_per_s": 3.53,
+  "shake_events_near_sound_onset": 0.909,
+  "shake_chance": 0.772,
+  "shake_lift": 1.18
+ }
+}

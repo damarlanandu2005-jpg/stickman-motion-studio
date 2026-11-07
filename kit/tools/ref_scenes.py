@@ -22,7 +22,7 @@ def thumbs(path):
     return np.array(T), fps
 
 
-def scenes(path, lag_s=0.5, thr=0.075, min_gap_s=1.2):
+def scenes(path, lag_s=0.5, thr=0.075, min_gap_s=1.2, min_layout=0.12):
     T, fps = thumbs(path); n = len(T); lag = max(2, int(round(lag_s * fps)))
     d = np.zeros(n)
     for i in range(lag, n): d[i] = np.abs(T[i] - T[i - lag]).mean()
@@ -35,10 +35,12 @@ def scenes(path, lag_s=0.5, thr=0.075, min_gap_s=1.2):
         if keep and (i - keep[-1]) < min_gap_s * fps:
             if ds[i] > ds[keep[-1]]: keep[-1] = i
         else: keep.append(i)
+    # a real scene change leaves a clearly different colour layout 0.5 s after than 0.5 s before; a big camera move inside one scene does not
+    keep = [i for i in keep if float(np.abs(T[min(n - 1, i + 15)] - T[max(0, i - 15)]).mean()) >= min_layout]
     t = [round((i - lag / 2) / fps, 2) for i in keep]    # centre of the 0.5 s window
     dur = n / fps; gaps = np.diff([0] + t + [dur])
     return {"count": len(t), "per_min": round(len(t) / dur * 60, 1), "times_s": t, "median_scene_s": round(float(np.median(gaps)), 2),
-            "p10_scene_s": round(float(np.percentile(gaps, 10)), 2), "p90_scene_s": round(float(np.percentile(gaps, 90)), 2), "thr": thr, "lag_s": lag_s, "duration_s": round(dur, 2)}
+            "p10_scene_s": round(float(np.percentile(gaps, 10)), 2), "p90_scene_s": round(float(np.percentile(gaps, 90)), 2), "thr": thr, "lag_s": lag_s, "min_layout": min_layout, "duration_s": round(dur, 2)}
 
 
 if __name__ == "__main__":

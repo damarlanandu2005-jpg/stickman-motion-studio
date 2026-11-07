@@ -296,28 +296,131 @@
   }
  ],
  "scenes": {
-  "count": 13,
-  "per_min": 25.2,
+  "count": 10,
+  "per_min": 19.4,
   "times_s": [
    0.85,
-   3.18,
    5.25,
-   6.55,
    8.32,
    11.35,
    13.68,
    16.55,
    17.75,
-   23.05,
    25.92,
    28.12,
    30.08
   ],
-  "median_scene_s": 2.13,
-  "p10_scene_s": 0.96,
-  "p90_scene_s": 2.98,
+  "median_scene_s": 2.33,
+  "p10_scene_s": 0.85,
+  "p90_scene_s": 4.4,
   "thr": 0.075,
   "lag_s": 0.5,
+  "min_layout": 0.12,
   "duration_s": 30.93
+ },
+ "transitions": {
+  "events": [
+   {
+    "t": 0.85,
+    "kind": "camera_move",
+    "size": "location_change",
+    "peak_flow": 12.2,
+    "sharp_ratio": 0.69,
+    "d_layout": 0.18
+   },
+   {
+    "t": 5.25,
+    "kind": "camera_move",
+    "size": "angle_change",
+    "peak_flow": 7.8,
+    "sharp_ratio": 0.8,
+    "d_layout": 0.117
+   },
+   {
+    "t": 8.32,
+    "kind": "dissolve",
+    "size": "location_change",
+    "peak_flow": 1.4,
+    "sharp_ratio": 0.29,
+    "d_layout": 0.158,
+    "dissolve_frames": 18,
+    "fit": 0.11
+   },
+   {
+    "t": 11.35,
+    "kind": "dissolve",
+    "size": "location_change",
+    "peak_flow": 1.5,
+    "sharp_ratio": 0.4,
+    "d_layout": 0.191,
+    "dissolve_frames": 18,
+    "fit": 0.13
+   },
+   {
+    "t": 13.68,
+    "kind": "whip",
+    "size": "location_change",
+    "peak_flow": 13.7,
+    "sharp_ratio": 0.35,
+    "d_layout": 0.195
+   },
+   {
+    "t": 16.55,
+    "kind": "in_place",
+    "size": "location_change",
+    "peak_flow": 2.5,
+    "sharp_ratio": 0.42,
+    "d_layout": 0.164
+   },
+   {
+    "t": 17.75,
+    "kind": "hard_cut",
+    "size": "location_change",
+    "peak_flow": 14.7,
+    "sharp_ratio": 0.25,
+    "d_layout": 0.213
+   },
+   {
+    "t": 25.92,
+    "kind": "hard_cut",
+    "size": "location_change",
+    "peak_flow": 9.4,
+    "sharp_ratio": 0.38,
+    "d_layout": 0.274
+   },
+   {
+    "t": 28.12,
+    "kind": "in_place",
+    "size": "location_change",
+    "peak_flow": 1.7,
+    "sharp_ratio": 0.94,
+    "d_layout": 0.129
+   },
+   {
+    "t": 30.08,
+    "kind": "camera_move",
+    "size": "location_change",
+    "peak_flow": 8.6,
+    "sharp_ratio": 0.91,
+    "d_layout": 0.204
+   }
+  ],
+  "per_min": {
+   "hard_cut": 3.9,
+   "dissolve": 3.9,
+   "whip": 1.9,
+   "camera_move": 5.8,
+   "in_place": 3.9
+  },
+  "count": {
+   "hard_cut": 2,
+   "dissolve": 2,
+   "whip": 1,
+   "camera_move": 3,
+   "in_place": 2
+  },
+  "location_changes_per_min": 17.5,
+  "angle_changes_per_min": 1.9,
+  "note": "types are rules on frame data, estimate +-20 %; see kit/tools/ref_transitions.py header"
  }
 }

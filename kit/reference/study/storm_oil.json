@@ -538,15 +538,14 @@
   }
  ],
  "scenes": {
-  "count": 25,
-  "per_min": 23.2,
+  "count": 22,
+  "per_min": 20.4,
   "times_s": [
    1.25,
    3.25,
    6.02,
    10.18,
    11.75,
-   14.48,
    16.52,
    18.92,
    20.58,
@@ -557,21 +556,231 @@
    34.65,
    36.75,
    39.18,
-   40.95,
    42.82,
    45.72,
    48.48,
    49.82,
    52.48,
-   55.95,
    58.68,
    60.75
   ],
-  "median_scene_s": 2.43,
-  "p10_scene_s": 1.61,
-  "p90_scene_s": 3.39,
+  "median_scene_s": 2.66,
+  "p10_scene_s": 1.59,
+  "p90_scene_s": 4.09,
   "thr": 0.075,
   "lag_s": 0.5,
+  "min_layout": 0.12,
   "duration_s": 64.57
+ },
+ "transitions": {
+  "events": [
+   {
+    "t": 1.25,
+    "kind": "hard_cut",
+    "size": "location_change",
+    "peak_flow": 19.7,
+    "sharp_ratio": 0.72,
+    "d_layout": 0.332
+   },
+   {
+    "t": 3.25,
+    "kind": "whip",
+    "size": "location_change",
+    "peak_flow": 15.8,
+    "sharp_ratio": 0.36,
+    "d_layout": 0.398
+   },
+   {
+    "t": 6.02,
+    "kind": "dissolve",
+    "size": "location_change",
+    "peak_flow": 7.0,
+    "sharp_ratio": 0.31,
+    "d_layout": 0.233,
+    "dissolve_frames": 15,
+    "fit": 0.17
+   },
+   {
+    "t": 10.18,
+    "kind": "in_place",
+    "size": "location_change",
+    "peak_flow": 4.2,
+    "sharp_ratio": 0.92,
+    "d_layout": 0.177
+   },
+   {
+    "t": 11.75,
+    "kind": "camera_move",
+    "size": "location_change",
+    "peak_flow": 7.4,
+    "sharp_ratio": 0.66,
+    "d_layout": 0.282
+   },
+   {
+    "t": 16.52,
+    "kind": "dissolve",
+    "size": "location_change",
+    "peak_flow": 2.1,
+    "sharp_ratio": 0.53,
+    "d_layout": 0.253,
+    "dissolve_frames": 18,
+    "fit": 0.13
+   },
+   {
+    "t": 18.92,
+    "kind": "hard_cut",
+    "size": "location_change",
+    "peak_flow": 26.3,
+    "sharp_ratio": 0.29,
+    "d_layout": 0.349
+   },
+   {
+    "t": 20.58,
+    "kind": "camera_move",
+    "size": "location_change",
+    "peak_flow": 19.9,
+    "sharp_ratio": 0.92,
+    "d_layout": 0.348
+   },
+   {
+    "t": 23.48,
+    "kind": "camera_move",
+    "size": "location_change",
+    "peak_flow": 6.0,
+    "sharp_ratio": 0.52,
+    "d_layout": 0.175
+   },
+   {
+    "t": 26.55,
+    "kind": "hard_cut",
+    "size": "location_change",
+    "peak_flow": 12.4,
+    "sharp_ratio": 0.01,
+    "d_layout": 0.294
+   },
+   {
+    "t": 29.85,
+    "kind": "dissolve",
+    "size": "location_change",
+    "peak_flow": 1.8,
+    "sharp_ratio": 0.62,
+    "d_layout": 0.263,
+    "dissolve_frames": 9,
+    "fit": 0.12
+   },
+   {
+    "t": 32.28,
+    "kind": "camera_move",
+    "size": "location_change",
+    "peak_flow": 11.3,
+    "sharp_ratio": 0.78,
+    "d_layout": 0.246
+   },
+   {
+    "t": 34.65,
+    "kind": "camera_move",
+    "size": "location_change",
+    "peak_flow": 10.4,
+    "sharp_ratio": 0.46,
+    "d_layout": 0.233
+   },
+   {
+    "t": 36.75,
+    "kind": "dissolve",
+    "size": "location_change",
+    "peak_flow": 3.2,
+    "sharp_ratio": 0.38,
+    "d_layout": 0.152,
+    "dissolve_frames": 9,
+    "fit": 0.12
+   },
+   {
+    "t": 39.18,
+    "kind": "hard_cut",
+    "size": "location_change",
+    "peak_flow": 3.4,
+    "sharp_ratio": 0.44,
+    "d_layout": 0.159
+   },
+   {
+    "t": 42.82,
+    "kind": "dissolve",
+    "size": "location_change",
+    "peak_flow": 10.8,
+    "sharp_ratio": 0.29,
+    "d_layout": 0.33,
+    "dissolve_frames": 15,
+    "fit": 0.08
+   },
+   {
+    "t": 45.72,
+    "kind": "camera_move",
+    "size": "location_change",
+    "peak_flow": 5.5,
+    "sharp_ratio": 0.85,
+    "d_layout": 0.154
+   },
+   {
+    "t": 48.48,
+    "kind": "camera_move",
+    "size": "location_change",
+    "peak_flow": 6.4,
+    "sharp_ratio": 0.9,
+    "d_layout": 0.124
+   },
+   {
+    "t": 49.82,
+    "kind": "dissolve",
+    "size": "location_change",
+    "peak_flow": 4.4,
+    "sharp_ratio": 0.45,
+    "d_layout": 0.264,
+    "dissolve_frames": 9,
+    "fit": 0.13
+   },
+   {
+    "t": 52.48,
+    "kind": "dissolve",
+    "size": "location_change",
+    "peak_flow": 9.7,
+    "sharp_ratio": 0.13,
+    "d_layout": 0.584,
+    "dissolve_frames": 9,
+    "fit": 0.09
+   },
+   {
+    "t": 58.68,
+    "kind": "in_place",
+    "size": "location_change",
+    "peak_flow": 3.3,
+    "sharp_ratio": 0.83,
+    "d_layout": 0.127
+   },
+   {
+    "t": 60.75,
+    "kind": "camera_move",
+    "size": "location_change",
+    "peak_flow": 8.7,
+    "sharp_ratio": 0.53,
+    "d_layout": 0.209
+   }
+  ],
+  "per_min": {
+   "hard_cut": 3.7,
+   "dissolve": 6.5,
+   "whip": 0.9,
+   "camera_move": 7.4,
+   "in_place": 1.9
+  },
+  "count": {
+   "hard_cut": 4,
+   "dissolve": 7,
+   "whip": 1,
+   "camera_move": 8,
+   "in_place": 2
+  },
+  "location_changes_per_min": 20.4,
+  "angle_changes_per_min": 0.0,
+  "note": "types are rules on frame data, estimate +-20 %; see kit/tools/ref_transitions.py header"
  }
 }
