@@ -121,279 +121,373 @@ const cloudsInit = () => {
 const DECK = 0;
 const world = new THREE.Group(); scene.add(world);
 
-const timerCanvas = document.createElement('canvas');
-timerCanvas.width = 256; timerCanvas.height = 128;
-const timerCtx = timerCanvas.getContext('2d');
-const timerTex = new THREE.CanvasTexture(timerCanvas);
-timerTex.colorSpace = THREE.SRGBColorSpace;
-// Use MeshBasicMaterial so the timer screen glows and is always visible
-const timerMat = new THREE.MeshBasicMaterial({map: timerTex});
-
 const ASSETS = {
-  'CITY-STREET': () => {
+  'STREET': () => {
     const g = new THREE.Group();
-    add(new THREE.PlaneGeometry(25, 25), toon({map: P.tex(P.stone(4), 10, 10), color: '#666'}), 0, 0, 0, g).rotation.x = -Math.PI/2;
-    for(let i=-12; i<12; i+=2.1) {
-      add(tbox(2, 1, 0.5), M.stone, -4, 0.5, i, g);
-    }
+    // Road
+    const roadTex = canvasTex(512, 512, (ctx, w, h) => {
+      ctx.fillStyle = '#444444'; ctx.fillRect(0, 0, w, h);
+      ctx.fillStyle = '#dddddd'; ctx.fillRect(w/2 - 5, 0, 10, h);
+    }, 10, 10);
+    add(new THREE.PlaneGeometry(20, 20), toon({map: roadTex}), 0, 0, 0, g).rotation.x = -Math.PI/2;
+    
+    // Brick building (right)
+    const brickTex = canvasTex(512, 512, (ctx, w, h) => {
+      ctx.fillStyle = '#8b4513'; ctx.fillRect(0, 0, w, h);
+      ctx.fillStyle = '#cccccc';
+      for(let y=0; y<h; y+=32) {
+        ctx.fillRect(0, y, w, 4);
+        for(let x=0; x<w; x+=64) {
+          ctx.fillRect(x + (y%64===0?0:32), y, 4, 32);
+        }
+      }
+    }, 4, 4);
+    add(tbox(8, 15, 8, 2), toon({map: brickTex}), 8, 7.5, -5, g);
+    
+    // Concrete barricade (left)
+    add(tbox(3, 1, 1, 1), M.stone, -4, 0.5, 2, g);
+    
+    // Police car (middle)
     const car = new THREE.Group();
-    add(tbox(2, 0.8, 4.5), toon({color: '#1a242f'}), 0, 0.6, 0, car);
-    add(tbox(1.8, 0.6, 2.5), toon({color: '#1a242f'}), 0, 1.3, -0.5, car);
-    add(tbox(0.8, 0.1, 0.3), toon({color: '#ff0000'}), -0.4, 1.65, -0.5, car);
-    add(tbox(0.8, 0.1, 0.3), toon({color: '#0000ff'}), 0.4, 1.65, -0.5, car);
-    for (const [x, z] of [[1, 1.2], [-1, 1.2], [1, -1.2], [-1, -1.2]]) {
-      const w = add(new THREE.CylinderGeometry(0.3, 0.3, 0.2, 12), toon({color: '#111'}), x*0.9, 0.3, z, car);
-      w.rotation.z = Math.PI/2;
-    }
-    car.position.set(2, 0, -5);
-    g.add(car);
-    add(tbox(8, 15, 25), toon({map: P.tex(P.plaster(8), 4, 12), color: '#8c7a6b'}), 10, 7.5, 0, g);
-    for(let y=3; y<14; y+=3) {
-      for(let z=-10; z<10; z+=4) {
-        add(new THREE.PlaneGeometry(1.5, 2), M.window, 5.9, y, z, g).rotation.y = -Math.PI/2;
+    add(tbox(4, 0.8, 1.8, 1), toon({color: '#111111'}), 0, 0.6, 0, car);
+    add(tbox(2, 0.7, 1.6, 1), toon({color: '#ffffff'}), 0, 1.35, 0, car);
+    add(tbox(0.5, 0.15, 0.4, 1), toon({color: '#ff0000'}), -0.5, 1.775, 0, car);
+    add(tbox(0.5, 0.15, 0.4, 1), toon({color: '#0000ff'}), 0.5, 1.775, 0, car);
+    for(let x of [-1.2, 1.2]) {
+      for(let z of [-0.9, 0.9]) {
+        const w = add(new THREE.CylinderGeometry(0.35, 0.35, 0.2, 16), toon({color: '#222222'}), x, 0.35, z, car);
+        w.rotation.x = Math.PI/2;
       }
     }
+    car.position.set(2, 0, -4);
+    g.add(car);
     return g;
   },
-  'POLICE-OFFICE': () => {
+  'BOMB-TENT': () => {
     const g = new THREE.Group();
-    add(new THREE.PlaneGeometry(12, 12), M.plank, 0, 0, 0, g).rotation.x = -Math.PI/2;
-    add(tbox(12, 4, 0.2), M.plaster, 0, 2, -6, g);
-    add(tbox(0.2, 4, 12), M.plaster, -6, 2, 0, g);
-    add(tbox(0.2, 4, 12), M.plaster, 6, 2, 0, g);
+    // Floor
+    const floorTex = canvasTex(512, 512, (ctx, w, h) => {
+      ctx.fillStyle = '#6a7d43'; ctx.fillRect(0, 0, w, h);
+      ctx.fillStyle = '#5a6d33';
+      for(let i=0; i<700; i++) {
+        ctx.beginPath(); ctx.arc(Math.random()*w, Math.random()*h, 2+Math.random()*5, 0, Math.PI*2); ctx.fill();
+      }
+    }, 4, 4);
+    add(new THREE.PlaneGeometry(6, 6), toon({map: floorTex}), 0, 0, 0, g).rotation.x = -Math.PI/2;
     
-    // Papers on wall
-    add(new THREE.PlaneGeometry(0.6, 0.8), toon({color: '#fff'}), -1, 2, -5.89, g);
-    add(new THREE.PlaneGeometry(0.6, 0.8), toon({color: '#fff'}), 1, 2, -5.89, g);
-    add(new THREE.PlaneGeometry(0.8, 0.6), toon({color: '#eee'}), 0, 2.2, -5.89, g);
+    // Walls
+    const wallTex = canvasTex(512, 512, (ctx, w, h) => {
+      const grd = ctx.createLinearGradient(0, 0, 0, h);
+      grd.addColorStop(0, '#7a8d53');
+      grd.addColorStop(1, '#4a5d23');
+      ctx.fillStyle = grd; ctx.fillRect(0, 0, w, h);
+      ctx.strokeStyle = '#3a4d13'; ctx.lineWidth = 4;
+      for(let i=0; i<w; i+=64) { ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, h); ctx.stroke(); }
+    }, 2, 1);
+    const wallMat = toon({map: wallTex, side: THREE.DoubleSide});
+    add(new THREE.PlaneGeometry(6, 3), wallMat, 0, 1.5, -3, g);
+    add(new THREE.PlaneGeometry(6, 3), wallMat, -3, 1.5, 0, g).rotation.y = Math.PI/2;
+    add(new THREE.PlaneGeometry(6, 3), wallMat, 3, 1.5, 0, g).rotation.y = -Math.PI/2;
     
-    // Blue poster
-    add(new THREE.PlaneGeometry(1.2, 1.8), toon({color: '#2266cc'}), -3, 2, -5.89, g);
-    
-    // Fire extinguisher
-    add(new THREE.CylinderGeometry(0.15, 0.15, 0.6, 8), toon({color: '#dd2222'}), 4, 0.3, -5.5, g);
-    add(tbox(0.1, 0.1, 0.1), toon({color: '#222'}), 4, 0.65, -5.5, g);
+    // Warning Sign on back wall
+    const signTex = canvasTex(256, 128, (ctx, w, h) => {
+      ctx.fillStyle = '#ffcc00'; ctx.fillRect(0, 0, w, h);
+      ctx.fillStyle = '#000000'; ctx.fillRect(10, 10, w-20, h-20);
+      ctx.fillStyle = '#ffcc00'; ctx.fillRect(15, 15, w-30, h-30);
+      ctx.fillStyle = '#000000';
+      ctx.font = 'bold 40px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('DANGER', w/2, 55);
+      ctx.font = 'bold 20px sans-serif'; ctx.fillText('EXPLOSIVES', w/2, 90);
+    }, 1, 1);
+    add(new THREE.PlaneGeometry(1.5, 0.75), toon({map: signTex}), 0, 2, -2.9, g);
 
-    // Desk
-    add(tbox(2, 1, 1), M.wood, 3, 0.5, -2, g);
-    // Desk props
-    add(tbox(0.4, 0.1, 0.3), toon({color: '#222'}), 3, 1.05, -2, g); // phone
-    add(tbox(0.2, 0.3, 0.2), toon({color: '#444'}), 2.5, 1.15, -2.2, g); // lamp base
-    add(tbox(0.3, 0.1, 0.3), toon({color: '#888'}), 2.5, 1.4, -2.1, g); // lamp head
-    
-    // Bench
-    add(tbox(3, 0.1, 0.8), M.wood, -3, 0.5, -2, g);
-    add(tbox(0.1, 0.5, 0.8), M.wood, -4.45, 0.25, -2, g);
-    add(tbox(0.1, 0.5, 0.8), M.wood, -1.55, 0.25, -2, g);
-    return g;
-  },
-  'BOMB-ROOM': () => {
-    const g = new THREE.Group();
-    add(new THREE.PlaneGeometry(10, 10), toon({map: P.tex(P.stone(4), 4, 4), color: '#556'}), 0, 0, 0, g).rotation.x = -Math.PI/2;
-    const wallMat = toon({map: P.tex(P.plaster(8), 4, 2), color: '#445'});
-    add(tbox(10, 4, 0.2), wallMat, 0, 2, -5, g);
-    add(tbox(0.2, 4, 10), wallMat, -5, 2, 0, g);
-    add(tbox(0.2, 4, 10), wallMat, 5, 2, 0, g);
-    
-    // Warning stripe
-    add(tbox(10, 0.2, 0.25), toon({color: '#d9a020'}), 0, 1.5, -5, g);
-    add(tbox(10, 0.2, 0.25), toon({color: '#222'}), 0, 1.3, -5, g);
-    
-    // Whiteboard
-    add(new THREE.PlaneGeometry(2, 1.2), toon({color: '#eee'}), -2, 2, -4.89, g);
-    add(tbox(0.2, 0.2, 0.1), toon({color: '#22c'}), -2.5, 2.2, -4.85, g);
-    add(tbox(0.3, 0.1, 0.1), toon({color: '#c22'}), -1.5, 1.8, -4.85, g);
-    
-    // Fire extinguisher
-    add(new THREE.CylinderGeometry(0.15, 0.15, 0.6, 8), toon({color: '#dd2222'}), -4, 0.3, -4.5, g);
-    add(tbox(0.1, 0.1, 0.1), toon({color: '#222'}), -4, 0.65, -4.5, g);
+    // Blueprint on side wall
+    const bpTex = canvasTex(256, 256, (ctx, w, h) => {
+      ctx.fillStyle = '#2244aa'; ctx.fillRect(0, 0, w, h);
+      ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 2;
+      ctx.strokeRect(10, 10, w-20, h-20);
+      ctx.beginPath(); ctx.arc(w/2, h/2, 50, 0, Math.PI*2); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(20, 20); ctx.lineTo(w-20, h-20); ctx.stroke();
+    }, 1, 1);
+    add(new THREE.PlaneGeometry(1.5, 1.5), toon({map: bpTex}), -2.9, 1.8, -1, g).rotation.y = Math.PI/2;
 
-    // Blue poster
-    add(new THREE.PlaneGeometry(1, 1.5), toon({color: '#2266cc'}), 2, 2, -4.89, g);
+    // Fire extinguisher
+    const fe = new THREE.Group();
+    add(new THREE.CylinderGeometry(0.15, 0.15, 0.6), M.red, 0, 0.3, 0, fe);
+    add(new THREE.CylinderGeometry(0.05, 0.15, 0.15), M.red, 0, 0.675, 0, fe);
+    add(new THREE.CylinderGeometry(0.03, 0.03, 0.1), toon({color: '#222222'}), 0, 0.8, 0, fe);
+    add(tbox(0.1, 0.3, 0.1, 1), toon({color: '#dddddd'}), 0, 0.3, 0.16, fe);
+    fe.position.set(2.5, 0, -2.5);
+    g.add(fe);
+
+    // Table
+    const tableTex = canvasTex(256, 256, (ctx, w, h) => {
+      ctx.fillStyle = '#777777'; ctx.fillRect(0, 0, w, h);
+      ctx.fillStyle = '#888888';
+      for(let i=0; i<100; i++) {
+        ctx.fillRect(Math.random()*w, Math.random()*h, 2, 2);
+      }
+    }, 2, 2);
+    const tableMat = toon({map: tableTex});
+    add(tbox(1.5, 0.05, 0.8, 1), tableMat, 0, 0.9, 0, g);
+    add(new THREE.CylinderGeometry(0.05, 0.05, 0.9), M.iron, -0.6, 0.45, -0.3, g);
+    add(new THREE.CylinderGeometry(0.05, 0.05, 0.9), M.iron, 0.6, 0.45, -0.3, g);
+    add(new THREE.CylinderGeometry(0.05, 0.05, 0.9), M.iron, -0.6, 0.45, 0.3, g);
+    add(new THREE.CylinderGeometry(0.05, 0.05, 0.9), M.iron, 0.6, 0.45, 0.3, g);
     
-    // Bomb table
-    add(tbox(1.2, 0.05, 1.2), M.wood, 0, 0.75, -2, g);
-    add(tbox(0.1, 0.75, 0.1), M.iron, -0.5, 0.375, -1.5, g);
-    add(tbox(0.1, 0.75, 0.1), M.iron, 0.5, 0.375, -1.5, g);
-    add(tbox(0.1, 0.75, 0.1), M.iron, -0.5, 0.375, -2.5, g);
-    add(tbox(0.1, 0.75, 0.1), M.iron, 0.5, 0.375, -2.5, g);
+    // Spotlight
+    add(new THREE.CylinderGeometry(0.05, 0.05, 2.5), M.iron, 2, 1.25, -2, g);
+    add(new THREE.CylinderGeometry(0.2, 0.4, 0.4), toon({color: '#444444'}), 1.8, 2.5, -1.8, g).rotation.x = Math.PI/4;
+    add(new THREE.CylinderGeometry(0.18, 0.38, 0.41), toon({color: '#ffffff'}), 1.8, 2.5, -1.8, g).rotation.x = Math.PI/4;
     
-    // Tool table
-    add(tbox(2, 0.05, 1), M.iron, 3, 0.75, -2, g);
-    add(tbox(0.1, 0.75, 0.1), M.iron, 2.1, 0.375, -1.6, g);
-    add(tbox(0.1, 0.75, 0.1), M.iron, 3.9, 0.375, -1.6, g);
-    add(tbox(0.1, 0.75, 0.1), M.iron, 2.1, 0.375, -2.4, g);
-    add(tbox(0.1, 0.75, 0.1), M.iron, 3.9, 0.375, -2.4, g);
-    // Tools
-    add(tbox(0.3, 0.15, 0.2), toon({color: '#cc2222'}), 2.5, 0.85, -2, g); // red box
-    add(tbox(0.2, 0.1, 0.15), toon({color: '#2222cc'}), 3.2, 0.82, -1.8, g); // blue box
-    add(tbox(0.4, 0.05, 0.1), toon({color: '#888'}), 3.5, 0.8, -2.2, g); // wrench
+    // Tool case
+    add(tbox(0.5, 0.2, 0.3, 1), toon({color: '#333333'}), -1.5, 0.1, -1, g);
+    add(tbox(0.1, 0.05, 0.31, 1), M.iron, -1.5, 0.1, -1, g);
+    
+    // Crates
+    add(tbox(0.8, 0.8, 0.8, 1), M.wood, 2, 0.4, -2.5, g);
+    add(tbox(0.6, 0.6, 0.6, 1), M.wood, 2.2, 1.1, -2.5, g);
+    
+    // Tools on table
+    add(tbox(0.2, 0.05, 0.1, 1), toon({color: '#cc2222'}), -0.4, 0.925, 0.2, g);
+    add(tbox(0.15, 0.04, 0.08, 1), toon({color: '#2222cc'}), -0.2, 0.92, 0.25, g);
+    add(tbox(0.3, 0.02, 0.2, 1), toon({color: '#dddddd'}), 0.4, 0.91, 0.15, g);
+    
     return g;
   },
-  'CIRCUIT-VIEW': () => {
+  'COMMAND-POST': () => {
     const g = new THREE.Group();
-    add(new THREE.PlaneGeometry(1, 1), toon({map: P.tex(P.stone(4), 1, 1), color: '#222'}), 0, 0, 0, g).rotation.x = -Math.PI/2;
+    const floorTex = canvasTex(512, 512, (ctx, w, h) => {
+      ctx.fillStyle = '#555566'; ctx.fillRect(0, 0, w, h);
+      ctx.fillStyle = '#666677';
+      for(let i=0; i<w; i+=64) {
+        for(let j=0; j<h; j+=64) {
+          if((i/64 + j/64) % 2 === 0) ctx.fillRect(i, j, 64, 64);
+        }
+      }
+    }, 4, 4);
+    add(new THREE.PlaneGeometry(10, 10), toon({map: floorTex}), 0, 0, 0, g).rotation.x = -Math.PI/2;
+    
+    const wallTex = canvasTex(512, 512, (ctx, w, h) => {
+      const grd = ctx.createLinearGradient(0, 0, 0, h);
+      grd.addColorStop(0, '#888899');
+      grd.addColorStop(1, '#555566');
+      ctx.fillStyle = grd; ctx.fillRect(0, 0, w, h);
+    }, 1, 1);
+    add(new THREE.PlaneGeometry(10, 4), toon({map: wallTex}), 0, 2, -5, g);
+    add(new THREE.PlaneGeometry(10, 4), toon({map: wallTex}), -5, 2, 0, g).rotation.y = Math.PI/2;
+    
+    // Poster
+    const posterTex = canvasTex(256, 512, (ctx, w, h) => {
+      ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, w, h);
+      ctx.fillStyle = '#ff0000'; ctx.fillRect(20, 20, w-40, 60);
+      ctx.fillStyle = '#000000'; ctx.fillRect(20, 100, w-40, 20);
+      ctx.fillRect(20, 140, w-40, 20);
+      ctx.fillRect(20, 180, w-40, 20);
+    }, 1, 1);
+    add(new THREE.PlaneGeometry(1, 2), toon({map: posterTex}), -2, 2, -4.9, g);
+    
+    // Radio desk
+    add(tbox(2, 1, 1, 1), M.wood, -3, 0.5, -2, g);
+    add(tbox(0.8, 0.4, 0.4, 1), toon({color: '#222222'}), -3, 1.2, -2, g);
+    add(new THREE.CylinderGeometry(0.05, 0.05, 0.1), M.iron, -2.8, 1.3, -1.75, g).rotation.x = Math.PI/2;
+    
+    // Screens
+    add(tbox(4, 1.5, 0.2, 1), toon({color: '#222222'}), 0, 2, -4.8, g);
+    add(new THREE.PlaneGeometry(1.2, 0.8), toon({color: '#66aaff'}), -1.3, 2, -4.69, g);
+    add(new THREE.PlaneGeometry(1.2, 0.8), toon({color: '#66aaff'}), 0, 2, -4.69, g);
+    add(new THREE.PlaneGeometry(1.2, 0.8), toon({color: '#66aaff'}), 1.3, 2, -4.69, g);
+    add(new THREE.PlaneGeometry(1.2, 0.8), toon({color: '#ffaa66'}), -1.3, 1.1, -4.69, g);
+    add(new THREE.PlaneGeometry(1.2, 0.8), toon({color: '#ffaa66'}), 0, 1.1, -4.69, g);
+    add(new THREE.PlaneGeometry(1.2, 0.8), toon({color: '#ffaa66'}), 1.3, 1.1, -4.69, g);
+    
+    // Coffee cups table
+    add(tbox(1.5, 1, 1, 1), M.wood, 3, 0.5, -2, g);
+    add(new THREE.CylinderGeometry(0.05, 0.04, 0.15), toon({color: '#ffffff'}), 3, 1.075, -2, g);
+    add(new THREE.CylinderGeometry(0.05, 0.04, 0.15), toon({color: '#ffffff'}), 3.2, 1.075, -1.9, g);
     return g;
   },
-  'CONTROL-ROOM': () => {
+  'bomb suit': () => {
     const g = new THREE.Group();
-    add(new THREE.PlaneGeometry(15, 15), toon({map: P.tex(P.marble(10), 4, 4), color: '#5a5a6a'}), 0, 0, 0, g).rotation.x = -Math.PI/2;
-    const wallMat = toon({map: P.tex(P.plaster(8), 6, 2), color: '#4a4a5a'});
-    add(tbox(15, 4, 0.2), wallMat, 0, 2, -7.5, g);
-    add(tbox(0.2, 4, 15), wallMat, -7.5, 2, 0, g);
-    add(tbox(0.2, 4, 15), wallMat, 7.5, 2, 0, g);
-    
-    // Main big screen
-    add(tbox(6, 3, 0.2), toon({color: '#111'}), 0, 2.5, -7.4, g);
-    add(new THREE.PlaneGeometry(5.8, 2.8), toon({color: '#2a4a6a'}), 0, 2.5, -7.29, g);
-    
-    // Desks
-    add(tbox(10, 1, 2), M.iron, 0, 0.5, -5, g);
-    add(tbox(3, 1, 2), M.iron, -6, 0.5, -4, g);
-    add(tbox(2, 3, 1), M.iron, 6, 1.5, -6, g);
-    
-    for (let x of [-3, 0, 3]) {
-      const mon = new THREE.Group();
-      add(tbox(0.8, 0.6, 0.1), toon({color: '#111'}), 0, 0, 0, mon);
-      add(new THREE.PlaneGeometry(0.7, 0.5), toon({color: '#4a8a8a'}), 0, 0, 0.06, mon);
-      add(tbox(0.2, 0.2, 0.2), toon({color: '#111'}), 0, -0.3, 0, mon);
-      mon.position.set(x, 1.3, -5.2);
-      g.add(mon);
+    add(tbox(0.6, 1.8, 0.4, 1), toon({color: '#4a5d23'}), 0, 0.9, 0, g);
+    return g;
+  },
+  'bomb helmet': () => {
+    const g = new THREE.Group();
+    add(new THREE.SphereGeometry(0.2, 16, 16), toon({color: '#4a5d23'}), 0, 0.2, 0, g);
+    add(box(0.3, 0.15, 0.1), toon({color: '#88ccff'}), 0, 0.2, 0.15, g);
+    return g;
+  },
+  'police uniform': () => {
+    const g = new THREE.Group();
+    add(tbox(0.5, 1.8, 0.25, 1), toon({color: '#2a3b5c'}), 0, 0.9, 0, g);
+    add(box(0.1, 0.1, 0.05), toon({color: '#c0c0c0'}), -0.1, 1.4, 0.15, g);
+    return g;
+  },
+  'police cap': () => {
+    const g = new THREE.Group();
+    add(new THREE.CylinderGeometry(0.15, 0.15, 0.1, 8), toon({color: '#2a3b5c'}), 0, 0.05, 0, g);
+    add(box(0.3, 0.02, 0.15), toon({color: '#111111'}), 0, 0.01, 0.1, g);
+    return g;
+  },
+  'bomb': () => {
+    const g = new THREE.Group();
+    const bombTex = canvasTex(512, 512, (ctx, w, h) => {
+      ctx.fillStyle = '#444444'; ctx.fillRect(0, 0, w, h);
+      // Hazard stripes on edges
+      ctx.fillStyle = '#ffcc00';
+      for(let i=-w; i<w*2; i+=40) {
+        ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i+20, 0); ctx.lineTo(i+h+20, h); ctx.lineTo(i+h, h); ctx.fill();
+      }
+      ctx.fillStyle = '#222222'; ctx.fillRect(20, 20, w-40, h-40); // Inner dark area
       
-      // Keyboard
-      add(tbox(0.6, 0.05, 0.2), toon({color: '#222'}), x, 1.025, -4.5, g);
-      
-      // Chair
-      add(tbox(0.6, 0.1, 0.6), toon({color: '#333'}), x, 0.5, -3.5, g);
-      add(tbox(0.6, 0.6, 0.1), toon({color: '#333'}), x, 0.8, -3.2, g);
-      add(tbox(0.1, 0.4, 0.1), M.iron, x, 0.2, -3.5, g);
-    }
-    return g;
-  },
-  'bomb device': () => {
-    const g = new THREE.Group();
-    add(tbox(0.35, 0.15, 0.25), toon({color: '#333'}), 0, 0.075, 0, g);
-    // Warning sticker
-    add(new THREE.PlaneGeometry(0.1, 0.05), toon({color: '#ddaa00'}), 0, 0.151, 0.08, g).rotation.x = -Math.PI/2;
-    // Lid open
-    const lid = add(tbox(0.35, 0.02, 0.25), toon({color: '#333'}), 0, 0.16, -0.125, g);
-    lid.rotation.x = -Math.PI/3;
-    lid.position.set(0, 0.25, -0.18);
-    // Battery pack
-    add(new THREE.CylinderGeometry(0.02, 0.02, 0.1, 8), toon({color: '#cc2222'}), -0.12, 0.17, 0.05, g).rotation.x = Math.PI/2;
-    add(new THREE.CylinderGeometry(0.02, 0.02, 0.1, 8), toon({color: '#222222'}), -0.08, 0.17, 0.05, g).rotation.x = Math.PI/2;
-    // Dynamite sticks
+      // Panel lines
+      ctx.strokeStyle = '#111111'; ctx.lineWidth = 4;
+      ctx.strokeRect(30, 30, w-60, h-60);
+      ctx.beginPath(); ctx.moveTo(w/2, 30); ctx.lineTo(w/2, h-30); ctx.stroke();
+    }, 1, 1);
+    add(tbox(0.4, 0.2, 0.3, 1), toon({map: bombTex}), 0, 0.1, 0, g);
+    
+    // Keypad
+    const kp = new THREE.Group();
+    add(tbox(0.1, 0.02, 0.1, 1), toon({color: '#cccccc'}), 0, 0, 0, kp);
     for(let i=0; i<3; i++) {
-      add(new THREE.CylinderGeometry(0.025, 0.025, 0.15, 8), toon({color: '#dd3333'}), 0.1, 0.175, -0.05 + i*0.05, g).rotation.z = Math.PI/2;
+      for(let j=0; j<3; j++) {
+        add(tbox(0.02, 0.03, 0.02, 1), toon({color: '#333333'}), -0.03 + i*0.03, 0, -0.03 + j*0.03, kp);
+      }
     }
-    add(tbox(0.01, 0.01, 0.15), toon({color: '#111'}), 0.1, 0.2, 0, g);
-    return g;
-  },
-  'six bomb wires': () => {
-    const g = new THREE.Group();
-    const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ffa500', '#ffffff'];
-    for(let i=0; i<6; i++) {
-      const wire = new THREE.Mesh(new THREE.CylinderGeometry(0.005, 0.005, 0.4, 8), toon({color: colors[i]}));
-      wire.rotation.z = Math.PI/2;
-      wire.position.set(0, 0.02, -0.1 + i*0.04);
-      g.add(wire);
+    kp.position.set(-0.1, 0.2, 0.05);
+    g.add(kp);
+
+    // Bolts
+    for(let x of [-0.18, 0.18]) {
+      for(let z of [-0.13, 0.13]) {
+        add(new THREE.CylinderGeometry(0.01, 0.01, 0.02), M.iron, x, 0.2, z, g);
+      }
     }
-    return g;
-  },
-  'digital countdown display': () => {
-    const g = new THREE.Group();
-    add(tbox(0.15, 0.05, 0.08), toon({color: '#111'}), 0, 0.025, 0, g);
-    add(new THREE.PlaneGeometry(0.13, 0.04), timerMat, 0, 0.025, 0.046, g);
-    add(tbox(0.02, 0.01, 0.02), toon({color: '#ff2222'}), -0.04, 0.055, 0.02, g);
-    add(tbox(0.02, 0.01, 0.02), toon({color: '#22ff22'}), 0.04, 0.055, 0.02, g);
-    add(tbox(0.02, 0.01, 0.02), toon({color: '#2222ff'}), 0.0, 0.055, 0.02, g);
-    // Bezel
-    add(tbox(0.14, 0.05, 0.01), toon({color: '#666'}), 0, 0.025, 0.04, g);
+
     return g;
   },
   'circuit board': () => {
     const g = new THREE.Group();
-    add(tbox(0.25, 0.02, 0.2), toon({color: '#005522'}), 0, 0.01, 0, g);
+    const pcbTex = canvasTex(256, 256, (ctx, w, h) => {
+      ctx.fillStyle = '#228822'; ctx.fillRect(0, 0, w, h);
+      ctx.strokeStyle = '#44aa44'; ctx.lineWidth = 3;
+      for(let i=0; i<30; i++) {
+        ctx.beginPath();
+        ctx.moveTo(Math.random()*w, Math.random()*h);
+        ctx.lineTo(Math.random()*w, Math.random()*h);
+        ctx.stroke();
+      }
+      // Gold pins on edge
+      ctx.fillStyle = '#ffcc00';
+      for(let i=0; i<w; i+=10) {
+        ctx.fillRect(i, h-10, 6, 10);
+      }
+    }, 1, 1);
+    add(tbox(0.2, 0.02, 0.15, 1), toon({map: pcbTex}), 0, 0.01, 0, g);
+    
     // Chips
-    add(tbox(0.04, 0.01, 0.04), toon({color: '#111'}), -0.08, 0.025, -0.05, g);
-    add(tbox(0.06, 0.01, 0.02), toon({color: '#111'}), 0.05, 0.025, 0.05, g);
-    add(tbox(0.03, 0.01, 0.03), toon({color: '#111'}), 0.08, 0.025, -0.06, g);
-    add(tbox(0.02, 0.01, 0.05), toon({color: '#111'}), -0.05, 0.025, 0.06, g);
+    add(tbox(0.04, 0.03, 0.04, 1), toon({color: '#111111'}), -0.05, 0.02, -0.03, g);
+    add(tbox(0.06, 0.03, 0.03, 1), toon({color: '#111111'}), 0.04, 0.02, 0.02, g);
+    
     // Capacitors
-    for(let i=0; i<4; i++) {
-      add(new THREE.CylinderGeometry(0.008, 0.008, 0.02, 8), toon({color: '#2244cc'}), -0.02 + i*0.02, 0.03, -0.02, g);
-    }
-    for(let i=0; i<3; i++) {
-      add(new THREE.CylinderGeometry(0.006, 0.006, 0.015, 8), toon({color: '#ccaa22'}), 0.02 + i*0.015, 0.0275, 0.02, g);
-    }
-    // Resistors
-    for(let i=0; i<5; i++) {
-      add(tbox(0.005, 0.005, 0.015), toon({color: '#d2a679'}), -0.08, 0.025, 0.02 + i*0.01, g);
-    }
-    // Red and Blue components
-    add(tbox(0.02, 0.015, 0.02), toon({color: '#dd2222'}), 0.1, 0.0275, 0.08, g);
-    add(tbox(0.02, 0.015, 0.02), toon({color: '#2222dd'}), -0.1, 0.0275, 0.08, g);
-    // Connectors
-    add(tbox(0.02, 0.015, 0.18), toon({color: '#888'}), -0.11, 0.0275, 0, g);
-    add(tbox(0.02, 0.015, 0.18), toon({color: '#888'}), 0.11, 0.0275, 0, g);
+    add(new THREE.CylinderGeometry(0.01, 0.01, 0.03), toon({color: '#2244cc'}), -0.08, 0.025, 0.04, g);
+    add(new THREE.CylinderGeometry(0.01, 0.01, 0.03), toon({color: '#2244cc'}), -0.05, 0.025, 0.04, g);
+    add(new THREE.CylinderGeometry(0.015, 0.015, 0.04), toon({color: '#cc4422'}), 0.07, 0.03, -0.04, g);
+
     return g;
   },
-  'protective bomb disposal suit': () => new THREE.Group()
+  'wire bundle': () => {
+    const g = new THREE.Group();
+    const cols = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff8800', '#ffffff'];
+    cols.forEach((c, i) => {
+      const w = add(new THREE.CylinderGeometry(0.005, 0.005, 0.15), toon({color: c}), (i-2.5)*0.015, 0.01, 0, g);
+      w.rotation.x = Math.PI/2;
+      w.rotation.z = (Math.random()-0.5)*0.2;
+      w.name = `wire_${i}`;
+    });
+    return g;
+  },
+  'wire snips': () => {
+    const g = new THREE.Group();
+    const handleTex = canvasTex(64, 256, (ctx, w, h) => {
+      ctx.fillStyle = '#cc0000'; ctx.fillRect(0, 0, w, h);
+      ctx.fillStyle = '#aa0000';
+      for(let y=0; y<h; y+=10) { ctx.fillRect(0, y, w, 5); }
+    }, 1, 1);
+    const handleMat = toon({map: handleTex});
+    add(tbox(0.02, 0.08, 0.01, 1), handleMat, -0.015, 0.04, 0, g).rotation.z = -0.2;
+    add(tbox(0.02, 0.08, 0.01, 1), handleMat, 0.015, 0.04, 0, g).rotation.z = 0.2;
+    add(tbox(0.01, 0.05, 0.01, 1), M.iron, -0.01, 0.1, 0, g).rotation.z = 0.2;
+    add(tbox(0.01, 0.05, 0.01, 1), M.iron, 0.01, 0.1, 0, g).rotation.z = -0.2;
+    add(new THREE.CylinderGeometry(0.005, 0.005, 0.012), toon({color: '#333333'}), 0, 0.08, 0, g).rotation.x = Math.PI/2;
+    return g;
+  },
+  'digital timer': () => {
+    const g = new THREE.Group();
+    // Bezel
+    add(tbox(0.12, 0.04, 0.04, 1), toon({color: '#333333'}), 0, 0.02, 0, g);
+    // Screen bg
+    const screenBg = add(new THREE.PlaneGeometry(0.09, 0.03), toon({color: '#220000'}), 0, 0.041, -0.005, g);
+    screenBg.rotation.x = -Math.PI/2;
+    // Buttons
+    add(new THREE.CylinderGeometry(0.005, 0.005, 0.01), toon({color: '#00ff00'}), -0.03, 0.04, 0.015, g);
+    add(new THREE.CylinderGeometry(0.005, 0.005, 0.01), toon({color: '#ff0000'}), 0.03, 0.04, 0.015, g);
+    return g;
+  }
 };
 
 const waterU = { t: { value: 0 }, deep: { value: new THREE.Color('#2f6f8f') }, shal: { value: new THREE.Color('#5fa8bf') }, glint: { value: new THREE.Color('#e9f6ff') } };
 const clouds = cloudsInit();
 
-const cityStreet = ASSETS['CITY-STREET']();
-const policeOffice = ASSETS['POLICE-OFFICE']();
-const bombRoom = ASSETS['BOMB-ROOM']();
-const circuitView = ASSETS['CIRCUIT-VIEW']();
-const controlRoom = ASSETS['CONTROL-ROOM']();
+const envStreet = ASSETS['STREET']();
+const envTent = ASSETS['BOMB-TENT']();
+const envPost = ASSETS['COMMAND-POST']();
+world.add(envStreet);
+world.add(envTent);
+world.add(envPost);
 
-const makeFullBomb = () => {
-  const g = new THREE.Group();
-  const bd = ASSETS['bomb device']();
-  const cb = ASSETS['circuit board']();
-  const sw = ASSETS['six bomb wires']();
-  const cd = ASSETS['digital countdown display']();
-  cb.position.set(0, 0.15, -0.05);
-  sw.position.set(0, 0.17, -0.05);
-  cd.position.set(0, 0.15, 0.08);
-  g.add(bd, cb, sw, cd);
-  return g;
-};
+const theBomb = ASSETS['bomb']();
+const theTimer = ASSETS['digital timer']();
+const theCircuit = ASSETS['circuit board']();
+const theWires = ASSETS['wire bundle']();
+const theSnips = ASSETS['wire snips']();
 
-const bombInRoom = makeFullBomb();
-bombInRoom.position.set(0, 0.8, -2);
-bombRoom.add(bombInRoom);
+theBomb.add(theTimer);
+theTimer.position.set(0, 0.2, 0.1);
+theBomb.add(theCircuit);
+theCircuit.position.set(0, 0.2, -0.05);
+theBomb.add(theWires);
+theWires.position.set(0, 0.22, -0.05);
 
-const bombInCircuit = makeFullBomb();
-bombInCircuit.position.set(0, 0, 0);
-circuitView.add(bombInCircuit);
+envTent.add(theBomb);
+theBomb.position.set(0, 0.95, 0);
 
-world.add(cityStreet, policeOffice, bombRoom, circuitView, controlRoom);
+envTent.add(theSnips);
+theSnips.position.set(0.3, 0.95, 0.2);
 
-function updateTimer(f) {
-  let text = '00:15';
-  if (f >= 250 && f <= 338) text = '00:05';
-  if (f >= 772) text = '00:08';
-  if (f >= 918) text = '00:03';
-  
-  timerCtx.fillStyle = '#000'; timerCtx.fillRect(0, 0, 256, 128);
-  timerCtx.fillStyle = (f % 15 < 7 && f < 918) ? '#ff0000' : '#fff';
-  timerCtx.font = 'bold 80px monospace'; timerCtx.textAlign = 'center'; timerCtx.textBaseline = 'middle';
-  timerCtx.fillText(text, 128, 64);
-  timerTex.needsUpdate = true;
-}
+envStreet.position.set(0, 0, 0);
+envTent.position.set(100, 0, 0);
+envPost.position.set(200, 0, 0);
 
 function worldState(S, f) {
-  cityStreet.visible = S.place === 'CITY-STREET';
-  policeOffice.visible = S.place === 'POLICE-OFFICE';
-  bombRoom.visible = S.place === 'BOMB-ROOM';
-  circuitView.visible = S.place === 'CIRCUIT-VIEW';
-  controlRoom.visible = S.place === 'CONTROL-ROOM';
-  updateTimer(f);
   waterU.t.value = f / 30;
+  
+  if (S.shotId === 's8') {
+    theSnips.position.set(0.1, 1.15, 0.1);
+    theSnips.rotation.set(-Math.PI/4, 0, 0);
+  } else if (S.shotId === 's12') {
+    theSnips.position.set(0, 1.17, -0.05);
+    theSnips.rotation.set(-Math.PI/2, 0, 0);
+  } else {
+    theSnips.position.set(0.3, 0.95, 0.2);
+    theSnips.rotation.set(0, 0, 0);
+  }
+  
+  const redWire = theWires.getObjectByName('wire_0');
+  if (redWire) {
+    redWire.visible = f < 960;
+  }
 }
 
 // ---------- cards ----------

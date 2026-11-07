@@ -4,38 +4,31 @@ exec(open(os.path.join(D, "audiolib.py")).read())
 F = lambda f: f / 30
 music = np.zeros(N, np.float32); sfx = np.zeros(N, np.float32)
 
-beat = 60 / 120
-t = 0.0
-while t < F(1082):
-    if t < F(250):
-        if int(t/beat) % 4 == 0: place(music, pluck(midi(55), 0.5, 0.3), t, 0.4)
-    elif t < F(772):
-        place(music, drum("kick"), t, 0.3)
-        if int(t/(beat/2)) % 2 == 0: place(music, pluck(midi(60), 0.1, 0.6), t, 0.2)
-    elif t < F(918):
-        place(music, drum("kick"), t, 0.6)
-        place(music, drum("kick"), t + 0.15, 0.4)
-    else:
-        if int(t/beat) % 2 == 0: place(music, brass([midi(60), midi(64), midi(67)], beat), t, 0.3)
-        place(music, drum("snare"), t, 0.2)
-    t += beat if t < F(772) else (beat/2 if t < F(918) else beat)
+place(music, rumble(4.8), 0.0, 0.3)
+place(music, rumble(3.5), 4.8, 0.4)
+place(music, ragtime(3.0, 60, 140), 8.33, 0.3)
+place(music, ragtime(3.2, 60, 140), 11.3, 0.3)
+place(music, rumble(3.7), 14.53, 0.5)
+place(music, ragtime(2.3, 60, 120), 18.23, 0.3)
+place(music, ragtime(2.7, 60, 120), 20.53, 0.3)
+# 23.2 to 26.57: none
+place(music, rumble(2.0), 26.57, 0.5)
+place(music, brass([midi(60), midi(64), midi(67)], 3.1), 28.6, 0.4)
+place(music, brass([midi(60), midi(64), midi(67)], 2.5), 31.7, 0.5)
+place(music, folk(120, 1.9), 34.2, 0.6)
 
-place(sfx, thunk(80, 0.4), F(20), 0.8)
-place(sfx, click(), F(120), 0.8)
-place(sfx, murmur(1.0), F(160), 0.5)
-place(sfx, ting(), F(310), 0.8)
-place(sfx, engine(0.5, 60), F(400), 0.5)
-place(sfx, thunk(50, 0.3), F(470), 0.8)
-place(sfx, click(), F(530), 0.8)
-place(sfx, scrape(0.5), F(590), 0.6)
-place(sfx, scrape(0.5), F(670), 0.6)
-place(sfx, ting(), F(750), 0.8)
-place(sfx, ting(), F(772), 0.9)
-place(sfx, ting(), F(782), 0.9)
-place(sfx, ting(), F(792), 0.9)
-place(sfx, whoosh(0.5), F(830), 0.5)
-place(sfx, bell(800, 1.0), F(890), 0.8)
-place(sfx, click(), F(970), 0.8)
-place(sfx, brass([midi(60), midi(64), midi(67)], 1.0), F(1030), 0.8)
+place(sfx, steps(1.0, 1.5), 4.123, 0.8)
+place(sfx, murmur(1.0), 6.547, 0.4)
+place(sfx, click(0.1), 10.123, 0.5)
+place(sfx, scrape(0.5), 11.475, 0.5)
+place(sfx, thunk(60, 0.5), 15.491, 0.6)
+place(sfx, click(0.1), 19.577, 0.5)
+place(sfx, scrape(0.3), 21.784, 0.4)
+place(sfx, snap(), 24.67, 0.6)
+place(sfx, click(0.2), 26.211, 0.8)
+place(sfx, noise(1.0), 27.314, 0.3)
+place(sfx, ting(), 29.004, 0.7)
+place(sfx, snap(), 32.092, 0.8)
+place(sfx, cheer(1.5), 34.574, 0.7)
 
 write_stems(music, sfx)

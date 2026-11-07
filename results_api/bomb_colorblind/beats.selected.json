@@ -1,0 +1,2400 @@
+{
+ "schema_version": "1.2.0",
+ "project": {
+  "id": "project",
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "source": "gemini (tools/make_beats.py)"
+ },
+ "narration": {
+  "text": "Arthur was colorblind. But that didn't stop him from becoming a bomb disposal expert. He was called whenever a dangerous device needed to be defused. One day, he faced a bomb with only seconds remaining. The instructions depended on identifying colored wires. But Arthur couldn't see the difference between them. He had to find another way. Instead of guessing, he carefully studied the circuit. He traced every wire and followed its connections. There were six wires, and one wrong cut could kill him. The countdown kept ticking. Everyone was waiting for an answer. Then Arthur noticed something others had missed. He understood the circuit. And he defused the bomb. He had done it again. Forty-one bombs, without relying on color.",
+  "words": [
+   {
+    "w": "Arthur",
+    "s": 0.0,
+    "e": 0.432
+   },
+   {
+    "w": "was",
+    "s": 0.432,
+    "e": 0.648
+   },
+   {
+    "w": "colorblind.",
+    "s": 0.648,
+    "e": 1.297
+   },
+   {
+    "w": "But",
+    "s": 1.424,
+    "e": 1.617
+   },
+   {
+    "w": "that",
+    "s": 1.617,
+    "e": 1.81
+   },
+   {
+    "w": "didn't",
+    "s": 1.81,
+    "e": 2.002
+   },
+   {
+    "w": "stop",
+    "s": 2.002,
+    "e": 2.195
+   },
+   {
+    "w": "him",
+    "s": 2.195,
+    "e": 2.388
+   },
+   {
+    "w": "from",
+    "s": 2.388,
+    "e": 2.581
+   },
+   {
+    "w": "becoming",
+    "s": 2.581,
+    "e": 3.159
+   },
+   {
+    "w": "a",
+    "s": 3.159,
+    "e": 3.352
+   },
+   {
+    "w": "bomb",
+    "s": 3.352,
+    "e": 3.544
+   },
+   {
+    "w": "disposal",
+    "s": 3.544,
+    "e": 4.123
+   },
+   {
+    "w": "expert.",
+    "s": 4.123,
+    "e": 4.508
+   },
+   {
+    "w": "He",
+    "s": 4.809,
+    "e": 4.967
+   },
+   {
+    "w": "was",
+    "s": 4.967,
+    "e": 5.125
+   },
+   {
+    "w": "called",
+    "s": 5.125,
+    "e": 5.441
+   },
+   {
+    "w": "whenever",
+    "s": 5.441,
+    "e": 5.915
+   },
+   {
+    "w": "a",
+    "s": 5.915,
+    "e": 6.073
+   },
+   {
+    "w": "dangerous",
+    "s": 6.073,
+    "e": 6.547
+   },
+   {
+    "w": "device",
+    "s": 6.547,
+    "e": 6.863
+   },
+   {
+    "w": "needed",
+    "s": 6.863,
+    "e": 7.18
+   },
+   {
+    "w": "to",
+    "s": 7.18,
+    "e": 7.338
+   },
+   {
+    "w": "be",
+    "s": 7.338,
+    "e": 7.496
+   },
+   {
+    "w": "defused.",
+    "s": 7.496,
+    "e": 7.97
+   },
+   {
+    "w": "One",
+    "s": 8.342,
+    "e": 8.52
+   },
+   {
+    "w": "day,",
+    "s": 8.52,
+    "e": 8.698
+   },
+   {
+    "w": "he",
+    "s": 8.698,
+    "e": 8.876
+   },
+   {
+    "w": "faced",
+    "s": 8.876,
+    "e": 9.232
+   },
+   {
+    "w": "a",
+    "s": 9.232,
+    "e": 9.41
+   },
+   {
+    "w": "bomb",
+    "s": 9.41,
+    "e": 9.588
+   },
+   {
+    "w": "with",
+    "s": 9.588,
+    "e": 9.766
+   },
+   {
+    "w": "only",
+    "s": 9.766,
+    "e": 10.123
+   },
+   {
+    "w": "seconds",
+    "s": 10.123,
+    "e": 10.479
+   },
+   {
+    "w": "remaining.",
+    "s": 10.479,
+    "e": 11.013
+   },
+   {
+    "w": "The",
+    "s": 11.299,
+    "e": 11.475
+   },
+   {
+    "w": "instructions",
+    "s": 11.475,
+    "e": 12.002
+   },
+   {
+    "w": "depended",
+    "s": 12.002,
+    "e": 12.53
+   },
+   {
+    "w": "on",
+    "s": 12.53,
+    "e": 12.706
+   },
+   {
+    "w": "identifying",
+    "s": 12.706,
+    "e": 13.41
+   },
+   {
+    "w": "colored",
+    "s": 13.41,
+    "e": 13.938
+   },
+   {
+    "w": "wires.",
+    "s": 13.938,
+    "e": 14.29
+   },
+   {
+    "w": "But",
+    "s": 14.529,
+    "e": 14.689
+   },
+   {
+    "w": "Arthur",
+    "s": 14.689,
+    "e": 15.01
+   },
+   {
+    "w": "couldn't",
+    "s": 15.01,
+    "e": 15.171
+   },
+   {
+    "w": "see",
+    "s": 15.171,
+    "e": 15.331
+   },
+   {
+    "w": "the",
+    "s": 15.331,
+    "e": 15.491
+   },
+   {
+    "w": "difference",
+    "s": 15.491,
+    "e": 15.973
+   },
+   {
+    "w": "between",
+    "s": 15.973,
+    "e": 16.294
+   },
+   {
+    "w": "them.",
+    "s": 16.294,
+    "e": 16.454
+   },
+   {
+    "w": "He",
+    "s": 16.65,
+    "e": 16.8
+   },
+   {
+    "w": "had",
+    "s": 16.8,
+    "e": 16.949
+   },
+   {
+    "w": "to",
+    "s": 16.949,
+    "e": 17.099
+   },
+   {
+    "w": "find",
+    "s": 17.099,
+    "e": 17.248
+   },
+   {
+    "w": "another",
+    "s": 17.248,
+    "e": 17.697
+   },
+   {
+    "w": "way.",
+    "s": 17.697,
+    "e": 17.846
+   },
+   {
+    "w": "Instead",
+    "s": 18.226,
+    "e": 18.496
+   },
+   {
+    "w": "of",
+    "s": 18.496,
+    "e": 18.632
+   },
+   {
+    "w": "guessing,",
+    "s": 18.632,
+    "e": 18.902
+   },
+   {
+    "w": "he",
+    "s": 18.902,
+    "e": 19.037
+   },
+   {
+    "w": "carefully",
+    "s": 19.037,
+    "e": 19.577
+   },
+   {
+    "w": "studied",
+    "s": 19.577,
+    "e": 19.847
+   },
+   {
+    "w": "the",
+    "s": 19.847,
+    "e": 19.982
+   },
+   {
+    "w": "circuit.",
+    "s": 19.982,
+    "e": 20.252
+   },
+   {
+    "w": "He",
+    "s": 20.523,
+    "e": 20.68
+   },
+   {
+    "w": "traced",
+    "s": 20.68,
+    "e": 20.996
+   },
+   {
+    "w": "every",
+    "s": 20.996,
+    "e": 21.469
+   },
+   {
+    "w": "wire",
+    "s": 21.469,
+    "e": 21.627
+   },
+   {
+    "w": "and",
+    "s": 21.627,
+    "e": 21.784
+   },
+   {
+    "w": "followed",
+    "s": 21.784,
+    "e": 22.257
+   },
+   {
+    "w": "its",
+    "s": 22.257,
+    "e": 22.415
+   },
+   {
+    "w": "connections.",
+    "s": 22.415,
+    "e": 22.888
+   },
+   {
+    "w": "There",
+    "s": 23.191,
+    "e": 23.376
+   },
+   {
+    "w": "were",
+    "s": 23.376,
+    "e": 23.561
+   },
+   {
+    "w": "six",
+    "s": 23.561,
+    "e": 23.746
+   },
+   {
+    "w": "wires,",
+    "s": 23.746,
+    "e": 24.116
+   },
+   {
+    "w": "and",
+    "s": 24.116,
+    "e": 24.3
+   },
+   {
+    "w": "one",
+    "s": 24.3,
+    "e": 24.485
+   },
+   {
+    "w": "wrong",
+    "s": 24.485,
+    "e": 24.67
+   },
+   {
+    "w": "cut",
+    "s": 24.67,
+    "e": 24.855
+   },
+   {
+    "w": "could",
+    "s": 24.855,
+    "e": 25.04
+   },
+   {
+    "w": "kill",
+    "s": 25.04,
+    "e": 25.225
+   },
+   {
+    "w": "him.",
+    "s": 25.225,
+    "e": 25.41
+   },
+   {
+    "w": "The",
+    "s": 25.738,
+    "e": 25.856
+   },
+   {
+    "w": "countdown",
+    "s": 25.856,
+    "e": 26.093
+   },
+   {
+    "w": "kept",
+    "s": 26.093,
+    "e": 26.211
+   },
+   {
+    "w": "ticking.",
+    "s": 26.211,
+    "e": 26.448
+   },
+   {
+    "w": "Everyone",
+    "s": 26.572,
+    "e": 27.128
+   },
+   {
+    "w": "was",
+    "s": 27.128,
+    "e": 27.314
+   },
+   {
+    "w": "waiting",
+    "s": 27.314,
+    "e": 27.685
+   },
+   {
+    "w": "for",
+    "s": 27.685,
+    "e": 27.87
+   },
+   {
+    "w": "an",
+    "s": 27.87,
+    "e": 28.055
+   },
+   {
+    "w": "answer.",
+    "s": 28.055,
+    "e": 28.426
+   },
+   {
+    "w": "Then",
+    "s": 28.61,
+    "e": 28.741
+   },
+   {
+    "w": "Arthur",
+    "s": 28.741,
+    "e": 29.004
+   },
+   {
+    "w": "noticed",
+    "s": 29.004,
+    "e": 29.397
+   },
+   {
+    "w": "something",
+    "s": 29.397,
+    "e": 29.791
+   },
+   {
+    "w": "others",
+    "s": 29.791,
+    "e": 30.053
+   },
+   {
+    "w": "had",
+    "s": 30.053,
+    "e": 30.184
+   },
+   {
+    "w": "missed.",
+    "s": 30.184,
+    "e": 30.446
+   },
+   {
+    "w": "He",
+    "s": 30.595,
+    "e": 30.735
+   },
+   {
+    "w": "understood",
+    "s": 30.735,
+    "e": 31.156
+   },
+   {
+    "w": "the",
+    "s": 31.156,
+    "e": 31.296
+   },
+   {
+    "w": "circuit.",
+    "s": 31.296,
+    "e": 31.577
+   },
+   {
+    "w": "And",
+    "s": 31.71,
+    "e": 31.901
+   },
+   {
+    "w": "he",
+    "s": 31.901,
+    "e": 32.092
+   },
+   {
+    "w": "defused",
+    "s": 32.092,
+    "e": 32.664
+   },
+   {
+    "w": "the",
+    "s": 32.664,
+    "e": 32.855
+   },
+   {
+    "w": "bomb.",
+    "s": 32.855,
+    "e": 33.046
+   },
+   {
+    "w": "He",
+    "s": 33.046,
+    "e": 33.237
+   },
+   {
+    "w": "had",
+    "s": 33.237,
+    "e": 33.428
+   },
+   {
+    "w": "done",
+    "s": 33.428,
+    "e": 33.619
+   },
+   {
+    "w": "it",
+    "s": 33.619,
+    "e": 33.81
+   },
+   {
+    "w": "again.",
+    "s": 33.81,
+    "e": 34.192
+   },
+   {
+    "w": "Forty-one",
+    "s": 34.192,
+    "e": 34.574
+   },
+   {
+    "w": "bombs,",
+    "s": 34.574,
+    "e": 34.765
+   },
+   {
+    "w": "without",
+    "s": 34.765,
+    "e": 35.147
+   },
+   {
+    "w": "relying",
+    "s": 35.147,
+    "e": 35.528
+   },
+   {
+    "w": "on",
+    "s": 35.528,
+    "e": 35.719
+   },
+   {
+    "w": "color.",
+    "s": 35.719,
+    "e": 36.101
+   }
+  ]
+ },
+ "entities": {
+  "characters": [
+   {
+    "id": "ARTHUR-SUIT",
+    "outfit": "NEW:bomb suit",
+    "hat": "NEW:bomb helmet",
+    "skin_hair": "light skin, brown hair, no beard",
+    "default_face": "determined",
+    "identity_lock": [
+     "bomb suit: olive green, heavy padding",
+     "bomb helmet: olive green with thick glass visor",
+     "skin: light",
+     "hair: brown"
+    ],
+    "status": "new_item"
+   },
+   {
+    "id": "OFFICER",
+    "outfit": "NEW:police uniform",
+    "hat": "NEW:police cap",
+    "skin_hair": "dark skin, black hair, no beard",
+    "default_face": "nervous",
+    "identity_lock": [
+     "police uniform: dark navy blue with silver badge",
+     "police cap: dark navy blue with black brim",
+     "skin: dark",
+     "hair: black"
+    ],
+    "status": "new_item"
+   }
+  ],
+  "objects": [
+   {
+    "id": "BOMB",
+    "label": "bomb",
+    "size_m": 0.4,
+    "representation": "3d_mesh",
+    "material_ids": [
+     "M02"
+    ],
+    "status": "new_item"
+   },
+   {
+    "id": "CIRCUIT_BOARD",
+    "label": "circuit board",
+    "size_m": 0.2,
+    "representation": "3d_mesh",
+    "material_ids": [
+     "M02"
+    ],
+    "status": "new_item"
+   },
+   {
+    "id": "WIRE_BUNDLE",
+    "label": "wire bundle",
+    "size_m": 0.1,
+    "representation": "3d_mesh",
+    "material_ids": [
+     "M02"
+    ],
+    "status": "new_item"
+   },
+   {
+    "id": "WIRE_SNIPS",
+    "label": "wire snips",
+    "size_m": 0.15,
+    "representation": "3d_mesh",
+    "material_ids": [
+     "M02"
+    ],
+    "status": "new_item"
+   },
+   {
+    "id": "DIGITAL_TIMER",
+    "label": "digital timer",
+    "size_m": 0.1,
+    "representation": "3d_mesh",
+    "material_ids": [
+     "M02",
+     "M07"
+    ],
+    "status": "new_item"
+   },
+   {
+    "id": "POLICE_CAR",
+    "label": "police car",
+    "size_m": 4.0,
+    "representation": "3d_mesh",
+    "material_ids": [
+     "M02"
+    ],
+    "status": "new_item"
+   },
+   {
+    "id": "CONCRETE_BARRICADE",
+    "label": "concrete barricade",
+    "size_m": 2.0,
+    "representation": "3d_mesh",
+    "material_ids": [
+     "M03"
+    ],
+    "status": "new_item"
+   },
+   {
+    "id": "METAL_TABLE",
+    "label": "metal table",
+    "size_m": 1.5,
+    "representation": "3d_mesh",
+    "material_ids": [
+     "M02"
+    ],
+    "status": "new_item"
+   },
+   {
+    "id": "TOOL_CASE",
+    "label": "tool case",
+    "size_m": 0.5,
+    "representation": "3d_mesh",
+    "material_ids": [
+     "M02"
+    ],
+    "status": "new_item"
+   },
+   {
+    "id": "RADIO_DESK",
+    "label": "radio desk",
+    "size_m": 2.0,
+    "representation": "3d_mesh",
+    "material_ids": [
+     "M01"
+    ],
+    "status": "new_item"
+   },
+   {
+    "id": "SCREENS",
+    "label": "screens",
+    "size_m": 1.5,
+    "representation": "3d_mesh",
+    "material_ids": [
+     "M07"
+    ],
+    "status": "new_item"
+   },
+   {
+    "id": "COFFEE_CUPS",
+    "label": "coffee cups",
+    "size_m": 0.1,
+    "representation": "3d_mesh",
+    "material_ids": [
+     "M07"
+    ],
+    "status": "new_item"
+   }
+  ],
+  "environments": [
+   {
+    "id": "STREET",
+    "width_m": 20,
+    "light": "day",
+    "lighting_profile_id": "L02",
+    "landmarks": [
+     "police car middle",
+     "concrete barricade left",
+     "brick building right"
+    ],
+    "material_ids": [
+     "M03",
+     "M02"
+    ],
+    "depth_layers": {
+     "foreground": "concrete barricade",
+     "midground": "police car",
+     "background": "brick building"
+    }
+   },
+   {
+    "id": "BOMB-TENT",
+    "width_m": 6,
+    "light": "indoor",
+    "lighting_profile_id": "L01",
+    "landmarks": [
+     "metal table middle",
+     "bright spotlight top",
+     "tool case left"
+    ],
+    "material_ids": [
+     "M02",
+     "M01"
+    ],
+    "depth_layers": {
+     "foreground": "tool case",
+     "midground": "metal table",
+     "background": "tent wall"
+    }
+   },
+   {
+    "id": "COMMAND-POST",
+    "width_m": 10,
+    "light": "indoor",
+    "lighting_profile_id": "L01",
+    "landmarks": [
+     "radio desk left",
+     "screens middle",
+     "coffee cups right"
+    ],
+    "material_ids": [
+     "M01",
+     "M07"
+    ],
+    "depth_layers": {
+     "foreground": "coffee cups",
+     "midground": "radio desk",
+     "background": "screens"
+    }
+   }
+  ]
+ },
+ "beats": [
+  {
+   "id": "s1",
+   "index": 1,
+   "time": {
+    "start_s": 0.0,
+    "end_s": 4.8
+   },
+   "narration": {
+    "text": "Arthur was colorblind. But that didn't stop him from becoming a bomb disposal expert.",
+    "word_range": [
+     0,
+     13
+    ]
+   },
+   "intent": "introduce_character",
+   "visual_purpose": "Introduce Arthur in his bomb suit, showing he is a bomb disposal expert (the word bomb is part of the job title and not pictured).",
+   "subject": {
+    "main_id": "ARTHUR-SUIT",
+    "character_ids": [
+     "ARTHUR-SUIT"
+    ]
+   },
+   "environment_id": "STREET",
+   "light": "day",
+   "character_actions": [
+    {
+     "character_id": "ARTHUR-SUIT",
+     "action": "stands determined",
+     "pose": "hang",
+     "face": "determined",
+     "phase": "attention",
+     "start_s": 0.0,
+     "duration_s": 4.8
+    }
+   ],
+   "shot": {
+    "recipe_id": "S02",
+    "framing": "medium",
+    "composition": {
+     "primary_id": "ARTHUR-SUIT",
+     "focal_point_norm": [
+      0.5,
+      0.4
+     ]
+    }
+   },
+   "camera": {
+    "purpose": "establish",
+    "mode": "push-in",
+    "rationale": "Push in to introduce Arthur in his bomb suit.",
+    "confidence": "designed",
+    "duration_s": 4.8,
+    "ease": "smooth",
+    "from": {
+     "framing": "wide",
+     "distance_m": 6,
+     "height": "eye",
+     "side": "front"
+    },
+    "to": {
+     "framing": "medium_wide",
+     "distance_m": 4,
+     "height": "eye",
+     "side": "front"
+    }
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "music",
+     "event": "curious mysterious opening",
+     "time_s": 0.0,
+     "trigger": "beat_start"
+    },
+    {
+     "track": "sfx",
+     "event": "heavy footsteps",
+     "time_s": 4.123,
+     "trigger": "word",
+     "word_index": 13
+    }
+   ],
+   "transition_in": {
+    "type": "start",
+    "reason": "start"
+   },
+   "validation": {
+    "gates": [
+     "Q01",
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q09",
+     "Q10"
+    ],
+    "must_see": [
+     "ARTHUR-SUIT",
+     "CONCRETE_BARRICADE"
+    ],
+    "must_not": [
+     "Arthur's face hidden",
+     "empty street"
+    ],
+    "not_shown": [
+     "BOMB"
+    ]
+   },
+   "extensions": {
+    "selector": {
+     "planner_recipe": "S01",
+     "chosen": "S02",
+     "decision": "replaced planner's S01 (0.71 vs S02 0.87)",
+     "why": "S02 for intent introduce_character: intent 1.00 (candidate #1 for intent introduce_character); assets 1.00 (1 character(s) in frame); variety 1.00 (not used in the last beat) | weak: camera (camera purpose establish is not typical for S02)",
+     "alternatives": [
+      {
+       "recipe": "S04",
+       "score": 0.852
+      },
+      {
+       "recipe": "S01",
+       "score": 0.714
+      }
+     ],
+     "notes": [
+      "camera purpose establish is unusual for S02: the planner's camera was left as written",
+      "framing wide -> medium to suit S02"
+     ]
+    }
+   }
+  },
+  {
+   "id": "s2",
+   "index": 2,
+   "time": {
+    "start_s": 4.8,
+    "end_s": 8.3333
+   },
+   "narration": {
+    "text": "He was called whenever a dangerous device needed to be defused.",
+    "word_range": [
+     14,
+     24
+    ]
+   },
+   "intent": "explain_mechanism",
+   "visual_purpose": "Show the dangerous device (bomb) that Arthur is called to defuse.",
+   "subject": {
+    "main_id": "BOMB",
+    "hero_object_id": "BOMB"
+   },
+   "environment_id": "BOMB-TENT",
+   "light": "indoor",
+   "object_events": [
+    {
+     "object_id": "BOMB",
+     "event": "settle",
+     "start_s": 0.0,
+     "duration_s": 3.5
+    }
+   ],
+   "shot": {
+    "recipe_id": "S03",
+    "framing": "close",
+    "composition": {
+     "primary_id": "BOMB",
+     "focal_point_norm": [
+      0.5,
+      0.5
+     ]
+    }
+   },
+   "camera": {
+    "purpose": "inspect",
+    "mode": "orbit",
+    "rationale": "Orbit the bomb to show its details and the danger.",
+    "confidence": "designed",
+    "duration_s": 3.5,
+    "ease": "smooth",
+    "from": {
+     "framing": "close",
+     "distance_m": 2,
+     "height": "eye",
+     "side": "front"
+    },
+    "to": {
+     "framing": "close",
+     "distance_m": 2,
+     "height": "eye",
+     "side": "left"
+    }
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "music",
+     "event": "tension builds",
+     "time_s": 4.8,
+     "trigger": "beat_start"
+    },
+    {
+     "track": "sfx",
+     "event": "electronic hum",
+     "time_s": 6.547,
+     "trigger": "word",
+     "word_index": 20
+    }
+   ],
+   "transition_in": {
+    "type": "dissolve",
+    "reason": "new_place",
+    "frames": 8
+   },
+   "validation": {
+    "gates": [
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q09",
+     "Q10"
+    ],
+    "must_see": [
+     "BOMB",
+     "DIGITAL_TIMER",
+     "METAL_TABLE"
+    ],
+    "must_not": [
+     "bomb missing",
+     "timer unreadable"
+    ]
+   },
+   "extensions": {
+    "selector": {
+     "planner_recipe": "S03",
+     "chosen": "S03",
+     "decision": "planner's choice kept (it is the best)",
+     "why": "S03 for intent explain_mechanism: intent 1.00 (candidate #1 for intent explain_mechanism); assets 1.00 (hero object); variety 1.00 (not used in the last beat)",
+     "alternatives": [
+      {
+       "recipe": "S06",
+       "score": 0.69
+      },
+      {
+       "recipe": "S01",
+       "score": 0.644
+      }
+     ],
+     "notes": []
+    }
+   }
+  },
+  {
+   "id": "s3",
+   "index": 3,
+   "time": {
+    "start_s": 8.3333,
+    "end_s": 11.3
+   },
+   "narration": {
+    "text": "One day, he faced a bomb with only seconds remaining.",
+    "word_range": [
+     25,
+     34
+    ]
+   },
+   "intent": "create_suspense",
+   "visual_purpose": "Arthur faces the bomb with the digital timer counting down.",
+   "subject": {
+    "main_id": "BOMB",
+    "character_ids": [
+     "ARTHUR-SUIT"
+    ],
+    "hero_object_id": "BOMB"
+   },
+   "environment_id": "BOMB-TENT",
+   "light": "indoor",
+   "character_actions": [
+    {
+     "character_id": "ARTHUR-SUIT",
+     "action": "reaches for the bomb",
+     "pose": "reach",
+     "face": "determined",
+     "phase": "action",
+     "start_s": 0.0,
+     "duration_s": 2.9
+    }
+   ],
+   "shot": {
+    "recipe_id": "S04",
+    "framing": "medium",
+    "composition": {
+     "primary_id": "BOMB",
+     "secondary_ids": [
+      "ARTHUR-SUIT"
+     ],
+     "focal_point_norm": [
+      0.5,
+      0.5
+     ]
+    }
+   },
+   "camera": {
+    "purpose": "emphasize",
+    "mode": "push-in",
+    "rationale": "Push in from a low angle to emphasize the bomb and Arthur's tension.",
+    "confidence": "designed",
+    "duration_s": 2.9,
+    "ease": "easeOut",
+    "from": {
+     "framing": "medium",
+     "distance_m": 1,
+     "height": "low",
+     "side": "front"
+    },
+    "to": {
+     "framing": "close",
+     "distance_m": 0.4,
+     "height": "low",
+     "side": "front"
+    }
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "music",
+     "event": "fast ticking suspense",
+     "time_s": 8.33,
+     "trigger": "beat_start"
+    },
+    {
+     "track": "sfx",
+     "event": "fast beeping starts",
+     "time_s": 10.123,
+     "trigger": "word",
+     "word_index": 33
+    }
+   ],
+   "transition_in": {
+    "type": "cut",
+    "reason": "emphasis"
+   },
+   "validation": {
+    "gates": [
+     "Q01",
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q09",
+     "Q10"
+    ],
+    "must_see": [
+     "DIGITAL_TIMER",
+     "BOMB",
+     "ARTHUR-SUIT"
+    ],
+    "must_not": [
+     "timer missing",
+     "Arthur blocking the bomb"
+    ]
+   },
+   "extensions": {
+    "selector": {
+     "planner_recipe": "S04",
+     "chosen": "S04",
+     "decision": "planner's choice kept (it is the best)",
+     "why": "S04 for intent create_suspense: assets 1.00 (a character with a face action); intent 0.80 (candidate #2 for intent create_suspense); action 1.00 (a face/reaction is planned)",
+     "alternatives": [
+      {
+       "recipe": "S03",
+       "score": 0.764
+      },
+      {
+       "recipe": "S01",
+       "score": 0.674
+      }
+     ],
+     "notes": []
+    }
+   }
+  },
+  {
+   "id": "s4",
+   "index": 4,
+   "time": {
+    "start_s": 11.3,
+    "end_s": 14.5333
+   },
+   "narration": {
+    "text": "The instructions depended on identifying colored wires.",
+    "word_range": [
+     35,
+     41
+    ]
+   },
+   "intent": "explain_mechanism",
+   "visual_purpose": "Show the colored wires and the circuit board.",
+   "subject": {
+    "main_id": "WIRE_BUNDLE",
+    "hero_object_id": "WIRE_BUNDLE"
+   },
+   "environment_id": "BOMB-TENT",
+   "light": "indoor",
+   "shot": {
+    "recipe_id": "S03",
+    "framing": "detail",
+    "composition": {
+     "primary_id": "WIRE_BUNDLE",
+     "secondary_ids": [
+      "CIRCUIT_BOARD"
+     ],
+     "focal_point_norm": [
+      0.5,
+      0.5
+     ]
+    }
+   },
+   "camera": {
+    "purpose": "inspect",
+    "mode": "static",
+    "rationale": "Hold overhead to clearly show the colored wires.",
+    "confidence": "designed"
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "music",
+     "event": "tense electronic pulse",
+     "time_s": 11.3,
+     "trigger": "beat_start"
+    },
+    {
+     "track": "sfx",
+     "event": "paper rustle",
+     "time_s": 11.475,
+     "trigger": "word",
+     "word_index": 36
+    }
+   ],
+   "transition_in": {
+    "type": "cut",
+    "reason": "scale_change"
+   },
+   "validation": {
+    "gates": [
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q09",
+     "Q10"
+    ],
+    "must_see": [
+     "WIRE_BUNDLE",
+     "CIRCUIT_BOARD"
+    ],
+    "must_not": [
+     "wires merged together",
+     "missing circuit board"
+    ]
+   },
+   "extensions": {
+    "selector": {
+     "planner_recipe": "S03",
+     "chosen": "S03",
+     "decision": "planner's choice kept (it is the best)",
+     "why": "S03 for intent explain_mechanism: intent 1.00 (candidate #1 for intent explain_mechanism); assets 1.00 (hero object); variety 1.00 (not used in the last beat)",
+     "alternatives": [
+      {
+       "recipe": "S01",
+       "score": 0.674
+      },
+      {
+       "recipe": "S05",
+       "score": 0.674
+      }
+     ],
+     "notes": []
+    }
+   }
+  },
+  {
+   "id": "s5",
+   "index": 5,
+   "time": {
+    "start_s": 14.5333,
+    "end_s": 18.2333
+   },
+   "narration": {
+    "text": "But Arthur couldn't see the difference between them. He had to find another way.",
+    "word_range": [
+     42,
+     55
+    ]
+   },
+   "intent": "emotional_reaction",
+   "visual_purpose": "Arthur looks nervous and sweaty because he can't see the colors.",
+   "subject": {
+    "main_id": "ARTHUR-SUIT",
+    "character_ids": [
+     "ARTHUR-SUIT"
+    ]
+   },
+   "environment_id": "BOMB-TENT",
+   "light": "indoor",
+   "character_actions": [
+    {
+     "character_id": "ARTHUR-SUIT",
+     "action": "touches temple nervously",
+     "pose": "temple",
+     "face": "nervous+sweat",
+     "phase": "response",
+     "start_s": 0.0,
+     "duration_s": 3.7
+    }
+   ],
+   "shot": {
+    "recipe_id": "S04",
+    "framing": "close",
+    "composition": {
+     "primary_id": "ARTHUR-SUIT",
+     "focal_point_norm": [
+      0.5,
+      0.4
+     ]
+    }
+   },
+   "camera": {
+    "purpose": "hold_for_performance",
+    "mode": "creep",
+    "rationale": "Creep back slightly to hold on Arthur's nervous reaction.",
+    "confidence": "designed",
+    "duration_s": 3.7,
+    "ease": "smooth",
+    "from": {
+     "framing": "close",
+     "distance_m": 1.5,
+     "height": "eye",
+     "side": "front"
+    },
+    "to": {
+     "framing": "medium",
+     "distance_m": 2,
+     "height": "eye",
+     "side": "front"
+    }
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "music",
+     "event": "suspenseful drone",
+     "time_s": 14.53,
+     "trigger": "beat_start"
+    },
+    {
+     "track": "sfx",
+     "event": "low heartbeat",
+     "time_s": 15.491,
+     "trigger": "word",
+     "word_index": 47
+    }
+   ],
+   "transition_in": {
+    "type": "dissolve",
+    "reason": "memory_or_thought",
+    "frames": 8
+   },
+   "validation": {
+    "gates": [
+     "Q01",
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q09",
+     "Q10"
+    ],
+    "must_see": [
+     "ARTHUR-SUIT"
+    ],
+    "must_not": [
+     "visor opaque",
+     "face missing"
+    ]
+   },
+   "extensions": {
+    "selector": {
+     "planner_recipe": "S04",
+     "chosen": "S04",
+     "decision": "planner's choice kept (it is the best)",
+     "why": "S04 for intent emotional_reaction: intent 1.00 (candidate #1 for intent emotional_reaction); assets 1.00 (a character with a face action); action 1.00 (a face/reaction is planned)",
+     "alternatives": [
+      {
+       "recipe": "S02",
+       "score": 0.884
+      },
+      {
+       "recipe": "S01",
+       "score": 0.674
+      }
+     ],
+     "notes": []
+    }
+   }
+  },
+  {
+   "id": "s6",
+   "index": 6,
+   "time": {
+    "start_s": 18.2333,
+    "end_s": 20.5333
+   },
+   "narration": {
+    "text": "Instead of guessing, he carefully studied the circuit.",
+    "word_range": [
+     56,
+     63
+    ]
+   },
+   "intent": "explain_mechanism",
+   "visual_purpose": "Arthur carefully studies the circuit instead of guessing.",
+   "subject": {
+    "main_id": "ARTHUR-SUIT",
+    "character_ids": [
+     "ARTHUR-SUIT"
+    ]
+   },
+   "environment_id": "BOMB-TENT",
+   "light": "indoor",
+   "character_actions": [
+    {
+     "character_id": "ARTHUR-SUIT",
+     "action": "points at the circuit",
+     "pose": "point",
+     "face": "determined",
+     "phase": "action",
+     "start_s": 0.0,
+     "duration_s": 2.3
+    }
+   ],
+   "shot": {
+    "recipe_id": "S06",
+    "framing": "medium",
+    "composition": {
+     "primary_id": "ARTHUR-SUIT",
+     "secondary_ids": [
+      "WIRE_BUNDLE",
+      "CIRCUIT_BOARD"
+     ],
+     "focal_point_norm": [
+      0.5,
+      0.4
+     ]
+    }
+   },
+   "camera": {
+    "purpose": "follow",
+    "mode": "push-in",
+    "rationale": "Push in over the shoulder to show Arthur studying the circuit.",
+    "confidence": "designed",
+    "duration_s": 2.3,
+    "ease": "smooth",
+    "from": {
+     "framing": "medium",
+     "distance_m": 2.5,
+     "height": "high",
+     "side": "back"
+    },
+    "to": {
+     "framing": "medium",
+     "distance_m": 2,
+     "height": "high",
+     "side": "back"
+    }
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "music",
+     "event": "analytical electronic rhythm",
+     "time_s": 18.23,
+     "trigger": "beat_start"
+    },
+    {
+     "track": "sfx",
+     "event": "subtle clock tick",
+     "time_s": 19.577,
+     "trigger": "word",
+     "word_index": 61
+    }
+   ],
+   "transition_in": {
+    "type": "dissolve",
+    "reason": "time_shift",
+    "frames": 8
+   },
+   "validation": {
+    "gates": [
+     "Q01",
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q09",
+     "Q10"
+    ],
+    "must_see": [
+     "WIRE_BUNDLE",
+     "CIRCUIT_BOARD",
+     "ARTHUR-SUIT"
+    ],
+    "must_not": [
+     "Arthur looking away"
+    ]
+   },
+   "extensions": {
+    "selector": {
+     "planner_recipe": "S06",
+     "chosen": "S06",
+     "decision": "planner's choice kept (it is the best)",
+     "why": "S06 for intent explain_mechanism: assets 1.00 (actor+object: 1 character(s), 2 object(s)); intent 0.60 (candidate #3 for intent explain_mechanism); variety 1.00 (not used in the last beat) | weak: action (no physical action planned)",
+     "alternatives": [
+      {
+       "recipe": "S01",
+       "score": 0.674
+      },
+      {
+       "recipe": "S05",
+       "score": 0.674
+      }
+     ],
+     "notes": []
+    }
+   }
+  },
+  {
+   "id": "s7",
+   "index": 7,
+   "time": {
+    "start_s": 20.5333,
+    "end_s": 23.2
+   },
+   "narration": {
+    "text": "He traced every wire and followed its connections.",
+    "word_range": [
+     64,
+     71
+    ]
+   },
+   "intent": "explain_mechanism",
+   "visual_purpose": "Follow the wires to show Arthur tracing the connections.",
+   "subject": {
+    "main_id": "WIRE_BUNDLE",
+    "hero_object_id": "WIRE_BUNDLE"
+   },
+   "environment_id": "BOMB-TENT",
+   "light": "indoor",
+   "shot": {
+    "recipe_id": "S03",
+    "framing": "detail",
+    "composition": {
+     "primary_id": "WIRE_BUNDLE",
+     "secondary_ids": [
+      "CIRCUIT_BOARD"
+     ],
+     "focal_point_norm": [
+      0.5,
+      0.5
+     ]
+    }
+   },
+   "camera": {
+    "purpose": "inspect",
+    "mode": "track",
+    "rationale": "Track along the wires to show him tracing the connections.",
+    "confidence": "designed",
+    "duration_s": 2.6,
+    "ease": "smooth",
+    "from": {
+     "framing": "detail",
+     "distance_m": 0.2,
+     "height": "eye",
+     "side": "left"
+    },
+    "to": {
+     "framing": "detail",
+     "distance_m": 0.2,
+     "height": "eye",
+     "side": "right"
+    }
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "music",
+     "event": "steady pulsing",
+     "time_s": 20.53,
+     "trigger": "beat_start"
+    },
+    {
+     "track": "sfx",
+     "event": "sliding finger sound",
+     "time_s": 21.784,
+     "trigger": "word",
+     "word_index": 69
+    }
+   ],
+   "transition_in": {
+    "type": "cut",
+    "reason": "scale_change"
+   },
+   "validation": {
+    "gates": [
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q09",
+     "Q10"
+    ],
+    "must_see": [
+     "WIRE_BUNDLE",
+     "CIRCUIT_BOARD"
+    ],
+    "must_not": [
+     "blurry wires"
+    ]
+   },
+   "extensions": {
+    "selector": {
+     "planner_recipe": "S03",
+     "chosen": "S03",
+     "decision": "planner's choice kept (it is the best)",
+     "why": "S03 for intent explain_mechanism: intent 1.00 (candidate #1 for intent explain_mechanism); assets 1.00 (hero object); variety 1.00 (not used in the last beat)",
+     "alternatives": [
+      {
+       "recipe": "S01",
+       "score": 0.674
+      },
+      {
+       "recipe": "S05",
+       "score": 0.674
+      }
+     ],
+     "notes": []
+    }
+   }
+  },
+  {
+   "id": "s8",
+   "index": 8,
+   "time": {
+    "start_s": 23.2,
+    "end_s": 25.7333
+   },
+   "narration": {
+    "text": "There were six wires, and one wrong cut could kill him.",
+    "word_range": [
+     72,
+     82
+    ]
+   },
+   "intent": "create_suspense",
+   "visual_purpose": "Show the wire snips ready to cut, emphasizing the danger.",
+   "subject": {
+    "main_id": "WIRE_SNIPS",
+    "hero_object_id": "WIRE_SNIPS"
+   },
+   "environment_id": "BOMB-TENT",
+   "light": "indoor",
+   "shot": {
+    "recipe_id": "S03",
+    "framing": "detail",
+    "composition": {
+     "primary_id": "WIRE_SNIPS",
+     "secondary_ids": [
+      "WIRE_BUNDLE",
+      "BOMB"
+     ],
+     "focal_point_norm": [
+      0.5,
+      0.5
+     ]
+    }
+   },
+   "camera": {
+    "purpose": "emphasize",
+    "mode": "static",
+    "rationale": "Hold on the snips to build suspense before the cut.",
+    "confidence": "designed"
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "music",
+     "event": "music drops out",
+     "time_s": 23.2,
+     "trigger": "beat_start"
+    },
+    {
+     "track": "sfx",
+     "event": "metal click",
+     "time_s": 24.67,
+     "trigger": "word",
+     "word_index": 79
+    }
+   ],
+   "transition_in": {
+    "type": "dissolve",
+    "reason": "emphasis",
+    "frames": 8
+   },
+   "validation": {
+    "gates": [
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q09",
+     "Q10"
+    ],
+    "must_see": [
+     "WIRE_SNIPS",
+     "WIRE_BUNDLE",
+     "BOMB"
+    ],
+    "must_not": [
+     "wire already cut"
+    ]
+   },
+   "extensions": {
+    "selector": {
+     "planner_recipe": "S03",
+     "chosen": "S03",
+     "decision": "planner's choice kept (it is the best)",
+     "why": "S03 for intent create_suspense: intent 1.00 (candidate #1 for intent create_suspense); assets 1.00 (hero object); action 0.70 (hero object, no action)",
+     "alternatives": [
+      {
+       "recipe": "S01",
+       "score": 0.674
+      },
+      {
+       "recipe": "S05",
+       "score": 0.674
+      }
+     ],
+     "notes": []
+    }
+   }
+  },
+  {
+   "id": "s9",
+   "index": 9,
+   "time": {
+    "start_s": 25.7333,
+    "end_s": 26.5667
+   },
+   "narration": {
+    "text": "The countdown kept ticking.",
+    "word_range": [
+     83,
+     86
+    ]
+   },
+   "intent": "create_suspense",
+   "visual_purpose": "The digital timer keeps counting down.",
+   "subject": {
+    "main_id": "DIGITAL_TIMER",
+    "hero_object_id": "DIGITAL_TIMER"
+   },
+   "environment_id": "BOMB-TENT",
+   "light": "indoor",
+   "shot": {
+    "recipe_id": "S01",
+    "framing": "wide",
+    "composition": {
+     "primary_id": "DIGITAL_TIMER",
+     "focal_point_norm": [
+      0.5,
+      0.5
+     ]
+    }
+   },
+   "camera": {
+    "purpose": "emphasize",
+    "mode": "static",
+    "rationale": "Extreme close-up on the timer ticking down.",
+    "confidence": "designed"
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "music",
+     "event": "none",
+     "time_s": 25.73,
+     "trigger": "beat_start"
+    },
+    {
+     "track": "sfx",
+     "event": "loud beep",
+     "time_s": 26.211,
+     "trigger": "word",
+     "word_index": 86
+    }
+   ],
+   "transition_in": {
+    "type": "cut",
+    "reason": "scale_change"
+   },
+   "validation": {
+    "gates": [
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q09",
+     "Q10"
+    ],
+    "must_see": [
+     "DIGITAL_TIMER"
+    ],
+    "must_not": [
+     "timer frozen"
+    ]
+   },
+   "extensions": {
+    "selector": {
+     "planner_recipe": "S03",
+     "chosen": "S01",
+     "decision": "replaced planner's S03 (unavailable: would be the third identical recipe in a row (CAM-10))",
+     "why": "S01 for intent create_suspense: assets 1.00 (environment with depth layers and a scale anchor); variety 1.00 (not used in the last beat); action 0.80 (the place carries the beat) | weak: intent (not meant for intent create_suspense), camera (camera purpose emphasize is not typical for S01)",
+     "alternatives": [
+      {
+       "recipe": "S05",
+       "score": 0.674
+      },
+      {
+       "recipe": "S06",
+       "score": 0.494
+      }
+     ],
+     "notes": [
+      "camera purpose emphasize is unusual for S01: the planner's camera was left as written",
+      "framing detail -> wide to suit S01"
+     ]
+    }
+   }
+  },
+  {
+   "id": "s10",
+   "index": 10,
+   "time": {
+    "start_s": 26.5667,
+    "end_s": 28.6
+   },
+   "narration": {
+    "text": "Everyone was waiting for an answer.",
+    "word_range": [
+     87,
+     92
+    ]
+   },
+   "intent": "crowd_or_scale",
+   "visual_purpose": "Show the police officer and crowd waiting nervously at the command post.",
+   "subject": {
+    "main_id": "OFFICER",
+    "character_ids": [
+     "OFFICER"
+    ],
+    "crowd": 10
+   },
+   "environment_id": "COMMAND-POST",
+   "light": "indoor",
+   "character_actions": [
+    {
+     "character_id": "OFFICER",
+     "action": "touches temple nervously",
+     "pose": "temple",
+     "face": "nervous+sweat",
+     "phase": "response",
+     "start_s": 0.0,
+     "duration_s": 2.0
+    }
+   ],
+   "shot": {
+    "recipe_id": "S05",
+    "framing": "wide",
+    "composition": {
+     "primary_id": "OFFICER",
+     "focal_point_norm": [
+      0.5,
+      0.4
+     ]
+    }
+   },
+   "camera": {
+    "purpose": "establish",
+    "mode": "push-in",
+    "rationale": "Slow push-in on the command post to show the waiting crowd's tension.",
+    "confidence": "designed",
+    "duration_s": 2.0,
+    "ease": "smooth",
+    "from": {
+     "framing": "wide",
+     "distance_m": 6,
+     "height": "eye",
+     "side": "front"
+    },
+    "to": {
+     "framing": "medium_wide",
+     "distance_m": 5,
+     "height": "eye",
+     "side": "front"
+    }
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "music",
+     "event": "low ominous drone",
+     "time_s": 26.57,
+     "trigger": "beat_start"
+    },
+    {
+     "track": "sfx",
+     "event": "radio static",
+     "time_s": 27.314,
+     "trigger": "word",
+     "word_index": 89
+    }
+   ],
+   "transition_in": {
+    "type": "dissolve",
+    "reason": "new_place",
+    "frames": 8
+   },
+   "validation": {
+    "gates": [
+     "Q01",
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q09",
+     "Q10"
+    ],
+    "must_see": [
+     "OFFICER",
+     "SCREENS",
+     "RADIO_DESK"
+    ],
+    "must_not": [
+     "empty room"
+    ]
+   },
+   "extensions": {
+    "selector": {
+     "planner_recipe": "S05",
+     "chosen": "S05",
+     "decision": "planner's choice kept (it is the best)",
+     "why": "S05 for intent crowd_or_scale: intent 1.00 (candidate #1 for intent crowd_or_scale); assets 1.00 (a place with depth and something to reveal); variety 1.00 (not used in the last beat)",
+     "alternatives": [
+      {
+       "recipe": "S01",
+       "score": 0.871
+      },
+      {
+       "recipe": "S04",
+       "score": 0.66
+      }
+     ],
+     "notes": []
+    }
+   }
+  },
+  {
+   "id": "s11",
+   "index": 11,
+   "time": {
+    "start_s": 28.6,
+    "end_s": 31.7
+   },
+   "narration": {
+    "text": "Then Arthur noticed something others had missed. He understood the circuit.",
+    "word_range": [
+     93,
+     103
+    ]
+   },
+   "intent": "surprising_reveal",
+   "visual_purpose": "Arthur suddenly realizes something and understands the circuit.",
+   "subject": {
+    "main_id": "ARTHUR-SUIT",
+    "character_ids": [
+     "ARTHUR-SUIT"
+    ]
+   },
+   "environment_id": "BOMB-TENT",
+   "light": "indoor",
+   "character_actions": [
+    {
+     "character_id": "ARTHUR-SUIT",
+     "action": "reaches out in realization",
+     "pose": "reach",
+     "face": "shock+sparkle",
+     "phase": "response",
+     "start_s": 0.0,
+     "duration_s": 3.1
+    }
+   ],
+   "shot": {
+    "recipe_id": "S04",
+    "framing": "close",
+    "composition": {
+     "primary_id": "ARTHUR-SUIT",
+     "focal_point_norm": [
+      0.5,
+      0.4
+     ]
+    }
+   },
+   "camera": {
+    "purpose": "impact",
+    "mode": "snap-zoom",
+    "rationale": "Snap zoom to Arthur's face as he realizes the solution.",
+    "confidence": "designed",
+    "duration_s": 3.1,
+    "ease": "easeOut",
+    "from": {
+     "framing": "medium",
+     "distance_m": 3,
+     "height": "eye",
+     "side": "front"
+    },
+    "to": {
+     "framing": "close",
+     "distance_m": 2,
+     "height": "eye",
+     "side": "front"
+    }
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "music",
+     "event": "triumphant swell begins",
+     "time_s": 28.6,
+     "trigger": "beat_start"
+    },
+    {
+     "track": "sfx",
+     "event": "sharp realization ping",
+     "time_s": 29.004,
+     "trigger": "word",
+     "word_index": 95
+    }
+   ],
+   "transition_in": {
+    "type": "dissolve",
+    "reason": "new_place",
+    "frames": 8
+   },
+   "validation": {
+    "gates": [
+     "Q01",
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q09",
+     "Q10"
+    ],
+    "must_see": [
+     "ARTHUR-SUIT"
+    ],
+    "must_not": [
+     "face hidden"
+    ]
+   },
+   "extensions": {
+    "selector": {
+     "planner_recipe": "S04",
+     "chosen": "S04",
+     "decision": "planner's choice kept (it is the best)",
+     "why": "S04 for intent surprising_reveal: assets 1.00 (a character with a face action); intent 0.80 (candidate #2 for intent surprising_reveal); action 1.00 (a face/reaction is planned) | weak: camera (camera purpose impact is not typical for S04)",
+     "alternatives": [
+      {
+       "recipe": "S05",
+       "score": 0.847
+      },
+      {
+       "recipe": "S01",
+       "score": 0.662
+      }
+     ],
+     "notes": [
+      "camera purpose impact is unusual for S04: the planner's camera was left as written"
+     ]
+    }
+   }
+  },
+  {
+   "id": "s12",
+   "index": 12,
+   "time": {
+    "start_s": 31.7,
+    "end_s": 34.2
+   },
+   "narration": {
+    "text": "And he defused the bomb. He had done it again.",
+    "word_range": [
+     104,
+     113
+    ]
+   },
+   "intent": "physical_action",
+   "visual_purpose": "Arthur cuts the correct wire and defuses the bomb (the bomb itself is off-screen, represented by the wires and timer).",
+   "subject": {
+    "main_id": "WIRE_SNIPS",
+    "hero_object_id": "WIRE_SNIPS"
+   },
+   "environment_id": "BOMB-TENT",
+   "light": "indoor",
+   "object_events": [
+    {
+     "object_id": "WIRE_SNIPS",
+     "event": "break",
+     "contact_target_id": "WIRE_BUNDLE",
+     "secondary_effects": [
+      "sparks"
+     ],
+     "start_s": 0.0,
+     "duration_s": 2.5
+    }
+   ],
+   "shot": {
+    "recipe_id": "S03",
+    "framing": "detail",
+    "composition": {
+     "primary_id": "WIRE_SNIPS",
+     "secondary_ids": [
+      "WIRE_BUNDLE",
+      "DIGITAL_TIMER"
+     ],
+     "focal_point_norm": [
+      0.5,
+      0.5
+     ]
+    }
+   },
+   "camera": {
+    "purpose": "emphasize",
+    "mode": "static",
+    "rationale": "Hold on the wires as they are cut, showing the resolution.",
+    "confidence": "designed"
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "music",
+     "event": "heroic resolution",
+     "time_s": 31.7,
+     "trigger": "beat_start"
+    },
+    {
+     "track": "sfx",
+     "event": "wire snip sound",
+     "time_s": 32.092,
+     "trigger": "word",
+     "word_index": 106
+    }
+   ],
+   "transition_in": {
+    "type": "cut",
+    "reason": "scale_change"
+   },
+   "validation": {
+    "gates": [
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q05",
+     "Q09",
+     "Q10"
+    ],
+    "must_see": [
+     "WIRE_SNIPS",
+     "WIRE_BUNDLE",
+     "DIGITAL_TIMER"
+    ],
+    "must_not": [
+     "timer still ticking"
+    ],
+    "not_shown": [
+     "BOMB"
+    ]
+   },
+   "extensions": {
+    "selector": {
+     "planner_recipe": "S06",
+     "chosen": "S03",
+     "decision": "replaced planner's S06 (0.81 vs S03 0.90)",
+     "why": "S03 for intent physical_action: assets 1.00 (hero object); intent 0.80 (candidate #2 for intent physical_action); variety 1.00 (not used in the last beat)",
+     "alternatives": [
+      {
+       "recipe": "S06",
+       "score": 0.812
+      },
+      {
+       "recipe": "S01",
+       "score": 0.632
+      }
+     ],
+     "notes": []
+    }
+   }
+  },
+  {
+   "id": "s13",
+   "index": 13,
+   "time": {
+    "start_s": 34.2,
+    "end_s": 36.1
+   },
+   "narration": {
+    "text": "Forty-one bombs, without relying on color.",
+    "word_range": [
+     114,
+     119
+    ]
+   },
+   "intent": "summarize_or_conclude",
+   "visual_purpose": "Arthur stands proudly in the street, having successfully defused another bomb (the bombs are mentioned as a statistic and not pictured).",
+   "subject": {
+    "main_id": "ARTHUR-SUIT",
+    "character_ids": [
+     "ARTHUR-SUIT"
+    ]
+   },
+   "environment_id": "STREET",
+   "light": "golden",
+   "character_actions": [
+    {
+     "character_id": "ARTHUR-SUIT",
+     "action": "stands proudly",
+     "pose": "hip",
+     "face": "proud",
+     "phase": "settle",
+     "start_s": 0.0,
+     "duration_s": 1.9
+    }
+   ],
+   "shot": {
+    "recipe_id": "S01",
+    "framing": "wide",
+    "composition": {
+     "primary_id": "ARTHUR-SUIT",
+     "secondary_ids": [
+      "CONCRETE_BARRICADE",
+      "POLICE_CAR"
+     ],
+     "focal_point_norm": [
+      0.5,
+      0.4
+     ]
+    }
+   },
+   "camera": {
+    "purpose": "reveal",
+    "mode": "pull-back",
+    "rationale": "Pull back to show Arthur victorious in the street.",
+    "confidence": "designed",
+    "duration_s": 1.9,
+    "ease": "smooth",
+    "from": {
+     "framing": "medium_wide",
+     "distance_m": 4,
+     "height": "eye",
+     "side": "front"
+    },
+    "to": {
+     "framing": "wide",
+     "distance_m": 6,
+     "height": "eye",
+     "side": "front"
+    }
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "music",
+     "event": "confident cinematic ending",
+     "time_s": 34.2,
+     "trigger": "beat_start"
+    },
+    {
+     "track": "sfx",
+     "event": "crowd cheer",
+     "time_s": 34.574,
+     "trigger": "word",
+     "word_index": 115
+    }
+   ],
+   "transition_in": {
+    "type": "dissolve",
+    "reason": "new_place",
+    "frames": 8
+   },
+   "validation": {
+    "gates": [
+     "Q01",
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q09",
+     "Q10"
+    ],
+    "must_see": [
+     "ARTHUR-SUIT",
+     "CONCRETE_BARRICADE",
+     "POLICE_CAR"
+    ],
+    "must_not": [
+     "Arthur looking sad"
+    ],
+    "not_shown": [
+     "BOMB"
+    ]
+   },
+   "extensions": {
+    "selector": {
+     "planner_recipe": "S01",
+     "chosen": "S01",
+     "decision": "planner's choice kept (it is the best)",
+     "why": "S01 for intent summarize_or_conclude: intent 1.00 (candidate #1 for intent summarize_or_conclude); assets 1.00 (environment with depth layers and a scale anchor); variety 1.00 (not used in the last beat)",
+     "alternatives": [
+      {
+       "recipe": "S02",
+       "score": 0.844
+      },
+      {
+       "recipe": "S05",
+       "score": 0.844
+      }
+     ],
+     "notes": []
+    }
+   }
+  }
+ ]
+}

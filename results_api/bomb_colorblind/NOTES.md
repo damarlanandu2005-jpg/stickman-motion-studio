@@ -1,9 +1,12 @@
-- The timer text in s4 and s11 was explicitly set to "00:05" and "00:08" respectively to strictly match the MUST SEE requirements, even though it violates the logical rule that a countdown only goes down.
-- The bomb was placed on a table in the BOMB-ROOM so that it could be in the foreground of the camera in s6.
-- The bomb suit helmet was drawn using a custom function `arthurBombSuit` in `cast.js` that wraps `romanFront` and draws the helmet and visor over the head.
-- The technician's headset was drawn using a custom function `techWithHeadset` in `cast.js`.
-- The protective bomb disposal suit was listed under NEW OBJECTS, so a dummy builder was added to ASSETS to satisfy the asset rule, but it is fully implemented as an outfit in `cast.js`.
+# Notes
+
+- **Poses**: Used `reach`, `temple`, `point`, `hang`, `hip` as requested.
+- **Faces**: Used `determined` (alias for stubborn/stern), `nervous` (alias for worried/neutral), `shock+sparkle`, `proud`, `nervous+sweat`.
+- **Assets**: Created `STREET`, `BOMB-TENT`, `COMMAND-POST` environments. Created `bomb`, `circuit board`, `wire bundle`, `wire snips`, `digital timer` as 3D objects.
+- **Characters**: Handled `bomb suit` and `police uniform` via custom wrapper functions in `cast.js` to draw the helmet visor and police cap brim over the standard `romanFront` output.
+- **Camera/Staging**: Since the kit does not support a true "back view" for characters, shots where Arthur faces away from the camera (e.g., s3, s11) were staged with Arthur positioned behind the bomb, facing the camera, reaching forward. This preserves the "MUST NOT: face hidden" rule while keeping the spatial relationship correct.
+- **Timer**: Implemented the digital timer as a custom `fxTimerText` card that counts down based on the frame number.
 
 
 ## pipeline
-calls: 8. final build error: none. audio: ok.
+calls: 9. final build error: none. audio: ok.

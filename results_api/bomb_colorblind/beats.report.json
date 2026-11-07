@@ -1,0 +1,122 @@
+{
+ "file": "/home/runner/work/stickman-motion-studio/stickman-motion-studio/project/beats.candidate.json",
+ "ok": true,
+ "errors": [],
+ "warnings": [
+  [
+   "warn",
+   "Q06",
+   "beat s1",
+   "the narration names 'bomb' and it is in the beat, but it is not in validation.must_see"
+  ],
+  [
+   "warn",
+   "Q06",
+   "beat s12",
+   "the narration names 'bomb' and it is in the beat, but it is not in validation.must_see"
+  ],
+  [
+   "warn",
+   "Q05",
+   "beat s12",
+   "break of WIRE_SNIPS has no reaction or settling afterwards (a character reaction, a second object event or a settle)"
+  ],
+  [
+   "warn",
+   "Q06",
+   "beat s13",
+   "the narration names 'bomb' and it is in the beat, but it is not in validation.must_see"
+  ],
+  [
+   "warn",
+   "Q03",
+   "beat s9",
+   "same shot recipe 'S03' three beats in a row (CAM-10: vary the moves)"
+  ]
+ ],
+ "gates": {
+  "Q01": {
+   "status": "PASS",
+   "errors": 0,
+   "warnings": 0,
+   "not_run": [
+    "[ai_assisted] head, face, costume look the same across the preview frames",
+    "[human] final approval of the look"
+   ]
+  },
+  "Q02": {
+   "status": "PASS",
+   "errors": 0,
+   "warnings": 0,
+   "not_run": [
+    "[ai_assisted] hero object and action readable at phone size in the preview frames",
+    "[human] does the picture say what the words say"
+   ]
+  },
+  "Q03": {
+   "status": "PASS (with warnings)",
+   "errors": 0,
+   "warnings": 1,
+   "not_run": [
+    "[human] the move helps the story"
+   ]
+  },
+  "Q04": {
+   "status": "PASS",
+   "errors": 0,
+   "warnings": 0,
+   "not_run": [
+    "[ai_assisted] each named noun is visible within 0.3 s of its word (CHK-07)"
+   ]
+  },
+  "Q05": {
+   "status": "PASS (with warnings)",
+   "errors": 0,
+   "warnings": 1,
+   "not_run": [
+    "[human] the motion looks causal and has weight"
+   ]
+  },
+  "Q06": {
+   "status": "PASS (with warnings)",
+   "errors": 0,
+   "warnings": 3,
+   "not_run": [
+    "[automatic] parallax and soft-edge share on rendered frames"
+   ]
+  },
+  "Q07": {
+   "status": "PASS",
+   "errors": 0,
+   "warnings": 0,
+   "not_run": [
+    "[ai_assisted] the surface reads as that material in the preview"
+   ]
+  },
+  "Q08": {
+   "status": "PASS",
+   "errors": 0,
+   "warnings": 0,
+   "not_run": [
+    "[human] each cut is on a meaning beat"
+   ]
+  },
+  "Q09": {
+   "status": "PASS",
+   "errors": 0,
+   "warnings": 0,
+   "not_run": [
+    "[automatic] mix level and loudness",
+    "[human] sound quality and taste"
+   ]
+  },
+  "Q10": {
+   "status": "PASS",
+   "errors": 0,
+   "warnings": 0,
+   "not_run": [
+    "[automatic] a build check of the real code (assets render, no errors)"
+   ]
+  }
+ }
+}
