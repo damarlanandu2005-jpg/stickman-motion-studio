@@ -1,0 +1,5 @@
+tokens: prompt 38340 answer 11972
+try 1: 5 errors, 2 warnings
+tokens: prompt 50699 answer 12070
+try 2: 0 errors, 6 warnings
+beats.json written: 13 beats (try 2); report in beats.report.json
