@@ -55,6 +55,30 @@
     "in_place": 0.0
    }
   },
+  "claude_bomb_v22": {
+   "group": "ours",
+   "seconds": 36.1,
+   "scene_changes": 12,
+   "scene_changes_per_min": 20.0,
+   "mean_gap_s": 2.77,
+   "median_gap_s": 2.93,
+   "hard_cuts_per_min": 13.3,
+   "hard_cuts_inside_a_scene_per_min": 0.0,
+   "by_type_per_min": {
+    "hard_cut": 11.6,
+    "dissolve": 8.3,
+    "whip": 0.0,
+    "camera_move": 0.0,
+    "in_place": 0.0
+   },
+   "by_type_share": {
+    "hard_cut": 0.58,
+    "dissolve": 0.42,
+    "whip": 0.0,
+    "camera_move": 0.0,
+    "in_place": 0.0
+   }
+  },
   "grave_bell": {
    "group": "refs",
    "seconds": 59.5,

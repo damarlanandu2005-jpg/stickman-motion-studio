@@ -85,3 +85,9 @@ Known limits of the tools
 - `ref_study.py` expects burned-in captions in the band 60-78 % of frame height. A video with captions elsewhere needs `CAP0/CAP1` changed.
 - Frames with very fast motion blur can look like cuts or hide them. Flights that contain a cut are marked `has_cut_inside`.
 - The 6 older videos use an older cut rule, so their `cuts_per_min` is not comparable with the new 8.
+
+## Session 3c - v2.2 controlled test (same script, narration, 36 s, 9:16)
+Hand-applied rules (render code still does NOT read rules.json): continuous camera flights, no pure zoom, scene mix (hard cut / dissolve / fly-through / flash), one-word captions, camera shake kicks, line width 3.2, grain + light gradient.
+Now inside reference range: hard cuts/min (13 vs refs 2-15), scene changes/min (20), flights/min, flight length, pause, pure zoom (0%), shake/min, ramp times, line width, caption pop.
+Still outside: flat surface share 55% (refs 35-48), gradient 7% (refs 14-20), palette 27 (refs 32-45), foreground soft edge 10% (refs 24-61), head size 0.116 (refs 0.12-0.21), parallax 0.47 (slightly high), word stay 0.23 s, caption speed slightly high.
+Missing in engine: rules wired into code, richer materials/textures, depth-of-field blur, bigger head framing, physics/animation of objects, classifier labels fly-through/flash as cut/dissolve.

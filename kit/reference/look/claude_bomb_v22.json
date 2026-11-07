@@ -1,0 +1,246 @@
+{
+ "name": "claude_bomb_v22",
+ "group": "ours",
+ "source": "short.mp4",
+ "frames": 1082,
+ "fps": 30.0,
+ "seconds": 36.07,
+ "height_px": 1920,
+ "width_px": 1080,
+ "heads": {
+  "found_per_sampled_frame": 0.05,
+  "size_d_over_h": {
+   "p10": 0.105,
+   "p50": 0.116,
+   "p90": 0.118
+  },
+  "outline_over_d_all": 0.1047,
+  "outline_uneven": 0.621,
+  "outline_over_d_big_heads": null,
+  "eye_d_over_head": null,
+  "eye_y_in_head": null,
+  "eyes_per_head": 0.0,
+  "sample": 4
+ },
+ "outline": {
+  "stroke_over_frame_w": {
+   "p10": 0.0035,
+   "p50": 0.0071,
+   "p90": 0.0101
+  },
+  "spread_within_frame_p25_p75": [
+   0.0053,
+   0.0071
+  ],
+  "frames": 73,
+  "note": "line width of thin dark shapes (outlines and limbs), share of frame width"
+ },
+ "colour": {
+  "palette8": [
+   {
+    "hex": "#6a6b82",
+    "share": 0.218,
+    "hue": 238,
+    "sat": 0.18,
+    "val": 0.51
+   },
+   {
+    "hex": "#3c516f",
+    "share": 0.171,
+    "hue": 216,
+    "sat": 0.46,
+    "val": 0.44
+   },
+   {
+    "hex": "#162234",
+    "share": 0.166,
+    "hue": 216,
+    "sat": 0.58,
+    "val": 0.2
+   },
+   {
+    "hex": "#0b8136",
+    "share": 0.156,
+    "hue": 142,
+    "sat": 0.91,
+    "val": 0.51
+   },
+   {
+    "hex": "#74362d",
+    "share": 0.145,
+    "hue": 8,
+    "sat": 0.61,
+    "val": 0.45
+   },
+   {
+    "hex": "#a58238",
+    "share": 0.061,
+    "hue": 40,
+    "sat": 0.66,
+    "val": 0.65
+   },
+   {
+    "hex": "#d5b192",
+    "share": 0.049,
+    "hue": 28,
+    "sat": 0.31,
+    "val": 0.84
+   },
+   {
+    "hex": "#c1c6cc",
+    "share": 0.034,
+    "hue": 212,
+    "sat": 0.05,
+    "val": 0.8
+   }
+  ],
+  "warm_share": 0.255,
+  "cool_share": 0.337,
+  "hue_bins_30deg": [
+   0.194,
+   0.061,
+   0.0,
+   0.0,
+   0.156,
+   0.0,
+   0.0,
+   0.337,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "surface": {
+   "flat": 0.548,
+   "smooth_gradient": 0.071,
+   "detailed": 0.108,
+   "edge": 0.273
+  }
+ },
+ "captions": {
+  "words": 106,
+  "words_per_s": 2.94,
+  "word_on_screen_s": {
+   "p10": 0.13,
+   "p50": 0.23,
+   "p90": 0.6
+  },
+  "text_height_over_frame_h": 0.032,
+  "centre_y_over_frame_h": 0.696,
+  "centre_x_over_frame_w": 0.5,
+  "width_over_frame_w_p50": 0.357,
+  "pop_first3_over_steady": 1.151,
+  "share_of_time_with_caption": 0.975
+ },
+ "blur": {
+  "edge_over_centre_sharpness_median": 0.86,
+  "frames_with_soft_edges": 0.096,
+  "flight_peak_sharpness_over_median": 1.013
+ },
+ "camera_curves": {
+  "decelerate": {
+   "n": 5,
+   "mean": [
+    0.28,
+    0.78,
+    0.71,
+    0.52,
+    0.48,
+    0.5,
+    0.44,
+    0.36,
+    0.29,
+    0.21,
+    0.13
+   ]
+  },
+  "all": {
+   "n": 9,
+   "mean": [
+    0.25,
+    0.61,
+    0.62,
+    0.54,
+    0.48,
+    0.51,
+    0.44,
+    0.4,
+    0.39,
+    0.28,
+    0.2
+   ]
+  },
+  "constant": {
+   "n": 2,
+   "mean": [
+    0.17,
+    0.31,
+    0.62,
+    0.67,
+    0.48,
+    0.51,
+    0.56,
+    0.55,
+    0.48,
+    0.44,
+    0.37
+   ]
+  },
+  "move_then_hold": {
+   "n": 1,
+   "mean": [
+    0.39,
+    0.79,
+    0.79,
+    0.92,
+    0.71,
+    0.57,
+    0.2,
+    0.19,
+    0.38,
+    0.39,
+    0.29
+   ]
+  },
+  "accelerate": {
+   "n": 1,
+   "mean": [
+    0.14,
+    0.17,
+    0.04,
+    0.05,
+    0.25,
+    0.52,
+    0.44,
+    0.46,
+    0.76,
+    0.21,
+    0.11
+   ]
+  }
+ },
+ "camera_ramps": {
+  "n": 9,
+  "ramp_up_s_p50": 0.17,
+  "ramp_down_s_p50": 0.47,
+  "peak_pct_width_per_s_p50": 52.8,
+  "peak_position_in_flight_p50": 0.25
+ },
+ "shake": {
+  "events_per_min": 13.3,
+  "amp_pct_width_p50": 1.7,
+  "decay_s_p50": 0.08,
+  "threshold_pct_width": 0.6,
+  "background_jitter_pct_width_median": 0.014,
+  "note": "estimate: jitter found after removing a 9-frame running mean of the camera shift; a fast whip can also show up here"
+ },
+ "sound": {
+  "scene_change_near_sound_onset": 0.917,
+  "chance": 0.689,
+  "lift": 1.33,
+  "onset_rate_per_s": 3.41,
+  "shake_events_near_sound_onset": 0.875,
+  "shake_chance": 0.718,
+  "shake_lift": 1.22
+ }
+}

@@ -21,6 +21,7 @@
  ],
  "videos_in_ours": [
   "claude_bomb_v21",
+  "claude_bomb_v22",
   "gemini_bomb_v1"
  ],
  "metrics": {
@@ -35,6 +36,7 @@
    },
    "ours": {
     "claude_bomb_v21": 58.2,
+    "claude_bomb_v22": 13.3,
     "gemini_bomb_v1": 25.0
    }
   },
@@ -49,6 +51,7 @@
    },
    "ours": {
     "claude_bomb_v21": 1.0,
+    "claude_bomb_v22": 2.867,
     "gemini_bomb_v1": 2.067
    }
   },
@@ -63,6 +66,7 @@
    },
    "ours": {
     "claude_bomb_v21": 15.0,
+    "claude_bomb_v22": 16.6,
     "gemini_bomb_v1": 6.7
    }
   },
@@ -77,6 +81,7 @@
    },
    "ours": {
     "claude_bomb_v21": 0.57,
+    "claude_bomb_v22": 1.38,
     "gemini_bomb_v1": 1.42
    }
   },
@@ -91,6 +96,7 @@
    },
    "ours": {
     "claude_bomb_v21": 8.9,
+    "claude_bomb_v22": 15.6,
     "gemini_bomb_v1": 23.6
    }
   },
@@ -105,6 +111,7 @@
    },
    "ours": {
     "claude_bomb_v21": 2.28,
+    "claude_bomb_v22": 1.23,
     "gemini_bomb_v1": 0.83
    }
   },
@@ -119,6 +126,7 @@
    },
    "ours": {
     "claude_bomb_v21": 0.27,
+    "claude_bomb_v22": 0.47,
     "gemini_bomb_v1": 0.3
    }
   },
@@ -133,6 +141,7 @@
    },
    "ours": {
     "claude_bomb_v21": 0.209,
+    "claude_bomb_v22": 0.371,
     "gemini_bomb_v1": 0.162
    }
   },
@@ -147,6 +156,7 @@
    },
    "ours": {
     "claude_bomb_v21": 0.428,
+    "claude_bomb_v22": 0.306,
     "gemini_bomb_v1": 0.636
    }
   },
@@ -161,6 +171,7 @@
    },
    "ours": {
     "claude_bomb_v21": 0.778,
+    "claude_bomb_v22": 0,
     "gemini_bomb_v1": 0.25
    }
   },
@@ -175,6 +186,7 @@
    },
    "ours": {
     "claude_bomb_v21": 0.886,
+    "claude_bomb_v22": 0.375,
     "gemini_bomb_v1": 0.333
    }
   },
@@ -189,6 +201,7 @@
    },
    "ours": {
     "claude_bomb_v21": 28.3,
+    "claude_bomb_v22": 20.0,
     "gemini_bomb_v1": null
    }
   },
@@ -203,6 +216,7 @@
    },
    "ours": {
     "claude_bomb_v21": 1.96,
+    "claude_bomb_v22": 2.93,
     "gemini_bomb_v1": null
    }
   }
