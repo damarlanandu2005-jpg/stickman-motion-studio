@@ -6,26 +6,20 @@
   [
    "warn",
    "Q05",
-   "beat s8",
+   "beat s5",
    "impact of ANCHOR-PIECE has no reaction or settling afterwards (a character reaction, a second object event or a settle)"
   ],
   [
    "warn",
    "Q06",
-   "beat s10",
-   "the narration names 'tooth' and it is in the beat, but it is not in validation.must_see"
-  ],
-  [
-   "warn",
-   "Q06",
-   "beat s12",
+   "beat s11",
    "the narration names 'pendulum' and it is in the beat, but it is not in validation.must_see"
   ],
   [
    "warn",
-   "Q06",
-   "beat s12",
-   "the narration names 'patience' and it is in the beat, but it is not in validation.must_see"
+   "Q08",
+   "plan",
+   "pacing 17.9 scene changes per minute is below the measured reference range 18-24 (CHK-11). Fix it in the shot notes (more shots) unless the story is dialogue or numbers heavy"
   ]
  ],
  "gates": {
@@ -74,7 +68,7 @@
   "Q06": {
    "status": "PASS (with warnings)",
    "errors": 0,
-   "warnings": 3,
+   "warnings": 1,
    "not_run": [
     "[automatic] parallax and soft-edge share on rendered frames"
    ]
@@ -88,9 +82,9 @@
    ]
   },
   "Q08": {
-   "status": "PASS",
+   "status": "PASS (with warnings)",
    "errors": 0,
-   "warnings": 0,
+   "warnings": 1,
    "not_run": [
     "[human] each cut is on a meaning beat"
    ]

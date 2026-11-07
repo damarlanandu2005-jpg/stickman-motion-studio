@@ -1,8 +1,9 @@
-- Defined `clockmaker` outfit in `cast.js` based on `worker1` to include the required white hair and beard.
-- Used `indoor` light preset for all shots as requested.
-- Created custom geometry for the gears, escapement wheel, anchor, and mainspring to accurately represent the mechanical parts.
-- Implemented continuous synchronized animation in `worldState` for the clock mechanism (gears turning, anchor rocking, pendulum swinging) driven by the frame time.
-- Macro shots (s2-s11) use a shallow depth of field (`cinf: 12`) to emphasize the small scale of the clock interior.
+# Notes and Decisions
+
+- **Characters**: Added `clockmaker` outfit to `cast.js` to match the specific "worker1 + cap + grey beard + grey hair" requirement.
+- **Environment**: Built a unified `CLOCK-INTERIOR` mechanism containing the gears, spring, escapement, anchor, and pendulum. This allows smooth continuous animation of the tick-tock mechanism.
+- **Animation**: The tick-tock motion is driven procedurally in `worldAt(f)`. The pendulum and anchor swing together using a sine wave, while the escapement wheel advances in steps based on the phase. This naturally satisfies the requirements of shots 5, 6, and 7 without needing complex hard-coded keyframes.
+- **Camera**: The camera is positioned precisely in front of the relevant mechanism parts for each shot in `CLOCK-INTERIOR`, ensuring the correct components are in focus and framed properly.
 
 
 ## pipeline

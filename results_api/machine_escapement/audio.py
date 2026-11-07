@@ -4,32 +4,43 @@ exec(open(os.path.join(D, "audiolib.py")).read())
 F = lambda f: f / 30
 music = np.zeros(N, np.float32); sfx = np.zeros(N, np.float32)
 
-# Music
-place(music, folk(100, 1.83), 0.0, 0.5)
-place(music, ragtime(2.7, 60, 100), 1.83, 0.5)
-place(music, ragtime(2.57, 60, 160), 4.53, 0.6)
-place(music, ragtime(2.6, 60, 80), 7.1, 0.4)
-place(music, trombone_sad(4.53), 9.7, 0.5)
-place(music, folk(90, 3.87), 14.23, 0.5)
-place(music, ragtime(4.5, 60, 120), 18.1, 0.5)
-# s8 silent 22.6 to 23.07
-place(music, ragtime(1.36, 60, 120), 23.07, 0.5)
-place(music, folk(110, 5.44), 24.43, 0.5)
-place(music, brass([midi(60), midi(64), midi(67)], 1.7), 29.87, 0.4)
-place(music, ragtime(2.0, 60, 100), 31.57, 0.6)
+# --- music
+# s1: curious mechanical rhythm
+place(music, folk(100, F(55), 60), 0, 0.6)
+# s2: steady rhythmic pulse
+place(music, folk(100, F(136)-F(55), 60), F(55), 0.6)
+# s3: chaotic strings
+place(music, ragtime(F(213)-F(136), 65, 140), F(136), 0.6)
+# s4: focused tone
+place(music, folk(100, F(291)-F(213), 60), F(213), 0.6)
+# s5: tension builds
+place(music, rumble(F(427)-F(291)), F(291), 0.4)
+# s6: steady beat
+place(music, folk(100, F(543)-F(427), 60), F(427), 0.6)
+# s7: steady mechanical beat
+place(music, folk(100, F(678)-F(543), 60), F(543), 0.6)
+# s8: playful pizzicato
+place(music, ragtime(F(733)-F(678), 60, 100), F(678), 0.7)
+# s9: steady patient rhythm
+place(music, folk(100, F(896)-F(733), 60), F(733), 0.6)
+# s10: warm chord swells
+place(music, trombone_sad(F(947)-F(896)), F(896), 0.5)
+# s11: resolute finish
+place(music, folk(100, DUR-F(947), 60), F(947), 0.6)
+place(music, ting(), DUR-1.0, 0.8)
 
-# SFX
-place(sfx, click(), 1.374, 0.6)
-place(sfx, creak(0.5), 2.736, 0.7)
-place(sfx, scrape(0.8), 6.008, 0.6)
-place(sfx, snap(), 8.631, 0.8)
-place(sfx, thunk(120, 0.3), 13.467, 0.8)
-place(sfx, scrape(0.6), 16.792, 0.6)
-place(sfx, click(), 21.3, 0.7)
-place(sfx, snap(), 22.603, 1.0)
-place(sfx, thunk(150, 0.3), 23.873, 0.9)
-place(sfx, whoosh(0.6), 24.66, 0.6)
-place(sfx, creak(0.6), 31.064, 0.7)
-place(sfx, click(), 33.123, 0.6)
+# --- sfx
+place(sfx, click(0.1), 1.37, 0.8) # tick
+place(sfx, scrape(1.0), 2.73, 0.6) # winding
+place(sfx, engine(2.0, 60), 6.0, 0.5) # whirring
+place(sfx, click(0.1), 8.63, 0.8) # click
+place(sfx, thunk(150, 0.2), 13.46, 0.8) # lock
+place(sfx, whoosh(0.5), 14.59, 0.7) # whoosh
+place(sfx, snap(), 21.3, 0.8) # clack
+place(sfx, click(0.1), 22.6, 0.8) # tick
+place(sfx, thunk(120, 0.15), 23.87, 0.8) # tock
+place(sfx, click(0.1), 27.66, 0.6) # ticking
+place(sfx, creak(0.6, 180), 31.06, 0.7) # creak
+place(sfx, click(0.1), 33.12, 0.6) # ticking
 
 write_stems(music, sfx)

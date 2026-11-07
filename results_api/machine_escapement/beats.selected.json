@@ -18,11 +18,11 @@
    {
     "w": "does",
     "s": 0.172,
-    "e": 0.344
+    "e": 0.343
    },
    {
     "w": "a",
-    "s": 0.344,
+    "s": 0.343,
     "e": 0.515
    },
    {
@@ -263,11 +263,11 @@
    {
     "w": "Then",
     "s": 14.223,
-    "e": 14.407
+    "e": 14.406
    },
    {
     "w": "a",
-    "s": 14.407,
+    "s": 14.406,
     "e": 14.59
    },
    {
@@ -278,21 +278,21 @@
    {
     "w": "pendulum",
     "s": 14.957,
-    "e": 15.508
+    "e": 15.507
    },
    {
     "w": "rocks",
-    "s": 15.508,
+    "s": 15.507,
     "e": 15.691
    },
    {
     "w": "the",
     "s": 15.691,
-    "e": 15.875
+    "e": 15.874
    },
    {
     "w": "anchor",
-    "s": 15.875,
+    "s": 15.874,
     "e": 16.242
    },
    {
@@ -428,11 +428,11 @@
    {
     "w": "swing",
     "s": 24.66,
-    "e": 24.891
+    "e": 24.89
    },
    {
     "w": "lets",
-    "s": 24.891,
+    "s": 24.89,
     "e": 25.121
    },
    {
@@ -493,11 +493,11 @@
    {
     "w": "a",
     "s": 28.583,
-    "e": 28.814
+    "e": 28.813
    },
    {
     "w": "swing",
-    "s": 28.814,
+    "s": 28.813,
     "e": 29.044
    },
    {
@@ -563,49 +563,53 @@
     "id": "CLOCKMAKER",
     "outfit": "worker1",
     "hat": "cap",
-    "skin_hair": "light skin, white hair, white beard",
+    "skin_hair": "light skin, grey hair, grey beard",
     "default_face": "neutral",
+    "aliases": [
+     "clockmaker"
+    ],
     "identity_lock": [
-     "worker1 outfit",
-     "cap",
-     "light skin, white hair, white beard"
+     "outfit: worker1",
+     "hat: cap",
+     "skin: light",
+     "hair: grey",
+     "beard: grey"
     ],
     "status": "kit"
    }
   ],
   "objects": [
    {
-    "id": "MECHANICAL-CLOCK",
-    "label": "mechanical clock",
-    "size_m": 0.6,
+    "id": "GRANDFATHER-CLOCK",
+    "label": "grandfather clock",
+    "size_m": 2.0,
     "representation": "3d_mesh",
     "material_ids": [
      "M01",
-     "M07"
+     "M02"
     ],
     "aliases": [
      "clock",
-     "it"
+     "mechanical clock"
     ],
     "status": "new_item"
    },
    {
-    "id": "MAINSPRING",
-    "label": "mainspring",
-    "size_m": 0.2,
+    "id": "COILED-SPRING",
+    "label": "coiled spring",
+    "size_m": 0.3,
     "representation": "3d_mesh",
     "material_ids": [
      "M02"
     ],
     "aliases": [
-     "spring",
-     "push"
+     "spring"
     ],
     "status": "new_item"
    },
    {
-    "id": "GEAR-STACK",
-    "label": "gear stack",
+    "id": "STACK-OF-GEARS",
+    "label": "stack of gears",
     "size_m": 0.4,
     "representation": "3d_mesh",
     "material_ids": [
@@ -613,14 +617,14 @@
     ],
     "aliases": [
      "gears",
-     "they"
+     "stack of gears"
     ],
     "status": "new_item"
    },
    {
     "id": "ESCAPEMENT-WHEEL",
     "label": "escapement wheel",
-    "size_m": 0.15,
+    "size_m": 0.2,
     "representation": "3d_mesh",
     "material_ids": [
      "M02"
@@ -628,10 +632,7 @@
     "aliases": [
      "escapement",
      "toothed wheel",
-     "wheel",
-     "tooth",
-     "next tooth",
-     "step"
+     "wheel"
     ],
     "status": "new_item"
    },
@@ -646,7 +647,6 @@
     "aliases": [
      "anchor-shaped piece",
      "anchor",
-     "other end of the anchor",
      "piece"
     ],
     "status": "new_item"
@@ -654,16 +654,14 @@
    {
     "id": "SWINGING-PENDULUM",
     "label": "swinging pendulum",
-    "size_m": 0.5,
+    "size_m": 1.0,
     "representation": "3d_mesh",
     "material_ids": [
      "M02"
     ],
     "aliases": [
      "pendulum",
-     "pendulum's length",
-     "swing",
-     "patience"
+     "swinging pendulum"
     ],
     "status": "new_item"
    }
@@ -671,60 +669,41 @@
   "environments": [
    {
     "id": "WORKSHOP",
-    "width_m": 8,
+    "width_m": 8.0,
     "light": "indoor",
     "lighting_profile_id": "L01",
     "landmarks": [
-     "wooden workbench",
-     "tools on left wall",
-     "window on right"
+     "wooden workbench on left",
+     "large grandfather clock in middle",
+     "tools on wall right"
     ],
     "material_ids": [
      "M01",
-     "M07"
+     "M02"
     ],
     "depth_layers": {
      "foreground": "workbench edge",
-     "midground": "clockmaker and clock",
-     "background": "tools and window"
+     "midground": "clockmaker and grandfather clock",
+     "background": "tools on wall"
     }
    },
    {
     "id": "CLOCK-INTERIOR",
-    "width_m": 1,
+    "width_m": 1.0,
     "light": "indoor",
     "lighting_profile_id": "L04",
     "landmarks": [
-     "brass gears",
-     "metal springs",
-     "pendulum rod"
+     "brass gears on left",
+     "coiled spring in middle",
+     "pendulum rod on right"
     ],
     "material_ids": [
      "M02"
     ],
     "depth_layers": {
      "foreground": "gear edges",
-     "midground": "gears and springs",
-     "background": "dark clock case interior"
-    }
-   },
-   {
-    "id": "ESCAPEMENT-VIEW",
-    "width_m": 0.3,
-    "light": "indoor",
-    "lighting_profile_id": "L04",
-    "landmarks": [
-     "toothed wheel",
-     "anchor piece",
-     "pendulum rod"
-    ],
-    "material_ids": [
-     "M02"
-    ],
-    "depth_layers": {
-     "foreground": "anchor hooks",
-     "midground": "wheel and anchor",
-     "background": "clock plate"
+     "midground": "main mechanism",
+     "background": "dark interior casing"
     }
    }
   ]
@@ -745,33 +724,34 @@
     ]
    },
    "intent": "hook",
-   "visual_purpose": "Show the clockmaker and the mechanical clock to introduce the topic.",
+   "visual_purpose": "Introduce the clockmaker and the grandfather clock to set up the question of how it ticks.",
    "subject": {
-    "main_id": "MECHANICAL-CLOCK",
+    "main_id": "CLOCKMAKER",
     "character_ids": [
      "CLOCKMAKER"
-    ]
+    ],
+    "hero_object_id": "GRANDFATHER-CLOCK"
    },
    "environment_id": "WORKSHOP",
    "character_actions": [
     {
      "character_id": "CLOCKMAKER",
-     "action": "stands at workbench",
+     "action": "facing grandfather clock",
      "pose": "hip",
      "face": "neutral",
      "phase": "attention",
      "start_s": 0.0,
-     "duration_s": 1.8
+     "duration_s": 1.83
     }
    ],
    "shot": {
     "recipe_id": "S04",
-    "framing": "medium",
-    "distance_m": 6,
+    "framing": "close",
+    "distance_m": 6.0,
     "composition": {
      "primary_id": "CLOCKMAKER",
      "secondary_ids": [
-      "MECHANICAL-CLOCK"
+      "GRANDFATHER-CLOCK"
      ],
      "focal_point_norm": [
       0.5,
@@ -782,21 +762,21 @@
    "camera": {
     "purpose": "establish",
     "mode": "push-in",
+    "duration_s": 1.83,
+    "ease": "easeOut",
     "from": {
-     "framing": "medium",
-     "distance_m": 6,
+     "framing": "wide",
+     "distance_m": 6.0,
      "height": "eye",
      "side": "front"
     },
     "to": {
-     "framing": "medium",
-     "distance_m": 4,
+     "framing": "medium_wide",
+     "distance_m": 4.0,
      "height": "eye",
      "side": "front"
     },
-    "duration_s": 1.83,
-    "ease": "smooth",
-    "rationale": "Push in to introduce the clockmaker and the clock.",
+    "rationale": "Push in slowly to establish the workshop and focus attention on the clock.",
     "confidence": "designed"
    },
    "captions": {
@@ -805,13 +785,13 @@
    "audio_events": [
     {
      "track": "music",
-     "event": "curious, precise classical strings",
+     "event": "curious mechanical rhythm begins",
      "time_s": 0.0,
      "trigger": "beat_start"
     },
     {
      "track": "sfx",
-     "event": "rhythmic ticking",
+     "event": "loud clock tick",
      "time_s": 1.374,
      "trigger": "word",
      "word_index": 5
@@ -827,7 +807,6 @@
      "Q02",
      "Q03",
      "Q04",
-     "Q05",
      "Q06",
      "Q07",
      "Q08",
@@ -835,14 +814,14 @@
      "Q10"
     ],
     "must_see": [
-     "MECHANICAL-CLOCK",
-     "CLOCKMAKER"
+     "CLOCKMAKER",
+     "GRANDFATHER-CLOCK"
+    ],
+    "must_not": [
+     "clock missing from the room",
+     "empty frame"
     ]
    },
-   "rule_refs": [
-    "SCR-03",
-    "CAM-04"
-   ],
    "extensions": {
     "selector": {
      "planner_recipe": "S01",
@@ -860,7 +839,8 @@
       }
      ],
      "notes": [
-      "camera purpose establish is unusual for S04: the planner's camera was left as written"
+      "camera purpose establish is unusual for S04: the planner's camera was left as written",
+      "framing wide -> close to suit S04"
      ]
     }
    }
@@ -880,29 +860,20 @@
     ]
    },
    "intent": "explain_mechanism",
-   "visual_purpose": "Reveal the inside of the clock showing the spring and gears.",
+   "visual_purpose": "Show the power source inside the clock: a coiled spring and gears.",
    "subject": {
-    "main_id": "MAINSPRING",
-    "hero_object_id": "GEAR-STACK"
+    "main_id": "COILED-SPRING",
+    "hero_object_id": "STACK-OF-GEARS"
    },
    "environment_id": "CLOCK-INTERIOR",
-   "object_events": [
-    {
-     "object_id": "MAINSPRING",
-     "event": "settle",
-     "motion_profile": "rigid",
-     "start_s": 0.0,
-     "duration_s": 2.7
-    }
-   ],
    "shot": {
     "recipe_id": "S03",
-    "framing": "detail",
-    "distance_m": 0.5,
+    "framing": "close",
+    "distance_m": 0.6,
     "composition": {
-     "primary_id": "MAINSPRING",
+     "primary_id": "COILED-SPRING",
      "secondary_ids": [
-      "GEAR-STACK"
+      "STACK-OF-GEARS"
      ],
      "focal_point_norm": [
       0.5,
@@ -912,22 +883,22 @@
    },
    "camera": {
     "purpose": "inspect",
-    "mode": "pull-back",
+    "mode": "orbit",
+    "duration_s": 2.7,
+    "ease": "smooth",
     "from": {
-     "framing": "detail",
-     "distance_m": 0.5,
+     "framing": "close",
+     "distance_m": 0.6,
      "height": "eye",
      "side": "front"
     },
     "to": {
      "framing": "close",
-     "distance_m": 0.8,
+     "distance_m": 0.6,
      "height": "eye",
-     "side": "front"
+     "side": "right"
     },
-    "duration_s": 2.7,
-    "ease": "easeOut",
-    "rationale": "Pull back to reveal the inner workings of the clock.",
+    "rationale": "Orbit the spring and gears to show their 3D relationship and mechanical nature.",
     "confidence": "designed"
    },
    "captions": {
@@ -936,13 +907,13 @@
    "audio_events": [
     {
      "track": "music",
-     "event": "steady mechanical rhythm begins",
+     "event": "steady rhythmic pulse",
      "time_s": 1.83,
      "trigger": "beat_start"
     },
     {
      "track": "sfx",
-     "event": "metallic winding tension",
+     "event": "metallic winding",
      "time_s": 2.736,
      "trigger": "word",
      "word_index": 9
@@ -950,16 +921,14 @@
    ],
    "transition_in": {
     "type": "dissolve",
-    "reason": "new_place",
+    "reason": "scale_change",
     "frames": 8
    },
    "validation": {
     "gates": [
-     "Q01",
      "Q02",
      "Q03",
      "Q04",
-     "Q05",
      "Q06",
      "Q07",
      "Q08",
@@ -967,14 +936,14 @@
      "Q10"
     ],
     "must_see": [
-     "MAINSPRING",
-     "GEAR-STACK"
+     "COILED-SPRING",
+     "STACK-OF-GEARS"
+    ],
+    "must_not": [
+     "gears floating without connection",
+     "spring missing"
     ]
    },
-   "rule_refs": [
-    "WLD-06",
-    "CAM-04"
-   ],
    "extensions": {
     "selector": {
      "planner_recipe": "S03",
@@ -983,12 +952,12 @@
      "why": "S03 for intent explain_mechanism: intent 1.00 (candidate #1 for intent explain_mechanism); assets 1.00 (hero object); variety 1.00 (not used in the last beat)",
      "alternatives": [
       {
-       "recipe": "S06",
-       "score": 0.69
+       "recipe": "S01",
+       "score": 0.686
       },
       {
-       "recipe": "S01",
-       "score": 0.644
+       "recipe": "S05",
+       "score": 0.686
       }
      ],
      "notes": []
@@ -1010,14 +979,14 @@
     ]
    },
    "intent": "physical_action",
-   "visual_purpose": "Show the gears spinning rapidly out of control.",
+   "visual_purpose": "Demonstrate the uncontrolled spinning of the gears if unrestrained.",
    "subject": {
-    "main_id": "GEAR-STACK"
+    "main_id": "STACK-OF-GEARS"
    },
    "environment_id": "CLOCK-INTERIOR",
    "object_events": [
     {
-     "object_id": "GEAR-STACK",
+     "object_id": "STACK-OF-GEARS",
      "event": "spin",
      "motion_profile": "rigid",
      "start_s": 0.0,
@@ -1026,10 +995,10 @@
    ],
    "shot": {
     "recipe_id": "S06",
-    "framing": "close",
-    "distance_m": 0.8,
+    "framing": "detail",
+    "distance_m": 0.4,
     "composition": {
-     "primary_id": "GEAR-STACK",
+     "primary_id": "STACK-OF-GEARS",
      "focal_point_norm": [
       0.5,
       0.5
@@ -1037,23 +1006,9 @@
     }
    },
    "camera": {
-    "purpose": "impact",
-    "mode": "snap-zoom",
-    "from": {
-     "framing": "close",
-     "distance_m": 0.8,
-     "height": "eye",
-     "side": "front"
-    },
-    "to": {
-     "framing": "detail",
-     "distance_m": 0.4,
-     "height": "eye",
-     "side": "front"
-    },
-    "duration_s": 2.57,
-    "ease": "easeIn",
-    "rationale": "Snap zoom to emphasize the out-of-control spinning gears.",
+    "purpose": "emphasize",
+    "mode": "static",
+    "rationale": "Hold static to let the fast spinning motion of the gears be the sole focus.",
     "confidence": "designed"
    },
    "captions": {
@@ -1062,13 +1017,13 @@
    "audio_events": [
     {
      "track": "music",
-     "event": "sudden fast tempo",
+     "event": "quick burst of chaotic strings",
      "time_s": 4.53,
      "trigger": "beat_start"
     },
     {
      "track": "sfx",
-     "event": "fast whirring metal",
+     "event": "fast whirring",
      "time_s": 6.008,
      "trigger": "word",
      "word_index": 21
@@ -1080,25 +1035,22 @@
    },
    "validation": {
     "gates": [
-     "Q01",
      "Q02",
      "Q03",
      "Q04",
      "Q05",
-     "Q06",
      "Q07",
      "Q08",
      "Q09",
      "Q10"
     ],
     "must_see": [
-     "GEAR-STACK"
+     "STACK-OF-GEARS"
+    ],
+    "must_not": [
+     "gears standing still"
     ]
    },
-   "rule_refs": [
-    "FX-03",
-    "PHY-03"
-   ],
    "extensions": {
     "selector": {
      "planner_recipe": "S06",
@@ -1134,16 +1086,16 @@
     ]
    },
    "intent": "explain_mechanism",
-   "visual_purpose": "Introduce the escapement mechanism clearly.",
+   "visual_purpose": "Introduce the escapement wheel and anchor as the solution to the spinning.",
    "subject": {
     "main_id": "ESCAPEMENT-WHEEL",
     "hero_object_id": "ANCHOR-PIECE"
    },
-   "environment_id": "ESCAPEMENT-VIEW",
+   "environment_id": "CLOCK-INTERIOR",
    "shot": {
     "recipe_id": "S03",
-    "framing": "detail",
-    "distance_m": 0.3,
+    "framing": "close",
+    "distance_m": 0.5,
     "composition": {
      "primary_id": "ESCAPEMENT-WHEEL",
      "secondary_ids": [
@@ -1156,11 +1108,13 @@
     }
    },
    "camera": {
-    "purpose": "hold_for_performance",
-    "mode": "static",
+    "purpose": "reveal",
+    "mode": "push-in",
+    "duration_s": 2.6,
+    "ease": "easeOut",
     "from": {
-     "framing": "detail",
-     "distance_m": 0.3,
+     "framing": "close",
+     "distance_m": 0.5,
      "height": "eye",
      "side": "front"
     },
@@ -1170,9 +1124,7 @@
      "height": "eye",
      "side": "front"
     },
-    "duration_s": 2.6,
-    "ease": "smooth",
-    "rationale": "Hold to let the viewer clearly see the escapement mechanism.",
+    "rationale": "Push in to reveal the small escapement mechanism clearly.",
     "confidence": "designed"
    },
    "captions": {
@@ -1181,7 +1133,7 @@
    "audio_events": [
     {
      "track": "music",
-     "event": "tempo slows to a precise beat",
+     "event": "focused, precise tone",
      "time_s": 7.1,
      "trigger": "beat_start"
     },
@@ -1195,16 +1147,14 @@
    ],
    "transition_in": {
     "type": "dissolve",
-    "reason": "scale_change",
+    "reason": "continuity",
     "frames": 8
    },
    "validation": {
     "gates": [
-     "Q01",
      "Q02",
      "Q03",
      "Q04",
-     "Q05",
      "Q06",
      "Q07",
      "Q08",
@@ -1214,30 +1164,29 @@
     "must_see": [
      "ESCAPEMENT-WHEEL",
      "ANCHOR-PIECE"
+    ],
+    "must_not": [
+     "anchor piece missing"
     ]
    },
-   "rule_refs": [
-    "CAM-13",
-    "PRP-05"
-   ],
    "extensions": {
     "selector": {
      "planner_recipe": "S03",
      "chosen": "S03",
      "decision": "planner's choice kept (it is the best)",
-     "why": "S03 for intent explain_mechanism: intent 1.00 (candidate #1 for intent explain_mechanism); assets 1.00 (hero object); variety 1.00 (not used in the last beat) | weak: camera (camera purpose hold_for_performance is not typical for S03)",
+     "why": "S03 for intent explain_mechanism: intent 1.00 (candidate #1 for intent explain_mechanism); assets 1.00 (hero object); variety 1.00 (not used in the last beat) | weak: camera (camera purpose reveal is not typical for S03)",
      "alternatives": [
       {
        "recipe": "S01",
-       "score": 0.686
+       "score": 0.726
       },
       {
        "recipe": "S05",
-       "score": 0.686
+       "score": 0.726
       }
      ],
      "notes": [
-      "camera purpose hold_for_performance is unusual for S03: the planner's camera was left as written"
+      "camera purpose reveal is unusual for S03: the planner's camera was left as written"
      ]
     }
    }
@@ -1257,20 +1206,13 @@
     ]
    },
    "intent": "explain_mechanism",
-   "visual_purpose": "Demonstrate the anchor catching the wheel tooth.",
+   "visual_purpose": "Show the anchor piece physically catching and holding a tooth of the wheel.",
    "subject": {
     "main_id": "ANCHOR-PIECE",
     "hero_object_id": "ESCAPEMENT-WHEEL"
    },
-   "environment_id": "ESCAPEMENT-VIEW",
+   "environment_id": "CLOCK-INTERIOR",
    "object_events": [
-    {
-     "object_id": "ESCAPEMENT-WHEEL",
-     "event": "move",
-     "motion_profile": "rigid",
-     "start_s": 0.0,
-     "duration_s": 4.5
-    },
     {
      "object_id": "ANCHOR-PIECE",
      "event": "impact",
@@ -1279,8 +1221,8 @@
      "secondary_effects": [
       "sound"
      ],
-     "start_s": 0.0,
-     "duration_s": 4.5
+     "start_s": 2.5,
+     "duration_s": 0.5
     }
    ],
    "shot": {
@@ -1300,22 +1242,8 @@
    },
    "camera": {
     "purpose": "inspect",
-    "mode": "orbit",
-    "from": {
-     "framing": "detail",
-     "distance_m": 0.2,
-     "height": "eye",
-     "side": "front"
-    },
-    "to": {
-     "framing": "detail",
-     "distance_m": 0.2,
-     "height": "eye",
-     "side": "front"
-    },
-    "duration_s": 4.53,
-    "ease": "smooth",
-    "rationale": "Orbit slowly to show the 3D shape of the anchor catching the tooth.",
+    "mode": "static",
+    "rationale": "Hold static on the extreme close-up to clearly show the mechanical catch.",
     "confidence": "designed"
    },
    "captions": {
@@ -1324,31 +1252,28 @@
    "audio_events": [
     {
      "track": "music",
-     "event": "suspenseful held note",
+     "event": "tension builds",
      "time_s": 9.7,
      "trigger": "beat_start"
     },
     {
      "track": "sfx",
-     "event": "heavy metallic lock",
+     "event": "heavy lock sound",
      "time_s": 13.467,
      "trigger": "word",
      "word_index": 48
     }
    ],
    "transition_in": {
-    "type": "blend_fly",
-    "reason": "continuity",
-    "frames": 8
+    "type": "cut",
+    "reason": "scale_change"
    },
    "validation": {
     "gates": [
-     "Q01",
      "Q02",
      "Q03",
      "Q04",
      "Q05",
-     "Q06",
      "Q07",
      "Q08",
      "Q09",
@@ -1357,18 +1282,18 @@
     "must_see": [
      "ESCAPEMENT-WHEEL",
      "ANCHOR-PIECE"
+    ],
+    "must_not": [
+     "anchor missing the teeth",
+     "blurry focus"
     ]
    },
-   "rule_refs": [
-    "CAM-03",
-    "PHY-03"
-   ],
    "extensions": {
     "selector": {
-     "planner_recipe": "S06",
+     "planner_recipe": "S03",
      "chosen": "S03",
-     "decision": "replaced planner's S06 (0.71 vs S03 0.90)",
-     "why": "S03 for intent explain_mechanism: intent 1.00 (candidate #1 for intent explain_mechanism); assets 1.00 (hero object); action 0.90 (hero object acts)",
+     "decision": "planner's choice kept (it is the best)",
+     "why": "S03 for intent explain_mechanism: intent 1.00 (candidate #1 for intent explain_mechanism); assets 1.00 (hero object); action 0.90 (hero object acts) | weak: continuity (hard cut to the same recipe looks like a jump cut)",
      "alternatives": [
       {
        "recipe": "S06",
@@ -1397,24 +1322,17 @@
      60
     ]
    },
-   "intent": "explain_mechanism",
-   "visual_purpose": "Show the pendulum rocking the anchor to release the wheel.",
+   "intent": "physical_action",
+   "visual_purpose": "Show the pendulum swinging and rocking the anchor to release the wheel.",
    "subject": {
     "main_id": "SWINGING-PENDULUM",
     "hero_object_id": "ANCHOR-PIECE"
    },
-   "environment_id": "ESCAPEMENT-VIEW",
+   "environment_id": "CLOCK-INTERIOR",
    "object_events": [
     {
      "object_id": "SWINGING-PENDULUM",
      "event": "swing",
-     "motion_profile": "rigid",
-     "start_s": 0.0,
-     "duration_s": 3.8
-    },
-    {
-     "object_id": "ANCHOR-PIECE",
-     "event": "move",
      "motion_profile": "rigid",
      "start_s": 0.0,
      "duration_s": 3.8
@@ -1423,7 +1341,7 @@
    "shot": {
     "recipe_id": "S06",
     "framing": "medium",
-    "distance_m": 0.4,
+    "distance_m": 0.6,
     "composition": {
      "primary_id": "SWINGING-PENDULUM",
      "secondary_ids": [
@@ -1432,28 +1350,28 @@
      ],
      "focal_point_norm": [
       0.5,
-      0.5
+      0.4
      ]
     }
    },
    "camera": {
-    "purpose": "emphasize",
-    "mode": "push-in",
+    "purpose": "follow",
+    "mode": "pull-back",
+    "duration_s": 3.8,
+    "ease": "smooth",
     "from": {
-     "framing": "close",
+     "framing": "detail",
      "distance_m": 0.4,
      "height": "eye",
      "side": "front"
     },
     "to": {
-     "framing": "detail",
-     "distance_m": 0.2,
+     "framing": "close",
+     "distance_m": 0.6,
      "height": "eye",
      "side": "front"
     },
-    "duration_s": 3.87,
-    "ease": "easeOut",
-    "rationale": "Push in to emphasize the pendulum releasing the anchor.",
+    "rationale": "Pull back to connect the swinging pendulum to the anchor it controls.",
     "confidence": "designed"
    },
    "captions": {
@@ -1462,26 +1380,25 @@
    "audio_events": [
     {
      "track": "music",
-     "event": "rhythmic swaying melody",
+     "event": "rhythm locks into a steady beat",
      "time_s": 14.23,
      "trigger": "beat_start"
     },
     {
      "track": "sfx",
-     "event": "smooth sliding metal",
-     "time_s": 16.792,
+     "event": "heavy whoosh",
+     "time_s": 14.59,
      "trigger": "word",
-     "word_index": 58
+     "word_index": 52
     }
    ],
    "transition_in": {
     "type": "blend_fly",
     "reason": "continuity",
-    "frames": 8
+    "frames": 12
    },
    "validation": {
     "gates": [
-     "Q01",
      "Q02",
      "Q03",
      "Q04",
@@ -1496,18 +1413,17 @@
      "SWINGING-PENDULUM",
      "ANCHOR-PIECE",
      "ESCAPEMENT-WHEEL"
+    ],
+    "must_not": [
+     "pendulum disconnected from anchor"
     ]
    },
-   "rule_refs": [
-    "PHY-03",
-    "CAM-05"
-   ],
    "extensions": {
     "selector": {
-     "planner_recipe": "S03",
+     "planner_recipe": "S06",
      "chosen": "S06",
-     "decision": "replaced planner's S03 (unavailable: would be the third identical recipe in a row (CAM-10))",
-     "why": "S06 for intent explain_mechanism: intent 0.60 (candidate #3 for intent explain_mechanism); variety 1.00 (not used in the last beat); assets 0.50 (actor+object: 0 character(s), 3 object(s))",
+     "decision": "planner's choice kept (it is the best)",
+     "why": "S06 for intent physical_action: intent 1.00 (candidate #1 for intent physical_action); variety 1.00 (not used in the last beat); assets 0.50 (actor+object: 0 character(s), 3 object(s))",
      "alternatives": [
       {
        "recipe": "S01",
@@ -1518,9 +1434,7 @@
        "score": 0.632
       }
      ],
-     "notes": [
-      "framing close -> medium to suit S06"
-     ]
+     "notes": []
     }
    }
   },
@@ -1539,30 +1453,19 @@
     ]
    },
    "intent": "explain_mechanism",
-   "visual_purpose": "Show the wheel advancing and the opposite anchor hook catching it.",
+   "visual_purpose": "Show the wheel advancing one step and being caught by the other side of the anchor.",
    "subject": {
     "main_id": "ESCAPEMENT-WHEEL",
     "hero_object_id": "ANCHOR-PIECE"
    },
-   "environment_id": "ESCAPEMENT-VIEW",
+   "environment_id": "CLOCK-INTERIOR",
    "object_events": [
     {
      "object_id": "ESCAPEMENT-WHEEL",
      "event": "move",
      "motion_profile": "rigid",
      "start_s": 0.0,
-     "duration_s": 4.5
-    },
-    {
-     "object_id": "ANCHOR-PIECE",
-     "event": "impact",
-     "motion_profile": "rigid",
-     "contact_target_id": "ESCAPEMENT-WHEEL",
-     "secondary_effects": [
-      "sound"
-     ],
-     "start_s": 0.0,
-     "duration_s": 4.5
+     "duration_s": 0.5
     }
    ],
    "shot": {
@@ -1570,9 +1473,9 @@
     "framing": "detail",
     "distance_m": 0.2,
     "composition": {
-     "primary_id": "ANCHOR-PIECE",
+     "primary_id": "ESCAPEMENT-WHEEL",
      "secondary_ids": [
-      "ESCAPEMENT-WHEEL"
+      "ANCHOR-PIECE"
      ],
      "focal_point_norm": [
       0.5,
@@ -1581,23 +1484,9 @@
     }
    },
    "camera": {
-    "purpose": "hold_for_performance",
+    "purpose": "inspect",
     "mode": "static",
-    "from": {
-     "framing": "detail",
-     "distance_m": 0.2,
-     "height": "eye",
-     "side": "front"
-    },
-    "to": {
-     "framing": "detail",
-     "distance_m": 0.2,
-     "height": "eye",
-     "side": "front"
-    },
-    "duration_s": 4.5,
-    "ease": "smooth",
-    "rationale": "Hold to clearly show the step-by-step catching mechanism.",
+    "rationale": "Hold static to clearly show the precise mechanical step of the wheel.",
     "confidence": "designed"
    },
    "captions": {
@@ -1606,13 +1495,13 @@
    "audio_events": [
     {
      "track": "music",
-     "event": "precise staccato notes",
+     "event": "steady mechanical beat",
      "time_s": 18.1,
      "trigger": "beat_start"
     },
     {
      "track": "sfx",
-     "event": "ratchet click",
+     "event": "sharp clack",
      "time_s": 21.3,
      "trigger": "word",
      "word_index": 74
@@ -1624,12 +1513,10 @@
    },
    "validation": {
     "gates": [
-     "Q01",
      "Q02",
      "Q03",
      "Q04",
      "Q05",
-     "Q06",
      "Q07",
      "Q08",
      "Q09",
@@ -1638,18 +1525,17 @@
     "must_see": [
      "ESCAPEMENT-WHEEL",
      "ANCHOR-PIECE"
+    ],
+    "must_not": [
+     "wheel spinning uncontrollably"
     ]
    },
-   "rule_refs": [
-    "CAM-13",
-    "PHY-03"
-   ],
    "extensions": {
     "selector": {
-     "planner_recipe": "S06",
+     "planner_recipe": "S03",
      "chosen": "S03",
-     "decision": "replaced planner's S06 (0.55 vs S03 0.86)",
-     "why": "S03 for intent explain_mechanism: intent 1.00 (candidate #1 for intent explain_mechanism); assets 1.00 (hero object); action 0.90 (hero object acts) | weak: camera (camera purpose hold_for_performance is not typical for S03)",
+     "decision": "planner's choice kept (it is the best)",
+     "why": "S03 for intent explain_mechanism: intent 1.00 (candidate #1 for intent explain_mechanism); assets 1.00 (hero object); action 0.90 (hero object acts)",
      "alternatives": [
       {
        "recipe": "S01",
@@ -1660,9 +1546,7 @@
        "score": 0.632
       }
      ],
-     "notes": [
-      "camera purpose hold_for_performance is unusual for S03: the planner's camera was left as written"
-     ]
+     "notes": []
     }
    }
   },
@@ -1671,236 +1555,84 @@
    "index": 8,
    "time": {
     "start_s": 22.6,
-    "end_s": 23.0667
+    "end_s": 24.4333
    },
    "narration": {
-    "text": "Tick.",
+    "text": "Tick. Rock back, tock.",
     "word_range": [
      78,
-     78
+     81
     ]
    },
-   "intent": "physical_action",
-   "visual_purpose": "Emphasize the exact moment of the tick with a sharp impact.",
+   "intent": "emotional_reaction",
+   "visual_purpose": "Show the clockmaker reacting to the steady rhythm of the clock.",
    "subject": {
-    "main_id": "ANCHOR-PIECE",
-    "hero_object_id": "ESCAPEMENT-WHEEL"
+    "main_id": "CLOCKMAKER",
+    "character_ids": [
+     "CLOCKMAKER"
+    ]
    },
-   "environment_id": "ESCAPEMENT-VIEW",
-   "object_events": [
+   "environment_id": "WORKSHOP",
+   "character_actions": [
     {
-     "object_id": "ANCHOR-PIECE",
-     "event": "impact",
-     "motion_profile": "rigid",
-     "contact_target_id": "ESCAPEMENT-WHEEL",
-     "secondary_effects": [
-      "sparks",
-      "camera_kick",
-      "sound"
-     ],
+     "character_id": "CLOCKMAKER",
+     "action": "facing camera",
+     "pose": "hang",
+     "face": "smile",
+     "phase": "response",
      "start_s": 0.0,
-     "duration_s": 0.4
+     "duration_s": 1.83
     }
    ],
    "shot": {
-    "recipe_id": "S06",
-    "framing": "medium",
-    "distance_m": 0.15,
+    "recipe_id": "S04",
+    "framing": "close",
+    "distance_m": 2.0,
     "composition": {
-     "primary_id": "ANCHOR-PIECE",
+     "primary_id": "CLOCKMAKER",
      "secondary_ids": [
-      "ESCAPEMENT-WHEEL"
+      "GRANDFATHER-CLOCK"
      ],
      "focal_point_norm": [
       0.5,
-      0.5
+      0.4
      ]
     }
    },
    "camera": {
-    "purpose": "impact",
-    "mode": "snap-zoom",
-    "from": {
-     "framing": "detail",
-     "distance_m": 0.15,
-     "height": "eye",
-     "side": "front"
-    },
-    "to": {
-     "framing": "detail",
-     "distance_m": 0.1,
-     "height": "eye",
-     "side": "front"
-    },
-    "duration_s": 0.47,
-    "ease": "easeIn",
-    "kicks": [
-     {
-      "time_s": 22.6,
-      "amp": 1.5
-     }
-    ],
-    "rationale": "Snap zoom to emphasize the exact moment of the tick.",
+    "purpose": "hold_for_performance",
+    "mode": "static",
+    "rationale": "Hold on the clockmaker's face to let the tick-tock rhythm and his reaction land.",
     "confidence": "designed"
    },
    "captions": {
-    "mode": "one_word",
-    "emphasis_word_indexes": [
-     78
-    ]
+    "mode": "one_word"
    },
    "audio_events": [
     {
      "track": "music",
-     "event": "music silent just before the tick",
+     "event": "playful pizzicato strings",
      "time_s": 22.6,
      "trigger": "beat_start"
     },
     {
      "track": "sfx",
-     "event": "loud crisp tick",
+     "event": "loud tick",
      "time_s": 22.603,
      "trigger": "word",
      "word_index": 78
-    }
-   ],
-   "transition_in": {
-    "type": "cut",
-    "reason": "emphasis"
-   },
-   "validation": {
-    "gates": [
-     "Q01",
-     "Q02",
-     "Q03",
-     "Q04",
-     "Q05",
-     "Q06",
-     "Q07",
-     "Q08",
-     "Q09",
-     "Q10"
-    ],
-    "must_see": [
-     "ANCHOR-PIECE",
-     "ESCAPEMENT-WHEEL"
-    ]
-   },
-   "rule_refs": [
-    "FX-02",
-    "FX-05"
-   ],
-   "extensions": {
-    "selector": {
-     "planner_recipe": "S03",
-     "chosen": "S06",
-     "decision": "replaced planner's S03 (0.74 vs S06 0.81)",
-     "why": "S06 for intent physical_action: intent 1.00 (candidate #1 for intent physical_action); variety 1.00 (not used in the last beat); assets 0.50 (actor+object: 0 character(s), 2 object(s))",
-     "alternatives": [
-      {
-       "recipe": "S03",
-       "score": 0.74
-      },
-      {
-       "recipe": "S01",
-       "score": 0.632
-      }
-     ],
-     "notes": [
-      "framing detail -> medium to suit S06"
-     ]
-    }
-   }
-  },
-  {
-   "id": "s9",
-   "index": 9,
-   "time": {
-    "start_s": 23.0667,
-    "end_s": 24.4333
-   },
-   "narration": {
-    "text": "Rock back, tock.",
-    "word_range": [
-     79,
-     81
-    ]
-   },
-   "intent": "physical_action",
-   "visual_purpose": "Show the reverse motion of the anchor creating the tock.",
-   "subject": {
-    "main_id": "ANCHOR-PIECE",
-    "hero_object_id": "ESCAPEMENT-WHEEL"
-   },
-   "environment_id": "ESCAPEMENT-VIEW",
-   "object_events": [
-    {
-     "object_id": "ANCHOR-PIECE",
-     "event": "swing",
-     "motion_profile": "rigid",
-     "start_s": 0.0,
-     "duration_s": 1.3
-    }
-   ],
-   "shot": {
-    "recipe_id": "S03",
-    "framing": "close",
-    "distance_m": 0.2,
-    "composition": {
-     "primary_id": "ANCHOR-PIECE",
-     "secondary_ids": [
-      "ESCAPEMENT-WHEEL"
-     ],
-     "focal_point_norm": [
-      0.5,
-      0.5
-     ]
-    }
-   },
-   "camera": {
-    "purpose": "follow",
-    "mode": "pull-back",
-    "from": {
-     "framing": "detail",
-     "distance_m": 0.2,
-     "height": "eye",
-     "side": "front"
-    },
-    "to": {
-     "framing": "close",
-     "distance_m": 0.4,
-     "height": "eye",
-     "side": "front"
-    },
-    "duration_s": 1.36,
-    "ease": "easeOut",
-    "rationale": "Pull back to follow the anchor rocking back for the tock.",
-    "confidence": "designed"
-   },
-   "captions": {
-    "mode": "one_word",
-    "emphasis_word_indexes": [
-     81
-    ]
-   },
-   "audio_events": [
-    {
-     "track": "music",
-     "event": "rhythm resumes",
-     "time_s": 23.07,
-     "trigger": "beat_start"
     },
     {
      "track": "sfx",
-     "event": "loud crisp tock",
+     "event": "tock",
      "time_s": 23.873,
      "trigger": "word",
      "word_index": 81
     }
    ],
    "transition_in": {
-    "type": "blend_fly",
-    "reason": "continuity",
+    "type": "dissolve",
+    "reason": "new_place",
     "frames": 8
    },
    "validation": {
@@ -1909,47 +1641,43 @@
      "Q02",
      "Q03",
      "Q04",
-     "Q05",
      "Q06",
-     "Q07",
      "Q08",
      "Q09",
      "Q10"
     ],
     "must_see": [
-     "ANCHOR-PIECE",
-     "ESCAPEMENT-WHEEL"
+     "CLOCKMAKER",
+     "GRANDFATHER-CLOCK"
+    ],
+    "must_not": [
+     "missing face",
+     "wrong character"
     ]
    },
-   "rule_refs": [
-    "PHY-01",
-    "CAM-07"
-   ],
    "extensions": {
     "selector": {
-     "planner_recipe": "S06",
-     "chosen": "S03",
-     "decision": "replaced planner's S06 (0.71 vs S03 0.81)",
-     "why": "S03 for intent physical_action: assets 1.00 (hero object); intent 0.80 (candidate #2 for intent physical_action); action 0.90 (hero object acts) | weak: camera (camera purpose follow is not typical for S03)",
+     "planner_recipe": "S04",
+     "chosen": "S04",
+     "decision": "planner's choice kept (it is the best)",
+     "why": "S04 for intent emotional_reaction: intent 1.00 (candidate #1 for intent emotional_reaction); assets 1.00 (a character with a face action); action 1.00 (a face/reaction is planned)",
      "alternatives": [
       {
-       "recipe": "S06",
-       "score": 0.714
+       "recipe": "S02",
+       "score": 0.896
       },
       {
        "recipe": "S01",
-       "score": 0.632
+       "score": 0.662
       }
      ],
-     "notes": [
-      "camera purpose follow is unusual for S03: the planner's camera was left as written"
-     ]
+     "notes": []
     }
    }
   },
   {
-   "id": "s10",
-   "index": 10,
+   "id": "s9",
+   "index": 9,
    "time": {
     "start_s": 24.4333,
     "end_s": 29.8667
@@ -1962,10 +1690,10 @@
     ]
    },
    "intent": "explain_mechanism",
-   "visual_purpose": "Show the full pendulum swinging and regulating the gears. The individual tooth is not shown in this wider view.",
+   "visual_purpose": "Show the full pendulum swinging to explain how its length controls the timing.",
    "subject": {
     "main_id": "SWINGING-PENDULUM",
-    "hero_object_id": "GEAR-STACK"
+    "hero_object_id": "ESCAPEMENT-WHEEL"
    },
    "environment_id": "CLOCK-INTERIOR",
    "object_events": [
@@ -1974,17 +1702,18 @@
      "event": "swing",
      "motion_profile": "rigid",
      "start_s": 0.0,
-     "duration_s": 5.4
+     "duration_s": 5.44
     }
    ],
    "shot": {
     "recipe_id": "S03",
     "framing": "close",
-    "distance_m": 0.6,
+    "distance_m": 1.2,
     "composition": {
      "primary_id": "SWINGING-PENDULUM",
      "secondary_ids": [
-      "GEAR-STACK"
+      "ESCAPEMENT-WHEEL",
+      "ANCHOR-PIECE"
      ],
      "focal_point_norm": [
       0.5,
@@ -1993,23 +1722,23 @@
     }
    },
    "camera": {
-    "purpose": "reveal",
+    "purpose": "inspect",
     "mode": "crane-down",
+    "duration_s": 5.44,
+    "ease": "smooth",
     "from": {
      "framing": "medium",
-     "distance_m": 0.6,
+     "distance_m": 1.2,
      "height": "high",
      "side": "front"
     },
     "to": {
      "framing": "wide",
-     "distance_m": 1.0,
+     "distance_m": 1.2,
      "height": "eye",
      "side": "front"
     },
-    "duration_s": 5.44,
-    "ease": "smooth",
-    "rationale": "Crane down to reveal how the pendulum regulates the gears.",
+    "rationale": "Crane down to reveal the full length of the pendulum as its timing function is explained.",
     "confidence": "designed"
    },
    "captions": {
@@ -2018,29 +1747,25 @@
    "audio_events": [
     {
      "track": "music",
-     "event": "steady waltz tempo",
+     "event": "steady, patient rhythm",
      "time_s": 24.43,
      "trigger": "beat_start"
     },
     {
      "track": "sfx",
-     "event": "steady rhythmic swoosh",
-     "time_s": 24.66,
+     "event": "rhythmic ticking",
+     "time_s": 27.66,
      "trigger": "word",
-     "word_index": 83
+     "word_index": 92
     }
    ],
    "transition_in": {
     "type": "dissolve",
-    "reason": "scale_change",
+    "reason": "new_place",
     "frames": 8
    },
    "validation": {
-    "not_shown": [
-     "ESCAPEMENT-WHEEL"
-    ],
     "gates": [
-     "Q01",
      "Q02",
      "Q03",
      "Q04",
@@ -2053,39 +1778,38 @@
     ],
     "must_see": [
      "SWINGING-PENDULUM",
-     "GEAR-STACK"
+     "ESCAPEMENT-WHEEL",
+     "ANCHOR-PIECE"
+    ],
+    "must_not": [
+     "pendulum cut off at the bottom"
     ]
    },
-   "rule_refs": [
-    "WLD-06",
-    "CAM-04"
-   ],
    "extensions": {
     "selector": {
      "planner_recipe": "S07",
      "chosen": "S03",
      "decision": "replaced planner's S07 (unavailable: CAP-DIAGRAM-CARD)",
-     "why": "S03 for intent explain_mechanism: intent 1.00 (candidate #1 for intent explain_mechanism); assets 1.00 (hero object); action 0.90 (hero object acts) | weak: camera (camera purpose reveal is not typical for S03)",
+     "why": "S03 for intent explain_mechanism: intent 1.00 (candidate #1 for intent explain_mechanism); assets 1.00 (hero object); action 0.90 (hero object acts)",
      "alternatives": [
       {
-       "recipe": "S01",
-       "score": 0.672
+       "recipe": "S06",
+       "score": 0.696
       },
       {
-       "recipe": "S05",
-       "score": 0.672
+       "recipe": "S01",
+       "score": 0.62
       }
      ],
      "notes": [
-      "camera purpose reveal is unusual for S03: the planner's camera was left as written",
-      "framing medium -> close to suit S03"
+      "framing wide -> close to suit S03"
      ]
     }
    }
   },
   {
-   "id": "s11",
-   "index": 11,
+   "id": "s10",
+   "index": 10,
    "time": {
     "start_s": 29.8667,
     "end_s": 31.5667
@@ -2098,16 +1822,16 @@
     ]
    },
    "intent": "summarize_or_conclude",
-   "visual_purpose": "Remind the viewer of the spring's role as the power source.",
+   "visual_purpose": "Reiterate that the spring is the source of power.",
    "subject": {
-    "main_id": "MAINSPRING"
+    "main_id": "COILED-SPRING"
    },
    "environment_id": "CLOCK-INTERIOR",
    "object_events": [
     {
-     "object_id": "MAINSPRING",
-     "event": "bend",
-     "motion_profile": "elastic",
+     "object_id": "COILED-SPRING",
+     "event": "glow",
+     "motion_profile": "none",
      "start_s": 0.0,
      "duration_s": 1.7
     }
@@ -2115,9 +1839,9 @@
    "shot": {
     "recipe_id": "S01",
     "framing": "wide",
-    "distance_m": 0.5,
+    "distance_m": 0.3,
     "composition": {
-     "primary_id": "MAINSPRING",
+     "primary_id": "COILED-SPRING",
      "focal_point_norm": [
       0.5,
       0.5
@@ -2127,21 +1851,21 @@
    "camera": {
     "purpose": "emphasize",
     "mode": "push-in",
+    "duration_s": 1.7,
+    "ease": "easeIn",
     "from": {
      "framing": "close",
-     "distance_m": 0.5,
+     "distance_m": 0.3,
      "height": "eye",
      "side": "front"
     },
     "to": {
      "framing": "detail",
-     "distance_m": 0.3,
+     "distance_m": 0.2,
      "height": "eye",
      "side": "front"
     },
-    "duration_s": 1.7,
-    "ease": "easeOut",
-    "rationale": "Push in to emphasize the spring as the power source.",
+    "rationale": "Push in to emphasize the spring as the fundamental source of the clock's energy.",
     "confidence": "designed"
    },
    "captions": {
@@ -2150,49 +1874,44 @@
    "audio_events": [
     {
      "track": "music",
-     "event": "building harmonic chord",
+     "event": "warm chord swells",
      "time_s": 29.87,
      "trigger": "beat_start"
     },
     {
      "track": "sfx",
-     "event": "tight metallic creak",
+     "event": "tight spring creak",
      "time_s": 31.064,
      "trigger": "word",
      "word_index": 103
     }
    ],
    "transition_in": {
-    "type": "blend_fly",
-    "reason": "continuity",
-    "frames": 8
+    "type": "cut",
+    "reason": "emphasis"
    },
    "validation": {
     "gates": [
-     "Q01",
      "Q02",
      "Q03",
      "Q04",
-     "Q05",
-     "Q06",
      "Q07",
      "Q08",
      "Q09",
      "Q10"
     ],
     "must_see": [
-     "MAINSPRING"
+     "COILED-SPRING"
+    ],
+    "must_not": [
+     "spring missing"
     ]
    },
-   "rule_refs": [
-    "CAM-05",
-    "END-01"
-   ],
    "extensions": {
     "selector": {
      "planner_recipe": "S03",
      "chosen": "S01",
-     "decision": "replaced planner's S03 (unavailable: would be the third identical recipe in a row (CAM-10))",
+     "decision": "replaced planner's S03 (0.61 vs S01 0.87)",
      "why": "S01 for intent summarize_or_conclude: intent 1.00 (candidate #1 for intent summarize_or_conclude); assets 1.00 (environment with depth layers and a scale anchor); variety 1.00 (not used in the last beat) | weak: camera (camera purpose emphasize is not typical for S01)",
      "alternatives": [
       {
@@ -2200,8 +1919,8 @@
        "score": 0.762
       },
       {
-       "recipe": "S06",
-       "score": 0.578
+       "recipe": "S03",
+       "score": 0.607
       }
      ],
      "notes": [
@@ -2212,8 +1931,8 @@
    }
   },
   {
-   "id": "s12",
-   "index": 12,
+   "id": "s11",
+   "index": 11,
    "time": {
     "start_s": 31.5667,
     "end_s": 33.5667
@@ -2226,33 +1945,34 @@
     ]
    },
    "intent": "summarize_or_conclude",
-   "visual_purpose": "Return to the clockmaker and the whole clock, concluding the explanation. The pendulum is inside the clock and not shown directly.",
+   "visual_purpose": "End on the clockmaker proud of the clock's steady, patient rhythm. The pendulum is inside the clock and not pictured directly.",
    "subject": {
-    "main_id": "MECHANICAL-CLOCK",
+    "main_id": "CLOCKMAKER",
     "character_ids": [
      "CLOCKMAKER"
-    ]
+    ],
+    "hero_object_id": "GRANDFATHER-CLOCK"
    },
    "environment_id": "WORKSHOP",
    "character_actions": [
     {
      "character_id": "CLOCKMAKER",
-     "action": "looks at clock",
-     "pose": "hang",
-     "face": "smile",
+     "action": "facing camera",
+     "pose": "hip",
+     "face": "proud",
      "phase": "settle",
      "start_s": 0.0,
      "duration_s": 2.0
     }
    ],
    "shot": {
-    "recipe_id": "S01",
-    "framing": "wide",
-    "distance_m": 6,
+    "recipe_id": "S02",
+    "framing": "medium",
+    "distance_m": 6.0,
     "composition": {
      "primary_id": "CLOCKMAKER",
      "secondary_ids": [
-      "MECHANICAL-CLOCK"
+      "GRANDFATHER-CLOCK"
      ],
      "focal_point_norm": [
       0.5,
@@ -2263,21 +1983,21 @@
    "camera": {
     "purpose": "establish",
     "mode": "pull-back",
+    "duration_s": 2.0,
+    "ease": "easeOut",
     "from": {
      "framing": "medium",
-     "distance_m": 6,
+     "distance_m": 6.0,
      "height": "eye",
      "side": "front"
     },
     "to": {
      "framing": "wide",
-     "distance_m": 8,
+     "distance_m": 8.0,
      "height": "eye",
      "side": "front"
     },
-    "duration_s": 2.0,
-    "ease": "easeOut",
-    "rationale": "Pull back to return to the clockmaker and conclude the explanation.",
+    "rationale": "Pull back to re-establish the workshop and conclude the story with the proud clockmaker.",
     "confidence": "designed"
    },
    "captions": {
@@ -2286,13 +2006,13 @@
    "audio_events": [
     {
      "track": "music",
-     "event": "warm satisfying resolution",
+     "event": "resolute and satisfying finish",
      "time_s": 31.57,
      "trigger": "beat_start"
     },
     {
      "track": "sfx",
-     "event": "gentle continuous ticking",
+     "event": "steady clock ticking",
      "time_s": 33.123,
      "trigger": "word",
      "word_index": 108
@@ -2312,40 +2032,38 @@
      "Q02",
      "Q03",
      "Q04",
-     "Q05",
      "Q06",
-     "Q07",
      "Q08",
      "Q09",
      "Q10"
     ],
     "must_see": [
      "CLOCKMAKER",
-     "MECHANICAL-CLOCK"
+     "GRANDFATHER-CLOCK"
+    ],
+    "must_not": [
+     "clock missing",
+     "character cut off"
     ]
    },
-   "rule_refs": [
-    "END-01",
-    "CAM-11"
-   ],
    "extensions": {
     "selector": {
      "planner_recipe": "S02",
-     "chosen": "S01",
-     "decision": "replaced planner's S02 (0.76 vs S01 0.90)",
-     "why": "S01 for intent summarize_or_conclude: intent 1.00 (candidate #1 for intent summarize_or_conclude); assets 1.00 (environment with depth layers and a scale anchor); action 0.80 (the place carries the beat)",
+     "chosen": "S02",
+     "decision": "planner's choice kept as a justified alternative: 0.84 vs best S01 0.90",
+     "why": "S02 for intent summarize_or_conclude: assets 1.00 (1 character(s) in frame); intent 0.80 (candidate #2 for intent summarize_or_conclude); variety 1.00 (not used in the last beat) | weak: camera (camera purpose establish is not typical for S02)",
      "alternatives": [
+      {
+       "recipe": "S01",
+       "score": 0.899
+      },
       {
        "recipe": "S05",
        "score": 0.844
-      },
-      {
-       "recipe": "S02",
-       "score": 0.756
       }
      ],
      "notes": [
-      "framing medium -> wide to suit S01"
+      "camera purpose establish is unusual for S02: the planner's camera was left as written"
      ]
     }
    }

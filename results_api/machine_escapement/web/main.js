@@ -121,384 +121,324 @@ const cloudsInit = () => {
 const DECK = 0;
 const world = new THREE.Group(); scene.add(world);
 
-M.brass = toon({ color: '#d4af37' });
-M.steel = toon({ color: '#a0a5ab' });
-M.copper = toon({ color: '#b87333' });
-M.ruby = toon({ color: '#cc1133' });
-M.darkMetal = toon({ color: '#333333' });
-M.blueprint = toon({ color: '#1144aa' });
-M.blueSteel = toon({ color: '#2244aa' });
-M.darkBlueMetal = toon({ color: '#2a3b4c' });
-
 const ASSETS = {
-  'WORKSHOP': () => {
-    const ws = new THREE.Group();
-    // Room
-    add(tbox(8, 0.1, 6, 2), M.plank, 0, -0.05, 0, ws); // Floor
-    add(tbox(8, 4, 0.1, 2), M.plaster, 0, 2, -3, ws); // Back wall
-    add(tbox(0.1, 4, 6, 2), M.plaster, -4, 2, 0, ws); // Left wall
-    add(tbox(0.1, 4, 6, 2), M.plaster, 4, 2, 0, ws); // Right wall
-    add(tbox(8, 0.1, 6, 2), M.plaster2, 0, 4.05, 0, ws); // Ceiling
+  'grandfather clock': () => {
+    const g = new THREE.Group();
+    const wood = toon({color: '#4a2c1a'});
+    const woodDark = toon({color: '#2a1408'});
+    const brass = toon({color: '#d4af37'});
+    const white = toon({color: '#f8f8f8'});
+    const glass = toon({color: '#111115', transparent: true, opacity: 0.7});
+    const black = toon({color: '#111111'});
     
-    // Workbench
-    add(tbox(2.5, 0.1, 1.2, 1), M.wood, 0, 0.95, -1, ws); // Top
-    add(tbox(0.1, 0.9, 1.0, 1), M.wood, -1.1, 0.45, -1, ws); // Leg L
-    add(tbox(0.1, 0.9, 1.0, 1), M.wood, 1.1, 0.45, -1, ws); // Leg R
-    
-    // Stool
-    add(new THREE.CylinderGeometry(0.3, 0.3, 0.05, 16), M.wood, 0, 0.5, 0.5, ws);
-    add(new THREE.CylinderGeometry(0.05, 0.05, 0.5, 8), M.wood, 0, 0.25, 0.5, ws);
-    add(tbox(0.4, 0.05, 0.4, 1), M.wood, 0, 0.025, 0.5, ws);
-    
-    // Window on right
-    add(tbox(1.6, 1.6, 0.2, 1), M.wood, 3.9, 2, -1, ws); // Frame outer
-    add(tbox(1.4, 1.4, 0.1, 1), toon({color:'#aaddff', transparent: true, opacity: 0.5}), 3.9, 2, -1, ws); // Glass
-    add(tbox(1.4, 0.1, 0.15, 1), M.wood, 3.9, 2, -1, ws); // Mullion H
-    add(tbox(0.1, 1.4, 0.15, 1), M.wood, 3.9, 2, -1, ws); // Mullion V
-    // View outside window
-    add(tbox(0.1, 4, 4, 2), toon({color:'#4488cc'}), 4.5, 2, -1, ws); // Sky
-    add(tbox(0.1, 2, 4, 2), toon({color:'#336622'}), 4.4, 0.5, -1, ws); // Ground
-    
-    // Tools on left wall
-    add(tbox(1.5, 0.8, 0.1, 1), M.wood, -3.9, 2, -1, ws); // Tool board
-    for(let i=0; i<3; i++) {
-        // Hammers / wrenches
-        add(box(0.05, 0.3, 0.05), M.iron, -3.8, 2.1, -1.5 + i*0.3, ws);
-        add(box(0.15, 0.05, 0.05), M.iron, -3.8, 2.25, -1.5 + i*0.3, ws);
-    }
-    // Some gears hanging
-    add(new THREE.CylinderGeometry(0.1, 0.1, 0.05, 8), M.brass, -3.8, 1.8, -1.2, ws).rotation.z = Math.PI/2;
-    add(new THREE.CylinderGeometry(0.15, 0.15, 0.05, 8), M.brass, -3.8, 1.7, -0.7, ws).rotation.z = Math.PI/2;
-    
-    // Shelf on back wall
-    add(tbox(2, 0.05, 0.3, 1), M.wood, -2, 2.5, -2.9, ws);
-    add(new THREE.CylinderGeometry(0.1, 0.1, 0.2, 8), toon({color:'#ccddff'}), -2.5, 2.6, -2.8, ws);
-    add(new THREE.CylinderGeometry(0.08, 0.08, 0.15, 8), toon({color:'#ffddcc'}), -1.5, 2.575, -2.8, ws);
-    
-    // Blueprints on back wall
-    add(tbox(1.0, 0.8, 0.02, 1), M.blueprint, 2, 2.2, -2.95, ws);
-    add(tbox(0.8, 0.6, 0.02, 1), M.blueprint, 1.5, 1.5, -2.95, ws);
-    
-    // Clutter on desk
-    add(new THREE.CylinderGeometry(0.05, 0.05, 0.02, 8), M.brass, -0.8, 1.01, -0.8, ws);
-    add(new THREE.CylinderGeometry(0.03, 0.03, 0.02, 8), M.brass, -0.6, 1.01, -0.9, ws);
-    add(box(0.2, 0.02, 0.05), M.iron, 0.8, 1.01, -0.7, ws);
-    
-    // Lamp
-    add(new THREE.CylinderGeometry(0.3, 0.3, 0.2, 16), M.iron, 0, 3.9, -1, ws);
-    add(new THREE.SphereGeometry(0.15, 8, 8), toon({color:'#ffeedd'}), 0, 3.8, -1, ws);
-    
-    // Interior Light
-    const light = new THREE.PointLight('#ffeedd', 2.5, 12);
-    light.position.set(0, 3.5, -1);
-    ws.add(light);
-    
-    return ws;
-  },
-  'CLOCK-INTERIOR': () => {
-    const ci = new THREE.Group();
-    // Back plate - dark metal
-    add(tbox(1.2, 1.2, 0.05, 1), M.darkMetal, 0, 0.5, -0.2, ci);
-    // Side walls to enclose
-    add(tbox(0.05, 1.2, 0.4, 1), M.brass, -0.6, 0.5, 0, ci);
-    add(tbox(0.05, 1.2, 0.4, 1), M.brass, 0.6, 0.5, 0, ci);
-    
-    // Screws on backplate (Blue Steel)
-    for(let x of [-0.5, -0.2, 0.2, 0.5]) {
-        for(let y of [0.1, 0.5, 0.9]) {
-            const screw = add(new THREE.CylinderGeometry(0.02, 0.02, 0.02, 8), M.blueSteel, x, y, -0.17, ci);
-            screw.rotation.x = Math.PI/2;
-            add(box(0.04, 0.005, 0.005), M.darkMetal, x, y, -0.16, ci); // slot
-        }
-    }
-
-    // Background static gears (copper/brass mix)
-    const bgGear1 = add(new THREE.CylinderGeometry(0.2, 0.2, 0.02, 16), M.copper, -0.3, 0.7, -0.15, ci); bgGear1.rotation.x = Math.PI/2;
-    const bgGear2 = add(new THREE.CylinderGeometry(0.25, 0.25, 0.02, 16), M.brass, 0.3, 0.3, -0.15, ci); bgGear2.rotation.x = Math.PI/2;
-    
-    // Details behind mainspring
-    add(new THREE.CylinderGeometry(0.12, 0.12, 0.02, 32), M.copper, -0.3, 0.5, -0.18, ci).rotation.x = Math.PI/2;
-    for(let i=0; i<6; i++) {
-        const a = (i/6)*Math.PI*2;
-        add(new THREE.CylinderGeometry(0.01, 0.01, 0.02, 8), M.blueSteel, -0.3+Math.cos(a)*0.09, 0.5+Math.sin(a)*0.09, -0.17, ci).rotation.x = Math.PI/2;
-    }
-
-    // Standoffs (steel)
-    add(new THREE.CylinderGeometry(0.02, 0.02, 0.2, 8), M.steel, -0.4, 0.8, -0.1, ci).rotation.x = Math.PI/2;
-    add(new THREE.CylinderGeometry(0.02, 0.02, 0.2, 8), M.steel, 0.4, 0.8, -0.1, ci).rotation.x = Math.PI/2;
-    add(new THREE.CylinderGeometry(0.02, 0.02, 0.2, 8), M.steel, -0.4, 0.2, -0.1, ci).rotation.x = Math.PI/2;
-    add(new THREE.CylinderGeometry(0.02, 0.02, 0.2, 8), M.steel, 0.4, 0.2, -0.1, ci).rotation.x = Math.PI/2;
-    
-    // Bridge plate (brass)
-    add(tbox(0.8, 0.1, 0.02, 1), M.brass, 0, 0.8, 0.02, ci);
-    add(tbox(0.8, 0.1, 0.02, 1), M.brass, 0, 0.2, 0.02, ci);
-    
-    // Ruby bearings on bridge
-    add(new THREE.CylinderGeometry(0.015, 0.015, 0.01, 8), M.ruby, -0.2, 0.8, 0.03, ci).rotation.x = Math.PI/2;
-    add(new THREE.CylinderGeometry(0.015, 0.015, 0.01, 8), M.ruby, 0.2, 0.2, 0.03, ci).rotation.x = Math.PI/2;
-
-    // Add some blue screws to the bridge
-    add(new THREE.CylinderGeometry(0.015, 0.015, 0.01, 8), M.blueSteel, -0.35, 0.8, 0.03, ci).rotation.x = Math.PI/2;
-    add(new THREE.CylinderGeometry(0.015, 0.015, 0.01, 8), M.blueSteel, 0.35, 0.8, 0.03, ci).rotation.x = Math.PI/2;
-    add(new THREE.CylinderGeometry(0.015, 0.015, 0.01, 8), M.blueSteel, -0.35, 0.2, 0.03, ci).rotation.x = Math.PI/2;
-    add(new THREE.CylinderGeometry(0.015, 0.015, 0.01, 8), M.blueSteel, 0.35, 0.2, 0.03, ci).rotation.x = Math.PI/2;
-
-    // Local light to ensure visibility
-    const light = new THREE.PointLight('#ffffff', 0.8, 3);
-    light.position.set(0, 0.5, 0.5);
-    ci.add(light);
-
-    return ci;
-  },
-  'ESCAPEMENT-VIEW': () => {
-    const ev = new THREE.Group();
-    // Base plate - dark blue metal for high contrast
-    add(tbox(0.6, 0.6, 0.02, 1), M.darkBlueMetal, 0, 0, -0.1, ev);
-    
-    // Decorative engraving/recesses on base plate
-    add(new THREE.CylinderGeometry(0.15, 0.15, 0.022, 32), M.darkMetal, 0, 0, -0.1, ev).rotation.x = Math.PI/2;
-    add(new THREE.CylinderGeometry(0.1, 0.1, 0.022, 32), M.darkMetal, 0, 0.1, -0.1, ev).rotation.x = Math.PI/2;
-
-    // Background gears (copper, brass, steel)
-    const bg1 = add(new THREE.CylinderGeometry(0.12, 0.12, 0.01, 16), M.copper, -0.1, 0.1, -0.08, ev); bg1.rotation.x = Math.PI/2;
-    for(let i=0; i<12; i++) { add(box(0.02, 0.02, 0.01), M.copper, -0.1+Math.cos(i*Math.PI/6)*0.12, 0.1+Math.sin(i*Math.PI/6)*0.12, -0.08, ev).rotation.z = i*Math.PI/6; }
-    
-    const bg2 = add(new THREE.CylinderGeometry(0.1, 0.1, 0.01, 16), M.steel, 0.12, -0.05, -0.06, ev); bg2.rotation.x = Math.PI/2;
-    for(let i=0; i<10; i++) { add(box(0.02, 0.02, 0.01), M.steel, 0.12+Math.cos(i*Math.PI/5)*0.1, -0.05+Math.sin(i*Math.PI/5)*0.1, -0.06, ev).rotation.z = i*Math.PI/5; }
-
-    const bg3 = add(new THREE.CylinderGeometry(0.08, 0.08, 0.01, 16), M.brass, -0.12, -0.1, -0.07, ev); bg3.rotation.x = Math.PI/2;
-
-    // Mid-ground bridge plate (steel)
-    const bridge = add(tbox(0.35, 0.35, 0.01, 1), M.steel, 0, 0, -0.04, ev);
-    // Cutout in bridge to see background
-    add(new THREE.CylinderGeometry(0.08, 0.08, 0.012, 32), M.darkBlueMetal, 0, 0, -0.04, ev).rotation.x = Math.PI/2; 
-    
-    // Screws (Blue Steel and Copper) on the bridge
-    for(let x of [-0.12, 0.12]) {
-        for(let y of [-0.12, 0.12]) {
-            const mat = (x === y) ? M.blueSteel : M.copper;
-            const screw = add(new THREE.CylinderGeometry(0.012, 0.012, 0.01, 8), mat, x, y, -0.035, ev);
-            screw.rotation.x = Math.PI/2;
-            add(box(0.024, 0.004, 0.004), M.darkMetal, x, y, -0.03, ev); // slot
-        }
-    }
-
-    // Pivot holes/mounts with rubies
-    const p1 = add(new THREE.CylinderGeometry(0.025, 0.025, 0.02, 16), M.brass, 0, 0, -0.03, ev); p1.rotation.x = Math.PI/2; // Wheel pivot
-    add(new THREE.CylinderGeometry(0.015, 0.015, 0.022, 8), M.ruby, 0, 0, -0.03, ev).rotation.x = Math.PI/2;
-    
-    const p2 = add(new THREE.CylinderGeometry(0.02, 0.02, 0.02, 16), M.brass, 0, 0.10, -0.03, ev); p2.rotation.x = Math.PI/2; // Anchor pivot
-    add(new THREE.CylinderGeometry(0.012, 0.012, 0.022, 8), M.ruby, 0, 0.10, -0.03, ev).rotation.x = Math.PI/2;
-
-    // Some surface detail (raised copper bars)
-    add(tbox(0.25, 0.015, 0.01, 1), M.copper, 0, -0.1, -0.035, ev);
-    add(tbox(0.015, 0.25, 0.01, 1), M.copper, -0.1, 0, -0.035, ev);
-    
-    // Local light
-    const light = new THREE.PointLight('#ffffff', 1.0, 1.5);
-    light.position.set(0, 0, 0.2);
-    ev.add(light);
-
-    return ev;
-  },
-  'mechanical clock': () => {
-    const clock = new THREE.Group();
-    // Case
-    add(tbox(0.35, 0.4, 0.2, 1), M.wood, 0, 0.25, 0, clock);
     // Base
-    add(tbox(0.4, 0.05, 0.25, 1), M.wood, 0, 0.025, 0, clock);
-    // Top
-    add(tbox(0.4, 0.05, 0.25, 1), M.wood, 0, 0.475, 0, clock);
-    const topArch = add(new THREE.CylinderGeometry(0.15, 0.15, 0.2, 16), M.wood, 0, 0.5, 0, clock);
-    topArch.rotation.x = Math.PI/2;
+    add(tbox(0.8, 0.3, 0.5, 1), wood, 0, 0.15, 0, g);
+    add(tbox(0.7, 0.1, 0.45, 1), woodDark, 0, 0.35, 0, g);
+    
+    // Trunk
+    add(tbox(0.6, 1.2, 0.35, 1), wood, 0, 1.0, 0, g);
+    // Glass door
+    add(new THREE.PlaneGeometry(0.4, 0.9), glass, 0, 1.0, 0.176, g);
+    // Pendulum inside
+    add(new THREE.CylinderGeometry(0.01, 0.01, 0.8, 8), brass, 0, 1.0, 0.1, g);
+    add(new THREE.CylinderGeometry(0.08, 0.08, 0.02, 16), brass, 0, 0.6, 0.1, g).rotation.x = Math.PI/2;
+    
+    // Hood
+    add(tbox(0.7, 0.1, 0.45, 1), woodDark, 0, 1.65, 0, g);
+    add(tbox(0.65, 0.6, 0.4, 1), wood, 0, 2.0, 0, g);
+    add(tbox(0.75, 0.1, 0.45, 1), woodDark, 0, 2.35, 0, g);
     
     // Face
-    const face = add(new THREE.CylinderGeometry(0.12, 0.12, 0.02, 32), toon({color:'#ffffff'}), 0, 0.28, 0.1, clock);
+    const face = add(new THREE.CylinderGeometry(0.22, 0.22, 0.02, 16), white, 0, 2.0, 0.2, g);
     face.rotation.x = Math.PI/2;
-    // Hands (Gold)
-    add(box(0.01, 0.08, 0.01), M.brass, 0, 0.32, 0.12, clock); // Minute
-    add(box(0.06, 0.01, 0.01), M.brass, 0.03, 0.28, 0.12, clock); // Hour
-    // Center pin
-    add(new THREE.CylinderGeometry(0.015, 0.015, 0.01, 8), M.brass, 0, 0.28, 0.125, clock).rotation.x = Math.PI/2;
+    add(new THREE.CylinderGeometry(0.24, 0.24, 0.01, 16), brass, 0, 2.0, 0.19, g).rotation.x = Math.PI/2; // rim
     
-    return clock;
+    // Hands
+    add(box(0.02, 0.15, 0.01), black, 0, 2.05, 0.22, g); // minute
+    add(box(0.1, 0.02, 0.01), black, 0.04, 2.0, 0.22, g); // hour
+    add(new THREE.CylinderGeometry(0.02, 0.02, 0.02, 8), brass, 0, 2.0, 0.23, g).rotation.x = Math.PI/2;
+    
+    return g;
   },
-  'mainspring': () => {
-    const spring = new THREE.Group();
-    // Barrel (brass)
-    const barrel = add(new THREE.CylinderGeometry(0.1, 0.1, 0.04, 32), M.brass, 0, 0, 0, spring);
-    barrel.rotation.x = Math.PI/2;
-    // Barrel teeth (gear on the outside)
-    for(let i=0; i<30; i++) {
-        const a = (i/30)*Math.PI*2;
-        add(box(0.02, 0.04, 0.01), M.brass, Math.cos(a)*0.1, Math.sin(a)*0.1, 0, spring).rotation.z = a;
+  'coiled spring': () => {
+    const g = new THREE.Group();
+    const steel = toon({color: '#9ba4b5'});
+    for(let i=0; i<8; i++) {
+        const r = 0.03 + i * 0.015;
+        add(new THREE.TorusGeometry(r, 0.004, 8, 32, Math.PI * 1.8), steel, 0, 0, 0, g);
     }
-    // Inner dark area
-    const inside = add(new THREE.CylinderGeometry(0.095, 0.095, 0.041, 32), M.darkMetal, 0, 0, 0, spring);
-    inside.rotation.x = Math.PI/2;
-    // Center arbor (steel)
-    add(new THREE.CylinderGeometry(0.02, 0.02, 0.05, 16), M.steel, 0, 0, 0, spring).rotation.x = Math.PI/2;
-    add(new THREE.CylinderGeometry(0.01, 0.01, 0.052, 8), M.ruby, 0, 0, 0, spring).rotation.x = Math.PI/2;
-    // Coiled band
-    for(let i=0; i<120; i++) {
-        const a = i * 0.2;
-        const r = 0.025 + i * 0.0005;
-        add(box(0.005, 0.04, 0.015), M.steel, Math.cos(a)*r, Math.sin(a)*r, 0, spring).rotation.z = a;
-    }
-    return spring;
+    // center arbor
+    add(new THREE.CylinderGeometry(0.02, 0.02, 0.1, 8), steel, 0, 0, 0, g).rotation.x = Math.PI/2;
+    return g;
   },
-  'gear stack': () => {
-    const gears = new THREE.Group();
-    // Gear 1 (large)
-    const g1 = add(new THREE.CylinderGeometry(0.15, 0.15, 0.02, 16), M.brass, 0, 0, 0, gears); g1.rotation.x = Math.PI/2;
-    for(let i=0; i<16; i++) { const a = (i/16)*Math.PI*2; add(box(0.04, 0.04, 0.02), M.brass, Math.cos(a)*0.15, Math.sin(a)*0.15, 0, gears).rotation.z = a; }
-    // Cutouts for Gear 1
-    for(let i=0; i<4; i++) {
-        const a = (i/4)*Math.PI*2;
-        const hole = add(new THREE.CylinderGeometry(0.04, 0.04, 0.022, 16), M.darkMetal, Math.cos(a)*0.08, Math.sin(a)*0.08, 0, gears);
-        hole.rotation.x = Math.PI/2;
+  'stack of gears': () => {
+    const g = new THREE.Group();
+    const brass = toon({color: '#c59b27'});
+    const steel = toon({color: '#9ba4b5'});
+    
+    // Big gear (spoked for detail)
+    const g1 = new THREE.Group(); g.add(g1);
+    add(new THREE.TorusGeometry(0.16, 0.02, 8, 24), brass, 0, 0, 0, g1).rotation.x = Math.PI/2; // rim
+    add(new THREE.CylinderGeometry(0.04, 0.04, 0.025, 12), brass, 0, 0, 0, g1); // hub
+    for(let i=0; i<5; i++) { // 5 spokes
+        const a = i * Math.PI * 2 / 5;
+        add(box(0.12, 0.015, 0.03), brass, Math.cos(a)*0.1, 0, Math.sin(a)*0.1, g1).rotation.y = -a;
     }
-    // Hub 1
-    add(new THREE.CylinderGeometry(0.03, 0.03, 0.025, 16), M.steel, 0, 0, 0, gears).rotation.x = Math.PI/2;
-
-    // Gear 2 (small)
-    const g2 = add(new THREE.CylinderGeometry(0.1, 0.1, 0.02, 16), M.brass, 0, 0, 0.05, gears); g2.rotation.x = Math.PI/2;
-    for(let i=0; i<12; i++) { const a = (i/12)*Math.PI*2; add(box(0.03, 0.03, 0.02), M.brass, Math.cos(a)*0.1, Math.sin(a)*0.1, 0.05, gears).rotation.z = a; }
-    // Cutouts for Gear 2
-    for(let i=0; i<3; i++) {
-        const a = (i/3)*Math.PI*2;
-        const hole = add(new THREE.CylinderGeometry(0.03, 0.03, 0.022, 16), M.darkMetal, Math.cos(a)*0.05, Math.sin(a)*0.05, 0.05, gears);
-        hole.rotation.x = Math.PI/2;
+    for(let i=0; i<24; i++) {
+        const a = i * Math.PI / 12;
+        add(box(0.03, 0.02, 0.03), brass, Math.cos(a)*0.18, 0, Math.sin(a)*0.18, g1).rotation.y = -a;
     }
-    // Hub 2
-    add(new THREE.CylinderGeometry(0.02, 0.02, 0.025, 16), M.steel, 0, 0, 0.05, gears).rotation.x = Math.PI/2;
-
-    return gears;
+    
+    // Small gear (solid with indent)
+    const g2 = new THREE.Group(); g.add(g2);
+    g2.position.y = 0.03;
+    add(new THREE.CylinderGeometry(0.08, 0.08, 0.04, 12), brass, 0, 0, 0, g2);
+    add(new THREE.CylinderGeometry(0.06, 0.06, 0.042, 12), toon({color: '#a88015'}), 0, 0, 0, g2); // indent
+    for(let i=0; i<12; i++) {
+        const a = i * Math.PI / 6;
+        add(box(0.02, 0.04, 0.02), brass, Math.cos(a)*0.09, 0, Math.sin(a)*0.09, g2).rotation.y = -a;
+    }
+    
+    // shaft
+    add(new THREE.CylinderGeometry(0.02, 0.02, 0.15, 8), steel, 0, 0, 0, g);
+    return g;
   },
   'escapement wheel': () => {
-    const esc = new THREE.Group();
-    // Rim (Brass)
-    const rim = add(new THREE.TorusGeometry(0.065, 0.01, 8, 32), M.brass, 0, 0, 0, esc);
-    
-    for(let i=0; i<15; i++) {
-        const a = (i/15)*Math.PI*2;
-        const tooth = add(box(0.03, 0.008, 0.015), M.brass, Math.cos(a)*0.075, Math.sin(a)*0.075, 0, esc);
-        tooth.rotation.z = a + Math.PI/4;
-        // Steel tip
-        const tip = add(box(0.01, 0.009, 0.016), M.steel, Math.cos(a)*0.085, Math.sin(a)*0.085, 0, esc);
-        tip.rotation.z = a + Math.PI/4;
+    const g = new THREE.Group();
+    const brass = toon({color: '#d4af37'});
+    const darkBrass = toon({color: '#8a6b1c'});
+    const steel = toon({color: '#9ba4b5'});
+    const w = add(new THREE.CylinderGeometry(0.08, 0.08, 0.015, 16), brass, 0, 0, 0, g);
+    // Holes
+    for(let i=0; i<3; i++) {
+        const a = i * Math.PI * 2 / 3;
+        add(new THREE.CylinderGeometry(0.025, 0.025, 0.017, 12), darkBrass, Math.cos(a)*0.04, 0, Math.sin(a)*0.04, w);
     }
-    // Spokes (Steel to break up the yellow)
-    for(let i=0; i<5; i++) {
-        const a = (i/5)*Math.PI*2;
-        const spoke = add(box(0.06, 0.008, 0.01), M.steel, Math.cos(a)*0.035, Math.sin(a)*0.035, 0, esc);
-        spoke.rotation.z = a;
+    for(let i=0; i<16; i++) {
+        const a = i * Math.PI / 8;
+        const t = add(new THREE.ConeGeometry(0.015, 0.04, 4), brass, Math.cos(a)*0.09, 0, Math.sin(a)*0.09, w);
+        t.rotation.x = Math.PI/2;
+        t.rotation.z = -a - Math.PI/4;
     }
-    // Hub
-    add(new THREE.CylinderGeometry(0.015, 0.015, 0.02, 16), M.brass, 0, 0, 0, esc).rotation.x = Math.PI/2;
-    add(new THREE.CylinderGeometry(0.008, 0.008, 0.022, 16), M.steel, 0, 0, 0, esc).rotation.x = Math.PI/2;
-    add(new THREE.CylinderGeometry(0.004, 0.004, 0.024, 8), M.ruby, 0, 0, 0, esc).rotation.x = Math.PI/2;
-    
-    return esc;
+    add(new THREE.CylinderGeometry(0.015, 0.015, 0.06, 8), steel, 0, 0, 0, g);
+    return g;
   },
   'anchor piece': () => {
-    const anchor = new THREE.Group();
-    // Pivot hub
-    add(new THREE.CylinderGeometry(0.015, 0.015, 0.02, 16), M.steel, 0, 0, 0, anchor).rotation.x = Math.PI/2;
-    add(new THREE.CylinderGeometry(0.008, 0.008, 0.022, 16), M.brass, 0, 0, 0, anchor).rotation.x = Math.PI/2;
-    add(new THREE.CylinderGeometry(0.004, 0.004, 0.024, 8), M.ruby, 0, 0, 0, anchor).rotation.x = Math.PI/2;
-    
-    // Body
-    const curve = add(new THREE.TorusGeometry(0.08, 0.01, 8, 16, Math.PI), M.steel, 0, -0.02, 0, anchor);
-    curve.rotation.z = Math.PI; 
-    
-    // Arms connecting pivot to curve
-    const armL = add(box(0.08, 0.01, 0.01), M.steel, -0.035, -0.01, 0, anchor);
-    armL.rotation.z = -Math.PI/6;
-    const armR = add(box(0.08, 0.01, 0.01), M.steel, 0.035, -0.01, 0, anchor);
-    armR.rotation.z = Math.PI/6;
-
-    // Brass weights on the arms for color
-    const wL = add(new THREE.CylinderGeometry(0.015, 0.015, 0.015, 16), M.brass, -0.05, -0.01, 0, anchor);
-    wL.rotation.x = Math.PI/2;
-    const wR = add(new THREE.CylinderGeometry(0.015, 0.015, 0.015, 16), M.brass, 0.05, -0.01, 0, anchor);
-    wR.rotation.x = Math.PI/2;
-
-    // Hooks
-    const lHook = add(box(0.015, 0.03, 0.015), M.steel, -0.08, -0.03, 0, anchor);
-    lHook.rotation.z = -Math.PI/8;
-    const lPallet = add(box(0.025, 0.012, 0.016), M.ruby, -0.085, -0.045, 0, anchor);
-    lPallet.rotation.z = -Math.PI/8;
-    // Screw holding pallet
-    const lScrew = add(new THREE.CylinderGeometry(0.004, 0.004, 0.018, 8), M.blueSteel, -0.08, -0.035, 0, anchor);
-    lScrew.rotation.x = Math.PI/2;
-
-    const rHook = add(box(0.015, 0.03, 0.015), M.steel, 0.08, -0.03, 0, anchor);
-    rHook.rotation.z = Math.PI/8;
-    const rPallet = add(box(0.025, 0.012, 0.016), M.ruby, 0.085, -0.045, 0, anchor);
-    rPallet.rotation.z = Math.PI/8;
-    // Screw holding pallet
-    const rScrew = add(new THREE.CylinderGeometry(0.004, 0.004, 0.018, 8), M.blueSteel, 0.08, -0.035, 0, anchor);
-    rScrew.rotation.x = Math.PI/2;
-
-    return anchor;
+    const g = new THREE.Group();
+    const silver = toon({color: '#d0d5da'});
+    // curved top
+    add(new THREE.TorusGeometry(0.1, 0.015, 8, 16, Math.PI), silver, 0, 0, 0, g);
+    // pivot shaft
+    add(new THREE.CylinderGeometry(0.015, 0.015, 0.08, 8), silver, 0, 0, 0, g).rotation.x = Math.PI/2;
+    // pallets
+    add(box(0.02, 0.04, 0.02), silver, -0.1, -0.02, 0, g).rotation.z = Math.PI/4;
+    add(box(0.02, 0.04, 0.02), silver, 0.1, -0.02, 0, g).rotation.z = -Math.PI/4;
+    // rod connecting to pendulum
+    add(box(0.01, 0.15, 0.01), silver, 0, -0.07, 0, g);
+    return g;
   },
   'swinging pendulum': () => {
-    const pen = new THREE.Group();
-    // Pivot hole extends from -0.01 to +0.01
-    add(new THREE.CylinderGeometry(0.01, 0.01, 0.02, 8), toon({color:'#000000'}), 0, 0, 0, pen).rotation.x = Math.PI/2;
-    // Rod (0.43m long, centered at -0.215m)
-    add(box(0.015, 0.43, 0.015), M.brass, 0, -0.215, 0, pen);
-    // Bob (0.12m diameter, centered at -0.43m) -> extends down to -0.49m
-    // Total height = +0.01 to -0.49 = 0.50m
-    const bob = add(new THREE.CylinderGeometry(0.06, 0.06, 0.025, 32), M.brass, 0, -0.43, 0, pen); 
-    bob.rotation.x = Math.PI/2;
-    return pen;
+    const g = new THREE.Group();
+    const brass = toon({color: '#c59b27'});
+    add(new THREE.CylinderGeometry(0.03, 0.03, 1.0, 8), brass, 0, -0.5, 0, g);
+    add(new THREE.CylinderGeometry(0.08, 0.08, 0.03, 16), brass, 0, -0.9, 0, g).rotation.x = Math.PI/2;
+    // pivot
+    add(new THREE.CylinderGeometry(0.02, 0.02, 0.04, 8), brass, 0, 0, 0, g).rotation.x = Math.PI/2;
+    return g;
+  },
+  'WORKSHOP': () => {
+    const g = new THREE.Group();
+    // floor (wood planks)
+    add(tbox(8, 0.1, 6, 2), M.plank, 0, -0.05, 0, g);
+    // back wall
+    add(tbox(8, 4, 0.2, 2), M.plaster, 0, 2, -3, g);
+    // left wall
+    add(tbox(0.2, 4, 6, 2), M.plaster2, -4, 2, 0, g);
+    // right wall
+    add(tbox(0.2, 4, 6, 2), M.plaster2, 4, 2, 0, g);
+    
+    // trim
+    add(tbox(8, 0.2, 0.3, 2), M.wood, 0, 0.1, -2.9, g);
+    
+    // workbench on left (larger)
+    add(tbox(3.5, 0.1, 1.2, 1), M.wood, -2.0, 0.9, -2, g);
+    add(tbox(0.1, 0.9, 0.8, 1), M.wood, -3.6, 0.45, -2, g);
+    add(tbox(0.1, 0.9, 0.8, 1), M.wood, -0.4, 0.45, -2, g);
+    
+    // workbench dressing
+    const brass = toon({color: '#c59b27'});
+    const steel = toon({color: '#9ba4b5'});
+    add(new THREE.CylinderGeometry(0.15, 0.15, 0.02, 12), brass, -1.5, 0.96, -1.8, g);
+    add(new THREE.CylinderGeometry(0.08, 0.08, 0.05, 12), brass, -1.8, 0.96, -1.6, g);
+    add(new THREE.CylinderGeometry(0.05, 0.05, 0.1, 12), steel, -2.2, 0.96, -1.7, g);
+    add(box(0.8, 0.01, 0.5), toon({color: '#e0e8e0'}), -2.8, 0.96, -1.9, g).rotation.y = 0.2; // paper
+    add(box(0.4, 0.01, 0.3), toon({color: '#e0e8e0'}), -2.5, 0.97, -1.7, g).rotation.y = -0.1; // paper
+    
+    // desk lamp
+    add(new THREE.CylinderGeometry(0.1, 0.1, 0.02, 12), M.iron, -3.2, 0.96, -2.2, g);
+    add(new THREE.CylinderGeometry(0.02, 0.02, 0.4, 8), M.iron, -3.2, 1.15, -2.2, g);
+    add(new THREE.CylinderGeometry(0.1, 0.05, 0.15, 12), M.iron, -3.0, 1.3, -2.2, g).rotation.z = Math.PI/4;
+    add(new THREE.CylinderGeometry(0.08, 0.08, 0.02, 12), toon({color: '#ffddaa'}), -2.95, 1.25, -2.2, g).rotation.z = Math.PI/4; // bulb
+    
+    // Stool
+    add(new THREE.CylinderGeometry(0.3, 0.3, 0.05, 12), M.wood, -1.5, 0.5, -1.0, g);
+    add(new THREE.CylinderGeometry(0.04, 0.04, 0.5, 8), M.wood, -1.5, 0.25, -1.0, g);
+    add(new THREE.CylinderGeometry(0.15, 0.15, 0.05, 12), M.iron, -1.5, 0.05, -1.0, g);
+
+    // Shelves on back wall left
+    add(tbox(2.0, 0.05, 0.4, 1), M.wood, -2.5, 2.0, -2.8, g);
+    add(tbox(2.0, 0.05, 0.4, 1), M.wood, -2.5, 2.5, -2.8, g);
+    // Shelf dressing
+    add(box(0.4, 0.3, 0.3), M.wood, -3.0, 2.15, -2.8, g);
+    add(box(0.3, 0.2, 0.3), M.wood, -2.5, 2.1, -2.8, g);
+    add(new THREE.CylinderGeometry(0.15, 0.15, 0.2, 12), brass, -2.0, 2.1, -2.8, g);
+    add(new THREE.CylinderGeometry(0.1, 0.1, 0.25, 12), steel, -2.8, 2.625, -2.8, g);
+    add(new THREE.CylinderGeometry(0.12, 0.12, 0.15, 12), brass, -2.3, 2.575, -2.8, g);
+
+    // Blueprints on walls
+    const paper = toon({color: '#d0d8d0'});
+    const bp1 = add(new THREE.PlaneGeometry(1.5, 1.0), paper, -3.8, 2.0, -1.5, g);
+    bp1.rotation.y = Math.PI/2;
+    add(new THREE.PlaneGeometry(1.2, 1.5), paper, -1.0, 2.2, -2.8, g);
+
+    // Rug (larger)
+    add(new THREE.PlaneGeometry(5, 3), toon({color: '#8a3a3a'}), -0.5, 0.01, -1.0, g).rotation.x = -Math.PI/2;
+
+    // grandfather clock in middle
+    const clock = ASSETS['grandfather clock']();
+    clock.position.set(0, 0, -2.5);
+    g.add(clock);
+    
+    // tools on right wall
+    add(tbox(2.0, 1.5, 0.05, 1), M.wood, 2.5, 1.8, -2.9, g); // tool board
+    // hammer
+    add(box(0.03, 0.4, 0.03), M.wood, 2.2, 1.8, -2.85, g);
+    add(box(0.15, 0.08, 0.08), M.iron, 2.2, 2.0, -2.85, g);
+    // wrench
+    add(box(0.04, 0.3, 0.02), M.iron, 2.5, 1.7, -2.85, g);
+    add(new THREE.CylinderGeometry(0.06, 0.06, 0.02, 8), M.iron, 2.5, 1.9, -2.85, g).rotation.x = Math.PI/2;
+    // saw
+    add(box(0.05, 0.15, 0.02), M.wood, 2.8, 1.6, -2.85, g);
+    add(box(0.1, 0.3, 0.01), M.iron, 2.8, 1.85, -2.85, g);
+    // extra tools
+    add(box(0.02, 0.25, 0.02), M.iron, 1.9, 1.7, -2.85, g);
+    add(box(0.02, 0.25, 0.02), M.iron, 2.0, 1.7, -2.85, g);
+    add(box(0.02, 0.25, 0.02), M.iron, 3.1, 1.7, -2.85, g);
+    
+    // window on back wall right (larger)
+    add(tbox(1.5, 2.0, 0.25, 1), M.window, 2.5, 1.8, -3, g);
+    add(tbox(1.6, 2.1, 0.3, 1), M.wood, 2.5, 1.8, -3, g); // frame
+    
+    // Boxes on floor right
+    add(tbox(0.8, 0.6, 0.6, 1), M.wood, 2.5, 0.3, -2.0, g);
+    add(tbox(0.6, 0.4, 0.5, 1), M.wood, 3.2, 0.2, -1.8, g);
+    
+    return g;
+  },
+  'CLOCK-INTERIOR': () => {
+    const g = new THREE.Group();
+    const brass = toon({color: '#c59b27'});
+    const darkBrass = toon({color: '#8a6b1c'});
+    const ruby = toon({color: '#d32f2f'});
+    const blueSteel = toon({color: '#2c3e50'});
+    
+    const plateTex = canvasTex(512, 512, (ctx, w, h) => {
+      ctx.fillStyle = '#5a7b7b'; // lighter teal
+      ctx.fillRect(0, 0, w, h);
+      for(let i=0; i<2000; i++) {
+        ctx.fillStyle = `hsla(180, 20%, ${40 + rnd()*30}%, 0.15)`;
+        ctx.fillRect(rnd()*w, rnd()*h, 15+rnd()*30, 2+rnd()*4);
+      }
+      ctx.strokeStyle = '#4a6b6b';
+      ctx.lineWidth = 3;
+      for(let r=40; r<400; r+=30) {
+        ctx.beginPath(); ctx.arc(w/2, h/2, r, 0, Math.PI*2); ctx.stroke();
+      }
+    }, 2, 2);
+    const plateMat = toon({map: plateTex});
+    
+    // Backplate
+    add(tbox(2.0, 2.0, 0.05, 1), plateMat, 0, 0.3, -0.2, g);
+    
+    // Background decorative gears (darker, behind the main mechanism)
+    const bgGear1 = add(new THREE.CylinderGeometry(0.3, 0.3, 0.02, 24), darkBrass, -0.4, 0.8, -0.15, g);
+    bgGear1.rotation.x = Math.PI/2;
+    const bgGear2 = add(new THREE.CylinderGeometry(0.25, 0.25, 0.02, 24), darkBrass, 0.5, 0.1, -0.15, g);
+    bgGear2.rotation.x = Math.PI/2;
+    
+    // Front frame (open cage)
+    const frame = new THREE.Group();
+    add(tbox(1.8, 0.1, 0.05, 1), darkBrass, 0, -0.55, 0.15, frame);
+    add(tbox(1.8, 0.1, 0.05, 1), darkBrass, 0, 1.15, 0.15, frame);
+    add(tbox(0.1, 1.8, 0.05, 1), darkBrass, -0.85, 0.3, 0.15, frame);
+    add(tbox(0.1, 1.8, 0.05, 1), darkBrass, 0.85, 0.3, 0.15, frame);
+    g.add(frame);
+    
+    // Pillars connecting backplate and front frame
+    for(let x of [-0.8, -0.4, 0.4, 0.8]) {
+      for(let y of [-0.5, 0.3, 1.1]) {
+        add(new THREE.CylinderGeometry(0.04, 0.04, 0.35, 8), brass, x, y, -0.025, g).rotation.x = Math.PI/2;
+        // Screws on front
+        add(new THREE.CylinderGeometry(0.02, 0.02, 0.02, 8), blueSteel, x, y, 0.18, g).rotation.x = Math.PI/2;
+      }
+    }
+    
+    // Bearings & extra screws on backplate for detail
+    const addBearing = (x, y) => {
+        add(new THREE.CylinderGeometry(0.05, 0.05, 0.02, 12), brass, x, y, -0.17, g).rotation.x = Math.PI/2;
+        add(new THREE.CylinderGeometry(0.025, 0.025, 0.025, 12), ruby, x, y, -0.17, g).rotation.x = Math.PI/2;
+    };
+    addBearing(-0.35, 0.5); // gears
+    addBearing(0, 0.5); // spring
+    addBearing(0.35, 0.4); // escapement
+    addBearing(0.35, 0.52); // anchor/pendulum
+    
+    // Random extra screws for detail
+    for(let i=0; i<15; i++) {
+        const x = (rnd() - 0.5) * 1.5;
+        const y = (rnd() - 0.5) * 1.5 + 0.3;
+        add(new THREE.CylinderGeometry(0.015, 0.015, 0.02, 8), blueSteel, x, y, -0.17, g).rotation.x = Math.PI/2;
+    }
+    
+    // Extra details near the stack of gears for s3 close-up
+    for(let i=0; i<5; i++) {
+        const a = i * Math.PI * 2 / 5;
+        add(new THREE.CylinderGeometry(0.01, 0.01, 0.02, 8), blueSteel, -0.35 + Math.cos(a)*0.25, 0.5 + Math.sin(a)*0.25, -0.17, g).rotation.x = Math.PI/2;
+    }
+    
+    const gears = ASSETS['stack of gears'](); gears.position.set(-0.35, 0.5, 0); g.add(gears);
+    const spring = ASSETS['coiled spring'](); spring.position.set(0, 0.5, 0); g.add(spring);
+    const escapement = ASSETS['escapement wheel'](); escapement.position.set(0.35, 0.4, 0); g.add(escapement);
+    const anchor = ASSETS['anchor piece'](); anchor.position.set(0.35, 0.52, 0.02); g.add(anchor);
+    const pendulum = ASSETS['swinging pendulum'](); pendulum.position.set(0.35, 0.52, 0.04); g.add(pendulum);
+    
+    g.userData = { gears, spring, escapement, anchor, pendulum, bgGear1, bgGear2 };
+    return g;
   }
 };
 
 const waterU = { t: { value: 0 }, deep: { value: new THREE.Color('#2f6f8f') }, shal: { value: new THREE.Color('#5fa8bf') }, glint: { value: new THREE.Color('#e9f6ff') } };
 const clouds = cloudsInit();
 
-const ws = ASSETS['WORKSHOP'](); world.add(ws); ws.position.set(0, 0, 0);
-const ci = ASSETS['CLOCK-INTERIOR'](); world.add(ci); ci.position.set(10, 0, 0);
-const ev = ASSETS['ESCAPEMENT-VIEW'](); world.add(ev); ev.position.set(20, 0, 0);
-
-const parts = {};
-parts.clock = ASSETS['mechanical clock'](); world.add(parts.clock); parts.clock.position.set(0, 1.0, -1);
-parts.spring = ASSETS['mainspring'](); world.add(parts.spring); parts.spring.position.set(9.7, 0.5, 0);
-parts.gears = ASSETS['gear stack'](); world.add(parts.gears); parts.gears.position.set(10, 0.5, 0);
-parts.pendulum1 = ASSETS['swinging pendulum'](); world.add(parts.pendulum1); parts.pendulum1.position.set(10.3, 0.8, 0);
-
-parts.escWheel = ASSETS['escapement wheel'](); world.add(parts.escWheel); parts.escWheel.position.set(20, 0, 0);
-parts.anchor = ASSETS['anchor piece'](); world.add(parts.anchor); parts.anchor.position.set(20, 0.10, 0);
-parts.pendulum2 = ASSETS['swinging pendulum'](); world.add(parts.pendulum2); parts.pendulum2.position.set(20, 0.10, 0);
+const workshop = ASSETS['WORKSHOP'](); world.add(workshop);
+const interior = ASSETS['CLOCK-INTERIOR'](); world.add(interior);
 
 function worldState(S, f) {
-  const t = f / 30;
-  let speed = S.id === 's3' ? 10 : 1;
-  let tickT = t * 2 * speed;
-  let tickPhase = tickT % 1;
-  let tickCount = Math.floor(tickT);
-
-  let wheelAngle = -(tickCount + (tickPhase * tickPhase * (3 - 2 * tickPhase))) * (Math.PI * 2 / 15);
-  let swingAngle = Math.sin(tickT * Math.PI) * 0.15;
-
-  parts.escWheel.rotation.z = wheelAngle;
-  parts.anchor.rotation.z = swingAngle;
-  parts.pendulum1.rotation.z = swingAngle;
-  parts.pendulum2.rotation.z = swingAngle;
-
-  parts.gears.rotation.z = -wheelAngle * 0.5;
-  parts.spring.rotation.z = -wheelAngle * 0.1;
-
-  if (S.id === 's11') {
-      parts.spring.scale.setScalar(1 + Math.sin(t * 10) * 0.05);
-  } else {
-      parts.spring.scale.setScalar(1);
+  workshop.visible = S.env === 'WORKSHOP';
+  interior.visible = S.env === 'CLOCK-INTERIOR';
+  
+  if (S.env === 'CLOCK-INTERIOR') {
+    const { gears, spring, escapement, anchor, pendulum, bgGear1, bgGear2 } = interior.userData;
+    gears.rotation.z = S.gearsZ || 0;
+    spring.rotation.z = S.springZ || 0;
+    escapement.rotation.z = S.escZ || 0;
+    anchor.rotation.z = S.anchorZ || 0;
+    pendulum.rotation.z = S.pendZ || 0;
+    bgGear1.rotation.y = f * 0.005;
+    bgGear2.rotation.y = -f * 0.003;
   }
-
-  waterU.t.value = t;
+  
+  waterU.t.value = f / 30;
 }
 
 // ---------- cards ----------

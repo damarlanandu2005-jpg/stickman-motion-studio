@@ -561,6 +561,7 @@ export const fxClock = (p, t, turns = 1) => {
   p.dot(cx, cy, 16); g.restore();
 };
 
+// Add the clockmaker outfit
 Object.assign(OUTFITS, {
-  clockmaker: { tunic: "#4a4f58", skin: "#f5c9a0", cap: "#6a6a70", hair: "#ffffff", beard: "#ffffff", moustache: "#ffffff" }
+  clockmaker: { tunic: "#4a4f58", skin: "#f5c9a0", cap: "#6a6a70", beard: "#a0a0a0", hair: "#a0a0a0" }
 });
