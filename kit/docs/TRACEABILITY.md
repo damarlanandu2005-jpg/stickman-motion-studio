@@ -19,7 +19,7 @@ No row has render_code_reads_rule = true: nothing in the renderer reads rules.js
 ## Four levels of maturity (kept separate on purpose)
 
 1. **capability_exists**: code exists that can do it when something tells it to (kit/engine, kit/tools, or only a project copy: see state)
-2. **automatically_selected**: a planner or selector chooses it from the narration, the beat plan or the rules without a person or Gemini writing the choice by hand (nothing does yet; Step 2B adds the first selector)
+2. **automatically_selected**: a planner or selector chooses it from the narration, the beat plan or the rules without a person or Gemini writing the choice by hand (Step 2B: kit/tools/shot_selector.py does this for the shot recipe only, in the planning stage; camera moves, materials and acting are still written by Gemini)
 3. **consumed_by_renderer**: the render code reads rule or plan DATA (rules.json, beats.json) and acts on it; today it only reads story.js written per project
 4. **tested**: production_test status: in a real video, measured (not a claim that the system knows when to use it)
 
@@ -32,6 +32,9 @@ No row has render_code_reads_rule = true: nothing in the renderer reads rules.js
 | CAP-FLY-THROUGH | scene change where the camera passes through geometry into the next place on one continuous 3D path | NO | - | no | no | none | not implemented anywhere; the validator warns if a plan asks for transition type fly_through |
 | CAP-HARD-CUT | hard cut between scenes | yes | kit/engine | no | no | in_range | default behaviour at a shot boundary |
 | CAP-CAMERA-KICK | impact camera kick | yes | kit/engine | no | no | in_range | frames listed by hand in story.js KICKS |
+| CAP-SHOT-SELECTOR | chooses the shot recipe per beat from intent, assets, action, continuity, variety, camera purpose and renderer capabilities, and records why | yes | kit/tools (planning stage) | yes | no | partial | runs in the Gemini workflow when input beats=true; its decisions reach Gemini's code-writing prompt (checked with a dry run), not the render code. Tested by unit tests and on two real plans; not tested in a finished video. Does not move the camera. |
+| CAP-PLAN-VALIDATOR | schema + automatic gate checks on a beat plan (names, ids, words, camera purpose vs mode, nouns in frame, physical events, pacing, hard cuts) | yes | kit/tools (planning stage) | yes | no | partial | gates make_beats.py retries; heuristic tables (purpose vs mode) are not measured values |
+| CAP-PLAN-PREVIEW | phone-width storyboard sheets drawn from the plan + automatic/AI-assisted/human check list; with real stills it shows them and runs pixel checks | yes | kit/tools (planning stage) | yes | no | partial | plan tiles are NOT renders. AI-assisted checks are listed, not run. No real stills have been checked with it yet. |
 
 ## Rule table
 

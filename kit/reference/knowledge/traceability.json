@@ -3564,7 +3564,7 @@
  ],
  "maturity_levels": {
   "capability_exists": "code exists that can do it when something tells it to (kit/engine, kit/tools, or only a project copy: see state)",
-  "automatically_selected": "a planner or selector chooses it from the narration, the beat plan or the rules without a person or Gemini writing the choice by hand (nothing does yet; Step 2B adds the first selector)",
+  "automatically_selected": "a planner or selector chooses it from the narration, the beat plan or the rules without a person or Gemini writing the choice by hand (Step 2B: kit/tools/shot_selector.py does this for the shot recipe only, in the planning stage; camera moves, materials and acting are still written by Gemini)",
   "consumed_by_renderer": "the render code reads rule or plan DATA (rules.json, beats.json) and acts on it; today it only reads story.js written per project",
   "tested": "production_test status: in a real video, measured (not a claim that the system knows when to use it)"
  },
@@ -3647,6 +3647,54 @@
    "consumed_by_renderer": false,
    "tested": "in_range",
    "note": "frames listed by hand in story.js KICKS"
+  },
+  {
+   "id": "CAP-SHOT-SELECTOR",
+   "what": "chooses the shot recipe per beat from intent, assets, action, continuity, variety, camera purpose and renderer capabilities, and records why",
+   "where": [
+    {
+     "file": "kit/tools/shot_selector.py",
+     "symbol": "def select"
+    }
+   ],
+   "exists": true,
+   "scope": "kit/tools (planning stage)",
+   "automatically_selected": true,
+   "consumed_by_renderer": false,
+   "tested": "partial",
+   "note": "runs in the Gemini workflow when input beats=true; its decisions reach Gemini's code-writing prompt (checked with a dry run), not the render code. Tested by unit tests and on two real plans; not tested in a finished video. Does not move the camera."
+  },
+  {
+   "id": "CAP-PLAN-VALIDATOR",
+   "what": "schema + automatic gate checks on a beat plan (names, ids, words, camera purpose vs mode, nouns in frame, physical events, pacing, hard cuts)",
+   "where": [
+    {
+     "file": "kit/tools/validate_beats.py",
+     "symbol": "def story_checks"
+    }
+   ],
+   "exists": true,
+   "scope": "kit/tools (planning stage)",
+   "automatically_selected": true,
+   "consumed_by_renderer": false,
+   "tested": "partial",
+   "note": "gates make_beats.py retries; heuristic tables (purpose vs mode) are not measured values"
+  },
+  {
+   "id": "CAP-PLAN-PREVIEW",
+   "what": "phone-width storyboard sheets drawn from the plan + automatic/AI-assisted/human check list; with real stills it shows them and runs pixel checks",
+   "where": [
+    {
+     "file": "kit/tools/plan_preview.py",
+     "symbol": "def checks"
+    }
+   ],
+   "exists": true,
+   "scope": "kit/tools (planning stage)",
+   "automatically_selected": true,
+   "consumed_by_renderer": false,
+   "tested": "partial",
+   "note": "plan tiles are NOT renders. AI-assisted checks are listed, not run. No real stills have been checked with it yet."
   }
  ]
 }

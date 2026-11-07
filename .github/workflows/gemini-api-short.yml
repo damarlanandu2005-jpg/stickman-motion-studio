@@ -12,7 +12,7 @@ on:
         description: "Gemini model (3.1-pro-preview is the one that works)"
         default: gemini-3.1-pro-preview
       beats:
-        description: "EXPERIMENTAL: also write a beat plan (beats.json, schema 1.0.0) and give it to Gemini. Default false = pipeline exactly as before"
+        description: "EXPERIMENTAL: also write a beat plan (beats.json, schema 1.2.0, then shot selector and plan preview) and give it to Gemini. Default false = pipeline exactly as before"
         default: "false"
 
 permissions:
@@ -71,6 +71,7 @@ jobs:
           [ -f shot_notes.txt ] || python3 ../tools/make_notes.py . 2>&1 | tee ../notes.log
           test -f shot_notes.txt || { echo "no shot notes"; exit 1; }
           if [ "$BEATS" = "true" ]; then [ -f beats.json ] || python3 ../tools/make_beats.py . 2>&1 | tee ../beats.log || true; fi   # optional; a failure here never stops the run
+          if [ -f beats.json ]; then python3 ../kit/tools/shot_selector.py beats.json --out beats.selected.json --report selection.report.json 2>&1 | tee ../selector.log || true; python3 ../kit/tools/plan_preview.py beats.selected.json preview --selector selection.report.json 2>&1 | tee ../preview.log || true; fi   # optional; a failure here never stops the run
           python3 ../tools/gen_api.py . --model "$MODEL" --asset-rounds 3 --shot-rounds 5 2>&1 | tee ../gemini.log
           test -f work/DONE.txt || { echo "gen_api did not finish: stopping"; exit 1; }
       - name: Plan the parallel render
@@ -154,7 +155,7 @@ jobs:
           cp project/out/*.mp4 project/out/qa_sheet.jpg project/out/qa_report.txt project/out/ref_compare.txt "$D"/ 2>/dev/null || true
           cp project/stills/sheet_*.jpg project/work/PLAN.md project/work/DONE.txt project/work/NOTES.md project/work/usage.json "$D"/ 2>/dev/null || true
           mkdir -p "$D/web"; cp project/web/story.js project/web/main.js project/web/roman.js "$D/web/" 2>/dev/null || true
-          cp project/audio.py project/work/words.json project/shot_notes.txt project/beats.json project/beats.report.json "$D/" 2>/dev/null || true
+          cp project/audio.py project/work/words.json project/shot_notes.txt project/beats.json project/beats.report.json project/beats.selected.json project/selection.report.json "$D/" 2>/dev/null || true
           cp project/web/story.js "$D/story.js" 2>/dev/null || true
           tail -200 gemini.log > "$D/gemini_log_tail.txt" 2>/dev/null || true
           git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

@@ -134,14 +134,15 @@ def static_context():
 
 def beats_text():
     """Optional beat plan (tools/make_beats.py). Absent file = empty text = the prompt is exactly as before."""
-    f = P / "beats.json"
+    f = P / "beats.selected.json"      # beats.json after kit/tools/shot_selector.py (shot.recipe_id and extensions.selector filled in); falls back to the planner's own beats.json
+    if not f.exists(): f = P / "beats.json"
     if not f.exists(): return ""
     try:
         d = json.loads(rd(f)); d.get("narration", {}).pop("words", None); d.pop("narration", None)
     except Exception as e:
         log("WARNING beats.json unreadable, ignored:", repr(e)); return ""
     return ("===== BEAT PLAN (beats.json, format in the section below; it was checked by validate_beats.py) =====\n"
-            "Follow it per beat: camera.purpose, mode, from/to, duration_s, ease, kicks; transition_in (type, reason, frames); object_events; character_actions; audio_events; validation.must_see. "
+            "(If a beat has extensions.selector, shot.recipe_id is the selector's decision and extensions.selector.why says why.) Follow it per beat: camera.purpose, mode, from/to, duration_s, ease, kicks; transition_in (type, reason, frames); object_events; character_actions; audio_events; validation.must_see. "
             "The shot notes stay the source of truth for shots, places, words and frames: if the plan conflicts with them, follow the notes and list the conflict in work/NOTES.md.\n\n"
             + rd(KIT / "docs/BEATS.md") + "\n\nBEAT PLAN JSON:\n" + json.dumps(d, ensure_ascii=False, separators=(",", ":")) + "\n\n")
 
