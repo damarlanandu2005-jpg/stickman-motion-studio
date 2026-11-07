@@ -1,0 +1,13 @@
+short.mp4: 1700 frames, 26 shots
+  brightness       0.547    ref 0.3143 .. 0.5642  ok
+  saturation       0.4373   ref 0.3941 .. 0.5839  ok
+  palette size     26.0     ref 32.0 .. 45.0  LOW
+  detail           0.0808   ref 0.1059 .. 0.2185  LOW
+  held frames      0.0489   ref 0.0019 .. 0.0585  ok
+  object motion    1.4835   ref 3.2115 .. 8.4144  LOW
+  shot length (s)  2.05     ref 0.99 .. 10.59  ok
+  weak shots: 
+    {'shot': 1, 'frames': '90-219', 'seconds': '3.0-7.3', 'problems': ['plain (little detail)']}
+    {'shot': 16, 'frames': '1024-1139', 'seconds': '34.1-38.0', 'problems': ['plain (little detail)', 'mostly held (nothing moves)']}
+    {'shot': 21, 'frames': '1358-1419', 'seconds': '45.3-47.3', 'problems': ['plain (little detail)']}
+    {'shot': 23, 'frames': '1474-1549', 'seconds': '49.1-51.6', 'problems': ['plain (little detail)']}
