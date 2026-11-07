@@ -11,7 +11,7 @@ const GPU = !!process.env.GPU;   // GPU=1: real GPU (Kaggle T4 with NVIDIA drive
 const b = await chromium.launch(GPU ? { channel: 'chromium', args: ['--use-angle=gl-egl', '--ignore-gpu-blocklist', '--enable-gpu'] }
   : { args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'] });
 const pg = await b.newPage({ viewport: { width: 1080, height: 1920 } });
-pg.on('console', m => console.log('PAGE', m.text())); pg.on('pageerror', e => console.log('ERR', e.message));
+pg.on('console', m => console.log('PAGE', m.text())); pg.on('pageerror', e => console.log('ERR', e.message, (e.stack||'').split('\n').slice(0,4).join(' | ')));
 if (GPU) { const info = await pg.evaluate(() => { const g = document.createElement('canvas').getContext('webgl2'); const e = g && g.getExtension('WEBGL_debug_renderer_info'); return g ? g.getParameter(e ? e.UNMASKED_RENDERER_WEBGL : g.RENDERER) : 'no webgl2'; }); console.log('GL_RENDERER ' + info); }
 await pg.goto(`http://localhost:${srv.address().port}/index.html${process.env.HASH||""}`);
 await pg.waitForFunction(() => window.ready || window.err, null, { timeout: 180000 });
@@ -28,7 +28,7 @@ if (process.env.TESTJSON) {   // asset test mode: node render.mjs <outdir> 0 ; e
 const t0 = Date.now();
 for (const f of frames) {
   if (process.env.RESUME && fs.existsSync(path.join(outdir, `f${String(f).padStart(4, '0')}.jpg`))) continue;
-  const d = await pg.evaluate(([f, q]) => { if (window.location.hash==="#nd") window.DEBUG_ND=1; if (window.location.hash==="#e") window.DEBUG_E=1; window.renderFrame(f); return document.getElementById('c').toDataURL('image/jpeg', q); }, [f, +qual]);
+  const d = await pg.evaluate(([f, q]) => { if (window.location.hash==="#nd") window.DEBUG_ND=1; if (window.location.hash==="#e") window.DEBUG_E=1; return window.snap(f, q); }, [f, +qual]);
   fs.writeFileSync(path.join(outdir, `f${String(f).padStart(4, '0')}.jpg`), Buffer.from(d.split(',')[1], 'base64'));
 }
 console.log(`done ${frames.length} frames, ${((Date.now() - t0) / frames.length / 1000).toFixed(2)} s/frame`);

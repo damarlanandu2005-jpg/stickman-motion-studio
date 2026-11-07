@@ -1,3 +1,6 @@
 project/
 models/
 __pycache__/
+mine/*/web/lib/
+mine/*/node_modules/
+mine/*/frames/

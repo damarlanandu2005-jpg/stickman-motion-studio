@@ -3,6 +3,7 @@ import * as T from './toon.js';
 import * as P from './paint.js';
 import { SHOTS, TOTAL, shotAt, camAt, dofAt, LIGHTS, lightFor, actorsAt, worldAt, fxAt } from './story.js';
 import * as STORY from './story.js';
+import { WORDS } from './words.js';
 // OPTIONAL look controls (a story may export LOOK; without it nothing changes): { sat: colour strength multiplier (1 = off), vibr: lifts dull colours (0 = off),
 //   drift: slow camera sway amount (0 = off), push: slow push-in amount per shot (0 = off) }
 const LK = STORY.LOOK || {};
@@ -117,128 +118,157 @@ const cloudsInit = () => {
   return cl;
 };
 
-// ---------- world ----------
+// ---------- world ---------- (railroad polish: one continuous outdoor set + the office)
 const DECK = 0;
 const world = new THREE.Group(); scene.add(world);
+const TAU = Math.PI * 2;
 
+// ---- surface textures painted in code (sand grain, ballast gravel, rock strata, wood grain)
+const spk = (base, cols, n, rmin, rmax, seed, edge) => canvasTex(512, 512, (g, w, h) => {
+  const r = P.rng(seed); g.fillStyle = base; g.fillRect(0, 0, w, h);
+  for (let i = 0; i < n; i++) {
+    g.fillStyle = cols[Math.floor(r() * cols.length)]; g.beginPath();
+    const rr = rmin + r() * (rmax - rmin); g.ellipse(r() * w, r() * h, rr, rr * (0.55 + r() * 0.5), r() * 3.14, 0, TAU); g.fill();
+    if (edge) { g.strokeStyle = edge; g.lineWidth = 1.4; g.stroke(); }
+  }
+});
+const sandTex = spk('#d6924f', ['#e6a966', '#c97f3f', '#bf7338', '#eeb97c', '#a85f30'], 2200, 1.5, 6, 11);
+const gravelTex = spk('#7a6d66', ['#a99c90', '#8b6f66', '#c3ab97', '#5d534e', '#b9877b', '#98a0a8', '#d2c2b0'], 520, 8, 18, 12, '#352a26');
+const strataTex = canvasTex(256, 512, (g, w, h) => {
+  const r = P.rng(21), pal = ['#a8482a', '#c0643a', '#d98a4e', '#8f3d26', '#c97a45', '#7a3624', '#e0a060']; let y = 0;
+  while (y < h) { const bh = 8 + r() * 44; g.fillStyle = pal[Math.floor(r() * pal.length)]; g.fillRect(0, y, w, bh); g.fillStyle = 'rgba(40,12,6,.35)'; g.fillRect(0, y, w, 2); y += bh; }
+  for (let i = 0; i < 1500; i++) { g.fillStyle = r() < 0.5 ? 'rgba(255,225,170,.20)' : 'rgba(50,16,8,.25)'; g.fillRect(r() * w, r() * h, 2 + r() * 16, 1 + r() * 2); }
+});
+const woodTex = canvasTex(256, 256, (g, w, h) => {
+  const r = P.rng(31); g.fillStyle = '#6a4a2e'; g.fillRect(0, 0, w, h);
+  for (let i = 0; i < 90; i++) { g.strokeStyle = r() < 0.5 ? 'rgba(30,16,8,.45)' : 'rgba(150,110,70,.35)'; g.lineWidth = 1 + r() * 2; const y = r() * h; g.beginPath(); g.moveTo(0, y); g.bezierCurveTo(w * 0.3, y + r() * 8 - 4, w * 0.6, y + r() * 8 - 4, w, y + r() * 6 - 3); g.stroke(); }
+  for (let i = 0; i < 6; i++) { g.fillStyle = 'rgba(25,12,6,.5)'; g.beginPath(); g.ellipse(r() * w, r() * h, 4 + r() * 6, 2 + r() * 3, 0, 0, TAU); g.fill(); }
+});
+const MT = {
+  sand: toon({ map: sandTex }), gravel: toon({ map: gravelTex }), strata: toon({ map: strataTex }), wood: toon({ map: woodTex }),
+  deck: toon({ map: woodTex, color: '#b59a80' }),
+  rust: toon({ color: '#8a4a2c' }), blueSteel: toon({ color: '#5f7488' }), dark: toon({ color: '#2b2230' }),
+  cactus: toon({ color: '#5f8f4a' }), butte: toon({ color: '#a8482a' }), floor: toon({ color: '#4a2a4a' }),
+  railBody: toon({ color: '#7f848c' }), plate: toon({ color: '#c9a16a' }), bolt: toon({ color: '#d8dce2' }),
+  loco: toon({ color: '#2f3a3a' }), locoRed: toon({ color: '#b8282b' }), brass: toon({ color: '#d8a640' }), white: toon({ color: '#f4f0e6' }),
+};
+// rails that heat up: a head and a body material per track, colour set per frame (steel > purple > pink > orange > yellow-white)
+const HEAT = ['#8d9199', '#7a46c8', '#e0589a', '#ff9b3d', '#ffe27a'].map((c) => new THREE.Color(c));
+const heatCol = (h, out) => { const k = Math.max(0, Math.min(0.9999, h)) * (HEAT.length - 1), i = Math.floor(k); return out.copy(HEAT[i]).lerp(HEAT[i + 1], k - i); };
+const mkRailMats = () => ({ head: new THREE.MeshToonMaterial({ gradientMap: grad, color: '#c6cbd3', emissive: '#000000' }), body: new THREE.MeshToonMaterial({ gradientMap: grad, color: '#7f848c', emissive: '#000000' }) });
+const RAILS = { R: mkRailMats(), L: mkRailMats() };
+const tmpC = new THREE.Color();
+const setHeat = (set, h) => { heatCol(h, tmpC); set.head.color.set('#c6cbd3').lerp(tmpC, Math.min(1, h * 1.6)); set.head.emissive.copy(tmpC).multiplyScalar(h > 0.02 ? 0.55 * Math.min(1, h * 1.5) : 0); set.body.color.set('#7f848c').lerp(tmpC, Math.min(1, h * 1.3)); set.body.emissive.copy(tmpC).multiplyScalar(0.4 * Math.min(1, h * 1.4)); };
+
+// rail section geometry (profile exaggerated a little so it reads in a vertical frame): base on y = 0, along z
+const railParts = (len) => ({ flange: box(0.24, 0.05, len), web: new THREE.BoxGeometry(0.07, 0.2, len), head: box(0.13, 0.085, len) });
+const railMesh = (set, len) => {
+  const g = new THREE.Group(), p = railParts(len);
+  add(p.flange, set.body, 0, 0.025, 0, g); add(p.web, set.body, 0, 0.15, 0, g); add(p.head, set.head, 0, 0.2925, 0, g);
+  return g;
+};
+const GAUGE = 0.72, TOPY = 0.24, JOINT = 12, Z0 = 86, Z1 = -104;   // track runs from z=86 to z=-104, a rail joint every 12 m
+const TRACK_X = { R: 4.5, L: -4.5 };
+
+const buildOutdoor = () => {
+  const g = new THREE.Group();
+  // ground: near cliff top (z > 8), far cliff top (z < -64), canyon walls with painted strata, a dark floor far below
+  add(tbox(500, 4, 90, 4), MT.sand, 0, -2, 53, g);                       // near ground
+  add(tbox(500, 4, 80, 4), MT.sand, 0, -2, -104, g);                     // far ground
+  add(tbox(500, 90, 3, 8), MT.strata, 0, -45, 8.5, g);                   // near cliff face (front = canyon side)
+  add(tbox(500, 90, 3, 8), MT.strata, 0, -45, -64.5, g);                 // far cliff face
+  add(box(500, 2, 80), MT.floor, 0, -88, -28, g);                        // canyon floor in the haze
+  const rr = P.rng(5);
+  for (let k = 0; k < 70; k++) {                                         // ledges and blocks on both cliff faces give the walls depth
+    const w = 5 + rr() * 16, h = 1.5 + rr() * 4, d = 1.5 + rr() * 4.5, y = -2 - rr() * 70, x = -70 + rr() * 140, near = k % 2 === 0;
+    add(tbox(w, h, d, 4), MT.strata, x, y, near ? 8 - d / 2 : -64 + d / 2, g);
+  }
+  // far desert: wide flat mesas with a stepped top, hazed by the fog
+  for (let k = 0; k < 7; k++) { const w = 60 + rr() * 70, h = 8 + rr() * 16, x = -190 + k * 62 + rr() * 20, z = -135 - rr() * 30; add(box(w, h, 40), MT.butte, x, h / 2, z, g); add(box(w * 0.62, h * 0.45, 30), MT.butte, x + rr() * 8, h + h * 0.22, z, g); }
+  // desert rocks and cactus near the track
+  const rocks = [];
+  for (let k = 0; k < 90; k++) { const s = 0.15 + rr() * 0.9, x = (rr() - 0.5) * 70, z = 12 + rr() * 60; if (Math.abs(x - 4.5) < 2.6 || Math.abs(x + 4.5) < 2.6) continue; rocks.push(placed(new THREE.DodecahedronGeometry(1, 0), x, s * 0.4, z, rr() * 3, s, s * 0.7, s * 1.1)); }
+  add(mergeGeos(rocks), toon({ map: strataTex, color: '#e0c0a0' }), 0, 0, 0, g);
+  for (let k = 0; k < 12; k++) {
+    const x = (rr() - 0.5) * 50, z = 14 + rr() * 50; if (Math.abs(x - 4.5) < 3.2 || Math.abs(x + 4.5) < 3.2) continue;
+    const h = 1.2 + rr() * 1.6; add(new THREE.CylinderGeometry(0.2, 0.24, h, 8), MT.cactus, x, h / 2, z, g);
+    add(new THREE.CylinderGeometry(0.13, 0.15, 0.7, 8), MT.cactus, x + 0.4, h * 0.6, z, g).rotation.z = -0.5; add(new THREE.CylinderGeometry(0.13, 0.15, 0.6, 8), MT.cactus, x - 0.4, h * 0.45, z, g).rotation.z = 0.5;
+  }
+  // company sign and crates at the cliff
+  add(tbox(0.12, 2.1, 0.12, 1), MT.wood, 8.6, 1.05, 30, g); add(tbox(2.0, 0.9, 0.1, 1), toon({ map: canvasTex(256, 128, (c, w, h) => { c.fillStyle = '#e8dcc0'; c.fillRect(0, 0, w, h); c.fillStyle = '#7a2a20'; c.font = 'bold 30px Arial'; c.fillText('CANYON', 52, 52); c.fillText('RAIL CO.', 44, 94); }) }), 8.6, 1.9, 30.1, g);
+  for (let k = 0; k < 4; k++) add(tbox(0.9, 0.9, 0.9, 1), MT.wood, 7.4 + (k % 2) * 0.95, 0.45 + Math.floor(k / 2) * 0.9, 27 - (k % 3) * 0.2, g);
+
+  // the two bridges (steel truss) over the canyon: right = his (rust), left = the perfect one (blue steel)
+  for (const [key, mat] of [['R', MT.rust], ['L', MT.blueSteel]]) {
+    const x = TRACK_X[key], b = new THREE.Group(); b.position.x = x; g.add(b);
+    add(tbox(3.6, 0.3, 72, 2), MT.deck, 0, -0.15, -28, b);
+    for (const sx of [-1.75, 1.75]) {
+      add(box(0.22, 0.22, 72), mat, sx, 3.4, -28, b); add(box(0.22, 0.3, 72), mat, sx, 0.1, -28, b);
+      for (let z = 7; z >= -63; z -= 3.5) { add(box(0.14, 3.3, 0.14), mat, sx, 1.75, z, b); const d = add(box(0.1, 3.9, 0.1), mat, sx, 1.75, z - 1.75, b); d.rotation.x = (Math.floor(z / 3.5) % 2 ? 1 : -1) * 0.84; }
+    }
+    for (const pz of [-6, -22, -38, -54]) {
+      for (const sx of [-1.4, 1.4]) add(box(0.55, 86, 0.55), mat, sx, -43, pz, b);
+      for (let y = -8; y > -80; y -= 12) { add(box(2.8, 0.2, 0.2), mat, 0, y, pz, b); const d1 = add(box(0.16, 0.16, 12.6), mat, 0, y - 6, pz, b); d1.rotation.z = 0; const dx = add(box(3.4, 0.16, 0.16), mat, 0, y - 6, pz, b); dx.rotation.z = 0.55; const dy = add(box(3.4, 0.16, 0.16), mat, 0, y - 6, pz, b); dy.rotation.z = -0.55; }
+    }
+  }
+  return g;
+};
+
+// track pieces. Static sleepers + ballast are merged; rails move (gap, heat, buckle) so they are separate meshes.
+const buildTrackStatic = (g, x) => {
+  const sl = [], bl = [];
+  for (let z = Z0; z > Z1; z -= 0.62) sl.push(placed(box(2.6, 0.14, 0.24), x, TOPY - 0.07, z));
+  add(mergeGeos(sl), MT.wood, 0, 0, 0, g);
+  add(tbox(3.8, 0.2, 98 - 8, 1.4), MT.gravel, x, 0.1, 8 + 45, g);                 // gravel bed on the cliff top (z 8..98)
+  add(tbox(3.8, 0.2, 40, 1.4), MT.gravel, x, 0.1, -64 - 20, g);                  // and on the far side
+};
+const trackR = { segs: [], plates: [] };
+const buildRightTrack = (g) => {
+  const x = TRACK_X.R, grp = new THREE.Group(); g.add(grp); buildTrackStatic(grp, x);
+  const joints = []; for (let z = Z0 - 6; z > Z1; z -= JOINT) joints.push(z);   // 80, 68, 56 ... -100
+  const zs = [Z0 + 4, ...joints, Z1 - 4];
+  for (const sx of [-GAUGE, GAUGE]) for (let i = 0; i < zs.length - 1; i++) {
+    const len = zs[i] - zs[i + 1], m = railMesh(RAILS.R, len); m.position.set(x + sx, TOPY, (zs[i] + zs[i + 1]) / 2); grp.add(m);
+    m.userData = { zc: (zs[i] + zs[i + 1]) / 2, len, first: i === 0, last: i === zs.length - 2 }; trackR.segs.push(m);
+  }
+  for (const jz of joints) for (const sx of [-GAUGE, GAUGE]) {   // fish plates + bolts that bridge each joint
+    for (const s of [-0.045, 0.045]) { add(box(0.025, 0.14, 0.9), MT.plate, x + sx + s * 1.55, TOPY + 0.17, jz, grp); for (const bz of [-0.3, -0.1, 0.1, 0.3]) add(new THREE.CylinderGeometry(0.022, 0.022, 0.03, 6).rotateZ(Math.PI / 2), MT.bolt, x + sx + s * 2.1, TOPY + 0.17, jz + bz, grp); }
+  }
+  return grp;
+};
+const trackL = { units: [] };
+const buildLeftTrack = (g) => {
+  const x = TRACK_X.L, grp = new THREE.Group(); g.add(grp);
+  add(tbox(3.8, 0.2, 98 - 8, 1.4), MT.gravel, x, 0.1, 8 + 45, grp); add(tbox(3.8, 0.2, 40, 1.4), MT.gravel, x, 0.1, -64 - 20, grp);
+  // pieces: 3 m long, but only 1 m long where the track will buckle (z -46 .. -6) so the S-bend stays one smooth line
+  const cuts = []; let z = Z0 + 3;
+  while (z > Z1) { const len = z <= -6 && z > -46 ? 1 : 3; cuts.push([z, Math.max(Z1, z - len)]); z -= len; }
+  cuts.forEach(([za, zb], i) => {
+    const len = za - zb, u = new THREE.Group(); u.position.set(x, 0, (za + zb) / 2); grp.add(u);
+    for (const sx of [-GAUGE, GAUGE]) { const r = railMesh(RAILS.L, len + 0.08); r.position.set(sx, TOPY, 0); u.add(r); }
+    for (let k = 0; k * 0.62 < len; k++) add(box(2.6, 0.14, 0.24), MT.wood, 0, TOPY - 0.07, -len / 2 + 0.3 + k * 0.62, u);
+    u.userData.z0 = u.position.z; trackL.units.push(u);
+  });
+};
+// a steam locomotive + tender (about 9 m long), nose toward -z, wheels on the rails
+const buildTrain = (tone) => {
+  const t = new THREE.Group(), body = tone === 'L' ? MT.loco : toon({ color: '#4a3226' });
+  add(new THREE.CylinderGeometry(1.0, 1.0, 5, 16).rotateX(Math.PI / 2), body, 0, 1.75, -1.2, t);
+  add(new THREE.CylinderGeometry(0.2, 0.34, 1.1, 10), body, 0, 3.15, -3.2, t); add(new THREE.CylinderGeometry(0.42, 0.2, 0.3, 10), MT.dark, 0, 3.8, -3.2, t);
+  add(new THREE.SphereGeometry(0.34, 10, 8), MT.brass, 0, 2.85, -0.6, t);
+  add(tbox(2.2, 2.6, 2.0, 1), body, 0, 2.2, 2.0, t); add(tbox(2.5, 0.2, 2.4, 1), MT.dark, 0, 3.6, 2.0, t); add(tbox(1.5, 0.9, 0.05, 1), MT.dark, 0, 2.7, 0.98, t);
+  add(new THREE.CylinderGeometry(0.28, 0.28, 0.3, 12).rotateX(Math.PI / 2), MT.brass, 0, 1.9, -3.75, t); add(new THREE.CylinderGeometry(0.2, 0.2, 0.06, 12).rotateX(Math.PI / 2), toon({ color: '#fff3b0', emissive: '#c8a030' }), 0, 1.9, -3.93, t);
+  const cc = add(new THREE.ConeGeometry(0.9, 1.4, 4).rotateX(-Math.PI / 2), MT.dark, 0, 0.55, -4.4, t); cc.rotation.y = Math.PI / 4;
+  add(tbox(2.0, 1.7, 2.6, 1), body, 0, 1.15, 5.3, t); add(tbox(1.8, 0.3, 2.4, 1), toon({ color: '#1a1a1a' }), 0, 2.1, 5.3, t);
+  for (const z of [-2.6, -1.2, 0.2]) for (const sx of [-0.72, 0.72]) add(new THREE.CylinderGeometry(0.62, 0.62, 0.16, 16).rotateZ(Math.PI / 2), MT.locoRed, sx, 0.62, z, t);
+  for (const z of [2.0]) for (const sx of [-0.72, 0.72]) add(new THREE.CylinderGeometry(0.85, 0.85, 0.16, 18).rotateZ(Math.PI / 2), MT.locoRed, sx, 0.85, z, t);
+  for (const z of [4.6, 6.0]) for (const sx of [-0.72, 0.72]) add(new THREE.CylinderGeometry(0.45, 0.45, 0.14, 14).rotateZ(Math.PI / 2), MT.locoRed, sx, 0.45, z, t);
+  add(tbox(2.0, 0.2, 9.8, 1), MT.dark, 0, 0.42, 0.9, t);
+  t.position.y = TOPY + 0.33 - 0.0;
+  return t;
+};
 const ASSETS = {
-  'CANYON-EDGE': () => {
-    const g = new THREE.Group();
-    // Cliff ground (left side)
-    add(tbox(15, 4, 15, 2), M.dirt, -7.5, -2, 0, g);
-    // Rocks on left
-    for(let i=0; i<8; i++) {
-      const r = add(new THREE.DodecahedronGeometry(1.5 + Math.random(), 1), M.stone, -12 + Math.random()*8, 0, -5 + Math.random()*10, g);
-      r.rotation.set(Math.random(), Math.random(), Math.random());
-    }
-    for(let i=0; i<15; i++) {
-      const r = add(new THREE.DodecahedronGeometry(0.3 + Math.random()*0.5, 0), M.stone, -8 + Math.random()*6, 0.2, -5 + Math.random()*10, g);
-      r.rotation.set(Math.random(), Math.random(), Math.random());
-    }
-    // Bushes
-    for(let i=0; i<4; i++) {
-      const b = add(new THREE.DodecahedronGeometry(0.8 + Math.random()*0.5, 1), M.bush, -5 + Math.random()*4, 0.4, -3 + Math.random()*6, g);
-      b.rotation.set(Math.random(), Math.random(), Math.random());
-    }
-    // Flowers
-    for(let i=0; i<10; i++) {
-      add(new THREE.DodecahedronGeometry(0.15, 0), toon({color: '#8a4a8a'}), -6 + Math.random()*4, 0.1, -4 + Math.random()*8, g);
-      add(new THREE.DodecahedronGeometry(0.15, 0), toon({color: '#d9a441'}), -6 + Math.random()*4, 0.1, -4 + Math.random()*8, g);
-    }
-    // Crates and barrel
-    add(tbox(1, 1, 1, 1), M.wood, -3, 0.5, -2, g);
-    add(tbox(1.2, 1.2, 1.2, 1), M.wood, -4.5, 0.6, -1.5, g);
-    add(new THREE.CylinderGeometry(0.5, 0.5, 1.2, 8), toon({color: '#3a5a8a'}), -2.5, 0.6, -3.5, g);
-    // Yellow sign
-    add(tbox(0.1, 1.5, 0.1, 1), M.wood, -1.5, 0.75, -2, g);
-    add(tbox(0.8, 0.6, 0.1, 1), toon({color: '#d9a441'}), -1.5, 1.2, -1.9, g);
-    // Extra grass
-    for(let i=0; i<20; i++) {
-      const w = add(new THREE.ConeGeometry(0.2, 0.6, 4), M.grass, -10 + Math.random()*8, 0.3, -8 + Math.random()*12, g);
-      w.rotation.x = Math.random() * 0.4 - 0.2;
-      w.rotation.z = Math.random() * 0.4 - 0.2;
-    }
-    // Bridge starting at edge (x=0) and going right
-    add(tbox(8, 0.2, 4, 2), M.plank, 4, -0.1, 0, g); // deck
-    add(tbox(8, 0.4, 0.2, 2), M.beam, 4, -0.4, -1.8, g); // support beam
-    add(tbox(8, 0.4, 0.2, 2), M.beam, 4, -0.4, 1.8, g); // support beam
-    // Rails on bridge
-    add(tbox(8, 0.2, 0.1, 1), M.iron, 4, 0.1, -0.7, g);
-    add(tbox(8, 0.2, 0.1, 1), M.iron, 4, 0.1, 0.7, g);
-    // Rails on ground
-    add(tbox(8, 0.2, 0.1, 1), M.iron, -4, 0.1, -0.7, g);
-    add(tbox(8, 0.2, 0.1, 1), M.iron, -4, 0.1, 0.7, g);
-    return g;
-  },
-  'RAIL-CLOSEUP': () => {
-    const g = new THREE.Group();
-    // Ballast (stone base)
-    add(tbox(2.5, 0.4, 3, 2), M.stone, 0, -0.2, 0, g);
-    // Add many loose stones for detail
-    for(let i=0; i<100; i++) {
-      const s = add(new THREE.DodecahedronGeometry(0.03 + Math.random()*0.06, 0), Math.random() > 0.5 ? M.stone : M.stoneMoss, -1.2 + Math.random()*2.4, 0.05 + Math.random()*0.05, -1.4 + Math.random()*2.8, g);
-      s.rotation.set(Math.random(), Math.random(), Math.random());
-    }
-    // Wooden ties and plates
-    for(let z=-1.2; z<=1.2; z+=0.6) {
-      add(tbox(2.2, 0.15, 0.25, 1), M.rot, 0, 0.075, z, g);
-      // Tie plates
-      add(tbox(0.4, 0.02, 0.3, 1), M.iron, -0.7, 0.16, z, g);
-      add(tbox(0.4, 0.02, 0.3, 1), M.iron, 0.7, 0.16, z, g);
-      // Spikes
-      add(new THREE.CylinderGeometry(0.02, 0.02, 0.05, 6), M.iron, -0.85, 0.18, z - 0.1, g);
-      add(new THREE.CylinderGeometry(0.02, 0.02, 0.05, 6), M.iron, -0.55, 0.18, z + 0.1, g);
-      add(new THREE.CylinderGeometry(0.02, 0.02, 0.05, 6), M.iron, 0.55, 0.18, z - 0.1, g);
-      add(new THREE.CylinderGeometry(0.02, 0.02, 0.05, 6), M.iron, 0.85, 0.18, z + 0.1, g);
-    }
-    // Weeds and twigs
-    for(let i=0; i<15; i++) {
-      const w = add(new THREE.ConeGeometry(0.05, 0.2, 4), M.grass, -1 + Math.random()*2, 0.1, -1.5 + Math.random()*3, g);
-      w.rotation.x = Math.random() * 0.4 - 0.2;
-      w.rotation.z = Math.random() * 0.4 - 0.2;
-    }
-    for(let i=0; i<10; i++) {
-      const t = add(new THREE.CylinderGeometry(0.01, 0.01, 0.3, 4), M.wood, -1 + Math.random()*2, 0.05, -1.5 + Math.random()*3, g);
-      t.rotation.set(Math.random(), Math.random(), Math.random());
-    }
-    return g;
-  },
-  'BRIDGE-WIDE': () => {
-    const g = new THREE.Group();
-    // Canyon walls
-    const wallL = add(tbox(20, 30, 40, 4), M.stoneMoss, -16, -15, -10, g);
-    wallL.rotation.z = -0.2; // slope
-    const wallR = add(tbox(20, 30, 40, 4), M.stoneMoss, 16, -15, -10, g);
-    wallR.rotation.z = 0.2; // slope
-    
-    // Bridges
-    const makeBridge = (x) => {
-      const b = new THREE.Group();
-      b.position.x = x;
-      // Deck
-      add(tbox(3, 0.2, 40, 2), M.plank, 0, 0, -10, b);
-      // Rails
-      add(tbox(0.1, 0.2, 40, 1), M.iron, -0.7, 0.2, -10, b);
-      add(tbox(0.1, 0.2, 40, 1), M.iron, 0.7, 0.2, -10, b);
-      // Beams
-      add(tbox(0.3, 0.6, 40, 2), M.beam, -1.2, -0.4, -10, b);
-      add(tbox(0.3, 0.6, 40, 2), M.beam, 1.2, -0.4, -10, b);
-      // Trestles (pillars)
-      for(let z=-25; z<=5; z+=10) {
-        add(tbox(0.4, 20, 0.4, 2), M.beam, -1.2, -10, z, b);
-        add(tbox(0.4, 20, 0.4, 2), M.beam, 1.2, -10, z, b);
-        // Cross braces
-        const cross = add(tbox(3, 0.2, 0.2, 2), M.beam, 0, -5, z, b);
-        cross.rotation.z = Math.PI/4;
-        const cross2 = add(tbox(3, 0.2, 0.2, 2), M.beam, 0, -5, z, b);
-        cross2.rotation.z = -Math.PI/4;
-      }
-      g.add(b);
-    };
-    makeBridge(-5);
-    makeBridge(5);
-    return g;
-  },
+  'OUTDOOR': () => { const g = buildOutdoor(); buildRightTrack(g); buildLeftTrack(g); return g; },
   'OFFICE': () => {
     const g = new THREE.Group();
     // Floor
@@ -279,7 +309,7 @@ const ASSETS = {
     add(tbox(0.8, 0.4, 0.1, 1), toon({color: '#3a5a7a'}), 4, 0.3, -6.0, g);
     
     // Window on right wall
-    add(tbox(0.3, 2.5, 3, 1), toon({color: '#88ccff'}), 5.9, 3, -2, g);
+    add(tbox(0.3, 2.5, 3, 1), toon({color: '#ffcf8a', emissive:'#a86a20'}), 5.9, 3, -2, g);
     add(tbox(0.4, 2.5, 0.1, 1), M.wood, 5.9, 3, -2, g); // frame vertical
     add(tbox(0.4, 0.1, 3, 1), M.wood, 5.9, 3, -2, g); // frame horizontal
     
@@ -317,124 +347,57 @@ const ASSETS = {
     
     return g;
   },
-  'steel rail': () => {
-    const g = new THREE.Group();
-    add(tbox(0.15, 0.04, 2.0, 1), M.iron, 0, 0.02, 0, g); // base
-    add(tbox(0.05, 0.12, 2.0, 1), M.iron, 0, 0.1, 0, g); // web
-    add(tbox(0.1, 0.06, 2.0, 1), M.iron, 0, 0.19, 0, g); // head
-    return g;
-  },
-  'handsaw': () => {
-    const g = new THREE.Group();
-    add(tbox(0.1, 0.15, 0.15, 1), M.wood, 0, 0, 0.225, g);
-    add(tbox(0.02, 0.1, 0.45, 1), M.iron, 0, 0, -0.075, g);
-    return g;
-  },
-  'steam train': () => {
-    const g = new THREE.Group();
-    add(new THREE.CylinderGeometry(1.2, 1.2, 6, 12).rotateX(Math.PI/2), M.iron, 0, 1.8, -2, g);
-    add(tbox(2.8, 3.5, 3, 1), M.iron, 0, 2.35, 2.5, g);
-    add(new THREE.CylinderGeometry(0.5, 0.5, 1.5, 8), M.iron, 0, 3.15, -4, g);
-    for(let z of [-4, -1.5, 1, 3.5]) {
-      add(new THREE.CylinderGeometry(0.9, 0.9, 0.3, 12).rotateZ(Math.PI/2), M.red, -1.4, 0.9, z, g);
-      add(new THREE.CylinderGeometry(0.9, 0.9, 0.3, 12).rotateZ(Math.PI/2), M.red, 1.4, 0.9, z, g);
-    }
-    return g;
-  },
+  // ---- single props
+  'handsaw': () => { const g = new THREE.Group(); add(tbox(0.5, 0.13, 0.025, 1), toon({ color: '#d4d8de' }), 0, 0, 0, g); for (let i = 0; i < 14; i++) add(box(0.014, 0.02, 0.03), toon({ color: '#d4d8de' }), -0.23 + i * 0.035, -0.07, 0, g); add(tbox(0.14, 0.16, 0.06, 1), MT.wood, 0.3, 0.03, 0, g); return g; },
   'newspaper': () => {
     const g = new THREE.Group();
-    const newsTex = canvasTex(256, 256, (ctx, w, h) => {
-      ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, w, h);
-      ctx.fillStyle = '#222222';
-      ctx.fillRect(20, 20, 216, 40); // headline
-      for(let y=80; y<230; y+=20) {
-        ctx.fillRect(20, y, 90, 10); // col 1
-        ctx.fillRect(130, y, 106, 10); // col 2
-      }
+    const tx = canvasTex(256, 360, (c, w, h) => {
+      c.fillStyle = '#efe4c8'; c.fillRect(0, 0, w, h); c.fillStyle = '#1e1a16'; c.font = 'bold 22px Georgia, serif'; c.textAlign = 'center';
+      c.fillText('THE CLICKETY', w / 2, 40); c.fillText('CLACK LINE!', w / 2, 66); c.fillRect(14, 76, w - 28, 3);
+      c.strokeStyle = '#1e1a16'; c.lineWidth = 3; c.strokeRect(34, 96, w - 68, 100);
+      c.fillRect(54, 150, 110, 26); c.fillRect(120, 124, 30, 28); c.fillRect(58, 132, 24, 18); c.beginPath(); c.arc(76, 186, 10, 0, 6.3); c.arc(134, 186, 10, 0, 6.3); c.arc(166, 186, 10, 0, 6.3); c.fill();
+      for (let y = 214; y < 340; y += 14) { c.fillRect(18, y, 100, 6); c.fillRect(138, y, 100, 6); }
     });
-    add(tbox(0.5, 0.02, 0.4, 1), toon({map: newsTex}), 0, 0.01, 0, g);
-    return g;
+    add(tbox(1.0, 1.4, 0.03, 1), toon({ map: tx }), 0, 0, 0, g); return g;
   },
-  'gold coin': () => {
-    const g = new THREE.Group();
-    add(new THREE.CylinderGeometry(0.025, 0.025, 0.01, 8), toon({color: '#ffd700'}), 0, 0.005, 0, g);
-    return g;
-  },
-  'sheet of paper': () => {
-    const g = new THREE.Group();
-    add(tbox(0.3, 0.004, 0.4, 1), toon({color: '#ffffff'}), 0, 0.002, 0, g);
-    return g;
-  },
-  'bent rail': () => {
-    const g = new THREE.Group();
-    const makeRail = () => {
-      const r = new THREE.Group();
-      add(tbox(0.15, 0.04, 1.0, 1), M.iron, 0, 0.02, 0, r);
-      add(tbox(0.05, 0.12, 1.0, 1), M.iron, 0, 0.1, 0, r);
-      add(tbox(0.1, 0.06, 1.0, 1), M.iron, 0, 0.19, 0, r);
-      return r;
-    };
-    const r1 = makeRail(); r1.position.set(0, 0, -0.48); r1.rotation.y = 0.3; g.add(r1);
-    const r2 = makeRail(); r2.position.set(0.28, 0, 0.48); r2.rotation.y = -0.3; g.add(r2);
-    return g;
-  }
+  'gold coin': () => { const g = new THREE.Group(); add(new THREE.CylinderGeometry(0.13, 0.13, 0.04, 20).rotateX(Math.PI / 2), toon({ color: '#ffd23a', emissive: '#7a5a10' }), 0, 0, 0, g); add(new THREE.CylinderGeometry(0.09, 0.09, 0.045, 20).rotateX(Math.PI / 2), toon({ color: '#f0b020' }), 0, 0, 0, g); return g; },
+  'sheet of paper': () => { const g = new THREE.Group(); add(box(0.24, 0.32, 0.012), toon({ color: '#ffffff' }), 0, 0, 0, g); return g; },
 };
 
 const waterU = { t: { value: 0 }, deep: { value: new THREE.Color('#2f6f8f') }, shal: { value: new THREE.Color('#5fa8bf') }, glint: { value: new THREE.Color('#e9f6ff') } };
 const clouds = cloudsInit();
 
-const canyonEdge = ASSETS['CANYON-EDGE'](); world.add(canyonEdge);
-const railCloseup = ASSETS['RAIL-CLOSEUP'](); world.add(railCloseup);
-const bridgeWide = ASSETS['BRIDGE-WIDE'](); world.add(bridgeWide);
+const outdoor = ASSETS['OUTDOOR'](); world.add(outdoor);
 const office = ASSETS['OFFICE'](); world.add(office);
+const newspaper = ASSETS['newspaper'](); office.add(newspaper); newspaper.position.set(-0.55, 1.05, -3.3); newspaper.rotation.set(-0.1, 0.35, 0.05); newspaper.scale.setScalar(0.55);
+const handsaw = ASSETS['handsaw'](); outdoor.add(handsaw);
+const goldCoin = ASSETS['gold coin'](); outdoor.add(goldCoin);
+const sheetPaper = ASSETS['sheet of paper'](); outdoor.add(sheetPaper);
+const trainL = buildTrain('L'); outdoor.add(trainL); const trainR = buildTrain('R'); outdoor.add(trainR);
+const JOINT_Z = 32;   // the joint every close-up looks at (right track, near cliff)
 
-const railL1 = ASSETS['steel rail'](); railCloseup.add(railL1);
-const railL2 = ASSETS['steel rail'](); railCloseup.add(railL2);
-const railR1 = ASSETS['steel rail'](); railCloseup.add(railR1);
-const railR2 = ASSETS['steel rail'](); railCloseup.add(railR2);
-
-const handsaw = ASSETS['handsaw'](); railCloseup.add(handsaw); handsaw.position.set(0.7, 0.3, 0);
-const goldCoin = ASSETS['gold coin'](); railCloseup.add(goldCoin); goldCoin.position.set(0.7, 0.3, 0); goldCoin.rotation.x = Math.PI / 2;
-const sheetPaper = ASSETS['sheet of paper'](); railCloseup.add(sheetPaper); sheetPaper.position.set(0.7, 0.3, 0); sheetPaper.rotation.x = Math.PI / 2;
-
-const newspaper = ASSETS['newspaper'](); office.add(newspaper); newspaper.position.set(0, 1.25, -3);
-
-const trainLeft = ASSETS['steam train'](); bridgeWide.add(trainLeft); trainLeft.position.set(-5, 0.17, -10);
-const trainRight = ASSETS['steam train'](); bridgeWide.add(trainRight); trainRight.position.set(5, 0.17, -10);
-const bentRail = ASSETS['bent rail'](); bridgeWide.add(bentRail); bentRail.position.set(5, 0.17, -10);
+const buckleDx = (z, A) => { const u = (z - -40) / 28; return u > 0 && u < 1 ? A * Math.sin(TAU * u) * Math.sin(Math.PI * u) : 0; };
 
 function worldState(S, f) {
-  canyonEdge.visible = S.place === 'CANYON-EDGE';
-  railCloseup.visible = S.place === 'RAIL-CLOSEUP';
-  bridgeWide.visible = S.place === 'BRIDGE-WIDE';
-  office.visible = S.place === 'OFFICE';
-
-  handsaw.visible = S.id === 's1';
-  goldCoin.visible = S.id === 's13';
-  sheetPaper.visible = S.id === 's14';
-  newspaper.visible = S.id === 's10';
-
-  trainLeft.visible = S.id === 's9';
-  trainRight.visible = S.id === 's19';
-  bentRail.visible = S.id === 's19';
-
-  if (S.id === 's9') trainLeft.position.z = -20 + (f - 692) * 0.2;
-  if (S.id === 's19') trainRight.position.z = -25 + (f - 1549) * 0.15;
-
-  let gap = 0.2;
-  if (S.id === 's8') gap = 0;
-  if (S.id === 's12') gap = 0.2 - Math.min(1, (f - 1024) / 52) * 0.1;
-  if (S.id === 's13') gap = 0.05;
-  if (S.id === 's14') gap = 0.01;
-  if (S.id === 's16' || S.id === 's18' || S.id === 's19') gap = 0;
-
-  railL1.position.set(-0.7, 0.17, -1 - gap / 2);
-  railL2.position.set(-0.7, 0.17, 1 + gap / 2);
-  railR1.position.set(0.7, 0.17, -1 - gap / 2);
-  railR2.position.set(0.7, 0.17, 1 + gap / 2);
-
+  const st = STORY.STATE(f, S);
+  outdoor.visible = S.place === 'OUTDOOR'; office.visible = S.place === 'OFFICE';
+  newspaper.visible = office.visible;
+  // right track: every joint opens by the same gap
+  for (const m of trackR.segs) { const u = m.userData; m.scale.z = Math.max(0.001, (u.len - (u.first || u.last ? 0 : st.gapR)) / u.len); }
+  setHeat(RAILS.R, st.heatR); setHeat(RAILS.L, st.heatL);
+  // left track: heat pushes it sideways into an S (buckle 0..1)
+  for (const u of trackL.units) {
+    const z = u.userData.z0, dx = buckleDx(z, 1.5 * st.buckle), dx2 = buckleDx(z - 0.5, 1.5 * st.buckle), dx1 = buckleDx(z + 0.5, 1.5 * st.buckle);
+    u.position.x = TRACK_X.L + dx; u.rotation.y = Math.atan2(dx2 - dx1, 1.0);
+  }
+  handsaw.visible = st.saw !== null; if (st.saw !== null) { handsaw.position.set(TRACK_X.R + GAUGE + 0.35 + Math.sin(st.saw * 40) * 0.12, TOPY + 0.36, JOINT_Z); handsaw.rotation.set(0, Math.PI / 2, 0.0); }
+  goldCoin.visible = st.coin; goldCoin.position.set(TRACK_X.R + GAUGE, TOPY + 0.33, JOINT_Z); goldCoin.rotation.set(0, 0.6, 0);
+  sheetPaper.visible = st.paper; sheetPaper.position.set(TRACK_X.R + GAUGE, TOPY + 0.45, JOINT_Z); sheetPaper.rotation.set(0, 0.6, 0);
+  trainL.visible = st.trainL !== null; if (st.trainL !== null) { const z = st.trainL, dx = buckleDx(z, 1.5 * st.buckle), dxa = buckleDx(z - 1, 1.5 * st.buckle), dxb = buckleDx(z + 1, 1.5 * st.buckle); trainL.position.set(TRACK_X.L + dx, TOPY + 0.33, z); trainL.rotation.y = Math.atan2(dxa - dxb, 2.0) ; }
+  trainR.visible = st.trainR !== null; if (st.trainR !== null) { const z = st.trainR, ph = ((z - 80) / JOINT) % 1; trainR.position.set(TRACK_X.R, TOPY + 0.33 + 0.05 * Math.pow(Math.abs(Math.sin(Math.PI * ph * 1.0 * 2)), 8), z); trainR.rotation.z = 0.012 * Math.sin(Math.PI * ph * 4); }
   waterU.t.value = f / 30;
 }
+
 
 // ---------- cards ----------
 const CW = 1200, CH = 2000, CM = 2.25; // canvas px, card height in metres (design 600x1000 -> 2.25 m)
@@ -466,9 +429,11 @@ const rtInk = new THREE.WebGLRenderTarget(W, H, { type: THREE.HalfFloatType });
 const fsCam = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1), fsGeo = new THREE.PlaneGeometry(2, 2);
 const fs = (mat) => { const s = new THREE.Scene(); s.add(new THREE.Mesh(fsGeo, mat)); return s; };
 const inkU = { col: { value: rtColor.texture }, nd: { value: rtNd.texture }, res: { value: new THREE.Vector2(W, H) }, px: { value: 1.6 }, fogCol: { value: new THREE.Color() },
-  sat: { value: 1.08 }, vibr: { value: 0 }, lift: { value: new THREE.Color(0, 0, 0) }, gain: { value: new THREE.Color(1, 1, 1) }, vig: { value: 0.22 }, flash: { value: 0 } };
+  sat: { value: 1.08 }, vibr: { value: 0 }, lift: { value: new THREE.Color(0, 0, 0) }, gain: { value: new THREE.Color(1, 1, 1) }, vig: { value: 0.22 }, flash: { value: 0 }, grain: { value: 0 }, grad: { value: 0 } };
 const inkScene = fs(new THREE.ShaderMaterial({ uniforms: inkU, vertexShader: `varying vec2 vUv; void main(){ vUv=uv; gl_Position=vec4(position.xy,0.,1.); }`,
-  fragmentShader: `uniform sampler2D col, nd; uniform vec2 res; uniform float px, sat, vibr, vig, flash; uniform vec3 fogCol, lift, gain; varying vec2 vUv;
+  fragmentShader: `uniform sampler2D col, nd; uniform vec2 res; uniform float px, sat, vibr, vig, flash, grain, grad; uniform vec3 fogCol, lift, gain; varying vec2 vUv;
+  float hsh(vec2 p){ return fract(sin(dot(p, vec2(127.1,311.7)))*43758.5453); }
+  float vnz(vec2 p){ vec2 i=floor(p), f=fract(p); f=f*f*(3.-2.*f); return mix(mix(hsh(i),hsh(i+vec2(1.,0.)),f.x), mix(hsh(i+vec2(0.,1.)),hsh(i+vec2(1.,1.)),f.x), f.y); }
   float edgeAt(vec2 uv, float r){
     vec4 c = texture2D(nd, uv); if (dot(c.rgb,c.rgb) < .01) return 0.; float d = c.a; vec3 n = c.rgb*2.-1.;
     float e = 0.; float rr = r * clamp(7./d, .62, 1.25);
@@ -491,6 +456,10 @@ const inkScene = fs(new THREE.ShaderMaterial({ uniforms: inkU, vertexShader: `va
     float l = dot(c, vec3(.299,.587,.114)); c = mix(vec3(l), c, sat);
     float cs = max(c.r,max(c.g,c.b)) - min(c.r,min(c.g,c.b)); c = mix(vec3(l), c, 1. + vibr*(1.-clamp(cs*1.6,0.,1.)));
     c = c*gain + lift;
+    // v2.2 (rule COL-02): surfaces are never one flat colour: soft top-to-bottom light gradient + fine painted grain, strongest on mid tones
+    c *= 1. + grad*(vUv.y-.5);
+    float nz = vnz(vUv*res/5.)*.45 + vnz(vUv*res/19.)*.35 + (hsh(vUv*res)-.5)*.35;
+    c *= 1. + grain*(nz-.4)*(1.-.6*abs(l-.5)*2.);
     vec2 q = vUv-.5; c *= 1. - vig*dot(q*vec2(1.,.75), q*vec2(1.,.75))*2.2;
     c = mix(c, vec3(1.), flash);
     gl_FragColor = vec4(c,1.); }` }));
@@ -612,12 +581,33 @@ window.renderFrame = (f) => {
   if (window.DEBUG_ND) { const dm = new THREE.MeshBasicMaterial({ map: rtNd.texture }); const ds = fs(dm); renderer.setRenderTarget(null); renderer.render(ds, fsCam); return true; }
   // ink + grade
   const D = T0 ? { focus: T0.dist, cinf: 0, near: 1 } : dofAt(f);
-  inkU.px.value = 2.5; inkU.flash.value = window.DEBUG_E ? -1 : (C.flash || 0); inkU.vig.value = L.vig ?? 0.22;
+  inkU.px.value = LK.ink ?? 2.5; inkU.grain.value = LK.grain ?? 0; inkU.grad.value = LK.grad ?? 0; inkU.flash.value = window.DEBUG_E ? -1 : (C.flash || 0); inkU.vig.value = L.vig ?? 0.22;
   renderer.setRenderTarget(rtInk); renderer.render(inkScene, fsCam);
   // lens
   dofU.focus.value = D.focus; dofU.cinf.value = D.cinf; dofU.near.value = D.near ?? 1;
   renderer.setRenderTarget(null); renderer.render(dofScene, fsCam);
   return true;
+};
+// ---------- v2.2: final picture = scene-change blend (rule TRN-06) + one-word captions (rule CAP-02) ----------
+const mk2d = () => { const c = document.createElement('canvas'); c.width = W; c.height = H; return c; };
+const compC = mk2d(), compX = compC.getContext('2d'), outC = mk2d(), outX = outC.getContext('2d');
+const FC = STORY.FORCE;
+window.snap = (f, q) => {
+  const tr = (STORY.TRANS || []).find((t) => (t.kind === 'dissolve' || t.kind === 'fly') && f >= t.b - t.n / 2 && f < t.b + t.n / 2);
+  if (tr) {
+    const a = (f - (tr.b - tr.n / 2) + 0.5) / tr.n, toShot = shotAt(tr.b).id;
+    FC.shot = tr.fromShot; FC.scene = tr.from; window.renderFrame(f); outX.drawImage(canvas, 0, 0);
+    FC.shot = toShot; FC.scene = tr.to; window.renderFrame(f); FC.shot = null; FC.scene = null;
+    compX.globalAlpha = 1; compX.drawImage(outC, 0, 0); compX.globalAlpha = a; compX.drawImage(canvas, 0, 0); compX.globalAlpha = 1;
+  } else { window.renderFrame(f); compX.drawImage(canvas, 0, 0); }
+  const t = (f + 0.5) / 30; let wi = -1;
+  for (let i = 0; i < WORDS.length; i++) { const w = WORDS[i], nx = WORDS[i + 1], end = nx && nx.s - w.e < 0.3 ? nx.s : w.e + 0.12; if (t >= w.s && t < end) { wi = i; break; } }
+  if (wi >= 0 && !window.NOCAP) {
+    const w = WORDS[wi], age = t - w.s, k = age < 0.1 ? 1 + 0.12 * Math.pow(1 - age / 0.1, 2) : 1, fs_ = 84;
+    compX.save(); compX.font = `900 ${fs_}px Impact, "Arial Black", "DejaVu Sans", sans-serif`; compX.textAlign = 'center'; compX.textBaseline = 'middle'; compX.lineJoin = 'round';
+    compX.translate(W / 2, H * 0.70); compX.scale(k, k); compX.lineWidth = 12; compX.strokeStyle = '#1b1424'; compX.strokeText(w.w, 0, 0); compX.fillStyle = '#ffffff'; compX.fillText(w.w, 0, 0); compX.restore();
+  }
+  return compC.toDataURL('image/jpeg', q);
 };
 window.TOTAL = TOTAL;
 window.ready = true;

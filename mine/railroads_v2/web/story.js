@@ -1,117 +1,145 @@
 import { camFromKeys, idle, blinkAt, q, ramp, clamp, lerp, M as MO } from './motion.js';
+// Railroad story (v2): Gemini v1 polished by hand with the 17-video rules.
+//  - one continuous camera flight per scene, fixed lens (CAM-03, CUT-03), scene changes mixed: hard cut / dissolve / fly-through (TRN-06)
+//  - one-word captions (CAP-02, drawn in main.js), a few impact kicks (FX-05), painted surfaces + grain (COL-02/03)
 export const FPS = 30, TOTAL = 1701, DECK = 0;
-export const SHOTS = [
-  { id: 's1', place: 'RAIL-CLOSEUP', a: 0, b: 89, light: 'day' },
-  { id: 's2', place: 'BRIDGE-WIDE', a: 90, b: 218, light: 'day' },
-  { id: 's3', place: 'OFFICE', a: 219, b: 297, light: 'indoor' },
-  { id: 's4', place: 'CANYON-EDGE', a: 298, b: 352, light: 'day' },
-  { id: 's5', place: 'RAIL-CLOSEUP', a: 353, b: 484, light: 'day' },
-  { id: 's6', place: 'CANYON-EDGE', a: 485, b: 524, light: 'day' },
-  { id: 's7', place: 'CANYON-EDGE', a: 525, b: 576, light: 'day' },
-  { id: 's8', place: 'RAIL-CLOSEUP', a: 577, b: 691, light: 'day' },
-  { id: 's9', place: 'BRIDGE-WIDE', a: 692, b: 823, light: 'day' },
-  { id: 's10', place: 'OFFICE', a: 824, b: 955, light: 'indoor' },
-  { id: 's11', place: 'CANYON-EDGE', a: 956, b: 1023, light: 'golden' },
-  { id: 's12', place: 'RAIL-CLOSEUP', a: 1024, b: 1076, light: 'golden' },
-  { id: 's13', place: 'RAIL-CLOSEUP', a: 1077, b: 1138, light: 'golden' },
-  { id: 's14', place: 'RAIL-CLOSEUP', a: 1139, b: 1208, light: 'golden' },
-  { id: 's15', place: 'CANYON-EDGE', a: 1209, b: 1263, light: 'golden' },
-  { id: 's16', place: 'RAIL-CLOSEUP', a: 1264, b: 1418, light: 'golden' },
-  { id: 's17', place: 'BRIDGE-WIDE', a: 1419, b: 1473, light: 'golden' },
-  { id: 's18', place: 'RAIL-CLOSEUP', a: 1474, b: 1548, light: 'golden' },
-  { id: 's19', place: 'BRIDGE-WIDE', a: 1549, b: 1700, light: 'golden' }
+const SC = [
+  ['c1', 0, 89, 'OUTDOOR', 'day'], ['c2', 90, 218, 'OUTDOOR', 'day'], ['c3', 219, 297, 'OFFICE', 'indoor'], ['c4', 298, 352, 'OUTDOOR', 'day'],
+  ['c5', 353, 484, 'OUTDOOR', 'day'], ['c6', 485, 524, 'OUTDOOR', 'day'], ['c7', 525, 576, 'OUTDOOR', 'day'], ['c8', 577, 691, 'OUTDOOR', 'day'],
+  ['c9', 692, 823, 'OUTDOOR', 'day'], ['c10', 824, 955, 'OFFICE', 'indoor'], ['c11', 956, 1023, 'OUTDOOR', 'golden'], ['c12', 1024, 1076, 'OUTDOOR', 'golden'],
+  ['c13', 1077, 1138, 'OUTDOOR', 'golden'], ['c14', 1139, 1208, 'OUTDOOR', 'golden'], ['c15', 1209, 1263, 'OUTDOOR', 'golden'], ['c16', 1264, 1418, 'OUTDOOR', 'golden'],
+  ['c17', 1419, 1473, 'OUTDOOR', 'golden'], ['c18', 1474, 1548, 'OUTDOOR', 'golden'], ['c19', 1549, 1700, 'OUTDOOR', 'golden']
 ];
-export const shotAt = (f) => SHOTS.find((s) => f >= s.a && f <= s.b) || SHOTS[SHOTS.length - 1];
+export const FORCE = { shot: null, scene: null };   // set by main.js while it renders the OUTGOING picture of a dissolve
+// one camera flight per scene: fl(a, b, from-pos, from-look, from-fov, to-pos, to-look, to-fov, [via points], ease)
+const fl = (a, b, p0, l0, f0, p1, l1, f1, via = null, ease = 'easeOut') => [{ f: a, pos: p0, look: l0, fov: f0 }, { f: b, pos: p1, look: l1, fov: f1, ease, ...(via ? { path: via } : {}) }];
+const RX = 4.5, LX = -4.5, G = 0.72, JZ = 32;      // right (his) track x, left (perfect) track x, half gauge, the joint the close-ups look at
+const CAM = {
+  c1: fl(0, 89, [6.4, 0.75, 34.2], [5.22, 0.45, 32], 36, [7.2, 1.6, 35.8], [5.0, 0.5, 31.6], 34, [[6.6, 1.0, 35.0]]),
+  c2: fl(90, 218, [2.6, 2.0, 17], [1, -3, -40], 56, [0.8, 5.8, 10], [0, -9, -46], 58, [[1.6, 3.6, 13]]),
+  c3: fl(219, 297, [0, 1.5, 5], [0, 1.25, -1], 46, [0.3, 1.45, 3.2], [0, 1.4, -1], 40),
+  c4: fl(298, 352, [3.0, 1.3, 26], [4.5, 1.35, 22], 38, [6.2, 1.45, 25.2], [4.5, 1.4, 22], 36, [[4.6, 1.3, 26.8]]),
+  c5: fl(353, 484, [4.6, 0.45, 24.6], [4.1, 0.3, 20.0], 32, [3.6, 1.45, 24.2], [3.3, 1.5, 20.8], 36, [[3.9, 0.7, 23.5]]),
+  c6: fl(485, 524, [7.0, 1.5, 26.5], [4.6, 1.35, 19.5], 40, [5.5, 1.4, 25.0], [4.3, 1.4, 19.5], 36),
+  c7: fl(525, 576, [5.9, 1.35, 23.2], [5.9, 1.4, 19.5], 34, [5.6, 1.4, 22.4], [5.9, 1.4, 19.5], 32),
+  c8: fl(577, 691, [-3.8, 0.5, 34], [-4.5, 0.35, 24], 40, [-4.4, 0.9, 6], [-4.5, 0.3, -10], 42, [[-4.0, 0.55, 20]]),
+  c9: fl(692, 823, [0.5, 7.5, 31], [-4.5, 1, -12], 48, [3.5, 10.5, 25], [-2.5, 0, -30], 50, [[2.0, 9.0, 28]]),
+  c10: fl(824, 955, [0.7, 1.45, 1.8], [-0.1, 1.3, -3.6], 40, [0.1, 1.5, 0.6], [-0.1, 1.3, -3.6], 36),
+  c11: fl(956, 1023, [5.4, 1.2, 30], [4.7, 1.5, 23], 44, [8.5, 5.5, 38], [4.5, 1.0, 10], 50, [[7.2, 2.5, 34]]),
+  c12: fl(1024, 1076, [6.6, 0.7, 34.2], [5.22, 0.42, 32], 36, [6.0, 0.62, 33.0], [5.22, 0.42, 32], 30),
+  c13: fl(1077, 1138, [3.9, 0.9, 33.6], [5.22, 0.55, 32], 30, [4.2, 0.75, 33.0], [5.22, 0.55, 32], 28),
+  c14: fl(1139, 1208, [6.8, 0.95, 33.8], [5.22, 0.55, 32], 30, [6.4, 0.8, 33.2], [5.22, 0.55, 32], 28),
+  c15: fl(1209, 1263, [3.4, 1.5, 30], [4.6, 1.35, 24], 42, [6.4, 1.6, 29], [4.6, 1.35, 24], 38),
+  c16: fl(1264, 1418, [-3.5, 0.55, 12], [-4.6, 0.35, -6], 40, [-3.9, 0.75, -4], [-4.6, 0.35, -22], 36, [[-3.7, 0.6, 4]]),
+  c17: fl(1419, 1473, [-1.0, 3.5, 26], [-4.0, 0.5, -20], 50, [-6.5, 2.0, 14], [-4.5, 0.3, -26], 48),
+  c18: fl(1474, 1548, [6.4, 0.6, 34.0], [5.22, 0.42, 32], 30, [5.9, 0.5, 32.9], [5.22, 0.42, 32], 24),
+  c19: fl(1549, 1700, [-9, 11, 16], [-4.5, 0, -6], 48, [-8, 9, -8], [-4.5, 0, -27], 42, [[-10, 10, 6]])
+};
+export const SHOTS = SC.map(([id, a, b, place, light]) => ({ id, a, b, place, light, k: CAM[id] }));
+export const shotAt = (f) => (FORCE.shot ? SHOTS.find((s) => s.id === FORCE.shot) : null) || SHOTS.find((s) => f >= s.a && f <= s.b) || SHOTS[SHOTS.length - 1];
 export const smooth = MO.smooth;
+export const worldAt = (f) => { const S = shotAt(f); return { place: S.place, id: S.id, a: S.a, b: S.b }; };
 
-export const LIGHTS = {
-  day: { az: 130, el: 55, sky: '#bcd6f0', ground: '#b88a58', hemi: 1.15, sun: '#fff3dc', sunI: 2.6, fog: '#e8d9c0', fogNear: 90, fogFar: 700, skyTop: '#3f86d8', skyHor: '#d6e6f0', sat: 1.12, vig: 0.2, shadowExt: 26 },
-  golden: { az: 20, el: 12, sky: '#d9a888', ground: '#9a5c3a', hemi: 1.0, sun: '#ffb050', sunI: 3.0, fog: '#f0b480', fogNear: 50, fogFar: 520, skyTop: '#7c6ab0', skyHor: '#ffb46a', sunDisc: '#fff0c8', sunSize: 0.004, sat: 1.15, gain: '#fff0dc', vig: 0.28, shadowExt: 26 },
-  indoor: { az: 160, el: 35, sky: '#4a4a4a', ground: '#3a3a3a', hemi: 0.8, sun: '#ffeedd', sunI: 1.5, fog: '#2a2a2a', fogNear: 20, fogFar: 100, skyTop: '#222222', skyHor: '#333333', sat: 1.1, vig: 0.4, shadowExt: 15 }
-};
-export const lightFor = (S, f) => ({ ...LIGHTS[S.light] });
-
-const CAMS = {
-  s1: [{ f: 0, pos: [0.7, 1.2, 1.5], look: [0.7, 0.1, 0], fov: 40 }, { f: 89, pos: [0.7, 1.2, 1.5], look: [0.7, 0.1, 0], fov: 40 }],
-  s2: [{ f: 90, pos: [0, 10, 15], look: [0, 0, -10], fov: 50 }, { f: 218, pos: [0, 12, 25], look: [0, 0, -10], fov: 50 }],
-  s3: [{ f: 219, pos: [0, 1.5, 6], look: [0, 1.2, -1], fov: 45 }, { f: 297, pos: [0, 1.5, 4], look: [0, 1.2, -1], fov: 45 }],
-  s4: [{ f: 298, pos: [0, 1.5, 2], look: [0, 1.3, 0], fov: 40 }, { f: 352, pos: [0, 1.5, 2], look: [0, 1.3, 0], fov: 40 }],
-  s5: [{ f: 353, pos: [0, 1.8, 1.5], look: [0, 0.2, 0], fov: 45 }, { f: 484, pos: [0, 1.5, 1.0], look: [0, 0.2, 0], fov: 45 }],
-  s6: [{ f: 485, pos: [0, 1.5, 6], look: [0, 1.2, 0], fov: 45 }, { f: 524, pos: [0, 1.5, 6], look: [0, 1.2, 0], fov: 45 }],
-  s7: [{ f: 525, pos: [0, 1.5, 2], look: [0, 1.3, 0], fov: 40 }, { f: 576, pos: [0, 1.5, 1.5], look: [0, 1.3, 0], fov: 40 }],
-  s8: [{ f: 577, pos: [0, 1.5, 1.5], look: [0, 0.2, 0], fov: 40 }, { f: 691, pos: [0, 1.5, 1.5], look: [0, 0.2, 0], fov: 40 }],
-  s9: [{ f: 692, pos: [0, 8, 15], look: [0, 0, -10], fov: 50 }, { f: 823, pos: [0, 8, 15], look: [0, 0, -10], fov: 50 }],
-  s10: [{ f: 824, pos: [0, 1.5, 2], look: [0, 1.0, -3], fov: 40 }, { f: 955, pos: [0, 1.5, 1.5], look: [0, 1.0, -3], fov: 40 }],
-  s11: [{ f: 956, pos: [0, 2, 12], look: [0, 2, 0], fov: 50 }, { f: 1023, pos: [0, 8, 15], look: [0, 2, 0], fov: 50 }],
-  s12: [{ f: 1024, pos: [0.7, 1.5, 1.5], look: [0.7, 0.1, 0], fov: 35 }, { f: 1076, pos: [0.7, 1.0, 1.0], look: [0.7, 0.1, 0], fov: 35 }],
-  s13: [{ f: 1077, pos: [0.7, 1.0, 1.0], look: [0.7, 0.1, 0], fov: 35 }, { f: 1138, pos: [0.7, 1.0, 1.0], look: [0.7, 0.1, 0], fov: 35 }],
-  s14: [{ f: 1139, pos: [0.7, 1.0, 1.0], look: [0.7, 0.1, 0], fov: 35 }, { f: 1208, pos: [0.7, 1.0, 1.0], look: [0.7, 0.1, 0], fov: 35 }],
-  s15: [{ f: 1209, pos: [0, 1.5, 6], look: [0, 1.2, 0], fov: 45 }, { f: 1263, pos: [0, 1.5, 6], look: [0, 1.2, 0], fov: 45 }],
-  s16: [{ f: 1264, pos: [0.7, 1.5, 1.5], look: [0.7, 0.1, 0], fov: 35 }, { f: 1418, pos: [0.7, 1.0, 1.0], look: [0.7, 0.1, 0], fov: 35 }],
-  s17: [{ f: 1419, pos: [0, 10, 20], look: [0, 0, -10], fov: 50 }, { f: 1473, pos: [0, 10, 20], look: [0, 0, -10], fov: 50 }],
-  s18: [{ f: 1474, pos: [0.7, 1.5, 1.5], look: [0.7, 0.1, 0], fov: 35 }, { f: 1548, pos: [0.7, 1.0, 1.0], look: [0.7, 0.1, 0], fov: 35 }],
-  s19: [{ f: 1549, pos: [0, 10, 20], look: [0, 0, -10], fov: 50 }, { f: 1700, pos: [5, 6, -4], look: [5, 1, -10], fov: 45, ease: 'easeOut' }]
-};
-
+// ---- scene changes (rule TRN-06: about 45 % dissolve, 20 % fly-through, 25 % hard cut, 10 % in-place). n = blend length in frames, centred on the boundary b.
+export const TRANS = [
+  { b: 90, kind: 'dissolve', n: 8, from: 'c1', to: 'c2', fromShot: 'c1' }, { b: 219, kind: 'dissolve', n: 8, from: 'c2', to: 'c3', fromShot: 'c2' },
+  { b: 298, kind: 'fly', n: 10, from: 'c3', to: 'c4', fromShot: 'c3' }, { b: 353, kind: 'cut' }, { b: 485, kind: 'dissolve', n: 8, from: 'c5', to: 'c6', fromShot: 'c5' },
+  { b: 525, kind: 'cut' }, { b: 577, kind: 'cut' }, { b: 692, kind: 'dissolve', n: 8, from: 'c8', to: 'c9', fromShot: 'c8' },
+  { b: 824, kind: 'dissolve', n: 8, from: 'c9', to: 'c10', fromShot: 'c9' }, { b: 956, kind: 'fly', n: 10, from: 'c10', to: 'c11', fromShot: 'c10' },
+  { b: 1024, kind: 'dissolve', n: 8, from: 'c11', to: 'c12', fromShot: 'c11' }, { b: 1077, kind: 'cut' }, { b: 1139, kind: 'dissolve', n: 8, from: 'c13', to: 'c14', fromShot: 'c13' },
+  { b: 1209, kind: 'cut' }, { b: 1264, kind: 'dissolve', n: 8, from: 'c15', to: 'c16', fromShot: 'c15' }, { b: 1419, kind: 'fly', n: 10, from: 'c16', to: 'c17', fromShot: 'c16' },
+  { b: 1474, kind: 'dissolve', n: 8, from: 'c17', to: 'c18', fromShot: 'c17' }, { b: 1549, kind: 'fly', n: 10, from: 'c18', to: 'c19', fromShot: 'c18' }
+];
+const KICKS = [{ f: 353, a: 0.03 }, { f: 1650, a: 0.05 }, { f: 1688, a: 0.06 }];   // rule FX-05: a few impact kicks, not constant shake
 export const camAt = (f) => {
-  const S = shotAt(f), c = camFromKeys(CAMS[S.id], f, { creep: 0.001 });
+  const S = shotAt(f), c = camFromKeys(S.k, f, { creep: 0, kicks: KICKS });
   c.shadowAt = [c.look[0], 0, c.look[2]];
   return c;
 };
-
 const dist = (a, b) => Math.hypot(a[0] - b[0], a[1] - b[1], a[2] - b[2]);
-export const dofAt = (f) => {
+export const dofAt = (f) => {   // soft foreground / background on the close-ups (rule: reference videos blur 24-61 % of the frame edges)
   const S = shotAt(f), C = camAt(f);
-  const cinf = ['s1', 's4', 's5', 's7', 's8', 's10', 's12', 's13', 's14', 's16', 's18'].includes(S.id) ? 12 : 0;
+  const cinf = { c1: 11, c5: 9, c12: 12, c13: 12, c14: 12, c16: 5, c18: 12, c8: 5, c7: 6, c4: 6, c6: 6, c10: 7 }[S.id] || 0;
   return { focus: dist(C.pos, C.look), cinf, near: 1 };
 };
 
-export const worldAt = (f) => {
-  const S = shotAt(f);
-  return { place: S.place, id: S.id };
+// ---- lights
+export const LIGHTS = {
+  day: { az: 120, el: 52, sky: '#bcd6f0', ground: '#c99a62', hemi: 1.1, sun: '#fff0d8', sunI: 2.5, fog: '#ecd2a8', fogNear: 30, fogFar: 270, skyTop: '#3f86d8', skyHor: '#e8d8bc', sat: 1.12, vig: 0.2, shadowExt: 30 },
+  golden: { az: 60, el: 11, sky: '#e3a07c', ground: '#9a5c3a', hemi: 0.95, sun: '#ffb050', sunI: 3.1, fog: '#f0a070', fogNear: 28, fogFar: 240, skyTop: '#6e5aa8', skyHor: '#ffa860', sunDisc: '#fff0c8', sunSize: 0.004, sat: 1.18, gain: '#fff0dc', vig: 0.28, shadowExt: 30 },
+  indoor: { az: 160, el: 35, sky: '#5a5a5a', ground: '#4a4a4a', hemi: 0.9, sun: '#ffeedd', sunI: 1.6, fog: '#2a2a2a', fogNear: 20, fogFar: 100, skyTop: '#222222', skyHor: '#333333', sat: 1.1, vig: 0.4, shadowExt: 15 }
+};
+export const lightFor = (S, f) => ({ ...LIGHTS[S.light] });
+
+// ---- story state (the world reads this every frame): rail gap, heat, buckle, trains, props
+const ss = (a, b, f) => { const t = clamp((f - a) / (b - a)); return t * t * (3 - 2 * t); };
+export const STATE = (f, S) => {
+  const id = S.id, o = { gapR: 0.2, heatR: 0, heatL: 0, buckle: 0, trainL: null, trainR: null, saw: null, coin: false, paper: false };
+  if (id === 'c1') { o.gapR = 0.2 * ss(28, 84, f); o.saw = f < 86 ? f / 30 : null; }
+  if (id === 'c12') o.gapR = lerp(0.2, 0.1, ss(1024, 1076, f));
+  if (id === 'c13') { o.gapR = lerp(0.1, 0.07, ss(1077, 1138, f)); o.coin = true; }
+  if (id === 'c14') { o.gapR = lerp(0.07, 0.02, ss(1139, 1170, f)); o.paper = true; }
+  if (id === 'c15') o.gapR = 0.02;
+  if (id === 'c16' || id === 'c17') o.gapR = lerp(0.02, 0.012, ss(1264, 1473, f));
+  if (id === 'c18') o.gapR = lerp(0.012, 0, ss(1474, 1530, f));
+  if (id === 'c19') o.gapR = 0;
+  // the sun heats the rails after the time jump
+  const h = f < 1024 ? 0 : f < 1264 ? lerp(0, 0.12, ss(1024, 1264, f)) : lerp(0.12, 0.38, ss(1264, 1548, f));
+  o.heatR = h;
+  o.heatL = f < 1264 ? 0 : f < 1419 ? lerp(0.18, 0.72, ss(1264, 1418, f)) : lerp(0.72, 1, ss(1419, 1700, f));
+  o.buckle = f < 1300 ? 0 : f < 1549 ? 0.1 * ss(1300, 1548, f) : lerp(0.1, 1, Math.pow(ss(1549, 1660, f), 1.5));
+  if (id === 'c9') { if (f >= 692) o.trainL = 40 - (f - 692) * 0.66; if (f >= 770) o.trainR = 52 - (f - 770) * 0.52; }
+  if (id === 'c19') o.trainL = 36 - (f - 1549) * 0.42;
+  return o;
 };
 
-const R = (T, who, o, pos, extra = {}) => ({ key: who + JSON.stringify(o), draw: (p) => T.romanFront(p, who, o), x: pos[0], y: pos[1], z: pos[2], ...extra });
+// ---- characters
+// ov = outfit overrides (colours, beard...): the kit only reads these from the outfit object, so the outfit is copied and changed
+const R = (T, who, o, pos, extra = {}) => { const { ov = {}, ...op } = o; return { key: who + JSON.stringify(o), draw: (p) => T.romanFront(p, { ...T.OUTFITS[who], ...ov }, op), x: pos[0], y: pos[1], z: pos[2], ...extra }; };
 const FX = (key, draw, pos, s, extra = {}) => ({ key, draw, x: pos[0], y: pos[1], z: pos[2], s, blob: false, shadow: false, order: 5, ...extra });
+const ENG = { who: 'worker1', o: { ov: { moustache: undefined, cap: '#c2733a' } } };
+const BOSS = { who: 'councilman', o: { ov: { tunic: '#7a2a2a', dress: '#7a2a2a' } } };
+const RIVAL = { who: 'council2', o: { ov: { skin: '#8c5a35', beard: '#111111', brows: '#111111', moustache: undefined, tunic: '#2c5a4a', dress: undefined } } };
+const mix = (a, b, t) => { const p = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16)), A = p(a), B = p(b); return '#' + A.map((v, i) => Math.round(lerp(v, B[i], t)).toString(16).padStart(2, '0')).join(''); };
+const purple = (t) => mix('#f5c9a0', '#8d54c8', Math.round(clamp(t) * 6) / 6);   // face turns purple in 6 steps (cards are cached per step)
 
 export const actorsAt = (f, T) => {
-  const S = shotAt(f), out = [];
-  const ENGINEER = { who: 'worker1', o: { moustache: null } };
-  const BOSS = { who: 'councilman', o: {} };
-  const RIVAL = { who: 'council2', o: { skin: "#8c5a35", beard: "#111111", brows: "#111111", moustache: null } };
-
-  if (S.id === 's1') out.push(R(T, ENGINEER.who, { ...ENGINEER.o, expr: 'determined', L: 'spear', R: 'spear', facing: 0, look: 0.5, blink: blinkAt(f, 1), ...idle(f, 1) }, [0.7, 0, -0.5]));
-  if (S.id === 's3') out.push(R(T, BOSS.who, { ...BOSS.o, expr: 'proud', L: 'point', R: 'hang', facing: 1, blink: blinkAt(f, 2), ...idle(f, 2) }, [0, 0, -1]));
-  if (S.id === 's4') out.push(R(T, ENGINEER.who, { ...ENGINEER.o, expr: 'proud', L: 'hip', R: 'hang', facing: 1, blink: blinkAt(f, 1), ...idle(f, 1) }, [0, 0, 0]));
-  if (S.id === 's5') out.push(R(T, BOSS.who, { ...BOSS.o, expr: 'angry+vein', L: 'point', R: 'hang', facing: 0, look: 0.5, blink: blinkAt(f, 2), ...idle(f, 2) }, [0, 0, -0.5]));
-  if (S.id === 's6') {
-    out.push(R(T, BOSS.who, { ...BOSS.o, expr: 'angry+vein', L: 'point', R: 'hang', facing: 1, blink: blinkAt(f, 2), ...idle(f, 2) }, [-1.5, 0, 0]));
-    out.push(R(T, ENGINEER.who, { ...ENGINEER.o, expr: 'neutral', L: 'hang', R: 'hang', facing: -1, blink: blinkAt(f, 1), ...idle(f, 1) }, [1.5, 0, 0]));
+  const S = shotAt(f), out = [], id = S.id;
+  if (id === 'c1') out.push(R(T, ENG.who, { ...ENG.o, expr: 'determined', L: 'hip', R: 'hang', facing: 0, look: 0.3, blink: blinkAt(f, 1), ...idle(f, 1) }, [6.9, 0, 29.4]));
+  if (id === 'c3') out.push(R(T, BOSS.who, { ...BOSS.o, expr: 'proud', L: 'point', R: 'hang', facing: 1, blink: blinkAt(f, 2), ...idle(f, 2) }, [0, 0, -1]));
+  if (id === 'c4') out.push(R(T, ENG.who, { ...ENG.o, expr: 'proud', L: 'hip', R: 'hang', facing: 0, blink: blinkAt(f, 1), ...idle(f, 1) }, [RX, 0, 22]));
+  if (id === 'c5') out.push(R(T, BOSS.who, { ...BOSS.o, ov: { ...BOSS.o.ov, skin: purple(ss(430, 484, f)) }, expr: f < 430 ? 'shock' : 'angry+vein', L: 'point', R: 'hang', facing: 0, look: 0.4, blink: blinkAt(f, 2), ...idle(f, 2) }, [3.3, 0, 20.8]));
+  if (id === 'c6') {
+    out.push(R(T, BOSS.who, { ...BOSS.o, ov: { ...BOSS.o.ov, skin: purple(1) }, expr: 'angry+vein', L: 'point', R: 'hang', facing: 1, blink: blinkAt(f, 2), ...idle(f, 2) }, [3.0, 0, 19.5]));
+    out.push(R(T, ENG.who, { ...ENG.o, expr: 'neutral', L: 'hang', R: 'hang', facing: -1, blink: blinkAt(f, 1), ...idle(f, 1) }, [5.9, 0, 19.5]));
   }
-  if (S.id === 's7') out.push(R(T, ENGINEER.who, { ...ENGINEER.o, expr: 'stubborn', L: 'cross', R: 'cross', facing: -1, blink: blinkAt(f, 1), ...idle(f, 1) }, [0, 0, 0]));
-  if (S.id === 's8') out.push(R(T, RIVAL.who, { ...RIVAL.o, expr: 'proud', L: 'point', R: 'hang', facing: 0, look: 0.5, blink: blinkAt(f, 3), ...idle(f, 3) }, [0, 0, -0.5]));
-  if (S.id === 's10') out.push(R(T, BOSS.who, { ...BOSS.o, expr: 'sad+sweat', L: 'temple', R: 'hang', facing: 1, blink: blinkAt(f, 2), ...idle(f, 2) }, [0, 0, -1]));
-  if (S.id === 's11') out.push(R(T, ENGINEER.who, { ...ENGINEER.o, expr: 'neutral', L: 'point', R: 'hang', facing: 0, blink: blinkAt(f, 1), ...idle(f, 1) }, [0, 0, 0]));
-  if (S.id === 's13') out.push(R(T, ENGINEER.who, { ...ENGINEER.o, expr: 'neutral', L: 'reach', R: 'hang', facing: 0, look: 0.5, blink: blinkAt(f, 1), ...idle(f, 1) }, [0.7, 0, -0.5]));
-  if (S.id === 's14') out.push(R(T, BOSS.who, { ...BOSS.o, expr: 'grin', L: 'reach', R: 'hang', facing: 0, look: 0.5, blink: blinkAt(f, 2), ...idle(f, 2) }, [0.7, 0, -0.5]));
-  if (S.id === 's15') {
-    out.push(R(T, BOSS.who, { ...BOSS.o, expr: 'laugh', L: 'hip', R: 'hang', facing: 1, blink: blinkAt(f, 2), ...idle(f, 2) }, [-1.5, 0, 0]));
-    out.push(R(T, ENGINEER.who, { ...ENGINEER.o, expr: 'neutral', L: 'cross', R: 'cross', facing: -1, blink: blinkAt(f, 1), ...idle(f, 1) }, [1.5, 0, 0]));
+  if (id === 'c7') out.push(R(T, ENG.who, { ...ENG.o, expr: 'stubborn', L: 'cross', R: 'cross', facing: 0, blink: blinkAt(f, 1), ...idle(f, 1) }, [5.9, 0, 19.5]));
+  if (id === 'c8') out.push(R(T, RIVAL.who, { ...RIVAL.o, expr: 'proud', L: 'point', R: 'hang', facing: 0, look: 0.3, blink: blinkAt(f, 3), ...idle(f, 3) }, [-2.7, 0, 20]));
+  if (id === 'c10') out.push(R(T, BOSS.who, { ...BOSS.o, expr: 'sad+sweat', L: 'temple', R: 'hang', facing: 0, blink: blinkAt(f, 2), ...idle(f, 2) }, [0, 0, -4.4]));
+  if (id === 'c11') out.push(R(T, ENG.who, { ...ENG.o, expr: 'neutral', L: 'point', R: 'hang', facing: 0, blink: blinkAt(f, 1), ...idle(f, 1) }, [RX + 0.4, 0, 23.5]));
+  if (id === 'c13') out.push(R(T, ENG.who, { ...ENG.o, expr: 'neutral', L: 'reach', R: 'hang', facing: 0, look: 0.4, blink: blinkAt(f, 1), ...idle(f, 1) }, [6.8, 0, 29.5]));
+  if (id === 'c14') out.push(R(T, BOSS.who, { ...BOSS.o, expr: 'grin', L: 'reach', R: 'hang', facing: 0, look: 0.4, blink: blinkAt(f, 2), ...idle(f, 2) }, [3.3, 0, 29.8]));
+  if (id === 'c15') {
+    out.push(R(T, BOSS.who, { ...BOSS.o, expr: 'laugh', L: 'hip', R: 'hang', facing: 1, blink: blinkAt(f, 2), ...idle(f, 2) }, [3.2, 0, 24]));
+    out.push(R(T, ENG.who, { ...ENG.o, expr: 'neutral', L: 'cross', R: 'cross', facing: -1, blink: blinkAt(f, 1), ...idle(f, 1) }, [5.9, 0, 24]));
   }
-
   return out;
 };
 
 export const fxAt = (f, T) => {
-  const S = shotAt(f), out = [];
-  if (S.id === 's2') out.push(FX('crowd', (p) => T.crowd(p, { n: 10, mode: 'stand' }), [0, 0, 5], 1));
-  if (S.id === 's9') out.push(FX('smoke', (p) => T.fxSmoke(p, (f % 30) / 30), [-6, 4, -20 + (f - 692) * 0.2], 2));
-  if (S.id === 's16') out.push(FX('glow', (p) => T.fxGlow(p, (f % 30) / 30, '#ffaa55'), [0.7, 0.2, 0], 1.5));
-  if (S.id === 's17') out.push(FX('motes', (p) => T.fxMotes(p, (f % 60) / 60), [0, 5, -5], 3));
-  if (S.id === 's19') {
-    out.push(FX('debris', (p) => T.fxDebris(p, Math.min(1, (f - 1549) / 30)), [5, 1, -10], 2));
-    out.push(FX('smoke', (p) => T.fxSmoke(p, (f % 30) / 30), [5, 4, -30 + (f - 1549) * 0.3], 2));
+  const S = shotAt(f), out = [], id = S.id, st = STATE(f, S);
+  if (id === 'c2') out.push(FX('crowd', (p) => T.crowd(p, { n: 10, mode: 'stand' }), [1.0, 0, 18.5], 1));
+  if (id === 'c1' && st.saw !== null && f > 20) out.push(FX('sp', (p) => T.fxDebris(p, ((f % 9) / 9)), [RX + G + 0.1, 0.65, JZ], 0.25));
+  if (id === 'c9' && st.trainL !== null) out.push(FX('smoke', (p) => T.fxSmoke(p, (f % 40) / 40), [LX, 4.6 + ((f % 40) / 40) * 1.5, st.trainL - 3.2], 2.2));
+  if (id === 'c9' && st.trainR !== null) out.push(FX('smoke2', (p) => T.fxSmoke(p, (f % 33) / 33), [RX, 4.6 + ((f % 33) / 33) * 1.4, st.trainR - 3.2], 2.0));
+  if (id === 'c16') out.push(FX('glow', (p) => T.fxGlow(p, (f % 30) / 30, '#ffaa55'), [LX, 0.5, -10 - (f - 1264) * 0.06], 1.6));
+  if (id === 'c17') out.push(FX('motes', (p) => T.fxMotes(p, (f % 60) / 60), [LX, 3, -6], 3));
+  if (id === 'c18') out.push(FX('glow2', (p) => T.fxGlow(p, (f % 30) / 30, '#ffaa55'), [RX + G, 0.6, JZ], 0.9));
+  if (id === 'c19') {
+    if (f > 1630) out.push(FX('debris', (p) => T.fxDebris(p, Math.min(1, (f - 1630) / 70)), [LX + 0.6, 1.0, -22], 2.4));
+    out.push(FX('smoke', (p) => T.fxSmoke(p, (f % 36) / 36), [LX, 4.6 + ((f % 36) / 36) * 1.5, (st.trainL ?? 0) - 3.2], 2.4));
+    if (f > 1625) out.push(FX('dust', (p) => T.fxSmoke(p, ((f - 1625) % 50) / 50), [LX - 0.5, 0.8, -26], 3.2));
   }
   return out;
 };
-export const LOOK = { sat: 0.78, vibr: 0.25, drift: 1, push: 1 };
+export const LOOK = { sat: 1.0, vibr: 0.35, drift: 0.5, push: 0, ink: 3.2, grain: 0.09, grad: 0.10 };   // no automatic push-in zoom (rule CAM-03)
