@@ -563,8 +563,6 @@ export const fxClock = (p, t, turns = 1) => {
 
 export const bombSuit = (p, opts = {}) => {
   const O = { tunic: "#4a6b4a", skin: "#f5c9a0", stout: true, armor: false };
-  romanFront(p, O, opts);
-  
   const seed = opts.seed || 3;
   const H = headBlob(seed, 118, opts.facing || 0);
   const HH = 2 * H.b;
@@ -574,29 +572,16 @@ export const bombSuit = (p, opts = {}) => {
   const hc = chin - H.b;
   const cx = 300;
   const u = 2 * H.a / 100;
-  
-  // Helmet dome
-  p.ell(cx, hc - H.b * 0.2, H.a * 1.25, H.b * 1.25, "#3a5a3a", 4 * u);
-  // Neck guard
-  p.poly([
-    [cx - H.a * 1.2, hc], [cx + H.a * 1.2, hc],
-    [cx + H.a * 1.4, hc + H.b * 1.2], [cx - H.a * 1.4, hc + H.b * 1.2]
-  ], "#3a5a3a", 4 * u);
-  
-  // Visor (semi-transparent)
+  // helmet shell and neck guard are drawn BEHIND the face so the expression stays readable (editor fix: v1 painted an opaque dome over the face)
+  p.ell(cx, hc - H.b * 0.15, H.a * 1.32, H.b * 1.32, "#3a5a3a", 4 * u);
+  p.poly([[cx - H.a * 1.25, hc + H.b * 0.2], [cx + H.a * 1.25, hc + H.b * 0.2], [cx + H.a * 1.45, hc + H.b * 1.25], [cx - H.a * 1.45, hc + H.b * 1.25]], "#3a5a3a", 4 * u);
+  romanFront(p, O, opts);
+  // visor: a light glass tint and a highlight over the face, plus a rim at the top of the opening
   const g = p.g;
   g.save();
-  g.fillStyle = "#aaddff66";
-  g.beginPath();
-  g.moveTo(cx - H.a * 1.0, hc - H.b * 0.5);
-  g.lineTo(cx + H.a * 1.0, hc - H.b * 0.5);
-  g.lineTo(cx + H.a * 0.8, hc + H.b * 0.5);
-  g.lineTo(cx - H.a * 0.8, hc + H.b * 0.5);
-  g.closePath();
-  g.fill();
-  g.lineWidth = 3 * u;
-  g.strokeStyle = INK;
-  g.stroke();
+  g.fillStyle = "#aaddff30"; g.beginPath(); g.ellipse(cx, hc, H.a * 1.05, H.b * 1.02, 0, 0, Math.PI * 2); g.fill();
+  g.lineWidth = 5 * u; g.strokeStyle = "#2c442c"; g.beginPath(); g.ellipse(cx, hc, H.a * 1.08, H.b * 1.05, 0, Math.PI * 1.05, Math.PI * 1.95); g.stroke();
+  g.strokeStyle = "#ffffffaa"; g.lineWidth = 4 * u; g.beginPath(); g.arc(cx - H.a * 0.4, hc - H.b * 0.35, H.a * 0.5, Math.PI * 1.15, Math.PI * 1.45); g.stroke();
   g.restore();
 };
 

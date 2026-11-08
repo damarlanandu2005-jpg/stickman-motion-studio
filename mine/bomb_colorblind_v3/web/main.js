@@ -405,12 +405,12 @@ function worldState(S, f) {
   envBombRoom.visible = S.place === 'BOMB-ROOM';
   envCircuit.visible = S.place === 'CIRCUIT-VIEW';
   
-  const sec = Math.max(0, 7 - Math.floor(f / 30));
+  const sec = Math.max(5, 30 - Math.floor(Math.max(0, f - 250) / 30));   // editor fix: v1 hit 00:00 before the bomb scene began; now it ticks 30 -> 5 s while Arthur works
   [timer1, timer2].forEach(t => {
     const ctx = t.userData.ctx;
     ctx.fillStyle = '#050505'; ctx.fillRect(0,0,256,128);
     ctx.fillStyle = '#ff2222'; ctx.font = 'bold 80px monospace';
-    ctx.fillText(`00:0${sec}`, 20, 90);
+    ctx.fillText(`00:${String(sec).padStart(2, '0')}`, 20, 90);
     t.userData.tex.needsUpdate = true;
   });
   

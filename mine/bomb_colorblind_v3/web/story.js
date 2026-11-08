@@ -33,16 +33,16 @@ const CAMS = {
   s2: [{ f: 43, pos: [100, 1.5, 6], look: [100, 1.5, 0], fov: 54 }, { f: 143, pos: [100, 3.0, 8], look: [100, 1.5, 0], fov: 58 }],
   s3: [{ f: 144, pos: [100, 1.5, 15], look: [99, 1.5, 0], fov: 56 }, { f: 249, pos: [105, 1.5, 14], look: [99, 1.5, 0], fov: 56 }],
   s4: [{ f: 250, pos: [200, 1.5, 0.5], look: [200, 1.1, -1], fov: 45 }, { f: 338, pos: [200, 1.4, 0.0], look: [200, 1.1, -1], fov: 42 }],
-  s5: [{ f: 339, pos: [300, 0.3, 0.3], look: [300, 0, 0], fov: 40 }, { f: 435, pos: [300, 0.3, 0.3], look: [300, 0, 0], fov: 40 }],
+  s5: [{ f: 339, pos: [300.9,1.15,1.0], look: [300,0.1,-0.1], fov: 44 }, { f: 435, pos: [300.3,0.8,0.7], look: [300,0.1,-0.1], fov: 42 }],
   s6: [{ f: 436, pos: [200, 1.5, 2.0], look: [200, 1.5, 1], fov: 48 }, { f: 498, pos: [200, 1.5, 3.0], look: [200, 1.5, 1], fov: 50 }],
   s7: [{ f: 499, pos: [200, 1.5, 3.0], look: [200, 1.5, 1], fov: 50 }, { f: 546, pos: [200, 1.5, 3.0], look: [200, 1.5, 1], fov: 50 }],
-  s8: [{ f: 547, pos: [300, 0.5, 0.5], look: [300, 0, 0], fov: 45 }, { f: 615, pos: [300, 0.2, 0.2], look: [300, 0, 0], fov: 40 }],
-  s9: [{ f: 616, pos: [300, 0.3, 0.2], look: [300, 0, 0], fov: 40 }, { f: 695, pos: [299.8, 0.3, 0.2], look: [300, 0, 0], fov: 40 }],
+  s8: [{ f: 547, pos: [299.2,0.9,0.9], look: [300,0.1,-0.1], fov: 44 }, { f: 615, pos: [299.7,0.6,0.55], look: [300,0.1,-0.1], fov: 40 }],
+  s9: [{ f: 616, pos: [300.6,0.45,0.75], look: [300,0.1,-0.1], fov: 42 }, { f: 695, pos: [300.1,0.35,0.5], look: [299.9,0.1,-0.1], fov: 38 }],
   s10: [{ f: 696, pos: [200, 3.0, 6.0], look: [200, 1.5, 0], fov: 58 }, { f: 771, pos: [200, 1.5, 5.0], look: [200, 1.5, 0], fov: 54 }],
-  s11: [{ f: 772, pos: [300, 0.4, 0.3], look: [300, 0.1, -0.1], fov: 40, ease: 'anticip' }, { f: 796, pos: [300, 0.35, 0.15], look: [300, 0.1, -0.1], fov: 38 }],
+  s11: [{ f: 772, pos: [300,0.55,0.7], look: [300,0.1,-0.1], fov: 42, ease: 'anticip' }, { f: 796, pos: [300,0.35,0.35], look: [300,0.1,-0.1], fov: 36 }],
   s12: [{ f: 797, pos: [100, 1.5, 6.0], look: [100, 1.5, 0], fov: 54 }, { f: 857, pos: [102, 1.5, 6.0], look: [100, 1.5, 0], fov: 54 }],
   s13: [{ f: 858, pos: [201, 1.5, 3.0], look: [200, 1.5, 1], fov: 48 }, { f: 917, pos: [200.5, 1.5, 2.5], look: [200, 1.5, 1], fov: 45 }],
-  s14: [{ f: 918, pos: [300, 0.3, 0.3], look: [300, 0, 0], fov: 40 }, { f: 990, pos: [300, 0.3, 0.3], look: [300, 0, 0], fov: 40 }],
+  s14: [{ f: 918, pos: [300,1.3,0.9], look: [300,0.1,-0.1], fov: 44 }, { f: 990, pos: [300.3,0.7,0.6], look: [300,0.1,-0.1], fov: 40 }],
   s15: [{ f: 991, pos: [0, 1.5, 3.0], look: [0, 1.5, -2], fov: 54 }, { f: 1082, pos: [0, 1.5, 6.0], look: [0, 1.5, -2], fov: 58 }]
 };
 
@@ -72,7 +72,7 @@ export const actorsAt = (f, T) => {
   const S = shotAt(f), out = [];
   
   if (S.id === 's1') {
-    out.push(R(T, 'civA', { seed: 1, expr: 'neutral', blink: blinkAt(f, 1), L: 'hang', R: 'hang', ...idle(f, 1) }, [0, 0, -1.5]));
+    out.push(R(T, 'bombSuit', { seed: 1, expr: 'neutral', blink: blinkAt(f, 1), L: 'hang', R: 'hang', ...idle(f, 1) }, [0, 0, -1.5]));
   }
   if (S.id === 's2') {
     out.push(R(T, 'bombSuit', { seed: 1, expr: 'proud', blink: blinkAt(f, 1), L: 'hip', R: 'hip', ...idle(f, 1) }, [100, 0, 0]));
@@ -98,7 +98,7 @@ export const actorsAt = (f, T) => {
     out.push(R(T, 'bombSuit', { seed: 1, expr: 'shock+sparkle', facing: 1, blink: blinkAt(f, 1), L: 'point', R: 'hang', ...idle(f, 1) }, [200, 0, 1]));
   }
   if (S.id === 's15') {
-    out.push(R(T, 'civA', { seed: 1, expr: 'proud', blink: blinkAt(f, 1), L: 'hip', R: 'hip', ...idle(f, 1) }, [0, 0, -0.2]));
+    out.push(R(T, 'bombSuit', { seed: 1, expr: 'proud', blink: blinkAt(f, 1), L: 'hip', R: 'hip', ...idle(f, 1) }, [0, 0, -0.2]));
   }
   
   return out;
