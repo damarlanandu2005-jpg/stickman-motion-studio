@@ -1,0 +1,144 @@
+{
+ "duration": 36.101224,
+ "frames30": 1083,
+ "source": "silence-align (cost 1.39)",
+ "segments": [
+  [
+   0.0,
+   1.29687
+  ],
+  [
+   1.42401,
+   4.5083
+  ],
+  [
+   4.8093,
+   7.96959
+  ],
+  [
+   8.3417,
+   11.0129
+  ],
+  [
+   11.2986,
+   14.2901
+  ],
+  [
+   14.5292,
+   16.4533
+  ],
+  [
+   16.6501,
+   17.8463
+  ],
+  [
+   18.2263,
+   20.2524
+  ],
+  [
+   20.5228,
+   22.8879
+  ],
+  [
+   23.1916,
+   25.4095
+  ],
+  [
+   25.7377,
+   26.4479
+  ],
+  [
+   26.5723,
+   28.4262
+  ],
+  [
+   28.6103,
+   30.4462
+  ],
+  [
+   30.595,
+   31.5767
+  ],
+  [
+   31.7098,
+   36.101224
+  ]
+ ],
+ "phrases": [
+  {
+   "text": "Arthur was colorblind.",
+   "s": 0.0,
+   "e": 1.297
+  },
+  {
+   "text": "But that didn't stop him from becoming a bomb disposal expert.",
+   "s": 1.424,
+   "e": 4.508
+  },
+  {
+   "text": "He was called whenever a dangerous device needed to be defused.",
+   "s": 4.809,
+   "e": 7.97
+  },
+  {
+   "text": "One day, he faced a bomb with only seconds remaining.",
+   "s": 8.342,
+   "e": 11.013
+  },
+  {
+   "text": "The instructions depended on identifying colored wires.",
+   "s": 11.299,
+   "e": 14.29
+  },
+  {
+   "text": "But Arthur couldn't see the difference between them.",
+   "s": 14.529,
+   "e": 16.453
+  },
+  {
+   "text": "He had to find another way.",
+   "s": 16.65,
+   "e": 17.846
+  },
+  {
+   "text": "Instead of guessing, he carefully studied the circuit.",
+   "s": 18.226,
+   "e": 20.252
+  },
+  {
+   "text": "He traced every wire and followed its connections.",
+   "s": 20.523,
+   "e": 22.888
+  },
+  {
+   "text": "There were six wires, and one wrong cut could kill him.",
+   "s": 23.192,
+   "e": 25.41
+  },
+  {
+   "text": "The countdown kept ticking.",
+   "s": 25.738,
+   "e": 26.448
+  },
+  {
+   "text": "Everyone was waiting for an answer.",
+   "s": 26.572,
+   "e": 28.426
+  },
+  {
+   "text": "Then Arthur noticed something others had missed.",
+   "s": 28.61,
+   "e": 30.446
+  },
+  {
+   "text": "He understood the circuit.",
+   "s": 30.595,
+   "e": 31.577
+  },
+  {
+   "text": "And he defused the bomb. He had done it again. Forty-one bombs, without relying on color.",
+   "s": 31.71,
+   "e": 36.101
+  }
+ ]
+}
