@@ -1,0 +1,146 @@
+CAST:
+- CLOCKMAKER | worker1 + cap | light skin, grey hair, grey beard | neutral
+
+PLACES:
+- WORKSHOP | clockmaker's repair room | 8 m wide | wooden workbench on left, large grandfather clock in middle, tools on wall right
+- CLOCK-INTERIOR | macro view inside the mechanical clock | 1 m wide | brass gears on left, coiled spring in middle, pendulum rod on right
+
+NEW OBJECTS:
+- NEW: grandfather clock | 2 m tall | dark wood, brass face | stands in the workshop, shows the time
+- NEW: coiled spring | 0.3 m wide | shiny steel metal | tightly wound spiral that powers the clock
+- NEW: stack of gears | 0.4 m wide | polished brass | interlocking toothed wheels
+- NEW: escapement wheel | 0.2 m wide | brass with sharp pointed teeth | turns one step at a time
+- NEW: anchor piece | 0.2 m wide | silver metal shaped like a boat anchor | catches the teeth of the escapement wheel
+- NEW: swinging pendulum | 1 m long | brass rod with a heavy round bob at the bottom | swings left and right
+
+SHOT 1
+WORDS:      "How does a mechanical clock tick?"
+PLACE:      WORKSHOP
+LIGHT:      indoor
+CAMERA:     wide shot of WORKSHOP > slow push-in | mid (6 m) | wide
+CHARACTERS: CLOCKMAKER | hip | neutral | left | mid | facing grandfather clock
+EFFECTS:    floating dust motes
+MUST SEE:   CLOCKMAKER, grandfather clock, wooden workbench
+MUST NOT:   clock missing from the room, empty frame
+SFX:        loud clock tick, on "tick"
+MUSIC:      curious mechanical rhythm begins
+
+SHOT 2
+WORDS:      "Inside is a spring, pulling a stack of gears."
+PLACE:      CLOCK-INTERIOR
+LIGHT:      indoor
+CAMERA:     view of spring and gears > slow orbit | camera 0.6 m | tight
+CHARACTERS: none
+EFFECTS:    none
+MUST SEE:   coiled spring, stack of gears
+MUST NOT:   gears floating without connection, spring missing
+SFX:        metallic winding, on "spring"
+MUSIC:      steady rhythmic pulse
+
+SHOT 3
+WORDS:      "If nothing stopped it, they would spin free in seconds."
+PLACE:      CLOCK-INTERIOR
+LIGHT:      indoor
+CAMERA:     close-up of stack of gears > static | camera 0.4 m | tight
+CHARACTERS: none
+EFFECTS:    speed lines
+MUST SEE:   stack of gears
+MUST NOT:   gears standing still
+SFX:        fast whirring, on "spin free"
+MUSIC:      quick burst of chaotic strings
+
+SHOT 4
+WORDS:      "The trick is a small part called the escapement."
+PLACE:      CLOCK-INTERIOR
+LIGHT:      indoor
+CAMERA:     view of escapement wheel > slow push-in | camera 0.5 m | tight
+CHARACTERS: none
+EFFECTS:    none
+MUST SEE:   escapement wheel, anchor piece
+MUST NOT:   anchor piece missing
+SFX:        sharp metallic click, on "escapement"
+MUSIC:      focused, precise tone
+
+SHOT 5
+WORDS:      "A toothed wheel wants to turn, but an anchor-shaped piece catches one tooth, and holds it."
+PLACE:      CLOCK-INTERIOR
+LIGHT:      indoor
+CAMERA:     extreme close-up of anchor and tooth > static | camera 0.2 m | tight
+CHARACTERS: none
+EFFECTS:    none
+MUST SEE:   escapement wheel, anchor piece catching a tooth
+MUST NOT:   anchor missing the teeth, blurry focus
+SFX:        heavy lock sound, on "holds"
+MUSIC:      tension builds
+
+SHOT 6
+WORDS:      "Then a swinging pendulum rocks the anchor sideways, releasing the tooth."
+PLACE:      CLOCK-INTERIOR
+LIGHT:      indoor
+CAMERA:     view of pendulum and anchor > slow pull-back | camera 0.6 m | tight
+CHARACTERS: none
+EFFECTS:    none
+MUST SEE:   swinging pendulum, anchor piece, escapement wheel
+MUST NOT:   pendulum disconnected from anchor
+SFX:        heavy whoosh, on "swinging"
+MUSIC:      rhythm locks into a steady beat
+
+SHOT 7
+WORDS:      "The wheel jumps forward one step, and the other end of the anchor catches the next tooth."
+PLACE:      CLOCK-INTERIOR
+LIGHT:      indoor
+CAMERA:     close-up of the other side of the anchor > static | camera 0.2 m | tight
+CHARACTERS: none
+EFFECTS:    none
+MUST SEE:   escapement wheel, anchor piece catching a tooth
+MUST NOT:   wheel spinning uncontrollably
+SFX:        sharp clack, on "catches"
+MUSIC:      steady mechanical beat
+
+SHOT 8
+WORDS:      "Tick. Rock back, tock."
+PLACE:      WORKSHOP
+LIGHT:      indoor
+CAMERA:     close-up of CLOCKMAKER > static | near (2 m) | tight
+CHARACTERS: CLOCKMAKER | hang | smile | middle | near | facing camera
+EFFECTS:    none
+MUST SEE:   CLOCKMAKER, grandfather clock in background
+MUST NOT:   missing face, wrong character
+SFX:        loud tick and tock, on "Tick" and "tock"
+MUSIC:      playful pizzicato strings
+
+SHOT 9
+WORDS:      "Each swing lets exactly one tooth through, and the pendulum's length sets how long a swing takes."
+PLACE:      CLOCK-INTERIOR
+LIGHT:      indoor
+CAMERA:     full view of pendulum > slow crane-down | camera 1.2 m | wide
+CHARACTERS: none
+EFFECTS:    none
+MUST SEE:   swinging pendulum, escapement wheel, anchor piece
+MUST NOT:   pendulum cut off at the bottom
+SFX:        rhythmic ticking, on "length"
+MUSIC:      steady, patient rhythm
+
+SHOT 10
+WORDS:      "The spring supplies the push."
+PLACE:      CLOCK-INTERIOR
+LIGHT:      indoor
+CAMERA:     close-up of coiled spring > slow push-in | camera 0.3 m | tight
+CHARACTERS: none
+EFFECTS:    pulsing glow
+MUST SEE:   coiled spring
+MUST NOT:   spring missing
+SFX:        tight spring creak, on "push"
+MUSIC:      warm chord swells
+
+SHOT 11
+WORDS:      "The pendulum supplies the patience."
+PLACE:      WORKSHOP
+LIGHT:      indoor
+CAMERA:     medium shot of CLOCKMAKER > slow pull-back | mid (6 m) | wide
+CHARACTERS: CLOCKMAKER | hip | proud | middle | mid | facing camera
+EFFECTS:    floating dust motes
+MUST SEE:   CLOCKMAKER, grandfather clock, wooden workbench
+MUST NOT:   clock missing, character cut off
+SFX:        steady clock ticking, on "patience"
+MUSIC:      resolute and satisfying finish

@@ -1,0 +1,121 @@
+{
+ "duration": 33.567347,
+ "frames30": 1007,
+ "source": "silence-align (cost 0.90)",
+ "segments": [
+  [
+   0.0,
+   1.14732
+  ],
+  [
+   1.27948,
+   1.5459
+  ],
+  [
+   1.84637,
+   4.29385
+  ],
+  [
+   4.52798,
+   6.93338
+  ],
+  [
+   7.11039,
+   9.30703
+  ],
+  [
+   9.68601,
+   13.8655
+  ],
+  [
+   14.2232,
+   17.7099
+  ],
+  [
+   18.1037,
+   22.2987
+  ],
+  [
+   22.6026,
+   22.8826
+  ],
+  [
+   23.0498,
+   24.2853
+  ],
+  [
+   24.4291,
+   29.5058
+  ],
+  [
+   29.8496,
+   31.3069
+  ],
+  [
+   31.5693,
+   33.567347
+  ]
+ ],
+ "phrases": [
+  {
+   "text": "How does a mechanical clock tick?",
+   "s": 0.0,
+   "e": 1.546
+  },
+  {
+   "text": "Inside is a spring, pulling a stack of gears.",
+   "s": 1.846,
+   "e": 4.294
+  },
+  {
+   "text": "If nothing stopped it, they would spin free in seconds.",
+   "s": 4.528,
+   "e": 6.933
+  },
+  {
+   "text": "The trick is a small part called the escapement.",
+   "s": 7.11,
+   "e": 9.307
+  },
+  {
+   "text": "A toothed wheel wants to turn, but an anchor-shaped piece catches one tooth, and holds it.",
+   "s": 9.686,
+   "e": 13.866
+  },
+  {
+   "text": "Then a swinging pendulum rocks the anchor sideways, releasing the tooth.",
+   "s": 14.223,
+   "e": 17.71
+  },
+  {
+   "text": "The wheel jumps forward one step, and the other end of the anchor catches the next tooth.",
+   "s": 18.104,
+   "e": 22.299
+  },
+  {
+   "text": "Tick.",
+   "s": 22.603,
+   "e": 22.883
+  },
+  {
+   "text": "Rock back, tock.",
+   "s": 23.05,
+   "e": 24.285
+  },
+  {
+   "text": "Each swing lets exactly one tooth through, and the pendulum's length sets how long a swing takes.",
+   "s": 24.429,
+   "e": 29.506
+  },
+  {
+   "text": "The spring supplies the push.",
+   "s": 29.85,
+   "e": 31.307
+  },
+  {
+   "text": "The pendulum supplies the patience.",
+   "s": 31.569,
+   "e": 33.567
+  }
+ ]
+}
