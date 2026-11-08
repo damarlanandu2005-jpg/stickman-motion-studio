@@ -204,7 +204,7 @@ const ASSETS = {
     return g;
   },
   'escapement wheel': () => {
-    const g = new THREE.Group();
+    const o = new THREE.Group(), g = new THREE.Group(); g.rotation.x = Math.PI / 2; o.add(g);   // editor fix: v1 built the wheel lying flat (edge-on to the camera); now its face looks at the camera and o.rotation.z spins it
     const brass = toon({color: '#d4af37'});
     const darkBrass = toon({color: '#8a6b1c'});
     const steel = toon({color: '#9ba4b5'});
@@ -221,7 +221,7 @@ const ASSETS = {
         t.rotation.z = -a - Math.PI/4;
     }
     add(new THREE.CylinderGeometry(0.015, 0.015, 0.06, 8), steel, 0, 0, 0, g);
-    return g;
+    return o;
   },
   'anchor piece': () => {
     const g = new THREE.Group();
@@ -408,9 +408,9 @@ const ASSETS = {
     
     const gears = ASSETS['stack of gears'](); gears.position.set(-0.35, 0.5, 0); g.add(gears);
     const spring = ASSETS['coiled spring'](); spring.position.set(0, 0.5, 0); g.add(spring);
-    const escapement = ASSETS['escapement wheel'](); escapement.position.set(0.35, 0.4, 0); g.add(escapement);
-    const anchor = ASSETS['anchor piece'](); anchor.position.set(0.35, 0.52, 0.02); g.add(anchor);
-    const pendulum = ASSETS['swinging pendulum'](); pendulum.position.set(0.35, 0.52, 0.04); g.add(pendulum);
+    const escapement = ASSETS['escapement wheel'](); escapement.position.set(0.35, 0.37, 0); escapement.scale.setScalar(1.6); g.add(escapement);
+    const anchor = ASSETS['anchor piece'](); anchor.position.set(0.35, 0.52, 0.03); g.add(anchor);
+    const pendulum = ASSETS['swinging pendulum'](); pendulum.position.set(0.35, 0.62, -0.06); g.add(pendulum);
     
     g.userData = { gears, spring, escapement, anchor, pendulum, bgGear1, bgGear2 };
     return g;
