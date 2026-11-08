@@ -17,19 +17,22 @@ client = genai.Client(vertexai=True, project=os.environ["GOOGLE_CLOUD_PROJECT"],
 
 def gen_image(prompt, path):
     for m in ("gemini-2.5-flash-image",):
-        try:
+        for attempt in range(6):
+          try:
             r = client.models.generate_content(model=m, contents=[prompt], config=types.GenerateContentConfig(response_modalities=["IMAGE"]))
             for p in r.candidates[0].content.parts:
                 if getattr(p, "inline_data", None) and p.inline_data.data:
                     open(path, "wb").write(p.inline_data.data); log("image OK", path); return
             raise RuntimeError("no image")
-        except Exception as e:
+          except Exception as e:
             log("image FAIL", path, repr(e)[:200])
+            if "429" in repr(e): time.sleep(20 * (attempt + 1))
+            else: break
 
 if stage == "refs":
     os.makedirs(os.path.join(OUT, "refs"), exist_ok=True)
     jobs = [(plan["refs"][k] + " Warm golden light.", os.path.join(OUT, "refs", f"{k}_{i}.png")) for k in plan["refs"] if not only or k in only for i in (1, 2, 3)]
-    with ThreadPoolExecutor(4) as ex: list(ex.map(lambda j: gen_image(*j), jobs))
+    with ThreadPoolExecutor(2) as ex: list(ex.map(lambda j: gen_image(*j), jobs))
 else:
     os.makedirs(os.path.join(OUT, "clips"), exist_ok=True)
     refdir = os.path.join(OUT, "refs")
