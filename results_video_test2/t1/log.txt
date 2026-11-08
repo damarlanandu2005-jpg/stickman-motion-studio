@@ -1,0 +1,14 @@
+image ref_engineer: model gemini-3.1-flash-image FAILED: ClientError("404 NOT_FOUND. {'error': {'code': 404, 'message': 'Publisher model `projects/stickman-shorts-513818/locations/us-central1/publishers/google/models/gemini-3.1-flash-image` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model
+image ref_engineer: OK model=gemini-2.5-flash-image
+image ref_boss: model gemini-3.1-flash-image FAILED: ClientError("404 NOT_FOUND. {'error': {'code': 404, 'message': 'Publisher model `projects/stickman-shorts-513818/locations/us-central1/publishers/google/models/gemini-3.1-flash-image` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model
+image ref_boss: OK model=gemini-2.5-flash-image
+image ref_canyon: model gemini-3.1-flash-image FAILED: ClientError("404 NOT_FOUND. {'error': {'code': 404, 'message': 'Publisher model `projects/stickman-shorts-513818/locations/us-central1/publishers/google/models/gemini-3.1-flash-image` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model
+image ref_canyon: OK model=gemini-2.5-flash-image
+ref_shot2: OK model=veo-3.1-generate-001 4406 KB 53s
+ref_shot3: OK model=veo-3.1-generate-001 3192 KB 42s
+image key_shot2: model gemini-3.1-flash-image FAILED: ClientError("404 NOT_FOUND. {'error': {'code': 404, 'message': 'Publisher model `projects/stickman-shorts-513818/locations/us-central1/publishers/google/models/gemini-3.1-flash-image` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model
+image key_shot2: OK model=gemini-2.5-flash-image
+key_shot2: OK model=veo-3.1-generate-001 1186 KB 52s
+image key_shot3: model gemini-3.1-flash-image FAILED: ClientError("404 NOT_FOUND. {'error': {'code': 404, 'message': 'Publisher model `projects/stickman-shorts-513818/locations/us-central1/publishers/google/models/gemini-3.1-flash-image` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model
+image key_shot3: OK model=gemini-2.5-flash-image
+key_shot3: OK model=veo-3.1-generate-001 833 KB 52s
