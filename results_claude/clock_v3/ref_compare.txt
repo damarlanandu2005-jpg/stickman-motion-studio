@@ -1,0 +1,10 @@
+short.mp4: 1005 frames, 8 shots
+  brightness       0.4187   ref 0.3143 .. 0.5642  ok
+  saturation       0.5192   ref 0.3941 .. 0.5839  ok
+  palette size     27.0     ref 32.0 .. 45.0  LOW
+  detail           0.1112   ref 0.1059 .. 0.2185  ok
+  held frames      0.0299   ref 0.0019 .. 0.0585  ok
+  object motion    3.5592   ref 3.2115 .. 8.4144  ok
+  shot length (s)  3.6      ref 0.99 .. 10.59  ok
+  weak shots: 
+    {'shot': 4, 'frames': '678-733', 'seconds': '22.6-24.4', 'problems': ['mostly held (nothing moves)']}
