@@ -45,7 +45,7 @@
   {
    "id": "c8",
    "image": "results_video_ed/v4/key_up/c8.png",
-   "prompt": "Keep EXACTLY the same composition, characters, costumes, props and layout as the first frame. Do not add or remove characters or objects. Characters are flat 2D bean-head cartoon figures with thick outlines and keep their mouths closed except where described. No text, no music, no speech. Camera pushes forward along the bridge deck; dust blows across the rails.",
+   "prompt": "Keep EXACTLY the same composition, characters, costumes, props and layout as the first frame. Do not add or remove characters or objects. Characters are flat 2D bean-head cartoon figures with thick outlines and keep their mouths closed except where described. No text, no music, no speech. Camera pushes forward along the bridge deck. Nothing else moves; no dust clouds, no puffs, no particles.",
    "dur": 4
   },
   {
@@ -63,13 +63,13 @@
   {
    "id": "c11",
    "image": "results_video_ed/v4/key_up/c11.png",
-   "prompt": "Keep EXACTLY the same composition, characters, costumes, props and layout as the first frame. Do not add or remove characters or objects. Characters are flat 2D bean-head cartoon figures with thick outlines and keep their mouths closed except where described. No text, no music, no speech. The tiny engineer walks along the track toward the camera; heat haze shimmers.",
+   "prompt": "Keep EXACTLY the same composition, characters, costumes, props and layout as the first frame. Do not add or remove characters or objects. Characters are flat 2D bean-head cartoon figures with thick outlines and keep their mouths closed except where described. No text, no music, no speech. The tiny engineer walks along the track toward the camera. Very subtle heat shimmer only. No fire, no flames, no smoke, no glow effects.",
    "dur": 4
   },
   {
    "id": "c12",
    "image": "results_video_ed/v4/key_up/c12.png",
-   "prompt": "Keep EXACTLY the same composition, characters, costumes, props and layout as the first frame. Do not add or remove characters or objects. Characters are flat 2D bean-head cartoon figures with thick outlines and keep their mouths closed except where described. No text, no music, no speech. Slow push in on the rail joint, heat shimmer above the steel.",
+   "prompt": "Keep EXACTLY the same composition, characters, costumes, props and layout as the first frame. Do not add or remove characters or objects. Characters are flat 2D bean-head cartoon figures with thick outlines and keep their mouths closed except where described. No text, no music, no speech. Very slow push in on the rail joint. Very subtle heat shimmer only. No fire, no flames, no smoke, no sparks.",
    "dur": 4
   },
   {
