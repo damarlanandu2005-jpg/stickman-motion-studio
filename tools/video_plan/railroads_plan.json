@@ -8,16 +8,146 @@
   "track": "Environment reference, vertical, no characters: low close view along a steel railroad track, wooden sleepers, grey gravel ballast, red-orange canyon wall behind, stylised 3D toon look, golden light."
  },
  "clips": [
-  {"id":"c01","win":[0.0,3.0],"refs":["engineer","track"],"line":"He sawed gaps into a railroad every thirty-nine feet.","shot":"Low close shot along a railroad track: the ENGINEER sits on one steel rail and saws through it, sawdust flies, a finger-wide cut gap opens in the rail. Camera pulls back along the track and more gaps are visible in the rail ahead, evenly spaced."},
-  {"id":"c02","win":[3.0,9.9],"refs":["canyon"],"line":"Two companies are racing to build a railroad across a canyon so deep you can't see the bottom. Whoever finishes first gets the whole country's business.","shot":"Wide sweeping shot of a huge red-orange canyon so deep the bottom is black. Two railroad lines on wooden trestles race toward each other from opposite sides, tiny bean-head workers building them, banners A-LINE (blue) and B-LINE (orange). The camera glides forward, tilts down into the bottomless dark, then rises toward the bright sun."},
-  {"id":"c03","win":[9.9,16.2],"refs":["engineer","boss","track"],"line":"He's the youngest engineer on the job. And when his boss sees a finger wide gap between every single rail, his face turns purple.","shot":"Medium shot: the young ENGINEER stands proudly on the track with the saw over his shoulder. The BOSS walks into frame, looks down at the finger-wide gap in the rail, and his whole face slowly turns purple with anger, steam puffing from his ears."},
-  {"id":"c04","win":[16.2,23.1],"refs":["engineer","boss","rival"],"line":"You're wrecking my railroad. But he won't close a single one. The other one lays rails end to end, perfectly smooth, and finishes first.","shot":"The purple BOSS points angrily at the rail, arms flailing; the ENGINEER calmly crosses his arms and shakes his head, refusing. Then the camera swings to the other bridge where the RIVAL in a black top hat grins as workers lay one perfectly smooth, gap-free rail end to end."},
-  {"id":"c05","win":[23.1,27.5],"refs":["canyon"],"line":"Their trains glide across the canyon without a sound, while his go clickety clack over every gap.","shot":"Two trains cross the canyon side by side on two bridges: on one a sleek train glides smoothly and silently over seamless rail; on the other a black steam train rattles and shakes over every gap in the rail, bolts jumping, dust puffing. Camera tracks alongside."},
-  {"id":"c06","win":[27.5,31.9],"refs":["rival","canyon"],"line":"The newspapers start calling it the Clickety Clack Line, and everyone switches to the quiet trains.","shot":"Close-up of a newspaper with the headline THE CLICKETY CLACK LINE. Then a station platform where a crowd of bean-head townspeople in period clothes turn away from the rattling black train and walk onto the sleek quiet train."},
-  {"id":"c07","win":[31.9,38.0],"refs":["engineer","track"],"line":"Then summer comes, and something weird happens. His gaps start shrinking in May. You can fit a coin in them by July.","shot":"Summer: blazing sun, heat haze over the canyon. Close shot of a rail gap slowly shrinking. A wooden calendar post flips to MAY, then the ENGINEER places a gold coin into the narrow gap, and the calendar flips to JULY."},
-  {"id":"c08","win":[38.0,42.1],"refs":["boss","engineer"],"line":"Barely a sheet of paper, and his boss is thrilled. See, even your gaps know you were wrong.","shot":"Close on the rail gap: a sheet of paper barely fits into it. The BOSS leans in, rubs his hands together, thrilled, then points smugly at the ENGINEER, who sighs."},
-  {"id":"c09","win":[42.1,47.3],"refs":["canyon"],"line":"Meanwhile, on the perfect railroad, the rails started groaning in the afternoon sun, pushing against each other like they want out.","shot":"The perfect seamless railroad on the other bridge in the afternoon sun: heat shimmer, rails visibly bulging and straining against each other, sweat drops sliding off the steel. Camera low along the track."},
-  {"id":"c10","win":[47.3,51.6],"refs":["engineer","track"],"line":"On the hottest day anyone can remember. His gaps finally close. Rail touching rail.","shot":"Blazing hottest day, sun at full strength. Close shot: the gaps in the engineer's rail finally close, rail ends touching with a small spark. Wide shot shows every gap closed, the track still straight and fine."},
-  {"id":"c11","win":[51.6,56.7],"refs":["canyon"],"line":"Halfway across the canyon, the perfect railroad kicks sideways like a snake, right as a train rolls onto it.","shot":"Halfway across the canyon the perfect railroad suddenly kicks sideways like a snake, rails twisting into an S-curve, just as a big steam train rolls onto it. Camera tracks the train from above."}
+  {
+   "id": "c01",
+   "win": [
+    0.0,
+    3.0
+   ],
+   "refs": [
+    "engineer",
+    "track"
+   ],
+   "line": "He sawed gaps into a railroad every thirty-nine feet.",
+   "shot": "Low close shot along a railroad track: the ENGINEER sits on one steel rail and saws through it, sawdust flies, a finger-wide cut gap opens in the rail. Camera pulls back along the track and more gaps are visible in the rail ahead, evenly spaced."
+  },
+  {
+   "id": "c02",
+   "win": [
+    3.0,
+    9.9
+   ],
+   "refs": [
+    "canyon"
+   ],
+   "line": "Two companies are racing to build a railroad across a canyon so deep you can't see the bottom. Whoever finishes first gets the whole country's business.",
+   "shot": "Wide sweeping shot of a huge red-orange canyon so deep the bottom is black. Two railroad lines on wooden trestles race toward each other from opposite sides, tiny bean-head workers building them, banners A-LINE (blue) and B-LINE (orange). The camera glides forward, tilts down into the bottomless dark, then rises toward the bright sun."
+  },
+  {
+   "id": "c03",
+   "win": [
+    9.9,
+    16.2
+   ],
+   "refs": [
+    "engineer",
+    "boss",
+    "track"
+   ],
+   "line": "He's the youngest engineer on the job. And when his boss sees a finger wide gap between every single rail, his face turns purple.",
+   "shot": "Medium shot: the young ENGINEER stands proudly on the track with the saw over his shoulder. The BOSS walks into frame, looks down at the finger-wide gap in the rail, and his whole face slowly turns purple with anger, steam puffing from his ears."
+  },
+  {
+   "id": "c04",
+   "win": [
+    16.2,
+    23.1
+   ],
+   "refs": [
+    "engineer",
+    "boss",
+    "rival"
+   ],
+   "line": "You're wrecking my railroad. But he won't close a single one. The other one lays rails end to end, perfectly smooth, and finishes first.",
+   "shot": "On a wooden trestle bridge high in the red canyon at golden hour: the BOSS (yellow vest, brown bowler hat, brown moustache; only his FACE is purple, his body stays yellow-vested) points angrily at the rail, arms flailing; the ENGINEER (red-striped cap, teal vest) calmly crosses his arms and shakes his head, refusing. Then the camera swings to the other bridge where the RIVAL in a black top hat grins as workers lay one perfectly smooth, gap-free rail end to end."
+  },
+  {
+   "id": "c05",
+   "win": [
+    23.1,
+    27.5
+   ],
+   "refs": [
+    "canyon"
+   ],
+   "line": "Their trains glide across the canyon without a sound, while his go clickety clack over every gap.",
+   "shot": "Two trains cross the canyon side by side on two bridges: on one a sleek train glides smoothly and silently over seamless rail; on the other a black steam train rattles and shakes over every gap in the rail, bolts jumping, dust puffing. Camera tracks alongside."
+  },
+  {
+   "id": "c06",
+   "win": [
+    27.5,
+    31.9
+   ],
+   "refs": [
+    "rival",
+    "canyon"
+   ],
+   "line": "The newspapers start calling it the Clickety Clack Line, and everyone switches to the quiet trains.",
+   "shot": "Close-up of a newspaper front page with a giant headline in huge black capital letters reading exactly: CLICKETY CLACK LINE (three words). Then a station platform where a crowd of bean-head townspeople in period clothes turn away from the rattling black train and walk onto the sleek quiet train."
+  },
+  {
+   "id": "c07",
+   "win": [
+    31.9,
+    38.0
+   ],
+   "refs": [
+    "engineer",
+    "track"
+   ],
+   "line": "Then summer comes, and something weird happens. His gaps start shrinking in May. You can fit a coin in them by July.",
+   "shot": "Summer: blazing sun, heat haze over the canyon. Close shot of a rail gap: the calendar post beside the track reads MAY and the gap is wide. The calendar flips to JULY and the gap has shrunk to a hairline; the ENGINEER stands a shiny gold coin on edge in the narrow gap and it fits snugly."
+  },
+  {
+   "id": "c08",
+   "win": [
+    38.0,
+    42.1
+   ],
+   "refs": [
+    "boss",
+    "engineer"
+   ],
+   "line": "Barely a sheet of paper, and his boss is thrilled. See, even your gaps know you were wrong.",
+   "shot": "Close on the rail gap with a sheet of paper wedged snugly in the hairline gap. Exactly two characters appear: the BOSS (yellow vest, brown bowler hat, moustache) leans in, rubs his hands together, thrilled, then points smugly at the ENGINEER (red-striped cap, teal vest), who sighs and looks down."
+  },
+  {
+   "id": "c09",
+   "win": [
+    42.1,
+    47.3
+   ],
+   "refs": [
+    "canyon"
+   ],
+   "line": "Meanwhile, on the perfect railroad, the rails started groaning in the afternoon sun, pushing against each other like they want out.",
+   "shot": "The perfect seamless railroad on the other bridge in the afternoon sun: heat shimmer, rails visibly bulging and straining against each other, sweat drops sliding off the steel. Camera low along the track."
+  },
+  {
+   "id": "c10",
+   "win": [
+    47.3,
+    51.6
+   ],
+   "refs": [
+    "engineer",
+    "track"
+   ],
+   "line": "On the hottest day anyone can remember. His gaps finally close. Rail touching rail.",
+   "shot": "Blazing hottest day, sun at full strength. Close shot: the two rail ends in the engineer's rail slide together and touch with a small spark, no gap left. The ENGINEER (red-striped cap, teal vest) looks at it and smiles with quiet pride. Wide shot then shows every gap closed and the track straight and fine."
+  },
+  {
+   "id": "c11",
+   "win": [
+    51.6,
+    56.7
+   ],
+   "refs": [
+    "canyon"
+   ],
+   "line": "Halfway across the canyon, the perfect railroad kicks sideways like a snake, right as a train rolls onto it.",
+   "shot": "Halfway across the canyon the perfect seamless railroad suddenly buckles and kicks sideways into a clear S-shaped snake curve, rails twisting, just as a plain black steam locomotive (no face) rolls onto it. Camera tracks the train from above."
+  }
  ]
 }
