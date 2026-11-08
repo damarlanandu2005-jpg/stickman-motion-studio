@@ -44,7 +44,8 @@ else:
             if os.path.exists(fp):
                 ri.append(types.VideoGenerationReferenceImage(image=types.Image(image_bytes=open(fp, "rb").read(), mime_type="image/png"), reference_type="ASSET"))
         prompt = plan["style"] + " Shot: " + c["shot"]
-        for m in ("veo-3.1-generate-001",):
+        for m in ("veo-3.1-generate-001",) * 4:
+            if os.path.exists(path): return
             t0 = time.time()
             try:
                 op = client.models.generate_videos(model=m, prompt=prompt, config=types.GenerateVideosConfig(aspect_ratio="9:16", number_of_videos=1, duration_seconds=8, reference_images=ri or None, generate_audio=False))
@@ -57,5 +58,6 @@ else:
                 log(f"{c['id']}: OK {m} {time.time()-t0:.0f}s refs={c['refs']}"); return
             except Exception as e:
                 log(f"{c['id']}: FAIL {m}: {repr(e)[:400]}")
+                if "429" in repr(e): time.sleep(60)
     todo = [c for c in plan["clips"] if not only or c["id"] in only]
-    with ThreadPoolExecutor(4) as ex: list(ex.map(run, todo))
+    with ThreadPoolExecutor(3) as ex: list(ex.map(run, todo))
