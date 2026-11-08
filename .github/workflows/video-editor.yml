@@ -1,0 +1,41 @@
+name: Editor-driven generative video (feasibility) - refs / clips
+on:
+  push:
+    branches: [gemini-cartoon]
+    paths: ['.github/workflows/video-editor.yml']
+  workflow_dispatch:
+    inputs:
+      stage: {description: "refs or clips", default: refs}
+      plan: {description: "plan json", default: tools/video_plan/railroads_plan.json}
+      out: {description: "folder under results_video_ed/", default: railroads_a}
+      only: {description: "comma list of ref names or clip ids (empty = all)", default: ""}
+permissions:
+  contents: write
+jobs:
+  run:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - run: python -m pip install -q google-genai
+      - name: Run
+        env:
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+          GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+        run: |
+          [ -n "$GCP_SA_KEY" ] && [ -n "$GCP_PROJECT_ID" ] || { echo "GCP secrets missing"; exit 1; }
+          printf '%s' "$GCP_SA_KEY" > "$RUNNER_TEMP/sa.json"
+          export GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/sa.json" GOOGLE_CLOUD_PROJECT="$GCP_PROJECT_ID" GOOGLE_GENAI_USE_VERTEXAI=true
+          python tools/vid_editor.py "${{ github.event.inputs.stage }}" "${{ github.event.inputs.plan }}" "results_video_ed/${{ github.event.inputs.out }}" "${{ github.event.inputs.only }}" || true
+      - name: Commit results
+        run: |
+          git config user.name "claude-bot"; git config user.email "noreply@anthropic.com"
+          git add results_video_ed
+          git commit -m "video editor run ${{ github.event.inputs.stage }}
+
+          Co-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>
+          Claude-Session: https://claude.ai/code/session_016mB5dXU68XncSe2QQ1F8Qc" || exit 0
+          for i in 1 2 3; do git pull -q --rebase origin gemini-cartoon && git push -q origin HEAD:gemini-cartoon && break; sleep 5; done
