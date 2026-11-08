@@ -121,244 +121,607 @@ const cloudsInit = () => {
 const DECK = 0;
 const world = new THREE.Group(); scene.add(world);
 
+const dirtTex = canvasTex(512, 512, (ctx, w, h) => {
+  ctx.fillStyle = '#8b5a2b'; ctx.fillRect(0,0,w,h);
+  for(let i=0; i<1000; i++) {
+    ctx.fillStyle = rnd() > 0.5 ? '#7a4a1a' : '#9c6b3c';
+    ctx.beginPath(); ctx.arc(rnd()*w, rnd()*h, 1+rnd()*3, 0, Math.PI*2); ctx.fill();
+  }
+}, 4, 4);
+const M_dirt = toon({map: dirtTex});
+
+const gravelTex = canvasTex(512, 512, (ctx, w, h) => {
+  ctx.fillStyle = '#666666'; ctx.fillRect(0,0,w,h);
+  for(let i=0; i<2000; i++) {
+    ctx.fillStyle = rnd() > 0.5 ? '#555555' : '#777777';
+    ctx.beginPath(); ctx.arc(rnd()*w, rnd()*h, 2+rnd()*4, 0, Math.PI*2); ctx.fill();
+  }
+}, 4, 4);
+const M_gravel = toon({map: gravelTex});
+
+const woodTex = canvasTex(512, 512, (ctx, w, h) => {
+  ctx.fillStyle = '#5c4033'; ctx.fillRect(0,0,w,h);
+  ctx.strokeStyle = '#3e2723'; ctx.lineWidth = 2;
+  for(let i=0; i<w; i+=16) {
+    ctx.beginPath(); ctx.moveTo(i + rnd()*4, 0); ctx.lineTo(i + rnd()*4, h); ctx.stroke();
+  }
+}, 2, 2);
+const M_woodTex = toon({map: woodTex});
+
+const ironTex = canvasTex(256, 256, (ctx, w, h) => {
+  ctx.fillStyle = '#5c5a57'; ctx.fillRect(0,0,w,h);
+  ctx.fillStyle = '#4a4845';
+  for(let i=0; i<500; i++) {
+    ctx.fillRect(rnd()*w, rnd()*h, 2+rnd()*4, 1+rnd()*2);
+  }
+  ctx.fillStyle = '#6e6c69';
+  for(let i=0; i<500; i++) {
+    ctx.fillRect(rnd()*w, rnd()*h, 2+rnd()*4, 1+rnd()*2);
+  }
+}, 2, 2);
+const M_ironTex = toon({map: ironTex});
+
+const buildRail = (len, xOffset, z) => {
+  const r = new THREE.Group();
+  add(tbox(len, 0.02, 0.12), M_ironTex, xOffset, 0.01, z, r); // Base
+  add(tbox(len, 0.09, 0.03), M_ironTex, xOffset, 0.065, z, r); // Web
+  add(tbox(len, 0.04, 0.08), M_ironTex, xOffset, 0.13, z, r); // Head
+  return r;
+};
+
+const addTrackDetails = (g) => {
+  // Fence in the background (z = -1.5)
+  for(let x=-2; x<=2; x+=1.0) {
+    add(box(0.08, 1.0, 0.08), M_woodTex, x, 0.5, -1.5, g); // post
+  }
+  for(let y=0.3; y<=0.8; y+=0.35) {
+    add(tbox(4, 0.08, 0.04), M_woodTex, 0, y, -1.46, g); // rails
+  }
+  // Bushes behind fence
+  for(let x=-2; x<=2; x+=1) {
+    add(new THREE.DodecahedronGeometry(0.5 + rnd()*0.3), toon({color: '#336622'}), x + rnd()*0.5, 0.3, -1.8, g);
+  }
+
+  // Toolbox
+  add(tbox(0.6, 0.3, 0.3), toon({color: '#cc4433'}), -1.2, 0.15, -0.2, g);
+  add(tbox(0.62, 0.05, 0.32), toon({color: '#aa3322'}), -1.2, 0.325, -0.2, g);
+  add(tbox(0.1, 0.05, 0.05), M.iron, -1.2, 0.35, -0.05, g); // handle
+
+  // Lantern
+  add(new THREE.CylinderGeometry(0.1, 0.1, 0.05), M.iron, 1.2, 0.125, 0.3, g);
+  add(new THREE.CylinderGeometry(0.08, 0.08, 0.2), toon({color: '#ffdd88'}), 1.2, 0.25, 0.3, g);
+  add(new THREE.CylinderGeometry(0.1, 0.05, 0.1), M.iron, 1.2, 0.4, 0.3, g);
+  add(tbox(0.02, 0.2, 0.02), M.iron, 1.2, 0.5, 0.3, g); // handle
+
+  // Scattered bolts
+  for(let i=0; i<15; i++) {
+    const bx = (rnd()-0.5)*2;
+    const bz = (rnd()-0.5)*2;
+    const bolt = add(new THREE.CylinderGeometry(0.02, 0.02, 0.06, 6), M.iron, bx, 0.12, bz, g);
+    bolt.rotation.set(rnd()*Math.PI, rnd()*Math.PI, rnd()*Math.PI);
+  }
+
+  // Dense ground clutter
+  for(let i=0; i<60; i++) {
+    // Weeds
+    const wx = rnd()*4 - 2;
+    const wz = rnd()*4 - 2;
+    if(Math.abs(wz) > 0.6) { // Keep off the main rails
+      const h = 0.1 + rnd()*0.2;
+      const weed = add(new THREE.ConeGeometry(0.04, h, 4), toon({color: rnd()>0.5 ? '#44aa44' : '#88aa44'}), wx, 0.1 + h/2, wz, g);
+      weed.rotation.y = rnd()*Math.PI;
+      weed.rotation.x = (rnd()-0.5)*0.4;
+    }
+    // Rocks
+    const rx = rnd()*4 - 2;
+    const rz = rnd()*4 - 2;
+    const s = 0.02 + rnd()*0.04;
+    const rock = add(new THREE.DodecahedronGeometry(s), toon({color: rnd()>0.5 ? '#888888' : '#aaaaaa'}), rx, 0.1 + s, rz, g);
+    rock.rotation.set(rnd(), rnd(), rnd());
+  }
+  
+  // Twigs/debris
+  for(let i=0; i<30; i++) {
+    const tx = rnd()*4 - 2;
+    const tz = rnd()*4 - 2;
+    const twig = add(box(0.02, 0.02, 0.1 + rnd()*0.2), M_woodTex, tx, 0.11, tz, g);
+    twig.rotation.y = rnd()*Math.PI;
+  }
+
+  // Oil stains on sleepers
+  for(let i=-2; i<=2; i+=0.6) {
+    if(rnd()>0.2) {
+      add(tbox(0.2, 0.01, 0.2), toon({color: '#222222', transparent: true, opacity: 0.7}), i, 0.155, rnd()*0.4 - 0.2, g);
+    }
+  }
+
+  // SPECIFIC CENTER DETAILS FOR CLOSE-UPS
+  // Tie plates on the center sleeper
+  add(tbox(0.3, 0.02, 0.2), M.iron, 0, 0.16, -0.7, g);
+  add(tbox(0.3, 0.02, 0.2), M.iron, 0, 0.16, 0.7, g);
+  
+  // A specific weed right near the gap
+  const weed = add(new THREE.ConeGeometry(0.03, 0.15, 4), toon({color: '#44aa44'}), 0.2, 0.175, -0.4, g);
+  weed.rotation.set(0.2, 1, 0.1);
+  
+  // Some specific rocks near the gap
+  add(new THREE.DodecahedronGeometry(0.03), toon({color: '#888888'}), -0.15, 0.13, -0.45, g).rotation.set(1,2,3);
+  add(new THREE.DodecahedronGeometry(0.02), toon({color: '#aaaaaa'}), -0.2, 0.12, -0.35, g).rotation.set(3,2,1);
+  add(new THREE.DodecahedronGeometry(0.04), toon({color: '#777777'}), 0.15, 0.14, 0.45, g).rotation.set(0,1,2);
+
+  // A discarded wrench
+  const wrench = new THREE.Group();
+  add(tbox(0.3, 0.02, 0.04), M.iron, 0, 0, 0, wrench);
+  add(new THREE.CylinderGeometry(0.04, 0.04, 0.02, 6), M.iron, 0.15, 0, 0, wrench);
+  add(new THREE.CylinderGeometry(0.03, 0.03, 0.02, 6), M.iron, -0.15, 0, 0, wrench);
+  wrench.position.set(0.3, 0.16, 0.2);
+  wrench.rotation.y = 0.5;
+  g.add(wrench);
+};
+
 const ASSETS = {
-  'TRACK-VIEW': () => {
+  'TRACK-CLOSEUP': () => {
     const g = new THREE.Group();
-    add(tbox(2.4, 0.2, 4), M.stone, 0, -0.1, 0, g);
-    add(tbox(6, 0.1, 4), M.dirt, 0, -0.15, 0, g);
-    
-    // Ballast - more dense and varied
-    const ballastGeo1 = new THREE.BoxGeometry(0.05, 0.05, 0.05);
-    const ballastGeo2 = new THREE.BoxGeometry(0.08, 0.04, 0.06);
-    const ballastList1 = [], ballastList2 = [];
-    for(let i=0; i<300; i++) {
-      ballastList1.push(placed(ballastGeo1, (Math.random()-0.5)*2.2, 0.02, (Math.random()-0.5)*3.8, Math.random()*Math.PI, 1, 1, 1));
-      ballastList2.push(placed(ballastGeo2, (Math.random()-0.5)*2.2, 0.02, (Math.random()-0.5)*3.8, Math.random()*Math.PI, 1, 1, 1));
+    add(tbox(4, 0.1, 4), M_dirt, 0, -0.05, 0, g);
+    add(tbox(4, 0.1, 3), M_gravel, 0, 0.05, 0, g);
+    for(let i=-2; i<=2; i+=0.6) {
+      add(box(0.25, 0.15, 2.2), M_woodTex, i, 0.075, 0, g);
+      add(box(0.05, 0.05, 0.05), M.iron, i-0.05, 0.175, -0.7, g);
+      add(box(0.05, 0.05, 0.05), M.iron, i+0.05, 0.175, -0.7, g);
+      add(box(0.05, 0.05, 0.05), M.iron, i-0.05, 0.175, 0.7, g);
+      add(box(0.05, 0.05, 0.05), M.iron, i+0.05, 0.175, 0.7, g);
     }
-    add(mergeGeos(ballastList1), toon({color: '#7a7a7a'}), 0, 0, 0, g);
-    add(mergeGeos(ballastList2), toon({color: '#6a6a6a'}), 0, 0, 0, g);
-
-    for (let i = -3; i <= 3; i++) {
-      add(tbox(0.25, 0.12, 1.8), M.wood, i * 0.6, 0.06, 0, g);
-      add(tbox(0.15, 0.02, 0.2), M.iron, i * 0.6, 0.13, 0.4, g);
-      add(tbox(0.15, 0.02, 0.2), M.iron, i * 0.6, 0.13, -0.4, g);
-      // Add spikes
-      add(tbox(0.02, 0.05, 0.02), M.iron, i * 0.6 + 0.1, 0.15, 0.45, g);
-      add(tbox(0.02, 0.05, 0.02), M.iron, i * 0.6 - 0.1, 0.15, -0.45, g);
-    }
-    for (let i = 0; i < 30; i++) {
-      add(tbox(0.1, 0.2, 0.1), M.grass, (Math.random()-0.5)*2.5, 0, (Math.random()-0.5)*3.8, g);
-    }
-    add(tbox(0.4, 0.6, 0.4), M.wood, 1.5, 0.3, 1.5, g); // barrel/crate
-    add(tbox(0.5, 0.1, 0.2), M.iron, -1.2, 0.05, -1.0, g); // random tool/metal scrap
+    addTrackDetails(g);
     return g;
   },
-  'CANYON-EDGE': () => {
+  'CANYON-BRIDGE': () => {
     const g = new THREE.Group();
-    add(tbox(15, 20, 30), M.stone, -7.5, -10, 0, g);
-    add(tbox(15, 0.2, 30), M.dirt, -7.5, 0.1, 0, g);
+    const strataTex = canvasTex(512, 512, (ctx, w, h) => {
+      ctx.fillStyle = '#8a4a2a'; ctx.fillRect(0,0,w,h);
+      for(let y=0; y<h; y+=32) {
+        ctx.fillStyle = rnd() > 0.5 ? '#7a3a1a' : '#9a5a3a';
+        ctx.fillRect(0, y, w, 16 + rnd()*16);
+      }
+    }, 4, 4);
+    const M_strata = toon({map: strataTex});
     
-    // Dressing
-    for (let i = 0; i < 8; i++) {
-      add(new THREE.ConeGeometry(1, 3, 5), M.pine, -10 + Math.random()*5, 1.5, (Math.random()-0.5)*20, g);
-      add(tbox(1, 1, 1), M.wood, -5 + Math.random()*2, 0.5, (Math.random()-0.5)*10, g); // crates
-      add(new THREE.DodecahedronGeometry(0.8), M.stone, -2 + Math.random()*2, 0.4, (Math.random()-0.5)*15, g); // rocks
+    // Left wall
+    add(tbox(2, 40, 80), M_strata, -14, -20, 0, g);
+    add(tbox(2, 30, 80), M_strata, -13.5, -40, 0, g);
+    add(tbox(2, 10, 80), M_strata, -13, -5, 0, g);
+    
+    // Right wall
+    add(tbox(2, 40, 80), M_strata, 14, -20, 0, g);
+    add(tbox(2, 30, 80), M_strata, 13.5, -40, 0, g);
+    add(tbox(2, 10, 80), M_strata, 13, -5, 0, g);
+    
+    // Bushes on canyon rim
+    for(let z=-40; z<=40; z+=2) {
+      if(rnd()>0.3) add(new THREE.DodecahedronGeometry(1 + rnd()), toon({color: '#336622'}), -13, 0, z, g);
+      if(rnd()>0.3) add(new THREE.DodecahedronGeometry(1 + rnd()), toon({color: '#336622'}), 13, 0, z, g);
     }
 
-    const bridge = new THREE.Group();
-    g.add(bridge);
-    add(tbox(8, 0.4, 0.4), M.wood, 4, -0.2, 1, bridge);
-    add(tbox(8, 0.4, 0.4), M.wood, 4, -0.2, -1, bridge);
-    for (let i = 0; i < 12; i++) {
-      add(tbox(0.3, 0.2, 3), M.wood, i * 0.6, 0.1, 0, bridge);
-    }
-    for (let i = 1; i < 4; i++) {
-      add(tbox(0.3, 10, 0.3), M.wood, i * 2, -5, 1, bridge);
-      add(tbox(0.3, 10, 0.3), M.wood, i * 2, -5, -1, bridge);
-      const cross = add(tbox(0.2, 4, 0.2), M.wood, i * 2, -2, 0, bridge);
-      cross.rotation.x = Math.PI / 4;
-    }
+    // Bottomless fog
+    const fogTex = canvasTex(256, 256, (ctx, w, h) => {
+      const grd = ctx.createLinearGradient(0,0,0,h);
+      grd.addColorStop(0, 'rgba(0,0,0,0)');
+      grd.addColorStop(1, 'rgba(0,0,0,1)');
+      ctx.fillStyle = grd; ctx.fillRect(0,0,w,h);
+    });
+    const fogPlane = add(new THREE.PlaneGeometry(26, 80), toon({map: fogTex, transparent: true}), 0, -40, 0, g);
+    fogPlane.rotation.x = -Math.PI/2;
+
+    // Bridges
+    const buildBridge = (x) => {
+      const b = new THREE.Group();
+      b.position.x = x;
+      add(tbox(0.4, 0.6, 80), M_woodTex, -1, -0.3, 0, b);
+      add(tbox(0.4, 0.6, 80), M_woodTex, 1, -0.3, 0, b);
+      for(let z=-40; z<=40; z+=0.6) {
+        add(box(3, 0.2, 0.3), M_woodTex, 0, 0.1, z, b);
+      }
+      add(tbox(0.1, 0.15, 80), M.iron, -0.7, 0.275, 0, b);
+      add(tbox(0.1, 0.15, 80), M.iron, 0.7, 0.275, 0, b);
+      for(let z=-38; z<=38; z+=4) {
+        add(tbox(2.8, 0.2, 0.2), M_woodTex, 0, -0.8, z, b);
+        const diag1 = add(tbox(0.2, 3, 0.2), M_woodTex, -1, -2, z+2, b);
+        diag1.rotation.x = Math.PI/4;
+        const diag2 = add(tbox(0.2, 3, 0.2), M_woodTex, 1, -2, z+2, b);
+        diag2.rotation.x = -Math.PI/4;
+        add(tbox(0.4, 4, 0.4), M_woodTex, -1, -2, z, b);
+        add(tbox(0.4, 4, 0.4), M_woodTex, 1, -2, z, b);
+      }
+      g.add(b);
+    };
+    
+    buildBridge(-6);
+    buildBridge(6);
+    
     return g;
   },
-  'STATION': () => {
+  'OFFICE': () => {
     const g = new THREE.Group();
-    add(tbox(20, 1, 6), M.plank, 0, 0.5, 3, g);
-    add(tbox(8, 4, 4), M.plaster, -4, 3, 5, g);
-    const roof = add(tbox(9, 0.4, 6), M.roof, -4, 5.2, 4, g);
-    roof.rotation.x = -0.1;
-    add(new THREE.PlaneGeometry(2, 1.5), toon({color: '#2b2430'}), -3, 2.5, 2.9, g);
-    add(new THREE.PlaneGeometry(1.2, 2.5), M.door, -6, 2.25, 2.9, g);
+    add(tbox(8, 0.2, 8), M_woodTex, 0, -0.1, 0, g);
     
-    // Dressing
-    add(tbox(2, 0.5, 0.5), toon({color: '#2f5f3f'}), 2, 1.25, 4, g); // bench
-    add(tbox(2, 0.5, 0.5), toon({color: '#2f5f3f'}), 6, 1.25, 4, g); // bench
-    add(tbox(0.8, 0.6, 0.4), toon({color: '#8f3f3f'}), 4, 1.3, 3.5, g); // luggage
-    add(tbox(0.6, 0.8, 0.3), toon({color: '#3f4f8f'}), 4.5, 1.4, 3.2, g); // luggage
+    // Rug
+    const rugTex = canvasTex(256, 256, (ctx, w, h) => {
+      ctx.fillStyle = '#883333'; ctx.fillRect(0,0,w,h);
+      ctx.strokeStyle = '#ddaa55'; ctx.lineWidth = 10;
+      ctx.strokeRect(20, 20, w-40, h-40);
+      ctx.beginPath(); ctx.arc(w/2, h/2, 50, 0, Math.PI*2); ctx.stroke();
+    });
+    add(tbox(4, 0.05, 3), toon({map: rugTex}), 0, 0.025, -0.5, g);
 
-    add(tbox(20, 0.2, 6), M.stone, 0, 0.1, -3, g);
-    add(tbox(20, 0.15, 0.15), M.iron, 0, 0.275, -2.6, g);
-    add(tbox(20, 0.15, 0.15), M.iron, 0, 0.275, -3.4, g);
-    for(let i=-10; i<=10; i+=0.6) add(tbox(0.2, 0.12, 1.8), M.wood, i, 0.16, -3, g);
-    return g;
-  },
-  'BRIDGE-WIDE': () => {
-    const g = new THREE.Group();
-    add(tbox(15, 40, 30), M.stone, -25, -20, 0, g);
-    add(tbox(15, 40, 30), M.stone, 25, -20, 0, g);
-    add(tbox(15, 0.2, 30), M.dirt, -25, 0.1, 0, g);
-    add(tbox(15, 0.2, 30), M.dirt, 25, 0.1, 0, g);
+    const wallTex = canvasTex(256, 256, (ctx, w, h) => {
+      ctx.fillStyle = '#e8e0d0'; ctx.fillRect(0,0,w,h);
+      ctx.strokeStyle = '#d0c8b8'; ctx.lineWidth = 4;
+      for(let i=0; i<w; i+=32) { ctx.beginPath(); ctx.moveTo(i,0); ctx.lineTo(i,h); ctx.stroke(); }
+    });
+    const M_wall = toon({map: wallTex});
     
-    // River
-    add(new THREE.PlaneGeometry(35, 30), toon({color: '#3f7f9f'}), 0, -35, 0, g).rotation.x = -Math.PI/2;
+    add(tbox(8, 4, 0.2), M_wall, 0, 2, -4, g);
+    add(tbox(0.2, 4, 8), M_wall, -4, 2, 0, g);
+    add(tbox(0.2, 4, 8), M_wall, 4, 2, 0, g);
+    
+    // Desk at z=-0.2
+    const deskZ = -0.2;
+    add(tbox(2.4, 0.1, 1.2), M_woodTex, 0, 1, deskZ, g);
+    add(tbox(0.6, 1, 1.1), M_woodTex, -0.9, 0.5, deskZ, g);
+    add(tbox(0.6, 1, 1.1), M_woodTex, 0.9, 0.5, deskZ, g);
+    
+    // Chair at z=-1.0
+    add(tbox(0.6, 0.1, 0.6), M_woodTex, 0, 0.5, deskZ - 0.8, g);
+    add(tbox(0.6, 0.6, 0.1), M_woodTex, 0, 0.8, deskZ - 1.05, g);
+    add(tbox(0.05, 0.5, 0.05), M.iron, 0, 0.25, deskZ - 0.8, g);
+    
+    // Desk props
+    add(new THREE.CylinderGeometry(0.15, 0.15, 0.05), M.iron, -0.8, 1.05, deskZ - 0.2, g);
+    add(new THREE.CylinderGeometry(0.02, 0.02, 0.4), M.iron, -0.8, 1.25, deskZ - 0.2, g);
+    const shade = add(new THREE.ConeGeometry(0.15, 0.2, 16), toon({color: '#225533'}), -0.8, 1.4, deskZ);
+    shade.rotation.x = Math.PI/4;
+    
+    add(tbox(0.3, 0.02, 0.4), toon({color: '#ffffff'}), 0.2, 1.06, deskZ, g);
+    add(tbox(0.3, 0.02, 0.4), toon({color: '#ffffff'}), -0.2, 1.06, deskZ + 0.1, g).rotation.y = 0.2;
+    add(new THREE.CylinderGeometry(0.05, 0.05, 0.12), toon({color: '#cc3333'}), 0.8, 1.11, deskZ, g); // mug
+    
+    // Blueprints
+    const bpTex = canvasTex(512, 512, (ctx, w, h) => {
+      ctx.fillStyle = '#224488'; ctx.fillRect(0,0,w,h);
+      ctx.strokeStyle = '#fff'; ctx.lineWidth = 3;
+      ctx.strokeRect(20, 20, w-40, h-40);
+      ctx.beginPath(); ctx.moveTo(40, 40); ctx.lineTo(w-40, h-40); ctx.stroke();
+      ctx.beginPath(); ctx.arc(w/2, h/2, 100, 0, Math.PI*2); ctx.stroke();
+      for(let i=0; i<5; i++) { ctx.fillRect(40, 100+i*30, 150, 10); }
+    });
+    add(tbox(0.05, 2, 3), toon({map: bpTex}), -3.9, 2, -1.5, g);
+    
+    // Window
+    add(tbox(0.1, 1.6, 2.1), M_woodTex, 3.9, 2, -1, g);
+    add(tbox(0.05, 1.5, 2), toon({color: '#88ccff', transparent: true, opacity: 0.5}), 3.9, 2, -1, g);
+    add(tbox(0.12, 1.5, 0.05), M_woodTex, 3.9, 2, -1, g);
+    add(tbox(0.12, 0.05, 2), M_woodTex, 3.9, 2, -1, g);
+    
+    // Filing cabinet
+    add(tbox(0.8, 1.5, 0.8), toon({color: '#556655'}), -3.5, 0.75, -3.5, g);
+    for(let i=0; i<3; i++) add(tbox(0.7, 0.4, 0.05), toon({color: '#445544'}), -3.1, 0.4 + i*0.45, -3.5, g);
 
-    const bridge = new THREE.Group();
-    g.add(bridge);
-    add(tbox(35, 0.4, 0.4), M.wood, 0, -0.2, 1.5, bridge);
-    add(tbox(35, 0.4, 0.4), M.wood, 0, -0.2, -1.5, bridge);
-    for (let x = -17.4; x <= 17.4; x += 0.6) {
-      add(tbox(0.3, 0.2, 4), M.wood, x, 0.1, 0, bridge);
-    }
-    for (let x = -16; x <= 16; x += 4) {
-      add(tbox(0.4, 30, 0.4), M.wood, x, -15, 1.5, bridge);
-      add(tbox(0.4, 30, 0.4), M.wood, x, -15, -1.5, bridge);
-      for(let y = -5; y >= -25; y -= 5) {
-        add(tbox(0.3, 0.3, 4), M.wood, x, y, 0, bridge);
-        if (x < 16) {
-          add(tbox(4, 0.3, 0.3), M.wood, x+2, y, 1.5, bridge);
-          add(tbox(4, 0.3, 0.3), M.wood, x+2, y, -1.5, bridge);
+    // Bookshelf on back wall
+    add(tbox(2, 2, 0.4), M_woodTex, 2, 1, -3.8, g);
+    for(let y=0.4; y<=1.8; y+=0.6) {
+      add(tbox(1.8, 0.05, 0.35), M_woodTex, 2, y, -3.8, g);
+      // Books
+      for(let x=1.2; x<=2.8; x+=0.15) {
+        if(rnd()>0.3) {
+          const h = 0.3 + rnd()*0.2;
+          const col = ['#aa3333', '#33aa33', '#3333aa', '#aaaa33', '#33aaaa'][Math.floor(rnd()*5)];
+          add(tbox(0.1, h, 0.25), toon({color: col}), x, y + h/2, -3.8, g);
         }
       }
-      if (x < 16) {
-        for(let y = -2.5; y >= -22.5; y -= 5) {
-          const cross1 = add(tbox(0.2, 6, 0.2), M.wood, x+2, y, 1.3, bridge);
-          cross1.rotation.z = Math.PI / 4;
-          const cross2 = add(tbox(0.2, 6, 0.2), M.wood, x+2, y, -1.3, bridge);
-          cross2.rotation.z = -Math.PI / 4;
+    }
+
+    const calTex = canvasTex(128, 128, (ctx, w, h) => {
+      ctx.fillStyle = '#fff'; ctx.fillRect(0,0,w,h);
+      ctx.fillStyle = '#d22'; ctx.fillRect(0,0,w,30);
+      ctx.fillStyle = '#000'; ctx.font = 'bold 60px Arial'; ctx.textAlign = 'center'; ctx.fillText('14', w/2, 90);
+    });
+    add(tbox(0.05, 0.6, 0.6), toon({map: calTex}), -1.5, 2.5, -3.9, g);
+    
+    const clock = new THREE.Group();
+    clock.position.set(0, 3, -3.9);
+    add(new THREE.CylinderGeometry(0.4, 0.4, 0.05, 16), toon({color: '#333'}), 0, 0, 0, clock).rotation.x = Math.PI/2;
+    add(new THREE.CylinderGeometry(0.35, 0.35, 0.06, 16), toon({color: '#fff'}), 0, 0, 0, clock).rotation.x = Math.PI/2;
+    add(box(0.05, 0.2, 0.08), toon({color: '#000'}), 0, 0.1, 0, clock);
+    add(box(0.15, 0.05, 0.08), toon({color: '#000'}), 0.075, 0, 0, clock);
+    g.add(clock);
+    
+    return g;
+  },
+  'NEWSPAPER-STAND': () => {
+    const g = new THREE.Group();
+    add(tbox(6, 0.1, 3), toon({color: '#333333'}), 0, -0.05, 1.5, g);
+    add(tbox(6, 0.2, 3), M.stone, 0, 0, -1.5, g);
+    add(tbox(6, 0.25, 0.2), M.plaster, 0, 0.025, 0, g);
+    
+    const brickTex = canvasTex(512, 512, (ctx, w, h) => {
+      ctx.fillStyle = '#8a3a3a'; ctx.fillRect(0,0,w,h);
+      ctx.fillStyle = '#aa4a4a'; 
+      for(let y=0; y<h; y+=32) {
+        let offset = (y/32)%2 === 0 ? 0 : 32;
+        for(let x=-offset; x<w; x+=64) {
+          ctx.fillRect(x+2, y+2, 60, 28);
         }
       }
+    });
+    add(tbox(0.4, 4, 3), toon({map: brickTex}), -2.8, 2, -1.5, g);
+    
+    add(tbox(0.4, 0.2, 0.4), M.iron, 2, 0.2, -1, g);
+    add(new THREE.CylinderGeometry(0.05, 0.08, 4), M.iron, 2, 2.2, -1, g);
+    add(new THREE.SphereGeometry(0.3), toon({color: '#ffdd88'}), 2, 4.4, -1, g);
+    add(new THREE.CylinderGeometry(0.35, 0.05, 0.2), M.iron, 2, 4.6, -1, g);
+    
+    const rack = new THREE.Group();
+    rack.position.set(0, 0.1, -1);
+    add(tbox(1.6, 0.1, 0.8), M_woodTex, 0, 0.05, 0, rack);
+    add(tbox(1.6, 1.2, 0.1), M_woodTex, 0, 0.6, -0.35, rack);
+    add(tbox(0.1, 1.2, 0.8), M_woodTex, -0.75, 0.6, 0, rack);
+    add(tbox(0.1, 1.2, 0.8), M_woodTex, 0.75, 0.6, 0, rack);
+    add(tbox(1.6, 0.2, 0.8), M_woodTex, 0, 1.3, 0, rack);
+    for(let y=0.3; y<=0.9; y+=0.3) {
+      const shelf = add(tbox(1.5, 0.05, 0.6), M_woodTex, 0, y, 0, rack);
+      shelf.rotation.x = Math.PI/8;
+      add(tbox(0.4, 0.1, 0.3), toon({color: '#eeeeee'}), -0.4, y+0.05, 0.1, rack).rotation.x = Math.PI/8;
+      add(tbox(0.4, 0.1, 0.3), toon({color: '#eeeeee'}), 0.4, y+0.05, 0.1, rack).rotation.x = Math.PI/8;
     }
+    g.add(rack);
+    
+    add(new THREE.CylinderGeometry(0.25, 0.2, 0.7), M.iron, -1.5, 0.45, -0.5, g);
+    
     return g;
   },
-  'steel rail': () => {
+  'SMOOTH-TRACK': () => {
     const g = new THREE.Group();
-    add(tbox(12, 0.15, 0.15), M.iron, 0, 0.075, 0, g);
+    add(tbox(4, 0.1, 4), M_dirt, 0, -0.05, 0, g);
+    add(tbox(4, 0.1, 3), M_gravel, 0, 0.05, 0, g);
+    for(let i=-2; i<=2; i+=0.6) {
+      add(box(0.25, 0.15, 2.2), M_woodTex, i, 0.075, 0, g);
+      add(box(0.05, 0.05, 0.05), M.iron, i-0.05, 0.175, -0.7, g);
+      add(box(0.05, 0.05, 0.05), M.iron, i+0.05, 0.175, -0.7, g);
+      add(box(0.05, 0.05, 0.05), M.iron, i-0.05, 0.175, 0.7, g);
+      add(box(0.05, 0.05, 0.05), M.iron, i+0.05, 0.175, 0.7, g);
+    }
+    addTrackDetails(g);
     return g;
   },
-  'hand saw': () => {
+  'saw': () => {
     const g = new THREE.Group();
-    add(tbox(0.12, 0.15, 0.04), M.wood, -0.24, 0, 0, g);
-    add(tbox(0.04, 0.1, 0.04), M.wood, -0.28, -0.05, 0, g);
-    add(tbox(0.45, 0.12, 0.01), M.iron, 0.045, -0.015, 0, g);
+    add(tbox(0.5, 0.1, 0.01), M.iron, 0.25, 0, 0, g);
+    add(tbox(0.1, 0.15, 0.05), M.wood, -0.05, 0, 0, g);
+    return g;
+  },
+  'steel rail with gap': () => {
+    const g = new THREE.Group();
+    const left = new THREE.Group();
+    left.add(buildRail(1.0, -0.5, -0.7));
+    left.add(buildRail(1.0, -0.5, 0.7));
+    // Joint bars (fishplates)
+    add(tbox(0.2, 0.06, 0.02), M.iron, -0.1, 0.065, 0.7 - 0.025, left);
+    add(tbox(0.2, 0.06, 0.02), M.iron, -0.1, 0.065, 0.7 + 0.025, left);
+    add(new THREE.CylinderGeometry(0.015, 0.015, 0.08), toon({color: '#444'}), -0.05, 0.065, 0.7, left).rotation.x = Math.PI/2;
+    add(new THREE.CylinderGeometry(0.015, 0.015, 0.08), toon({color: '#444'}), -0.15, 0.065, 0.7, left).rotation.x = Math.PI/2;
+    g.add(left);
+    
+    const right = new THREE.Group();
+    right.add(buildRail(1.0, 0.5, -0.7));
+    right.add(buildRail(1.0, 0.5, 0.7));
+    add(tbox(0.2, 0.06, 0.02), M.iron, 0.1, 0.065, 0.7 - 0.025, right);
+    add(tbox(0.2, 0.06, 0.02), M.iron, 0.1, 0.065, 0.7 + 0.025, right);
+    add(new THREE.CylinderGeometry(0.015, 0.015, 0.08), toon({color: '#444'}), 0.05, 0.065, 0.7, right).rotation.x = Math.PI/2;
+    add(new THREE.CylinderGeometry(0.015, 0.015, 0.08), toon({color: '#444'}), 0.15, 0.065, 0.7, right).rotation.x = Math.PI/2;
+    g.add(right);
+    
+    g.userData = { left, right };
+    return g;
+  },
+  'seamless steel rail': () => {
+    const g = new THREE.Group();
+    g.add(buildRail(4.0, 0, -0.7));
+    g.add(buildRail(4.0, 0, 0.7));
+    // Joint bars in the middle to show it's joined seamlessly
+    add(tbox(0.4, 0.06, 0.02), M.iron, 0, 0.065, 0.7 - 0.025, g);
+    add(tbox(0.4, 0.06, 0.02), M.iron, 0, 0.065, 0.7 + 0.025, g);
+    for(let x=-0.15; x<=0.15; x+=0.1) {
+      add(new THREE.CylinderGeometry(0.015, 0.015, 0.08), toon({color: '#444'}), x, 0.065, 0.7, g).rotation.x = Math.PI/2;
+    }
     return g;
   },
   'train': () => {
     const g = new THREE.Group();
-    const black = toon({ color: '#1a1a1a' });
-    const red = toon({ color: '#8a2a2a' });
-    const grey = toon({ color: '#4a4a4a' });
-    add(tbox(14, 0.5, 3.2), black, 0, 1.5, 0, g);
-    const boiler = add(new THREE.CylinderGeometry(1.4, 1.4, 9, 16), black, 1.5, 3.2, 0, g);
-    boiler.rotation.z = Math.PI / 2;
-    add(tbox(4, 4.5, 3.4), red, -5, 4, 0, g);
-    add(tbox(4.4, 0.2, 3.8), black, -5, 6.3, 0, g);
-    add(new THREE.PlaneGeometry(1.5, 1.5), toon({color: '#88ccff'}), -5, 4.5, 1.71, g);
-    add(new THREE.PlaneGeometry(1.5, 1.5), toon({color: '#88ccff'}), -5, 4.5, -1.71, g);
-    add(new THREE.CylinderGeometry(0.4, 0.3, 2, 16), black, 4.5, 5, 0, g);
-    const cow = add(new THREE.ConeGeometry(1.5, 2, 4), grey, 7.5, 1.5, 0, g);
-    cow.rotation.y = Math.PI / 4;
-    cow.rotation.x = Math.PI / 2;
-    for (let x = -4; x <= 5; x += 3) {
-      for (let z of [-1.6, 1.6]) {
-        const w = add(new THREE.CylinderGeometry(1.2, 1.2, 0.3, 16), red, x, 1.2, z, g);
-        w.rotation.x = Math.PI / 2;
-        const hub = add(new THREE.CylinderGeometry(0.3, 0.3, 0.4, 8), grey, x, 1.2, z, g);
-        hub.rotation.x = Math.PI / 2;
+    const black = toon({color: '#222222'}), red = toon({color: '#882222'}), brass = toon({color: '#aa8833'}), grey = toon({color: '#555555'});
+    
+    const boiler = add(new THREE.CylinderGeometry(1.2, 1.2, 8, 16), black, 0, 2.2, 0, g);
+    boiler.rotation.z = Math.PI/2;
+    for(let x=-2; x<=2; x+=2) {
+      const band = add(new THREE.CylinderGeometry(1.22, 1.22, 0.1, 16), brass, x, 2.2, 0, g);
+      band.rotation.z = Math.PI/2;
+    }
+    add(new THREE.CylinderGeometry(0.4, 0.4, 0.8, 16), brass, 0, 3.5, 0, g);
+    add(new THREE.SphereGeometry(0.4, 16, 16), brass, 0, 3.9, 0, g);
+    
+    add(tbox(3, 4, 3), red, -3.5, 3, 0, g);
+    add(tbox(3.2, 0.2, 3.2), black, -3.5, 5.1, 0, g);
+    add(tbox(1, 1.5, 3.1), toon({color: '#88ccff'}), -3.5, 3.5, 0, g);
+    
+    add(tbox(4, 2.5, 2.8), black, -7.5, 2.25, 0, g);
+    add(tbox(3.8, 0.5, 2.6), grey, -7.5, 3.6, 0, g);
+    
+    // Coal in tender
+    const coalGeo = new THREE.DodecahedronGeometry(0.3);
+    const coalMat = toon({color: '#111111'});
+    for(let i=0; i<30; i++) {
+      const cx = -7.5 + (rnd()-0.5)*3.5;
+      const cz = (rnd()-0.5)*2.5;
+      const cy = 3.5 + rnd()*0.5;
+      const c = add(coalGeo, coalMat, cx, cy, cz, g);
+      c.rotation.set(rnd(), rnd(), rnd());
+    }
+    // Lantern on back of tender
+    add(tbox(0.4, 0.6, 0.4), toon({color: '#ddaa33'}), -9.6, 3, 0, g);
+    add(tbox(0.3, 0.4, 0.3), toon({color: '#ffffee'}), -9.6, 3, 0, g);
+    
+    add(new THREE.CylinderGeometry(0.3, 0.4, 1.5, 16), black, 3, 3.5, 0, g);
+    add(new THREE.CylinderGeometry(0.5, 0.3, 0.5, 16), brass, 3, 4.5, 0, g);
+    
+    const cowcatcher = add(new THREE.ConeGeometry(1.5, 2, 4), black, 4.5, 1, 0, g);
+    cowcatcher.rotation.z = -Math.PI/2;
+    cowcatcher.rotation.x = Math.PI/4;
+    
+    const wheels = [];
+    for(let i=-1; i<=3; i+=2) {
+      for(let z of [-0.7, 0.7]) {
+        const w = new THREE.Group();
+        w.position.set(i, 0.8, z);
+        add(new THREE.CylinderGeometry(0.8, 0.8, 0.15, 16), red, 0, 0, 0, w).rotation.x = Math.PI/2;
+        add(new THREE.CylinderGeometry(0.7, 0.7, 0.17, 16), black, 0, 0, 0, w).rotation.x = Math.PI/2;
+        for(let a=0; a<Math.PI; a+=Math.PI/4) {
+          const spoke = add(box(1.4, 0.1, 0.2), red, 0, 0, 0, w);
+          spoke.rotation.z = a;
+        }
+        add(new THREE.CylinderGeometry(0.2, 0.2, 0.25, 8), brass, 0, 0, 0, w).rotation.x = Math.PI/2;
+        g.add(w);
+        wheels.push(w);
       }
     }
+    
+    const rodL = add(tbox(4.5, 0.15, 0.1), grey, 1, 0.8, -0.85, g);
+    const rodR = add(tbox(4.5, 0.15, 0.1), grey, 1, 0.8, 0.85, g);
+    
+    g.userData.wheels = wheels;
+    g.userData.rods = { left: rodL, right: rodR };
     return g;
   },
   'newspaper': () => {
     const g = new THREE.Group();
     const tex = canvasTex(512, 256, (ctx, w, h) => {
-      ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, w, h);
-      ctx.fillStyle = '#000000'; ctx.font = 'bold 40px Arial';
-      ctx.textAlign = 'center'; ctx.fillText('CLICKETY CLACK LINE', w / 2, h / 2);
+      ctx.fillStyle = '#fff'; ctx.fillRect(0,0,w,h);
+      ctx.fillStyle = '#000'; ctx.font = 'bold 40px Arial'; ctx.textAlign = 'center';
+      ctx.fillText('CLICKETY CLACK LINE', w/2, h/2);
+      ctx.fillRect(50, h/2 + 20, w-100, 10);
+      ctx.fillRect(50, h/2 + 40, w-100, 10);
     });
-    add(new THREE.PlaneGeometry(0.4, 0.2), toon({ map: tex }), 0, 0, 0, g);
+    add(tbox(0.4, 0.01, 0.3), toon({map: tex}), 0, 0, 0, g);
     return g;
   },
-  'gold coin': () => {
+  'coin': () => {
     const g = new THREE.Group();
-    const w = add(new THREE.CylinderGeometry(0.025, 0.025, 0.005, 16), toon({ color: '#ffd700' }), 0, 0, 0, g);
-    w.rotation.x = Math.PI / 2;
+    add(new THREE.CylinderGeometry(0.025, 0.025, 0.005, 16), toon({color: '#ffdd44'}), 0, 0, 0, g);
     return g;
   },
   'sheet of paper': () => {
     const g = new THREE.Group();
-    add(new THREE.PlaneGeometry(0.3, 0.2), toon({ color: '#ffffff' }), 0, 0, 0, g);
+    add(tbox(0.2, 0.01, 0.15), toon({color: '#ffffff'}), 0, 0, 0, g);
+    return g;
+  },
+  'kinked rail': () => {
+    const g = new THREE.Group();
+    const left = new THREE.Group();
+    left.add(buildRail(1.5, -0.75, -0.7));
+    left.add(buildRail(1.5, -0.75, 0.7));
+    left.rotation.y = Math.PI/6;
+    g.add(left);
+    const right = new THREE.Group();
+    right.add(buildRail(1.5, 0.75, -0.7));
+    right.add(buildRail(1.5, 0.75, 0.7));
+    right.rotation.y = -Math.PI/6;
+    g.add(right);
     return g;
   }
 };
 
+const env_track = ASSETS['TRACK-CLOSEUP'](); world.add(env_track);
+const env_canyon = ASSETS['CANYON-BRIDGE'](); world.add(env_canyon);
+const env_office = ASSETS['OFFICE'](); world.add(env_office);
+const env_news = ASSETS['NEWSPAPER-STAND'](); world.add(env_news);
+const env_smooth = ASSETS['SMOOTH-TRACK'](); world.add(env_smooth);
+
+const prop_saw = ASSETS['saw'](); world.add(prop_saw);
+const prop_gapRail = ASSETS['steel rail with gap'](); world.add(prop_gapRail);
+const prop_smoothRail = ASSETS['seamless steel rail'](); world.add(prop_smoothRail);
+const prop_train = ASSETS['train'](); world.add(prop_train);
+const prop_newspaper = ASSETS['newspaper'](); world.add(prop_newspaper);
+const prop_coin = ASSETS['coin'](); world.add(prop_coin);
+const prop_paper = ASSETS['sheet of paper'](); world.add(prop_paper);
+const prop_kinkedRail = ASSETS['kinked rail'](); world.add(prop_kinkedRail);
+
 const waterU = { t: { value: 0 }, deep: { value: new THREE.Color('#2f6f8f') }, shal: { value: new THREE.Color('#5fa8bf') }, glint: { value: new THREE.Color('#e9f6ff') } };
 const clouds = cloudsInit();
 
-const trackView = new THREE.Group(); world.add(trackView);
-for(let i=-4; i<=4; i++) {
-  const tv = ASSETS['TRACK-VIEW']();
-  tv.position.set(i * 2.4, 0, 0);
-  trackView.add(tv);
-}
-const canyonEdge = ASSETS['CANYON-EDGE'](); canyonEdge.position.set(100, 0, 0); world.add(canyonEdge);
-const station = ASSETS['STATION'](); station.position.set(200, 0, 0); world.add(station);
-const bridgeWide = ASSETS['BRIDGE-WIDE'](); bridgeWide.position.set(300, 0, 0); world.add(bridgeWide);
-
-const railL1 = ASSETS['steel rail'](); railL1.position.set(-6, 0.175, -0.4); trackView.add(railL1);
-const railL2 = ASSETS['steel rail'](); railL2.position.set(6, 0.175, -0.4); trackView.add(railL2);
-const railR1 = ASSETS['steel rail'](); railR1.position.set(-6, 0.175, 0.4); trackView.add(railR1);
-const railR2 = ASSETS['steel rail'](); railR2.position.set(6, 0.175, 0.4); trackView.add(railR2);
-
-const saw = ASSETS['hand saw'](); trackView.add(saw);
-const coin = ASSETS['gold coin'](); trackView.add(coin);
-const paper = ASSETS['sheet of paper'](); trackView.add(paper);
-const news = ASSETS['newspaper'](); station.add(news);
-const trainStat = ASSETS['train'](); station.add(trainStat);
-const trainBridge = ASSETS['train'](); bridgeWide.add(trainBridge);
-
-const bridgeRails = [];
-for (let x = -24; x <= 24; x += 12) {
-  const r1 = ASSETS['steel rail'](); r1.position.set(x, 0.275, -0.4); r1.userData.z0 = -0.4; bridgeWide.add(r1);
-  const r2 = ASSETS['steel rail'](); r2.position.set(x, 0.275, 0.4); r2.userData.z0 = 0.4; bridgeWide.add(r2);
-  bridgeRails.push(r1, r2);
-}
-
 function worldState(S, f) {
-  railL1.position.x = -6 - S.gapSize / 2;
-  railL2.position.x = 6 + S.gapSize / 2;
-  railR1.position.x = -6 - S.gapSize / 2;
-  railR2.position.x = 6 + S.gapSize / 2;
-  
-  saw.visible = S.sawVis;
-  saw.position.set(0, 0.25 + S.sawPos, 0.4);
-  
-  coin.visible = S.coinVis;
-  coin.position.set(0, 0.2, 0.4);
-  
-  paper.visible = S.paperVis;
-  paper.position.set(0, 0.2, 0.4);
-  paper.rotation.x = -Math.PI / 2;
-  
-  news.visible = S.newsVis;
-  news.position.set(200, 1.5, 4);
-  
-  trainStat.position.set(S.trainStatX, 0.15, -3);
-  trainBridge.position.set(S.trainX, 0.15, 0);
-  trainBridge.visible = S.trainVis;
-  
-  bridgeRails.forEach(r => {
-    r.position.z = r.userData.z0 + Math.sin(r.position.x * 0.3) * S.warpAmt;
-  });
-  
+  env_track.visible = S.env === 'TRACK-CLOSEUP';
+  env_canyon.visible = S.env === 'CANYON-BRIDGE';
+  env_office.visible = S.env === 'OFFICE';
+  env_news.visible = S.env === 'NEWSPAPER-STAND';
+  env_smooth.visible = S.env === 'SMOOTH-TRACK';
+
+  prop_saw.visible = !!S.saw;
+  if(S.saw) {
+    prop_saw.position.set(S.saw.x, S.saw.y, S.saw.z);
+  }
+
+  prop_gapRail.visible = !!S.gapRail;
+  if(S.gapRail) {
+    prop_gapRail.position.set(0, 0.15, 0);
+    const gap = S.gapRail.gapSize || 0.1;
+    prop_gapRail.userData.left.position.x = -gap/2;
+    prop_gapRail.userData.right.position.x = gap/2;
+  }
+
+  prop_smoothRail.visible = !!S.smoothRail;
+  if(S.smoothRail) {
+    prop_smoothRail.position.set(0, 0.15, 0);
+    if(S.smoothRail.bend) {
+      prop_smoothRail.position.z = Math.sin(f * 0.5) * 0.02;
+    } else {
+      prop_smoothRail.position.z = 0;
+    }
+  }
+
+  prop_train.visible = !!S.train;
+  if(S.train) {
+    const ty = S.env === 'CANYON-BRIDGE' ? 0.35 : 0.3;
+    prop_train.position.set(S.train.x, ty, S.train.z);
+    prop_train.rotation.y = S.train.ry || 0;
+    prop_train.rotation.z = S.train.roll || 0;
+    const dist = S.train.ry ? S.train.z : S.train.x;
+    const angle = -dist / 0.8;
+    prop_train.userData.wheels.forEach(w => w.rotation.z = angle);
+    const rodOffset = Math.sin(angle) * 0.4;
+    const rodX = Math.cos(angle) * 0.4;
+    prop_train.userData.rods.left.position.set(1 + rodX, 0.8 + rodOffset, -0.85);
+    prop_train.userData.rods.right.position.set(1 + rodX, 0.8 + rodOffset, 0.85);
+  }
+
+  prop_newspaper.visible = !!S.newspaper;
+  if(S.newspaper) {
+    prop_newspaper.position.set(0, 1.05, -0.9);
+    prop_newspaper.rotation.x = Math.PI/8;
+  }
+
+  prop_coin.visible = !!S.coin;
+  if(S.coin) {
+    prop_coin.position.set(0, 0.3, 0.7);
+    prop_coin.rotation.x = Math.PI/2;
+  }
+
+  prop_paper.visible = !!S.paper;
+  if(S.paper) {
+    prop_paper.position.set(0, 0.3, 0.7);
+  }
+
+  prop_kinkedRail.visible = !!S.kinkedRail;
+  if(S.kinkedRail) {
+    prop_kinkedRail.position.set(S.kinkedRail.x || 0, 0.15, S.kinkedRail.z || 0);
+  }
+
   waterU.t.value = f / 30;
 }
 

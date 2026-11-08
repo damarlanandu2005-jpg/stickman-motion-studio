@@ -1078,85 +1078,80 @@
     "id": "ENGINEER",
     "outfit": "worker1",
     "hat": "cap",
-    "skin_hair": "light skin, no beard",
-    "default_face": "determined",
+    "skin_hair": "light skin, dark hair, no beard",
+    "default_face": "neutral",
     "identity_lock": [
      "outfit: worker1",
      "hat: cap",
      "skin: light",
-     "no beard"
+     "hair: dark, no beard"
     ],
     "status": "kit"
    },
    {
     "id": "BOSS",
-    "outfit": "worker2",
+    "outfit": "councilman",
     "hat": "tophat",
-    "skin_hair": "dark skin, beard",
+    "skin_hair": "light skin, grey hair, big beard",
     "default_face": "angry",
     "identity_lock": [
-     "outfit: worker2",
+     "outfit: councilman",
      "hat: tophat",
-     "skin: dark",
-     "beard"
+     "skin: light",
+     "hair: grey, big beard"
     ],
     "status": "kit"
    },
    {
     "id": "RIVAL",
-    "outfit": "workA",
-    "hat": "slouch",
-    "skin_hair": "light skin, moustache",
+    "outfit": "worker2",
+    "hat": "tophat",
+    "skin_hair": "dark skin, black hair, moustache",
     "default_face": "grin",
     "identity_lock": [
-     "outfit: workA",
-     "hat: slouch",
-     "skin: light",
-     "moustache"
+     "outfit: worker2",
+     "hat: tophat",
+     "skin: dark",
+     "hair: black, moustache"
     ],
     "status": "kit"
    }
   ],
   "objects": [
    {
-    "id": "STEEL_RAIL",
-    "label": "steel rail",
-    "size_m": 12.0,
+    "id": "SAW",
+    "label": "silver blade, brown handle saw",
+    "size_m": 0.6,
+    "representation": "3d_mesh",
+    "status": "new_item"
+   },
+   {
+    "id": "GAP-RAIL",
+    "label": "steel rail with gap",
+    "size_m": 2.0,
     "representation": "3d_mesh",
     "material_ids": [
      "M02"
-    ],
-    "aliases": [
-     "railroad",
-     "rail",
-     "rails",
-     "track"
     ],
     "status": "new_item"
    },
    {
-    "id": "HAND_SAW",
-    "label": "hand saw",
-    "size_m": 0.6,
+    "id": "SMOOTH-RAIL",
+    "label": "seamless steel rail",
+    "size_m": 4.0,
     "representation": "3d_mesh",
     "material_ids": [
      "M02"
-    ],
-    "aliases": [
-     "saw"
     ],
     "status": "new_item"
    },
    {
     "id": "TRAIN",
-    "label": "train",
+    "label": "black and red steam locomotive",
     "size_m": 15.0,
     "representation": "3d_mesh",
     "material_ids": [
      "M02"
-    ],
-    "aliases": [
-     "trains"
     ],
     "status": "new_item"
    },
@@ -1164,122 +1159,139 @@
     "id": "NEWSPAPER",
     "label": "newspaper",
     "size_m": 0.4,
-    "representation": "2d_card",
-    "material_ids": [
-     "M01"
-    ],
+    "representation": "3d_mesh",
     "text_on_object": "CLICKETY CLACK LINE",
-    "aliases": [
-     "newspapers"
-    ],
     "status": "new_item"
    },
    {
-    "id": "GOLD_COIN",
-    "label": "gold coin",
+    "id": "COIN",
+    "label": "shiny gold coin",
     "size_m": 0.05,
     "representation": "3d_mesh",
     "material_ids": [
      "M02"
     ],
-    "aliases": [
-     "coin"
-    ],
     "status": "new_item"
    },
    {
-    "id": "SHEET_OF_PAPER",
+    "id": "PAPER-SHEET",
     "label": "sheet of paper",
-    "size_m": 0.3,
-    "representation": "2d_card",
+    "size_m": 0.2,
+    "representation": "3d_mesh",
+    "status": "new_item"
+   },
+   {
+    "id": "KINKED-RAIL",
+    "label": "kinked rail",
+    "size_m": 3.0,
+    "representation": "3d_mesh",
     "material_ids": [
-     "M01"
-    ],
-    "aliases": [
-     "paper"
+     "M02"
     ],
     "status": "new_item"
    }
   ],
   "environments": [
    {
-    "id": "TRACK-VIEW",
+    "id": "TRACK-CLOSEUP",
     "width_m": 2.0,
     "light": "day",
     "lighting_profile_id": "L02",
     "landmarks": [
      "steel rail in middle",
-     "wooden sleeper far left",
-     "gap near right"
+     "wooden sleepers below",
+     "gravel on sides"
     ],
     "material_ids": [
      "M02",
-     "M01"
-    ],
-    "depth_layers": {
-     "foreground": "rail edge",
-     "midground": "rails and sleepers",
-     "background": "ground"
-    }
-   },
-   {
-    "id": "CANYON-EDGE",
-    "width_m": 30.0,
-    "light": "day",
-    "lighting_profile_id": "L02",
-    "landmarks": [
-     "cliff edge near left",
-     "wooden bridge starting middle",
-     "deep drop far right"
-    ],
-    "material_ids": [
-     "M04",
-     "M01"
-    ],
-    "depth_layers": {
-     "foreground": "cliff edge",
-     "midground": "bridge start",
-     "background": "canyon drop"
-    }
-   },
-   {
-    "id": "STATION",
-    "width_m": 20.0,
-    "light": "day",
-    "lighting_profile_id": "L02",
-    "landmarks": [
-     "train cars back",
-     "platform middle",
-     "ticket office left"
-    ],
-    "material_ids": [
-     "M01",
-     "M03"
-    ],
-    "depth_layers": {
-     "foreground": "platform edge",
-     "midground": "ticket office and platform",
-     "background": "train cars"
-    }
-   },
-   {
-    "id": "BRIDGE-WIDE",
-    "width_m": 50.0,
-    "light": "day",
-    "lighting_profile_id": "L02",
-    "landmarks": [
-     "bridge middle",
-     "canyon walls left and right",
-     "deep drop below"
-    ],
-    "material_ids": [
      "M01",
      "M04"
     ],
     "depth_layers": {
+     "foreground": "gravel",
+     "midground": "steel rail",
+     "background": "sleepers"
+    }
+   },
+   {
+    "id": "CANYON-BRIDGE",
+    "width_m": 30.0,
+    "light": "day",
+    "lighting_profile_id": "L02",
+    "landmarks": [
+     "gap-railroad bridge on left",
+     "smooth-railroad bridge on right",
+     "bottomless canyon below"
+    ],
+    "material_ids": [
+     "M01",
+     "M02",
+     "M04"
+    ],
+    "depth_layers": {
      "foreground": "bridge edge",
-     "midground": "bridge",
+     "midground": "both bridges",
      "background": "canyon walls"
+    }
+   },
+   {
+    "id": "OFFICE",
+    "width_m": 8.0,
+    "light": "indoor",
+    "lighting_profile_id": "L01",
+    "landmarks": [
+     "desk in middle",
+     "blueprints on left wall",
+     "window on right"
+    ],
+    "material_ids": [
+     "M01"
+    ],
+    "depth_layers": {
+     "foreground": "desk",
+     "midground": "office center",
+     "background": "wall with blueprints"
+    }
+   },
+   {
+    "id": "NEWSPAPER-STAND",
+    "width_m": 6.0,
+    "light": "day",
+    "lighting_profile_id": "L02",
+    "landmarks": [
+     "newspaper rack in middle",
+     "brick wall on left",
+     "street lamp on right"
+    ],
+    "material_ids": [
+     "M03",
+     "M02"
+    ],
+    "depth_layers": {
+     "foreground": "street lamp",
+     "midground": "newspaper rack",
+     "background": "brick wall"
+    }
+   },
+   {
+    "id": "SMOOTH-TRACK",
+    "width_m": 2.0,
+    "light": "day",
+    "lighting_profile_id": "L02",
+    "landmarks": [
+     "seamless steel rail in middle",
+     "wooden sleepers below",
+     "gravel on sides"
+    ],
+    "material_ids": [
+     "M02",
+     "M01",
+     "M04"
+    ],
+    "depth_layers": {
+     "foreground": "gravel",
+     "midground": "seamless rail",
+     "background": "sleepers"
     }
    }
   ]
@@ -1300,24 +1312,35 @@
     ]
    },
    "intent": "hook",
-   "visual_purpose": "Introduce the engineer cutting gaps into the rail.",
+   "visual_purpose": "Introduce the engineer sawing gaps into the rail.",
    "subject": {
     "main_id": "ENGINEER",
     "character_ids": [
      "ENGINEER"
     ],
-    "hero_object_id": "STEEL_RAIL"
+    "hero_object_id": "SAW"
    },
-   "environment_id": "TRACK-VIEW",
+   "environment_id": "TRACK-CLOSEUP",
    "character_actions": [
     {
      "character_id": "ENGINEER",
      "action": "sawing the rail",
      "pose": "spear",
-     "face": "determined",
+     "face": "neutral",
      "phase": "action",
      "start_s": 0.0,
      "duration_s": 3.0
+    }
+   ],
+   "object_events": [
+    {
+     "object_id": "SAW",
+     "event": "move",
+     "start_s": 0.0,
+     "duration_s": 3.0,
+     "secondary_effects": [
+      "sparks"
+     ]
     }
    ],
    "shot": {
@@ -1325,42 +1348,52 @@
     "framing": "close",
     "composition": {
      "primary_id": "ENGINEER",
+     "secondary_ids": [
+      "SAW",
+      "GAP-RAIL"
+     ],
      "focal_point_norm": [
       0.5,
-      0.5
+      0.4
      ]
     }
    },
    "camera": {
     "purpose": "emphasize",
     "mode": "push-in",
-    "from": {
-     "framing": "detail"
-    },
-    "to": {
-     "framing": "detail"
-    },
+    "rationale": "Push in to emphasize the action of sawing gaps.",
+    "confidence": "designed",
     "duration_s": 3.0,
     "ease": "easeOut",
-    "rationale": "Push in to emphasize the sawing action.",
-    "confidence": "designed"
+    "from": {
+     "framing": "medium",
+     "distance_m": 2.0,
+     "height": "eye",
+     "side": "front"
+    },
+    "to": {
+     "framing": "close",
+     "distance_m": 1.0,
+     "height": "eye",
+     "side": "front"
+    }
    },
    "captions": {
     "mode": "one_word"
    },
    "audio_events": [
     {
+     "track": "music",
+     "event": "rhythmic mechanical beat starts",
+     "time_s": 0.0,
+     "trigger": "beat_start"
+    },
+    {
      "track": "sfx",
      "event": "metal sawing sound",
      "time_s": 0.167,
      "trigger": "word",
      "word_index": 1
-    },
-    {
-     "track": "music",
-     "event": "energetic acoustic rhythm",
-     "time_s": 0.0,
-     "trigger": "beat_start"
     }
    ],
    "transition_in": {
@@ -1377,34 +1410,32 @@
      "Q10"
     ],
     "must_see": [
-     "HAND_SAW",
-     "STEEL_RAIL",
-     "ENGINEER"
+     "ENGINEER",
+     "SAW",
+     "GAP-RAIL"
     ],
     "must_not": [
-     "missing gap",
-     "empty frame"
+     "seamless track",
+     "train"
     ]
    },
    "extensions": {
     "selector": {
-     "planner_recipe": "S06",
+     "planner_recipe": "S04",
      "chosen": "S04",
-     "decision": "replaced planner's S06 (0.59 vs S04 0.98)",
+     "decision": "planner's choice kept (it is the best)",
      "why": "S04 for intent hook: intent 1.00 (candidate #1 for intent hook); assets 1.00 (a character with a face action); action 1.00 (a face/reaction is planned)",
      "alternatives": [
       {
        "recipe": "S03",
-       "score": 0.882
+       "score": 0.91
       },
       {
        "recipe": "S05",
-       "score": 0.792
+       "score": 0.75
       }
      ],
-     "notes": [
-      "framing detail -> close to suit S04"
-     ]
+     "notes": []
     }
    }
   },
@@ -1423,17 +1454,16 @@
     ]
    },
    "intent": "introduce_place_or_time",
-   "visual_purpose": "Show the massive canyon and the bridge being built. The railroad is not built yet, so it is not shown.",
+   "visual_purpose": "Show the vast canyon and the two competing bridges.",
    "subject": {
-    "main_id": "CANYON-EDGE",
-    "crowd": 6
+    "main_id": "CANYON-BRIDGE"
    },
-   "environment_id": "CANYON-EDGE",
+   "environment_id": "CANYON-BRIDGE",
    "shot": {
-    "recipe_id": "S05",
+    "recipe_id": "S01",
     "framing": "wide",
     "composition": {
-     "primary_id": "CANYON-EDGE",
+     "primary_id": "CANYON-BRIDGE",
      "focal_point_norm": [
       0.5,
       0.5
@@ -1442,34 +1472,40 @@
    },
    "camera": {
     "purpose": "establish",
-    "mode": "crane-down",
+    "mode": "pull-back",
+    "rationale": "Pull back to reveal the scale of the canyon and the two bridges.",
+    "confidence": "designed",
+    "duration_s": 4.3,
+    "ease": "easeOut",
     "from": {
-     "framing": "wide"
+     "framing": "medium_wide",
+     "distance_m": 10.0,
+     "height": "high",
+     "side": "front"
     },
     "to": {
-     "framing": "wide"
-    },
-    "duration_s": 4.3,
-    "ease": "smooth",
-    "rationale": "Crane down to reveal the depth of the canyon.",
-    "confidence": "designed"
+     "framing": "wide",
+     "distance_m": 15.0,
+     "height": "high",
+     "side": "front"
+    }
    },
    "captions": {
     "mode": "one_word"
    },
    "audio_events": [
     {
-     "track": "sfx",
-     "event": "distant construction hammering",
-     "time_s": 3.923,
-     "trigger": "word",
-     "word_index": 13
-    },
-    {
      "track": "music",
-     "event": "grand adventurous theme",
+     "event": "grand orchestral swell",
      "time_s": 3.0,
      "trigger": "beat_start"
+    },
+    {
+     "track": "sfx",
+     "event": "wind howling",
+     "time_s": 5.472,
+     "trigger": "word",
+     "word_index": 20
     }
    ],
    "transition_in": {
@@ -1478,35 +1514,30 @@
     "frames": 8
    },
    "validation": {
-    "not_shown": [
-     "STEEL_RAIL"
-    ],
     "gates": [
      "Q02",
      "Q03",
      "Q04",
      "Q06",
-     "Q09",
      "Q10"
     ],
     "must_see": [
-     "CANYON-EDGE"
+     "CANYON-BRIDGE"
     ],
     "must_not": [
-     "flat ground",
-     "missing bridge"
+     "canyon floor visible"
     ]
    },
    "extensions": {
     "selector": {
-     "planner_recipe": "S05",
-     "chosen": "S05",
-     "decision": "planner's choice kept as a justified alternative: 0.81 vs best S01 0.87",
-     "why": "S05 for intent introduce_place_or_time: intent 0.80 (candidate #2 for intent introduce_place_or_time); variety 1.00 (not used in the last beat); continuity 1.00 (new place seen for the first time: show the place)",
+     "planner_recipe": "S01",
+     "chosen": "S01",
+     "decision": "planner's choice kept (it is the best)",
+     "why": "S01 for intent introduce_place_or_time: intent 1.00 (candidate #1 for intent introduce_place_or_time); variety 1.00 (not used in the last beat); assets 0.55 (environment with depth layers, no scale anchor)",
      "alternatives": [
       {
-       "recipe": "S01",
-       "score": 0.873
+       "recipe": "S05",
+       "score": 0.81
       },
       {
        "recipe": "S03",
@@ -1531,18 +1562,44 @@
      36
     ]
    },
-   "intent": "crowd_or_scale",
-   "visual_purpose": "Show the busy train station representing the country's business.",
+   "intent": "explain_mechanism",
+   "visual_purpose": "Show the two engineers competing across the canyon.",
    "subject": {
-    "main_id": "TRAIN",
-    "crowd": 20
+    "main_id": "ENGINEER",
+    "character_ids": [
+     "ENGINEER",
+     "RIVAL"
+    ]
    },
-   "environment_id": "STATION",
+   "environment_id": "CANYON-BRIDGE",
+   "character_actions": [
+    {
+     "character_id": "ENGINEER",
+     "action": "pointing",
+     "pose": "point",
+     "face": "stubborn",
+     "phase": "action",
+     "start_s": 7.3,
+     "duration_s": 2.63
+    },
+    {
+     "character_id": "RIVAL",
+     "action": "pointing",
+     "pose": "point",
+     "face": "proud",
+     "phase": "action",
+     "start_s": 7.3,
+     "duration_s": 2.63
+    }
+   ],
    "shot": {
-    "recipe_id": "S01",
+    "recipe_id": "S08",
     "framing": "wide",
     "composition": {
-     "primary_id": "TRAIN",
+     "primary_id": "ENGINEER",
+     "secondary_ids": [
+      "RIVAL"
+     ],
      "focal_point_norm": [
       0.5,
       0.5
@@ -1550,17 +1607,9 @@
     }
    },
    "camera": {
-    "purpose": "establish",
-    "mode": "pull-back",
-    "from": {
-     "framing": "medium_wide"
-    },
-    "to": {
-     "framing": "wide"
-    },
-    "duration_s": 2.63,
-    "ease": "smooth",
-    "rationale": "Pull back to show the scale of the bustling station.",
+    "purpose": "hold_for_performance",
+    "mode": "static",
+    "rationale": "Hold to let the viewer see both characters competing.",
     "confidence": "designed"
    },
    "captions": {
@@ -1568,55 +1617,55 @@
    },
    "audio_events": [
     {
-     "track": "sfx",
-     "event": "train whistle",
-     "time_s": 7.748,
-     "trigger": "word",
-     "word_index": 30
-    },
-    {
      "track": "music",
-     "event": "continues grand and busy",
+     "event": "competitive upbeat tempo",
      "time_s": 7.3,
      "trigger": "beat_start"
+    },
+    {
+     "track": "sfx",
+     "event": "cash register ding",
+     "time_s": 8.929,
+     "trigger": "word",
+     "word_index": 35
     }
    ],
    "transition_in": {
-    "type": "dissolve",
-    "reason": "new_place",
+    "type": "blend_fly",
+    "reason": "continuity",
     "frames": 8
    },
    "validation": {
     "gates": [
+     "Q01",
      "Q02",
      "Q03",
      "Q04",
-     "Q06",
-     "Q09",
      "Q10"
     ],
     "must_see": [
-     "TRAIN",
-     "STATION"
+     "ENGINEER",
+     "RIVAL",
+     "CANYON-BRIDGE"
     ],
     "must_not": [
-     "empty station"
+     "trains on the bridges"
     ]
    },
    "extensions": {
     "selector": {
-     "planner_recipe": "S01",
-     "chosen": "S01",
-     "decision": "planner's choice kept as a justified alternative: 0.92 vs best S05 0.92",
-     "why": "S01 for intent crowd_or_scale: assets 1.00 (environment with depth layers and a scale anchor); intent 0.80 (candidate #2 for intent crowd_or_scale); variety 1.00 (not used in the last beat)",
+     "planner_recipe": "S08",
+     "chosen": "S08",
+     "decision": "planner's choice kept as a justified alternative: 0.73 vs best S04 0.77",
+     "why": "S08 for intent explain_mechanism: assets 1.00 (2 characters in frame (dialogue needs two)); action 1.00 (two-way acting); variety 1.00 (not used in the last beat) | weak: intent (not meant for intent explain_mechanism)",
      "alternatives": [
       {
-       "recipe": "S05",
-       "score": 0.923
+       "recipe": "S04",
+       "score": 0.766
       },
       {
-       "recipe": "S03",
-       "score": 0.618
+       "recipe": "S05",
+       "score": 0.65
       }
      ],
      "notes": []
@@ -1638,14 +1687,25 @@
     ]
    },
    "intent": "introduce_character",
-   "visual_purpose": "Introduce the young, proud engineer.",
+   "visual_purpose": "Introduce the young engineer in his office.",
    "subject": {
     "main_id": "ENGINEER",
     "character_ids": [
      "ENGINEER"
     ]
    },
-   "environment_id": "CANYON-EDGE",
+   "environment_id": "OFFICE",
+   "character_actions": [
+    {
+     "character_id": "ENGINEER",
+     "action": "standing confident",
+     "pose": "hip",
+     "face": "stubborn",
+     "phase": "settle",
+     "start_s": 9.93,
+     "duration_s": 1.84
+    }
+   ],
    "shot": {
     "recipe_id": "S02",
     "framing": "medium",
@@ -1660,33 +1720,39 @@
    "camera": {
     "purpose": "emphasize",
     "mode": "push-in",
+    "rationale": "Push in to emphasize the engineer's youth and determination.",
+    "confidence": "designed",
+    "duration_s": 1.84,
+    "ease": "smooth",
     "from": {
-     "framing": "medium"
+     "framing": "medium_wide",
+     "distance_m": 6.0,
+     "height": "eye",
+     "side": "front"
     },
     "to": {
-     "framing": "close"
-    },
-    "duration_s": 1.84,
-    "ease": "easeOut",
-    "rationale": "Push in to emphasize the engineer's pride.",
-    "confidence": "designed"
+     "framing": "medium",
+     "distance_m": 4.0,
+     "height": "eye",
+     "side": "front"
+    }
    },
    "captions": {
     "mode": "one_word"
    },
    "audio_events": [
     {
-     "track": "sfx",
-     "event": "confident footstep",
-     "time_s": 10.257,
-     "trigger": "word",
-     "word_index": 39
-    },
-    {
      "track": "music",
-     "event": "light optimistic beat",
+     "event": "determined steady rhythm",
      "time_s": 9.93,
      "trigger": "beat_start"
+    },
+    {
+     "track": "sfx",
+     "event": "pencil scratching",
+     "time_s": 10.578,
+     "trigger": "word",
+     "word_index": 40
     }
    ],
    "transition_in": {
@@ -1700,16 +1766,13 @@
      "Q02",
      "Q03",
      "Q04",
-     "Q09",
      "Q10"
     ],
     "must_see": [
-     "ENGINEER",
-     "CANYON-EDGE"
+     "ENGINEER"
     ],
     "must_not": [
-     "missing hat",
-     "wrong character"
+     "BOSS in the room"
     ]
    },
    "extensions": {
@@ -1721,11 +1784,11 @@
      "alternatives": [
       {
        "recipe": "S04",
-       "score": 0.83
+       "score": 0.894
       },
       {
-       "recipe": "S05",
-       "score": 0.662
+       "recipe": "S01",
+       "score": 0.637
       }
      ],
      "notes": []
@@ -1747,23 +1810,23 @@
     ]
    },
    "intent": "emotional_reaction",
-   "visual_purpose": "Show the boss reacting angrily to the gaps, his face turning purple.",
+   "visual_purpose": "Show the boss's angry reaction to the gaps.",
    "subject": {
     "main_id": "BOSS",
     "character_ids": [
      "BOSS"
     ],
-    "hero_object_id": "STEEL_RAIL"
+    "hero_object_id": "GAP-RAIL"
    },
-   "environment_id": "TRACK-VIEW",
+   "environment_id": "TRACK-CLOSEUP",
    "character_actions": [
     {
      "character_id": "BOSS",
-     "action": "face turns purple in anger",
-     "pose": "hip",
+     "action": "pointing angrily",
+     "pose": "point",
      "face": "angry+vein",
      "phase": "response",
-     "start_s": 0.0,
+     "start_s": 11.77,
      "duration_s": 4.4
     }
    ],
@@ -1772,6 +1835,9 @@
     "framing": "close",
     "composition": {
      "primary_id": "BOSS",
+     "secondary_ids": [
+      "GAP-RAIL"
+     ],
      "focal_point_norm": [
       0.5,
       0.4
@@ -1781,33 +1847,39 @@
    "camera": {
     "purpose": "impact",
     "mode": "snap-zoom",
+    "rationale": "Snap zoom to emphasize the boss's sudden anger.",
+    "confidence": "designed",
+    "duration_s": 0.5,
+    "ease": "easeIn",
     "from": {
-     "framing": "medium"
+     "framing": "medium",
+     "distance_m": 4.0,
+     "height": "eye",
+     "side": "front"
     },
     "to": {
-     "framing": "close"
-    },
-    "duration_s": 4.4,
-    "ease": "easeOut",
-    "rationale": "Snap zoom to capture the boss's sudden anger.",
-    "confidence": "designed"
+     "framing": "close",
+     "distance_m": 2.0,
+     "height": "eye",
+     "side": "front"
+    }
    },
    "captions": {
     "mode": "one_word"
    },
    "audio_events": [
     {
+     "track": "music",
+     "event": "sudden comedic halt",
+     "time_s": 11.77,
+     "trigger": "beat_start"
+    },
+    {
      "track": "sfx",
-     "event": "cartoon boiling sound",
+     "event": "cartoon steam whistle",
      "time_s": 15.373,
      "trigger": "word",
      "word_index": 59
-    },
-    {
-     "track": "music",
-     "event": "comedic tension",
-     "time_s": 11.77,
-     "trigger": "beat_start"
     }
    ],
    "transition_in": {
@@ -1824,15 +1896,15 @@
      "Q02",
      "Q03",
      "Q04",
-     "Q09",
      "Q10"
     ],
     "must_see": [
      "BOSS",
-     "STEEL_RAIL"
+     "GAP-RAIL"
     ],
     "must_not": [
-     "missing rail gap"
+     "ENGINEER",
+     "seamless track"
     ]
    },
    "extensions": {
@@ -1862,44 +1934,43 @@
    "index": 6,
    "time": {
     "start_s": 16.1667,
-    "end_s": 19.2333
+    "end_s": 17.5
    },
    "narration": {
-    "text": "You're wrecking my railroad. But he won't close a single one.",
+    "text": "You're wrecking my railroad.",
     "word_range": [
      61,
-     71
+     64
     ]
    },
    "intent": "dialogue_or_argument",
-   "visual_purpose": "Show the standoff between the angry boss and the stubborn engineer.",
+   "visual_purpose": "The boss yells at the engineer about the gaps.",
    "subject": {
     "main_id": "BOSS",
     "character_ids": [
      "BOSS",
      "ENGINEER"
-    ],
-    "hero_object_id": "STEEL_RAIL"
+    ]
    },
-   "environment_id": "TRACK-VIEW",
+   "environment_id": "TRACK-CLOSEUP",
    "character_actions": [
     {
      "character_id": "BOSS",
-     "action": "yelling at engineer",
+     "action": "shouting",
      "pose": "point",
-     "face": "angry",
+     "face": "shout",
      "phase": "action",
-     "start_s": 0.0,
-     "duration_s": 3.06
+     "start_s": 16.17,
+     "duration_s": 1.33
     },
     {
      "character_id": "ENGINEER",
-     "action": "standing stubbornly",
+     "action": "arms crossed",
      "pose": "cross",
      "face": "stubborn",
      "phase": "response",
-     "start_s": 0.0,
-     "duration_s": 3.06
+     "start_s": 16.17,
+     "duration_s": 1.33
     }
    ],
    "shot": {
@@ -1908,7 +1979,8 @@
     "composition": {
      "primary_id": "BOSS",
      "secondary_ids": [
-      "ENGINEER"
+      "ENGINEER",
+      "GAP-RAIL"
      ],
      "focal_point_norm": [
       0.5,
@@ -1919,15 +1991,7 @@
    "camera": {
     "purpose": "hold_for_performance",
     "mode": "static",
-    "from": {
-     "framing": "medium"
-    },
-    "to": {
-     "framing": "medium"
-    },
-    "duration_s": 3.06,
-    "ease": "smooth",
-    "rationale": "Hold to let the dialogue and standoff play out.",
+    "rationale": "Hold for the dialogue exchange.",
     "confidence": "designed"
    },
    "captions": {
@@ -1935,22 +1999,23 @@
    },
    "audio_events": [
     {
+     "track": "music",
+     "event": "tense silence",
+     "time_s": 16.17,
+     "trigger": "beat_start"
+    },
+    {
      "track": "sfx",
-     "event": "angry foot stomp",
+     "event": "loud booming voice effect",
      "time_s": 16.351,
      "trigger": "word",
      "word_index": 62
-    },
-    {
-     "track": "music",
-     "event": "stubborn standoff",
-     "time_s": 16.17,
-     "trigger": "beat_start"
     }
    ],
    "transition_in": {
-    "type": "cut",
-    "reason": "emphasis"
+    "type": "blend_fly",
+    "reason": "continuity",
+    "frames": 8
    },
    "validation": {
     "gates": [
@@ -1958,16 +2023,15 @@
      "Q02",
      "Q03",
      "Q04",
-     "Q09",
      "Q10"
     ],
     "must_see": [
      "BOSS",
      "ENGINEER",
-     "STEEL_RAIL"
+     "GAP-RAIL"
     ],
     "must_not": [
-     "characters overlapping"
+     "empty track"
     ]
    },
    "extensions": {
@@ -1979,7 +2043,7 @@
      "alternatives": [
       {
        "recipe": "S04",
-       "score": 0.754
+       "score": 0.814
       },
       {
        "recipe": "S01",
@@ -1994,6 +2058,135 @@
    "id": "s7",
    "index": 7,
    "time": {
+    "start_s": 17.5,
+    "end_s": 19.2333
+   },
+   "narration": {
+    "text": "But he won't close a single one.",
+    "word_range": [
+     65,
+     71
+    ]
+   },
+   "intent": "emotional_reaction",
+   "visual_purpose": "The engineer stubbornly refuses to close the gaps.",
+   "subject": {
+    "main_id": "ENGINEER",
+    "character_ids": [
+     "ENGINEER"
+    ],
+    "hero_object_id": "GAP-RAIL"
+   },
+   "environment_id": "TRACK-CLOSEUP",
+   "character_actions": [
+    {
+     "character_id": "ENGINEER",
+     "action": "arms crossed",
+     "pose": "cross",
+     "face": "stubborn",
+     "phase": "settle",
+     "start_s": 17.5,
+     "duration_s": 1.73
+    }
+   ],
+   "shot": {
+    "recipe_id": "S04",
+    "framing": "close",
+    "composition": {
+     "primary_id": "ENGINEER",
+     "secondary_ids": [
+      "GAP-RAIL"
+     ],
+     "focal_point_norm": [
+      0.5,
+      0.4
+     ]
+    }
+   },
+   "camera": {
+    "purpose": "emphasize",
+    "mode": "orbit",
+    "rationale": "Orbit to show his stubbornness from a dynamic angle.",
+    "confidence": "designed",
+    "duration_s": 1.73,
+    "ease": "smooth",
+    "from": {
+     "framing": "close",
+     "distance_m": 2.0,
+     "height": "low",
+     "side": "front"
+    },
+    "to": {
+     "framing": "close",
+     "distance_m": 2.0,
+     "height": "low",
+     "side": "right"
+    }
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "music",
+     "event": "stubborn drum beat",
+     "time_s": 17.5,
+     "trigger": "beat_start"
+    },
+    {
+     "track": "sfx",
+     "event": "heavy metal clank",
+     "time_s": 18.011,
+     "trigger": "word",
+     "word_index": 68
+    }
+   ],
+   "transition_in": {
+    "type": "blend_fly",
+    "reason": "continuity",
+    "frames": 8
+   },
+   "validation": {
+    "gates": [
+     "Q01",
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q10"
+    ],
+    "must_see": [
+     "ENGINEER",
+     "GAP-RAIL"
+    ],
+    "must_not": [
+     "BOSS",
+     "tools in hand"
+    ]
+   },
+   "extensions": {
+    "selector": {
+     "planner_recipe": "S04",
+     "chosen": "S04",
+     "decision": "planner's choice kept (it is the best)",
+     "why": "S04 for intent emotional_reaction: intent 1.00 (candidate #1 for intent emotional_reaction); assets 1.00 (a character with a face action); action 1.00 (a face/reaction is planned)",
+     "alternatives": [
+      {
+       "recipe": "S02",
+       "score": 0.884
+      },
+      {
+       "recipe": "S03",
+       "score": 0.688
+      }
+     ],
+     "notes": []
+    }
+   }
+  },
+  {
+   "id": "s8",
+   "index": 8,
+   "time": {
     "start_s": 19.2333,
     "end_s": 23.0667
    },
@@ -2005,67 +2198,76 @@
     ]
    },
    "intent": "introduce_character",
-   "visual_purpose": "Introduce the rival engineer who lays smooth rails.",
+   "visual_purpose": "Show the rival engineer with his perfectly smooth rails.",
    "subject": {
     "main_id": "RIVAL",
     "character_ids": [
      "RIVAL"
     ],
-    "hero_object_id": "STEEL_RAIL"
+    "hero_object_id": "SMOOTH-RAIL"
    },
-   "environment_id": "CANYON-EDGE",
+   "environment_id": "SMOOTH-TRACK",
    "character_actions": [
     {
      "character_id": "RIVAL",
-     "action": "showing off smooth rails",
-     "pose": "point",
-     "face": "grin",
-     "phase": "action",
-     "start_s": 0.0,
+     "action": "standing proud",
+     "pose": "hip",
+     "face": "proud",
+     "phase": "settle",
+     "start_s": 19.23,
      "duration_s": 3.84
     }
    ],
    "shot": {
     "recipe_id": "S02",
-    "framing": "medium",
+    "framing": "close",
     "composition": {
      "primary_id": "RIVAL",
+     "secondary_ids": [
+      "SMOOTH-RAIL"
+     ],
      "focal_point_norm": [
       0.5,
-      0.5
+      0.4
      ]
     }
    },
    "camera": {
-    "purpose": "inspect",
+    "purpose": "emphasize",
     "mode": "push-in",
+    "rationale": "Push in to introduce the rival and his perfect track.",
+    "confidence": "designed",
+    "duration_s": 3.84,
+    "ease": "easeOut",
     "from": {
-     "framing": "medium"
+     "framing": "medium",
+     "distance_m": 4.0,
+     "height": "eye",
+     "side": "front"
     },
     "to": {
-     "framing": "close"
-    },
-    "duration_s": 3.84,
-    "ease": "smooth",
-    "rationale": "Push in to inspect the rival and his smooth rails.",
-    "confidence": "designed"
+     "framing": "close",
+     "distance_m": 2.0,
+     "height": "eye",
+     "side": "front"
+    }
    },
    "captions": {
     "mode": "one_word"
    },
    "audio_events": [
     {
+     "track": "music",
+     "event": "triumphant brass",
+     "time_s": 19.23,
+     "trigger": "beat_start"
+    },
+    {
      "track": "sfx",
-     "event": "smooth sliding sound",
+     "event": "smooth sliding chime",
      "time_s": 21.57,
      "trigger": "word",
      "word_index": 81
-    },
-    {
-     "track": "music",
-     "event": "slick triumphant melody",
-     "time_s": 19.23,
-     "trigger": "beat_start"
     }
    ],
    "transition_in": {
@@ -2079,12 +2281,11 @@
      "Q02",
      "Q03",
      "Q04",
-     "Q09",
      "Q10"
     ],
     "must_see": [
      "RIVAL",
-     "STEEL_RAIL"
+     "SMOOTH-RAIL"
     ],
     "must_not": [
      "gaps in the rail"
@@ -2092,50 +2293,57 @@
    },
    "extensions": {
     "selector": {
-     "planner_recipe": "S06",
+     "planner_recipe": "S02",
      "chosen": "S02",
-     "decision": "replaced planner's S06 (0.59 vs S02 0.90)",
-     "why": "S02 for intent introduce_character: intent 1.00 (candidate #1 for intent introduce_character); assets 1.00 (1 character(s) in frame); variety 1.00 (not used in the last beat) | weak: camera (camera purpose inspect is not typical for S02)",
+     "decision": "planner's choice kept (it is the best)",
+     "why": "S02 for intent introduce_character: intent 1.00 (candidate #1 for intent introduce_character); assets 1.00 (1 character(s) in frame); variety 1.00 (not used in the last beat)",
      "alternatives": [
       {
        "recipe": "S04",
-       "score": 0.828
+       "score": 0.825
       },
       {
-       "recipe": "S03",
-       "score": 0.676
+       "recipe": "S01",
+       "score": 0.686
       }
      ],
-     "notes": [
-      "camera purpose inspect is unusual for S02: the planner's camera was left as written"
-     ]
+     "notes": []
     }
    }
   },
   {
-   "id": "s8",
-   "index": 8,
+   "id": "s9",
+   "index": 9,
    "time": {
     "start_s": 23.0667,
-    "end_s": 27.4667
+    "end_s": 24.9333
    },
    "narration": {
-    "text": "Their trains glide across the canyon without a sound, while his go clickety clack over every gap.",
+    "text": "Their trains glide across the canyon without a sound,",
     "word_range": [
      85,
-     101
+     93
     ]
    },
-   "intent": "explain_mechanism",
-   "visual_purpose": "Show the trains crossing the bridge smoothly versus clickety clack.",
+   "intent": "physical_action",
+   "visual_purpose": "Show the rival's train gliding smoothly over the canyon.",
    "subject": {
     "main_id": "TRAIN",
     "hero_object_id": "TRAIN"
    },
-   "environment_id": "BRIDGE-WIDE",
+   "environment_id": "CANYON-BRIDGE",
+   "object_events": [
+    {
+     "object_id": "TRAIN",
+     "event": "move",
+     "start_s": 23.07,
+     "duration_s": 1.86,
+     "contact_target_id": "SMOOTH-RAIL"
+    }
+   ],
    "shot": {
-    "recipe_id": "S03",
-    "framing": "close",
+    "recipe_id": "S06",
+    "framing": "wide",
     "composition": {
      "primary_id": "TRAIN",
      "focal_point_norm": [
@@ -2145,35 +2353,41 @@
     }
    },
    "camera": {
-    "purpose": "inspect",
-    "mode": "orbit",
+    "purpose": "follow",
+    "mode": "push-in",
+    "rationale": "Push in to follow the train gliding smoothly.",
+    "confidence": "designed",
+    "duration_s": 1.86,
+    "ease": "smooth",
     "from": {
-     "framing": "wide"
+     "framing": "wide",
+     "distance_m": 20.0,
+     "height": "high",
+     "side": "front"
     },
     "to": {
-     "framing": "wide"
-    },
-    "duration_s": 4.4,
-    "ease": "smooth",
-    "rationale": "Orbit to inspect the train crossing the bridge.",
-    "confidence": "designed"
+     "framing": "wide",
+     "distance_m": 15.0,
+     "height": "high",
+     "side": "front"
+    }
    },
    "captions": {
     "mode": "one_word"
    },
    "audio_events": [
     {
-     "track": "sfx",
-     "event": "loud clacking train wheels",
-     "time_s": 25.535,
-     "trigger": "word",
-     "word_index": 97
-    },
-    {
      "track": "music",
-     "event": "contrasting bumpy rhythm",
+     "event": "smooth sweeping strings",
      "time_s": 23.07,
      "trigger": "beat_start"
+    },
+    {
+     "track": "sfx",
+     "event": "gentle wind swoosh",
+     "time_s": 23.374,
+     "trigger": "word",
+     "word_index": 87
     }
    ],
    "transition_in": {
@@ -2186,65 +2400,172 @@
      "Q02",
      "Q03",
      "Q04",
-     "Q06",
-     "Q09",
      "Q10"
     ],
     "must_see": [
      "TRAIN",
-     "BRIDGE-WIDE"
+     "CANYON-BRIDGE"
     ],
     "must_not": [
-     "missing canyon"
+     "gap-railroad bridge in focus"
     ]
    },
    "extensions": {
     "selector": {
-     "planner_recipe": "S01",
-     "chosen": "S03",
-     "decision": "replaced planner's S01 (0.69 vs S03 0.90)",
-     "why": "S03 for intent explain_mechanism: intent 1.00 (candidate #1 for intent explain_mechanism); assets 1.00 (hero object); variety 1.00 (not used in the last beat)",
+     "planner_recipe": "S06",
+     "chosen": "S06",
+     "decision": "planner's choice kept as a justified alternative: 0.80 vs best S03 0.83",
+     "why": "S06 for intent physical_action: intent 1.00 (candidate #1 for intent physical_action); variety 1.00 (not used in the last beat); assets 0.50 (actor+object: 0 character(s), 1 object(s))",
      "alternatives": [
       {
-       "recipe": "S01",
-       "score": 0.686
+       "recipe": "S03",
+       "score": 0.834
       },
       {
-       "recipe": "S05",
-       "score": 0.686
+       "recipe": "S01",
+       "score": 0.62
+      }
+     ],
+     "notes": []
+    }
+   }
+  },
+  {
+   "id": "s10",
+   "index": 10,
+   "time": {
+    "start_s": 24.9333,
+    "end_s": 27.4667
+   },
+   "narration": {
+    "text": "while his go clickety clack over every gap.",
+    "word_range": [
+     94,
+     101
+    ]
+   },
+   "intent": "physical_action",
+   "visual_purpose": "Show the engineer's train bumping over the gaps.",
+   "subject": {
+    "main_id": "TRAIN",
+    "hero_object_id": "GAP-RAIL"
+   },
+   "environment_id": "TRACK-CLOSEUP",
+   "object_events": [
+    {
+     "object_id": "TRAIN",
+     "event": "move",
+     "start_s": 24.93,
+     "duration_s": 2.54,
+     "contact_target_id": "GAP-RAIL",
+     "secondary_effects": [
+      "dust"
+     ]
+    }
+   ],
+   "shot": {
+    "recipe_id": "S03",
+    "framing": "close",
+    "composition": {
+     "primary_id": "TRAIN",
+     "secondary_ids": [
+      "GAP-RAIL"
+     ],
+     "focal_point_norm": [
+      0.5,
+      0.5
+     ]
+    }
+   },
+   "camera": {
+    "purpose": "hold_for_performance",
+    "mode": "static",
+    "rationale": "Hold to clearly show the wheels hitting the gaps.",
+    "confidence": "designed"
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "music",
+     "event": "bumpy chaotic rhythm",
+     "time_s": 24.93,
+     "trigger": "beat_start"
+    },
+    {
+     "track": "sfx",
+     "event": "loud metallic clack",
+     "time_s": 25.535,
+     "trigger": "word",
+     "word_index": 97
+    }
+   ],
+   "transition_in": {
+    "type": "cut",
+    "reason": "new_place"
+   },
+   "validation": {
+    "gates": [
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q10"
+    ],
+    "must_see": [
+     "TRAIN",
+     "GAP-RAIL"
+    ],
+    "must_not": [
+     "seamless track"
+    ]
+   },
+   "extensions": {
+    "selector": {
+     "planner_recipe": "S06",
+     "chosen": "S03",
+     "decision": "replaced planner's S06 (0.70 vs S03 0.83)",
+     "why": "S03 for intent physical_action: assets 1.00 (hero object); intent 0.80 (candidate #2 for intent physical_action); variety 1.00 (not used in the last beat) | weak: camera (camera purpose hold_for_performance is not typical for S03)",
+     "alternatives": [
+      {
+       "recipe": "S06",
+       "score": 0.699
+      },
+      {
+       "recipe": "S01",
+       "score": 0.571
       }
      ],
      "notes": [
-      "framing wide -> close to suit S03"
+      "camera purpose hold_for_performance is unusual for S03: the planner's camera was left as written"
      ]
     }
    }
   },
   {
-   "id": "s9",
-   "index": 9,
+   "id": "s11",
+   "index": 11,
    "time": {
     "start_s": 27.4667,
-    "end_s": 31.8667
+    "end_s": 29.9
    },
    "narration": {
-    "text": "The newspapers start calling it the Clickety Clack Line, and everyone switches to the quiet trains.",
+    "text": "The newspapers start calling it the Clickety Clack Line,",
     "word_range": [
      102,
-     117
+     110
     ]
    },
-   "intent": "explain_mechanism",
-   "visual_purpose": "Show the newspaper headline about the Clickety Clack Line.",
+   "intent": "surprising_reveal",
+   "visual_purpose": "Show the newspaper headline mocking the line.",
    "subject": {
     "main_id": "NEWSPAPER",
-    "hero_object_id": "NEWSPAPER",
-    "crowd": 15
+    "hero_object_id": "NEWSPAPER"
    },
-   "environment_id": "STATION",
+   "environment_id": "NEWSPAPER-STAND",
    "shot": {
-    "recipe_id": "S03",
-    "framing": "close",
+    "recipe_id": "S05",
+    "framing": "wide",
     "composition": {
      "primary_id": "NEWSPAPER",
      "focal_point_norm": [
@@ -2254,35 +2575,41 @@
     }
    },
    "camera": {
-    "purpose": "reveal",
-    "mode": "pull-back",
+    "purpose": "land_on_prop",
+    "mode": "push-in",
+    "rationale": "Push in to read the newspaper headline.",
+    "confidence": "designed",
+    "duration_s": 2.43,
+    "ease": "easeOut",
     "from": {
-     "framing": "detail"
+     "framing": "medium",
+     "distance_m": 2.0,
+     "height": "eye",
+     "side": "front"
     },
     "to": {
-     "framing": "close"
-    },
-    "duration_s": 4.4,
-    "ease": "easeOut",
-    "rationale": "Pull back from the newspaper to reveal the crowd switching trains.",
-    "confidence": "designed"
+     "framing": "close",
+     "distance_m": 0.6,
+     "height": "eye",
+     "side": "front"
+    }
    },
    "captions": {
     "mode": "one_word"
    },
    "audio_events": [
     {
+     "track": "music",
+     "event": "ragtime piano tune",
+     "time_s": 27.47,
+     "trigger": "beat_start"
+    },
+    {
      "track": "sfx",
-     "event": "paper rustle",
+     "event": "paper rustling",
      "time_s": 27.635,
      "trigger": "word",
      "word_index": 103
-    },
-    {
-     "track": "music",
-     "event": "fast passing of time",
-     "time_s": 27.47,
-     "trigger": "beat_start"
     }
    ],
    "transition_in": {
@@ -2295,42 +2622,150 @@
      "Q02",
      "Q03",
      "Q04",
-     "Q09",
      "Q10"
     ],
     "must_see": [
-     "NEWSPAPER",
-     "TRAIN"
+     "NEWSPAPER"
     ],
     "must_not": [
-     "unreadable newspaper"
+     "people blocking the paper"
     ]
    },
    "extensions": {
     "selector": {
      "planner_recipe": "S03",
-     "chosen": "S03",
-     "decision": "planner's choice kept (it is the best)",
-     "why": "S03 for intent explain_mechanism: intent 1.00 (candidate #1 for intent explain_mechanism); assets 1.00 (hero object); action 0.70 (hero object, no action) | weak: camera (camera purpose reveal is not typical for S03)",
+     "chosen": "S05",
+     "decision": "replaced planner's S03 (0.62 vs S05 0.92)",
+     "why": "S05 for intent surprising_reveal: intent 1.00 (candidate #1 for intent surprising_reveal); assets 1.00 (a place with depth and something to reveal); variety 1.00 (not used in the last beat) | weak: camera (camera purpose land_on_prop is not typical for S05)",
      "alternatives": [
       {
        "recipe": "S01",
-       "score": 0.714
+       "score": 0.686
       },
       {
-       "recipe": "S05",
-       "score": 0.714
+       "recipe": "S03",
+       "score": 0.621
       }
      ],
      "notes": [
-      "camera purpose reveal is unusual for S03: the planner's camera was left as written"
+      "camera purpose land_on_prop is unusual for S05: the planner's camera was left as written",
+      "framing close -> wide to suit S05"
      ]
     }
    }
   },
   {
-   "id": "s10",
-   "index": 10,
+   "id": "s12",
+   "index": 12,
+   "time": {
+    "start_s": 29.9,
+    "end_s": 31.8667
+   },
+   "narration": {
+    "text": "and everyone switches to the quiet trains.",
+    "word_range": [
+     111,
+     117
+    ]
+   },
+   "intent": "crowd_or_scale",
+   "visual_purpose": "Show the crowd choosing the rival's quiet train.",
+   "subject": {
+    "main_id": "TRAIN",
+    "crowd": 30
+   },
+   "environment_id": "CANYON-BRIDGE",
+   "shot": {
+    "recipe_id": "S05",
+    "framing": "wide",
+    "composition": {
+     "primary_id": "TRAIN",
+     "focal_point_norm": [
+      0.5,
+      0.5
+     ]
+    }
+   },
+   "camera": {
+    "purpose": "establish",
+    "mode": "pull-back",
+    "rationale": "Pull back to show the large crowd boarding the smooth train.",
+    "confidence": "designed",
+    "duration_s": 1.97,
+    "ease": "easeOut",
+    "from": {
+     "framing": "medium_wide",
+     "distance_m": 10.0,
+     "height": "high",
+     "side": "front"
+    },
+    "to": {
+     "framing": "wide",
+     "distance_m": 15.0,
+     "height": "high",
+     "side": "front"
+    }
+   },
+   "captions": {
+    "mode": "one_word"
+   },
+   "audio_events": [
+    {
+     "track": "music",
+     "event": "busy cheerful melody",
+     "time_s": 29.9,
+     "trigger": "beat_start"
+    },
+    {
+     "track": "sfx",
+     "event": "crowd murmuring",
+     "time_s": 30.073,
+     "trigger": "word",
+     "word_index": 112
+    }
+   ],
+   "transition_in": {
+    "type": "dissolve",
+    "reason": "new_place",
+    "frames": 8
+   },
+   "validation": {
+    "gates": [
+     "Q02",
+     "Q03",
+     "Q04",
+     "Q10"
+    ],
+    "must_see": [
+     "TRAIN"
+    ],
+    "must_not": [
+     "people on the gap bridge"
+    ]
+   },
+   "extensions": {
+    "selector": {
+     "planner_recipe": "S05",
+     "chosen": "S05",
+     "decision": "planner's choice kept (it is the best)",
+     "why": "S05 for intent crowd_or_scale: intent 1.00 (candidate #1 for intent crowd_or_scale); assets 1.00 (a place with depth and something to reveal); action 0.80 (the place carries the beat)",
+     "alternatives": [
+      {
+       "recipe": "S01",
+       "score": 0.896
+      },
+      {
+       "recipe": "S03",
+       "score": 0.624
+      }
+     ],
+     "notes": []
+    }
+   }
+  },
+  {
+   "id": "s13",
+   "index": 13,
    "time": {
     "start_s": 31.8667,
     "end_s": 34.1333
@@ -2343,35 +2778,28 @@
     ]
    },
    "intent": "time_passes",
-   "visual_purpose": "Show the transition to hot summer at the canyon.",
+   "visual_purpose": "Show the heat of summer affecting the track.",
    "subject": {
-    "main_id": "CANYON-EDGE"
+    "main_id": "GAP-RAIL",
+    "hero_object_id": "GAP-RAIL"
    },
-   "environment_id": "CANYON-EDGE",
+   "environment_id": "TRACK-CLOSEUP",
    "light": "golden",
    "shot": {
     "recipe_id": "S01",
     "framing": "wide",
     "composition": {
-     "primary_id": "CANYON-EDGE",
+     "primary_id": "GAP-RAIL",
      "focal_point_norm": [
       0.5,
-      0.3
+      0.5
      ]
     }
    },
    "camera": {
-    "purpose": "reveal",
-    "mode": "tilt",
-    "from": {
-     "framing": "wide"
-    },
-    "to": {
-     "framing": "wide"
-    },
-    "duration_s": 2.26,
-    "ease": "smooth",
-    "rationale": "Tilt up to the sun to reveal the hot summer.",
+    "purpose": "hold_for_performance",
+    "mode": "static",
+    "rationale": "Hold to show the heat effect on the rail.",
     "confidence": "designed"
    },
    "captions": {
@@ -2379,63 +2807,65 @@
    },
    "audio_events": [
     {
+     "track": "music",
+     "event": "mysterious shift in tone",
+     "time_s": 31.87,
+     "trigger": "beat_start"
+    },
+    {
      "track": "sfx",
-     "event": "subtle desert wind",
+     "event": "subtle heat sizzle",
      "time_s": 32.032,
      "trigger": "word",
      "word_index": 119
-    },
-    {
-     "track": "music",
-     "event": "mysterious shift",
-     "time_s": 31.87,
-     "trigger": "beat_start"
     }
    ],
    "transition_in": {
     "type": "dissolve",
     "reason": "time_shift",
-    "frames": 8
+    "frames": 10
    },
    "validation": {
     "gates": [
      "Q02",
      "Q03",
      "Q04",
-     "Q06",
-     "Q09",
      "Q10"
     ],
     "must_see": [
-     "CANYON-EDGE"
+     "GAP-RAIL"
     ],
     "must_not": [
-     "night sky"
+     "train",
+     "snow"
     ]
    },
    "extensions": {
     "selector": {
-     "planner_recipe": "S01",
+     "planner_recipe": "S07",
      "chosen": "S01",
-     "decision": "planner's choice kept (it is the best)",
-     "why": "S01 for intent time_passes: intent 0.80 (candidate #2 for intent time_passes); variety 1.00 (not used in the last beat); assets 0.55 (environment with depth layers, no scale anchor)",
+     "decision": "replaced planner's S07 (unavailable: CAP-DIAGRAM-CARD)",
+     "why": "S01 for intent time_passes: assets 1.00 (environment with depth layers and a scale anchor); intent 0.80 (candidate #2 for intent time_passes); variety 1.00 (not used in the last beat) | weak: camera (camera purpose hold_for_performance is not typical for S01)",
      "alternatives": [
       {
-       "recipe": "S05",
-       "score": 0.604
+       "recipe": "S03",
+       "score": 0.624
       },
       {
        "recipe": "S06",
-       "score": 0.372
+       "score": 0.43
       }
      ],
-     "notes": []
+     "notes": [
+      "camera purpose hold_for_performance is unusual for S01: the planner's camera was left as written",
+      "framing close -> wide to suit S01"
+     ]
     }
    }
   },
   {
-   "id": "s11",
-   "index": 11,
+   "id": "s14",
+   "index": 14,
    "time": {
     "start_s": 34.1333,
     "end_s": 35.9
@@ -2448,18 +2878,18 @@
     ]
    },
    "intent": "explain_mechanism",
-   "visual_purpose": "Show the rail gaps starting to shrink.",
+   "visual_purpose": "The gaps between the rails begin to shrink.",
    "subject": {
-    "main_id": "STEEL_RAIL",
-    "hero_object_id": "STEEL_RAIL"
+    "main_id": "GAP-RAIL",
+    "hero_object_id": "GAP-RAIL"
    },
-   "environment_id": "TRACK-VIEW",
+   "environment_id": "TRACK-CLOSEUP",
    "light": "golden",
    "shot": {
     "recipe_id": "S03",
     "framing": "detail",
     "composition": {
-     "primary_id": "STEEL_RAIL",
+     "primary_id": "GAP-RAIL",
      "focal_point_norm": [
       0.5,
       0.5
@@ -2469,38 +2899,44 @@
    "camera": {
     "purpose": "inspect",
     "mode": "push-in",
-    "from": {
-     "framing": "detail"
-    },
-    "to": {
-     "framing": "detail"
-    },
+    "rationale": "Push in closely to see the gap shrinking.",
+    "confidence": "designed",
     "duration_s": 1.77,
     "ease": "smooth",
-    "rationale": "Slow push in to inspect the shrinking gap.",
-    "confidence": "designed"
+    "from": {
+     "framing": "close",
+     "distance_m": 1.0,
+     "height": "eye",
+     "side": "front"
+    },
+    "to": {
+     "framing": "detail",
+     "distance_m": 0.5,
+     "height": "eye",
+     "side": "front"
+    }
    },
    "captions": {
     "mode": "one_word"
    },
    "audio_events": [
     {
-     "track": "sfx",
-     "event": "deep metal groaning",
-     "time_s": 34.757,
-     "trigger": "word",
-     "word_index": 128
-    },
-    {
      "track": "music",
      "event": "slow building tension",
      "time_s": 34.13,
      "trigger": "beat_start"
+    },
+    {
+     "track": "sfx",
+     "event": "metal groaning softly",
+     "time_s": 34.757,
+     "trigger": "word",
+     "word_index": 128
     }
    ],
    "transition_in": {
-    "type": "dissolve",
-    "reason": "continuity",
+    "type": "blend_fly",
+    "reason": "scale_change",
     "frames": 8
    },
    "validation": {
@@ -2508,14 +2944,13 @@
      "Q02",
      "Q03",
      "Q04",
-     "Q09",
      "Q10"
     ],
     "must_see": [
-     "STEEL_RAIL"
+     "GAP-RAIL"
     ],
     "must_not": [
-     "completely closed gap"
+     "seamless track"
     ]
    },
    "extensions": {
@@ -2523,15 +2958,15 @@
      "planner_recipe": "S03",
      "chosen": "S03",
      "decision": "planner's choice kept (it is the best)",
-     "why": "S03 for intent explain_mechanism: intent 1.00 (candidate #1 for intent explain_mechanism); assets 1.00 (hero object); variety 0.75 (not used in the last beat; 2+ times in the last 4)",
+     "why": "S03 for intent explain_mechanism: intent 1.00 (candidate #1 for intent explain_mechanism); assets 1.00 (hero object); variety 1.00 (not used in the last beat)",
      "alternatives": [
       {
-       "recipe": "S05",
-       "score": 0.662
+       "recipe": "S06",
+       "score": 0.66
       },
       {
-       "recipe": "S01",
-       "score": 0.613
+       "recipe": "S05",
+       "score": 0.566
       }
      ],
      "notes": []
@@ -2539,8 +2974,8 @@
    }
   },
   {
-   "id": "s12",
-   "index": 12,
+   "id": "s15",
+   "index": 15,
    "time": {
     "start_s": 35.9,
     "end_s": 37.9667
@@ -2553,32 +2988,21 @@
     ]
    },
    "intent": "give_number_or_quantity",
-   "visual_purpose": "Show a coin fitting into the shrinking gap.",
+   "visual_purpose": "Show a coin fitting tightly into the shrinking gap.",
    "subject": {
-    "main_id": "GOLD_COIN",
-    "character_ids": [
-     "ENGINEER"
-    ],
-    "hero_object_id": "GOLD_COIN"
+    "main_id": "COIN",
+    "hero_object_id": "COIN"
    },
-   "environment_id": "TRACK-VIEW",
+   "environment_id": "TRACK-CLOSEUP",
    "light": "golden",
-   "character_actions": [
-    {
-     "character_id": "ENGINEER",
-     "action": "pointing at coin",
-     "pose": "point",
-     "face": "neutral",
-     "phase": "action",
-     "start_s": 0.0,
-     "duration_s": 2.07
-    }
-   ],
    "shot": {
     "recipe_id": "S03",
     "framing": "detail",
     "composition": {
-     "primary_id": "GOLD_COIN",
+     "primary_id": "COIN",
+     "secondary_ids": [
+      "GAP-RAIL"
+     ],
      "focal_point_norm": [
       0.5,
       0.5
@@ -2588,14 +3012,6 @@
    "camera": {
     "purpose": "hold_for_performance",
     "mode": "static",
-    "from": {
-     "framing": "detail"
-    },
-    "to": {
-     "framing": "detail"
-    },
-    "duration_s": 2.07,
-    "ease": "smooth",
     "rationale": "Hold to clearly show the coin in the gap.",
     "confidence": "designed"
    },
@@ -2604,38 +3020,36 @@
    },
    "audio_events": [
     {
+     "track": "music",
+     "event": "curious ticking",
+     "time_s": 35.9,
+     "trigger": "beat_start"
+    },
+    {
      "track": "sfx",
-     "event": "metallic clink",
+     "event": "coin ting",
      "time_s": 36.551,
      "trigger": "word",
      "word_index": 135
-    },
-    {
-     "track": "music",
-     "event": "ticking clock rhythm",
-     "time_s": 35.9,
-     "trigger": "beat_start"
     }
    ],
    "transition_in": {
-    "type": "cut",
-    "reason": "scale_change"
+    "type": "in_place",
+    "reason": "emphasis"
    },
    "validation": {
     "gates": [
-     "Q01",
      "Q02",
      "Q03",
      "Q04",
-     "Q09",
      "Q10"
     ],
     "must_see": [
-     "GOLD_COIN",
-     "STEEL_RAIL"
+     "COIN",
+     "GAP-RAIL"
     ],
     "must_not": [
-     "missing coin"
+     "large gap"
     ]
    },
    "extensions": {
@@ -2643,15 +3057,15 @@
      "planner_recipe": "S03",
      "chosen": "S03",
      "decision": "planner's choice kept (it is the best)",
-     "why": "S03 for intent give_number_or_quantity: intent 1.00 (candidate #1 for intent give_number_or_quantity); assets 1.00 (hero object); action 0.70 (hero object, no action) | weak: continuity (hard cut to the same recipe looks like a jump cut), camera (camera purpose hold_for_performance is not typical for S03)",
+     "why": "S03 for intent give_number_or_quantity: intent 1.00 (candidate #1 for intent give_number_or_quantity); assets 1.00 (hero object); action 0.70 (hero object, no action) | weak: camera (camera purpose hold_for_performance is not typical for S03)",
      "alternatives": [
-      {
-       "recipe": "S04",
-       "score": 0.736
-      },
       {
        "recipe": "S01",
        "score": 0.674
+      },
+      {
+       "recipe": "S05",
+       "score": 0.639
       }
      ],
      "notes": [
@@ -2661,8 +3075,8 @@
    }
   },
   {
-   "id": "s13",
-   "index": 13,
+   "id": "s16",
+   "index": 16,
    "time": {
     "start_s": 37.9667,
     "end_s": 40.3
@@ -2675,24 +3089,24 @@
     ]
    },
    "intent": "emotional_reaction",
-   "visual_purpose": "Show the boss thrilled as the gap is now paper-thin.",
+   "visual_purpose": "Show the boss thrilled that the gaps are almost gone.",
    "subject": {
     "main_id": "BOSS",
     "character_ids": [
      "BOSS"
     ],
-    "hero_object_id": "SHEET_OF_PAPER"
+    "hero_object_id": "PAPER-SHEET"
    },
-   "environment_id": "TRACK-VIEW",
+   "environment_id": "TRACK-CLOSEUP",
    "light": "golden",
    "character_actions": [
     {
      "character_id": "BOSS",
-     "action": "thrilled by the tiny gap",
-     "pose": "up",
-     "face": "laugh",
+     "action": "pointing and grinning",
+     "pose": "point",
+     "face": "grin",
      "phase": "response",
-     "start_s": 0.0,
+     "start_s": 37.97,
      "duration_s": 2.33
     }
    ],
@@ -2701,6 +3115,10 @@
     "framing": "close",
     "composition": {
      "primary_id": "BOSS",
+     "secondary_ids": [
+      "PAPER-SHEET",
+      "GAP-RAIL"
+     ],
      "focal_point_norm": [
       0.5,
       0.4
@@ -2710,38 +3128,45 @@
    "camera": {
     "purpose": "reveal",
     "mode": "pull-back",
-    "from": {
-     "framing": "detail"
-    },
-    "to": {
-     "framing": "close"
-    },
+    "rationale": "Pull back from the paper to reveal the boss's happy face.",
+    "confidence": "designed",
     "duration_s": 2.33,
     "ease": "easeOut",
-    "rationale": "Pull back to reveal the boss's thrilled reaction.",
-    "confidence": "designed"
+    "from": {
+     "framing": "detail",
+     "distance_m": 0.5,
+     "height": "eye",
+     "side": "front"
+    },
+    "to": {
+     "framing": "close",
+     "distance_m": 2.0,
+     "height": "eye",
+     "side": "front"
+    }
    },
    "captions": {
     "mode": "one_word"
    },
    "audio_events": [
     {
-     "track": "sfx",
-     "event": "paper slide",
-     "time_s": 38.566,
-     "trigger": "word",
-     "word_index": 142
-    },
-    {
      "track": "music",
-     "event": "joyful realization",
+     "event": "happy upbeat chord",
      "time_s": 37.97,
      "trigger": "beat_start"
+    },
+    {
+     "track": "sfx",
+     "event": "paper slide",
+     "time_s": 38.872,
+     "trigger": "word",
+     "word_index": 144
     }
    ],
    "transition_in": {
-    "type": "cut",
-    "reason": "emphasis"
+    "type": "blend_fly",
+    "reason": "scale_change",
+    "frames": 8
    },
    "validation": {
     "gates": [
@@ -2749,16 +3174,15 @@
      "Q02",
      "Q03",
      "Q04",
-     "Q09",
      "Q10"
     ],
     "must_see": [
-     "SHEET_OF_PAPER",
-     "STEEL_RAIL",
-     "BOSS"
+     "BOSS",
+     "PAPER-SHEET",
+     "GAP-RAIL"
     ],
     "must_not": [
-     "missing paper"
+     "coin"
     ]
    },
    "extensions": {
@@ -2784,8 +3208,8 @@
    }
   },
   {
-   "id": "s14",
-   "index": 14,
+   "id": "s17",
+   "index": 17,
    "time": {
     "start_s": 40.3,
     "end_s": 42.1333
@@ -2804,28 +3228,27 @@
     "character_ids": [
      "BOSS",
      "ENGINEER"
-    ],
-    "hero_object_id": "STEEL_RAIL"
+    ]
    },
-   "environment_id": "TRACK-VIEW",
+   "environment_id": "TRACK-CLOSEUP",
    "light": "golden",
    "character_actions": [
     {
      "character_id": "BOSS",
-     "action": "smugly telling engineer he was wrong",
-     "pose": "point",
+     "action": "standing smug",
+     "pose": "hip",
      "face": "grin",
      "phase": "action",
-     "start_s": 0.0,
+     "start_s": 40.3,
      "duration_s": 1.83
     },
     {
      "character_id": "ENGINEER",
-     "action": "listening neutrally",
+     "action": "arms crossed",
      "pose": "cross",
      "face": "neutral",
      "phase": "response",
-     "start_s": 0.0,
+     "start_s": 40.3,
      "duration_s": 1.83
     }
    ],
@@ -2835,7 +3258,8 @@
     "composition": {
      "primary_id": "BOSS",
      "secondary_ids": [
-      "ENGINEER"
+      "ENGINEER",
+      "GAP-RAIL"
      ],
      "focal_point_norm": [
       0.5,
@@ -2846,15 +3270,7 @@
    "camera": {
     "purpose": "hold_for_performance",
     "mode": "static",
-    "from": {
-     "framing": "medium"
-    },
-    "to": {
-     "framing": "medium"
-    },
-    "duration_s": 1.83,
-    "ease": "smooth",
-    "rationale": "Hold for the dialogue exchange.",
+    "rationale": "Hold for the dialogue.",
     "confidence": "designed"
    },
    "captions": {
@@ -2862,22 +3278,23 @@
    },
    "audio_events": [
     {
-     "track": "sfx",
-     "event": "smug chuckle",
-     "time_s": 40.306,
-     "trigger": "word",
-     "word_index": 150
-    },
-    {
      "track": "music",
-     "event": "brief pause in tension",
+     "event": "playful pause",
      "time_s": 40.3,
      "trigger": "beat_start"
+    },
+    {
+     "track": "sfx",
+     "event": "smug chuckle",
+     "time_s": 41.657,
+     "trigger": "word",
+     "word_index": 157
     }
    ],
    "transition_in": {
-    "type": "cut",
-    "reason": "continuity"
+    "type": "blend_fly",
+    "reason": "continuity",
+    "frames": 8
    },
    "validation": {
     "gates": [
@@ -2885,16 +3302,15 @@
      "Q02",
      "Q03",
      "Q04",
-     "Q09",
      "Q10"
     ],
     "must_see": [
      "BOSS",
      "ENGINEER",
-     "STEEL_RAIL"
+     "GAP-RAIL"
     ],
     "must_not": [
-     "characters missing"
+     "train"
     ]
    },
    "extensions": {
@@ -2906,7 +3322,7 @@
      "alternatives": [
       {
        "recipe": "S04",
-       "score": 0.754
+       "score": 0.814
       },
       {
        "recipe": "S01",
@@ -2918,8 +3334,8 @@
    }
   },
   {
-   "id": "s15",
-   "index": 15,
+   "id": "s18",
+   "index": 18,
    "time": {
     "start_s": 42.1333,
     "end_s": 45.2667
@@ -2932,18 +3348,18 @@
     ]
    },
    "intent": "create_suspense",
-   "visual_purpose": "Show the perfect rails under stress in the sun.",
+   "visual_purpose": "Show the smooth rails groaning under the heat.",
    "subject": {
-    "main_id": "STEEL_RAIL",
-    "hero_object_id": "STEEL_RAIL"
+    "main_id": "SMOOTH-RAIL",
+    "hero_object_id": "SMOOTH-RAIL"
    },
-   "environment_id": "BRIDGE-WIDE",
+   "environment_id": "SMOOTH-TRACK",
    "light": "golden",
    "shot": {
     "recipe_id": "S03",
-    "framing": "medium",
+    "framing": "close",
     "composition": {
-     "primary_id": "STEEL_RAIL",
+     "primary_id": "SMOOTH-RAIL",
      "focal_point_norm": [
       0.5,
       0.5
@@ -2953,33 +3369,39 @@
    "camera": {
     "purpose": "inspect",
     "mode": "push-in",
-    "from": {
-     "framing": "medium"
-    },
-    "to": {
-     "framing": "close"
-    },
+    "rationale": "Push in to inspect the rails under stress.",
+    "confidence": "designed",
     "duration_s": 3.14,
     "ease": "smooth",
-    "rationale": "Push in to inspect the groaning rails.",
-    "confidence": "designed"
+    "from": {
+     "framing": "medium",
+     "distance_m": 2.0,
+     "height": "eye",
+     "side": "front"
+    },
+    "to": {
+     "framing": "close",
+     "distance_m": 1.0,
+     "height": "eye",
+     "side": "front"
+    }
    },
    "captions": {
     "mode": "one_word"
    },
    "audio_events": [
     {
+     "track": "music",
+     "event": "dark ominous drone",
+     "time_s": 42.13,
+     "trigger": "beat_start"
+    },
+    {
      "track": "sfx",
-     "event": "loud metal stress sound",
+     "event": "heavy metal creaking",
      "time_s": 44.078,
      "trigger": "word",
      "word_index": 166
-    },
-    {
-     "track": "music",
-     "event": "dark heavy suspense",
-     "time_s": 42.13,
-     "trigger": "beat_start"
     }
    ],
    "transition_in": {
@@ -2992,16 +3414,13 @@
      "Q02",
      "Q03",
      "Q04",
-     "Q06",
-     "Q09",
      "Q10"
     ],
     "must_see": [
-     "STEEL_RAIL",
-     "BRIDGE-WIDE"
+     "SMOOTH-RAIL"
     ],
     "must_not": [
-     "gaps in rail"
+     "gaps"
     ]
    },
    "extensions": {
@@ -3025,8 +3444,8 @@
    }
   },
   {
-   "id": "s16",
-   "index": 16,
+   "id": "s19",
+   "index": 19,
    "time": {
     "start_s": 45.2667,
     "end_s": 47.3
@@ -3039,31 +3458,30 @@
     ]
    },
    "intent": "physical_action",
-   "visual_purpose": "Show the tight rail joints pushing against each other.",
+   "visual_purpose": "Show the smooth rails pushing tightly against each other.",
    "subject": {
-    "main_id": "STEEL_RAIL",
-    "hero_object_id": "STEEL_RAIL"
+    "main_id": "SMOOTH-RAIL",
+    "hero_object_id": "SMOOTH-RAIL"
    },
-   "environment_id": "TRACK-VIEW",
+   "environment_id": "SMOOTH-TRACK",
    "light": "golden",
    "object_events": [
     {
-     "object_id": "STEEL_RAIL",
-     "event": "move",
-     "contact_target_id": "STEEL_RAIL",
+     "object_id": "SMOOTH-RAIL",
+     "event": "bend",
+     "start_s": 45.27,
+     "duration_s": 2.03,
+     "contact_target_id": "SMOOTH-RAIL",
      "secondary_effects": [
-      "sparks"
-     ],
-     "motion_profile": "rigid",
-     "start_s": 0.0,
-     "duration_s": 2.03
+      "dust"
+     ]
     }
    ],
    "shot": {
-    "recipe_id": "S03",
-    "framing": "detail",
+    "recipe_id": "S06",
+    "framing": "close",
     "composition": {
-     "primary_id": "STEEL_RAIL",
+     "primary_id": "SMOOTH-RAIL",
      "focal_point_norm": [
       0.5,
       0.5
@@ -3071,70 +3489,76 @@
     }
    },
    "camera": {
-    "purpose": "impact",
-    "mode": "snap-zoom",
+    "purpose": "emphasize",
+    "mode": "orbit",
+    "rationale": "Orbit to show the tension in the rails.",
+    "confidence": "designed",
+    "duration_s": 2.03,
+    "ease": "smooth",
     "from": {
-     "framing": "close"
+     "framing": "close",
+     "distance_m": 0.6,
+     "height": "low",
+     "side": "front"
     },
     "to": {
-     "framing": "detail"
-    },
-    "duration_s": 2.03,
-    "ease": "easeOut",
-    "rationale": "Snap zoom to emphasize the rails pushing together.",
-    "confidence": "designed"
+     "framing": "close",
+     "distance_m": 0.6,
+     "height": "low",
+     "side": "right"
+    }
    },
    "captions": {
     "mode": "one_word"
    },
    "audio_events": [
     {
+     "track": "music",
+     "event": "fast ticking suspense",
+     "time_s": 45.27,
+     "trigger": "beat_start"
+    },
+    {
      "track": "sfx",
-     "event": "sharp metal creak",
+     "event": "high pitched metal strain",
      "time_s": 45.277,
      "trigger": "word",
      "word_index": 171
-    },
-    {
-     "track": "music",
-     "event": "urgent pulse",
-     "time_s": 45.27,
-     "trigger": "beat_start"
     }
    ],
    "transition_in": {
-    "type": "cut",
-    "reason": "scale_change"
+    "type": "blend_fly",
+    "reason": "continuity",
+    "frames": 8
    },
    "validation": {
     "gates": [
      "Q02",
      "Q03",
      "Q04",
-     "Q09",
      "Q10"
     ],
     "must_see": [
-     "STEEL_RAIL"
+     "SMOOTH-RAIL"
     ],
     "must_not": [
-     "flat unmoving rails"
+     "train"
     ]
    },
    "extensions": {
     "selector": {
-     "planner_recipe": "S03",
-     "chosen": "S03",
+     "planner_recipe": "S06",
+     "chosen": "S06",
      "decision": "planner's choice kept (it is the best)",
-     "why": "S03 for intent physical_action: assets 1.00 (hero object); intent 0.80 (candidate #2 for intent physical_action); action 0.90 (hero object acts)",
+     "why": "S06 for intent physical_action: intent 1.00 (candidate #1 for intent physical_action); variety 1.00 (not used in the last beat); assets 0.50 (actor+object: 0 character(s), 1 object(s))",
      "alternatives": [
       {
-       "recipe": "S06",
-       "score": 0.751
+       "recipe": "S03",
+       "score": 0.8
       },
       {
        "recipe": "S01",
-       "score": 0.62
+       "score": 0.632
       }
      ],
      "notes": []
@@ -3142,8 +3566,8 @@
    }
   },
   {
-   "id": "s17",
-   "index": 17,
+   "id": "s20",
+   "index": 20,
    "time": {
     "start_s": 47.3,
     "end_s": 49.1333
@@ -3155,68 +3579,60 @@
      185
     ]
    },
-   "intent": "emotional_reaction",
-   "visual_purpose": "Show the rival sweating nervously in the heat.",
+   "intent": "create_suspense",
+   "visual_purpose": "Show the intense heat over the canyon.",
    "subject": {
-    "main_id": "RIVAL",
-    "character_ids": [
-     "RIVAL"
-    ]
+    "main_id": "CANYON-BRIDGE"
    },
-   "environment_id": "CANYON-EDGE",
-   "light": "golden",
-   "character_actions": [
-    {
-     "character_id": "RIVAL",
-     "action": "sweating nervously",
-     "pose": "cheek",
-     "face": "nervous+sweat",
-     "phase": "response",
-     "start_s": 0.0,
-     "duration_s": 1.83
-    }
-   ],
+   "environment_id": "CANYON-BRIDGE",
+   "light": "day",
    "shot": {
-    "recipe_id": "S04",
-    "framing": "close",
+    "recipe_id": "S05",
+    "framing": "wide",
     "composition": {
-     "primary_id": "RIVAL",
+     "primary_id": "CANYON-BRIDGE",
      "focal_point_norm": [
       0.5,
-      0.4
+      0.5
      ]
     }
    },
    "camera": {
-    "purpose": "hold_for_performance",
-    "mode": "static",
-    "from": {
-     "framing": "close"
-    },
-    "to": {
-     "framing": "close"
-    },
+    "purpose": "establish",
+    "mode": "crane-up",
+    "rationale": "Crane up to show the vast canyon baking in the sun.",
+    "confidence": "designed",
     "duration_s": 1.83,
     "ease": "smooth",
-    "rationale": "Hold to show the rival's nervous reaction.",
-    "confidence": "designed"
+    "from": {
+     "framing": "wide",
+     "distance_m": 15.0,
+     "height": "eye",
+     "side": "front"
+    },
+    "to": {
+     "framing": "wide",
+     "distance_m": 15.0,
+     "height": "high",
+     "side": "front"
+    }
    },
    "captions": {
     "mode": "one_word"
    },
    "audio_events": [
     {
+     "track": "music",
+     "event": "climactic build",
+     "time_s": 47.3,
+     "trigger": "beat_start"
+    },
+    {
      "track": "sfx",
-     "event": "intense heat sizzle",
+     "event": "desert wind",
      "time_s": 47.619,
      "trigger": "word",
      "word_index": 181
-    },
-    {
-     "track": "music",
-     "event": "high pitched drone",
-     "time_s": 47.3,
-     "trigger": "beat_start"
     }
    ],
    "transition_in": {
@@ -3226,35 +3642,32 @@
    },
    "validation": {
     "gates": [
-     "Q01",
      "Q02",
      "Q03",
      "Q04",
-     "Q09",
      "Q10"
     ],
     "must_see": [
-     "RIVAL",
-     "CANYON-EDGE"
+     "CANYON-BRIDGE"
     ],
     "must_not": [
-     "missing sweat"
+     "clouds"
     ]
    },
    "extensions": {
     "selector": {
-     "planner_recipe": "S04",
-     "chosen": "S04",
-     "decision": "planner's choice kept (it is the best)",
-     "why": "S04 for intent emotional_reaction: intent 1.00 (candidate #1 for intent emotional_reaction); assets 1.00 (a character with a face action); action 1.00 (a face/reaction is planned)",
+     "planner_recipe": "S05",
+     "chosen": "S05",
+     "decision": "planner's choice kept as a justified alternative: 0.60 vs best S01 0.61",
+     "why": "S05 for intent create_suspense: variety 1.00 (not used in the last beat); action 0.80 (the place carries the beat); assets 0.50 (a place with depth and something to reveal) | weak: intent (not meant for intent create_suspense)",
      "alternatives": [
       {
-       "recipe": "S02",
-       "score": 0.896
+       "recipe": "S01",
+       "score": 0.615
       },
       {
-       "recipe": "S01",
-       "score": 0.662
+       "recipe": "S03",
+       "score": 0.582
       }
      ],
      "notes": []
@@ -3262,8 +3675,8 @@
    }
   },
   {
-   "id": "s18",
-   "index": 18,
+   "id": "s21",
+   "index": 21,
    "time": {
     "start_s": 49.1333,
     "end_s": 51.6333
@@ -3275,19 +3688,28 @@
      192
     ]
    },
-   "intent": "explain_mechanism",
-   "visual_purpose": "Show the engineer's gaps finally closing completely.",
+   "intent": "physical_action",
+   "visual_purpose": "The engineer's gaps close perfectly.",
    "subject": {
-    "main_id": "STEEL_RAIL",
-    "hero_object_id": "STEEL_RAIL"
+    "main_id": "GAP-RAIL",
+    "hero_object_id": "GAP-RAIL"
    },
-   "environment_id": "TRACK-VIEW",
-   "light": "golden",
+   "environment_id": "TRACK-CLOSEUP",
+   "light": "day",
+   "object_events": [
+    {
+     "object_id": "GAP-RAIL",
+     "event": "move",
+     "start_s": 49.13,
+     "duration_s": 2.5,
+     "contact_target_id": "GAP-RAIL"
+    }
+   ],
    "shot": {
     "recipe_id": "S03",
     "framing": "detail",
     "composition": {
-     "primary_id": "STEEL_RAIL",
+     "primary_id": "GAP-RAIL",
      "focal_point_norm": [
       0.5,
       0.5
@@ -3297,68 +3719,75 @@
    "camera": {
     "purpose": "inspect",
     "mode": "push-in",
+    "rationale": "Push in to see the gap perfectly closed.",
+    "confidence": "designed",
+    "duration_s": 2.5,
+    "ease": "easeOut",
     "from": {
-     "framing": "detail"
+     "framing": "close",
+     "distance_m": 1.0,
+     "height": "eye",
+     "side": "front"
     },
     "to": {
-     "framing": "detail"
-    },
-    "duration_s": 2.5,
-    "ease": "smooth",
-    "rationale": "Push in to inspect the gaps closing.",
-    "confidence": "designed"
+     "framing": "detail",
+     "distance_m": 0.3,
+     "height": "eye",
+     "side": "front"
+    }
    },
    "captions": {
     "mode": "one_word"
    },
    "audio_events": [
     {
-     "track": "sfx",
-     "event": "solid metal clunk",
-     "time_s": 49.957,
-     "trigger": "word",
-     "word_index": 189
-    },
-    {
      "track": "music",
      "event": "sudden silence",
      "time_s": 49.13,
      "trigger": "beat_start"
+    },
+    {
+     "track": "sfx",
+     "event": "solid metal thud",
+     "time_s": 49.957,
+     "trigger": "word",
+     "word_index": 189
     }
    ],
    "transition_in": {
-    "type": "cut",
-    "reason": "scale_change"
+    "type": "dissolve",
+    "reason": "new_place",
+    "frames": 8
    },
    "validation": {
     "gates": [
      "Q02",
      "Q03",
      "Q04",
-     "Q09",
      "Q10"
     ],
     "must_see": [
-     "STEEL_RAIL"
+     "GAP-RAIL"
     ],
     "must_not": [
-     "gap remaining"
+     "coin",
+     "paper"
     ]
    },
    "extensions": {
     "selector": {
-     "planner_recipe": "S03",
+     "planner_recipe": "S06",
      "chosen": "S03",
-     "decision": "planner's choice kept (it is the best)",
-     "why": "S03 for intent explain_mechanism: intent 1.00 (candidate #1 for intent explain_mechanism); assets 1.00 (hero object); variety 0.75 (not used in the last beat; 2+ times in the last 4)",
+     "decision": "replaced planner's S06 (0.80 vs S03 0.89)",
+     "why": "S03 for intent physical_action: assets 1.00 (hero object); intent 0.80 (candidate #2 for intent physical_action); variety 1.00 (not used in the last beat)",
      "alternatives": [
       {
-       "recipe": "S01",
-       "score": 0.662
+       "recipe": "S06",
+       "score": 0.8
       },
       {
-       "recipe": "S05",
-       "score": 0.662
+       "recipe": "S01",
+       "score": 0.62
       }
      ],
      "notes": []
@@ -3366,8 +3795,8 @@
    }
   },
   {
-   "id": "s19",
-   "index": 19,
+   "id": "s22",
+   "index": 22,
    "time": {
     "start_s": 51.6333,
     "end_s": 55.2
@@ -3380,27 +3809,18 @@
     ]
    },
    "intent": "surprising_reveal",
-   "visual_purpose": "Show the perfect railroad warping and kicking sideways.",
+   "visual_purpose": "The rival's smooth railroad buckles and kinks sideways.",
    "subject": {
-    "main_id": "STEEL_RAIL",
-    "hero_object_id": "STEEL_RAIL"
+    "main_id": "KINKED-RAIL",
+    "hero_object_id": "KINKED-RAIL"
    },
-   "environment_id": "BRIDGE-WIDE",
-   "light": "golden",
-   "object_events": [
-    {
-     "object_id": "STEEL_RAIL",
-     "event": "bend",
-     "motion_profile": "elastic",
-     "start_s": 0.0,
-     "duration_s": 3.57
-    }
-   ],
+   "environment_id": "SMOOTH-TRACK",
+   "light": "day",
    "shot": {
     "recipe_id": "S05",
-    "framing": "wide",
+    "framing": "close",
     "composition": {
-     "primary_id": "STEEL_RAIL",
+     "primary_id": "KINKED-RAIL",
      "focal_point_norm": [
       0.5,
       0.5
@@ -3409,55 +3829,58 @@
    },
    "camera": {
     "purpose": "impact",
-    "mode": "whip",
+    "mode": "snap-zoom",
+    "rationale": "Snap zoom to emphasize the violent buckling of the track.",
+    "confidence": "designed",
+    "duration_s": 3.57,
+    "ease": "easeIn",
     "from": {
-     "framing": "wide"
+     "framing": "medium",
+     "distance_m": 4.0,
+     "height": "eye",
+     "side": "front"
     },
     "to": {
-     "framing": "wide"
-    },
-    "duration_s": 3.57,
-    "ease": "easeOut",
-    "rationale": "Whip pan to capture the sudden warping of the track.",
-    "confidence": "designed"
+     "framing": "close",
+     "distance_m": 2.0,
+     "height": "eye",
+     "side": "front"
+    }
    },
    "captions": {
     "mode": "one_word"
    },
    "audio_events": [
     {
+     "track": "music",
+     "event": "loud chaotic strike",
+     "time_s": 51.63,
+     "trigger": "beat_start"
+    },
+    {
      "track": "sfx",
-     "event": "massive metal snap",
+     "event": "violent metal snap",
      "time_s": 53.89,
      "trigger": "word",
      "word_index": 200
-    },
-    {
-     "track": "music",
-     "event": "explosive danger",
-     "time_s": 51.63,
-     "trigger": "beat_start"
     }
    ],
    "transition_in": {
     "type": "cut",
-    "reason": "emphasis"
+    "reason": "new_place"
    },
    "validation": {
     "gates": [
      "Q02",
      "Q03",
      "Q04",
-     "Q05",
-     "Q09",
      "Q10"
     ],
     "must_see": [
-     "STEEL_RAIL",
-     "BRIDGE-WIDE"
+     "KINKED-RAIL"
     ],
     "must_not": [
-     "straight rails"
+     "straight rail"
     ]
    },
    "extensions": {
@@ -3468,12 +3891,12 @@
      "why": "S05 for intent surprising_reveal: intent 1.00 (candidate #1 for intent surprising_reveal); assets 1.00 (a place with depth and something to reveal); variety 1.00 (not used in the last beat) | weak: camera (camera purpose impact is not typical for S05)",
      "alternatives": [
       {
-       "recipe": "S03",
-       "score": 0.655
+       "recipe": "S01",
+       "score": 0.662
       },
       {
-       "recipe": "S01",
-       "score": 0.62
+       "recipe": "S03",
+       "score": 0.627
       }
      ],
      "notes": [
@@ -3483,8 +3906,8 @@
    }
   },
   {
-   "id": "s20",
-   "index": 20,
+   "id": "s23",
+   "index": 23,
    "time": {
     "start_s": 55.2,
     "end_s": 56.7
@@ -3497,20 +3920,38 @@
     ]
    },
    "intent": "physical_action",
-   "visual_purpose": "Show the train rolling onto the warped track.",
+   "visual_purpose": "The rival's train derails on the kinked track.",
    "subject": {
     "main_id": "TRAIN",
-    "hero_object_id": "TRAIN"
+    "character_ids": [
+     "RIVAL"
+    ],
+    "hero_object_id": "KINKED-RAIL"
    },
-   "environment_id": "BRIDGE-WIDE",
-   "light": "golden",
+   "environment_id": "CANYON-BRIDGE",
+   "light": "day",
+   "character_actions": [
+    {
+     "character_id": "RIVAL",
+     "action": "shocked reaction",
+     "pose": "temple",
+     "face": "shock",
+     "phase": "response",
+     "start_s": 55.2,
+     "duration_s": 1.5
+    }
+   ],
    "object_events": [
     {
      "object_id": "TRAIN",
-     "event": "roll",
-     "motion_profile": "rigid",
-     "start_s": 0.0,
-     "duration_s": 1.5
+     "event": "impact",
+     "start_s": 55.2,
+     "duration_s": 1.5,
+     "contact_target_id": "KINKED-RAIL",
+     "secondary_effects": [
+      "smoke",
+      "sparks"
+     ]
     }
    ],
    "shot": {
@@ -3518,6 +3959,10 @@
     "framing": "wide",
     "composition": {
      "primary_id": "TRAIN",
+     "secondary_ids": [
+      "KINKED-RAIL",
+      "RIVAL"
+     ],
      "focal_point_norm": [
       0.5,
       0.5
@@ -3525,17 +3970,9 @@
     }
    },
    "camera": {
-    "purpose": "emphasize",
-    "mode": "orbit",
-    "from": {
-     "framing": "wide"
-    },
-    "to": {
-     "framing": "wide"
-    },
-    "duration_s": 1.5,
-    "ease": "smooth",
-    "rationale": "Orbit to emphasize the train rolling onto the warped track.",
+    "purpose": "hold_for_performance",
+    "mode": "static",
+    "rationale": "Hold wide to show the full disaster.",
     "confidence": "designed"
    },
    "captions": {
@@ -3543,58 +3980,60 @@
    },
    "audio_events": [
     {
+     "track": "music",
+     "event": "dramatic tragic finale",
+     "time_s": 55.2,
+     "trigger": "beat_start"
+    },
+    {
      "track": "sfx",
-     "event": "train brakes screeching",
+     "event": "massive crash and derailment",
      "time_s": 55.959,
      "trigger": "word",
      "word_index": 209
-    },
-    {
-     "track": "music",
-     "event": "dramatic orchestral hit",
-     "time_s": 55.2,
-     "trigger": "beat_start"
     }
    ],
    "transition_in": {
     "type": "cut",
-    "reason": "continuity"
+    "reason": "new_place"
    },
    "validation": {
     "gates": [
+     "Q01",
      "Q02",
      "Q03",
      "Q04",
-     "Q05",
-     "Q09",
      "Q10"
     ],
     "must_see": [
      "TRAIN",
-     "STEEL_RAIL",
-     "BRIDGE-WIDE"
+     "KINKED-RAIL",
+     "RIVAL",
+     "CANYON-BRIDGE"
     ],
     "must_not": [
-     "train on straight track"
+     "smooth track"
     ]
    },
    "extensions": {
     "selector": {
      "planner_recipe": "S06",
      "chosen": "S06",
-     "decision": "planner's choice kept as a justified alternative: 0.85 vs best S03 0.90",
-     "why": "S06 for intent physical_action: intent 1.00 (candidate #1 for intent physical_action); variety 1.00 (not used in the last beat); continuity 1.00 (coming in from a wide shot)",
+     "decision": "planner's choice kept (it is the best)",
+     "why": "S06 for intent physical_action: intent 1.00 (candidate #1 for intent physical_action); assets 1.00 (actor+object: 1 character(s), 2 object(s)); action 1.00 (object events planned) | weak: camera (camera purpose hold_for_performance is not typical for S06)",
      "alternatives": [
       {
        "recipe": "S03",
-       "score": 0.899
+       "score": 0.834
       },
       {
-       "recipe": "S01",
-       "score": 0.608
+       "recipe": "S04",
+       "score": 0.718
       }
      ],
-     "notes": []
+     "notes": [
+      "camera purpose hold_for_performance is unusual for S06: the planner's camera was left as written"
+     ]
     }
    }
   }

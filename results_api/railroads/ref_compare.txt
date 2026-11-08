@@ -1,13 +1,21 @@
-short.mp4: 1700 frames, 26 shots
-  brightness       0.547    ref 0.3143 .. 0.5642  ok
-  saturation       0.4373   ref 0.3941 .. 0.5839  ok
+short.mp4: 1700 frames, 27 shots
+  brightness       0.3803   ref 0.3143 .. 0.5642  ok
+  saturation       0.5256   ref 0.3941 .. 0.5839  ok
   palette size     26.0     ref 32.0 .. 45.0  LOW
-  detail           0.0808   ref 0.1059 .. 0.2185  LOW
-  held frames      0.0489   ref 0.0019 .. 0.0585  ok
-  object motion    1.4835   ref 3.2115 .. 8.4144  LOW
-  shot length (s)  2.05     ref 0.99 .. 10.59  ok
+  detail           0.0567   ref 0.1059 .. 0.2185  LOW
+  held frames      0.033    ref 0.0019 .. 0.0585  ok
+  object motion    1.2203   ref 3.2115 .. 8.4144  LOW
+  shot length (s)  1.8333   ref 0.99 .. 10.59  ok
   weak shots: 
-    {'shot': 1, 'frames': '90-219', 'seconds': '3.0-7.3', 'problems': ['plain (little detail)']}
-    {'shot': 16, 'frames': '1024-1139', 'seconds': '34.1-38.0', 'problems': ['plain (little detail)', 'mostly held (nothing moves)']}
-    {'shot': 21, 'frames': '1358-1419', 'seconds': '45.3-47.3', 'problems': ['plain (little detail)']}
-    {'shot': 23, 'frames': '1474-1549', 'seconds': '49.1-51.6', 'problems': ['plain (little detail)']}
+    {'shot': 10, 'frames': '769-777', 'seconds': '25.6-25.9', 'problems': ['dark', 'plain (little detail)']}
+    {'shot': 11, 'frames': '777-784', 'seconds': '25.9-26.1', 'problems': ['dark', 'plain (little detail)']}
+    {'shot': 12, 'frames': '784-791', 'seconds': '26.1-26.4', 'problems': ['dark', 'plain (little detail)']}
+    {'shot': 13, 'frames': '791-824', 'seconds': '26.4-27.5', 'problems': ['plain (little detail)']}
+    {'shot': 14, 'frames': '824-897', 'seconds': '27.5-29.9', 'problems': ['plain (little detail)']}
+    {'shot': 16, 'frames': '956-1024', 'seconds': '31.9-34.1', 'problems': ['plain (little detail)']}
+    {'shot': 17, 'frames': '1024-1077', 'seconds': '34.1-35.9', 'problems': ['dark', 'plain (little detail)']}
+    {'shot': 18, 'frames': '1077-1139', 'seconds': '35.9-38.0', 'problems': ['dark', 'plain (little detail)', 'mostly held (nothing moves)']}
+    {'shot': 19, 'frames': '1139-1209', 'seconds': '38.0-40.3', 'problems': ['dark', 'plain (little detail)']}
+    {'shot': 20, 'frames': '1209-1264', 'seconds': '40.3-42.1', 'problems': ['plain (little detail)']}
+    {'shot': 21, 'frames': '1264-1419', 'seconds': '42.1-47.3', 'problems': ['dark', 'plain (little detail)']}
+    {'shot': 25, 'frames': '1556-1656', 'seconds': '51.9-55.2', 'problems': ['plain (little detail)']}

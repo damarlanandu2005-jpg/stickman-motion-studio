@@ -3,18 +3,21 @@ s2: See, two companies are racing to build a railroad across a canyon so deep yo
 s3: And whoever finishes first gets the whole country's business.
 s4: He's the youngest engineer on the job.
 s5: And when his boss sees a finger wide gap between every single rail, his face turns purple.
-s6: You're wrecking my railroad. But he won't close a single one.
-s7: The other one lays rails end to end, perfectly smooth, and finishes first.
-s8: Their trains glide across the canyon without a sound, while his go clickety clack over every gap.
-s9: The newspapers start calling it the Clickety Clack Line, and everyone switches to the quiet trains.
-s10: Then summer comes, and something weird happens.
-s11: His gaps start shrinking in May.
-s12: You can fit a coin in them by July.
-s13: Barely a sheet of paper, and his boss is thrilled.
-s14: See, even your gaps know you were wrong.
-s15: Meanwhile, on the perfect railroad, the rails started groaning in the afternoon sun,
-s16: pushing against each other like they want out.
-s17: On the hottest day anyone can remember.
-s18: His gaps finally close. Rail touching rail.
-s19: Halfway across the canyon, the perfect railroad kicks sideways like a snake,
-s20: right as a train rolls onto it.
+s6: You're wrecking my railroad.
+s7: But he won't close a single one.
+s8: The other one lays rails end to end, perfectly smooth, and finishes first.
+s9: Their trains glide across the canyon without a sound,
+s10: while his go clickety clack over every gap.
+s11: The newspapers start calling it the Clickety Clack Line,
+s12: and everyone switches to the quiet trains.
+s13: Then summer comes, and something weird happens.
+s14: His gaps start shrinking in May.
+s15: You can fit a coin in them by July.
+s16: Barely a sheet of paper, and his boss is thrilled.
+s17: See, even your gaps know you were wrong.
+s18: Meanwhile, on the perfect railroad, the rails started groaning in the afternoon sun,
+s19: pushing against each other like they want out.
+s20: On the hottest day anyone can remember.
+s21: His gaps finally close. Rail touching rail.
+s22: Halfway across the canyon, the perfect railroad kicks sideways like a snake,
+s23: right as a train rolls onto it.

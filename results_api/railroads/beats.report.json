@@ -5,9 +5,105 @@
  "warnings": [
   [
    "warn",
-   "Q06",
-   "beat s2",
-   "the narration names 'railroad' and it is in the beat, but it is not in validation.must_see"
+   "Q10",
+   "beat s3",
+   "action of ENGINEER ends after the beat"
+  ],
+  [
+   "warn",
+   "Q10",
+   "beat s3",
+   "action of RIVAL ends after the beat"
+  ],
+  [
+   "warn",
+   "Q10",
+   "beat s4",
+   "action of ENGINEER ends after the beat"
+  ],
+  [
+   "warn",
+   "Q10",
+   "beat s5",
+   "action of BOSS ends after the beat"
+  ],
+  [
+   "warn",
+   "Q10",
+   "beat s6",
+   "action of BOSS ends after the beat"
+  ],
+  [
+   "warn",
+   "Q10",
+   "beat s6",
+   "action of ENGINEER ends after the beat"
+  ],
+  [
+   "warn",
+   "Q10",
+   "beat s7",
+   "action of ENGINEER ends after the beat"
+  ],
+  [
+   "warn",
+   "Q10",
+   "beat s8",
+   "action of RIVAL ends after the beat"
+  ],
+  [
+   "warn",
+   "Q10",
+   "beat s9",
+   "event of TRAIN ends after the beat"
+  ],
+  [
+   "warn",
+   "Q10",
+   "beat s10",
+   "event of TRAIN ends after the beat"
+  ],
+  [
+   "warn",
+   "Q10",
+   "beat s16",
+   "action of BOSS ends after the beat"
+  ],
+  [
+   "warn",
+   "Q10",
+   "beat s17",
+   "action of BOSS ends after the beat"
+  ],
+  [
+   "warn",
+   "Q10",
+   "beat s17",
+   "action of ENGINEER ends after the beat"
+  ],
+  [
+   "warn",
+   "Q10",
+   "beat s19",
+   "event of SMOOTH-RAIL ends after the beat"
+  ],
+  [
+   "warn",
+   "Q10",
+   "beat s21",
+   "event of GAP-RAIL ends after the beat"
+  ],
+  [
+   "warn",
+   "Q10",
+   "beat s23",
+   "action of RIVAL ends after the beat"
+  ],
+  [
+   "warn",
+   "Q10",
+   "beat s23",
+   "event of TRAIN ends after the beat"
   ]
  ],
  "gates": {
@@ -54,9 +150,9 @@
    ]
   },
   "Q06": {
-   "status": "PASS (with warnings)",
+   "status": "PASS",
    "errors": 0,
-   "warnings": 1,
+   "warnings": 0,
    "not_run": [
     "[automatic] parallax and soft-edge share on rendered frames"
    ]
@@ -87,9 +183,9 @@
    ]
   },
   "Q10": {
-   "status": "PASS",
+   "status": "PASS (with warnings)",
    "errors": 0,
-   "warnings": 0,
+   "warnings": 17,
    "not_run": [
     "[automatic] a build check of the real code (assets render, no errors)"
    ]

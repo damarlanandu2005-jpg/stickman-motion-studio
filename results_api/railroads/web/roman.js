@@ -561,4 +561,8 @@ export const fxClock = (p, t, turns = 1) => {
   p.dot(cx, cy, 16); g.restore();
 };
 
-// No custom cast needed. The kit's OUTFITS (worker1, worker2, workA), faces, and hats cover all characters.
+Object.assign(OUTFITS, {
+  engineer: { tunic: "#4a4f58", skin: "#f5c9a0", cap: "#6a6a70", hair: "#2a201a" },
+  boss: { tunic: "#6a3c8f", dress: "#6a3c8f", skin: "#f5c9a0", hatx: "tophat", beard: "#d9d6d0", brows: "#d9d6d0", stout: true },
+  rival: { tunic: "#5a4a40", skin: "#8d5524", hatx: "tophat", moustache: "#111111", hair: "#111111" }
+});
