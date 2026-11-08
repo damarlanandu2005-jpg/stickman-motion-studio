@@ -17,3 +17,6 @@ c17 OK 53s
 c16 OK 64s
 c18 OK 42s
 c19 OK 64s
+c12 OK 42s
+c8 OK 42s
+c11 OK 52s
