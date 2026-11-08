@@ -678,11 +678,9 @@ function worldState(S, f) {
   prop_smoothRail.visible = !!S.smoothRail;
   if(S.smoothRail) {
     prop_smoothRail.position.set(0, 0.15, 0);
-    if(S.smoothRail.bend) {
-      prop_smoothRail.position.z = Math.sin(f * 0.5) * 0.02;
-    } else {
-      prop_smoothRail.position.z = 0;
-    }
+    const am = S.smoothRail.amt || 0;                       // heat buckling: the rail pushes sideways and shakes
+    prop_smoothRail.position.z = am * 0.12 + (am > 0 ? Math.sin(f * 0.9) * 0.015 * am : 0);
+    prop_smoothRail.rotation.y = am * 0.12;
   }
 
   prop_train.visible = !!S.train;
@@ -708,7 +706,7 @@ function worldState(S, f) {
 
   prop_coin.visible = !!S.coin;
   if(S.coin) {
-    prop_coin.position.set(0, 0.3, 0.7);
+    prop_coin.position.set(0, S.coin.y == null ? 0.3 : S.coin.y, 0.7); prop_coin.rotation.y = f * 0.3;
     prop_coin.rotation.x = Math.PI/2;
   }
 

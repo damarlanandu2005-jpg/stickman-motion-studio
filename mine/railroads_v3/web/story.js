@@ -39,27 +39,27 @@ export const LIGHTS = {
 export const lightFor = (S, f) => ({ ...LIGHTS[S.light] });
 
 const CAMS = {
-  s1: [{ f: 0, pos: [0, 0.8, 1.5], look: [0, 0.3, 0], fov: 40 }, { f: 89, pos: [0, 0.6, 1.3], look: [0, 0.3, 0], fov: 40 }],
+  s1: [{ f: 0, pos: [1.8,1.1,4.2], look: [0,0.95,-0.4], fov: 42 }, { f: 89, pos: [0.9,1.0,3.0], look: [0,1.05,-0.3], fov: 40 }],
   s2: [{ f: 90, pos: [0, 10, 12], look: [0, 0, -10], fov: 54 }, { f: 218, pos: [0, 12, 15], look: [0, 0, -10], fov: 54 }],
   s3: [{ f: 219, pos: [0, 12, 15], look: [0, 0, -10], fov: 54 }, { f: 297, pos: [0, 12, 15], look: [0, 0, -10], fov: 54 }],
   s4: [{ f: 298, pos: [0, 1.5, 2], look: [0, 1.5, -1.2], fov: 45 }, { f: 352, pos: [0, 1.5, 1], look: [0, 1.5, -1.2], fov: 45 }],
-  s5: [{ f: 353, pos: [0, 1.5, 4.7], look: [0, 0.5, 0.7], fov: 40 }, { f: 360, pos: [0, 1.5, 2.7], look: [0, 0.5, 0.7], fov: 40, ease: 'easeIn' }, { f: 484, pos: [0, 1.5, 2.5], look: [0, 0.5, 0.7], fov: 40 }],
+  s5: [{ f: 353, pos: [0,2.0,5.6], look: [0,1.9,-1], fov: 42 }, { f: 360, pos: [0,2.0,3.9], look: [0,1.95,-1], fov: 40, ease: 'easeIn' }, { f: 484, pos: [0,2.0,3.5], look: [0,1.95,-1], fov: 40 }],
   s6: [{ f: 485, pos: [0, 1.5, 6], look: [0, 1.5, 0], fov: 45 }, { f: 524, pos: [0, 1.5, 6], look: [0, 1.5, 0], fov: 45 }],
   s7: [{ f: 525, pos: [0, 0.5, 2.7], look: [0, 0.8, 0], fov: 40 }, { f: 576, pos: [1.5, 0.5, 2.2], look: [0, 0.8, 0], fov: 40 }],
   s8: [{ f: 577, pos: [0, 1.5, 4], look: [0, 1.5, 0], fov: 45 }, { f: 691, pos: [0, 1.5, 2], look: [0, 1.5, 0], fov: 45 }],
   s9: [{ f: 692, pos: [6, 5, 15], look: [6, 2, 0], fov: 54 }, { f: 747, pos: [6, 4, 10], look: [6, 2, -10], fov: 54 }],
   s10: [{ f: 748, pos: [0, 0.5, 2.0], look: [0, 0.3, 0], fov: 40 }, { f: 823, pos: [0, 0.5, 2.0], look: [0, 0.3, 0], fov: 40 }],
-  s11: [{ f: 824, pos: [0, 1.5, 2], look: [0, 1.2, -0.8], fov: 40 }, { f: 896, pos: [0, 1.2, 0.6], look: [0, 1.2, -0.8], fov: 40 }],
+  s11: [{ f: 824, pos: [0,1.4,1.6], look: [0,1.3,-0.9], fov: 46 }, { f: 896, pos: [0,1.3,0.9], look: [0,1.25,-0.9], fov: 42 }],
   s12: [{ f: 897, pos: [6, 5, 10], look: [6, 0, 0], fov: 54 }, { f: 955, pos: [6, 8, 15], look: [6, 0, 0], fov: 54 }],
-  s13: [{ f: 956, pos: [0, 0.8, 2.0], look: [0, 0.3, 0], fov: 40 }, { f: 1023, pos: [0, 0.8, 2.0], look: [0, 0.3, 0], fov: 40 }],
-  s14: [{ f: 1024, pos: [0, 0.6, 1.2], look: [0, 0.3, 0], fov: 35 }, { f: 1076, pos: [0, 0.6, 0.8], look: [0, 0.3, 0], fov: 35 }],
-  s15: [{ f: 1077, pos: [0, 0.4, 0.6], look: [0, 0.3, 0], fov: 30 }, { f: 1138, pos: [0, 0.4, 0.6], look: [0, 0.3, 0], fov: 30 }],
-  s16: [{ f: 1139, pos: [0, 0.6, 1.2], look: [0, 0.2, 0], fov: 40 }, { f: 1208, pos: [0, 1.5, 2.7], look: [0, 0.5, 0], fov: 40 }],
+  s13: [{ f: 956, pos: [-0.6,0.9,4.2], look: [-0.4,1.0,-1], fov: 46 }, { f: 1023, pos: [-0.3,0.8,3.2], look: [-0.3,1.05,-1], fov: 44 }],
+  s14: [{ f: 1024, pos: [0.9,0.55,3.0], look: [0.3,1.0,-1.2], fov: 48 }, { f: 1076, pos: [0.5,0.45,2.0], look: [0.3,0.95,-1.2], fov: 44 }],
+  s15: [{ f: 1077, pos: [0.4,0.55,2.6], look: [0.1,0.9,-1], fov: 44 }, { f: 1138, pos: [0.15,0.45,1.5], look: [0.1,0.7,-0.5], fov: 38 }],
+  s16: [{ f: 1139, pos: [0,1.0,3.4], look: [0,1.1,-0.4], fov: 40 }, { f: 1208, pos: [0,1.5,4.4], look: [0,1.3,-0.4], fov: 40 }],
   s17: [{ f: 1209, pos: [0, 1.5, 6], look: [0, 1.5, 0], fov: 45 }, { f: 1263, pos: [0, 1.5, 6], look: [0, 1.5, 0], fov: 45 }],
-  s18: [{ f: 1264, pos: [0, 0.8, 2.0], look: [0, 0.3, 0], fov: 40 }, { f: 1357, pos: [0, 0.8, 1.2], look: [0, 0.3, 0], fov: 40 }],
-  s19: [{ f: 1358, pos: [0, 0.6, 0.8], look: [0, 0.3, 0], fov: 35 }, { f: 1418, pos: [0.5, 0.6, 0.6], look: [0, 0.3, 0], fov: 35 }],
+  s18: [{ f: 1264, pos: [-1.2,0.9,3.8], look: [0.2,0.9,-1], fov: 46 }, { f: 1357, pos: [-0.6,0.8,2.8], look: [0.3,0.9,-1], fov: 44 }],
+  s19: [{ f: 1358, pos: [1.2,0.8,3.2], look: [0.2,0.9,-1], fov: 44 }, { f: 1418, pos: [0.6,0.7,2.4], look: [0.3,0.9,-1], fov: 42 }],
   s20: [{ f: 1419, pos: [0, 15, 15], look: [0, 0, -10], fov: 54 }, { f: 1473, pos: [0, 20, 15], look: [0, 0, -10], fov: 54 }],
-  s21: [{ f: 1474, pos: [0, 0.6, 1.2], look: [0, 0.3, 0], fov: 35 }, { f: 1548, pos: [0, 0.6, 0.6], look: [0, 0.3, 0], fov: 35 }],
+  s21: [{ f: 1474, pos: [0.9,0.7,3.4], look: [0.5,1.0,-1.2], fov: 46 }, { f: 1548, pos: [0.5,0.55,2.2], look: [0.5,0.9,-1.2], fov: 42 }],
   s22: [{ f: 1549, pos: [0, 1.5, 4.7], look: [0, 0.5, 0], fov: 40 }, { f: 1556, pos: [0, 0.8, 2.7], look: [0, 0.5, 0], fov: 40, ease: 'easeIn' }, { f: 1655, pos: [0, 0.8, 2.5], look: [0, 0.5, 0], fov: 40 }],
   s23: [{ f: 1656, pos: [6, 8, 15], look: [6, 0, 0], fov: 54 }, { f: 1700, pos: [6, 8, 15], look: [6, 0, 0], fov: 54 }]
 };
@@ -106,7 +106,7 @@ export const worldAt = (f) => {
   }
 
   if (W.env === 'SMOOTH-TRACK' && S.id !== 's22') {
-    W.smoothRail = { bend: S.id === 's19' };
+    W.smoothRail = { bend: S.id === 's19', amt: S.id === 's18' ? ramp(f, 1264, 1357) * 0.4 : (S.id === 's19' ? 0.4 + ramp(f, 1358, 1418) * 0.8 : 0) };
   }
 
   if (S.id === 's9') W.train = { x: 6, z: lerp(0, -30, ramp(f, 692, 747)), ry: Math.PI/2 };
@@ -115,7 +115,7 @@ export const worldAt = (f) => {
   if (S.id === 's23') W.train = { x: 6, z: lerp(-15, -5, ramp(f, 1656, 1680)), ry: Math.PI/2, roll: ramp(f, 1680, 1700) * Math.PI/4 };
 
   if (S.id === 's11') W.newspaper = true;
-  if (S.id === 's15') W.coin = true;
+  if (S.id === 's15') W.coin = { y: lerp(1.2, 0.34, smooth(ramp(f, 1077, 1120))) };
   if (S.id === 's16') W.paper = true;
 
   if (S.id === 's22') W.kinkedRail = { x: 0, z: 0 };
@@ -153,11 +153,29 @@ export const actorsAt = (f, T) => {
     case 's8':
       out.push(R(T, 'rival', { seed: 2, expr: 'proud', L: 'hip', facing: 0, ...idle(f, 2) }, [0, 0, 0], { tint }));
       break;
+    case 's13':
+      out.push(R(T, 'engineer', { seed: 1, expr: 'neutral', L: 'hip', facing: 1, ...idle(f, 1) }, [-0.3, 0, -1.2], { tint }));
+      break;
+    case 's14':
+      out.push(R(T, 'engineer', { seed: 1, expr: 'shock', L: 'point', facing: 1, ...idle(f, 1) }, [0.5, 0, -1.2], { tint }));
+      break;
+    case 's15':
+      out.push(R(T, 'engineer', { seed: 1, expr: 'proud', L: 'hip', facing: 0, ...idle(f, 1) }, [0.2, 0, -1.3], { tint }));
+      break;
+    case 's18':
+      out.push(R(T, 'rival', { seed: 2, expr: 'nervous+sweat2', L: 'temple', facing: 1, ...idle(f, 2) }, [0.4, 0, -1.2], { tint }));
+      break;
+    case 's19':
+      out.push(R(T, 'rival', { seed: 2, expr: 'shock+sweat', L: 'temple', facing: -1, ...idle(f, 2) }, [1.0, 0, -1.4], { tint }));
+      break;
+    case 's21':
+      out.push(R(T, 'engineer', { seed: 1, expr: 'proud', L: 'cross', R: 'cross', facing: 0, ...idle(f, 1) }, [0.6, 0, -1.2], { tint }));
+      break;
     case 's12':
       T.crowd && out.push(FX('crowd', (p) => T.crowd(p, { n: 30, t: f/30, mode: 'stand' }), [6, 0.5, 0], 4, { tint }));
       break;
     case 's16':
-      out.push(R(T, 'boss', { seed: 3, expr: 'grin', L: 'point', facing: 0, ...idle(f, 3) }, [0, 0, -1], { tint }));
+      out.push(R(T, 'boss', { seed: 3, expr: 'grin+sparkle', L: 'point', facing: 0, ...idle(f, 3) }, [0, 0, -1.2], { tint }));
       break;
     case 's17':
       out.push(R(T, 'boss', { seed: 3, expr: 'grin', L: 'hip', facing: 1, ...idle(f, 3) }, [-1.5, 0, 0], { tint }));
@@ -175,11 +193,12 @@ export const fxAt = (f, T) => {
   if (S.id === 's1') out.push(FX('sparks', (p) => T.fxSparkle(p, (f/30)%1, '#ffaa00'), [0, 0.3, 0], 1));
   if (S.id === 's2') out.push(FX('dust', (p) => T.fxMotes(p, (f/30)%1), [0, 5, 0], 10));
   if (S.id === 's5') out.push(FX('steam', (p) => T.fxSmoke(p, (f/30)%1), [0, 2, -1], 2));
+  if (S.id === 's11') out.push(FX('headline', (p) => T.fxText(p, 'CLICKETY', 100, '#ffffff'), [0, 0.5, 0.2], 1.6, { order: 9, tint: '#ffffff' }));
   if (S.id === 's8') out.push(FX('stars', (p) => T.fxSparkle(p, (f/30)%1), [0, 1.5, 0], 2));
   if (S.id === 's10') out.push(FX('dust', (p) => T.fxDust(p, (f/30)%1), [0, 0.5, 0], 2));
-  if (S.id === 's13') out.push(FX('steam', (p) => T.fxSmoke(p, (f/30)%1), [0, 0.5, 0], 1));
-  if (S.id === 's15') out.push(FX('flash', (p) => T.fxGlow(p, (f/30)%1), [0, 0.25, 0], 0.5));
-  if (S.id === 's18') out.push(FX('steam', (p) => T.fxSmoke(p, (f/30)%1), [0, 0.5, 0], 1));
+  if (S.id === 's13') out.push(FX('steam', (p) => T.fxSmoke(p, (f/30)%1), [2.4, 0.3, -1.6], 1.6));
+  if (S.id === 's15') out.push(FX('flash', (p) => T.fxGlow(p, (f/30)%1), [0, 0.3, 0.7], 0.4));
+  if (S.id === 's18') out.push(FX('steam', (p) => T.fxSmoke(p, (f/30)%1), [-2.4, 0.3, -1.6], 1.6));
   if (S.id === 's19') out.push(FX('dust', (p) => T.fxDust(p, (f/30)%1), [0, 0.5, 0], 1));
   if (S.id === 's20') out.push(FX('steam', (p) => T.fxSmoke(p, (f/30)%1), [0, 5, 0], 10));
   if (S.id === 's22') out.push(FX('debris', (p) => T.fxDebris(p, ramp(f, 1549, 1570)), [0, 0.5, 0], 2));
