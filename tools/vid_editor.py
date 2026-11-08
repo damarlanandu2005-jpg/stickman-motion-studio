@@ -29,7 +29,24 @@ def gen_image(prompt, path):
             if "429" in repr(e): time.sleep(20 * (attempt + 1))
             else: break
 
-if stage == "i2v":
+if stage == "upgrade":
+    os.makedirs(os.path.join(OUT, "key_up"), exist_ok=True)
+    def run_u(c):
+        path = os.path.join(OUT, "key_up", c["id"] + ".png")
+        for att in range(6):
+            try:
+                r = client.models.generate_content(model="gemini-2.5-flash-image", contents=[types.Part.from_bytes(data=open(c["image"], "rb").read(), mime_type="image/png"), c["prompt"]],
+                      config=types.GenerateContentConfig(response_modalities=["IMAGE"]))
+                for p_ in r.candidates[0].content.parts:
+                    if getattr(p_, "inline_data", None) and p_.inline_data.data:
+                        open(path, "wb").write(p_.inline_data.data); log(c["id"], "upgrade OK"); return
+                raise RuntimeError("no image")
+            except Exception as e:
+                log(c["id"], "FAIL", repr(e)[:200])
+                if "429" in repr(e): time.sleep(20 * (att + 1))
+                else: time.sleep(3)
+    with ThreadPoolExecutor(2) as ex: list(ex.map(run_u, [c for c in plan["upgrade"] if not only or c["id"] in only]))
+elif stage == "i2v":
     os.makedirs(os.path.join(OUT, "i2v"), exist_ok=True)
     def run_i(c):
         path = os.path.join(OUT, "i2v", c["id"] + ".mp4")

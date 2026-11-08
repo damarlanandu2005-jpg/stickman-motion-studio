@@ -1,0 +1,180 @@
+{
+ "duration": 56.711837,
+ "frames30": 1701,
+ "source": "silence-align (cost 0.89)",
+ "segments": [
+  [
+   0.0,
+   2.67499
+  ],
+  [
+   2.99272,
+   7.02227
+  ],
+  [
+   7.30553,
+   9.66673
+  ],
+  [
+   9.9363,
+   11.5414
+  ],
+  [
+   11.759,
+   15.9145
+  ],
+  [
+   16.1655,
+   17.2782
+  ],
+  [
+   17.5153,
+   18.836
+  ],
+  [
+   19.2356,
+   22.7366
+  ],
+  [
+   23.0648,
+   27.0792
+  ],
+  [
+   27.4613,
+   31.6395
+  ],
+  [
+   31.8676,
+   33.8404
+  ],
+  [
+   34.1276,
+   35.596
+  ],
+  [
+   35.8842,
+   37.5514
+  ],
+  [
+   37.9553,
+   40.0932
+  ],
+  [
+   40.3055,
+   41.8446
+  ],
+  [
+   42.1291,
+   46.9257
+  ],
+  [
+   47.2849,
+   50.1243
+  ],
+  [
+   50.3548,
+   51.3648
+  ],
+  [
+   51.633,
+   56.711837
+  ]
+ ],
+ "phrases": [
+  {
+   "text": "He sawed gaps into a railroad every thirty-nine feet.",
+   "s": 0.0,
+   "e": 2.675
+  },
+  {
+   "text": "See, two companies are racing to build a railroad across a canyon so deep you can't see the bottom.",
+   "s": 2.993,
+   "e": 7.022
+  },
+  {
+   "text": "And whoever finishes first gets the whole country's business.",
+   "s": 7.306,
+   "e": 9.667
+  },
+  {
+   "text": "He's the youngest engineer on the job.",
+   "s": 9.936,
+   "e": 11.541
+  },
+  {
+   "text": "And when his boss sees a finger wide gap between every single rail, his face turns purple.",
+   "s": 11.759,
+   "e": 15.915
+  },
+  {
+   "text": "You're wrecking my railroad.",
+   "s": 16.166,
+   "e": 17.278
+  },
+  {
+   "text": "But he won't close a single one.",
+   "s": 17.515,
+   "e": 18.836
+  },
+  {
+   "text": "The other one lays rails end to end, perfectly smooth, and finishes first.",
+   "s": 19.236,
+   "e": 22.737
+  },
+  {
+   "text": "Their trains glide across the canyon without a sound, while his go clickety clack over every gap.",
+   "s": 23.065,
+   "e": 27.079
+  },
+  {
+   "text": "The newspapers start calling it the Clickety Clack Line, and everyone switches to the quiet trains.",
+   "s": 27.461,
+   "e": 31.64
+  },
+  {
+   "text": "Then summer comes, and something weird happens.",
+   "s": 31.868,
+   "e": 33.84
+  },
+  {
+   "text": "His gaps start shrinking in May.",
+   "s": 34.128,
+   "e": 35.596
+  },
+  {
+   "text": "You can fit a coin in them by July.",
+   "s": 35.884,
+   "e": 37.551
+  },
+  {
+   "text": "Barely a sheet of paper, and his boss is thrilled.",
+   "s": 37.955,
+   "e": 40.093
+  },
+  {
+   "text": "See, even your gaps know you were wrong.",
+   "s": 40.306,
+   "e": 41.845
+  },
+  {
+   "text": "Meanwhile, on the perfect railroad, the rails started groaning in the afternoon sun, pushing against each other like they want out.",
+   "s": 42.129,
+   "e": 46.926
+  },
+  {
+   "text": "On the hottest day anyone can remember. His gaps finally close.",
+   "s": 47.285,
+   "e": 50.124
+  },
+  {
+   "text": "Rail touching rail.",
+   "s": 50.355,
+   "e": 51.365
+  },
+  {
+   "text": "Halfway across the canyon, the perfect railroad kicks sideways like a snake, right as a train rolls onto it.",
+   "s": 51.633,
+   "e": 56.712
+  }
+ ]
+}
