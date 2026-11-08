@@ -1,0 +1,26 @@
+[
+ {
+  "shot": 1,
+  "model": "veo-3.1-fast-generate-001",
+  "seconds": 32,
+  "kb": 4317
+ },
+ {
+  "shot": 2,
+  "model": "veo-3.1-fast-generate-001",
+  "seconds": 31,
+  "kb": 1202
+ },
+ {
+  "shot": 3,
+  "model": "veo-3.1-fast-generate-001",
+  "seconds": 32,
+  "kb": 1413
+ },
+ {
+  "shot": 4,
+  "model": "veo-3.1-fast-generate-001",
+  "seconds": 32,
+  "kb": 2079
+ }
+]

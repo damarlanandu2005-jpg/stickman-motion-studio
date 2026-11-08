@@ -1,0 +1,6 @@
+location: us-central1 | models seen: 130
+media models: ['publishers/google/models/imageclassification-proprietary-vit', 'publishers/google/models/imageobjectdetection-proprietary-spinenet', 'publishers/google/models/imageclassification-proprietary-efficientnet', 'publishers/google/models/imagewatermarkdetector', 'publishers/google/models/automl-vision-image-classification', 'publishers/google/models/automl-vision-image-object-detection', 'publishers/google/models/video-text-detection', 'publishers/google/models/video-speech-transcription', 'publishers/google/models/image-segmentation-001', 'publishers/google/models/gemini-2.5-flash-image', 'publishers/google/models/earth-ai-imagery-owlvit-eap-10-2025', 'publishers/google/models/earth-ai-imagery-mammut-eap-10-2025', 'publishers/google/models/veo-3.1-generate-001', 'publishers/google/models/veo-3.1-fast-generate-001', 'publishers/google/models/gemini-3.1-flash-image-preview', 'publishers/google/models/veo-3.1-lite-generate-001', 'publishers/google/models/gemini-3.1-flash-image', 'publishers/google/models/gemini-3-pro-image', 'publishers/google/models/gemini-3.1-flash-lite-image']
+shot 1: OK model=veo-3.1-fast-generate-001 4317 KB 32s
+shot 2: OK model=veo-3.1-fast-generate-001 1202 KB 31s
+shot 3: OK model=veo-3.1-fast-generate-001 1413 KB 32s
+shot 4: OK model=veo-3.1-fast-generate-001 2079 KB 32s
