@@ -2,7 +2,7 @@ name: Feasibility test 2 - consistency with reference images
 on:
   push:
     branches: [gemini-cartoon]
-    paths: ['.github/workflows/video-test.yml']
+    paths: ['.github/workflows/video-test2.yml']
   workflow_dispatch:
     inputs:
       out:
