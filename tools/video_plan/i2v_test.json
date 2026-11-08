@@ -1,0 +1,24 @@
+{
+ "i2v": [
+  {
+   "id": "i1",
+   "image": "results_video_ed/i2v_test/in/v2_t1.png",
+   "prompt": "Keep EXACTLY the same composition, camera position, characters, costumes and layout as the first frame. Do not add or remove characters. Upgrade it to rich, finished stylised 3D toon quality: textured rock, steel, wood and gravel, soft warm golden-hour light, depth of field. Characters stay flat 2D bean-head cartoon figures with thick outlines and keep their mouths closed. Slow smooth camera move, subtle natural motion. No text, no music, no speech. Shot: close-up of a steel rail joint with bolted plates on wooden sleepers and gravel; camera slowly pushes along the rail."
+  },
+  {
+   "id": "i2",
+   "image": "results_video_ed/i2v_test/in/v2_t5.png",
+   "prompt": "Keep EXACTLY the same composition, camera position, characters, costumes and layout as the first frame. Do not add or remove characters. Upgrade it to rich, finished stylised 3D toon quality: textured rock, steel, wood and gravel, soft warm golden-hour light, depth of field. Characters stay flat 2D bean-head cartoon figures with thick outlines and keep their mouths closed. Slow smooth camera move, subtle natural motion. No text, no music, no speech. Shot: two steel truss railroad bridges side by side stretching across a canyon; camera glides forward between them."
+  },
+  {
+   "id": "i3",
+   "image": "results_video_ed/i2v_test/in/v2_t9.png",
+   "prompt": "Keep EXACTLY the same composition, camera position, characters, costumes and layout as the first frame. Do not add or remove characters. Upgrade it to rich, finished stylised 3D toon quality: textured rock, steel, wood and gravel, soft warm golden-hour light, depth of field. Characters stay flat 2D bean-head cartoon figures with thick outlines and keep their mouths closed. Slow smooth camera move, subtle natural motion. No text, no music, no speech. Shot: the white-bearded boss in a black top hat stands in the construction office and smiles; slight head movement and blink."
+  },
+  {
+   "id": "i4",
+   "image": "results_video_ed/i2v_test/in/v2_t19.png",
+   "prompt": "Keep EXACTLY the same composition, camera position, characters, costumes and layout as the first frame. Do not add or remove characters. Upgrade it to rich, finished stylised 3D toon quality: textured rock, steel, wood and gravel, soft warm golden-hour light, depth of field. Characters stay flat 2D bean-head cartoon figures with thick outlines and keep their mouths closed. Slow smooth camera move, subtle natural motion. No text, no music, no speech. Shot: the young engineer in an orange cap with arms crossed stands on the track and frowns; slight breathing, blink and small head tilt."
+  }
+ ]
+}

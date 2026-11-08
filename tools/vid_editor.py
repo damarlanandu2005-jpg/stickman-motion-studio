@@ -29,7 +29,26 @@ def gen_image(prompt, path):
             if "429" in repr(e): time.sleep(20 * (attempt + 1))
             else: break
 
-if stage == "refs":
+if stage == "i2v":
+    os.makedirs(os.path.join(OUT, "i2v"), exist_ok=True)
+    def run_i(c):
+        path = os.path.join(OUT, "i2v", c["id"] + ".mp4")
+        for att in range(3):
+            t0 = time.time()
+            try:
+                img = types.Image(image_bytes=open(c["image"], "rb").read(), mime_type="image/png")
+                op = client.models.generate_videos(model="veo-3.1-generate-001", prompt=c["prompt"], image=img, config=types.GenerateVideosConfig(aspect_ratio="9:16", number_of_videos=1, duration_seconds=c.get("dur", 6), generate_audio=False))
+                while not op.done:
+                    time.sleep(10); op = client.operations.get(op)
+                    if time.time() - t0 > 780: raise TimeoutError("over 13 min")
+                r = op.response
+                if not r or not r.generated_videos: raise RuntimeError("no video: " + str(getattr(op, "error", None) or r)[:300])
+                open(path, "wb").write(r.generated_videos[0].video.video_bytes); log(c["id"], "OK", f"{time.time()-t0:.0f}s"); return
+            except Exception as e:
+                log(c["id"], "FAIL", repr(e)[:300])
+                if "429" in repr(e): time.sleep(60)
+    with ThreadPoolExecutor(3) as ex: list(ex.map(run_i, [c for c in plan["i2v"] if not only or c["id"] in only]))
+elif stage == "refs":
     os.makedirs(os.path.join(OUT, "refs"), exist_ok=True)
     jobs = [(plan["refs"][k] + " Warm golden light.", os.path.join(OUT, "refs", f"{k}_{i}.png")) for k in plan["refs"] if not only or k in only for i in (1, 2, 3)]
     with ThreadPoolExecutor(2) as ex: list(ex.map(lambda j: gen_image(*j), jobs))
