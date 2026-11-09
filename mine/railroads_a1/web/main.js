@@ -22,7 +22,39 @@ const rx = (a) => a * Math.PI / 180;
 
 // ---------- materials ----------
 const grad = (() => { const d = new Uint8Array([90, 90, 90, 255, 255, 255, 255, 255]); const t = new THREE.DataTexture(d, 2, 1); t.minFilter = t.magFilter = THREE.NearestFilter; t.needsUpdate = true; return t; })();
-const toon = (opts) => new THREE.MeshToonMaterial({ gradientMap: grad, ...opts });
+// ---- two-tone lighting ported from mromidev/templates/bridge/shade.ts (shadow-aware lit/shade colour mix, cool shade, lift)
+const TONE = { uLitCol: { value: new THREE.Vector3(1.2, 1.15, 1.05) }, uShadeCol: { value: new THREE.Vector3(0.5, 0.5, 0.66) }, uShadeLift: { value: new THREE.Vector3(0.03, 0.04, 0.08) }, uLambert: { value: 0.3 }, uSideK: { value: 0.88 }, uTerm: { value: 0.12 }, uSat: { value: 1 } };
+const LFB = THREE.ShaderChunk.lights_fragment_begin
+  .replace('directLight.color *= ( directLight.visible && receiveShadow ) ? getShadow( directionalShadowMap[ i ]', 'sunVis = ( directLight.visible && receiveShadow ) ? getShadow( directionalShadowMap[ i ]')
+  .replace('vDirectionalShadowCoord[ i ] ) : 1.0;', 'vDirectionalShadowCoord[ i ] ) : 1.0;\n\t\tdirectLight.color *= sunVis;');
+if (!LFB.includes('directLight.color *= sunVis')) throw new Error('twoTone: three lights_fragment_begin changed');
+const TWO_TONE = `
+#if NUM_DIR_LIGHTS > 0
+{
+  vec3 sunV = directionalLights[ 0 ].direction;
+  vec3 upV = normalize( ( viewMatrix * vec4( 0.0, 1.0, 0.0, 0.0 ) ).xyz );
+  float ndl = max( dot( geometryNormal, sunV ), 0.0 );
+  float sunTerm = sunVis * smoothstep( 0.0, uTerm, ndl );
+  float skyK = mix( uSideK, 1.0, 0.5 + 0.5 * dot( geometryNormal, upV ) );
+  vec3 lit = uLitCol * mix( 1.0, ndl, uLambert );
+  vec3 alb = max( mix( vec3( dot( diffuseColor.rgb, vec3( 0.2126, 0.7152, 0.0722 ) ) ), diffuseColor.rgb, uSat ), 0.0 );
+  reflectedLight.directDiffuse = alb * mix( uShadeCol, lit, sunTerm ) * skyK + uShadeLift * ( 1.0 - sunTerm ) * alb;
+  reflectedLight.indirectDiffuse = vec3( 0.0 );
+}
+#endif
+`;
+const twoTone = (m) => {
+  m.onBeforeCompile = (sh) => {
+    Object.assign(sh.uniforms, TONE);
+    sh.fragmentShader = sh.fragmentShader
+      .replace('#include <common>', '#include <common>\nuniform vec3 uLitCol; uniform vec3 uShadeCol; uniform vec3 uShadeLift; uniform float uLambert; uniform float uSideK; uniform float uTerm; uniform float uSat;')
+      .replace('#include <lights_fragment_begin>', 'float sunVis = 1.0;\n' + LFB)
+      .replace('#include <lights_fragment_end>', '#include <lights_fragment_end>\n' + TWO_TONE);
+  };
+  m.customProgramCacheKey = () => 'twoToneA1';
+  return m;
+};
+const toon = (opts) => twoTone(new THREE.MeshLambertMaterial(opts));
 const texM = (c, rx_ = 1, ry_ = 1, color = '#ffffff') => toon({ map: P.tex(c, rx_, ry_), color });
 const M = {
   plank: texM(P.planks(1), 1, 6), beam: texM(P.beam(2), 1, 2), beamDark: texM(P.beam(3, [28, 36, 30]), 1, 2),
@@ -134,11 +166,17 @@ const spk = (base, cols, n, rmin, rmax, seed, edge) => canvasTex(512, 512, (g, w
 });
 const sandTex = spk('#d6924f', ['#e6a966', '#c97f3f', '#bf7338', '#eeb97c', '#a85f30'], 2200, 1.5, 6, 11);
 const gravelTex = spk('#7a6d66', ['#a99c90', '#8b6f66', '#c3ab97', '#5d534e', '#b9877b', '#98a0a8', '#d2c2b0'], 520, 8, 18, 12, '#352a26');
-const strataTex = canvasTex(256, 512, (g, w, h) => {
+const strataTex = canvasTex(512, 512, (g, w, h) => {
   const r = P.rng(21), pal = ['#b2452a', '#d2683a', '#f0a05a', '#9a3a28', '#e08a50', '#7a3624', '#f4c08a', '#c85a4a', '#f7d9a8']; let y = 0;
-  while (y < h) { const bh = 3 + r() * 20; g.fillStyle = pal[Math.floor(r() * pal.length)]; g.fillRect(0, y, w, bh); g.fillStyle = 'rgba(40,12,6,.42)'; g.fillRect(0, y, w, 2); g.fillStyle = 'rgba(255,230,180,.28)'; g.fillRect(0, y + 2, w, 1.5); y += bh; }
-  for (let i = 0; i < 90; i++) { g.fillStyle = 'rgba(60,20,10,.22)'; const x = r() * w; g.fillRect(x, 0, 1 + r() * 2, h); }   // vertical erosion streaks
-  for (let i = 0; i < 1800; i++) { g.fillStyle = r() < 0.5 ? 'rgba(255,225,170,.22)' : 'rgba(50,16,8,.28)'; g.fillRect(r() * w, r() * h, 2 + r() * 16, 1 + r() * 2); }
+  const wob = (x, ph, am) => Math.sin(x * 0.013 + ph) * am + Math.sin(x * 0.037 + ph * 2.3) * am * 0.4;
+  while (y < h + 30) {
+    const bh = 5 + r() * 24, ph = r() * 6, am = 1.5 + r() * 4; g.fillStyle = pal[Math.floor(r() * pal.length)];
+    g.beginPath(); g.moveTo(0, y + wob(0, ph, am)); for (let x = 0; x <= w; x += 8) g.lineTo(x, y + wob(x, ph, am)); g.lineTo(w, h + 40); g.lineTo(0, h + 40); g.closePath(); g.fill();
+    g.strokeStyle = 'rgba(45,14,8,.5)'; g.lineWidth = 2; g.beginPath(); for (let x = 0; x <= w; x += 8) g.lineTo(x, y + wob(x, ph, am)); g.stroke();   // dark crevice under each band
+    g.strokeStyle = 'rgba(255,225,170,.35)'; g.lineWidth = 1.5; g.beginPath(); for (let x = 0; x <= w; x += 8) g.lineTo(x, y + 3 + wob(x, ph, am)); g.stroke();
+    y += bh;
+  }
+  for (let i = 0; i < 700; i++) { g.fillStyle = r() < 0.5 ? 'rgba(255,225,170,.18)' : 'rgba(50,16,8,.24)'; g.beginPath(); g.ellipse(r() * w, r() * h, 3 + r() * 14, 1 + r() * 2.2, 0, 0, TAU); g.fill(); }
 });
 const woodTex = canvasTex(256, 256, (g, w, h) => {
   const r = P.rng(31); g.fillStyle = '#6a4a2e'; g.fillRect(0, 0, w, h);
@@ -156,7 +194,7 @@ const MT = {
 // rails that heat up: a head and a body material per track, colour set per frame (steel > purple > pink > orange > yellow-white)
 const HEAT = ['#8d9199', '#7a46c8', '#e0589a', '#ff9b3d', '#ffe27a'].map((c) => new THREE.Color(c));
 const heatCol = (h, out) => { const k = Math.max(0, Math.min(0.9999, h)) * (HEAT.length - 1), i = Math.floor(k); return out.copy(HEAT[i]).lerp(HEAT[i + 1], k - i); };
-const mkRailMats = () => ({ head: new THREE.MeshToonMaterial({ gradientMap: grad, color: '#c6cbd3', emissive: '#000000' }), body: new THREE.MeshToonMaterial({ gradientMap: grad, color: '#7f848c', emissive: '#000000' }) });
+const mkRailMats = () => ({ head: toon({ color: '#c6cbd3', emissive: '#000000' }), body: toon({ color: '#7f848c', emissive: '#000000' }) });
 const RAILS = { R: mkRailMats(), L: mkRailMats() };
 const tmpC = new THREE.Color();
 const setHeat = (set, h) => { heatCol(h, tmpC); set.head.color.set('#c6cbd3').lerp(tmpC, Math.min(1, h * 1.6)); set.head.emissive.copy(tmpC).multiplyScalar(h > 0.02 ? 0.55 * Math.min(1, h * 1.5) : 0); set.body.color.set('#7f848c').lerp(tmpC, Math.min(1, h * 1.3)); set.body.emissive.copy(tmpC).multiplyScalar(0.4 * Math.min(1, h * 1.4)); };
@@ -529,6 +567,7 @@ dofScene.children[0].material.toneMapped = false;
 // ---------- per-frame state ----------
 const tmpV = new THREE.Vector3();
 function applyLight(L, f) {
+  if (L.lit) { TONE.uLitCol.value.fromArray(L.lit); TONE.uShadeCol.value.fromArray(L.shade); TONE.uShadeLift.value.fromArray(L.lift); TONE.uLambert.value = L.lambert ?? 0.3; TONE.uSideK.value = L.sideK ?? 0.88; TONE.uTerm.value = L.term ?? 0.12; TONE.uSat.value = L.msat ?? 1; }
   hemi.color.set(L.sky); hemi.groundColor.set(L.ground); hemi.intensity = L.hemi;
   sun.color.set(L.sun); sun.intensity = L.sunI;
   scene.fog.color.set(L.fog); scene.fog.near = L.fogNear; scene.fog.far = L.fogFar;

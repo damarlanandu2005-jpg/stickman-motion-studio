@@ -19,9 +19,9 @@ const CAM = {
   c2: fl(90, 218, [2.6, 2.0, 17], [1, -3, -40], 56, [0.8, 5.8, 10], [0, -9, -46], 58, [[1.6, 3.6, 13]]),
   c3: fl(219, 297, [0, 1.5, 5], [0, 1.25, -1], 46, [0.3, 1.45, 3.2], [0, 1.4, -1], 40),
   c4: fl(298, 352, [3.0, 1.3, 26], [4.5, 1.35, 22], 38, [6.2, 1.45, 25.2], [4.5, 1.4, 22], 36, [[4.6, 1.3, 26.8]]),
-  c5: fl(353, 484, [4.6, 0.45, 24.6], [4.1, 0.3, 20.0], 32, [3.6, 1.45, 24.2], [3.3, 1.5, 20.8], 36, [[3.9, 0.7, 23.5]]),
-  c6: fl(485, 524, [7.0, 1.5, 26.5], [4.6, 1.35, 19.5], 40, [5.5, 1.4, 25.0], [4.3, 1.4, 19.5], 36),
-  c7: fl(525, 576, [5.9, 1.35, 23.2], [5.9, 1.4, 19.5], 34, [5.6, 1.4, 22.4], [5.9, 1.4, 19.5], 32),
+  c5: fl(353, 484, [5.2, 0.8, 30.5], [3.5, 1.0, 20.8], 36, [4.4, 1.3, 29.0], [3.4, 1.1, 20.8], 36, [[4.8, 1.0, 29.8]]),
+  c6: fl(485, 524, [4.4, 1.1, 30.0], [4.4, 1.2, 19.5], 38, [4.4, 1.2, 28.5], [4.4, 1.2, 19.5], 38),
+  c7: fl(525, 576, [4.6, 0.9, 29.0], [5.9, 1.1, 19.5], 36, [5.2, 1.2, 28.0], [5.9, 1.1, 19.5], 36),
   c8: fl(577, 691, [-3.8, 0.5, 34], [-4.5, 0.35, 24], 40, [-4.4, 0.9, 6], [-4.5, 0.3, -10], 42, [[-4.0, 0.55, 20]]),
   c9: fl(692, 823, [0.5, 7.5, 31], [-4.5, 1, -12], 48, [3.5, 10.5, 25], [-2.5, 0, -30], 50, [[2.0, 9.0, 28]]),
   c10: fl(824, 955, [0.7, 1.45, 1.8], [-0.1, 1.3, -3.6], 40, [0.1, 1.5, 0.6], [-0.1, 1.3, -3.6], 36),
@@ -65,9 +65,9 @@ export const dofAt = (f) => {   // soft foreground / background on the close-ups
 
 // ---- lights
 export const LIGHTS = {
-  day: { az: 120, el: 52, sky: '#bcd6f0', ground: '#c99a62', hemi: 1.1, sun: '#fff0d8', sunI: 2.5, fog: '#d8c0b8', fogNear: 60, fogFar: 700, skyTop: '#2a62cc', skyHor: '#a8cdf4', sat: 1.12, vig: 0.2, shadowExt: 30 },
-  golden: { az: 60, el: 11, sky: '#e3a07c', ground: '#9a5c3a', hemi: 0.95, sun: '#ffb050', sunI: 3.1, fog: '#f0a070', fogNear: 28, fogFar: 240, skyTop: '#6e5aa8', skyHor: '#ffa860', sunDisc: '#fff0c8', sunSize: 0.004, sat: 1.18, gain: '#fff0dc', vig: 0.28, shadowExt: 30 },
-  indoor: { az: 160, el: 35, sky: '#5a5a5a', ground: '#4a4a4a', hemi: 0.9, sun: '#ffeedd', sunI: 1.6, fog: '#2a2a2a', fogNear: 20, fogFar: 100, skyTop: '#222222', skyHor: '#333333', sat: 1.1, vig: 0.4, shadowExt: 15 }
+  day: { lit: [1.25, 1.18, 1.05], shade: [0.46, 0.46, 0.64], lift: [0.03, 0.05, 0.1], az: 120, el: 52, sky: '#bcd6f0', ground: '#c99a62', hemi: 1.1, sun: '#fff0d8', sunI: 2.5, fog: '#d8c0b8', fogNear: 60, fogFar: 700, skyTop: '#2a62cc', skyHor: '#a8cdf4', sat: 1.12, vig: 0.2, shadowExt: 30 },
+  golden: { lit: [1.4, 0.82, 0.42], shade: [0.3, 0.3, 0.52], lift: [0.04, 0.05, 0.14], az: 60, el: 11, sky: '#e3a07c', ground: '#9a5c3a', hemi: 0.95, sun: '#ffb050', sunI: 3.1, fog: '#f0a070', fogNear: 28, fogFar: 240, skyTop: '#6e5aa8', skyHor: '#ffa860', sunDisc: '#fff0c8', sunSize: 0.004, sat: 1.18, gain: '#fff0dc', vig: 0.28, shadowExt: 30 },
+  indoor: { lit: [1.1, 1.05, 0.95], shade: [0.5, 0.5, 0.6], lift: [0.04, 0.04, 0.06], az: 160, el: 35, sky: '#5a5a5a', ground: '#4a4a4a', hemi: 0.9, sun: '#ffeedd', sunI: 1.6, fog: '#2a2a2a', fogNear: 20, fogFar: 100, skyTop: '#222222', skyHor: '#333333', sat: 1.1, vig: 0.4, shadowExt: 15 }
 };
 export const lightFor = (S, f) => ({ ...LIGHTS[S.light] });
 
@@ -97,8 +97,8 @@ export const STATE = (f, S) => {
 // ov = outfit overrides (colours, beard...): the kit only reads these from the outfit object, so the outfit is copied and changed
 const R = (T, who, o, pos, extra = {}) => { const { ov = {}, ...op } = o; return { key: who + JSON.stringify(o), draw: (p) => T.romanFront(p, { ...T.OUTFITS[who], ...ov }, op), x: pos[0], y: pos[1], z: pos[2], ...extra }; };
 const FX = (key, draw, pos, s, extra = {}) => ({ key, draw, x: pos[0], y: pos[1], z: pos[2], s, blob: false, shadow: false, order: 5, ...extra });
-const ENG = { who: 'worker1', o: { ov: { moustache: undefined, cap: '#c2733a' } } };
-const BOSS = { who: 'councilman', o: { ov: { tunic: '#7a2a2a', dress: '#7a2a2a' } } };
+const ENG = { who: 'worker1', o: { ov: { moustache: undefined, cap: '#c2733a', tunic: '#2a9a8a' } } };
+const BOSS = { who: 'councilman', o: { ov: { tunic: '#c9a02a', dress: null } } };
 const RIVAL = { who: 'council2', o: { ov: { skin: '#8c5a35', beard: '#111111', brows: '#111111', moustache: undefined, tunic: '#2c5a4a', dress: undefined } } };
 const mix = (a, b, t) => { const p = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16)), A = p(a), B = p(b); return '#' + A.map((v, i) => Math.round(lerp(v, B[i], t)).toString(16).padStart(2, '0')).join(''); };
 const purple = (t) => mix('#f5c9a0', '#8d54c8', Math.round(clamp(t) * 6) / 6);   // face turns purple in 6 steps (cards are cached per step)
