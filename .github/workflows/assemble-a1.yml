@@ -1,0 +1,39 @@
+name: Assemble railroads_a1 video from rendered frames
+on:
+  push:
+    branches: [gemini-cartoon]
+    paths: ['.github/workflows/assemble-a1.yml']
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: "render-mine run id holding frames-* artifacts"
+permissions:
+  contents: write
+  actions: read
+jobs:
+  asm:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: frames-*
+          path: frames
+          merge-multiple: true
+          run-id: ${{ github.event.inputs.run_id }}
+          github-token: ${{ github.token }}
+      - name: Join frames + captions + audio
+        run: |
+          ls frames | wc -l
+          mkdir -p out
+          ffmpeg -loglevel error -y -framerate 30 -i frames/f%04d.jpg -i tools/a1_assets/audio.m4a \
+            -vf "scale=720:1280:flags=lanczos,subtitles=tools/a1_assets/cap.ass,format=yuv420p" \
+            -c:v libx264 -preset medium -crf 20 -c:a copy -shortest out/railroads_a1.mp4
+          ls -la out
+      - name: Publish
+        run: |
+          D=results_claude/railroads_a1; mkdir -p $D; cp out/railroads_a1.mp4 $D/
+          git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add $D; git commit -q -m "railroads_a1 video, run ${{ github.run_id }} [skip ci]" || exit 0
+          for T in 1 2 3; do git pull -q --rebase -X theirs origin gemini-cartoon && git push -q origin HEAD:gemini-cartoon && break; sleep 10; done
