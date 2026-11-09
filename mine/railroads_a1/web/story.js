@@ -16,12 +16,12 @@ const fl = (a, b, p0, l0, f0, p1, l1, f1, via = null, ease = 'easeOut') => [{ f:
 const RX = 4.5, LX = -4.5, G = 0.72, JZ = 32;      // right (his) track x, left (perfect) track x, half gauge, the joint the close-ups look at
 const CAM = {
   c1: fl(0, 89, [6.4, 0.75, 34.2], [5.22, 0.45, 32], 36, [7.2, 1.6, 35.8], [5.0, 0.5, 31.6], 34, [[6.6, 1.0, 35.0]]),
-  c2: fl(90, 218, [2.6, 2.0, 17], [1, -3, -40], 56, [0.8, 5.8, 10], [0, -9, -46], 58, [[1.6, 3.6, 13]]),
+  c2: fl(90, 218, [-4.5, 4.2, 14], [3.0, -3.5, -22], 52, [-2.0, 6.5, 9], [4.2, -6, -30], 54, [[-3.5, 5.0, 11.5]]),
   c3: fl(219, 297, [0, 1.5, 5], [0, 1.25, -1], 46, [0.3, 1.45, 3.2], [0, 1.4, -1], 40),
   c4: fl(298, 352, [3.0, 1.3, 26], [4.5, 1.35, 22], 38, [6.2, 1.45, 25.2], [4.5, 1.4, 22], 36, [[4.6, 1.3, 26.8]]),
-  c5: fl(353, 484, [5.2, 0.8, 30.5], [3.5, 1.0, 20.8], 36, [4.4, 1.3, 29.0], [3.4, 1.1, 20.8], 36, [[4.8, 1.0, 29.8]]),
-  c6: fl(485, 524, [4.4, 1.1, 30.0], [4.4, 1.2, 19.5], 38, [4.4, 1.2, 28.5], [4.4, 1.2, 19.5], 38),
-  c7: fl(525, 576, [4.6, 0.9, 29.0], [5.9, 1.1, 19.5], 36, [5.2, 1.2, 28.0], [5.9, 1.1, 19.5], 36),
+  c5: fl(353, 484, [4.9, 0.55, 26.0], [3.4, 1.25, 20.8], 36, [4.3, 0.7, 25.2], [3.4, 1.3, 20.8], 36, [[4.6, 0.6, 25.6]]),
+  c6: fl(485, 524, [4.5, 0.6, 27.0], [4.5, 1.2, 19.5], 36, [4.5, 0.7, 26.2], [4.5, 1.25, 19.5], 36),
+  c7: fl(525, 576, [4.7, 0.55, 25.2], [5.9, 1.2, 19.5], 36, [5.1, 0.7, 24.5], [5.9, 1.25, 19.5], 36),
   c8: fl(577, 691, [-3.8, 0.5, 34], [-4.5, 0.35, 24], 40, [-4.4, 0.9, 6], [-4.5, 0.3, -10], 42, [[-4.0, 0.55, 20]]),
   c9: fl(692, 823, [0.5, 7.5, 31], [-4.5, 1, -12], 48, [3.5, 10.5, 25], [-2.5, 0, -30], 50, [[2.0, 9.0, 28]]),
   c10: fl(824, 955, [0.7, 1.45, 1.8], [-0.1, 1.3, -3.6], 40, [0.1, 1.5, 0.6], [-0.1, 1.3, -3.6], 36),
@@ -66,7 +66,7 @@ export const dofAt = (f) => {   // soft foreground / background on the close-ups
 // ---- lights
 export const LIGHTS = {
   day: { lit: [1.25, 1.18, 1.05], shade: [0.46, 0.46, 0.64], lift: [0.03, 0.05, 0.1], az: 120, el: 52, sky: '#bcd6f0', ground: '#c99a62', hemi: 1.1, sun: '#fff0d8', sunI: 2.5, fog: '#d8c0b8', fogNear: 60, fogFar: 700, skyTop: '#2a62cc', skyHor: '#a8cdf4', sat: 1.12, vig: 0.2, shadowExt: 30 },
-  golden: { lit: [1.4, 0.82, 0.42], shade: [0.3, 0.3, 0.52], lift: [0.04, 0.05, 0.14], az: 60, el: 11, sky: '#e3a07c', ground: '#9a5c3a', hemi: 0.95, sun: '#ffb050', sunI: 3.1, fog: '#f0a070', fogNear: 28, fogFar: 240, skyTop: '#6e5aa8', skyHor: '#ffa860', sunDisc: '#fff0c8', sunSize: 0.004, sat: 1.18, gain: '#fff0dc', vig: 0.28, shadowExt: 30 },
+  golden: { lit: [1.4, 0.82, 0.42], shade: [0.3, 0.3, 0.52], lift: [0.04, 0.05, 0.14], az: 60, el: 11, sky: '#e3a07c', ground: '#9a5c3a', hemi: 0.95, sun: '#ffb050', sunI: 3.1, fog: '#f0a070', fogNear: 28, fogFar: 240, skyTop: '#6e5aa8', skyHor: '#ffa860', sunDisc: '#fff0c8', sunSize: 0.012, sat: 1.18, gain: '#fff0dc', vig: 0.28, shadowExt: 30 },
   indoor: { lit: [1.1, 1.05, 0.95], shade: [0.5, 0.5, 0.6], lift: [0.04, 0.04, 0.06], az: 160, el: 35, sky: '#5a5a5a', ground: '#4a4a4a', hemi: 0.9, sun: '#ffeedd', sunI: 1.6, fog: '#2a2a2a', fogNear: 20, fogFar: 100, skyTop: '#222222', skyHor: '#333333', sat: 1.1, vig: 0.4, shadowExt: 15 }
 };
 export const lightFor = (S, f) => ({ ...LIGHTS[S.light] });
@@ -88,6 +88,7 @@ export const STATE = (f, S) => {
   o.heatR = h;
   o.heatL = f < 1264 ? 0 : f < 1419 ? lerp(0.18, 0.72, ss(1264, 1418, f)) : lerp(0.72, 1, ss(1419, 1700, f));
   o.buckle = f < 1300 ? 0 : f < 1549 ? 0.1 * ss(1300, 1548, f) : lerp(0.1, 1, Math.pow(ss(1549, 1660, f), 1.5));
+  if (id === 'c2') o.trainR = 30 - (f - 90) * 0.55;
   if (id === 'c9') { if (f >= 692) o.trainL = 40 - (f - 692) * 0.66; if (f >= 770) o.trainR = 52 - (f - 770) * 0.52; }
   if (id === 'c19') o.trainL = 36 - (f - 1549) * 0.42;
   return o;
@@ -110,8 +111,8 @@ export const actorsAt = (f, T) => {
   if (id === 'c4') out.push(R(T, ENG.who, { ...ENG.o, expr: 'proud', L: 'hip', R: 'hang', facing: 0, blink: blinkAt(f, 1), ...idle(f, 1) }, [RX, 0, 22]));
   if (id === 'c5') out.push(R(T, BOSS.who, { ...BOSS.o, ov: { ...BOSS.o.ov, skin: purple(ss(430, 484, f)) }, expr: f < 430 ? 'shock' : 'angry+vein', L: 'point', R: 'hang', facing: 0, look: 0.4, blink: blinkAt(f, 2), ...idle(f, 2) }, [3.3, 0, 20.8]));
   if (id === 'c6') {
-    out.push(R(T, BOSS.who, { ...BOSS.o, ov: { ...BOSS.o.ov, skin: purple(1) }, expr: 'angry+vein', L: 'point', R: 'hang', facing: 1, blink: blinkAt(f, 2), ...idle(f, 2) }, [3.0, 0, 19.5]));
-    out.push(R(T, ENG.who, { ...ENG.o, expr: 'neutral', L: 'hang', R: 'hang', facing: -1, blink: blinkAt(f, 1), ...idle(f, 1) }, [5.9, 0, 19.5]));
+    out.push(R(T, BOSS.who, { ...BOSS.o, ov: { ...BOSS.o.ov, skin: purple(1) }, expr: 'angry+vein', L: 'point', R: 'hang', facing: 1, blink: blinkAt(f, 2), ...idle(f, 2) }, [3.9, 0, 19.5]));
+    out.push(R(T, ENG.who, { ...ENG.o, expr: 'neutral', L: 'hang', R: 'hang', facing: -1, blink: blinkAt(f, 1), ...idle(f, 1) }, [5.1, 0, 19.5]));
   }
   if (id === 'c7') out.push(R(T, ENG.who, { ...ENG.o, expr: 'stubborn', L: 'cross', R: 'cross', facing: 0, blink: blinkAt(f, 1), ...idle(f, 1) }, [5.9, 0, 19.5]));
   if (id === 'c8') out.push(R(T, RIVAL.who, { ...RIVAL.o, expr: 'proud', L: 'point', R: 'hang', facing: 0, look: 0.3, blink: blinkAt(f, 3), ...idle(f, 3) }, [-2.7, 0, 20]));
@@ -130,6 +131,7 @@ export const fxAt = (f, T) => {
   const S = shotAt(f), out = [], id = S.id, st = STATE(f, S);
   if (id === 'c2') out.push(FX('crowd', (p) => T.crowd(p, { n: 10, mode: 'stand' }), [1.0, 0, 18.5], 1));
   if (id === 'c1' && st.saw !== null && f > 20) out.push(FX('sp', (p) => T.fxDebris(p, ((f % 9) / 9)), [RX + G + 0.1, 0.65, JZ], 0.25));
+  if (id === 'c2' && st.trainR !== null) out.push(FX('smokeA', (p) => T.fxSmoke(p, (f % 33) / 33), [RX, 4.6 + ((f % 33) / 33) * 1.4, st.trainR - 3.2], 2.4));
   if (id === 'c9' && st.trainL !== null) out.push(FX('smoke', (p) => T.fxSmoke(p, (f % 40) / 40), [LX, 4.6 + ((f % 40) / 40) * 1.5, st.trainL - 3.2], 2.2));
   if (id === 'c9' && st.trainR !== null) out.push(FX('smoke2', (p) => T.fxSmoke(p, (f % 33) / 33), [RX, 4.6 + ((f % 33) / 33) * 1.4, st.trainR - 3.2], 2.0));
   if (id === 'c16') out.push(FX('glow', (p) => T.fxGlow(p, (f % 30) / 30, '#ffaa55'), [LX, 0.5, -10 - (f - 1264) * 0.06], 1.6));
