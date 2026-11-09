@@ -25,6 +25,8 @@ jobs:
           github-token: ${{ github.token }}
       - name: Join frames + captions + audio
         run: |
+          mkdir -p $RUNNER_TEMP/ff && (cd $RUNNER_TEMP/ff && npm init -y >/dev/null && npm install --no-audit --no-fund ffmpeg-static >/dev/null)
+          export PATH=$RUNNER_TEMP/ff/node_modules/ffmpeg-static:$PATH; ffmpeg -version | head -1
           ls frames | wc -l
           mkdir -p out
           ffmpeg -loglevel error -y -framerate 30 -i frames/f%04d.jpg -i tools/a1_assets/audio.m4a \
