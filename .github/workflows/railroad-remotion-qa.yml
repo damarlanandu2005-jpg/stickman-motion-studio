@@ -1,11 +1,6 @@
 name: Railroad Remotion shot QA
 
 on:
-  push:
-    branches: [railroad-mromi-production]
-    paths:
-      - "mine/railroads_remotion/**"
-      - ".github/workflows/railroad-remotion-qa.yml"
   pull_request:
     branches: [gemini-cartoon]
     paths:
