@@ -1,0 +1,50 @@
+name: Railroad Remotion shot QA
+
+on:
+  push:
+    branches: [railroad-mromi-production]
+    paths:
+      - "mine/railroads_remotion/**"
+      - ".github/workflows/railroad-remotion-qa.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  shot-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install Remotion and browser
+        working-directory: mine/railroads_remotion
+        run: |
+          npm install --no-audit --no-fund
+          npm install --no-save --no-audit --no-fund playwright
+          npx playwright install --with-deps chromium
+      - name: Type-check the complete Remotion entry
+        working-directory: mine/railroads_remotion
+        run: |
+          npx tsc --noEmit --jsx react-jsx --module ESNext --moduleResolution bundler \
+            --target ES2022 --esModuleInterop --allowSyntheticDefaultImports \
+            --skipLibCheck --strict false src/index.ts
+      - name: Render one representative frame from every shot
+        working-directory: mine/railroads_remotion
+        env:
+          COMP: RailShort
+          REMOTION_DPR: "0.5"
+        run: |
+          mkdir -p out/shot-qa
+          CHROME="$(node -e "import('playwright').then(({chromium}) => console.log(chromium.executablePath()))")"
+          export CHROME
+          node still.mjs out/shot-qa/rail_ \
+            "45,154,258,325,419,505,551,634,758,890,990,1050,1108,1174,1236,1340,1445,1511,1625" 0.5
+      - uses: actions/upload-artifact@v4
+        with:
+          name: railroad-remotion-shot-qa
+          path: mine/railroads_remotion/out/shot-qa/
+          retention-days: 7
