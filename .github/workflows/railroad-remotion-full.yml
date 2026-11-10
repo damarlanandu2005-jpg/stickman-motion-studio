@@ -15,7 +15,7 @@ permissions:
 
 concurrency:
   group: railroad-remotion-full-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   full-render:
@@ -48,7 +48,7 @@ jobs:
           npx tsc --noEmit --jsx react-jsx --module ESNext --moduleResolution bundler \
             --target ES2022 --esModuleInterop --allowSyntheticDefaultImports \
             --skipLibCheck --strict false src/index.ts
-      - name: Render complete 56.7-second MP4
+      - name: Render railroad MP4 in chunks
         working-directory: mine/railroads_remotion
         env:
           REMOTION_GL: "swangle"
