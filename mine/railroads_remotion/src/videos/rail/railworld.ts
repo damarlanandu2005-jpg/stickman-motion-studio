@@ -86,7 +86,7 @@ export class RailWorld {
   private frustum = new THREE.Frustum(); private m4 = new THREE.Matrix4(); private v = new THREE.Vector3(); private sph = new THREE.Sphere();
   private sunCache = new Map<number, THREE.Vector3>();
 
-  constructor(kit: Kit) {
+  constructor(kit: Kit, shadowMapSize = 2048) {
     const R = this.root;
     this.skyMat = new THREE.ShaderMaterial({
       uniforms: { c0: { value: new THREE.Color() }, c1: { value: new THREE.Color() }, c2: { value: new THREE.Color() }, c3: { value: new THREE.Color() }, c4: { value: new THREE.Color() }, e: { value: new THREE.Vector4() } },
@@ -100,7 +100,7 @@ export class RailWorld {
     this.sky = new THREE.Mesh(new THREE.SphereGeometry(1100, 48, 24), this.skyMat);
     this.sky.renderOrder = -1; this.sky.frustumCulled = false; this.sky.layers.set(NOINK); R.add(this.sky);
     this.hemi = new THREE.HemisphereLight("#cfe6ff", "#6c5c8c", 1.1);
-    this.sun = new THREE.DirectionalLight("#fff0d6", 2.6); this.sun.castShadow = true; this.sun.shadow.mapSize.set(2048, 2048);
+    this.sun = new THREE.DirectionalLight("#fff0d6", 2.6); this.sun.castShadow = true; this.sun.shadow.mapSize.set(shadowMapSize, shadowMapSize);
     R.add(this.hemi, this.sun, this.sun.target);
     this.cloudMap = [0, 1, 2, 3].map((k) => cloudHD(k, LOOK.day.cloud));
     [[-60, 80, 260, 140], [90, 110, 300, 170], [-140, 95, 340, 150], [30, 140, 380, 190], [200, 120, 330, 160]].forEach(([x, y, z, w], i) => {
