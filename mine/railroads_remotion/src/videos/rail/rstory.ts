@@ -6,6 +6,7 @@ import type { Expr } from "./toon";
 
 export const FPS = 30;
 export const TOTAL = 1701;
+export const QA_FRAMES = [45,154,258,325,419,505,551,634,758,890,990,1050,1108,1174,1236,1340,1445,1511,1625];
 export type RCam = { pos: V3; look: V3; fov: number; roll: number };
 export type Who = "eng" | "boss" | "cond" | "tourist";
 export type Guy = {
