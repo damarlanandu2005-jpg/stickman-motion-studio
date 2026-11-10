@@ -44,7 +44,7 @@ jobs:
         env:
           COMP: RailShort
           REMOTION_DPR: "0.5"
-          REMOTION_GL: "angle-egl"
+          REMOTION_GL: "swangle"
         run: |
           mkdir -p out/shot-qa
           CHROME="$(node -e "import('playwright').then(({chromium}) => console.log(chromium.executablePath()))")"
