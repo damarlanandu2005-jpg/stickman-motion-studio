@@ -1,0 +1,69 @@
+name: Railroad Remotion full render
+
+on:
+  pull_request:
+    branches: [gemini-cartoon]
+    paths:
+      - "mine/railroads_remotion/**"
+      - "mine/railroads_v4/voice.mp3"
+      - "mine/railroads_v4/mix_raw.wav"
+      - ".github/workflows/railroad-remotion-full.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: railroad-remotion-full-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  full-render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: mine/railroads_remotion/package.json
+      - name: Install Remotion and Chromium
+        working-directory: mine/railroads_remotion
+        run: |
+          npm install --no-audit --no-fund
+          npm install --no-save --no-audit --no-fund playwright
+          npx playwright install --with-deps chromium
+      - name: Stage narration and sound mix
+        working-directory: mine/railroads_remotion
+        run: |
+          mkdir -p public/rail/audio out
+          cp ../railroads_v4/voice.mp3 public/rail/audio/voice.mp3
+          cp ../railroads_v4/mix_raw.wav public/rail/audio/mix_raw.wav
+          test -s public/rail/audio/voice.mp3
+          test -s public/rail/audio/mix_raw.wav
+      - name: Type-check production composition
+        working-directory: mine/railroads_remotion
+        run: |
+          npx tsc --noEmit --jsx react-jsx --module ESNext --moduleResolution bundler \
+            --target ES2022 --esModuleInterop --allowSyntheticDefaultImports \
+            --skipLibCheck --strict false src/index.ts
+      - name: Render complete 56.7-second MP4
+        working-directory: mine/railroads_remotion
+        env:
+          REMOTION_GL: "swangle"
+        run: |
+          CHROME="$(node -e "import('playwright').then(({chromium}) => console.log(chromium.executablePath()))")"
+          export CHROME
+          node render-full.mjs
+      - name: Validate final MP4
+        working-directory: mine/railroads_remotion
+        run: |
+          ffprobe -v error -show_entries format=duration,size -show_entries stream=codec_name,width,height,r_frame_rate -of json out/railroad-full-v1.mp4
+          test "$(ffprobe -v error -show_entries format=duration -of csv=p=0 out/railroad-full-v1.mp4 | cut -d. -f1)" -ge 56
+      - uses: actions/upload-artifact@v4
+        with:
+          name: railroad-full-render-v1
+          path: mine/railroads_remotion/out/railroad-full-v1.mp4
+          if-no-files-found: error
+          retention-days: 14
