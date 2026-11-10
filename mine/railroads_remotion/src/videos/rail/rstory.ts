@@ -46,11 +46,11 @@ export const SHOTS: RShot[] = [
     cast: [guy("eng", 6.9, 29.4, "stern", 1.18)], dof: { focus: [6.9, 1.45, 29.4], cInf: 11 } },
   // 02 — Two companies race along the canyon. Both lines and both crews must read in one wide.
   { id: 2, a: 90, b: 219, light: "day", place: "OUTDOOR",
-    cam: flight([-4.5, 4.2, 14], [-2.0, 6.5, 9], [3.0, -3.5, -22], [4.2, -6, -30], 52, 54, -0.025),
+    cam: flight([-32, -14, 45], [-28, -11, 40], [0, -27, 28], [0, -24, 26], 56, 54, -0.015),
     cast: [
-      guy("eng", -4.5, -18, "stern", 1.05), guy("cond", -4.5, -24, "neutral"),
-      guy("tourist", -4.5, -29, "neutral"), guy("eng", 4.5, -18, "stern", 1.05),
-      guy("boss", 4.5, -24, "grin"), guy("cond", 4.5, -29, "neutral"),
+      guy("eng", -4.5, 20, "stern", 1.05), guy("cond", -4.5, 26, "neutral"),
+      guy("tourist", -4.5, 32, "neutral"), guy("eng", 4.5, 20, "stern", 1.05),
+      guy("boss", 4.5, 26, "grin"), guy("cond", 4.5, 32, "neutral"),
     ] },
   // 03 — Office: the contract makes the race worth winning.
   { id: 3, a: 219, b: 298, light: "day", place: "OFFICE",
@@ -79,7 +79,7 @@ export const SHOTS: RShot[] = [
     cast: [guy("cond", -2.7, 20, "grin", 1.18)], dof: { focus: [-2.7, 1.4, 20], cInf: 5 } },
   // 09 — The race: both trains approach on separate tracks.
   { id: 9, a: 692, b: 824, light: "day", place: "OUTDOOR",
-    cam: flight([0.5, 7.5, 31], [3.5, 10.5, 25], [-4.5, 1, 70], [-2.5, 0, 55], 48, 50),
+    cam: flight([-30, -13, 48], [-27, -10, 42], [0, -26, 42], [0, -23, 38], 54, 52),
     cast: [guy("tourist", -5.7, 8, "neutral", 0.9), guy("tourist", 5.7, 8, "neutral", 0.9)] },
   // 10 — The boss studies the numbers as the temperature rises.
   { id: 10, a: 824, b: 956, light: "day", place: "OFFICE",
@@ -87,7 +87,7 @@ export const SHOTS: RShot[] = [
     cast: [guy("boss", 0, -3.6, "pained", 1.2)], dof: { focus: [0, 1.4, -3.6], cInf: 7 } },
   // 11 — Time jump: the engineer returns under a low golden sun.
   { id: 11, a: 956, b: 1024, light: "golden", place: "OUTDOOR",
-    cam: flight([5.4, 1.2, 30], [8.5, 5.5, 38], [4.7, 1.5, 23], [4.5, 1.0, 10], 44, 50),
+    cam: flight([-29, -9, 48], [-27, -7, 42], [0, -24, 30], [0, -22, 28], 52, 50),
     cast: [guy("eng", 4.9, 23.5, "neutral", 1.1)], dof: { focus: [4.9, 1.4, 23.5], cInf: 5 } },
   // 12 — Close-up: the gap is now smaller as the rail warms.
   { id: 12, a: 1024, b: 1077, light: "golden", place: "OUTDOOR",
@@ -120,7 +120,7 @@ export const SHOTS: RShot[] = [
     cast: [], dof: { focus: [5.22, 0.95, 32], cInf: 12 } },
   // 19 — Payoff: the continuous rail kinks; the train jolts and dust fills the canyon.
   { id: 19, a: 1549, b: TOTAL, light: "golden", place: "OUTDOOR",
-    cam: flight([-9, 11, 16], [-8, 9, -8], [-4.5, 0, -6], [-4.5, 0, -27], 48, 42),
+    cam: flight([-30, -13, 12], [-27, -11, 8], [0, -31, 12], [0, -29, 8], 54, 50),
     cast: [guy("tourist", -5.7, -12, "shock", 0.9)] },
 ];
 
