@@ -39,18 +39,18 @@ jobs:
           npx tsc --noEmit --jsx react-jsx --module ESNext --moduleResolution bundler \
             --target ES2022 --esModuleInterop --allowSyntheticDefaultImports \
             --skipLibCheck --strict false src/index.ts
-      - name: Render one representative frame from every shot
+      - name: Render the 19-shot QA strip in one browser session
         working-directory: mine/railroads_remotion
         env:
-          COMP: RailShort
-          REMOTION_DPR: "0.5"
+          COMP: RailShotQA
           REMOTION_GL: "swangle"
         run: |
           mkdir -p out/shot-qa
           CHROME="$(node -e "import('playwright').then(({chromium}) => console.log(chromium.executablePath()))")"
           export CHROME
-          node still.mjs out/shot-qa/rail_ \
-            "45,154,258,325,419,505,551,634,758,890,990,1050,1108,1174,1236,1340,1445,1511,1625" 0.5
+          node render-qa.mjs
+          ffmpeg -version || (sudo apt-get update -qq && sudo apt-get install -y ffmpeg)
+          ffmpeg -y -i out/shot-qa.mp4 -vsync 0 out/shot-qa/rail_%02d.jpg
       - uses: actions/upload-artifact@v4
         with:
           name: railroad-remotion-shot-qa
