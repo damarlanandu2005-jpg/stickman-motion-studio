@@ -2,13 +2,14 @@
 // Camera grammar follows the bridge production playbook: deliberate glides, motivated cuts,
 // close focus on the active subject, and no random handheld motion. The story and staging are original.
 import type { V3 } from "./story";
+import type { Expr } from "./toon";
 
 export const FPS = 30;
 export const TOTAL = 1701;
 export type RCam = { pos: V3; look: V3; fov: number; roll: number };
 export type Who = "eng" | "boss" | "cond" | "tourist";
 export type Guy = {
-  who: Who; x: number; z: number; y?: number; expr?: string;
+  who: Who; x: number; z: number; y?: number; expr?: Expr;
   look?: number; scale?: number; mode?: "stand" | "sit" | "stroll"; yaw?: number;
 };
 export type RShot = {
@@ -35,29 +36,29 @@ const flight = (p0: V3, p1: V3, l0: V3, l1: V3, f0: number, f1: number, roll = 0
     };
   };
 const still = (p: V3, l: V3, fov = 42) => flight(p, [p[0] - 0.08, p[1] + 0.05, p[2] - 0.35], l, l, fov, fov - 1);
-const guy = (who: Who, x: number, z: number, expr = "neutral", scale = 1): Guy => ({ who, x, z, expr, scale, look: 0 });
+const guy = (who: Who, x: number, z: number, expr: Expr = "neutral", scale = 1): Guy => ({ who, x, z, expr, scale, look: 0 });
 
 export const SHOTS: RShot[] = [
   // 01 — Hook: the engineer's saw opens a visible joint in the rail.
   { id: 1, a: 0, b: 90, light: "day", place: "OUTDOOR",
     cam: flight([6.4, 0.75, 34.2], [7.2, 1.6, 35.8], [5.22, 0.45, 32], [5.0, 0.5, 31.6], 36, 34),
-    cast: [guy("eng", 6.9, 29.4, "determined", 1.18)], dof: { focus: [6.9, 1.45, 29.4], cInf: 11 } },
+    cast: [guy("eng", 6.9, 29.4, "stern", 1.18)], dof: { focus: [6.9, 1.45, 29.4], cInf: 11 } },
   // 02 — Two companies race along the canyon. Both lines and both crews must read in one wide.
   { id: 2, a: 90, b: 219, light: "day", place: "OUTDOOR",
     cam: flight([-4.5, 4.2, 14], [-2.0, 6.5, 9], [3.0, -3.5, -22], [4.2, -6, -30], 52, 54, -0.025),
     cast: [
-      guy("eng", -4.5, -18, "determined", 1.05), guy("cond", -4.5, -24, "focused"),
-      guy("tourist", -4.5, -29, "focused"), guy("eng", 4.5, -18, "determined", 1.05),
-      guy("boss", 4.5, -24, "proud"), guy("cond", 4.5, -29, "focused"),
+      guy("eng", -4.5, -18, "stern", 1.05), guy("cond", -4.5, -24, "neutral"),
+      guy("tourist", -4.5, -29, "neutral"), guy("eng", 4.5, -18, "stern", 1.05),
+      guy("boss", 4.5, -24, "grin"), guy("cond", 4.5, -29, "neutral"),
     ] },
   // 03 — Office: the contract makes the race worth winning.
   { id: 3, a: 219, b: 298, light: "day", place: "OFFICE",
     cam: flight([0, 1.5, 5], [0.3, 1.45, 3.2], [0, 1.25, -1], [0, 1.4, -1], 46, 40),
-    cast: [guy("boss", 0, -1, "proud", 1.22)], dof: { focus: [0, 1.4, -1], cInf: 7 } },
+    cast: [guy("boss", 0, -1, "grin", 1.22)], dof: { focus: [0, 1.4, -1], cInf: 7 } },
   // 04 — The young engineer checks his work.
   { id: 4, a: 298, b: 353, light: "day", place: "OUTDOOR",
     cam: flight([3.0, 1.3, 26], [6.2, 1.45, 25.2], [4.5, 1.35, 22], [4.5, 1.4, 22], 38, 36),
-    cast: [guy("eng", 4.5, 22, "proud", 1.12)], dof: { focus: [4.5, 1.4, 22], cInf: 6 } },
+    cast: [guy("eng", 4.5, 22, "grin", 1.12)], dof: { focus: [4.5, 1.4, 22], cInf: 6 } },
   // 05 — Boss sees the finger-wide expansion gap.
   { id: 5, a: 353, b: 485, light: "day", place: "OUTDOOR",
     cam: flight([4.9, 0.55, 26], [4.3, 0.7, 25.2], [3.4, 1.25, 20.8], [3.4, 1.3, 20.8], 36, 36),
@@ -65,24 +66,24 @@ export const SHOTS: RShot[] = [
   // 06 — The argument: two-shot, characters face each other, not a lineup.
   { id: 6, a: 485, b: 525, light: "day", place: "OUTDOOR",
     cam: flight([4.5, 0.6, 27], [4.5, 0.7, 26.2], [4.5, 1.2, 19.5], [4.5, 1.25, 19.5], 36, 36),
-    cast: [guy("boss", 3.9, 19.5, "angry", 1.22), guy("eng", 5.1, 19.5, "neutral", 1.18)],
+    cast: [guy("boss", 3.9, 19.5, "stern", 1.22), guy("eng", 5.1, 19.5, "neutral", 1.18)],
     dof: { focus: [4.5, 1.45, 19.5], cInf: 6 } },
   // 07 — The engineer refuses to remove the joints.
   { id: 7, a: 525, b: 577, light: "day", place: "OUTDOOR",
     cam: flight([4.7, 0.55, 25.2], [5.1, 0.7, 24.5], [5.9, 1.2, 19.5], [5.9, 1.25, 19.5], 36, 36),
-    cast: [guy("eng", 5.9, 19.5, "stubborn", 1.2)], dof: { focus: [5.9, 1.45, 19.5], cInf: 6 } },
+    cast: [guy("eng", 5.9, 19.5, "stern", 1.2)], dof: { focus: [5.9, 1.45, 19.5], cInf: 6 } },
   // 08 — The rival company believes its continuous rail is superior.
   { id: 8, a: 577, b: 692, light: "day", place: "OUTDOOR",
     cam: flight([-3.8, 0.5, 34], [-4.4, 0.9, 6], [-4.5, 0.35, 24], [-4.5, 0.3, -10], 40, 42),
-    cast: [guy("cond", -2.7, 20, "proud", 1.18)], dof: { focus: [-2.7, 1.4, 20], cInf: 5 } },
+    cast: [guy("cond", -2.7, 20, "grin", 1.18)], dof: { focus: [-2.7, 1.4, 20], cInf: 5 } },
   // 09 — The race: both trains approach on separate tracks.
   { id: 9, a: 692, b: 824, light: "day", place: "OUTDOOR",
     cam: flight([0.5, 7.5, 31], [3.5, 10.5, 25], [-4.5, 1, 70], [-2.5, 0, 55], 48, 50),
-    cast: [guy("tourist", -5.7, 8, "focused", 0.9), guy("tourist", 5.7, 8, "focused", 0.9)] },
+    cast: [guy("tourist", -5.7, 8, "neutral", 0.9), guy("tourist", 5.7, 8, "neutral", 0.9)] },
   // 10 — The boss studies the numbers as the temperature rises.
   { id: 10, a: 824, b: 956, light: "day", place: "OFFICE",
     cam: flight([0.7, 1.45, 1.8], [0.1, 1.5, 0.6], [-0.1, 1.3, -3.6], [-0.1, 1.3, -3.6], 40, 36),
-    cast: [guy("boss", 0, -3.6, "sad", 1.2)], dof: { focus: [0, 1.4, -3.6], cInf: 7 } },
+    cast: [guy("boss", 0, -3.6, "pained", 1.2)], dof: { focus: [0, 1.4, -3.6], cInf: 7 } },
   // 11 — Time jump: the engineer returns under a low golden sun.
   { id: 11, a: 956, b: 1024, light: "golden", place: "OUTDOOR",
     cam: flight([5.4, 1.2, 30], [8.5, 5.5, 38], [4.7, 1.5, 23], [4.5, 1.0, 10], 44, 50),
