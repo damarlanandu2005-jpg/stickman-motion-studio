@@ -1,0 +1,122 @@
+name: Railroad Remotion full preview render
+
+on:
+  push:
+    branches: [railroad-mromi-production]
+    paths: ["mine/railroads_remotion/RENDER_FULL"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: railroad-full-render-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  render-part:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { part: 0, start: 0, end: 283 }
+          - { part: 1, start: 284, end: 567 }
+          - { part: 2, start: 568, end: 851 }
+          - { part: 3, start: 852, end: 1135 }
+          - { part: 4, start: 1136, end: 1419 }
+          - { part: 5, start: 1420, end: 1700 }
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          sparse-checkout: |
+            mine/railroads_remotion
+            results_claude/railroads_a1
+          sparse-checkout-cone-mode: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install Remotion and browser
+        working-directory: mine/railroads_remotion
+        run: |
+          npm install --no-audit --no-fund
+          npm install --no-save --no-audit --no-fund playwright
+          npx playwright install --with-deps chromium
+      - name: Render assigned frame range
+        working-directory: mine/railroads_remotion
+        env:
+          START_FRAME: "${{ matrix.start }}"
+          END_FRAME: "${{ matrix.end }}"
+          PART: "${{ matrix.part }}"
+          REMOTION_DPR: "0.6667"
+        run: |
+          CHROME="$(node -e "import('playwright').then(({chromium}) => console.log(chromium.executablePath()))")"
+          export CHROME
+          cat > render-part.mjs <<'EOF'
+          import { bundle } from "@remotion/bundler";
+          import { renderMedia, selectComposition } from "@remotion/renderer";
+          import path from "node:path";
+          const start = Number(process.env.START_FRAME);
+          const end = Number(process.env.END_FRAME);
+          const part = process.env.PART;
+          const browserExecutable = process.env.CHROME;
+          const chromiumOptions = { gl: "swangle" };
+          const inputProps = { post: { dpr: Number(process.env.REMOTION_DPR || 0.6667) } };
+          const serveUrl = await bundle({ entryPoint: path.resolve("src/index.ts"), publicDir: path.resolve("public") });
+          const composition = await selectComposition({ serveUrl, id: "RailShort", inputProps, browserExecutable, chromiumOptions });
+          if (start < 0 || end < start || end >= composition.durationInFrames) throw new Error(`Invalid frame range ${start}-${end}`);
+          await renderMedia({
+            composition, serveUrl, codec: "h264", outputLocation: `out/part_${part}.mp4`,
+            inputProps, frameRange: [start, end], scale: 0.6667, concurrency: 2,
+            chromiumOptions, browserExecutable, crf: 22, x264Preset: "veryfast",
+            pixelFormat: "yuv420p",
+          });
+          console.log(`Rendered part ${part}: frames ${start}-${end}`);
+          EOF
+          mkdir -p out
+          node render-part.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: railroad-part-${{ matrix.part }}
+          path: mine/railroads_remotion/out/part_${{ matrix.part }}.mp4
+          retention-days: 2
+
+  assemble:
+    runs-on: ubuntu-latest
+    needs: render-part
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          sparse-checkout: |
+            mine/railroads_remotion
+            results_claude/railroads_a1
+          sparse-checkout-cone-mode: true
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: railroad-part-*
+          path: parts
+          merge-multiple: true
+      - name: Assemble preview and restore narration audio
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg
+          mkdir -p out
+          for f in $(find parts -maxdepth 1 -name 'part_*.mp4' | sort -V); do
+            printf "file '%s/%s'\n" "$PWD" "$f" >> parts.txt
+          done
+          test "$(wc -l < parts.txt)" -eq 6
+          ffmpeg -y -f concat -safe 0 -i parts.txt -c copy out/railroad_visuals.mp4
+          ffmpeg -y -i results_claude/railroads_a1/railroads_a1.mp4 -vn -ac 2 -ar 48000 -c:a aac -b:a 192k out/narration.m4a
+          ffmpeg -y -i out/railroad_visuals.mp4 -i out/narration.m4a \
+            -map 0:v:0 -map 1:a:0 -c:v copy -c:a aac -b:a 192k -shortest \
+            -movflags +faststart out/railroads_remotion_preview_720p.mp4
+          ffprobe -v error -show_entries format=duration -of default=nw=1:nk=1 out/railroads_remotion_preview_720p.mp4
+      - uses: actions/upload-artifact@v4
+        with:
+          name: railroads-remotion-preview-720p
+          path: out/railroads_remotion_preview_720p.mp4
+          retention-days: 14
