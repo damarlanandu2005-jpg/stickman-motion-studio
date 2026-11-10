@@ -305,7 +305,7 @@ export class RailWorld {
     const st = railStage(s.light, info);
     for (const g of s.cast) {
       const who: CWho = { i: g.who.length + (g.x > 0 ? 1 : 0), o: OUTFITS[g.who], okey: g.who };
-      const p = person(info, who, g.x, g.y ?? 0, g.z, { side: false, mirror: false }, { expr: (g.expr as never) ?? "neutral", mode: g.mode ?? "stand", look: g.look ?? 0, blink: false, facing: 0 }, {} as never, g.scale ?? 1);
+      const p = person(info, who, g.x, g.y ?? 0, g.z, { side: false, mirror: false }, { expr: g.expr ?? "neutral", mode: g.mode ?? "stand", look: g.look ?? 0, blink: false, facing: 0 }, {} as never, g.scale ?? 1);
       st.places.push(p);
       blob(st, g.x, g.y ?? 0, g.z, g.scale ?? 1);
     }
