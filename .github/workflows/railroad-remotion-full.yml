@@ -63,7 +63,7 @@ jobs:
           const part = process.env.PART;
           const browserExecutable = process.env.CHROME;
           const chromiumOptions = { gl: "swangle" };
-          const inputProps = { post: { dpr: Number(process.env.REMOTION_DPR || 0.6667) } };
+          const inputProps = { post: { dpr: Number(process.env.REMOTION_DPR || 0.6667), shadowMapSize: 1024, msaa: 0, lens: false, pre: false, bloom: false } };
           const serveUrl = await bundle({ entryPoint: path.resolve("src/index.ts"), publicDir: path.resolve("public") });
           const composition = await selectComposition({ serveUrl, id: "RailShort", inputProps, browserExecutable, chromiumOptions });
           if (start < 0 || end < start || end >= composition.durationInFrames) throw new Error(`Invalid frame range ${start}-${end}`);
