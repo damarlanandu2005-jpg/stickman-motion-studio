@@ -22,6 +22,9 @@ jobs:
     timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
+        with:
+          sparse-checkout: mine/railroads_remotion
+          sparse-checkout-cone-mode: true
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
