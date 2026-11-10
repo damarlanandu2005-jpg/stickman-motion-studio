@@ -47,23 +47,26 @@ const useKit = () => {
 const Inner: React.FC<{ id: number; frame: number; kit: Kit }> = ({ id, frame, kit }) => {
   const f = frame;
   const { camera, scene } = useThree();
-  const world = useMemo(() => new World(kit), [kit]);
+  const postSettings = (getInputProps() as { post?: { shadowMapSize?: number; msaa?: number } }).post;
+  const shadowMapSize = postSettings?.shadowMapSize ?? 2048;
+  const msaa = postSettings?.msaa ?? 2;
+  const world = useMemo(() => new World(kit, shadowMapSize), [kit, shadowMapSize]);
   const on = useMemo(toggles, []);
   const fx = useMemo(() => ({
     ink: new InkPass(scene, camera as THREE.PerspectiveCamera),
-    lens: new LensBlur({ maxCoC: 24, nearScale: 1.2 }),
-    bloom: makeBloom(),
+    lens: on.lens ? new LensBlur({ maxCoC: 24, nearScale: 1.2 }) : null,
+    bloom: on.bloom ? makeBloom() : null,
     tone: new ToneMappingEffect({ mode: ToneMappingMode.NEUTRAL }),
     grade: new GradeEffect(GRADES.day, GRADE_STRENGTH.day),
     grain: new GrainEffect({ amount: 0.025, cellPx: 1.5 }),
-  }), [camera, scene]);
+  }), [camera, scene, on]);
   useEffect(() => () => fx.ink.dispose(), [fx]);
   const post = useMemo(() => (
-    <EffectComposer multisampling={2}>
+    <EffectComposer multisampling={msaa}>
       {on.ink ? <primitive object={fx.ink} dispose={null} /> : null}
-      {on.lens && on.pre ? <primitive object={fx.lens.pre} dispose={null} /> : null}
-      {on.lens ? <primitive object={fx.lens.main} dispose={null} /> : null}
-      {on.bloom ? <primitive object={fx.bloom} dispose={null} /> : null}
+      {on.lens && on.pre && fx.lens ? <primitive object={fx.lens.pre} dispose={null} /> : null}
+      {on.lens && fx.lens ? <primitive object={fx.lens.main} dispose={null} /> : null}
+      {on.bloom && fx.bloom ? <primitive object={fx.bloom} dispose={null} /> : null}
       <primitive object={fx.tone} dispose={null} />
       {on.grade ? <primitive object={fx.grade} dispose={null} /> : null}
       {on.grain ? <primitive object={fx.grain} dispose={null} /> : null}
@@ -75,8 +78,10 @@ const Inner: React.FC<{ id: number; frame: number; kit: Kit }> = ({ id, frame, k
   const shot = shotAt(f);
   cam.getWorldDirection(fwd);
   const focus = shot.dof?.focus ? fpt.set(...shot.dof.focus) : fpt.copy(target);
-  fx.lens.focus = Math.max(0.3, focus.sub(cam.position).dot(fwd));
-  fx.lens.cInf = shot.dof?.cInf ?? 0;
+  if (fx.lens) {
+    fx.lens.focus = Math.max(0.3, focus.sub(cam.position).dot(fwd));
+    fx.lens.cInf = shot.dof?.cInf ?? 0;
+  }
   gradeFor(fx.grade, shot.light);
   fx.grain.seed = f;
   return <><primitive object={world.root} dispose={null} />{post}</>;
