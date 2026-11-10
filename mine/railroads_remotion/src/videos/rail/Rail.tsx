@@ -125,5 +125,6 @@ export const RailShort: React.FC = () => {
   const post = (getInputProps() as { post?: { frameMap?: number[] } }).post;
   const frame = post?.frameMap?.[f] ?? f;
   const shot = shotAt(frame);
-  const includeAudio = (getInputProps() as { includeAudio?: boolean }).includeAudio ?? true;\n  return <AbsoluteFill style={{ background: "#cfe3f2" }}><ShotView id={shot.id} frame={frame} kit={kit} /><CaptionOverlay frame={frame} />{includeAudio ? <><Audio src={staticFile("rail/audio/voice.mp3")} /><Audio src={staticFile("rail/audio/mix_raw.wav")} /></> : null}</AbsoluteFill>;
+  const includeAudio = (getInputProps() as { includeAudio?: boolean }).includeAudio ?? false;
+  return <AbsoluteFill style={{ background: "#cfe3f2" }}><ShotView id={shot.id} frame={frame} kit={kit} /><CaptionOverlay frame={frame} />{includeAudio ? <><Audio src={staticFile("rail/audio/voice.mp3")} /><Audio src={staticFile("rail/audio/mix_raw.wav")} /></> : null}</AbsoluteFill>;
 };
