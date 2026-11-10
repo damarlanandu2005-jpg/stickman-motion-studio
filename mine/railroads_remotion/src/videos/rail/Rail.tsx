@@ -3,7 +3,7 @@
 // Post chain: world ink -> thin-lens blur -> emissive bloom -> neutral tone map -> per-light grade.
 import React, { useEffect, useMemo, useState } from "react";
 import * as THREE from "three";
-import { AbsoluteFill, continueRender, delayRender, getInputProps, useCurrentFrame } from "remotion";
+import { AbsoluteFill, Audio, continueRender, delayRender, getInputProps, staticFile, useCurrentFrame } from "remotion";
 import { ThreeCanvas } from "@remotion/three";
 import { useThree } from "@react-three/fiber";
 import { EffectComposer } from "@react-three/postprocessing";
@@ -125,5 +125,5 @@ export const RailShort: React.FC = () => {
   const post = (getInputProps() as { post?: { frameMap?: number[] } }).post;
   const frame = post?.frameMap?.[f] ?? f;
   const shot = shotAt(frame);
-  return <AbsoluteFill style={{ background: "#cfe3f2" }}><ShotView id={shot.id} frame={frame} kit={kit} /><CaptionOverlay frame={frame} /></AbsoluteFill>;
+  return <AbsoluteFill style={{ background: "#cfe3f2" }}><ShotView id={shot.id} frame={frame} kit={kit} /><CaptionOverlay frame={frame} /><Audio src={staticFile("rail/audio/voice.mp3")} /><Audio src={staticFile("rail/audio/mix_raw.wav")} /></AbsoluteFill>;
 };
