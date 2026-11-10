@@ -118,12 +118,31 @@ export class RailWorld {
     const box = (w: number, h: number, d: number, m: THREE.Material, x: number, y: number, z: number, cast = true) => {
       const g = new THREE.BoxGeometry(w, h, d); const me = new THREE.Mesh(g, m); me.position.set(x, y + h / 2, z); me.castShadow = cast; me.receiveShadow = true; R.add(me); return me;
     };
-    // ---- ground: ledge with the track on it, canyon wall on +x, a drop on -x ----
-    box(26, 3, 520, dirtM, -2, -3, 150); // ledge slab (top at y=0), x -15..11
+    // ---- deep canyon crossing: two banks, a long deck, and visible 60 m trestle piers ----
+    box(26, 3, 110, dirtM, -2, -3, -55);   // near bank, z -110..0
+    box(26, 3, 330, dirtM, -2, -3, 245);  // far bank, z 80..410
+    const bridgeDeck = mk(rep(gravelTex(), 2, 16), "#b08b6d");
+    const bridgePier = mk(rep(dirtTex(), 2, 18), "#795847");
+    box(26, 1.0, 80, bridgeDeck, -2, -1, 40); // top flush with both banks
+    const beamBetween = (a: THREE.Vector3, b: THREE.Vector3, thickness: number, mat: THREE.Material) => {
+      const delta = b.clone().sub(a), mesh = new THREE.Mesh(new THREE.BoxGeometry(thickness, delta.length(), thickness), mat);
+      mesh.position.copy(a).add(b).multiplyScalar(0.5);
+      mesh.quaternion.setFromUnitVectors(V(0, 1, 0), delta.normalize());
+      mesh.castShadow = true; mesh.receiveShadow = true; R.add(mesh);
+    };
+    const pierXs = [-11, -5.5, 0, 5.5, 11], pierZs = [6, 24, 42, 60, 78];
+    for (const z of pierZs) {
+      for (const x of pierXs) box(1.1, 60, 1.1, bridgePier, x, -60, z);
+      box(26, 0.7, 0.7, bridgePier, -2, -2.2, z);
+    }
+    for (let i = 0; i < pierZs.length - 1; i++) for (const x of pierXs) {
+      beamBetween(V(x, -57, pierZs[i]), V(x, -4, pierZs[i + 1]), 0.42, bridgePier);
+      beamBetween(V(x, -4, pierZs[i]), V(x, -57, pierZs[i + 1]), 0.42, bridgePier);
+    }
     // gravel box removed: the kit tile carries its own ballast
     // ---- canyon wall: three stepped tiers, tall, strata textured ----
     const tiers = [[8, 14, 0], [7, 14, 5], [9, 20, 9], [12, 40, 16]];
-    let xo = 4.5, yo = 0;
+    let xo = 14.5, yo = 0;
     for (const [w, h, d] of tiers) { box(w + 40, h, 560, wallM, xo + (w + 40) / 2, yo - 3, 150); xo += w * 0.5; yo += h * 0.55; }
     // buttresses / hoodoos from the Kenney cliff blocks, recoloured warm (his build.ts recolours by material name)
     const place = (name: string, x: number, y: number, z: number, s: number, ry = 0, sy = s) => {
@@ -133,12 +152,12 @@ export class RailWorld {
     for (let i = 0; i < 70; i++) {
       const z = -6 + i * 4.5 + r() * 3, left = r() > 0.4;
       const nm = ["rock_largeA", "rock_largeB", "rock_smallA", "rock_tallA", "stone_largeA", "rock_smallB"][Math.floor(r() * 6)];
-      place(nm, left ? 2.6 + r() * 1.6 : -2.6 - r() * 2.4, 0, z, 0.9 + r() * 1.6, r() * 6.3);
+      place(nm, left ? 7.5 + r() * 1.6 : -7.5 - r() * 1.8, 0, z, 0.9 + r() * 1.6, r() * 6.3);
     }
-    for (let i = 0; i < 24; i++) place(r() > 0.5 ? "cactus_tall" : "cactus_short", 2.8 + r() * 1.6, 0, 2 + i * 7 + r() * 5, 1.4 + r() * 0.8, r() * 6);
+    for (let i = 0; i < 24; i++) place(r() > 0.5 ? "cactus_tall" : "cactus_short", 7.8 + r() * 1.4, 0, 2 + i * 7 + r() * 5, 1.4 + r() * 0.8, r() * 6);
     // ---- track: Kenney railroad tiles, 4 m long, scaled 1.6 for a person-scaled gauge ----
     const S = 1.6;
-    for (const lane of [-4.5, 4.5]) for (let z = -12; z < 300; z += 4 * S) place("railroad-straight", lane, S * 1.0, z, S);
+    for (const lane of [-4.5, 4.5]) for (let z = -60; z < 300; z += 4 * S) place("railroad-straight", lane, S * 1.0, z, S);
     // far mesas on the -x side beyond the drop, banded by the same strata
     for (let i = 0; i < 9; i++) {
       const x = -70 - i * 38 - r() * 20, w = 60 + r() * 60, h = 14 + r() * 22, z = 120 + r() * 380;
