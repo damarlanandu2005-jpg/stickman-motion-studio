@@ -46,7 +46,7 @@ export const SHOTS: RShot[] = [
     cast: [guy("eng", 6.9, 29.4, "stern", 1.18)], dof: { focus: [6.9, 1.45, 29.4], cInf: 11 } },
   // 02 — Two companies race along the canyon. Both lines and both crews must read in one wide.
   { id: 2, a: 90, b: 219, light: "day", place: "OUTDOOR",
-    cam: flight([-32, -14, 45], [-28, -11, 40], [0, -27, 28], [0, -24, 26], 56, 54, -0.015),
+    cam: flight([-72, -30, 48], [-68, -28, 44], [0, -30, 34], [0, -30, 30], 70, 68, -0.015),
     cast: [
       guy("eng", -4.5, 20, "stern", 1.05), guy("cond", -4.5, 26, "neutral"),
       guy("tourist", -4.5, 32, "neutral"), guy("eng", 4.5, 20, "stern", 1.05),
@@ -79,7 +79,7 @@ export const SHOTS: RShot[] = [
     cast: [guy("cond", -2.7, 20, "grin", 1.18)], dof: { focus: [-2.7, 1.4, 20], cInf: 5 } },
   // 09 — The race: both trains approach on separate tracks.
   { id: 9, a: 692, b: 824, light: "day", place: "OUTDOOR",
-    cam: flight([-30, -13, 48], [-27, -10, 42], [0, -26, 42], [0, -23, 38], 54, 52),
+    cam: flight([-70, -30, 56], [-67, -28, 50], [0, -30, 44], [0, -30, 42], 70, 68),
     cast: [guy("tourist", -5.7, 8, "neutral", 0.9), guy("tourist", 5.7, 8, "neutral", 0.9)] },
   // 10 — The boss studies the numbers as the temperature rises.
   { id: 10, a: 824, b: 956, light: "day", place: "OFFICE",
@@ -87,7 +87,7 @@ export const SHOTS: RShot[] = [
     cast: [guy("boss", 0, -3.6, "pained", 1.2)], dof: { focus: [0, 1.4, -3.6], cInf: 7 } },
   // 11 — Time jump: the engineer returns under a low golden sun.
   { id: 11, a: 956, b: 1024, light: "golden", place: "OUTDOOR",
-    cam: flight([-29, -9, 48], [-27, -7, 42], [0, -24, 30], [0, -22, 28], 52, 50),
+    cam: flight([-70, -30, 52], [-68, -28, 46], [0, -30, 32], [0, -30, 30], 70, 68),
     cast: [guy("eng", 4.9, 23.5, "neutral", 1.1)], dof: { focus: [4.9, 1.4, 23.5], cInf: 5 } },
   // 12 — Close-up: the gap is now smaller as the rail warms.
   { id: 12, a: 1024, b: 1077, light: "golden", place: "OUTDOOR",
@@ -120,7 +120,7 @@ export const SHOTS: RShot[] = [
     cast: [], dof: { focus: [5.22, 0.95, 32], cInf: 12 } },
   // 19 — Payoff: the continuous rail kinks; the train jolts and dust fills the canyon.
   { id: 19, a: 1549, b: TOTAL, light: "golden", place: "OUTDOOR",
-    cam: flight([-30, -13, 12], [-27, -11, 8], [0, -31, 12], [0, -29, 8], 54, 50),
+    cam: flight([-72, -30, 20], [-68, -28, 16], [0, -30, 12], [0, -30, 10], 70, 68),
     cast: [guy("tourist", -5.7, -12, "shock", 0.9)] },
 ];
 
