@@ -14,6 +14,7 @@ import { LensBlur, GrainEffect } from "./lensblur";
 import { GradeEffect, GRADES, GRADE_STRENGTH, gradeFor } from "./grade";
 import type { Kit } from "./build";
 import { TOTAL, shotAt } from "./rstory";
+import { WORDS } from "./captions";
 
 export const RAIL_FRAMES = TOTAL;
 type PostToggles = { ink: boolean; lens: boolean; pre: boolean; bloom: boolean; grade: boolean; grain: boolean };
@@ -96,10 +97,27 @@ const ShotView: React.FC<{ id: number; kit: Kit }> = ({ id, kit }) => (
   </AbsoluteFill>
 );
 
+const CaptionOverlay: React.FC = () => {
+  const f = useCurrentFrame();
+  const t = f / 30;
+  const word = WORDS.find((w) => t >= w.s && t < w.e);
+  if (!word) return null;
+  return (
+    <AbsoluteFill style={{ justifyContent: "flex-end", alignItems: "center", paddingBottom: 178, pointerEvents: "none" }}>
+      <div style={{
+        fontFamily: "Arial, sans-serif", fontSize: 66, lineHeight: 1, fontWeight: 900,
+        color: "#ffffff", letterSpacing: 1.2, textTransform: "uppercase",
+        WebkitTextStroke: "3px #241726", paintOrder: "stroke fill",
+        textShadow: "0 5px 0 #241726, 0 9px 18px rgba(0,0,0,0.55)",
+      }}>{word.w}</div>
+    </AbsoluteFill>
+  );
+};
+
 export const RailShort: React.FC = () => {
   const f = useCurrentFrame();
   const kit = useKit();
   if (!kit) return null;
   const shot = shotAt(f);
-  return <AbsoluteFill style={{ background: "#cfe3f2" }}><ShotView id={shot.id} kit={kit} /></AbsoluteFill>;
+  return <AbsoluteFill style={{ background: "#cfe3f2" }}><ShotView id={shot.id} kit={kit} /><CaptionOverlay /></AbsoluteFill>;
 };
