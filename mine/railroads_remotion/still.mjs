@@ -1,11 +1,26 @@
-import { bundle } from "@remotion/bundler"; import { renderStill, selectComposition } from "@remotion/renderer"; import path from "node:path"; import fs from "node:fs";
+import { bundle } from "@remotion/bundler";
+import { renderStill, selectComposition } from "@remotion/renderer";
+import path from "node:path";
+
 const [prefix, frames, scale = "0.5"] = process.argv.slice(2);
+if (!prefix || !frames) {
+  throw new Error("Usage: COMP=RailShort CHROME=<chromium> node still.mjs out/r_ 0,45,90 0.5");
+}
 const browserExecutable = process.env.CHROME;
-const chromiumOptions = { gl: "swiftshader" };
+const chromiumOptions = { gl: process.env.REMOTION_GL || "swangle" };
+const inputProps = { post: { dpr: Number(process.env.REMOTION_DPR || 0.5) } };
 const serveUrl = await bundle({ entryPoint: path.resolve("src/index.ts"), publicDir: path.resolve("public") });
-const composition = await selectComposition({ serveUrl, id: process.env.COMP || "BridgeShort", browserExecutable, chromiumOptions });
-for (const f of frames.split(",").map(Number)) {
-  const t0 = Date.now();
-  await renderStill({ composition, serveUrl, frame: f, output: `${prefix}${f}.jpg`, imageFormat: "jpeg", jpegQuality: 90, scale: Number(scale), browserExecutable, chromiumOptions, timeoutInMilliseconds: 300000, onBrowserLog: (l) => { if (l.type === "error") console.log("[err]", l.text.slice(0, 200)); } });
-  console.log("still", f, ((Date.now() - t0) / 1000).toFixed(1) + "s");
+const composition = await selectComposition({
+  serveUrl, id: process.env.COMP || "RailShort", inputProps, browserExecutable, chromiumOptions,
+});
+for (const frame of frames.split(",").map(Number)) {
+  if (frame < 0 || frame >= composition.durationInFrames) throw new Error("Frame out of range: " + frame);
+  const started = Date.now();
+  await renderStill({
+    composition, serveUrl, frame, inputProps, output: prefix + frame + ".jpg",
+    imageFormat: "jpeg", jpegQuality: 92, scale: Number(scale),
+    browserExecutable, chromiumOptions, timeoutInMilliseconds: 300000,
+    onBrowserLog: (entry) => { if (entry.type === "error") console.log("[browser]", entry.text.slice(0, 240)); },
+  });
+  console.log("still", frame, ((Date.now() - started) / 1000).toFixed(1) + "s");
 }

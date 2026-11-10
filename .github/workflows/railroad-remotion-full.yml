@@ -1,0 +1,118 @@
+name: Railroad Remotion distributed render
+
+on:
+  pull_request:
+    branches: [gemini-cartoon]
+    paths:
+      - "mine/railroads_remotion/**"
+      - "mine/railroads_v4/voice.mp3"
+      - "mine/railroads_v4/mix_raw.wav"
+      - ".github/workflows/railroad-remotion-full.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: railroad-remotion-full-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  render-chunks:
+    name: Render chunk ${{ matrix.index }}/4
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        include:
+          - index: 1
+            start: 0
+            end: 425
+          - index: 2
+            start: 426
+            end: 851
+          - index: 3
+            start: 852
+            end: 1277
+          - index: 4
+            start: 1278
+            end: 1700
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: mine/railroads_remotion/package.json
+      - name: Install Remotion and Chromium
+        working-directory: mine/railroads_remotion
+        run: |
+          npm install --no-audit --no-fund
+          npm install --no-save --no-audit --no-fund playwright
+          npx playwright install --with-deps chromium
+      - name: Type-check composition
+        working-directory: mine/railroads_remotion
+        run: |
+          npx tsc --noEmit --jsx react-jsx --module ESNext --moduleResolution bundler \
+            --target ES2022 --esModuleInterop --allowSyntheticDefaultImports \
+            --skipLibCheck --strict false src/index.ts
+      - name: Render assigned frame range
+        working-directory: mine/railroads_remotion
+        env:
+          REMOTION_GL: "swangle"
+          CHUNK_INDEX: ${{ matrix.index }}
+          CHUNK_START: ${{ matrix.start }}
+          CHUNK_END: ${{ matrix.end }}
+        run: |
+          CHROME="$(node -e "import('playwright').then(({chromium}) => console.log(chromium.executablePath()))")"
+          export CHROME
+          node render-full.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: railroad-part-${{ matrix.index }}
+          path: mine/railroads_remotion/out/railroad-part-0${{ matrix.index }}.mp4
+          if-no-files-found: error
+          retention-days: 3
+
+  finalize:
+    name: Stitch and validate final MP4
+    runs-on: ubuntu-latest
+    needs: render-chunks
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install FFmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+          ffmpeg -version
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: railroad-part-*
+          path: out/chunks
+          merge-multiple: true
+      - name: Stage original audio
+        run: |
+          mkdir -p out
+          test -s mine/railroads_v4/voice.mp3
+          test -s mine/railroads_v4/mix_raw.wav
+          for n in 1 2 3 4; do test -s "out/chunks/railroad-part-0${n}.mp4"; done
+      - name: Stitch video and mux audio
+        run: |
+          printf "file 'chunks/railroad-part-01.mp4'\\nfile 'chunks/railroad-part-02.mp4'\\nfile 'chunks/railroad-part-03.mp4'\\nfile 'chunks/railroad-part-04.mp4'\\n" > out/concat.txt
+          ffmpeg -y -f concat -safe 0 -i out/concat.txt -c copy out/video-only.mp4
+          ffmpeg -y -i out/video-only.mp4 -i mine/railroads_v4/voice.mp3 -i mine/railroads_v4/mix_raw.wav \
+            -filter_complex "[1:a][2:a]amix=inputs=2:duration=longest:dropout_transition=0[a]" \
+            -map 0:v:0 -map "[a]" -c:v copy -c:a aac -b:a 192k -shortest out/railroad-full-v1.mp4
+      - name: Validate final MP4
+        run: |
+          ffprobe -v error -show_entries format=duration,size -show_entries stream=codec_name,width,height,r_frame_rate -of json out/railroad-full-v1.mp4
+          test "$(ffprobe -v error -show_entries format=duration -of csv=p=0 out/railroad-full-v1.mp4 | cut -d. -f1)" -ge 56
+      - uses: actions/upload-artifact@v4
+        with:
+          name: railroad-full-render-v1
+          path: out/railroad-full-v1.mp4
+          if-no-files-found: error
+          retention-days: 14
