@@ -20,7 +20,7 @@ export const Root: React.FC = () => (
       fps={30}
       width={1080}
       height={1920}
-      defaultProps={{ post: { dpr: 0.5, frameMap: QA_FRAMES } } as never}
+      defaultProps={{ post: { dpr: 0.5, frameMap: QA_FRAMES, shadowMapSize: 512, msaa: 0, lens: false, pre: false, bloom: false } } as never}
     />
   </>
 );
