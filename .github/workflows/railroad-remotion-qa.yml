@@ -6,6 +6,11 @@ on:
     paths:
       - "mine/railroads_remotion/**"
       - ".github/workflows/railroad-remotion-qa.yml"
+  pull_request:
+    branches: [gemini-cartoon]
+    paths:
+      - "mine/railroads_remotion/**"
+      - ".github/workflows/railroad-remotion-qa.yml"
   workflow_dispatch:
 
 permissions:
