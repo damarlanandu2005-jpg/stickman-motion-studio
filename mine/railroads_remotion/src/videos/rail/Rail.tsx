@@ -44,8 +44,8 @@ const useKit = () => {
   return kit;
 };
 
-const Inner: React.FC<{ id: number; kit: Kit }> = ({ id, kit }) => {
-  const f = useCurrentFrame();
+const Inner: React.FC<{ id: number; frame: number; kit: Kit }> = ({ id, frame, kit }) => {
+  const f = frame;
   const { camera, scene } = useThree();
   const world = useMemo(() => new World(kit), [kit]);
   const on = useMemo(toggles, []);
@@ -83,7 +83,7 @@ const Inner: React.FC<{ id: number; kit: Kit }> = ({ id, kit }) => {
 };
 
 const dprOverride = () => (getInputProps() as { post?: { dpr?: number } }).post?.dpr;
-const ShotView: React.FC<{ id: number; kit: Kit }> = ({ id, kit }) => (
+const ShotView: React.FC<{ id: number; frame: number; kit: Kit }> = ({ id, frame, kit }) => (
   <AbsoluteFill>
     <ThreeCanvas
       width={1080} height={1920}
@@ -92,14 +92,13 @@ const ShotView: React.FC<{ id: number; kit: Kit }> = ({ id, kit }) => (
       gl={{ antialias: false, stencil: false, powerPreference: "high-performance", toneMappingExposure: 1.0 }}
       camera={{ fov: 40, near: 0.2, far: 1500 }}
     >
-      <Inner id={id} kit={kit} />
+      <Inner id={id} frame={frame} kit={kit} />
     </ThreeCanvas>
   </AbsoluteFill>
 );
 
-const CaptionOverlay: React.FC = () => {
-  const f = useCurrentFrame();
-  const t = f / 30;
+const CaptionOverlay: React.FC<{ frame: number }> = ({ frame }) => {
+  const t = frame / 30;
   const word = WORDS.find((w) => t >= w.s && t < w.e);
   if (!word) return null;
   return (
@@ -118,6 +117,8 @@ export const RailShort: React.FC = () => {
   const f = useCurrentFrame();
   const kit = useKit();
   if (!kit) return null;
-  const shot = shotAt(f);
-  return <AbsoluteFill style={{ background: "#cfe3f2" }}><ShotView id={shot.id} kit={kit} /><CaptionOverlay /></AbsoluteFill>;
+  const post = (getInputProps() as { post?: { frameMap?: number[] } }).post;
+  const frame = post?.frameMap?.[f] ?? f;
+  const shot = shotAt(frame);
+  return <AbsoluteFill style={{ background: "#cfe3f2" }}><ShotView id={shot.id} frame={frame} kit={kit} /><CaptionOverlay frame={frame} /></AbsoluteFill>;
 };
