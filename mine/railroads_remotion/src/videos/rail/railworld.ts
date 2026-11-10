@@ -100,7 +100,7 @@ export class RailWorld {
     this.sky = new THREE.Mesh(new THREE.SphereGeometry(1100, 48, 24), this.skyMat);
     this.sky.renderOrder = -1; this.sky.frustumCulled = false; this.sky.layers.set(NOINK); R.add(this.sky);
     this.hemi = new THREE.HemisphereLight("#cfe6ff", "#6c5c8c", 1.1);
-    this.sun = new THREE.DirectionalLight("#fff0d6", 2.6); this.sun.castShadow = true; this.sun.shadow.mapSize.set(4096, 4096);
+    this.sun = new THREE.DirectionalLight("#fff0d6", 2.6); this.sun.castShadow = true; this.sun.shadow.mapSize.set(2048, 2048);
     R.add(this.hemi, this.sun, this.sun.target);
     this.cloudMap = [0, 1, 2, 3].map((k) => cloudHD(k, LOOK.day.cloud));
     [[-60, 80, 260, 140], [90, 110, 300, 170], [-140, 95, 340, 150], [30, 140, 380, 190], [200, 120, 330, 160]].forEach(([x, y, z, w], i) => {
@@ -128,7 +128,7 @@ export class RailWorld {
       const delta = b.clone().sub(a), mesh = new THREE.Mesh(new THREE.BoxGeometry(thickness, delta.length(), thickness), mat);
       mesh.position.copy(a).add(b).multiplyScalar(0.5);
       mesh.quaternion.setFromUnitVectors(V(0, 1, 0), delta.normalize());
-      mesh.castShadow = true; mesh.receiveShadow = true; R.add(mesh);
+      mesh.castShadow = false; mesh.receiveShadow = true; R.add(mesh);
     };
     const pierXs = [-11, -5.5, 0, 5.5, 11], pierZs = [6, 24, 42, 60, 78];
     for (const z of pierZs) {
