@@ -205,6 +205,8 @@ export class RailWorld {
     officeBox(0.1, 2.2, 0.1, 0, 2.12, -8.62, officeTrim);
     officeBox(1.2, 0.1, 0.8, -2.2, 1.18, -0.2, officeTrim);
     officeBox(0.9, 0.08, 0.6, 2.2, 1.18, -0.2, officeTrim);
+    const officeLamp = new THREE.PointLight("#ffcf9a", 55, 28, 2);
+    officeLamp.position.set(-2.2, 5.0, 1.5); this.office.add(officeLamp);
 
     // Expansion-joint inserts: each rail has two steel ends with a controllable gap.
     const railSteel = twoTone(new THREE.MeshLambertMaterial({ color: "#56616d" }));
