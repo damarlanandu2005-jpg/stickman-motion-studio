@@ -48,6 +48,11 @@ jobs:
           npx tsc --noEmit --jsx react-jsx --module ESNext --moduleResolution bundler \
             --target ES2022 --esModuleInterop --allowSyntheticDefaultImports \
             --skipLibCheck --strict false src/index.ts
+      - name: Install FFmpeg for chunk stitching
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+          ffmpeg -version
       - name: Render railroad MP4 in chunks
         working-directory: mine/railroads_remotion
         env:
