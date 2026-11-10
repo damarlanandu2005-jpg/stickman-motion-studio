@@ -7,7 +7,7 @@ if (!prefix || !frames) {
   throw new Error("Usage: COMP=RailShort CHROME=<chromium> node still.mjs out/r_ 0,45,90 0.5");
 }
 const browserExecutable = process.env.CHROME;
-const chromiumOptions = { gl: "swiftshader" };
+const chromiumOptions = { gl: process.env.REMOTION_GL || "angle-egl" };
 const inputProps = { post: { dpr: Number(process.env.REMOTION_DPR || 0.5) } };
 const serveUrl = await bundle({ entryPoint: path.resolve("src/index.ts"), publicDir: path.resolve("public") });
 const composition = await selectComposition({
