@@ -46,9 +46,9 @@ export const SHOTS: RShot[] = [
   { id: 2, a: 90, b: 219, light: "day", place: "OUTDOOR",
     cam: flight([-4.5, 4.2, 14], [-2.0, 6.5, 9], [3.0, -3.5, -22], [4.2, -6, -30], 52, 54, -0.025),
     cast: [
-      guy("eng", -4.5, 18, "determined", 1.05), guy("cond", -4.5, 24, "focused"),
-      guy("tourist", -4.5, 29, "focused"), guy("eng", 4.5, 18, "determined", 1.05),
-      guy("boss", 4.5, 24, "proud"), guy("cond", 4.5, 29, "focused"),
+      guy("eng", -4.5, -18, "determined", 1.05), guy("cond", -4.5, -24, "focused"),
+      guy("tourist", -4.5, -29, "focused"), guy("eng", 4.5, -18, "determined", 1.05),
+      guy("boss", 4.5, -24, "proud"), guy("cond", 4.5, -29, "focused"),
     ] },
   // 03 — Office: the contract makes the race worth winning.
   { id: 3, a: 219, b: 298, light: "day", place: "OFFICE",
@@ -77,7 +77,7 @@ export const SHOTS: RShot[] = [
     cast: [guy("cond", -2.7, 20, "proud", 1.18)], dof: { focus: [-2.7, 1.4, 20], cInf: 5 } },
   // 09 — The race: both trains approach on separate tracks.
   { id: 9, a: 692, b: 824, light: "day", place: "OUTDOOR",
-    cam: flight([0.5, 7.5, 31], [3.5, 10.5, 25], [-4.5, 1, -12], [-2.5, 0, -30], 48, 50),
+    cam: flight([0.5, 7.5, 31], [3.5, 10.5, 25], [-4.5, 1, 70], [-2.5, 0, 55], 48, 50),
     cast: [guy("tourist", -5.7, 8, "focused", 0.9), guy("tourist", 5.7, 8, "focused", 0.9)] },
   // 10 — The boss studies the numbers as the temperature rises.
   { id: 10, a: 824, b: 956, light: "day", place: "OFFICE",
@@ -133,7 +133,7 @@ export type RailwayState = {
 export const stateAt = (f: number): RailwayState => {
   const id = shotAt(f).id;
   const s = {
-    gapL: 0.2, gapR: 0.2, heatL: 0, heatR: 0, buckle: 0,
+    gapL: 0, gapR: 0.2, heatL: 0, heatR: 0, buckle: 0,
     trainL: null as number | null, trainR: null as number | null,
   };
   if (id === 1) s.gapR = 0.2 * ramp(28, 84, f);
