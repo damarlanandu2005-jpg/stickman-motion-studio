@@ -75,6 +75,6 @@ for (let i = 0; i < chunks.length; i += parallelChunks) {
 }
 
 const concatList = path.join(outputDir, "concat.txt");
-await writeFile(concatList, chunks.map((c) => `file '${c.file.replace(/'/g, "'\\''")}'`).join("\\n") + "\\n");
+await writeFile(concatList, chunks.map((c) => `file '${c.file.replace(/'/g, "'\\''")}'`).join("\n") + "\n");
 execFileSync("ffmpeg", ["-y", "-f", "concat", "-safe", "0", "-i", concatList, "-c", "copy", "out/railroad-full-v1.mp4"], { stdio: "inherit" });
 console.log("FULL_RENDER_COMPLETE out/railroad-full-v1.mp4");
