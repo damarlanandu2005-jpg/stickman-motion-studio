@@ -50,6 +50,7 @@ jobs:
           CHROME="$(node -e "import('playwright').then(({chromium}) => console.log(chromium.executablePath()))")"
           export CHROME
           node render-qa.mjs
+          ffmpeg -version || (sudo apt-get update -qq && sudo apt-get install -y ffmpeg)
           ffmpeg -y -i out/shot-qa.mp4 -vsync 0 out/shot-qa/rail_%02d.jpg
       - uses: actions/upload-artifact@v4
         with:
