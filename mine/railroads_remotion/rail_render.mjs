@@ -8,6 +8,6 @@ fs.mkdirSync("out", { recursive: true });
 if (mode === "stills") {
   for (const f of a.split(",").map(Number)) await renderStill({ composition, serveUrl, frame: f, output: `${b}${f}.jpg`, imageFormat: "jpeg", jpegQuality: 92, scale: Number(c || 0.5), chromiumOptions });
 } else {
-  await renderMedia({ composition, serveUrl, codec: "h264", crf: 16, frameRange: [Number(a), Number(b)], outputLocation: c, chromiumOptions, concurrency: 3, onProgress: (p) => { if (p.renderedFrames % 20 === 0) console.log("frames", p.renderedFrames); } });
+  await renderMedia({ composition, serveUrl, codec: "h264", crf: 16, frameRange: [Number(a), Number(b)], outputLocation: c, chromiumOptions, concurrency: 2, timeoutInMilliseconds: 600000, onProgress: (p) => { if (p.renderedFrames % 20 === 0) console.log("frames", p.renderedFrames); } });
 }
 console.log("done");
