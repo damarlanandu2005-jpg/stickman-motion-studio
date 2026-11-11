@@ -1,0 +1,10 @@
+{
+ "mode": "test",
+ "gpu": "Tesla T4, 580.178.04\nTesla T4, 580.178.04",
+ "node": "v22.23.4",
+ "chrome": "/root/.cache/ms-playwright/chromium-1254/chrome-linux64/chrome",
+ "test_s_total": 17.1,
+ "test_frames": 6,
+ "test_s_per_frame": 2.85,
+ "ok": true
+}
