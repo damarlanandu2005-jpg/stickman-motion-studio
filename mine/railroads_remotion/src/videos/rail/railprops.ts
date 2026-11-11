@@ -278,21 +278,10 @@ export const buildDressing = (R: THREE.Object3D, M: Mats, kit: Kit) => {
   const B = new Batch(), LB = new THREE.Group(); R.add(LB);
   const dark = M.dark, wood = M.wood, rope = tm({ color: "#d8c8a8" });
   // fence along the cliff edge (z 9.2), x -14..14 but leaving the two track gaps
-  for (let x = -14; x <= 14; x += 2) { if (Math.abs(x - RX) < 1.7 || Math.abs(x - LX) < 1.7) continue; bx(B, wood, 0.12, 1.1, 0.12, x, 0.55, 9.2); }
-  for (const yy of [0.5, 0.95]) for (const [xa, xb] of [[-14, LX - 1.6], [LX + 1.6, RX - 1.6], [RX + 1.6, 14]]) bx(B, rope, xb - xa, 0.07, 0.07, (xa + xb) / 2, yy, 9.2);
-  // lamp post + bunting to a signal pole across the right track
-  const lampX = 1.2, lampZ = 15;
-  cyl(B, dark, 0.07, 0.1, 4.2, lampX, 2.1, lampZ, 0, 0, 8); bx(B, dark, 0.5, 0.06, 0.5, lampX, 4.2, lampZ);
-  cyl(B, dark, 0.06, 0.06, 4.0, 9.2, 2.0, lampZ, 0, 0, 8);
-  const lamp = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.5, 0.5), new THREE.MeshBasicMaterial({ color: new THREE.Color(2.2, 1.7, 0.8), fog: true }));
-  lamp.position.set(lampX, 4.5, lampZ); LB.add(lamp);
-  B.add(new THREE.ConeGeometry(0.42, 0.35, 4).rotateY(Math.PI / 4), dark, MX(lampX, 4.9, lampZ));
-  bx(B, dark, 8, 0.03, 0.03, (lampX + 9.2) / 2, 3.95, lampZ);
-  const cols = ["#d8402a", "#f0c030", "#2a8ad8", "#3aa860"]; let fi = 0;
-  for (let t = 0.06; t < 0.97; t += 0.11) {
-    const fx = lampX + (9.2 - lampX) * t, fy = 3.9 - 0.45 * Math.sin(t * Math.PI), tg = new THREE.ConeGeometry(0.22, 0.45, 3); tg.rotateZ(Math.PI);
-    B.add(tg, tm({ color: cols[fi++ % 4] }), MX(fx, fy - 0.2, lampZ));
-  }
+  for (let x = -14; x <= 14; x += 2) { if (Math.abs(x - RX) < 1.7 || Math.abs(x - LX) < 1.7 || (x > LX && x < RX)) continue; bx(B, wood, 0.12, 1.1, 0.12, x, 0.55, 9.2); }
+  for (const yy of [0.5, 0.95]) for (const [xa, xb] of [[-14, LX - 1.6], [RX + 1.6, 14]]) bx(B, rope, xb - xa, 0.07, 0.07, (xa + xb) / 2, yy, 9.2);
+  // (lamp post + bunting removed: it stood in the c9 and c17 frames)
+  cyl(B, dark, 0.06, 0.06, 4.0, 9.2, 2.0, 15, 0, 0, 8);
   // barrels, crates, sleeper stack, company sign, signal flag
   for (let k = 0; k < 3; k++) { cyl(B, wood, 0.4, 0.4, 0.8, 11 + k * 0.85, 0.4, 48, 0, 0, 14); cyl(B, dark, 0.415, 0.415, 0.06, 11 + k * 0.85, 0.22, 48, 0, 0, 14); cyl(B, dark, 0.415, 0.415, 0.06, 11 + k * 0.85, 0.6, 48, 0, 0, 14); }
   for (let k = 0; k < 4; k++) sbox(B, tm({ map: crateTex(k % 3) }), 10.4 + (k % 2) * 0.95 - 0.45, 10.4 + (k % 2) * 0.95 + 0.45, Math.floor(k / 2) * 0.9, Math.floor(k / 2) * 0.9 + 0.9, 46.8 - (k % 3) * 0.2 - 0.45, 46.8 - (k % 3) * 0.2 + 0.45, 0.9);
@@ -305,7 +294,7 @@ export const buildDressing = (R: THREE.Object3D, M: Mats, kit: Kit) => {
   const tank = tm({ map: woodTex(), color: "#b08a64" });
   for (const [lx, lz] of [[-1.6, -1.6], [1.6, -1.6], [-1.6, 1.6], [1.6, 1.6]]) bx(B, wood, 0.28, 8, 0.28, 11 + lx, 4, 14 + lz);
   cyl(B, tank, 2.4, 2.4, 3.2, 11, 9.6, 14, 0, 0, 20); B.add(new THREE.ConeGeometry(2.7, 1.4, 20), dark, MX(11, 11.9, 14)); for (const yy of [8.6, 10.4]) cyl(B, dark, 2.45, 2.45, 0.14, 11, yy, 14, 0, 0, 20);
-  for (let x = -16; x <= 22; x += 7) { bx(B, wood, 0.18, 6.2, 0.18, x, 3.1, 11.5); bx(B, wood, 1.6, 0.12, 0.12, x, 5.7, 11.5); bx(B, wood, 1.1, 0.1, 0.1, x, 5.3, 11.5); }
+  for (let x = -16; x <= 22; x += 7) { if (Math.abs(x) < 8) continue; bx(B, wood, 0.18, 6.2, 0.18, x, 3.1, 11.5); bx(B, wood, 1.6, 0.12, 0.12, x, 5.7, 11.5); bx(B, wood, 1.1, 0.1, 0.1, x, 5.3, 11.5); }
   B.add(new THREE.ConeGeometry(2.6, 2.4, 4).rotateY(Math.PI / 4), tm({ color: "#e8dcc0" }), MX(-13, 1.2, 36));
   for (let k = 0; k < 3; k++) sbox(B, tm({ map: crateTex(k) }), -11.8 + k * 0.9 - 0.45, -11.8 + k * 0.9 + 0.45, 0, 0.9, 38.05, 38.95, 0.9);
   // the work beam jutting over the canyon with a brace down to the wall

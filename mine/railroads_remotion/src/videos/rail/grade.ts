@@ -155,15 +155,15 @@ export class GradeEffect extends Effect {
 //   day: mid knot .60 for median Y' ~.57, darks pressed (.1 -> .085), a hint of violet in shadows.
 //   golden: stronger S (darks .1 -> .09, mids .5 -> .54), blue-violet shadow tint, orange highlight tint, heavier vignette.
 export const GRADE_DAY2: GradeParams = {
-  ky: [0.07, 0.19, 0.37, 0.66, 0.87, 0.958, 1],
+  ky: [0.03, 0.135, 0.33, 0.645, 0.865, 0.957, 1],
   sat: [1.0, 1.08, 1.0],
   tintS: [0.008, 0.0], tintM: [-0.024, 0.006], tintH: [-0.008, 0.004],   // de-pink: mids/highlights lean warm (cb < 0), blue only in shadows
   vig: [0.12, 0.45],
 };
 export const GRADE_GOLDEN2: GradeParams = {
-  ky: [0.09, 0.2, 0.39, 0.69, 0.88, 0.96, 1],
-  sat: [1.0, 0.98, 1.05],
-  tintS: [0.06, -0.01], tintM: [-0.012, 0.008], tintH: [-0.034, 0.016],   // violet in shadows only, peach mids/highlights
+  ky: [0.04, 0.15, 0.34, 0.65, 0.865, 0.955, 1],
+  sat: [1.0, 1.0, 1.05],
+  tintS: [0.045, -0.01], tintM: [-0.012, 0.008], tintH: [-0.034, 0.016],   // violet in shadows only, peach mids/highlights
   vig: [0.2, 0.4],
 };
 /** indoor (office c3 / c10): warm lamp-lit room; slightly lower key than day, warm mids, cool-violet shadows, stronger vignette. */

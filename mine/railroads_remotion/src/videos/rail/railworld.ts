@@ -38,11 +38,11 @@ const OUTFITS: Record<string, Outfit> = {
 };
 const mix = (a: LightPreset, o: Partial<LightPreset>): LightPreset => ({ ...a, ...o });
 const PRES: Record<"day" | "golden" | "indoor", LightPreset> = {
-  day: mix(LIGHTS.day, { az: 70, el: 42, lit: [1.62, 1.42, 1.15], shade: [0.44, 0.42, 0.62], lift: [0.09, 0.09, 0.16], fog: "#c2d2ea", fogNear: 45, fogFar: 420, sunCol: "#ffe2c0", sunI: 2.8 }),
-  golden: mix(LIGHTS.golden, { shade: [0.36, 0.33, 0.66], lift: [0.09, 0.09, 0.2], fog: "#dca08e", fogNear: 35, fogFar: 300 }),
+  day: mix(LIGHTS.day, { az: 70, el: 42, lit: [1.62, 1.42, 1.15], shade: [0.44, 0.42, 0.62], lift: [0.05, 0.05, 0.11], fog: "#b8cce8", fogNear: 70, fogFar: 650, sunCol: "#ffe2c0", sunI: 2.8 }),
+  golden: mix(LIGHTS.golden, { shade: [0.3, 0.28, 0.6], lift: [0.05, 0.05, 0.13], fog: "#dca08e", fogNear: 50, fogFar: 450 }),
   indoor: mix(LIGHTS.day, { az: 60, el: 50, lit: [1.5, 1.3, 1.05], shade: [0.62, 0.46, 0.42], lift: [0.08, 0.05, 0.06], fog: "#3a2418", fogNear: 200, fogFar: 900, sunCol: "#ffe0b0", sunI: 2.2 }),
 };
-const SMOKE = { day: "#ece8ea", golden: "#6e5448", indoor: "#ece8ea" };
+const SMOKE = { day: "#d2cacc", golden: "#8a6a68", indoor: "#d2cacc" };
 export class RailWorld {
   root = new THREE.Group();
   private pool = new Pool(); private actors: Actor[] = []; private fxs: Fx[] = [];
@@ -81,7 +81,7 @@ export class RailWorld {
     const gl = ctex("sunGlow", 256, 256, (g) => { const gr = g.createRadialGradient(128, 128, 2, 128, 128, 126); gr.addColorStop(0, "rgba(255,255,255,1)"); gr.addColorStop(0.12, "rgba(255,255,255,0.9)"); gr.addColorStop(0.3, "rgba(255,255,255,0.28)"); gr.addColorStop(1, "rgba(255,255,255,0)"); g.fillStyle = gr; g.fillRect(0, 0, 256, 256); });
     this.glow = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), new THREE.MeshBasicMaterial({ map: gl, transparent: true, depthWrite: false, fog: false, blending: THREE.AdditiveBlending }));
     this.glow.layers.set(NOINK); R.add(this.glow);
-    this.smokeTex = ctex("smokeR2", 128, 128, (g) => { const gr = g.createRadialGradient(64, 64, 6, 64, 64, 60); gr.addColorStop(0, "rgba(255,255,255,0.95)"); gr.addColorStop(0.7, "rgba(255,255,255,0.7)"); gr.addColorStop(1, "rgba(255,255,255,0)"); g.fillStyle = gr; g.fillRect(0, 0, 128, 128); });
+    this.smokeTex = ctex("smokeR2", 128, 128, (g) => { const gr = g.createRadialGradient(64, 64, 6, 64, 64, 60); gr.addColorStop(0, "rgba(255,255,255,0.55)"); gr.addColorStop(0.45, "rgba(255,255,255,0.3)"); gr.addColorStop(0.8, "rgba(255,255,255,0.06)"); gr.addColorStop(1, "rgba(255,255,255,0)"); g.fillStyle = gr; g.fillRect(0, 0, 128, 128); });
     R.add(this.out);
     const M = P.makeMats(); this.M = M;
     this.disc = new THREE.Mesh(new THREE.CircleGeometry(1, 40), new THREE.MeshBasicMaterial({ color: new THREE.Color(3.2, 2.2, 1.1), fog: false })); this.disc.layers.set(NOINK); R.add(this.disc);
@@ -90,9 +90,9 @@ export class RailWorld {
     this.out.add(this.trk.R.group, this.trk.L.group);
     this.trainR = P.buildTrain(kit, M, ["train-carriage-box", "train-carriage-tank"], "#c8282b"); this.trainL = P.buildTrain(kit, M, ["train-carriage-coal", "train-carriage-box", "train-carriage-lumber"]);
     this.out.add(this.trainR, this.trainL, this.saw, this.coin, this.sheet);
-    this.office = P.buildOffice(R, M); this.office.add(this.news); this.news.position.set(-0.55, 1.3, -3.0); this.news.rotation.set(-1.4, 0, 0.35); this.news.scale.setScalar(0.5);
+    this.office = P.buildOffice(R, M); this.office.add(this.news); this.news.position.set(-0.2, 1.55, -2.7); this.news.rotation.set(-0.3, 0, 0.04); this.news.scale.setScalar(0.62);
     for (let t = 0; t < 2; t++) for (let k = 0; k < 16; k++) {
-      const m = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), new THREE.MeshBasicMaterial({ map: this.smokeTex, transparent: true, depthWrite: false, color: "#ece8ea", fog: true }));
+      const m = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), new THREE.MeshBasicMaterial({ map: this.smokeTex, transparent: true, depthWrite: false, color: "#d8d0d2", fog: true, alphaTest: 0 }));
       m.layers.set(NOINK); this.smoke[t].push(m); R.add(m);
     }
   }
@@ -154,14 +154,14 @@ export class RailWorld {
         const q = (((t * 0.55 + i / 16) % 1) + 1) % 1, age = q * 2.2 * FPS; // frames since emission
         m.position.set(x + dx + 0.5 * q * 3, 5.9 + q * 10, z - 3.7 - spd * age + 2.5 * q);
         const sz = 2.2 + q * 9; m.scale.set(sz, sz, 1); m.quaternion.copy(cam.quaternion);
-        const mm = m.material as THREE.MeshBasicMaterial; mm.opacity = 0.9 * (1 - q) ** 1.3 * Math.min(1, q * 8); mm.color.copy(col);
+        const mm = m.material as THREE.MeshBasicMaterial; mm.opacity = 0.55 * (1 - q) ** 1.3 * Math.min(1, q * 8); mm.color.copy(col);
       });
       void fr;
     };
     const tr = trainsAt(f); place(this.trainR, tr.R, P.RX, false, 0); place(this.trainL, tr.L, P.LX, true, 1);
     this.saw.visible = st.saw !== null && !office; this.saw.position.set(P.RX + P.G + 0.35 + Math.sin((st.saw ?? 0) * 40) * 0.12, P.TOPY + 0.36, JZ); this.saw.rotation.set(0, Math.PI / 2, 0);
     this.coin.visible = st.coin; const cn = coinAt(f); this.coin.position.set(P.RX + P.G + cn.dx, P.TOPY + 0.33 + cn.dy, JZ); this.coin.rotation.set(cn.rx, 0.6, 0); this.coin.scale.setScalar(0.25);
-    this.sheet.visible = st.paper; this.sheet.position.set(P.RX + P.G, P.TOPY + 0.45, JZ); this.sheet.rotation.set(0, 0.6, 0);
+    this.sheet.visible = st.paper; this.sheet.position.set(P.RX + P.G, P.TOPY + 0.2, JZ); this.sheet.rotation.set(0, 0.6, 0);
     // cast
     const right = V(0, 0, 0).setFromMatrixColumn(cam.matrixWorld, 0);
     const info = { pos: cam.position, right };
