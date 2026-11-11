@@ -3,19 +3,21 @@
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { staticFile } from "remotion";
-import { Batch, V, lam, toLambert, RECOLOR } from "./build";
-import { ctex, rng, cloudHD } from "./paint";
+import { V } from "./build";
+import { ctex, cloudHD } from "./paint";
 import { LIGHTS, LOOK, LightPreset } from "./lights";
 import { TONE, CHAR, twoTone, untone } from "./shade";
 import { NOINK } from "./ink";
 import { Pool, Actor, Fx, person, blob, railStage, Place, Who as CWho } from "./cast";
 import { Outfit } from "./toon";
-import { shotById, camAt, FPS, SHOTS, RShot } from "./rstory";
+import { shotById, camAt, FPS, RShot, STATE, JZ } from "./rstory";
 import { castAt, trainsAt, drawGuy, Guy } from "./railcast";
 
-const NATURE = ["cliff_block_rock", "cliff_blockHalf_rock", "cliff_rock", "cliff_large_rock", "rock_largeA", "rock_largeB", "rock_largeC", "rock_smallA", "rock_smallB", "rock_tallA", "rock_tallB", "cactus_tall", "cactus_short", "tree_oak", "plant_bush", "stone_largeA", "stone_tallA"];
-const TRAIN = ["railroad-straight", "train-locomotive-a", "train-carriage-box", "train-carriage-tank", "train-carriage-lumber", "track", "railroad-rail-straight"];
-type Kit = Record<string, THREE.Object3D>;
+import * as P from "./railprops";
+import { Kit } from "./railprops";
+
+const NATURE = ["rock_largeA", "rock_largeB", "rock_smallA", "rock_smallB", "rock_tallA", "rock_tallB", "cactus_tall", "cactus_short", "stone_largeA", "stone_smallA"];
+const TRAIN = ["railroad-straight", "train-locomotive-a", "train-carriage-box", "train-carriage-tank", "train-carriage-coal", "train-carriage-lumber", "train-carriage-flatbed-wood"];
 let kitP: Promise<Kit> | null = null;
 export const loadKit = () => {
   if (!kitP) {
@@ -27,9 +29,6 @@ export const loadKit = () => {
   return kitP;
 };
 
-// canyon palette: warm rock, not the kit's green/teal
-Object.assign(RECOLOR, { grass: "#d9803f", dirt: "#b4502e", stone: "#c9774d", leafsDark: "#4a9142" });
-
 const OUTFITS: Record<string, Outfit> = {
   rival: { jacket: "#2c5a4a", pants: "#2a3350", boots: "#1d1a1a", hat: "tophat", skin: "#8c5a35", moustache: "#111111" },
   eng: { jacket: "#2a9a8a", pants: "#3b3f52", boots: "#2b211c", hat: "cap", cap: "#35476b", skin: "#f6efe4", belt: null, buttons: "#e8c45a" },
@@ -37,49 +36,25 @@ const OUTFITS: Record<string, Outfit> = {
   cond: { jacket: "#2d4670", pants: "#2a3350", boots: "#1d1a1a", hat: "shako", skin: "#f6efe4", buttons: "#e8c45a" },
   tourist: { jacket: "#b5653f", pants: "#3b3f52", boots: "#4a3426", hat: "bonnet", dress: "#c25a7a", skin: "#f6efe4" },
 };
-const RAIL_LIGHT: LightPreset = {
-  ...LIGHTS.day, az: 70, el: 42,
-  lit: [1.62, 1.42, 1.15], shade: [0.34, 0.3, 0.44], lift: [0.09, 0.06, 0.13],
-  fog: "#d9c4c0", fogNear: 70, fogFar: 620, sunCol: "#ffe2c0", sunI: 2.8,
+const mix = (a: LightPreset, o: Partial<LightPreset>): LightPreset => ({ ...a, ...o });
+const PRES: Record<"day" | "golden" | "indoor", LightPreset> = {
+  day: mix(LIGHTS.day, { az: 70, el: 42, lit: [1.62, 1.42, 1.15], shade: [0.46, 0.34, 0.37], lift: [0.07, 0.05, 0.1], fog: "#b3c0ea", fogNear: 90, fogFar: 700, sunCol: "#ffe2c0", sunI: 2.8 }),
+  golden: mix(LIGHTS.golden, { shade: [0.3, 0.22, 0.38], lift: [0.06, 0.05, 0.13], fogNear: 40, fogFar: 340 }),
+  indoor: mix(LIGHTS.day, { az: 60, el: 50, lit: [1.5, 1.3, 1.05], shade: [0.62, 0.46, 0.42], lift: [0.08, 0.05, 0.06], fog: "#3a2418", fogNear: 200, fogFar: 900, sunCol: "#ffe0b0", sunI: 2.2 }),
 };
-
-const stripTex = (key: string) => ctex(key, 1024, 1024, (g, r) => {
-  // storybook strata: horizontal wavy bands in rust / orange / ochre / plum, thin dark crevices (his reference: a painted wall)
-  const cols = ["#c8482f", "#e0743a", "#f19a4a", "#b83a3c", "#9c3d4e", "#d95f38", "#f0a85c", "#a93f3a"];
-  let y = 0;
-  while (y < 1024) {
-    const h = 14 + r() * 46, c = cols[Math.floor(r() * cols.length)];
-    g.fillStyle = c; g.beginPath(); g.moveTo(0, y);
-    const a = 3 + r() * 9, p = r() * 6, f = 1 + Math.floor(r() * 3);
-    for (let x = 0; x <= 1024; x += 16) g.lineTo(x, y + a * Math.sin((x / 1024) * Math.PI * 2 * f + p));
-    g.lineTo(1024, y + h + 20); g.lineTo(0, y + h + 20); g.closePath(); g.fill();
-    g.strokeStyle = "rgba(70,20,30,0.45)"; g.lineWidth = 1.5 + r() * 2; g.beginPath();
-    for (let x = 0; x <= 1024; x += 16) { const yy = y + a * Math.sin((x / 1024) * Math.PI * 2 * f + p); x ? g.lineTo(x, yy) : g.moveTo(x, yy); }
-    g.stroke();
-    y += h;
-  }
-});
-const gravelTex = () => ctex("gravel", 512, 512, (g, r) => {
-  g.fillStyle = "#a9755a"; g.fillRect(0, 0, 512, 512);
-  const cols = ["#c98f72", "#8a5a4a", "#d6a284", "#6f4a42", "#b98068", "#e0b090"];
-  for (let i = 0; i < 2600; i++) { g.fillStyle = cols[Math.floor(r() * cols.length)]; g.beginPath(); g.ellipse(r() * 512, r() * 512, 3 + r() * 6, 2 + r() * 4, r() * 3, 0, 7); g.fill(); g.strokeStyle = "rgba(60,30,30,0.5)"; g.lineWidth = 1; g.stroke(); }
-});
-const dirtTex = () => ctex("dirtR", 512, 512, (g, r) => {
-  g.fillStyle = "#d1763c"; g.fillRect(0, 0, 512, 512);
-  for (let i = 0; i < 400; i++) { g.fillStyle = r() > 0.5 ? "#e08a4a" : "#bd6232"; g.beginPath(); g.ellipse(r() * 512, r() * 512, 10 + r() * 30, 4 + r() * 10, 0, 0, 7); g.fill(); }
-});
-const rep = (t: THREE.Texture, x: number, y: number) => { const c = t.clone(); c.wrapS = c.wrapT = THREE.RepeatWrapping; c.repeat.set(x, y); c.anisotropy = 8; c.needsUpdate = true; return c; };
-
-const skyTex = () => null;
+const SMOKE = { day: "#ece8ea", golden: "#6e5448", indoor: "#ece8ea" };
 export class RailWorld {
   root = new THREE.Group();
   private pool = new Pool(); private actors: Actor[] = []; private fxs: Fx[] = [];
   private hemi: THREE.HemisphereLight; private sun: THREE.DirectionalLight;
   private skyMat: THREE.ShaderMaterial; private sky: THREE.Mesh;
-  private fog = new THREE.Fog("#d9c4c0", 70, 620);
-  private clouds: THREE.Mesh[] = []; private cloudMap: THREE.Texture[];
-  private trains: THREE.Group; private smokeG: THREE.Mesh[] = [];
-  private frustum = new THREE.Frustum(); private m4 = new THREE.Matrix4(); private v = new THREE.Vector3(); private sph = new THREE.Sphere();
+  private fog = new THREE.Fog("#b3c0ea", 35, 330);
+  private clouds: THREE.Mesh[] = []; private cloudMaps: Record<string, THREE.Texture[]>;
+  private out = new THREE.Group(); private office!: THREE.Group;
+  private trk!: { R: P.Track; L: P.Track }; private trainR!: THREE.Group; private trainL!: THREE.Group;
+  private smoke: THREE.Mesh[][] = [[], []]; private smokeTex: THREE.Texture; private glow: THREE.Mesh;
+  private saw = P.handsaw(); private coin = P.coin(); private sheet = P.paper(); private news = P.newspaper();
+  private frustum = new THREE.Frustum(); private m4 = new THREE.Matrix4(); private v = new THREE.Vector3();
   private sunCache = new Map<number, THREE.Vector3>();
 
   constructor(kit: Kit) {
@@ -98,61 +73,26 @@ export class RailWorld {
     this.hemi = new THREE.HemisphereLight("#cfe6ff", "#6c5c8c", 1.1);
     this.sun = new THREE.DirectionalLight("#fff0d6", 2.6); this.sun.castShadow = true; this.sun.shadow.mapSize.set(4096, 4096);
     R.add(this.hemi, this.sun, this.sun.target);
-    this.cloudMap = [0, 1, 2, 3].map((k) => cloudHD(k, LOOK.day.cloud));
-    [[-60, 80, 260, 140], [90, 110, 300, 170], [-140, 95, 340, 150], [30, 140, 380, 190], [200, 120, 330, 160]].forEach(([x, y, z, w], i) => {
-      const m = new THREE.Mesh(new THREE.PlaneGeometry(w, w / 2), new THREE.MeshBasicMaterial({ map: this.cloudMap[i % 4], transparent: true, depthWrite: false, fog: false }));
+    this.cloudMaps = { day: [0, 1, 2, 3].map((k) => cloudHD(k, LOOK.day.cloud)), golden: [0, 1, 2, 3].map((k) => cloudHD(k, LOOK.golden.cloud)) };
+    ([[-80, 95, -380, 220], [120, 130, -450, 260], [-260, 110, -330, 200], [20, 170, -560, 300], [300, 120, -300, 220], [-420, 140, -90, 240], [440, 150, -120, 260]] as number[][]).forEach(([x, y, z, w], i) => {
+      const m = new THREE.Mesh(new THREE.PlaneGeometry(w, w / 2), new THREE.MeshBasicMaterial({ map: this.cloudMaps.day[i % 4], transparent: true, depthWrite: false, fog: false }));
       m.position.set(x, y, z); m.layers.set(NOINK); this.clouds.push(m); R.add(m);
     });
-    this.build(kit);
-  }
-
-  private build(kit: Kit) {
-    const R = this.root, B = new Batch(), r = rng(7);
-    const strata = rep(stripTex("strata"), 3, 2), gravel = rep(gravelTex(), 1, 70), dirt = rep(dirtTex(), 40, 40);
-    const mk = (map: THREE.Texture, col = "#ffffff") => twoTone(new THREE.MeshLambertMaterial({ map, color: col }));
-    const wallM = mk(strata), gravM = mk(gravel), dirtM = mk(dirt);
-    const box = (w: number, h: number, d: number, m: THREE.Material, x: number, y: number, z: number, cast = true) => {
-      const g = new THREE.BoxGeometry(w, h, d); const me = new THREE.Mesh(g, m); me.position.set(x, y + h / 2, z); me.castShadow = cast; me.receiveShadow = true; R.add(me); return me;
-    };
-    // ---- ground: ledge with the track on it, canyon wall on +x, a drop on -x ----
-    box(26, 3, 520, dirtM, -2, -3, 150); // ledge slab (top at y=0), x -15..11
-    // gravel box removed: the kit tile carries its own ballast
-    // ---- canyon wall: three stepped tiers, tall, strata textured ----
-    const tiers = [[8, 14, 0], [7, 14, 5], [9, 20, 9], [12, 40, 16]];
-    let xo = 4.5, yo = 0;
-    for (const [w, h, d] of tiers) { box(w + 40, h, 560, wallM, xo + (w + 40) / 2, yo - 3, 150); xo += w * 0.5; yo += h * 0.55; }
-    // buttresses / hoodoos from the Kenney cliff blocks, recoloured warm (his build.ts recolours by material name)
-    const place = (name: string, x: number, y: number, z: number, s: number, ry = 0, sy = s) => {
-      const o = kit[name]; if (!o) return;
-      B.addObject(o.clone(true), new THREE.Matrix4().compose(new THREE.Vector3(x, y, z), new THREE.Quaternion().setFromEuler(new THREE.Euler(0, ry, 0)), new THREE.Vector3(s, sy, s)));
-    };
-    for (let i = 0; i < 70; i++) {
-      const z = -6 + i * 4.5 + r() * 3, left = r() > 0.4;
-      const nm = ["rock_largeA", "rock_largeB", "rock_smallA", "rock_tallA", "stone_largeA", "rock_smallB"][Math.floor(r() * 6)];
-      place(nm, left ? 2.6 + r() * 1.6 : -2.6 - r() * 2.4, 0, z, 0.9 + r() * 1.6, r() * 6.3);
-    }
-    for (let i = 0; i < 24; i++) place(r() > 0.5 ? "cactus_tall" : "cactus_short", 2.8 + r() * 1.6, 0, 2 + i * 7 + r() * 5, 1.4 + r() * 0.8, r() * 6);
-    // ---- track: Kenney railroad tiles, 4 m long, scaled 1.6 for a person-scaled gauge ----
-    const S = 1.6;
-    for (let z = -12; z < 300; z += 4 * S) place("railroad-straight", 0, S * 1.0, z, S);
-    // far mesas on the -x side beyond the drop, banded by the same strata
-    for (let i = 0; i < 9; i++) {
-      const x = -70 - i * 38 - r() * 20, w = 60 + r() * 60, h = 14 + r() * 22, z = 120 + r() * 380;
-      box(w, h, 70, wallM, x, -60, z); box(w * 0.6, h * 0.5, 50, wallM, x + 4, -60 + h, z);
-    }
-    box(2000, 2, 2000, mk(rep(stripTex("floor"), 20, 20)), -400, -62, 500, false);
-    B.build(R, true);
-    // ---- the train: locomotive + 2 carriages parked far down the track, facing the camera ----
-    this.trains = new THREE.Group(); R.add(this.trains);
-    const tb = new Batch();
-    const T = (name: string, z: number) => { const o = kit[name]; if (!o) return; tb.addObject(o.clone(true), new THREE.Matrix4().compose(new THREE.Vector3(0, -0.06, z), new THREE.Quaternion().setFromEuler(new THREE.Euler(0, Math.PI, 0)), new THREE.Vector3(S, S, S))); };
-    T("train-locomotive-a", 0); T("train-carriage-box", 4.4); T("train-carriage-tank", 8.2);
-    tb.build(this.trains, true);
-    // smoke puffs (flat soft discs, no-ink)
-    const sm = ctex("smokeR", 128, 128, (g) => { const gr = g.createRadialGradient(64, 64, 4, 64, 64, 60); gr.addColorStop(0, "rgba(255,255,255,0.95)"); gr.addColorStop(1, "rgba(255,255,255,0)"); g.fillStyle = gr; g.fillRect(0, 0, 128, 128); });
-    for (let k = 0; k < 8; k++) {
-      const m = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), new THREE.MeshLambertMaterial({ map: sm, transparent: true, depthWrite: false, color: "#d8d2d0" }));
-      m.layers.set(NOINK); this.smokeG.push(m); R.add(m);
+    const gl = ctex("sunGlow", 256, 256, (g) => { const gr = g.createRadialGradient(128, 128, 2, 128, 128, 126); gr.addColorStop(0, "rgba(255,255,255,1)"); gr.addColorStop(0.12, "rgba(255,255,255,0.9)"); gr.addColorStop(0.3, "rgba(255,255,255,0.28)"); gr.addColorStop(1, "rgba(255,255,255,0)"); g.fillStyle = gr; g.fillRect(0, 0, 256, 256); });
+    this.glow = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), new THREE.MeshBasicMaterial({ map: gl, transparent: true, depthWrite: false, fog: false, blending: THREE.AdditiveBlending }));
+    this.glow.layers.set(NOINK); R.add(this.glow);
+    this.smokeTex = ctex("smokeR2", 128, 128, (g) => { const gr = g.createRadialGradient(64, 64, 6, 64, 64, 60); gr.addColorStop(0, "rgba(255,255,255,0.95)"); gr.addColorStop(0.7, "rgba(255,255,255,0.7)"); gr.addColorStop(1, "rgba(255,255,255,0)"); g.fillStyle = gr; g.fillRect(0, 0, 128, 128); });
+    R.add(this.out);
+    const M = P.makeMats();
+    P.buildCanyon(this.out, kit, M); P.buildBridges(this.out, M); P.buildDressing(this.out, M, kit); P.gravelBeds(this.out, M);
+    this.trk = { R: new P.Track(kit, P.RX, true, false), L: new P.Track(kit, P.LX, false, true) };
+    this.out.add(this.trk.R.group, this.trk.L.group);
+    this.trainR = P.buildTrain(kit, M, ["train-carriage-box", "train-carriage-tank"]); this.trainL = P.buildTrain(kit, M, ["train-carriage-coal", "train-carriage-box", "train-carriage-lumber"]);
+    this.out.add(this.trainR, this.trainL, this.saw, this.coin, this.sheet);
+    this.office = P.buildOffice(R, M); this.office.add(this.news); this.news.position.set(-0.55, 1.3, -3.0); this.news.rotation.set(-1.4, 0, 0.35); this.news.scale.setScalar(0.5);
+    for (let t = 0; t < 2; t++) for (let k = 0; k < 16; k++) {
+      const m = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), new THREE.MeshBasicMaterial({ map: this.smokeTex, transparent: true, depthWrite: false, color: "#ece8ea", fog: true }));
+      m.layers.set(NOINK); this.smoke[t].push(m); R.add(m);
     }
   }
 
@@ -167,12 +107,13 @@ export class RailWorld {
   private fx(i: number) { while (this.fxs.length <= i) this.fxs.push(new Fx(this.root)); return this.fxs[i]; }
 
   update(id: string, f: number, cam: THREE.PerspectiveCamera, scene: THREE.Scene) {
-    const s = shotById(id), t = f / FPS, L = RAIL_LIGHT, K = LOOK.day;
-    const c = camAt(f, id);
+    const s = shotById(id), t = f / FPS, lt = s.light, L = PRES[lt], K = lt === "golden" ? LOOK.golden : LOOK.day, office = s.place === "OFFICE";
+    const c = camAt(f, id), st = STATE(f, id);
     cam.position.set(...c.pos); cam.up.set(0, 1, 0); cam.lookAt(...c.look); cam.rotateZ(c.roll);
     cam.fov = c.fov; cam.near = 0.1; cam.far = 1500; cam.updateProjectionMatrix(); cam.updateMatrixWorld();
     const focus = V(...c.look), dist = cam.position.distanceTo(focus);
     cam.layers.enable(NOINK);
+    this.out.visible = !office; this.office.visible = office;
     const sunDir = this.shotSun(s, L);
     this.hemi.color.set(L.sky); this.hemi.groundColor.set(L.ground); this.hemi.intensity = L.hemiI;
     this.sun.color.set(L.sunCol); this.sun.intensity = L.sunI;
@@ -181,32 +122,55 @@ export class RailWorld {
     const sc = this.sun.shadow.camera; sc.left = -Rr; sc.right = Rr; sc.top = Rr; sc.bottom = -Rr; sc.near = 20; sc.far = 480; sc.updateProjectionMatrix();
     this.sun.shadow.bias = L.bias; this.sun.shadow.normalBias = L.normalBias * (Rr / 12);
     TONE.uLitCol.value.set(...L.lit); TONE.uShadeCol.value.set(...L.shade); TONE.uShadeLift.value.set(...L.lift);
-    TONE.uLambert.value = L.lambert; TONE.uSideK.value = L.sideK; TONE.uTerm.value = L.term; TONE.uBounce.value.set(0.05, 0.02, 0); TONE.uSat.value = 1.12;
+    TONE.uLambert.value = L.lambert; TONE.uSideK.value = L.sideK; TONE.uTerm.value = L.term; TONE.uBounce.value.set(...(lt === "golden" ? [0.05, 0.02, 0.04] : [0.04, 0.015, 0])); TONE.uSat.value = lt === "golden" ? 1.1 : 1.12;
     CHAR.uCharTint.value.set(...L.charTint); CHAR.uCharShade.value = L.charShade; CHAR.uGrad.value = L.charGrad; CHAR.uBodyGrad.value = L.bodyGrad; CHAR.uSideTint.value.set(...L.sideTint);
     const su = this.skyMat.uniforms; K.sky.c.forEach((h, i) => untone(h, su["c" + i].value));
     const e = K.sky.e.map((d) => THREE.MathUtils.degToRad(d)); su.e.value.set(e[1], e[2], e[3], e[4]);
     this.sky.position.copy(cam.position);
-    untone(L.fog, this.fog.color); this.fog.near = L.fogNear; this.fog.far = L.fogFar; scene.fog = this.fog; scene.background = null;
-    for (const m of this.clouds) m.lookAt(cam.position.x, m.position.y, cam.position.z);
-    // train
-    const tr = trainsAt(f); this.trains.visible = tr.R !== null; this.trains.position.set(4.5, 0, tr.R ?? 0);
-    this.smokeG.forEach((m, k) => {
-      m.visible = tr.R !== null; const q = (t * 0.12 + k / 8) % 1, z0 = (tr.R ?? 0);
-      m.position.set(0.3 - q * 6, 4.2 + q * 11, z0 + 0.2 + q * 8); const sz = 2 + q * 7; m.scale.set(sz, sz, 1); m.quaternion.copy(cam.quaternion);
-      (m.material as THREE.MeshLambertMaterial).opacity = 0.85 * (1 - q) ** 1.2;
-    });
+    untone(L.fog, this.fog.color); this.fog.near = L.fogNear; this.fog.far = L.fogFar; scene.fog = this.fog; scene.background = office ? new THREE.Color("#2a1810") : null;
+    const cm = this.cloudMaps[lt === "golden" ? "golden" : "day"];
+    this.clouds.forEach((m, i) => { (m.material as THREE.MeshBasicMaterial).map = cm[i % 4]; m.visible = !office; m.lookAt(cam.position.x, m.position.y, cam.position.z); });
+    // sun glow: soft halo in the sky in the sun direction (golden = low setting sun)
+    this.glow.visible = !office; this.glow.position.copy(cam.position).addScaledVector(sunDir, 900); this.glow.quaternion.copy(cam.quaternion);
+    const gs = lt === "golden" ? 420 : 300; this.glow.scale.set(gs, gs, 1);
+    (this.glow.material as THREE.MeshBasicMaterial).color.set(lt === "golden" ? "#ffcf9e" : "#fff4dc").multiplyScalar(lt === "golden" ? 1.6 : 0.9);
+    // track + trains from STATE
+    this.trk.R.set(st.gapR, st.heatR, 0); this.trk.L.set(0, st.heatL, st.buckle);
+    const A = 1.5 * st.buckle;
+    const place = (g: THREE.Group, z: number | null, x: number, bend: boolean, k: number) => {
+      g.visible = z !== null && !office;
+      for (const m of this.smoke[k]) m.visible = g.visible;
+      if (z === null) return;
+      const dx = bend ? P.buckleDx(z, A) : 0, da = bend ? P.buckleDx(z - 1, A) : 0, db = bend ? P.buckleDx(z + 1, A) : 0;
+      const ph = ((z - JZ) / P.TL) % 1, bump = bend ? 0 : 0.03 * Math.pow(Math.abs(Math.sin(Math.PI * ph * 2)), 8);
+      g.position.set(x + dx, bump, z); g.rotation.y = bend ? Math.atan2(da - db, 2) : 0;
+      const z1 = z === null ? 0 : z, vel = (k === 0 ? (trainsAt(f + 1).R ?? z1 - 0.55) : (trainsAt(f + 1).L ?? z1 - 0.5)) - z1; // m per frame (negative)
+      const spd = Math.abs(vel) > 0.01 ? vel : -0.55, fr = f + 0;
+      const col = new THREE.Color(SMOKE[lt]);
+      this.smoke[k].forEach((m, i) => {
+        const q = (((t * 0.55 + i / 16) % 1) + 1) % 1, age = q * 2.2 * FPS; // frames since emission
+        m.position.set(x + dx + 0.5 * q * 3, 5.6 + q * 9, z - 1.75 - spd * age + 2.5 * q);
+        const sz = 1.6 + q * 7; m.scale.set(sz, sz, 1); m.quaternion.copy(cam.quaternion);
+        const mm = m.material as THREE.MeshBasicMaterial; mm.opacity = 0.9 * (1 - q) ** 1.3 * Math.min(1, q * 8); mm.color.copy(col);
+      });
+      void fr;
+    };
+    place(this.trainR, st.trainR, P.RX, false, 0); place(this.trainL, st.trainL, P.LX, true, 1);
+    this.saw.visible = st.saw !== null && !office; this.saw.position.set(P.RX + P.G + 0.35 + Math.sin((st.saw ?? 0) * 40) * 0.12, P.TOPY + 0.36, JZ); this.saw.rotation.set(0, Math.PI / 2, 0);
+    this.coin.visible = st.coin; this.coin.position.set(P.RX + P.G, P.TOPY + 0.33, JZ); this.coin.rotation.set(0, 0.6, 0);
+    this.sheet.visible = st.paper; this.sheet.position.set(P.RX + P.G, P.TOPY + 0.45, JZ); this.sheet.rotation.set(0, 0.6, 0);
     // cast
     const right = V(0, 0, 0).setFromMatrixColumn(cam.matrixWorld, 0);
     const info = { pos: cam.position, right };
-    const st = railStage("day", info);
+    const stg = railStage(lt === "golden" ? "golden" : "day", info);
     for (const g of castAt(f)) {
       const p = drawGuy(g, info, f);
-      st.places.push(p);
-      blob(st, g.x, g.y ?? 0, g.z, g.scale ?? 1);
+      stg.places.push(p);
+      blob(stg, g.x, g.y ?? 0, g.z, g.scale ?? 1);
     }
     this.frustum.setFromProjectionMatrix(this.m4.multiplyMatrices(cam.projectionMatrix, cam.matrixWorldInverse));
     let ai = 0; const used: Actor[] = [];
-    for (const p of st.places) {
+    for (const p of stg.places) {
       const sc2 = p.scale ?? 1; const a = this.actor(ai++); const [w, h, k] = p.size ?? [300, 500, 0.5];
       a.r = this.pool.req(p.key, w, h, k, p.draw); a.mesh.visible = true; a.mesh.position.set(p.x, p.y, p.z);
       a.mesh.rotation.set(0, Math.atan2(cam.position.x - p.x, cam.position.z - p.z), 0); a.mesh.scale.set(sc2, sc2, sc2);
@@ -214,7 +178,7 @@ export class RailWorld {
     }
     for (let i = ai; i < this.actors.length; i++) this.actors[i].mesh.visible = false;
     let fi = 0; const fused: Fx[] = [];
-    for (const p of st.fx) {
+    for (const p of stg.fx) {
       const ee = this.fx(fi++); ee.r = this.pool.req(p.key, p.cw, p.ch, 1, p.draw); ee.use(!!p.soft); ee.mesh.visible = true; ee.mesh.position.set(p.x, p.y, p.z);
       if (p.flat) ee.mesh.rotation.set(-Math.PI / 2, 0, p.rot ?? 0); else { ee.mesh.quaternion.copy(cam.quaternion); ee.mesh.rotateZ(p.rot ?? 0); }
       ee.mesh.scale.set(p.w, p.h, 1); fused.push(ee);
