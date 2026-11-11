@@ -10,7 +10,8 @@ import { TONE, CHAR, twoTone, untone } from "./shade";
 import { NOINK } from "./ink";
 import { Pool, Actor, Fx, person, blob, railStage, Place, Who as CWho } from "./cast";
 import { Outfit } from "./toon";
-import { SHOTS, RShot, Guy, FPS } from "./rstory";
+import { shotById, camAt, FPS, SHOTS, RShot } from "./rstory";
+import { castAt, trainsAt, drawGuy, Guy } from "./railcast";
 
 const NATURE = ["cliff_block_rock", "cliff_blockHalf_rock", "cliff_rock", "cliff_large_rock", "rock_largeA", "rock_largeB", "rock_largeC", "rock_smallA", "rock_smallB", "rock_tallA", "rock_tallB", "cactus_tall", "cactus_short", "tree_oak", "plant_bush", "stone_largeA", "stone_tallA"];
 const TRAIN = ["railroad-straight", "train-locomotive-a", "train-carriage-box", "train-carriage-tank", "train-carriage-lumber", "track", "railroad-rail-straight"];
@@ -30,6 +31,7 @@ export const loadKit = () => {
 Object.assign(RECOLOR, { grass: "#d9803f", dirt: "#b4502e", stone: "#c9774d", leafsDark: "#4a9142" });
 
 const OUTFITS: Record<string, Outfit> = {
+  rival: { jacket: "#2c5a4a", pants: "#2a3350", boots: "#1d1a1a", hat: "tophat", skin: "#8c5a35", moustache: "#111111" },
   eng: { jacket: "#2a9a8a", pants: "#3b3f52", boots: "#2b211c", hat: "cap", cap: "#35476b", skin: "#f6efe4", belt: null, buttons: "#e8c45a" },
   boss: { jacket: "#c9a02a", pants: "#4a3a2a", boots: "#2b211c", hat: "tophat", skin: "#f6efe4", moustache: "#3a2a20", buttons: "#fff2b0" },
   cond: { jacket: "#2d4670", pants: "#2a3350", boots: "#1d1a1a", hat: "shako", skin: "#f6efe4", buttons: "#e8c45a" },
@@ -155,18 +157,18 @@ export class RailWorld {
   }
 
   private shotSun(s: RShot, L: LightPreset) {
-    let v = this.sunCache.get(s.id); if (v) return v;
-    const c = s.cam(0.5), x = c.look[0] - c.pos[0], z = c.look[2] - c.pos[2], n = Math.hypot(x, z) || 1, fx = x / n, fz = z / n;
+    let v = this.sunCache.get(s.n); if (v) return v;
+    const c = camAt((s.a + s.b) >> 1, s.id), x = c.look[0] - c.pos[0], z = c.look[2] - c.pos[2], n = Math.hypot(x, z) || 1, fx = x / n, fz = z / n;
     const az = THREE.MathUtils.degToRad(L.az), el = THREE.MathUtils.degToRad(L.el);
     const hx = fx * Math.cos(az) - fz * Math.sin(az), hz = fz * Math.cos(az) + fx * Math.sin(az);
-    v = new THREE.Vector3(hx * Math.cos(el), Math.sin(el), hz * Math.cos(el)).normalize(); this.sunCache.set(s.id, v); return v;
+    v = new THREE.Vector3(hx * Math.cos(el), Math.sin(el), hz * Math.cos(el)).normalize(); this.sunCache.set(s.n, v); return v;
   }
   private actor(i: number) { while (this.actors.length <= i) this.actors.push(new Actor(this.root)); return this.actors[i]; }
   private fx(i: number) { while (this.fxs.length <= i) this.fxs.push(new Fx(this.root)); return this.fxs[i]; }
 
-  update(id: number, f: number, cam: THREE.PerspectiveCamera, scene: THREE.Scene) {
-    const s = SHOTS[id - 1], u = Math.max(0, Math.min(1, (f - s.a) / (s.b - s.a))), t = f / FPS, L = RAIL_LIGHT, K = LOOK.day;
-    const c = s.cam(u);
+  update(id: string, f: number, cam: THREE.PerspectiveCamera, scene: THREE.Scene) {
+    const s = shotById(id), t = f / FPS, L = RAIL_LIGHT, K = LOOK.day;
+    const c = camAt(f, id);
     cam.position.set(...c.pos); cam.up.set(0, 1, 0); cam.lookAt(...c.look); cam.rotateZ(c.roll);
     cam.fov = c.fov; cam.near = 0.1; cam.far = 1500; cam.updateProjectionMatrix(); cam.updateMatrixWorld();
     const focus = V(...c.look), dist = cam.position.distanceTo(focus);
@@ -187,9 +189,9 @@ export class RailWorld {
     untone(L.fog, this.fog.color); this.fog.near = L.fogNear; this.fog.far = L.fogFar; scene.fog = this.fog; scene.background = null;
     for (const m of this.clouds) m.lookAt(cam.position.x, m.position.y, cam.position.z);
     // train
-    this.trains.visible = s.train !== undefined; this.trains.position.set(0, 0, s.train ?? 0);
+    const tr = trainsAt(f); this.trains.visible = tr.R !== null; this.trains.position.set(4.5, 0, tr.R ?? 0);
     this.smokeG.forEach((m, k) => {
-      m.visible = !!s.train; const q = (t * 0.12 + k / 8) % 1, z0 = (s.train ?? 0);
+      m.visible = tr.R !== null; const q = (t * 0.12 + k / 8) % 1, z0 = (tr.R ?? 0);
       m.position.set(0.3 - q * 6, 4.2 + q * 11, z0 + 0.2 + q * 8); const sz = 2 + q * 7; m.scale.set(sz, sz, 1); m.quaternion.copy(cam.quaternion);
       (m.material as THREE.MeshLambertMaterial).opacity = 0.85 * (1 - q) ** 1.2;
     });
@@ -197,9 +199,8 @@ export class RailWorld {
     const right = V(0, 0, 0).setFromMatrixColumn(cam.matrixWorld, 0);
     const info = { pos: cam.position, right };
     const st = railStage("day", info);
-    for (const g of s.cast) {
-      const who: CWho = { i: g.who.length + (g.x > 0 ? 1 : 0), o: OUTFITS[g.who], okey: g.who };
-      const p = person(info, who, g.x, g.y ?? 0, g.z, { side: false, mirror: false }, { expr: (g.expr as never) ?? "neutral", mode: "stand", look: g.look ?? 0, blink: false, facing: 0 }, {} as never, g.scale ?? 1);
+    for (const g of castAt(f)) {
+      const p = drawGuy(g, info, f);
       st.places.push(p);
       blob(st, g.x, g.y ?? 0, g.z, g.scale ?? 1);
     }

@@ -1,24 +1,132 @@
-// Railroad short: shot list, cameras, lights, DOF. Our own story (original), told in his grammar:
-// slow push-ins, cuts between framings, no handheld float.
-import { V3 } from "./story";
+// Railroad story ("two companies race to build a railroad across a canyon"), 1701 frames @ 30 fps, 19 scenes.
+// Ported from the a1 engine story (mine/railroads_a1/web/story.js): same scene list, camera flights and story state.
+// OWNER: cam agent (this file). Contracts: SHOTS/camAt/dofAt/STATE/TRANS/layersAt are read by railworld.ts, railcast.ts, Rail.tsx.
 export const FPS = 30;
+export const TOTAL = 1701;
+export type V3 = [number, number, number];
 export type RCam = { pos: V3; look: V3; fov: number; roll: number };
-export type Who = "eng" | "boss" | "cond" | "tourist";
-export type Guy = { who: Who; x: number; z: number; y?: number; expr?: string; look?: number; scale?: number; mode?: "stand" | "sit" | "stroll"; yaw?: number };
-export type RShot = { id: number; a: number; b: number; light: "day" | "golden"; cam: (u: number) => RCam; cast: Guy[]; dof?: { focus: V3; cInf: number }; train?: number; smoke?: boolean };
-const L = (a: V3, b: V3, u: number): V3 => [a[0] + (b[0] - a[0]) * u, a[1] + (b[1] - a[1]) * u, a[2] + (b[2] - a[2]) * u];
-const push = (p0: V3, p1: V3, look: V3, fov = 40, look1?: V3) => (u: number): RCam => ({ pos: L(p0, p1, u), look: L(look, look1 ?? look, u), fov, roll: 0 });
-export const SHOTS: RShot[] = [
-  // 1 "railroad": low beside the rail, engineer foreground-left, locomotive far down the track, wall behind
-  { id: 1, a: 0, b: 90, light: "day", cam: push([1.9, 1.1, 5.2], [1.7, 1.15, 4.4], [-0.6, 1.45, 10], 56), train: 36,
-    cast: [{ who: "eng", x: -0.9, z: 10, expr: "smile_closed" }], dof: { focus: [-0.9, 1.4, 10], cInf: 2.5 } },
-  // 2 two-shot on the track: boss and engineer shake hands
-  { id: 2, a: 90, b: 180, light: "day", cam: push([0.3, 1.3, 2.6], [0.3, 1.3, 2.0], [0.0, 1.5, 8], 54),
-    cast: [{ who: "eng", x: -0.75, z: 8, expr: "smile" }, { who: "boss", x: 0.8, z: 8, expr: "stern" }], dof: { focus: [0, 1.45, 8], cInf: 2.5 } },
-  // 3 straight down the track
-  { id: 3, a: 180, b: 270, light: "day", cam: push([0, 1.2, -4], [0, 1.25, -1.5], [0, 1.9, 40], 58), cast: [] },
-  // 4 engineer close, wall behind
-  { id: 4, a: 270, b: 360, light: "day", cam: push([1.4, 1.35, 4.8], [1.25, 1.35, 4.2], [-1.0, 1.5, 9], 50), cast: [{ who: "eng", x: -1.1, z: 9, expr: "shock" }], dof: { focus: [-1.1, 1.45, 9], cInf: 3 } },
+export type Light = "day" | "golden" | "indoor";
+export type Place = "OUTDOOR" | "OFFICE";
+export type Key = { f: number; pos: V3; look: V3; fov: number; path?: V3[] };
+export type RShot = { id: string; n: number; a: number; b: number; place: Place; light: Light; k: Key[] };
+export const RX = 4.5, LX = -4.5, G = 0.72, JZ = 32; // right (his) track x, left (perfect) track x, half gauge, joint the close-ups look at
+const clamp01 = (x: number) => Math.max(0, Math.min(1, x));
+export const smoother = (u: number) => { const x = clamp01(u); return x * x * x * (x * (6 * x - 15) + 10); };
+const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
+const lv = (a: V3, b: V3, t: number): V3 => [lerp(a[0], b[0], t), lerp(a[1], b[1], t), lerp(a[2], b[2], t)];
+const fl = (a: number, b: number, p0: V3, l0: V3, f0: number, p1: V3, l1: V3, f1: number, via?: V3[]): Key[] =>
+  [{ f: a, pos: p0, look: l0, fov: f0 }, { f: b, pos: p1, look: l1, fov: f1, path: via }];
+const SC: [string, number, number, Place, Light][] = [
+  ["c1", 0, 89, "OUTDOOR", "day"], ["c2", 90, 218, "OUTDOOR", "day"], ["c3", 219, 297, "OFFICE", "indoor"], ["c4", 298, 352, "OUTDOOR", "day"],
+  ["c5", 353, 484, "OUTDOOR", "day"], ["c6", 485, 524, "OUTDOOR", "day"], ["c7", 525, 576, "OUTDOOR", "day"], ["c8", 577, 691, "OUTDOOR", "day"],
+  ["c9", 692, 823, "OUTDOOR", "day"], ["c10", 824, 955, "OFFICE", "indoor"], ["c11", 956, 1023, "OUTDOOR", "golden"], ["c12", 1024, 1076, "OUTDOOR", "golden"],
+  ["c13", 1077, 1138, "OUTDOOR", "golden"], ["c14", 1139, 1208, "OUTDOOR", "golden"], ["c15", 1209, 1263, "OUTDOOR", "golden"], ["c16", 1264, 1418, "OUTDOOR", "golden"],
+  ["c17", 1419, 1473, "OUTDOOR", "golden"], ["c18", 1474, 1548, "OUTDOOR", "golden"], ["c19", 1549, 1700, "OUTDOOR", "golden"],
 ];
-export const TOTAL = 360;
-export const shotAt = (f: number) => SHOTS.find((s) => f >= s.a && f < s.b) ?? SHOTS[SHOTS.length - 1];
+const CAM: Record<string, Key[]> = {
+  c1: fl(0, 89, [6.4, 0.75, 34.2], [5.22, 0.45, 32], 36, [7.2, 1.6, 35.8], [5.0, 0.5, 31.6], 34, [[6.6, 1.0, 35.0]]),
+  c2: fl(90, 218, [-4.5, 4.2, 14], [3.0, -3.5, -22], 52, [-2.0, 6.5, 9], [4.2, -6, -30], 54, [[-3.5, 5.0, 11.5]]),
+  c3: fl(219, 297, [0, 1.5, 5], [0, 1.25, -1], 46, [0.3, 1.45, 3.2], [0, 1.4, -1], 40),
+  c4: fl(298, 352, [3.0, 1.15, 26], [4.5, 1.05, 22], 38, [6.2, 1.2, 25.2], [4.5, 1.1, 22], 36, [[4.6, 1.3, 26.8]]),
+  c5: fl(353, 484, [4.9, 0.55, 26.0], [3.4, 1.25, 20.8], 36, [4.3, 0.7, 25.2], [3.4, 1.3, 20.8], 36, [[4.6, 0.6, 25.6]]),
+  c6: fl(485, 524, [4.5, 0.6, 27.0], [4.5, 1.2, 19.5], 36, [4.5, 0.7, 26.2], [4.5, 1.25, 19.5], 36),
+  c7: fl(525, 576, [4.7, 0.55, 25.2], [5.9, 1.2, 19.5], 36, [5.1, 0.7, 24.5], [5.9, 1.25, 19.5], 36),
+  c8: fl(577, 691, [-3.8, 0.5, 34], [-4.5, 0.35, 24], 40, [-4.4, 0.9, 6], [-4.5, 0.3, -10], 42, [[-4.0, 0.55, 20]]),
+  c9: fl(692, 823, [0.5, 7.5, 31], [-4.5, 1, -12], 48, [3.5, 10.5, 25], [-2.5, 0, -30], 50, [[2.0, 9.0, 28]]),
+  c10: fl(824, 955, [0.7, 1.45, 1.8], [-0.1, 1.3, -3.6], 40, [0.1, 1.5, 0.6], [-0.1, 1.3, -3.6], 36),
+  c11: fl(956, 1023, [5.4, 1.2, 30], [4.7, 1.5, 23], 44, [8.5, 5.5, 38], [4.5, 1.0, 10], 50, [[7.2, 2.5, 34]]),
+  c12: fl(1024, 1076, [6.6, 0.7, 34.2], [5.22, 0.42, 32], 36, [6.0, 0.62, 33.0], [5.22, 0.42, 32], 30),
+  c13: fl(1077, 1138, [3.9, 0.9, 33.6], [5.22, 0.55, 32], 30, [4.2, 0.75, 33.0], [5.22, 0.55, 32], 28),
+  c14: fl(1139, 1208, [6.8, 0.95, 33.8], [5.22, 0.55, 32], 30, [6.4, 0.8, 33.2], [5.22, 0.55, 32], 28),
+  c15: fl(1209, 1263, [3.4, 1.5, 30], [4.6, 1.35, 24], 42, [6.4, 1.6, 29], [4.6, 1.35, 24], 38),
+  c16: fl(1264, 1418, [-3.5, 0.55, 12], [-4.6, 0.35, -6], 40, [-3.9, 0.75, -4], [-4.6, 0.35, -22], 36, [[-3.7, 0.6, 4]]),
+  c17: fl(1419, 1473, [-1.0, 3.5, 26], [-4.0, 0.5, -20], 50, [-6.5, 2.0, 14], [-4.5, 0.3, -26], 48),
+  c18: fl(1474, 1548, [6.4, 0.6, 34.0], [5.22, 0.42, 32], 30, [5.9, 0.5, 32.9], [5.22, 0.42, 32], 24),
+  c19: fl(1549, 1700, [-9, 11, 16], [-4.5, 0, -6], 48, [-8, 9, -8], [-4.5, 0, -27], 42, [[-10, 10, 6]]),
+};
+export const SHOTS: RShot[] = SC.map(([id, a, b, place, light], i) => ({ id, n: i + 1, a, b, place, light, k: CAM[id] }));
+export const shotAt = (f: number) => SHOTS.find((s) => f >= s.a && f <= s.b) ?? SHOTS[SHOTS.length - 1];
+export const shotById = (id: string) => SHOTS.find((s) => s.id === id)!;
+// ---- his camera grammar: smootherstep glide (18-40 f) then a creeping push-in, never a static hold; flip kicks on impacts; 4-5 degree rolls on emphasis only ----
+/** shots that are the move itself (aerials, tracking shots): the glide takes (almost) the whole shot */
+const LONG: Record<string, number> = { c2: 0.95, c8: 0.95, c9: 0.95, c11: 0.9, c16: 0.95, c17: 0.95, c19: 0.95 };
+/** creep push-in per frame as a fraction of the lens-to-target distance (0.15-0.35 %/f), 0.6 %/f on punch words */
+const CREEP = 0.0022;
+const PUNCH: Record<string, [number, number][]> = { c5: [[430, 448]], c7: [[540, 556]], c14: [[1160, 1172]], c15: [[1220, 1232]] };
+/** impact frames: the flip kick starts here and decays over 7 frames */
+const KICKS: Record<string, number[]> = { c5: [353], c19: [1650, 1688] };
+/** rolls (degrees) on emphasis: [start frame, glide frames, end degrees]; a roll holds until the shot ends */
+const ROLLS: Record<string, [number, number, number][]> = { c5: [[430, 18, 4.5]], c7: [[535, 22, -4]], c10: [[880, 24, 4]], c19: [[1650, 14, -4.8]] };
+const glideP = (S: RShot, f: number) => {
+  const len = S.b - S.a, u = clamp01((f - S.a) / len), G = LONG[S.id] ?? Math.min(1, 40 / len);
+  if (G >= 0.9) return smoother(u / G);
+  const share = 0.82;
+  return u <= G ? share * smoother(u / G) : share + (1 - share) * ((u - G) / (1 - G));
+};
+const creepAt = (S: RShot, f: number) => {
+  if (LONG[S.id]) return 0.0009 * (f - S.a);
+  let c = CREEP * (f - S.a);
+  for (const [p0, p1] of PUNCH[S.id] ?? []) c += 0.0038 * Math.max(0, Math.min(f, p1) - p0);
+  return Math.min(0.26, c);
+};
+export const camAt = (f: number, id?: string): RCam => {
+  const S = id ? shotById(id) : shotAt(f), [k0, k1] = S.k;
+  const t = glideP(S, f);
+  let pos = lv(k0.pos, k1.pos, t);
+  if (k1.path) { const v = k1.path[0], a = lv(k0.pos, v, t), b = lv(v, k1.pos, t); pos = lv(a, b, t); }
+  const look = lv(k0.look, k1.look, t);
+  const c = creepAt(S, f);
+  pos = lv(pos, look, c);
+  let roll = 0;
+  for (const [r0, n, deg] of ROLLS[S.id] ?? []) roll += (deg * Math.PI / 180) * smoother((f - r0) / n);
+  let py = 0, lyk = 0;
+  for (const k of KICKS[S.id] ?? []) {
+    const d = f - k;
+    if (d >= 0 && d < 7) { const a = (1 - d / 7) ** 1.5 * (d % 2 ? -1 : 1), dist = Math.hypot(pos[0] - look[0], pos[1] - look[1], pos[2] - look[2]); py += a * 0.014 * dist; lyk += a * 0.006 * dist; roll += a * 0.02; }
+  }
+  return { pos: [pos[0], pos[1] + py, pos[2]], look: [look[0], look[1] + lyk, look[2]], fov: lerp(k0.fov, k1.fov, t), roll };
+};
+/** depth of field (cInf px at 1080, SKILL.md): hook / CU 14-16, close-ups 12-14, MS 10-12, park 7, golden sway 5, wides and aerials 0; focus on the eyes */
+const DOF: Record<string, number | [number, number]> = {
+  c1: 15, c2: 0, c3: 11, c4: 10, c5: [12, 14], c6: 11, c7: 12, c8: 10, c9: 0, c10: [12, 14], c11: [7, 0], c12: 14, c13: 15, c14: 14, c15: 10, c16: 5, c17: 0, c18: 13, c19: 0,
+};
+export const dofAt = (f: number): { cInf: number } => {
+  const S = shotAt(f), d = DOF[S.id] ?? 0;
+  if (typeof d === "number") return { cInf: d };
+  return { cInf: lerp(d[0], d[1], smoother((f - S.a) / (S.b - S.a))) };
+};
+/** scene changes: n = blend frames centred on the boundary b. kinds: dissolve / fly / cut */
+export const TRANS: { b: number; kind: "dissolve" | "fly" | "cut"; n?: number; from?: string; to?: string }[] = [
+  { b: 90, kind: "dissolve", n: 8, from: "c1", to: "c2" }, { b: 219, kind: "dissolve", n: 8, from: "c2", to: "c3" }, { b: 298, kind: "fly", n: 10, from: "c3", to: "c4" },
+  { b: 353, kind: "cut" }, { b: 485, kind: "dissolve", n: 8, from: "c5", to: "c6" }, { b: 525, kind: "cut" }, { b: 577, kind: "cut" },
+  { b: 692, kind: "dissolve", n: 8, from: "c8", to: "c9" }, { b: 824, kind: "dissolve", n: 8, from: "c9", to: "c10" }, { b: 956, kind: "fly", n: 10, from: "c10", to: "c11" },
+  { b: 1024, kind: "dissolve", n: 8, from: "c11", to: "c12" }, { b: 1077, kind: "cut" }, { b: 1139, kind: "dissolve", n: 8, from: "c13", to: "c14" }, { b: 1209, kind: "cut" },
+  { b: 1264, kind: "dissolve", n: 8, from: "c15", to: "c16" }, { b: 1419, kind: "fly", n: 10, from: "c16", to: "c17" }, { b: 1474, kind: "dissolve", n: 8, from: "c17", to: "c18" },
+  { b: 1549, kind: "fly", n: 10, from: "c18", to: "c19" },
+];
+/** layers to draw at frame f: base shot plus the incoming shot fading in over a dissolve */
+export const layersAt = (f: number): { id: string; alpha: number }[] => {
+  for (const t of TRANS) if (t.kind !== "cut" && t.n && f >= t.b - t.n / 2 && f < t.b + t.n / 2) return [{ id: t.from!, alpha: 1 }, { id: t.to!, alpha: (f - (t.b - t.n / 2) + 1) / (t.n + 1) }];
+  return [{ id: shotAt(f).id, alpha: 1 }];
+};
+const ss = (a: number, b: number, f: number) => { const t = clamp01((f - a) / (b - a)); return t * t * (3 - 2 * t); };
+export type State = { gapR: number; heatR: number; heatL: number; buckle: number; trainL: number | null; trainR: number | null; saw: number | null; coin: boolean; paper: boolean };
+/** story state read by the world every frame: rail gap, heat, buckle, train positions, props */
+export const STATE = (f: number, id: string): State => {
+  const o: State = { gapR: 0.2, heatR: 0, heatL: 0, buckle: 0, trainL: null, trainR: null, saw: null, coin: false, paper: false };
+  if (id === "c1") { o.gapR = 0.2 * ss(28, 84, f); o.saw = f < 86 ? f / 30 : null; }
+  if (id === "c12") o.gapR = lerp(0.2, 0.1, ss(1024, 1076, f));
+  if (id === "c13") { o.gapR = lerp(0.1, 0.07, ss(1077, 1138, f)); o.coin = true; }
+  if (id === "c14") { o.gapR = lerp(0.07, 0.02, ss(1139, 1170, f)); o.paper = true; }
+  if (id === "c15") o.gapR = 0.02;
+  if (id === "c16" || id === "c17") o.gapR = lerp(0.02, 0.012, ss(1264, 1473, f));
+  if (id === "c18") o.gapR = lerp(0.012, 0, ss(1474, 1530, f));
+  if (id === "c19") o.gapR = 0;
+  o.heatR = f < 1024 ? 0 : f < 1264 ? lerp(0, 0.12, ss(1024, 1264, f)) : lerp(0.12, 0.38, ss(1264, 1548, f));
+  o.heatL = f < 1264 ? 0 : f < 1419 ? lerp(0.18, 0.72, ss(1264, 1418, f)) : lerp(0.72, 1, ss(1419, 1700, f));
+  o.buckle = f < 1300 ? 0 : f < 1549 ? 0.1 * ss(1300, 1548, f) : lerp(0.1, 1, Math.pow(ss(1549, 1660, f), 1.5));
+  if (id === "c2") o.trainR = 30 - (f - 90) * 0.55;
+  if (id === "c9") { if (f >= 692) o.trainL = 40 - (f - 692) * 0.66; if (f >= 770) o.trainR = 52 - (f - 770) * 0.52; }
+  if (id === "c19") o.trainL = 36 - (f - 1549) * 0.42;
+  return o;
+};

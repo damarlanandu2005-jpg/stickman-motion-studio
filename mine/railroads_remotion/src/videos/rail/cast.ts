@@ -471,5 +471,5 @@ export const creakFx = (t: number, pts: V3[], out: Stage, size = 0.8) =>
     out.fx.push({ key: `creak${u}`, cw: 300, ch: 300, draw: (p) => fxCreak(p, u), x, y, z, w: size, h: size, rot: i * 0.6 - 0.6 });
   });
 export { FPS };
-export { person, blob, tier, seedOf };
+export { person, blob, tier, seedOf, lidAt };
 export const railStage = (light: "day" | "golden", cam: CamInfo): Stage => { LNAME = light; findSun(cam, SUN); return { places: [], fx: [] }; };

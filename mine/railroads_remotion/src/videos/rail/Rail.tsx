@@ -18,9 +18,19 @@ import { InkPass, noInkFallback } from "./ink";
 import { LensBlur, GrainEffect } from "./lensblur";
 import { GradeEffect, GRADES, GRADE_STRENGTH, gradeFor } from "./grade";
 import { Kit } from "./build";
-import { TOTAL, SHOTS, shotAt } from "./rstory";
-const layersAt = (f: number) => [{ id: shotAt(f).id, alpha: 1 }];
-const dofAt = (f: number) => { const d = shotAt(f).dof; return d ? { focus: () => d.focus as [number, number, number], cInf: d.cInf } : { focus: undefined as undefined | ((f: number) => [number, number, number]), cInf: 6 }; };
+import { TOTAL, TRANS, layersAt, shotAt, shotById, dofAt as dofStory } from "./rstory";
+import { castAt } from "./railcast";
+
+/** Frame that stands for shot `id` when it is drawn as a transition layer (the incoming/outgoing shot is not shotAt(f)). */
+const repFrame = (id: string, f: number) => { const S = shotById(id); return f >= S.a && f <= S.b ? f : f < S.a ? S.a : S.b; };
+/** DOF focus point for a shot at frame f: the first cast member's eyes (castAt), else null (= the camera's look target). */
+export const focusAt = (f: number, id?: string): [number, number, number] | null => {
+  const g = castAt(repFrame(id ?? shotAt(f).id, f))[0];
+  return g ? [g.x, (g.y ?? 0) + 1.7 * (g.scale ?? 1), g.z] : null;
+};
+const dofAt = (f: number, id: string) => ({ focus: focusAt(f, id), cInf: dofStory(repFrame(id, f)).cInf });
+/** bloom strength per light: emissives only (threshold 1.0): lamp / locomotive lamp (day, indoor), the low golden sun */
+const BLOOM: Record<string, number> = { day: 0.4, golden: 0.7, indoor: 0.6 };
 const FLASH_AT = -100;
 
 export const RAIL_FRAMES = TOTAL;
@@ -49,7 +59,7 @@ const useKit = () => {
   return kit;
 };
 
-const Inner: React.FC<{ id: number; kit: Kit }> = ({ id, kit }) => {
+const Inner: React.FC<{ id: string; kit: Kit }> = ({ id, kit }) => {
   const f = useCurrentFrame();
   const { camera, scene } = useThree();
   const world = useMemo(() => new World(kit), [kit]);
@@ -79,12 +89,14 @@ const Inner: React.FC<{ id: number; kit: Kit }> = ({ id, kit }) => {
   target.copy(world.update(id, f, cam, scene));
   noInkFallback(world.root);
   // thin-lens focus: distance along the view axis to the shot's focus point (default: the camera's look target)
-  const d = dofAt(f);
+  const d = dofAt(f, id);
   cam.getWorldDirection(fwd);
-  if (d.focus) fpt.set(...d.focus(f)); else fpt.copy(target);
+  if (d.focus) fpt.set(...d.focus); else fpt.copy(target);
   fx.lens.focus = Math.max(0.3, fpt.sub(cam.position).dot(fwd));
   fx.lens.cInf = d.cInf;
-  gradeFor(fx.grade, "day");
+  const light = shotById(id).light;
+  gradeFor(fx.grade, light);
+  fx.bloom.intensity = BLOOM[light];
   fx.grain.seed = f; // deterministic per frame
   return (
     <>
@@ -96,8 +108,8 @@ const Inner: React.FC<{ id: number; kit: Kit }> = ({ id, kit }) => {
 
 /** test stills only: inputProps `{ post: { dpr: 0.5 } }` forces the WebGL buffer size (R3F clamps dpr to >= 1 by default) */
 const dprOverride = () => (getInputProps() as { post?: { dpr?: number } }).post?.dpr;
-const ShotView: React.FC<{ id: number; kit: Kit; alpha: number }> = ({ id, kit, alpha }) => (
-  <AbsoluteFill style={{ opacity: alpha }}>
+const ShotView: React.FC<{ id: string; kit: Kit; alpha: number; scale?: number }> = ({ id, kit, alpha, scale = 1 }) => (
+  <AbsoluteFill style={{ opacity: alpha, transform: scale === 1 ? undefined : `scale(${scale})`, transformOrigin: "50% 55%" }}>
     <ThreeCanvas width={1080} height={1920} {...(dprOverride() ? { dpr: dprOverride() } : {})} shadows gl={{ antialias: false, stencil: false, powerPreference: "high-performance", toneMappingExposure: 1.0 }}
       camera={{ fov: 40, near: 0.2, far: 1500 }}>
       <Inner id={id} kit={kit} />
@@ -111,8 +123,14 @@ export const RailShort: React.FC = () => {
   if (!kit) return null;
   const flash = f >= FLASH_AT && f < FLASH_AT + 4 ? [1, 0.75, 0.45, 0.2][f - FLASH_AT] : 0;
   return (
-    <AbsoluteFill style={{ background: "#cfe3f2" }}>
-      {layersAt(f).map((l, i) => <ShotView key={i ? "over" : "base"} id={l.id} kit={kit} alpha={l.alpha} />)}
+    <AbsoluteFill style={{ background: "#cfe3f2", overflow: "hidden" }}>
+      {layersAt(f).map((l, i, all) => {
+        // 'fly': quick forward push on top of the crossfade (outgoing pushes in, incoming settles in from 1.12 (both layers stay >= 1: no uncovered edges))
+        const T = all.length > 1 ? TRANS.find((t) => t.kind === "fly" && t.n && f >= t.b - t.n / 2 && f < t.b + t.n / 2) : undefined;
+        let sc = 1;
+        if (T) { const u = l.alpha, e = u * u * (3 - 2 * u); sc = i ? 1.12 - 0.12 * e : 1 + 0.2 * e; }
+        return <ShotView key={i ? "over" : "base"} id={l.id} kit={kit} alpha={l.alpha} scale={sc} />;
+      })}
       {flash > 0 && <AbsoluteFill style={{ background: "#ffffff", opacity: flash }} />}
     </AbsoluteFill>
   );

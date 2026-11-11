@@ -18,6 +18,8 @@ export type Outfit = {
   jacket: string; pants: string; boots: string; hat?: string | null; belt?: string | null; buttons?: string; rifle?: boolean;
   sash?: string; sword?: boolean; moustache?: string; skin?: string; head?: number; cap?: string; hair?: string; dress?: string;
   build?: Build;
+  /** story cast extras: beard colour, cap stripe colour, watch chain colour, shirt (V collar) colour, tie colour */
+  beard?: string; stripe?: string; chain?: string; shirt?: string; tie?: string;
 };
 type P2 = [number, number];
 
@@ -227,7 +229,7 @@ const DEF_LIGHT = rad(-120);
 
 // ---------------- faces ----------------
 export type Expr = "neutral" | "stern" | "grin" | "laugh" | "whistle" | "nervous" | "shock" | "relief" | "relief_open" | "dazed"
-  | "pained" | "smile" | "smile_closed" | "lick";
+  | "pained" | "smile" | "smile_closed" | "lick" | "determined" | "proud" | "angry" | "stubborn" | "sad_sweat";
 type EyeK = "dot" | "small" | "lid" | "slit" | "happy" | "dash" | "squeeze" | "shock" | "shockHalf" | "spiral";
 type MouthK = "dash" | "frown" | "smirk" | "smile" | "smileWide" | "grin" | "laugh" | "o" | "O" | "wave" | "teeth" | "lick";
 /** eyes [back, front], brows [inner, outer] offsets in u (+ = down), mouth kind */
@@ -246,6 +248,11 @@ const FACE: Record<Expr, { eye: [EyeK, EyeK]; brow: [number, number]; mouth: Mou
   smile: { eye: ["dot", "dot"], brow: [0, -1], mouth: "smirk" },
   smile_closed: { eye: ["happy", "happy"], brow: [0, -1], mouth: "smile" },
   lick: { eye: ["dot", "dot"], brow: [0, -1], mouth: "lick" },
+  determined: { eye: ["lid", "lid"], brow: [4, -1], mouth: "dash" },
+  proud: { eye: ["happy", "happy"], brow: [-2, -3], mouth: "smirk" },
+  angry: { eye: ["slit", "slit"], brow: [7, -3], mouth: "teeth" },
+  stubborn: { eye: ["slit", "slit"], brow: [3, -2], mouth: "frown" },
+  sad_sweat: { eye: ["small", "small"], brow: [-5, 3], mouth: "frown" },
 };
 const halfLid = (k: EyeK): EyeK => (k === "dot" || k === "small" ? "lid" : k === "lid" ? "slit" : k === "shock" ? "shockHalf" : k);
 const eyeKind = (k: EyeK, lid: number): EyeK =>
@@ -321,7 +328,12 @@ const faceFront = (p: Pen, cx: number, cy: number, W: number, expr: Expr, facing
   mouth(p, F.mouth, mx, my, u);
   if (moustache) for (const s of [-1, 1])
     taper(p, [mx + s * 1.5 * u, cy + 12.5 * u], [mx + s * (stout ? 19 : 15) * u, cy + (stout ? 10.5 : 15) * u], stout ? 5.5 * u : 4.5 * u, 1.6 * u, moustache);
-  if (expr === "nervous") p.ell(cx + 40 * u * (facing || 1), cy - 22 * u, 3 * u, 5 * u, "#9fd4ff", 2 * u);
+  if (expr === "nervous" || expr === "sad_sweat") p.ell(cx + 40 * u * (facing || 1), cy - 22 * u, 3 * u, 5 * u, "#9fd4ff", 2 * u);
+  if (expr === "angry") { // forehead vein: two short crossed strokes
+    const vx = cx + 30 * u, vy = cy - 40 * u;
+    p.stroke([[vx - 6 * u, vy - 6 * u], [vx - 1 * u, vy - 1 * u], [vx - 6 * u, vy + 5 * u]], 2.6 * u, "#c8323c");
+    p.stroke([[vx + 6 * u, vy - 6 * u], [vx + 1 * u, vy - 1 * u], [vx + 6 * u, vy + 5 * u]], 2.6 * u, "#c8323c");
+  }
 };
 
 /** profile face (facing screen-right): one eye, brow, nose tick, mouth near the front edge; no skin bump nose, no ear */
@@ -335,7 +347,7 @@ const faceSide = (p: Pen, hx: number, hy: number, W: number, expr: Expr, lid: nu
   p.stroke([[hx + 44 * u, hy + 4 * u], [hx + 47.5 * u, hy + 9 * u], [hx + 43 * u, hy + 10 * u]], 3 * u);
   mouth(p, F.mouth, hx + 33 * u, hy + 21 * u, u, 0.62);
   if (moustache) taper(p, [hx + 41 * u, hy + 13.5 * u], [hx + 25 * u, hy + (stout ? 11.5 : 16) * u], stout ? 5.5 * u : 4.5 * u, 1.6 * u, moustache);
-  if (expr === "nervous") p.ell(hx - 30 * u, hy - 24 * u, 3 * u, 5 * u, "#9fd4ff", 2 * u);
+  if (expr === "nervous" || expr === "sad_sweat") p.ell(hx - 30 * u, hy - 24 * u, 3 * u, 5 * u, "#9fd4ff", 2 * u);
 };
 
 // ---------------- hats ----------------
@@ -391,6 +403,7 @@ const hatOn = (p: Pen, o: Outfit, hp: P2[], H: Blob, cx: number, hc: number, lig
     }
     const col = o.hat === "cap" ? o.cap! : o.hair!;
     p.shadedFill(arc, col, mul(col, SH_FELT), light, H.a, 0.35);
+    if (o.hat === "cap" && o.stripe) p.clip(arc, () => { for (let k = -8; k <= 8; k++) p.stroke([[cx + k * 8 * u, cut - 0.6 * HH], [cx + k * 8.6 * u, cut + 0.05 * HH]], 3.6 * u, o.stripe!); });
     p.poly(arc, null, ow);
     if (o.hat === "hair") {
       const s = side ? -1 : facing || 1;
@@ -404,6 +417,14 @@ const hatOn = (p: Pen, o: Outfit, hp: P2[], H: Blob, cx: number, hc: number, lig
         p.ell(px, py, 32 * u, 0.06 * HH, shade(col, 0.8), ow, 0, 180, deg);
       }
     }
+  } else if (o.hat === "bowler") {
+    const yb = crown + 0.3 * HH, col = "#2e2a36";
+    const dome = R([...ellPts(cx, yb, 0.33 * W, 0.46 * HH, 180, 360, 0, 24), ...[]]);
+    p.shadedFill(dome, col, mul(col, SH_FELT), light, 0.33 * W, 0.4);
+    p.clip(dome, () => p.band(R([[cx - 0.4 * W, yb - 0.07 * HH], [cx + 0.4 * W, yb - 0.07 * HH]]), shade(o.jacket, 0.9), 0.09 * HH, 0.8 * u));
+    p.poly(dome, null, ow);
+    const [bx, by] = R([[cx, yb]])[0];
+    p.ell(bx, by, 0.47 * W, 0.06 * HH, "#1d1b22", ow, 0, 360, (a * 180) / Math.PI);
   } else if (o.hat === "tophat") {
     const yb = crown + 0.22 * HH, ht = 0.8 * HH, wb = 0.31 * W, wt = 0.33 * W, col = "#2e2a36";
     const body = R([...sag(yb, wb).reverse(), [cx - wt, yb - ht], [cx + wt, yb - ht]]);
@@ -435,6 +456,8 @@ const BUILD: Record<Build, { a: number; torso: number; legs: number; tw: number 
 export type FrontOpts = {
   phase?: number; expr?: Expr; mode?: "march" | "stroll" | "stand" | "sit" | "fall"; look?: number; blink?: boolean | number; lift?: number;
   prop?: Prop; tilt?: number; headTilt?: number; wave?: number;
+  /** arm pose: hip / hang / point / cross / temple / reach; purple = face colour 0..1 (rises from the chin) */
+  pose?: string; purple?: number;
   /** canvas angle the key light comes FROM (painted crescent + thick outline side) */
   light?: number; facing?: -1 | 0 | 1; seed?: number;
 };
@@ -445,7 +468,7 @@ const footStroke = (p: Pen, a: P2, b: P2, w: number, col: string) => {
 };
 
 export const bodyFront = (p: Pen, o: Outfit, opts: FrontOpts) => {
-  const { phase = 0, expr = "neutral", mode = "march", look = 0, blink = false, lift = 60, prop = null, tilt = 0, headTilt = 0, wave,
+  const { phase = 0, expr = "neutral", mode = "march", look = 0, blink = false, lift = 60, prop = null, tilt = 0, headTilt = 0, wave, pose, purple = 0,
     light = DEF_LIGHT, facing = 0, seed = 1 } = opts;
   const Bd = BUILD[o.build ?? "adult"], skin = o.skin ?? SKIN, two = Math.PI * 2, lid = lidOf(blink);
   const H = headBlob(seed, Bd.a, facing), W = 2 * H.a, HH = 2 * H.b, u = W / 100;
@@ -508,11 +531,30 @@ export const bodyFront = (p: Pen, o: Outfit, opts: FrontOpts) => {
   // rifle at the order: butt by the right hip, held by the hanging right hand, muzzle past the crown
   const R0: P2 = [300 + 47 * u, torsoBot + 0.12 * HH], R1: P2 = [300 + 64 * u, crown - 0.32 * HH];
   const rifle = !!o.rifle && (mode === "march" || mode === "stand" || mode === "stroll");
-  type Arm = { pts: [P2, P2, P2]; front: boolean };
+  type Arm = { pts: [P2, P2, P2]; front: boolean; fin?: number; open?: number };
+  let late: P2 | null = null;
   const arms: Arm[] = [];
   if (mode === "sit") for (const side of [-1, 1]) arms.push({ pts: [sh(side), [tcx + side * (1.1 * T.a + 6 * u), sh(side)[1] + 0.4 * HH], [tcx + side * (1.2 * T.a + 10 * u), torsoBot + 0.04 * HH]], front: false });
   else if (mode === "fall") for (const side of [-1, 1]) arms.push({ pts: [sh(side), [tcx + side * (1.15 * T.a + 12 * u), sh(side)[1] - 0.25 * HH], [tcx + side * (1.3 * T.a + 24 * u), sh(side)[1] - 0.68 * HH]], front: false });
-  else {
+  else if (pose && pose !== "hang" && !rifle && wave === undefined && !prop) {
+    const sd = facing || 1, S = sh(sd);
+    const outX = (side: number, k: number) => tcx + side * (1.12 * T.a + k);
+    if (pose === "hip") for (const side of [-1, 1]) arms.push({ pts: [sh(side), [outX(side, 0.2 * HH), sh(side)[1] + 0.34 * HH], [tcx + side * 0.9 * T.a, sh(side)[1] + 0.68 * HH]], front: true });
+    else if (pose === "point") {
+      arms.push({ pts: hang(-sd, 0), front: false });
+      arms.push({ pts: [S, [outX(sd, 0.3 * HH), S[1] + 0.03 * HH], [outX(sd, 0.78 * HH), S[1] - 0.1 * HH]], front: false, fin: 1 });
+    } else if (pose === "reach") {
+      arms.push({ pts: hang(-sd, 0), front: false });
+      arms.push({ pts: [S, [outX(sd, 0.2 * HH), S[1] + 0.3 * HH], [outX(sd, 0.5 * HH), S[1] + 0.62 * HH]], front: false, open: 1 });
+    } else if (pose === "cross") {
+      arms.push({ pts: [sh(-1), [tcx + 0.25 * T.a, chin + 0.56 * HH], [tcx + 0.88 * T.a, chin + 0.36 * HH]], front: true });
+      arms.push({ pts: [sh(1), [tcx - 0.25 * T.a, chin + 0.64 * HH], [tcx - 0.88 * T.a, chin + 0.45 * HH]], front: true });
+    } else if (pose === "temple") {
+      arms.push({ pts: hang(-sd, 0), front: false });
+      late = [300 + sd * 0.8 * H.a, chin - 0.5 * HH];
+      arms.push({ pts: [S, [outX(sd, 0.26 * HH), S[1] - 0.08 * HH], late], front: true });
+    } else arms.push({ pts: hang(-1, 0), front: false }, { pts: hang(1, 0), front: false });
+  } else {
     arms.push({ pts: prop === "shako" ? hang(-1, 0) : hang(-1, -sw), front: false });
     if (rifle) {
       const G = lerp2(R0, R1, 0.1);
@@ -530,7 +572,13 @@ export const bodyFront = (p: Pen, o: Outfit, opts: FrontOpts) => {
       arms.push({ pts: [S, E, Hd], front: true });
     } else arms.push({ pts: hang(1, sw), front: false });
   }
-  const drawArm = (a: Arm) => { p.stroke(curve(a.pts[0], a.pts[1], a.pts[2]), 5.2 * u, armCol); p.dot(a.pts[2][0], a.pts[2][1], 5.5 * u); };
+  const drawArm = (a: Arm) => {
+    p.stroke(curve(a.pts[0], a.pts[1], a.pts[2]), 5.2 * u, armCol);
+    const [hx, hy] = a.pts[2], [ex, ey] = a.pts[1], dl = Math.hypot(hx - ex, hy - ey) || 1, dx = (hx - ex) / dl, dy = (hy - ey) / dl;
+    if (a.fin) p.stroke([[hx, hy], [hx + dx * 17 * u, hy + dy * 17 * u]], 3.6 * u);
+    if (a.open) for (const k of [-0.5, 0, 0.5]) p.stroke([[hx, hy], [hx + (dx * Math.cos(k) - dy * Math.sin(k)) * 13 * u, hy + (dx * Math.sin(k) + dy * Math.cos(k)) * 13 * u]], 3 * u);
+    p.dot(hx, hy, (a.open ? 6.5 : 5.5) * u);
+  };
   // behind the body: rifle, sword, arms
   if (rifle) {
     p.band([R0, R1], "#7a4b2a", 5 * u, 1.5 * u, "round");
@@ -560,6 +608,16 @@ export const bodyFront = (p: Pen, o: Outfit, opts: FrontOpts) => {
         p.poly([[xc - 3.5 * u, yc - 3.5 * u], [xc + 3.5 * u, yc - 3.5 * u], [xc + 3.5 * u, yc + 3.5 * u], [xc - 3.5 * u, yc + 3.5 * u]], "#d9dde0", 1.5 * u);
       }
       if (o.sash) p.band([[tcx - 1.3 * T.a, torsoBot - 0.32 * HH], [tcx + 1.3 * T.a, torsoBot - 0.32 * HH]], o.sash, 0.13 * HH, 1.8 * u);
+      if (o.shirt) {
+        p.poly([[tcx - 0.42 * T.a, chin - 0.02 * HH], [tcx + 0.42 * T.a, chin - 0.02 * HH], [tcx, chin + 0.62 * HH]], o.shirt, 2 * u);
+        if (o.tie) p.poly([[tcx - 5 * u, chin + 0.05 * HH], [tcx + 5 * u, chin + 0.05 * HH], [tcx, chin + 0.17 * HH]], o.tie, 1.4 * u);
+      }
+      if (o.chain) {
+        const a0: P2 = [tcx - 0.05 * T.a, chin + 0.5 * HH], b0: P2 = [tcx + 0.55 * T.a, chin + 0.7 * HH];
+        p.stroke(curve(a0, [tcx + 0.25 * T.a, chin + 0.84 * HH], b0), 2.6 * u, INK);
+        p.stroke(curve(a0, [tcx + 0.25 * T.a, chin + 0.84 * HH], b0), 1.4 * u, o.chain);
+        p.ell(b0[0], b0[1] + 2 * u, 5 * u, 5 * u, o.chain, 1.6 * u);
+      }
       for (let i = 0; i < 4; i++) {
         const y = chin + 0.12 * HH + i * 0.2 * HH;
         if (o.sash && Math.abs(y - (torsoBot - 0.32 * HH)) < 0.08 * HH) continue;
@@ -597,11 +655,18 @@ export const bodyFront = (p: Pen, o: Outfit, opts: FrontOpts) => {
   hatBehind(p, o, H, 300, hc, light, thick, ow, false);
   const hp = blobPts(300, hc, H);
   p.shadedFill(hp, skin, mul(skin, SH_SKIN), light, H.a);
+  if (purple > 0.01) {
+    const g = p.g, [ax, ay] = p.P(300, hc + H.b), [bx, by] = p.P(300, hc - H.b), gr = g.createLinearGradient(ax, ay, bx, by);
+    for (let i = 0; i <= 6; i++) { const h = i / 6, al = clamp(purple * 2 - h, 0, 1); gr.addColorStop(h, `rgba(122,52,178,${(0.96 * al).toFixed(3)})`); }
+    p.path(hp, true); g.fillStyle = gr; g.fill();
+  }
+  if (o.beard) p.clip(hp, () => p.poly([[300 - 0.62 * W, hc + 0.02 * W], [300 - 0.3 * W, hc + 0.23 * W], [300, hc + 0.27 * W], [300 + 0.3 * W, hc + 0.23 * W], [300 + 0.62 * W, hc + 0.02 * W], [300 + 0.7 * W, hc + W], [300 - 0.7 * W, hc + W]], o.beard!, 0));
   p.inkRing(hp, ow, thick);
   hatOn(p, o, hp, H, 300, hc, light, seed, facing, false);
   const brim = !!o.hat && o.hat !== "hair" && o.hat !== "bonnet" && o.hat !== "cap";
   faceFront(p, 300, hc, W, expr, facing, look, lid, brim, skin, o.moustache, o.build === "stout");
   p.rot = null;
+  if (late) p.dot(late[0], late[1], 5.5 * u); // temple hand lands in front of the head
 };
 
 export type SideOpts = {
