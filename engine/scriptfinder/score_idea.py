@@ -3,6 +3,7 @@
 # Idea file: {"title","logline","scenes":[{"id":"c1","tags":["place.street","chars.1_3","action.talk_stand","light.day","camera.glide_push"]}, ...]}
 import json, sys, os
 HERE = os.path.dirname(os.path.abspath(__file__)); CAP = json.load(open(HERE + "/capabilities.json")); T = CAP["tags"]
+WPS = CAP["words_per_second"]["value"]; PROVEN_SEC = CAP["limits"].get("proven_max_seconds")
 def scene_cost(tags):
     costs = sorted((T[t]["cost"] for t in tags if t in T), reverse=True)
     return sum(c * (0.6 ** i) for i, c in enumerate(costs))          # biggest cost counts fully, the rest add less
@@ -12,8 +13,9 @@ def lint(idea, prof):
     if not (P["scenes"][0] <= len(sc) <= P["scenes"][1]): w.append(f"{len(sc)} scenes: profile '{prof}' expects {P['scenes'][0]}-{P['scenes'][1]}")
     words = sum(len(x.get("caption", "").split()) for x in sc)
     if words:
-        sec = words / 2.6
-        if not (P["seconds"][0] <= sec <= P["seconds"][1]): w.append(f"narration is about {sec:.0f} s ({words} words): profile expects {P['seconds'][0]}-{P['seconds'][1]} s")
+        sec = words / WPS
+        if not (P["seconds"][0] <= sec <= P["seconds"][1]): w.append(f"narration is about {sec:.0f} s ({words} words at {WPS} words/s): profile expects {P['seconds'][0]}-{P['seconds'][1]} s")
+        if PROVEN_SEC and sec > PROVEN_SEC: w.append(f"about {sec:.0f} s is longer than the longest short the engine has rendered ({PROVEN_SEC} s)")
     for x in sc:
         shots = x.get("shots") or []
         if len(shots) > 3: w.append(f"{x['id']}: {len(shots)} shots in one scene (more than 3 is hard to stage)")
@@ -32,12 +34,13 @@ def score(idea, prof="starter"):
     sizecost = next(v for k, v in CAP["scene_count_cost"].items() if (k.startswith("<=") and n <= int(k[2:])) or (not k.startswith("<=") and (n >= int(k.rstrip("+").split("-")[0]) and (k.endswith("+") or n <= int(k.split("-")[1])))))
     used = sorted({t for s in sc for t in tags_of(s) if t in T}, key=lambda t: -T[t]["cost"])
     new_art = [t for t in used if T[t]["status"] == "missing"]
-    risky = [t for t in used if T[t]["status"] == "risky"]
+    risky = [t for t in used if T[t]["status"] in ("risky", "untested")]          # untested is charged like risky
+    untested = [t for t in risky if T[t]["status"] == "untested"]
     d = sum(per) / max(1, n) * 6 + sizecost + 12 * len(new_art) + 3 * len(risky) + 8 * len(unknown)
     d = min(100, round(d))
     rounds = 2 + round(d / 12); lo = max(25, round(44 - d * 0.12)); hi = lo + 5
     return {"title": idea["title"], "scenes": n, "difficulty": d, "rounds": rounds, "expect_70": f"{lo}-{hi}", "new_work": [t for t in used if T[t]["source"] == "new_work"],
-            "missing": new_art, "risky": risky, "unknown_tags": unknown, "lint": lint(idea, prof), "verdict": "easy win" if d < 35 else "doable" if d < 55 else "hard" if d < 75 else "do not start"}
+            "missing": new_art, "risky": risky, "untested": untested, "unknown_tags": unknown, "lint": lint(idea, prof), "verdict": "easy win" if d < 35 else "doable" if d < 55 else "hard" if d < 75 else "do not start"}
 if __name__ == "__main__":
     prof = "starter"; files = []
     a = sys.argv[1:]
@@ -50,7 +53,7 @@ if __name__ == "__main__":
     print(f"{'title':44} {'scn':>3} {'diff':>4} {'rounds':>6} {'compat/70':>9}  verdict")
     for r in res: print(f"{r['title'][:44]:44} {r['scenes']:>3} {r['difficulty']:>4} {r['rounds']:>6} {r['expect_70']:>9}  {r['verdict']}")
     for r in res:
-        print(f"\n{r['title']}\n  needs new art (missing): {', '.join(r['missing']) or '-'}\n  risky: {', '.join(r['risky']) or '-'}" + (f"\n  UNKNOWN tags: {r['unknown_tags']}" if r["unknown_tags"] else ""))
+        print(f"\n{r['title']}\n  needs new art (missing): {', '.join(r['missing']) or '-'}\n  risky: {', '.join(r['risky']) or '-'}\n  never tried by us (inside risky): {', '.join(r['untested']) or '-'}" + (f"\n  UNKNOWN tags: {r['unknown_tags']}" if r["unknown_tags"] else ""))
         for x in r["lint"]: print("  CHECK:", x)
         for t in r["missing"] + r["risky"]:
             if T[t].get("instead"): print(f"    change {t}: {T[t]['instead']}")

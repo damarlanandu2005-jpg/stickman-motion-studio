@@ -18,9 +18,9 @@ Owner: Nandu (YouTube "Stickman Thoughts"). Short, simple sentences. Be honest. 
 - The engine does NOT read a script. Every new short needs new story, cast, world and props code.
 - Never tried: crowds, town buildings, streets, markets, palaces, walking, night, weather, water, boats, animals, fire,
   mouth moving with speech, more than 3 characters, more than 57 s.
-- WRONG in `engine/scriptfinder/capabilities.json`: tags street, bridge_river, crowd, walk are marked "proven". They are not.
+- FIXED 2026-11-12 in `engine/scriptfinder/capabilities.json`: street, bridge_river, crowd, walk (and 4_8_named) are now `untested`, charged like risky. New untested tags: town_buildings, market, palace, mouth_sync.
   They came from the template's claims, not my renders. Treat them as "never tried".
-- WRONG in the script brief and scorer: they assume 130-165 words. The rendered short has 212 words in 56.7 s.
+- FIXED 2026-11-12 in the scorer and brief: 3.7 words per second (measured once, rail short), so 185-244 words for 50-66 s. Scorer also warns above 57 s (longest rendered). `starter` stays at 8-10 scenes on purpose; the 19-scene rail short was an exception.
 - The scorer is not validated against real results. Its numbers are guesses.
 - Claude usage per short is not measured. Rounds for a new topic are not measured.
 - Known look problems in the test short: golden scenes read pink/purple and dark; canyon tops can read as a city skyline;

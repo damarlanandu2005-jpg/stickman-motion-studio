@@ -1,18 +1,18 @@
 {
- "_about": "What the engine can draw, scored by how much work and risk each tag adds to a scene. cost 0-10 (0 = free, 10 = new art + several rounds). status: proven (a finished short used it), risky (worked after several fix rounds), missing (never built). Evidence is from the bridge template and the rail test short. Re-fit after every finished short.",
+ "_about": "What the engine can draw, scored by how much work and risk each tag adds to a scene. cost 0-10 (0 = free, 10 = new art + several rounds). status: proven (a finished short used it), risky (worked after several fix rounds), missing (never built). untested (the template claims it or we plan it, but we never rendered it). Evidence is from the bridge template and the rail test short. Re-fit after every finished short.",
  "tags": {
   "place.street": {
    "cost": 1,
-   "status": "proven",
+   "status": "untested",
    "note": "town street / square, the template's home ground",
-   "evidence": "bridge short",
+   "evidence": "template claim only, never rendered by us (corrected 2026-11-12)",
    "source": "procedural"
   },
   "place.bridge_river": {
    "cost": 2,
-   "status": "proven",
+   "status": "untested",
    "note": "one bridge over a river",
-   "evidence": "bridge short",
+   "evidence": "template claim only, never rendered by us (corrected 2026-11-12)",
    "source": "procedural"
   },
   "place.office": {
@@ -60,17 +60,18 @@
   },
   "chars.crowd": {
    "cost": 3,
-   "status": "proven",
+   "status": "untested",
    "note": "crowd mode in the template",
-   "evidence": "bridge short",
+   "evidence": "template claim only, never rendered by us (corrected 2026-11-12)",
    "source": "procedural"
   },
   "chars.4_8_named": {
    "cost": 6,
-   "status": "risky",
+   "status": "untested",
    "note": "each needs its own outfit, silhouette and staging",
    "instead": "cut to 3 named characters, show the rest as a crowd",
-   "source": "new_work"
+   "source": "new_work",
+   "evidence": "never rendered by us; the rail short had 3 characters, 2 on screen"
   },
   "chars.animal": {
    "cost": 7,
@@ -119,9 +120,9 @@
   },
   "action.walk": {
    "cost": 2,
-   "status": "proven",
+   "status": "untested",
    "note": "walk bob, planted feet",
-   "evidence": "bridge short",
+   "evidence": "template claim only, never rendered by us (corrected 2026-11-12)",
    "source": "animation_supported"
   },
   "action.object_fall": {
@@ -239,6 +240,38 @@
    "evidence": "rail STATE",
    "instead": "change the story so nothing in the scene changes shape; show before and after as two scenes",
    "source": "procedural"
+  },
+  "place.town_buildings": {
+   "cost": 6,
+   "status": "untested",
+   "note": "houses, shops, a street of buildings (the rail short had canyon, bridges and one office only)",
+   "instead": "keep to one open square with 2-3 simple props, tell the town in narration",
+   "evidence": "never rendered by us",
+   "source": "new_work"
+  },
+  "place.market": {
+   "cost": 6,
+   "status": "untested",
+   "note": "stalls, goods, a busy market",
+   "instead": "one stall and one table, not a full market",
+   "evidence": "never rendered by us",
+   "source": "new_work"
+  },
+  "place.palace": {
+   "cost": 7,
+   "status": "untested",
+   "note": "grand hall, throne, large decorated interior",
+   "instead": "use the office room dressed as a hall, or move outdoors",
+   "evidence": "never rendered by us",
+   "source": "new_work"
+  },
+  "action.mouth_sync": {
+   "cost": 6,
+   "status": "untested",
+   "note": "mouth moving with speech; the rail short has no mouth sync",
+   "instead": "keep the mouth still or closed; captions and voice carry the line",
+   "evidence": "rail short has none",
+   "source": "new_work"
   }
  },
  "scene_count_cost": {
@@ -250,7 +283,9 @@
  "limits": {
   "max_seconds": 70,
   "fps": 30,
-  "format": "1080x1920"
+  "format": "1080x1920",
+  "proven_max_seconds": 57,
+  "_note": "max_seconds is the plan limit. proven_max_seconds is the longest short the engine has actually rendered (56.7 s)."
  },
  "_source_kinds": {
   "existing_asset": "CC0 kit pieces already in the repo (Kenney)",
@@ -267,14 +302,14 @@
    ],
    "max_named_chars": 3,
    "words": [
-    130,
-    165
+    185,
+    244
    ],
    "seconds": [
     50,
     66
    ],
-   "note": "the profile the engine has actually produced (bridge template, rail test)"
+   "note": "the profile we aim for. Scenes stay 8-10 on purpose: simple scripts need few scenes. The only short the engine has produced from scratch (rail, 19 scenes, difficulty 100, 7 rounds, 34/70) was an exception, not the target. Words are per the measured 3.7 words per second (one sample)."
   },
   "explainer": {
    "validated": false,
@@ -284,8 +319,8 @@
    ],
    "max_named_chars": 3,
    "words": [
-    130,
-    190
+    185,
+    259
    ],
    "seconds": [
     50,
@@ -301,8 +336,8 @@
    ],
    "max_named_chars": 3,
    "words": [
-    110,
-    170
+    148,
+    244
    ],
    "seconds": [
     40,
@@ -310,5 +345,9 @@
    ],
    "note": "not yet produced; timing (beats before words) will need testing"
   }
+ },
+ "words_per_second": {
+  "value": 3.7,
+  "basis": "measured once: the rail short has 212 words in 56.7 s. One short only, re-measure after every finished short."
  }
 }

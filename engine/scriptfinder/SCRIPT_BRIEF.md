@@ -5,7 +5,7 @@ You are writing a **vertical cartoon short, 50-65 seconds, 1080x1920**, for a fi
 The engine can only draw what is listed below. A script that needs something else cannot be built, so plan the story around the list.
 
 ## Hard rules (profile "starter": the only profile this engine has produced so far)
-1. **8-10 scenes**, about 130-165 narration words in total (about 2.6 words per second). One main place. **1-3 characters**. A scene may have up to 3 shots (wide, close, detail) in the same place; list them under `shots`. Other profiles (explainer, comedy) are not validated yet: ask the engine owner before using them.
+1. **8-10 scenes**, about 185-244 narration words in total (about 3.7 words per second, measured on one short). One main place. **1-3 characters**. A scene may have up to 3 shots (wide, close, detail) in the same place; list them under `shots`. Other profiles (explainer, comedy) are not validated yet: ask the engine owner before using them.
 2. **Every narration line has one thing the viewer must see** in that shot (`must_see`). If the line says "a tiny crack", the crack is the subject, big, in the picture.
 3. Show results, not hard actions: no sawing, fighting, chasing, throwing, explosions, weather, night, water, animals or crowds of named people.
 4. Day light first. Golden hour only for the last 1-2 scenes.
@@ -13,15 +13,11 @@ The engine can only draw what is listed below. A script that needs something els
 6. Keep two sides of a story (for example "his" and "hers") on fixed left/right sides in every scene.
 7. Nothing in a scene may change shape over time (no cracks growing, bridges bending). Show before and after as two scenes instead.
 
-## What the engine draws well (proven)
-- `place.street`: town street / square, the template's home ground
-- `place.bridge_river`: one bridge over a river
+## What the engine has drawn well (proven by a rendered short)
 - `place.office`: one room, desk, wall props; camera must keep the desk from covering the frame
 - `chars.1_3`: 1-3 cards with ink outlines, expressions, hip/point/cross/temple/reach poses
-- `chars.crowd`: crowd mode in the template
 - `prop.kit_static`: Kenney CC0 kit pieces, lamps, fences, crates
 - `action.talk_stand`: character talks (captions), small gestures, blinks
-- `action.walk`: walk bob, planted feet
 - `fx.sparkle_smoke`: small card fx
 - `light.day`: 
 - `light.indoor`: 
@@ -30,7 +26,6 @@ The engine can only draw what is listed below. A script that needs something els
 
 ## Works, but costs extra rounds (risky: use sparingly)
 - `place.canyon`: mesas read as skyscrapers unless silhouettes are varied; needs fog depth  -> if the script needs it: use one street, square or bridge; keep far hills as a flat backdrop
-- `chars.4_8_named`: each needs its own outfit, silhouette and staging  -> if the script needs it: cut to 3 named characters, show the rest as a crowd
 - `prop.text_sign`: newspaper/sign/chart with readable words: size, angle and crop problems  -> if the script needs it: use one big upright sign or newspaper facing the camera, 3 to 5 words
 - `prop.vehicle_moving`: own-built trains; timing, framing and scale all needed rounds  -> if the script needs it: show the vehicle parked or entering once; tell the rest in narration
 - `prop.readable_detail`: a small detail the viewer must see (a gap, a crack, a coin): needs close camera + exaggerated geometry  -> if the script needs it: make it large, one close insert shot, one idea per shot
@@ -39,6 +34,17 @@ The engine can only draw what is listed below. A script that needs something els
 - `camera.orbit`: keep subject in frame through the move  -> if the script needs it: use a push-in or a glide
 - `camera.insert_detail`: cut to a close insert of a small object  -> if the script needs it: max 2 inserts per short, each 30-40 frames
 - `state.geometry_change`: scene geometry that changes over time and must read (gap closes, rail buckles)  -> if the script needs it: change the story so nothing in the scene changes shape; show before and after as two scenes
+
+## Never tried by this engine (untested: treat like risky, expect extra rounds, avoid if you can)
+- `place.street`: town street / square, the template's home ground
+- `place.bridge_river`: one bridge over a river
+- `chars.crowd`: crowd mode in the template
+- `chars.4_8_named`: each needs its own outfit, silhouette and staging  -> if the script needs it: cut to 3 named characters, show the rest as a crowd
+- `action.walk`: walk bob, planted feet
+- `place.town_buildings`: houses, shops, a street of buildings (the rail short had canyon, bridges and one office only)  -> if the script needs it: keep to one open square with 2-3 simple props, tell the town in narration
+- `place.market`: stalls, goods, a busy market  -> if the script needs it: one stall and one table, not a full market
+- `place.palace`: grand hall, throne, large decorated interior  -> if the script needs it: use the office room dressed as a hall, or move outdoors
+- `action.mouth_sync`: mouth moving with speech; the rail short has no mouth sync  -> if the script needs it: keep the mouth still or closed; captions and voice carry the line
 
 ## Cannot be drawn (do not use)
 - `place.interior_other`: any room that is not the office: new walls, props, lighting  -> if the script needs it: use the office room we have, or keep the scene outdoors
