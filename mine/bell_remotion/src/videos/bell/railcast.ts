@@ -24,7 +24,7 @@ export const castAt = (f: number): Guy[] => {
   if (id === "c6a") out.push({ who: "watson", x: WATSON_X, z: WATSON_Z, expr: "shock", pose: "temple", facing: -1, look: -0.3 });
   if (id === "c6b") {
     const u = smoother((f - 983) / 44), moving = f >= 983;
-    out.push({ who: "watson", x: lerp(WATSON_X, 3.3, u), z: WATSON_Z + 0.35 * u, expr: "relief_open", pose: "reach", facing: -1, look: -0.5, tilt: moving ? -9 : 0, mode: moving ? "march" : "stand", phase: moving ? ((f - 983) / 30 * 2.4) % 1 : 0 });
+    out.push({ who: "watson", x: lerp(WATSON_X, 3.3, u), z: WATSON_Z, expr: "relief_open", pose: "reach", facing: -1, look: -0.5, tilt: moving ? -9 : 0, mode: moving ? "march" : "stand", phase: moving ? ((f - 983) / 30 * 2.4) % 1 : 0 });
   }
   return out;
 };
@@ -54,7 +54,7 @@ export const wireEndAt = (f: number): V3 => { const g = castAt(f).find((x) => x.
 import type { FxPlace } from "./cast";
 /** the wet acid stain on Bell's sleeve (a card in front of his card). Visible in every shot after "it spills on his clothes". */
 const stain = (p: import("./toon").Pen) => {
-  const C = "#3b3d1c", H = "#6e7234";
+  const C = "#b8d020", H = "#f0f580";
   for (const [x, y, rx, ry] of [[150, 150, 72, 52], [104, 128, 34, 28], [196, 176, 38, 30], [150, 208, 26, 34], [192, 108, 22, 18], [96, 180, 20, 16]] as number[][]) p.ell(x, y, rx, ry, C, 0);
   p.ell(132, 138, 18, 10, H, 0);
 };
@@ -63,7 +63,7 @@ export const fxAt = (f: number, camPos: THREE.Vector3): FxPlace[] => {
   if (s.stain > 0 && (id === "c4b" || id === "c5")) {
     const g = castAt(f).find((x) => x.who === "bell"); if (!g) return out;
     const dx = camPos.x - g.x, dz = camPos.z - g.z, n = Math.hypot(dx, dz) || 1, rx = dz / n, rz = -dx / n; // camera right in the xz plane
-    const sz = 0.3 * (0.35 + 0.65 * s.stain);
+    const sz = 0.5 * (0.35 + 0.65 * s.stain);
     out.push({ key: "stain", cw: 300, ch: 300, draw: stain, x: g.x + rx * 0.3 + (dx / n) * 0.07, y: 1.02, z: g.z + rz * 0.3 + (dz / n) * 0.07, w: sz, h: sz, soft: false });
   }
   return out;

@@ -95,7 +95,7 @@ export const makeJar = () => {
 };
 /** flat acid puddle (unit radius, scaled by the story) */
 export const makePuddle = () => {
-  const m = new THREE.Mesh(new THREE.CircleGeometry(1, 36).rotateX(-Math.PI / 2), new THREE.MeshBasicMaterial({ color: new THREE.Color(0.8, 0.88, 0.25) }));
+  const m = new THREE.Mesh(new THREE.CircleGeometry(1, 36).rotateX(-Math.PI / 2), new THREE.MeshBasicMaterial({ color: new THREE.Color(1.0, 1.1, 0.2) }));
   m.layers.set(NOINK); return m;
 };
 /** the telephone receiver Watson holds at his ear: black cup + brass rim */
@@ -118,7 +118,7 @@ export const setWire = (m: THREE.Mesh, pts: V3[]) => {
 export const buildTown = (R: THREE.Object3D) => {
   const g = new THREE.Group(); R.add(g);
   const B = new Batch();
-  sbox(B, tm({ color: "#86b45e" }), -600, 600, -0.5, 0, -700, 60, 40);
+  sbox(B, tm({ color: "#a8b87a" }), -600, 600, -0.5, 0, -700, 60, 40);
   sbox(B, tm({ color: "#bd9a70" }), -3.4, 3.4, 0, 0.03, -700, 60, 40);
   const dkw = tm({ color: "#4a3224" }), wire = tm({ color: "#15110e" });
   const seg = (a: V3, b: V3, t: number) => {

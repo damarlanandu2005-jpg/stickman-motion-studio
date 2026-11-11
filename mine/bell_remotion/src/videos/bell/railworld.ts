@@ -99,7 +99,7 @@ export class RailWorld {
     // ---- the spill: jar tips toward +x and empties onto the bench, the puddle grows ----
     const th = st.jarTip * (Math.PI / 2);
     this.jar.position.set(S.JAR0.x + 0.12 * st.jarTip, S.BENCH_Y + 0.17 * Math.sin(th), S.JAR0.z); this.jar.rotation.set(0, 0, -th);
-    this.puddle.position.set(S.JAR0.x + 0.12 + 0.47, S.BENCH_Y + 0.012, S.JAR0.z); this.puddle.scale.set(0.05 + 0.36 * st.puddle, 1, 0.05 + 0.27 * st.puddle);
+    this.puddle.position.set(S.JAR0.x + 0.12 + 0.47, S.BENCH_Y + 0.012, S.JAR0.z); this.puddle.scale.set(0.05 + 0.5 * st.puddle, 1, 0.05 + 0.38 * st.puddle);
     // ---- cast + receiver + wire ----
     const right = V(0, 0, 0).setFromMatrixColumn(cam.matrixWorld, 0);
     const info = { pos: cam.position, right };
