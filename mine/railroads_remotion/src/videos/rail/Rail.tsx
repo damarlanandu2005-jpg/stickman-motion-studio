@@ -6,11 +6,11 @@
 // source; the grade is display-referred, so it comes after tone mapping. Every pixel-sized parameter is specified at
 // 1080x1920 and scaled with the output size, so stills at --scale 0.5 and the 1440x2560 final match.
 // Place changes crossfade by stacking a second canvas for the fade frames; the hook ends on a 4-frame white flash.
-import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import * as THREE from "three";
 import { AbsoluteFill, continueRender, delayRender, getInputProps, useCurrentFrame } from "remotion";
 import { ThreeCanvas } from "@remotion/three";
-import { useFrame, useThree } from "@react-three/fiber";
+import { useThree } from "@react-three/fiber";
 import { EffectComposer } from "@react-three/postprocessing";
 import { BlendFunction, BloomEffect, ToneMappingEffect, ToneMappingMode } from "postprocessing";
 import { RailWorld as World, loadKit } from "./railworld";
@@ -59,48 +59,9 @@ const useKit = () => {
   return kit;
 };
 
-
-/** Capture guard (round 6 blocker: ~36 frames of the GPU/ANGLE render showed a strip of the top of the picture tiled ~3x5).
- *  Cause: the picture is drawn by R3F's free-running rAF loop and Remotion only waits for its delayRender handles, so a
- *  screenshot could land while the composer's last pass had not run (or had run into buffers whose size did not yet match
- *  the drawing buffer: EffectComposer.setSize is applied from a useEffect, and a fresh canvas starts at the default size).
- *  The final pass then samples a smaller source with the full-frame UVs = tiles. Fix: every (shot, frame) takes its own
- *  delayRender handle; before each composer render we make sure the composer buffers equal the drawing buffer, and the
- *  handle is released only after the composer has rendered this frame twice at the right size AND the GPU has finished
- *  (1-pixel readPixels forces the pipeline to complete). preserveDrawingBuffer keeps the canvas intact until captured. */
-const FrameSync: React.FC<{ composer: React.MutableRefObject<any>; frame: number; id: string }> = ({ composer, frame, id }) => {
-  const { gl, size } = useThree();
-  const st = useRef({ handle: null as number | null, n: 0 });
-  useLayoutEffect(() => {
-    const s = st.current;
-    s.n = 0;
-    s.handle = delayRender(`rail frame ${frame} ${id}`, { timeoutInMilliseconds: 120000 });
-    return () => { if (s.handle !== null) { continueRender(s.handle); s.handle = null; } };
-  }, [frame, id]);
-  const px = useMemo(() => new Uint8Array(4), []);
-  // before the composer render (its priority is 1): stable buffer size, no mid-render resize
-  useFrame(() => {
-    const c = composer.current;
-    if (!c) { st.current.n = 0; return; }
-    const db = gl.getDrawingBufferSize(new THREE.Vector2());
-    const ib = c.inputBuffer, w = Math.round(size.width * gl.getPixelRatio()), h = Math.round(size.height * gl.getPixelRatio());
-    if (!ib || ib.width !== w || ib.height !== h || db.x !== w || db.y !== h) { c.setSize(size.width, size.height); st.current.n = 0; }
-  }, 0.5);
-  // after the composer render
-  useFrame(() => {
-    const s = st.current;
-    if (s.handle === null || !composer.current) return;
-    if (++s.n < 2) return;
-    try { const ctx = gl.getContext(); ctx.finish(); ctx.readPixels(0, 0, 1, 1, ctx.RGBA, ctx.UNSIGNED_BYTE, px); } catch {}
-    continueRender(s.handle); s.handle = null;
-  }, 2);
-  return null;
-};
-
 const Inner: React.FC<{ id: string; kit: Kit }> = ({ id, kit }) => {
   const f = useCurrentFrame();
   const { camera, scene } = useThree();
-  const composer = useRef<any>(null);
   const world = useMemo(() => new World(kit), [kit]);
   const target = useMemo(() => new THREE.Vector3(), []);
   const on = useMemo(toggles, []);
@@ -114,7 +75,7 @@ const Inner: React.FC<{ id: string; kit: Kit }> = ({ id, kit }) => {
   }), [camera, scene]);
   useEffect(() => () => { try { (fx.ink as any)?.dispose?.(); } catch {} }, [fx]);
   const post = useMemo(() => (
-    <EffectComposer ref={composer} multisampling={4}>
+    <EffectComposer multisampling={4}>
       {on.ink ? <primitive object={fx.ink} dispose={null} /> : null}
       {on.lens && on.pre ? <primitive object={fx.lens.pre} dispose={null} /> : null}
       {on.lens ? <primitive object={fx.lens.main} dispose={null} /> : null}
@@ -142,7 +103,6 @@ const Inner: React.FC<{ id: string; kit: Kit }> = ({ id, kit }) => {
     <>
       <primitive object={world.root} dispose={null} />
       {post}
-      <FrameSync composer={composer} frame={f} id={id} />
     </>
   );
 };
@@ -151,7 +111,7 @@ const Inner: React.FC<{ id: string; kit: Kit }> = ({ id, kit }) => {
 const dprOverride = () => (getInputProps() as { post?: { dpr?: number } }).post?.dpr;
 const ShotView: React.FC<{ id: string; kit: Kit; alpha: number; scale?: number }> = ({ id, kit, alpha, scale = 1 }) => (
   <AbsoluteFill style={{ opacity: alpha, transform: scale === 1 ? undefined : `scale(${scale})`, transformOrigin: "50% 55%" }}>
-    <ThreeCanvas width={1080} height={1920} {...(dprOverride() ? { dpr: dprOverride() } : {})} shadows gl={{ antialias: false, stencil: false, preserveDrawingBuffer: true, powerPreference: "high-performance", toneMappingExposure: 1.0 }}
+    <ThreeCanvas width={1080} height={1920} {...(dprOverride() ? { dpr: dprOverride() } : {})} shadows gl={{ antialias: false, stencil: false, powerPreference: "high-performance", toneMappingExposure: 1.0 }}
       camera={{ fov: 40, near: 0.2, far: 1500 }}>
       <Inner id={id} kit={kit} />
     </ThreeCanvas>

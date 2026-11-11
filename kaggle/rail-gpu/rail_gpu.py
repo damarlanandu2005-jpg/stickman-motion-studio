@@ -20,7 +20,7 @@ sh("cd %s && npm ci --no-audit --no-fund 2>&1 | tail -2" % P, timeout=1500)
 sh("cd /tmp && npm init -y >/dev/null 2>&1; npm install playwright 2>&1 | tail -1; npx playwright install chromium 2>&1 | tail -1; npx playwright install-deps chromium 2>&1 | tail -1", timeout=1500)
 chrome = (glob.glob(os.path.expanduser("~/.cache/ms-playwright/chromium-*/chrome-linux/chrome")) + glob.glob(os.path.expanduser("~/.cache/ms-playwright/chromium-*/chrome-linux64/chrome")) + [""])[0]
 rep["chrome"] = chrome
-env = "cd %s && GL=angle-egl CHROME=%s CONC=2 " % (P, chrome)
+env = "cd %s && GL=angle-egl CHROME=%s CONC=1 " % (P, chrome)
 os.makedirs(P + "/out", exist_ok=True)
 def part(a, b, name):
     t = time.time()
@@ -44,8 +44,26 @@ else:
     FF = "/tmp/ff/node_modules/ffmpeg-static/ffmpeg"; R = "/tmp/repo"
     ins = " ".join("-i %s/out/part_%02d.mp4" % (P, i) for i in range(PARTS))
     fc = "".join("[%d:v]" % i for i in range(PARTS)) + "concat=n=%d:v=1:a=0[v]" % PARTS
-    sh("cd %s && %s -y %s -i tools/a1_assets/audio.m4a -filter_complex \"%s;[v]ass=tools/a1_assets/cap.ass[o]\" -map [o] -map %d:a:0 -c:v libx264 -crf 20 -preset medium -c:a aac -shortest -pix_fmt yuv420p %s/final.mp4 2>&1 | tail -2" % (R, FF, ins, fc, PARTS, W), timeout=2400)
-    rep["final_frames"] = sh("ffprobe -v error -select_streams v -count_packets -show_entries stream=nb_read_packets -of csv=p=0 %s/final.mp4 || true" % W).strip()
+    sh("cd %s && %s -y %s -filter_complex \"%s\" -map [v] -c:v libx264 -crf 12 -preset veryfast -pix_fmt yuv420p %s/out/silent.mp4 2>&1 | tail -2" % (R, FF, ins, fc, P), timeout=2400)
+    sh("pip -q install numpy pillow 2>&1 | tail -1")
+    import sys; os.environ["FFMPEG"] = FF; sys.path.insert(0, R + "/tools"); import framecheck as fcx
+    g = fcx.load(P + "/out/silent.mp4"); bad = sorted(fcx.find(g)); rep["bad_found"] = len(bad); rep["bad_list"] = bad[:200]; del g
+    json.dump({"bad": bad}, open(P + "/out/bad.json", "w"))
+    fixdir = P + "/out/fix"; os.makedirs(fixdir, exist_ok=True)
+    todo = bad[:150]
+    for attempt in range(3):
+        if not todo: break
+        for k in range(0, len(todo), 15):
+            grp = todo[k:k + 15]
+            sh("%s node rail_render.mjs stills %s out/fix/fix_ 1" % (env, ",".join(map(str, grp))), timeout=3000, show=600)
+        todo = [f for f in todo if not (os.path.exists("%s/fix_%d.jpg" % (fixdir, f)) and fcx.image_ok("%s/fix_%d.jpg" % (fixdir, f)))]
+        for f in todo:
+            try: os.remove("%s/fix_%d.jpg" % (fixdir, f))
+            except Exception: pass
+    rep["bad_unfixed"] = todo
+    sh("cd %s && python3 tools/repair_video.py %s/out/silent.mp4 %s/out/bad.json %s %s/final.mp4 tools/a1_assets/audio.m4a tools/a1_assets/cap.ass %s %s 2>&1 | tail -3" % (R, P, P, fixdir, W, R, FF), timeout=3600)
+    g = fcx.load(W + "/final.mp4"); rem = sorted(fcx.find(g)); rep["bad_after_repair"] = len(rem); rep["bad_after_list"] = rem[:100]
+    rep["final_frames"] = len(g)
     rep["final_exists"] = os.path.exists(W + "/final.mp4")
 json.dump(rep, open(W + "/render_result.json", "w"), indent=1)
 print("FINAL " + json.dumps(rep))
