@@ -5,207 +5,240 @@
    "cost": 1,
    "status": "proven",
    "note": "town street / square, the template's home ground",
-   "evidence": "bridge short"
+   "evidence": "bridge short",
+   "source": "procedural"
   },
   "place.bridge_river": {
    "cost": 2,
    "status": "proven",
    "note": "one bridge over a river",
-   "evidence": "bridge short"
+   "evidence": "bridge short",
+   "source": "procedural"
   },
   "place.office": {
    "cost": 3,
    "status": "proven",
    "note": "one room, desk, wall props; camera must keep the desk from covering the frame",
-   "evidence": "rail c3/c10"
+   "evidence": "rail c3/c10",
+   "source": "procedural"
   },
   "place.canyon": {
    "cost": 7,
    "status": "risky",
    "note": "mesas read as skyscrapers unless silhouettes are varied; needs fog depth",
    "evidence": "rail",
-   "instead": "use one street, square or bridge; keep far hills as a flat backdrop"
+   "instead": "use one street, square or bridge; keep far hills as a flat backdrop",
+   "source": "procedural"
   },
   "place.interior_other": {
    "cost": 5,
    "status": "missing",
    "note": "any room that is not the office: new walls, props, lighting",
-   "instead": "use the office room we have, or keep the scene outdoors"
+   "instead": "use the office room we have, or keep the scene outdoors",
+   "source": "new_work"
   },
   "place.sea_ship": {
    "cost": 9,
    "status": "missing",
    "note": "water, hull, waves not built",
-   "instead": "move the story to a harbour wall or bridge, tell the sea part in narration"
+   "instead": "move the story to a harbour wall or bridge, tell the sea part in narration",
+   "source": "new_work"
   },
   "place.space": {
    "cost": 9,
    "status": "missing",
    "note": "no planets/stars/zero-g",
-   "instead": "cannot be drawn; change the setting"
+   "instead": "cannot be drawn; change the setting",
+   "source": "new_work"
   },
   "chars.1_3": {
    "cost": 1,
    "status": "proven",
    "note": "1-3 cards with ink outlines, expressions, hip/point/cross/temple/reach poses",
-   "evidence": "rail"
+   "evidence": "rail",
+   "source": "procedural"
   },
   "chars.crowd": {
    "cost": 3,
    "status": "proven",
    "note": "crowd mode in the template",
-   "evidence": "bridge short"
+   "evidence": "bridge short",
+   "source": "procedural"
   },
   "chars.4_8_named": {
    "cost": 6,
    "status": "risky",
    "note": "each needs its own outfit, silhouette and staging",
-   "instead": "cut to 3 named characters, show the rest as a crowd"
+   "instead": "cut to 3 named characters, show the rest as a crowd",
+   "source": "new_work"
   },
   "chars.animal": {
    "cost": 7,
    "status": "missing",
    "note": "no animal rig",
-   "instead": "replace the animal with a person or an object"
+   "instead": "replace the animal with a person or an object",
+   "source": "new_work"
   },
   "prop.kit_static": {
    "cost": 1,
    "status": "proven",
    "note": "Kenney CC0 kit pieces, lamps, fences, crates",
-   "evidence": "rail"
+   "evidence": "rail",
+   "source": "existing_asset"
   },
   "prop.text_sign": {
    "cost": 3,
    "status": "risky",
    "note": "newspaper/sign/chart with readable words: size, angle and crop problems",
    "evidence": "rail c3/c10",
-   "instead": "use one big upright sign or newspaper facing the camera, 3 to 5 words"
+   "instead": "use one big upright sign or newspaper facing the camera, 3 to 5 words",
+   "source": "procedural"
   },
   "prop.vehicle_moving": {
    "cost": 7,
    "status": "risky",
    "note": "own-built trains; timing, framing and scale all needed rounds",
    "evidence": "rail c9",
-   "instead": "show the vehicle parked or entering once; tell the rest in narration"
+   "instead": "show the vehicle parked or entering once; tell the rest in narration",
+   "source": "procedural"
   },
   "prop.readable_detail": {
    "cost": 8,
    "status": "risky",
    "note": "a small detail the viewer must see (a gap, a crack, a coin): needs close camera + exaggerated geometry",
    "evidence": "rail c1/c5/c12/c14/c18",
-   "instead": "make it large, one close insert shot, one idea per shot"
+   "instead": "make it large, one close insert shot, one idea per shot",
+   "source": "procedural"
   },
   "action.talk_stand": {
    "cost": 1,
    "status": "proven",
    "note": "character talks (captions), small gestures, blinks",
-   "evidence": "all"
+   "evidence": "all",
+   "source": "animation_supported"
   },
   "action.walk": {
    "cost": 2,
    "status": "proven",
    "note": "walk bob, planted feet",
-   "evidence": "bridge short"
+   "evidence": "bridge short",
+   "source": "animation_supported"
   },
   "action.object_fall": {
    "cost": 6,
    "status": "risky",
    "note": "coin/paper dropping on the beat; physics arc must be authored",
    "evidence": "rail c13",
-   "instead": "use one object, one drop, one close insert"
+   "instead": "use one object, one drop, one close insert",
+   "source": "procedural"
   },
   "action.tool_use": {
    "cost": 7,
    "status": "missing",
    "note": "sawing, hammering, throwing: no animation exists",
-   "instead": "show the result, not the action (the cut rail, not the sawing)"
+   "instead": "show the result, not the action (the cut rail, not the sawing)",
+   "source": "new_work"
   },
   "action.fight_chase": {
    "cost": 9,
    "status": "missing",
    "note": "fast body motion not supported",
-   "instead": "cannot be drawn; show before and after"
+   "instead": "cannot be drawn; show before and after",
+   "source": "new_work"
   },
   "fx.sparkle_smoke": {
    "cost": 3,
    "status": "proven",
    "note": "small card fx",
-   "evidence": "rail c18"
+   "evidence": "rail c18",
+   "source": "procedural"
   },
   "fx.explosion_fire": {
    "cost": 8,
    "status": "missing",
    "note": "no volumetric fx",
-   "instead": "cannot be drawn; show the aftermath"
+   "instead": "cannot be drawn; show the aftermath",
+   "source": "new_work"
   },
   "fx.weather": {
    "cost": 8,
    "status": "missing",
    "note": "rain/snow/fog banks not built",
-   "instead": "cannot be drawn; use a clear day"
+   "instead": "cannot be drawn; use a clear day",
+   "source": "new_work"
   },
   "light.day": {
    "cost": 1,
    "status": "proven",
    "note": "",
-   "evidence": "all"
+   "evidence": "all",
+   "source": "procedural"
   },
   "light.golden": {
    "cost": 5,
    "status": "risky",
    "note": "pink/purple tint came back every round; shadows violet, lit areas warm",
    "evidence": "rail c11-c19",
-   "instead": "keep golden hour to the last 1-2 scenes only"
+   "instead": "keep golden hour to the last 1-2 scenes only",
+   "source": "procedural"
   },
   "light.indoor": {
    "cost": 3,
    "status": "proven",
    "note": "",
-   "evidence": "rail"
+   "evidence": "rail",
+   "source": "procedural"
   },
   "light.night": {
    "cost": 7,
    "status": "missing",
    "note": "no night grade or lamps tuned",
-   "instead": "use day or indoor light; say 'night' in narration"
+   "instead": "use day or indoor light; say 'night' in narration",
+   "source": "new_work"
   },
   "camera.glide_push": {
    "cost": 1,
    "status": "proven",
    "note": "smootherstep glide then creeping push-in",
-   "evidence": "all"
+   "evidence": "all",
+   "source": "animation_supported"
   },
   "camera.aerial_wide": {
    "cost": 3,
    "status": "proven",
    "note": "high wide establishing shot",
-   "evidence": "rail c2/c9/c19"
+   "evidence": "rail c2/c9/c19",
+   "source": "animation_supported"
   },
   "camera.orbit": {
    "cost": 3,
    "status": "risky",
    "note": "keep subject in frame through the move",
-   "instead": "use a push-in or a glide"
+   "instead": "use a push-in or a glide",
+   "source": "animation_supported"
   },
   "camera.insert_detail": {
    "cost": 4,
    "status": "risky",
    "note": "cut to a close insert of a small object",
    "evidence": "rail c5/c12/c14",
-   "instead": "max 2 inserts per short, each 30-40 frames"
+   "instead": "max 2 inserts per short, each 30-40 frames",
+   "source": "animation_supported"
   },
   "camera.fast_track": {
    "cost": 8,
    "status": "missing",
    "note": "following fast action",
-   "instead": "use a steady glide"
+   "instead": "use a steady glide",
+   "source": "new_work"
   },
   "state.geometry_change": {
    "cost": 7,
    "status": "risky",
    "note": "scene geometry that changes over time and must read (gap closes, rail buckles)",
    "evidence": "rail STATE",
-   "instead": "change the story so nothing in the scene changes shape; show before and after as two scenes"
+   "instead": "change the story so nothing in the scene changes shape; show before and after as two scenes",
+   "source": "procedural"
   }
  },
  "scene_count_cost": {
@@ -218,5 +251,64 @@
   "max_seconds": 70,
   "fps": 30,
   "format": "1080x1920"
+ },
+ "_source_kinds": {
+  "existing_asset": "CC0 kit pieces already in the repo (Kenney)",
+  "procedural": "built in code by the engine (cards, props, sky, trains, grade)",
+  "animation_supported": "a movement/camera move the engine already performs",
+  "new_work": "needs new assets, new animation logic or a different approach: not available"
+ },
+ "profiles": {
+  "starter": {
+   "validated": true,
+   "scenes": [
+    8,
+    10
+   ],
+   "max_named_chars": 3,
+   "words": [
+    130,
+    165
+   ],
+   "seconds": [
+    50,
+    66
+   ],
+   "note": "the profile the engine has actually produced (bridge template, rail test)"
+  },
+  "explainer": {
+   "validated": false,
+   "scenes": [
+    8,
+    14
+   ],
+   "max_named_chars": 3,
+   "words": [
+    130,
+    190
+   ],
+   "seconds": [
+    50,
+    70
+   ],
+   "note": "not yet produced; use at your own risk, expect extra rounds"
+  },
+  "comedy": {
+   "validated": false,
+   "scenes": [
+    6,
+    12
+   ],
+   "max_named_chars": 3,
+   "words": [
+    110,
+    170
+   ],
+   "seconds": [
+    40,
+    66
+   ],
+   "note": "not yet produced; timing (beats before words) will need testing"
+  }
  }
 }

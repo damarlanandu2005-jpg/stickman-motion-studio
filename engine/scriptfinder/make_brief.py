@@ -9,8 +9,8 @@ You are writing a **vertical cartoon short, 50-65 seconds, 1080x1920**, for a fi
 (cards with ink outlines) standing in a painted 3D world with black ink lines, gliding camera, voice narration with burned-in captions.
 The engine can only draw what is listed below. A script that needs something else cannot be built, so plan the story around the list.
 
-## Hard rules
-1. **8-10 scenes**, about 130-165 narration words in total (about 2.6 words per second). One main place. **1-3 characters**.
+## Hard rules (profile "starter": the only profile this engine has produced so far)
+1. **8-10 scenes**, about 130-165 narration words in total (about 2.6 words per second). One main place. **1-3 characters**. A scene may have up to 3 shots (wide, close, detail) in the same place; list them under `shots`. Other profiles (explainer, comedy) are not validated yet: ask the engine owner before using them.
 2. **Every narration line has one thing the viewer must see** in that shot (`must_see`). If the line says "a tiny crack", the crack is the subject, big, in the picture.
 3. Show results, not hard actions: no sawing, fighting, chasing, throwing, explosions, weather, night, water, animals or crowds of named people.
 4. Day light first. Golden hour only for the last 1-2 scenes.
@@ -34,8 +34,12 @@ The engine can only draw what is listed below. A script that needs something els
   "logline": "one sentence",
   "sources": ["link 1", "link 2"],
   "scenes": [
-    {{"id": "c1", "caption": "the narration line for this scene", "must_see": "what the viewer must see",
-      "tags": ["place.street", "chars.1_3", "action.talk_stand", "light.day", "camera.glide_push"]}}
+    {{"id": "c1", "caption": "the narration line for this scene",
+      "tags": ["place.street", "chars.1_3", "light.day"],
+      "shots": [
+        {{"must_see": "what the viewer must see in this shot", "tags": ["camera.glide_push", "action.talk_stand"]}},
+        {{"must_see": "a close detail", "tags": ["camera.insert_detail", "prop.kit_static"]}}
+      ]}}
   ]
 }}
 ```
