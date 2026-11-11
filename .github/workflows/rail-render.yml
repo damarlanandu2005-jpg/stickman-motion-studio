@@ -1,0 +1,47 @@
+name: Rail full render in parts, then assemble with audio and captions
+on:
+  workflow_dispatch:
+    inputs:
+      parts: { description: "Number of parallel parts (max 20)", default: "17" }
+permissions: { contents: write }
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs: { idx: "${{ steps.p.outputs.idx }}" }
+    steps:
+      - id: p
+        run: echo "idx=$(python3 -c "print(list(range(${{ github.event.inputs.parts }})))")" >> "$GITHUB_OUTPUT"
+  render:
+    needs: plan
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    strategy: { fail-fast: false, matrix: { i: "${{ fromJSON(needs.plan.outputs.idx) }}" } }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "22" }
+      - run: |
+          cd mine/railroads_remotion && npm install --no-audit --no-fund
+          N=1701; P=${{ github.event.inputs.parts }}; I=${{ matrix.i }}
+          STEP=$(( (N + P - 1) / P )); A=$(( I * STEP )); B=$(( (I + 1) * STEP - 1 )); [ "$B" -gt $((N-1)) ] && B=$((N-1))
+          echo "frames $A-$B"; node rail_render.mjs part $A $B out/part_$(printf %02d $I).mp4
+      - uses: actions/upload-artifact@v4
+        with: { name: "part-${{ matrix.i }}", path: "mine/railroads_remotion/out/part_*.mp4", retention-days: 3 }
+  assemble:
+    needs: render
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "22" }
+      - uses: actions/download-artifact@v4
+        with: { pattern: "part-*", path: parts, merge-multiple: true }
+      - run: |
+          mkdir -p "$RUNNER_TEMP/ff" && cd "$RUNNER_TEMP/ff" && npm init -y >/dev/null && npm install --no-audit --no-fund ffmpeg-static >/dev/null
+          FF="$RUNNER_TEMP/ff/node_modules/ffmpeg-static/ffmpeg"; cd "$GITHUB_WORKSPACE"
+          ls parts | sort | sed "s/^/file 'parts\//; s/$/'/" > list.txt
+          $FF -y -f concat -safe 0 -i list.txt -c copy silent.mp4
+          $FF -y -i silent.mp4 -i tools/a1_assets/audio.m4a -vf "ass=tools/a1_assets/cap.ass" -map 0:v:0 -map 1:a:0 -c:v libx264 -crf 17 -preset medium -c:a aac -shortest -pix_fmt yuv420p final.mp4
+          mkdir -p results_claude/railroads_remotion && cp final.mp4 results_claude/railroads_remotion/railroads_remotion.mp4
+          git config user.name "claude-bot"; git config user.email "bot@example.com"
+          git add results_claude/railroads_remotion && git commit -qm "Railroad video rendered on the Remotion stack" && git pull -q --rebase origin gemini-cartoon && git push -q origin HEAD:gemini-cartoon

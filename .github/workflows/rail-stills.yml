@@ -1,0 +1,49 @@
+name: Rail stills (review rounds), one job per frame, contact sheet committed
+on:
+  workflow_dispatch:
+    inputs:
+      tag: { description: "Round tag, e.g. r3", default: r3 }
+      frames: { description: "Comma frames", default: "40,150,260,330,420,500,550,620,760,900,990,1050,1100,1170,1230,1330,1450,1510,1620" }
+      scale: { description: "Render scale", default: "0.5" }
+permissions: { contents: write }
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs: { f: "${{ steps.p.outputs.f }}" }
+    steps:
+      - id: p
+        run: echo "f=$(python3 -c "import json;print(json.dumps('${{ github.event.inputs.frames }}'.split(',')))")" >> "$GITHUB_OUTPUT"
+  render:
+    needs: plan
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy: { fail-fast: false, matrix: { f: "${{ fromJSON(needs.plan.outputs.f) }}" } }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "22" }
+      - run: cd mine/railroads_remotion && npm install --no-audit --no-fund && node rail_render.mjs stills "${{ matrix.f }}" out/s_ ${{ github.event.inputs.scale }}
+      - uses: actions/upload-artifact@v4
+        with: { name: "still-${{ matrix.f }}", path: "mine/railroads_remotion/out/*.jpg", retention-days: 3 }
+  sheet:
+    needs: render
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with: { pattern: "still-*", path: stills, merge-multiple: true }
+      - run: |
+          python3 -m pip install -q pillow
+          mkdir -p docs/railroad_rounds/${{ github.event.inputs.tag }}
+          cp stills/*.jpg docs/railroad_rounds/${{ github.event.inputs.tag }}/
+          python3 - <<'PY'
+          import glob,re
+          from PIL import Image
+          fs=sorted(glob.glob('stills/s_*.jpg'),key=lambda p:int(re.findall(r'(\d+)\.jpg',p)[0]))
+          ims=[Image.open(p) for p in fs]; w,h=ims[0].size; cols=7; rows=(len(ims)+cols-1)//cols
+          s=Image.new('RGB',(w*cols,h*rows),'black')
+          for i,m in enumerate(ims): s.paste(m,((i%cols)*w,(i//cols)*h))
+          s.thumbnail((4200,4200)); s.save('docs/railroad_rounds/${{ github.event.inputs.tag }}/sheet.jpg',quality=88)
+          PY
+          git config user.name "claude-bot"; git config user.email "bot@example.com"
+          git add docs/railroad_rounds && git commit -qm "Rail stills ${{ github.event.inputs.tag }}" && git pull -q --rebase origin gemini-cartoon && git push -q origin HEAD:gemini-cartoon
