@@ -1,0 +1,190 @@
+{
+ "title": "[claude draft] Bell's first phone call (1876)",
+ "status": "claude_draft",
+ "note": "Claude draft, not Nandu's final script. Narration is exactly as drafted. Tags are Claude's own tagging, so the score tests the tagging, not the script. Historical facts are not yet checked against sources.",
+ "logline": "Bell spills battery acid and his cry for help becomes the first phone call.",
+ "profile": "starter",
+ "sources": [],
+ "narration": "March tenth, eighteen seventy-six. Boston. Alexander Graham Bell is in his workshop. Three days ago he got a patent for a talking wire. But nobody has heard it work. His helper, Thomas Watson, waits in the next room, holding the receiver. Bell leans over his machine. Then he knocks over a jar of battery acid. It spills on his clothes. He shouts into the device: \"Mr. Watson, come here. I want to see you.\" In the next room, Watson hears a voice. A real voice, coming out of a wire. He runs to the door. The first phone call is not a speech. It is a cry for help. Within a few years, thousands of homes had a phone. And it all began with a spill.",
+ "scenes": [
+  {
+   "id": "c1",
+   "caption": "March tenth, eighteen seventy-six. Boston. Alexander Graham Bell is in his workshop.",
+   "tags": [
+    "place.office",
+    "chars.1_3",
+    "light.indoor"
+   ],
+   "shots": [
+    {
+     "must_see": "Bell at his desk with the wire machine, big in frame",
+     "tags": [
+      "camera.glide_push",
+      "action.talk_stand"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c2",
+   "caption": "Three days ago he got a patent for a talking wire. But nobody has heard it work.",
+   "tags": [
+    "place.office",
+    "chars.1_3",
+    "light.indoor",
+    "prop.kit_static"
+   ],
+   "shots": [
+    {
+     "must_see": "the machine with its wire running off through the wall, nobody listening",
+     "tags": [
+      "camera.glide_push",
+      "prop.kit_static"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c3",
+   "caption": "His helper, Thomas Watson, waits in the next room, holding the receiver.",
+   "tags": [
+    "place.interior_other",
+    "chars.1_3",
+    "light.indoor"
+   ],
+   "shots": [
+    {
+     "must_see": "Watson alone on the right of the frame, receiver in hand, a closed door behind him",
+     "tags": [
+      "camera.glide_push",
+      "action.talk_stand"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c4",
+   "caption": "Bell leans over his machine. Then he knocks over a jar of battery acid. It spills on his clothes.",
+   "tags": [
+    "place.office",
+    "chars.1_3",
+    "light.indoor",
+    "action.object_fall"
+   ],
+   "shots": [
+    {
+     "must_see": "Bell leaning over the machine, jar at his elbow",
+     "tags": [
+      "camera.glide_push",
+      "action.talk_stand"
+     ]
+    },
+    {
+     "must_see": "the tipped jar and a dark wet stain on his sleeve",
+     "tags": [
+      "camera.insert_detail",
+      "prop.readable_detail",
+      "action.object_fall"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c5",
+   "caption": "He shouts into the device: \"Mr. Watson, come here. I want to see you.\"",
+   "tags": [
+    "place.office",
+    "chars.1_3",
+    "light.indoor"
+   ],
+   "shots": [
+    {
+     "must_see": "Bell's open mouth and startled face at the horn",
+     "tags": [
+      "camera.glide_push",
+      "action.talk_stand"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c6",
+   "caption": "In the next room, Watson hears a voice. A real voice, coming out of a wire. He runs to the door.",
+   "tags": [
+    "place.interior_other",
+    "chars.1_3",
+    "light.indoor"
+   ],
+   "shots": [
+    {
+     "must_see": "Watson's startled face with the receiver at his ear",
+     "tags": [
+      "camera.glide_push",
+      "action.talk_stand"
+     ]
+    },
+    {
+     "must_see": "Watson turning and moving toward the door",
+     "tags": [
+      "camera.glide_push",
+      "action.walk"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c7",
+   "caption": "The first phone call is not a speech. It is a cry for help.",
+   "tags": [
+    "place.office",
+    "chars.1_3",
+    "light.indoor",
+    "prop.kit_static"
+   ],
+   "shots": [
+    {
+     "must_see": "the horn device alone on the desk, big and centred",
+     "tags": [
+      "camera.glide_push",
+      "prop.kit_static"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c8",
+   "caption": "Within a few years, thousands of homes had a phone.",
+   "tags": [
+    "place.town_buildings",
+    "light.day",
+    "prop.kit_static"
+   ],
+   "shots": [
+    {
+     "must_see": "rows of small houses joined by a wire",
+     "tags": [
+      "camera.aerial_wide",
+      "prop.kit_static"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c9",
+   "caption": "And it all began with a spill.",
+   "tags": [
+    "place.office",
+    "light.indoor"
+   ],
+   "shots": [
+    {
+     "must_see": "the spilled jar and a small puddle on the desk",
+     "tags": [
+      "camera.insert_detail",
+      "prop.readable_detail"
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,195 @@
+{
+ "title": "[claude draft] The Emperor's New Clothes (Andersen, 1837)",
+ "status": "claude_draft",
+ "note": "Claude draft, not Nandu's final script. Narration is exactly as drafted. Tags are Claude's own tagging, so the score tests the tagging, not the script. Historical facts are not yet checked against sources.",
+ "logline": "An emperor parades in invisible clothes until a child says what everyone sees.",
+ "profile": "starter",
+ "sources": [],
+ "narration": "Once there was an emperor who loved new clothes more than his people. Two swindlers arrive. They promise cloth so fine only clever people can see it. They set up empty looms and work all day. The emperor sends his minister to look. The minister sees nothing. But he is afraid to say so. He praises the cloth. Everyone does the same. On parade day, the emperor walks through the street in his new clothes. The crowd cheers, because no one wants to look foolish. Then a small child says it plainly: he has nothing on. A whisper spreads. Then the whole crowd says it. The emperor shivers, but he walks on, head high, to the end. The story is nearly two hundred years old. The lesson is the same: one honest voice can break a silence.",
+ "scenes": [
+  {
+   "id": "c1",
+   "caption": "Once there was an emperor who loved new clothes more than his people.",
+   "tags": [
+    "place.palace",
+    "chars.1_3",
+    "light.indoor",
+    "prop.kit_static"
+   ],
+   "shots": [
+    {
+     "must_see": "the emperor among racks of clothes, alone in the room",
+     "tags": [
+      "camera.glide_push",
+      "action.talk_stand"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c2",
+   "caption": "Two swindlers arrive. They promise cloth so fine only clever people can see it.",
+   "tags": [
+    "place.palace",
+    "chars.1_3",
+    "light.indoor"
+   ],
+   "shots": [
+    {
+     "must_see": "two swindlers on the left holding up an invisible cloth, the emperor on the right",
+     "tags": [
+      "camera.glide_push",
+      "action.talk_stand"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c3",
+   "caption": "They set up empty looms and work all day.",
+   "tags": [
+    "place.interior_other",
+    "chars.1_3",
+    "light.indoor",
+    "prop.readable_detail"
+   ],
+   "shots": [
+    {
+     "must_see": "a big empty loom frame with the two swindlers pretending to work at it",
+     "tags": [
+      "camera.glide_push",
+      "prop.readable_detail"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c4",
+   "caption": "The emperor sends his minister to look. The minister sees nothing.",
+   "tags": [
+    "place.interior_other",
+    "chars.1_3",
+    "light.indoor"
+   ],
+   "shots": [
+    {
+     "must_see": "the minister in front of the empty loom, hand on chin, swindlers behind",
+     "tags": [
+      "camera.glide_push",
+      "action.talk_stand"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c5",
+   "caption": "But he is afraid to say so. He praises the cloth. Everyone does the same.",
+   "tags": [
+    "place.palace",
+    "chars.crowd",
+    "light.indoor"
+   ],
+   "shots": [
+    {
+     "must_see": "a line of courtiers all nodding and pointing at empty air",
+     "tags": [
+      "camera.glide_push",
+      "chars.crowd"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c6",
+   "caption": "On parade day, the emperor walks through the street in his new clothes.",
+   "tags": [
+    "place.town_buildings",
+    "chars.crowd",
+    "light.day",
+    "action.walk"
+   ],
+   "shots": [
+    {
+     "must_see": "the emperor in plain underclothes walking down the street between two lines of crowd",
+     "tags": [
+      "camera.aerial_wide",
+      "action.walk"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c7",
+   "caption": "The crowd cheers, because no one wants to look foolish.",
+   "tags": [
+    "place.street",
+    "chars.crowd",
+    "light.day"
+   ],
+   "shots": [
+    {
+     "must_see": "crowd with arms up cheering, the emperor at the left with a stiff smile",
+     "tags": [
+      "camera.glide_push",
+      "chars.crowd"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c8",
+   "caption": "Then a small child says it plainly: he has nothing on.",
+   "tags": [
+    "place.street",
+    "chars.1_3",
+    "light.day"
+   ],
+   "shots": [
+    {
+     "must_see": "a small child on the left pointing at the emperor on the right",
+     "tags": [
+      "camera.glide_push",
+      "action.talk_stand"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c9",
+   "caption": "A whisper spreads. Then the whole crowd says it.",
+   "tags": [
+    "place.street",
+    "chars.crowd",
+    "light.day"
+   ],
+   "shots": [
+    {
+     "must_see": "the crowd turning and pointing at the emperor, mouths open",
+     "tags": [
+      "camera.aerial_wide",
+      "chars.crowd"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c10",
+   "caption": "The emperor shivers, but he walks on, head high, to the end. The story is nearly two hundred years old. The lesson is the same: one honest voice can break a silence.",
+   "tags": [
+    "place.street",
+    "chars.1_3",
+    "light.golden",
+    "action.walk"
+   ],
+   "shots": [
+    {
+     "must_see": "the emperor from behind walking away head high, the child small at the left edge",
+     "tags": [
+      "camera.glide_push",
+      "action.walk"
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,201 @@
+{
+ "title": "[claude draft] Tulip mania (1637)",
+ "status": "claude_draft",
+ "note": "Claude draft, not Nandu's final script. Narration is exactly as drafted. Tags are Claude's own tagging, so the score tests the tagging, not the script. Historical facts are not yet checked against sources.",
+ "logline": "A tulip bulb market booms and crashes, and the lesson is the crowd's certainty, not the flower.",
+ "profile": "starter",
+ "sources": [],
+ "narration": "Holland, sixteen thirty-seven. Stories say one tulip bulb costs more than a house. People trade bulb contracts in taverns. A bulb that no one has even dug up yet changes hands again and again. A craftsman earns about three hundred guilders a year. A famous bulb is said to sell for thousands. Everyone thinks the price only goes up. Then, in early February, a bulb auction in Haarlem finds no buyers. Panic spreads. Prices fall. Contracts become paper nobody wants. Now the twist. Historians say the legend is bigger than the truth. Few people were ruined. Records are thin. Still, the lesson sticks. When everyone is sure a price can't fall, ask who is left to buy. That is the real danger of a crowd. Not the flower. The certainty.",
+ "scenes": [
+  {
+   "id": "c1",
+   "caption": "Holland, sixteen thirty-seven. Stories say one tulip bulb costs more than a house.",
+   "tags": [
+    "place.town_buildings",
+    "light.day",
+    "prop.readable_detail"
+   ],
+   "shots": [
+    {
+     "must_see": "one big tulip bulb beside a small house, the bulb bigger than the door",
+     "tags": [
+      "camera.glide_push",
+      "prop.readable_detail"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c2",
+   "caption": "People trade bulb contracts in taverns. A bulb that no one has even dug up yet changes hands again and again.",
+   "tags": [
+    "place.interior_other",
+    "chars.1_3",
+    "light.indoor"
+   ],
+   "shots": [
+    {
+     "must_see": "two men at a table passing a paper contract across it",
+     "tags": [
+      "camera.glide_push",
+      "action.talk_stand"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c3",
+   "caption": "A craftsman earns about three hundred guilders a year. A famous bulb is said to sell for thousands.",
+   "tags": [
+    "place.street",
+    "chars.1_3",
+    "light.day",
+    "prop.kit_static"
+   ],
+   "shots": [
+    {
+     "must_see": "a craftsman holding one small coin pouch beside a tall pile of coin crates",
+     "tags": [
+      "camera.glide_push",
+      "prop.kit_static"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c4",
+   "caption": "Everyone thinks the price only goes up.",
+   "tags": [
+    "place.street",
+    "chars.crowd",
+    "light.day",
+    "prop.text_sign"
+   ],
+   "shots": [
+    {
+     "must_see": "a big upright board with a rising line, people nodding in front of it",
+     "tags": [
+      "camera.glide_push",
+      "prop.text_sign"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c5",
+   "caption": "Then, in early February, a bulb auction in Haarlem finds no buyers.",
+   "tags": [
+    "place.market",
+    "chars.crowd",
+    "light.day",
+    "action.walk"
+   ],
+   "shots": [
+    {
+     "must_see": "an auctioneer on a box facing a nearly empty square, one man walking away",
+     "tags": [
+      "camera.glide_push",
+      "action.talk_stand"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c6",
+   "caption": "Panic spreads. Prices fall.",
+   "tags": [
+    "place.street",
+    "chars.crowd",
+    "light.day",
+    "prop.text_sign"
+   ],
+   "shots": [
+    {
+     "must_see": "the same board with the line now falling, people with hands on heads",
+     "tags": [
+      "camera.glide_push",
+      "prop.text_sign"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c7",
+   "caption": "Contracts become paper nobody wants.",
+   "tags": [
+    "place.street",
+    "light.day"
+   ],
+   "shots": [
+    {
+     "must_see": "loose paper contracts on the ground, a hand letting one go",
+     "tags": [
+      "camera.insert_detail",
+      "prop.readable_detail"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c8",
+   "caption": "Now the twist. Historians say the legend is bigger than the truth. Few people were ruined. Records are thin.",
+   "tags": [
+    "place.office",
+    "chars.1_3",
+    "light.indoor"
+   ],
+   "shots": [
+    {
+     "must_see": "a historian at a desk looking at one folder",
+     "tags": [
+      "camera.glide_push",
+      "action.talk_stand"
+     ]
+    },
+    {
+     "must_see": "a thin folder lying open on the desk",
+     "tags": [
+      "camera.insert_detail",
+      "prop.readable_detail"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c9",
+   "caption": "Still, the lesson sticks. When everyone is sure a price can't fall, ask who is left to buy.",
+   "tags": [
+    "place.street",
+    "chars.crowd",
+    "light.day"
+   ],
+   "shots": [
+    {
+     "must_see": "a crowd all facing the same way, one empty spot at the front where a buyer should stand",
+     "tags": [
+      "camera.glide_push",
+      "chars.crowd"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c10",
+   "caption": "That is the real danger of a crowd. Not the flower. The certainty.",
+   "tags": [
+    "place.street",
+    "chars.crowd",
+    "light.golden"
+   ],
+   "shots": [
+    {
+     "must_see": "one small tulip on the ground in front of a crowd all pointing the same way",
+     "tags": [
+      "camera.glide_push",
+      "prop.readable_detail"
+     ]
+    }
+   ]
+  }
+ ]
+}

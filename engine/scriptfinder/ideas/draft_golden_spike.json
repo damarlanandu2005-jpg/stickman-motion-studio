@@ -1,0 +1,200 @@
+{
+ "title": "[claude draft] The Golden Spike (1869)",
+ "status": "claude_draft",
+ "note": "Claude draft, not Nandu's final script. Narration is exactly as drafted. Tags are Claude's own tagging, so the score tests the tagging, not the script. Historical facts are not yet checked against sources.",
+ "logline": "Two railroads meet in Utah; the famous photo leaves out the Chinese workers who built the western line.",
+ "profile": "starter",
+ "sources": [],
+ "narration": "May tenth, eighteen sixty-nine. A desert in Utah. Two railroads, built toward each other for six years, finally meet. One from the west. One from the east. Two steam engines stop nose to nose. A crowd gathers. A golden spike waits for its hole. A railroad boss lifts the hammer. He swings. He misses. He hits the rail. The telegraph man taps out one word anyway: done. Bells ring in cities across America. A trip that took months by wagon now takes days. But look at the famous photo. Thousands of Chinese workers built the western line, through mountains, in winter. Almost none are in the picture. The golden spike was taken out that same day and replaced with an iron one. The glory was gold. The work was iron.",
+ "scenes": [
+  {
+   "id": "c1",
+   "caption": "May tenth, eighteen sixty-nine. A desert in Utah.",
+   "tags": [
+    "place.canyon",
+    "light.day"
+   ],
+   "shots": [
+    {
+     "must_see": "empty flat desert, low far hills as a flat backdrop, one short line of track in the foreground",
+     "tags": [
+      "camera.aerial_wide"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c2",
+   "caption": "Two railroads, built toward each other for six years, finally meet. One from the west. One from the east.",
+   "tags": [
+    "place.canyon",
+    "light.day",
+    "prop.kit_static"
+   ],
+   "shots": [
+    {
+     "must_see": "two lines of track from the left (west) and the right (east) toward one gap in the middle",
+     "tags": [
+      "camera.aerial_wide",
+      "prop.kit_static"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c3",
+   "caption": "Two steam engines stop nose to nose.",
+   "tags": [
+    "place.canyon",
+    "light.day",
+    "prop.vehicle_moving"
+   ],
+   "shots": [
+    {
+     "must_see": "west engine on the left, east engine on the right, noses almost touching",
+     "tags": [
+      "camera.aerial_wide",
+      "prop.vehicle_moving"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c4",
+   "caption": "A crowd gathers. A golden spike waits for its hole.",
+   "tags": [
+    "place.canyon",
+    "chars.crowd",
+    "light.day",
+    "prop.readable_detail"
+   ],
+   "shots": [
+    {
+     "must_see": "a ring of people and a big gold spike standing in a tie in the foreground",
+     "tags": [
+      "camera.glide_push",
+      "prop.readable_detail"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c5",
+   "caption": "A railroad boss lifts the hammer. He swings. He misses. He hits the rail.",
+   "tags": [
+    "place.canyon",
+    "chars.1_3",
+    "light.day",
+    "action.tool_use"
+   ],
+   "shots": [
+    {
+     "must_see": "the boss with the hammer raised over the spike",
+     "tags": [
+      "camera.glide_push",
+      "action.tool_use"
+     ]
+    },
+    {
+     "must_see": "the hammer lying on the rail, the spike untouched",
+     "tags": [
+      "camera.insert_detail",
+      "prop.readable_detail"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c6",
+   "caption": "The telegraph man taps out one word anyway: done.",
+   "tags": [
+    "place.canyon",
+    "chars.1_3",
+    "light.day",
+    "prop.text_sign"
+   ],
+   "shots": [
+    {
+     "must_see": "a big upright sign reading DONE facing the camera, the telegraph man beside it",
+     "tags": [
+      "camera.glide_push",
+      "prop.text_sign"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c7",
+   "caption": "Bells ring in cities across America. A trip that took months by wagon now takes days.",
+   "tags": [
+    "place.town_buildings",
+    "light.day",
+    "prop.kit_static"
+   ],
+   "shots": [
+    {
+     "must_see": "a bell tower and a row of town buildings, the bell swinging",
+     "tags": [
+      "camera.aerial_wide",
+      "prop.kit_static"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c8",
+   "caption": "But look at the famous photo.",
+   "tags": [
+    "place.canyon",
+    "chars.crowd",
+    "light.day",
+    "prop.readable_detail"
+   ],
+   "shots": [
+    {
+     "must_see": "a framed photo of the crowd with a clear gap where the Chinese workers should be",
+     "tags": [
+      "camera.glide_push",
+      "prop.readable_detail"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c9",
+   "caption": "Thousands of Chinese workers built the western line, through mountains, in winter. Almost none are in the picture.",
+   "tags": [
+    "place.canyon",
+    "chars.crowd",
+    "light.day"
+   ],
+   "shots": [
+    {
+     "must_see": "many workers on the west (left) hillside laying track, the photo crowd on the right",
+     "tags": [
+      "camera.aerial_wide",
+      "chars.crowd"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c10",
+   "caption": "The golden spike was taken out that same day and replaced with an iron one. The glory was gold. The work was iron.",
+   "tags": [
+    "place.canyon",
+    "light.golden",
+    "prop.readable_detail"
+   ],
+   "shots": [
+    {
+     "must_see": "a gold spike on the left and a dull iron spike in the track on the right",
+     "tags": [
+      "camera.insert_detail",
+      "prop.readable_detail"
+     ]
+    }
+   ]
+  }
+ ]
+}
