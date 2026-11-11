@@ -42,10 +42,10 @@ else:
     rep["total_s"] = round(time.time() - t0, 1)
     sh("mkdir -p /tmp/ff && cd /tmp/ff && npm init -y >/dev/null 2>&1; npm install --no-audit --no-fund ffmpeg-static 2>&1 | tail -1", timeout=600)
     FF = "/tmp/ff/node_modules/ffmpeg-static/ffmpeg"; R = "/tmp/repo"
-    with open(P + "/out/list.txt", "w") as lf:
-        for i in range(PARTS): lf.write("file '%s/out/part_%02d.mp4'\n" % (P, i))
-    sh("cd %s/out && %s -y -f concat -safe 0 -i list.txt -c copy silent.mp4 2>&1 | tail -2" % (P, FF))
-    sh("cd %s && %s -y -i %s/out/silent.mp4 -i tools/a1_assets/audio.m4a -vf ass=tools/a1_assets/cap.ass -map 0:v:0 -map 1:a:0 -c:v libx264 -crf 19 -preset medium -c:a aac -shortest -pix_fmt yuv420p %s/final.mp4 2>&1 | tail -2" % (R, FF, P, W), timeout=1800)
+    ins = " ".join("-i %s/out/part_%02d.mp4" % (P, i) for i in range(PARTS))
+    fc = "".join("[%d:v]" % i for i in range(PARTS)) + "concat=n=%d:v=1:a=0[v]" % PARTS
+    sh("cd %s && %s -y %s -i tools/a1_assets/audio.m4a -filter_complex \"%s;[v]ass=tools/a1_assets/cap.ass[o]\" -map [o] -map %d:a:0 -c:v libx264 -crf 20 -preset medium -c:a aac -shortest -pix_fmt yuv420p %s/final.mp4 2>&1 | tail -2" % (R, FF, ins, fc, PARTS, W), timeout=2400)
+    rep["final_frames"] = sh("ffprobe -v error -select_streams v -count_packets -show_entries stream=nb_read_packets -of csv=p=0 %s/final.mp4 || true" % W).strip()
     rep["final_exists"] = os.path.exists(W + "/final.mp4")
 json.dump(rep, open(W + "/render_result.json", "w"), indent=1)
 print("FINAL " + json.dumps(rep))
