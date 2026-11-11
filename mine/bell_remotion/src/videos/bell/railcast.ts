@@ -45,7 +45,7 @@ export const drawGuy = (g: Guy, cam: CamInfo, f = 0): Place => {
 /** where Watson's receiver is (at his ear) in the shots he is in; null = not on screen, the prop is hidden */
 export const receiverAt = (f: number, right: THREE.Vector3): V3 | null => {
   const g = castAt(f).find((x) => x.who === "watson"); if (!g) return null;
-  const sd = g.facing || 1, off = sd * 0.2;
+  const sd = g.facing || 1, off = sd * 0.27;
   return [g.x + right.x * off, 1.62 + (g.y ?? 0), g.z + right.z * off];
 };
 /** wire end on the floor, in the dark beyond the doorway; follows Watson when he moves */
