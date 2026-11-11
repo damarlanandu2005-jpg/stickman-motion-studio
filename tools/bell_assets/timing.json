@@ -1,0 +1,162 @@
+{
+ "voice": "am_fenrir",
+ "speed": 0.88,
+ "speech_seconds": 42.67,
+ "speech_end": 43.17,
+ "total_seconds": 44.17,
+ "total_frames": 1326,
+ "words": 126,
+ "words_per_second_speech": 2.95,
+ "words_per_second_total": 2.85,
+ "fps": 30,
+ "scenes": [
+  {
+   "id": "c1",
+   "start": 0.5,
+   "end": 6.155,
+   "sentences": [
+    {
+     "text": "March tenth, eighteen seventy-six.",
+     "start": 0.5,
+     "end": 2.484
+    },
+    {
+     "text": "Boston.",
+     "start": 2.634,
+     "end": 3.423
+    },
+    {
+     "text": "Alexander Graham Bell is in his workshop.",
+     "start": 3.573,
+     "end": 6.155
+    }
+   ]
+  },
+  {
+   "id": "c2",
+   "start": 6.605,
+   "end": 11.32,
+   "sentences": [
+    {
+     "text": "Three days ago he got a patent for a talking wire.",
+     "start": 6.605,
+     "end": 9.527
+    },
+    {
+     "text": "But nobody has heard it work.",
+     "start": 9.677,
+     "end": 11.32
+    }
+   ]
+  },
+  {
+   "id": "c3",
+   "start": 11.77,
+   "end": 16.271,
+   "sentences": [
+    {
+     "text": "His helper, Thomas Watson, waits in the next room, holding the receiver.",
+     "start": 11.77,
+     "end": 16.271
+    }
+   ]
+  },
+  {
+   "id": "c4",
+   "start": 16.721,
+   "end": 22.504,
+   "sentences": [
+    {
+     "text": "Bell leans over his machine.",
+     "start": 16.721,
+     "end": 18.257
+    },
+    {
+     "text": "Then he knocks over a jar of battery acid.",
+     "start": 18.407,
+     "end": 20.903
+    },
+    {
+     "text": "It spills on his clothes.",
+     "start": 21.053,
+     "end": 22.504
+    }
+   ]
+  },
+  {
+   "id": "c5",
+   "start": 22.954,
+   "end": 27.583,
+   "sentences": [
+    {
+     "text": "He shouts into the device: \"Mr. Watson, come here. I want to see you.\"",
+     "start": 22.954,
+     "end": 27.583
+    }
+   ]
+  },
+  {
+   "id": "c6",
+   "start": 28.033,
+   "end": 33.859,
+   "sentences": [
+    {
+     "text": "In the next room, Watson hears a voice.",
+     "start": 28.033,
+     "end": 30.359
+    },
+    {
+     "text": "A real voice, coming out of a wire.",
+     "start": 30.509,
+     "end": 32.493
+    },
+    {
+     "text": "He runs to the door.",
+     "start": 32.643,
+     "end": 33.859
+    }
+   ]
+  },
+  {
+   "id": "c7",
+   "start": 34.309,
+   "end": 37.893,
+   "sentences": [
+    {
+     "text": "The first phone call is not a speech.",
+     "start": 34.309,
+     "end": 36.421
+    },
+    {
+     "text": "It is a cry for help.",
+     "start": 36.571,
+     "end": 37.893
+    }
+   ]
+  },
+  {
+   "id": "c8",
+   "start": 38.343,
+   "end": 41.117,
+   "sentences": [
+    {
+     "text": "Within a few years, thousands of homes had a phone.",
+     "start": 38.343,
+     "end": 41.117
+    }
+   ]
+  },
+  {
+   "id": "c9",
+   "start": 41.567,
+   "end": 43.167,
+   "sentences": [
+    {
+     "text": "And it all began with a spill.",
+     "start": 41.567,
+     "end": 43.167
+    }
+   ]
+  }
+ ]
+}

@@ -4,7 +4,14 @@
  "note": "Claude draft, not Nandu's final script. Narration is exactly as drafted. Tags are Claude's own tagging, so the score tests the tagging, not the script. Historical facts are not yet checked against sources.",
  "logline": "Bell spills battery acid and his cry for help becomes the first phone call.",
  "profile": "starter",
- "sources": [],
+ "sources": [
+  "https://www.history.com/this-day-in-history/March-10/speech-transmitted-by-telephone",
+  "https://www.americanheritage.com/pluck-heard-round-world?nid=66982",
+  "https://www.charlesrivermuseum.org/news-and-announcements/2026/3/17/exactly-150-years-ago-today",
+  "https://civicsforlife.org/?p=70026",
+  "https://sale.morven.org/online/ma-bell/orientation/inventing",
+  "https://en.wikipedia.org/wiki/Telephone_in_United_States_history"
+ ],
  "narration": "March tenth, eighteen seventy-six. Boston. Alexander Graham Bell is in his workshop. Three days ago he got a patent for a talking wire. But nobody has heard it work. His helper, Thomas Watson, waits in the next room, holding the receiver. Bell leans over his machine. Then he knocks over a jar of battery acid. It spills on his clothes. He shouts into the device: \"Mr. Watson, come here. I want to see you.\" In the next room, Watson hears a voice. A real voice, coming out of a wire. He runs to the door. The first phone call is not a speech. It is a cry for help. Within a few years, thousands of homes had a phone. And it all began with a spill.",
  "scenes": [
   {
@@ -48,13 +55,13 @@
    "id": "c3",
    "caption": "His helper, Thomas Watson, waits in the next room, holding the receiver.",
    "tags": [
-    "place.interior_other",
+    "place.office",
     "chars.1_3",
     "light.indoor"
    ],
    "shots": [
     {
-     "must_see": "Watson alone on the right of the frame, receiver in hand, a closed door behind him",
+     "must_see": "Watson alone on the right, receiver at his ear, standing in the dark beyond an open doorway at the far end of the same workshop",
      "tags": [
       "camera.glide_push",
       "action.talk_stand"
@@ -111,7 +118,7 @@
    "id": "c6",
    "caption": "In the next room, Watson hears a voice. A real voice, coming out of a wire. He runs to the door.",
    "tags": [
-    "place.interior_other",
+    "place.office",
     "chars.1_3",
     "light.indoor"
    ],
@@ -124,7 +131,7 @@
      ]
     },
     {
-     "must_see": "Watson turning and moving toward the door",
+     "must_see": "Watson running out of the dark doorway toward the room",
      "tags": [
       "camera.glide_push",
       "action.walk"
@@ -186,5 +193,23 @@
     }
    ]
   }
- ]
+ ],
+ "facts_checked": {
+  "March 10, 1876, Boston": "confirmed (history.com, American Heritage, Charles River Museum)",
+  "patent three days earlier": "confirmed: US 174,465 granted March 7, 1876 (history.com, American Heritage)",
+  "Thomas Watson, helper, other room": "confirmed: his assistant, in another / adjoining workshop (history.com, American Heritage, civicsforlife)",
+  "acid spill": "confirmed by three secondary pages (Charles River Museum: on his pants; civicsforlife: on himself; Morven, from Watson's account: he knocked the apparatus over and spilled its acid). Not in the history.com or American Heritage pages. Kept as written.",
+  "the shouted words": "confirmed: matches Bell's lab-notebook wording 'Mr. Watson, come here, I want to see you' (American Heritage). Some pages print 'I want you'.",
+  "Watson runs to Bell": "supported: Morven (from Watson's account) says he ran to Bell. Staged as running to the doorway.",
+  "thousands of homes within a few years": "true but understated: the American Bell company reported 133,692 telephones in 1881 (Wikipedia). 'Thousands' is not wrong, so left as written.",
+  "talking wire, nobody has heard it work": "narration framing, not a sourced claim. Kept.",
+  "first call is a cry for help": "interpretation, not a sourced fact. Kept.",
+  "place": "sources disagree on the exact spot (Bell's Boston home / lab at 109 Court Street / adjoining workshops). The narration says only 'Boston' and 'workshop', which fits all of them."
+ },
+ "staging_notes": {
+  "2026-11-12 change 1": "Watson stands at a doorway in the right wall of the SAME workshop; beyond it is only darkness. No second room is built. Narration still says 'in the next room'. Tags place.interior_other changed to place.office in c3 and c6.",
+  "2026-11-12 change 2": "must_see for c3 and c6 shot 2 reworded to match that staging. Narration untouched (126 words, verified word for word).",
+  "sides": "Bell is always on the left (x<0), Watson always on the right (x>4).",
+  "timing": "Placeholder Kokoro voice, 2.85 words per second overall, 1326 frames (44.2 s). Shot frames are in mine/bell_remotion/src/videos/bell/bstory.ts and must be re-timed for a real voiceover."
+ }
 }

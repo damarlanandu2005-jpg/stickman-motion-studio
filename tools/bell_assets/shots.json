@@ -1,0 +1,83 @@
+{
+ "shots": [
+  {
+   "id": "c1",
+   "a": 0,
+   "b": 194,
+   "place": "WORKSHOP",
+   "light": "indoor"
+  },
+  {
+   "id": "c2",
+   "a": 195,
+   "b": 349,
+   "place": "WORKSHOP",
+   "light": "indoor"
+  },
+  {
+   "id": "c3",
+   "a": 350,
+   "b": 498,
+   "place": "WORKSHOP",
+   "light": "indoor"
+  },
+  {
+   "id": "c4a",
+   "a": 499,
+   "b": 628,
+   "place": "WORKSHOP",
+   "light": "indoor"
+  },
+  {
+   "id": "c4b",
+   "a": 629,
+   "b": 685,
+   "place": "WORKSHOP",
+   "light": "indoor"
+  },
+  {
+   "id": "c5",
+   "a": 686,
+   "b": 837,
+   "place": "WORKSHOP",
+   "light": "indoor"
+  },
+  {
+   "id": "c6a",
+   "a": 838,
+   "b": 975,
+   "place": "WORKSHOP",
+   "light": "indoor"
+  },
+  {
+   "id": "c6b",
+   "a": 976,
+   "b": 1025,
+   "place": "WORKSHOP",
+   "light": "indoor"
+  },
+  {
+   "id": "c7",
+   "a": 1026,
+   "b": 1146,
+   "place": "WORKSHOP",
+   "light": "indoor"
+  },
+  {
+   "id": "c8",
+   "a": 1147,
+   "b": 1243,
+   "place": "TOWN",
+   "light": "day"
+  },
+  {
+   "id": "c9",
+   "a": 1244,
+   "b": 1325,
+   "place": "WORKSHOP",
+   "light": "indoor"
+  }
+ ],
+ "flash": [],
+ "xfade": []
+}
