@@ -23,9 +23,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-        with: { node-version: "22" }
-      - run: |
-          cd mine/railroads_remotion && npm install --no-audit --no-fund
+        with: { node-version: "22", cache: npm, cache-dependency-path: mine/railroads_remotion/package-lock.json }
+      - name: 1 install packages
+        run: cd mine/railroads_remotion && npm ci --no-audit --no-fund
+      - name: 2 download the browser
+        run: cd mine/railroads_remotion && npx remotion browser ensure
+      - name: 3 render frames of this part
+        run: |
+          cd mine/railroads_remotion
           N=1701; P=${{ github.event.inputs.parts }}; I=${{ matrix.i }}
           STEP=$(( (N + P - 1) / P )); A=$(( I * STEP )); B=$(( (I + 1) * STEP - 1 )); [ "$B" -gt $((N-1)) ] && B=$((N-1))
           echo "frames $A-$B"; node rail_render.mjs part $A $B out/part_$(printf %02d $I).mp4

@@ -38,8 +38,8 @@ const OUTFITS: Record<string, Outfit> = {
 };
 const mix = (a: LightPreset, o: Partial<LightPreset>): LightPreset => ({ ...a, ...o });
 const PRES: Record<"day" | "golden" | "indoor", LightPreset> = {
-  day: mix(LIGHTS.day, { az: 70, el: 42, lit: [1.62, 1.42, 1.15], shade: [0.46, 0.34, 0.37], lift: [0.07, 0.05, 0.1], fog: "#e6c4a8", fogNear: 120, fogFar: 1100, sunCol: "#ffe2c0", sunI: 2.8 }),
-  golden: mix(LIGHTS.golden, { shade: [0.34, 0.24, 0.34], lift: [0.07, 0.05, 0.1], fogNear: 90, fogFar: 560 }),
+  day: mix(LIGHTS.day, { az: 70, el: 42, lit: [1.62, 1.42, 1.15], shade: [0.5, 0.36, 0.3], lift: [0.06, 0.04, 0.05], fog: "#e6c4a8", fogNear: 120, fogFar: 1100, sunCol: "#ffe2c0", sunI: 2.8 }),
+  golden: mix(LIGHTS.golden, { shade: [0.42, 0.27, 0.27], lift: [0.07, 0.04, 0.05], fogNear: 90, fogFar: 560 }),
   indoor: mix(LIGHTS.day, { az: 60, el: 50, lit: [1.5, 1.3, 1.05], shade: [0.62, 0.46, 0.42], lift: [0.08, 0.05, 0.06], fog: "#3a2418", fogNear: 200, fogFar: 900, sunCol: "#ffe0b0", sunI: 2.2 }),
 };
 const SMOKE = { day: "#ece8ea", golden: "#6e5448", indoor: "#ece8ea" };
@@ -88,7 +88,7 @@ export class RailWorld {
     P.buildCanyon(this.out, kit, M); P.buildBridges(this.out, M); P.buildDressing(this.out, M, kit); P.gravelBeds(this.out, M);
     this.trk = { R: new P.Track(kit, P.RX, true, false), L: new P.Track(kit, P.LX, false, true) };
     this.out.add(this.trk.R.group, this.trk.L.group);
-    this.trainR = P.buildTrain(kit, M, ["train-carriage-box", "train-carriage-tank"]); this.trainL = P.buildTrain(kit, M, ["train-carriage-coal", "train-carriage-box", "train-carriage-lumber"]);
+    this.trainR = P.buildTrain(kit, M, ["train-carriage-box", "train-carriage-tank"], "#c8282b"); this.trainL = P.buildTrain(kit, M, ["train-carriage-coal", "train-carriage-box", "train-carriage-lumber"]);
     this.out.add(this.trainR, this.trainL, this.saw, this.coin, this.sheet);
     this.office = P.buildOffice(R, M); this.office.add(this.news); this.news.position.set(-0.55, 1.3, -3.0); this.news.rotation.set(-1.4, 0, 0.35); this.news.scale.setScalar(0.5);
     for (let t = 0; t < 2; t++) for (let k = 0; k < 16; k++) {
@@ -139,21 +139,21 @@ export class RailWorld {
     (this.glow.material as THREE.MeshBasicMaterial).color.set(lt === "golden" ? "#ffcf9e" : "#fff4dc").multiplyScalar(lt === "golden" ? 3.2 : 0.9);
     // track + trains from STATE
     this.trk.R.set(st.gapR, st.heatR, 0); this.trk.L.set(0, st.heatL, st.buckle);
-    const A = 1.5 * st.buckle;
+    const A = 2.0 * st.buckle;
     const place = (g: THREE.Group, z: number | null, x: number, bend: boolean, k: number) => {
       g.visible = z !== null && !office;
       for (const m of this.smoke[k]) m.visible = g.visible;
       if (z === null) return;
       const dx = bend ? P.buckleDx(z, A) : 0, da = bend ? P.buckleDx(z - 1, A) : 0, db = bend ? P.buckleDx(z + 1, A) : 0;
       const ph = ((z - JZ) / P.TL) % 1, bump = bend ? 0 : 0.03 * Math.pow(Math.abs(Math.sin(Math.PI * ph * 2)), 8);
-      g.position.set(x + dx, bump, z); g.rotation.y = bend ? Math.atan2(da - db, 2) : 0;
+      g.position.set(x + dx, bump + (bend ? P.buckleLift(z, A) : 0), z); g.rotation.y = bend ? Math.atan2(da - db, 2) : 0;
       const z1 = z === null ? 0 : z, vel = (k === 0 ? (trainsAt(f + 1).R ?? z1 - 0.55) : (trainsAt(f + 1).L ?? z1 - 0.5)) - z1; // m per frame (negative)
       const spd = Math.abs(vel) > 0.01 ? vel : -0.55, fr = f + 0;
       const col = new THREE.Color(SMOKE[lt]);
       this.smoke[k].forEach((m, i) => {
         const q = (((t * 0.55 + i / 16) % 1) + 1) % 1, age = q * 2.2 * FPS; // frames since emission
-        m.position.set(x + dx + 0.5 * q * 3, 5.6 + q * 9, z - 1.75 - spd * age + 2.5 * q);
-        const sz = 1.6 + q * 7; m.scale.set(sz, sz, 1); m.quaternion.copy(cam.quaternion);
+        m.position.set(x + dx + 0.5 * q * 3, 5.9 + q * 10, z - 3.7 - spd * age + 2.5 * q);
+        const sz = 2.2 + q * 9; m.scale.set(sz, sz, 1); m.quaternion.copy(cam.quaternion);
         const mm = m.material as THREE.MeshBasicMaterial; mm.opacity = 0.9 * (1 - q) ** 1.3 * Math.min(1, q * 8); mm.color.copy(col);
       });
       void fr;
