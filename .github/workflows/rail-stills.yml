@@ -1,5 +1,8 @@
 name: Rail stills (review rounds), one job per frame, contact sheet committed
 on:
+  push:
+    branches: [gemini-cartoon]
+    paths: ['.github/workflows/rail-stills.yml']
   workflow_dispatch:
     inputs:
       tag: { description: "Round tag, e.g. r3", default: r3 }
@@ -8,6 +11,7 @@ on:
 permissions: { contents: write }
 jobs:
   plan:
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     outputs: { f: "${{ steps.p.outputs.f }}" }
     steps:

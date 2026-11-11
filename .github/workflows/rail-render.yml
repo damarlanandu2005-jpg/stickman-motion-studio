@@ -1,11 +1,15 @@
 name: Rail full render in parts, then assemble with audio and captions
 on:
+  push:
+    branches: [gemini-cartoon]
+    paths: ['.github/workflows/rail-render.yml']
   workflow_dispatch:
     inputs:
       parts: { description: "Number of parallel parts (max 20)", default: "17" }
 permissions: { contents: write }
 jobs:
   plan:
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     outputs: { idx: "${{ steps.p.outputs.idx }}" }
     steps:
