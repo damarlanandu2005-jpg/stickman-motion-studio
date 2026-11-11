@@ -18,9 +18,12 @@ export const castAt = (f: number): Guy[] => {
   if (id === "c10") out.push({ who: "boss", x: 0, z: -4.4, expr: "sad_sweat", pose: "temple" });
   if (id === "c12") out.push({ who: "eng", x: 4.3, z: 30.8, expr: "determined", pose: "hip", look: -0.3 });
   if (id === "c11") out.push({ who: "eng", x: RX + 0.4, z: 23.5, expr: "neutral", pose: "point" });
-  if (id === "c13") out.push({ who: "eng", x: 6.1, z: 31.3, expr: "neutral", pose: "reach", facing: -1, tilt: -24, look: -0.4 });
+  if (id === "c13") out.push({ who: "eng", x: 5.85, z: 31.5, expr: "neutral", pose: "reach", facing: -1, tilt: -28, look: -0.4 });
   if (id === "c14") out.push({ who: "boss", x: 4.0, z: 31.2, expr: "grin", pose: "reach", tilt: 14, look: 0.4, scale: 1.05 });
   if (id === "c15") { out.push({ who: "boss", x: 3.2, z: 24, expr: "laugh", pose: "hip", facing: 1 }); out.push({ who: "eng", x: 5.9, z: 24, expr: "neutral", pose: "cross", facing: -1 }); }
+  if (id === "c16") out.push({ who: "eng", x: -2.8, z: -10, expr: "determined", pose: "hip", facing: -1 });
+  if (id === "c17") { out.push({ who: "eng", x: -2.9, z: 8, expr: "sad_sweat", pose: "cross", facing: -1 }); out.push({ who: "rival", x: -6.0, z: 2, expr: "proud", pose: "hip", scale: 1 }); }
+  if (id === "c18") out.push({ who: "eng", x: 6.15, z: 31.4, expr: "determined", pose: "reach", facing: -1, tilt: -26 });
   return out;
 };
 const S = "#f6efe4";
@@ -53,7 +56,7 @@ export const fxAt = (f: number): FxPlace[] => {
   const out: FxPlace[] = [];
   if (shotAt(f).id === "c18") {
     const u = ss(1474, 1530, f), n = Math.floor(f / 3) % 6, tt = (n / 6);
-    out.push({ key: `spark${n}`, cw: 300, ch: 300, draw: (p) => spark(p, tt), x: 5.22, y: 0.4, z: 31.95, w: 0.26 + 0.1 * u, h: 0.26 + 0.1 * u, soft: true });
+    out.push({ key: `spark${n}`, cw: 300, ch: 300, draw: (p) => spark(p, tt), x: 5.22, y: 0.4, z: 31.95, w: 0.4 + 0.15 * u, h: 0.4 + 0.15 * u, soft: true });
   }
   return out;
 };
