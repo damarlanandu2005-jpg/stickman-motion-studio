@@ -49,6 +49,7 @@ jobs:
           mkdir -p results_kaggle/rail
           cp out/render_result.json results_kaggle/rail/ 2>/dev/null || echo '{"note":"no result"}' > results_kaggle/rail/render_result.json
           cp out/*.jpg results_kaggle/rail/ 2>/dev/null || true
+          cp out/final.mp4 results_kaggle/rail/railroads_kaggle.mp4 2>/dev/null || true
           git checkout -- kaggle 2>/dev/null || true
           git config user.name "claude-bot"; git config user.email "bot@example.com"
           git add results_kaggle; git commit -qm "Kaggle rail render result [skip ci]" || exit 0
