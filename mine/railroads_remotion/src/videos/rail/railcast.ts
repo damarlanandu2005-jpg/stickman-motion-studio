@@ -11,14 +11,14 @@ export const castAt = (f: number): Guy[] => {
   if (id === "c1") out.push({ who: "eng", x: 6.9, z: 29.4, expr: "determined", pose: "hip", look: 0.3 });
   if (id === "c3") out.push({ who: "boss", x: 0, z: -1, expr: "proud", pose: "point", facing: 1 });
   if (id === "c4") out.push({ who: "eng", x: RX, z: 22, expr: "proud", pose: "hip" });
-  if (id === "c5") out.push({ who: "boss", x: 3.3, z: 20.8, expr: f < 430 ? "shock" : "angry", pose: "point", look: 0.4, purple: ss(430, 484, f) });
+  if (id === "c5") out.push({ who: "boss", x: 3.3, z: 20.8, expr: f < 430 ? "shock" : "angry", pose: "point", look: 0.4, scale: 1.12, purple: ss(430, 484, f) });
   if (id === "c6") { out.push({ who: "boss", x: 3.9, z: 19.5, expr: "angry", pose: "point", facing: 1, purple: 1 }); out.push({ who: "eng", x: 5.1, z: 19.5, expr: "neutral", pose: "hang", facing: -1 }); }
-  if (id === "c7") out.push({ who: "eng", x: 5.9, z: 19.5, expr: "stubborn", pose: "cross" });
-  if (id === "c8") out.push({ who: "rival", x: -3.4, z: 17, expr: "proud", pose: "point", look: 0.3 });
+  if (id === "c7") out.push({ who: "eng", x: 5.9, z: 19.5, expr: "stubborn", pose: "cross", scale: 1.1 });
+  if (id === "c8") out.push({ who: "rival", x: -3.5, z: 20, expr: "proud", pose: "point", look: 0.3, scale: 1.15 });
   if (id === "c10") out.push({ who: "boss", x: 0, z: -4.4, expr: "sad_sweat", pose: "temple" });
   if (id === "c11") out.push({ who: "eng", x: RX + 0.4, z: 23.5, expr: "neutral", pose: "point" });
   if (id === "c13") out.push({ who: "eng", x: 6.8, z: 29.5, expr: "neutral", pose: "reach", look: 0.4 });
-  if (id === "c14") out.push({ who: "boss", x: 3.3, z: 29.8, expr: "grin", pose: "reach", look: 0.4 });
+  if (id === "c14") out.push({ who: "boss", x: 3.3, z: 29.8, expr: "grin", pose: "reach", look: 0.4, scale: 1.05 });
   if (id === "c15") { out.push({ who: "boss", x: 3.2, z: 24, expr: "laugh", pose: "hip", facing: 1 }); out.push({ who: "eng", x: 5.9, z: 24, expr: "neutral", pose: "cross", facing: -1 }); }
   return out;
 };

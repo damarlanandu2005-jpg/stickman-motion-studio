@@ -51,7 +51,7 @@ void mainImage(const in vec4 inputColor, const in vec2 uv, out vec4 outputColor)
   vec3 c = vec3(gradeCurve(src.r), gradeCurve(src.g), gradeCurve(src.b));
   const vec3 W = vec3(0.2126, 0.7152, 0.0722);
   float y = dot(c, W);
-  float wS = 1.0 - smoothstep(0.0, 0.55, y);
+  float wS = 1.0 - smoothstep(0.0, 0.38, y);   // shadow tint (violet) only in true shadows, never on lit faces
   float wH = smoothstep(0.45, 1.0, y);
   float wM = 1.0 - wS - wH;
   float s = gradeSat.y + (gradeSat.x - gradeSat.y) * wS + (gradeSat.z - gradeSat.y) * wH;
@@ -156,14 +156,14 @@ export class GradeEffect extends Effect {
 //   golden: stronger S (darks .1 -> .09, mids .5 -> .54), blue-violet shadow tint, orange highlight tint, heavier vignette.
 export const GRADE_DAY2: GradeParams = {
   ky: [0, 0.105, 0.31, 0.64, 0.86, 0.955, 1],
-  sat: [1.0, 1.05, 1.0],
-  tintS: [0.01, 0.002], tintM: [0, 0], tintH: [0.006, 0],
+  sat: [1.0, 1.08, 1.0],
+  tintS: [0.008, 0.0], tintM: [-0.024, 0.006], tintH: [-0.008, 0.004],   // de-pink: mids/highlights lean warm (cb < 0), blue only in shadows
   vig: [0.12, 0.45],
 };
 export const GRADE_GOLDEN2: GradeParams = {
   ky: [0, 0.09, 0.245, 0.54, 0.8, 0.93, 1],
-  sat: [1.0, 1.12, 1.15],
-  tintS: [0.02, 0.002], tintM: [0, 0], tintH: [-0.012, 0.006],
+  sat: [1.0, 1.1, 1.1],
+  tintS: [0.035, 0.0], tintM: [-0.012, 0.008], tintH: [-0.024, 0.01],   // violet in shadows only, peach mids/highlights
   vig: [0.2, 0.4],
 };
 /** indoor (office c3 / c10): warm lamp-lit room; slightly lower key than day, warm mids, cool-violet shadows, stronger vignette. */

@@ -218,7 +218,7 @@ const blob = (out: Stage, x: number, y: number, z: number, sc = 1, k = 1) => {
   }
   const cc = hexOf(CONTACT[LNAME], k);
   out.fx.push({ key: `blob|contact|${cc}`, cw: 128, ch: 128, draw: (p) => fxContact(p, cc), x: x + ox * 0.03 * sc, y: y + 0.022, z: z + oz * 0.03 * sc,
-    w: 0.52 * sc, h: 0.4 * sc, flat: true, rot });
+    w: 0.66 * sc, h: 0.5 * sc, flat: true, rot });
 };
 
 // ---------------- crowd by shot ----------------

@@ -14,7 +14,7 @@ export const tm = (o: THREE.MeshLambertMaterialParameters) => twoTone(new THREE.
 const U = (r: () => number, a: number, b: number) => a + (b - a) * r();
 
 // ---------------- painted textures ----------------
-const STRATA_COLS = ["#c8402c", "#e2653a", "#f08a46", "#f4aa62", "#b0302f", "#d4503c", "#f2b27a", "#9a2c33", "#e0724a", "#c2523a", "#f6c486", "#ea7a50"];
+const STRATA_COLS = ["#b02a22", "#c8402c", "#e2653a", "#f08a46", "#d89a3c", "#b8421e", "#a02424", "#e87a40", "#c46a24", "#f4aa62", "#c2523a", "#d4503c", "#e0722a", "#a8431f"]; const _OLD = ["#c8402c", "#e2653a", "#f08a46", "#f4aa62", "#b0302f", "#d4503c", "#f2b27a", "#9a2c33", "#e0724a", "#c2523a", "#f6c486", "#ea7a50"];
 export const strataTex = () => ctex("strataW", 1024, 1024, (g, r) => {
   let y = -10;
   while (y < 1040) {
@@ -24,7 +24,7 @@ export const strataTex = () => ctex("strataW", 1024, 1024, (g, r) => {
     g.fillStyle = c; g.beginPath(); g.moveTo(0, yy(0));
     for (let x = 0; x <= 1024; x += 16) g.lineTo(x, yy(x));
     g.lineTo(1024, 1100); g.lineTo(0, 1100); g.closePath(); g.fill();
-    g.strokeStyle = "rgba(80,18,24,0.5)"; g.lineWidth = 1.5 + r() * 2.5; g.beginPath();
+    g.strokeStyle = "rgba(60,10,22,0.6)"; g.lineWidth = 2 + r() * 3; g.beginPath();
     for (let x = 0; x <= 1024; x += 16) { const v = yy(x); x ? g.lineTo(x, v) : g.moveTo(x, v); }
     g.stroke();
     g.strokeStyle = "rgba(255,226,170,0.32)"; g.lineWidth = 1.5; g.beginPath();
@@ -40,18 +40,18 @@ export const strataTex = () => ctex("strataW", 1024, 1024, (g, r) => {
 });
 export const sandTex = () => ctex("sandW", 512, 512, (g, r) => {
   g.fillStyle = "#e08c4c"; g.fillRect(0, 0, 512, 512);
-  const cols = ["#eda262", "#d27a3c", "#f0b074", "#c46c36", "#e69456"];
+  const cols = ["#e8985a", "#da8446", "#ec9e60", "#d47c40", "#e48e50"];
   for (let i = 0; i < 1500; i++) { g.fillStyle = cols[Math.floor(r() * cols.length)]; g.beginPath(); g.ellipse(r() * 512, r() * 512, 4 + r() * 16, 2 + r() * 6, r() * 3, 0, TAU); g.fill(); }
   const pc = ["#c98a74", "#a8685a", "#e0b496", "#8c5a50", "#d9a083"];
-  for (let i = 0; i < 160; i++) { g.fillStyle = pc[Math.floor(r() * pc.length)]; g.beginPath(); const rr = 3 + r() * 6; g.ellipse(r() * 512, r() * 512, rr, rr * 0.7, r() * 3, 0, TAU); g.fill(); g.strokeStyle = "rgba(60,26,26,0.55)"; g.lineWidth = 1.2; g.stroke(); }
+  for (let i = 0; i < 50; i++) { g.fillStyle = pc[Math.floor(r() * pc.length)]; g.beginPath(); const rr = 3 + r() * 6; g.ellipse(r() * 512, r() * 512, rr, rr * 0.7, r() * 3, 0, TAU); g.fill(); g.strokeStyle = "rgba(60,26,26,0.3)"; g.lineWidth = 1; g.stroke(); }
 });
 export const gravelTex = () => ctex("gravelW", 512, 512, (g, r) => {
-  g.fillStyle = "#6e5457"; g.fillRect(0, 0, 512, 512);
-  const cols = ["#c9a393", "#b08878", "#d8c0a8", "#8f7a78", "#c98f7c", "#e0cdb8", "#7a6466", "#a68f90", "#d6a58a"];
-  for (let i = 0; i < 1100; i++) {
-    const rr = 6 + r() * 9; g.fillStyle = cols[Math.floor(r() * cols.length)]; g.beginPath();
+  g.fillStyle = "#8a6a64"; g.fillRect(0, 0, 512, 512);
+  const cols = ["#c4a090", "#b08c7c", "#cdb09a", "#9a827e", "#c2917e", "#d4bca6", "#8a706e", "#a89090", "#cc9e86"];
+  for (let i = 0; i < 2600; i++) {
+    const rr = 3 + r() * 5; g.fillStyle = cols[Math.floor(r() * cols.length)]; g.beginPath();
     g.ellipse(r() * 512, r() * 512, rr, rr * (0.55 + r() * 0.4), r() * 3, 0, TAU); g.fill();
-    g.strokeStyle = "rgba(44,26,34,0.65)"; g.lineWidth = 1.4; g.stroke();
+    g.strokeStyle = "rgba(60,36,40,0.38)"; g.lineWidth = 1; g.stroke();
   }
 });
 export const deckTex = () => ctex("deckW", 512, 512, (g, r) => {
@@ -126,11 +126,11 @@ const cyl = (B: Batch, mat: THREE.Material, rt: number, rb: number, h: number, x
 export type Mats = ReturnType<typeof makeMats>;
 export const makeMats = () => {
   const strata = strataTex();
-  const depthTints = ["#ffffff", "#ffe0cc", "#f8c8bc", "#e0b0b8", "#c8a0c0"]; // warm at the rim, cooler and bluer deep in the canyon
+  const depthTints = ["#ffffff", "#ffd0a0", "#f5a870", "#e58c5a", "#cc7a58"]; // warm at the rim, cooler and bluer deep in the canyon
   const wall = depthTints.map((c) => tm({ map: strata, color: c }));
   return {
     wall, sand: tm({ map: sandTex() }), gravel: tm({ map: gravelTex() }), deck: tm({ map: deckTex() }), wood: tm({ map: woodTex() }),
-    floor: tm({ map: strata, color: "#7a62b0" }), rustS: tm({ color: "#a2542c" }), blueS: tm({ color: "#7490aa" }), dark: tm({ color: "#2c2430" }),
+    floor: tm({ map: strata, color: "#a8704f" }), rustS: tm({ color: "#a2542c" }), blueS: tm({ color: "#7490aa" }), dark: tm({ color: "#2c2430" }),
     brass: tm({ color: "#d8a640" }), cactus: tm({ color: "#6a9a48" }),
   };
 };
@@ -152,14 +152,14 @@ export const buildCanyon = (R: THREE.Object3D, kit: Kit, M: Mats) => {
       while (x < XR / 2) {
         const w = 7 + rr() * 26, d = 0.35 + rr() * (tier % 3 === 0 ? 4.6 : 1.8), ou = rr() * 4, ov = rr() * 4;
         const z0 = zf + dir * d, z1 = zf - dir * 1.5;
-        sbox(B, wallMat(M, y - h / 2), x, x + w, y - h, y, Math.min(z0, z1), Math.max(z0, z1), 14, ou, ov);
+        sbox(B, wallMat(M, y - h / 2), x, x + w, y - h, y, Math.min(z0, z1), Math.max(z0, z1), 9, ou, ov);
         x += w * (0.75 + rr() * 0.25);
       }
       y -= h * 0.86; tier++;
     }
     for (let k = 0; k < 18; k++) {       // buttresses: towers hugging the wall, they make the silhouette
       const w = 8 + rr() * 14, h = 20 + rr() * 44, d = 6 + rr() * 10, side = rr() < 0.5 ? -1 : 1, x = side * (14 + w / 2 + rr() * 90), top = -4 - rr() * 4;
-      sbox(B, wallMat(M, top - h / 2), x - w / 2, x + w / 2, top - h, top, zf + dir * d, zf - dir * 1.5, 26, rr() * 4, rr() * 4);
+      sbox(B, wallMat(M, top - h / 2), x - w / 2, x + w / 2, top - h, top, zf + dir * d, zf - dir * 1.5, 16, rr() * 4, rr() * 4);
       sbox(B, wallMat(M, top - h), x - w * 0.37, x + w * 0.37, top - h - 0.1, top - h + 3, zf + dir * d * 0.9, zf - dir * 1.2, 10); // cap stones, a little darker tier above
     }
     for (let k = 0; k < 16; k++) {       // crevices: dark vertical slots in the face
@@ -176,10 +176,16 @@ export const buildCanyon = (R: THREE.Object3D, kit: Kit, M: Mats) => {
     sbox(B, M.wall[4], x - w / 2, x + w / 2, -88, -88 + h, z - w * 0.45, z + w * 0.45, 20, rr() * 3, rr() * 3);
     sbox(B, M.wall[3], x - w * 0.78, x + w * 0.78, -88 + h, -88 + h + 2.2, z - w * 0.65, z + w * 0.65, 3);
   }
+  // tall buttes along the far rim (they make the skyline, seen from every bridge shot) and stepped mesas behind
+  for (let k = 0; k < 26; k++) {
+    const side = rr() < 0.5 ? -1 : 1, x = side * (22 + rr() * 220), w = 10 + rr() * 26, h = 14 + rr() * 56, z = -70 - rr() * 40;
+    let yy = -4, ww = w;
+    for (let t = 0; t < 4 && yy < h; t++) { const hh = h / 4 * (0.8 + rr() * 0.5); sbox(B, M.wall[t % 2], x - ww / 2, x + ww / 2, yy, yy + hh, z - ww * 0.5, z + ww * 0.5, 9, rr() * 3, rr() * 3); yy += hh; ww *= 0.62 + rr() * 0.2; }
+  }
   // far desert: stepped strata mesas on the horizon, hazed by fog
   for (let k = 0; k < 40; k++) {
-    const w = 60 + rr() * 140, x = -520 + rr() * 1040, z = -170 - rr() * 380, h = 6 + rr() * 22, mm = M.wall[k % 3];
-    sbox(B, mm, x - w / 2, x + w / 2, 0, h, z - 24, z + 24, 22, rr() * 3, 0);
+    const w = 60 + rr() * 140, x = -520 + rr() * 1040, z = -170 - rr() * 380, h = 14 + rr() * 40, mm = M.wall[k % 2];
+    sbox(B, mm, x - w / 2, x + w / 2, 0, h * 0.6, z - 24, z + 24, 14, rr() * 3, 0); sbox(B, mm, x - w * 0.42, x + w * 0.42, h * 0.6, h, z - 20, z + 20, 14, rr() * 3, 0);
     sbox(B, mm, x - w * 0.35, x + w * 0.35, h, h * 1.6, z - 16, z + 16, 22, rr() * 3, 0);
     sbox(B, mm, x - w * 0.15, x + w * 0.15, h * 1.6, h * 2.0, z - 10, z + 10, 22, rr() * 3, 0);
   }
@@ -297,7 +303,7 @@ const splitTile = (kit: Kit) => {
     for (let k = 0; k < 3; k++) { const ax = Math.abs(p.getX(i + k)); if (ax < 0.249 || ax > 0.351) rail = false; }
     for (let k = 0; k < 3; k++) {
       const P = rail ? rp : tp, N = rail ? rn : tn, UU = rail ? ru : tu;
-      const px = p.getX(i + k), cx = Math.sign(px) * 0.3; P.push((rail ? cx + (px - cx) * 0.55 : px) * TS, p.getY(i + k) * TS, p.getZ(i + k) * TS); N.push(n.getX(i + k), n.getY(i + k), n.getZ(i + k)); UU.push(u.getX(i + k), u.getY(i + k));
+      const px = p.getX(i + k), cx = Math.sign(px) * 0.3; P.push((rail ? cx + (px - cx) * 0.38 : px) * TS, p.getY(i + k) * TS, p.getZ(i + k) * TS); N.push(n.getX(i + k), n.getY(i + k), n.getZ(i + k)); UU.push(u.getX(i + k), u.getY(i + k));
     }
   }
   const mk = (a: number[], b: number[], c: number[]) => { const x = new THREE.BufferGeometry(); x.setAttribute("position", new THREE.Float32BufferAttribute(a, 3)); x.setAttribute("normal", new THREE.Float32BufferAttribute(b, 3)); x.setAttribute("uv", new THREE.Float32BufferAttribute(c, 2)); return x; };
@@ -348,9 +354,9 @@ export const gravelBeds = (R: THREE.Object3D, M: Mats) => {
   const B = new Batch();
   for (const x of [RX, LX]) for (const [za, zb] of [[120, 8], [-64, -150]]) {
     const hw0 = 2.2, hw1 = 1.6, h = 0.09, a = V, zH = za, zL = zb;
-    B.add(quad(a(x - hw1, h, zH), a(x + hw1, h, zH), a(x + hw1, h, zL), a(x - hw1, h, zL), (hw1 * 2) / 1.6, Math.abs(zH - zL) / 1.6), M.gravel);
-    B.add(quad(a(x + hw1, h, zH), a(x + hw0, 0, zH), a(x + hw0, 0, zL), a(x + hw1, h, zL), 0.5, Math.abs(zH - zL) / 1.6), M.gravel);
-    B.add(quad(a(x - hw0, 0, zH), a(x - hw1, h, zH), a(x - hw1, h, zL), a(x - hw0, 0, zL), 0.5, Math.abs(zH - zL) / 1.6), M.gravel);
+    B.add(quad(a(x - hw1, h, zH), a(x + hw1, h, zH), a(x + hw1, h, zL), a(x - hw1, h, zL), (hw1 * 2) / 1.2, Math.abs(zH - zL) / 1.2), M.gravel);
+    B.add(quad(a(x + hw1, h, zH), a(x + hw0, 0, zH), a(x + hw0, 0, zL), a(x + hw1, h, zL), 0.5, Math.abs(zH - zL) / 1.2), M.gravel);
+    B.add(quad(a(x - hw0, 0, zH), a(x - hw1, h, zH), a(x - hw1, h, zL), a(x - hw0, 0, zL), 0.5, Math.abs(zH - zL) / 1.2), M.gravel);
   }
   B.build(R, false);
 };
@@ -394,20 +400,24 @@ export const buildOffice = (R: THREE.Object3D, M: Mats) => {
   // desk
   sbox(B, wood, -1.5, 1.5, 1.15, 1.25, -3.75, -2.25, 1); sbox(B, wood, -1.5, -1.4, 0, 1.15, -3.7, -2.3, 1); sbox(B, wood, 1.4, 1.5, 0, 1.15, -3.7, -2.3, 1); sbox(B, dkw, -1.4, 1.4, 0.15, 1.15, -3.72, -3.62, 1);
   // bookshelf, cabinet, plant, door, painting, certificate, map, calendar
-  sbox(B, wood, -5, -3, 0, 4, -7, -6.2, 1);
-  [0.5, 1.3, 2.1, 2.9, 3.7].forEach((y, i) => { sbox(B, dkw, -4.95, -3.05, y, y + 0.05, -6.95, -6.25, 1); for (let k = 0; k < 5; k++) sbox(B, tm({ color: ["#2a4a6a", "#8a2a2a", "#3a6a4a", "#c9a02a", "#5a3a6a"][(i + k) % 5] }), -4.8 + k * 0.35, -4.58 + k * 0.35, y + 0.05, y + 0.7 - (k % 2) * 0.1, -6.9, -6.4, 0.5); });
+  sbox(B, wood, -2.9, -1.5, 0, 3.6, -7, -6.2, 1);
+  [0.5, 1.3, 2.1, 2.9].forEach((y, i) => { sbox(B, dkw, -2.85, -1.55, y, y + 0.05, -6.95, -6.25, 1); for (let k = 0; k < 3; k++) sbox(B, tm({ color: ["#2a4a6a", "#8a2a2a", "#3a6a4a", "#c9a02a", "#5a3a6a"][(i + k) % 5] }), -2.7 + k * 0.4, -2.38 + k * 0.4, y + 0.05, y + 0.7 - (k % 2) * 0.1, -6.9, -6.4, 0.5); });
   sbox(B, tm({ color: "#4a6a8a" }), 3.5, 4.5, 0, 2, -7, -6.1, 1); for (const y of [0.3, 0.9, 1.5]) sbox(B, tm({ color: "#2a4a6a" }), 3.6, 4.4, y, y + 0.35, -6.12, -6.05, 0.5);
   sbox(B, tm({ color: "#8a5a3a" }), -4.3, -3.7, 0, 0.45, -2.3, -1.7, 1); B.add(new THREE.DodecahedronGeometry(0.6, 1), tm({ color: "#4a8a3a" }), MX(-4, 1.0, -2));
-  sbox(B, dkw, -3.75, -2.25, 0, 3, -7, -6.88, 1); sbox(B, tm({ color: "#e8d8b0" }), -3.5, -2.5, 0, 2.8, -6.88, -6.84, 1);
-  sbox(B, dkw, 2.4, 3.6, 2.4, 3.6, -7, -6.9, 1); sbox(B, tm({ color: "#4f7a58" }), 2.5, 3.5, 2.5, 3.5, -6.9, -6.86, 1);
-  sbox(B, dkw, -2.0, -1.0, 4.1, 4.9, -7, -6.9, 1); sbox(B, tm({ color: "#f2e8cc" }), -1.92, -1.08, 4.18, 4.82, -6.9, -6.86, 1);
   // armchair + side table (reads as the boss's office)
   sbox(B, red, 2.0, 3.6, 0, 0.7, -5.9, -4.6, 1); sbox(B, red, 2.0, 3.6, 0.7, 2.4, -5.9, -5.6, 1); sbox(B, red, 2.0, 2.25, 0.7, 1.5, -5.9, -4.6, 1); sbox(B, red, 3.35, 3.6, 0.7, 1.5, -5.9, -4.6, 1);
-  const mapM = new THREE.MeshBasicMaterial({ map: ctex("officeMap", 256, 256, (c) => { c.fillStyle = "#e6d4aa"; c.fillRect(0, 0, 256, 256); c.strokeStyle = "#503020"; c.lineWidth = 5; c.beginPath(); c.moveTo(20, 40); c.lineTo(110, 120); c.lineTo(160, 130); c.lineTo(236, 220); c.stroke(); c.fillStyle = "#a83030"; for (const [x, y] of [[20, 40], [110, 120], [236, 220]]) { c.beginPath(); c.arc(x, y, 10, 0, 7); c.fill(); } }) });
-  const map = new THREE.Mesh(new THREE.BoxGeometry(0.06, 2, 3), mapM); map.position.set(-5.95, 3, -3); g.add(map);
-  // window on the right wall: warm sky colour, frame, mullions
-  const win = new THREE.Mesh(new THREE.BoxGeometry(0.1, 2.6, 3.2), new THREE.MeshBasicMaterial({ color: new THREE.Color(2.0, 1.5, 0.9), fog: false })); win.position.set(5.9, 3.1, -2); g.add(win);
-  sbox(B, dkw, 5.8, 5.95, 1.7, 1.85, -3.7, -0.3, 1); sbox(B, dkw, 5.8, 5.95, 4.35, 4.5, -3.7, -0.3, 1); sbox(B, dkw, 5.8, 5.95, 1.7, 4.5, -2.08, -1.92, 1); sbox(B, dkw, 5.8, 5.95, 1.7, 4.5, -3.7, -3.55, 1); sbox(B, dkw, 5.8, 5.95, 1.7, 4.5, -0.45, -0.3, 1);
+  const mapM = new THREE.MeshBasicMaterial({ map: ctex("officeMap", 256, 256, (c) => { c.fillStyle = "#e6d4aa"; c.fillRect(0, 0, 256, 256); c.strokeStyle = "#7a5a3a"; c.lineWidth = 5; c.strokeRect(6, 6, 244, 244); c.fillStyle = "#c8805a"; c.fillRect(120, 20, 120, 90); c.fillStyle = "#6a9fd0"; c.fillRect(20, 150, 216, 30); c.strokeStyle = "#503020"; c.lineWidth = 6; c.beginPath(); c.moveTo(20, 60); c.lineTo(110, 130); c.lineTo(160, 140); c.lineTo(236, 220); c.stroke(); c.fillStyle = "#a83030"; for (const [x, y] of [[20, 60], [110, 130], [236, 220]]) { c.beginPath(); c.arc(x, y, 10, 0, 7); c.fill(); } }) });
+  const map = new THREE.Mesh(new THREE.BoxGeometry(1.7, 1.8, 0.05), mapM); map.position.set(-0.4, 3.7, -6.9); g.add(map);
+  sbox(B, dkw, -1.3, 0.5, 2.75, 2.85, -6.95, -6.85, 1); sbox(B, dkw, -1.3, 0.5, 4.55, 4.65, -6.95, -6.85, 1);
+  // window on the back wall with the canyon outside: sky, red mesas, haze
+  const vt = ctex("officeView", 256, 256, (c) => {
+    const sk = c.createLinearGradient(0, 0, 0, 256); sk.addColorStop(0, "#5c94dc"); sk.addColorStop(0.55, "#bcd0f0"); sk.addColorStop(1, "#f4dcc0"); c.fillStyle = sk; c.fillRect(0, 0, 256, 256);
+    c.fillStyle = "#e8e4ee"; c.beginPath(); c.arc(70, 60, 24, 0, 7); c.arc(100, 52, 30, 0, 7); c.arc(135, 62, 22, 0, 7); c.fill();
+    c.fillStyle = "#b8604a"; c.fillRect(20, 150, 90, 50); c.fillRect(40, 130, 50, 24); c.fillRect(150, 160, 100, 40); c.fillRect(170, 142, 50, 20);
+    c.fillStyle = "#d08050"; c.fillRect(0, 196, 256, 60); c.fillStyle = "#8a2e3a"; c.fillRect(0, 214, 256, 8); c.fillStyle = "#6a4a8a"; c.fillRect(0, 232, 256, 24);
+  });
+  const win = new THREE.Mesh(new THREE.PlaneGeometry(2.0, 2.6), new THREE.MeshBasicMaterial({ map: vt, fog: false })); win.position.set(1.95, 3.1, -6.93); g.add(win);
+  sbox(B, dkw, 0.9, 3.0, 1.75, 1.9, -7, -6.8, 1); sbox(B, dkw, 0.9, 3.0, 4.4, 4.55, -7, -6.8, 1); sbox(B, dkw, 0.9, 1.0, 1.75, 4.55, -7, -6.8, 1); sbox(B, dkw, 2.9, 3.0, 1.75, 4.55, -7, -6.8, 1); sbox(B, dkw, 1.9, 2.0, 1.75, 4.55, -7, -6.8, 1);
   // desk lamp (green shade, glowing), brass hanging lamps
   B.add(new THREE.CylinderGeometry(0.2, 0.2, 0.05, 12), dkw, MX(1, 1.28, -3.2)); B.add(new THREE.CylinderGeometry(0.02, 0.02, 0.6, 8), dkw, MX(0.9, 1.5, -3.2, 0, 1, 1, 1, 0.3));
   B.add(new THREE.CylinderGeometry(0.15, 0.3, 0.25, 12, 1, true), tm({ color: "#2a6a4a", side: THREE.DoubleSide }), MX(0.8, 1.85, -3.2, 0, 1, 1, 1, -0.4));
@@ -422,8 +432,19 @@ export const handsaw = () => {
   for (let i = 0; i < 14; i++) { const t = new THREE.Mesh(new THREE.BoxGeometry(0.014, 0.03, 0.03), m); t.position.set(-0.23 + i * 0.035, -0.075, 0); g.add(t); }
   g.traverse((o) => { if ((o as THREE.Mesh).isMesh) (o as THREE.Mesh).castShadow = true; }); return g;
 };
-export const coin = () => { const g = new THREE.Group(); g.add(new THREE.Mesh(new THREE.CylinderGeometry(0.13, 0.13, 0.04, 20).rotateX(Math.PI / 2), new THREE.MeshBasicMaterial({ color: new THREE.Color(1.9, 1.35, 0.3) }))); return g; };
-export const paper = () => { const g = new THREE.Group(); g.add(new THREE.Mesh(new THREE.BoxGeometry(0.24, 0.32, 0.012), new THREE.MeshBasicMaterial({ color: "#fff6e8" }))); return g; };
+export const coin = () => {
+  const g = new THREE.Group();
+  g.add(new THREE.Mesh(new THREE.CylinderGeometry(0.17, 0.17, 0.05, 28).rotateX(Math.PI / 2), new THREE.MeshBasicMaterial({ color: new THREE.Color(0.62, 0.38, 0.03) })));
+  const f = new THREE.Mesh(new THREE.CylinderGeometry(0.135, 0.135, 0.056, 28).rotateX(Math.PI / 2), new THREE.MeshBasicMaterial({ color: new THREE.Color(1.2, 0.82, 0.1) })); g.add(f);
+  g.add(new THREE.Mesh(new THREE.CylinderGeometry(0.06, 0.06, 0.06, 20).rotateX(Math.PI / 2), new THREE.MeshBasicMaterial({ color: new THREE.Color(0.8, 0.5, 0.05) })));
+  return g;
+};
+export const paper = () => {
+  const g = new THREE.Group(), tx = ctex("paperW", 128, 160, (c) => { c.fillStyle = "#f6efe0"; c.fillRect(0, 0, 128, 160); c.fillStyle = "#4a4a56"; for (let y = 20; y < 150; y += 14) c.fillRect(14, y, 100 - (y % 3) * 14, 5); c.fillStyle = "#b02a22"; c.fillRect(14, 8, 40, 7); });
+  const mat = new THREE.MeshBasicMaterial({ map: tx, side: THREE.DoubleSide });
+  for (const s of [-1, 1]) { const m = new THREE.Mesh(new THREE.PlaneGeometry(0.18, 0.34), mat); m.position.x = s * 0.085; m.rotation.y = -s * 0.4; g.add(m); }
+  return g;
+};
 export const newspaper = () => {
   const tx = ctex("newsW", 256, 360, (c) => {
     c.fillStyle = "#efe4c8"; c.fillRect(0, 0, 256, 360); c.fillStyle = "#1e1a16"; c.font = "bold 24px serif"; c.textAlign = "center";

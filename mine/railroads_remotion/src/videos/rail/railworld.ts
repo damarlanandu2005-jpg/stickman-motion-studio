@@ -38,8 +38,8 @@ const OUTFITS: Record<string, Outfit> = {
 };
 const mix = (a: LightPreset, o: Partial<LightPreset>): LightPreset => ({ ...a, ...o });
 const PRES: Record<"day" | "golden" | "indoor", LightPreset> = {
-  day: mix(LIGHTS.day, { az: 70, el: 42, lit: [1.62, 1.42, 1.15], shade: [0.46, 0.34, 0.37], lift: [0.07, 0.05, 0.1], fog: "#b3c0ea", fogNear: 90, fogFar: 700, sunCol: "#ffe2c0", sunI: 2.8 }),
-  golden: mix(LIGHTS.golden, { shade: [0.3, 0.22, 0.38], lift: [0.06, 0.05, 0.13], fogNear: 40, fogFar: 340 }),
+  day: mix(LIGHTS.day, { az: 70, el: 42, lit: [1.62, 1.42, 1.15], shade: [0.46, 0.34, 0.37], lift: [0.07, 0.05, 0.1], fog: "#e6c4a8", fogNear: 120, fogFar: 1100, sunCol: "#ffe2c0", sunI: 2.8 }),
+  golden: mix(LIGHTS.golden, { shade: [0.3, 0.22, 0.38], lift: [0.06, 0.05, 0.13], fogNear: 90, fogFar: 560 }),
   indoor: mix(LIGHTS.day, { az: 60, el: 50, lit: [1.5, 1.3, 1.05], shade: [0.62, 0.46, 0.42], lift: [0.08, 0.05, 0.06], fog: "#3a2418", fogNear: 200, fogFar: 900, sunCol: "#ffe0b0", sunI: 2.2 }),
 };
 const SMOKE = { day: "#ece8ea", golden: "#6e5448", indoor: "#ece8ea" };
@@ -48,7 +48,7 @@ export class RailWorld {
   private pool = new Pool(); private actors: Actor[] = []; private fxs: Fx[] = [];
   private hemi: THREE.HemisphereLight; private sun: THREE.DirectionalLight;
   private skyMat: THREE.ShaderMaterial; private sky: THREE.Mesh;
-  private fog = new THREE.Fog("#b3c0ea", 35, 330);
+  private fog = new THREE.Fog("#e6c4a8", 35, 330);
   private clouds: THREE.Mesh[] = []; private cloudMaps: Record<string, THREE.Texture[]>;
   private out = new THREE.Group(); private office!: THREE.Group;
   private trk!: { R: P.Track; L: P.Track }; private trainR!: THREE.Group; private trainL!: THREE.Group;
@@ -132,8 +132,8 @@ export class RailWorld {
     this.clouds.forEach((m, i) => { (m.material as THREE.MeshBasicMaterial).map = cm[i % 4]; m.visible = !office; m.lookAt(cam.position.x, m.position.y, cam.position.z); });
     // sun glow: soft halo in the sky in the sun direction (golden = low setting sun)
     this.glow.visible = !office; this.glow.position.copy(cam.position).addScaledVector(sunDir, 900); this.glow.quaternion.copy(cam.quaternion);
-    const gs = lt === "golden" ? 420 : 300; this.glow.scale.set(gs, gs, 1);
-    (this.glow.material as THREE.MeshBasicMaterial).color.set(lt === "golden" ? "#ffcf9e" : "#fff4dc").multiplyScalar(lt === "golden" ? 1.6 : 0.9);
+    const gs = lt === "golden" ? 700 : 300; this.glow.scale.set(gs, gs, 1);
+    (this.glow.material as THREE.MeshBasicMaterial).color.set(lt === "golden" ? "#ffcf9e" : "#fff4dc").multiplyScalar(lt === "golden" ? 2.6 : 0.9);
     // track + trains from STATE
     this.trk.R.set(st.gapR, st.heatR, 0); this.trk.L.set(0, st.heatL, st.buckle);
     const A = 1.5 * st.buckle;
