@@ -128,9 +128,10 @@ export const makeMats = () => {
   const strata = strataTex();
   const depthTints = ["#ffffff", "#ffd8b0", "#f8b888", "#e89868", "#d08060"]; // warm at the rim, cooler and bluer deep in the canyon
   const wall = depthTints.map((c) => tm({ map: strata, color: c }));
+  const mesa = ["#e0a498", "#cc98a2", "#b88ca8", "#a484b0"].map((c) => tm({ map: strata, color: c })); // far mesas: dusty rose -> violet so each ridge separates from the one in front
   return {
-    wall, sand: tm({ map: sandTex() }), gravel: tm({ map: gravelTex() }), deck: tm({ map: deckTex() }), wood: tm({ map: woodTex() }),
-    floor: tm({ map: strata, color: "#a86a7a" }), rustS: tm({ color: "#c4602c" }), blueS: tm({ color: "#8fb0d4" }), dark: tm({ color: "#2c2430" }),
+    wall, mesa, sand: tm({ map: sandTex() }), gravel: tm({ map: gravelTex() }), deck: tm({ map: deckTex() }), wood: tm({ map: woodTex() }),
+    floor: tm({ map: strata, color: "#a86a7a" }), rustS: tm({ color: "#c4602c" }), blueS: tm({ color: "#5f93e2" }), dark: tm({ color: "#2c2430" }),
     brass: tm({ color: "#d8a640" }), cactus: tm({ color: "#6a9a48" }),
   };
 };
@@ -176,18 +177,41 @@ export const buildCanyon = (R: THREE.Object3D, kit: Kit, M: Mats) => {
     sbox(B, M.wall[4], x - w / 2, x + w / 2, -88, -88 + h, z - w * 0.45, z + w * 0.45, 20, rr() * 3, rr() * 3);
     sbox(B, M.wall[3], x - w * 0.78, x + w * 0.78, -88 + h, -88 + h + 2.2, z - w * 0.65, z + w * 0.65, 3);
   }
-  // tall buttes along the far rim (they make the skyline, seen from every bridge shot) and stepped mesas behind
+  // tilted-slab helper: a box that stands on y0 and leans (rz = strata tilt) / turns (ry)
+  const slab = (mat: THREE.Material, cx: number, y0: number, h: number, cz: number, w: number, d: number, rz: number, ry: number, tile: number) => {
+    const g = boxGeo(V(-w / 2, -6, -d / 2), V(w / 2, h, d / 2), tile), uv = g.attributes.uv as THREE.BufferAttribute, ou = rr() * 3, ov = rr() * 3;
+    for (let i = 0; i < uv.count; i++) uv.setXY(i, uv.getX(i) + ou, uv.getY(i) + ov);
+    B.add(g, mat, new THREE.Matrix4().compose(V(cx, y0, cz), new THREE.Quaternion().setFromEuler(new THREE.Euler(0, ry, rz)), V(1, 1, 1)));
+  };
+  // rim buttes behind the far cliff: four different silhouettes (spire, tilted-strata block, wide mesa with a notch, split twin butte)
   for (let k = 0; k < 34; k++) {
-    const side = rr() < 0.5 ? -1 : 1, w = 10 + rr() * 26, x = side * (7 + w / 2 + rr() * 230), h = 14 + rr() * 56, z = -70 - rr() * 40;
-    let yy = -4, ww = w;
-    for (let t = 0; t < 4 && yy < h; t++) { const hh = h / 4 * (0.8 + rr() * 0.5); sbox(B, M.wall[t % 2], x - ww / 2, x + ww / 2, yy, yy + hh, z - ww * 0.5, z + ww * 0.5, 9, rr() * 3, rr() * 3); yy += hh; ww *= 0.62 + rr() * 0.2; }
+    const side = rr() < 0.5 ? -1 : 1, w = 10 + rr() * 26, x = side * (7 + w / 2 + rr() * 230), h = 14 + rr() * 56, z = -70 - rr() * 40, kind = k % 4, ry = (rr() - 0.5) * 0.5;
+    const m0 = M.wall[k % 2], m1 = M.wall[(k + 1) % 2];
+    if (kind === 0) {            // spire: thin, leaning, with a small cap block
+      const sw = 5 + rr() * 6; slab(m0, x, -4, h * 1.25, z, sw, sw * 0.9, (rr() - 0.5) * 0.07, ry, 9);
+      slab(m1, x + (rr() - 0.5) * 2, h * 1.2, 2 + rr() * 3, z, sw * 1.35, sw * 1.1, (rr() - 0.5) * 0.1, ry, 4);
+    } else if (kind === 1) {     // block with strata tilted ~8 deg, one corner higher
+      slab(m0, x, -4, h * 0.8, z, w * 1.1, w * 0.7, (rr() < 0.5 ? -1 : 1) * (0.03 + rr() * 0.05), ry, 10);
+      slab(m1, x + w * 0.25, h * 0.6, h * 0.22, z, w * 0.55, w * 0.45, (rr() - 0.5) * 0.2, ry, 7);
+    } else if (kind === 2) {     // wide low mesa, flat top split by a notch, ragged shoulders
+      const ww = w * 2.2, hh = 8 + rr() * 14;
+      slab(m0, x - ww * 0.27, -4, hh, z, ww * 0.5, w * 0.8, (rr() - 0.5) * 0.05, ry, 12);
+      slab(m1, x + ww * 0.27, -4, hh * (0.65 + rr() * 0.5), z + 3, ww * 0.42, w * 0.7, (rr() - 0.5) * 0.06, ry, 12);
+      slab(m0, x + ww * 0.55, -4, hh * 0.4, z, ww * 0.2, w * 0.6, 0.12 * side, ry, 8);
+    } else {                     // twin butte, different heights, a saddle between
+      slab(m0, x - w * 0.5, -4, h * 0.95, z, w * 0.55, w * 0.55, (rr() - 0.5) * 0.08, ry, 9);
+      slab(m1, x + w * 0.45, -4, h * 0.6, z + 2, w * 0.7, w * 0.6, (rr() - 0.5) * 0.12, ry, 9);
+      slab(m0, x, -4, h * 0.3, z, w * 0.4, w * 0.4, 0, ry, 8);
+    }
   }
-  // far desert: stepped strata mesas on the horizon, hazed by fog
-  for (let k = 0; k < 40; k++) {
-    const w = 60 + rr() * 140, x = -520 + rr() * 1040, z = -170 - rr() * 380, h = 14 + rr() * 40, mm = M.wall[k % 2];
-    sbox(B, mm, x - w / 2, x + w / 2, 0, h * 0.6, z - 24, z + 24, 14, rr() * 3, 0); sbox(B, mm, x - w * 0.42, x + w * 0.42, h * 0.6, h, z - 20, z + 20, 14, rr() * 3, 0);
-    sbox(B, mm, x - w * 0.35, x + w * 0.35, h, h * 1.6, z - 16, z + 16, 22, rr() * 3, 0);
-    sbox(B, mm, x - w * 0.15, x + w * 0.15, h * 1.6, h * 2.0, z - 10, z + 10, 22, rr() * 3, 0);
+  // far desert: layered ridges, each a wide tilted-strata mesa with a talus skirt and a lower neighbour, dusty-rose to violet with distance
+  for (let k = 0; k < 44; k++) {
+    const w = 50 + rr() * 150, x = -560 + rr() * 1120, z = -170 - rr() * 400, h = 10 + rr() * 34, mm = M.mesa[Math.min(3, Math.floor((-z - 170) / 100))];
+    const tl = (rr() - 0.5) * 0.16, ry = (rr() - 0.5) * 0.4;
+    slab(mm, x, 0, h * 0.55, z, w, 40 + rr() * 30, tl * 0.5, ry, 14);                                         // wide base, tilted
+    slab(mm, x + (rr() - 0.5) * w * 0.4, h * 0.5, h * (0.3 + rr() * 0.5), z + 4, w * (0.3 + rr() * 0.3), 26, tl, ry, 14); // uneven shoulder
+    if (rr() < 0.55) slab(mm, x + (rr() - 0.5) * w * 0.5, h * 0.8, h * (0.4 + rr() * 0.9), z, w * (0.07 + rr() * 0.12), 12 + rr() * 8, tl * 1.5, ry, 20); // butte on top
+    if (rr() < 0.5) slab(mm, x + (rr() < 0.5 ? -1 : 1) * w * 0.7, 0, h * 0.35, z + 8, w * 0.6, 34, -tl, ry, 14);   // low flank, other lean
   }
   // near-side side mesas on both horizons behind the near cliff (visible from the bridges looking sideways)
   // desert rocks and cactus near the tracks (Kenney Nature kit, warm)
@@ -290,41 +314,49 @@ export const buildDressing = (R: THREE.Object3D, M: Mats, kit: Kit) => {
 };
 
 // ---------------- Kenney track: ties + rails per tile; the right track gaps, the left one buckles ----------------
-const HEAT = ["#8d9199", "#ff7a1a", "#ff4410", "#ff6a1a", "#ffb030"].map((c) => new THREE.Color(c));
+const HEAT = ["#8d9199", "#ff6a22", "#ff3d12", "#ff5a1c", "#ff8a2a"].map((c) => new THREE.Color(c));
 const tmp = new THREE.Color();
 const HOT = new THREE.Color("#2a1208");
 export const heatSet = (m: THREE.MeshLambertMaterial, h: number, base: THREE.Color) => {
   const k = Math.max(0, Math.min(0.9999, h)) * (HEAT.length - 1), i = Math.floor(k);
   tmp.copy(HEAT[i]).lerp(HEAT[i + 1], k - i);
-  m.color.copy(base).lerp(HOT, Math.min(1, h * 2.2));
-  if (h > 0.02) m.emissive.copy(tmp).multiplyScalar(0.5 + 2.0 * Math.min(1, h * 1.5)); else m.emissive.setRGB(0.1, 0.1, 0.11);
+  m.color.copy(base).lerp(HOT, Math.min(0.75, h * 1.6));       // steel darkens as it heats (multiplies the vertex colours)
+  if (h > 0.02) m.emissive.copy(tmp).multiplyScalar(0.05 + 0.5 * Math.min(1, h * 1.3)); else m.emissive.setRGB(0.02, 0.02, 0.025); // an even red-orange glow along the whole rail, no dashes
 };
 type Tile = { rail: THREE.Mesh; tie: THREE.Mesh; zc: number; rb: Float32Array; tb: Float32Array };
+const RC_TOP = new THREE.Color("#c4cad8"), RC_SIDE = new THREE.Color("#20212c"), RC_CUT = new THREE.Color("#eceff5"); // bright top strip and cut faces on dark steel
 const splitTile = (kit: Kit) => {
   let mesh: THREE.Mesh | null = null;
   kit["railroad-straight"]?.traverse((c) => { if ((c as THREE.Mesh).isMesh && !mesh) mesh = c as THREE.Mesh; });
   if (!mesh) return null;
   const g = (mesh as THREE.Mesh).geometry.toNonIndexed(), p = g.attributes.position, n = g.attributes.normal, u = g.attributes.uv;
-  const rp: number[] = [], rn: number[] = [], ru: number[] = [], tp: number[] = [], tn: number[] = [], tu: number[] = [];
+  const rp: number[] = [], rn: number[] = [], ru: number[] = [], rcol: number[] = [], tp: number[] = [], tn: number[] = [], tu: number[] = [];
   for (let i = 0; i < p.count; i += 3) {
     let rail = true;
     for (let k = 0; k < 3; k++) { const ax = Math.abs(p.getX(i + k)); if (ax < 0.249 || ax > 0.351) rail = false; }
+    const e1 = new THREE.Vector3(p.getX(i + 1) - p.getX(i), p.getY(i + 1) - p.getY(i), p.getZ(i + 1) - p.getZ(i)), e2 = new THREE.Vector3(p.getX(i + 2) - p.getX(i), p.getY(i + 2) - p.getY(i), p.getZ(i + 2) - p.getZ(i));
+    const fn = e1.cross(e2).normalize();   // face normal from the triangle itself (the kit's vertex normals are not reliable for this)
     for (let k = 0; k < 3; k++) {
       const P = rail ? rp : tp, N = rail ? rn : tn, UU = rail ? ru : tu;
-      const px = p.getX(i + k), cx = Math.sign(px) * 0.3; P.push((rail ? cx + (px - cx) * 0.38 : px) * TS, p.getY(i + k) * TS, p.getZ(i + k) * TS); N.push(n.getX(i + k), n.getY(i + k), n.getZ(i + k)); if (rail) UU.push(u.getX(i + k), u.getY(i + k)); else UU.push(p.getX(i + k) * TS / 1.4, p.getZ(i + k) * TS / 0.7);
+      const px = p.getX(i + k), cx = Math.sign(px) * 0.3; P.push((rail ? cx + (px - cx) * 0.5 : px) * TS, p.getY(i + k) * TS, p.getZ(i + k) * TS); N.push(n.getX(i + k), n.getY(i + k), n.getZ(i + k)); if (rail) { UU.push(u.getX(i + k), u.getY(i + k)); const c = Math.abs(fn.z) > 0.8 ? RC_CUT : Math.abs(fn.y) > 0.5 ? RC_TOP : RC_SIDE; rcol.push(c.r, c.g, c.b); } else UU.push(p.getX(i + k) * TS / 1.4, p.getZ(i + k) * TS / 0.7);
     }
   }
-  const mk = (a: number[], b: number[], c: number[]) => { const x = new THREE.BufferGeometry(); x.setAttribute("position", new THREE.Float32BufferAttribute(a, 3)); x.setAttribute("normal", new THREE.Float32BufferAttribute(b, 3)); x.setAttribute("uv", new THREE.Float32BufferAttribute(c, 2)); return x; };
+  const mk = (a: number[], b: number[], c: number[], col?: number[]) => { const x = new THREE.BufferGeometry(); if (col) x.setAttribute("color", new THREE.Float32BufferAttribute(col, 3)); x.setAttribute("position", new THREE.Float32BufferAttribute(a, 3)); x.setAttribute("normal", new THREE.Float32BufferAttribute(b, 3)); x.setAttribute("uv", new THREE.Float32BufferAttribute(c, 2)); return x; };
   const map = ((Array.isArray((mesh as THREE.Mesh).material) ? (mesh as THREE.Mesh).material[0] : (mesh as THREE.Mesh).material) as THREE.MeshStandardMaterial).map ?? null;
-  return { rail: mk(rp, rn, ru), tie: mk(tp, tn, tu), map };
+  return { rail: mk(rp, rn, ru, rcol), tie: mk(tp, tn, tu), map };
 };
-export const buckleDx = (z: number, A: number) => { const u = (z + 40) / 28; return u > 0 && u < 1 ? A * Math.sin(TAU * u) * Math.sin(Math.PI * u) : 0; };
-export const buckleLift = (z: number, A: number) => { const u = (z + 40) / 28; return u > 0 && u < 1 ? 0.45 * A * Math.sin(Math.PI * u) ** 2 : 0; };
+// the buckle is one S-bend centred on the middle of the bridge span (z 8 .. -64 -> centre -28), 32 m long
+export const buckleDx = (z: number, A: number) => { const u = (z + 44) / 32; return u > 0 && u < 1 ? A * Math.sin(TAU * u) * Math.sin(Math.PI * u) : 0; };
+export const buckleLift = (z: number, A: number) => { const u = (z + 44) / 32; return u > 0 && u < 1 ? 0.45 * A * Math.sin(Math.PI * u) ** 2 : 0; };
+// heat warp of the rails on the left bridge: a standing wave, amplitude from STATE.heatL
+const warpX = (z: number, h: number) => (z < 10 && z > -66 ? h * 0.13 * Math.sin(z * 0.85 + 0.6) * Math.min(1, (z + 66) / 8, (10 - z) / 6) : 0);
+const warpY = (z: number, h: number) => (z < 10 && z > -66 ? h * 0.07 * (0.5 + 0.5 * Math.sin(z * 0.6 + 2.0)) * Math.min(1, (z + 66) / 8, (10 - z) / 6) : 0);
 export class Track {
-  group = new THREE.Group(); tiles: Tile[] = []; railMat: THREE.MeshLambertMaterial; base = new THREE.Color("#f4f6fa"); private last = NaN;
+  group = new THREE.Group(); tiles: Tile[] = []; railMat: THREE.MeshLambertMaterial; base = new THREE.Color("#ffffff"); private last = NaN;
+  private voids: THREE.Mesh[] = []; private joints: number[] = [];
   constructor(kit: Kit, public x: number, private gaps: boolean, private buckles: boolean) {
     const s = splitTile(kit)!;
-    this.railMat = tm({ map: s.map, color: "#f4f6fa" }); this.railMat.emissive.set(0.1, 0.1, 0.11);
+    this.railMat = tm({ color: "#ffffff", vertexColors: true }); this.railMat.emissive.set(0.02, 0.02, 0.025);
     const wt = woodTex().clone(); wt.wrapS = wt.wrapT = THREE.RepeatWrapping; wt.needsUpdate = true; const tieMat = tm({ map: wt, color: "#d8c0a4" });
     for (let zs = JZ - TL * 15; zs < JZ + TL * 6; zs += TL) {
       const mk = (geo: THREE.BufferGeometry, mat: THREE.Material) => {
@@ -334,23 +366,28 @@ export class Track {
       };
       const rail = mk(s.rail, this.railMat), tie = mk(s.tie, tieMat);
       this.tiles.push({ rail, tie, zc: zs + TL / 2, rb: Float32Array.from((rail.geometry.attributes.position as THREE.BufferAttribute).array), tb: Float32Array.from((tie.geometry.attributes.position as THREE.BufferAttribute).array) });
+      if (gaps && zs > -90 && zs < 80) {   // dark void in the rail line at this joint (both rails); its length is the gap
+        const vm = new THREE.MeshBasicMaterial({ color: "#0b0810" });
+        for (const sx of [-1, 1]) { const v = new THREE.Mesh(new THREE.BoxGeometry(0.17, 0.1, 1), vm); v.position.set(x + sx * G, TOPY - 0.085, zs); v.frustumCulled = false; v.visible = false; this.group.add(v); this.voids.push(v); this.joints.push(zs); }
+      }
     }
   }
   /** gap: every rail joint opens by this much (m); heat 0..1; buckle 0..1 (S-bend of the whole track) */
   set(gap: number, heat: number, buckle: number) {
     heatSet(this.railMat, heat, this.base);
-    const key = gap * 1000 + buckle * 7919;
+    const key = gap * 1000 + buckle * 7919 + heat * 104729;
     if (key === this.last) return; this.last = key;
+    this.voids.forEach((v, i) => { v.visible = gap > 0.004; v.scale.z = Math.max(gap, 0.001); v.position.z = this.joints[i]; });
     for (const t of this.tiles) {
       if (this.gaps) { const s = (TL - gap) / TL; t.rail.scale.z = s; t.rail.position.z = t.zc * (1 - s); }
       if (this.buckles) {
-        const A = 2.0 * buckle, near = t.zc < 0 && t.zc > -70;
+        const A = 2.0 * buckle, near = t.zc < 14 && t.zc > -76;
         if (!near && t.rail.userData.bent === undefined) continue;
-        for (const [m, b] of [[t.rail, t.rb], [t.tie, t.tb]] as [THREE.Mesh, Float32Array][]) {
+        for (const [m, b, isRail] of [[t.rail, t.rb, true], [t.tie, t.tb, false]] as [THREE.Mesh, Float32Array, boolean][]) {
           const p = m.geometry.attributes.position as THREE.BufferAttribute;
           for (let i = 0; i < p.count; i++) {
             const lx = b[i * 3], z = b[i * 3 + 2], dx = buckleDx(z, A), sl = (buckleDx(z - 0.25, A) - buckleDx(z + 0.25, A)) / 0.5, th = Math.atan(sl), c = Math.cos(th), s2 = Math.sin(th);
-            p.setX(i, dx + lx * c); p.setZ(i, z - lx * s2); p.setY(i, b[i * 3 + 1] + buckleLift(z, A));
+            p.setX(i, dx + lx * c + (isRail ? warpX(z, heat) : 0)); p.setZ(i, z - lx * s2); p.setY(i, b[i * 3 + 1] + buckleLift(z, A) + (isRail ? warpY(z, heat) : 0));
           }
           p.needsUpdate = true;
         }
@@ -398,6 +435,21 @@ export const buildTrain = (kit: Kit, M: Mats, cars: string[], bodyCol = "#1f9c8c
   return g;
 };
 
+// wall chart: business curve. up = rising (c3 "whole country's business"), down = falling (newspapers / summer trouble)
+const chartTex = (up: boolean) => ctex(up ? "officeChartUp" : "officeChartDn", 256, 256, (c) => {
+  c.fillStyle = "#efe2bf"; c.fillRect(0, 0, 256, 256); c.strokeStyle = "#7a5a3a"; c.lineWidth = 7; c.strokeRect(5, 5, 246, 246);
+  c.strokeStyle = "rgba(90,60,30,0.35)"; c.lineWidth = 2; for (let i = 1; i < 5; i++) { c.beginPath(); c.moveTo(30, 30 + i * 40); c.lineTo(236, 30 + i * 40); c.stroke(); }
+  c.strokeStyle = "#3a2a1e"; c.lineWidth = 6; c.beginPath(); c.moveTo(30, 28); c.lineTo(30, 226); c.lineTo(236, 226); c.stroke();
+  const col = up ? "#2a8a4a" : "#b02a22", ys = up ? [200, 170, 176, 130, 98, 50] : [50, 84, 78, 130, 164, 202];
+  c.fillStyle = up ? "rgba(60,160,90,0.45)" : "rgba(200,70,60,0.4)";
+  for (let i = 0; i < 6; i++) { c.fillRect(44 + i * 33, ys[i] + 18, 22, 226 - ys[i] - 18); }
+  c.strokeStyle = col; c.lineWidth = 9; c.lineJoin = "round"; c.beginPath(); ys.forEach((y, i) => { const x = 55 + i * 33; i ? c.lineTo(x, y) : c.moveTo(x, y); }); c.stroke();
+  c.fillStyle = col; ys.forEach((y, i) => { c.beginPath(); c.arc(55 + i * 33, y, 8, 0, 7); c.fill(); });
+  c.fillStyle = col; c.beginPath(); const ax = 55 + 5 * 33 + 12, ay = ys[5] + (up ? -14 : 14), dd = up ? -1 : 1; c.moveTo(ax, ay + dd * 20); c.lineTo(ax - 18, ay - dd * 4); c.lineTo(ax + 16, ay - dd * 4); c.closePath(); c.fill();
+});
+/** swap the office wall chart: true = rising, false = falling (call from the world when the shot changes) */
+export const setOfficeChart = (office: THREE.Object3D, up: boolean) => { const m = office.userData.chart as THREE.MeshBasicMaterial | undefined; if (m) { m.map = chartTex(up); m.needsUpdate = true; } };
+
 // ---------------- office interior (a1 ASSETS.OFFICE, warmer and richer) ----------------
 export const buildOffice = (R: THREE.Object3D, M: Mats) => {
   const g = new THREE.Group(); R.add(g);
@@ -412,7 +464,7 @@ export const buildOffice = (R: THREE.Object3D, M: Mats) => {
   sbox(B2, dkw, -6, 6, 6.2, 6.5, -7, 4, 3, 0, 0, true);                       // ceiling planks
   for (let z = -6; z < 4; z += 2.5) sbox(B2, dkw, -6, 6, 5.7, 6.2, z, z + 0.4, 1);  // ceiling beams
   // desk
-  sbox(B, wood, -1.5, 1.5, 1.15, 1.25, -3.75, -2.25, 1); sbox(B, wood, -1.5, -1.4, 0, 1.15, -3.7, -2.3, 1); sbox(B, wood, 1.4, 1.5, 0, 1.15, -3.7, -2.3, 1); sbox(B, dkw, -1.4, 1.4, 0.15, 1.15, -3.72, -3.62, 1);
+  sbox(B, wood, -1.5, 1.5, 1.15, 1.25, -3.75, -2.25, 1); sbox(B, wood, -1.5, -1.4, 0, 1.15, -3.7, -2.3, 1); sbox(B, wood, 1.4, 1.5, 0, 1.15, -3.7, -2.3, 1);
   // bookshelf, cabinet, plant, door, painting, certificate, map, calendar
   sbox(B, wood, -2.9, -1.5, 0, 3.6, -7, -6.2, 1);
   [0.5, 1.3, 2.1, 2.9].forEach((y, i) => { sbox(B, dkw, -2.85, -1.55, y, y + 0.05, -6.95, -6.25, 1); for (let k = 0; k < 3; k++) sbox(B, tm({ color: ["#2a4a6a", "#8a2a2a", "#3a6a4a", "#c9a02a", "#5a3a6a"][(i + k) % 5] }), -2.7 + k * 0.4, -2.38 + k * 0.4, y + 0.05, y + 0.7 - (k % 2) * 0.1, -6.9, -6.4, 0.5); });
@@ -420,8 +472,8 @@ export const buildOffice = (R: THREE.Object3D, M: Mats) => {
   sbox(B, tm({ color: "#8a5a3a" }), -4.3, -3.7, 0, 0.45, -2.3, -1.7, 1); B.add(new THREE.DodecahedronGeometry(0.6, 1), tm({ color: "#4a8a3a" }), MX(-4, 1.0, -2));
   // armchair + side table (reads as the boss's office)
   sbox(B, red, 2.0, 3.6, 0, 0.7, -5.9, -4.6, 1); sbox(B, red, 2.0, 3.6, 0.7, 2.4, -5.9, -5.6, 1); sbox(B, red, 2.0, 2.25, 0.7, 1.5, -5.9, -4.6, 1); sbox(B, red, 3.35, 3.6, 0.7, 1.5, -5.9, -4.6, 1);
-  const mapM = new THREE.MeshBasicMaterial({ map: ctex("officeMap", 256, 256, (c) => { c.fillStyle = "#e6d4aa"; c.fillRect(0, 0, 256, 256); c.strokeStyle = "#7a5a3a"; c.lineWidth = 5; c.strokeRect(6, 6, 244, 244); c.fillStyle = "#c8805a"; c.fillRect(120, 20, 120, 90); c.fillStyle = "#6a9fd0"; c.fillRect(20, 150, 216, 30); c.strokeStyle = "#503020"; c.lineWidth = 6; c.beginPath(); c.moveTo(20, 60); c.lineTo(110, 130); c.lineTo(160, 140); c.lineTo(236, 220); c.stroke(); c.fillStyle = "#a83030"; for (const [x, y] of [[20, 60], [110, 130], [236, 220]]) { c.beginPath(); c.arc(x, y, 10, 0, 7); c.fill(); } }) });
-  const map = new THREE.Mesh(new THREE.BoxGeometry(1.7, 1.8, 0.05), mapM); map.position.set(-0.4, 3.7, -6.9); g.add(map);
+  const chartM = new THREE.MeshBasicMaterial({ map: chartTex(true) });
+  const map = new THREE.Mesh(new THREE.BoxGeometry(1.7, 1.8, 0.05), chartM); map.position.set(-0.4, 3.7, -6.9); g.add(map); g.userData.chart = chartM;
   sbox(B, dkw, -1.3, 0.5, 2.75, 2.85, -6.95, -6.85, 1); sbox(B, dkw, -1.3, 0.5, 4.55, 4.65, -6.95, -6.85, 1);
   // window on the back wall with the canyon outside: sky, red mesas, haze
   const vt = ctex("officeView", 256, 256, (c) => {
@@ -468,18 +520,20 @@ export const coin = () => {
   g.add(new THREE.Mesh(new THREE.CylinderGeometry(0.06, 0.06, 0.06, 20).rotateX(Math.PI / 2), new THREE.MeshBasicMaterial({ color: new THREE.Color(0.8, 0.5, 0.05) })));
   return g;
 };
-export const paper = () => {
-  const g = new THREE.Group(), tx = ctex("paperW", 128, 160, (c) => { c.fillStyle = "#f6efe0"; c.fillRect(0, 0, 128, 160); c.fillStyle = "#4a4a56"; for (let y = 20; y < 150; y += 14) c.fillRect(14, y, 100 - (y % 3) * 14, 5); c.fillStyle = "#b02a22"; c.fillRect(14, 8, 40, 7); });
+export const paper = () => {   // a folded sheet wedged upright in the rail gap (origin = the gap, sheet sinks below the rail top)
+  const g = new THREE.Group(), tx = ctex("paperW", 128, 160, (c) => { c.fillStyle = "#f8f1e2"; c.fillRect(0, 0, 128, 160); c.fillStyle = "#4a4a56"; for (let y = 20; y < 150; y += 14) c.fillRect(14, y, 100 - (y % 3) * 14, 5); c.fillStyle = "#b02a22"; c.fillRect(14, 8, 40, 7); });
   const mat = new THREE.MeshBasicMaterial({ map: tx, side: THREE.DoubleSide });
-  for (const s of [-1, 1]) { const m = new THREE.Mesh(new THREE.PlaneGeometry(0.18, 0.34), mat); m.position.x = s * 0.085; m.rotation.y = -s * 0.4; g.add(m); }
+  for (const s of [-1, 1]) { const m = new THREE.Mesh(new THREE.PlaneGeometry(0.34, 0.5), mat); m.position.set(0, -0.16, s * 0.012); m.rotation.x = s * 0.16; m.rotation.z = s * 0.05; g.add(m); }
   return g;
 };
-export const newspaper = () => {
+export const newspaper = () => {   // front page, headline fills the top third, unlit so it reads in any light
   const tx = ctex("newsW", 256, 360, (c) => {
-    c.fillStyle = "#efe4c8"; c.fillRect(0, 0, 256, 360); c.fillStyle = "#1e1a16"; c.font = "bold 24px serif"; c.textAlign = "center";
-    c.fillText("THE CLICKETY", 128, 40); c.fillText("CLACK LINE!", 128, 68); c.fillRect(14, 78, 228, 3); c.strokeStyle = "#1e1a16"; c.lineWidth = 3; c.strokeRect(34, 96, 188, 100);
-    c.fillRect(54, 150, 110, 26); c.fillRect(120, 124, 30, 28);
-    for (let y = 214; y < 340; y += 14) { c.fillRect(18, y, 100, 6); c.fillRect(138, y, 100, 6); }
+    c.fillStyle = "#f2e8cc"; c.fillRect(0, 0, 256, 360); c.fillStyle = "#14110e"; c.textAlign = "center";
+    c.font = "900 38px Georgia, serif"; c.fillText("CLICKETY", 128, 54); c.fillText("CLACK", 128, 100); c.font = "900 38px Georgia, serif"; c.fillText("LINE!", 128, 146);
+    c.fillRect(12, 158, 232, 5); c.fillRect(12, 166, 232, 2);
+    c.fillStyle = "#cfc4a6"; c.fillRect(20, 182, 104, 84); c.fillStyle = "#14110e"; c.fillRect(30, 232, 70, 18); c.fillRect(82, 208, 22, 26);
+    for (let y = 186; y < 270; y += 11) c.fillRect(134, y, 100, 5);
+    for (let y = 284; y < 350; y += 11) { c.fillRect(18, y, 104, 5); c.fillRect(134, y, 104, 5); }
   });
-  return new THREE.Mesh(new THREE.BoxGeometry(1.0, 1.4, 0.03), new THREE.MeshBasicMaterial({ map: tx }));
+  return new THREE.Mesh(new THREE.BoxGeometry(1.5, 2.1, 0.03), new THREE.MeshBasicMaterial({ map: tx }));
 };

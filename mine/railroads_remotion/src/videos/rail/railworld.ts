@@ -11,7 +11,7 @@ import { NOINK } from "./ink";
 import { Pool, Actor, Fx, person, blob, railStage, Place, Who as CWho } from "./cast";
 import { Outfit } from "./toon";
 import { shotById, camAt, FPS, RShot, STATE, JZ } from "./rstory";
-import { castAt, trainsAt, drawGuy, fxAt, Guy } from "./railcast";
+import { castAt, trainsAt, coinAt, drawGuy, fxAt, Guy } from "./railcast";
 
 import * as P from "./railprops";
 import { Kit } from "./railprops";
@@ -38,8 +38,8 @@ const OUTFITS: Record<string, Outfit> = {
 };
 const mix = (a: LightPreset, o: Partial<LightPreset>): LightPreset => ({ ...a, ...o });
 const PRES: Record<"day" | "golden" | "indoor", LightPreset> = {
-  day: mix(LIGHTS.day, { az: 70, el: 42, lit: [1.62, 1.42, 1.15], shade: [0.5, 0.36, 0.3], lift: [0.06, 0.04, 0.05], fog: "#e6c4a8", fogNear: 120, fogFar: 1100, sunCol: "#ffe2c0", sunI: 2.8 }),
-  golden: mix(LIGHTS.golden, { shade: [0.42, 0.27, 0.27], lift: [0.07, 0.04, 0.05], fogNear: 90, fogFar: 560 }),
+  day: mix(LIGHTS.day, { az: 70, el: 42, lit: [1.62, 1.42, 1.15], shade: [0.44, 0.42, 0.62], lift: [0.09, 0.09, 0.16], fog: "#c2d2ea", fogNear: 45, fogFar: 420, sunCol: "#ffe2c0", sunI: 2.8 }),
+  golden: mix(LIGHTS.golden, { shade: [0.36, 0.33, 0.66], lift: [0.09, 0.09, 0.2], fog: "#dca08e", fogNear: 35, fogFar: 300 }),
   indoor: mix(LIGHTS.day, { az: 60, el: 50, lit: [1.5, 1.3, 1.05], shade: [0.62, 0.46, 0.42], lift: [0.08, 0.05, 0.06], fog: "#3a2418", fogNear: 200, fogFar: 900, sunCol: "#ffe0b0", sunI: 2.2 }),
 };
 const SMOKE = { day: "#ece8ea", golden: "#6e5448", indoor: "#ece8ea" };
@@ -123,7 +123,7 @@ export class RailWorld {
     const sc = this.sun.shadow.camera; sc.left = -Rr; sc.right = Rr; sc.top = Rr; sc.bottom = -Rr; sc.near = 20; sc.far = 480; sc.updateProjectionMatrix();
     this.sun.shadow.bias = L.bias; this.sun.shadow.normalBias = L.normalBias * (Rr / 12);
     TONE.uLitCol.value.set(...L.lit); TONE.uShadeCol.value.set(...L.shade); TONE.uShadeLift.value.set(...L.lift);
-    TONE.uLambert.value = L.lambert; TONE.uSideK.value = L.sideK; TONE.uTerm.value = L.term; TONE.uBounce.value.set(...(lt === "golden" ? [0.05, 0.02, 0.04] : [0.04, 0.015, 0])); TONE.uSat.value = lt === "golden" ? 1.1 : 1.12;
+    TONE.uLambert.value = L.lambert; TONE.uSideK.value = L.sideK; TONE.uTerm.value = L.term; TONE.uBounce.value.set(...(lt === "golden" ? [0.03, 0.03, 0.06] as [number, number, number] : [0.04, 0.015, 0] as [number, number, number])); TONE.uSat.value = lt === "golden" ? 0.95 : 1.12;
     CHAR.uCharTint.value.set(...L.charTint); CHAR.uCharShade.value = L.charShade; CHAR.uGrad.value = L.charGrad; CHAR.uBodyGrad.value = L.bodyGrad; CHAR.uSideTint.value.set(...L.sideTint);
     const su = this.skyMat.uniforms; K.sky.c.forEach((h, i) => untone(h, su["c" + i].value));
     const e = K.sky.e.map((d) => THREE.MathUtils.degToRad(d)); su.e.value.set(e[1], e[2], e[3], e[4]);
@@ -135,7 +135,7 @@ export class RailWorld {
     this.glow.visible = !office; this.glow.position.copy(cam.position).addScaledVector(sunDir, 900); this.glow.quaternion.copy(cam.quaternion);
     const gs = lt === "golden" ? 1100 : 300;
     this.disc.visible = lt === "golden" && !office; this.disc.position.copy(cam.position).addScaledVector(sunDir, 900); this.disc.quaternion.copy(cam.quaternion); this.disc.scale.setScalar(48);
-    (this.M.blueS as THREE.MeshLambertMaterial).color.set(lt === "golden" ? "#b8a89c" : "#8fb0d4"); (this.M.rustS as THREE.MeshLambertMaterial).color.set(lt === "golden" ? "#c8783c" : "#c4602c"); this.glow.scale.set(gs, gs, 1);
+    (this.M.blueS as THREE.MeshLambertMaterial).color.set(lt === "golden" ? "#6f93d0" : "#8fb0d4"); (this.M.rustS as THREE.MeshLambertMaterial).color.set(lt === "golden" ? "#c8783c" : "#c4602c"); this.glow.scale.set(gs, gs, 1);
     (this.glow.material as THREE.MeshBasicMaterial).color.set(lt === "golden" ? "#ffcf9e" : "#fff4dc").multiplyScalar(lt === "golden" ? 3.2 : 0.9);
     // track + trains from STATE
     this.trk.R.set(st.gapR, st.heatR, 0); this.trk.L.set(0, st.heatL, st.buckle);
@@ -158,9 +158,9 @@ export class RailWorld {
       });
       void fr;
     };
-    place(this.trainR, st.trainR, P.RX, false, 0); place(this.trainL, st.trainL, P.LX, true, 1);
+    const tr = trainsAt(f); place(this.trainR, tr.R, P.RX, false, 0); place(this.trainL, tr.L, P.LX, true, 1);
     this.saw.visible = st.saw !== null && !office; this.saw.position.set(P.RX + P.G + 0.35 + Math.sin((st.saw ?? 0) * 40) * 0.12, P.TOPY + 0.36, JZ); this.saw.rotation.set(0, Math.PI / 2, 0);
-    this.coin.visible = st.coin; this.coin.position.set(P.RX + P.G, P.TOPY + 0.33, JZ); this.coin.rotation.set(0, 0.6, 0); this.coin.scale.setScalar(0.25);
+    this.coin.visible = st.coin; const cn = coinAt(f); this.coin.position.set(P.RX + P.G + cn.dx, P.TOPY + 0.33 + cn.dy, JZ); this.coin.rotation.set(cn.rx, 0.6, 0); this.coin.scale.setScalar(0.25);
     this.sheet.visible = st.paper; this.sheet.position.set(P.RX + P.G, P.TOPY + 0.45, JZ); this.sheet.rotation.set(0, 0.6, 0);
     // cast
     const right = V(0, 0, 0).setFromMatrixColumn(cam.matrixWorld, 0);

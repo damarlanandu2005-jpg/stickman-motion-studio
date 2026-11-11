@@ -389,6 +389,7 @@ export function noInkFallback(root: THREE.Object3D) {
     const card = !!m.customDepthMaterial || (o as THREE.Sprite).isSprite || (o as THREE.Points).isPoints || (o as THREE.Line).isLine;
     const noDepth = mats.some((x) => x && x.depthWrite === false);
     const basicCut = mats.some((x) => x && (x as THREE.MeshBasicMaterial).isMeshBasicMaterial && x.alphaTest > 0);
-    if (card || noDepth || basicCut) o.layers.set(NOINK);
+    const soft = mats.some((x) => x && x.transparent && ((x as THREE.MeshBasicMaterial).alphaMap || ((x as THREE.MeshBasicMaterial).map && x.opacity < 0.95))); // steam / haze cards
+    if (card || noDepth || basicCut || soft) o.layers.set(NOINK);
   });
 }

@@ -24,25 +24,37 @@ const SC: [string, number, number, Place, Light][] = [
   ["c17", 1419, 1473, "OUTDOOR", "golden"], ["c18", 1474, 1548, "OUTDOOR", "golden"], ["c19", 1549, 1700, "OUTDOOR", "golden"],
 ];
 const CAM: Record<string, Key[]> = {
-  c1: fl(0, 89, [4.0, 0.95, 37.0], [4.7, 0.95, 30.0], 38, [4.4, 1.1, 35.6], [4.9, 1.0, 30.0], 36, [[4.1, 1.0, 36.4]]),
-  c2: fl(90, 218, [-8, 22, 56], [4.5, 2.0, 34], 44, [-8, 22, -14], [4.5, 2.0, -36], 44),
+  c1: fl(0, 89, [3.9, 0.3, 36.0], [4.5, 0.7, 30.6], 38, [4.3, 0.32, 34.6], [4.5, 0.72, 30.6], 36),
+  c2: fl(90, 218, [-9, 22, 58], [0, 2.0, 34], 50, [-9, 22, -12], [0, 2.0, -34], 50),
   c3: fl(219, 297, [0, 1.5, 5], [0, 1.25, -1], 46, [0.3, 1.45, 3.2], [0, 1.4, -1], 40),
   c4: fl(298, 352, [1.2, 1.5, 27.5], [5.8, 1.2, 18.5], 36, [2.0, 1.4, 26.0], [5.9, 1.2, 18.5], 34),
   c5: fl(353, 484, [4.9, 0.3, 28.5], [3.3, 1.65, 20.8], 36, [4.4, 0.25, 26.8], [3.3, 1.75, 20.8], 34),
   c6: fl(485, 524, [2.0, 1.35, 26.8], [4.5, 1.3, 19.5], 34, [2.7, 1.3, 25.8], [4.5, 1.3, 19.5], 32),
   c7: fl(525, 576, [2.6, 2.4, 26.5], [5.9, 0.9, 19.5], 36, [3.2, 2.2, 25.8], [5.9, 0.9, 19.5], 34),
-  c8: fl(577, 691, [-3.9, 0.8, 31], [-3.6, 1.0, 22], 36, [-4.3, 0.95, 23.8], [-3.5, 1.1, 20], 36),
-  c9: fl(692, 823, [0.5, 7.5, 31], [-4.5, 1, -12], 48, [3.5, 10.5, 25], [-2.5, 0, -30], 50, [[2.0, 9.0, 28]]),
-  c10: fl(824, 955, [0.7, 1.45, 1.8], [-0.1, 1.3, -3.6], 40, [0.1, 1.5, 0.6], [-0.1, 1.3, -3.6], 36),
+  c8: fl(577, 691, [-3.9, 0.8, 31], [-3.6, 1.1, 22], 36, [-4.3, 1.0, 24.6], [-3.5, 1.4, 20], 40),
+  c9: fl(692, 823, [-3.0, 13, 34], [-1.0, 0.0, -10], 50, [1.5, 12, 33], [2.5, 0.0, -14], 48),
+  c10: fl(824, 955, [0.6, 2.05, -0.2], [-0.2, 1.35, -3.2], 38, [0.1, 1.95, -1.1], [-0.2, 1.5, -3.3], 33),
   c11: fl(956, 1023, [8.9, 1.4, 29.6], [4.9, 1.1, 23.4], 36, [8.5, 1.5, 28.7], [4.9, 1.2, 23.4], 34),
-  c12: fl(1024, 1076, [6.6, 0.7, 36.2], [5.0, 0.7, 31.5], 42, [6.0, 0.65, 35.2], [5.0, 0.7, 31.5], 40),
+  c12: fl(1024, 1076, [6.5, 0.42, 34.3], [5.22, 0.27, 32.0], 34, [6.2, 0.4, 33.7], [5.22, 0.27, 32.0], 31),
   c13: fl(1077, 1138, [3.0, 1.1, 36.0], [5.5, 0.8, 31.6], 34, [3.4, 1.1, 35.2], [5.5, 0.8, 31.6], 32),
-  c14: fl(1139, 1208, [5.3, 1.1, 35.2], [3.9, 1.05, 30.6], 32, [5.0, 1.05, 34.4], [3.9, 1.05, 30.6], 30),
-  c15: fl(1209, 1263, [3.4, 1.5, 30], [4.6, 1.35, 24], 42, [6.4, 1.6, 29], [4.6, 1.35, 24], 38),
-  c16: fl(1264, 1418, [-3.5, 0.55, 12], [-4.6, 0.35, -6], 40, [-3.9, 0.75, -4], [-4.6, 0.35, -22], 36, [[-3.7, 0.6, 4]]),
-  c17: fl(1419, 1473, [-1.0, 1.8, 22], [-4.5, 0.5, 6], 46, [-2.0, 1.5, 15], [-4.5, 0.4, 0], 42),
+  c14: fl(1139, 1208, [5.0, 1.25, 36.6], [4.1, 1.2, 31.2], 32, [4.9, 1.25, 36.2], [4.1, 1.2, 31.2], 31),
+  c15: fl(1209, 1263, [4.55, 1.35, 35.5], [4.55, 1.15, 24], 38, [4.55, 1.35, 34.3], [4.55, 1.15, 24], 36),
+  c16: fl(1264, 1418, [-3.2, 0.5, 8], [-4.5, 0.3, -10], 34, [-3.6, 0.55, 2], [-4.5, 0.3, -10], 34),
+  c17: fl(1419, 1473, [-0.5, 2.7, 19], [-4.2, 1.0, 5], 42, [-1.0, 2.6, 14.5], [-4.3, 1.0, 4], 40),
   c18: fl(1474, 1548, [2.4, 1.0, 38.0], [5.7, 0.8, 31.6], 36, [3.0, 1.0, 37.0], [5.7, 0.8, 31.6], 34),
-  c19: fl(1549, 1700, [-14, 13, 46], [-4.5, 1, 14], 46, [-28, 22, 22], [-4.5, 0, -24], 44),
+  c19: fl(1549, 1700, [-12, 10, 30], [-4.5, 0.5, -6], 44, [-34, 24, -6], [-4.5, 0, -28], 46),
+};
+/** inserts: hard-cut close-ups inside a scene (frames a..b), own two keys with a slow smoother drift; castAt/STATE still follow the scene id */
+const INS: Record<string, { a: number; b: number; k: [Key, Key] }[]> = {
+  // c5: the finger-wide gap in the right rail at the joint nearest the boss (z 22.4), then back to the boss turning purple
+  c5: [{ a: 400, b: 429, k: [{ f: 0, pos: [4.1, 0.5, 24.5], look: [5.0, 0.3, 22.4], fov: 32 }, { f: 0, pos: [4.3, 0.46, 24.1], look: [5.0, 0.3, 22.4], fov: 29 }] }],
+  // c14: a sheet of paper slid into the joint, then the boss
+  c14: [{ a: 1139, b: 1165, k: [{ f: 0, pos: [4.5, 0.55, 33.9], look: [5.22, 0.32, 32.0], fov: 32 }, { f: 0, pos: [4.7, 0.5, 33.5], look: [5.22, 0.32, 32.0], fov: 28 }] }],
+  // c16: engineer on HIS trestle (right), then the rival's bridge mid-span with the strain
+  c16: [
+    { a: 1311, b: 1360, k: [{ f: 0, pos: [7.0, 1.4, -1.0], look: [4.6, 1.1, -8.5], fov: 40 }, { f: 0, pos: [6.7, 1.4, -2.0], look: [4.6, 1.1, -8.5], fov: 37 }] },
+    { a: 1361, b: 1418, k: [{ f: 0, pos: [-0.5, 3.0, 10], look: [-4.5, 0.4, -28], fov: 36 }, { f: 0, pos: [-1.5, 2.5, 2], look: [-4.5, 0.4, -28], fov: 34 }] },
+  ],
 };
 export const SHOTS: RShot[] = SC.map(([id, a, b, place, light], i) => ({ id, n: i + 1, a, b, place, light, k: CAM[id] }));
 export const shotAt = (f: number) => SHOTS.find((s) => f >= s.a && f <= s.b) ?? SHOTS[SHOTS.length - 1];
@@ -64,15 +76,21 @@ const glideP = (S: RShot, f: number) => {
   const share = 0.82;
   return u <= G ? share * smoother(u / G) : share + (1 - share) * ((u - G) / (1 - G));
 };
+const CAP: Record<string, number> = { c14: 0.06, c15: 0.05, c12: 0.12, c10: 0.1 };
 const creepAt = (S: RShot, f: number) => {
   if (S.id === "c2") return 0;
   if (LONG[S.id]) return 0.0009 * (f - S.a);
   let c = CREEP * (f - S.a);
   for (const [p0, p1] of PUNCH[S.id] ?? []) c += 0.0038 * Math.max(0, Math.min(f, p1) - p0);
-  return Math.min(0.26, c);
+  return Math.min(CAP[S.id] ?? 0.26, c);
 };
 export const camAt = (f: number, id?: string): RCam => {
-  const S = id ? shotById(id) : shotAt(f), [k0, k1] = S.k;
+  const S = id ? shotById(id) : shotAt(f);
+  for (const I of INS[S.id] ?? []) if (f >= I.a && f <= I.b) {
+    const t = smoother((f - I.a) / (I.b - I.a)), [a, b] = I.k;
+    return { pos: lv(a.pos, b.pos, t), look: lv(a.look, b.look, t), fov: lerp(a.fov, b.fov, t), roll: 0 };
+  }
+  const [k0, k1] = S.k;
   const t = glideP(S, f);
   let pos = lv(k0.pos, k1.pos, t);
   if (k1.path) { const v = k1.path[0], a = lv(k0.pos, v, t), b = lv(v, k1.pos, t); pos = lv(a, b, t); }
@@ -99,11 +117,11 @@ export const dofAt = (f: number): { cInf: number } => {
 };
 /** scene changes: n = blend frames centred on the boundary b. kinds: dissolve / fly / cut */
 export const TRANS: { b: number; kind: "dissolve" | "fly" | "cut"; n?: number; from?: string; to?: string }[] = [
-  { b: 90, kind: "dissolve", n: 8, from: "c1", to: "c2" }, { b: 219, kind: "dissolve", n: 8, from: "c2", to: "c3" }, { b: 298, kind: "fly", n: 10, from: "c3", to: "c4" },
-  { b: 353, kind: "cut" }, { b: 485, kind: "dissolve", n: 8, from: "c5", to: "c6" }, { b: 525, kind: "cut" }, { b: 577, kind: "cut" },
-  { b: 692, kind: "dissolve", n: 8, from: "c8", to: "c9" }, { b: 824, kind: "dissolve", n: 8, from: "c9", to: "c10" }, { b: 956, kind: "fly", n: 10, from: "c10", to: "c11" },
-  { b: 1024, kind: "dissolve", n: 8, from: "c11", to: "c12" }, { b: 1077, kind: "cut" }, { b: 1139, kind: "dissolve", n: 8, from: "c13", to: "c14" }, { b: 1209, kind: "cut" },
-  { b: 1264, kind: "dissolve", n: 8, from: "c15", to: "c16" }, { b: 1419, kind: "fly", n: 10, from: "c16", to: "c17" }, { b: 1474, kind: "dissolve", n: 8, from: "c17", to: "c18" },
+  { b: 90, kind: "cut" }, { b: 219, kind: "cut" }, { b: 298, kind: "fly", n: 10, from: "c3", to: "c4" },
+  { b: 353, kind: "cut" }, { b: 485, kind: "cut" }, { b: 525, kind: "cut" }, { b: 577, kind: "cut" },
+  { b: 692, kind: "cut" }, { b: 824, kind: "cut" }, { b: 956, kind: "fly", n: 10, from: "c10", to: "c11" },
+  { b: 1024, kind: "cut" }, { b: 1077, kind: "cut" }, { b: 1139, kind: "cut" }, { b: 1209, kind: "cut" },
+  { b: 1264, kind: "cut" }, { b: 1419, kind: "cut" }, { b: 1474, kind: "cut" },
   { b: 1549, kind: "fly", n: 10, from: "c18", to: "c19" },
 ];
 /** layers to draw at frame f: base shot plus the incoming shot fading in over a dissolve */
@@ -128,7 +146,7 @@ export const STATE = (f: number, id: string): State => {
   o.heatL = f < 1264 ? 0 : f < 1419 ? lerp(0.18, 0.72, ss(1264, 1418, f)) : lerp(0.72, 1, ss(1419, 1700, f));
   o.buckle = f < 1300 ? 0 : f < 1549 ? 0.1 * ss(1300, 1548, f) : lerp(0.1, 1, Math.pow(ss(1549, 1660, f), 1.5));
   if (id === "c2") o.trainR = 30 - (f - 90) * 0.55;
-  if (id === "c9") { if (f >= 692) o.trainL = 40 - (f - 692) * 0.66; if (f >= 770) o.trainR = 52 - (f - 770) * 0.52; }
+  if (id === "c9") { o.trainL = 22 - (f - 692) * 0.5; if (f >= 752) o.trainR = 32 - (f - 752) * 0.5; }
   if (id === "c19") o.trainL = 36 - (f - 1549) * 0.42;
   return o;
 };

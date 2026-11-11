@@ -21,8 +21,8 @@ export const castAt = (f: number): Guy[] => {
   if (id === "c13") out.push({ who: "eng", x: 5.85, z: 31.5, expr: "neutral", pose: "reach", facing: -1, tilt: -28, look: -0.4 });
   if (id === "c14") out.push({ who: "boss", x: 4.0, z: 31.2, expr: "grin", pose: "reach", tilt: 14, look: 0.4, scale: 1.05 });
   if (id === "c15") { out.push({ who: "boss", x: 3.2, z: 24, expr: "laugh", pose: "hip", facing: 1 }); out.push({ who: "eng", x: 5.9, z: 24, expr: "neutral", pose: "cross", facing: -1 }); }
-  if (id === "c16") out.push({ who: "eng", x: -2.8, z: -10, expr: "determined", pose: "hip", facing: -1 });
-  if (id === "c17") { out.push({ who: "eng", x: -2.9, z: 8, expr: "sad_sweat", pose: "cross", facing: -1 }); out.push({ who: "rival", x: -6.0, z: 2, expr: "proud", pose: "hip", scale: 1 }); }
+  if (id === "c16") out.push({ who: "eng", x: 5.6, z: -8, expr: "determined", pose: "hip", facing: -1 });
+  if (id === "c17") { out.push({ who: "eng", x: 3.0, z: 9, expr: "sad_sweat", pose: "cross", facing: -1 }); out.push({ who: "rival", x: -6.0, z: 2, expr: "proud", pose: "hip", scale: 1 }); }
   if (id === "c18") out.push({ who: "eng", x: 6.15, z: 31.4, expr: "determined", pose: "reach", facing: -1, tilt: -26 });
   return out;
 };
@@ -42,7 +42,22 @@ export const drawGuy = (g: Guy, cam: CamInfo, f = 0): Place => {
   const fo = { tilt: (g.tilt ?? 0) + idleTilt, headTilt: (g.ht ?? 0) + idleHead, expr: (g.expr as never) ?? "neutral", mode: "stand" as const, look: g.look ?? 0, blink: lidAt(f / 30, IDX[g.who] * 7), facing: g.facing ?? 0, pose: g.pose, purple: g.purple ?? 0 };
   return person(cam, who, g.x, g.y ?? 0, g.z, { side: false, mirror: false }, fo, {} as never, g.scale ?? 1);
 };
-export const trainsAt = (f: number) => { const id = shotAt(f).id, s = STATE(f, id); return { R: s.trainR, L: s.trainL }; };
+export const trainsAt = (f: number) => {
+  const id = shotAt(f).id, s = STATE(f, id);
+  // c9: rival's quiet trains glide on the LEFT (blue) trestle through 696-750, then his rust train rattles over the gaps on the RIGHT from 752 ("his go clickety clack")
+  if (id === "c9") return { R: f >= 752 ? 32 - (f - 752) * 0.5 : null, L: 22 - (f - 692) * 0.5 };
+  return { R: s.trainR, L: s.trainL };
+};
+/** c13 coin drop (railworld.ts: add dy/dx/rx to the coin position/rotation; coin is visible when STATE.coin): falls from his hand, lands in the gap, two tiny bounces, settles. */
+export const coinAt = (f: number) => {
+  const t = f - 1080;
+  if (t < 0) return { dy: 0.9, dx: -0.12, rx: 0.4 };
+  if (t < 20) { const u = t / 20; return { dy: 0.9 * (1 - u * u), dx: -0.12 * (1 - u), rx: 0.4 + (Math.PI * 2 - 0.4) * u }; }
+  const hop = (a: number, n: number, h: number) => { const u = (t - a) / n; return h * 4 * u * (1 - u); };
+  if (t < 28) return { dy: hop(20, 8, 0.07), dx: 0, rx: Math.PI * 2 };
+  if (t < 33) return { dy: hop(28, 5, 0.022), dx: 0, rx: Math.PI * 2 };
+  return { dy: 0, dx: 0, rx: Math.PI * 2 };
+};
 export type { V3 };
 
 /** extra effect cards for a frame (sparks + glow at the closing joint in c18). railworld.ts: for (const x of fxAt(f)) stg.fx.push(x); */
@@ -56,7 +71,7 @@ export const fxAt = (f: number): FxPlace[] => {
   const out: FxPlace[] = [];
   if (shotAt(f).id === "c18") {
     const u = ss(1474, 1530, f), n = Math.floor(f / 3) % 6, tt = (n / 6);
-    out.push({ key: `spark${n}`, cw: 300, ch: 300, draw: (p) => spark(p, tt), x: 5.22, y: 0.4, z: 31.95, w: 0.4 + 0.15 * u, h: 0.4 + 0.15 * u, soft: true });
+    out.push({ key: `spark${n}`, cw: 300, ch: 300, draw: (p) => spark(p, tt), x: 5.22, y: 0.78, z: 32.5, w: 0.26 + 0.1 * u, h: 0.26 + 0.1 * u, soft: true });
   }
   return out;
 };
