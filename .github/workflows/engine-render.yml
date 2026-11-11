@@ -1,0 +1,64 @@
+name: Engine render on Kaggle GPU (any short, test or full)
+on:
+  push:
+    branches: [engine-pipeline]
+    paths: ['.github/workflows/engine-render.yml']
+  workflow_dispatch:
+    inputs:
+      mode: { description: "test or full", default: test }
+      project: { description: "project folder", default: mine/railroads_remotion }
+      comp: { description: "composition id", default: RailShort }
+      total: { description: "total frames", default: "1701" }
+      parts: { description: "number of parts", default: "8" }
+      audio: { description: "audio file in repo or none", default: tools/a1_assets/audio.m4a }
+      captions: { description: "ass file in repo or none", default: tools/a1_assets/cap.ass }
+permissions: { contents: write }
+jobs:
+  run:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - run: python -m pip install kaggle==2.2.5 six
+      - name: Push the kernel and wait
+        env:
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+        run: |
+          set -u
+          U=$(echo "$KAGGLE_USERNAME" | tr -d '[:space:]'); export KAGGLE_USERNAME="$U"; export KAGGLE_KEY=$(echo "$KAGGLE_KEY" | tr -d '[:space:]')
+          sed -i "s/USERNAME/$U/" engine/kaggle/kernel-metadata.json
+          sed -i "s#__MODE__#${{ github.event.inputs.mode }}#; s#__PROJECT__#${{ github.event.inputs.project }}#; s#__COMP__#${{ github.event.inputs.comp }}#; s#__TOTAL__#${{ github.event.inputs.total }}#; s#__PARTS__#${{ github.event.inputs.parts }}#; s#__BRANCH__#${{ github.ref_name }}#; s#__AUDIO__#${{ github.event.inputs.audio }}#; s#__ASS__#${{ github.event.inputs.captions }}#" engine/kaggle/engine_gpu.py
+          kaggle kernels push -p engine/kaggle 2>&1 | tee push.txt
+          for i in $(seq 1 1000); do
+            sleep 20
+            S=$(kaggle kernels status "$U/engine-gpu" 2>&1 | tail -1); [ $((i%9)) = 0 ] && echo "$i $S"
+            case "$S" in *COMPLETE*|*ERROR*|*CANCEL*) echo "$S"; break;; esac
+          done
+          mkdir -p out && kaggle kernels output "$U/engine-gpu" -p out 2>&1 | tail -3 || true
+          ls -la out | head -20
+          python3 - <<'PY'
+          import json,glob
+          for f in glob.glob('out/*.log'):
+              try: txt=''.join(x.get('data','') for x in json.load(open(f)))
+              except Exception: txt=open(f).read()
+              print(txt[-5000:])
+          PY
+      - name: Save the result (video must stay under 100 MB for git)
+        if: always()
+        run: |
+          D=results_engine/${{ github.event.inputs.comp }}; mkdir -p $D
+          cp out/render_result.json $D/ 2>/dev/null || echo '{"note":"no result"}' > $D/render_result.json
+          cp out/*.jpg $D/ 2>/dev/null || true
+          [ -f out/final.mp4 ] && [ $(stat -c%s out/final.mp4) -lt 99000000 ] && cp out/final.mp4 $D/${{ github.event.inputs.comp }}.mp4 || true
+          git checkout -- engine 2>/dev/null || true
+          git config user.name "claude-bot"; git config user.email "bot@example.com"
+          git add results_engine; git commit -qm "Engine render result ${{ github.event.inputs.comp }} [skip ci]" || exit 0
+          git pull -q --rebase -X theirs origin ${{ github.ref_name }} || true
+          git push -q origin HEAD:${{ github.ref_name }} || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: engine-out, path: out/, retention-days: 3 }
