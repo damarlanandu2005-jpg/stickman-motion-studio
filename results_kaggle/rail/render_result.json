@@ -3,10 +3,11 @@
  "gpu": "Tesla T4, 580.178.04\nTesla T4, 580.178.04",
  "node": "v22.23.4",
  "chrome": "/root/.cache/ms-playwright/chromium-1254/chrome-linux64/chrome",
- "part_00": 109.5,
- "part_01": 103.5,
- "part_02": 101.7,
- "part_03": 106.7,
- "total_s": 421.4,
+ "part_00": 142.0,
+ "part_01": 168.8,
+ "part_02": 178.8,
+ "part_03": 175.7,
+ "total_s": 665.2,
+ "final_frames": "1699",
  "final_exists": true
 }
