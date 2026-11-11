@@ -46,12 +46,12 @@ export const sandTex = () => ctex("sandW", 512, 512, (g, r) => {
   for (let i = 0; i < 50; i++) { g.fillStyle = pc[Math.floor(r() * pc.length)]; g.beginPath(); const rr = 3 + r() * 6; g.ellipse(r() * 512, r() * 512, rr, rr * 0.7, r() * 3, 0, TAU); g.fill(); g.strokeStyle = "rgba(60,26,26,0.3)"; g.lineWidth = 1; g.stroke(); }
 });
 export const gravelTex = () => ctex("gravelW", 512, 512, (g, r) => {
-  g.fillStyle = "#8a6a64"; g.fillRect(0, 0, 512, 512);
-  const cols = ["#c4a090", "#b08c7c", "#cdb09a", "#9a827e", "#c2917e", "#d4bca6", "#8a706e", "#a89090", "#cc9e86"];
+  g.fillStyle = "#4e4240"; g.fillRect(0, 0, 512, 512);
+  const cols = ["#b9ada2", "#9a8e86", "#d0c4b6", "#7c7068", "#c4a898", "#a89a8a", "#dad2c6", "#8e8276", "#c8b090", "#6e625c"];
   for (let i = 0; i < 2600; i++) {
     const rr = 3 + r() * 5; g.fillStyle = cols[Math.floor(r() * cols.length)]; g.beginPath();
     g.ellipse(r() * 512, r() * 512, rr, rr * (0.55 + r() * 0.4), r() * 3, 0, TAU); g.fill();
-    g.strokeStyle = "rgba(60,36,40,0.38)"; g.lineWidth = 1; g.stroke();
+    g.strokeStyle = "rgba(40,28,30,0.55)"; g.lineWidth = 1.2; g.stroke();
   }
 });
 export const deckTex = () => ctex("deckW", 512, 512, (g, r) => {
@@ -96,9 +96,9 @@ const kmat = (m: THREE.Material) => {
   if (!x) { x = tm({ color: s.map ? new THREE.Color("#ffffff") : new THREE.Color(KCOL[m.name] ?? "#c9866a"), map: s.map ?? null }); kc.set(key, x); }
   return x;
 };
-export const addKit = (B: Batch, o: THREE.Object3D, m: THREE.Matrix4) => {
+export const addKit = (B: Batch, o: THREE.Object3D, m: THREE.Matrix4, mat?: THREE.Material) => {
   o.updateMatrixWorld(true);
-  o.traverse((c) => { const me = c as THREE.Mesh; if (me.isMesh) B.add(me.geometry, kmat(Array.isArray(me.material) ? me.material[0] : me.material), new THREE.Matrix4().multiplyMatrices(m, me.matrixWorld)); });
+  o.traverse((c) => { const me = c as THREE.Mesh; if (me.isMesh) B.add(me.geometry, mat ?? kmat(Array.isArray(me.material) ? me.material[0] : me.material), new THREE.Matrix4().multiplyMatrices(m, me.matrixWorld)); });
 };
 const MX = (x: number, y: number, z: number, ry = 0, sx = 1, sy = sx, sz = sx, rz = 0, rx = 0) =>
   new THREE.Matrix4().compose(V(x, y, z), new THREE.Quaternion().setFromEuler(new THREE.Euler(rx, ry, rz)), V(sx, sy, sz));
@@ -130,7 +130,7 @@ export const makeMats = () => {
   const wall = depthTints.map((c) => tm({ map: strata, color: c }));
   return {
     wall, sand: tm({ map: sandTex() }), gravel: tm({ map: gravelTex() }), deck: tm({ map: deckTex() }), wood: tm({ map: woodTex() }),
-    floor: tm({ map: strata, color: "#a8704f" }), rustS: tm({ color: "#a2542c" }), blueS: tm({ color: "#7490aa" }), dark: tm({ color: "#2c2430" }),
+    floor: tm({ map: strata, color: "#a8704f" }), rustS: tm({ color: "#c4602c" }), blueS: tm({ color: "#8fb0d4" }), dark: tm({ color: "#2c2430" }),
     brass: tm({ color: "#d8a640" }), cactus: tm({ color: "#6a9a48" }),
   };
 };
@@ -270,12 +270,12 @@ export const buildDressing = (R: THREE.Object3D, M: Mats, kit: Kit) => {
     B.add(tg, tm({ color: cols[fi++ % 4] }), MX(fx, fy - 0.2, lampZ));
   }
   // barrels, crates, sleeper stack, company sign, signal flag
-  for (let k = 0; k < 3; k++) { cyl(B, wood, 0.4, 0.4, 0.8, 8.2 + k * 0.85, 0.4, 24.4, 0, 0, 14); cyl(B, dark, 0.415, 0.415, 0.06, 8.2 + k * 0.85, 0.22, 24.4, 0, 0, 14); cyl(B, dark, 0.415, 0.415, 0.06, 8.2 + k * 0.85, 0.6, 24.4, 0, 0, 14); }
-  for (let k = 0; k < 4; k++) sbox(B, tm({ map: crateTex(k % 3) }), 7.4 + (k % 2) * 0.95 - 0.45, 7.4 + (k % 2) * 0.95 + 0.45, Math.floor(k / 2) * 0.9, Math.floor(k / 2) * 0.9 + 0.9, 26.8 - (k % 3) * 0.2 - 0.45, 26.8 - (k % 3) * 0.2 + 0.45, 0.9);
-  for (let k = 0; k < 6; k++) bx(B, wood, 2.6, 0.14, 0.24, 7.9, 0.07 + k * 0.15, 19.5);
-  bx(B, wood, 0.12, 2.1, 0.12, 8.6, 1.05, 30);
+  for (let k = 0; k < 3; k++) { cyl(B, wood, 0.4, 0.4, 0.8, 11 + k * 0.85, 0.4, 48, 0, 0, 14); cyl(B, dark, 0.415, 0.415, 0.06, 11 + k * 0.85, 0.22, 48, 0, 0, 14); cyl(B, dark, 0.415, 0.415, 0.06, 11 + k * 0.85, 0.6, 48, 0, 0, 14); }
+  for (let k = 0; k < 4; k++) sbox(B, tm({ map: crateTex(k % 3) }), 10.4 + (k % 2) * 0.95 - 0.45, 10.4 + (k % 2) * 0.95 + 0.45, Math.floor(k / 2) * 0.9, Math.floor(k / 2) * 0.9 + 0.9, 46.8 - (k % 3) * 0.2 - 0.45, 46.8 - (k % 3) * 0.2 + 0.45, 0.9);
+  for (let k = 0; k < 6; k++) bx(B, wood, 2.6, 0.14, 0.24, 12.5, 0.07 + k * 0.15, 40);
+  bx(B, wood, 0.12, 2.1, 0.12, 12, 1.05, 46);
   const sg = new THREE.Mesh(new THREE.BoxGeometry(2.0, 0.9, 0.08), [wood, wood, wood, wood, new THREE.MeshBasicMaterial({ map: signTex() }), new THREE.MeshBasicMaterial({ map: signTex() })] as never);
-  sg.position.set(8.6, 1.9, 29.93); LB.add(sg);
+  sg.position.set(12, 1.9, 45.93); LB.add(sg);
   bx(B, wood, 0.1, 2.6, 0.1, 2.2, 1.3, 27); bx(B, tm({ color: "#c8281e" }), 0.9, 0.55, 0.04, 2.62, 2.35, 27);
   // the work beam jutting over the canyon with a brace down to the wall
   bx(B, wood, 0.55, 0.45, 14, 0.4, -0.3, 2); bx(B, wood, 0.4, 0.4, 7, 0.4, -3.6, 5.2, 0.62, 0, 0); bx(B, wood, 0.12, 1.0, 0.12, 0.0, 0.3, -4.6); bx(B, tm({ color: "#6a4a2e" }), 0.8, 0.5, 0.5, 1.0, -0.05, 6.2);
@@ -283,13 +283,13 @@ export const buildDressing = (R: THREE.Object3D, M: Mats, kit: Kit) => {
 };
 
 // ---------------- Kenney track: ties + rails per tile; the right track gaps, the left one buckles ----------------
-const HEAT = ["#8d9199", "#7a46c8", "#e0589a", "#ff9b3d", "#ffe27a"].map((c) => new THREE.Color(c));
+const HEAT = ["#8d9199", "#c8602a", "#ff4a18", "#ff8a2a", "#ffd060"].map((c) => new THREE.Color(c));
 const tmp = new THREE.Color();
 export const heatSet = (m: THREE.MeshLambertMaterial, h: number, base: THREE.Color) => {
   const k = Math.max(0, Math.min(0.9999, h)) * (HEAT.length - 1), i = Math.floor(k);
   tmp.copy(HEAT[i]).lerp(HEAT[i + 1], k - i);
   m.color.copy(base).lerp(tmp, Math.min(1, h * 1.6));
-  m.emissive.copy(tmp).multiplyScalar(h > 0.02 ? (0.35 + 1.3 * Math.min(1, h * 1.2)) * Math.min(1, h * 2) : 0);
+  if (h > 0.02) m.emissive.copy(tmp).multiplyScalar((0.35 + 1.3 * Math.min(1, h * 1.2)) * Math.min(1, h * 2)); else m.emissive.setRGB(0.1, 0.1, 0.11);
 };
 type Tile = { rail: THREE.Mesh; tie: THREE.Mesh; zc: number; rb: Float32Array; tb: Float32Array };
 const splitTile = (kit: Kit) => {
@@ -303,7 +303,7 @@ const splitTile = (kit: Kit) => {
     for (let k = 0; k < 3; k++) { const ax = Math.abs(p.getX(i + k)); if (ax < 0.249 || ax > 0.351) rail = false; }
     for (let k = 0; k < 3; k++) {
       const P = rail ? rp : tp, N = rail ? rn : tn, UU = rail ? ru : tu;
-      const px = p.getX(i + k), cx = Math.sign(px) * 0.3; P.push((rail ? cx + (px - cx) * 0.38 : px) * TS, p.getY(i + k) * TS, p.getZ(i + k) * TS); N.push(n.getX(i + k), n.getY(i + k), n.getZ(i + k)); UU.push(u.getX(i + k), u.getY(i + k));
+      const px = p.getX(i + k), cx = Math.sign(px) * 0.3; P.push((rail ? cx + (px - cx) * 0.38 : px) * TS, p.getY(i + k) * TS, p.getZ(i + k) * TS); N.push(n.getX(i + k), n.getY(i + k), n.getZ(i + k)); if (rail) UU.push(u.getX(i + k), u.getY(i + k)); else UU.push(p.getX(i + k) * TS / 1.4, p.getZ(i + k) * TS / 0.7);
     }
   }
   const mk = (a: number[], b: number[], c: number[]) => { const x = new THREE.BufferGeometry(); x.setAttribute("position", new THREE.Float32BufferAttribute(a, 3)); x.setAttribute("normal", new THREE.Float32BufferAttribute(b, 3)); x.setAttribute("uv", new THREE.Float32BufferAttribute(c, 2)); return x; };
@@ -312,11 +312,11 @@ const splitTile = (kit: Kit) => {
 };
 export const buckleDx = (z: number, A: number) => { const u = (z + 40) / 28; return u > 0 && u < 1 ? A * Math.sin(TAU * u) * Math.sin(Math.PI * u) : 0; };
 export class Track {
-  group = new THREE.Group(); tiles: Tile[] = []; railMat: THREE.MeshLambertMaterial; base = new THREE.Color("#c9ced6"); private last = NaN;
+  group = new THREE.Group(); tiles: Tile[] = []; railMat: THREE.MeshLambertMaterial; base = new THREE.Color("#f4f6fa"); private last = NaN;
   constructor(kit: Kit, public x: number, private gaps: boolean, private buckles: boolean) {
     const s = splitTile(kit)!;
-    this.railMat = tm({ map: s.map, color: "#c9ced6" });
-    const tieMat = tm({ map: s.map, color: "#ffffff" });
+    this.railMat = tm({ map: s.map, color: "#f4f6fa" }); this.railMat.emissive.set(0.1, 0.1, 0.11);
+    const wt = woodTex().clone(); wt.wrapS = wt.wrapT = THREE.RepeatWrapping; wt.needsUpdate = true; const tieMat = tm({ map: wt, color: "#d8c0a4" });
     for (let zs = JZ - TL * 15; zs < JZ + TL * 6; zs += TL) {
       const mk = (geo: THREE.BufferGeometry, mat: THREE.Material) => {
         const gg = geo.clone(), p = gg.attributes.position as THREE.BufferAttribute;
@@ -366,7 +366,10 @@ const SX = 1.5, SY = 2.1;
 export type Consist = { name: string; len: number }[];
 export const buildTrain = (kit: Kit, M: Mats, cars: string[]) => {
   const g = new THREE.Group(), B = new Batch();
-  const Lq = 2.75 * SY, add = (nm: string, z: number) => { const o = kit[nm]; if (o) addKit(B, o, MX(0, TOPY + 0.36 * SY, z, Math.PI, SX, SY, SY)); };
+  const Lq = 2.75 * SY, tints = ["#ffffff", "#ff9a5a", "#ffd25a", "#6ab4ff"];
+  const tintMat = (o: THREE.Object3D, c: string) => { let mp: THREE.Texture | null = null; o.traverse((x) => { const mm = (x as THREE.Mesh).material as THREE.MeshStandardMaterial | undefined; if ((x as THREE.Mesh).isMesh && mm?.map) mp = mm.map; }); return tm({ map: mp, color: c }); };
+  let ci = 0;
+  const add = (nm: string, z: number) => { const o = kit[nm]; if (!o) return; const mat = ci++ ? tintMat(o, tints[(ci - 1) % 4]) : undefined; addKit(B, o, MX(0, TOPY + 0.36 * SY, z, Math.PI, SX, SY, SY), mat); };
   add("train-locomotive-a", 0);
   // steam detail on the Kenney engine: flared stack, brass dome + bell, boiler bands, headlamp, cowcatcher, side rods
   const black = tm({ color: "#26242a" }), brass = M.brass, red = tm({ color: "#b8282b" });
@@ -391,7 +394,7 @@ export const buildOffice = (R: THREE.Object3D, M: Mats) => {
   const wall = tm({ map: officeWall() }), floor = tm({ map: officePlank() }), wood = tm({ map: woodTex(), color: "#b88a60" }), dkw = tm({ color: "#5a3a26" });
   const red = tm({ color: "#8e2a2a" }), gold = M.brass;
   sbox(B, floor, -6, 6, -0.4, 0, -7, 4, 3);                                  // floor
-  sbox(B, red, -3, 3, 0, 0.05, -5, -0.4, 2);                                  // rug
+  sbox(B, tm({ map: ctex("rugW", 256, 256, (c) => { c.fillStyle = "#7a2024"; c.fillRect(0, 0, 256, 256); c.strokeStyle = "#e0b050"; c.lineWidth = 8; c.strokeRect(12, 12, 232, 232); c.strokeStyle = "#2a3a5a"; c.lineWidth = 6; c.strokeRect(30, 30, 196, 196); c.fillStyle = "#d89a3c"; for (let i = 0; i < 4; i++) { c.beginPath(); c.moveTo(128, 50 + i * 40); c.lineTo(168, 70 + i * 40); c.lineTo(128, 90 + i * 40); c.lineTo(88, 70 + i * 40); c.fill(); } }) }), -3, 3, 0, 0.05, -5, -0.4, 3);                                  // rug
   sbox(B2, wall, -6, 6, 0, 6.5, -7.3, -7, 3);                                 // back wall
   sbox(B, dkw, -6, 6, 0, 1.2, -7, -6.88, 3);                                  // wainscot
   sbox(B2, wall, -6.3, -6, 0, 6.5, -7.3, 4, 3); sbox(B2, wall, 6, 6.3, 0, 6.5, -7.3, 4, 3);    // side walls
@@ -422,6 +425,16 @@ export const buildOffice = (R: THREE.Object3D, M: Mats) => {
   B.add(new THREE.CylinderGeometry(0.2, 0.2, 0.05, 12), dkw, MX(1, 1.28, -3.2)); B.add(new THREE.CylinderGeometry(0.02, 0.02, 0.6, 8), dkw, MX(0.9, 1.5, -3.2, 0, 1, 1, 1, 0.3));
   B.add(new THREE.CylinderGeometry(0.15, 0.3, 0.25, 12, 1, true), tm({ color: "#2a6a4a", side: THREE.DoubleSide }), MX(0.8, 1.85, -3.2, 0, 1, 1, 1, -0.4));
   for (const x of [-2.6, 2.6]) { cyl(B, gold, 0.02, 0.02, 1.2, x, 5.5, -2.5, 0, 0, 6); const l = new THREE.Mesh(new THREE.SphereGeometry(0.28, 12, 10), new THREE.MeshBasicMaterial({ color: new THREE.Color(2.6, 2.0, 1.0), fog: false })); l.position.set(x, 4.75, -2.5); g.add(l); }
+  const clk = new THREE.Mesh(new THREE.CylinderGeometry(0.4, 0.4, 0.06, 24).rotateX(Math.PI / 2), new THREE.MeshBasicMaterial({ map: ctex("clockW", 128, 128, (c) => { c.fillStyle = "#f2e8cc"; c.beginPath(); c.arc(64, 64, 62, 0, 7); c.fill(); c.strokeStyle = "#3a2418"; c.lineWidth = 6; c.stroke(); c.lineWidth = 5; c.beginPath(); c.moveTo(64, 64); c.lineTo(64, 24); c.moveTo(64, 64); c.lineTo(92, 74); c.stroke(); }) }));
+  clk.position.set(-2.2, 4.5, -6.9); g.add(clk);
+  B.add(new THREE.SphereGeometry(0.28, 14, 10), tm({ color: "#3a78b8" }), MX(-0.9, 1.5, -3.0)); cyl(B, dkw, 0.05, 0.12, 0.2, -0.9, 1.3, -3.0, 0, 0, 8);
+  const shaft = new THREE.BufferGeometry(), V3 = (x: number, y: number, z: number) => [x, y, z];
+  const q = [V3(0.9, 4.4, -6.9), V3(3.0, 4.4, -6.9), V3(1.3, 0.04, -2.8), V3(-0.8, 0.04, -2.8), V3(0.9, 1.75, -6.9), V3(3.0, 1.75, -6.9)];
+  shaft.setAttribute("position", new THREE.Float32BufferAttribute([...q[0], ...q[1], ...q[2], ...q[0], ...q[2], ...q[3], ...q[4], ...q[5], ...q[2], ...q[4], ...q[2], ...q[3]], 3));
+  const sm = new THREE.Mesh(shaft, new THREE.MeshBasicMaterial({ color: new THREE.Color(1.0, 0.72, 0.32), transparent: true, opacity: 0.2, depthWrite: false, side: THREE.DoubleSide, blending: THREE.AdditiveBlending, fog: false }));
+  sm.layers.set(3); g.add(sm);
+  const patch = new THREE.Mesh(new THREE.PlaneGeometry(2.4, 1.6).rotateX(-Math.PI / 2), new THREE.MeshBasicMaterial({ color: new THREE.Color(1.0, 0.7, 0.3), transparent: true, opacity: 0.28, depthWrite: false, blending: THREE.AdditiveBlending, fog: false }));
+  patch.position.set(0.3, 0.07, -3.4); patch.layers.set(3); g.add(patch);
   B.build(g, true); B2.build(g, false);
   return g;
 };

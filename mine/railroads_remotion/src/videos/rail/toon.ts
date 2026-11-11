@@ -330,7 +330,7 @@ const faceFront = (p: Pen, cx: number, cy: number, W: number, expr: Expr, facing
     taper(p, [mx + s * 1.5 * u, cy + 12.5 * u], [mx + s * (stout ? 19 : 15) * u, cy + (stout ? 10.5 : 15) * u], stout ? 5.5 * u : 4.5 * u, 1.6 * u, moustache);
   if (expr === "nervous" || expr === "sad_sweat") p.ell(cx + 40 * u * (facing || 1), cy - 22 * u, 3 * u, 5 * u, "#9fd4ff", 2 * u);
   if (expr === "angry") { // forehead vein: two short crossed strokes
-    const vx = cx + 30 * u, vy = cy - 40 * u;
+    const vx = cx + 33 * u, vy = cy - 15 * u;
     p.stroke([[vx - 6 * u, vy - 6 * u], [vx - 1 * u, vy - 1 * u], [vx - 6 * u, vy + 5 * u]], 2.6 * u, "#c8323c");
     p.stroke([[vx + 6 * u, vy - 6 * u], [vx + 1 * u, vy - 1 * u], [vx + 6 * u, vy + 5 * u]], 2.6 * u, "#c8323c");
   }

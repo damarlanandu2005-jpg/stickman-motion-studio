@@ -11,7 +11,7 @@ import { NOINK } from "./ink";
 import { Pool, Actor, Fx, person, blob, railStage, Place, Who as CWho } from "./cast";
 import { Outfit } from "./toon";
 import { shotById, camAt, FPS, RShot, STATE, JZ } from "./rstory";
-import { castAt, trainsAt, drawGuy, Guy } from "./railcast";
+import { castAt, trainsAt, drawGuy, fxAt, Guy } from "./railcast";
 
 import * as P from "./railprops";
 import { Kit } from "./railprops";
@@ -39,7 +39,7 @@ const OUTFITS: Record<string, Outfit> = {
 const mix = (a: LightPreset, o: Partial<LightPreset>): LightPreset => ({ ...a, ...o });
 const PRES: Record<"day" | "golden" | "indoor", LightPreset> = {
   day: mix(LIGHTS.day, { az: 70, el: 42, lit: [1.62, 1.42, 1.15], shade: [0.46, 0.34, 0.37], lift: [0.07, 0.05, 0.1], fog: "#e6c4a8", fogNear: 120, fogFar: 1100, sunCol: "#ffe2c0", sunI: 2.8 }),
-  golden: mix(LIGHTS.golden, { shade: [0.3, 0.22, 0.38], lift: [0.06, 0.05, 0.13], fogNear: 90, fogFar: 560 }),
+  golden: mix(LIGHTS.golden, { shade: [0.34, 0.24, 0.34], lift: [0.07, 0.05, 0.1], fogNear: 90, fogFar: 560 }),
   indoor: mix(LIGHTS.day, { az: 60, el: 50, lit: [1.5, 1.3, 1.05], shade: [0.62, 0.46, 0.42], lift: [0.08, 0.05, 0.06], fog: "#3a2418", fogNear: 200, fogFar: 900, sunCol: "#ffe0b0", sunI: 2.2 }),
 };
 const SMOKE = { day: "#ece8ea", golden: "#6e5448", indoor: "#ece8ea" };
@@ -53,7 +53,7 @@ export class RailWorld {
   private out = new THREE.Group(); private office!: THREE.Group;
   private trk!: { R: P.Track; L: P.Track }; private trainR!: THREE.Group; private trainL!: THREE.Group;
   private smoke: THREE.Mesh[][] = [[], []]; private smokeTex: THREE.Texture; private glow: THREE.Mesh;
-  private saw = P.handsaw(); private coin = P.coin(); private sheet = P.paper(); private news = P.newspaper();
+  private M!: P.Mats; private disc!: THREE.Mesh; private saw = P.handsaw(); private coin = P.coin(); private sheet = P.paper(); private news = P.newspaper();
   private frustum = new THREE.Frustum(); private m4 = new THREE.Matrix4(); private v = new THREE.Vector3();
   private sunCache = new Map<number, THREE.Vector3>();
 
@@ -83,7 +83,8 @@ export class RailWorld {
     this.glow.layers.set(NOINK); R.add(this.glow);
     this.smokeTex = ctex("smokeR2", 128, 128, (g) => { const gr = g.createRadialGradient(64, 64, 6, 64, 64, 60); gr.addColorStop(0, "rgba(255,255,255,0.95)"); gr.addColorStop(0.7, "rgba(255,255,255,0.7)"); gr.addColorStop(1, "rgba(255,255,255,0)"); g.fillStyle = gr; g.fillRect(0, 0, 128, 128); });
     R.add(this.out);
-    const M = P.makeMats();
+    const M = P.makeMats(); this.M = M;
+    this.disc = new THREE.Mesh(new THREE.CircleGeometry(1, 40), new THREE.MeshBasicMaterial({ color: new THREE.Color(3.2, 2.2, 1.1), fog: false })); this.disc.layers.set(NOINK); R.add(this.disc);
     P.buildCanyon(this.out, kit, M); P.buildBridges(this.out, M); P.buildDressing(this.out, M, kit); P.gravelBeds(this.out, M);
     this.trk = { R: new P.Track(kit, P.RX, true, false), L: new P.Track(kit, P.LX, false, true) };
     this.out.add(this.trk.R.group, this.trk.L.group);
@@ -132,8 +133,10 @@ export class RailWorld {
     this.clouds.forEach((m, i) => { (m.material as THREE.MeshBasicMaterial).map = cm[i % 4]; m.visible = !office; m.lookAt(cam.position.x, m.position.y, cam.position.z); });
     // sun glow: soft halo in the sky in the sun direction (golden = low setting sun)
     this.glow.visible = !office; this.glow.position.copy(cam.position).addScaledVector(sunDir, 900); this.glow.quaternion.copy(cam.quaternion);
-    const gs = lt === "golden" ? 700 : 300; this.glow.scale.set(gs, gs, 1);
-    (this.glow.material as THREE.MeshBasicMaterial).color.set(lt === "golden" ? "#ffcf9e" : "#fff4dc").multiplyScalar(lt === "golden" ? 2.6 : 0.9);
+    const gs = lt === "golden" ? 1100 : 300;
+    this.disc.visible = lt === "golden" && !office; this.disc.position.copy(cam.position).addScaledVector(sunDir, 900); this.disc.quaternion.copy(cam.quaternion); this.disc.scale.setScalar(48);
+    (this.M.blueS as THREE.MeshLambertMaterial).color.set(lt === "golden" ? "#b8a89c" : "#8fb0d4"); (this.M.rustS as THREE.MeshLambertMaterial).color.set(lt === "golden" ? "#c8783c" : "#c4602c"); this.glow.scale.set(gs, gs, 1);
+    (this.glow.material as THREE.MeshBasicMaterial).color.set(lt === "golden" ? "#ffcf9e" : "#fff4dc").multiplyScalar(lt === "golden" ? 3.2 : 0.9);
     // track + trains from STATE
     this.trk.R.set(st.gapR, st.heatR, 0); this.trk.L.set(0, st.heatL, st.buckle);
     const A = 1.5 * st.buckle;
@@ -157,7 +160,7 @@ export class RailWorld {
     };
     place(this.trainR, st.trainR, P.RX, false, 0); place(this.trainL, st.trainL, P.LX, true, 1);
     this.saw.visible = st.saw !== null && !office; this.saw.position.set(P.RX + P.G + 0.35 + Math.sin((st.saw ?? 0) * 40) * 0.12, P.TOPY + 0.36, JZ); this.saw.rotation.set(0, Math.PI / 2, 0);
-    this.coin.visible = st.coin; this.coin.position.set(P.RX + P.G, P.TOPY + 0.33, JZ); this.coin.rotation.set(0, 0.6, 0);
+    this.coin.visible = st.coin; this.coin.position.set(P.RX + P.G, P.TOPY + 0.33, JZ); this.coin.rotation.set(0, 0.6, 0); this.coin.scale.setScalar(0.25);
     this.sheet.visible = st.paper; this.sheet.position.set(P.RX + P.G, P.TOPY + 0.45, JZ); this.sheet.rotation.set(0, 0.6, 0);
     // cast
     const right = V(0, 0, 0).setFromMatrixColumn(cam.matrixWorld, 0);
@@ -168,6 +171,7 @@ export class RailWorld {
       stg.places.push(p);
       blob(stg, g.x, g.y ?? 0, g.z, g.scale ?? 1);
     }
+    for (const x of fxAt(f)) stg.fx.push(x);
     this.frustum.setFromProjectionMatrix(this.m4.multiplyMatrices(cam.projectionMatrix, cam.matrixWorldInverse));
     let ai = 0; const used: Actor[] = [];
     for (const p of stg.places) {

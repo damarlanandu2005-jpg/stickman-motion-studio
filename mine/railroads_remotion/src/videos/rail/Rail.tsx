@@ -28,9 +28,9 @@ export const focusAt = (f: number, id?: string): [number, number, number] | null
   const g = castAt(repFrame(id ?? shotAt(f).id, f))[0];
   return g ? [g.x, (g.y ?? 0) + 1.7 * (g.scale ?? 1), g.z] : null;
 };
-const dofAt = (f: number, id: string) => ({ focus: focusAt(f, id), cInf: dofStory(repFrame(id, f)).cInf });
+const dofAt = (f: number, id: string) => ({ focus: focusAt(f, id), cInf: Math.min(12, dofStory(repFrame(id, f)).cInf * 0.7) }); // round 4: softer DOF (backgrounds only moderately blurred)
 /** bloom strength per light: emissives only (threshold 1.0): lamp / locomotive lamp (day, indoor), the low golden sun */
-const BLOOM: Record<string, number> = { day: 0.4, golden: 0.7, indoor: 0.6 };
+const BLOOM: Record<string, number> = { day: 0.4, golden: 0.9, indoor: 0.6 };
 const FLASH_AT = -100;
 
 export const RAIL_FRAMES = TOTAL;
@@ -67,7 +67,7 @@ const Inner: React.FC<{ id: string; kit: Kit }> = ({ id, kit }) => {
   const on = useMemo(toggles, []);
   const fx = useMemo(() => ({
     ink: new InkPass(scene, camera as THREE.PerspectiveCamera),
-    lens: new LensBlur({ maxCoC: 24, nearScale: 1.2 }),
+    lens: new LensBlur({ maxCoC: 12, nearScale: 0.5 }),
     bloom: makeBloom(),
     tone: new ToneMappingEffect({ mode: ToneMappingMode.NEUTRAL }),
     grade: new GradeEffect(GRADES.day, GRADE_STRENGTH.day),
@@ -97,6 +97,7 @@ const Inner: React.FC<{ id: string; kit: Kit }> = ({ id, kit }) => {
   const light = shotById(id).light;
   gradeFor(fx.grade, light);
   fx.bloom.intensity = BLOOM[light];
+  fx.bloom.luminanceMaterial.threshold = light === "golden" ? 0.8 : 1.0; // golden: the low sun glow blooms too
   fx.grain.seed = f; // deterministic per frame
   return (
     <>

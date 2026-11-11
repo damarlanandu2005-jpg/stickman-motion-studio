@@ -4,11 +4,11 @@ import { RX, LX, shotAt, STATE, V3 } from "./rstory";
 import { person, lidAt, CamInfo, Place, Who as CWho } from "./cast";
 import { Outfit } from "./toon";
 export type Who = "eng" | "boss" | "rival";
-export type Guy = { who: Who; x: number; y?: number; z: number; expr: string; pose?: string; facing?: -1 | 0 | 1; look?: number; purple?: number; scale?: number };
+export type Guy = { who: Who; x: number; y?: number; z: number; expr: string; pose?: string; facing?: -1 | 0 | 1; look?: number; purple?: number; scale?: number; tilt?: number; ht?: number };
 const ss = (a: number, b: number, f: number) => { const t = Math.max(0, Math.min(1, (f - a) / (b - a))); return t * t * (3 - 2 * t); };
 export const castAt = (f: number): Guy[] => {
   const id = shotAt(f).id, out: Guy[] = [];
-  if (id === "c1") out.push({ who: "eng", x: 6.9, z: 29.4, expr: "determined", pose: "hip", look: 0.3 });
+  if (id === "c1") out.push({ who: "eng", x: 4.5, z: 30.3, expr: "determined", pose: "hip", look: 0.3 });
   if (id === "c3") out.push({ who: "boss", x: 0, z: -1, expr: "proud", pose: "point", facing: 1 });
   if (id === "c4") out.push({ who: "eng", x: RX, z: 22, expr: "proud", pose: "hip" });
   if (id === "c5") out.push({ who: "boss", x: 3.3, z: 20.8, expr: f < 430 ? "shock" : "angry", pose: "point", look: 0.4, scale: 1.12, purple: ss(430, 484, f) });
@@ -16,9 +16,10 @@ export const castAt = (f: number): Guy[] => {
   if (id === "c7") out.push({ who: "eng", x: 5.9, z: 19.5, expr: "stubborn", pose: "cross", scale: 1.1 });
   if (id === "c8") out.push({ who: "rival", x: -3.5, z: 20, expr: "proud", pose: "point", look: 0.3, scale: 1.15 });
   if (id === "c10") out.push({ who: "boss", x: 0, z: -4.4, expr: "sad_sweat", pose: "temple" });
+  if (id === "c12") out.push({ who: "eng", x: 4.3, z: 30.8, expr: "determined", pose: "hip", look: -0.3 });
   if (id === "c11") out.push({ who: "eng", x: RX + 0.4, z: 23.5, expr: "neutral", pose: "point" });
-  if (id === "c13") out.push({ who: "eng", x: 6.8, z: 29.5, expr: "neutral", pose: "reach", look: 0.4 });
-  if (id === "c14") out.push({ who: "boss", x: 3.3, z: 29.8, expr: "grin", pose: "reach", look: 0.4, scale: 1.05 });
+  if (id === "c13") out.push({ who: "eng", x: 6.1, z: 31.3, expr: "neutral", pose: "reach", facing: -1, tilt: -24, look: -0.4 });
+  if (id === "c14") out.push({ who: "boss", x: 4.0, z: 31.2, expr: "grin", pose: "reach", tilt: 14, look: 0.4, scale: 1.05 });
   if (id === "c15") { out.push({ who: "boss", x: 3.2, z: 24, expr: "laugh", pose: "hip", facing: 1 }); out.push({ who: "eng", x: 5.9, z: 24, expr: "neutral", pose: "cross", facing: -1 }); }
   return out;
 };
@@ -33,8 +34,26 @@ const IDX: Record<Who, number> = { eng: 1, boss: 2, rival: 3 };
  *  `const p = drawGuy(g, info, f);` then `st.places.push(p); blob(st, g.x, g.y ?? 0, g.z, g.scale ?? 1);` */
 export const drawGuy = (g: Guy, cam: CamInfo, f = 0): Place => {
   const who: CWho = { i: IDX[g.who], o: OUTFITS[g.who], okey: g.who };
-  const fo = { expr: (g.expr as never) ?? "neutral", mode: "stand" as const, look: g.look ?? 0, blink: lidAt(f / 30, IDX[g.who] * 7), facing: g.facing ?? 0, pose: g.pose, purple: g.purple ?? 0 };
+  const t = f / 30, ix = IDX[g.who];
+  const idleTilt = Math.round(1.6 * Math.sin(t * 0.7 + ix * 2.1) * 2) / 2, idleHead = Math.round(3 * Math.sin(t * 0.45 + ix));
+  const fo = { tilt: (g.tilt ?? 0) + idleTilt, headTilt: (g.ht ?? 0) + idleHead, expr: (g.expr as never) ?? "neutral", mode: "stand" as const, look: g.look ?? 0, blink: lidAt(f / 30, IDX[g.who] * 7), facing: g.facing ?? 0, pose: g.pose, purple: g.purple ?? 0 };
   return person(cam, who, g.x, g.y ?? 0, g.z, { side: false, mirror: false }, fo, {} as never, g.scale ?? 1);
 };
 export const trainsAt = (f: number) => { const id = shotAt(f).id, s = STATE(f, id); return { R: s.trainR, L: s.trainL }; };
 export type { V3 };
+
+/** extra effect cards for a frame (sparks + glow at the closing joint in c18). railworld.ts: for (const x of fxAt(f)) stg.fx.push(x); */
+import type { FxPlace } from "./cast";
+import { fxBurst, fxPuff } from "./toon";
+const spark = (p: import("./toon").Pen, t: number) => {
+  p.ell(150, 150, 70, 70, "rgba(255,190,90,0.35)", 0); p.ell(150, 150, 34, 34, "rgba(255,226,150,0.85)", 0); p.ell(150, 150, 14, 14, "#fff6d0", 0);
+  for (let i = 0; i < 9; i++) { const a = i * 0.7 + t * 2.4, l = 50 + 70 * ((i * 37 + t * 100) % 60) / 60; p.stroke([[150 + Math.cos(a) * 30, 150 + Math.sin(a) * 30], [150 + Math.cos(a) * l, 150 + Math.sin(a) * l]], 6, "#ffd47a"); }
+};
+export const fxAt = (f: number): FxPlace[] => {
+  const out: FxPlace[] = [];
+  if (shotAt(f).id === "c18") {
+    const u = ss(1474, 1530, f), n = Math.floor(f / 3) % 6, tt = (n / 6);
+    out.push({ key: `spark${n}`, cw: 300, ch: 300, draw: (p) => spark(p, tt), x: 5.22, y: 0.4, z: 31.95, w: 0.26 + 0.1 * u, h: 0.26 + 0.1 * u, soft: true });
+  }
+  return out;
+};

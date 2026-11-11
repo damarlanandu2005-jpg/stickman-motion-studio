@@ -161,9 +161,9 @@ export const GRADE_DAY2: GradeParams = {
   vig: [0.12, 0.45],
 };
 export const GRADE_GOLDEN2: GradeParams = {
-  ky: [0, 0.09, 0.245, 0.54, 0.8, 0.93, 1],
+  ky: [0, 0.09, 0.26, 0.59, 0.84, 0.95, 1],
   sat: [1.0, 1.1, 1.1],
-  tintS: [0.035, 0.0], tintM: [-0.012, 0.008], tintH: [-0.024, 0.01],   // violet in shadows only, peach mids/highlights
+  tintS: [0.035, 0.0], tintM: [-0.012, 0.008], tintH: [-0.034, 0.016],   // violet in shadows only, peach mids/highlights
   vig: [0.2, 0.4],
 };
 /** indoor (office c3 / c10): warm lamp-lit room; slightly lower key than day, warm mids, cool-violet shadows, stronger vignette. */
