@@ -9,3 +9,8 @@ Round 2 changes: cameras c1,c2,c3,c5,c6a,c6b,c9 reworked; stain bigger/brighter;
 Scores: camera 6, story 4, characters 7, set 5, light/post 6, captions 7, polish 5 = 40/70. Ready: NO. Machine checks clean (0 bad frames).
 Open: Watson in a dark void with no doorway visible (cam/world); spill cause not shown (jar tipping); static horn close-up; final insert unclear; town too lime.
 Round 3 changes: cameras c3, c4a, c6a, c6b, c7, c9 widened so the doorway frame shows (checked on a CPU still); receiver moved out to the ear.
+
+# Round 3
+Scores: camera 6, story 5, characters 7, set 6, light/post 7, captions 7, polish 6 = 44/70. Ready: NO. 0 bad frames.
+Open: jar/knock not seen (jar out of frame), Bell cropped at left in c4b/c5, caption over the acid, final insert unclear, doorway room is just dark.
+Round 4 changes: cameras c4a (jar and Bell both in frame), c4b, c5 (more headroom), c9 (pulled back to show jar and puddle).
