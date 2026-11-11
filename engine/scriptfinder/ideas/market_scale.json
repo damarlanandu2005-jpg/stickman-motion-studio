@@ -1,0 +1,95 @@
+{
+ "title": "The Market Scale That Cheated",
+ "scenes": [
+  {
+   "id": "c1",
+   "tags": [
+    "place.street",
+    "chars.1_3",
+    "action.talk_stand",
+    "light.day",
+    "camera.glide_push",
+    "prop.kit_static"
+   ]
+  },
+  {
+   "id": "c2",
+   "tags": [
+    "place.street",
+    "chars.1_3",
+    "action.talk_stand",
+    "light.day",
+    "camera.glide_push",
+    "prop.kit_static"
+   ]
+  },
+  {
+   "id": "c3",
+   "tags": [
+    "place.street",
+    "chars.1_3",
+    "action.talk_stand",
+    "light.day",
+    "camera.glide_push",
+    "prop.kit_static"
+   ]
+  },
+  {
+   "id": "c4",
+   "tags": [
+    "place.street",
+    "chars.1_3",
+    "action.talk_stand",
+    "light.day",
+    "camera.insert_detail",
+    "prop.text_sign",
+    "prop.readable_detail"
+   ]
+  },
+  {
+   "id": "c5",
+   "tags": [
+    "place.street",
+    "chars.1_3",
+    "action.talk_stand",
+    "light.day",
+    "camera.insert_detail",
+    "prop.text_sign",
+    "prop.readable_detail"
+   ]
+  },
+  {
+   "id": "c6",
+   "tags": [
+    "place.street",
+    "chars.crowd",
+    "action.talk_stand",
+    "light.golden",
+    "camera.glide_push",
+    "prop.kit_static"
+   ]
+  },
+  {
+   "id": "c7",
+   "tags": [
+    "place.street",
+    "chars.crowd",
+    "action.talk_stand",
+    "light.golden",
+    "camera.glide_push",
+    "prop.kit_static"
+   ]
+  },
+  {
+   "id": "c8",
+   "tags": [
+    "place.street",
+    "chars.crowd",
+    "action.talk_stand",
+    "light.golden",
+    "camera.glide_push",
+    "prop.kit_static"
+   ]
+  }
+ ]
+}

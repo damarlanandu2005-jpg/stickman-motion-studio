@@ -1,0 +1,99 @@
+{
+ "title": "The Lighthouse Keeper's Lamp",
+ "scenes": [
+  {
+   "id": "c1",
+   "tags": [
+    "place.sea_ship",
+    "chars.1_3",
+    "action.talk_stand",
+    "light.night",
+    "camera.glide_push",
+    "fx.weather"
+   ]
+  },
+  {
+   "id": "c2",
+   "tags": [
+    "place.sea_ship",
+    "chars.1_3",
+    "action.talk_stand",
+    "light.night",
+    "camera.glide_push",
+    "fx.weather"
+   ]
+  },
+  {
+   "id": "c3",
+   "tags": [
+    "place.sea_ship",
+    "chars.1_3",
+    "action.talk_stand",
+    "light.night",
+    "camera.glide_push",
+    "fx.weather"
+   ]
+  },
+  {
+   "id": "c4",
+   "tags": [
+    "place.sea_ship",
+    "chars.1_3",
+    "action.talk_stand",
+    "light.night",
+    "camera.glide_push",
+    "fx.weather"
+   ]
+  },
+  {
+   "id": "c5",
+   "tags": [
+    "place.interior_other",
+    "chars.1_3",
+    "action.talk_stand",
+    "light.night",
+    "camera.glide_push"
+   ]
+  },
+  {
+   "id": "c6",
+   "tags": [
+    "place.interior_other",
+    "chars.1_3",
+    "action.talk_stand",
+    "light.night",
+    "camera.glide_push"
+   ]
+  },
+  {
+   "id": "c7",
+   "tags": [
+    "place.interior_other",
+    "chars.1_3",
+    "action.talk_stand",
+    "light.night",
+    "camera.glide_push"
+   ]
+  },
+  {
+   "id": "c8",
+   "tags": [
+    "place.sea_ship",
+    "chars.1_3",
+    "action.object_fall",
+    "light.night",
+    "fx.explosion_fire"
+   ]
+  },
+  {
+   "id": "c9",
+   "tags": [
+    "place.sea_ship",
+    "chars.1_3",
+    "action.object_fall",
+    "light.night",
+    "fx.explosion_fire"
+   ]
+  }
+ ]
+}

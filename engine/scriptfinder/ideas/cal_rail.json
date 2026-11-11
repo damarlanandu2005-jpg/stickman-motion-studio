@@ -1,0 +1,245 @@
+{
+ "title": "[calibration] Railroads (our test short)",
+ "scenes": [
+  {
+   "id": "c1",
+   "tags": [
+    "place.canyon",
+    "chars.1_3",
+    "action.talk_stand",
+    "light.day",
+    "camera.aerial_wide",
+    "prop.readable_detail",
+    "prop.vehicle_moving",
+    "state.geometry_change"
+   ]
+  },
+  {
+   "id": "c2",
+   "tags": [
+    "place.canyon",
+    "chars.1_3",
+    "action.talk_stand",
+    "light.day",
+    "camera.aerial_wide",
+    "prop.readable_detail",
+    "prop.vehicle_moving",
+    "state.geometry_change"
+   ]
+  },
+  {
+   "id": "c3",
+   "tags": [
+    "place.canyon",
+    "chars.1_3",
+    "action.talk_stand",
+    "light.day",
+    "camera.aerial_wide",
+    "prop.readable_detail",
+    "prop.vehicle_moving",
+    "state.geometry_change"
+   ]
+  },
+  {
+   "id": "c4",
+   "tags": [
+    "place.canyon",
+    "chars.1_3",
+    "action.talk_stand",
+    "light.day",
+    "camera.aerial_wide",
+    "prop.readable_detail",
+    "prop.vehicle_moving",
+    "state.geometry_change"
+   ]
+  },
+  {
+   "id": "c5",
+   "tags": [
+    "place.office",
+    "chars.1_3",
+    "action.talk_stand",
+    "light.indoor",
+    "camera.glide_push",
+    "prop.text_sign"
+   ]
+  },
+  {
+   "id": "c6",
+   "tags": [
+    "place.office",
+    "chars.1_3",
+    "action.talk_stand",
+    "light.indoor",
+    "camera.glide_push",
+    "prop.text_sign"
+   ]
+  },
+  {
+   "id": "c7",
+   "tags": [
+    "place.canyon",
+    "chars.1_3",
+    "action.talk_stand",
+    "light.day",
+    "camera.insert_detail",
+    "prop.readable_detail",
+    "state.geometry_change"
+   ]
+  },
+  {
+   "id": "c8",
+   "tags": [
+    "place.canyon",
+    "chars.1_3",
+    "action.talk_stand",
+    "light.day",
+    "camera.insert_detail",
+    "prop.readable_detail",
+    "state.geometry_change"
+   ]
+  },
+  {
+   "id": "c9",
+   "tags": [
+    "place.canyon",
+    "chars.1_3",
+    "action.talk_stand",
+    "light.day",
+    "camera.insert_detail",
+    "prop.readable_detail",
+    "state.geometry_change"
+   ]
+  },
+  {
+   "id": "c10",
+   "tags": [
+    "place.canyon",
+    "chars.1_3",
+    "action.object_fall",
+    "light.golden",
+    "camera.insert_detail",
+    "prop.readable_detail",
+    "state.geometry_change",
+    "fx.sparkle_smoke"
+   ]
+  },
+  {
+   "id": "c11",
+   "tags": [
+    "place.canyon",
+    "chars.1_3",
+    "action.object_fall",
+    "light.golden",
+    "camera.insert_detail",
+    "prop.readable_detail",
+    "state.geometry_change",
+    "fx.sparkle_smoke"
+   ]
+  },
+  {
+   "id": "c12",
+   "tags": [
+    "place.canyon",
+    "chars.1_3",
+    "action.object_fall",
+    "light.golden",
+    "camera.insert_detail",
+    "prop.readable_detail",
+    "state.geometry_change",
+    "fx.sparkle_smoke"
+   ]
+  },
+  {
+   "id": "c13",
+   "tags": [
+    "place.canyon",
+    "chars.1_3",
+    "action.object_fall",
+    "light.golden",
+    "camera.insert_detail",
+    "prop.readable_detail",
+    "state.geometry_change",
+    "fx.sparkle_smoke"
+   ]
+  },
+  {
+   "id": "c14",
+   "tags": [
+    "place.canyon",
+    "chars.1_3",
+    "action.object_fall",
+    "light.golden",
+    "camera.insert_detail",
+    "prop.readable_detail",
+    "state.geometry_change",
+    "fx.sparkle_smoke"
+   ]
+  },
+  {
+   "id": "c15",
+   "tags": [
+    "place.canyon",
+    "chars.1_3",
+    "action.object_fall",
+    "light.golden",
+    "camera.insert_detail",
+    "prop.readable_detail",
+    "state.geometry_change",
+    "fx.sparkle_smoke"
+   ]
+  },
+  {
+   "id": "c16",
+   "tags": [
+    "place.canyon",
+    "chars.1_3",
+    "action.object_fall",
+    "light.golden",
+    "camera.insert_detail",
+    "prop.readable_detail",
+    "state.geometry_change",
+    "fx.sparkle_smoke"
+   ]
+  },
+  {
+   "id": "c17",
+   "tags": [
+    "place.canyon",
+    "chars.1_3",
+    "action.object_fall",
+    "light.golden",
+    "camera.insert_detail",
+    "prop.readable_detail",
+    "state.geometry_change",
+    "fx.sparkle_smoke"
+   ]
+  },
+  {
+   "id": "c18",
+   "tags": [
+    "place.canyon",
+    "chars.1_3",
+    "action.object_fall",
+    "light.golden",
+    "camera.insert_detail",
+    "prop.readable_detail",
+    "state.geometry_change",
+    "fx.sparkle_smoke"
+   ]
+  },
+  {
+   "id": "c19",
+   "tags": [
+    "place.canyon",
+    "chars.1_3",
+    "action.object_fall",
+    "light.golden",
+    "camera.insert_detail",
+    "prop.readable_detail",
+    "state.geometry_change",
+    "fx.sparkle_smoke"
+   ]
+  }
+ ]
+}

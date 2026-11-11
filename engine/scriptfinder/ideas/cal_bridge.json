@@ -1,0 +1,138 @@
+{
+ "title": "[calibration] The Bridge That Fell for a Song",
+ "scenes": [
+  {
+   "id": "c1",
+   "tags": [
+    "place.bridge_river",
+    "chars.crowd",
+    "action.walk",
+    "light.day",
+    "camera.glide_push",
+    "prop.kit_static"
+   ]
+  },
+  {
+   "id": "c2",
+   "tags": [
+    "place.bridge_river",
+    "chars.crowd",
+    "action.walk",
+    "light.day",
+    "camera.glide_push",
+    "prop.kit_static"
+   ]
+  },
+  {
+   "id": "c3",
+   "tags": [
+    "place.bridge_river",
+    "chars.crowd",
+    "action.walk",
+    "light.day",
+    "camera.glide_push",
+    "prop.kit_static"
+   ]
+  },
+  {
+   "id": "c4",
+   "tags": [
+    "place.bridge_river",
+    "chars.crowd",
+    "action.walk",
+    "light.day",
+    "camera.glide_push",
+    "prop.kit_static"
+   ]
+  },
+  {
+   "id": "c5",
+   "tags": [
+    "place.bridge_river",
+    "chars.crowd",
+    "action.walk",
+    "light.day",
+    "camera.glide_push",
+    "prop.kit_static"
+   ]
+  },
+  {
+   "id": "c6",
+   "tags": [
+    "place.bridge_river",
+    "chars.crowd",
+    "action.walk",
+    "light.golden",
+    "camera.glide_push",
+    "prop.kit_static",
+    "fx.sparkle_smoke"
+   ]
+  },
+  {
+   "id": "c7",
+   "tags": [
+    "place.bridge_river",
+    "chars.crowd",
+    "action.walk",
+    "light.golden",
+    "camera.glide_push",
+    "prop.kit_static",
+    "fx.sparkle_smoke"
+   ]
+  },
+  {
+   "id": "c8",
+   "tags": [
+    "place.bridge_river",
+    "chars.crowd",
+    "action.walk",
+    "light.golden",
+    "camera.glide_push",
+    "prop.kit_static",
+    "fx.sparkle_smoke"
+   ]
+  },
+  {
+   "id": "c9",
+   "tags": [
+    "place.bridge_river",
+    "chars.crowd",
+    "action.walk",
+    "light.golden",
+    "camera.glide_push",
+    "prop.kit_static",
+    "fx.sparkle_smoke"
+   ]
+  },
+  {
+   "id": "c10",
+   "tags": [
+    "place.street",
+    "chars.1_3",
+    "action.talk_stand",
+    "light.golden",
+    "camera.glide_push"
+   ]
+  },
+  {
+   "id": "c11",
+   "tags": [
+    "place.street",
+    "chars.1_3",
+    "action.talk_stand",
+    "light.golden",
+    "camera.glide_push"
+   ]
+  },
+  {
+   "id": "c12",
+   "tags": [
+    "place.street",
+    "chars.1_3",
+    "action.talk_stand",
+    "light.golden",
+    "camera.glide_push"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,82 @@
+{
+ "title": "The Librarian and the Missing Book",
+ "scenes": [
+  {
+   "id": "c1",
+   "tags": [
+    "place.interior_other",
+    "chars.1_3",
+    "action.talk_stand",
+    "light.indoor",
+    "camera.glide_push",
+    "prop.text_sign"
+   ]
+  },
+  {
+   "id": "c2",
+   "tags": [
+    "place.interior_other",
+    "chars.1_3",
+    "action.talk_stand",
+    "light.indoor",
+    "camera.glide_push",
+    "prop.text_sign"
+   ]
+  },
+  {
+   "id": "c3",
+   "tags": [
+    "place.interior_other",
+    "chars.1_3",
+    "action.talk_stand",
+    "light.indoor",
+    "camera.glide_push",
+    "prop.text_sign"
+   ]
+  },
+  {
+   "id": "c4",
+   "tags": [
+    "place.interior_other",
+    "chars.1_3",
+    "action.talk_stand",
+    "light.indoor",
+    "camera.glide_push",
+    "prop.text_sign"
+   ]
+  },
+  {
+   "id": "c5",
+   "tags": [
+    "place.interior_other",
+    "chars.1_3",
+    "action.talk_stand",
+    "light.indoor",
+    "camera.glide_push",
+    "prop.text_sign"
+   ]
+  },
+  {
+   "id": "c6",
+   "tags": [
+    "place.street",
+    "chars.1_3",
+    "action.walk",
+    "light.day",
+    "camera.glide_push",
+    "prop.kit_static"
+   ]
+  },
+  {
+   "id": "c7",
+   "tags": [
+    "place.street",
+    "chars.1_3",
+    "action.walk",
+    "light.day",
+    "camera.glide_push",
+    "prop.kit_static"
+   ]
+  }
+ ]
+}

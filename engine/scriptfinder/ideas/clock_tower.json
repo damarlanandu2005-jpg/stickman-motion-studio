@@ -1,0 +1,87 @@
+{
+ "title": "The Day the Town Clock Lied",
+ "scenes": [
+  {
+   "id": "c1",
+   "tags": [
+    "place.street",
+    "chars.1_3",
+    "action.talk_stand",
+    "light.day",
+    "camera.glide_push",
+    "prop.kit_static",
+    "prop.text_sign"
+   ]
+  },
+  {
+   "id": "c2",
+   "tags": [
+    "place.street",
+    "chars.1_3",
+    "action.talk_stand",
+    "light.day",
+    "camera.glide_push",
+    "prop.kit_static",
+    "prop.text_sign"
+   ]
+  },
+  {
+   "id": "c3",
+   "tags": [
+    "place.street",
+    "chars.1_3",
+    "action.talk_stand",
+    "light.day",
+    "camera.glide_push",
+    "prop.kit_static",
+    "prop.text_sign"
+   ]
+  },
+  {
+   "id": "c4",
+   "tags": [
+    "place.street",
+    "chars.1_3",
+    "action.walk",
+    "light.day",
+    "camera.glide_push",
+    "prop.kit_static"
+   ]
+  },
+  {
+   "id": "c5",
+   "tags": [
+    "place.street",
+    "chars.1_3",
+    "action.walk",
+    "light.day",
+    "camera.glide_push",
+    "prop.kit_static"
+   ]
+  },
+  {
+   "id": "c6",
+   "tags": [
+    "place.street",
+    "chars.1_3",
+    "action.talk_stand",
+    "light.golden",
+    "camera.glide_push",
+    "prop.kit_static",
+    "prop.text_sign"
+   ]
+  },
+  {
+   "id": "c7",
+   "tags": [
+    "place.street",
+    "chars.1_3",
+    "action.talk_stand",
+    "light.golden",
+    "camera.glide_push",
+    "prop.kit_static",
+    "prop.text_sign"
+   ]
+  }
+ ]
+}
