@@ -1,0 +1,59 @@
+name: Kaggle GPU render of the rail project (test = speed check, full = whole video)
+on:
+  push:
+    branches: [gemini-cartoon]
+    paths: ['.github/workflows/kaggle-rail.yml']
+  workflow_dispatch:
+    inputs:
+      mode: { description: "test or full", default: test }
+      parts: { description: "full mode: number of sequential parts", default: "6" }
+permissions: { contents: write }
+jobs:
+  run:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - run: python -m pip install kaggle==2.2.5 six
+      - name: Push the kernel and wait
+        env:
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+        run: |
+          set -u
+          U=$(echo "$KAGGLE_USERNAME" | tr -d '[:space:]'); export KAGGLE_USERNAME="$U"; export KAGGLE_KEY=$(echo "$KAGGLE_KEY" | tr -d '[:space:]')
+          sed -i "s/USERNAME/$U/" kaggle/rail-gpu/kernel-metadata.json
+          sed -i "s/__MODE__/${{ github.event.inputs.mode }}/; s/__PARTS__/${{ github.event.inputs.parts }}/" kaggle/rail-gpu/rail_gpu.py
+          kaggle kernels push -p kaggle/rail-gpu 2>&1 | tee push.txt
+          for i in $(seq 1 1000); do
+            sleep 20
+            S=$(kaggle kernels status "$U/rail-gpu" 2>&1 | tail -1); [ $((i%9)) = 0 ] && echo "$i $S"
+            case "$S" in *COMPLETE*|*ERROR*|*CANCEL*) echo "$S"; break;; esac
+          done
+          mkdir -p out && kaggle kernels output "$U/rail-gpu" -p out 2>&1 | tail -3 || true
+          ls -la out | head -40
+          python3 - <<'PY'
+          import json,glob
+          for f in glob.glob('out/*.log'):
+              try: txt=''.join(x.get('data','') for x in json.load(open(f)))
+              except Exception: txt=open(f).read()
+              print(txt[-6000:])
+          for f in glob.glob('out/render_result.json'): print(open(f).read())
+          PY
+      - name: Save the result and any stills/parts
+        if: always()
+        run: |
+          mkdir -p results_kaggle/rail
+          cp out/render_result.json results_kaggle/rail/ 2>/dev/null || echo '{"note":"no result"}' > results_kaggle/rail/render_result.json
+          cp out/*.jpg results_kaggle/rail/ 2>/dev/null || true
+          git checkout -- kaggle 2>/dev/null || true
+          git config user.name "claude-bot"; git config user.email "bot@example.com"
+          git add results_kaggle; git commit -qm "Kaggle rail render result [skip ci]" || exit 0
+          git pull -q --rebase -X theirs origin gemini-cartoon || true
+          git push -q origin HEAD:gemini-cartoon || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: kaggle-out, path: out/, retention-days: 3 }
