@@ -14,3 +14,8 @@ Round 3 changes: cameras c3, c4a, c6a, c6b, c7, c9 widened so the doorway frame 
 Scores: camera 6, story 5, characters 7, set 6, light/post 7, captions 7, polish 6 = 44/70. Ready: NO. 0 bad frames.
 Open: jar/knock not seen (jar out of frame), Bell cropped at left in c4b/c5, caption over the acid, final insert unclear, doorway room is just dark.
 Round 4 changes: cameras c4a (jar and Bell both in frame), c4b, c5 (more headroom), c9 (pulled back to show jar and puddle).
+
+# Round 4
+Scores: camera 6, story 5, characters 6, set 6, light/post 6, captions 7, polish 5 = 41/70. Ready: NO. 0 bad frames.
+Score did not rise (37, 40, 44, 41), so the stop rule ended the loop after 4 rounds. Best by the verifier: round 3 (44). Both files are kept in results_engine/Bell/. The verifier is another AI looking at stills; its scores moved by about 3 between near-identical renders, so a 3-point drop is within noise (not sure).
+Still wrong: the jar knock is never shown in motion (only before and after), the doorway room is a dark opening, Watson's run is a slide, the town is a different, brighter look, the voice is a placeholder, and captions must be re-timed for a real voiceover.
