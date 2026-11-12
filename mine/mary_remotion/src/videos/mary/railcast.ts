@@ -17,9 +17,9 @@ export const OUTFITS: Record<string, Outfit> = {
   crewA: { jacket: "#3a5a86", pants: "#e4dcc8", boots: "#2b211c", hat: "cap", cap: "#2a2a2a", hair: "#5a3a22", moustache: "#5a3a22", skin: "#fbf5ea" },
   crewB: { jacket: "#9a4a3a", pants: "#d8d0bc", boots: "#2b211c", hat: "cap", cap: "#3a2a22", hair: "#2a1c14", beard: "#2a1c14", skin: "#fbf5ea" },
   crewC: { jacket: "#5f7a58", pants: "#e0d8c2", boots: "#2b211c", hat: "cap", cap: "#1c2236", hair: "#8a6a3a", skin: "#fbf5ea" },
-  dg1: { jacket: "#7a7a54", pants: "#4a4036", boots: "#2b211c", hat: "cap", cap: "#d8c89a", hair: "#4a3020", moustache: "#4a3020", skin: "#fbf5ea" },
-  dg2: { jacket: "#8a6a44", pants: "#3a3a40", boots: "#2b211c", hat: "cap", cap: "#cdbb8a", hair: "#7a4a2a", beard: "#7a4a2a", skin: "#fbf5ea" },
-  dg3: { jacket: "#5a6a7a", pants: "#4a4036", boots: "#2b211c", hat: "cap", cap: "#d8c89a", hair: "#2a1c14", skin: "#fbf5ea" },
+  dg1: { jacket: "#c9b27a", pants: "#4a4036", boots: "#2b211c", hat: "cap", cap: "#7a2a2a", hair: "#4a3020", moustache: "#4a3020", skin: "#fbf5ea" },
+  dg2: { jacket: "#e8e4d8", pants: "#2a2a30", boots: "#2b211c", hat: "cap", cap: "#2a2a30", hair: "#7a4a2a", beard: "#7a4a2a", skin: "#fbf5ea" },
+  dg3: { jacket: "#4a4a4a", pants: "#8a7a5a", boots: "#2b211c", hat: "cap", cap: "#c9b27a", hair: "#2a1c14", skin: "#fbf5ea" },
 };
 const IDX: Record<string, number> = { captain: 1, wife: 2, girl: 3, crewA: 4, crewB: 5, crewC: 6, dg1: 7, dg2: 8, dg3: 9 };
 const G = (who: string, x: number, z: number, expr: string, o: Partial<Guy> = {}): Guy => ({ who, x, z, expr, ...o });
@@ -34,10 +34,10 @@ export const castAt = (f: number): Guy[] => {
       break;
     }
     case "c2c":
-      out.push(G("captain", -1.0, 1.5, "determined", { y: dk, pose: "hip" }), G("wife", 0, 1.5, "smile_closed", { y: dk }), G("girl", 0.95, 1.5, "grin", { y: dk, scale: 0.55 }));
+      out.push(G("captain", -1.0, 1.5, "determined", { y: dk, pose: "hip" }), G("wife", 0, 1.5, "smile_closed", { y: dk }), G("girl", 0.7, 2.2, "grin", { y: dk, scale: 0.7 }));
       break;
     case "c3b":
-      out.push(G("dg1", -35.4, -34, "stern", { y: DECK_Y * 0.85, pose: "point", facing: 1, scale: 1 }), G("dg2", -33.9, -34.4, "nervous", { y: DECK_Y * 0.85, facing: 1 }));
+      out.push(G("dg1", -23.4, -30, "stern", { y: DECK_Y * 0.85, pose: "point", facing: 1, scale: 1 }), G("dg2", -21.9, -30.4, "nervous", { y: DECK_Y * 0.85, facing: 1 }));
       break;
     case "c3c":
       out.push(G("dg1", -3.1, 6.2, "neutral", { y: 0.3 }), G("dg2", -2.0, 6.4, "stern", { y: 0.3 }), G("dg3", -0.9, 6.2, "neutral", { y: 0.3 }));
@@ -46,7 +46,7 @@ export const castAt = (f: number): Guy[] => {
       out.push(G("dg1", -0.7, 1.9, "neutral", { y: dk, facing: -1, look: -0.4 }), G("dg3", 0.75, 2.1, "nervous", { y: dk, facing: 1, look: 0.4 }));
       break;
     case "c4b":
-      out.push(G("dg2", -13.9, 0.75, "neutral", { y: dk, pose: "reach", facing: -1, look: -0.3 }));
+      out.push(G("dg2", -12.0, 0.8, "neutral", { y: dk, pose: "reach", facing: -1, look: -0.3 }));
       break;
   }
   return out;

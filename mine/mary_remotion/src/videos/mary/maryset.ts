@@ -180,7 +180,13 @@ export const buildCabin = (R: THREE.Object3D) => {
   bx(B, dk, 1.14, 0.07, 0.1, 0.3, 1.82, -Z + 0.05); bx(B, dk, 1.14, 0.07, 0.1, 0.3, 1.08, -Z + 0.05); bx(B, dk, 0.07, 0.8, 0.1, -0.27, 1.45, -Z + 0.05); bx(B, dk, 0.07, 0.8, 0.1, 0.87, 1.45, -Z + 0.05);
   // bunk against the left wall with a blanket and a rag doll (a child's toy: the two-year-old)
   bx(B, dk, 1.1, 0.4, 2.0, -X + 0.55, 0.2, -0.8); bx(B, cloth, 1.0, 0.14, 1.9, -X + 0.55, 0.47, -0.8); bx(B, blanket, 1.0, 0.1, 1.1, -X + 0.55, 0.58, -0.35);
-  B.add(new THREE.SphereGeometry(0.09, 12, 10), tm({ color: "#f1d8b8" }), MX(-X + 0.55, 0.74, -1.45)); bx(B, tm({ color: "#c0453a" }), 0.12, 0.2, 0.08, -X + 0.55, 0.62, -1.45);
+  const doll = (x: number, y: number, z: number) => {   // rag doll, about 40 cm: red dress, round head, two arms, yarn hair
+    B.add(new THREE.CylinderGeometry(0.07, 0.17, 0.34, 12), tm({ color: "#c0453a" }), MX(x, y + 0.17, z));
+    B.add(new THREE.SphereGeometry(0.13, 14, 12), tm({ color: "#f1d8b8" }), MX(x, y + 0.47, z));
+    B.add(new THREE.SphereGeometry(0.135, 12, 8, 0, Math.PI * 2, 0, Math.PI / 2), tm({ color: "#d8a040" }), MX(x, y + 0.5, z));
+    bx(B, tm({ color: "#f1d8b8" }), 0.3, 0.06, 0.06, x, y + 0.3, z);
+  };
+  doll(-X + 0.6, 0.64, -1.2);
   // table with two plates and a cup, a chair pushed back from it
   bx(B, dk, 1.2, 0.07, 0.8, 0.7, 0.82, -0.5); for (const [dx, dz] of [[-0.52, -0.32], [0.52, -0.32], [-0.52, 0.32], [0.52, 0.32]]) bx(B, dk, 0.07, 0.82, 0.07, 0.7 + dx, 0.41, -0.5 + dz);
   cyl(B, plate, 0.17, 0.15, 0.03, 0.45, 0.88, -0.5, 0, 0, 16); cyl(B, plate, 0.17, 0.15, 0.03, 0.95, 0.88, -0.5, 0, 0, 16); cyl(B, tm({ color: "#b9bcc0" }), 0.06, 0.05, 0.1, 0.7, 0.92, -0.65, 0, 0, 12);
