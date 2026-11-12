@@ -17,7 +17,7 @@ def eyes_of(path):
         bh, bw = sl[0].stop - sl[0].start, sl[1].stop - sl[1].start; cy, cx = (sl[0].start + sl[0].stop) / 2, (sl[1].start + sl[1].stop) / 2
         area = (lab[sl] == i).sum(); fy, fx = (cy - y0) / H, (cx - x0) / W
         if not (0.30 <= fy <= 0.72 and 0.14 <= fx <= 0.86): continue
-        if not (0.035 * W <= max(bw, bh) <= 0.30 * W): continue
+        if not (0.018 * W <= max(bw, bh) <= 0.30 * W): continue
         if not (0.55 <= bw / max(bh, 1) <= 1.8): continue
         if area < 0.35 * bw * bh * 0.5 and max(bw, bh) < 0.08 * W: continue
         cand.append((cx, cy, max(bw, bh) / 2, fx, fy))

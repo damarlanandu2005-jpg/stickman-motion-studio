@@ -144,28 +144,32 @@
    "id": "lustig",
    "sheet": "b",
    "ref": "ricks/projects/lustig/raw/lustig_character.png",
-   "headgear": true
+   "headgear": true,
+   "keep": "grey fedora hat and thin neat moustache"
   },
   {
    "kind": "faces",
    "id": "lustig",
    "sheet": "c",
    "ref": "ricks/projects/lustig/raw/lustig_character.png",
-   "headgear": true
+   "headgear": true,
+   "keep": "grey fedora hat and thin neat moustache"
   },
   {
    "kind": "faces",
    "id": "poisson",
    "sheet": "b",
    "ref": "ricks/projects/lustig/raw/poisson_character.png",
-   "headgear": true
+   "headgear": true,
+   "keep": "thick dark curled moustache and tweed flat cap"
   },
   {
    "kind": "faces",
    "id": "poisson",
    "sheet": "c",
    "ref": "ricks/projects/lustig/raw/poisson_character.png",
-   "headgear": true
+   "headgear": true,
+   "keep": "thick dark curled moustache and tweed flat cap"
   },
   {
    "kind": "character",
