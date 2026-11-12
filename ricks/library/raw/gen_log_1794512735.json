@@ -1,0 +1,170 @@
+[
+ {
+  "name": "npc20_woman_character.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1
+ },
+ {
+  "name": "npc20_man_character.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1
+ },
+ {
+  "name": "troffea_character.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1
+ },
+ {
+  "name": "councillor_character.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1
+ },
+ {
+  "name": "physician_character.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1
+ },
+ {
+  "name": "piper_character.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1
+ },
+ {
+  "name": "npc15_man_character.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1
+ },
+ {
+  "name": "npc15_woman_character.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1
+ },
+ {
+  "name": "npc15_youth_character.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1
+ },
+ {
+  "name": "troffea_sheet_a.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1
+ },
+ {
+  "name": "troffea_sheet_b.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1
+ },
+ {
+  "name": "troffea_sheet_c.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1
+ },
+ {
+  "name": "councillor_sheet_a.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1
+ },
+ {
+  "name": "councillor_sheet_b.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1
+ },
+ {
+  "name": "councillor_sheet_c.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1
+ },
+ {
+  "name": "physician_sheet_a.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1
+ },
+ {
+  "name": "piper_sheet_a.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1
+ },
+ {
+  "name": "hat_tudor_cap.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1
+ },
+ {
+  "name": "hat_scholar_cap.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1
+ },
+ {
+  "name": "tex_timber.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1
+ },
+ {
+  "name": "tex_claytile.png",
+  "ok": false,
+  "attempt": 1,
+  "error": "ClientError(\"429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource has been exhausted (e.g. check quota).', 'status': 'RESOURCE_EXHAUSTED'}}\")"
+ },
+ {
+  "name": "tex_claytile.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 2
+ },
+ {
+  "name": "tex_planks.png",
+  "ok": false,
+  "attempt": 1,
+  "error": "ClientError(\"429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource has been exhausted (e.g. check quota).', 'status': 'RESOURCE_EXHAUSTED'}}\")"
+ },
+ {
+  "name": "tex_planks.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 2
+ },
+ {
+  "name": "tex_stonewall.png",
+  "ok": false,
+  "attempt": 1,
+  "error": "ClientError(\"429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource has been exhausted (e.g. check quota).', 'status': 'RESOURCE_EXHAUSTED'}}\")"
+ },
+ {
+  "name": "tex_stonewall.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 2
+ },
+ {
+  "name": "backdrop_strasbourg.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1
+ },
+ {
+  "name": "backdrop_us_city.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1
+ }
+]

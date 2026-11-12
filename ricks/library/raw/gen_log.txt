@@ -6,3 +6,32 @@ OK police_a_sheet_c.png
 FAIL gangster_sheet_c.png ClientError("429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource has been exhausted (e.g. check quota).', 'status': 'RESOURCE_EXHAUSTED'}}")
 OK gangster_sheet_c.png
 done: 5 ok, 2 failed attempts
+OK npc20_woman_character.png
+OK npc20_man_character.png
+OK troffea_character.png
+OK councillor_character.png
+OK physician_character.png
+OK piper_character.png
+OK npc15_man_character.png
+OK npc15_woman_character.png
+OK npc15_youth_character.png
+OK troffea_sheet_a.png
+OK troffea_sheet_b.png
+OK troffea_sheet_c.png
+OK councillor_sheet_a.png
+OK councillor_sheet_b.png
+OK councillor_sheet_c.png
+OK physician_sheet_a.png
+OK piper_sheet_a.png
+OK hat_tudor_cap.png
+OK hat_scholar_cap.png
+OK tex_timber.png
+FAIL tex_claytile.png ClientError("429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource has been exhausted (e.g. check quota).', 'status': 'RESOURCE_EXHAUSTED'}}")
+OK tex_claytile.png
+FAIL tex_planks.png ClientError("429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource has been exhausted (e.g. check quota).', 'status': 'RESOURCE_EXHAUSTED'}}")
+OK tex_planks.png
+FAIL tex_stonewall.png ClientError("429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource has been exhausted (e.g. check quota).', 'status': 'RESOURCE_EXHAUSTED'}}")
+OK tex_stonewall.png
+OK backdrop_strasbourg.png
+OK backdrop_us_city.png
+done: 25 ok, 3 failed attempts
