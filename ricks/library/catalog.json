@@ -6,6 +6,58 @@
   }
  },
  "characters": {
+  "dealer_b": {
+   "bare_head": true,
+   "desc": "a tall thin 1920s Parisian scrap-metal dealer: long grey overcoat with a red scarf, small round glasses, short dark hair, sceptical look",
+   "faces": [
+    "angry",
+    "confused",
+    "crying",
+    "determined",
+    "disgusted",
+    "embarrassed",
+    "happy",
+    "laughing",
+    "nervous",
+    "neutral",
+    "sad",
+    "scared",
+    "scheming",
+    "shocked",
+    "shouting",
+    "skeptical",
+    "smug",
+    "tired"
+   ],
+   "limbs": [
+    "armL",
+    "armR",
+    "legL",
+    "legR"
+   ],
+   "path": "characters/dealer_b",
+   "sheets": [
+    "a",
+    "b",
+    "c"
+   ],
+   "tags": [
+    "tall",
+    "thin",
+    "1920s",
+    "parisian",
+    "scrap-metal",
+    "dealer",
+    "long",
+    "grey",
+    "overcoat",
+    "with",
+    "scarf",
+    "small",
+    "round",
+    "glasses"
+   ]
+  },
   "dealer_c": {
    "bare_head": true,
    "desc": "a short round 1920s Parisian scrap-metal dealer: green jacket with a yellow tie, bushy ginger sideburns, bald head, greedy eager look",
@@ -92,7 +144,8 @@
    "path": "characters/gangster",
    "sheets": [
     "a",
-    "b"
+    "b",
+    "c"
    ],
    "tags": [
     "heavy-set",
@@ -116,7 +169,7 @@
    ]
   },
   "lustig": {
-   "bare_head": false,
+   "bare_head": true,
    "desc": "Victor Lustig, a charming 1920s con man: navy suit, bow tie, grey fedora (hat is part of the head), thin moustache",
    "faces": [
     "angry",
@@ -161,7 +214,7 @@
    ]
   },
   "poisson": {
-   "bare_head": false,
+   "bare_head": true,
    "desc": "Andre Poisson, a stocky 1920s Parisian scrap-metal dealer: brown waistcoat, flat tweed cap (part of the head), thick moustache",
    "faces": [
     "angry",
@@ -234,7 +287,11 @@
     "legR"
    ],
    "path": "characters/police_a",
-   "sheets": [],
+   "sheets": [
+    "a",
+    "b",
+    "c"
+   ],
    "tags": [
     "1920s",
     "paris",

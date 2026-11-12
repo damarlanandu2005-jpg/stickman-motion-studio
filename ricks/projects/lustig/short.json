@@ -96,30 +96,6 @@
    "face": "neutral"
   },
   {
-   "id": "ps",
-   "puppet": "puppets/poisson",
-   "pos": [
-    1.6,
-    0,
-    0.2
-   ],
-   "height": 1.8,
-   "face": "neutral",
-   "flip": true
-  },
-  {
-   "id": "ps2",
-   "puppet": "puppets/poisson",
-   "pos": [
-    3.4,
-    0,
-    -0.3
-   ],
-   "height": 1.8,
-   "face": "neutral",
-   "flip": true
-  },
-  {
    "id": "lh",
    "puppet": "puppets/lustig",
    "pos": [
@@ -141,6 +117,135 @@
    "height": 1.8,
    "face": "neutral",
    "flip": true
+  },
+  {
+   "id": "ps",
+   "puppet": "puppets/dealer_c",
+   "pos": [
+    1.6,
+    0,
+    0.2
+   ],
+   "height": 1.8,
+   "face": "neutral",
+   "flip": true,
+   "hat": {
+    "file": "hats/bowler.png",
+    "scale": 1.08,
+    "sit": 0.22
+   }
+  },
+  {
+   "id": "ps2",
+   "puppet": "puppets/dealer_b",
+   "pos": [
+    3.4,
+    0,
+    -0.3
+   ],
+   "height": 1.8,
+   "face": "neutral",
+   "flip": true,
+   "hat": {
+    "file": "hats/tophat.png",
+    "scale": 1.0,
+    "sit": 0.16
+   }
+  },
+  {
+   "id": "pa",
+   "puppet": "puppets/police_a",
+   "pos": [
+    9.5,
+    0,
+    -0.4
+   ],
+   "height": 1.8,
+   "face": "angry",
+   "flip": true,
+   "hat": {
+    "file": "hats/kepi.png",
+    "scale": 0.72,
+    "sit": 0.16
+   }
+  },
+  {
+   "id": "pb",
+   "puppet": "puppets/police_b",
+   "pos": [
+    10.8,
+    0,
+    -0.8
+   ],
+   "height": 1.8,
+   "face": "angry",
+   "flip": true,
+   "hat": {
+    "file": "hats/kepi.png",
+    "scale": 0.72,
+    "sit": 0.16
+   }
+  },
+  {
+   "id": "ls3",
+   "puppet": "puppets/lustig",
+   "pos": [
+    -70,
+    0,
+    0
+   ],
+   "height": 1.8,
+   "face": "scheming"
+  },
+  {
+   "id": "cap",
+   "puppet": "puppets/gangster",
+   "pos": [
+    -68.1,
+    0,
+    0.2
+   ],
+   "height": 1.8,
+   "face": "neutral",
+   "flip": true,
+   "hat": {
+    "file": "hats/fedora_cream.png",
+    "scale": 1.3,
+    "sit": 0.2
+   }
+  },
+  {
+   "id": "pa2",
+   "puppet": "puppets/police_a",
+   "pos": [
+    -76,
+    0,
+    -0.6
+   ],
+   "height": 1.8,
+   "face": "determined",
+   "hat": {
+    "file": "hats/kepi.png",
+    "scale": 0.72,
+    "sit": 0.16
+   }
+  },
+  {
+   "id": "pb2",
+   "puppet": "puppets/police_b",
+   "pos": [
+    -62.5,
+    0,
+    -0.6
+   ],
+   "height": 1.8,
+   "face": "determined",
+   "flip": true,
+   "hat": {
+    "file": "hats/kepi.png",
+    "scale": 0.72,
+    "sit": 0.16
+   }
   }
  ],
  "props": [
@@ -484,53 +589,130 @@
    "color": "#4f8f4a"
   },
   {
-   "type": "box",
+   "type": "house",
    "pos": [
-    7.0,
+    -78,
     0,
-    -2.5
+    -9
    ],
    "size": [
-    0.55,
-    0.25,
-    0.38
+    5,
+    4.2,
+    4
    ],
-   "color": "#4f8f5a"
+   "color": "#a0523d",
+   "roof": "#4a3a44",
+   "door": "#2f2a3a"
   },
   {
-   "type": "box",
+   "type": "house",
    "pos": [
-    7.7,
+    -62,
     0,
-    -2.64
+    -10
    ],
    "size": [
-    0.55,
-    0.25,
-    0.38
+    5,
+    4.2,
+    4
    ],
-   "color": "#4f8f5a"
+   "color": "#8c5a4a",
+   "roof": "#4a3a44",
+   "door": "#2f2a3a"
   },
   {
-   "type": "box",
+   "type": "house",
    "pos": [
-    7.35,
+    -71,
     0,
-    -2.57
+    -15
    ],
    "size": [
-    0.55,
-    0.25,
-    0.38
+    5,
+    4.2,
+    4
    ],
-   "color": "#4f8f5a"
+   "color": "#b06a4a",
+   "roof": "#4a3a44",
+   "door": "#2f2a3a"
   },
   {
-   "type": "box",
+   "type": "post",
    "pos": [
-    7.35,
-    0.25,
+    -73.2,
+    0,
     -2.6
+   ],
+   "h": 3.0
+  },
+  {
+   "type": "post",
+   "pos": [
+    -65.8,
+    0,
+    -3.2
+   ],
+   "h": 3.0
+  },
+  {
+   "type": "barrel",
+   "pos": [
+    -72.4,
+    0,
+    -1.6
+   ]
+  },
+  {
+   "type": "crate",
+   "pos": [
+    -66.6,
+    0,
+    -1.8
+   ]
+  },
+  {
+   "type": "crate",
+   "pos": [
+    -65.9,
+    0,
+    -1.6
+   ],
+   "size": 0.55
+  },
+  {
+   "type": "box",
+   "pos": [
+    -69.3,
+    0,
+    -0.9
+   ],
+   "size": [
+    0.55,
+    0.25,
+    0.38
+   ],
+   "color": "#4f8f5a"
+  },
+  {
+   "type": "box",
+   "pos": [
+    -68.7,
+    0,
+    -0.9
+   ],
+   "size": [
+    0.55,
+    0.25,
+    0.38
+   ],
+   "color": "#4f8f5a"
+  },
+  {
+   "type": "box",
+   "pos": [
+    -69.0,
+    0.25,
+    -0.9
    ],
    "size": [
     0.55,
@@ -576,7 +758,7 @@
     {
      "at": 0.0,
      "who": "ls",
-     "face": "happy",
+     "face": "smug",
      "hop": 0.12
     }
    ],
@@ -613,8 +795,13 @@
     {
      "at": 0.0,
      "who": "ps",
-     "face": "shocked",
+     "face": "disgusted",
      "shake": 0.3
+    },
+    {
+     "at": 0.0,
+     "who": "ps2",
+     "face": "skeptical"
     }
    ],
    "orbit": 3.2,
@@ -634,7 +821,7 @@
     {
      "at": 0.1,
      "who": "lh",
-     "face": "neutral"
+     "face": "scheming"
     }
    ],
    "orbit": -4.2,
@@ -650,7 +837,7 @@
     {
      "at": 0.1,
      "who": "lh",
-     "face": "happy",
+     "face": "smug",
      "pose": {
       "armR": -50
      }
@@ -673,38 +860,28 @@
     {
      "at": 0.2,
      "who": "lh",
-     "face": "neutral",
-     "pose": {
-      "armL": 60,
-      "armR": 0
-     }
+     "face": "determined",
+     "motion": "point"
     }
    ],
-   "out": "dissolve",
-   "outDur": 0.5,
    "orbit": -4.2,
    "rise": 1.2
   },
   {
    "start": "say:rusting",
-   "target": "ls",
-   "headWidth": 0.13,
+   "target": "lh",
+   "headWidth": 0.22,
    "yaw": 4,
    "zoom": 5,
-   "pan": [
-    0,
-    -4
-   ],
    "actions": [
     {
      "at": 0.0,
-     "who": "ls",
-     "face": "nervous"
+     "who": "lh",
+     "face": "sad",
+     "motion": "shrug"
     }
    ],
-   "pitch": 9,
-   "out": "dissolve",
-   "outDur": 0.5,
+   "pitch": 6,
    "orbit": 4.2,
    "rise": 0.8
   },
@@ -718,8 +895,12 @@
     {
      "at": 0.0,
      "who": "ph",
-     "face": "nervous",
-     "shake": 0.4
+     "face": "skeptical"
+    },
+    {
+     "at": 0.9,
+     "who": "ph",
+     "face": "nervous"
     }
    ],
    "orbit": -3.2,
@@ -735,7 +916,7 @@
     {
      "at": 0.0,
      "who": "lh",
-     "face": "happy",
+     "face": "determined",
      "pose": {
       "armL": 80
      }
@@ -775,7 +956,7 @@
      "face": "shocked"
     },
     {
-     "at": 1.3,
+     "at": 1.0,
      "who": "ph",
      "face": "happy",
      "hop": 0.15
@@ -794,8 +975,8 @@
     {
      "at": 0.0,
      "who": "ph",
-     "face": "happy",
-     "hop": 0.14
+     "face": "laughing",
+     "motion": "cheer"
     }
    ],
    "orbit": -3.2,
@@ -811,7 +992,7 @@
     {
      "at": 0.0,
      "who": "lh",
-     "face": "neutral",
+     "face": "smug",
      "pose": {
       "armL": 0,
       "armR": 0
@@ -831,11 +1012,8 @@
     {
      "at": 0.0,
      "who": "lh",
-     "face": "confused",
-     "pose": {
-      "armL": 50,
-      "armR": -50
-     }
+     "face": "scheming",
+     "motion": "shrug"
     }
    ],
    "orbit": -3.2,
@@ -851,13 +1029,13 @@
     {
      "at": 0.0,
      "who": "ph",
-     "face": "nervous",
-     "shake": 0.6
+     "face": "embarrassed",
+     "shake": 0.5
     },
     {
-     "at": 1.4,
+     "at": 1.6,
      "who": "ph",
-     "face": "confused"
+     "face": "sad"
     }
    ],
    "out": "dissolve",
@@ -880,7 +1058,7 @@
     {
      "at": 0.0,
      "who": "lh",
-     "face": "happy",
+     "face": "laughing",
      "to": [
       73.5,
       0.05,
@@ -907,6 +1085,7 @@
     {
      "at": 0.1,
      "who": "ls2",
+     "face": "scheming",
      "to": [
       -1.8,
       0,
@@ -930,13 +1109,13 @@
     {
      "at": 0.0,
      "who": "ps",
-     "face": "happy"
+     "face": "happy",
+     "hop": 0.1
     },
     {
      "at": 0.3,
      "who": "ps2",
-     "face": "happy",
-     "hop": 0.1
+     "face": "skeptical"
     }
    ],
    "pitch": 6,
@@ -953,8 +1132,18 @@
     {
      "at": 0.0,
      "who": "ls2",
-     "face": "happy",
+     "face": "laughing",
      "hop": 0.14
+    },
+    {
+     "at": 0.0,
+     "who": "ps",
+     "face": "happy"
+    },
+    {
+     "at": 0.0,
+     "who": "ps2",
+     "face": "happy"
     }
    ],
    "orbit": -3.2,
@@ -970,35 +1159,88 @@
     {
      "at": 0.0,
      "who": "ps2",
-     "face": "shouting",
-     "shake": 0.5
+     "face": "angry",
+     "motion": "point"
+    },
+    {
+     "at": 0.0,
+     "who": "ps",
+     "face": "shocked"
     }
    ],
    "orbit": 3.2,
    "rise": 1.2
   },
   {
+   "start": "say:someone went",
+   "target": "pa",
+   "headWidth": 0.15,
+   "frameX": 0.1,
+   "yaw": 12,
+   "zoom": 5,
+   "pitch": 6,
+   "orbit": -3.5,
+   "rise": 1,
+   "actions": [
+    {
+     "at": 0.0,
+     "who": "pa",
+     "face": "angry",
+     "motion": "point"
+    },
+    {
+     "at": 0.0,
+     "who": "pb",
+     "face": "determined"
+    }
+   ]
+  },
+  {
    "start": "say:He fled",
-   "target": "ls2",
-   "headWidth": 0.13,
+   "target": "pa",
+   "headWidth": 0.11,
    "yaw": 4,
    "zoom": 5,
    "pan": [
-    10,
+    -14,
     0
    ],
    "actions": [
     {
      "at": 0.0,
      "who": "ls2",
-     "face": "nervous",
+     "face": "scared",
+     "flip": true,
      "to": [
-      9,
+      -15,
       0,
-      -3
+      -1.5
+     ],
+     "over": 1.6,
+     "motion": "run",
+     "repeat": 4
+    },
+    {
+     "at": 0.0,
+     "who": "pa",
+     "to": [
+      2.5,
+      0,
+      -0.4
      ],
      "walk": true,
-     "over": 2.0
+     "over": 1.6
+    },
+    {
+     "at": 0.1,
+     "who": "pb",
+     "to": [
+      4.0,
+      0,
+      -0.8
+     ],
+     "walk": true,
+     "over": 1.6
     }
    ],
    "pitch": 7,
@@ -1007,36 +1249,51 @@
   },
   {
    "start": "say:and borrowed",
-   "target": "ls2",
-   "headWidth": 0.2,
-   "yaw": -10,
+   "target": "ls3",
+   "headWidth": 0.13,
+   "yaw": -8,
    "zoom": 5,
    "actions": [
     {
      "at": 0.0,
-     "who": "ls2",
-     "face": "happy",
-     "hop": 0.1
+     "who": "ls3",
+     "face": "scheming",
+     "pose": {
+      "armR": -60
+     }
+    },
+    {
+     "at": 0.0,
+     "who": "cap",
+     "face": "skeptical"
+    },
+    {
+     "at": 1.6,
+     "who": "cap",
+     "face": "smug"
     }
    ],
    "orbit": -3.2,
-   "rise": 1.2
+   "rise": 1.2,
+   "frameX": -0.12
   },
   {
    "start": "say:Capone rewarded",
-   "target": "ls2",
-   "headWidth": 0.18,
-   "yaw": 12,
+   "target": "cap",
+   "headWidth": 0.2,
+   "yaw": 10,
    "zoom": 4,
    "actions": [
     {
      "at": 0.0,
-     "who": "ls2",
-     "face": "shocked",
-     "pose": {
-      "armL": 50,
-      "armR": -50
-     }
+     "who": "cap",
+     "face": "laughing",
+     "motion": "cheer"
+    },
+    {
+     "at": 0.0,
+     "who": "ls3",
+     "face": "smug"
     }
    ],
    "orbit": 4.2,
@@ -1044,17 +1301,51 @@
   },
   {
    "start": "say:In the end",
-   "target": "ls2",
-   "headWidth": 0.14,
-   "yaw": -6,
+   "target": "ls3",
+   "headWidth": 0.1,
+   "yaw": -4,
    "zoom": 3,
    "pitch": 8,
    "actions": [
     {
      "at": 0.0,
-     "who": "ls2",
-     "face": "nervous",
+     "who": "ls3",
+     "face": "scared",
      "shake": 0.5
+    },
+    {
+     "at": 0.0,
+     "who": "cap",
+     "face": "shocked",
+     "to": [
+      -61,
+      0,
+      2
+     ],
+     "walk": true,
+     "over": 1.2
+    },
+    {
+     "at": 0.0,
+     "who": "pa2",
+     "to": [
+      -71.4,
+      0,
+      -0.2
+     ],
+     "walk": true,
+     "over": 1.1
+    },
+    {
+     "at": 0.1,
+     "who": "pb2",
+     "to": [
+      -68.5,
+      0,
+      -0.2
+     ],
+     "walk": true,
+     "over": 1.1
     }
    ],
    "orbit": -4.2,
@@ -1062,15 +1353,26 @@
   },
   {
    "start": "say:he got twenty",
-   "target": "ls2",
-   "headWidth": 0.26,
+   "target": "ls3",
+   "headWidth": 0.22,
    "yaw": 8,
    "zoom": 6,
    "actions": [
     {
      "at": 0.0,
-     "who": "ls2",
-     "face": "shocked"
+     "who": "ls3",
+     "face": "crying",
+     "motion": "cower"
+    },
+    {
+     "at": 0.0,
+     "who": "pa2",
+     "face": "smug"
+    },
+    {
+     "at": 0.0,
+     "who": "pb2",
+     "face": "determined"
     }
    ],
    "orbit": 3.2,

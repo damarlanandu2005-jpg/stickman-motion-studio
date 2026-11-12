@@ -198,6 +198,198 @@
     205.0
    ],
    "diameter": 248.0
+  },
+  "sad": {
+   "file": "faces/sad.png",
+   "size": [
+    264,
+    306
+   ],
+   "pivot": [
+    130.0,
+    292.7
+   ],
+   "center": [
+    130.0,
+    207.0
+   ],
+   "diameter": 249.0
+  },
+  "angry": {
+   "file": "faces/angry.png",
+   "size": [
+    264,
+    305
+   ],
+   "pivot": [
+    129.5,
+    286.3
+   ],
+   "center": [
+    129.5,
+    201.0
+   ],
+   "diameter": 248.0
+  },
+  "scared": {
+   "file": "faces/scared.png",
+   "size": [
+    263,
+    306
+   ],
+   "pivot": [
+    129.5,
+    289.3
+   ],
+   "center": [
+    129.5,
+    204.0
+   ],
+   "diameter": 248.0
+  },
+  "laughing": {
+   "file": "faces/laughing.png",
+   "size": [
+    259,
+    301
+   ],
+   "pivot": [
+    127.5,
+    284.0
+   ],
+   "center": [
+    127.5,
+    200.0
+   ],
+   "diameter": 244.0
+  },
+  "smug": {
+   "file": "faces/smug.png",
+   "size": [
+    261,
+    301
+   ],
+   "pivot": [
+    128.0,
+    283.3
+   ],
+   "center": [
+    128.0,
+    199.0
+   ],
+   "diameter": 245.0
+  },
+  "crying": {
+   "file": "faces/crying.png",
+   "size": [
+    260,
+    301
+   ],
+   "pivot": [
+    127.0,
+    287.3
+   ],
+   "center": [
+    127.0,
+    203.0
+   ],
+   "diameter": 245.0
+  },
+  "scheming": {
+   "file": "faces/scheming.png",
+   "size": [
+    271,
+    311
+   ],
+   "pivot": [
+    133.5,
+    294.4
+   ],
+   "center": [
+    133.5,
+    207.0
+   ],
+   "diameter": 254.0
+  },
+  "embarrassed": {
+   "file": "faces/embarrassed.png",
+   "size": [
+    271,
+    312
+   ],
+   "pivot": [
+    133.5,
+    300.1
+   ],
+   "center": [
+    133.5,
+    212.0
+   ],
+   "diameter": 256.0
+  },
+  "determined": {
+   "file": "faces/determined.png",
+   "size": [
+    270,
+    311
+   ],
+   "pivot": [
+    133.0,
+    300.7
+   ],
+   "center": [
+    133.0,
+    213.0
+   ],
+   "diameter": 255.0
+  },
+  "tired": {
+   "file": "faces/tired.png",
+   "size": [
+    269,
+    309
+   ],
+   "pivot": [
+    132.5,
+    289.7
+   ],
+   "center": [
+    132.5,
+    203.0
+   ],
+   "diameter": 252.0
+  },
+  "skeptical": {
+   "file": "faces/skeptical.png",
+   "size": [
+    268,
+    309
+   ],
+   "pivot": [
+    131.5,
+    298.7
+   ],
+   "center": [
+    131.5,
+    212.0
+   ],
+   "diameter": 252.0
+  },
+  "disgusted": {
+   "file": "faces/disgusted.png",
+   "size": [
+    268,
+    309
+   ],
+   "pivot": [
+    132.5,
+    295.7
+   ],
+   "center": [
+    132.5,
+    209.0
+   ],
+   "diameter": 252.0
   }
  }
 }

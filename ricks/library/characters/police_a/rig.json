@@ -106,72 +106,200 @@
   "happy": {
    "file": "faces/happy.png",
    "size": [
-    282,
+    283,
     268
    ],
    "pivot": [
-    140.5,
-    250.8
+    141.0,
+    254.2
    ],
    "center": [
-    140.5,
-    161.0
+    141.0,
+    164.0
    ],
-   "diameter": 272.0
+   "diameter": 273.0
   },
   "nervous": {
    "file": "faces/nervous.png",
    "size": [
-    281,
-    268
+    282,
+    266
    ],
    "pivot": [
-    140.0,
-    246.5
+    140.5,
+    252.8
    ],
    "center": [
-    140.0,
-    157.0
+    140.5,
+    163.0
    ],
-   "diameter": 271.0
+   "diameter": 272.0
   },
   "shocked": {
    "file": "faces/shocked.png",
    "size": [
-    280,
-    267
+    281,
+    266
    ],
    "pivot": [
-    139.5,
-    243.2
+    140.0,
+    242.5
    ],
    "center": [
-    139.5,
-    154.0
+    140.0,
+    153.0
    ],
-   "diameter": 270.0
+   "diameter": 271.0
   },
   "shouting": {
    "file": "faces/shouting.png",
    "size": [
-    280,
-    267
+    282,
+    265
    ],
    "pivot": [
-    139.5,
-    249.2
+    140.5,
+    244.8
    ],
    "center": [
-    139.5,
-    160.0
+    140.5,
+    155.0
    ],
-   "diameter": 270.0
+   "diameter": 272.0
   },
   "confused": {
    "file": "faces/confused.png",
    "size": [
+    281,
+    266
+   ],
+   "pivot": [
+    140.0,
+    248.5
+   ],
+   "center": [
+    140.0,
+    159.0
+   ],
+   "diameter": 271.0
+  },
+  "neutral": {
+   "file": "faces/neutral.png",
+   "size": [
+    281,
+    266
+   ],
+   "pivot": [
+    140.0,
+    245.5
+   ],
+   "center": [
+    140.0,
+    156.0
+   ],
+   "diameter": 271.0
+  },
+  "sad": {
+   "file": "faces/sad.png",
+   "size": [
+    299,
+    282
+   ],
+   "pivot": [
+    149.0,
+    265.4
+   ],
+   "center": [
+    149.0,
+    170.0
+   ],
+   "diameter": 289.0
+  },
+  "angry": {
+   "file": "faces/angry.png",
+   "size": [
+    298,
+    281
+   ],
+   "pivot": [
+    148.5,
+    260.1
+   ],
+   "center": [
+    148.5,
+    165.0
+   ],
+   "diameter": 288.0
+  },
+  "scared": {
+   "file": "faces/scared.png",
+   "size": [
+    300,
+    283
+   ],
+   "pivot": [
+    149.5,
+    267.8
+   ],
+   "center": [
+    149.5,
+    172.0
+   ],
+   "diameter": 290.0
+  },
+  "laughing": {
+   "file": "faces/laughing.png",
+   "size": [
+    300,
+    283
+   ],
+   "pivot": [
+    149.5,
+    267.8
+   ],
+   "center": [
+    149.5,
+    172.0
+   ],
+   "diameter": 290.0
+  },
+  "smug": {
+   "file": "faces/smug.png",
+   "size": [
+    299,
+    283
+   ],
+   "pivot": [
+    149.0,
+    260.4
+   ],
+   "center": [
+    149.0,
+    165.0
+   ],
+   "diameter": 289.0
+  },
+  "crying": {
+   "file": "faces/crying.png",
+   "size": [
+    299,
+    283
+   ],
+   "pivot": [
+    149.0,
+    266.4
+   ],
+   "center": [
+    149.0,
+    171.0
+   ],
+   "diameter": 289.0
+  },
+  "scheming": {
+   "file": "faces/scheming.png",
+   "size": [
     280,
-    267
+    265
    ],
    "pivot": [
     139.5,
@@ -183,213 +311,85 @@
    ],
    "diameter": 270.0
   },
-  "neutral": {
-   "file": "faces/neutral.png",
-   "size": [
-    281,
-    267
-   ],
-   "pivot": [
-    140.0,
-    247.5
-   ],
-   "center": [
-    140.0,
-    158.0
-   ],
-   "diameter": 271.0
-  },
-  "sad": {
-   "file": "faces/sad.png",
-   "size": [
-    283,
-    265
-   ],
-   "pivot": [
-    141.0,
-    247.2
-   ],
-   "center": [
-    141.0,
-    157.0
-   ],
-   "diameter": 273.0
-  },
-  "angry": {
-   "file": "faces/angry.png",
-   "size": [
-    283,
-    265
-   ],
-   "pivot": [
-    141.0,
-    249.2
-   ],
-   "center": [
-    141.0,
-    159.0
-   ],
-   "diameter": 273.0
-  },
-  "scared": {
-   "file": "faces/scared.png",
-   "size": [
-    283,
-    265
-   ],
-   "pivot": [
-    141.0,
-    250.2
-   ],
-   "center": [
-    141.0,
-    160.0
-   ],
-   "diameter": 273.0
-  },
-  "laughing": {
-   "file": "faces/laughing.png",
-   "size": [
-    283,
-    266
-   ],
-   "pivot": [
-    141.0,
-    248.2
-   ],
-   "center": [
-    141.0,
-    158.0
-   ],
-   "diameter": 273.0
-  },
-  "smug": {
-   "file": "faces/smug.png",
-   "size": [
-    283,
-    266
-   ],
-   "pivot": [
-    141.0,
-    249.2
-   ],
-   "center": [
-    141.0,
-    159.0
-   ],
-   "diameter": 273.0
-  },
-  "crying": {
-   "file": "faces/crying.png",
-   "size": [
-    283,
-    266
-   ],
-   "pivot": [
-    141.0,
-    249.2
-   ],
-   "center": [
-    141.0,
-    159.0
-   ],
-   "diameter": 273.0
-  },
-  "scheming": {
-   "file": "faces/scheming.png",
-   "size": [
-    283,
-    269
-   ],
-   "pivot": [
-    141.0,
-    255.2
-   ],
-   "center": [
-    141.0,
-    165.0
-   ],
-   "diameter": 273.0
-  },
   "embarrassed": {
    "file": "faces/embarrassed.png",
    "size": [
-    285,
-    267
+    281,
+    264
    ],
    "pivot": [
-    142.0,
-    253.8
+    140.0,
+    242.5
    ],
    "center": [
-    142.0,
-    163.0
+    140.0,
+    153.0
    ],
-   "diameter": 275.0
+   "diameter": 271.0
   },
   "determined": {
    "file": "faces/determined.png",
    "size": [
-    285,
-    268
+    283,
+    264
    ],
    "pivot": [
-    142.0,
-    251.8
+    141.0,
+    252.2
    ],
    "center": [
-    142.0,
-    161.0
+    141.0,
+    162.0
    ],
-   "diameter": 275.0
+   "diameter": 273.0
   },
   "tired": {
    "file": "faces/tired.png",
    "size": [
-    280,
-    263
+    279,
+    262
    ],
    "pivot": [
-    139.5,
-    248.2
+    138.5,
+    244.5
    ],
    "center": [
-    139.5,
-    159.0
+    138.5,
+    156.0
    ],
-   "diameter": 270.0
+   "diameter": 268.0
   },
   "skeptical": {
    "file": "faces/skeptical.png",
-   "size": [
-    280,
-    263
-   ],
-   "pivot": [
-    139.5,
-    248.2
-   ],
-   "center": [
-    139.5,
-    159.0
-   ],
-   "diameter": 270.0
-  },
-  "disgusted": {
-   "file": "faces/disgusted.png",
    "size": [
     280,
     264
    ],
    "pivot": [
     139.5,
-    250.2
+    246.2
    ],
    "center": [
     139.5,
-    161.0
+    157.0
    ],
    "diameter": 270.0
+  },
+  "disgusted": {
+   "file": "faces/disgusted.png",
+   "size": [
+    278,
+    263
+   ],
+   "pivot": [
+    138.5,
+    240.5
+   ],
+   "center": [
+    138.5,
+    152.0
+   ],
+   "diameter": 268.0
   }
  }
 }
