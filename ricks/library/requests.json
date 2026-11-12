@@ -166,6 +166,169 @@
    "sheet": "c",
    "ref": "ricks/projects/lustig/raw/poisson_character.png",
    "headgear": true
+  },
+  {
+   "kind": "character",
+   "id": "npc20_woman",
+   "who": "a 1920s Parisian woman passer-by: long plum coat with a fur collar, a small cloche hat, short bob hair, calm look. Her hat is part of the head",
+   "period": "1920s",
+   "headgear": true
+  },
+  {
+   "kind": "character",
+   "id": "npc20_man",
+   "who": "a 1920s Parisian working man passer-by: olive vest over a striped shirt, a soft newsboy cap, small stubble, calm look. His cap is part of the head",
+   "period": "1920s",
+   "headgear": true
+  },
+  {
+   "kind": "character",
+   "id": "troffea",
+   "who": "Frau Troffea, a tired medieval townswoman of 1518: long rust-red wool dress with a cream apron, a white linen headscarf (coif) tied over her hair, rosy cheeks. Her headscarf is part of the head",
+   "period": "1500s",
+   "headgear": true
+  },
+  {
+   "kind": "character",
+   "id": "councillor",
+   "who": "a pompous medieval city councillor of 1518: long dark green robe with brown fur trim and a heavy gold chain of office, grey beard, bald head",
+   "period": "1500s",
+   "headgear": false
+  },
+  {
+   "kind": "character",
+   "id": "physician",
+   "who": "a thin medieval physician of 1518: long black scholar's robe with a white collar, pointed dark goatee, short grey hair, serious look",
+   "period": "1500s",
+   "headgear": false
+  },
+  {
+   "kind": "character",
+   "id": "piper",
+   "who": "a cheerful medieval street musician of 1518: mustard-yellow tunic with a brown belt and a blue hood collar, curly ginger hair, freckles",
+   "period": "1500s",
+   "headgear": false
+  },
+  {
+   "kind": "character",
+   "id": "npc15_man",
+   "who": "a medieval peasant man of 1518: plain brown tunic with a rope belt, shaggy dark hair, short beard, weary look",
+   "period": "1500s",
+   "headgear": false
+  },
+  {
+   "kind": "character",
+   "id": "npc15_woman",
+   "who": "a medieval peasant woman of 1518: blue-grey dress with a white apron, a plain white linen cap covering her hair, weary look. Her cap is part of the head",
+   "period": "1500s",
+   "headgear": true
+  },
+  {
+   "kind": "character",
+   "id": "npc15_youth",
+   "who": "a young medieval apprentice of 1518: green tunic with patched elbows, blond bowl-cut hair, weary look",
+   "period": "1500s",
+   "headgear": false
+  },
+  {
+   "kind": "faces",
+   "id": "troffea",
+   "sheet": "a",
+   "keep": "white linen headscarf and rosy cheeks",
+   "headgear": true
+  },
+  {
+   "kind": "faces",
+   "id": "troffea",
+   "sheet": "b",
+   "keep": "white linen headscarf and rosy cheeks",
+   "headgear": true
+  },
+  {
+   "kind": "faces",
+   "id": "troffea",
+   "sheet": "c",
+   "keep": "white linen headscarf and rosy cheeks",
+   "headgear": true
+  },
+  {
+   "kind": "faces",
+   "id": "councillor",
+   "sheet": "a",
+   "keep": "bald head and grey beard",
+   "headgear": false
+  },
+  {
+   "kind": "faces",
+   "id": "councillor",
+   "sheet": "b",
+   "keep": "bald head and grey beard",
+   "headgear": false
+  },
+  {
+   "kind": "faces",
+   "id": "councillor",
+   "sheet": "c",
+   "keep": "bald head and grey beard",
+   "headgear": false
+  },
+  {
+   "kind": "faces",
+   "id": "physician",
+   "sheet": "a",
+   "keep": "short grey hair and pointed dark goatee",
+   "headgear": false
+  },
+  {
+   "kind": "faces",
+   "id": "piper",
+   "sheet": "a",
+   "keep": "curly ginger hair and freckles",
+   "headgear": false
+  },
+  {
+   "kind": "hat",
+   "id": "tudor_cap",
+   "what": "a flat round dark red velvet Tudor bonnet of the early 1500s with a narrow brim and a small gold brooch",
+   "period": "1500s"
+  },
+  {
+   "kind": "hat",
+   "id": "scholar_cap",
+   "what": "a black square scholar's cap of the early 1500s (a soft four-cornered biretta)",
+   "period": "1500s"
+  },
+  {
+   "kind": "texture",
+   "id": "timber",
+   "surface": "medieval half-timbered house wall: cream plaster panels divided by dark brown wooden beams in a regular grid with a few diagonal braces, soft painted look, thin dark plum outlines"
+  },
+  {
+   "kind": "texture",
+   "id": "claytile",
+   "surface": "overlapping warm red-orange clay roof tiles in neat rows with soft painted highlights, thin dark plum lines between the tiles"
+  },
+  {
+   "kind": "texture",
+   "id": "planks",
+   "surface": "rough pale wooden planks side by side with visible grain and a few nail heads, soft painted highlights, thin dark plum lines between the planks"
+  },
+  {
+   "kind": "texture",
+   "id": "stonewall",
+   "surface": "large pale grey-beige dressed stone blocks of a medieval hall wall in a regular brick bond, soft painted highlights, thin dark plum mortar lines"
+  },
+  {
+   "kind": "backdrop",
+   "id": "strasbourg",
+   "sky": "a soft summer morning sky with a few small clouds",
+   "far": "a hazy medieval town skyline of steep red roofs and half-timbered houses with one tall single-spired gothic cathedral rising in the middle distance and low green hills behind"
+  },
+  {
+   "kind": "backdrop",
+   "id": "us_city",
+   "sky": "a soft hazy evening sky with long thin clouds",
+   "far": "a hazy 1930s American city skyline of brick warehouses, water towers on rooftops, a few art-deco stepped skyscrapers and factory chimneys with thin smoke"
   }
  ]
 }

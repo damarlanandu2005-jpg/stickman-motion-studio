@@ -1,0 +1,46 @@
+{
+ "moods": {
+  "day": {
+   "sun": {
+    "azimuth": 35,
+    "elevation": 50,
+    "color": "#ffe0b5",
+    "intensity": 2.4
+   },
+   "sky": {
+    "top": "#5f86d8",
+    "horizon": "#f2b98a"
+   },
+   "fill": {
+    "sky": "#8ea2ff",
+    "ground": "#6a3b6e",
+    "intensity": 1.1
+   }
+  },
+  "night": {
+   "sun": {
+    "azimuth": -40,
+    "elevation": 38,
+    "color": "#a9bcff",
+    "intensity": 1.8
+   },
+   "sky": {
+    "top": "#1d2a6e",
+    "horizon": "#6268b4"
+   },
+   "fill": {
+    "sky": "#7686ee",
+    "ground": "#4c3f8c",
+    "intensity": 1.6
+   },
+   "exposure": 1.2
+  }
+ },
+ "ink": {
+  "set": 4
+ },
+ "captions": {
+  "wordsPer": 1
+ },
+ "contactShadow": null
+}

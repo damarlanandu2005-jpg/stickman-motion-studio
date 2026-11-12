@@ -1,0 +1,142 @@
+{
+ "desc": "Paris side street, cream houses with zinc roofs, lamp posts, barrels, crates",
+ "period": [
+  "1900s",
+  "1910s",
+  "1920s",
+  "1930s"
+ ],
+ "interior": false,
+ "props": [
+  {
+   "type": "house",
+   "pos": [
+    -9,
+    0,
+    -9
+   ],
+   "size": [
+    7,
+    8,
+    5
+   ],
+   "color": "#efe2c4",
+   "roofTexture": "textures/roof.png"
+  },
+  {
+   "type": "house",
+   "pos": [
+    9,
+    0,
+    -10
+   ],
+   "size": [
+    7,
+    7.5,
+    5
+   ],
+   "color": "#ecdcbc",
+   "roofTexture": "textures/roof.png"
+  },
+  {
+   "type": "house",
+   "pos": [
+    9,
+    0,
+    -17
+   ],
+   "size": [
+    7,
+    9,
+    5
+   ],
+   "color": "#e3d2ac",
+   "roofTexture": "textures/roof.png"
+  },
+  {
+   "type": "post",
+   "pos": [
+    -3.5,
+    0,
+    -3
+   ],
+   "h": 3.4,
+   "color": "#2b2b33"
+  },
+  {
+   "type": "post",
+   "pos": [
+    4.2,
+    0,
+    -4
+   ],
+   "h": 3.4,
+   "color": "#2b2b33"
+  },
+  {
+   "type": "barrel",
+   "pos": [
+    5.5,
+    0,
+    -1.2
+   ]
+  },
+  {
+   "type": "barrel",
+   "pos": [
+    6.3,
+    0,
+    -1.6
+   ]
+  },
+  {
+   "type": "crate",
+   "pos": [
+    -5.4,
+    0,
+    -1.5
+   ],
+   "size": 0.8,
+   "color": "#a8743c"
+  },
+  {
+   "type": "post",
+   "pos": [
+    -1.9,
+    0,
+    -4.6
+   ],
+   "h": 3.4,
+   "color": "#2b2b33"
+  },
+  {
+   "type": "post",
+   "pos": [
+    2.1,
+    0,
+    -5.4
+   ],
+   "h": 3.4,
+   "color": "#2b2b33"
+  },
+  {
+   "type": "crate",
+   "pos": [
+    1.2,
+    0,
+    -3.4
+   ],
+   "size": 0.8,
+   "color": "#a8743c"
+  },
+  {
+   "type": "barrel",
+   "pos": [
+    -0.9,
+    0,
+    -3.0
+   ]
+  }
+ ],
+ "life": []
+}

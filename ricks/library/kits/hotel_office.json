@@ -1,0 +1,213 @@
+{
+ "desc": "Grand hotel office: parquet, fleur-de-lis wallpaper, desk, rug, armchairs, framed pictures, plant",
+ "period": [
+  "1900s",
+  "1910s",
+  "1920s",
+  "1930s"
+ ],
+ "interior": true,
+ "props": [
+  {
+   "type": "box",
+   "pos": [
+    0,
+    0,
+    5
+   ],
+   "size": [
+    14,
+    0.05,
+    24
+   ],
+   "texture": "textures/floor.png",
+   "repeat": [
+    8,
+    12
+   ]
+  },
+  {
+   "type": "wall",
+   "pos": [
+    0,
+    0,
+    -5
+   ],
+   "size": [
+    12,
+    4.6,
+    0.3
+   ],
+   "texture": "textures/wallpaper.png",
+   "repeat": [
+    5,
+    2
+   ]
+  },
+  {
+   "type": "wall",
+   "pos": [
+    -6,
+    0,
+    -2
+   ],
+   "size": [
+    0.3,
+    4.6,
+    6.4
+   ],
+   "texture": "textures/wallpaper.png",
+   "repeat": [
+    3,
+    2
+   ]
+  },
+  {
+   "type": "box",
+   "pos": [
+    0,
+    0.05,
+    1.6
+   ],
+   "size": [
+    5.5,
+    0.03,
+    3.4
+   ],
+   "color": "#8c2f39"
+  },
+  {
+   "type": "box",
+   "pos": [
+    -3.6,
+    0.05,
+    1.2
+   ],
+   "size": [
+    0.9,
+    0.5,
+    0.9
+   ],
+   "color": "#2f6f6a"
+  },
+  {
+   "type": "box",
+   "pos": [
+    -3.6,
+    0.55,
+    0.8
+   ],
+   "size": [
+    0.9,
+    0.9,
+    0.15
+   ],
+   "color": "#2f6f6a"
+  },
+  {
+   "type": "box",
+   "pos": [
+    3.6,
+    0.05,
+    1.2
+   ],
+   "size": [
+    0.9,
+    0.5,
+    0.9
+   ],
+   "color": "#2f6f6a"
+  },
+  {
+   "type": "box",
+   "pos": [
+    3.6,
+    0.55,
+    0.8
+   ],
+   "size": [
+    0.9,
+    0.9,
+    0.15
+   ],
+   "color": "#2f6f6a"
+  },
+  {
+   "type": "desk",
+   "pos": [
+    -0.6,
+    0.05,
+    -1.7
+   ],
+   "w": 3.2,
+   "color": "#6b3f2a"
+  },
+  {
+   "type": "box",
+   "pos": [
+    -3.2,
+    1.9,
+    -4.78
+   ],
+   "size": [
+    1.2,
+    1.5,
+    0.06
+   ],
+   "color": "#c9a24a"
+  },
+  {
+   "type": "box",
+   "pos": [
+    -3.2,
+    2.0,
+    -4.74
+   ],
+   "size": [
+    1.0,
+    1.3,
+    0.06
+   ],
+   "color": "#3d5a7a"
+  },
+  {
+   "type": "box",
+   "pos": [
+    3.2,
+    1.9,
+    -4.78
+   ],
+   "size": [
+    1.2,
+    1.5,
+    0.06
+   ],
+   "color": "#c9a24a"
+  },
+  {
+   "type": "box",
+   "pos": [
+    3.2,
+    2.0,
+    -4.74
+   ],
+   "size": [
+    1.0,
+    1.3,
+    0.06
+   ],
+   "color": "#3d5a7a"
+  },
+  {
+   "type": "tree",
+   "pos": [
+    -6.6,
+    0.05,
+    -4.2
+   ],
+   "scale": 1.0,
+   "color": "#4f8f4a"
+  }
+ ],
+ "life": []
+}

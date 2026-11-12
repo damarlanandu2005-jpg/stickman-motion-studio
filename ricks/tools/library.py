@@ -52,13 +52,13 @@ def ingest():
             if rc: rep.append("FAIL faces %s sheet %s: %s" % (cid, s, out)); continue
             ent.setdefault("sheets", []).append(s); shutil.copy(os.path.join(d, "faces_preview.png"), os.path.join(d, "faces_preview_%s.png" % s))
         ent["faces"] = sorted(json.load(open(os.path.join(d, "rig.json"))).get("faces", {}))
-        ent["path"] = "characters/" + cid; ent.setdefault("tags", [w.strip(",.:").lower() for w in ent.get("desc", "").split() if len(w) > 3][:14])
+        ent["path"] = "characters/" + cid; ent.setdefault("period", req.get(("character", cid), {}).get("period", "1920s")); ent.setdefault("tags", [w.strip(",.:").lower() for w in ent.get("desc", "").split() if len(w) > 3][:14])
         c["characters"][cid] = ent; rep.append("character %s: limbs %s, %d faces" % (cid, ",".join(ent["limbs"]), len(ent["faces"])))
     for src in sorted(glob.glob(os.path.join(raw, "hat_*.png"))):
         hid = os.path.basename(src)[4:-4]; out = os.path.join(LIB, "hats", hid + ".png")
         if hid in c["hats"] and os.path.exists(out): continue
         run([sys.executable, os.path.join(HERE, "cutout.py"), src, out]); w, h = trim(out)
-        c["hats"][hid] = {"path": "hats/%s.png" % hid, "desc": req.get(("hat", hid), {}).get("what", ""), "size": [w, h], "scale": 1.05, "sit": 0.2}
+        c["hats"][hid] = {"path": "hats/%s.png" % hid, "desc": req.get(("hat", hid), {}).get("what", ""), "size": [w, h], "scale": 1.05, "sit": 0.2, "period": req.get(("hat", hid), {}).get("period", "1920s")}
         rep.append("hat %s: %dx%d" % (hid, w, h))
     for kind, pre, folder in (("textures", "tex_", "textures"), ("backdrops", "backdrop_", "backdrops")):
         for src in sorted(glob.glob(os.path.join(raw, pre + "*.png"))):

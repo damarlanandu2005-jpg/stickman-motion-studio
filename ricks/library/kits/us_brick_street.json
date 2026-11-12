@@ -1,0 +1,102 @@
+{
+ "desc": "American brick back street: brick houses, posts, barrels, crates",
+ "period": [
+  "1920s",
+  "1930s"
+ ],
+ "interior": false,
+ "props": [
+  {
+   "type": "house",
+   "pos": [
+    -8,
+    0,
+    -9
+   ],
+   "size": [
+    5,
+    4.2,
+    4
+   ],
+   "color": "#a0523d",
+   "roof": "#4a3a44",
+   "door": "#2f2a3a"
+  },
+  {
+   "type": "house",
+   "pos": [
+    8,
+    0,
+    -10
+   ],
+   "size": [
+    5,
+    4.2,
+    4
+   ],
+   "color": "#8c5a4a",
+   "roof": "#4a3a44",
+   "door": "#2f2a3a"
+  },
+  {
+   "type": "house",
+   "pos": [
+    -1,
+    0,
+    -15
+   ],
+   "size": [
+    5,
+    4.2,
+    4
+   ],
+   "color": "#b06a4a",
+   "roof": "#4a3a44",
+   "door": "#2f2a3a"
+  },
+  {
+   "type": "post",
+   "pos": [
+    -3.2,
+    0,
+    -2.6
+   ],
+   "h": 3.0
+  },
+  {
+   "type": "post",
+   "pos": [
+    4.2,
+    0,
+    -3.2
+   ],
+   "h": 3.0
+  },
+  {
+   "type": "barrel",
+   "pos": [
+    -2.4,
+    0,
+    -1.6
+   ]
+  },
+  {
+   "type": "crate",
+   "pos": [
+    3.4,
+    0,
+    -1.8
+   ]
+  },
+  {
+   "type": "crate",
+   "pos": [
+    4.1,
+    0,
+    -1.6
+   ],
+   "size": 0.55
+  }
+ ],
+ "life": []
+}
