@@ -1,0 +1,158 @@
+{
+ "style_ref": "ricks/projects/lustig/raw/lustig_character.png",
+ "items": [
+  {
+   "kind": "character",
+   "id": "dealer_b",
+   "who": "a tall thin 1920s Parisian scrap-metal dealer: long grey overcoat with a red scarf, small round glasses, short dark hair, sceptical look"
+  },
+  {
+   "kind": "character",
+   "id": "dealer_c",
+   "who": "a short round 1920s Parisian scrap-metal dealer: green jacket with a yellow tie, bushy ginger sideburns, bald head, greedy eager look"
+  },
+  {
+   "kind": "character",
+   "id": "police_a",
+   "who": "a 1920s Paris policeman: dark navy uniform tunic with a row of silver buttons and a short navy cape, thin curled black moustache, short black hair, stern look"
+  },
+  {
+   "kind": "character",
+   "id": "police_b",
+   "who": "a stout 1920s Paris policeman: dark navy uniform tunic with silver buttons and a black belt, big grey walrus moustache, bald head, grumpy look"
+  },
+  {
+   "kind": "character",
+   "id": "gangster",
+   "who": "a heavy-set 1920s Chicago gangster boss: cream pinstripe three-piece suit with a dark red tie, slicked-back black hair, a small scar on one cheek, confident look"
+  },
+  {
+   "kind": "hat",
+   "id": "kepi",
+   "what": "a 1920s French police kepi: a short flat-topped cylindrical dark navy cap with a small black visor and a silver badge on the front"
+  },
+  {
+   "kind": "hat",
+   "id": "bowler",
+   "what": "a black bowler hat with a rounded crown, a narrow curled brim and a grey band"
+  },
+  {
+   "kind": "hat",
+   "id": "fedora_cream",
+   "what": "a cream-white fedora hat with a pinched crown, a wide brim and a black band"
+  },
+  {
+   "kind": "hat",
+   "id": "flatcap",
+   "what": "a grey tweed flat cap with a short stiff peak"
+  },
+  {
+   "kind": "hat",
+   "id": "tophat",
+   "what": "a tall black top hat with a flat top, a narrow brim and a dark red band"
+  },
+  {
+   "kind": "faces",
+   "id": "dealer_b",
+   "sheet": "a"
+  },
+  {
+   "kind": "faces",
+   "id": "dealer_b",
+   "sheet": "b"
+  },
+  {
+   "kind": "faces",
+   "id": "dealer_b",
+   "sheet": "c"
+  },
+  {
+   "kind": "faces",
+   "id": "dealer_c",
+   "sheet": "a"
+  },
+  {
+   "kind": "faces",
+   "id": "dealer_c",
+   "sheet": "b"
+  },
+  {
+   "kind": "faces",
+   "id": "dealer_c",
+   "sheet": "c"
+  },
+  {
+   "kind": "faces",
+   "id": "police_a",
+   "sheet": "a"
+  },
+  {
+   "kind": "faces",
+   "id": "police_a",
+   "sheet": "b"
+  },
+  {
+   "kind": "faces",
+   "id": "police_a",
+   "sheet": "c"
+  },
+  {
+   "kind": "faces",
+   "id": "police_b",
+   "sheet": "a"
+  },
+  {
+   "kind": "faces",
+   "id": "police_b",
+   "sheet": "b"
+  },
+  {
+   "kind": "faces",
+   "id": "police_b",
+   "sheet": "c"
+  },
+  {
+   "kind": "faces",
+   "id": "gangster",
+   "sheet": "a"
+  },
+  {
+   "kind": "faces",
+   "id": "gangster",
+   "sheet": "b"
+  },
+  {
+   "kind": "faces",
+   "id": "gangster",
+   "sheet": "c"
+  },
+  {
+   "kind": "faces",
+   "id": "lustig",
+   "sheet": "b",
+   "ref": "ricks/projects/lustig/raw/lustig_character.png",
+   "headgear": true
+  },
+  {
+   "kind": "faces",
+   "id": "lustig",
+   "sheet": "c",
+   "ref": "ricks/projects/lustig/raw/lustig_character.png",
+   "headgear": true
+  },
+  {
+   "kind": "faces",
+   "id": "poisson",
+   "sheet": "b",
+   "ref": "ricks/projects/lustig/raw/poisson_character.png",
+   "headgear": true
+  },
+  {
+   "kind": "faces",
+   "id": "poisson",
+   "sheet": "c",
+   "ref": "ricks/projects/lustig/raw/poisson_character.png",
+   "headgear": true
+  }
+ ]
+}
