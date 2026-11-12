@@ -2,20 +2,20 @@
  "project": "/tmp/repo/ricks/projects/lustig",
  "mode": "full",
  "gl_renderer": "ANGLE (NVIDIA Corporation, Tesla T4/PCIe/SSE2, OpenGL ES 3.2)",
- "gate_seconds": 10.1,
+ "gate_seconds": 11.8,
  "flagged": 0,
  "flags": [],
  "gate_ok": true,
- "render_seconds": 295.9,
+ "render_seconds": 310.3,
  "render_ok": true,
- "size_mb": 57.8,
+ "size_mb": 67.6,
  "camera_check": {
   "frames": 852,
   "step": 1,
-  "pan_speed_med_px_s": 14.6,
-  "zoom_med_pct_s": 4.16,
-  "static_frames_pct": 51.7,
-  "pan_speed_ok": true,
+  "pan_speed_med_px_s": 134.2,
+  "zoom_med_pct_s": 2.12,
+  "static_frames_pct": 11.8,
+  "pan_speed_ok": false,
   "zoom_ok": true
  }
 }
