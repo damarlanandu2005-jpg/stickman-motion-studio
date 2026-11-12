@@ -1,0 +1,889 @@
+{
+ "title": "The dancing plague of 1518",
+ "period": "1500s",
+ "pivot": "say:You see",
+ "audio": {
+  "voice": "audio/voice.mp3",
+  "music": "audio/music.mp3",
+  "musicDb": -16
+ },
+ "words": "audio/words.json",
+ "ground": {
+  "texture": "cobble",
+  "repeat": [
+   150,
+   150
+  ]
+ },
+ "places": {
+  "square": {
+   "kit": "medieval_square",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "backdrop": "strasbourg"
+  },
+  "crowd": {
+   "kit": "medieval_square_dance",
+   "at": [
+    70,
+    0,
+    0
+   ],
+   "backdrop": "strasbourg"
+  },
+  "council": {
+   "kit": "council_hall",
+   "at": [
+    140,
+    0,
+    0
+   ],
+   "backdrop": null
+  },
+  "hall": {
+   "kit": "guild_hall",
+   "at": [
+    -70,
+    0,
+    0
+   ],
+   "backdrop": null
+  },
+  "hill": {
+   "kit": "shrine_hill",
+   "at": [
+    -140,
+    0,
+    0
+   ],
+   "backdrop": "strasbourg"
+  }
+ },
+ "cast": [
+  {
+   "id": "t1",
+   "char": "troffea",
+   "place": "square",
+   "pos": [
+    0,
+    0,
+    0
+   ],
+   "face": "nervous"
+  },
+  {
+   "id": "t2",
+   "char": "troffea",
+   "place": "crowd",
+   "pos": [
+    0,
+    0,
+    0
+   ],
+   "face": "scared"
+  },
+  {
+   "id": "co",
+   "char": "councillor",
+   "hat": "tudor_cap",
+   "place": "council",
+   "pos": [
+    -1.2,
+    0.05,
+    -0.6
+   ],
+   "face": "nervous"
+  },
+  {
+   "id": "dr",
+   "char": "physician",
+   "hat": "scholar_cap",
+   "place": "council",
+   "pos": [
+    1.4,
+    0.05,
+    -0.4
+   ],
+   "flip": true,
+   "face": "neutral"
+  },
+  {
+   "id": "co2",
+   "char": "councillor",
+   "hat": "tudor_cap",
+   "place": "hall",
+   "pos": [
+    -4.2,
+    0.05,
+    -0.4
+   ],
+   "face": "happy"
+  },
+  {
+   "id": "pi",
+   "char": "piper",
+   "place": "hall",
+   "pos": [
+    0.3,
+    0.85,
+    -4.0
+   ],
+   "face": "happy"
+  },
+  {
+   "id": "t3",
+   "char": "troffea",
+   "place": "hall",
+   "pos": [
+    0.6,
+    0.05,
+    -0.2
+   ],
+   "face": "scared"
+  },
+  {
+   "id": "h1",
+   "char": "npc15_man",
+   "place": "hall",
+   "pos": [
+    -1.6,
+    0.05,
+    -1.2
+   ],
+   "height": 1.75
+  },
+  {
+   "id": "h2",
+   "char": "npc15_youth",
+   "place": "hall",
+   "pos": [
+    2.8,
+    0.05,
+    -1.4
+   ],
+   "height": 1.65,
+   "flip": true
+  },
+  {
+   "id": "t4",
+   "char": "troffea",
+   "place": "hill",
+   "pos": [
+    0,
+    0.05,
+    0
+   ],
+   "face": "sad"
+  },
+  {
+   "id": "m1",
+   "char": "npc15_man",
+   "place": "hill",
+   "pos": [
+    -2.2,
+    0.05,
+    -1.2
+   ],
+   "height": 1.75
+  },
+  {
+   "id": "m2",
+   "char": "npc15_woman",
+   "place": "hill",
+   "pos": [
+    2.3,
+    0.05,
+    -1.5
+   ],
+   "height": 1.7,
+   "flip": true
+  }
+ ],
+ "props": [
+  {
+   "place": "square",
+   "type": "plane",
+   "image": "props/sign_1518.png",
+   "pos": [
+    -3.4,
+    0.9,
+    -5.55
+   ],
+   "size": [
+    2.4,
+    1.1
+   ]
+  },
+  {
+   "place": "hall",
+   "type": "plane",
+   "image": "props/sign_guildhall.png",
+   "pos": [
+    -5.2,
+    0,
+    -2.6
+   ],
+   "size": [
+    1.7,
+    2.2
+   ]
+  },
+  {
+   "place": "hall",
+   "type": "plane",
+   "image": "props/note.png",
+   "pos": [
+    1.5,
+    3.3,
+    -4.0
+   ],
+   "size": [
+    0.6,
+    0.75
+   ]
+  },
+  {
+   "place": "hall",
+   "type": "plane",
+   "image": "props/note.png",
+   "pos": [
+    -0.9,
+    3.8,
+    -4.1
+   ],
+   "size": [
+    0.5,
+    0.62
+   ]
+  },
+  {
+   "place": "hill",
+   "type": "plane",
+   "image": "props/sign_shrine.png",
+   "pos": [
+    -2.6,
+    0,
+    -5.2
+   ],
+   "size": [
+    1.7,
+    1.5
+   ]
+  }
+ ],
+ "lines": [
+  {
+   "place": "square",
+   "subject": "t1",
+   "shot": "medium",
+   "move": "orbitR",
+   "proof": "A woman in a red dress dances alone in a medieval square",
+   "acts": [
+    {
+     "who": "t1",
+     "at": 0.0,
+     "motion": "dance",
+     "repeat": 4,
+     "face": "nervous"
+    }
+   ],
+   "extra": {
+    "yaw": -14
+   }
+  },
+  {
+   "say": "and could not",
+   "place": "square",
+   "subject": "t1",
+   "shot": "close",
+   "move": "push",
+   "proof": "Her face is frightened while her body keeps dancing",
+   "acts": [
+    {
+     "who": "t1",
+     "at": 0.0,
+     "motion": "dance",
+     "repeat": 3,
+     "face": "scared"
+    }
+   ]
+  },
+  {
+   "say": "Her name",
+   "place": "square",
+   "subject": "t1",
+   "shot": "wide",
+   "move": "orbitL",
+   "proof": "Townsfolk walk past the dancing woman by the market stalls",
+   "acts": [
+    {
+     "who": "t1",
+     "at": 0.0,
+     "motion": "dance",
+     "repeat": 4,
+     "face": "scared"
+    }
+   ]
+  },
+  {
+   "say": "It was July",
+   "place": "square",
+   "anchor": [
+    -3.4,
+    1.5,
+    -5.5
+   ],
+   "move": "push",
+   "proof": "A card on the stall reads STRASBOURG JULY 1518",
+   "extra": {
+    "distance": 5.5,
+    "fov": 34,
+    "yaw": 10,
+    "pitch": 4,
+    "frameY": 0.05
+   }
+  },
+  {
+   "say": "She danced for",
+   "place": "square",
+   "subject": "t1",
+   "shot": "close",
+   "move": "craneDown",
+   "proof": "She is exhausted and still dancing",
+   "acts": [
+    {
+     "who": "t1",
+     "at": 0.0,
+     "motion": "dance",
+     "repeat": 3,
+     "face": "tired"
+    }
+   ]
+  },
+  {
+   "say": "Within a week",
+   "place": "crowd",
+   "subject": "t2",
+   "shot": "wide",
+   "move": "orbitR",
+   "proof": "The square is now full of dancing townsfolk",
+   "acts": [
+    {
+     "who": "t2",
+     "at": 0.0,
+     "motion": "dance",
+     "repeat": 5,
+     "face": "scared"
+    }
+   ],
+   "extra": {
+    "pitch": 10
+   }
+  },
+  {
+   "say": "None of them",
+   "place": "crowd",
+   "subject": "t2",
+   "shot": "close",
+   "move": "push",
+   "proof": "She cries while she dances",
+   "acts": [
+    {
+     "who": "t2",
+     "at": 0.0,
+     "motion": "dance",
+     "repeat": 3,
+     "face": "crying"
+    }
+   ]
+  },
+  {
+   "say": "By August",
+   "place": "crowd",
+   "subject": "t2",
+   "shot": "wide",
+   "move": "craneUp",
+   "proof": "A high view: dancers everywhere",
+   "acts": [
+    {
+     "who": "t2",
+     "at": 0.0,
+     "motion": "dance",
+     "repeat": 5,
+     "face": "crying"
+    }
+   ],
+   "extra": {
+    "pitch": 16,
+    "headWidth": 0.08
+   }
+  },
+  {
+   "say": "The city council",
+   "place": "council",
+   "subject": "co",
+   "shot": "medium",
+   "move": "push",
+   "proof": "A councillor in a fur robe and gold chain frets in a stone hall",
+   "acts": [
+    {
+     "who": "co",
+     "at": 0.0,
+     "face": "nervous",
+     "shake": 0.3
+    }
+   ]
+  },
+  {
+   "say": "the physicians",
+   "place": "council",
+   "subject": "dr",
+   "shot": "two",
+   "move": "orbitL",
+   "proof": "A physician in a black robe and cap thinks it over",
+   "acts": [
+    {
+     "who": "dr",
+     "at": 0.0,
+     "face": "confused"
+    },
+    {
+     "who": "co",
+     "at": 0.0,
+     "face": "nervous"
+    }
+   ],
+   "extra": {
+    "frameX": 0.12
+   }
+  },
+  {
+   "say": "Their verdict",
+   "place": "council",
+   "subject": "dr",
+   "shot": "close",
+   "move": "push",
+   "proof": "The physician holds up a written verdict",
+   "acts": [
+    {
+     "who": "dr",
+     "at": 0.0,
+     "face": "shouting",
+     "hold": {
+      "file": "props/letter.png",
+      "hand": "R",
+      "scale": 0.55
+     },
+     "pose": {
+      "armR": -80
+     }
+    }
+   ]
+  },
+  {
+   "say": "The cure",
+   "place": "council",
+   "subject": "co",
+   "shot": "close",
+   "move": "orbitR",
+   "proof": "The councillor is baffled",
+   "acts": [
+    {
+     "who": "co",
+     "at": 0.0,
+     "face": "confused",
+     "motion": "shrug"
+    }
+   ]
+  },
+  {
+   "say": "More dancing",
+   "place": "council",
+   "subject": "dr",
+   "shot": "medium",
+   "move": "orbitL",
+   "proof": "The physician demonstrates a dance step",
+   "acts": [
+    {
+     "who": "dr",
+     "at": 0.0,
+     "face": "happy",
+     "hold": null,
+     "motion": "dance",
+     "repeat": 2
+    }
+   ]
+  },
+  {
+   "say": "So the council",
+   "place": "hall",
+   "subject": "co2",
+   "shot": "medium",
+   "move": "push",
+   "proof": "The councillor opens the guild hall: GUILD HALL sign, wooden stage",
+   "acts": [
+    {
+     "who": "co2",
+     "at": 0.0,
+     "face": "happy",
+     "motion": "point"
+    }
+   ],
+   "extra": {
+    "frameX": -0.1
+   }
+  },
+  {
+   "say": "and hired musicians",
+   "place": "hall",
+   "subject": "pi",
+   "shot": "medium",
+   "move": "orbitR",
+   "proof": "A piper plays on the stage, music notes above him",
+   "acts": [
+    {
+     "who": "pi",
+     "at": 0.0,
+     "face": "happy",
+     "hold": {
+      "file": "props/pipe.png",
+      "hand": "R",
+      "scale": 0.9
+     },
+     "motion": "play",
+     "repeat": 6
+    }
+   ]
+  },
+  {
+   "say": "to keep everyone",
+   "place": "hall",
+   "subject": "t3",
+   "shot": "wide",
+   "move": "orbitL",
+   "proof": "Dancers dance in front of the stage while the piper plays",
+   "acts": [
+    {
+     "who": "t3",
+     "at": 0.0,
+     "motion": "dance",
+     "repeat": 3,
+     "face": "scared"
+    },
+    {
+     "who": "h1",
+     "at": 0.0,
+     "motion": "dance",
+     "repeat": 3
+    },
+    {
+     "who": "h2",
+     "at": 0.0,
+     "motion": "dance",
+     "repeat": 3
+    },
+    {
+     "who": "pi",
+     "at": 0.0,
+     "motion": "play",
+     "repeat": 4
+    }
+   ]
+  },
+  {
+   "say": "It only made",
+   "place": "hall",
+   "subject": "t3",
+   "shot": "medium",
+   "move": "craneDown",
+   "proof": "A dancer collapses",
+   "acts": [
+    {
+     "who": "t3",
+     "at": 0.0,
+     "face": "crying",
+     "motion": "fall",
+     "hold": null
+    },
+    {
+     "who": "h1",
+     "at": 0.0,
+     "motion": "dance",
+     "repeat": 2
+    },
+    {
+     "who": "h2",
+     "at": 0.0,
+     "motion": "dance",
+     "repeat": 2
+    }
+   ]
+  },
+  {
+   "say": "You see",
+   "place": "council",
+   "subject": "dr",
+   "shot": "medium",
+   "move": "orbitR",
+   "proof": "The physician shrugs, embarrassed: wrong diagnosis",
+   "acts": [
+    {
+     "who": "co",
+     "at": 0.0,
+     "face": "shocked"
+    },
+    {
+     "who": "dr",
+     "at": 0.0,
+     "face": "nervous",
+     "motion": "shrug"
+    }
+   ]
+  },
+  {
+   "say": "Historians think",
+   "place": "square",
+   "subject": "t1",
+   "shot": "wide",
+   "move": "orbitL",
+   "proof": "A tired woman by empty market stalls, weary townsfolk passing",
+   "acts": [
+    {
+     "who": "t1",
+     "at": 0.0,
+     "face": "sad",
+     "pose": {
+      "armL": 0,
+      "armR": 0,
+      "legL": 0,
+      "legR": 0,
+      "body": 0,
+      "head": 0
+     }
+    }
+   ]
+  },
+  {
+   "say": "and people believed",
+   "place": "square",
+   "subject": "t1",
+   "shot": "medium",
+   "move": "craneDown",
+   "proof": "She looks up at the sky in fear",
+   "acts": [
+    {
+     "who": "t1",
+     "at": 0.0,
+     "face": "scared",
+     "motion": "cower"
+    }
+   ],
+   "extra": {
+    "pitch": 14
+   }
+  },
+  {
+   "say": "Fear did",
+   "place": "square",
+   "subject": "t1",
+   "shot": "close",
+   "move": "push",
+   "proof": "Her frightened face, shaking",
+   "acts": [
+    {
+     "who": "t1",
+     "at": 0.0,
+     "face": "scared",
+     "shake": 0.6
+    }
+   ]
+  },
+  {
+   "say": "So the council",
+   "place": "hall",
+   "subject": "co2",
+   "shot": "medium",
+   "move": "orbitR",
+   "proof": "The councillor bans the music; the piper lowers his pipe",
+   "acts": [
+    {
+     "who": "co2",
+     "at": 0.0,
+     "face": "angry",
+     "motion": "point"
+    },
+    {
+     "who": "pi",
+     "at": 0.0,
+     "face": "nervous",
+     "hold": {
+      "file": "props/pipe.png",
+      "hand": "R",
+      "scale": 0.9
+     },
+     "pose": {
+      "armL": 0,
+      "armR": 0
+     }
+    },
+    {
+     "who": "t3",
+     "at": 0.0,
+     "pose": {
+      "spin": 0
+     },
+     "face": "tired"
+    }
+   ],
+   "extra": {
+    "frameX": -0.1
+   }
+  },
+  {
+   "say": "and sent the",
+   "place": "hill",
+   "subject": "t4",
+   "shot": "wide",
+   "move": "orbitL",
+   "proof": "Dancers walk up a green hill to a small stone chapel",
+   "acts": [
+    {
+     "who": "t4",
+     "at": 0.0,
+     "face": "tired",
+     "to": [
+      0.4,
+      0.05,
+      -1.6
+     ],
+     "walk": true,
+     "over": 1.6
+    },
+    {
+     "who": "m1",
+     "at": 0.0,
+     "to": [
+      -1.8,
+      0.05,
+      -2.6
+     ],
+     "walk": true,
+     "over": 1.6
+    },
+    {
+     "who": "m2",
+     "at": 0.0,
+     "to": [
+      2.4,
+      0.05,
+      -2.8
+     ],
+     "walk": true,
+     "over": 1.6
+    }
+   ],
+   "extra": {
+    "pitch": 9
+   }
+  },
+  {
+   "say": "to the shrine",
+   "place": "hill",
+   "anchor": [
+    0.5,
+    3.2,
+    -9
+   ],
+   "move": "craneUp",
+   "proof": "The chapel with its cross and the ST VITUS sign",
+   "extra": {
+    "distance": 15,
+    "fov": 38,
+    "yaw": -12,
+    "pitch": 3,
+    "frameY": 0.0
+   }
+  },
+  {
+   "say": "in red shoes",
+   "place": "hill",
+   "subject": "t4",
+   "shot": "medium",
+   "move": "push",
+   "proof": "She holds a pair of red shoes with crosses",
+   "acts": [
+    {
+     "who": "t4",
+     "at": 0.0,
+     "face": "nervous",
+     "hold": {
+      "file": "props/red_shoes.png",
+      "hand": "R",
+      "scale": 0.7
+     },
+     "pose": {
+      "armR": -70
+     }
+    }
+   ]
+  },
+  {
+   "say": "And there",
+   "place": "hill",
+   "subject": "t4",
+   "shot": "close",
+   "move": "orbitR",
+   "proof": "She stands still at last; relief on her face",
+   "acts": [
+    {
+     "who": "t4",
+     "at": 0.0,
+     "face": "tired"
+    },
+    {
+     "who": "t4",
+     "at": 0.7,
+     "face": "happy"
+    }
+   ]
+  },
+  {
+   "say": "The cure for",
+   "place": "hill",
+   "subject": "t4",
+   "shot": "wide",
+   "move": "orbitL",
+   "proof": "Everyone stands calm on the hill; nobody dances",
+   "acts": [
+    {
+     "who": "t4",
+     "at": 0.0,
+     "face": "happy",
+     "hold": null,
+     "pose": {
+      "armR": 0
+     }
+    }
+   ]
+  },
+  {
+   "say": "It was believing",
+   "place": "hill",
+   "subject": "t4",
+   "shot": "close",
+   "move": "craneUp",
+   "proof": "Her peaceful smile",
+   "acts": [
+    {
+     "who": "t4",
+     "at": 0.0,
+     "face": "happy",
+     "motion": "nod"
+    }
+   ]
+  }
+ ]
+}
