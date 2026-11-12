@@ -1,0 +1,175 @@
+{
+ "version": 2,
+ "name": "lustig",
+ "size": [
+  427,
+  1000
+ ],
+ "feetY": 992,
+ "head": {
+  "center": [
+   210.5,
+   330.0
+  ],
+  "diameter": 406.0
+ },
+ "skin": "#fbf7e8",
+ "layers": {
+  "legL": {
+   "file": "legL.png",
+   "box": [
+    106,
+    791,
+    60,
+    201
+   ],
+   "pivot": [
+    148.5,
+    799.0
+   ]
+  },
+  "legR": {
+   "file": "legR.png",
+   "box": [
+    269,
+    794,
+    66,
+    201
+   ],
+   "pivot": [
+    278.5,
+    803.0
+   ]
+  },
+  "body": {
+   "file": "body.png",
+   "box": [
+    23,
+    439,
+    390,
+    365
+   ],
+   "pivot": [
+    213.5,
+    801.0
+   ]
+  },
+  "head": {
+   "file": "head.png",
+   "box": [
+    5,
+    5,
+    417,
+    463
+   ],
+   "pivot": [
+    218.0,
+    468.0
+   ]
+  }
+ },
+ "order": [
+  "legL",
+  "legR",
+  "body",
+  "head"
+ ],
+ "faces": {
+  "happy": {
+   "file": "faces/happy.png",
+   "size": [
+    263,
+    303
+   ],
+   "pivot": [
+    130.0,
+    291.0
+   ],
+   "center": [
+    130.0,
+    207.0
+   ],
+   "diameter": 247.0
+  },
+  "nervous": {
+   "file": "faces/nervous.png",
+   "size": [
+    264,
+    303
+   ],
+   "pivot": [
+    130.0,
+    291.6
+   ],
+   "center": [
+    130.0,
+    207.0
+   ],
+   "diameter": 249.0
+  },
+  "shocked": {
+   "file": "faces/shocked.png",
+   "size": [
+    264,
+    303
+   ],
+   "pivot": [
+    130.0,
+    283.0
+   ],
+   "center": [
+    130.0,
+    199.0
+   ],
+   "diameter": 247.0
+  },
+  "shouting": {
+   "file": "faces/shouting.png",
+   "size": [
+    261,
+    301
+   ],
+   "pivot": [
+    128.0,
+    290.3
+   ],
+   "center": [
+    128.0,
+    207.0
+   ],
+   "diameter": 245.0
+  },
+  "confused": {
+   "file": "faces/confused.png",
+   "size": [
+    261,
+    301
+   ],
+   "pivot": [
+    128.0,
+    282.3
+   ],
+   "center": [
+    128.0,
+    199.0
+   ],
+   "diameter": 245.0
+  },
+  "neutral": {
+   "file": "faces/neutral.png",
+   "size": [
+    263,
+    302
+   ],
+   "pivot": [
+    129.5,
+    289.3
+   ],
+   "center": [
+    129.5,
+    205.0
+   ],
+   "diameter": 248.0
+  }
+ }
+}
