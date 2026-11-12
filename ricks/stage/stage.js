@@ -19,7 +19,7 @@ const GLIDE_S = 0.8, DISSOLVE_S = 8 / 30;
 const CAPTION_Y = 1350, CAPTION_PX = 70;
 
 let FPS = 30, SCALE = 1, S;
-let renderer, scene, camera, setRoot, sun, hemi, skyMesh, backdrop, inkPass;
+let renderer, scene, camera, setRoot, sun, hemi, skyMesh, backdrop, inkPass, backdrops = [];
 let out, octx;                        // 2D output canvas (render + captions)
 const chars = {}, shots = [], anchors = [];
 const texCache = new Map();
@@ -106,6 +106,11 @@ async function loadRig(c) {
   rig.faces = rig.faces || {};
   for (const k of Object.keys(rig.faces)) rig.faces[k].img = await loadImage(dir + '/' + rig.faces[k].file);
   if (c.hat) { const h = typeof c.hat === 'string' ? { file: c.hat } : c.hat; rig.hat = { img: await loadImage(h.file), scale: h.scale ?? 1.05, sit: h.sit ?? 0.2, dx: h.dx ?? 0 }; }   // separate hat cutout, drawn over the head
+  for (const n of ['armL', 'armR']) { const L = rig.layers[n]; if (!L || !L.img) continue;      // hand tip = the arm pixel farthest from the shoulder
+    const cc = document.createElement('canvas'); cc.width = L.img.width; cc.height = L.img.height; const cg = cc.getContext('2d'); cg.drawImage(L.img, 0, 0);
+    const d = cg.getImageData(0, 0, cc.width, cc.height).data; let best = -1, tip = [0, 0];
+    for (let y = 0; y < cc.height; y += 2) for (let x = 0; x < cc.width; x += 2) if (d[(y * cc.width + x) * 4 + 3] > 120) { const dx = L.box[0] + x - L.pivot[0], dy = L.box[1] + y - L.pivot[1], q = dx * dx + dy * dy; if (q > best) { best = q; tip = [dx, dy]; } }
+    L.tip = tip; }
   rig.order = (rig.order || ['legL', 'legR', 'armL', 'armR', 'body', 'head']).filter(k => rig.layers[k]);
   if (!rig.layers.body || !rig.layers.head) throw new Error(dir + ': rig needs at least body and head layers');
   return rig;
@@ -144,7 +149,7 @@ function makeCharacter(c, rig, actions) {
   const bodyW = rig.layers.body.box[2] * upp; blob.scale.set(bodyW * 1.9, bodyW * 0.8, 1);
 
   // channels
-  const pose = {}, keys = { armL: [], armR: [], legL: [], legR: [], head: [], body: [], spin: [] }, faceKeys = [], posKeys = [], flips = [], hops = [], shakes = [];
+  const pose = {}, keys = { armL: [], armR: [], legL: [], legR: [], head: [], body: [], spin: [] }, faceKeys = [], posKeys = [], flips = [], hops = [], shakes = [], holds = [], heldImgs = {};
   for (const a of actions) {
     const ease = a.ease ?? 0.3;
     for (const ch of Object.keys(a.pose || {})) if (keys[ch]) keys[ch].push({ t: a.t, v: a.pose[ch], ease });
@@ -153,10 +158,13 @@ function makeCharacter(c, rig, actions) {
     if (a.flip !== undefined) flips.push({ t: a.t, v: !!a.flip });
     if (a.hop) hops.push({ t: a.t, h: a.hop });
     if (a.shake) shakes.push({ t: a.t, d: a.shake });
+    if (a.hold !== undefined) holds.push({ t: a.t, h: a.hold });        // {file, hand: 'L'|'R', scale} or null to let go
   }
   for (const ch of Object.keys(keys)) pose[ch] = makeChannel((c.pose && c.pose[ch]) || 0, keys[ch]);
   faceKeys.sort((a, b) => a.t - b.t); posKeys.sort((a, b) => a.t - b.t);
   { let p = (c.pos || [0, 0, 0]).slice(); for (const pk of posKeys) { pk.from = p.slice(); p = pk.to.slice(); } }
+  holds.sort((a, b) => a.t - b.t);
+  for (const h of holds) if (h.h && !heldImgs[h.h.file]) heldImgs[h.h.file] = await loadImage(h.h.file);
   const seed = hash(c.id), blinkP = 3.1 + 1.3 * seed;
 
   const state = (t) => {
@@ -181,7 +189,8 @@ function makeCharacter(c, rig, actions) {
       body: pose.body(t), spin: pose.spin(t),
     };
     const pop = 1 + 0.07 * (1 - smoothstep(0, 0.14, t - st.faceT));           // a face change lands with a small pop
-    const blink = idle && rig.eyes && st.face === 'default' && ((t + seed * 7) % blinkP) < 0.12;
+    const blinkNow = idle && ((t + seed * 7) % blinkP) < 0.12, blink = blinkNow && rig.eyes && st.face === 'default';
+    let held = null; for (const h of holds) { if (t < h.t) break; held = h.h; }
     const bp = rig.layers.body.pivot;
     g.setTransform(1, 0, 0, 1, 0, 0); g.clearRect(0, 0, cv.width, cv.height);
     for (const name of rig.order) {
@@ -195,7 +204,12 @@ function makeCharacter(c, rig, actions) {
       if (name === 'head') {
         const F = rig.faces[st.face];
         g.scale(pop, pop);
-        if (F) { const fk = rig.head.diameter / F.diameter; g.save(); g.scale(fk, fk); g.drawImage(F.img, -F.pivot[0], -F.pivot[1]); g.restore(); }
+        if (F) { const fk = rig.head.diameter / F.diameter; g.save(); g.scale(fk, fk); g.drawImage(F.img, -F.pivot[0], -F.pivot[1]);
+          if (blinkNow && F.eyes) for (const e of F.eyes) {                      // blink on a face image: lid over each detected eye
+            const ex = e.c[0] - F.pivot[0], ey = e.c[1] - F.pivot[1];
+            g.fillStyle = F.skin || '#f4f1e8'; g.beginPath(); g.ellipse(ex, ey, e.r * 1.25, e.r * 1.3, 0, 0, 6.283); g.fill();
+            g.strokeStyle = LINE; g.lineWidth = Math.max(3, e.r * 0.3); g.lineCap = 'round'; g.beginPath(); g.moveTo(ex - e.r, ey + e.r * 0.15); g.lineTo(ex + e.r, ey + e.r * 0.15); g.stroke(); }
+          g.restore(); }
         else {
           g.drawImage(L.img, L.box[0] - L.pivot[0], L.box[1] - L.pivot[1]);
           if (blink) for (const e of rig.eyes) {
@@ -206,7 +220,9 @@ function makeCharacter(c, rig, actions) {
         }
         if (rig.hat) { const d = rig.head.diameter, cx = rig.head.center[0] - L.pivot[0], top = rig.head.center[1] - d / 2 - L.pivot[1], w = d * rig.hat.scale, hh = w * rig.hat.img.height / rig.hat.img.width;
           g.drawImage(rig.hat.img, cx - w / 2 + rig.hat.dx * d, top + rig.hat.sit * d - hh, w, hh); }
-      } else g.drawImage(L.img, L.box[0] - L.pivot[0], L.box[1] - L.pivot[1]);
+      } else { g.drawImage(L.img, L.box[0] - L.pivot[0], L.box[1] - L.pivot[1]);
+        if (held && L.tip && name === (held.hand === 'L' ? 'armL' : 'armR')) { const im = heldImgs[held.file], w = rig.head.diameter * (held.scale ?? 0.5), hh = w * im.height / im.width;
+          g.save(); g.translate(L.tip[0], L.tip[1]); g.rotate(-rad((ang[name] || 0) + ang.body + ang.spin) + rad(held.rot || 0)); g.drawImage(im, -w / 2, -hh / 2, w, hh); g.restore(); } }
     }
     tex.needsUpdate = true;
     const bob = walk * Math.abs(wph) * 0.02 * (c.height || 1.8), jx = st.shake * 0.012 * (c.height || 1.8) * Math.sin(t * 80);
@@ -339,7 +355,7 @@ function applyMood(P, focus) {
   col.needsUpdate = true; scene.fog.color.copy(P.hor);
   for (const ch of Object.values(chars)) ch.mesh.material.color.copy(P.tint);
   setRoot.traverse(o => { if (o.userData.tint) o.material.color.copy(P.tint); });
-  if (backdrop) backdrop.material.color.copy(P.tint);
+  for (const b of backdrops) b.material.color.copy(P.tint);
 }
 
 // ------------------------------------------------------------ ink outline on the 3D set
@@ -398,14 +414,15 @@ window.setup = async (spec) => {
   ground.rotation.x = -Math.PI / 2; ground.receiveShadow = true; ground.layers.enable(1); setRoot.add(ground);
   for (const p of (spec.props || [])) setRoot.add(await makeProp(p));
 
-  if (spec.backdrop && spec.backdrop.image) {                // flat painting far behind the set, blurred, wrapped around the world
-    const b = spec.backdrop, img = await loadImage(b.image), bw = 2048, bh = Math.round(2048 * img.height / img.width);
+  backdrops = [];
+  for (const b of [].concat(spec.backdrop || []).filter(x => x && x.image)) {   // flat painting(s) far behind the set; several = one per place, picked by camera x ("near": [x0, x1])
+    const img = await loadImage(b.image), bw = 2048, bh = Math.round(2048 * img.height / img.width);
     const cv = canvasOf(bw, bh), g = cv.getContext('2d'); g.filter = `blur(${b.blur ?? 5}px)`; g.drawImage(img, 0, 0, bw, bh); g.filter = 'none';
     g.globalCompositeOperation = 'destination-out'; const fade = g.createLinearGradient(0, 0, 0, bh * 0.22); fade.addColorStop(0, 'rgba(0,0,0,1)'); fade.addColorStop(1, 'rgba(0,0,0,0)'); g.fillStyle = fade; g.fillRect(0, 0, bw, bh * 0.22);
     const t = new THREE.CanvasTexture(cv); t.colorSpace = THREE.SRGBColorSpace; t.wrapS = THREE.MirroredRepeatWrapping; t.repeat.set(b.repeat || 4, 1);
     const R = b.distance || 170, hgt = b.height || (2 * Math.PI * R / (b.repeat || 4)) * (img.height / img.width);
     backdrop = new THREE.Mesh(new THREE.CylinderGeometry(R, R, hgt, 64, 1, true), new THREE.MeshBasicMaterial({ map: t, transparent: true, side: THREE.BackSide, fog: false, toneMapped: false, depthWrite: false }));
-    backdrop.userData.y = (b.y ?? -hgt * 0.03) + hgt / 2; backdrop.renderOrder = -5; setRoot.add(backdrop);
+    backdrop.userData.y = (b.y ?? -hgt * 0.03) + hgt / 2; backdrop.userData.near = b.near || null; backdrop.renderOrder = -5; setRoot.add(backdrop); backdrops.push(backdrop);
   }
 
   // characters and their actions (times already absolute)
@@ -475,7 +492,8 @@ function setCamera(p) { camera.position.copy(p.pos); camera.quaternion.copy(p.qu
 function drawScene() {
   for (const ch of Object.values(chars)) ch.mesh.rotation.y = Math.atan2(camera.position.x - ch.mesh.position.x, camera.position.z - ch.mesh.position.z);
   skyMesh.position.copy(camera.position);
-  if (backdrop) backdrop.position.set(camera.position.x, backdrop.userData.y, camera.position.z);
+  { let act = backdrops.find(b => b.userData.near && camera.position.x >= b.userData.near[0] && camera.position.x <= b.userData.near[1]) || backdrops.find(b => !b.userData.near) || backdrops[0];
+    for (const b of backdrops) { b.visible = b === act; if (b.visible) b.position.set(camera.position.x, b.userData.y, camera.position.z); } }
   const cut = Object.values(chars).map(c => c.mesh);
   if (inkPass) {                                               // normals + depth of the set only
     inkPass.mat.uniforms.near.value = camera.near; inkPass.mat.uniforms.far.value = camera.far;
@@ -532,7 +550,7 @@ window.probeFrame = (i, quality = 0.9) => {
     const hw = chars[s.target].headAt(t), ndc = hw.clone().project(camera);
     const onScreen = Math.abs(ndc.x) <= 1 && Math.abs(ndc.y) <= 1 && ndc.z < 1;
     const ray = new THREE.Raycaster(cp.clone(), hw.clone().sub(cp).normalize(), 0.05, cp.distanceTo(hw) - 0.05); ray.layers.set(1);
-    const hit = ray.intersectObjects(setRoot.children, true).find(h => h.object !== skyMesh && h.object !== backdrop);
+    const hit = ray.intersectObjects(setRoot.children, true).find(h => h.object !== skyMesh && !backdrops.includes(h.object));
     if (plan.kind === 'none') { if (!onScreen) flags.push('TARGET_OFF_SCREEN'); else if (hit) flags.push('TARGET_HIDDEN_BEHIND_SET'); }
     head = { x: +(ndc.x * 0.5 + 0.5).toFixed(3), y: +(0.5 - ndc.y * 0.5).toFixed(3), onScreen };
   }

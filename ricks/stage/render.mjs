@@ -224,7 +224,7 @@ if (ain.length) {
   const fc = mi && vi ? `[${mi}:a]volume=${mdb}dB,${fade}[m];[${vi}:a][m]amix=inputs=2:duration=longest:normalize=0[a]` : mi ? `[${mi}:a]volume=${mdb}dB,${fade}[a]` : `[${vi}:a]anull[a]`;
   ff.push('-filter_complex', `[0:v]${vf}[v];${fc}`, '-map', '[v]', '-map', '[a]', '-c:a', 'aac', '-b:a', '192k');
 } else ff.push('-vf', vf);
-ff.push('-t', String(dur), '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '18', '-pix_fmt', 'yuv420p', '-movflags', '+faststart', outPath);
+ff.push('-t', String(dur), '-c:v', 'libx264', '-preset', process.env.RICKS_PRESET || 'veryfast', '-crf', process.env.RICKS_CRF || '18', '-pix_fmt', 'yuv420p', '-movflags', '+faststart', outPath);
 const enc = spawn('ffmpeg', ff, { stdio: ['pipe', 'inherit', 'inherit'] });
 enc.on('error', () => fail('ffmpeg is not on PATH'));
 const done = new Promise(r => enc.on('close', r));
