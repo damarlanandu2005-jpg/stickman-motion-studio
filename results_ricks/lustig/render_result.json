@@ -1,0 +1,11 @@
+{
+ "mode": "full",
+ "project": "lustig",
+ "branch": "ricks-stage-kaggle",
+ "gpu": "Tesla T4, 580.178.04\nTesla T4, 580.178.04",
+ "node": "v22.23.4",
+ "total_s": 0.1,
+ "result": {
+  "error": "no result.json: [Errno 2] No such file or directory: '/tmp/ricks_out/result.json'"
+ }
+}
