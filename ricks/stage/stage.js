@@ -239,11 +239,12 @@ async function makeProp(p) {
     const h = p.h || 2.6; add(new THREE.CylinderGeometry(0.06, 0.06, h, 8), await surface(p.color || '#5a3a2a'), h / 2);
   } else if (p.type === 'desk') {
     // office desk: top, two drawer pedestals, drawer fronts and handles, leather blotter, papers, lamp, inkwell. p.w = width
-    const w = p.w || 3, d = w * 0.42, h = w * 0.27, wood = await surface(p.color || '#6b3f2a', p.texture, p.repeat), dark = await surface('#3a2230'), brass = await surface('#c9a24a'), paper = await surface('#efe6d0'), green = await surface('#2f5a4a');
+    const w = p.w || 3, d = w * 0.42, h = w * 0.27, lift = (m, c) => { m = m.clone(); if (m.emissive) m.emissive.set(c); return m; }, wood = lift(await surface(p.color || '#6b3f2a', p.texture, p.repeat), '#3a2026'), dark = lift(await surface('#3a2230'), '#2a1a28'), brass = await surface('#c9a24a'), paper = await surface('#efe6d0'), green = await surface('#2f5a4a');
     const top = add(new THREE.BoxGeometry(w, h * 0.09, d), wood, h); 
     for (const sx of [-1, 1]) { const ped = add(new THREE.BoxGeometry(w * 0.3, h * 0.96, d * 0.92), wood, h * 0.48); ped.position.x = sx * w * 0.33;
       for (let i = 0; i < 3; i++) { const dr = add(new THREE.BoxGeometry(w * 0.26, h * 0.26, 0.03), dark, h * (0.18 + i * 0.3)); dr.position.set(sx * w * 0.33, h * (0.18 + i * 0.3), d * 0.47);
         const hd = add(new THREE.BoxGeometry(w * 0.07, h * 0.035, 0.05), brass, h * (0.18 + i * 0.3)); hd.position.set(sx * w * 0.33, h * (0.18 + i * 0.3), d * 0.5); } }
+    const rp = add(new THREE.BoxGeometry(w * 0.36, h * 0.9, 0.03), wood, h * 0.5); rp.position.z = -d * 0.44;
     const bl = add(new THREE.BoxGeometry(w * 0.34, 0.02, d * 0.5), green, h * 1.05); bl.position.z = d * 0.08;
     const pp = add(new THREE.BoxGeometry(w * 0.16, 0.012, d * 0.3), paper, h * 1.075); pp.position.set(-w * 0.05, h * 0.0 + h * 1.075, d * 0.1); pp.rotation.y = 0.2;
     const lb = add(new THREE.CylinderGeometry(w * 0.03, w * 0.04, h * 0.05, 12), brass, h * 1.07); lb.position.set(w * 0.38, h * 1.07, -d * 0.2);

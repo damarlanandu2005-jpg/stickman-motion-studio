@@ -482,6 +482,62 @@
    ],
    "scale": 1.0,
    "color": "#4f8f4a"
+  },
+  {
+   "type": "box",
+   "pos": [
+    7.0,
+    0,
+    -2.5
+   ],
+   "size": [
+    0.55,
+    0.25,
+    0.38
+   ],
+   "color": "#4f8f5a"
+  },
+  {
+   "type": "box",
+   "pos": [
+    7.7,
+    0,
+    -2.64
+   ],
+   "size": [
+    0.55,
+    0.25,
+    0.38
+   ],
+   "color": "#4f8f5a"
+  },
+  {
+   "type": "box",
+   "pos": [
+    7.35,
+    0,
+    -2.57
+   ],
+   "size": [
+    0.55,
+    0.25,
+    0.38
+   ],
+   "color": "#4f8f5a"
+  },
+  {
+   "type": "box",
+   "pos": [
+    7.35,
+    0.25,
+    -2.6
+   ],
+   "size": [
+    0.55,
+    0.25,
+    0.38
+   ],
+   "color": "#5fa56a"
   }
  ],
  "shots": [
@@ -530,6 +586,41 @@
    "rise": -1.2
   },
   {
+   "start": "say:Built for",
+   "anchor": [
+    0,
+    24,
+    -48
+   ],
+   "distance": 52,
+   "fov": 40,
+   "yaw": 26,
+   "pitch": 4,
+   "zoom": 4,
+   "orbit": -7,
+   "rise": 6,
+   "frameY": 0.0,
+   "out": "dissolve",
+   "outDur": 0.4
+  },
+  {
+   "start": "say:and many",
+   "target": "ps",
+   "headWidth": 0.2,
+   "yaw": -8,
+   "zoom": 5,
+   "actions": [
+    {
+     "at": 0.0,
+     "who": "ps",
+     "face": "shocked",
+     "shake": 0.3
+    }
+   ],
+   "orbit": 3.2,
+   "rise": 1.2
+  },
+  {
    "start": "say:In nineteen",
    "target": "lh",
    "headWidth": 0.15,
@@ -569,7 +660,7 @@
    "rise": 1.2
   },
   {
-   "start": "say:He told them",
+   "start": "say:On fake",
    "target": "lh",
    "headWidth": 0.14,
    "yaw": -10,
@@ -654,6 +745,24 @@
    "rise": -1.2
   },
   {
+   "start": "say:All seven",
+   "anchor": [
+    0,
+    16,
+    -48
+   ],
+   "distance": 30,
+   "fov": 42,
+   "yaw": -18,
+   "pitch": -4,
+   "zoom": 4,
+   "orbit": 6,
+   "rise": 8,
+   "frameY": 0.0,
+   "out": "dissolve",
+   "outDur": 0.4
+  },
+  {
    "start": "say:A dealer",
    "target": "ph",
    "headWidth": 0.2,
@@ -674,6 +783,23 @@
    ],
    "orbit": -3.2,
    "rise": -0.8
+  },
+  {
+   "start": "say:and handed",
+   "target": "ph",
+   "headWidth": 0.2,
+   "yaw": 10,
+   "zoom": 5,
+   "actions": [
+    {
+     "at": 0.0,
+     "who": "ph",
+     "face": "happy",
+     "hop": 0.14
+    }
+   ],
+   "orbit": -3.2,
+   "rise": -1.2
   },
   {
    "start": "say:You see",
@@ -738,6 +864,34 @@
    "outDur": 0.5,
    "orbit": 3.2,
    "rise": 0.8
+  },
+  {
+   "start": "say:Lustig left",
+   "target": "lh",
+   "headWidth": 0.14,
+   "yaw": 8,
+   "zoom": 3,
+   "pan": [
+    10,
+    0
+   ],
+   "pitch": 6,
+   "actions": [
+    {
+     "at": 0.0,
+     "who": "lh",
+     "face": "happy",
+     "to": [
+      73.5,
+      0.05,
+      1.5
+     ],
+     "walk": true,
+     "over": 1.8
+    }
+   ],
+   "orbit": -4.2,
+   "rise": 1.2
   },
   {
    "start": "say:So six months",
@@ -852,18 +1006,105 @@
    "rise": 1.2
   },
   {
-   "start": "say:tower is still",
+   "start": "say:and borrowed",
+   "target": "ls2",
+   "headWidth": 0.2,
+   "yaw": -10,
+   "zoom": 5,
+   "actions": [
+    {
+     "at": 0.0,
+     "who": "ls2",
+     "face": "happy",
+     "hop": 0.1
+    }
+   ],
+   "orbit": -3.2,
+   "rise": 1.2
+  },
+  {
+   "start": "say:Capone rewarded",
+   "target": "ls2",
+   "headWidth": 0.18,
+   "yaw": 12,
+   "zoom": 4,
+   "actions": [
+    {
+     "at": 0.0,
+     "who": "ls2",
+     "face": "shocked",
+     "pose": {
+      "armL": 50,
+      "armR": -50
+     }
+    }
+   ],
+   "orbit": 4.2,
+   "rise": 0.8
+  },
+  {
+   "start": "say:In the end",
+   "target": "ls2",
+   "headWidth": 0.14,
+   "yaw": -6,
+   "zoom": 3,
+   "pitch": 8,
+   "actions": [
+    {
+     "at": 0.0,
+     "who": "ls2",
+     "face": "nervous",
+     "shake": 0.5
+    }
+   ],
+   "orbit": -4.2,
+   "rise": -1.2
+  },
+  {
+   "start": "say:he got twenty",
+   "target": "ls2",
+   "headWidth": 0.26,
+   "yaw": 8,
+   "zoom": 6,
+   "actions": [
+    {
+     "at": 0.0,
+     "who": "ls2",
+     "face": "shocked"
+    }
+   ],
+   "orbit": 3.2,
+   "rise": -1.2
+  },
+  {
+   "start": "say:And the Eiffel",
    "anchor": [
     0,
-    20,
+    16,
+    -48
+   ],
+   "distance": 40,
+   "fov": 38,
+   "yaw": -14,
+   "pitch": 2,
+   "zoom": 4,
+   "orbit": 9,
+   "rise": 9,
+   "frameY": 0.0
+  },
+  {
+   "start": "say:Still standing",
+   "anchor": [
+    0,
+    22,
     -48
    ],
    "distance": 60,
    "fov": 38,
    "yaw": 18,
    "pitch": 2,
-   "orbit": -10,
-   "rise": 14,
+   "orbit": -8,
+   "rise": 10,
    "zoom": 2,
    "frameY": 0.0
   }
