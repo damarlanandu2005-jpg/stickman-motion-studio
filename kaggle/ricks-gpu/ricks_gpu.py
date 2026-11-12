@@ -35,6 +35,10 @@ if FORCE: cmd += " --force"
 t = time.time(); sh(cmd, timeout=40000, show=4000, env=env); rep["total_s"] = round(time.time() - t, 1)
 try: rep["result"] = json.load(open(OUT + "/result.json"))
 except Exception as e: rep["result"] = {"error": "no result.json: " + str(e)[:120]}
+big = OUT + "/out.mp4"                       # git refuses files over 100 MB: re-encode the render smaller when needed
+if os.path.exists(big) and os.path.getsize(big) > 90e6:
+    sh("ffmpeg -v error -y -i %s -c:v libx264 -crf 24 -preset medium -pix_fmt yuv420p -c:a copy -movflags +faststart %s/small.mp4 && mv %s/small.mp4 %s" % (big, OUT, OUT, big), timeout=1800)
+    rep["compressed_mb"] = round(os.path.getsize(big) / 1e6, 1) if os.path.exists(big) else None
 for f in glob.glob(OUT + "/out_stills/*") + glob.glob(OUT + "/*.mp4") + glob.glob(OUT + "/*.json") + glob.glob(OUT + "/log.txt"):
     shutil.copy(f, W)
 json.dump(rep, open(W + "/render_result.json", "w"), indent=1)
