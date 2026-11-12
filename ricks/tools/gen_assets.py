@@ -51,6 +51,11 @@ TEXTURES = {
  "cobble": "rounded warm grey-beige Paris cobblestones of slightly different sizes with soft painted highlights, thin dark plum lines between the stones",
  "roof": "blue-grey zinc roof panels of a Paris rooftop with thin raised seams, soft painted highlights, thin dark plum lines",
 }
+ARMS = ("Redraw this exact same character: same head, same hat, same moustache, same face, same outfit colours, same art style, same proportions, "
+ "same legs. Change ONLY the arms. The torso must be a plain rounded bean shape with no sleeves. The arms are two thin solid black stick lines "
+ "(no clothing, no sleeves, no cuffs) that leave the shoulder points and angle outward and downward, well away from the torso, with a clear gap of "
+ "plain backdrop between each arm and the torso along their whole length, each ending in a small round black dot hand. Whole figure visible from the "
+ "top of the head to the tips of the stick legs, front view, centered, solid uniform light warm-grey backdrop, no shadow, no text, no extra characters.")
 SKY = "a soft Paris morning sky with a few small clouds"
 FAR = "a hazy Paris skyline of cream stone buildings and the iron lattice Eiffel Tower standing tall in the middle distance"
 
@@ -96,6 +101,11 @@ def main():
         if data and first is None: first = data
         if data:
             gen(who + "_sheet", [img(data), SHEET.format(neutral=CAST[who]["neutral"])], "3:2", raw)
+    if "arms" in only:
+        for who in CAST:
+            src = os.path.join(raw, who + "_character.png")
+            if os.path.exists(src):
+                gen(who + "_character_arms", [img(open(src, "rb").read()), ARMS], "2:3", raw); time.sleep(15)
     if "textures" in only or any(o.startswith("tex_") for o in only):
         for k, v in TEXTURES.items():
             if "textures" in only or ("tex_" + k) in only:
