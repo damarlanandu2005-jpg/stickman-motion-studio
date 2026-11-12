@@ -41,7 +41,7 @@ jobs:
           mkdir -p models
           for F in kokoro-v1.0.onnx voices-v1.0.bin; do curl -sSL --retry 4 -o "models/$F" "https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/$F"; done
           ls -la models | tee "ricks/projects/$IN_PROJECT/audio/voice_log.txt"
-          python tools/make_voice.py "ricks/projects/$IN_PROJECT/audio/script.txt" "ricks/projects/$IN_PROJECT/audio" models am_fenrir 1.2 2>&1 | tee -a "ricks/projects/$IN_PROJECT/audio/voice_log.txt"
+          python tools/make_voice.py "ricks/projects/$IN_PROJECT/audio/script.txt" "ricks/projects/$IN_PROJECT/audio" models am_fenrir 1.0 2>&1 | tee -a "ricks/projects/$IN_PROJECT/audio/voice_log.txt"
       - name: Commit results
         if: always()
         env:
