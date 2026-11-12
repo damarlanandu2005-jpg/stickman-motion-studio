@@ -108,7 +108,8 @@ export const makeShip = (o: ShipOpts) => {
   for (let i = 0; i < 4; i++) for (let k = 0; k < 3; k++) barrel(1.6 + i * 0.75, DECK_Y + 0.2, -0.85 + k * 0.85);
   // empty boat cradle on the deck amidships (the lifeboat sat here): two chocks, and two davits on the starboard rail
   bx(B, dk, 0.3, 0.28, 2.4, -3.0, DECK_Y + 0.14, 0); bx(B, dk, 0.3, 0.28, 2.4, -0.2, DECK_Y + 0.14, 0);
-  for (const x of [-3.1, 0.3]) { rod(B, dk, [x, DECK_Y, 3.1], [x, DECK_Y + 2.4, 3.1], 0.13); rod(B, dk, [x, DECK_Y + 2.4, 3.1], [x, DECK_Y + 2.45, 3.9], 0.1); rod(B, rope, [x, DECK_Y + 2.45, 3.9], [x + 0.25, DECK_Y - 0.3, 4.0], 0.03); }  // davit + loose rope
+  const B3 = new Batch();   // the davits are drawn only when the story reaches the missing lifeboat (world.ts shows/hides this group)
+  for (const x of [-3.1, 0.3]) { rod(B3, dk, [x, DECK_Y, 3.1], [x, DECK_Y + 2.4, 3.1], 0.13); rod(B3, dk, [x, DECK_Y + 2.4, 3.1], [x, DECK_Y + 2.45, 3.9], 0.1); rod(B3, rope, [x, DECK_Y + 2.45, 3.9], [x + 0.25, DECK_Y - 0.3, 4.0], 0.03); }  // davit + loose rope
   bx(B, tm({ color: "#c9a874" }), 3.8, 0.02, 2.9, -1.4, DECK_Y + 0.012, 0);                                      // pale patch where the lifeboat sat
   bx(B, trim, 30, 0.1, 0.05, 0, 0.35, 3.57); bx(B, trim, 30, 0.1, 0.05, 0, 0.35, -3.57);                           // second, lower stripe
   // barrels lashed on deck forward (c1 close-up): 3 x 3 with two ropes over them
@@ -122,6 +123,7 @@ export const makeShip = (o: ShipOpts) => {
   cyl(B, tm({ color: "#b9bcc0" }), 0.07, 0.06, 0.12, TX + 0.2, DECK_Y + 0.95, 2.35, 0, 0, 12);                                                    // tin mug
   cyl(B, bar, 0.36, 0.36, 0.7, TX + 0.9, DECK_Y + 0.35, 2.2, 0, 0, 14); cyl(B, hoop, 0.375, 0.375, 0.05, TX + 0.9, DECK_Y + 0.5, 2.2, 0, 0, 14);          // water cask
   B.build(g, true);
+  const dav = new THREE.Group(); B3.build(dav, true); g.add(dav); g.userData.dav = dav;
   return g;
 };
 export const makeBoat = () => {

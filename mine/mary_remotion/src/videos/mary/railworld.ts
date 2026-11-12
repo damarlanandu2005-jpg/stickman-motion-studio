@@ -93,7 +93,7 @@ export class RailWorld {
     // ships: the Mary Celeste in the sea (local origin) or alongside the wharf; the Dei Gratia and the boat only at sea
     const o = ORIGIN[P === "HARBOR" ? "HARBOR" : "SEA"];
     this.mary.visible = outdoor; this.mary.rotation.y = P === "SEA" ? (YAW[id] ?? 0) : 0; this.mary.position.set(o[0], o[1], o[2] + (P === "SEA" ? driftZ(f) : 0));
-    this.dg.visible = P === "SEA"; this.dg.position.set(o[0] - 22, 0, o[2] - 30);
+    this.dg.visible = P === "SEA"; (this.mary.userData.dav as THREE.Object3D).visible = id === "c6a" || id === "c6b"; (this.dg.userData.dav as THREE.Object3D).visible = false; (this.shipA.userData.dav as THREE.Object3D).visible = false; (this.shipB.userData.dav as THREE.Object3D).visible = false; this.dg.position.set(o[0] - 22, 0, o[2] - 30);
     this.boat.visible = P === "SEA"; this.boat.scale.setScalar(1.3); this.boat.position.set(o[0] - 2, 0.2, o[2] + 6.3);
     this.shipA.visible = P === "HARBOR"; this.shipA.position.set(o[0] - 44, 0, o[2] + 0); this.shipB.visible = P === "HARBOR"; this.shipB.position.set(o[0] + 46, 0, o[2] - 1);
     const sunDir = this.shotSun(s, L);
