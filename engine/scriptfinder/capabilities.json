@@ -315,7 +315,7 @@
     50,
     66
    ],
-   "note": "the profile we aim for. Scenes stay 8-10 on purpose: simple scripts need few scenes. Real results so far: rail (19 scenes, difficulty 100) took 7 rounds and ended at 34/70; Bell (9 scenes / 11 shots, scorer guess difficulty 81 and 9 rounds) was stopped by the score rule after 4 rounds, 37 -> 40 -> 44 -> 41 /70 (best 44, not ready). The scorer over-guessed the rounds for Bell, but its 34-39/70 guess was too low for the best round; 4 rounds is one sample, so not sure it is a good fit. Rail was an exception, not the target. Words are per the measured 3.7 words per second (one sample)."
+   "note": "the profile we aim for. Scenes stay 8-10 on purpose: simple scripts need few scenes. Real results so far: rail (19 scenes, difficulty 100) took 7 rounds and ended at 34/70; Bell (9 scenes / 11 shots, scorer guess difficulty 81 and 9 rounds) was stopped by the score rule after 4 rounds, 37 -> 40 -> 44 -> 41 /70 (best 44, not ready). The scorer over-guessed the rounds for Bell, but its 34-39/70 guess was too low for the best round; 4 rounds is one sample, so not sure it is a good fit. Mary Celeste (7 scenes / 19 shots; scorer: difficulty 100, 10 rounds, compat 32-37/70, 'do not start') was built anyway and stopped by the score rule after 5 rounds: 33 -> 41 -> 44 -> 46 -> 45 /70 (best 46, not ready). So the scorer's rounds guess was about 2x too high again, and its compat range was too low (best real 46). Two samples; not sure. Rail was an exception, not the target. Words are per the measured 3.7 words per second (one sample)."
   },
   "explainer": {
    "validated": false,

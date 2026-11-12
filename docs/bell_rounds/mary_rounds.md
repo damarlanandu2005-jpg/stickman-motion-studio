@@ -11,3 +11,7 @@ Round 4 changes: ten-people shot starts at "Genoa" (3 s instead of 1.7 s); wide 
 Round 4: camera 6, story 6, characters 7, set 6, light/post 7, captions 8, polish 6 = 46/70. Not ready. (+2)
  Faults: ship small/cut at left; ten people a thin strip; no visible rowboat; hatch not readable; object in the empty cradle; haze too strong at the end.
 Round 5 changes: ten people in three rows, closer; rowboat rebuilt with gunwales and oars, sailors stand in it; hatch coaming lighter and seen from the side; cradle and davits moved away from the hatch; haze softer.
+Round 5: camera 6, story 7, characters 7, set 6, light/post 7, captions 6, polish 6 = 45/70. Not ready. (-1)
+Score did not rise (33, 41, 44, 46, 45), so the stop rule ended the loop after 5 rounds. Best by the verifier: round 4 (46). Both files kept in results_engine/MaryCeleste/. The verifier is an AI looking at stills; its scores move by about 2-3 between near-identical renders, so the 1-point drop is within noise (not sure). Round 5 has the better ten-people shot and the real rowboat.
+Still wrong: the ten people are small or packed; wide ship shots small or cropped; hull reads as a flat barge; lifeboat-missing shot weak; letterbox of captions ends 30 frames early; no motion check (stills only); placeholder voice, captions and shot cuts must be re-timed for a real voiceover.
+Fixed after round 5 but NOT rendered: davits now drawn only in the lifeboat shots (they stood next to sailors in c3b/c4a).
