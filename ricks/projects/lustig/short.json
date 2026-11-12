@@ -509,14 +509,16 @@
     }
    ],
    "out": "dissolve",
-   "outDur": 0.5
+   "outDur": 0.5,
+   "orbit": 9,
+   "rise": -3
   },
   {
    "start": "say:In nineteen",
    "target": "lh",
    "headWidth": 0.15,
    "yaw": 6,
-   "zoom": 3,
+   "zoom": 5,
    "pan": [
     15,
     0
@@ -527,7 +529,9 @@
      "who": "lh",
      "face": "neutral"
     }
-   ]
+   ],
+   "orbit": -12,
+   "rise": -2
   },
   {
    "start": "say:posing",
@@ -544,14 +548,16 @@
       "armR": -50
      }
     }
-   ]
+   ],
+   "orbit": 9,
+   "rise": 3
   },
   {
    "start": "say:He told them",
    "target": "lh",
    "headWidth": 0.14,
    "yaw": -10,
-   "zoom": 4,
+   "zoom": 5,
    "pan": [
     10,
     0
@@ -568,14 +574,16 @@
     }
    ],
    "out": "dissolve",
-   "outDur": 0.5
+   "outDur": 0.5,
+   "orbit": -12,
+   "rise": 3
   },
   {
    "start": "say:rusting",
    "target": "ls",
    "headWidth": 0.13,
    "yaw": 4,
-   "zoom": 2,
+   "zoom": 5,
    "pan": [
     0,
     -4
@@ -589,7 +597,9 @@
    ],
    "pitch": 9,
    "out": "dissolve",
-   "outDur": 0.5
+   "outDur": 0.5,
+   "orbit": 12,
+   "rise": 2
   },
   {
    "start": "say:too costly",
@@ -604,7 +614,9 @@
      "face": "nervous",
      "shake": 0.4
     }
-   ]
+   ],
+   "orbit": -9,
+   "rise": -3
   },
   {
    "start": "say:and must be sold",
@@ -621,14 +633,16 @@
       "armL": 80
      }
     }
-   ]
+   ],
+   "orbit": 9,
+   "rise": -3
   },
   {
    "start": "say:A dealer",
    "target": "ph",
    "headWidth": 0.2,
    "yaw": 12,
-   "zoom": 4,
+   "zoom": 5,
    "actions": [
     {
      "at": 0.0,
@@ -641,7 +655,9 @@
      "face": "happy",
      "hop": 0.15
     }
-   ]
+   ],
+   "orbit": -9,
+   "rise": -2
   },
   {
    "start": "say:You see",
@@ -659,14 +675,16 @@
       "armR": 0
      }
     }
-   ]
+   ],
+   "orbit": 9,
+   "rise": 3
   },
   {
    "start": "say:never his",
    "target": "lh",
    "headWidth": 0.24,
    "yaw": 12,
-   "zoom": 4,
+   "zoom": 5,
    "actions": [
     {
      "at": 0.0,
@@ -677,14 +695,16 @@
       "armR": -50
      }
     }
-   ]
+   ],
+   "orbit": -9,
+   "rise": 3
   },
   {
    "start": "say:but Poisson",
    "target": "ph",
    "headWidth": 0.22,
    "yaw": -14,
-   "zoom": 4,
+   "zoom": 5,
    "actions": [
     {
      "at": 0.0,
@@ -699,14 +719,16 @@
     }
    ],
    "out": "dissolve",
-   "outDur": 0.5
+   "outDur": 0.5,
+   "orbit": 9,
+   "rise": 2
   },
   {
    "start": "say:So six months",
    "target": "ls2",
    "headWidth": 0.14,
    "yaw": 6,
-   "zoom": 3,
+   "zoom": 5,
    "pan": [
     -12,
     0
@@ -724,14 +746,16 @@
      "over": 1.8
     }
    ],
-   "pitch": 7
+   "pitch": 7,
+   "orbit": -12,
+   "rise": -3
   },
   {
    "start": "say:found new dealers",
    "target": "ps",
    "headWidth": 0.15,
    "yaw": -10,
-   "zoom": 4,
+   "zoom": 5,
    "actions": [
     {
      "at": 0.0,
@@ -745,7 +769,9 @@
      "hop": 0.1
     }
    ],
-   "pitch": 6
+   "pitch": 6,
+   "orbit": 12,
+   "rise": -3
   },
   {
    "start": "say:and sold the Eiffel",
@@ -760,14 +786,16 @@
      "face": "happy",
      "hop": 0.14
     }
-   ]
+   ],
+   "orbit": -9,
+   "rise": -2
   },
   {
    "start": "say:This time",
    "target": "ps2",
    "headWidth": 0.24,
    "yaw": -12,
-   "zoom": 4,
+   "zoom": 5,
    "actions": [
     {
      "at": 0.0,
@@ -775,14 +803,16 @@
      "face": "shouting",
      "shake": 0.5
     }
-   ]
+   ],
+   "orbit": 9,
+   "rise": 3
   },
   {
    "start": "say:He fled",
    "target": "ls2",
    "headWidth": 0.13,
    "yaw": 4,
-   "zoom": 3,
+   "zoom": 5,
    "pan": [
     10,
     0
@@ -801,7 +831,9 @@
      "over": 2.0
     }
    ],
-   "pitch": 7
+   "pitch": 7,
+   "orbit": -12,
+   "rise": 3
   },
   {
    "start": "say:tower is still",
