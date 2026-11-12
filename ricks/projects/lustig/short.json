@@ -805,7 +805,9 @@
     }
    ],
    "orbit": 3.2,
-   "rise": 1.2
+   "rise": 1.2,
+   "out": "dissolve",
+   "outDur": 0.45
   },
   {
    "start": "say:In nineteen",
@@ -923,7 +925,9 @@
     }
    ],
    "orbit": 3.2,
-   "rise": -1.2
+   "rise": -1.2,
+   "out": "dissolve",
+   "outDur": 0.45
   },
   {
    "start": "say:All seven",
@@ -1069,7 +1073,9 @@
     }
    ],
    "orbit": -4.2,
-   "rise": 1.2
+   "rise": 1.2,
+   "out": "dissolve",
+   "outDur": 0.45
   },
   {
    "start": "say:So six months",
@@ -1245,7 +1251,9 @@
    ],
    "pitch": 7,
    "orbit": -4.2,
-   "rise": 1.2
+   "rise": 1.2,
+   "out": "dissolve",
+   "outDur": 0.45
   },
   {
    "start": "say:and borrowed",
@@ -1376,7 +1384,9 @@
     }
    ],
    "orbit": 3.2,
-   "rise": -1.2
+   "rise": -1.2,
+   "out": "dissolve",
+   "outDur": 0.45
   },
   {
    "start": "say:And the Eiffel",
