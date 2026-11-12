@@ -1,0 +1,395 @@
+{
+ "version": 2,
+ "name": "police_b",
+ "size": [
+  644,
+  974
+ ],
+ "feetY": 966,
+ "head": {
+  "center": [
+   318.5,
+   252.0
+  ],
+  "diameter": 436.0
+ },
+ "skin": "#fbf7e8",
+ "layers": {
+  "legL": {
+   "file": "legL.png",
+   "box": [
+    206,
+    739,
+    65,
+    227
+   ],
+   "pivot": [
+    251.0,
+    748.9
+   ]
+  },
+  "legR": {
+   "file": "legR.png",
+   "box": [
+    381,
+    740,
+    72,
+    229
+   ],
+   "pivot": [
+    391.0,
+    749.9
+   ]
+  },
+  "armL": {
+   "file": "armL.png",
+   "box": [
+    6,
+    418,
+    187,
+    229
+   ],
+   "pivot": [
+    174.7,
+    435.4
+   ]
+  },
+  "armR": {
+   "file": "armR.png",
+   "box": [
+    456,
+    424,
+    183,
+    223
+   ],
+   "pivot": [
+    473.2,
+    441.7
+   ]
+  },
+  "body": {
+   "file": "body.png",
+   "box": [
+    144,
+    379,
+    355,
+    374
+   ],
+   "pivot": [
+    321.0,
+    749.4
+   ]
+  },
+  "head": {
+   "file": "head.png",
+   "box": [
+    99,
+    5,
+    440,
+    402
+   ],
+   "pivot": [
+    322.0,
+    407.0
+   ]
+  }
+ },
+ "order": [
+  "legL",
+  "legR",
+  "armL",
+  "armR",
+  "body",
+  "head"
+ ],
+ "faces": {
+  "happy": {
+   "file": "faces/happy.png",
+   "size": [
+    276,
+    266
+   ],
+   "pivot": [
+    137.5,
+    250.6
+   ],
+   "center": [
+    137.5,
+    156.0
+   ],
+   "diameter": 266.0
+  },
+  "nervous": {
+   "file": "faces/nervous.png",
+   "size": [
+    277,
+    266
+   ],
+   "pivot": [
+    138.0,
+    249.9
+   ],
+   "center": [
+    138.0,
+    155.0
+   ],
+   "diameter": 267.0
+  },
+  "shocked": {
+   "file": "faces/shocked.png",
+   "size": [
+    277,
+    266
+   ],
+   "pivot": [
+    138.0,
+    250.9
+   ],
+   "center": [
+    138.0,
+    156.0
+   ],
+   "diameter": 267.0
+  },
+  "shouting": {
+   "file": "faces/shouting.png",
+   "size": [
+    276,
+    264
+   ],
+   "pivot": [
+    137.5,
+    247.6
+   ],
+   "center": [
+    137.5,
+    153.0
+   ],
+   "diameter": 266.0
+  },
+  "confused": {
+   "file": "faces/confused.png",
+   "size": [
+    275,
+    263
+   ],
+   "pivot": [
+    137.0,
+    252.2
+   ],
+   "center": [
+    137.0,
+    158.0
+   ],
+   "diameter": 265.0
+  },
+  "neutral": {
+   "file": "faces/neutral.png",
+   "size": [
+    277,
+    264
+   ],
+   "pivot": [
+    138.0,
+    244.9
+   ],
+   "center": [
+    138.0,
+    150.0
+   ],
+   "diameter": 267.0
+  },
+  "sad": {
+   "file": "faces/sad.png",
+   "size": [
+    267,
+    254
+   ],
+   "pivot": [
+    133.0,
+    238.4
+   ],
+   "center": [
+    133.0,
+    147.0
+   ],
+   "diameter": 257.0
+  },
+  "angry": {
+   "file": "faces/angry.png",
+   "size": [
+    265,
+    253
+   ],
+   "pivot": [
+    132.0,
+    242.7
+   ],
+   "center": [
+    132.0,
+    152.0
+   ],
+   "diameter": 255.0
+  },
+  "scared": {
+   "file": "faces/scared.png",
+   "size": [
+    267,
+    253
+   ],
+   "pivot": [
+    133.0,
+    240.4
+   ],
+   "center": [
+    133.0,
+    149.0
+   ],
+   "diameter": 257.0
+  },
+  "laughing": {
+   "file": "faces/laughing.png",
+   "size": [
+    268,
+    254
+   ],
+   "pivot": [
+    133.5,
+    242.7
+   ],
+   "center": [
+    133.5,
+    151.0
+   ],
+   "diameter": 258.0
+  },
+  "smug": {
+   "file": "faces/smug.png",
+   "size": [
+    269,
+    254
+   ],
+   "pivot": [
+    134.0,
+    245.1
+   ],
+   "center": [
+    134.0,
+    153.0
+   ],
+   "diameter": 259.0
+  },
+  "crying": {
+   "file": "faces/crying.png",
+   "size": [
+    266,
+    253
+   ],
+   "pivot": [
+    132.5,
+    237.0
+   ],
+   "center": [
+    132.5,
+    146.0
+   ],
+   "diameter": 256.0
+  },
+  "scheming": {
+   "file": "faces/scheming.png",
+   "size": [
+    281,
+    268
+   ],
+   "pivot": [
+    140.0,
+    250.3
+   ],
+   "center": [
+    140.0,
+    154.0
+   ],
+   "diameter": 271.0
+  },
+  "embarrassed": {
+   "file": "faces/embarrassed.png",
+   "size": [
+    283,
+    269
+   ],
+   "pivot": [
+    141.0,
+    256.1
+   ],
+   "center": [
+    141.0,
+    159.0
+   ],
+   "diameter": 273.0
+  },
+  "determined": {
+   "file": "faces/determined.png",
+   "size": [
+    283,
+    269
+   ],
+   "pivot": [
+    141.0,
+    256.1
+   ],
+   "center": [
+    141.0,
+    159.0
+   ],
+   "diameter": 273.0
+  },
+  "tired": {
+   "file": "faces/tired.png",
+   "size": [
+    280,
+    264
+   ],
+   "pivot": [
+    139.5,
+    254.0
+   ],
+   "center": [
+    139.5,
+    158.0
+   ],
+   "diameter": 270.0
+  },
+  "skeptical": {
+   "file": "faces/skeptical.png",
+   "size": [
+    280,
+    264
+   ],
+   "pivot": [
+    139.5,
+    247.0
+   ],
+   "center": [
+    139.5,
+    151.0
+   ],
+   "diameter": 270.0
+  },
+  "disgusted": {
+   "file": "faces/disgusted.png",
+   "size": [
+    280,
+    264
+   ],
+   "pivot": [
+    139.5,
+    250.0
+   ],
+   "center": [
+    139.5,
+    154.0
+   ],
+   "diameter": 270.0
+  }
+ }
+}

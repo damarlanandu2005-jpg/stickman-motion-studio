@@ -61,214 +61,98 @@
  "characters": [
   {
    "id": "a",
-   "puppet": "puppets/lustig",
+   "puppet": "puppets/police_b",
    "pos": [
-    -0.9,
+    -1.5,
     0,
     0
    ],
    "height": 1.8,
-   "face": "neutral"
+   "face": "angry",
+   "hat": {
+    "file": "hats/kepi.png",
+    "scale": 0.72,
+    "sit": 0.16
+   }
   },
   {
    "id": "b",
-   "puppet": "puppets/poisson",
+   "puppet": "puppets/gangster",
    "pos": [
-    0.9,
+    0,
     0,
     0
    ],
    "height": 1.8,
-   "face": "neutral",
-   "flip": true
+   "face": "smug",
+   "hat": {
+    "file": "hats/fedora_cream.png",
+    "scale": 1.3,
+    "sit": 0.2
+   }
+  },
+  {
+   "id": "c",
+   "puppet": "puppets/dealer_c",
+   "pos": [
+    1.5,
+    0,
+    0
+   ],
+   "height": 1.8,
+   "face": "scheming",
+   "hat": {
+    "file": "hats/bowler.png",
+    "scale": 1.08,
+    "sit": 0.22
+   }
   }
  ],
  "props": [],
  "shots": [
   {
-   "start": 0.0,
-   "target": "a",
-   "headWidth": 0.11,
-   "frameX": -0.12,
+   "start": 0,
+   "target": "b",
+   "headWidth": 0.2,
    "yaw": 0,
    "zoom": 0,
    "pitch": 4,
-   "out": "cut",
+   "frameY": 0.0,
    "actions": [
     {
-     "at": 0.2,
+     "at": 0.3,
      "who": "a",
      "motion": "punch",
-     "repeat": 3
+     "repeat": 2
     },
     {
-     "at": 0.2,
-     "who": "b",
-     "face": "shocked"
+     "at": 0.3,
+     "who": "c",
+     "face": "laughing"
     }
    ]
   },
   {
-   "start": 2.0,
-   "target": "a",
-   "headWidth": 0.11,
-   "frameX": -0.12,
-   "yaw": 0,
+   "start": 2,
+   "target": "b",
+   "headWidth": 0.2,
+   "yaw": 20,
    "zoom": 0,
    "pitch": 4,
+   "frameY": 0.0,
    "out": "cut",
    "actions": [
     {
-     "at": 0.2,
-     "who": "a",
-     "motion": "kick",
-     "repeat": 1
-    },
-    {
-     "at": 0.2,
+     "at": 0,
      "who": "b",
-     "face": "shocked"
-    }
-   ]
-  },
-  {
-   "start": 4.0,
-   "target": "a",
-   "headWidth": 0.11,
-   "frameX": -0.12,
-   "yaw": 0,
-   "zoom": 0,
-   "pitch": 4,
-   "out": "cut",
-   "actions": [
-    {
-     "at": 0.2,
-     "who": "a",
-     "motion": "run",
-     "repeat": 3
-    },
-    {
-     "at": 0.2,
-     "who": "b",
-     "face": "shocked"
-    }
-   ]
-  },
-  {
-   "start": 6.0,
-   "target": "a",
-   "headWidth": 0.11,
-   "frameX": -0.12,
-   "yaw": 0,
-   "zoom": 0,
-   "pitch": 4,
-   "out": "cut",
-   "actions": [
-    {
-     "at": 0.2,
-     "who": "a",
-     "motion": "swim",
-     "repeat": 3
-    },
-    {
-     "at": 0.2,
-     "who": "b",
-     "face": "shocked"
-    }
-   ]
-  },
-  {
-   "start": 8.0,
-   "target": "a",
-   "headWidth": 0.11,
-   "frameX": -0.12,
-   "yaw": 0,
-   "zoom": 0,
-   "pitch": 4,
-   "out": "cut",
-   "actions": [
-    {
-     "at": 0.2,
-     "who": "a",
-     "motion": "wave",
-     "repeat": 3
-    },
-    {
-     "at": 0.2,
-     "who": "b",
-     "face": "shocked"
-    }
-   ]
-  },
-  {
-   "start": 10.0,
-   "target": "a",
-   "headWidth": 0.11,
-   "frameX": -0.12,
-   "yaw": 0,
-   "zoom": 0,
-   "pitch": 4,
-   "out": "cut",
-   "actions": [
-    {
-     "at": 0.2,
-     "who": "a",
-     "motion": "cheer",
-     "repeat": 3
-    },
-    {
-     "at": 0.2,
-     "who": "b",
-     "face": "shocked"
-    }
-   ]
-  },
-  {
-   "start": 12.0,
-   "target": "a",
-   "headWidth": 0.11,
-   "frameX": -0.12,
-   "yaw": 0,
-   "zoom": 0,
-   "pitch": 4,
-   "out": "cut",
-   "actions": [
-    {
-     "at": 0.2,
-     "who": "a",
-     "motion": "fall",
-     "repeat": 1
-    },
-    {
-     "at": 0.2,
-     "who": "b",
-     "face": "shocked"
-    }
-   ]
-  },
-  {
-   "start": 14.0,
-   "target": "a",
-   "headWidth": 0.11,
-   "frameX": -0.12,
-   "yaw": 0,
-   "zoom": 0,
-   "pitch": 4,
-   "out": "cut",
-   "actions": [
-    {
-     "at": 0.2,
-     "who": "a",
-     "motion": "cower",
-     "repeat": 1
-    },
-    {
-     "at": 0.2,
-     "who": "b",
-     "face": "shocked"
+     "hat": {
+      "file": "hats/tophat.png",
+      "scale": 1.0,
+      "sit": 0.16
+     }
     }
    ]
   }
  ],
- "duration": 16
+ "duration": 4
 }
