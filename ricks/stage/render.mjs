@@ -48,7 +48,7 @@ function validate(s) {
     if (c.pos !== undefined && !isVec(c.pos, 3)) errs.push(`character ${c.id}: "pos" must be [x, y, z]`);
     if (c.puppet !== undefined) file(String(c.puppet).replace(/\/+$/, '') + '/rig.json', `character ${c.id} puppet`);
   }
-  const types = new Set(['house', 'box', 'crate', 'barrel', 'wall', 'tree', 'post', 'plane', 'model', 'eiffel']);
+  const types = new Set(['house', 'box', 'crate', 'barrel', 'wall', 'tree', 'post', 'plane', 'model', 'eiffel', 'desk']);
   for (const [i, p] of (Array.isArray(s.props) ? s.props : []).entries()) {
     if (!p || !types.has(p.type)) { errs.push(`props[${i}]: unknown type "${p && p.type}"`); continue; }
     if (p.pos !== undefined && !isVec(p.pos, 3)) errs.push(`props[${i}]: "pos" must be [x, y, z]`);

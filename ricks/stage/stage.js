@@ -237,6 +237,19 @@ async function makeProp(p) {
     add(new THREE.CylinderGeometry(0.12 * s, 0.16 * s, 1.2 * s, 10), await surface('#6b4429'), 0.6 * s); add(new THREE.IcosahedronGeometry(0.9 * s, 1), await surface(p.color || '#4f8f4a'), 1.7 * s);
   } else if (p.type === 'post') {
     const h = p.h || 2.6; add(new THREE.CylinderGeometry(0.06, 0.06, h, 8), await surface(p.color || '#5a3a2a'), h / 2);
+  } else if (p.type === 'desk') {
+    // office desk: top, two drawer pedestals, drawer fronts and handles, leather blotter, papers, lamp, inkwell. p.w = width
+    const w = p.w || 3, d = w * 0.42, h = w * 0.27, wood = await surface(p.color || '#6b3f2a', p.texture, p.repeat), dark = await surface('#3a2230'), brass = await surface('#c9a24a'), paper = await surface('#efe6d0'), green = await surface('#2f5a4a');
+    const top = add(new THREE.BoxGeometry(w, h * 0.09, d), wood, h); 
+    for (const sx of [-1, 1]) { const ped = add(new THREE.BoxGeometry(w * 0.3, h * 0.96, d * 0.92), wood, h * 0.48); ped.position.x = sx * w * 0.33;
+      for (let i = 0; i < 3; i++) { const dr = add(new THREE.BoxGeometry(w * 0.26, h * 0.26, 0.03), dark, h * (0.18 + i * 0.3)); dr.position.set(sx * w * 0.33, h * (0.18 + i * 0.3), d * 0.47);
+        const hd = add(new THREE.BoxGeometry(w * 0.07, h * 0.035, 0.05), brass, h * (0.18 + i * 0.3)); hd.position.set(sx * w * 0.33, h * (0.18 + i * 0.3), d * 0.5); } }
+    const bl = add(new THREE.BoxGeometry(w * 0.34, 0.02, d * 0.5), green, h * 1.05); bl.position.z = d * 0.08;
+    const pp = add(new THREE.BoxGeometry(w * 0.16, 0.012, d * 0.3), paper, h * 1.075); pp.position.set(-w * 0.05, h * 0.0 + h * 1.075, d * 0.1); pp.rotation.y = 0.2;
+    const lb = add(new THREE.CylinderGeometry(w * 0.03, w * 0.04, h * 0.05, 12), brass, h * 1.07); lb.position.set(w * 0.38, h * 1.07, -d * 0.2);
+    const ln = add(new THREE.CylinderGeometry(w * 0.012, w * 0.012, h * 0.45, 8), brass, h * 1.3); ln.position.set(w * 0.38, h * 1.3, -d * 0.2);
+    const sh = add(new THREE.CylinderGeometry(w * 0.05, w * 0.085, h * 0.16, 14), green, h * 1.58); sh.position.set(w * 0.38, h * 1.58, -d * 0.2);
+    const ik = add(new THREE.CylinderGeometry(w * 0.025, w * 0.03, h * 0.07, 10), dark, h * 1.09); ik.position.set(-w * 0.27, h * 1.09, d * 0.05);
   } else if (p.type === 'eiffel') {
     // procedural lattice tower: p.h = height, p.color = iron colour. Four curved legs, rings, X braces, two platforms, spire.
     const H = p.h || 30, base = H * 0.21, iron = (await surface(p.color || '#5b4a4f')).clone(), th = Math.max(0.05, H * 0.006);
@@ -258,9 +271,14 @@ async function makeProp(p) {
     for (const [yy, s] of [[H * 0.27, 1.25], [H * 0.55, 0.9]]) {                       // platforms
       const w = half(yy) * 2 * s, pm = add(new THREE.BoxGeometry(w, H * 0.018, w), iron, yy); pm.userData.plat = true;
     }
-    const arch = (sx) => { const pts = []; for (let i = 0; i <= 8; i++) { const u = i / 8, x = (u - 0.5) * 2 * half(0) * 0.62, y = Math.sin(u * Math.PI) * H * 0.1 + H * 0.26 * 0.0 + H * 0.02; pts.push(new THREE.Vector3(x, y, sx * half(H * 0.04))); }
-      for (let i = 0; i < 8; i++) seg(pts[i], pts[i + 1], th * 1.1); };
-    arch(1); arch(-1);
+    for (let k = 0; k < 4; k++) {                                                      // arch between two leg bases on each face
+      const [ax, az] = cs[k], [bx, bz] = cs[(k + 1) % 4], hw = half(0), ah = H * 0.13; let prev = null;
+      for (let i = 0; i <= 10; i++) { const u = i / 10, e = Math.sin(u * Math.PI), f = 1 - e * 0.0;
+        const x = ax * hw + (bx - ax) * hw * u, z = az * hw + (bz - az) * hw * u, yy = e * ah * 0.95 + 0.02;
+        // pull the arch inwards a little so it reads as a curve between the legs
+        const q = new THREE.Vector3(x - (ax + bx) * hw * 0.04 * e, yy, z - (az + bz) * hw * 0.04 * e);
+        if (prev) seg(prev, q, th * 1.3); prev = q; }
+    }
     seg(new THREE.Vector3(0, top, 0), new THREE.Vector3(0, H, 0), th * 0.6);          // spire
     grp.userData.thin = true;   // dense lattice: skip the ink outline pass, it would turn the tower solid black
   } else if (p.type === 'plane') {
