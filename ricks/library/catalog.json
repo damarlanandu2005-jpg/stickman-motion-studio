@@ -1,0 +1,424 @@
+{
+ "backdrops": {
+  "paris": {
+   "desc": "Paris morning sky, hazy skyline with the Eiffel Tower",
+   "path": "backdrops/paris.png"
+  }
+ },
+ "characters": {
+  "dealer_c": {
+   "bare_head": true,
+   "desc": "a short round 1920s Parisian scrap-metal dealer: green jacket with a yellow tie, bushy ginger sideburns, bald head, greedy eager look",
+   "faces": [
+    "angry",
+    "confused",
+    "crying",
+    "determined",
+    "disgusted",
+    "embarrassed",
+    "happy",
+    "laughing",
+    "nervous",
+    "neutral",
+    "sad",
+    "scared",
+    "scheming",
+    "shocked",
+    "shouting",
+    "skeptical",
+    "smug",
+    "tired"
+   ],
+   "limbs": [
+    "armL",
+    "armR",
+    "legL",
+    "legR"
+   ],
+   "path": "characters/dealer_c",
+   "sheets": [
+    "a",
+    "b",
+    "c"
+   ],
+   "tags": [
+    "short",
+    "round",
+    "1920s",
+    "parisian",
+    "scrap-metal",
+    "dealer",
+    "green",
+    "jacket",
+    "with",
+    "yellow",
+    "tie",
+    "bushy",
+    "ginger",
+    "sideburns",
+    "dealer",
+    "buyer"
+   ]
+  },
+  "gangster": {
+   "bare_head": true,
+   "desc": "a heavy-set 1920s Chicago gangster boss: cream pinstripe three-piece suit with a dark red tie, slicked-back black hair, a small scar on one cheek, confident look",
+   "faces": [
+    "angry",
+    "confused",
+    "crying",
+    "determined",
+    "disgusted",
+    "embarrassed",
+    "happy",
+    "laughing",
+    "nervous",
+    "neutral",
+    "sad",
+    "scared",
+    "scheming",
+    "shocked",
+    "shouting",
+    "skeptical",
+    "smug",
+    "tired"
+   ],
+   "limbs": [
+    "armL",
+    "armR",
+    "legL",
+    "legR"
+   ],
+   "path": "characters/gangster",
+   "sheets": [
+    "a",
+    "b"
+   ],
+   "tags": [
+    "heavy-set",
+    "1920s",
+    "chicago",
+    "gangster",
+    "boss",
+    "cream",
+    "pinstripe",
+    "three-piece",
+    "suit",
+    "with",
+    "dark",
+    "tie",
+    "slicked-back",
+    "black",
+    "capone",
+    "gangster",
+    "boss",
+    "mobster"
+   ]
+  },
+  "lustig": {
+   "bare_head": false,
+   "desc": "Victor Lustig, a charming 1920s con man: navy suit, bow tie, grey fedora (hat is part of the head), thin moustache",
+   "faces": [
+    "angry",
+    "confused",
+    "crying",
+    "determined",
+    "disgusted",
+    "embarrassed",
+    "happy",
+    "laughing",
+    "nervous",
+    "neutral",
+    "sad",
+    "scared",
+    "scheming",
+    "shocked",
+    "shouting",
+    "skeptical",
+    "smug",
+    "tired"
+   ],
+   "limbs": [
+    "armL",
+    "armR",
+    "legL",
+    "legR"
+   ],
+   "path": "characters/lustig",
+   "sheets": [
+    "a",
+    "b",
+    "c"
+   ],
+   "tags": [
+    "lustig",
+    "con",
+    "man",
+    "seller",
+    "fedora",
+    "navy",
+    "suit"
+   ]
+  },
+  "poisson": {
+   "bare_head": false,
+   "desc": "Andre Poisson, a stocky 1920s Parisian scrap-metal dealer: brown waistcoat, flat tweed cap (part of the head), thick moustache",
+   "faces": [
+    "angry",
+    "confused",
+    "crying",
+    "determined",
+    "disgusted",
+    "embarrassed",
+    "happy",
+    "laughing",
+    "nervous",
+    "neutral",
+    "sad",
+    "scared",
+    "scheming",
+    "shocked",
+    "shouting",
+    "skeptical",
+    "smug",
+    "tired"
+   ],
+   "limbs": [
+    "armL",
+    "armR",
+    "legL",
+    "legR"
+   ],
+   "path": "characters/poisson",
+   "sheets": [
+    "a",
+    "b",
+    "c"
+   ],
+   "tags": [
+    "poisson",
+    "dealer",
+    "buyer",
+    "scrap",
+    "cap",
+    "brown"
+   ]
+  },
+  "police_a": {
+   "bare_head": true,
+   "desc": "a 1920s Paris policeman: dark navy uniform tunic with a row of silver buttons and a short navy cape, thin curled black moustache, short black hair, stern look",
+   "faces": [
+    "angry",
+    "confused",
+    "crying",
+    "determined",
+    "disgusted",
+    "embarrassed",
+    "happy",
+    "laughing",
+    "nervous",
+    "neutral",
+    "sad",
+    "scared",
+    "scheming",
+    "shocked",
+    "shouting",
+    "skeptical",
+    "smug",
+    "tired"
+   ],
+   "limbs": [
+    "armL",
+    "armR",
+    "legL",
+    "legR"
+   ],
+   "path": "characters/police_a",
+   "sheets": [],
+   "tags": [
+    "1920s",
+    "paris",
+    "policeman",
+    "dark",
+    "navy",
+    "uniform",
+    "tunic",
+    "with",
+    "silver",
+    "buttons",
+    "short",
+    "navy",
+    "cape",
+    "thin",
+    "police",
+    "policeman",
+    "officer"
+   ]
+  },
+  "police_b": {
+   "bare_head": true,
+   "desc": "a stout 1920s Paris policeman: dark navy uniform tunic with silver buttons and a black belt, big grey walrus moustache, bald head, grumpy look",
+   "faces": [
+    "angry",
+    "confused",
+    "crying",
+    "determined",
+    "disgusted",
+    "embarrassed",
+    "happy",
+    "laughing",
+    "nervous",
+    "neutral",
+    "sad",
+    "scared",
+    "scheming",
+    "shocked",
+    "shouting",
+    "skeptical",
+    "smug",
+    "tired"
+   ],
+   "limbs": [
+    "armL",
+    "armR",
+    "legL",
+    "legR"
+   ],
+   "path": "characters/police_b",
+   "sheets": [
+    "a",
+    "b",
+    "c"
+   ],
+   "tags": [
+    "stout",
+    "1920s",
+    "paris",
+    "policeman",
+    "dark",
+    "navy",
+    "uniform",
+    "tunic",
+    "with",
+    "silver",
+    "buttons",
+    "black",
+    "belt",
+    "grey",
+    "police",
+    "policeman",
+    "officer"
+   ]
+  }
+ },
+ "hats": {
+  "bowler": {
+   "desc": "a black bowler hat with a rounded crown, a narrow curled brim and a grey band",
+   "path": "hats/bowler.png",
+   "scale": 1.05,
+   "sit": 0.2,
+   "size": [
+    604,
+    353
+   ]
+  },
+  "fedora_cream": {
+   "desc": "a cream-white fedora hat with a pinched crown, a wide brim and a black band",
+   "path": "hats/fedora_cream.png",
+   "scale": 1.05,
+   "sit": 0.2,
+   "size": [
+    718,
+    332
+   ]
+  },
+  "flatcap": {
+   "desc": "a grey tweed flat cap with a short stiff peak",
+   "path": "hats/flatcap.png",
+   "scale": 1.05,
+   "sit": 0.2,
+   "size": [
+    628,
+    359
+   ]
+  },
+  "kepi": {
+   "desc": "a 1920s French police kepi: a short flat-topped cylindrical dark navy cap with a small black visor and a silver badge on the front",
+   "path": "hats/kepi.png",
+   "scale": 1.05,
+   "sit": 0.2,
+   "size": [
+    314,
+    230
+   ]
+  },
+  "tophat": {
+   "desc": "a tall black top hat with a flat top, a narrow brim and a dark red band",
+   "path": "hats/tophat.png",
+   "scale": 1.05,
+   "sit": 0.2,
+   "size": [
+    573,
+    460
+   ]
+  }
+ },
+ "motions": {
+  "cheer": {
+   "desc": "stage motion preset"
+  },
+  "cower": {
+   "desc": "stage motion preset"
+  },
+  "fall": {
+   "desc": "stage motion preset"
+  },
+  "kick": {
+   "desc": "stage motion preset"
+  },
+  "point": {
+   "desc": "stage motion preset"
+  },
+  "punch": {
+   "desc": "stage motion preset"
+  },
+  "run": {
+   "desc": "stage motion preset"
+  },
+  "shrug": {
+   "desc": "stage motion preset"
+  },
+  "swim": {
+   "desc": "stage motion preset"
+  },
+  "wave": {
+   "desc": "stage motion preset"
+  }
+ },
+ "props3d": {
+  "desk": {
+   "desc": "office desk with drawers, lamp, blotter (stage prop type 'desk')"
+  },
+  "eiffel": {
+   "desc": "procedural lattice Eiffel Tower (stage prop type 'eiffel')"
+  }
+ },
+ "textures": {
+  "cobble": {
+   "desc": "Paris cobblestones",
+   "path": "textures/cobble.png"
+  },
+  "floor": {
+   "desc": "oak parquet",
+   "path": "textures/floor.png"
+  },
+  "roof": {
+   "desc": "blue-grey zinc roof",
+   "path": "textures/roof.png"
+  },
+  "wallpaper": {
+   "desc": "cream hotel wallpaper, gold fleur-de-lis",
+   "path": "textures/wallpaper.png"
+  }
+ }
+}

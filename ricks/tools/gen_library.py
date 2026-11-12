@@ -88,7 +88,16 @@ def main():
             out = os.path.join(raw, "%s_sheet_%s.png" % (it["id"], it["sheet"])); src = os.path.join(repo, it["ref"]) if it.get("ref") else os.path.join(raw, it["id"] + "_character.png")
             if os.path.exists(out) or not os.path.exists(src): continue
             hg = it.get("headgear")
-            gen(out, [img(src), SHEET.format(head="head with its hat only" if hg else "bare head only, no hat", same=" and hat" if hg else "", expr=SHEETS[it["sheet"]])], "3:2")
+            keep = (" Every one of the six heads MUST keep exactly the same " + it["keep"] + " as the reference; only the eyes, eyebrows and mouth change.") if it.get("keep") else ""
+            gen(out, [img(src), SHEET.format(head="head with its hat only" if hg else "bare head only, no hat", same=" and hat" if hg else "", expr=SHEETS[it["sheet"]]) + keep], "3:2")
+        elif k == "redraw":      # same character, arms redrawn as free stick lines so the puppet can be sliced
+            out = os.path.join(raw, it["id"] + "_character.png"); src = os.path.join(raw, it["id"] + "_character_v1.png")
+            if not os.path.exists(src) and os.path.exists(out): os.replace(out, src)
+            if os.path.exists(out) or not os.path.exists(src): continue
+            gen(out, [img(src), "Redraw this exact same character: same head, same hair, same face, same outfit colours, same art style, same proportions, same legs. Change ONLY the arms. "
+                "The torso must be a plain rounded bean shape with no sleeves. The arms are two thin solid black stick lines (no clothing, no sleeves, no cuffs, no gloves) that leave the shoulder points and angle outward and downward, "
+                "well away from the torso, with a clear gap of plain backdrop between each arm and the torso along their whole length, each ending in a small round black dot hand. Whole figure visible from the top of the head to the "
+                "tips of the stick legs, front view, centered, solid uniform light warm-grey backdrop, no shadow, no text, no extra characters."], "2:3")
         elif k == "hat":
             out = os.path.join(raw, "hat_" + it["id"] + ".png")
             if os.path.exists(out): continue

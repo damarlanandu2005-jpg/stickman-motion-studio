@@ -2,6 +2,10 @@
  "style_ref": "ricks/projects/lustig/raw/lustig_character.png",
  "items": [
   {
+   "kind": "redraw",
+   "id": "dealer_b"
+  },
+  {
    "kind": "character",
    "id": "dealer_b",
    "who": "a tall thin 1920s Parisian scrap-metal dealer: long grey overcoat with a red scarf, small round glasses, short dark hair, sceptical look"
@@ -84,47 +88,56 @@
   {
    "kind": "faces",
    "id": "police_a",
-   "sheet": "a"
+   "sheet": "a",
+   "keep": "short black hair and thin curled black moustache"
   },
   {
    "kind": "faces",
    "id": "police_a",
-   "sheet": "b"
+   "sheet": "b",
+   "keep": "short black hair and thin curled black moustache"
   },
   {
    "kind": "faces",
    "id": "police_a",
-   "sheet": "c"
+   "sheet": "c",
+   "keep": "short black hair and thin curled black moustache"
   },
   {
    "kind": "faces",
    "id": "police_b",
-   "sheet": "a"
+   "sheet": "a",
+   "keep": "bald head and big grey walrus moustache"
   },
   {
    "kind": "faces",
    "id": "police_b",
-   "sheet": "b"
+   "sheet": "b",
+   "keep": "bald head and big grey walrus moustache"
   },
   {
    "kind": "faces",
    "id": "police_b",
-   "sheet": "c"
+   "sheet": "c",
+   "keep": "bald head and big grey walrus moustache"
   },
   {
    "kind": "faces",
    "id": "gangster",
-   "sheet": "a"
+   "sheet": "a",
+   "keep": "slicked-back black hair and cheek scar"
   },
   {
    "kind": "faces",
    "id": "gangster",
-   "sheet": "b"
+   "sheet": "b",
+   "keep": "slicked-back black hair and cheek scar"
   },
   {
    "kind": "faces",
    "id": "gangster",
-   "sheet": "c"
+   "sheet": "c",
+   "keep": "slicked-back black hair and cheek scar"
   },
   {
    "kind": "faces",
