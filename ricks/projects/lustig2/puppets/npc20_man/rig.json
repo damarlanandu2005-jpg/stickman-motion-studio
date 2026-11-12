@@ -1,0 +1,105 @@
+{
+ "version": 2,
+ "name": "npc20_man",
+ "size": [
+  546,
+  1000
+ ],
+ "feetY": 992,
+ "head": {
+  "center": [
+   266.0,
+   337.0
+  ],
+  "diameter": 417.0
+ },
+ "skin": "#faf6e7",
+ "layers": {
+  "legL": {
+   "file": "legL.png",
+   "box": [
+    159,
+    784,
+    61,
+    208
+   ],
+   "pivot": [
+    202.5,
+    793.0
+   ]
+  },
+  "legR": {
+   "file": "legR.png",
+   "box": [
+    326,
+    787,
+    68,
+    208
+   ],
+   "pivot": [
+    335.5,
+    796.8
+   ]
+  },
+  "armL": {
+   "file": "armL.png",
+   "box": [
+    5,
+    509,
+    133,
+    232
+   ],
+   "pivot": [
+    121.5,
+    524.5
+   ]
+  },
+  "armR": {
+   "file": "armR.png",
+   "box": [
+    411,
+    514,
+    130,
+    227
+   ],
+   "pivot": [
+    426.3,
+    530.0
+   ]
+  },
+  "body": {
+   "file": "body.png",
+   "box": [
+    95,
+    443,
+    345,
+    356
+   ],
+   "pivot": [
+    269.0,
+    794.9
+   ]
+  },
+  "head": {
+   "file": "head.png",
+   "box": [
+    56,
+    5,
+    425,
+    467
+   ],
+   "pivot": [
+    274.5,
+    472.0
+   ]
+  }
+ },
+ "order": [
+  "legL",
+  "legR",
+  "armL",
+  "armR",
+  "body",
+  "head"
+ ]
+}

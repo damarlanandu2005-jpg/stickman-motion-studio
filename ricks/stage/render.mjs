@@ -44,15 +44,15 @@ const MOTIONS = {
   wave: { len: 0.5, keys: [{ dt: 0, pose: { armR: -150 }, ease: 0.15 }, { dt: 0.25, pose: { armR: -115 }, ease: 0.15 }] },
   cheer: { len: 0.6, keys: [{ dt: 0, pose: { armL: 150, armR: -150 }, hop: 0.14, ease: 0.12 }, { dt: 0.3, pose: { armL: 120, armR: -120 }, ease: 0.15 }] },
   shrug: { len: 0.8, keys: [{ dt: 0, pose: { armL: 55, armR: -55, head: 8 }, ease: 0.2 }, { dt: 0.5, pose: { armL: 0, armR: 0, head: 0 }, ease: 0.25 }] },
-  point: { len: 1.0, keys: [{ dt: 0, pose: { armR: -85, body: 4 }, ease: 0.15 }] },
-  fall: { len: 0.8, keys: [{ dt: 0, pose: { spin: 88, armL: 60, armR: -60 }, ease: 0.45 }] },
+  point: { keep: true, len: 1.0, keys: [{ dt: 0, pose: { armR: -85, body: 4 }, ease: 0.15 }] },
+  fall: { keep: true, len: 0.8, keys: [{ dt: 0, pose: { spin: 88, armL: 60, armR: -60 }, ease: 0.45 }] },
   dance: { len: 0.8, keys: [{ dt: 0, pose: { armL: 140, armR: -40, legL: 30, legR: -12, body: 9, head: 8 }, hop: 0.12, ease: 0.18 }, { dt: 0.4, pose: { armL: 40, armR: -140, legL: -12, legR: 30, body: -9, head: -8 }, hop: 0.12, ease: 0.18 }] },
   bow: { len: 1.2, keys: [{ dt: 0, pose: { body: 32, head: 14, armL: 20, armR: -20 }, ease: 0.3 }, { dt: 0.8, pose: { body: 0, head: 0, armL: 0, armR: 0 }, ease: 0.3 }] },
-  give: { len: 1.2, keys: [{ dt: 0, pose: { armR: -78, body: 5 }, ease: 0.25 }] },
-  take: { len: 1.2, keys: [{ dt: 0, pose: { armL: 78, body: -5 }, ease: 0.25 }] },
+  give: { keep: true, len: 1.2, keys: [{ dt: 0, pose: { armR: -78, body: 5 }, ease: 0.25 }] },
+  take: { keep: true, len: 1.2, keys: [{ dt: 0, pose: { armL: 78, body: -5 }, ease: 0.25 }] },
   nod: { len: 0.6, keys: [{ dt: 0, pose: { head: 12 }, ease: 0.12 }, { dt: 0.3, pose: { head: -4 }, ease: 0.15 }] },
   play: { len: 0.5, keys: [{ dt: 0, pose: { armL: 95, armR: -95, head: 6, body: 3 }, ease: 0.15 }, { dt: 0.25, pose: { armL: 80, armR: -80, head: -6, body: -3 }, ease: 0.15 }] },
-  cower: { len: 0.8, keys: [{ dt: 0, pose: { armL: 150, armR: -150, body: -6, head: -8 }, shake: 0.7, ease: 0.15 }] },
+  cower: { keep: true, len: 0.8, keys: [{ dt: 0, pose: { armL: 150, armR: -150, body: -6, head: -8 }, shake: 0.7, ease: 0.15 }] },
 };
 
 function validate(s) {
@@ -125,11 +125,11 @@ function resolveTimeline(s) {
   const expand = (list) => (list || []).flatMap(a => {
     if (!a.motion) return [a];
     const M = MOTIONS[a.motion]; if (!M) throw new Error('unknown motion "' + a.motion + '" (have: ' + Object.keys(M ? {} : MOTIONS).join(', ') + ')');
-    const sp = a.speed || 1, out = [], base = a.at ?? a.t ?? 0, rest = { ...a }; delete rest.motion; delete rest.repeat; delete rest.speed; delete rest.hold;
+    const sp = a.speed || 1, out = [], base = a.at ?? a.t ?? 0, rest = { ...a }; delete rest.motion; delete rest.repeat; delete rest.speed; delete rest.keep;
     if (Object.keys(rest).some(k => !['at', 't', 'who'].includes(k))) out.push(rest);
     if (M.start) out.push({ who: a.who, at: base, t: base, ...M.start });
     for (let r = 0; r < (a.repeat || 1); r++) for (const kf of M.keys) { const tt = base + (r * M.len + kf.dt) / sp, o = { who: a.who, at: tt, t: tt, ...kf, ease: (kf.ease ?? 0.15) / sp }; delete o.dt; out.push(o); }
-    if (!a.hold) { const tt = base + (a.repeat || 1) * M.len / sp; out.push({ who: a.who, at: tt, t: tt, pose: { armL: 0, armR: 0, legL: 0, legR: 0, body: 0, head: 0, spin: 0 }, ease: 0.25 }); }
+    if (!(a.keep ?? M.keep)) { const tt = base + (a.repeat || 1) * M.len / sp; out.push({ who: a.who, at: tt, t: tt, pose: { armL: 0, armR: 0, legL: 0, legR: 0, body: 0, head: 0, spin: 0 }, ease: 0.25 }); }
     return out;
   });
   s.shots.forEach(sh => { sh.actions = expand(sh.actions); });

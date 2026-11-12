@@ -11,8 +11,8 @@
  "ground": {
   "texture": "cobble",
   "repeat": [
-   150,
-   150
+   240,
+   240
   ]
  },
  "places": {
@@ -60,16 +60,6 @@
    "place": "street",
    "pos": [
     -0.8,
-    0,
-    0
-   ]
-  },
-  {
-   "id": "ls2",
-   "char": "lustig",
-   "place": "street",
-   "pos": [
-    -7,
     0,
     0
    ]
@@ -129,9 +119,9 @@
    "char": "lustig",
    "place": "hotel",
    "pos": [
-    -0.6,
+    -0.9,
     0.05,
-    -2.6
+    -0.4
    ]
   },
   {
@@ -139,9 +129,9 @@
    "char": "poisson",
    "place": "hotel",
    "pos": [
-    2.2,
+    0.9,
     0.05,
-    -0.6
+    -0.4
    ],
    "flip": true
   },
@@ -222,13 +212,13 @@
    "type": "plane",
    "image": "props/sign_for_sale.png",
    "pos": [
-    5.5,
     0,
-    -36
+    0,
+    -37.5
    ],
    "size": [
-    5.6,
-    4.6
+    8.4,
+    6.9
    ]
   },
   {
@@ -323,13 +313,13 @@
    "type": "plane",
    "image": "props/sign_alcatraz.png",
    "pos": [
-    -2.6,
-    1.6,
+    0,
+    2.7,
     -2.4
    ],
    "size": [
-    2.0,
-    0.95
+    2.4,
+    1.15
    ]
   }
  ],
@@ -494,7 +484,7 @@
     }
    ],
    "extra": {
-    "frameX": 0.14
+    "frameX": -0.1
    }
   },
   {
@@ -579,7 +569,7 @@
    "say": "and handed",
    "place": "hotel",
    "subject": "ph",
-   "shot": "two",
+   "shot": "medium",
    "move": "orbitL",
    "proof": "Cash passes from Poisson's hand to Lustig's",
    "acts": [
@@ -603,7 +593,7 @@
     {
      "who": "lh",
      "at": 0.5,
-     "motion": "take",
+     "motion": "give",
      "hold": null
     },
     {
@@ -616,14 +606,14 @@
      "at": 1.0,
      "hold": {
       "file": "props/cash.png",
-      "hand": "L",
+      "hand": "R",
       "scale": 0.5
      },
      "face": "laughing"
     }
    ],
    "extra": {
-    "frameX": 0.14
+    "frameX": -0.16
    }
   },
   {
@@ -710,6 +700,21 @@
      ],
      "walk": true,
      "over": 1.8
+    },
+    {
+     "who": "ls",
+     "at": 0.0,
+     "to": [
+      -6.5,
+      0,
+      0
+     ],
+     "over": 0.05,
+     "hold": null,
+     "pose": {
+      "armR": 0
+     },
+     "face": "scheming"
     }
    ],
    "extra": {
@@ -722,13 +727,13 @@
   {
    "say": "So six months",
    "place": "street",
-   "subject": "ls2",
+   "subject": "ls",
    "shot": "medium",
    "move": "push",
    "proof": "Lustig strolls back into the Paris street with a new letter",
    "acts": [
     {
-     "who": "ls2",
+     "who": "ls",
      "at": 0.1,
      "face": "scheming",
      "hold": {
@@ -737,7 +742,7 @@
       "scale": 0.55
      },
      "to": [
-      -1.8,
+      -1.6,
       0,
       0
      ],
@@ -788,7 +793,7 @@
      "flip": true
     },
     {
-     "who": "ls2",
+     "who": "ls",
      "at": 0.0,
      "face": "laughing",
      "hop": 0.14
@@ -836,13 +841,13 @@
   {
    "say": "He fled",
    "place": "street",
-   "subject": "ls2",
+   "subject": "ls",
    "shot": "wide",
    "move": "orbitR",
    "proof": "Lustig runs off with his suitcase, police chasing",
    "acts": [
     {
-     "who": "ls2",
+     "who": "ls",
      "at": 0.0,
      "face": "scared",
      "flip": true,
@@ -917,10 +922,10 @@
     {
      "who": "ls3",
      "at": 1.3,
-     "motion": "take",
+     "motion": "give",
      "hold": {
       "file": "props/cash.png",
-      "hand": "L",
+      "hand": "R",
       "scale": 0.5
      }
     },
@@ -964,7 +969,7 @@
      "face": "smug",
      "hold": {
       "file": "props/cash.png",
-      "hand": "L",
+      "hand": "R",
       "scale": 0.5
      }
     },
@@ -1072,7 +1077,7 @@
     }
    ],
    "extra": {
-    "frameX": 0.08
+    "frameX": 0.0
    }
   },
   {
@@ -1109,7 +1114,7 @@
    "extra": {
     "distance": 60,
     "fov": 38,
-    "yaw": 18,
+    "yaw": 8,
     "pitch": 2,
     "orbit": -8,
     "rise": 10,

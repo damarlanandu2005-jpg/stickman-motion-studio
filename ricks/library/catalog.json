@@ -4,6 +4,10 @@
    "desc": "Paris morning sky, hazy skyline with the Eiffel Tower",
    "path": "backdrops/paris.png"
   },
+  "paris_plain": {
+   "desc": "",
+   "path": "backdrops/paris_plain.png"
+  },
   "strasbourg": {
    "desc": "",
    "path": "backdrops/strasbourg.png"
@@ -552,7 +556,8 @@
    "period": "1920s",
    "sheets": [
     "a",
-    "b"
+    "b",
+    "c"
    ],
    "tags": [
     "poisson",

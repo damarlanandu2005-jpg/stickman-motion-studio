@@ -315,98 +315,98 @@
   "scheming": {
    "file": "faces/scheming.png",
    "size": [
-    259,
-    299
+    273,
+    316
    ],
    "pivot": [
-    129.0,
-    285.6
+    136.0,
+    303.4
    ],
    "center": [
-    129.0,
-    201.0
+    136.0,
+    214.0
    ],
-   "diameter": 249.0
+   "diameter": 263.0
   },
   "embarrassed": {
    "file": "faces/embarrassed.png",
    "size": [
-    260,
-    299
+    273,
+    316
    ],
    "pivot": [
-    129.5,
-    285.0
+    136.5,
+    302.0
    ],
    "center": [
-    129.5,
-    200.0
+    136.5,
+    213.0
    ],
-   "diameter": 250.0
+   "diameter": 262.0
   },
   "determined": {
    "file": "faces/determined.png",
    "size": [
-    259,
-    299
+    273,
+    317
    ],
    "pivot": [
-    129.0,
-    275.6
+    136.0,
+    294.4
    ],
    "center": [
-    129.0,
-    191.0
+    136.0,
+    205.0
    ],
-   "diameter": 249.0
+   "diameter": 263.0
   },
   "tired": {
    "file": "faces/tired.png",
    "size": [
-    258,
-    298
+    270,
+    311
    ],
    "pivot": [
-    128.5,
-    284.3
+    134.5,
+    296.4
    ],
    "center": [
-    128.5,
-    200.0
+    134.5,
+    208.0
    ],
-   "diameter": 248.0
+   "diameter": 260.0
   },
   "skeptical": {
    "file": "faces/skeptical.png",
    "size": [
-    259,
-    298
+    270,
+    311
    ],
    "pivot": [
-    129.0,
-    280.6
+    134.5,
+    290.4
    ],
    "center": [
-    129.0,
-    196.0
+    134.5,
+    202.0
    ],
-   "diameter": 249.0
+   "diameter": 260.0
   },
   "disgusted": {
    "file": "faces/disgusted.png",
    "size": [
-    258,
-    299
+    270,
+    311
    ],
    "pivot": [
-    128.5,
-    279.3
+    134.5,
+    288.4
    ],
    "center": [
-    128.5,
-    195.0
+    134.5,
+    200.0
    ],
-   "diameter": 248.0
+   "diameter": 260.0
   }
  }
 }
