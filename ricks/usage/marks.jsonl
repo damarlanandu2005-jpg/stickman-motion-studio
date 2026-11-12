@@ -6,3 +6,4 @@
 {"t": 1794512777.7988353, "stage": "5 ingest + continuity gate (new cast)"}
 {"t": 1794512885.030971, "stage": "6 video 2 build + checks"}
 {"t": 1794513180.2777684, "stage": "7 video 1 (Lustig) build + checks"}
+{"t": 1794513581.7263691, "stage": "8 blind verifier round 1 + fixes"}
