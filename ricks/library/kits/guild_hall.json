@@ -1,0 +1,188 @@
+{
+ "desc": "Timber guild hall with a wooden stage, beams, benches, banners, barrels",
+ "period": [
+  "1400s",
+  "1500s",
+  "1600s"
+ ],
+ "interior": true,
+ "props": [
+  {
+   "type": "box",
+   "pos": [
+    0,
+    0,
+    4
+   ],
+   "size": [
+    16,
+    0.05,
+    22
+   ],
+   "texture": "textures/planks.png",
+   "repeat": [
+    8,
+    11
+   ]
+  },
+  {
+   "type": "wall",
+   "pos": [
+    0,
+    0,
+    -6
+   ],
+   "size": [
+    14,
+    5.4,
+    0.3
+   ],
+   "texture": "textures/timber.png",
+   "repeat": [
+    3,
+    1
+   ]
+  },
+  {
+   "type": "wall",
+   "pos": [
+    -7,
+    0,
+    -2.5
+   ],
+   "size": [
+    0.3,
+    5.4,
+    7.4
+   ],
+   "texture": "textures/timber.png",
+   "repeat": [
+    2,
+    1
+   ]
+  },
+  {
+   "type": "box",
+   "pos": [
+    0,
+    0,
+    -4.2
+   ],
+   "size": [
+    6.4,
+    0.8,
+    2.6
+   ],
+   "texture": "textures/planks.png",
+   "repeat": [
+    4,
+    1
+   ]
+  },
+  {
+   "type": "box",
+   "pos": [
+    -4.6,
+    0,
+    -5.4
+   ],
+   "size": [
+    0.5,
+    4.2,
+    0.5
+   ],
+   "color": "#5a3a2a"
+  },
+  {
+   "type": "box",
+   "pos": [
+    4.6,
+    0,
+    -5.4
+   ],
+   "size": [
+    0.5,
+    4.2,
+    0.5
+   ],
+   "color": "#5a3a2a"
+  },
+  {
+   "type": "box",
+   "pos": [
+    0,
+    4.2,
+    -5.4
+   ],
+   "size": [
+    9.8,
+    0.4,
+    0.5
+   ],
+   "color": "#5a3a2a"
+  },
+  {
+   "type": "barrel",
+   "pos": [
+    5.6,
+    0,
+    -3.2
+   ]
+  },
+  {
+   "type": "barrel",
+   "pos": [
+    6.2,
+    0,
+    -3.6
+   ]
+  },
+  {
+   "type": "box",
+   "pos": [
+    -5.4,
+    0,
+    -3.4
+   ],
+   "size": [
+    1.6,
+    0.5,
+    0.6
+   ],
+   "texture": "textures/planks.png",
+   "repeat": [
+    1,
+    1
+   ]
+  },
+  {
+   "type": "box",
+   "pos": [
+    -2.6,
+    3.2,
+    -5.8
+   ],
+   "size": [
+    0.9,
+    1.6,
+    0.06
+   ],
+   "color": "#8c2f39"
+  },
+  {
+   "type": "box",
+   "pos": [
+    2.6,
+    3.2,
+    -5.8
+   ],
+   "size": [
+    0.9,
+    1.6,
+    0.06
+   ],
+   "color": "#c9a24a"
+  }
+ ],
+ "life": []
+}

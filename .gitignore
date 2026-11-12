@@ -7,3 +7,4 @@ mine/*/frames/
 
 # Ricks projects keep their 3D models in the repo
 !ricks/projects/*/models/
+!ricks/library/models/

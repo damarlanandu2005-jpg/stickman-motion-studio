@@ -109,12 +109,13 @@ def build(proj):
         if isinstance(f, str) and f.startswith("props/") and not os.path.exists(os.path.join(proj, f)): cp(f, os.path.join(proj, f))
         return f
     def tex(p):
-        for k in ("texture", "wall", "roofTexture"):
+        for k in ("texture", "wall", "roofTexture", "roof"):
             v = p.get(k)
             if isinstance(v, str) and v.startswith("textures/"):
                 n = os.path.basename(v)[:-4]
                 if n in C["textures"] and n not in used_tex: cp(C["textures"][n]["path"], os.path.join(proj, v)); used_tex.add(n)
         p2d(p.get("image"))
+        if isinstance(p.get("file"), str) and p["file"].startswith("models/") and not os.path.exists(os.path.join(proj, p["file"])): cp(p["file"], os.path.join(proj, p["file"]))
         return p
     def actor(cid, char, pos, flip=False, face=None, hat=None, height=1.8):
         dst = os.path.join(proj, "puppets", char)

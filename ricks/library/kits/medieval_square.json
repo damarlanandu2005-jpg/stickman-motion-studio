@@ -1,0 +1,342 @@
+{
+ "desc": "Medieval town square: half-timbered houses with clay roofs, market stalls, a well, barrels, a cart",
+ "period": [
+  "1400s",
+  "1500s",
+  "1600s"
+ ],
+ "interior": false,
+ "props": [
+  {
+   "type": "house",
+   "pos": [
+    -10,
+    0,
+    -11
+   ],
+   "size": [
+    6,
+    5.2,
+    4
+   ],
+   "color": "#efe6d2",
+   "wall": "textures/timber.png",
+   "roofTexture": "textures/claytile.png",
+   "roof": "#b5553a",
+   "door": "#5a3a2a"
+  },
+  {
+   "type": "house",
+   "pos": [
+    -3.5,
+    0,
+    -14
+   ],
+   "size": [
+    5,
+    6.0,
+    4
+   ],
+   "color": "#e9dcc0",
+   "wall": "textures/timber.png",
+   "roofTexture": "textures/claytile.png",
+   "roof": "#b5553a",
+   "door": "#5a3a2a"
+  },
+  {
+   "type": "house",
+   "pos": [
+    3.5,
+    0,
+    -13
+   ],
+   "size": [
+    5.5,
+    4.8,
+    4
+   ],
+   "color": "#efe6d2",
+   "wall": "textures/timber.png",
+   "roofTexture": "textures/claytile.png",
+   "roof": "#b5553a",
+   "door": "#5a3a2a"
+  },
+  {
+   "type": "house",
+   "pos": [
+    10,
+    0,
+    -10.5
+   ],
+   "size": [
+    6,
+    5.6,
+    4
+   ],
+   "color": "#eadfc8",
+   "wall": "textures/timber.png",
+   "roofTexture": "textures/claytile.png",
+   "roof": "#b5553a",
+   "door": "#5a3a2a"
+  },
+  {
+   "type": "box",
+   "pos": [
+    -6.2,
+    0,
+    -5.6
+   ],
+   "size": [
+    2.2,
+    0.9,
+    1.0
+   ],
+   "texture": "textures/planks.png",
+   "repeat": [
+    2,
+    1
+   ]
+  },
+  {
+   "type": "box",
+   "pos": [
+    -6.2,
+    2.0,
+    -5.6
+   ],
+   "size": [
+    2.6,
+    0.12,
+    1.4
+   ],
+   "color": "#b5443a"
+  },
+  {
+   "type": "box",
+   "pos": [
+    -7.35,
+    0,
+    -5.6
+   ],
+   "size": [
+    0.09,
+    2.0,
+    0.09
+   ],
+   "color": "#5a3a2a"
+  },
+  {
+   "type": "box",
+   "pos": [
+    -5.050000000000001,
+    0,
+    -5.6
+   ],
+   "size": [
+    0.09,
+    2.0,
+    0.09
+   ],
+   "color": "#5a3a2a"
+  },
+  {
+   "type": "box",
+   "pos": [
+    6.4,
+    0,
+    -6.2
+   ],
+   "size": [
+    2.2,
+    0.9,
+    1.0
+   ],
+   "texture": "textures/planks.png",
+   "repeat": [
+    2,
+    1
+   ]
+  },
+  {
+   "type": "box",
+   "pos": [
+    6.4,
+    2.0,
+    -6.2
+   ],
+   "size": [
+    2.6,
+    0.12,
+    1.4
+   ],
+   "color": "#3f6f8a"
+  },
+  {
+   "type": "box",
+   "pos": [
+    5.25,
+    0,
+    -6.2
+   ],
+   "size": [
+    0.09,
+    2.0,
+    0.09
+   ],
+   "color": "#5a3a2a"
+  },
+  {
+   "type": "box",
+   "pos": [
+    7.550000000000001,
+    0,
+    -6.2
+   ],
+   "size": [
+    0.09,
+    2.0,
+    0.09
+   ],
+   "color": "#5a3a2a"
+  },
+  {
+   "type": "barrel",
+   "pos": [
+    -3.6,
+    0,
+    -4.6
+   ]
+  },
+  {
+   "type": "barrel",
+   "pos": [
+    -3.0,
+    0,
+    -5.0
+   ]
+  },
+  {
+   "type": "crate",
+   "pos": [
+    3.6,
+    0,
+    -4.4
+   ]
+  },
+  {
+   "type": "crate",
+   "pos": [
+    4.3,
+    0,
+    -4.7
+   ],
+   "size": 0.55
+  },
+  {
+   "type": "model",
+   "file": "models/cart.glb",
+   "pos": [
+    8.6,
+    0,
+    -3.6
+   ],
+   "height": 1.5
+  },
+  {
+   "type": "box",
+   "pos": [
+    0,
+    0,
+    -8.2
+   ],
+   "size": [
+    1.6,
+    0.8,
+    1.6
+   ],
+   "texture": "textures/stonewall.png",
+   "repeat": [
+    2,
+    1
+   ]
+  },
+  {
+   "type": "box",
+   "pos": [
+    -0.7,
+    0.8,
+    -8.2
+   ],
+   "size": [
+    0.1,
+    1.3,
+    0.1
+   ],
+   "color": "#5a3a2a"
+  },
+  {
+   "type": "box",
+   "pos": [
+    0.7,
+    0.8,
+    -8.2
+   ],
+   "size": [
+    0.1,
+    1.3,
+    0.1
+   ],
+   "color": "#5a3a2a"
+  },
+  {
+   "type": "box",
+   "pos": [
+    0,
+    2.1,
+    -8.2
+   ],
+   "size": [
+    1.9,
+    0.12,
+    0.5
+   ],
+   "color": "#5a3a2a"
+  }
+ ],
+ "life": [
+  {
+   "char": "npc15_man",
+   "behaviour": "stroll",
+   "path": [
+    [
+     -8,
+     -3.4
+    ],
+    [
+     7,
+     -3.4
+    ]
+   ],
+   "speed": 0.7,
+   "start": 0.6,
+   "pause": 2.2
+  },
+  {
+   "char": "npc15_woman",
+   "behaviour": "stroll",
+   "path": [
+    [
+     9,
+     -4.4
+    ],
+    [
+     -7,
+     -4.4
+    ]
+   ],
+   "speed": 0.8,
+   "start": 2.5,
+   "pause": 1.8
+  }
+ ]
+}
