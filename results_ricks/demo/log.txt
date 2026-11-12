@@ -1,0 +1,4 @@
+$ node /tmp/repo/ricks/stage/render.mjs /tmp/repo/ricks/projects/demo/short.json /tmp/ricks_out/out.mp4 --stills
+short.json has problems:
+  - props[5].file: file not found: models/cart.glb
+

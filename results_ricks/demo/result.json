@@ -1,0 +1,10 @@
+{
+ "project": "/tmp/repo/ricks/projects/demo",
+ "mode": "stills",
+ "gl_renderer": null,
+ "gate_seconds": 0.1,
+ "flagged": null,
+ "flags": [],
+ "gate_ok": false,
+ "error": "stop-frame check failed to run (exit 1)"
+}
