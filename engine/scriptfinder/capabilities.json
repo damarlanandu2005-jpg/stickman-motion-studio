@@ -272,6 +272,12 @@
    "instead": "keep the mouth still or closed; captions and voice carry the line",
    "evidence": "rail short has none",
    "source": "new_work"
+  },
+  "fx.fog_haze": {
+   "cost": 3,
+   "status": "untested",
+   "source": "new_work",
+   "note": "scene.fog plus a haze-coloured sky; not weather, but never rendered by us"
   }
  },
  "scene_count_cost": {

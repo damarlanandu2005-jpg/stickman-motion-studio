@@ -1,0 +1,120 @@
+
+{
+  "title": "The Ship Found Sailing Across the Ocean With Nobody Aboard",
+  "status": "nandu_final",
+  "logline": "In 1872, a merchant ship was discovered drifting across the Atlantic with its cargo intact but all ten people aboard missing.",
+  "profile": "starter",
+  "sources": [
+    "https://www.smithsonianmag.com/smart-news/an-abandoned-merchant-ship-was-discovered-floating-in-the-atlantic-1872-the-mystery-its-missing-crew-never-solved-180985547/",
+    "https://www.history.org.uk/publications/resource/10590/the-mary-celeste-the-history-of-a-mystery",
+    "https://www.history.com/this-day-in-history/december-5/the-mystery-of-the-mary-celeste"
+  ],
+  "narration": "A ship was found drifting across the Atlantic Ocean. Its cargo was still there. Food and water remained on board. But every person had vanished. The ship was called the Mary Celeste. On November 7, 1872, it left New York for Genoa, Italy, carrying ten people, including the captain, his wife and their two-year-old daughter. Almost a month later, another ship spotted it near the Azores. Sailors approached and climbed aboard. What they discovered was extraordinary. The ship was still seaworthy. Its cargo of industrial alcohol was largely intact. Personal belongings remained in the cabins. But there was nobody anywhere on board. Even the lifeboat was missing. The captain, his family and all seven crew members were never found. Investigators examined the mystery, but no explanation was ever proven. More than 150 years later, one question remains: why did ten people abandon a ship that was still floating?",
+  "scenes": [
+    {
+      "id": "c1",
+      "caption": "A ship was found drifting across the Atlantic Ocean. Its cargo was still there. Food and water remained on board. But every person had vanished.",
+      "tags": ["place.atlantic_ocean", "chars.0", "light.overcast"],
+      "shots": [
+        {
+          "must_see": "A lonely nineteenth-century wooden sailing ship drifts across a vast Atlantic Ocean under a cloudy sky.",
+          "tags": ["camera.aerial_glide", "action.ship_drift"]
+        },
+        {
+          "must_see": "An empty wooden ship deck with ropes moving in the wind and no sailors visible anywhere.",
+          "tags": ["camera.slow_push", "action.empty_deck"]
+        }
+      ]
+    },
+    {
+      "id": "c2",
+      "caption": "The ship was called the Mary Celeste. On November 7, 1872, it left New York for Genoa, Italy, carrying ten people, including the captain, his wife and their two-year-old daughter.",
+      "tags": ["place.new_york_harbor", "chars.1_3", "light.day"],
+      "shots": [
+        {
+          "must_see": "The Mary Celeste, a two-masted nineteenth-century brigantine, prepares to leave New York harbor with its sails raised.",
+          "tags": ["camera.wide_glide", "action.ship_depart"]
+        },
+        {
+          "must_see": "Captain Benjamin Briggs stands on deck with his wife Sarah and their young daughter Sophia as sailors prepare the vessel.",
+          "tags": ["camera.medium", "action.family_stand"]
+        }
+      ]
+    },
+    {
+      "id": "c3",
+      "caption": "Almost a month later, another ship spotted it near the Azores. Sailors approached and climbed aboard.",
+      "tags": ["place.atlantic_ocean", "chars.1_2", "light.overcast"],
+      "shots": [
+        {
+          "must_see": "The British brigantine Dei Gratia sails through the Atlantic while a sailor notices another ship moving strangely in the distance.",
+          "tags": ["camera.over_shoulder", "action.spot_ship"]
+        },
+        {
+          "must_see": "Three sailors row a small wooden boat from the Dei Gratia toward the distant Mary Celeste.",
+          "tags": ["camera.side_tracking", "action.row_boat"]
+        }
+      ]
+    },
+    {
+      "id": "c4",
+      "caption": "What they discovered was extraordinary. The ship was still seaworthy. Its cargo of industrial alcohol was largely intact.",
+      "tags": ["place.mary_celeste_deck", "chars.1_2", "light.overcast"],
+      "shots": [
+        {
+          "must_see": "Two boarding sailors climb over the railing onto the Mary Celeste's deserted deck and cautiously inspect their surroundings.",
+          "tags": ["camera.low_angle", "action.board_ship"]
+        },
+        {
+          "must_see": "Rows of sealed wooden cargo barrels fill the ship's hold, showing that most of the cargo remains undisturbed.",
+          "tags": ["camera.glide_push", "action.inspect_cargo"]
+        }
+      ]
+    },
+    {
+      "id": "c5",
+      "caption": "Personal belongings remained in the cabins. But there was nobody anywhere on board.",
+      "tags": ["place.mary_celeste_interior", "chars.0", "light.dim_indoor"],
+      "shots": [
+        {
+          "must_see": "A wooden cabin containing an untouched table, dishes, clothing and personal belongings, with no people present.",
+          "tags": ["camera.slow_pan", "action.empty_cabin"]
+        },
+        {
+          "must_see": "A narrow empty corridor inside the wooden ship, with an open cabin door and sunlight entering through a small window.",
+          "tags": ["camera.slow_push", "action.empty_ship"]
+        }
+      ]
+    },
+    {
+      "id": "c6",
+      "caption": "Even the lifeboat was missing. The captain, his family and all seven crew members were never found.",
+      "tags": ["place.mary_celeste_deck", "chars.0", "light.overcast"],
+      "shots": [
+        {
+          "must_see": "An empty space where the ship's lifeboat should have been, with loose ropes hanging from its fittings.",
+          "tags": ["camera.closeup", "action.empty_lifeboat"]
+        },
+        {
+          "must_see": "A wide view of the deserted Mary Celeste surrounded by endless ocean, emphasizing the absence of all ten people.",
+          "tags": ["camera.pull_back", "action.ship_drift"]
+        }
+      ]
+    },
+    {
+      "id": "c7",
+      "caption": "Investigators examined the mystery, but no explanation was ever proven. More than 150 years later, one question remains: why did ten people abandon a ship that was still floating?",
+      "tags": ["place.mary_celeste_deck", "chars.0", "light.sunset"],
+      "shots": [
+        {
+          "must_see": "An old maritime investigation table with a map of the Atlantic, ship sketches and handwritten notes about the Mary Celeste.",
+          "tags": ["camera.top_down", "action.investigation"]
+        },
+        {
+          "must_see": "The Mary Celeste slowly disappears into a misty Atlantic horizon, leaving the mystery unresolved.",
+          "tags": ["camera.slow_pull_back", "action.ship_drift"]
+        }
+      ]
+    }
+  ]
+}

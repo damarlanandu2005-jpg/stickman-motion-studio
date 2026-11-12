@@ -1,0 +1,261 @@
+{
+ "title": "The Ship Found Sailing Across the Ocean With Nobody Aboard",
+ "status": "nandu_final",
+ "logline": "In 1872, a merchant ship was discovered drifting across the Atlantic with its cargo intact but all ten people aboard missing.",
+ "profile": "starter",
+ "sources": [
+  "https://www.smithsonianmag.com/smart-news/an-abandoned-merchant-ship-was-discovered-floating-in-the-atlantic-1872-the-mystery-its-missing-crew-never-solved-180985547/",
+  "https://www.history.org.uk/publications/resource/10590/the-mary-celeste-the-history-of-a-mystery",
+  "https://www.history.com/this-day-in-history/december-5/the-mystery-of-the-mary-celeste"
+ ],
+ "narration": "A ship was found drifting across the Atlantic Ocean. Its cargo was still there. Food and water remained on board. But every person had vanished. The ship was called the Mary Celeste. On November 7, 1872, it left New York for Genoa, Italy, carrying ten people, including the captain, his wife and their two-year-old daughter. Almost a month later, another ship spotted it near the Azores. Sailors approached and climbed aboard. What they discovered was extraordinary. The ship was still seaworthy. Its cargo of industrial alcohol was largely intact. Personal belongings remained in the cabins. But there was nobody anywhere on board. Even the lifeboat was missing. The captain, his family and all seven crew members were never found. Investigators examined the mystery, but no explanation was ever proven. More than 150 years later, one question remains: why did ten people abandon a ship that was still floating?",
+ "note": "Narration and scene captions are Nandu's exact words. Tags, extra shots and staging notes are Claude's plan; every addition is marked ADDED or CHANGED.",
+ "scenes": [
+  {
+   "id": "c1",
+   "caption": "A ship was found drifting across the Atlantic Ocean. Its cargo was still there. Food and water remained on board. But every person had vanished.",
+   "tags": [
+    "place.sea_ship",
+    "chars.0",
+    "light.day"
+   ],
+   "shots": [
+    {
+     "must_see": "Wide: a lonely wooden two-masted ship drifting on a grey ocean, nobody on deck",
+     "tags": [
+      "camera.glide_push",
+      "prop.vehicle_moving"
+     ],
+     "staging": "ADDED: grey flat sea to the horizon, low cloud, a thin wake; no gulls (animals are not built)"
+    },
+    {
+     "must_see": "Close: the ship's cargo, rows of barrels lashed on the deck",
+     "tags": [
+      "camera.glide_push",
+      "prop.kit_static"
+     ],
+     "staging": "ADDED: ropes and canvas on the barrels so it reads as cargo"
+    },
+    {
+     "must_see": "Close: a table on deck with bread and a water cask, no hand reaching for it",
+     "tags": [
+      "camera.glide_push",
+      "prop.kit_static"
+     ],
+     "staging": "ADDED: bread loaf, tin mug, water cask (the narration says food and water)"
+    }
+   ]
+  },
+  {
+   "id": "c2",
+   "caption": "The ship was called the Mary Celeste. On November 7, 1872, it left New York for Genoa, Italy, carrying ten people, including the captain, his wife and their two-year-old daughter.",
+   "tags": [
+    "place.sea_ship",
+    "place.town_buildings",
+    "chars.crowd",
+    "light.day"
+   ],
+   "shots": [
+    {
+     "must_see": "Wide: New York harbor wharf with warehouses, the ship tied up, barrels piled on the quay",
+     "tags": [
+      "camera.glide_push",
+      "place.town_buildings"
+     ],
+     "staging": "ADDED: stone wharf, 3 brick warehouses, mast poles of other ships far back; sky day"
+    },
+    {
+     "must_see": "Medium: the captain, his wife and their small daughter standing together on the deck (left to right: captain, wife, daughter)",
+     "tags": [
+      "camera.glide_push",
+      "chars.1_3"
+     ],
+     "staging": "ADDED: the girl is a small card; same outfits as later scenes"
+    },
+    {
+     "must_see": "Medium: seven sailors in a row on the quay and gangway, the ten people counted by eye",
+     "tags": [
+      "camera.glide_push",
+      "chars.crowd"
+     ],
+     "staging": "ADDED: 7 crew cards in blue shirts, 3 outfit variants; the narration says ten people, so the crowd is the ten"
+    }
+   ]
+  },
+  {
+   "id": "c3",
+   "caption": "Almost a month later, another ship spotted it near the Azores. Sailors approached and climbed aboard.",
+   "tags": [
+    "place.sea_ship",
+    "chars.1_3",
+    "light.day"
+   ],
+   "shots": [
+    {
+     "must_see": "Wide: the small ship Dei Gratia far on the left, the drifting Mary Celeste small on the right, empty sea between",
+     "tags": [
+      "camera.glide_push",
+      "prop.vehicle_moving"
+     ],
+     "staging": "ADDED: different sail colour on the Dei Gratia so the two ships are never confused; Dei Gratia always on the left"
+    },
+    {
+     "must_see": "Medium: one sailor on the Dei Gratia deck pointing at the distant ship, a second sailor beside him",
+     "tags": [
+      "camera.glide_push",
+      "chars.1_3"
+     ],
+     "staging": "ADDED: the Azores are not drawn (no island); the narration only needs the distance"
+    },
+    {
+     "must_see": "Medium: a rowboat with three sailors alongside the Mary Celeste hull, already arrived",
+     "tags": [
+      "camera.glide_push",
+      "chars.1_3"
+     ],
+     "staging": "CHANGED vs the draft: shows the boat arrived, not rowing (rowing is a hard action; hard cut instead)"
+    }
+   ]
+  },
+  {
+   "id": "c4",
+   "caption": "What they discovered was extraordinary. The ship was still seaworthy. Its cargo of industrial alcohol was largely intact.",
+   "tags": [
+    "place.sea_ship",
+    "chars.1_3",
+    "light.day"
+   ],
+   "shots": [
+    {
+     "must_see": "Medium: two sailors standing on the empty deck, looking around",
+     "tags": [
+      "camera.glide_push",
+      "chars.1_3"
+     ],
+     "staging": "CHANGED vs the draft: standing on deck, not climbing the railing (climbing is a hard action)"
+    },
+    {
+     "must_see": "Close: the open cargo hatch with rows of sealed barrels below, dim light",
+     "tags": [
+      "camera.glide_push",
+      "prop.kit_static"
+     ],
+     "staging": "ADDED: dark box under the hatch, barrels in 3 rows"
+    },
+    {
+     "must_see": "Medium: a sailor taps the wheel and the mast, the ship upright and firm",
+     "tags": [
+      "camera.glide_push",
+      "chars.1_3"
+     ],
+     "staging": "ADDED: shows 'still seaworthy' as an intact mast and wheel, no damage"
+    }
+   ]
+  },
+  {
+   "id": "c5",
+   "caption": "Personal belongings remained in the cabins. But there was nobody anywhere on board.",
+   "tags": [
+    "place.interior_other",
+    "chars.0",
+    "light.indoor"
+   ],
+   "shots": [
+    {
+     "must_see": "Wide: a small wooden cabin with a table, plates, a coat on a hook, a bed with a doll",
+     "tags": [
+      "camera.glide_push",
+      "place.interior_other"
+     ],
+     "staging": "ADDED: doll is a small prop that points to the two-year-old; it is not in the narration"
+    },
+    {
+     "must_see": "Close: the table with plates and a tin cup, a chair pushed back",
+     "tags": [
+      "camera.glide_push",
+      "prop.kit_static"
+     ],
+     "staging": "ADDED: chair pushed back only (nothing moves)"
+    }
+   ]
+  },
+  {
+   "id": "c6",
+   "caption": "Even the lifeboat was missing. The captain, his family and all seven crew members were never found.",
+   "tags": [
+    "place.sea_ship",
+    "chars.0",
+    "light.day"
+   ],
+   "shots": [
+    {
+     "must_see": "Close: empty davits at the ship's rail where the lifeboat should hang, two loose ropes",
+     "tags": [
+      "camera.glide_push",
+      "prop.kit_static"
+     ],
+     "staging": "ADDED: a pale rectangle on the deck where the boat once sat"
+    },
+    {
+     "must_see": "Wide: the deserted ship on endless grey sea, nobody on deck",
+     "tags": [
+      "camera.glide_push",
+      "prop.vehicle_moving"
+     ],
+     "staging": "ADDED: ten hats on the deck are NOT added (invention); empty is the message"
+    }
+   ]
+  },
+  {
+   "id": "c7",
+   "caption": "Investigators examined the mystery, but no explanation was ever proven. More than 150 years later, one question remains: why did ten people abandon a ship that was still floating?",
+   "tags": [
+    "place.interior_other",
+    "place.sea_ship",
+    "chars.0",
+    "light.golden"
+   ],
+   "shots": [
+    {
+     "must_see": "Top-down: an old table with a big map of the Atlantic, ship sketches, a lamp, a pen",
+     "tags": [
+      "camera.glide_push",
+      "prop.readable_detail"
+     ],
+     "staging": "ADDED: map is plain shapes (no real text), a lamp; this is the only text-like prop"
+    },
+    {
+     "must_see": "Wide: the Mary Celeste small on a calm sea at sunset, haze at the horizon",
+     "tags": [
+      "camera.glide_push",
+      "prop.vehicle_moving",
+      "fx.fog_haze"
+     ],
+     "staging": "ADDED: scene fog for the haze (not weather)"
+    },
+    {
+     "must_see": "Wide: the same view, the ship smaller and fainter in the haze, empty sea",
+     "tags": [
+      "camera.glide_push",
+      "fx.fog_haze"
+     ],
+     "staging": "ADDED: ship drifts away along the depth axis"
+    }
+   ]
+  }
+ ],
+ "facts_checked": {
+  "from my own knowledge, to be confirmed against the 3 sources before the final report": [
+   "Mary Celeste, brigantine, left New York for Genoa Nov 7, 1872 (as in the script)",
+   "10 aboard: Captain Benjamin Briggs, wife Sarah, daughter Sophia (2), 7 crew",
+   "found by the Dei Gratia near the Azores, early December 1872",
+   "cargo industrial alcohol, mostly intact; lifeboat missing; no proven explanation"
+  ]
+ },
+ "staging_notes": {
+  "ten_people": "The narration says ten people. The crowd shot in c2 shows the captain, wife, daughter and seven crew as cards.",
+  "sides": "Dei Gratia always on the left, Mary Celeste on the right. Captain left, wife centre, daughter right.",
+  "hard_actions_removed": "Rowing and climbing are shown as arrived/standing; hard cuts carry the action.",
+  "invented_details": "Doll in the cabin, bread and cup on the deck table, map shapes: small props that carry 'belongings' and 'food and water'. No new story facts."
+ }
+}
