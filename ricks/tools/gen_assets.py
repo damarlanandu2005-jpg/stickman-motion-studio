@@ -75,7 +75,8 @@ def gen(name, parts, aspect, out_dir, ext="png", tries=3):
                 raise RuntimeError("no image part")
             except Exception as e:
                 log.append(dict(name=name, ok=False, model=m, attempt=attempt + 1, error=repr(e)[:300]))
-                print("FAIL", name, m, repr(e)[:200], flush=True); time.sleep(5)
+                print("FAIL", name, m, repr(e)[:200], flush=True)
+                time.sleep(60 * (attempt + 1) if "429" in repr(e) else 5)   # rate limit: back off for a minute or more
     return None
 
 def img(data): return types.Part.from_bytes(data=data, mime_type="image/png")
@@ -95,11 +96,13 @@ def main():
         if data and first is None: first = data
         if data:
             gen(who + "_sheet", [img(data), SHEET.format(neutral=CAST[who]["neutral"])], "3:2", raw)
-    if "textures" in only:
-        for k, v in TEXTURES.items(): gen("tex_" + k, [TEXTURE.format(surface=v)], "1:1", raw, ext="png")
+    if "textures" in only or any(o.startswith("tex_") for o in only):
+        for k, v in TEXTURES.items():
+            if "textures" in only or ("tex_" + k) in only:
+                gen("tex_" + k, [TEXTURE.format(surface=v)], "1:1", raw, ext="png"); time.sleep(15)
     if "backdrop" in only:
         gen("backdrop", [BACKDROP.format(sky=SKY, far=FAR)], "21:9", raw)
-    json.dump(log, open(os.path.join(raw, "gen_log.json"), "w"), indent=1)
+    json.dump(log, open(os.path.join(raw, "gen_log_%d.json" % time.time()), "w"), indent=1)
     bad = [l for l in log if not l["ok"]]
     print("done:", sum(1 for l in log if l["ok"]), "ok,", len(bad), "failed attempts")
 
