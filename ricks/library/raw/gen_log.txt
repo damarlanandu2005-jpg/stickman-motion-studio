@@ -35,3 +35,5 @@ OK tex_stonewall.png
 OK backdrop_strasbourg.png
 OK backdrop_us_city.png
 done: 25 ok, 3 failed attempts
+OK backdrop_paris_plain.png
+done: 1 ok, 0 failed attempts
