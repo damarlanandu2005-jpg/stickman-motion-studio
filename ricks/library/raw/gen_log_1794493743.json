@@ -1,0 +1,44 @@
+[
+ {
+  "name": "dealer_b_character.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1
+ },
+ {
+  "name": "police_a_sheet_a.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1
+ },
+ {
+  "name": "police_a_sheet_b.png",
+  "ok": false,
+  "attempt": 1,
+  "error": "ClientError(\"429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource has been exhausted (e.g. check quota).', 'status': 'RESOURCE_EXHAUSTED'}}\")"
+ },
+ {
+  "name": "police_a_sheet_b.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 2
+ },
+ {
+  "name": "police_a_sheet_c.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1
+ },
+ {
+  "name": "gangster_sheet_c.png",
+  "ok": false,
+  "attempt": 1,
+  "error": "ClientError(\"429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource has been exhausted (e.g. check quota).', 'status': 'RESOURCE_EXHAUSTED'}}\")"
+ },
+ {
+  "name": "gangster_sheet_c.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 2
+ }
+]

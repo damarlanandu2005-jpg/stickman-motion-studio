@@ -1,0 +1,8 @@
+OK dealer_b_character.png
+OK police_a_sheet_a.png
+FAIL police_a_sheet_b.png ClientError("429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource has been exhausted (e.g. check quota).', 'status': 'RESOURCE_EXHAUSTED'}}")
+OK police_a_sheet_b.png
+OK police_a_sheet_c.png
+FAIL gangster_sheet_c.png ClientError("429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource has been exhausted (e.g. check quota).', 'status': 'RESOURCE_EXHAUSTED'}}")
+OK gangster_sheet_c.png
+done: 5 ok, 2 failed attempts
