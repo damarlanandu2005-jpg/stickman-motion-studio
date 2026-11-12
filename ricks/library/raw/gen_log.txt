@@ -39,3 +39,5 @@ OK backdrop_paris_plain.png
 done: 1 ok, 0 failed attempts
 OK poisson_sheet_c.png
 done: 1 ok, 0 failed attempts
+OK tex_grass.png
+done: 1 ok, 0 failed attempts
