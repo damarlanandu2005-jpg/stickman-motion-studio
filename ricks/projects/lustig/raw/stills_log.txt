@@ -1,0 +1,16 @@
+OK lustig_character gemini-2.5-flash-image
+OK lustig_sheet gemini-2.5-flash-image
+OK poisson_character gemini-2.5-flash-image
+OK poisson_sheet gemini-2.5-flash-image
+FAIL tex_floor gemini-2.5-flash-image TypeError("'NoneType' object is not iterable")
+OK tex_floor gemini-2.5-flash-image
+FAIL tex_wallpaper gemini-2.5-flash-image TypeError("'NoneType' object is not iterable")
+OK tex_wallpaper gemini-2.5-flash-image
+FAIL tex_cobble gemini-2.5-flash-image ClientError("429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource has been exhausted (e.g. check quota).', 'status': 'RESOURCE_EXHAUSTED'}}")
+FAIL tex_cobble gemini-2.5-flash-image ClientError("429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource has been exhausted (e.g. check quota).', 'status': 'RESOURCE_EXHAUSTED'}}")
+FAIL tex_cobble gemini-2.5-flash-image ClientError("429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource has been exhausted (e.g. check quota).', 'status': 'RESOURCE_EXHAUSTED'}}")
+OK tex_roof gemini-2.5-flash-image
+FAIL backdrop gemini-2.5-flash-image ClientError("429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource has been exhausted (e.g. check quota).', 'status': 'RESOURCE_EXHAUSTED'}}")
+FAIL backdrop gemini-2.5-flash-image ClientError("429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource has been exhausted (e.g. check quota).', 'status': 'RESOURCE_EXHAUSTED'}}")
+FAIL backdrop gemini-2.5-flash-image ClientError("429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource has been exhausted (e.g. check quota).', 'status': 'RESOURCE_EXHAUSTED'}}")
+done: 7 ok, 8 failed attempts

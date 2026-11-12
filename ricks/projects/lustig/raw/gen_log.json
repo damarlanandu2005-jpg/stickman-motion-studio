@@ -1,0 +1,107 @@
+[
+ {
+  "name": "lustig_character",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1,
+  "bytes": 826162
+ },
+ {
+  "name": "lustig_sheet",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1,
+  "bytes": 962666
+ },
+ {
+  "name": "poisson_character",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1,
+  "bytes": 955427
+ },
+ {
+  "name": "poisson_sheet",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1,
+  "bytes": 1089875
+ },
+ {
+  "name": "tex_floor",
+  "ok": false,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1,
+  "error": "TypeError(\"'NoneType' object is not iterable\")"
+ },
+ {
+  "name": "tex_floor",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 2,
+  "bytes": 1339077
+ },
+ {
+  "name": "tex_wallpaper",
+  "ok": false,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1,
+  "error": "TypeError(\"'NoneType' object is not iterable\")"
+ },
+ {
+  "name": "tex_wallpaper",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 2,
+  "bytes": 1340042
+ },
+ {
+  "name": "tex_cobble",
+  "ok": false,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1,
+  "error": "ClientError(\"429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource has been exhausted (e.g. check quota).', 'status': 'RESOURCE_EXHAUSTED'}}\")"
+ },
+ {
+  "name": "tex_cobble",
+  "ok": false,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 2,
+  "error": "ClientError(\"429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource has been exhausted (e.g. check quota).', 'status': 'RESOURCE_EXHAUSTED'}}\")"
+ },
+ {
+  "name": "tex_cobble",
+  "ok": false,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 3,
+  "error": "ClientError(\"429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource has been exhausted (e.g. check quota).', 'status': 'RESOURCE_EXHAUSTED'}}\")"
+ },
+ {
+  "name": "tex_roof",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1,
+  "bytes": 1077240
+ },
+ {
+  "name": "backdrop",
+  "ok": false,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1,
+  "error": "ClientError(\"429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource has been exhausted (e.g. check quota).', 'status': 'RESOURCE_EXHAUSTED'}}\")"
+ },
+ {
+  "name": "backdrop",
+  "ok": false,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 2,
+  "error": "ClientError(\"429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource has been exhausted (e.g. check quota).', 'status': 'RESOURCE_EXHAUSTED'}}\")"
+ },
+ {
+  "name": "backdrop",
+  "ok": false,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 3,
+  "error": "ClientError(\"429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource has been exhausted (e.g. check quota).', 'status': 'RESOURCE_EXHAUSTED'}}\")"
+ }
+]
