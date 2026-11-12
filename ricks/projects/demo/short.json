@@ -1,0 +1,57 @@
+{
+ "fps": 30,
+ "audio": {"voice": "audio/voice.mp3", "music": "audio/music.mp3", "musicDb": -16},
+ "words": "audio/words.json",
+ "captions": {"wordsPer": 1},
+
+ "moods": {
+  "day": {
+   "sun": {"azimuth": 35, "elevation": 50, "color": "#ffe0b5", "intensity": 2.4},
+   "sky": {"top": "#5f86d8", "horizon": "#f2b98a"},
+   "fill": {"sky": "#8ea2ff", "ground": "#6a3b6e", "intensity": 1.1}
+  },
+  "night": {
+   "sun": {"azimuth": -40, "elevation": 38, "color": "#a9bcff", "intensity": 1.8},
+   "sky": {"top": "#1d2a6e", "horizon": "#6268b4"},
+   "fill": {"sky": "#7686ee", "ground": "#4c3f8c", "intensity": 1.6},
+   "exposure": 1.2
+  }
+ },
+ "lighting": [
+  {"t": 0, "mood": "day"},
+  {"t": "say:You see", "mood": "night", "fade": 0.8}
+ ],
+
+ "ground": {"texture": "textures/cobble.jpg", "repeat": [150, 150]},
+ "backdrop": {"image": "bg/town.jpg"},
+ "ink": {"set": 4},
+
+ "characters": [
+  {"id": "official", "puppet": "puppets/official", "pos": [0, 0, 0], "height": 1.8, "face": "neutral"}
+ ],
+
+ "props": [
+  {"type": "house", "pos": [-7, 0, -7.5], "size": [6, 4.2, 5], "wall": "textures/plaster.jpg", "roof": "#b5553a"},
+  {"type": "house", "pos": [0.8, 0, -8], "size": [6.5, 4.6, 5], "wall": "textures/plaster.jpg", "roof": "#a94d36"},
+  {"type": "house", "pos": [8.6, 0, -7.5], "size": [6, 4.2, 5], "wall": "textures/plaster.jpg", "roof": "#b5553a"},
+  {"type": "tree", "pos": [-3.6, 0, -4.4], "scale": 1.5, "color": "#5f9a4c"},
+  {"type": "tree", "pos": [5.0, 0, -4.6], "scale": 1.3, "color": "#4f8f4a"},
+  {"type": "model", "file": "models/cart.glb", "pos": [2.7, 0, -1.7], "height": 1.25, "rotY": -30},
+  {"type": "crate", "pos": [4.2, 0, -2.6], "size": 0.75},
+  {"type": "crate", "pos": [4.35, 0.75, -2.65], "size": 0.55, "rotY": 20},
+  {"type": "barrel", "pos": [5.1, 0, -1.7]},
+  {"type": "post", "pos": [-2.2, 0, 0.9], "h": 2.6, "color": "#4a3a3f"}
+ ],
+
+ "shots": [
+  {"start": 0, "target": "official", "headWidth": 0.2, "yaw": 16, "pitch": 5, "zoom": 6, "pan": [-25, 8]},
+  {"start": "say:paid", "target": "official", "headWidth": 0.3, "yaw": -14, "zoom": 5, "pan": [20, 0],
+   "actions": [{"at": 0.1, "who": "official", "face": "happy", "pose": {"armR": -115}}]},
+  {"start": "say:You see", "target": "official", "headWidth": 0.24, "yaw": 8, "pitch": 10, "zoom": 8, "pan": [0, -12],
+   "actions": [{"at": 0.0, "who": "official", "face": "shocked", "pose": {"armR": 0}},
+               {"at": 1.3, "who": "official", "face": "confused", "pose": {"head": 7}}]},
+  {"start": "say:cut", "target": "official", "headWidth": 0.1, "yaw": 34, "pitch": 12, "frameY": 0.02, "zoom": -5, "pan": [18, 0],
+   "actions": [{"at": 0.3, "who": "official", "face": "shouting", "shake": 1.6, "pose": {"armL": 105, "armR": -105, "head": 0}}]}
+ ],
+ "end": "audio"
+}

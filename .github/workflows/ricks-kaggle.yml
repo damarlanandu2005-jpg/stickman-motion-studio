@@ -1,0 +1,66 @@
+name: Ricks Short on Kaggle GPU (stop-frame check, then full render)
+on:
+  push:
+    branches: [ricks-stage-kaggle]
+    paths: ['.github/workflows/ricks-kaggle.yml']
+  workflow_dispatch:
+    inputs:
+      mode: { description: "stills (stop-frame check only) or full", default: stills }
+      project: { description: "repo folder that holds short.json", default: ricks/projects/demo }
+      scale: { description: "0 = full 1080x1920, or 0.5 for a quick preview", default: "0" }
+      force: { description: "1 = render even if the stop-frame check flags problems", default: "0" }
+permissions: { contents: write }
+jobs:
+  run:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - run: python -m pip install kaggle==2.2.5 six
+      - name: Push the kernel and wait
+        env:
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+          IN_MODE: ${{ github.event.inputs.mode }}
+          IN_PROJECT: ${{ github.event.inputs.project }}
+          IN_SCALE: ${{ github.event.inputs.scale }}
+          IN_FORCE: ${{ github.event.inputs.force }}
+          IN_BRANCH: ${{ github.ref_name }}
+        run: |
+          set -u
+          U=$(echo "$KAGGLE_USERNAME" | tr -d '[:space:]'); export KAGGLE_USERNAME="$U"; export KAGGLE_KEY=$(echo "$KAGGLE_KEY" | tr -d '[:space:]')
+          sed -i "s/USERNAME/$U/" kaggle/ricks-gpu/kernel-metadata.json
+          sed -i "s#__MODE__#$IN_MODE#; s#__PROJECT__#$IN_PROJECT#; s#__SCALE__#$IN_SCALE#; s#__FORCE__#$IN_FORCE#; s#__BRANCH__#$IN_BRANCH#" kaggle/ricks-gpu/ricks_gpu.py
+          kaggle kernels push -p kaggle/ricks-gpu 2>&1 | tee push.txt
+          for i in $(seq 1 1000); do
+            sleep 20
+            S=$(kaggle kernels status "$U/ricks-gpu" 2>&1 | tail -1); [ $((i%9)) = 0 ] && echo "$i $S"
+            case "$S" in *COMPLETE*|*ERROR*|*CANCEL*) echo "$S"; break;; esac
+          done
+          mkdir -p out && kaggle kernels output "$U/ricks-gpu" -p out 2>&1 | tail -3 || true
+          ls -la out | head -30
+          python3 - <<'PY'
+          import json,glob
+          for f in glob.glob('out/*.log'):
+              try: txt=''.join(x.get('data','') for x in json.load(open(f)))
+              except Exception: txt=open(f).read()
+              print(txt[-5000:])
+          PY
+      - name: Save the result (video must stay under 100 MB for git)
+        if: always()
+        run: |
+          D=results_ricks/$(basename "${{ github.event.inputs.project }}"); mkdir -p $D
+          cp out/render_result.json $D/ 2>/dev/null || echo '{"note":"no result"}' > $D/render_result.json
+          cp out/result.json out/log.txt out/*.jpg $D/ 2>/dev/null || true
+          [ -f out/out.mp4 ] && [ $(stat -c%s out/out.mp4) -lt 99000000 ] && cp out/out.mp4 $D/short.mp4 || true
+          git checkout -- kaggle 2>/dev/null || true
+          git config user.name "claude-bot"; git config user.email "bot@example.com"
+          git add results_ricks; git commit -qm "Ricks render result $(basename '${{ github.event.inputs.project }}') [skip ci]" || exit 0
+          git pull -q --rebase -X theirs origin ${{ github.ref_name }} || true
+          git push -q origin HEAD:${{ github.ref_name }} || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: ricks-out, path: out/, retention-days: 3 }

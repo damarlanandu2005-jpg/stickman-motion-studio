@@ -1,0 +1,168 @@
+{
+ "source": "20 most recent @ricksclips3000 Shorts, 34,359 frames at 1080x1920/30fps, 549 shot reference sheets; measured 2026-11-08",
+ "format": {
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "length_s": {
+   "target": 62,
+   "range": [
+    56,
+    66
+   ]
+  }
+ },
+ "character": {
+  "shots_with_characters_pct": 77,
+  "count_share_pct": {
+   "1": 57,
+   "2": 21,
+   "3": 11,
+   "4": 6,
+   "crowd": 4
+  },
+  "largest_head_width_pct_of_frame": {
+   "median": 20,
+   "iqr": [
+    12,
+    30
+   ]
+  },
+  "round_outlined_white_head_pct": 94,
+  "method": "by-eye count of 61 sampled sheets, +/-5 points"
+ },
+ "line": {
+  "width_px_at_1080": {
+   "median": 10,
+   "iqr": [
+    7.2,
+    12
+   ],
+   "p10_p90": [
+    6,
+    16
+   ]
+  },
+  "rgb_median": [
+   39,
+   25,
+   37
+  ],
+  "hex": "#271925",
+  "pure_black_shots_pct": 2.8,
+  "outline_to_head_ratio": 0.0463
+ },
+ "colour": {
+  "shadow_hue_share_pct": {
+   "red_brown": 40,
+   "blue": 32,
+   "violet": 25,
+   "green": 2,
+   "orange_yellow": 1
+  },
+  "shadow_neutral_pct": 6,
+  "shadow_sat_median": 0.51,
+  "shadow_value_median_0_255": 76,
+  "shadow_value_range": [
+   42,
+   129
+  ],
+  "shadow_median_hex": "#342838",
+  "palette_hue_area_pct": {
+   "warm_330_60": 48.7,
+   "blue_180_270": 34.6,
+   "green_60_180": 7.2,
+   "magenta_270_330": 9.4
+  },
+  "palette_sat_median": 0.37,
+  "shot_luma_mean": {
+   "median": 120,
+   "p10_p90": [
+    72,
+    160
+   ]
+  }
+ },
+ "camera": {
+  "locked_shots_pct_max": 8.7,
+  "push_in_pct": 58,
+  "pull_out_pct": 29,
+  "zoom_pct_s": {
+   "median": 2.6,
+   "p10_p90": [
+    -15.5,
+    26.2
+   ]
+  },
+  "speed_px_s": {
+   "median": 44,
+   "iqr": [
+    13,
+    118
+   ],
+   "p90": 255
+  },
+  "arrive_settle_px_s": {
+   "first_third": 58,
+   "rest": 37
+  }
+ },
+ "pacing": {
+  "shot_len_s": {
+   "median": 1.17,
+   "p10_p90": [
+    0.33,
+    3.87
+   ]
+  },
+  "first_3s_shot_median_s": 0.8,
+  "first_change_s": 1.2,
+  "transitions_per_min": {
+   "overall": 30,
+   "per_video": [
+    17,
+    41
+   ]
+  }
+ },
+ "transitions": {
+  "camera_move_pct": 61,
+  "camera_move_frames": {
+   "median": 10,
+   "p10_p90": [
+    4,
+    16
+   ]
+  },
+  "dissolve_pct": 38,
+  "dissolve_frames": {
+   "median": 8,
+   "p10_p90": [
+    4,
+    12
+   ]
+  },
+  "hard_cut_pct": 0.7,
+  "first_3s_camera_move_pct": 86
+ },
+ "captions": {
+  "on_screen_pct_min": 99.7,
+  "centre_px": [
+   540,
+   1350
+  ],
+  "centre_y_iqr": [
+   1348,
+   1356
+  ],
+  "glyph_band_px": 60,
+  "changes_per_s": 2.77,
+  "frames_per_caption_median": 10,
+  "words": "1-2"
+ },
+ "lighting": {
+  "bright_side_upper_half_pct": 65.6,
+  "bright_side_top_pct": 26,
+  "within_shot_consistency_R": 0.98
+ }
+}

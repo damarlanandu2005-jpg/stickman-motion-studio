@@ -1,0 +1,15 @@
+{
+ "name": "ricksclips-stage",
+ "version": "2.0.0",
+ "private": true,
+ "type": "module",
+ "description": "three.js stage for @ricksclips3000-style Shorts: 2D puppets in a 3D set, rendered headless to MP4",
+ "scripts": {
+  "stills": "node render.mjs ../../examples/demo/short.json out.mp4 --stills",
+  "render": "node render.mjs ../../examples/demo/short.json out.mp4"
+ },
+ "dependencies": {
+  "playwright": "1.65.0",
+  "three": "0.187.0"
+ }
+}
