@@ -19,7 +19,7 @@ SIZE = {"close": 0.22, "medium": 0.15, "wide": 0.10, "two": 0.13, "insert": 0.30
 MOVE = {"push": dict(zoom=6, orbit=2.2, rise=0.6), "orbitL": dict(zoom=3, orbit=-5, rise=0.8), "orbitR": dict(zoom=3, orbit=5, rise=-0.8),
         "craneUp": dict(zoom=3, orbit=2, rise=3.2), "craneDown": dict(zoom=3, orbit=-2, rise=-3.2), "pull": dict(zoom=-3, orbit=-2.5, rise=1.0)}
 YAWS = [-10, 8, -4, 12, -8, 5, -12, 9]
-MOTIONS = ["punch", "kick", "run", "swim", "wave", "cheer", "shrug", "point", "fall", "cower", "dance", "bow", "give", "nod"]
+MOTIONS = ["punch", "kick", "run", "swim", "wave", "cheer", "shrug", "point", "fall", "cower", "dance", "bow", "give", "take", "nod", "play"]
 
 def J(p): return json.load(open(p))
 def norm(w): return re.sub(r"[^a-z0-9']", "", w.lower())

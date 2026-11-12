@@ -421,16 +421,31 @@
   }
  },
  "motions": {
+  "bow": {
+   "desc": "stage motion preset"
+  },
   "cheer": {
    "desc": "stage motion preset"
   },
   "cower": {
    "desc": "stage motion preset"
   },
+  "dance": {
+   "desc": "stage motion preset"
+  },
   "fall": {
    "desc": "stage motion preset"
   },
+  "give": {
+   "desc": "stage motion preset"
+  },
   "kick": {
+   "desc": "stage motion preset"
+  },
+  "nod": {
+   "desc": "stage motion preset"
+  },
+  "play": {
    "desc": "stage motion preset"
   },
   "point": {
@@ -446,6 +461,9 @@
    "desc": "stage motion preset"
   },
   "swim": {
+   "desc": "stage motion preset"
+  },
+  "take": {
    "desc": "stage motion preset"
   },
   "wave": {
