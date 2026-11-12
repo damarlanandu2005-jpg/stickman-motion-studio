@@ -162,21 +162,6 @@
   {
    "type": "house",
    "pos": [
-    -9,
-    0,
-    -16
-   ],
-   "size": [
-    7,
-    9.5,
-    5
-   ],
-   "color": "#e6d5b0",
-   "roofTexture": "textures/roof.png"
-  },
-  {
-   "type": "house",
-   "pos": [
     9,
     0,
     -10
@@ -471,19 +456,36 @@
     0.15
    ],
    "color": "#2f6f6a"
+  },
+  {
+   "type": "eiffel",
+   "pos": [
+    0,
+    0,
+    -48
+   ],
+   "h": 42,
+   "color": "#7a666b"
   }
  ],
  "shots": [
   {
    "start": 0,
-   "target": "ls",
-   "headWidth": 0.22,
-   "yaw": 10,
-   "zoom": 4,
-   "pan": [
-    -20,
-    6
+   "anchor": [
+    0,
+    10,
+    -48
    ],
+   "distance": 34,
+   "fov": 40,
+   "yaw": -28,
+   "pitch": -4,
+   "orbit": 28,
+   "rise": 16,
+   "zoom": 6,
+   "frameY": 0.0,
+   "out": "dissolve",
+   "outDur": 0.4,
    "actions": [
     {
      "at": 0.2,
@@ -805,15 +807,17 @@
    "start": "say:tower is still",
    "anchor": [
     0,
-    1.7,
-    -8
+    20,
+    -48
    ],
-   "distance": 14,
-   "yaw": 0,
-   "pitch": 6,
-   "frameY": -0.1,
-   "zoom": 3,
-   "fov": 28
+   "distance": 60,
+   "fov": 38,
+   "yaw": 18,
+   "pitch": 2,
+   "orbit": -10,
+   "rise": 14,
+   "zoom": 2,
+   "frameY": 0.0
   }
  ],
  "end": "audio"

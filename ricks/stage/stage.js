@@ -237,6 +237,32 @@ async function makeProp(p) {
     add(new THREE.CylinderGeometry(0.12 * s, 0.16 * s, 1.2 * s, 10), await surface('#6b4429'), 0.6 * s); add(new THREE.IcosahedronGeometry(0.9 * s, 1), await surface(p.color || '#4f8f4a'), 1.7 * s);
   } else if (p.type === 'post') {
     const h = p.h || 2.6; add(new THREE.CylinderGeometry(0.06, 0.06, h, 8), await surface(p.color || '#5a3a2a'), h / 2);
+  } else if (p.type === 'eiffel') {
+    // procedural lattice tower: p.h = height, p.color = iron colour. Four curved legs, rings, X braces, two platforms, spire.
+    const H = p.h || 30, base = H * 0.21, iron = (await surface(p.color || '#5b4a4f')).clone(), th = Math.max(0.05, H * 0.006);
+    const half = (y) => base * Math.exp(-3.1 * y / H) * (1 - y / H) + H * 0.008;       // half-width of the square section at height y
+    if (iron.emissive) iron.emissive.set(p.glow || '#3a2c40');   // lift shadowed lattice off pure black
+    const seg = (a, b, r) => { const d = new THREE.Vector3().subVectors(b, a), m = new THREE.Mesh(new THREE.CylinderGeometry(r, r, d.length(), 5), iron);
+      m.position.copy(a).addScaledVector(d, 0.5); m.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), d.clone().normalize()); grp.add(m); };
+    const top = H * 0.9, N = 16, ys = Array.from({ length: N + 1 }, (_, i) => top * Math.pow(i / N, 1.15));
+    const corner = (i, sx, sz) => new THREE.Vector3(sx * half(ys[i]), ys[i], sz * half(ys[i]));
+    const cs = [[1, 1], [1, -1], [-1, -1], [-1, 1]];
+    for (let i = 0; i < N; i++) {
+      for (const [sx, sz] of cs) seg(corner(i, sx, sz), corner(i + 1, sx, sz), th * (1.6 - i / N));
+      for (let k = 0; k < 4; k++) {                                                    // ring and X braces on each face
+        const [ax, az] = cs[k], [bx, bz] = cs[(k + 1) % 4];
+        seg(corner(i + 1, ax, az), corner(i + 1, bx, bz), th * 0.7);
+        seg(corner(i, ax, az), corner(i + 1, bx, bz), th * 0.45); seg(corner(i, bx, bz), corner(i + 1, ax, az), th * 0.45);
+      }
+    }
+    for (const [yy, s] of [[H * 0.27, 1.25], [H * 0.55, 0.9]]) {                       // platforms
+      const w = half(yy) * 2 * s, pm = add(new THREE.BoxGeometry(w, H * 0.018, w), iron, yy); pm.userData.plat = true;
+    }
+    const arch = (sx) => { const pts = []; for (let i = 0; i <= 8; i++) { const u = i / 8, x = (u - 0.5) * 2 * half(0) * 0.62, y = Math.sin(u * Math.PI) * H * 0.1 + H * 0.26 * 0.0 + H * 0.02; pts.push(new THREE.Vector3(x, y, sx * half(H * 0.04))); }
+      for (let i = 0; i < 8; i++) seg(pts[i], pts[i + 1], th * 1.1); };
+    arch(1); arch(-1);
+    seg(new THREE.Vector3(0, top, 0), new THREE.Vector3(0, H, 0), th * 0.6);          // spire
+    grp.userData.thin = true;   // dense lattice: skip the ink outline pass, it would turn the tower solid black
   } else if (p.type === 'plane') {
     const [w, h] = p.size || [2, 2], t = await texture(p.image);
     const m = add(new THREE.PlaneGeometry(w, h), new THREE.MeshBasicMaterial({ map: t, transparent: true, alphaTest: 0.05, side: THREE.DoubleSide, toneMapped: false }), h / 2); m.userData.noInk = true; m.userData.tint = true;
@@ -250,7 +276,7 @@ async function makeProp(p) {
     grp.add(obj);
   } else throw new Error('unknown prop type "' + p.type + '"');
   grp.position.set(...(p.pos || [0, 0, 0])); if (p.rotY) grp.rotation.y = rad(p.rotY);
-  grp.traverse(o => { if (o.isMesh) { if (!o.userData.noInk) { o.castShadow = true; o.receiveShadow = true; o.layers.enable(1); } } });
+  grp.traverse(o => { if (o.isMesh) { if (!o.userData.noInk) { o.castShadow = true; o.receiveShadow = true; if (!(grp.userData.thin)) o.layers.enable(1); } } });
   grp.userData.prop = p;
   return grp;
 }
@@ -376,7 +402,7 @@ window.setup = async (spec) => {
     if (!s.anchor && !chars[s.target]) throw new Error('shot target "' + s.target + '" is not a character id (or give "anchor")');
     shots.push({ start: s.start, dur: s.dur, n, T: driftTable(n), pan: s.pan || [0, 0], zoom: s.zoom ?? 6, fov: s.fov || 40, glide: s.glide || 'lens',
       out: s.out === 'whip' ? 'glide' : (s.out || 'glide'), outDur: s.outDur, target: s.target, anchor: s.anchor ? new THREE.Vector3(...s.anchor) : null,
-      headWidth: s.headWidth || 0.20, distance: s.distance, ox: s.frameX ?? 0, oy: s.frameY ?? 0.12,
+      yaw0: s.yaw || 0, pitch0: s.pitch ?? 6, orbit: s.orbit || 0, rise: s.rise || 0, headWidth: s.headWidth || 0.20, distance: s.distance, ox: s.frameX ?? 0, oy: s.frameY ?? 0.12,
       dir: new THREE.Vector3(Math.sin(yaw) * Math.cos(pitch), Math.sin(pitch), Math.cos(yaw) * Math.cos(pitch)) });
   }
   window.totalFrames = spec._frames;
@@ -390,16 +416,20 @@ function shotPose(k, t) {                                       // camera of sho
   const anchor = s.anchor ? s.anchor.clone() : ch.headAt(t);
   const t0 = Math.tan(rad(s.fov) / 2);
   const d0 = s.distance || (ch ? ch.headD / (s.headWidth * 2 * t0 * (W / H)) : 6);
-  const fwd = s.dir.clone().negate(), right = new THREE.Vector3().crossVectors(fwd, new THREE.Vector3(0, 1, 0)).normalize(), up = new THREE.Vector3().crossVectors(right, fwd).normalize();
+  let dir = s.dir;
+  if (s.orbit || s.rise) { const u = Math.min(1, Math.max(0, (t - s.start) / s.dur)), e = u * u * (3 - 2 * u), tt = (t - s.start);   // orbit deg/s and crane deg/s, eased at both ends
+    const ya = rad(s.yaw0 + s.orbit * s.dur * (e - 0.5) * 1 + 0 * tt), pa = rad(s.pitch0 + s.rise * s.dur * (e - 0.5));
+    dir = new THREE.Vector3(Math.sin(ya) * Math.cos(pa), Math.sin(pa), Math.cos(ya) * Math.cos(pa)); }
+  const fwd = dir.clone().negate(), right = new THREE.Vector3().crossVectors(fwd, new THREE.Vector3(0, 1, 0)).normalize(), up = new THREE.Vector3().crossVectors(right, fwd).normalize();
   let fov = s.fov;
   if (s.glide === 'dolly') {
     const d = d0 / p.scale, wpp = 2 * d * t0 / H;
     const look = anchor.clone().addScaledVector(right, -p.dx * wpp - s.ox * W * wpp).addScaledVector(up, p.dy * wpp - s.oy * H * wpp);
-    tmpCam.position.copy(look).addScaledVector(s.dir, d); tmpCam.lookAt(look);
+    tmpCam.position.copy(look).addScaledVector(dir, d); tmpCam.lookAt(look);
   } else {
     const tz = t0 / p.scale, wpp0 = 2 * d0 * t0 / H; fov = 2 * Math.atan(tz) * 180 / Math.PI;
     const look = anchor.clone().addScaledVector(right, -s.ox * W * wpp0).addScaledVector(up, -s.oy * H * wpp0);
-    tmpCam.position.copy(look).addScaledVector(s.dir, d0); tmpCam.lookAt(look);
+    tmpCam.position.copy(look).addScaledVector(dir, d0); tmpCam.lookAt(look);
     const pxAng = 2 * tz / H; tmpCam.rotateY(Math.atan(p.dx * pxAng)); tmpCam.rotateX(Math.atan(p.dy * pxAng));
   }
   return { pos: tmpCam.position.clone(), quat: tmpCam.quaternion.clone(), fov, anchor };
