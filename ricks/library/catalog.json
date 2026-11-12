@@ -470,6 +470,143 @@
    "desc": "stage motion preset"
   }
  },
+ "props2d": {
+  "cash": {
+   "desc": "a bundle of banknotes with a paper band",
+   "path": "props/cash.png",
+   "period": "any",
+   "size": [
+    200,
+    130
+   ]
+  },
+  "letter": {
+   "desc": "an official letter with a crest and a red wax seal",
+   "path": "props/letter.png",
+   "period": "any",
+   "size": [
+    170,
+    220
+   ]
+  },
+  "note": {
+   "desc": "a music note (floats above musicians)",
+   "path": "props/note.png",
+   "period": "any",
+   "size": [
+    120,
+    150
+   ]
+  },
+  "pipe": {
+   "desc": "a wooden shawm / pipe for a street musician",
+   "path": "props/pipe.png",
+   "period": "1500s",
+   "size": [
+    300,
+    70
+   ]
+  },
+  "red_shoes": {
+   "desc": "a pair of red shoes with painted crosses",
+   "path": "props/red_shoes.png",
+   "period": "1500s",
+   "size": [
+    260,
+    150
+   ]
+  },
+  "sign_1518": {
+   "desc": "a date card",
+   "path": "props/sign_1518.png",
+   "period": "1500s",
+   "size": [
+    420,
+    194
+   ]
+  },
+  "sign_alcatraz": {
+   "desc": "a grey prison sign",
+   "path": "props/sign_alcatraz.png",
+   "period": "1930s",
+   "size": [
+    420,
+    344
+   ]
+  },
+  "sign_chicago": {
+   "desc": "a brick-red city sign",
+   "path": "props/sign_chicago.png",
+   "period": "1930s",
+   "size": [
+    420,
+    282
+   ]
+  },
+  "sign_crillon": {
+   "desc": "a navy and gold hotel plaque",
+   "path": "props/sign_crillon.png",
+   "period": "1920s",
+   "size": [
+    420,
+    194
+   ]
+  },
+  "sign_for_sale": {
+   "desc": "a yellow FOR SALE sign on a post",
+   "path": "props/sign_for_sale.png",
+   "period": "1920s",
+   "size": [
+    420,
+    344
+   ]
+  },
+  "sign_guildhall": {
+   "desc": "a wooden guild hall sign",
+   "path": "props/sign_guildhall.png",
+   "period": "1500s",
+   "size": [
+    420,
+    344
+   ]
+  },
+  "sign_no_music": {
+   "desc": "a council notice banning music",
+   "path": "props/sign_no_music.png",
+   "period": "1500s",
+   "size": [
+    420,
+    344
+   ]
+  },
+  "sign_police": {
+   "desc": "a police sign",
+   "path": "props/sign_police.png",
+   "period": "1920s",
+   "size": [
+    420,
+    282
+   ]
+  },
+  "sign_shrine": {
+   "desc": "a shrine sign",
+   "path": "props/sign_shrine.png",
+   "period": "1500s",
+   "size": [
+    420,
+    282
+   ]
+  },
+  "suitcase": {
+   "desc": "a brown leather suitcase",
+   "path": "props/suitcase.png",
+   "period": "1920s",
+   "size": [
+    210,
+    150
+   ]
+  }
+ },
  "props3d": {
   "desk": {
    "desc": "office desk with drawers, lamp, blotter (stage prop type 'desk')"

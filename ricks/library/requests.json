@@ -329,6 +329,12 @@
    "id": "us_city",
    "sky": "a soft hazy evening sky with long thin clouds",
    "far": "a hazy 1930s American city skyline of brick warehouses, water towers on rooftops, a few art-deco stepped skyscrapers and factory chimneys with thin smoke"
+  },
+  {
+   "kind": "backdrop",
+   "id": "paris_plain",
+   "sky": "a soft Paris morning sky with a few small clouds",
+   "far": "a hazy Paris skyline of cream stone buildings with grey zinc roofs, chimneys and one small church dome, with NO tower"
   }
  ]
 }

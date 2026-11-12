@@ -98,5 +98,23 @@
    "size": 0.55
   }
  ],
- "life": []
+ "life": [
+  {
+   "char": "npc20_man",
+   "behaviour": "stroll",
+   "path": [
+    [
+     -9,
+     -4.6
+    ],
+    [
+     9,
+     -4.6
+    ]
+   ],
+   "speed": 0.9,
+   "start": 1.0,
+   "pause": 2.0
+  }
+ ]
 }

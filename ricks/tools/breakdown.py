@@ -105,12 +105,16 @@ def build(proj):
     if g.get("texture") and g["texture"] in C["textures"]: cp(C["textures"][g["texture"]]["path"], os.path.join(proj, "textures", g["texture"] + ".png")); g["texture"] = "textures/%s.png" % g["texture"]
     S["ground"] = g; S["backdrop"] = []; S["characters"] = []; S["props"] = []; S["actions"] = []
     used_tex = set()
+    def p2d(f):                                          # code-drawn 2D props (signs, hand-held things) live in library/props
+        if isinstance(f, str) and f.startswith("props/") and not os.path.exists(os.path.join(proj, f)): cp(f, os.path.join(proj, f))
+        return f
     def tex(p):
         for k in ("texture", "wall", "roofTexture"):
             v = p.get(k)
             if isinstance(v, str) and v.startswith("textures/"):
                 n = os.path.basename(v)[:-4]
                 if n in C["textures"] and n not in used_tex: cp(C["textures"][n]["path"], os.path.join(proj, v)); used_tex.add(n)
+        p2d(p.get("image"))
         return p
     def actor(cid, char, pos, flip=False, face=None, hat=None, height=1.8):
         dst = os.path.join(proj, "puppets", char)
@@ -152,6 +156,7 @@ def build(proj):
         for a in L.get("acts", []):
             a = dict(a)
             if "to" in a: a["to"] = absol(B["cast"][[c["id"] for c in B["cast"]].index(a["who"])]["place"], a["to"], B)
+            if a.get("hold"): p2d(a["hold"]["file"])
             a.setdefault("at", 0.0); acts.append(a)
         for n in npcm:                                      # background behaviours restart in every shot of their place
             if n["who"].split("_")[1] == L["place"]: acts.append({"who": n["who"], "at": 0.1, "motion": n["motion"], "repeat": n["repeat"], **({"face": n["face"]} if n["face"] else {})})
