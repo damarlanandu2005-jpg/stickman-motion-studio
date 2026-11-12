@@ -1,0 +1,49 @@
+name: Ricks assets (Gemini stills + Kokoro voice) for one project
+on:
+  push:
+    branches: [ricks-stage-kaggle]
+    paths: ['.github/workflows/ricks-assets.yml']
+  workflow_dispatch:
+    inputs:
+      project: { description: "project folder name under ricks/projects", default: lustig }
+      only: { description: "which assets: lustig,poisson,textures,backdrop (comma list)", default: "lustig,poisson,textures,backdrop" }
+      voice: { description: "yes = also make the Kokoro voice", default: "yes" }
+permissions: { contents: write }
+jobs:
+  run:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - run: python -m pip install -q google-genai pillow numpy kokoro-onnx soundfile
+      - name: Gemini stills
+        env:
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+          GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+          IN_PROJECT: ${{ github.event.inputs.project }}
+          IN_ONLY: ${{ github.event.inputs.only }}
+        run: |
+          [ -n "$GCP_SA_KEY" ] && [ -n "$GCP_PROJECT_ID" ] || { echo "GCP secrets missing"; exit 1; }
+          printf '%s' "$GCP_SA_KEY" > "$RUNNER_TEMP/sa.json"
+          export GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/sa.json" GOOGLE_CLOUD_PROJECT="$GCP_PROJECT_ID" GOOGLE_GENAI_USE_VERTEXAI=true
+          python ricks/tools/gen_assets.py "ricks/projects/$IN_PROJECT" --only "$IN_ONLY" || true
+      - name: Kokoro voice
+        if: github.event.inputs.voice == 'yes'
+        env:
+          IN_PROJECT: ${{ github.event.inputs.project }}
+        run: |
+          mkdir -p models
+          for F in kokoro-v1.0.onnx voices-v1.0.bin; do curl -sSL --retry 4 -o "models/$F" "https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/$F"; done
+          python tools/make_voice.py "ricks/projects/$IN_PROJECT/audio/script.txt" "ricks/projects/$IN_PROJECT/audio" models am_fenrir 1.2
+      - name: Commit results
+        env:
+          IN_PROJECT: ${{ github.event.inputs.project }}
+        run: |
+          git config user.name "claude-bot"; git config user.email "noreply@anthropic.com"
+          git add -f "ricks/projects/$IN_PROJECT/raw" "ricks/projects/$IN_PROJECT/audio"
+          git commit -m "Ricks assets for $IN_PROJECT (Gemini stills, Kokoro voice) [skip ci]" || exit 0
+          git pull -q --rebase -X theirs origin ${{ github.ref_name }} || true
+          git push -q origin HEAD:${{ github.ref_name }}
