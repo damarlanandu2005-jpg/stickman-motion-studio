@@ -510,8 +510,8 @@
    ],
    "out": "dissolve",
    "outDur": 0.5,
-   "orbit": 9,
-   "rise": -3
+   "orbit": 3.2,
+   "rise": -1.2
   },
   {
    "start": "say:In nineteen",
@@ -530,8 +530,8 @@
      "face": "neutral"
     }
    ],
-   "orbit": -12,
-   "rise": -2
+   "orbit": -4.2,
+   "rise": -0.8
   },
   {
    "start": "say:posing",
@@ -549,8 +549,8 @@
      }
     }
    ],
-   "orbit": 9,
-   "rise": 3
+   "orbit": 3.2,
+   "rise": 1.2
   },
   {
    "start": "say:He told them",
@@ -575,8 +575,8 @@
    ],
    "out": "dissolve",
    "outDur": 0.5,
-   "orbit": -12,
-   "rise": 3
+   "orbit": -4.2,
+   "rise": 1.2
   },
   {
    "start": "say:rusting",
@@ -598,8 +598,8 @@
    "pitch": 9,
    "out": "dissolve",
    "outDur": 0.5,
-   "orbit": 12,
-   "rise": 2
+   "orbit": 4.2,
+   "rise": 0.8
   },
   {
    "start": "say:too costly",
@@ -615,8 +615,8 @@
      "shake": 0.4
     }
    ],
-   "orbit": -9,
-   "rise": -3
+   "orbit": -3.2,
+   "rise": -1.2
   },
   {
    "start": "say:and must be sold",
@@ -634,8 +634,8 @@
      }
     }
    ],
-   "orbit": 9,
-   "rise": -3
+   "orbit": 3.2,
+   "rise": -1.2
   },
   {
    "start": "say:A dealer",
@@ -656,8 +656,8 @@
      "hop": 0.15
     }
    ],
-   "orbit": -9,
-   "rise": -2
+   "orbit": -3.2,
+   "rise": -0.8
   },
   {
    "start": "say:You see",
@@ -676,8 +676,8 @@
      }
     }
    ],
-   "orbit": 9,
-   "rise": 3
+   "orbit": 3.2,
+   "rise": 1.2
   },
   {
    "start": "say:never his",
@@ -696,8 +696,8 @@
      }
     }
    ],
-   "orbit": -9,
-   "rise": 3
+   "orbit": -3.2,
+   "rise": 1.2
   },
   {
    "start": "say:but Poisson",
@@ -720,8 +720,8 @@
    ],
    "out": "dissolve",
    "outDur": 0.5,
-   "orbit": 9,
-   "rise": 2
+   "orbit": 3.2,
+   "rise": 0.8
   },
   {
    "start": "say:So six months",
@@ -747,8 +747,8 @@
     }
    ],
    "pitch": 7,
-   "orbit": -12,
-   "rise": -3
+   "orbit": -4.2,
+   "rise": -1.2
   },
   {
    "start": "say:found new dealers",
@@ -770,8 +770,8 @@
     }
    ],
    "pitch": 6,
-   "orbit": 12,
-   "rise": -3
+   "orbit": 4.2,
+   "rise": -1.2
   },
   {
    "start": "say:and sold the Eiffel",
@@ -787,8 +787,8 @@
      "hop": 0.14
     }
    ],
-   "orbit": -9,
-   "rise": -2
+   "orbit": -3.2,
+   "rise": -0.8
   },
   {
    "start": "say:This time",
@@ -804,8 +804,8 @@
      "shake": 0.5
     }
    ],
-   "orbit": 9,
-   "rise": 3
+   "orbit": 3.2,
+   "rise": 1.2
   },
   {
    "start": "say:He fled",
@@ -832,8 +832,8 @@
     }
    ],
    "pitch": 7,
-   "orbit": -12,
-   "rise": 3
+   "orbit": -4.2,
+   "rise": 1.2
   },
   {
    "start": "say:tower is still",
