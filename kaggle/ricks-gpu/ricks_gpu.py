@@ -27,7 +27,7 @@ sh("cd %s && npm ci --no-audit --no-fund 2>&1 | tail -2" % S, timeout=1500)
 sh("cd %s && npx playwright install chromium 2>&1 | tail -1; npx playwright install-deps chromium 2>&1 | tail -1" % S, timeout=1500)
 sh("which ffmpeg || (apt-get update -qq && apt-get install -y -qq ffmpeg) 2>&1 | tail -2", timeout=900)
 sh("pip -q install numpy pillow scipy opencv-python-headless 2>&1 | tail -1", timeout=900)
-env = dict(os.environ, RICKS_GL="t4", RICKS_REQUIRE_GPU="1")
+env = dict(os.environ, RICKS_GL="t4", RICKS_REQUIRE_GPU="1", RICKS_CRF="21", RICKS_PRESET="medium")
 OUT = "/tmp/ricks_out"; os.makedirs(OUT, exist_ok=True)
 cmd = "cd %s && python3 gate_render.py %s/%s %s --mode %s" % (S, R, PROJECT, OUT, MODE)
 if SCALE: cmd += " --scale %s" % SCALE

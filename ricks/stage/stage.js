@@ -125,7 +125,7 @@ function makeChannel(base, keys) {
   return (t) => evalTo(keys.length, t);
 }
 
-function makeCharacter(c, rig, actions) {
+async function makeCharacter(c, rig, actions) {
   const figH = rig.feetY, upp = (c.height || 1.8) / figH;                       // world units per rig pixel
   const padX = rig.size[0] * 0.45, padTop = rig.size[1] * (rig.hat ? 0.34 : 0.12), padBot = rig.size[1] * 0.04;
   const k = Math.min(1, 900 / rig.size[1]);                                     // canvas pixels per rig pixel
@@ -427,7 +427,7 @@ window.setup = async (spec) => {
 
   // characters and their actions (times already absolute)
   const acts = {}; for (const a of (spec._actions || [])) (acts[a.who] = acts[a.who] || []).push(a);
-  for (const c of (spec.characters || [])) { const ch = makeCharacter(c, await loadRig(c), acts[c.id] || []); chars[c.id] = ch; scene.add(ch.mesh); setRoot.add(ch.blob); }
+  for (const c of (spec.characters || [])) { const ch = await makeCharacter(c, await loadRig(c), acts[c.id] || []); chars[c.id] = ch; scene.add(ch.mesh); setRoot.add(ch.blob); }
 
   // lighting keyframes
   const moods = spec.moods || { default: { sun: spec.sun, sky: spec.sky, fill: spec.fill, exposure: 1 } }, first = Object.keys(moods)[0];

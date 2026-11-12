@@ -147,9 +147,10 @@ def build(proj):
     for p in B.get("props", []):
         q = {k: v for k, v in p.items() if k != "place"}; q["pos"] = absol(p["place"], p["pos"], B); S["props"].append(tex(q))
     for c in B["cast"]: actor(c["id"], c["char"], absol(c["place"], c["pos"], B), c.get("flip", False), c.get("face"), c.get("hat"), c.get("height", 1.8))
-    npcm = S.pop("_npc_motion", []); shots = []; yi = 0
+    npcm = S.pop("_npc_motion", []); shots = []; yi = 0; wi = 0
     for i, L in enumerate(B["lines"]):
-        s = {"start": ("say:" + L["say"]) if L.get("say") else 0}
+        if L.get("say"): wi = find_phrase(W, L["say"], wi); s = {"start": "w:%d" % wi}      # word index: safe when a phrase is spoken twice
+        else: s = {"start": 0}
         if "subject" in L: s["target"] = L["subject"]; s["headWidth"] = SIZE[L.get("shot", "medium")]
         else: s["anchor"] = absol(L["place"], L["anchor"], B)
         s.update(MOVE[L.get("move", "push")]); s["yaw"] = L.get("yaw", YAWS[yi % len(YAWS)]); yi += 1; s["pitch"] = L.get("pitch", 6)

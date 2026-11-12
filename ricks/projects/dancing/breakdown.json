@@ -11,8 +11,8 @@
  "ground": {
   "texture": "cobble",
   "repeat": [
-   150,
-   150
+   240,
+   240
   ]
  },
  "places": {
@@ -208,13 +208,13 @@
    "type": "plane",
    "image": "props/sign_1518.png",
    "pos": [
-    -3.4,
-    0.9,
-    -5.55
+    -6.2,
+    0.95,
+    -5.05
    ],
    "size": [
-    2.4,
-    1.1
+    2.0,
+    0.92
    ]
   },
   {
@@ -222,7 +222,7 @@
    "type": "plane",
    "image": "props/sign_guildhall.png",
    "pos": [
-    -5.2,
+    -6.3,
     0,
     -2.6
    ],
@@ -264,9 +264,9 @@
    "type": "plane",
    "image": "props/sign_shrine.png",
    "pos": [
-    -2.6,
+    3.3,
     0,
-    -5.2
+    -6.2
    ],
    "size": [
     1.7,
@@ -332,16 +332,16 @@
    "say": "It was July",
    "place": "square",
    "anchor": [
-    -3.4,
-    1.5,
-    -5.5
+    -6.2,
+    1.45,
+    -5.05
    ],
    "move": "push",
    "proof": "A card on the stall reads STRASBOURG JULY 1518",
    "extra": {
-    "distance": 5.5,
+    "distance": 6.5,
     "fov": 34,
-    "yaw": 10,
+    "yaw": 8,
     "pitch": 4,
     "frameY": 0.05
    }
@@ -705,15 +705,22 @@
    "say": "So the council",
    "place": "hall",
    "subject": "co2",
-   "shot": "medium",
+   "shot": "wide",
    "move": "orbitR",
-   "proof": "The councillor bans the music; the piper lowers his pipe",
+   "proof": "The councillor holds up a NO MUSIC sign; the piper on the stage lowers his pipe",
    "acts": [
     {
      "who": "co2",
      "at": 0.0,
      "face": "angry",
-     "motion": "point"
+     "hold": {
+      "file": "props/sign_no_music.png",
+      "hand": "R",
+      "scale": 2.3
+     },
+     "pose": {
+      "armR": -120
+     }
     },
     {
      "who": "pi",
@@ -739,7 +746,7 @@
     }
    ],
    "extra": {
-    "frameX": -0.1
+    "frameX": -0.2
    }
   },
   {
@@ -794,17 +801,17 @@
    "place": "hill",
    "anchor": [
     0.5,
-    3.2,
+    6.0,
     -9
    ],
    "move": "craneUp",
    "proof": "The chapel with its cross and the ST VITUS sign",
    "extra": {
-    "distance": 15,
+    "distance": 17,
     "fov": 38,
     "yaw": -12,
-    "pitch": 3,
-    "frameY": 0.0
+    "pitch": -4,
+    "frameY": 0.12
    }
   },
   {

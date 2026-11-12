@@ -339,6 +339,11 @@
    "id": "paris_plain",
    "sky": "a soft Paris morning sky with a few small clouds",
    "far": "a hazy Paris skyline of cream stone buildings with grey zinc roofs, chimneys and one small church dome, with NO tower"
+  },
+  {
+   "kind": "texture",
+   "id": "grass",
+   "surface": "soft meadow grass in two close shades of green with small painted tufts and a few tiny white and yellow flowers, thin darker green strokes"
   }
  ]
 }
