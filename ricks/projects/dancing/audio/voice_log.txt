@@ -1,0 +1,7 @@
+total 345468
+drwxr-xr-x  2 runner runner      4096 Nov 12 19:36 .
+drwxr-xr-x 26 runner runner      4096 Nov 12 19:36 ..
+-rw-r--r--  1 runner runner 325532387 Nov 12 19:36 kokoro-v1.0.onnx
+-rw-r--r--  1 runner runner  28214398 Nov 12 19:36 voices-v1.0.bin
+[0;93m2026-11-12 19:36:35.484034793 [W:onnxruntime:Default, device_discovery.cc:95 GetPciBusId] Skipping pci_bus_id for PCI path at "/sys/devices/LNXSYSTM:00/LNXSYBUS:00/ACPI0004:00/MSFT1000:00/5620e0c7-8062-4dce-aeb7-520c7ef76171" because filename "5620e0c7-8062-4dce-aeb7-520c7ef76171" did not match expected pattern of [0-9a-f]+:[0-9a-f]+:[0-9a-f]+[.][0-9a-f]+[m
+voice.mp3 written: 51.64 s, 173 words
