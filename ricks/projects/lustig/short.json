@@ -473,15 +473,15 @@
    "start": 0,
    "anchor": [
     0,
-    14,
+    18,
     -48
    ],
    "distance": 46,
    "fov": 40,
    "yaw": -30,
-   "pitch": -8,
+   "pitch": 0,
    "orbit": 34,
-   "rise": 34,
+   "rise": 30,
    "zoom": 6,
    "frameY": 0.0,
    "out": "dissolve",
