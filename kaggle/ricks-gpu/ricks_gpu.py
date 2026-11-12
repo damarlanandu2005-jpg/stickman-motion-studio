@@ -5,7 +5,9 @@
 # -> ricks/stage/gate_render.py (stop-frame gate, then render, then camera check) -> copy results to /kaggle/working.
 import subprocess, json, os, shutil, glob, time
 W = "/kaggle/working"; os.makedirs(W, exist_ok=True)
-MODE = "__MODE__"; PROJECT = "__PROJECT__"; BRANCH = "__BRANCH__"; SCALE = float("__SCALE__"); FORCE = "__FORCE__" == "1"
+MODE = "__MODE__"; PROJECT = "__PROJECT__"
+if "/" not in PROJECT: PROJECT = "ricks/projects/" + PROJECT
+BRANCH = "__BRANCH__"; SCALE = float("__SCALE__"); FORCE = "__FORCE__" == "1"
 def sh(cmd, timeout=3600, show=2500, env=None):
     print("$", cmd, flush=True)
     try:
