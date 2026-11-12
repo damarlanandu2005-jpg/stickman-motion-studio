@@ -1,4 +1,18 @@
 $ node /tmp/repo/ricks/stage/render.mjs /tmp/repo/ricks/projects/demo/short.json /tmp/ricks_out/out.mp4 --stills
-short.json has problems:
-  - props[5].file: file not found: models/cart.glb
+GL_RENDERER ANGLE (NVIDIA Corporation, Tesla T4/PCIe/SSE2, OpenGL ES 3.2)
+4 shots, 9.47 s, 284 frames at 540x960
+shot 00 a  t=  0.27s  luma 104.3  contrast 56.3  ok
+shot 00 b  t=  0.70s  luma 103.4  contrast   57  ok
+shot 00 c  t=  1.13s  luma 103.7  contrast 56.7  ok
+shot 01 a  t=  1.83s  luma   112  contrast 56.6  ok
+shot 01 b  t=  3.17s  luma 115.1  contrast 57.1  ok
+shot 01 c  t=  4.50s  luma 117.6  contrast 57.3  ok
+shot 02 a  t=  5.27s  luma 111.8  contrast 53.5  ok
+shot 02 b  t=  5.70s  luma  88.7  contrast 46.8  ok
+shot 02 c  t=  6.17s  luma  88.4  contrast 46.5  ok
+shot 03 a  t=  6.90s  luma  99.1  contrast 48.6  ok
+shot 03 b  t=  7.97s  luma  91.2  contrast 35.7  ok
+shot 03 c  t=  9.00s  luma 104.9  contrast 49.1  ok
+12 stills -> /tmp/ricks_out/out_stills/sheet.jpg
+no problems found: safe to run the full render
 

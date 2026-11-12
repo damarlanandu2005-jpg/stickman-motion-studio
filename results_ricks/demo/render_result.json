@@ -4,15 +4,14 @@
  "branch": "ricks-stage-kaggle",
  "gpu": "Tesla T4, 580.178.04\nTesla T4, 580.178.04",
  "node": "v22.23.4",
- "total_s": 0.2,
+ "total_s": 5.8,
  "result": {
   "project": "/tmp/repo/ricks/projects/demo",
   "mode": "stills",
-  "gl_renderer": null,
-  "gate_seconds": 0.1,
-  "flagged": null,
+  "gl_renderer": "ANGLE (NVIDIA Corporation, Tesla T4/PCIe/SSE2, OpenGL ES 3.2)",
+  "gate_seconds": 5.7,
+  "flagged": 0,
   "flags": [],
-  "gate_ok": false,
-  "error": "stop-frame check failed to run (exit 1)"
+  "gate_ok": true
  }
 }
