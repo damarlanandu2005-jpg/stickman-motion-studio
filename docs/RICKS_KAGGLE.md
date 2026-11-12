@@ -11,7 +11,7 @@ GPU recipe: installs the NVIDIA userspace driver, then launches new-headless Chr
 1. Secrets `KAGGLE_USERNAME` and `KAGGLE_KEY` are already used by the other workflows.
 2. Actions -> "Ricks Short on Kaggle GPU" -> Run workflow. `mode=stills` runs only the stop-frame check; `mode=full` runs the check, refuses to render if anything is flagged (`force=1` overrides), renders 1080x1920 at 30 fps and runs the camera check.
 3. Results: `results_ricks/<project>/` (result.json, stills sheet, log, short.mp4 if under 100 MB).
-Note: GitHub only lists a workflow for manual runs once the file is on the default branch (`main`).
+No merge needed: the push trigger on the workflow file registers it from this branch, and it can be started from Actions (choose branch `ricks-stage-kaggle`) or with `gh workflow run ricks-kaggle.yml --ref ricks-stage-kaggle -f mode=stills`.
 
 ## Tested here (CPU only)
 Demo project: stop-frame gate passed (0 flagged), half-size render finished (284 frames, 90 s on CPU), camera check passed (static frames 2.8%, pan and zoom in range), and `RICKS_REQUIRE_GPU=1` correctly refuses a software renderer.
