@@ -1,0 +1,16 @@
+[
+ {
+  "name": "tex_cobble",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1,
+  "bytes": 1508071
+ },
+ {
+  "name": "backdrop",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1,
+  "bytes": 772084
+ }
+]

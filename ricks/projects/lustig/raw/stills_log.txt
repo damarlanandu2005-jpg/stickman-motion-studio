@@ -14,3 +14,6 @@ FAIL backdrop gemini-2.5-flash-image ClientError("429 RESOURCE_EXHAUSTED. {'erro
 FAIL backdrop gemini-2.5-flash-image ClientError("429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource has been exhausted (e.g. check quota).', 'status': 'RESOURCE_EXHAUSTED'}}")
 FAIL backdrop gemini-2.5-flash-image ClientError("429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource has been exhausted (e.g. check quota).', 'status': 'RESOURCE_EXHAUSTED'}}")
 done: 7 ok, 8 failed attempts
+OK tex_cobble gemini-2.5-flash-image
+OK backdrop gemini-2.5-flash-image
+done: 2 ok, 0 failed attempts

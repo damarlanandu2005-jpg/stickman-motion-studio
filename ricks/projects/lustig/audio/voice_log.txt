@@ -1,17 +1,7 @@
 total 345468
-drwxr-xr-x  2 runner runner      4096 Nov 12 10:42 .
-drwxr-xr-x 26 runner runner      4096 Nov 12 10:42 ..
--rw-r--r--  1 runner runner 325532387 Nov 12 10:42 kokoro-v1.0.onnx
--rw-r--r--  1 runner runner  28214398 Nov 12 10:42 voices-v1.0.bin
-[0;93m2026-11-12 10:42:43.873622858 [W:onnxruntime:Default, device_discovery.cc:95 GetPciBusId] Skipping pci_bus_id for PCI path at "/sys/devices/LNXSYSTM:00/LNXSYBUS:00/ACPI0004:00/MSFT1000:00/5620e0c7-8062-4dce-aeb7-520c7ef76171" because filename "5620e0c7-8062-4dce-aeb7-520c7ef76171" did not match expected pattern of [0-9a-f]+:[0-9a-f]+:[0-9a-f]+[.][0-9a-f]+[m
-Traceback (most recent call last):
-  File "/home/runner/work/stickman-motion-studio/stickman-motion-studio/tools/make_voice.py", line 26, in <module>
-    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(proj / "voice_raw.wav"), "-af", "loudnorm=I=-16:TP=-2", "-ar", "44100", "-b:a", "192k", str(proj / "voice.mp3")], check=True)
-  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/subprocess.py", line 548, in run
-    with Popen(*popenargs, **kwargs) as process:
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/subprocess.py", line 1026, in __init__
-    self._execute_child(args, executable, preexec_fn, close_fds,
-  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/subprocess.py", line 1955, in _execute_child
-    raise child_exception_type(errno_num, err_msg, err_filename)
-FileNotFoundError: [Errno 2] No such file or directory: 'ffmpeg'
+drwxr-xr-x  2 runner runner      4096 Nov 12 10:47 .
+drwxr-xr-x 26 runner runner      4096 Nov 12 10:47 ..
+-rw-r--r--  1 runner runner 325532387 Nov 12 10:47 kokoro-v1.0.onnx
+-rw-r--r--  1 runner runner  28214398 Nov 12 10:47 voices-v1.0.bin
+[0;93m2026-11-12 10:47:40.358600370 [W:onnxruntime:Default, device_discovery.cc:95 GetPciBusId] Skipping pci_bus_id for PCI path at "/sys/devices/LNXSYSTM:00/LNXSYBUS:00/ACPI0004:00/MSFT1000:00/5620e0c7-8062-4dce-aeb7-520c7ef76171" because filename "5620e0c7-8062-4dce-aeb7-520c7ef76171" did not match expected pattern of [0-9a-f]+:[0-9a-f]+:[0-9a-f]+[.][0-9a-f]+[m
+voice.mp3 written: 28.39 s, 101 words
