@@ -52,6 +52,11 @@ const mapTex = () => ctex("maryMap", 512, 384, (g, r) => {
   g.beginPath(); g.moveTo(512, 40); g.lineTo(440, 60); g.bezierCurveTo(420, 120, 450, 170, 430, 230); g.bezierCurveTo(440, 300, 470, 340, 512, 384); g.closePath(); g.fill();
   g.strokeStyle = "#7a2a24"; g.lineWidth = 4; g.setLineDash([10, 9]); g.beginPath(); g.moveTo(112, 120); g.bezierCurveTo(200, 90, 290, 130, 420, 100); g.stroke(); g.setLineDash([]);   // the route
   g.fillStyle = "#7a2a24"; g.beginPath(); g.arc(112, 120, 7, 0, 7); g.fill(); g.beginPath(); g.arc(420, 100, 7, 0, 7); g.fill();
+  for (const [x, y, k] of [[210, 250, 1], [300, 300, 0.8], [330, 170, 0.9]] as number[][]) {   // small ship sketches on the chart
+    g.strokeStyle = "#3a2a1a"; g.fillStyle = "#f4ecd6"; g.lineWidth = 3;
+    g.beginPath(); g.moveTo(x - 26 * k, y); g.lineTo(x + 26 * k, y); g.lineTo(x + 16 * k, y + 12 * k); g.lineTo(x - 18 * k, y + 12 * k); g.closePath(); g.fill(); g.stroke();
+    g.beginPath(); g.moveTo(x - 4 * k, y); g.lineTo(x - 4 * k, y - 38 * k); g.lineTo(x + 20 * k, y - 6 * k); g.closePath(); g.fill(); g.stroke();
+  }
   g.strokeStyle = "rgba(60,40,20,0.35)"; g.lineWidth = 2; g.strokeRect(6, 6, 500, 372);
 });
 
@@ -109,11 +114,11 @@ export const makeShip = (o: ShipOpts) => {
   bx(B, rope, 2.3, 0.04, 0.05, 10.3, DECK_Y + 0.93, -0.35); bx(B, rope, 2.3, 0.04, 0.05, 10.3, DECK_Y + 0.93, 0.35);
   // a small table with bread, a tin mug and a water cask (c1 close-up), between the masts on the starboard side
   const tbl = tm({ color: "#7a5230" });
-  bx(B, tbl, 1.3, 0.07, 0.8, 3.0, DECK_Y + 0.85, 2.2);
-  for (const [dx, dz] of [[-0.55, -0.32], [0.55, -0.32], [-0.55, 0.32], [0.55, 0.32]]) bx(B, tbl, 0.07, 0.85, 0.07, 3.0 + dx, DECK_Y + 0.42, 2.2 + dz);
-  B.add(new THREE.CapsuleGeometry(0.11, 0.3, 4, 10), tm({ color: "#c98a4a" }), MX(2.7, DECK_Y + 1.0, 2.2, 0.4, 1, 1, 1, Math.PI / 2));    // bread loaf
-  cyl(B, tm({ color: "#b9bcc0" }), 0.07, 0.06, 0.12, 3.2, DECK_Y + 0.95, 2.35, 0, 0, 12);                                                    // tin mug
-  cyl(B, bar, 0.36, 0.36, 0.7, 3.9, DECK_Y + 0.35, 2.2, 0, 0, 14); cyl(B, hoop, 0.375, 0.375, 0.05, 3.9, DECK_Y + 0.5, 2.2, 0, 0, 14);          // water cask
+  const TX = 6.0; bx(B, tbl, 1.3, 0.07, 0.8, TX, DECK_Y + 0.85, 2.2);
+  for (const [dx, dz] of [[-0.55, -0.32], [0.55, -0.32], [-0.55, 0.32], [0.55, 0.32]]) bx(B, tbl, 0.07, 0.85, 0.07, TX + dx, DECK_Y + 0.42, 2.2 + dz);
+  B.add(new THREE.CapsuleGeometry(0.11, 0.3, 4, 10), tm({ color: "#c98a4a" }), MX(TX - 0.3, DECK_Y + 1.0, 2.2, 0.4, 1, 1, 1, Math.PI / 2));    // bread loaf
+  cyl(B, tm({ color: "#b9bcc0" }), 0.07, 0.06, 0.12, TX + 0.2, DECK_Y + 0.95, 2.35, 0, 0, 12);                                                    // tin mug
+  cyl(B, bar, 0.36, 0.36, 0.7, TX + 0.9, DECK_Y + 0.35, 2.2, 0, 0, 14); cyl(B, hoop, 0.375, 0.375, 0.05, TX + 0.9, DECK_Y + 0.5, 2.2, 0, 0, 14);          // water cask
   B.build(g, true);
   return g;
 };

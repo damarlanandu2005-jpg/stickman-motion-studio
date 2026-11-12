@@ -95,7 +95,7 @@ const Inner: React.FC<{ id: string; kit: Kit }> = ({ id, kit }) => {
   fx.lens.focus = Math.max(0.3, fpt.sub(cam.position).dot(fwd));
   fx.lens.cInf = d.cInf;
   const light = shotById(id).light;
-  gradeFor(fx.grade, light === "grey" ? "day" : light);
+  gradeFor(fx.grade, light === "grey" || light === "golden" ? "day" : light);
   fx.bloom.intensity = BLOOM[light];
   fx.bloom.luminanceMaterial.threshold = 1.0; // golden: the low sun glow blooms too
   fx.grain.seed = f; // deterministic per frame
