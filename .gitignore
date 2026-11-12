@@ -4,3 +4,6 @@ __pycache__/
 mine/*/web/lib/
 mine/*/node_modules/
 mine/*/frames/
+
+# Ricks projects keep their 3D models in the repo
+!ricks/projects/*/models/
