@@ -3,9 +3,73 @@
   "paris": {
    "desc": "Paris morning sky, hazy skyline with the Eiffel Tower",
    "path": "backdrops/paris.png"
+  },
+  "strasbourg": {
+   "desc": "",
+   "path": "backdrops/strasbourg.png"
+  },
+  "us_city": {
+   "desc": "",
+   "path": "backdrops/us_city.png"
   }
  },
  "characters": {
+  "councillor": {
+   "bare_head": true,
+   "desc": "a pompous medieval city councillor of 1518: long dark green robe with brown fur trim and a heavy gold chain of office, grey beard, bald head",
+   "faces": [
+    "angry",
+    "confused",
+    "crying",
+    "determined",
+    "disgusted",
+    "embarrassed",
+    "happy",
+    "laughing",
+    "nervous",
+    "neutral",
+    "sad",
+    "scared",
+    "scheming",
+    "shocked",
+    "shouting",
+    "skeptical",
+    "smug",
+    "tired"
+   ],
+   "limbs": [
+    "armL",
+    "armR",
+    "legL",
+    "legR"
+   ],
+   "path": "characters/councillor",
+   "period": "1500s",
+   "sheets": [
+    "a",
+    "b",
+    "c"
+   ],
+   "tags": [
+    "1518",
+    "brown",
+    "city",
+    "council",
+    "councillor",
+    "dark",
+    "gold",
+    "green",
+    "heavy",
+    "long",
+    "medieval",
+    "noble",
+    "official",
+    "pompous",
+    "robe",
+    "trim",
+    "with"
+   ]
+  },
   "dealer_b": {
    "bare_head": true,
    "desc": "a tall thin 1920s Parisian scrap-metal dealer: long grey overcoat with a red scarf, small round glasses, short dark hair, sceptical look",
@@ -36,6 +100,7 @@
     "legR"
    ],
    "path": "characters/dealer_b",
+   "period": "1920s",
    "sheets": [
     "a",
     "b",
@@ -88,6 +153,7 @@
     "legR"
    ],
    "path": "characters/dealer_c",
+   "period": "1920s",
    "sheets": [
     "a",
     "b",
@@ -142,6 +208,7 @@
     "legR"
    ],
    "path": "characters/gangster",
+   "period": "1920s",
    "sheets": [
     "a",
     "b",
@@ -198,6 +265,7 @@
     "legR"
    ],
    "path": "characters/lustig",
+   "period": "1920s",
    "sheets": [
     "a",
     "b",
@@ -211,6 +279,244 @@
     "fedora",
     "navy",
     "suit"
+   ]
+  },
+  "npc15_man": {
+   "bare_head": true,
+   "desc": "a medieval peasant man of 1518: plain brown tunic with a rope belt, shaggy dark hair, short beard, weary look",
+   "faces": [],
+   "limbs": [
+    "armL",
+    "armR",
+    "legL",
+    "legR"
+   ],
+   "path": "characters/npc15_man",
+   "period": "1500s",
+   "sheets": [],
+   "tags": [
+    "1518",
+    "background",
+    "beard",
+    "belt",
+    "brown",
+    "dark",
+    "hair",
+    "medieval",
+    "peasant",
+    "plain",
+    "rope",
+    "shaggy",
+    "short",
+    "townsfolk",
+    "tunic",
+    "with"
+   ]
+  },
+  "npc15_woman": {
+   "bare_head": false,
+   "desc": "a medieval peasant woman of 1518: blue-grey dress with a white apron, a plain white linen cap covering her hair, weary look. Her cap is part of the head",
+   "faces": [],
+   "limbs": [
+    "armL",
+    "armR",
+    "legL",
+    "legR"
+   ],
+   "path": "characters/npc15_woman",
+   "period": "1500s",
+   "sheets": [],
+   "tags": [
+    "1518",
+    "apron",
+    "background",
+    "blue-grey",
+    "covering",
+    "dress",
+    "hair",
+    "linen",
+    "medieval",
+    "peasant",
+    "plain",
+    "townsfolk",
+    "white",
+    "with",
+    "woman"
+   ]
+  },
+  "npc15_youth": {
+   "bare_head": true,
+   "desc": "a young medieval apprentice of 1518: green tunic with patched elbows, blond bowl-cut hair, weary look",
+   "faces": [],
+   "limbs": [
+    "armL",
+    "armR",
+    "legL",
+    "legR"
+   ],
+   "path": "characters/npc15_youth",
+   "period": "1500s",
+   "sheets": [],
+   "tags": [
+    "1518",
+    "apprentice",
+    "background",
+    "blond",
+    "bowl-cut",
+    "elbows",
+    "green",
+    "hair",
+    "look",
+    "medieval",
+    "patched",
+    "peasant",
+    "townsfolk",
+    "tunic",
+    "weary",
+    "with",
+    "young"
+   ]
+  },
+  "npc20_man": {
+   "bare_head": false,
+   "desc": "a 1920s Parisian working man passer-by: olive vest over a striped shirt, a soft newsboy cap, small stubble, calm look. His cap is part of the head",
+   "faces": [],
+   "limbs": [
+    "armL",
+    "armR",
+    "legL",
+    "legR"
+   ],
+   "path": "characters/npc20_man",
+   "period": "1920s",
+   "sheets": [],
+   "tags": [
+    "1920s",
+    "background",
+    "cap",
+    "newsboy",
+    "olive",
+    "over",
+    "parisian",
+    "passer-by",
+    "shirt",
+    "small",
+    "soft",
+    "striped",
+    "stubble",
+    "vest",
+    "working"
+   ]
+  },
+  "npc20_woman": {
+   "bare_head": false,
+   "desc": "a 1920s Parisian woman passer-by: long plum coat with a fur collar, a small cloche hat, short bob hair, calm look. Her hat is part of the head",
+   "faces": [],
+   "limbs": [
+    "armL",
+    "armR",
+    "legL",
+    "legR"
+   ],
+   "path": "characters/npc20_woman",
+   "period": "1920s",
+   "sheets": [],
+   "tags": [
+    "1920s",
+    "background",
+    "cloche",
+    "coat",
+    "collar",
+    "hair",
+    "hat",
+    "long",
+    "parisian",
+    "passer-by",
+    "plum",
+    "short",
+    "small",
+    "with",
+    "woman"
+   ]
+  },
+  "physician": {
+   "bare_head": true,
+   "desc": "a thin medieval physician of 1518: long black scholar's robe with a white collar, pointed dark goatee, short grey hair, serious look",
+   "faces": [
+    "confused",
+    "happy",
+    "nervous",
+    "neutral",
+    "shocked",
+    "shouting"
+   ],
+   "limbs": [
+    "armL",
+    "armR",
+    "legR"
+   ],
+   "note": "one leg layer only",
+   "path": "characters/physician",
+   "period": "1500s",
+   "sheets": [
+    "a"
+   ],
+   "tags": [
+    "1518",
+    "black",
+    "collar",
+    "dark",
+    "doctor",
+    "goatee",
+    "long",
+    "medieval",
+    "physician",
+    "pointed",
+    "robe",
+    "scholar",
+    "scholar's",
+    "thin",
+    "white",
+    "with"
+   ]
+  },
+  "piper": {
+   "bare_head": true,
+   "desc": "a cheerful medieval street musician of 1518: mustard-yellow tunic with a brown belt and a blue hood collar, curly ginger hair, freckles",
+   "faces": [
+    "confused",
+    "happy",
+    "nervous",
+    "neutral",
+    "shocked",
+    "shouting"
+   ],
+   "limbs": [
+    "armL",
+    "armR",
+    "legL",
+    "legR"
+   ],
+   "path": "characters/piper",
+   "period": "1500s",
+   "sheets": [
+    "a"
+   ],
+   "tags": [
+    "1518",
+    "belt",
+    "blue",
+    "brown",
+    "cheerful",
+    "collar",
+    "curly",
+    "hood",
+    "medieval",
+    "musician",
+    "mustard-yellow",
+    "street",
+    "tunic",
+    "with"
    ]
   },
   "poisson": {
@@ -243,6 +549,7 @@
     "legR"
    ],
    "path": "characters/poisson",
+   "period": "1920s",
    "sheets": [
     "a",
     "b",
@@ -287,6 +594,7 @@
     "legR"
    ],
    "path": "characters/police_a",
+   "period": "1920s",
    "sheets": [
     "a",
     "b",
@@ -342,6 +650,7 @@
     "legR"
    ],
    "path": "characters/police_b",
+   "period": "1920s",
    "sheets": [
     "a",
     "b",
@@ -365,6 +674,60 @@
     "police",
     "policeman",
     "officer"
+   ]
+  },
+  "troffea": {
+   "bare_head": false,
+   "desc": "Frau Troffea, a tired medieval townswoman of 1518: long rust-red wool dress with a cream apron, a white linen headscarf (coif) tied over her hair, rosy cheeks. Her headscarf is part of the head",
+   "faces": [
+    "angry",
+    "confused",
+    "crying",
+    "determined",
+    "disgusted",
+    "embarrassed",
+    "happy",
+    "laughing",
+    "nervous",
+    "neutral",
+    "sad",
+    "scared",
+    "scheming",
+    "shocked",
+    "shouting",
+    "skeptical",
+    "smug",
+    "tired"
+   ],
+   "limbs": [
+    "armL",
+    "armR"
+   ],
+   "note": "legs are part of the dress (no leg layers): no walk cycle",
+   "path": "characters/troffea",
+   "period": "1500s",
+   "sheets": [
+    "a",
+    "b",
+    "c"
+   ],
+   "tags": [
+    "1518",
+    "apron",
+    "cream",
+    "dancer",
+    "dress",
+    "frau",
+    "long",
+    "medieval",
+    "rust-red",
+    "tired",
+    "townswoman",
+    "troffea",
+    "white",
+    "with",
+    "woman",
+    "wool"
    ]
   }
  },
@@ -409,6 +772,17 @@
     230
    ]
   },
+  "scholar_cap": {
+   "desc": "a black square scholar's cap of the early 1500s (a soft four-cornered biretta)",
+   "path": "hats/scholar_cap.png",
+   "period": "1500s",
+   "scale": 0.98,
+   "sit": 0.24,
+   "size": [
+    638,
+    370
+   ]
+  },
   "tophat": {
    "desc": "a tall black top hat with a flat top, a narrow brim and a dark red band",
    "path": "hats/tophat.png",
@@ -417,6 +791,17 @@
    "size": [
     573,
     460
+   ]
+  },
+  "tudor_cap": {
+   "desc": "a flat round dark red velvet Tudor bonnet of the early 1500s with a narrow brim and a small gold brooch",
+   "path": "hats/tudor_cap.png",
+   "period": "1500s",
+   "scale": 1.02,
+   "sit": 0.26,
+   "size": [
+    600,
+    317
    ]
   }
  },
@@ -616,6 +1001,10 @@
   }
  },
  "textures": {
+  "claytile": {
+   "desc": "overlapping warm red-orange clay roof tiles in neat rows with soft painted highlights, thin dark plum lines between the tiles",
+   "path": "textures/claytile.png"
+  },
   "cobble": {
    "desc": "Paris cobblestones",
    "path": "textures/cobble.png"
@@ -624,9 +1013,21 @@
    "desc": "oak parquet",
    "path": "textures/floor.png"
   },
+  "planks": {
+   "desc": "rough pale wooden planks side by side with visible grain and a few nail heads, soft painted highlights, thin dark plum lines between the planks",
+   "path": "textures/planks.png"
+  },
   "roof": {
    "desc": "blue-grey zinc roof",
    "path": "textures/roof.png"
+  },
+  "stonewall": {
+   "desc": "large pale grey-beige dressed stone blocks of a medieval hall wall in a regular brick bond, soft painted highlights, thin dark plum mortar lines",
+   "path": "textures/stonewall.png"
+  },
+  "timber": {
+   "desc": "medieval half-timbered house wall: cream plaster panels divided by dark brown wooden beams in a regular grid with a few diagonal braces, soft painted look, thin dark plum outlines",
+   "path": "textures/timber.png"
   },
   "wallpaper": {
    "desc": "cream hotel wallpaper, gold fleur-de-lis",

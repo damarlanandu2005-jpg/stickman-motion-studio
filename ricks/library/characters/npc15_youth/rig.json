@@ -1,0 +1,105 @@
+{
+ "version": 2,
+ "name": "npc15_youth",
+ "size": [
+  595,
+  962
+ ],
+ "feetY": 954,
+ "head": {
+  "center": [
+   304.0,
+   210.0
+  ],
+  "diameter": 469.0
+ },
+ "skin": "#fcf7e8",
+ "layers": {
+  "legL": {
+   "file": "legL.png",
+   "box": [
+    186,
+    741,
+    65,
+    214
+   ],
+   "pivot": [
+    232.5,
+    750.3
+   ]
+  },
+  "legR": {
+   "file": "legR.png",
+   "box": [
+    350,
+    740,
+    71,
+    217
+   ],
+   "pivot": [
+    360.0,
+    750.5
+   ]
+  },
+  "armL": {
+   "file": "armL.png",
+   "box": [
+    5,
+    502,
+    142,
+    179
+   ],
+   "pivot": [
+    127.7,
+    519.9
+   ]
+  },
+  "armR": {
+   "file": "armR.png",
+   "box": [
+    446,
+    503,
+    144,
+    182
+   ],
+   "pivot": [
+    464.2,
+    521.0
+   ]
+  },
+  "body": {
+   "file": "body.png",
+   "box": [
+    110,
+    395,
+    374,
+    358
+   ],
+   "pivot": [
+    296.2,
+    750.4
+   ]
+  },
+  "head": {
+   "file": "head.png",
+   "box": [
+    68,
+    5,
+    474,
+    419
+   ],
+   "pivot": [
+    296.0,
+    423.0
+   ]
+  }
+ },
+ "order": [
+  "legL",
+  "legR",
+  "armL",
+  "armR",
+  "body",
+  "head"
+ ]
+}

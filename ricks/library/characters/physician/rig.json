@@ -1,0 +1,240 @@
+{
+ "version": 2,
+ "name": "physician",
+ "size": [
+  578,
+  1000
+ ],
+ "feetY": 992,
+ "head": {
+  "center": [
+   287.0,
+   260.0
+  ],
+  "diameter": 419.0
+ },
+ "skin": "#fbf6e7",
+ "layers": {
+  "legR": {
+   "file": "legR.png",
+   "box": [
+    350,
+    912,
+    68,
+    83
+   ],
+   "pivot": [
+    359.5,
+    921.3
+   ]
+  },
+  "armL": {
+   "file": "armL.png",
+   "box": [
+    5,
+    438,
+    161,
+    218
+   ],
+   "pivot": [
+    147.2,
+    455.0
+   ]
+  },
+  "armR": {
+   "file": "armR.png",
+   "box": [
+    418,
+    435,
+    155,
+    230
+   ],
+   "pivot": [
+    435.4,
+    452.6
+   ]
+  },
+  "body": {
+   "file": "body.png",
+   "box": [
+    108,
+    403,
+    371,
+    589
+   ],
+   "pivot": [
+    359.5,
+    921.3
+   ]
+  },
+  "head": {
+   "file": "head.png",
+   "box": [
+    76,
+    5,
+    426,
+    427
+   ],
+   "pivot": [
+    292.5,
+    432.0
+   ]
+  }
+ },
+ "order": [
+  "legR",
+  "armL",
+  "armR",
+  "body",
+  "head"
+ ],
+ "faces": {
+  "happy": {
+   "file": "faces/happy.png",
+   "size": [
+    275,
+    289
+   ],
+   "pivot": [
+    136.0,
+    270.0
+   ],
+   "center": [
+    136.0,
+    162.0
+   ],
+   "diameter": 263.0
+  },
+  "nervous": {
+   "file": "faces/nervous.png",
+   "size": [
+    278,
+    283
+   ],
+   "pivot": [
+    137.5,
+    280.2
+   ],
+   "center": [
+    137.5,
+    171.0
+   ],
+   "diameter": 266.0
+  },
+  "shocked": {
+   "file": "faces/shocked.png",
+   "size": [
+    277,
+    288
+   ],
+   "pivot": [
+    137.5,
+    278.4
+   ],
+   "center": [
+    137.5,
+    170.0
+   ],
+   "diameter": 264.0,
+   "eyes": [
+    {
+     "c": [
+      73.5,
+      117.0
+     ],
+     "r": 40.4
+    },
+    {
+     "c": [
+      176.0,
+      117.5
+     ],
+     "r": 41.0
+    }
+   ],
+   "skin": "#faf6e7"
+  },
+  "shouting": {
+   "file": "faces/neutral.png",
+   "size": [
+    271,
+    285
+   ],
+   "pivot": [
+    135.5,
+    272.7
+   ],
+   "center": [
+    135.5,
+    166.0
+   ],
+   "diameter": 260.0,
+   "eyes": [
+    {
+     "c": [
+      99.5,
+      129.0
+     ],
+     "r": 13.4
+    },
+    {
+     "c": [
+      157.5,
+      126.0
+     ],
+     "r": 14.6
+    }
+   ],
+   "skin": "#fbf6e7"
+  },
+  "confused": {
+   "file": "faces/shouting.png",
+   "size": [
+    272,
+    279
+   ],
+   "pivot": [
+    134.5,
+    269.7
+   ],
+   "center": [
+    134.5,
+    163.0
+   ],
+   "diameter": 260.0
+  },
+  "neutral": {
+   "file": "faces/confused.png",
+   "size": [
+    277,
+    283
+   ],
+   "pivot": [
+    137.0,
+    275.8
+   ],
+   "center": [
+    137.0,
+    167.0
+   ],
+   "diameter": 265.0,
+   "eyes": [
+    {
+     "c": [
+      74.0,
+      119.0
+     ],
+     "r": 36.8
+    },
+    {
+     "c": [
+      170.0,
+      119.5
+     ],
+     "r": 36.8
+    }
+   ],
+   "skin": "#fbf6e7"
+  }
+ }
+}

@@ -1,0 +1,105 @@
+{
+ "version": 2,
+ "name": "npc20_woman",
+ "size": [
+  581,
+  977
+ ],
+ "feetY": 969,
+ "head": {
+  "center": [
+   297.0,
+   215.0
+  ],
+  "diameter": 403.0
+ },
+ "skin": "#fcf7e8",
+ "layers": {
+  "legL": {
+   "file": "legL.png",
+   "box": [
+    179,
+    828,
+    65,
+    142
+   ],
+   "pivot": [
+    228.4,
+    837.9
+   ]
+  },
+  "legR": {
+   "file": "legR.png",
+   "box": [
+    343,
+    828,
+    70,
+    144
+   ],
+   "pivot": [
+    353.5,
+    838.8
+   ]
+  },
+  "armL": {
+   "file": "armL.png",
+   "box": [
+    5,
+    459,
+    155,
+    159
+   ],
+   "pivot": [
+    121.0,
+    506.0
+   ]
+  },
+  "armR": {
+   "file": "armR.png",
+   "box": [
+    414,
+    456,
+    162,
+    162
+   ],
+   "pivot": [
+    457.0,
+    504.0
+   ]
+  },
+  "body": {
+   "file": "body.png",
+   "box": [
+    121,
+    444,
+    345,
+    396
+   ],
+   "pivot": [
+    290.9,
+    838.3
+   ]
+  },
+  "head": {
+   "file": "head.png",
+   "box": [
+    91,
+    5,
+    413,
+    467
+   ],
+   "pivot": [
+    289.5,
+    472.0
+   ]
+  }
+ },
+ "order": [
+  "legL",
+  "legR",
+  "armL",
+  "armR",
+  "body",
+  "head"
+ ]
+}
