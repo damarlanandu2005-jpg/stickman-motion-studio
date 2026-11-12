@@ -35,6 +35,20 @@ let spec; try { spec = JSON.parse(fs.readFileSync(scenePath, 'utf8')); } catch (
 
 // ------------------------------------------------------------ validation (the scene file is input: check it before use)
 const inProject = (p) => { const f = path.resolve(root, String(p)); return (f === root || f.startsWith(root + path.sep)) ? f : null; };
+// ------------------------------------------------------------ motion presets (angles in degrees; positive = clockwise on screen)
+const MOTIONS = {
+  punch: { len: 0.56, keys: [{ dt: 0, pose: { armR: -95, body: 8 }, ease: 0.08 }, { dt: 0.14, pose: { armR: -20, body: -3 }, ease: 0.12 }, { dt: 0.28, pose: { armL: 95, body: -8 }, ease: 0.08 }, { dt: 0.42, pose: { armL: 20, body: 3 }, ease: 0.12 }] },
+  kick: { len: 0.6, keys: [{ dt: 0, pose: { legR: -75, body: -12, armL: 40, armR: -40 }, ease: 0.1 }, { dt: 0.3, pose: { legR: 0, body: 0, armL: 0, armR: 0 }, ease: 0.2 }] },
+  run: { len: 0.36, keys: [{ dt: 0, pose: { legL: 42, legR: -42, armL: -50, armR: 50, body: 10 }, ease: 0.16 }, { dt: 0.18, pose: { legL: -42, legR: 42, armL: 50, armR: -50, body: 10 }, ease: 0.16 }] },
+  swim: { len: 0.9, start: { pose: { spin: 78 }, ease: 0.4 }, keys: [{ dt: 0, pose: { armL: -160, armR: 20, legL: 22, legR: -22 }, ease: 0.4 }, { dt: 0.45, pose: { armL: 20, armR: -160, legL: -22, legR: 22 }, ease: 0.4 }] },
+  wave: { len: 0.5, keys: [{ dt: 0, pose: { armR: -150 }, ease: 0.15 }, { dt: 0.25, pose: { armR: -115 }, ease: 0.15 }] },
+  cheer: { len: 0.6, keys: [{ dt: 0, pose: { armL: 150, armR: -150 }, hop: 0.14, ease: 0.12 }, { dt: 0.3, pose: { armL: 120, armR: -120 }, ease: 0.15 }] },
+  shrug: { len: 0.8, keys: [{ dt: 0, pose: { armL: 55, armR: -55, head: 8 }, ease: 0.2 }, { dt: 0.5, pose: { armL: 0, armR: 0, head: 0 }, ease: 0.25 }] },
+  point: { len: 1.0, keys: [{ dt: 0, pose: { armR: -85, body: 4 }, ease: 0.15 }] },
+  fall: { len: 0.8, keys: [{ dt: 0, pose: { spin: 88, armL: 60, armR: -60 }, ease: 0.45 }] },
+  cower: { len: 0.8, keys: [{ dt: 0, pose: { armL: 150, armR: -150, body: -6, head: -8 }, shake: 0.7, ease: 0.15 }] },
+};
+
 function validate(s) {
   const errs = [], isNum = (v) => typeof v === 'number' && Number.isFinite(v), isVec = (v, n) => Array.isArray(v) && v.length === n && v.every(isNum);
   const isTime = (v) => isNum(v) || (typeof v === 'string' && /^(w:\d+|say:.+)$/.test(v));
@@ -101,6 +115,19 @@ function resolveTimeline(s) {
   else if (typeof s.end === 'number') end = s.end;
   if (end <= starts[last] + 0.1) die('the video would end before the last shot starts');
   s._shots = s.shots.map((sh, k) => ({ ...sh, start: starts[k], dur: (k < last ? starts[k + 1] : end) - starts[k] }));
+  // motion presets: {"motion": "punch", "repeat": 2} expands into timed pose keys (see MOTIONS)
+  const expand = (list) => (list || []).flatMap(a => {
+    if (!a.motion) return [a];
+    const M = MOTIONS[a.motion]; if (!M) throw new Error('unknown motion "' + a.motion + '" (have: ' + Object.keys(M ? {} : MOTIONS).join(', ') + ')');
+    const sp = a.speed || 1, out = [], base = a.at ?? a.t ?? 0, rest = { ...a }; delete rest.motion; delete rest.repeat; delete rest.speed; delete rest.hold;
+    if (Object.keys(rest).some(k => !['at', 't', 'who'].includes(k))) out.push(rest);
+    if (M.start) out.push({ who: a.who, at: base, t: base, ...M.start });
+    for (let r = 0; r < (a.repeat || 1); r++) for (const kf of M.keys) { const tt = base + (r * M.len + kf.dt) / sp, o = { who: a.who, at: tt, t: tt, ...kf, ease: (kf.ease ?? 0.15) / sp }; delete o.dt; out.push(o); }
+    if (!a.hold) { const tt = base + (a.repeat || 1) * M.len / sp; out.push({ who: a.who, at: tt, t: tt, pose: { armL: 0, armR: 0, legL: 0, legR: 0, body: 0, head: 0, spin: 0 }, ease: 0.25 }); }
+    return out;
+  });
+  s.shots.forEach(sh => { sh.actions = expand(sh.actions); });
+  if (s.actions && s.actions.some(a => a.motion)) throw new Error('use "motion" inside a shot\'s actions, not in the global actions list');
   s._actions = [];
   s.shots.forEach((sh, k) => (sh.actions || []).forEach(a => s._actions.push({ ...a, t: starts[k] + (a.at || 0) })));
   (s.actions || []).forEach((a, i) => s._actions.push({ ...a, t: timeOf(a.t ?? 0, `actions[${i}].t`) }));

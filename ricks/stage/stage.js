@@ -105,6 +105,7 @@ async function loadRig(c) {
   for (const k of Object.keys(rig.layers || {})) rig.layers[k].img = await loadImage(dir + '/' + rig.layers[k].file);
   rig.faces = rig.faces || {};
   for (const k of Object.keys(rig.faces)) rig.faces[k].img = await loadImage(dir + '/' + rig.faces[k].file);
+  if (c.hat) { const h = typeof c.hat === 'string' ? { file: c.hat } : c.hat; rig.hat = { img: await loadImage(h.file), scale: h.scale ?? 1.05, sit: h.sit ?? 0.2, dx: h.dx ?? 0 }; }   // separate hat cutout, drawn over the head
   rig.order = (rig.order || ['legL', 'legR', 'armL', 'armR', 'body', 'head']).filter(k => rig.layers[k]);
   if (!rig.layers.body || !rig.layers.head) throw new Error(dir + ': rig needs at least body and head layers');
   return rig;
@@ -121,7 +122,7 @@ function makeChannel(base, keys) {
 
 function makeCharacter(c, rig, actions) {
   const figH = rig.feetY, upp = (c.height || 1.8) / figH;                       // world units per rig pixel
-  const padX = rig.size[0] * 0.45, padTop = rig.size[1] * 0.12, padBot = rig.size[1] * 0.04;
+  const padX = rig.size[0] * 0.45, padTop = rig.size[1] * (rig.hat ? 0.34 : 0.12), padBot = rig.size[1] * 0.04;
   const k = Math.min(1, 900 / rig.size[1]);                                     // canvas pixels per rig pixel
   const cw = (rig.size[0] + 2 * padX) * k, ch = (rig.size[1] + padTop + padBot) * k;
   const cv = canvasOf(cw, ch), g = cv.getContext('2d');
@@ -143,7 +144,7 @@ function makeCharacter(c, rig, actions) {
   const bodyW = rig.layers.body.box[2] * upp; blob.scale.set(bodyW * 1.9, bodyW * 0.8, 1);
 
   // channels
-  const pose = {}, keys = { armL: [], armR: [], legL: [], legR: [], head: [], body: [] }, faceKeys = [], posKeys = [], flips = [], hops = [], shakes = [];
+  const pose = {}, keys = { armL: [], armR: [], legL: [], legR: [], head: [], body: [], spin: [] }, faceKeys = [], posKeys = [], flips = [], hops = [], shakes = [];
   for (const a of actions) {
     const ease = a.ease ?? 0.3;
     for (const ch of Object.keys(a.pose || {})) if (keys[ch]) keys[ch].push({ t: a.t, v: a.pose[ch], ease });
@@ -177,7 +178,7 @@ function makeCharacter(c, rig, actions) {
       armR: pose.armR(t) - idle * 1.6 * Math.sin(6.283 * t / 3.4 + ph0 + 0.6) - walk * 14 * wph - st.shake * 3 * Math.sin(t * 55 + 1),
       legL: pose.legL(t) - walk * 22 * wph, legR: pose.legR(t) + walk * 22 * wph,
       head: pose.head(t) + idle * 1.2 * Math.sin(6.283 * t / 5.1 + ph0 * 1.7) + st.shake * 1.5 * Math.sin(t * 61),
-      body: pose.body(t),
+      body: pose.body(t), spin: pose.spin(t),
     };
     const pop = 1 + 0.07 * (1 - smoothstep(0, 0.14, t - st.faceT));           // a face change lands with a small pop
     const blink = idle && rig.eyes && st.face === 'default' && ((t + seed * 7) % blinkP) < 0.12;
@@ -186,6 +187,7 @@ function makeCharacter(c, rig, actions) {
     for (const name of rig.order) {
       const L = rig.layers[name], isLeg = name.startsWith('leg');
       g.setTransform(k, 0, 0, k, padX * k, padTop * k);
+      if (ang.spin) { g.translate(bp[0], bp[1]); g.rotate(rad(ang.spin)); g.translate(-bp[0], -bp[1]); }   // whole figure turns (swimming, falling)
       if (!isLeg) { g.translate(bp[0], bp[1]); g.rotate(rad(ang.body)); g.translate(-bp[0], -bp[1]); }
       if (name === 'body') { g.translate(bp[0], bp[1]); g.scale(1, sy); g.translate(-bp[0], -bp[1]); g.drawImage(L.img, L.box[0], L.box[1]); continue; }
       const lift = isLeg ? 0 : (L.pivot[1] - bp[1]) * (sy - 1);                 // ride the breathing torso
@@ -193,7 +195,7 @@ function makeCharacter(c, rig, actions) {
       if (name === 'head') {
         const F = rig.faces[st.face];
         g.scale(pop, pop);
-        if (F) { const fk = rig.head.diameter / F.diameter; g.scale(fk, fk); g.drawImage(F.img, -F.pivot[0], -F.pivot[1]); }
+        if (F) { const fk = rig.head.diameter / F.diameter; g.save(); g.scale(fk, fk); g.drawImage(F.img, -F.pivot[0], -F.pivot[1]); g.restore(); }
         else {
           g.drawImage(L.img, L.box[0] - L.pivot[0], L.box[1] - L.pivot[1]);
           if (blink) for (const e of rig.eyes) {
@@ -202,6 +204,8 @@ function makeCharacter(c, rig, actions) {
             g.strokeStyle = LINE; g.lineWidth = Math.max(2, e.r * 0.55); g.lineCap = 'round'; g.beginPath(); g.moveTo(ex - e.r * 1.1, ey + e.r * 0.2); g.lineTo(ex + e.r * 1.1, ey + e.r * 0.2); g.stroke();
           }
         }
+        if (rig.hat) { const d = rig.head.diameter, cx = rig.head.center[0] - L.pivot[0], top = rig.head.center[1] - d / 2 - L.pivot[1], w = d * rig.hat.scale, hh = w * rig.hat.img.height / rig.hat.img.width;
+          g.drawImage(rig.hat.img, cx - w / 2 + rig.hat.dx * d, top + rig.hat.sit * d - hh, w, hh); }
       } else g.drawImage(L.img, L.box[0] - L.pivot[0], L.box[1] - L.pivot[1]);
     }
     tex.needsUpdate = true;

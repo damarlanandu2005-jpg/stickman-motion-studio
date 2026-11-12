@@ -1,0 +1,274 @@
+{
+ "fps": 30,
+ "moods": {
+  "day": {
+   "sun": {
+    "azimuth": 35,
+    "elevation": 50,
+    "color": "#ffe0b5",
+    "intensity": 2.4
+   },
+   "sky": {
+    "top": "#5f86d8",
+    "horizon": "#f2b98a"
+   },
+   "fill": {
+    "sky": "#8ea2ff",
+    "ground": "#6a3b6e",
+    "intensity": 1.1
+   }
+  },
+  "night": {
+   "sun": {
+    "azimuth": -40,
+    "elevation": 38,
+    "color": "#a9bcff",
+    "intensity": 1.8
+   },
+   "sky": {
+    "top": "#1d2a6e",
+    "horizon": "#6268b4"
+   },
+   "fill": {
+    "sky": "#7686ee",
+    "ground": "#4c3f8c",
+    "intensity": 1.6
+   },
+   "exposure": 1.2
+  }
+ },
+ "ground": {
+  "texture": "textures/cobble.png",
+  "repeat": [
+   420,
+   420
+  ]
+ },
+ "backdrop": {
+  "image": "bg/backdrop.png",
+  "blur": 3,
+  "repeat": 3
+ },
+ "ink": {
+  "set": 4
+ },
+ "lighting": [
+  {
+   "t": 0,
+   "mood": "day"
+  }
+ ],
+ "characters": [
+  {
+   "id": "a",
+   "puppet": "puppets/lustig",
+   "pos": [
+    -0.9,
+    0,
+    0
+   ],
+   "height": 1.8,
+   "face": "neutral"
+  },
+  {
+   "id": "b",
+   "puppet": "puppets/poisson",
+   "pos": [
+    0.9,
+    0,
+    0
+   ],
+   "height": 1.8,
+   "face": "neutral",
+   "flip": true
+  }
+ ],
+ "props": [],
+ "shots": [
+  {
+   "start": 0.0,
+   "target": "a",
+   "headWidth": 0.11,
+   "frameX": -0.12,
+   "yaw": 0,
+   "zoom": 0,
+   "pitch": 4,
+   "out": "cut",
+   "actions": [
+    {
+     "at": 0.2,
+     "who": "a",
+     "motion": "punch",
+     "repeat": 3
+    },
+    {
+     "at": 0.2,
+     "who": "b",
+     "face": "shocked"
+    }
+   ]
+  },
+  {
+   "start": 2.0,
+   "target": "a",
+   "headWidth": 0.11,
+   "frameX": -0.12,
+   "yaw": 0,
+   "zoom": 0,
+   "pitch": 4,
+   "out": "cut",
+   "actions": [
+    {
+     "at": 0.2,
+     "who": "a",
+     "motion": "kick",
+     "repeat": 1
+    },
+    {
+     "at": 0.2,
+     "who": "b",
+     "face": "shocked"
+    }
+   ]
+  },
+  {
+   "start": 4.0,
+   "target": "a",
+   "headWidth": 0.11,
+   "frameX": -0.12,
+   "yaw": 0,
+   "zoom": 0,
+   "pitch": 4,
+   "out": "cut",
+   "actions": [
+    {
+     "at": 0.2,
+     "who": "a",
+     "motion": "run",
+     "repeat": 3
+    },
+    {
+     "at": 0.2,
+     "who": "b",
+     "face": "shocked"
+    }
+   ]
+  },
+  {
+   "start": 6.0,
+   "target": "a",
+   "headWidth": 0.11,
+   "frameX": -0.12,
+   "yaw": 0,
+   "zoom": 0,
+   "pitch": 4,
+   "out": "cut",
+   "actions": [
+    {
+     "at": 0.2,
+     "who": "a",
+     "motion": "swim",
+     "repeat": 3
+    },
+    {
+     "at": 0.2,
+     "who": "b",
+     "face": "shocked"
+    }
+   ]
+  },
+  {
+   "start": 8.0,
+   "target": "a",
+   "headWidth": 0.11,
+   "frameX": -0.12,
+   "yaw": 0,
+   "zoom": 0,
+   "pitch": 4,
+   "out": "cut",
+   "actions": [
+    {
+     "at": 0.2,
+     "who": "a",
+     "motion": "wave",
+     "repeat": 3
+    },
+    {
+     "at": 0.2,
+     "who": "b",
+     "face": "shocked"
+    }
+   ]
+  },
+  {
+   "start": 10.0,
+   "target": "a",
+   "headWidth": 0.11,
+   "frameX": -0.12,
+   "yaw": 0,
+   "zoom": 0,
+   "pitch": 4,
+   "out": "cut",
+   "actions": [
+    {
+     "at": 0.2,
+     "who": "a",
+     "motion": "cheer",
+     "repeat": 3
+    },
+    {
+     "at": 0.2,
+     "who": "b",
+     "face": "shocked"
+    }
+   ]
+  },
+  {
+   "start": 12.0,
+   "target": "a",
+   "headWidth": 0.11,
+   "frameX": -0.12,
+   "yaw": 0,
+   "zoom": 0,
+   "pitch": 4,
+   "out": "cut",
+   "actions": [
+    {
+     "at": 0.2,
+     "who": "a",
+     "motion": "fall",
+     "repeat": 1
+    },
+    {
+     "at": 0.2,
+     "who": "b",
+     "face": "shocked"
+    }
+   ]
+  },
+  {
+   "start": 14.0,
+   "target": "a",
+   "headWidth": 0.11,
+   "frameX": -0.12,
+   "yaw": 0,
+   "zoom": 0,
+   "pitch": 4,
+   "out": "cut",
+   "actions": [
+    {
+     "at": 0.2,
+     "who": "a",
+     "motion": "cower",
+     "repeat": 1
+    },
+    {
+     "at": 0.2,
+     "who": "b",
+     "face": "shocked"
+    }
+   ]
+  }
+ ],
+ "duration": 16
+}
