@@ -1,0 +1,12 @@
+{
+ "project": "/tmp/repo/ricks/projects/dancing",
+ "mode": "full",
+ "gl_renderer": "ANGLE (NVIDIA Corporation, Tesla T4/PCIe/SSE2, OpenGL ES 3.2)",
+ "gate_seconds": 16.8,
+ "flagged": 1,
+ "flags": [
+  "PURE_BLACK"
+ ],
+ "gate_ok": false,
+ "stopped": "gate flagged problems; full render skipped (use --force to override)"
+}
