@@ -21,7 +21,7 @@ const PRES: Record<LName, LightPreset> = {
   day: mix(LIGHTS.day, { az: 70, el: 42, lit: [1.62, 1.42, 1.15], shade: [0.54, 0.5, 0.6], lift: [0.06, 0.05, 0.09], fog: "#b8cce8", fogNear: 90, fogFar: 650, sunCol: "#ffe2c0", sunI: 2.8 }),
   indoor: mix(LIGHTS.day, { az: 60, el: 50, lit: [1.5, 1.3, 1.05], shade: [0.62, 0.46, 0.42], lift: [0.08, 0.05, 0.06], fog: "#3a2418", fogNear: 200, fogFar: 900, sunCol: "#ffe0b0", sunI: 2.2 }),
   grey: mix(LIGHTS.day, { az: 70, el: 62, lit: [1.22, 1.24, 1.27], shade: [0.62, 0.66, 0.74], lift: [0.07, 0.08, 0.1], fog: "#aab4bc", fogNear: 90, fogFar: 520, sunCol: "#e8eef5", sunI: 1.5 }),
-  golden: mix(LIGHTS.day, { az: 75, el: 14, lit: [1.5, 1.22, 0.9], shade: [0.6, 0.55, 0.64], lift: [0.07, 0.06, 0.09], fog: "#eab68c", fogNear: 20, fogFar: 175, sunCol: "#ffc88c", sunI: 2.4 }),
+  golden: mix(LIGHTS.day, { az: 75, el: 14, lit: [1.5, 1.22, 0.9], shade: [0.6, 0.55, 0.64], lift: [0.07, 0.06, 0.09], fog: "#eab68c", fogNear: 20, fogFar: 135, sunCol: "#ffc88c", sunI: 2.4 }),
 };
 /** sky gradient (horizon -> zenith) per light */
 const SKY: Record<LName, string[] | null> = {

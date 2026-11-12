@@ -108,7 +108,9 @@ export const makeShip = (o: ShipOpts) => {
   for (let i = 0; i < 4; i++) for (let k = 0; k < 3; k++) barrel(1.6 + i * 0.75, DECK_Y + 0.2, -0.85 + k * 0.85);
   // empty boat cradle on the deck amidships (the lifeboat sat here): two chocks, and two davits on the starboard rail
   bx(B, dk, 0.3, 0.28, 2.4, -2.2 + 0.0, DECK_Y + 0.14, 0); bx(B, dk, 0.3, 0.28, 2.4, 1.0 - 3.6 + 3.6 - 0.2, DECK_Y + 0.14 - 0.14, 0);
-  for (const x of [-1.6, 1.6]) { rod(B, dk, [x, DECK_Y, 3.1], [x, DECK_Y + 2.4, 3.1], 0.07); rod(B, dk, [x, DECK_Y + 2.4, 3.1], [x, DECK_Y + 2.45, 3.9], 0.06); rod(B, rope, [x, DECK_Y + 2.45, 3.9], [x + 0.25, DECK_Y - 0.3, 4.0], 0.03); }  // davit + loose rope
+  for (const x of [-1.6, 1.6]) { rod(B, dk, [x, DECK_Y, 3.1], [x, DECK_Y + 2.4, 3.1], 0.13); rod(B, dk, [x, DECK_Y + 2.4, 3.1], [x, DECK_Y + 2.45, 3.9], 0.1); rod(B, rope, [x, DECK_Y + 2.45, 3.9], [x + 0.25, DECK_Y - 0.3, 4.0], 0.03); }  // davit + loose rope
+  bx(B, tm({ color: "#c9a874" }), 3.8, 0.02, 2.9, -0.7, DECK_Y + 0.012, 0);                                      // pale patch where the lifeboat sat
+  bx(B, trim, 30, 0.1, 0.05, 0, 0.35, 3.57); bx(B, trim, 30, 0.1, 0.05, 0, 0.35, -3.57);                           // second, lower stripe
   // barrels lashed on deck forward (c1 close-up): 3 x 3 with two ropes over them
   for (let i = 0; i < 3; i++) for (let k = 0; k < 3; k++) barrel(9.6 + i * 0.7, DECK_Y + 0.45, -0.7 + k * 0.7);
   bx(B, rope, 2.3, 0.04, 0.05, 10.3, DECK_Y + 0.93, -0.35); bx(B, rope, 2.3, 0.04, 0.05, 10.3, DECK_Y + 0.93, 0.35);
