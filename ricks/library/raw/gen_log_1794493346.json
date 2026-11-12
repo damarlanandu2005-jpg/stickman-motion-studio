@@ -1,0 +1,230 @@
+[
+ {
+  "name": "dealer_b_character.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1
+ },
+ {
+  "name": "dealer_c_character.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1
+ },
+ {
+  "name": "police_a_character.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1
+ },
+ {
+  "name": "police_b_character.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1
+ },
+ {
+  "name": "gangster_character.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1
+ },
+ {
+  "name": "hat_kepi.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1
+ },
+ {
+  "name": "hat_bowler.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1
+ },
+ {
+  "name": "hat_fedora_cream.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1
+ },
+ {
+  "name": "hat_flatcap.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1
+ },
+ {
+  "name": "hat_tophat.png",
+  "ok": false,
+  "attempt": 1,
+  "error": "ClientError(\"429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource has been exhausted (e.g. check quota).', 'status': 'RESOURCE_EXHAUSTED'}}\")"
+ },
+ {
+  "name": "hat_tophat.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 2
+ },
+ {
+  "name": "dealer_b_sheet_a.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1
+ },
+ {
+  "name": "dealer_b_sheet_b.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1
+ },
+ {
+  "name": "dealer_b_sheet_c.png",
+  "ok": false,
+  "attempt": 1,
+  "error": "ClientError(\"429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource has been exhausted (e.g. check quota).', 'status': 'RESOURCE_EXHAUSTED'}}\")"
+ },
+ {
+  "name": "dealer_b_sheet_c.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 2
+ },
+ {
+  "name": "dealer_c_sheet_a.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1
+ },
+ {
+  "name": "dealer_c_sheet_b.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1
+ },
+ {
+  "name": "dealer_c_sheet_c.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1
+ },
+ {
+  "name": "police_a_sheet_a.png",
+  "ok": false,
+  "attempt": 1,
+  "error": "ClientError(\"429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource has been exhausted (e.g. check quota).', 'status': 'RESOURCE_EXHAUSTED'}}\")"
+ },
+ {
+  "name": "police_a_sheet_a.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 2
+ },
+ {
+  "name": "police_a_sheet_b.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1
+ },
+ {
+  "name": "police_a_sheet_c.png",
+  "ok": false,
+  "attempt": 1,
+  "error": "ClientError(\"429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource has been exhausted (e.g. check quota).', 'status': 'RESOURCE_EXHAUSTED'}}\")"
+ },
+ {
+  "name": "police_a_sheet_c.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 2
+ },
+ {
+  "name": "police_b_sheet_a.png",
+  "ok": false,
+  "attempt": 1,
+  "error": "ClientError(\"429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.', 'status': 'RESOURCE_EXHAUSTED'}}\")"
+ },
+ {
+  "name": "police_b_sheet_a.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 2
+ },
+ {
+  "name": "police_b_sheet_b.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1
+ },
+ {
+  "name": "police_b_sheet_c.png",
+  "ok": false,
+  "attempt": 1,
+  "error": "ClientError(\"429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource has been exhausted (e.g. check quota).', 'status': 'RESOURCE_EXHAUSTED'}}\")"
+ },
+ {
+  "name": "police_b_sheet_c.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 2
+ },
+ {
+  "name": "gangster_sheet_a.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1
+ },
+ {
+  "name": "gangster_sheet_b.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1
+ },
+ {
+  "name": "gangster_sheet_c.png",
+  "ok": false,
+  "attempt": 1,
+  "error": "ClientError(\"429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource has been exhausted (e.g. check quota).', 'status': 'RESOURCE_EXHAUSTED'}}\")"
+ },
+ {
+  "name": "gangster_sheet_c.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 2
+ },
+ {
+  "name": "lustig_sheet_b.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1
+ },
+ {
+  "name": "lustig_sheet_c.png",
+  "ok": false,
+  "attempt": 1,
+  "error": "ClientError(\"429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource has been exhausted (e.g. check quota).', 'status': 'RESOURCE_EXHAUSTED'}}\")"
+ },
+ {
+  "name": "lustig_sheet_c.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 2
+ },
+ {
+  "name": "poisson_sheet_b.png",
+  "ok": false,
+  "attempt": 1,
+  "error": "ClientError(\"429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource has been exhausted (e.g. check quota).', 'status': 'RESOURCE_EXHAUSTED'}}\")"
+ },
+ {
+  "name": "poisson_sheet_b.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 2
+ },
+ {
+  "name": "poisson_sheet_c.png",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1
+ }
+]
