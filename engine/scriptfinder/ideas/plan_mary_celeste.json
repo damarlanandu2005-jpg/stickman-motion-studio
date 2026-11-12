@@ -65,20 +65,20 @@
      "staging": "ADDED: stone wharf, 3 brick warehouses, mast poles of other ships far back; sky day"
     },
     {
-     "must_see": "Medium: the captain, his wife and their small daughter standing together on the deck (left to right: captain, wife, daughter)",
-     "tags": [
-      "camera.glide_push",
-      "chars.1_3"
-     ],
-     "staging": "ADDED: the girl is a small card; same outfits as later scenes"
-    },
-    {
      "must_see": "Medium: seven sailors in a row on the quay and gangway, the ten people counted by eye",
      "tags": [
       "camera.glide_push",
       "chars.crowd"
      ],
      "staging": "ADDED: 7 crew cards in blue shirts, 3 outfit variants; the narration says ten people, so the crowd is the ten"
+    },
+    {
+     "must_see": "Medium: the captain, his wife and their small daughter standing together on the deck (left to right: captain, wife, daughter)",
+     "tags": [
+      "camera.glide_push",
+      "chars.1_3"
+     ],
+     "staging": "ADDED: the girl is a small card; same outfits as later scenes"
     }
    ]
   },
@@ -135,20 +135,20 @@
      "staging": "CHANGED vs the draft: standing on deck, not climbing the railing (climbing is a hard action)"
     },
     {
-     "must_see": "Close: the open cargo hatch with rows of sealed barrels below, dim light",
-     "tags": [
-      "camera.glide_push",
-      "prop.kit_static"
-     ],
-     "staging": "ADDED: dark box under the hatch, barrels in 3 rows"
-    },
-    {
      "must_see": "Medium: a sailor taps the wheel and the mast, the ship upright and firm",
      "tags": [
       "camera.glide_push",
       "chars.1_3"
      ],
      "staging": "ADDED: shows 'still seaworthy' as an intact mast and wheel, no damage"
+    },
+    {
+     "must_see": "Close: the open cargo hatch with rows of sealed barrels below, dim light",
+     "tags": [
+      "camera.glide_push",
+      "prop.kit_static"
+     ],
+     "staging": "ADDED: dark box under the hatch, barrels in 3 rows"
     }
    ]
   },

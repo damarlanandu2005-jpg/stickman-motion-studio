@@ -1,0 +1,148 @@
+{
+ "voice": "am_fenrir",
+ "speed": 0.88,
+ "speech_seconds": 61.54,
+ "speech_end": 62.04,
+ "total_seconds": 63.04,
+ "total_frames": 1892,
+ "words": 148,
+ "words_per_second_speech": 2.4,
+ "words_per_second_total": 2.35,
+ "fps": 30,
+ "scenes": [
+  {
+   "id": "c1",
+   "start": 0.5,
+   "end": 9.035,
+   "sentences": [
+    {
+     "text": "A ship was found drifting across the Atlantic Ocean.",
+     "start": 0.5,
+     "end": 3.679
+    },
+    {
+     "text": "Its cargo was still there.",
+     "start": 3.829,
+     "end": 5.343
+    },
+    {
+     "text": "Food and water remained on board.",
+     "start": 5.493,
+     "end": 7.264
+    },
+    {
+     "text": "But every person had vanished.",
+     "start": 7.414,
+     "end": 9.035
+    }
+   ]
+  },
+  {
+   "id": "c2",
+   "start": 9.485,
+   "end": 22.905,
+   "sentences": [
+    {
+     "text": "The ship was called the Mary Celeste.",
+     "start": 9.485,
+     "end": 11.363
+    },
+    {
+     "text": "On November 7, 1872, it left New York for Genoa, Italy, carrying ten people, including the captain, his wife and their two-year-old daughter.",
+     "start": 11.513,
+     "end": 22.905
+    }
+   ]
+  },
+  {
+   "id": "c3",
+   "start": 23.355,
+   "end": 29.243,
+   "sentences": [
+    {
+     "text": "Almost a month later, another ship spotted it near the Azores.",
+     "start": 23.355,
+     "end": 27.109
+    },
+    {
+     "text": "Sailors approached and climbed aboard.",
+     "start": 27.259,
+     "end": 29.243
+    }
+   ]
+  },
+  {
+   "id": "c4",
+   "start": 29.693,
+   "end": 37.524,
+   "sentences": [
+    {
+     "text": "What they discovered was extraordinary.",
+     "start": 29.693,
+     "end": 31.784
+    },
+    {
+     "text": "The ship was still seaworthy.",
+     "start": 31.934,
+     "end": 33.47
+    },
+    {
+     "text": "Its cargo of industrial alcohol was largely intact.",
+     "start": 33.62,
+     "end": 37.524
+    }
+   ]
+  },
+  {
+   "id": "c5",
+   "start": 37.974,
+   "end": 42.583,
+   "sentences": [
+    {
+     "text": "Personal belongings remained in the cabins.",
+     "start": 37.974,
+     "end": 40.321
+    },
+    {
+     "text": "But there was nobody anywhere on board.",
+     "start": 40.471,
+     "end": 42.583
+    }
+   ]
+  },
+  {
+   "id": "c6",
+   "start": 43.033,
+   "end": 48.921,
+   "sentences": [
+    {
+     "text": "Even the lifeboat was missing.",
+     "start": 43.033,
+     "end": 44.654
+    },
+    {
+     "text": "The captain, his family and all seven crew members were never found.",
+     "start": 44.804,
+     "end": 48.921
+    }
+   ]
+  },
+  {
+   "id": "c7",
+   "start": 49.371,
+   "end": 62.044,
+   "sentences": [
+    {
+     "text": "Investigators examined the mystery, but no explanation was ever proven.",
+     "start": 49.371,
+     "end": 54.129
+    },
+    {
+     "text": "More than 150 years later, one question remains: why did ten people abandon a ship that was still floating?",
+     "start": 54.279,
+     "end": 62.044
+    }
+   ]
+  }
+ ]
+}
