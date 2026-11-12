@@ -27,20 +27,21 @@ export const castAt = (f: number): Guy[] => {
   const id = shotAt(f).id, out: Guy[] = [];
   const dk = DECK_Y;
   switch (id) {
-    case "c2b": {   // the ten: back row of five, front row of five (captain, wife, small daughter in the middle of the front row)
-      const back = ["crewA", "crewB", "crewC", "crewA", "crewB"], front = ["crewC", "captain", "wife", "girl", "crewA"];
-      front.forEach((w, i) => out.push(G(w, -2.1 + i * 1.05 + 0.5, -6.3, w === "girl" ? "grin" : w === "wife" ? "smile_closed" : "neutral", { y: QUAY_Y, scale: w === "girl" ? 0.55 : 1, pose: w === "captain" ? "hip" : undefined })));
-      back.forEach((w, i) => out.push(G(w, -2.1 + i * 1.05, -8.1, i % 2 ? "grin" : "neutral", { y: QUAY_Y })));
+    case "c2b": {   // the ten in three rows: nearest the camera captain, wife and small daughter; behind them 4 + 3 crew
+      const near = ["captain", "wife", "girl"], mid = ["crewA", "crewB", "crewC", "crewA"], far = ["crewB", "crewC", "crewA"];
+      near.forEach((w, i) => out.push(G(w, -0.9 + i * 0.85, -9.0, w === "girl" ? "grin" : w === "wife" ? "smile_closed" : "determined", { y: QUAY_Y, scale: w === "girl" ? 0.65 : 1.1 })));
+      mid.forEach((w, i) => out.push(G(w, -1.35 + i * 0.9, -7.6, i % 2 ? "grin" : "neutral", { y: QUAY_Y })));
+      far.forEach((w, i) => out.push(G(w, -0.9 + i * 0.9, -6.2, i % 2 ? "neutral" : "grin", { y: QUAY_Y })));
       break;
     }
     case "c2c":
-      out.push(G("captain", -1.0, 1.5, "determined", { y: dk, pose: "hip" }), G("wife", 0, 1.5, "smile_closed", { y: dk }), G("girl", 0.7, 2.2, "grin", { y: dk, scale: 0.7 }));
+      out.push(G("captain", -1.0, 1.5, "determined", { y: dk, pose: "hip" }), G("wife", 0, 1.5, "smile_closed", { y: dk }), G("girl", 0.65, 2.4, "grin", { y: dk, scale: 0.8 }));
       break;
     case "c3b":
       out.push(G("dg1", -23.4, -30, "stern", { y: DECK_Y * 0.85, pose: "point", facing: 1, scale: 1 }), G("dg2", -21.9, -30.4, "nervous", { y: DECK_Y * 0.85, facing: 1 }));
       break;
     case "c3c":
-      out.push(G("dg1", -3.1, 6.2, "neutral", { y: 0.3 }), G("dg2", -2.0, 6.4, "stern", { y: 0.3 }), G("dg3", -0.9, 6.2, "neutral", { y: 0.3 }));
+      out.push(G("dg1", -3.1, 6.2, "neutral", { y: 0.95 }), G("dg2", -2.0, 6.4, "stern", { y: 0.95 }), G("dg3", -0.9, 6.2, "neutral", { y: 0.95 }));
       break;
     case "c4a":
       out.push(G("dg1", -0.7, 1.9, "neutral", { y: dk, facing: -1, look: -0.4 }), G("dg3", 0.75, 2.1, "nervous", { y: dk, facing: 1, look: 0.4 }));

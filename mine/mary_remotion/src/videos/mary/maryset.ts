@@ -101,15 +101,15 @@ export const makeShip = (o: ShipOpts) => {
   B.add(new THREE.TorusGeometry(0.55, 0.05, 8, 22).rotateY(Math.PI / 2), brass, MX(-12.8, DECK_Y + 1.35, 0));
   for (let k = 0; k < 4; k++) B.add(UNIT, brass, MX(-12.8, DECK_Y + 1.35, 0, 0, 0.05, 1.3, 0.05, 0, (k * Math.PI) / 4 + Math.PI / 8));
   // main hatch: coaming with 3 x 4 barrels showing as rows below the deck line (cargo seen through the open hatch)
-  bx(B, dk, 3.2, 0.5, 0.18, 2.8, DECK_Y + 0.25, 1.4); bx(B, dk, 3.2, 0.5, 0.18, 2.8, DECK_Y + 0.25, -1.4); bx(B, dk, 0.18, 0.5, 2.9, 1.2, DECK_Y + 0.25, 0); bx(B, dk, 0.18, 0.5, 2.9, 4.4, DECK_Y + 0.25, 0);
+  const cm = tm({ color: "#8a6540" }); bx(B, cm, 3.4, 0.55, 0.2, 2.8, DECK_Y + 0.27, 1.45); bx(B, cm, 3.4, 0.55, 0.2, 2.8, DECK_Y + 0.27, -1.45); bx(B, cm, 0.2, 0.55, 3.1, 1.1, DECK_Y + 0.27, 0); bx(B, cm, 0.2, 0.55, 3.1, 4.5, DECK_Y + 0.27, 0);
   bx(B, black, 3.0, 0.03, 2.7, 2.8, DECK_Y + 0.02, 0);
   const bar = tm({ color: "#8a5a30" }), hoop = tm({ color: "#2c1e12" });
   const barrel = (x: number, y: number, z: number) => { cyl(B, bar, 0.3, 0.3, 0.9, x, y, z, 0, 0, 14); cyl(B, hoop, 0.315, 0.315, 0.05, x, y + 0.26, z, 0, 0, 14); cyl(B, hoop, 0.315, 0.315, 0.05, x, y - 0.26, z, 0, 0, 14); };
   for (let i = 0; i < 4; i++) for (let k = 0; k < 3; k++) barrel(1.6 + i * 0.75, DECK_Y + 0.2, -0.85 + k * 0.85);
   // empty boat cradle on the deck amidships (the lifeboat sat here): two chocks, and two davits on the starboard rail
-  bx(B, dk, 0.3, 0.28, 2.4, -2.2 + 0.0, DECK_Y + 0.14, 0); bx(B, dk, 0.3, 0.28, 2.4, 1.0 - 3.6 + 3.6 - 0.2, DECK_Y + 0.14 - 0.14, 0);
-  for (const x of [-1.6, 1.6]) { rod(B, dk, [x, DECK_Y, 3.1], [x, DECK_Y + 2.4, 3.1], 0.13); rod(B, dk, [x, DECK_Y + 2.4, 3.1], [x, DECK_Y + 2.45, 3.9], 0.1); rod(B, rope, [x, DECK_Y + 2.45, 3.9], [x + 0.25, DECK_Y - 0.3, 4.0], 0.03); }  // davit + loose rope
-  bx(B, tm({ color: "#c9a874" }), 3.8, 0.02, 2.9, -0.7, DECK_Y + 0.012, 0);                                      // pale patch where the lifeboat sat
+  bx(B, dk, 0.3, 0.28, 2.4, -3.0, DECK_Y + 0.14, 0); bx(B, dk, 0.3, 0.28, 2.4, -0.2, DECK_Y + 0.14, 0);
+  for (const x of [-3.1, 0.3]) { rod(B, dk, [x, DECK_Y, 3.1], [x, DECK_Y + 2.4, 3.1], 0.13); rod(B, dk, [x, DECK_Y + 2.4, 3.1], [x, DECK_Y + 2.45, 3.9], 0.1); rod(B, rope, [x, DECK_Y + 2.45, 3.9], [x + 0.25, DECK_Y - 0.3, 4.0], 0.03); }  // davit + loose rope
+  bx(B, tm({ color: "#c9a874" }), 3.8, 0.02, 2.9, -1.4, DECK_Y + 0.012, 0);                                      // pale patch where the lifeboat sat
   bx(B, trim, 30, 0.1, 0.05, 0, 0.35, 3.57); bx(B, trim, 30, 0.1, 0.05, 0, 0.35, -3.57);                           // second, lower stripe
   // barrels lashed on deck forward (c1 close-up): 3 x 3 with two ropes over them
   for (let i = 0; i < 3; i++) for (let k = 0; k < 3; k++) barrel(9.6 + i * 0.7, DECK_Y + 0.45, -0.7 + k * 0.7);
@@ -127,9 +127,14 @@ export const makeShip = (o: ShipOpts) => {
 export const makeBoat = () => {
   const g = new THREE.Group(); const B = new Batch();
   const sh = new THREE.Shape(); sh.moveTo(-2.2, 0); sh.lineTo(-1.2, 0.85); sh.lineTo(1.3, 0.85); sh.lineTo(2.3, 0); sh.lineTo(1.3, -0.85); sh.lineTo(-1.2, -0.85); sh.closePath();
-  const geo = new THREE.ExtrudeGeometry(sh, { depth: 0.7, bevelEnabled: false }); geo.rotateX(-Math.PI / 2); geo.translate(0, -0.15, 0);
-  const m = new THREE.Mesh(geo, [tm({ color: "#8a6a44" }), tm({ color: "#5a4030" })]); m.castShadow = true; g.add(m);
-  for (const x of [-0.6, 0.6]) bx(B, tm({ color: "#6a4a30" }), 0.2, 0.06, 1.5, x, 0.5, 0);
+  const geo = new THREE.ExtrudeGeometry(sh, { depth: 0.6, bevelEnabled: false }); geo.rotateX(-Math.PI / 2); geo.translate(0, -0.25, 0);
+  const side = tm({ color: "#4a3426" });
+  const m = new THREE.Mesh(geo, [tm({ color: "#7a5a3a" }), side]); m.castShadow = true; g.add(m);                       // floor level at y = 0.35
+  const rim = tm({ color: "#6a4a30" });
+  for (const z of [0.85, -0.85]) bx(B, rim, 2.5, 0.3, 0.07, 0.05, 0.5, z);                                              // gunwales
+  bx(B, rim, 0.07, 0.3, 1.7, -1.7, 0.5, 0, 0, 0.0); bx(B, rim, 0.07, 0.3, 1.7, 1.75, 0.5, 0);
+  for (const x of [-0.7, 0.7]) bx(B, rim, 0.2, 0.06, 1.7, x, 0.42, 0);                                                    // thwarts
+  rod(B, tm({ color: "#c9a878" }), [-0.4, 0.75, 0.9], [-0.1, 0.1, 2.5], 0.04); rod(B, tm({ color: "#c9a878" }), [0.4, 0.75, -0.9], [0.1, 0.1, -2.5], 0.04);   // two oars
   B.build(g, true); return g;
 };
 
