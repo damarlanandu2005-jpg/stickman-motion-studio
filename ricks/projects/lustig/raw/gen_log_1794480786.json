@@ -1,0 +1,16 @@
+[
+ {
+  "name": "lustig_character_arms",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1,
+  "bytes": 903718
+ },
+ {
+  "name": "poisson_character_arms",
+  "ok": true,
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1,
+  "bytes": 990414
+ }
+]
