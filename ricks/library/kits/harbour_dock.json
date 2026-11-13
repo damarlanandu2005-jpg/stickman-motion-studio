@@ -1,0 +1,182 @@
+{
+ "desc": "Harbour dock: plank pier, sea, an ocean liner, bollards, crates, a NEW YORK sign",
+ "period": [
+  "1900s",
+  "1910s",
+  "1920s",
+  "1930s"
+ ],
+ "interior": false,
+ "props": [
+  {
+   "type": "box",
+   "pos": [
+    0,
+    0.02,
+    0
+   ],
+   "size": [
+    30,
+    0.06,
+    14
+   ],
+   "texture": "textures/planks.png",
+   "repeat": [
+    14,
+    7
+   ]
+  },
+  {
+   "type": "box",
+   "pos": [
+    0,
+    0.0,
+    -22
+   ],
+   "size": [
+    90,
+    0.04,
+    30
+   ],
+   "color": "#4f86b8"
+  },
+  {
+   "type": "plane",
+   "image": "props/ship.png",
+   "pos": [
+    1.5,
+    -0.4,
+    -13
+   ],
+   "size": [
+    17,
+    9
+   ]
+  },
+  {
+   "type": "plane",
+   "image": "props/sign_newyork.png",
+   "pos": [
+    -3.2,
+    0,
+    -3.2
+   ],
+   "size": [
+    2.0,
+    1.7
+   ]
+  },
+  {
+   "type": "crate",
+   "pos": [
+    3.4,
+    0,
+    -2.6
+   ]
+  },
+  {
+   "type": "crate",
+   "pos": [
+    4.1,
+    0,
+    -2.9
+   ],
+   "size": 0.55
+  },
+  {
+   "type": "barrel",
+   "pos": [
+    -5.2,
+    0,
+    -2.4
+   ]
+  },
+  {
+   "type": "barrel",
+   "pos": [
+    4.9,
+    0,
+    -1.6
+   ]
+  },
+  {
+   "type": "box",
+   "pos": [
+    -1.6,
+    0,
+    -6.6
+   ],
+   "size": [
+    0.35,
+    0.7,
+    0.35
+   ],
+   "color": "#3a3a48"
+  },
+  {
+   "type": "box",
+   "pos": [
+    2.2,
+    0,
+    -6.6
+   ],
+   "size": [
+    0.35,
+    0.7,
+    0.35
+   ],
+   "color": "#3a3a48"
+  },
+  {
+   "type": "box",
+   "pos": [
+    6,
+    0,
+    -6.6
+   ],
+   "size": [
+    0.35,
+    0.7,
+    0.35
+   ],
+   "color": "#3a3a48"
+  },
+  {
+   "type": "box",
+   "pos": [
+    0.6,
+    0,
+    -7.2
+   ],
+   "size": [
+    1.4,
+    0.12,
+    3.2
+   ],
+   "texture": "textures/planks.png",
+   "repeat": [
+    1,
+    2
+   ]
+  }
+ ],
+ "life": [
+  {
+   "char": "npc20_woman",
+   "behaviour": "stroll",
+   "path": [
+    [
+     -7,
+     -4.4
+    ],
+    [
+     6,
+     -4.4
+    ]
+   ],
+   "speed": 0.8,
+   "start": 0.2,
+   "pause": 2.0
+  }
+ ]
+}

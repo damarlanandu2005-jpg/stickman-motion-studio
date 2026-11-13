@@ -23,7 +23,11 @@
     0.04,
     40
    ],
-   "color": "#8fbf74"
+   "texture": "textures/grass.png",
+   "repeat": [
+    20,
+    14
+   ]
   },
   {
    "type": "house",
@@ -123,7 +127,12 @@
     0.6,
     0.8
    ],
-   "color": "#9a968c"
+   "color": "#9a968c",
+   "texture": "textures/stonewall.png",
+   "repeat": [
+    1,
+    1
+   ]
   },
   {
    "type": "box",
@@ -137,7 +146,12 @@
     0.45,
     0.7
    ],
-   "color": "#8f8b82"
+   "color": "#8f8b82",
+   "texture": "textures/stonewall.png",
+   "repeat": [
+    1,
+    1
+   ]
   },
   {
    "type": "box",
@@ -151,7 +165,12 @@
     0.3,
     0.5
    ],
-   "color": "#9a968c"
+   "color": "#9a968c",
+   "texture": "textures/stonewall.png",
+   "repeat": [
+    1,
+    1
+   ]
   },
   {
    "type": "tree",
@@ -185,7 +204,12 @@
     0.9,
     0.12
    ],
-   "color": "#b9b4a8"
+   "color": "#b9b4a8",
+   "texture": "textures/stonewall.png",
+   "repeat": [
+    1,
+    1
+   ]
   },
   {
    "type": "box",
@@ -199,7 +223,56 @@
     0.8,
     0.12
    ],
-   "color": "#a9a59a"
+   "color": "#a9a59a",
+   "texture": "textures/stonewall.png",
+   "repeat": [
+    1,
+    1
+   ]
+  },
+  {
+   "type": "cone",
+   "pos": [
+    -16,
+    0,
+    -34
+   ],
+   "r": 17,
+   "h": 20,
+   "color": "#8d98a8"
+  },
+  {
+   "type": "cone",
+   "pos": [
+    12,
+    0,
+    -38
+   ],
+   "r": 20,
+   "h": 26,
+   "color": "#7f8c9e"
+  },
+  {
+   "type": "cone",
+   "pos": [
+    30,
+    0,
+    -30
+   ],
+   "r": 13,
+   "h": 14,
+   "color": "#98a4b0"
+  },
+  {
+   "type": "cone",
+   "pos": [
+    -34,
+    0,
+    -28
+   ],
+   "r": 12,
+   "h": 13,
+   "color": "#98a4b0"
   }
  ],
  "life": []

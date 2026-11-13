@@ -60,6 +60,15 @@
     0
    ],
    "backdrop": "strasbourg"
+  },
+  "fear": {
+   "kit": "medieval_square",
+   "at": [
+    210,
+    0,
+    0
+   ],
+   "backdrop": "strasbourg"
   }
  },
  "cast": [
@@ -179,27 +188,39 @@
    "face": "sad"
   },
   {
+   "id": "t5",
+   "char": "troffea",
+   "place": "fear",
+   "pos": [
+    0,
+    0,
+    0
+   ],
+   "face": "sad"
+  },
+  {
    "id": "m1",
-   "char": "npc15_man",
+   "char": "piper",
    "place": "hill",
    "pos": [
     -2.2,
     0.05,
     -1.2
    ],
-   "height": 1.75
+   "face": "nervous"
   },
   {
    "id": "m2",
-   "char": "npc15_woman",
+   "char": "councillor",
+   "hat": "tudor_cap",
    "place": "hill",
    "pos": [
     2.3,
     0.05,
     -1.5
    ],
-   "height": 1.7,
-   "flip": true
+   "flip": true,
+   "face": "nervous"
   }
  ],
  "props": [
@@ -264,13 +285,13 @@
    "type": "plane",
    "image": "props/sign_shrine.png",
    "pos": [
-    3.3,
+    -3.9,
     0,
-    -6.2
+    -4.4
    ],
    "size": [
-    1.7,
-    1.5
+    2.2,
+    1.9
    ]
   }
  ],
@@ -339,11 +360,11 @@
    "move": "push",
    "proof": "A card on the stall reads STRASBOURG JULY 1518",
    "extra": {
-    "distance": 6.5,
+    "distance": 4.4,
     "fov": 34,
-    "yaw": 8,
-    "pitch": 4,
-    "frameY": 0.05
+    "yaw": 6,
+    "pitch": 3,
+    "frameY": 0.02
    }
   },
   {
@@ -380,7 +401,7 @@
     }
    ],
    "extra": {
-    "pitch": 10
+    "pitch": 8
    }
   },
   {
@@ -417,8 +438,9 @@
     }
    ],
    "extra": {
-    "pitch": 16,
-    "headWidth": 0.08
+    "pitch": 14,
+    "headWidth": 0.11,
+    "frameY": -0.05
    }
   },
   {
@@ -466,19 +488,19 @@
    "subject": "dr",
    "shot": "close",
    "move": "push",
-   "proof": "The physician holds up a written verdict",
+   "proof": "The physician holds up a paper: VERDICT HOT BLOOD",
    "acts": [
     {
      "who": "dr",
      "at": 0.0,
      "face": "shouting",
      "hold": {
-      "file": "props/letter.png",
+      "file": "props/verdict.png",
       "hand": "R",
-      "scale": 0.55
+      "scale": 0.8
      },
      "pose": {
-      "armR": -80
+      "armR": -85
      }
     }
    ]
@@ -645,14 +667,14 @@
   },
   {
    "say": "Historians think",
-   "place": "square",
-   "subject": "t1",
+   "place": "fear",
+   "subject": "t5",
    "shot": "wide",
    "move": "orbitL",
-   "proof": "A tired woman by empty market stalls, weary townsfolk passing",
+   "proof": "A sad woman by a market stall with a NO BREAD notice",
    "acts": [
     {
-     "who": "t1",
+     "who": "t5",
      "at": 0.0,
      "face": "sad",
      "pose": {
@@ -664,40 +686,87 @@
       "head": 0
      }
     }
+   ],
+   "show": [
+    {
+     "type": "plane",
+     "image": "props/sign_no_bread.png",
+     "pos": [
+      -6.2,
+      1.0,
+      -5.05
+     ],
+     "size": [
+      2.0,
+      0.62
+     ]
+    }
    ]
   },
   {
    "say": "and people believed",
-   "place": "square",
-   "subject": "t1",
-   "shot": "medium",
+   "place": "fear",
+   "subject": "t5",
+   "shot": "wide",
    "move": "craneDown",
-   "proof": "She looks up at the sky in fear",
+   "proof": "A pale angry saint with a halo looms over her; she cowers",
    "acts": [
     {
-     "who": "t1",
+     "who": "t5",
      "at": 0.0,
      "face": "scared",
      "motion": "cower"
     }
    ],
    "extra": {
-    "pitch": 14
-   }
+    "pitch": 1,
+    "frameX": -0.12,
+    "frameY": 0.0
+   },
+   "show": [
+    {
+     "type": "plane",
+     "image": "props/saint.png",
+     "pos": [
+      1.6,
+      2.4,
+      -3.4
+     ],
+     "size": [
+      3.6,
+      5.2
+     ]
+    }
+   ]
   },
   {
    "say": "Fear did",
-   "place": "square",
-   "subject": "t1",
+   "place": "fear",
+   "subject": "t5",
    "shot": "close",
    "move": "push",
    "proof": "Her frightened face, shaking",
    "acts": [
     {
-     "who": "t1",
+     "who": "t5",
      "at": 0.0,
      "face": "scared",
      "shake": 0.6
+    }
+   ],
+   "show": [
+    {
+     "type": "plane",
+     "image": "props/saint.png",
+     "pos": [
+      1.6,
+      2.4,
+      -3.4
+     ],
+     "size": [
+      3.6,
+      5.2
+     ]
     }
    ]
   },
@@ -716,10 +785,10 @@
      "hold": {
       "file": "props/sign_no_music.png",
       "hand": "R",
-      "scale": 2.3
+      "scale": 2.6
      },
      "pose": {
-      "armR": -120
+      "armR": -150
      }
     },
     {
@@ -772,6 +841,7 @@
     {
      "who": "m1",
      "at": 0.0,
+     "face": "nervous",
      "to": [
       -1.8,
       0.05,
@@ -783,6 +853,7 @@
     {
      "who": "m2",
      "at": 0.0,
+     "face": "nervous",
      "to": [
       2.4,
       0.05,
@@ -818,7 +889,7 @@
    "say": "in red shoes",
    "place": "hill",
    "subject": "t4",
-   "shot": "medium",
+   "shot": "close",
    "move": "push",
    "proof": "She holds a pair of red shoes with crosses",
    "acts": [
@@ -829,10 +900,10 @@
      "hold": {
       "file": "props/red_shoes.png",
       "hand": "R",
-      "scale": 0.7
+      "scale": 1.25
      },
      "pose": {
-      "armR": -70
+      "armR": -100
      }
     }
    ]
@@ -848,11 +919,25 @@
     {
      "who": "t4",
      "at": 0.0,
-     "face": "tired"
+     "face": "tired",
+     "hold": null,
+     "pose": {
+      "armR": 0
+     }
     },
     {
      "who": "t4",
      "at": 0.7,
+     "face": "happy"
+    },
+    {
+     "who": "m1",
+     "at": 0.9,
+     "face": "happy"
+    },
+    {
+     "who": "m2",
+     "at": 1.0,
      "face": "happy"
     }
    ]
@@ -868,11 +953,17 @@
     {
      "who": "t4",
      "at": 0.0,
-     "face": "happy",
-     "hold": null,
-     "pose": {
-      "armR": 0
-     }
+     "face": "happy"
+    },
+    {
+     "who": "m1",
+     "at": 0.0,
+     "face": "happy"
+    },
+    {
+     "who": "m2",
+     "at": 0.0,
+     "face": "happy"
     }
    ]
   },
@@ -891,6 +982,22 @@
      "motion": "nod"
     }
    ]
+  }
+ ],
+ "lighting": [
+  {
+   "t": 0,
+   "mood": "day"
+  },
+  {
+   "t": "say:You see",
+   "mood": "night",
+   "fade": 0.8
+  },
+  {
+   "t": "say:And there",
+   "mood": "day",
+   "fade": 1.4
   }
  ]
 }

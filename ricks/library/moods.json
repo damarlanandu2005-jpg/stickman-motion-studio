@@ -21,19 +21,19 @@
    "sun": {
     "azimuth": -40,
     "elevation": 38,
-    "color": "#a9bcff",
+    "color": "#c6d0ff",
     "intensity": 1.8
    },
    "sky": {
-    "top": "#1d2a6e",
-    "horizon": "#6268b4"
+    "top": "#2a3676",
+    "horizon": "#8088c4"
    },
    "fill": {
-    "sky": "#7686ee",
-    "ground": "#4c3f8c",
+    "sky": "#a0a8e6",
+    "ground": "#6e6596",
     "intensity": 1.6
    },
-   "exposure": 1.2
+   "exposure": 1.28
   }
  },
  "ink": {

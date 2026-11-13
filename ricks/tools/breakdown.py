@@ -15,7 +15,8 @@ breakdown.json (all positions are relative to the place's "at"):
 """
 import json, os, re, shutil, sys
 HERE = os.path.dirname(os.path.abspath(__file__)); LIB = os.path.normpath(os.path.join(HERE, "..", "library"))
-SIZE = {"close": 0.22, "medium": 0.15, "wide": 0.10, "two": 0.13, "insert": 0.30}
+SIZE = {"close": 0.34, "medium": 0.26, "wide": 0.15, "two": 0.19, "insert": 0.42}
+FRAMEY = {"close": 0.12, "medium": 0.07, "wide": 0.05, "two": 0.07, "insert": 0.1}
 MOVE = {"push": dict(zoom=6, orbit=2.2, rise=0.6), "orbitL": dict(zoom=3, orbit=-5, rise=0.8), "orbitR": dict(zoom=3, orbit=5, rise=-0.8),
         "craneUp": dict(zoom=3, orbit=2, rise=3.2), "craneDown": dict(zoom=3, orbit=-2, rise=-3.2), "pull": dict(zoom=-3, orbit=-2.5, rise=1.0)}
 YAWS = [-10, 8, -4, 12, -8, 5, -12, 9]
@@ -151,9 +152,9 @@ def build(proj):
     for i, L in enumerate(B["lines"]):
         if L.get("say"): wi = find_phrase(W, L["say"], wi); s = {"start": "w:%d" % wi}      # word index: safe when a phrase is spoken twice
         else: s = {"start": 0}
-        if "subject" in L: s["target"] = L["subject"]; s["headWidth"] = SIZE[L.get("shot", "medium")]
+        if "subject" in L: s["target"] = L["subject"]; s["headWidth"] = SIZE[L.get("shot", "medium")]; s["frameY"] = FRAMEY[L.get("shot", "medium")]
         else: s["anchor"] = absol(L["place"], L["anchor"], B)
-        s.update(MOVE[L.get("move", "push")]); s["yaw"] = L.get("yaw", YAWS[yi % len(YAWS)]); yi += 1; s["pitch"] = L.get("pitch", 6)
+        s.update(MOVE[L.get("move", "push")]); s["yaw"] = L.get("yaw", YAWS[yi % len(YAWS)]); yi += 1; s["pitch"] = L.get("pitch", 3)
         s.update(L.get("extra", {})); acts = []
         for a in L.get("acts", []):
             a = dict(a)
@@ -163,6 +164,10 @@ def build(proj):
         for n in npcm:                                      # background behaviours restart in every shot of their place
             if n["who"].split("_")[1] == L["place"]: acts.append({"who": n["who"], "at": 0.1, "motion": n["motion"], "repeat": n["repeat"], **({"face": n["face"]} if n["face"] else {})})
         s["actions"] = acts
+        t0 = W[wi][1] if L.get("say") else 0.0; nx = B["lines"][i + 1] if i + 1 < len(B["lines"]) else None
+        t1 = W[find_phrase(W, nx["say"], wi + 1)][1] if nx else dur + 1
+        for p in L.get("show", []):                          # props that exist only during this line (labels, apparitions, inserts)
+            q = dict(p); q["pos"] = absol(L["place"], p["pos"], B); q["from"] = round(t0 - 0.05, 2); q["to"] = round(t1, 2); S["props"].append(tex(q))
         nxt = B["lines"][i + 1] if i + 1 < len(B["lines"]) else None
         if nxt and nxt["place"] != L["place"] and "out" not in s: s["out"] = "dissolve"; s["outDur"] = 0.45
         shots.append(s)

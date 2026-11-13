@@ -226,7 +226,7 @@ async function makeCharacter(c, rig, actions) {
     }
     tex.needsUpdate = true;
     const bob = walk * Math.abs(wph) * 0.02 * (c.height || 1.8), jx = st.shake * 0.012 * (c.height || 1.8) * Math.sin(t * 80);
-    mesh.position.set(st.p[0] + jx, st.p[1] + st.hop + bob, st.p[2]);
+    mesh.position.set(st.p[0] + jx, st.p[1] + st.hop + bob + Math.abs(Math.sin(rad(ang.spin))) * 0.2 * (c.height || 1.8), st.p[2]);   // a figure lying down rests on the floor, not in it
     mesh.scale.x = st.flip ? -1 : 1;
     blob.position.set(st.p[0], st.p[1] + 0.012, st.p[2]);
     blob.material.opacity = (S.contactShadow ?? 0.55) * (1 - clamp(st.hop * 1.5, 0, 0.7));
@@ -241,9 +241,15 @@ async function makeProp(p) {
   const size3 = (s, d) => Array.isArray(s) ? s : (s ? [s, s, s] : d);
   if (p.type === 'house') {
     const [w, h, d] = size3(p.size, [3, 2.5, 3]);
-    add(new THREE.BoxGeometry(w, h, d), await surface(p.color || '#d9c3a0', p.wall, p.repeat || [Math.max(1, w / 2.5), Math.max(1, h / 2.5)]), h / 2);
+    const wallM = (await surface(p.color || '#d9c3a0', p.wall, p.repeat || [Math.max(1, w / 2.5), Math.max(1, h / 2.5)])).clone(); if (wallM.emissive && p.wall) { wallM.emissive.set(p.glow || '#ffffff'); wallM.emissiveIntensity = 0.16; wallM.emissiveMap = wallM.map; }   // textured walls: keep dark beams off pure black in shadow
+    add(new THREE.BoxGeometry(w, h, d), wallM, h / 2);
     const roof = add(new THREE.ConeGeometry(Math.max(w, d) * 0.78, h * 0.6, 4), await surface(p.roof || '#7a2f2f', p.roofTexture, p.roofRepeat || [3, 2]), h + h * 0.3); roof.rotation.y = Math.PI / 4;
     const door = add(new THREE.BoxGeometry(w * 0.22, h * 0.45, 0.05), await surface(p.door || '#3b2a4a'), h * 0.225); door.position.z = d / 2 + 0.03;
+    if (p.windows !== false) { const glass = await surface(p.window || '#7f9cc4'), frame = await surface(p.windowFrame || '#f2e9d4');     // two shuttered windows so a house is not a blank box
+      for (const sx of [-1, 1]) { const fr = add(new THREE.BoxGeometry(w * 0.2, h * 0.24, 0.05), frame, h * 0.62); fr.position.set(sx * w * 0.3, h * 0.62, d / 2 + 0.03);
+        const gl = add(new THREE.BoxGeometry(w * 0.15, h * 0.18, 0.05), glass, h * 0.62); gl.position.set(sx * w * 0.3, h * 0.62, d / 2 + 0.06); } }
+  } else if (p.type === 'cone') {                       // hills, peaks, heaps
+    const m = add(new THREE.ConeGeometry(p.r || 3, p.h || 4, p.sides || 7), await surface(p.color || '#8a9a7a', p.texture, p.repeat), (p.h || 4) / 2); m.rotation.y = p.turn || 0.4;
   } else if (p.type === 'box' || p.type === 'crate' || p.type === 'wall') {
     const [w, h, d] = size3(p.size, p.type === 'wall' ? [4, 2.5, 0.3] : [0.7, 0.7, 0.7]);
     add(new THREE.BoxGeometry(w, h, d), await surface(p.color || (p.type === 'crate' ? '#a8743c' : '#b8794a'), p.texture, p.repeat), h / 2);
@@ -524,6 +530,7 @@ function drawCaption(t) {
 function compose(i, withCaption = true) {
   const t = i / FPS, plan = cameraPlan(t);
   for (const ch of Object.values(chars)) ch.draw(t);
+  for (const o of setRoot.children) { const pr = o.userData.prop; if (pr && pr.from !== undefined) o.visible = t >= pr.from && t < (pr.to ?? 1e9); }   // props that exist only while their line is spoken
   const mix = smoother(plan.mix), focusOf = (p) => p.anchor;
   if (plan.kind === 'dissolve') {
     applyMood(moodAt(t), focusOf(plan.a)); setCamera(plan.a); drawScene(); octx.globalAlpha = 1; octx.drawImage(renderer.domElement, 0, 0);

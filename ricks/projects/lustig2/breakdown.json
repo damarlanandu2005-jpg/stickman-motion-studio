@@ -51,6 +51,15 @@
     0
    ],
    "backdrop": null
+  },
+  "dock": {
+   "kit": "harbour_dock",
+   "at": [
+    210,
+    0,
+    0
+   ],
+   "backdrop": "paris_plain"
   }
  },
  "cast": [
@@ -66,8 +75,8 @@
   },
   {
    "id": "ps",
-   "char": "dealer_c",
-   "hat": "bowler",
+   "char": "dealer_b",
+   "hat": "tophat",
    "place": "street",
    "pos": [
     1.6,
@@ -78,11 +87,10 @@
   },
   {
    "id": "ps2",
-   "char": "dealer_b",
-   "hat": "tophat",
+   "char": "npc20_man",
    "place": "street",
    "pos": [
-    3.4,
+    3.3,
     0,
     -0.3
    ],
@@ -122,7 +130,8 @@
     -0.9,
     0.05,
     -0.4
-   ]
+   ],
+   "face": "smug"
   },
   {
    "id": "ph",
@@ -193,6 +202,29 @@
     0
    ],
    "face": "crying"
+  },
+  {
+   "id": "hc",
+   "char": "dealer_c",
+   "place": "hotel",
+   "pos": [
+    2.5,
+    0.05,
+    -1.0
+   ],
+   "flip": true,
+   "face": "skeptical"
+  },
+  {
+   "id": "ld",
+   "char": "lustig",
+   "place": "dock",
+   "pos": [
+    -4.5,
+    0.05,
+    0
+   ],
+   "face": "scared"
   }
  ],
  "props": [
@@ -206,34 +238,6 @@
    ],
    "h": 42,
    "color": "#7a666b"
-  },
-  {
-   "place": "street",
-   "type": "plane",
-   "image": "props/sign_for_sale.png",
-   "pos": [
-    0,
-    0,
-    -37.5
-   ],
-   "size": [
-    8.4,
-    6.9
-   ]
-  },
-  {
-   "place": "street",
-   "type": "plane",
-   "image": "props/sign_police.png",
-   "pos": [
-    12.2,
-    0,
-    -1.4
-   ],
-   "size": [
-    1.5,
-    1.25
-   ]
   },
   {
    "place": "hotel",
@@ -254,59 +258,14 @@
    "type": "plane",
    "image": "props/sign_chicago.png",
    "pos": [
-    -3.6,
+    -2.4,
     0,
-    -2.2
+    -2.0
    ],
    "size": [
     1.9,
     1.6
    ]
-  },
-  {
-   "place": "usa",
-   "type": "box",
-   "pos": [
-    0.75,
-    0,
-    -0.9
-   ],
-   "size": [
-    0.55,
-    0.25,
-    0.38
-   ],
-   "color": "#4f8f5a"
-  },
-  {
-   "place": "usa",
-   "type": "box",
-   "pos": [
-    1.35,
-    0,
-    -0.9
-   ],
-   "size": [
-    0.55,
-    0.25,
-    0.38
-   ],
-   "color": "#4f8f5a"
-  },
-  {
-   "place": "usa",
-   "type": "box",
-   "pos": [
-    1.05,
-    0.25,
-    -0.9
-   ],
-   "size": [
-    0.55,
-    0.25,
-    0.38
-   ],
-   "color": "#5fa56a"
   },
   {
    "place": "jail",
@@ -320,6 +279,20 @@
    "size": [
     2.4,
     1.15
+   ]
+  },
+  {
+   "place": "street",
+   "type": "plane",
+   "image": "props/sign_police.png",
+   "pos": [
+    12.2,
+    0,
+    -1.4
+   ],
+   "size": [
+    1.5,
+    1.25
    ]
   }
  ],
@@ -344,7 +317,22 @@
     "frameY": 0.0,
     "out": "dissolve",
     "outDur": 0.4
-   }
+   },
+   "show": [
+    {
+     "type": "plane",
+     "image": "props/sign_for_sale.png",
+     "pos": [
+      0,
+      0,
+      -37.5
+     ],
+     "size": [
+      8.4,
+      6.9
+     ]
+    }
+   ]
   },
   {
    "say": "Twice",
@@ -379,58 +367,109 @@
     -48
    ],
    "move": "orbitL",
-   "proof": "The tower from far away, small against the sky",
+   "proof": "The tower with an EXPO 1889 banner and a PERMIT: 20 YEARS notice",
    "extra": {
-    "distance": 56,
+    "distance": 50,
     "fov": 40,
-    "yaw": 26,
-    "pitch": 4,
-    "orbit": -7,
+    "yaw": 10,
+    "pitch": 2,
+    "orbit": -5,
     "rise": 6,
     "zoom": 4,
+    "frameY": 0.0,
+    "out": "dissolve",
+    "outDur": 0.4
+   },
+   "show": [
+    {
+     "type": "plane",
+     "image": "props/sign_expo.png",
+     "pos": [
+      -7,
+      0,
+      -36
+     ],
+     "size": [
+      9,
+      6.6
+     ]
+    },
+    {
+     "type": "plane",
+     "image": "props/sign_20ans.png",
+     "pos": [
+      7,
+      0,
+      -36
+     ],
+     "size": [
+      7,
+      6.0
+     ]
+    }
+   ]
+  },
+  {
+   "say": "and many",
+   "place": "street",
+   "move": "push",
+   "proof": "A protest placard in front of the tower: UGLY! TEAR IT DOWN",
+   "anchor": [
+    2,
+    5,
+    -40
+   ],
+   "show": [
+    {
+     "type": "plane",
+     "image": "props/sign_hated.png",
+     "pos": [
+      2.5,
+      0,
+      -33
+     ],
+     "size": [
+      8.5,
+      6.4
+     ]
+    }
+   ],
+   "extra": {
+    "distance": 22,
+    "fov": 40,
+    "yaw": -8,
+    "pitch": 2,
     "frameY": 0.0,
     "out": "dissolve",
     "outDur": 0.4
    }
   },
   {
-   "say": "and many",
-   "place": "street",
-   "subject": "ps",
-   "shot": "two",
-   "move": "orbitR",
-   "proof": "Two Parisians pull disgusted faces",
-   "acts": [
-    {
-     "who": "ps",
-     "at": 0.0,
-     "face": "disgusted",
-     "shake": 0.3
-    },
-    {
-     "who": "ps2",
-     "at": 0.0,
-     "face": "skeptical",
-     "motion": "shrug"
-    }
-   ]
-  },
-  {
    "say": "In nineteen",
    "place": "hotel",
    "subject": "lh",
-   "shot": "medium",
+   "shot": "two",
    "move": "push",
-   "proof": "Lustig behind a grand desk under the HOTEL DE CRILLON plaque",
+   "proof": "Lustig greets two dealers in a grand room under the HOTEL DE CRILLON plaque",
    "acts": [
     {
      "who": "lh",
      "at": 0.1,
-     "face": "scheming"
+     "face": "smug"
+    },
+    {
+     "who": "ph",
+     "at": 0.0,
+     "face": "neutral"
+    },
+    {
+     "who": "hc",
+     "at": 0.0,
+     "face": "skeptical"
     }
    ],
    "extra": {
-    "frameY": 0.02
+    "frameX": 0.14
    }
   },
   {
@@ -444,14 +483,14 @@
     {
      "who": "lh",
      "at": 0.1,
-     "face": "smug",
+     "face": "happy",
      "hold": {
       "file": "props/letter.png",
       "hand": "R",
-      "scale": 0.55
+      "scale": 0.6
      },
      "pose": {
-      "armR": -70
+      "armR": -75
      }
     }
    ]
@@ -462,12 +501,12 @@
    "subject": "ph",
    "shot": "two",
    "move": "orbitL",
-   "proof": "Poisson stares at the letter Lustig holds out",
+   "proof": "He shows the letter, then a REPAIR BILL for the tower",
    "acts": [
     {
      "who": "lh",
      "at": 0.0,
-     "face": "determined",
+     "face": "happy",
      "pose": {
       "armR": -88
      }
@@ -479,8 +518,13 @@
     },
     {
      "who": "lh",
-     "at": 2.6,
-     "face": "sad"
+     "at": 2.4,
+     "face": "sad",
+     "hold": {
+      "file": "props/bill.png",
+      "hand": "R",
+      "scale": 0.7
+     }
     }
    ],
    "extra": {
@@ -504,6 +548,11 @@
      "who": "ph",
      "at": 0.9,
      "face": "nervous"
+    },
+    {
+     "who": "lh",
+     "at": 0.0,
+     "face": "sad"
     }
    ]
   },
@@ -518,8 +567,13 @@
     {
      "who": "lh",
      "at": 0.0,
-     "face": "determined",
-     "motion": "point"
+     "face": "happy",
+     "motion": "point",
+     "hold": {
+      "file": "props/bill.png",
+      "hand": "R",
+      "scale": 0.7
+     }
     }
    ]
   },
@@ -532,7 +586,7 @@
     -48
    ],
    "move": "craneUp",
-   "proof": "Close on the iron lattice of the tower",
+   "proof": "Close on the iron lattice with a 7000 TONNES plate",
    "extra": {
     "distance": 30,
     "fov": 42,
@@ -542,7 +596,22 @@
     "rise": 8,
     "zoom": 4,
     "frameY": 0.0
-   }
+   },
+   "show": [
+    {
+     "type": "plane",
+     "image": "props/sign_7000.png",
+     "pos": [
+      0,
+      9.6,
+      -39.3
+     ],
+     "size": [
+      5.4,
+      2.5
+     ]
+    }
+   ]
   },
   {
    "say": "A dealer",
@@ -562,6 +631,15 @@
      "at": 0.9,
      "face": "happy",
      "hop": 0.15
+    },
+    {
+     "who": "lh",
+     "at": 0.0,
+     "hold": null,
+     "pose": {
+      "armR": 0
+     },
+     "face": "smug"
     }
    ]
   },
@@ -677,8 +755,8 @@
    "place": "hotel",
    "subject": "lh",
    "shot": "wide",
-   "move": "orbitL",
-   "proof": "Lustig walks out laughing with a suitcase",
+   "move": "orbitR",
+   "proof": "Lustig walks to the door with a suitcase; Poisson stays behind",
    "acts": [
     {
      "who": "lh",
@@ -686,20 +764,41 @@
      "face": "laughing",
      "hold": {
       "file": "props/suitcase.png",
-      "hand": "L",
-      "scale": 0.7
+      "hand": "R",
+      "scale": 0.75
      },
      "pose": {
-      "armL": 20,
-      "armR": 0
+      "armR": -15,
+      "armL": 0
      },
      "to": [
-      3.5,
+      2.5,
       0.05,
-      1.5
+      -3.0
      ],
      "walk": true,
-     "over": 1.8
+     "over": 1.9
+    },
+    {
+     "who": "ph",
+     "at": 0.0,
+     "to": [
+      -3.2,
+      0.05,
+      -0.8
+     ],
+     "over": 0.05,
+     "face": "sad"
+    },
+    {
+     "who": "hc",
+     "at": 0.0,
+     "to": [
+      -4.4,
+      0.05,
+      -1.4
+     ],
+     "over": 0.05
     },
     {
      "who": "ls",
@@ -718,10 +817,7 @@
     }
    ],
    "extra": {
-    "pan": [
-     10,
-     0
-    ]
+    "frameX": 0.1
    }
   },
   {
@@ -749,6 +845,21 @@
      "walk": true,
      "over": 1.8
     }
+   ],
+   "show": [
+    {
+     "type": "plane",
+     "image": "props/sign_for_sale.png",
+     "pos": [
+      0,
+      0,
+      -37.5
+     ],
+     "size": [
+      8.4,
+      6.9
+     ]
+    }
    ]
   },
   {
@@ -757,28 +868,41 @@
    "subject": "ps",
    "shot": "two",
    "move": "orbitR",
-   "proof": "Two new dealers in a bowler and a top hat, one eager, one unsure",
+   "proof": "Two new dealers by the FOR SALE sign: one in a top hat, one in a flat cap",
    "acts": [
     {
      "who": "ps",
      "at": 0.0,
      "face": "happy",
      "hop": 0.1
-    },
-    {
-     "who": "ps2",
-     "at": 0.3,
-     "face": "skeptical"
     }
-   ]
+   ],
+   "show": [
+    {
+     "type": "plane",
+     "image": "props/sign_for_sale.png",
+     "pos": [
+      0,
+      0,
+      -37.5
+     ],
+     "size": [
+      8.4,
+      6.9
+     ]
+    }
+   ],
+   "extra": {
+    "frameX": 0.1
+   }
   },
   {
    "say": "and sold the Eiffel",
    "place": "street",
    "subject": "ps",
-   "shot": "wide",
+   "shot": "two",
    "move": "orbitL",
-   "proof": "The bowler-hat dealer hands Lustig cash in front of the tower",
+   "proof": "The top-hat dealer holds out cash to Lustig",
    "acts": [
     {
      "who": "ps",
@@ -797,16 +921,26 @@
      "at": 0.0,
      "face": "laughing",
      "hop": 0.14
-    },
-    {
-     "who": "ps2",
-     "at": 0.0,
-     "face": "happy"
     }
    ],
    "extra": {
-    "frameX": 0.1
-   }
+    "frameX": -0.14
+   },
+   "show": [
+    {
+     "type": "plane",
+     "image": "props/sign_for_sale.png",
+     "pos": [
+      0,
+      0,
+      -37.5
+     ],
+     "size": [
+      8.4,
+      6.9
+     ]
+    }
+   ]
   },
   {
    "say": "This time",
@@ -817,12 +951,6 @@
    "proof": "Two policemen in kepis under a POLICE sign",
    "acts": [
     {
-     "who": "ps2",
-     "at": 0.0,
-     "face": "angry",
-     "motion": "point"
-    },
-    {
      "who": "pa",
      "at": 0.0,
      "face": "angry",
@@ -832,67 +960,66 @@
      "who": "pb",
      "at": 0.0,
      "face": "determined"
+    },
+    {
+     "who": "ps",
+     "at": 0.0,
+     "face": "angry",
+     "hold": null
     }
    ],
    "extra": {
     "frameX": 0.1
-   }
+   },
+   "show": [
+    {
+     "type": "plane",
+     "image": "props/sign_for_sale.png",
+     "pos": [
+      0,
+      0,
+      -37.5
+     ],
+     "size": [
+      8.4,
+      6.9
+     ]
+    }
+   ]
   },
   {
    "say": "He fled",
-   "place": "street",
-   "subject": "ls",
+   "place": "dock",
+   "subject": "ld",
    "shot": "wide",
-   "move": "orbitR",
-   "proof": "Lustig runs off with his suitcase, police chasing",
+   "move": "orbitL",
+   "proof": "Lustig runs along a dock with his suitcase toward an ocean liner and a NEW YORK sign",
    "acts": [
     {
-     "who": "ls",
+     "who": "ld",
      "at": 0.0,
      "face": "scared",
-     "flip": true,
      "hold": {
       "file": "props/suitcase.png",
       "hand": "L",
-      "scale": 0.7
+      "scale": 0.75
      },
      "to": [
-      -13,
-      0,
-      -1.0
+      2.5,
+      0.05,
+      -0.4
      ],
      "over": 1.7,
      "motion": "run",
      "repeat": 4
-    },
-    {
-     "who": "pa",
-     "at": 0.2,
-     "to": [
-      1.5,
-      0,
-      -0.4
-     ],
-     "walk": true,
-     "over": 1.6
-    },
-    {
-     "who": "pb",
-     "at": 0.3,
-     "to": [
-      3.0,
-      0,
-      -0.8
-     ],
-     "walk": true,
-     "over": 1.6
     }
    ],
    "extra": {
     "pan": [
-     -16,
+     14,
      0
-    ]
+    ],
+    "frameX": -0.1
    }
   },
   {
@@ -901,7 +1028,7 @@
    "subject": "ls3",
    "shot": "two",
    "move": "orbitL",
-   "proof": "Capone, in a cream fedora, hands Lustig a bundle of cash under a CHICAGO sign",
+   "proof": "Capone hands Lustig a stack labelled $50,000 by a CHICAGO sign",
    "acts": [
     {
      "who": "cap",
@@ -909,24 +1036,24 @@
      "face": "skeptical",
      "motion": "give",
      "hold": {
-      "file": "props/cash.png",
+      "file": "props/cash_50k.png",
       "hand": "R",
-      "scale": 0.5
+      "scale": 0.95
      }
     },
     {
      "who": "ls3",
      "at": 0.0,
-     "face": "scheming"
+     "face": "smug"
     },
     {
      "who": "ls3",
      "at": 1.3,
      "motion": "give",
      "hold": {
-      "file": "props/cash.png",
+      "file": "props/cash_50k.png",
       "hand": "R",
-      "scale": 0.5
+      "scale": 0.95
      }
     },
     {
@@ -953,9 +1080,9 @@
      "face": "happy",
      "motion": "give",
      "hold": {
-      "file": "props/cash.png",
+      "file": "props/cash_50k.png",
       "hand": "R",
-      "scale": 0.5
+      "scale": 0.95
      }
     },
     {
@@ -968,9 +1095,9 @@
      "at": 1.2,
      "face": "smug",
      "hold": {
-      "file": "props/cash.png",
+      "file": "props/cash_50k.png",
       "hand": "R",
-      "scale": 0.5
+      "scale": 0.95
      }
     },
     {
@@ -987,9 +1114,9 @@
    "say": "Capone rewarded",
    "place": "usa",
    "subject": "cap",
-   "shot": "close",
+   "shot": "two",
    "move": "push",
-   "proof": "Capone laughs and gives a smaller bundle to Lustig",
+   "proof": "Capone laughs and holds out a small bundle labelled $5,000",
    "acts": [
     {
      "who": "cap",
@@ -997,9 +1124,9 @@
      "face": "laughing",
      "motion": "give",
      "hold": {
-      "file": "props/cash.png",
+      "file": "props/cash_5k.png",
       "hand": "R",
-      "scale": 0.36
+      "scale": 0.7
      }
     },
     {
@@ -1007,14 +1134,17 @@
      "at": 0.0,
      "face": "smug"
     }
-   ]
+   ],
+   "extra": {
+    "frameX": 0.12
+   }
   },
   {
    "say": "In the end",
    "place": "usa",
    "subject": "ls3",
    "shot": "wide",
-   "move": "craneUp",
+   "move": "orbitL",
    "proof": "Two policemen close in on Lustig from both sides",
    "acts": [
     {
@@ -1059,7 +1189,8 @@
      "walk": true,
      "over": 1.1
     }
-   ]
+   ],
+   "pitch": 9
   },
   {
    "say": "he got twenty",
@@ -1112,9 +1243,9 @@
    "move": "pull",
    "proof": "Pull back and up: the whole tower still standing, FOR SALE sign at its foot",
    "extra": {
-    "distance": 60,
+    "distance": 64,
     "fov": 38,
-    "yaw": 8,
+    "yaw": 6,
     "pitch": 2,
     "orbit": -8,
     "rise": 10,

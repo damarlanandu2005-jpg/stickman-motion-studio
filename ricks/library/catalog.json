@@ -860,6 +860,15 @@
   }
  },
  "props2d": {
+  "bill": {
+   "desc": "a huge repair bill for the tower",
+   "path": "props/bill.png",
+   "period": "1920s",
+   "size": [
+    230,
+    290
+   ]
+  },
   "cash": {
    "desc": "a bundle of banknotes with a paper band",
    "path": "props/cash.png",
@@ -867,6 +876,24 @@
    "size": [
     200,
     130
+   ]
+  },
+  "cash_50k": {
+   "desc": "a tall stack of banknotes labelled $50,000",
+   "path": "props/cash_50k.png",
+   "period": "any",
+   "size": [
+    300,
+    216
+   ]
+  },
+  "cash_5k": {
+   "desc": "one small bundle labelled $5,000",
+   "path": "props/cash_5k.png",
+   "period": "any",
+   "size": [
+    210,
+    86
    ]
   },
   "letter": {
@@ -905,10 +932,46 @@
     150
    ]
   },
+  "saint": {
+   "desc": "a pale apparition of an angry saint with a halo, pointing",
+   "path": "props/saint.png",
+   "period": "1500s",
+   "size": [
+    360,
+    520
+   ]
+  },
+  "ship": {
+   "desc": "an ocean liner with three funnels",
+   "path": "props/ship.png",
+   "period": "1920s",
+   "size": [
+    620,
+    330
+   ]
+  },
   "sign_1518": {
    "desc": "a date card",
    "path": "props/sign_1518.png",
    "period": "1500s",
+   "size": [
+    420,
+    194
+   ]
+  },
+  "sign_20ans": {
+   "desc": "a notice: permit for 20 years",
+   "path": "props/sign_20ans.png",
+   "period": "1880s",
+   "size": [
+    420,
+    344
+   ]
+  },
+  "sign_7000": {
+   "desc": "an iron-grey weight plate",
+   "path": "props/sign_7000.png",
+   "period": "1920s",
    "size": [
     420,
     194
@@ -941,6 +1004,15 @@
     194
    ]
   },
+  "sign_expo": {
+   "desc": "a blue World's Fair banner",
+   "path": "props/sign_expo.png",
+   "period": "1880s",
+   "size": [
+    460,
+    282
+   ]
+  },
   "sign_for_sale": {
    "desc": "a yellow FOR SALE sign on a post",
    "path": "props/sign_for_sale.png",
@@ -957,6 +1029,33 @@
    "size": [
     420,
     344
+   ]
+  },
+  "sign_hated": {
+   "desc": "a protest placard",
+   "path": "props/sign_hated.png",
+   "period": "1880s",
+   "size": [
+    460,
+    344
+   ]
+  },
+  "sign_newyork": {
+   "desc": "a harbour sign",
+   "path": "props/sign_newyork.png",
+   "period": "1930s",
+   "size": [
+    420,
+    282
+   ]
+  },
+  "sign_no_bread": {
+   "desc": "a notice on an empty stall",
+   "path": "props/sign_no_bread.png",
+   "period": "1500s",
+   "size": [
+    420,
+    132
    ]
   },
   "sign_no_music": {
@@ -994,6 +1093,15 @@
     210,
     150
    ]
+  },
+  "verdict": {
+   "desc": "a physician's written verdict: HOT BLOOD",
+   "path": "props/verdict.png",
+   "period": "1500s",
+   "size": [
+    230,
+    290
+   ]
   }
  },
  "props3d": {
@@ -1016,6 +1124,10 @@
   "floor": {
    "desc": "oak parquet",
    "path": "textures/floor.png"
+  },
+  "grass": {
+   "desc": "soft meadow grass in two close shades of green with small painted tufts and a few tiny white and yellow flowers, thin darker green strokes",
+   "path": "textures/grass.png"
   },
   "planks": {
    "desc": "rough pale wooden planks side by side with visible grain and a few nail heads, soft painted highlights, thin dark plum lines between the planks",

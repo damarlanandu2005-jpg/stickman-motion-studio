@@ -46,7 +46,7 @@ const MOTIONS = {
   shrug: { len: 0.8, keys: [{ dt: 0, pose: { armL: 55, armR: -55, head: 8 }, ease: 0.2 }, { dt: 0.5, pose: { armL: 0, armR: 0, head: 0 }, ease: 0.25 }] },
   point: { keep: true, len: 1.0, keys: [{ dt: 0, pose: { armR: -85, body: 4 }, ease: 0.15 }] },
   fall: { keep: true, len: 0.8, keys: [{ dt: 0, pose: { spin: 88, armL: 60, armR: -60 }, ease: 0.45 }] },
-  dance: { len: 0.8, keys: [{ dt: 0, pose: { armL: 140, armR: -40, legL: 30, legR: -12, body: 9, head: 8 }, hop: 0.12, ease: 0.18 }, { dt: 0.4, pose: { armL: 40, armR: -140, legL: -12, legR: 30, body: -9, head: -8 }, hop: 0.12, ease: 0.18 }] },
+  dance: { len: 0.7, keys: [{ dt: 0, pose: { armL: 165, armR: -55, legL: 46, legR: -18, body: 15, head: 12 }, hop: 0.22, ease: 0.16 }, { dt: 0.35, pose: { armL: 55, armR: -165, legL: -18, legR: 46, body: -15, head: -12 }, hop: 0.22, ease: 0.16 }] },
   bow: { len: 1.2, keys: [{ dt: 0, pose: { body: 32, head: 14, armL: 20, armR: -20 }, ease: 0.3 }, { dt: 0.8, pose: { body: 0, head: 0, armL: 0, armR: 0 }, ease: 0.3 }] },
   give: { keep: true, len: 1.2, keys: [{ dt: 0, pose: { armR: -78, body: 5 }, ease: 0.25 }] },
   take: { keep: true, len: 1.2, keys: [{ dt: 0, pose: { armL: 78, body: -5 }, ease: 0.25 }] },
@@ -68,7 +68,7 @@ function validate(s) {
     if (c.pos !== undefined && !isVec(c.pos, 3)) errs.push(`character ${c.id}: "pos" must be [x, y, z]`);
     if (c.puppet !== undefined) file(String(c.puppet).replace(/\/+$/, '') + '/rig.json', `character ${c.id} puppet`);
   }
-  const types = new Set(['house', 'box', 'crate', 'barrel', 'wall', 'tree', 'post', 'plane', 'model', 'eiffel', 'desk']);
+  const types = new Set(['house', 'box', 'crate', 'barrel', 'wall', 'tree', 'post', 'plane', 'model', 'eiffel', 'desk', 'cone']);
   for (const [i, p] of (Array.isArray(s.props) ? s.props : []).entries()) {
     if (!p || !types.has(p.type)) { errs.push(`props[${i}]: unknown type "${p && p.type}"`); continue; }
     if (p.pos !== undefined && !isVec(p.pos, 3)) errs.push(`props[${i}]: "pos" must be [x, y, z]`);
