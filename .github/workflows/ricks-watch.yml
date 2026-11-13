@@ -1,0 +1,39 @@
+name: Ricks watch (Gemini watches the video)
+on:
+  push: { branches: [ricks-stage-kaggle], paths: ['.github/workflows/ricks-watch.yml'] }
+  workflow_dispatch:
+    inputs:
+      project: { description: "project folder under ricks/projects", default: "lustig2" }
+      video:   { description: "video path relative to the project", default: "output/lustig_rebuilt.mp4" }
+permissions: { contents: write }
+jobs:
+  run:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - run: sudo apt-get install -y -qq ffmpeg && python -m pip install -q google-genai
+      - name: Gemini watches
+        env:
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+          GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+          GCP_LOCATION: ${{ secrets.GCP_LOCATION }}
+          IN_PROJECT: ${{ github.event.inputs.project }}
+          IN_VIDEO: ${{ github.event.inputs.video }}
+        run: |
+          [ -n "$GCP_SA_KEY" ] && [ -n "$GCP_PROJECT_ID" ] || { echo "GCP secrets missing"; exit 1; }
+          printf '%s' "$GCP_SA_KEY" > "$RUNNER_TEMP/sa.json"
+          export GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/sa.json" GOOGLE_CLOUD_PROJECT="$GCP_PROJECT_ID" GOOGLE_GENAI_USE_VERTEXAI=true
+          mkdir -p ricks/projects/$IN_PROJECT/review
+          python ricks/tools/gemini_watch.py "ricks/projects/$IN_PROJECT/$IN_VIDEO" --out "ricks/projects/$IN_PROJECT/review/gemini_watch.txt" 2>&1 | tee -a "ricks/projects/$IN_PROJECT/review/gemini_watch.txt"
+      - name: Commit
+        if: always()
+        run: |
+          git config user.name "claude-bot"; git config user.email "noreply@anthropic.com"
+          git add -f ricks/projects/*/review/*.txt || true
+          git commit -m "Gemini watch result [skip ci]" || exit 0
+          git pull -q --rebase -X theirs origin ${{ github.ref_name }} || true
+          git push -q origin HEAD:${{ github.ref_name }}
