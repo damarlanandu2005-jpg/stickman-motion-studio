@@ -9,59 +9,59 @@ shot 01 b  t=  2.20s  luma 137.4  contrast 59.3  ok
 shot 01 c  t=  2.43s  luma   138  contrast 58.3  ok
 shot 02 a  t=  3.07s  luma 140.3  contrast 67.1  ok
 shot 02 b  t=  4.20s  luma 138.1  contrast   67  ok
-shot 02 c  t=  5.37s  luma 133.6  contrast 66.1  ok
+shot 02 c  t=  5.37s  luma 134.2  contrast 65.9  ok
 shot 03 a  t=  6.23s  luma 149.5  contrast 68.2  ok
 shot 03 b  t=  6.87s  luma 147.1  contrast 69.6  ok
 shot 03 c  t=  7.50s  luma 148.9  contrast 68.4  ok
-shot 04 a  t=  8.37s  luma 124.6  contrast 52.8  ok
-shot 04 b  t=  9.93s  luma 119.7  contrast 55.3  ok
-shot 04 c  t= 11.53s  luma 115.1  contrast 58.4  ok
+shot 04 a  t=  8.37s  luma 125.1  contrast 52.9  ok
+shot 04 b  t=  9.93s  luma 119.9  contrast 55.1  ok
+shot 04 c  t= 11.53s  luma 114.6  contrast 58.5  ok
 shot 05 a  t= 12.37s  luma  95.4  contrast 64.2  ok
 shot 05 b  t= 12.97s  luma  94.4  contrast 65.1  ok
 shot 05 c  t= 13.57s  luma  93.3  contrast 64.6  ok
-shot 06 a  t= 14.43s  luma 125.2  contrast 53.4  ok
-shot 06 b  t= 15.47s  luma 122.1  contrast 55.7  ok
-shot 06 c  t= 16.50s  luma 120.7  contrast 56.9  ok
-shot 07 a  t= 17.17s  luma 107.5  contrast   65  ok
-shot 07 b  t= 17.50s  luma 105.9  contrast 63.4  ok
-shot 07 c  t= 17.83s  luma 106.3  contrast 64.5  ok
-shot 08 a  t= 18.40s  luma 107.4  contrast 64.1  ok
+shot 06 a  t= 14.43s  luma   123  contrast 53.2  ok
+shot 06 b  t= 15.47s  luma 120.2  contrast 55.1  ok
+shot 06 c  t= 16.50s  luma 119.6  contrast 56.4  ok
+shot 07 a  t= 17.17s  luma 107.8  contrast 64.9  ok
+shot 07 b  t= 17.50s  luma 106.4  contrast 63.3  ok
+shot 07 c  t= 17.83s  luma 106.6  contrast 64.4  ok
+shot 08 a  t= 18.40s  luma 108.9  contrast   63  ok
 shot 08 b  t= 18.93s  luma 108.8  contrast   64  ok
 shot 08 c  t= 19.47s  luma 107.7  contrast 63.9  ok
 shot 09 a  t= 20.27s  luma 140.5  contrast 68.6  ok
 shot 09 b  t= 20.90s  luma 138.2  contrast 68.1  ok
 shot 09 c  t= 21.53s  luma 138.5  contrast   68  ok
-shot 10 a  t= 22.33s  luma 108.7  contrast 61.9  ok
-shot 10 b  t= 22.87s  luma 109.6  contrast 61.6  ok
-shot 10 c  t= 23.40s  luma 110.6  contrast 61.4  ok
-shot 11 a  t= 24.07s  luma 127.2  contrast 52.2  ok
-shot 11 b  t= 24.53s  luma   126  contrast   53  ok
-shot 11 c  t= 25.03s  luma 124.7  contrast 53.6  ok
+shot 10 a  t= 22.33s  luma 106.2  contrast 60.8  ok
+shot 10 b  t= 22.87s  luma 107.5  contrast 60.7  ok
+shot 10 c  t= 23.40s  luma 109.3  contrast 60.7  ok
+shot 11 a  t= 24.07s  luma 127.3  contrast 51.3  ok
+shot 11 b  t= 24.53s  luma 126.2  contrast 52.1  ok
+shot 11 c  t= 25.03s  luma 124.9  contrast 52.7  ok
 shot 12 a  t= 25.60s  luma 100.1  contrast 67.3  ok
 shot 12 b  t= 25.93s  luma  98.7  contrast 67.4  ok
 shot 12 c  t= 26.30s  luma  87.7  contrast   59  ok
 shot 13 a  t= 26.73s  luma  91.1  contrast 57.9  ok
 shot 13 b  t= 27.07s  luma  89.7  contrast 57.4  ok
 shot 13 c  t= 27.40s  luma  89.9  contrast 58.2  ok
-shot 14 a  t= 28.07s  luma  98.4  contrast 63.8  ok
-shot 14 b  t= 29.67s  luma    99  contrast 64.9  ok
-shot 14 c  t= 31.27s  luma  99.8  contrast 65.4  ok
+shot 14 a  t= 28.07s  luma  97.3  contrast 63.3  ok
+shot 14 b  t= 29.67s  luma  97.5  contrast 64.3  ok
+shot 14 c  t= 31.27s  luma  98.1  contrast 64.7  ok
 shot 15 a  t= 32.07s  luma 118.5  contrast 53.6  ok
 shot 15 b  t= 32.60s  luma 124.3  contrast 53.7  ok
 shot 15 c  t= 33.13s  luma 133.7  contrast 49.5  ok
-shot 16 a  t= 33.90s  luma 137.4  contrast   49  ok
-shot 16 b  t= 34.50s  luma   127  contrast 51.2  ok
-shot 16 c  t= 35.10s  luma 125.1  contrast 49.7  ok
-shot 17 a  t= 35.77s  luma 131.2  contrast 47.7  ok
-shot 17 b  t= 36.13s  luma 130.9  contrast 47.6  ok
-shot 17 c  t= 36.47s  luma 131.2  contrast 46.9  ok
-shot 18 a  t= 37.17s  luma 132.2  contrast 47.5  ok
+shot 16 a  t= 33.90s  luma   136  contrast 49.6  ok
+shot 16 b  t= 34.50s  luma 127.1  contrast   51  ok
+shot 16 c  t= 35.10s  luma 133.2  contrast 47.9  ok
+shot 17 a  t= 35.77s  luma 131.3  contrast 47.6  ok
+shot 17 b  t= 36.13s  luma 130.8  contrast 47.6  ok
+shot 17 c  t= 36.47s  luma 131.1  contrast   47  ok
+shot 18 a  t= 37.17s  luma 132.3  contrast 47.6  ok
 shot 18 b  t= 37.80s  luma 129.4  contrast   46  ok
-shot 18 c  t= 38.47s  luma 128.9  contrast 44.4  ok
-shot 19 a  t= 39.20s  luma 126.6  contrast 50.3  ok
-shot 19 b  t= 39.63s  luma 125.4  contrast 49.6  ok
-shot 19 c  t= 40.10s  luma 126.2  contrast 48.2  ok
-shot 20 a  t= 40.57s  luma 141.3  contrast 50.1  ok
+shot 18 c  t= 38.47s  luma   129  contrast 44.6  ok
+shot 19 a  t= 39.20s  luma 125.9  contrast 50.8  ok
+shot 19 b  t= 39.63s  luma 124.8  contrast 50.1  ok
+shot 19 c  t= 40.10s  luma 126.1  contrast 48.4  ok
+shot 20 a  t= 40.57s  luma 141.3  contrast 50.2  ok
 shot 20 b  t= 40.87s  luma 138.1  contrast 57.9  ok
 shot 20 c  t= 41.17s  luma 135.7  contrast 59.1  ok
 shot 21 a  t= 41.80s  luma 134.2  contrast 46.7  ok
@@ -91,74 +91,74 @@ no problems found: safe to run the full render
 $ node /tmp/repo/ricks/stage/render.mjs /tmp/repo/ricks/projects/lustig2/short.json /tmp/ricks_out/out.mp4
 GL_RENDERER ANGLE (NVIDIA Corporation, Tesla T4/PCIe/SSE2, OpenGL ES 3.2)
 28 shots, 54.70 s, 1641 frames at 1080x1920
-30/1641 frames, 154 ms/frame, 247 s left
-60/1641 frames, 279 ms/frame, 440 s left
-90/1641 frames, 347 ms/frame, 538 s left
-120/1641 frames, 315 ms/frame, 480 s left
-150/1641 frames, 296 ms/frame, 441 s left
-180/1641 frames, 286 ms/frame, 418 s left
+30/1641 frames, 156 ms/frame, 251 s left
+60/1641 frames, 274 ms/frame, 433 s left
+90/1641 frames, 340 ms/frame, 528 s left
+120/1641 frames, 309 ms/frame, 470 s left
+150/1641 frames, 289 ms/frame, 432 s left
+180/1641 frames, 283 ms/frame, 413 s left
 210/1641 frames, 278 ms/frame, 398 s left
-240/1641 frames, 282 ms/frame, 396 s left
-270/1641 frames, 296 ms/frame, 405 s left
-300/1641 frames, 303 ms/frame, 407 s left
-330/1641 frames, 310 ms/frame, 406 s left
-360/1641 frames, 314 ms/frame, 402 s left
-390/1641 frames, 312 ms/frame, 391 s left
-420/1641 frames, 311 ms/frame, 380 s left
-450/1641 frames, 315 ms/frame, 375 s left
-480/1641 frames, 319 ms/frame, 370 s left
-510/1641 frames, 322 ms/frame, 364 s left
-540/1641 frames, 321 ms/frame, 354 s left
-570/1641 frames, 321 ms/frame, 344 s left
-600/1641 frames, 322 ms/frame, 335 s left
-630/1641 frames, 315 ms/frame, 319 s left
-660/1641 frames, 311 ms/frame, 305 s left
-690/1641 frames, 313 ms/frame, 297 s left
-720/1641 frames, 314 ms/frame, 289 s left
-750/1641 frames, 317 ms/frame, 282 s left
-780/1641 frames, 318 ms/frame, 273 s left
-810/1641 frames, 317 ms/frame, 264 s left
-840/1641 frames, 317 ms/frame, 254 s left
-870/1641 frames, 317 ms/frame, 244 s left
-900/1641 frames, 317 ms/frame, 235 s left
-930/1641 frames, 317 ms/frame, 225 s left
-960/1641 frames, 317 ms/frame, 216 s left
-990/1641 frames, 319 ms/frame, 207 s left
-1020/1641 frames, 323 ms/frame, 200 s left
-1050/1641 frames, 329 ms/frame, 194 s left
-1080/1641 frames, 335 ms/frame, 188 s left
-1110/1641 frames, 340 ms/frame, 180 s left
-1140/1641 frames, 345 ms/frame, 173 s left
-1170/1641 frames, 350 ms/frame, 165 s left
-1200/1641 frames, 354 ms/frame, 156 s left
-1230/1641 frames, 357 ms/frame, 147 s left
-1260/1641 frames, 357 ms/frame, 136 s left
-1290/1641 frames, 358 ms/frame, 126 s left
-1320/1641 frames, 359 ms/frame, 115 s left
-1350/1641 frames, 360 ms/frame, 105 s left
-1380/1641 frames, 361 ms/frame, 94 s left
-1410/1641 frames, 362 ms/frame, 84 s left
-1440/1641 frames, 364 ms/frame, 73 s left
-1470/1641 frames, 365 ms/frame, 62 s left
-1500/1641 frames, 366 ms/frame, 52 s left
-1530/1641 frames, 364 ms/frame, 40 s left
-1560/1641 frames, 360 ms/frame, 29 s left
-1590/1641 frames, 357 ms/frame, 18 s left
-1620/1641 frames, 354 ms/frame, 7 s left
-1641/1641 frames, 352 ms/frame, 0 s left
+240/1641 frames, 284 ms/frame, 398 s left
+270/1641 frames, 293 ms/frame, 401 s left
+300/1641 frames, 298 ms/frame, 399 s left
+330/1641 frames, 300 ms/frame, 393 s left
+360/1641 frames, 301 ms/frame, 386 s left
+390/1641 frames, 298 ms/frame, 373 s left
+420/1641 frames, 296 ms/frame, 361 s left
+450/1641 frames, 298 ms/frame, 355 s left
+480/1641 frames, 301 ms/frame, 349 s left
+510/1641 frames, 302 ms/frame, 342 s left
+540/1641 frames, 302 ms/frame, 332 s left
+570/1641 frames, 301 ms/frame, 322 s left
+600/1641 frames, 301 ms/frame, 313 s left
+630/1641 frames, 295 ms/frame, 298 s left
+660/1641 frames, 291 ms/frame, 286 s left
+690/1641 frames, 292 ms/frame, 277 s left
+720/1641 frames, 292 ms/frame, 269 s left
+750/1641 frames, 295 ms/frame, 263 s left
+780/1641 frames, 296 ms/frame, 255 s left
+810/1641 frames, 295 ms/frame, 245 s left
+840/1641 frames, 295 ms/frame, 236 s left
+870/1641 frames, 294 ms/frame, 226 s left
+900/1641 frames, 293 ms/frame, 217 s left
+930/1641 frames, 292 ms/frame, 207 s left
+960/1641 frames, 291 ms/frame, 198 s left
+990/1641 frames, 292 ms/frame, 190 s left
+1020/1641 frames, 297 ms/frame, 184 s left
+1050/1641 frames, 304 ms/frame, 179 s left
+1080/1641 frames, 310 ms/frame, 174 s left
+1110/1641 frames, 316 ms/frame, 168 s left
+1140/1641 frames, 323 ms/frame, 162 s left
+1170/1641 frames, 329 ms/frame, 155 s left
+1200/1641 frames, 334 ms/frame, 147 s left
+1230/1641 frames, 338 ms/frame, 139 s left
+1260/1641 frames, 339 ms/frame, 129 s left
+1290/1641 frames, 341 ms/frame, 120 s left
+1320/1641 frames, 343 ms/frame, 110 s left
+1350/1641 frames, 345 ms/frame, 100 s left
+1380/1641 frames, 346 ms/frame, 90 s left
+1410/1641 frames, 348 ms/frame, 80 s left
+1440/1641 frames, 350 ms/frame, 70 s left
+1470/1641 frames, 352 ms/frame, 60 s left
+1500/1641 frames, 353 ms/frame, 50 s left
+1530/1641 frames, 352 ms/frame, 39 s left
+1560/1641 frames, 348 ms/frame, 28 s left
+1590/1641 frames, 345 ms/frame, 18 s left
+1620/1641 frames, 342 ms/frame, 7 s left
+1641/1641 frames, 340 ms/frame, 0 s left
 wrote /tmp/ricks_out/out.mp4: 1641 frames, 54.70 s
 
 $ /usr/bin/python3 /tmp/repo/ricks/stage/shortkit.py check /tmp/ricks_out/out.mp4
 {
  "frames": 1641,
  "step": 1,
- "pan_speed_med_px_s": 47.7,
- "zoom_med_pct_s": 4.88,
- "static_frames_pct": 30.6,
+ "pan_speed_med_px_s": 48.6,
+ "zoom_med_pct_s": 4.78,
+ "static_frames_pct": 30.4,
  "pan_speed_ok": true,
  "zoom_ok": true
 }
 
 $ /usr/bin/python3 /tmp/repo/ricks/stage/flicker.py /tmp/ricks_out/out.mp4
-{"frames": 1641, "pop_blocks": 9374, "pops_per_frame": 5.7, "frames_with_flicker": 399, "ok": true}
+{"frames": 1641, "pop_blocks": 8730, "pops_per_frame": 5.3, "frames_with_flicker": 390, "ok": true}
 
