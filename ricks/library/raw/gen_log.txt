@@ -41,3 +41,6 @@ OK poisson_sheet_c.png
 done: 1 ok, 0 failed attempts
 OK tex_grass.png
 done: 1 ok, 0 failed attempts
+OK lustig_sheet_b.png
+OK lustig_sheet_c.png
+done: 2 ok, 0 failed attempts
