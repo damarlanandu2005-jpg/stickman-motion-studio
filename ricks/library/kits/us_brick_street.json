@@ -18,7 +18,11 @@
     0.04,
     34
    ],
-   "color": "#66646f"
+   "texture": "textures/stonewall.png",
+   "repeat": [
+    26,
+    20
+   ]
   },
   {
    "type": "house",

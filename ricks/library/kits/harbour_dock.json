@@ -57,9 +57,9 @@
    "type": "plane",
    "image": "props/sign_newyork.png",
    "pos": [
-    -3.2,
+    5.4,
     0,
-    -3.2
+    -3.4
    ],
    "size": [
     2.0,

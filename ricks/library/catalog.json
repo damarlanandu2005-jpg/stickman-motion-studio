@@ -271,9 +271,7 @@
    "path": "characters/lustig",
    "period": "1920s",
    "sheets": [
-    "a",
-    "b",
-    "c"
+    "a"
    ],
    "tags": [
     "lustig",
@@ -928,7 +926,7 @@
    "path": "props/red_shoes.png",
    "period": "1500s",
    "size": [
-    260,
+    330,
     150
    ]
   },

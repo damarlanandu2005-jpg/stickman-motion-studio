@@ -127,7 +127,7 @@ function makeChannel(base, keys) {
 
 async function makeCharacter(c, rig, actions) {
   const figH = rig.feetY, upp = (c.height || 1.8) / figH;                       // world units per rig pixel
-  const padX = rig.size[0] * 0.45, padTop = rig.size[1] * (rig.hat ? 0.34 : 0.12), padBot = rig.size[1] * 0.04;
+  const padX = rig.size[0] * 0.95, padTop = rig.size[1] * (rig.hat ? 0.34 : 0.12), padBot = rig.size[1] * 0.04;
   const k = Math.min(1, 900 / rig.size[1]);                                     // canvas pixels per rig pixel
   const cw = (rig.size[0] + 2 * padX) * k, ch = (rig.size[1] + padTop + padBot) * k;
   const cv = canvasOf(cw, ch), g = cv.getContext('2d');
@@ -193,6 +193,7 @@ async function makeCharacter(c, rig, actions) {
     let held = null; for (const h of holds) { if (t < h.t) break; held = h.h; }
     const bp = rig.layers.body.pivot;
     g.setTransform(1, 0, 0, 1, 0, 0); g.clearRect(0, 0, cv.width, cv.height);
+    let heldM = null;
     for (const name of rig.order) {
       const L = rig.layers[name], isLeg = name.startsWith('leg');
       g.setTransform(k, 0, 0, k, padX * k, padTop * k);
@@ -221,12 +222,13 @@ async function makeCharacter(c, rig, actions) {
         if (rig.hat) { const d = rig.head.diameter, cx = rig.head.center[0] - L.pivot[0], top = rig.head.center[1] - d / 2 - L.pivot[1], w = d * rig.hat.scale, hh = w * rig.hat.img.height / rig.hat.img.width;
           g.drawImage(rig.hat.img, cx - w / 2 + rig.hat.dx * d, top + rig.hat.sit * d - hh, w, hh); }
       } else { g.drawImage(L.img, L.box[0] - L.pivot[0], L.box[1] - L.pivot[1]);
-        if (held && L.tip && name === (held.hand === 'L' ? 'armL' : 'armR')) { const im = heldImgs[held.file], w = rig.head.diameter * (held.scale ?? 0.5), hh = w * im.height / im.width;
-          g.save(); g.translate(L.tip[0], L.tip[1]); g.rotate(-rad((ang[name] || 0) + ang.body + ang.spin) + rad(held.rot || 0)); g.drawImage(im, -w / 2, -hh / 2, w, hh); g.restore(); } }
+        if (held && L.tip && name === (held.hand === 'L' ? 'armL' : 'armR')) heldM = { m: g.getTransform(), tip: L.tip, a: (ang[name] || 0) + ang.body + ang.spin }; }
     }
+    if (held && heldM) { const im = heldImgs[held.file], w = rig.head.diameter * (held.scale ?? 0.5), hh = w * im.height / im.width;      // on top of the figure, readable way round
+      g.setTransform(heldM.m); g.translate(heldM.tip[0], heldM.tip[1]); g.rotate(-rad(heldM.a) + rad(held.rot || 0)); if (st.flip) g.scale(-1, 1); g.drawImage(im, -w / 2, -hh / 2, w, hh); }
     tex.needsUpdate = true;
     const bob = walk * Math.abs(wph) * 0.02 * (c.height || 1.8), jx = st.shake * 0.012 * (c.height || 1.8) * Math.sin(t * 80);
-    mesh.position.set(st.p[0] + jx, st.p[1] + st.hop + bob + Math.abs(Math.sin(rad(ang.spin))) * 0.2 * (c.height || 1.8), st.p[2]);   // a figure lying down rests on the floor, not in it
+    mesh.position.set(st.p[0] + jx, st.p[1] + st.hop + bob + Math.abs(Math.sin(rad(ang.spin))) * 0.1 * (c.height || 1.8), st.p[2]);   // a figure lying down rests on the floor, not in it
     mesh.scale.x = st.flip ? -1 : 1;
     blob.position.set(st.p[0], st.p[1] + 0.012, st.p[2]);
     blob.material.opacity = (S.contactShadow ?? 0.55) * (1 - clamp(st.hop * 1.5, 0, 0.7));
@@ -416,7 +418,7 @@ window.setup = async (spec) => {
   hemi = new THREE.HemisphereLight('#8ea2ff', '#6a3b6e', 1.1); scene.add(hemi);
 
   const gr = spec.ground || {};
-  const ground = new THREE.Mesh(new THREE.PlaneGeometry(gr.size || 400, gr.size || 400), await surface(gr.color || '#c98a55', gr.texture, gr.repeat || [60, 60]));
+  const ground = new THREE.Mesh(new THREE.PlaneGeometry(gr.size || 1000, gr.size || 1000), await surface(gr.color || '#c98a55', gr.texture, gr.repeat || [60, 60]));
   ground.rotation.x = -Math.PI / 2; ground.receiveShadow = true; ground.layers.enable(1); setRoot.add(ground);
   for (const p of (spec.props || [])) setRoot.add(await makeProp(p));
 

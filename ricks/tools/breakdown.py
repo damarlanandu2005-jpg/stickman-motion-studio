@@ -16,7 +16,7 @@ breakdown.json (all positions are relative to the place's "at"):
 import json, os, re, shutil, sys
 HERE = os.path.dirname(os.path.abspath(__file__)); LIB = os.path.normpath(os.path.join(HERE, "..", "library"))
 SIZE = {"close": 0.34, "medium": 0.26, "wide": 0.15, "two": 0.19, "insert": 0.42}
-FRAMEY = {"close": 0.12, "medium": 0.07, "wide": 0.05, "two": 0.07, "insert": 0.1}
+FRAMEY = {"close": 0.07, "medium": -0.02, "wide": -0.07, "two": -0.02, "insert": 0.06}
 MOVE = {"push": dict(zoom=6, orbit=2.2, rise=0.6), "orbitL": dict(zoom=3, orbit=-5, rise=0.8), "orbitR": dict(zoom=3, orbit=5, rise=-0.8),
         "craneUp": dict(zoom=3, orbit=2, rise=3.2), "craneDown": dict(zoom=3, orbit=-2, rise=-3.2), "pull": dict(zoom=-3, orbit=-2.5, rise=1.0)}
 YAWS = [-10, 8, -4, 12, -8, 5, -12, 9]
@@ -103,6 +103,7 @@ def build(proj):
          "moods": B.get("moods", M["moods"]), "ink": M.get("ink"), "end": "audio"}
     S["lighting"] = B.get("lighting") or [{"t": 0, "mood": "day"}] + ([{"t": B["pivot"], "mood": "night", "fade": 0.8}] if B.get("pivot") else [])
     g = dict(B.get("ground", {"texture": "cobble", "repeat": [150, 150]}))
+    g["repeat"] = [round(x * 2.5) for x in g.get("repeat", [150, 150])]      # the stage ground is 1000 units wide (was 400)
     if g.get("texture") and g["texture"] in C["textures"]: cp(C["textures"][g["texture"]]["path"], os.path.join(proj, "textures", g["texture"] + ".png")); g["texture"] = "textures/%s.png" % g["texture"]
     S["ground"] = g; S["backdrop"] = []; S["characters"] = []; S["props"] = []; S["actions"] = []
     used_tex = set()

@@ -360,9 +360,9 @@
    "move": "push",
    "proof": "A card on the stall reads STRASBOURG JULY 1518",
    "extra": {
-    "distance": 4.4,
+    "distance": 6.4,
     "fov": 34,
-    "yaw": 6,
+    "yaw": 4,
     "pitch": 3,
     "frameY": 0.02
    }
@@ -573,7 +573,8 @@
      "hold": {
       "file": "props/pipe.png",
       "hand": "R",
-      "scale": 0.9
+      "scale": 1.0,
+      "rot": -25
      },
      "motion": "play",
      "repeat": 6
@@ -878,11 +879,11 @@
    "move": "craneUp",
    "proof": "The chapel with its cross and the ST VITUS sign",
    "extra": {
-    "distance": 17,
+    "distance": 21,
     "fov": 38,
     "yaw": -12,
-    "pitch": -4,
-    "frameY": 0.12
+    "pitch": 2,
+    "frameY": 0.16
    }
   },
   {
@@ -900,10 +901,10 @@
      "hold": {
       "file": "props/red_shoes.png",
       "hand": "R",
-      "scale": 1.25
+      "scale": 1.5
      },
      "pose": {
-      "armR": -100
+      "armR": -95
      }
     }
    ]

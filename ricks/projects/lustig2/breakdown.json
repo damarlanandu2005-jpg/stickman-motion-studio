@@ -79,7 +79,7 @@
    "hat": "tophat",
    "place": "street",
    "pos": [
-    1.6,
+    15,
     0,
     0.2
    ],
@@ -90,7 +90,7 @@
    "char": "npc20_man",
    "place": "street",
    "pos": [
-    3.3,
+    16.5,
     0,
     -0.3
    ],
@@ -258,13 +258,13 @@
    "type": "plane",
    "image": "props/sign_chicago.png",
    "pos": [
-    -2.4,
+    0.95,
     0,
-    -2.0
+    -2.4
    ],
    "size": [
-    1.9,
-    1.6
+    2.2,
+    1.85
    ]
   },
   {
@@ -273,12 +273,12 @@
    "image": "props/sign_alcatraz.png",
    "pos": [
     0,
-    2.7,
+    3.0,
     -2.4
    ],
    "size": [
-    2.4,
-    1.15
+    2.6,
+    1.25
    ]
   },
   {
@@ -369,7 +369,7 @@
    "move": "orbitL",
    "proof": "The tower with an EXPO 1889 banner and a PERMIT: 20 YEARS notice",
    "extra": {
-    "distance": 50,
+    "distance": 44,
     "fov": 40,
     "yaw": 10,
     "pitch": 2,
@@ -385,26 +385,26 @@
      "type": "plane",
      "image": "props/sign_expo.png",
      "pos": [
-      -7,
+      -9,
       0,
-      -36
+      -34
      ],
      "size": [
-      9,
-      6.6
+      15,
+      11
      ]
     },
     {
      "type": "plane",
      "image": "props/sign_20ans.png",
      "pos": [
-      7,
+      8,
       0,
-      -36
+      -34
      ],
      "size": [
-      7,
-      6.0
+      12,
+      10.3
      ]
     }
    ]
@@ -415,29 +415,29 @@
    "move": "push",
    "proof": "A protest placard in front of the tower: UGLY! TEAR IT DOWN",
    "anchor": [
-    2,
-    5,
-    -40
+    0.5,
+    5.5,
+    -30
    ],
    "show": [
     {
      "type": "plane",
      "image": "props/sign_hated.png",
      "pos": [
-      2.5,
+      0.5,
       0,
-      -33
+      -30
      ],
      "size": [
-      8.5,
-      6.4
+      11,
+      8.3
      ]
     }
    ],
    "extra": {
-    "distance": 22,
+    "distance": 20,
     "fov": 40,
-    "yaw": -8,
+    "yaw": -4,
     "pitch": 2,
     "frameY": 0.0,
     "out": "dissolve",
@@ -646,8 +646,8 @@
   {
    "say": "and handed",
    "place": "hotel",
-   "subject": "ph",
-   "shot": "medium",
+   "subject": "lh",
+   "shot": "two",
    "move": "orbitL",
    "proof": "Cash passes from Poisson's hand to Lustig's",
    "acts": [
@@ -691,7 +691,7 @@
     }
    ],
    "extra": {
-    "frameX": -0.16
+    "frameX": 0.16
    }
   },
   {
@@ -772,9 +772,9 @@
       "armL": 0
      },
      "to": [
-      2.5,
+      3.2,
       0.05,
-      -3.0
+      -2.6
      ],
      "walk": true,
      "over": 1.9
@@ -817,7 +817,7 @@
     }
    ],
    "extra": {
-    "frameX": 0.1
+    "frameX": 0.12
    }
   },
   {
@@ -835,15 +835,35 @@
      "hold": {
       "file": "props/letter.png",
       "hand": "R",
-      "scale": 0.55
+      "scale": 0.6
      },
      "to": [
-      -1.6,
+      -1.2,
       0,
       0
      ],
      "walk": true,
      "over": 1.8
+    },
+    {
+     "who": "ps",
+     "at": 0.0,
+     "to": [
+      0.6,
+      0,
+      0.2
+     ],
+     "over": 0.05
+    },
+    {
+     "who": "ps2",
+     "at": 0.0,
+     "to": [
+      2.2,
+      0,
+      -0.3
+     ],
+     "over": 0.05
     }
    ],
    "show": [
@@ -866,7 +886,7 @@
    "say": "found new dealers",
    "place": "street",
    "subject": "ps",
-   "shot": "two",
+   "shot": "wide",
    "move": "orbitR",
    "proof": "Two new dealers by the FOR SALE sign: one in a top hat, one in a flat cap",
    "acts": [
@@ -893,14 +913,14 @@
     }
    ],
    "extra": {
-    "frameX": 0.1
+    "frameX": 0.08
    }
   },
   {
    "say": "and sold the Eiffel",
    "place": "street",
    "subject": "ps",
-   "shot": "two",
+   "shot": "wide",
    "move": "orbitL",
    "proof": "The top-hat dealer holds out cash to Lustig",
    "acts": [
@@ -924,7 +944,7 @@
     }
    ],
    "extra": {
-    "frameX": -0.14
+    "frameX": 0.14
    },
    "show": [
     {
@@ -1019,7 +1039,8 @@
      14,
      0
     ],
-    "frameX": -0.1
+    "frameX": -0.1,
+    "out": "cut"
    }
   },
   {
@@ -1243,9 +1264,9 @@
    "move": "pull",
    "proof": "Pull back and up: the whole tower still standing, FOR SALE sign at its foot",
    "extra": {
-    "distance": 64,
+    "distance": 58,
     "fov": 38,
-    "yaw": 6,
+    "yaw": 0,
     "pitch": 2,
     "orbit": -8,
     "rise": 10,
