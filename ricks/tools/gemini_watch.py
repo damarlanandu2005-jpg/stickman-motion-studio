@@ -25,6 +25,27 @@ def small(src, dst, mb=15):
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("video"); ap.add_argument("--out"); ap.add_argument("--prompt", default=DEFAULT)
     a = ap.parse_args()
+    key = os.environ.get("GEMINI_API_KEY")
+    if key:                                   # Developer API + Files API: upload the whole video (no tight size limit)
+        import time
+        client = genai.Client(api_key=key, http_options=types.HttpOptions(timeout=300000))
+        with tempfile.TemporaryDirectory() as d:
+            clip = os.path.join(d, "clip.mp4"); small(a.video, clip, mb=40)   # light downscale just to speed the upload
+            up = client.files.upload(file=clip)
+            for _ in range(60):
+                if up.state and up.state.name == "ACTIVE": break
+                if up.state and up.state.name == "FAILED": sys.exit("upload failed")
+                time.sleep(2); up = client.files.get(name=up.name)
+            for model in (MODEL, "gemini-2.5-flash", "gemini-2.0-flash"):
+                try:
+                    r = client.models.generate_content(model=model, contents=[up, a.prompt])
+                    txt = r.text or "(no text)"; print("OK (API key) model=%s" % model, flush=True)
+                    print("=== GEMINI WATCHED THE VIDEO ===\n" + txt)
+                    if a.out: open(a.out, "w").write(txt)
+                    return
+                except Exception as e:
+                    print("FAIL", model, repr(e)[:160], flush=True)
+            sys.exit("API-key path failed on all models")
     proj = os.environ["GOOGLE_CLOUD_PROJECT"]
     combos = [(os.environ.get("VIDEO_LOCATION", "us-central1"), MODEL), ("us-central1", "gemini-2.5-flash"),
               ("us-central1", "gemini-2.0-flash-001"), ("us-east4", "gemini-2.5-flash"), ("us-central1", "gemini-flash-latest")]

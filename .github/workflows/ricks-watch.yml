@@ -18,13 +18,14 @@ jobs:
       - run: sudo apt-get install -y -qq ffmpeg && python -m pip install -q google-genai
       - name: Gemini watches
         env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
           GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
           GCP_LOCATION: ${{ secrets.GCP_LOCATION }}
           IN_PROJECT: ${{ github.event.inputs.project }}
           IN_VIDEO: ${{ github.event.inputs.video }}
         run: |
-          [ -n "$GCP_SA_KEY" ] && [ -n "$GCP_PROJECT_ID" ] || { echo "GCP secrets missing"; exit 1; }
+          if [ -z "$GEMINI_API_KEY" ]; then [ -n "$GCP_SA_KEY" ] && [ -n "$GCP_PROJECT_ID" ] || { echo "need GEMINI_API_KEY or GCP secrets"; exit 1; }; fi
           printf '%s' "$GCP_SA_KEY" > "$RUNNER_TEMP/sa.json"
           export GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/sa.json" GOOGLE_CLOUD_PROJECT="$GCP_PROJECT_ID" GOOGLE_GENAI_USE_VERTEXAI=true VIDEO_LOCATION=us-central1
           mkdir -p ricks/projects/$IN_PROJECT/review
