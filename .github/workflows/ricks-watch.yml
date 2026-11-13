@@ -26,7 +26,7 @@ jobs:
         run: |
           [ -n "$GCP_SA_KEY" ] && [ -n "$GCP_PROJECT_ID" ] || { echo "GCP secrets missing"; exit 1; }
           printf '%s' "$GCP_SA_KEY" > "$RUNNER_TEMP/sa.json"
-          export GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/sa.json" GOOGLE_CLOUD_PROJECT="$GCP_PROJECT_ID" GOOGLE_GENAI_USE_VERTEXAI=true
+          export GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/sa.json" GOOGLE_CLOUD_PROJECT="$GCP_PROJECT_ID" GOOGLE_GENAI_USE_VERTEXAI=true VIDEO_LOCATION=us-central1
           mkdir -p ricks/projects/$IN_PROJECT/review
           python ricks/tools/gemini_watch.py "ricks/projects/$IN_PROJECT/$IN_VIDEO" --out "ricks/projects/$IN_PROJECT/review/gemini_watch.txt" 2>&1 | tee -a "ricks/projects/$IN_PROJECT/review/gemini_watch.txt"
       - name: Commit
