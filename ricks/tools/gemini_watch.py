@@ -28,7 +28,8 @@ def main():
     key = os.environ.get("GEMINI_API_KEY")
     if key:                                   # Developer API + Files API: upload the whole video (no tight size limit)
         import time
-        client = genai.Client(api_key=key, http_options=types.HttpOptions(timeout=300000))
+        os.environ.pop("GOOGLE_GENAI_USE_VERTEXAI", None)      # the Files API works only in Developer mode, not Vertex
+        client = genai.Client(api_key=key, vertexai=False, http_options=types.HttpOptions(timeout=300000))
         with tempfile.TemporaryDirectory() as d:
             clip = os.path.join(d, "clip.mp4"); small(a.video, clip, mb=40)   # light downscale just to speed the upload
             up = client.files.upload(file=clip)
