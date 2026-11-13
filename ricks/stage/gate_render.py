@@ -73,6 +73,11 @@ def main():
             res["camera_check"] = json.loads(out2[out2.index("{"):out2.rindex("}") + 1])
         except Exception:
             res["camera_check"] = {"raw": out2[-400:]}
+        rcf, outf, _ = run([sys.executable, os.path.join(HERE, "flicker.py"), mp4], log)   # free consecutive-frame flicker check on every render
+        try:
+            res["flicker"] = json.loads(outf[outf.index("{"):outf.rindex("}") + 1])
+        except Exception:
+            res["flicker"] = {"raw": outf[-300:]}
     json.dump(res, open(os.path.join(a.out, "result.json"), "w"), indent=1)
     print(json.dumps(res, indent=1))
     return 0 if res["render_ok"] else 5

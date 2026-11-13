@@ -517,6 +517,7 @@ function drawScene() {
   // the characters on top, depth-tested against the set, with soft edges
   cut.forEach(m => { m.material.colorWrite = true; m.material.alphaTest = 0.02; }); setRoot.visible = false; renderer.shadowMap.autoUpdate = false;
   renderer.render(scene, camera); setRoot.visible = true; renderer.autoClear = true;
+  renderer.getContext().finish();   // wait for the GPU to finish before compose() copies this canvas; without it the ANGLE/T4 path copies a half-drawn frame (objects flicker out for one frame)
 }
 function drawCaption(t) {
   const caps = S._captions || []; let text = null;
