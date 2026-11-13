@@ -224,8 +224,10 @@ async function makeCharacter(c, rig, actions) {
       } else { g.drawImage(L.img, L.box[0] - L.pivot[0], L.box[1] - L.pivot[1]);
         if (held && L.tip && name === (held.hand === 'L' ? 'armL' : 'armR')) heldM = { m: g.getTransform(), tip: L.tip, a: (ang[name] || 0) + ang.body + ang.spin }; }
     }
-    if (held && heldM) { const im = heldImgs[held.file], w = rig.head.diameter * (held.scale ?? 0.5), hh = w * im.height / im.width;      // on top of the figure, readable way round
-      g.setTransform(heldM.m); g.translate(heldM.tip[0], heldM.tip[1]); g.rotate(-rad(heldM.a) + rad(held.rot || 0)); if (st.flip) g.scale(-1, 1); g.drawImage(im, -w / 2, -hh / 2, w, hh); }
+    if (held && heldM) { const im = heldImgs[held.file], w = rig.head.diameter * (held.scale ?? 0.5), hh = w * im.height / im.width, grip = rig.head.diameter * 0.06;      // on top of the figure, readable way round
+      g.setTransform(heldM.m); g.translate(heldM.tip[0], heldM.tip[1]); g.rotate(-rad(heldM.a) + rad(held.rot || 0)); if (st.flip) g.scale(-1, 1);
+      g.drawImage(im, -w / 2, -hh * 0.32, w, hh);                       // shift down so the hand grips the top edge, not the centre (stops it reading as floating)
+      g.fillStyle = LINE; g.beginPath(); g.arc(0, 0, grip, 0, 6.283); g.fill(); }   // redraw the hand dot on top of the prop as a visible grip
     tex.needsUpdate = true;
     const bob = walk * Math.abs(wph) * 0.02 * (c.height || 1.8), jx = st.shake * 0.012 * (c.height || 1.8) * Math.sin(t * 80);
     mesh.position.set(st.p[0] + jx, st.p[1] + st.hop + bob + Math.abs(Math.sin(rad(ang.spin))) * 0.1 * (c.height || 1.8), st.p[2]);   // a figure lying down rests on the floor, not in it

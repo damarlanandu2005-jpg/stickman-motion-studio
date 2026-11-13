@@ -1489,7 +1489,7 @@
   {
    "start": "w:6",
    "target": "ls",
-   "headWidth": 0.34,
+   "headWidth": 0.32,
    "frameY": 0.07,
    "zoom": 6,
    "orbit": 2.2,
@@ -1556,14 +1556,14 @@
   {
    "start": "w:28",
    "target": "lh",
-   "headWidth": 0.19,
+   "headWidth": 0.16,
    "frameY": -0.02,
    "zoom": 6,
    "orbit": 2.2,
    "rise": 0.6,
    "yaw": -8,
    "pitch": 3,
-   "frameX": 0.14,
+   "frameX": 0.1,
    "actions": [
     {
      "who": "lh",
@@ -1585,7 +1585,7 @@
   {
    "start": "w:42",
    "target": "lh",
-   "headWidth": 0.34,
+   "headWidth": 0.32,
    "frameY": 0.07,
    "zoom": 3,
    "orbit": 5,
@@ -1611,14 +1611,14 @@
   {
    "start": "w:47",
    "target": "ph",
-   "headWidth": 0.19,
+   "headWidth": 0.16,
    "frameY": -0.02,
    "zoom": 3,
    "orbit": -5,
    "rise": 0.8,
    "yaw": -12,
    "pitch": 3,
-   "frameX": 0.2,
+   "frameX": 0.1,
    "actions": [
     {
      "who": "lh",
@@ -1648,7 +1648,7 @@
   {
    "start": "w:57",
    "target": "ph",
-   "headWidth": 0.34,
+   "headWidth": 0.32,
    "frameY": 0.07,
    "zoom": 6,
    "orbit": 2.2,
@@ -1676,7 +1676,7 @@
   {
    "start": "w:61",
    "target": "lh",
-   "headWidth": 0.26,
+   "headWidth": 0.25,
    "frameY": -0.02,
    "zoom": 3,
    "orbit": 5,
@@ -1721,7 +1721,7 @@
   {
    "start": "w:74",
    "target": "ph",
-   "headWidth": 0.26,
+   "headWidth": 0.25,
    "frameY": -0.02,
    "zoom": 6,
    "orbit": 2.2,
@@ -1754,14 +1754,14 @@
   {
    "start": "w:81",
    "target": "ph",
-   "headWidth": 0.19,
+   "headWidth": 0.16,
    "frameY": -0.02,
    "zoom": 3,
    "orbit": -5,
    "rise": 0.8,
    "yaw": 12,
    "pitch": 3,
-   "frameX": 0.2,
+   "frameX": 0.1,
    "actions": [
     {
      "who": "ph",
@@ -1806,7 +1806,7 @@
   {
    "start": "w:86",
    "target": "lh",
-   "headWidth": 0.34,
+   "headWidth": 0.32,
    "frameY": 0.07,
    "zoom": 6,
    "orbit": 2.2,
@@ -1828,7 +1828,7 @@
   {
    "start": "w:91",
    "target": "lh",
-   "headWidth": 0.26,
+   "headWidth": 0.25,
    "frameY": -0.02,
    "zoom": 3,
    "orbit": 5,
@@ -1847,7 +1847,7 @@
   {
    "start": "w:95",
    "target": "ph",
-   "headWidth": 0.34,
+   "headWidth": 0.32,
    "frameY": 0.07,
    "zoom": 3,
    "orbit": -2,
@@ -1871,7 +1871,7 @@
   {
    "start": "w:104",
    "target": "lh",
-   "headWidth": 0.15,
+   "headWidth": 0.14,
    "frameY": -0.07,
    "zoom": 3,
    "orbit": 5,
@@ -1879,6 +1879,7 @@
    "yaw": 9,
    "pitch": 3,
    "frameX": 0.0,
+   "out": "cut",
    "actions": [
     {
      "who": "lh",
@@ -1937,14 +1938,12 @@
      },
      "face": "smug"
     }
-   ],
-   "out": "dissolve",
-   "outDur": 0.45
+   ]
   },
   {
    "start": "w:110",
    "target": "ls",
-   "headWidth": 0.26,
+   "headWidth": 0.25,
    "frameY": -0.02,
    "zoom": 6,
    "orbit": 2.2,
@@ -1994,7 +1993,7 @@
   {
    "start": "w:119",
    "target": "ps",
-   "headWidth": 0.15,
+   "headWidth": 0.14,
    "frameY": -0.07,
    "zoom": 3,
    "orbit": 5,
@@ -2014,14 +2013,14 @@
   {
    "start": "w:122",
    "target": "ps",
-   "headWidth": 0.15,
+   "headWidth": 0.14,
    "frameY": -0.07,
    "zoom": 3,
    "orbit": -5,
    "rise": 0.8,
    "yaw": -4,
    "pitch": 3,
-   "frameX": 0.14,
+   "frameX": 0.1,
    "actions": [
     {
      "who": "ps",
@@ -2046,7 +2045,7 @@
   {
    "start": "w:128",
    "target": "pa",
-   "headWidth": 0.19,
+   "headWidth": 0.16,
    "frameY": -0.02,
    "zoom": 3,
    "orbit": -5,
@@ -2079,7 +2078,7 @@
   {
    "start": "w:135",
    "target": "ld",
-   "headWidth": 0.15,
+   "headWidth": 0.14,
    "frameY": -0.07,
    "zoom": 3,
    "orbit": -5,
@@ -2116,14 +2115,14 @@
   {
    "start": "w:139",
    "target": "ls3",
-   "headWidth": 0.19,
+   "headWidth": 0.16,
    "frameY": -0.02,
    "zoom": 3,
    "orbit": -5,
    "rise": 0.8,
    "yaw": 5,
    "pitch": 3,
-   "frameX": -0.12,
+   "frameX": -0.1,
    "actions": [
     {
      "who": "cap",
@@ -2161,14 +2160,14 @@
   {
    "start": "w:147",
    "target": "cap",
-   "headWidth": 0.19,
+   "headWidth": 0.16,
    "frameY": -0.02,
    "zoom": 3,
    "orbit": 5,
    "rise": -0.8,
    "yaw": -12,
    "pitch": 3,
-   "frameX": 0.12,
+   "frameX": 0.1,
    "actions": [
     {
      "who": "ls3",
@@ -2206,14 +2205,14 @@
   {
    "start": "w:156",
    "target": "cap",
-   "headWidth": 0.19,
+   "headWidth": 0.16,
    "frameY": -0.02,
    "zoom": 6,
    "orbit": 2.2,
    "rise": 0.6,
    "yaw": 9,
    "pitch": 3,
-   "frameX": 0.12,
+   "frameX": 0.1,
    "actions": [
     {
      "who": "cap",
@@ -2236,7 +2235,7 @@
   {
    "start": "w:163",
    "target": "ls3",
-   "headWidth": 0.15,
+   "headWidth": 0.14,
    "frameY": -0.07,
    "zoom": 3,
    "orbit": -5,
@@ -2293,7 +2292,7 @@
   {
    "start": "w:171",
    "target": "lj",
-   "headWidth": 0.26,
+   "headWidth": 0.25,
    "frameY": -0.02,
    "zoom": 6,
    "orbit": 2.2,

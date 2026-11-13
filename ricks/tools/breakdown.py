@@ -15,7 +15,7 @@ breakdown.json (all positions are relative to the place's "at"):
 """
 import json, os, re, shutil, sys
 HERE = os.path.dirname(os.path.abspath(__file__)); LIB = os.path.normpath(os.path.join(HERE, "..", "library"))
-SIZE = {"close": 0.34, "medium": 0.26, "wide": 0.15, "two": 0.19, "insert": 0.42}
+SIZE = {"close": 0.32, "medium": 0.25, "wide": 0.14, "two": 0.16, "insert": 0.40}
 FRAMEY = {"close": 0.07, "medium": -0.02, "wide": -0.07, "two": -0.02, "insert": 0.06}
 MOVE = {"push": dict(zoom=6, orbit=2.2, rise=0.6), "orbitL": dict(zoom=3, orbit=-5, rise=0.8), "orbitR": dict(zoom=3, orbit=5, rise=-0.8),
         "craneUp": dict(zoom=3, orbit=2, rise=3.2), "craneDown": dict(zoom=3, orbit=-2, rise=-3.2), "pull": dict(zoom=-3, orbit=-2.5, rise=1.0)}
@@ -164,6 +164,7 @@ def build(proj):
             a.setdefault("at", 0.0); acts.append(a)
         for n in npcm:                                      # background behaviours restart in every shot of their place
             if n["who"].split("_")[1] == L["place"]: acts.append({"who": n["who"], "at": 0.1, "motion": n["motion"], "repeat": n["repeat"], **({"face": n["face"]} if n["face"] else {})})
+        if "frameX" in s: s["frameX"] = max(-0.1, min(0.1, s["frameX"]))
         s["actions"] = acts
         t0 = W[wi][1] if L.get("say") else 0.0; nx = B["lines"][i + 1] if i + 1 < len(B["lines"]) else None
         t1 = W[find_phrase(W, nx["say"], wi + 1)][1] if nx else dur + 1
