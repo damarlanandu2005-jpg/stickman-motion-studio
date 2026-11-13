@@ -25,7 +25,7 @@ def small(src, dst, mb=15):
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("video"); ap.add_argument("--out"); ap.add_argument("--prompt", default=DEFAULT)
     a = ap.parse_args()
-    key = os.environ.get("GEMINI_API_KEY")
+    key = None if os.environ.get("WATCH_VERTEX") == "1" else os.environ.get("GEMINI_API_KEY")
     if key:                                   # Developer API + Files API: upload the whole video (no tight size limit)
         import time
         os.environ.pop("GOOGLE_GENAI_USE_VERTEXAI", None)      # the Files API works only in Developer mode, not Vertex
@@ -48,22 +48,23 @@ def main():
                     print("FAIL", model, repr(e)[:160], flush=True)
             sys.exit("API-key path failed on all models")
     proj = os.environ["GOOGLE_CLOUD_PROJECT"]
-    combos = [(os.environ.get("VIDEO_LOCATION", "us-central1"), MODEL), ("us-central1", "gemini-2.5-flash"),
-              ("us-central1", "gemini-2.0-flash-001"), ("us-east4", "gemini-2.5-flash"), ("us-central1", "gemini-flash-latest")]
-    seen = []; combos = [c for c in combos if not (c in seen or seen.append(c))]
+    loc = os.environ.get("VIDEO_LOCATION", "global")
+    models = os.environ.get("WATCH_MODELS", "gemini-3.5-flash,gemini-3.1-pro-preview").split(",")
+    hdr = {"x-goog-user-project": os.environ.get("USER_PROJECT", proj)}
+    client = genai.Client(vertexai=True, project=proj, location=loc,
+                          http_options=types.HttpOptions(timeout=300000, headers=hdr))
     with tempfile.TemporaryDirectory() as d:
         clip = os.path.join(d, "clip.mp4"); n = small(a.video, clip)
-        print("compressed to %.1f MB" % (n / 1e6), flush=True)
+        print("compressed to %.1f MB, vertex location=%s" % (n / 1e6, loc), flush=True)
         data = open(clip, "rb").read()
         txt = None; last = None
-        for loc, model in combos:
+        for model in models:
             try:
-                client = genai.Client(vertexai=True, project=proj, location=loc, http_options=types.HttpOptions(timeout=300000))
                 part = types.Part.from_bytes(data=data, mime_type="video/mp4")
                 r = client.models.generate_content(model=model, contents=[part, a.prompt])
                 txt = r.text or "(no text)"; print("OK with location=%s model=%s" % (loc, model), flush=True); break
             except Exception as e:
-                last = "%s / %s -> %s" % (loc, model, repr(e)[:160]); print("FAIL", last, flush=True)
+                last = "%s / %s -> %s" % (loc, model, repr(e)[:200]); print("FAIL", last, flush=True)
     if txt is None:
         print("=== GEMINI COULD NOT WATCH (all combos failed) ===\nlast error: " + str(last))
         if a.out: open(a.out, "w").write("FAILED\n" + str(last))
