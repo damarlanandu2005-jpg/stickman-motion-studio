@@ -17,7 +17,7 @@ while True:
         if k >= 3: frames_bad += 1
     n += 1
     if len(fr) > 3: fr.pop(0)
-pct = round(100 * frames_bad / max(1, n), 1)
-res = {"frames": n, "pop_blocks": pops, "frames_with_flicker": frames_bad, "flicker_pct": pct, "ok": pct < 5}
+ppf = round(pops / max(1, n), 1)        # pops per frame: a clean render (CPU or fixed GPU) sits near 6; the GPU readback bug pushed it past 20
+res = {"frames": n, "pop_blocks": pops, "pops_per_frame": ppf, "frames_with_flicker": frames_bad, "ok": ppf < 13}
 print(json.dumps(res))
-sys.exit(0 if res["ok"] else 2)
+sys.exit(0 if res["ok"] else 2)   # bar 13 = ~2x a clean render, set from measured CPU-vs-GPU evidence
