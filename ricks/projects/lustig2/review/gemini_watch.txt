@@ -1,57 +1,64 @@
-FAILED
-us-central1 / gemini-flash-latest -> ClientError("404 NOT_FOUND. {'error': {'code': 404, 'message': 'Publisher model `projects/stickman-shorts-513818/locations/us-central1/publishers/google/models/=== GEMINI COULD NOT WATCH (all combos failed) ===
-last error: us-central1 / gemini-flash-latest -> ClientError("404 NOT_FOUND. {'error': {'code': 404, 'message': 'Publisher model `projects/stickman-shorts-513818/locations/us-central1/publishers/google/models/
-Traceback (most recent call last):
-  File "/home/runner/work/stickman-motion-studio/stickman-motion-studio/ricks/tools/gemini_watch.py", line 74, in <module>
-    main()
-  File "/home/runner/work/stickman-motion-studio/stickman-motion-studio/ricks/tools/gemini_watch.py", line 34, in main
-    up = client.files.upload(file=clip)
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/google/genai/files.py", line 596, in upload
-    raise ValueError(
-ValueError: This method is only supported in the Gemini Developer client.
-Traceback (most recent call last):
-  File "/home/runner/work/stickman-motion-studio/stickman-motion-studio/ricks/tools/gemini_watch.py", line 75, in <module>
-    main()
-  File "/home/runner/work/stickman-motion-studio/stickman-motion-studio/ricks/tools/gemini_watch.py", line 35, in main
-    up = client.files.upload(file=clip)
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/google/genai/files.py", line 622, in upload
-    response = self._create(
-               ^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/google/genai/files.py", line 293, in _create
-    response = self._api_client.request(
-               ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/google/genai/_api_client.py", line 2179, in request
-    response = self._request(http_request, http_options, stream=False)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/google/genai/_api_client.py", line 1955, in _request
-    return self._retry(self._request_once, http_request, stream)  # type: ignore[no-any-return]
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/tenacity/__init__.py", line 470, in __call__
-    do = self.iter(retry_state=retry_state)
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/tenacity/__init__.py", line 371, in iter
-    result = action(retry_state)
-             ^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/tenacity/__init__.py", line 413, in exc_check
-    raise retry_exc.reraise()
-          ^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/tenacity/__init__.py", line 184, in reraise
-    raise self.last_attempt.result()
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/concurrent/futures/_base.py", line 449, in result
-    return self.__get_result()
-           ^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/concurrent/futures/_base.py", line 401, in __get_result
-    raise self._exception
-  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/tenacity/__init__.py", line 473, in __call__
-    result = fn(*args, **kwargs)
-             ^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/google/genai/_api_client.py", line 1932, in _request_once
-    errors.APIError.raise_for_response(response)
-  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/google/genai/errors.py", line 187, in raise_for_response
-    cls.raise_error(response.status_code, response_json, response)
-  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/google/genai/errors.py", line 216, in raise_error
-    raise ClientError(status_code, response_json, response)
-google.genai.errors.ClientError: 402 RESOURCE_EXHAUSTED. {'error': {'code': 402, 'message': 'Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ', 'status': 'RESOURCE_EXHAUSTED'}}
+### Video Description
+
+* **0:00 - 0:03**: The video begins with a 3D animated view of the Eiffel Tower, panning down to show a cartoon character (Victor Lustig) in a fedora standing on cobblestones with cash hidden behind his back.
+* **0:03 - 0:07**: The scene shows the base of the Eiffel Tower with signs indicating it was built for "EXPO 1889" with a "PERMIT: 20 YEARS." A large sign then appears calling it "UGLY! TEAR IT DOWN."
+* **0:07 - 0:11**: Lustig is shown in a room at the "HÔTEL DE CRILLON" holding forged official stationery.
+* **0:11 - 0:21**: Lustig meets with a scrap metal dealer in the hotel room, showing him a fake "REPAIR BILL" to convince him that the tower is being sold for scrap metal.
+* **0:21 - 0:26**: The dealer excitedly buys the tower, handing over cash in exchange for the fake deed.
+* **0:26 - 0:31**: The dealer is shown looking embarrassed, realizing he was scammed but too ashamed to call the police. 
+* **0:31 - 0:38**: Lustig laughs and flees Paris, only to return six months later to try selling the Eiffel Tower to a new group of dealers.
+* **0:38 - 0:40**: French police officers appear, forcing Lustig to flee the country.
+* **0:40 - 0:49**: Lustig escapes to Chicago, where he cons mob boss Al Capone by returning a $50,000 investment to gain his trust, earning a $5,000 reward instead.
+* **0:49 - 0:51**: Lustig is eventually caught by the law and shown crying behind bars in Alcatraz with a "20 YEARS" sentence.
+* **0:51 - 0:54**: The video ends with a shot of the Eiffel Tower still standing tall.
+
+---
+
+### DEFECTS
+
+* **0:02**: The stack of green cash on the plate floats in mid-air behind Lustig's back.
+* **0:07**: The "UGLY! TEAR IT DOWN" sign is cut off on both sides by the screen frame.
+* **0:08**: The blue picture frame on the wall is cut off on the left edge.
+* **0:15**: The mustached dealer's left arm is cut off by the right edge of the screen.
+* **0:20**: The "7000 TONNES" sign is cut off by the right edge of the frame.
+* **0:23**: The green stack of money floats in mid-air between the two characters.
+* **0:28**: The mustached dealer's left hand is cut off by the right edge of the screen.
+* **0:33**: During the transition, the "FOR SALE" sign and wooden box awkwardly fade in directly on top of Lustig.
+* **0:34**: The woman in the pink coat is partially cut off by the left edge of the screen.
+* **0:36**: The dealer in the green cap is cut off by the right edge of the screen.
+* **0:39**: The police officer on the left has his arm cut off by the left edge of the screen.
+* **0:41**: Al Capone is cut off by the right edge of the screen, and his green $50,000 cash stack floats in mid-air.
+* **0:46**: The $5,000 stack of cash floats in mid-air next to Lustig's hand.
+* **0:49**: The police officer entering from the left is cut off by the edge of the screen.=== GEMINI WATCHED THE VIDEO ===
+### Video Description
+
+* **0:00 - 0:03**: The video begins with a 3D animated view of the Eiffel Tower, panning down to show a cartoon character (Victor Lustig) in a fedora standing on cobblestones with cash hidden behind his back.
+* **0:03 - 0:07**: The scene shows the base of the Eiffel Tower with signs indicating it was built for "EXPO 1889" with a "PERMIT: 20 YEARS." A large sign then appears calling it "UGLY! TEAR IT DOWN."
+* **0:07 - 0:11**: Lustig is shown in a room at the "HÔTEL DE CRILLON" holding forged official stationery.
+* **0:11 - 0:21**: Lustig meets with a scrap metal dealer in the hotel room, showing him a fake "REPAIR BILL" to convince him that the tower is being sold for scrap metal.
+* **0:21 - 0:26**: The dealer excitedly buys the tower, handing over cash in exchange for the fake deed.
+* **0:26 - 0:31**: The dealer is shown looking embarrassed, realizing he was scammed but too ashamed to call the police. 
+* **0:31 - 0:38**: Lustig laughs and flees Paris, only to return six months later to try selling the Eiffel Tower to a new group of dealers.
+* **0:38 - 0:40**: French police officers appear, forcing Lustig to flee the country.
+* **0:40 - 0:49**: Lustig escapes to Chicago, where he cons mob boss Al Capone by returning a $50,000 investment to gain his trust, earning a $5,000 reward instead.
+* **0:49 - 0:51**: Lustig is eventually caught by the law and shown crying behind bars in Alcatraz with a "20 YEARS" sentence.
+* **0:51 - 0:54**: The video ends with a shot of the Eiffel Tower still standing tall.
+
+---
+
+### DEFECTS
+
+* **0:02**: The stack of green cash on the plate floats in mid-air behind Lustig's back.
+* **0:07**: The "UGLY! TEAR IT DOWN" sign is cut off on both sides by the screen frame.
+* **0:08**: The blue picture frame on the wall is cut off on the left edge.
+* **0:15**: The mustached dealer's left arm is cut off by the right edge of the screen.
+* **0:20**: The "7000 TONNES" sign is cut off by the right edge of the frame.
+* **0:23**: The green stack of money floats in mid-air between the two characters.
+* **0:28**: The mustached dealer's left hand is cut off by the right edge of the screen.
+* **0:33**: During the transition, the "FOR SALE" sign and wooden box awkwardly fade in directly on top of Lustig.
+* **0:34**: The woman in the pink coat is partially cut off by the left edge of the screen.
+* **0:36**: The dealer in the green cap is cut off by the right edge of the screen.
+* **0:39**: The police officer on the left has his arm cut off by the left edge of the screen.
+* **0:41**: Al Capone is cut off by the right edge of the screen, and his green $50,000 cash stack floats in mid-air.
+* **0:46**: The $5,000 stack of cash floats in mid-air next to Lustig's hand.
+* **0:49**: The police officer entering from the left is cut off by the edge of the screen.
