@@ -2,11 +2,20 @@
  "project": "/tmp/repo/ricks/projects/dancing",
  "mode": "full",
  "gl_renderer": "ANGLE (NVIDIA Corporation, Tesla T4/PCIe/SSE2, OpenGL ES 3.2)",
- "gate_seconds": 16.8,
- "flagged": 1,
- "flags": [
-  "PURE_BLACK"
- ],
- "gate_ok": false,
- "stopped": "gate flagged problems; full render skipped (use --force to override)"
+ "gate_seconds": 21.1,
+ "flagged": 0,
+ "flags": [],
+ "gate_ok": true,
+ "render_seconds": 617.2,
+ "render_ok": true,
+ "size_mb": 63.6,
+ "camera_check": {
+  "frames": 1549,
+  "step": 1,
+  "pan_speed_med_px_s": 79.6,
+  "zoom_med_pct_s": 4.47,
+  "static_frames_pct": 12.3,
+  "pan_speed_ok": true,
+  "zoom_ok": true
+ }
 }
