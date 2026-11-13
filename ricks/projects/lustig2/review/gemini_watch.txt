@@ -1,3 +1,12 @@
 FAILED
 us-central1 / gemini-flash-latest -> ClientError("404 NOT_FOUND. {'error': {'code': 404, 'message': 'Publisher model `projects/stickman-shorts-513818/locations/us-central1/publishers/google/models/=== GEMINI COULD NOT WATCH (all combos failed) ===
 last error: us-central1 / gemini-flash-latest -> ClientError("404 NOT_FOUND. {'error': {'code': 404, 'message': 'Publisher model `projects/stickman-shorts-513818/locations/us-central1/publishers/google/models/
+Traceback (most recent call last):
+  File "/home/runner/work/stickman-motion-studio/stickman-motion-studio/ricks/tools/gemini_watch.py", line 74, in <module>
+    main()
+  File "/home/runner/work/stickman-motion-studio/stickman-motion-studio/ricks/tools/gemini_watch.py", line 34, in main
+    up = client.files.upload(file=clip)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/google/genai/files.py", line 596, in upload
+    raise ValueError(
+ValueError: This method is only supported in the Gemini Developer client.
