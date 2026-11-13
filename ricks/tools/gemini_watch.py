@@ -25,15 +25,27 @@ def small(src, dst, mb=15):
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("video"); ap.add_argument("--out"); ap.add_argument("--prompt", default=DEFAULT)
     a = ap.parse_args()
-    client = genai.Client(vertexai=True, project=os.environ["GOOGLE_CLOUD_PROJECT"],
-                          location=os.environ.get("VIDEO_LOCATION", os.environ.get("GCP_LOCATION", "us-central1")),
-                          http_options=types.HttpOptions(timeout=300000))
+    proj = os.environ["GOOGLE_CLOUD_PROJECT"]
+    combos = [(os.environ.get("VIDEO_LOCATION", "us-central1"), MODEL), ("us-central1", "gemini-2.5-flash"),
+              ("us-central1", "gemini-2.0-flash-001"), ("us-east4", "gemini-2.5-flash"), ("us-central1", "gemini-flash-latest")]
+    seen = []; combos = [c for c in combos if not (c in seen or seen.append(c))]
     with tempfile.TemporaryDirectory() as d:
         clip = os.path.join(d, "clip.mp4"); n = small(a.video, clip)
         print("compressed to %.1f MB" % (n / 1e6), flush=True)
-        part = types.Part.from_bytes(data=open(clip, "rb").read(), mime_type="video/mp4")
-        r = client.models.generate_content(model=MODEL, contents=[part, a.prompt])
-        txt = r.text or "(no text)"
+        data = open(clip, "rb").read()
+        txt = None; last = None
+        for loc, model in combos:
+            try:
+                client = genai.Client(vertexai=True, project=proj, location=loc, http_options=types.HttpOptions(timeout=300000))
+                part = types.Part.from_bytes(data=data, mime_type="video/mp4")
+                r = client.models.generate_content(model=model, contents=[part, a.prompt])
+                txt = r.text or "(no text)"; print("OK with location=%s model=%s" % (loc, model), flush=True); break
+            except Exception as e:
+                last = "%s / %s -> %s" % (loc, model, repr(e)[:160]); print("FAIL", last, flush=True)
+    if txt is None:
+        print("=== GEMINI COULD NOT WATCH (all combos failed) ===\nlast error: " + str(last))
+        if a.out: open(a.out, "w").write("FAILED\n" + str(last))
+        sys.exit(1)
     print("=== GEMINI WATCHED THE VIDEO ===\n" + txt)
     if a.out: open(a.out, "w").write(txt)
 
