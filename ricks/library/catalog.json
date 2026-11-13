@@ -268,10 +268,13 @@
     "legL",
     "legR"
    ],
+   "note": "moustache drifts: do not use scheming, determined, embarrassed, angry (they show a moustache the other faces lack)",
    "path": "characters/lustig",
    "period": "1920s",
    "sheets": [
-    "a"
+    "a",
+    "b",
+    "c"
    ],
    "tags": [
     "lustig",

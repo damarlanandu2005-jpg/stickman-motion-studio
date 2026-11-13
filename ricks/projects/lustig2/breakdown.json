@@ -153,7 +153,7 @@
     0,
     0
    ],
-   "face": "scheming"
+   "face": "smug"
   },
   {
    "id": "cap",
@@ -356,26 +356,30 @@
       "armR": -55
      }
     }
-   ]
+   ],
+   "extra": {
+    "out": "dissolve",
+    "outDur": 0.35
+   }
   },
   {
    "say": "Built for",
    "place": "street",
    "anchor": [
     0,
-    24,
+    9,
     -48
    ],
    "move": "orbitL",
    "proof": "The tower with an EXPO 1889 banner and a PERMIT: 20 YEARS notice",
    "extra": {
-    "distance": 44,
-    "fov": 40,
-    "yaw": 10,
-    "pitch": 2,
-    "orbit": -5,
-    "rise": 6,
-    "zoom": 4,
+    "distance": 36,
+    "fov": 44,
+    "yaw": 0,
+    "pitch": 3,
+    "orbit": 0.8,
+    "rise": 2,
+    "zoom": 3,
     "frameY": 0.0,
     "out": "dissolve",
     "outDur": 0.4
@@ -385,26 +389,26 @@
      "type": "plane",
      "image": "props/sign_expo.png",
      "pos": [
-      -9,
+      -2.9,
       0,
-      -34
+      -38
      ],
      "size": [
-      15,
-      11
+      5.2,
+      3.8
      ]
     },
     {
      "type": "plane",
      "image": "props/sign_20ans.png",
      "pos": [
-      8,
+      2.8,
       0,
-      -34
+      -38
      ],
      "size": [
-      12,
-      10.3
+      4.9,
+      4.2
      ]
     }
    ]
@@ -435,13 +439,14 @@
     }
    ],
    "extra": {
-    "distance": 20,
+    "distance": 17,
     "fov": 40,
-    "yaw": -4,
+    "yaw": 0,
     "pitch": 2,
     "frameY": 0.0,
     "out": "dissolve",
-    "outDur": 0.4
+    "outDur": 0.4,
+    "orbit": 2
    }
   },
   {
@@ -528,7 +533,7 @@
     }
    ],
    "extra": {
-    "frameX": -0.1
+    "frameX": 0.2
    }
   },
   {
@@ -646,7 +651,7 @@
   {
    "say": "and handed",
    "place": "hotel",
-   "subject": "lh",
+   "subject": "ph",
    "shot": "two",
    "move": "orbitL",
    "proof": "Cash passes from Poisson's hand to Lustig's",
@@ -691,7 +696,7 @@
     }
    ],
    "extra": {
-    "frameX": 0.16
+    "frameX": 0.2
    }
   },
   {
@@ -724,7 +729,7 @@
     {
      "who": "lh",
      "at": 0.0,
-     "face": "scheming",
+     "face": "smug",
      "motion": "shrug"
     }
    ]
@@ -772,9 +777,9 @@
       "armL": 0
      },
      "to": [
-      3.2,
+      3.4,
       0.05,
-      -2.6
+      -0.6
      ],
      "walk": true,
      "over": 1.9
@@ -813,11 +818,11 @@
      "pose": {
       "armR": 0
      },
-     "face": "scheming"
+     "face": "smug"
     }
    ],
    "extra": {
-    "frameX": 0.12
+    "frameX": 0.0
    }
   },
   {
@@ -831,7 +836,7 @@
     {
      "who": "ls",
      "at": 0.1,
-     "face": "scheming",
+     "face": "smug",
      "hold": {
       "file": "props/letter.png",
       "hand": "R",
