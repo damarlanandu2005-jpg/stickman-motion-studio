@@ -108,7 +108,7 @@ def build(proj):
     S["ground"] = g; S["backdrop"] = []; S["characters"] = []; S["props"] = []; S["actions"] = []
     used_tex = set()
     def p2d(f):                                          # code-drawn 2D props (signs, hand-held things) live in library/props
-        if isinstance(f, str) and f.startswith("props/") and not os.path.exists(os.path.join(proj, f)): cp(f, os.path.join(proj, f))
+        if isinstance(f, str) and f.startswith("props/"): cp(f, os.path.join(proj, f))
         return f
     def tex(p):
         for k in ("texture", "wall", "roofTexture", "roof"):
