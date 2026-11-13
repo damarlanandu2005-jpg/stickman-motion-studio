@@ -1,74 +1,64 @@
-Here is a description of the events in the cartoon, followed by a list of visual defects.
+Here is a chronological description of the events in the video, followed by a list of visual defects.
 
 ### **Scene Description**
 
-* **0:00 - 0:01**: The video opens with a panning shot of a 3D animated model of the Eiffel Tower in Paris, showcasing its structure against a blue sky.
-* **0:02**: A cartoon con man character (wearing a blue body and a gray hat) stands in front of the Eiffel Tower on a cobblestone path, holding a green wallet.
-* **0:03 - 0:05**: The camera pans down to the base of the tower, showing two signs: "EXPO 1889" and "PERMIT: 20 YEARS".
-* **0:06 - 0:07**: A wooden protest sign reading "UGLY! TEAR IT DOWN" is shown at the base of the tower.
-* **0:08 - 0:11**: Inside a room labeled "HÔTEL DE CRILLON" with gold fleur-de-lis wallpaper, the con man stands behind a desk as a scrap dealer with a mustache and a flat cap walks in.
-* **0:12 - 0:14**: The con man smiles and sweat drops from his face as he holds up a fake official document with a blue stamp to convince the scrap dealer and another associate.
-* **0:15 - 0:19**: The con man holds up a document that reads "REPAIR BILL TOWER !!!", acting concerned about maintenance costs to trick the scrap dealers into purchasing the tower for scrap metal.
-* **0:20 - 0:21**: A panning shot of the Eiffel Tower displays a sign indicating its weight: "7000 TONNES" of iron.
-* **0:22 - 0:24**: Back in the hotel room, the scrap dealer excitedly hands a stack of green cash to the con man.
-* **0:25 - 0:28**: The con man stands with a green suitcase full of cash, while the scrap dealer looks sad and embarrassed after realizing he has been scammed.
-* **0:29 - 0:33**: The con man laughs and exits through the door carrying a brown suitcase full of money.
-* **0:34 - 0:38**: Back at the Eiffel Tower, which now features a yellow "À VENDRE / FOR SALE" sign, the con man attempts the same scam with a new group of scrap dealers.
-* **0:39 - 0:40**: Two French police officers arrive, causing the con man to flee.
-* **0:41 - 0:48**: In Chicago, the con man stands next to mob boss Al Capone. Capone holds a large stack of cash ($50,000), which quickly decreases to a smaller stack ($5,000) as a reward.
-* **0:49 - 0:51**: Two Chicago police officers appear, and the con man is shown crying behind bars in Alcatraz under a sign reading "ALCATRAZ 20 YEARS".
-* **0:52 - 0:54**: The video finishes with a final upward panning shot of the Eiffel Tower standing tall in Paris.
+*   **0:00 - 0:01**: The video opens with a 3D animated model of the Eiffel Tower, zooming out. Text saying "sold" is displayed on the screen.
+*   **0:01 - 0:02**: A cartoon con artist (wearing a blue outfit and a grey fedora) stands on a cobblestone street in front of the Eiffel Tower, holding a stack of cash next to a brown barrel.
+*   **0:03 - 0:05**: A close-up of the base of the Eiffel Tower shows two signs in front: "EXPO 1889" and "PERMIT: 20 YEARS".
+*   **0:06 - 0:07**: A protest sign reading "UGLY! TEAR IT DOWN" rises into the frame in front of the tower.
+*   **0:08 - 0:19**: The setting shifts inside a room with fleur-de-lis wallpaper and a sign reading "HÔTEL DE CRILLON". The con artist speaks with a scrap metal dealer (wearing brown clothes and a cap), showing him forged official documents and a "REPAIR BILL TOWER !!!" sheet, convincing him that the city wants to sell the tower for scrap.
+*   **0:20 - 0:21**: A shot of the Eiffel Tower shows a sign labeled "7000 TONNES", indicating its weight in iron.
+*   **0:22 - 0:26**: Back in the hotel room, the scrap metal dealer is excited and hands a stack of cash to the con artist, who smugly accepts it.
+*   **0:27 - 0:31**: The dealer looks sad and embarrassed, realizing he has been scammed, but decides not to call the police.
+*   **0:32 - 0:33**: The con artist runs out of the room holding a briefcase full of money.
+*   **0:34 - 0:38**: Back outside in Paris, a "À VENDRE FOR SALE" sign is placed in front of the Eiffel Tower. The con artist stands in front of a new group of dealers, attempting to sell the tower again.
+*   **0:39 - 0:40**: Two French police officers arrive on the scene, shocking the con artist.
+*   **0:40 - 0:41**: An overlay of a steamship transition appears on screen as the con artist flees to America.
+*   **0:41 - 0:48**: Set in Chicago, the con artist meets with a cartoon version of Al Capone (wearing a white pinstripe suit and white fedora). Capone hands him a "$5,000" bill as a bribe, and both laugh.
+*   **0:49 - 0:50**: Two American police officers appear, causing the con artist to panic and run.
+*   **0:50 - 0:51**: The con artist is shown crying behind bars in prison, under a sign reading "ALCATRAZ 20 YEARS".
+*   **0:52 - 0:54**: The video ends with a shot of the Eiffel Tower still standing.
 
 ---
 
 ### **DEFECTS**
 
-* **0:00**: A yellow sign is cut off by the bottom-right edge of the screen.
-* **0:06 - 0:07**: The "UGLY! TEAR IT DOWN" sign is cut off on both the left and right edges of the screen.
-* **0:08**: A blue-framed picture on the wall is cut off by the left edge of the screen.
-* **0:10**: The bald, orange-haired character on the right is cut off by the right edge of the screen.
-* **0:14**: The orange-haired character on the right is cut off by the right edge of the screen.
-* **0:15 - 0:17**: The orange-haired character on the right is cut off by the right edge of the screen.
-* **0:22 - 0:24**: The orange-haired character on the right is cut off by the right edge of the screen.
-* **0:28 - 0:31**: The orange-haired character on the right is cut off by the right edge of the screen.
-* **0:35 - 0:38**: The pink-clothed character on the left is cut off by the left edge of the screen.
-* **0:40**: A large ship on the right is cut off by the right edge of the screen during the transition.
-* **0:41 - 0:49**: Houses on the far-left and far-right are cut off by the edges of the screen.
-* **0:50 - 0:51**: The "ALCATRAZ 20 YEARS" sign is partially cut off by the top edge of the screen.=== GEMINI WATCHED THE VIDEO ===
-Here is a description of the events in the cartoon, followed by a list of visual defects.
+*   **0:12**: The official document suddenly pops/instantly spawns into the con artist's hand.
+*   **0:15**: The "REPAIR BILL TOWER" sheet instantly pops into the con artist's hand.
+*   **0:24**: The stack of green cash instantly pops into the con artist's hand.
+*   **0:32**: The briefcase instantly pops into the con artist's hand as he turns to run.
+*   **0:34**: A document instantly pops into the con artist's hand.
+*   **0:41 - 0:45**: The green "$55,000" sign floats in mid-air between Al Capone and the con artist with no support or hands holding it.
+*   **0:46**: The "$5,000" bill floats detached in mid-air right next to Al Capone's hand before transferring to the con artist.=== GEMINI WATCHED THE VIDEO ===
+Here is a chronological description of the events in the video, followed by a list of visual defects.
 
 ### **Scene Description**
 
-* **0:00 - 0:01**: The video opens with a panning shot of a 3D animated model of the Eiffel Tower in Paris, showcasing its structure against a blue sky.
-* **0:02**: A cartoon con man character (wearing a blue body and a gray hat) stands in front of the Eiffel Tower on a cobblestone path, holding a green wallet.
-* **0:03 - 0:05**: The camera pans down to the base of the tower, showing two signs: "EXPO 1889" and "PERMIT: 20 YEARS".
-* **0:06 - 0:07**: A wooden protest sign reading "UGLY! TEAR IT DOWN" is shown at the base of the tower.
-* **0:08 - 0:11**: Inside a room labeled "HÔTEL DE CRILLON" with gold fleur-de-lis wallpaper, the con man stands behind a desk as a scrap dealer with a mustache and a flat cap walks in.
-* **0:12 - 0:14**: The con man smiles and sweat drops from his face as he holds up a fake official document with a blue stamp to convince the scrap dealer and another associate.
-* **0:15 - 0:19**: The con man holds up a document that reads "REPAIR BILL TOWER !!!", acting concerned about maintenance costs to trick the scrap dealers into purchasing the tower for scrap metal.
-* **0:20 - 0:21**: A panning shot of the Eiffel Tower displays a sign indicating its weight: "7000 TONNES" of iron.
-* **0:22 - 0:24**: Back in the hotel room, the scrap dealer excitedly hands a stack of green cash to the con man.
-* **0:25 - 0:28**: The con man stands with a green suitcase full of cash, while the scrap dealer looks sad and embarrassed after realizing he has been scammed.
-* **0:29 - 0:33**: The con man laughs and exits through the door carrying a brown suitcase full of money.
-* **0:34 - 0:38**: Back at the Eiffel Tower, which now features a yellow "À VENDRE / FOR SALE" sign, the con man attempts the same scam with a new group of scrap dealers.
-* **0:39 - 0:40**: Two French police officers arrive, causing the con man to flee.
-* **0:41 - 0:48**: In Chicago, the con man stands next to mob boss Al Capone. Capone holds a large stack of cash ($50,000), which quickly decreases to a smaller stack ($5,000) as a reward.
-* **0:49 - 0:51**: Two Chicago police officers appear, and the con man is shown crying behind bars in Alcatraz under a sign reading "ALCATRAZ 20 YEARS".
-* **0:52 - 0:54**: The video finishes with a final upward panning shot of the Eiffel Tower standing tall in Paris.
+*   **0:00 - 0:01**: The video opens with a 3D animated model of the Eiffel Tower, zooming out. Text saying "sold" is displayed on the screen.
+*   **0:01 - 0:02**: A cartoon con artist (wearing a blue outfit and a grey fedora) stands on a cobblestone street in front of the Eiffel Tower, holding a stack of cash next to a brown barrel.
+*   **0:03 - 0:05**: A close-up of the base of the Eiffel Tower shows two signs in front: "EXPO 1889" and "PERMIT: 20 YEARS".
+*   **0:06 - 0:07**: A protest sign reading "UGLY! TEAR IT DOWN" rises into the frame in front of the tower.
+*   **0:08 - 0:19**: The setting shifts inside a room with fleur-de-lis wallpaper and a sign reading "HÔTEL DE CRILLON". The con artist speaks with a scrap metal dealer (wearing brown clothes and a cap), showing him forged official documents and a "REPAIR BILL TOWER !!!" sheet, convincing him that the city wants to sell the tower for scrap.
+*   **0:20 - 0:21**: A shot of the Eiffel Tower shows a sign labeled "7000 TONNES", indicating its weight in iron.
+*   **0:22 - 0:26**: Back in the hotel room, the scrap metal dealer is excited and hands a stack of cash to the con artist, who smugly accepts it.
+*   **0:27 - 0:31**: The dealer looks sad and embarrassed, realizing he has been scammed, but decides not to call the police.
+*   **0:32 - 0:33**: The con artist runs out of the room holding a briefcase full of money.
+*   **0:34 - 0:38**: Back outside in Paris, a "À VENDRE FOR SALE" sign is placed in front of the Eiffel Tower. The con artist stands in front of a new group of dealers, attempting to sell the tower again.
+*   **0:39 - 0:40**: Two French police officers arrive on the scene, shocking the con artist.
+*   **0:40 - 0:41**: An overlay of a steamship transition appears on screen as the con artist flees to America.
+*   **0:41 - 0:48**: Set in Chicago, the con artist meets with a cartoon version of Al Capone (wearing a white pinstripe suit and white fedora). Capone hands him a "$5,000" bill as a bribe, and both laugh.
+*   **0:49 - 0:50**: Two American police officers appear, causing the con artist to panic and run.
+*   **0:50 - 0:51**: The con artist is shown crying behind bars in prison, under a sign reading "ALCATRAZ 20 YEARS".
+*   **0:52 - 0:54**: The video ends with a shot of the Eiffel Tower still standing.
 
 ---
 
 ### **DEFECTS**
 
-* **0:00**: A yellow sign is cut off by the bottom-right edge of the screen.
-* **0:06 - 0:07**: The "UGLY! TEAR IT DOWN" sign is cut off on both the left and right edges of the screen.
-* **0:08**: A blue-framed picture on the wall is cut off by the left edge of the screen.
-* **0:10**: The bald, orange-haired character on the right is cut off by the right edge of the screen.
-* **0:14**: The orange-haired character on the right is cut off by the right edge of the screen.
-* **0:15 - 0:17**: The orange-haired character on the right is cut off by the right edge of the screen.
-* **0:22 - 0:24**: The orange-haired character on the right is cut off by the right edge of the screen.
-* **0:28 - 0:31**: The orange-haired character on the right is cut off by the right edge of the screen.
-* **0:35 - 0:38**: The pink-clothed character on the left is cut off by the left edge of the screen.
-* **0:40**: A large ship on the right is cut off by the right edge of the screen during the transition.
-* **0:41 - 0:49**: Houses on the far-left and far-right are cut off by the edges of the screen.
-* **0:50 - 0:51**: The "ALCATRAZ 20 YEARS" sign is partially cut off by the top edge of the screen.
+*   **0:12**: The official document suddenly pops/instantly spawns into the con artist's hand.
+*   **0:15**: The "REPAIR BILL TOWER" sheet instantly pops into the con artist's hand.
+*   **0:24**: The stack of green cash instantly pops into the con artist's hand.
+*   **0:32**: The briefcase instantly pops into the con artist's hand as he turns to run.
+*   **0:34**: A document instantly pops into the con artist's hand.
+*   **0:41 - 0:45**: The green "$55,000" sign floats in mid-air between Al Capone and the con artist with no support or hands holding it.
+*   **0:46**: The "$5,000" bill floats detached in mid-air right next to Al Capone's hand before transferring to the con artist.
