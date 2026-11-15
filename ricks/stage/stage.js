@@ -18,7 +18,7 @@ const ARRIVE_GAIN = 0.7;              // camera arrives fast, then settles
 const GLIDE_S = 0.8, DISSOLVE_S = 8 / 30;
 const CAPTION_Y = 1350, CAPTION_PX = 70;
 
-let FPS = 30, SCALE = 1, SS = 1, S;   // SS = internal supersample factor (render big, downscale) to kill temporal shimmer/aliasing
+let FPS = 30, SCALE = 1, SS = 1, TEX_SOFTEN = 1, S;   // SS = supersample factor; TEX_SOFTEN = source-image blur strength to kill texture moire
 let renderer, scene, camera, setRoot, sun, hemi, skyMesh, backdrop, inkPass, backdrops = [];
 let out, octx;                        // 2D output canvas (render + captions)
 const chars = {}, shots = [], anchors = [];
@@ -40,12 +40,31 @@ async function loadJson(path) { const r = await fetch(projectUrl(path)); if (!r.
 async function texture(path, repeat) {
   const key = path + '|' + JSON.stringify(repeat || 1);
   if (texCache.has(key)) return texCache.get(key);
-  const img = await loadImage(path), t = new THREE.Texture(img);
+  const img = await loadImage(path);
+  const r = Array.isArray(repeat) ? repeat : [repeat || 1, repeat || 1];
+  // Pre-soften the source image to kill TEMPORAL moire: a fine high-contrast texture tiled many times
+  // twinkles under a panning camera. Blur scales with how finely it tiles (more repeat -> finer tiles ->
+  // more blur). This bakes into the pixels, so it works on any GL. Mipmaps/anisotropy alone do not fix
+  // motion moire. tune with TEX_SOFTEN (0 = off).
+  const reps = Math.max(r[0] || 1, r[1] || 1);
+  const blurPx = TEX_SOFTEN * Math.min(7, 0.9 + 0.95 * Math.sqrt(reps));
+  const lowCon = clamp(0.14 * TEX_SOFTEN * Math.min(1, 0.3 + 0.2 * Math.sqrt(reps)), 0, 0.5);  // also pull contrast toward mean
+  let srcEl = img;
+  if (blurPx > 0.05) {
+    const cc = canvasOf(img.width || img.naturalWidth, img.height || img.naturalHeight), cg = cc.getContext('2d');
+    cg.filter = `blur(${blurPx.toFixed(2)}px)`; cg.drawImage(img, 0, 0, cc.width, cc.height); cg.filter = 'none';
+    if (lowCon > 0.01) {   // flatten contrast: overlay the image's own mean at lowCon opacity
+      const mc = canvasOf(1, 1), mg = mc.getContext('2d'); mg.drawImage(cc, 0, 0, 1, 1);
+      const px = mg.getImageData(0, 0, 1, 1).data;
+      cg.globalAlpha = lowCon; cg.fillStyle = `rgb(${px[0]},${px[1]},${px[2]})`; cg.fillRect(0, 0, cc.width, cc.height); cg.globalAlpha = 1;
+    }
+    srcEl = cc;
+  }
+  const t = new THREE.Texture(srcEl);
   t.colorSpace = THREE.SRGBColorSpace; t.wrapS = t.wrapT = THREE.RepeatWrapping;
-  // max anisotropy + trilinear mipmaps: stops patterned surfaces (wallpaper, wood floor) shimmering at grazing angles
   t.anisotropy = (renderer && renderer.capabilities) ? renderer.capabilities.getMaxAnisotropy() : 16;
   t.minFilter = THREE.LinearMipmapLinearFilter; t.magFilter = THREE.LinearFilter; t.generateMipmaps = true;
-  const r = Array.isArray(repeat) ? repeat : [repeat || 1, repeat || 1]; t.repeat.set(r[0], r[1]); t.needsUpdate = true;
+  t.repeat.set(r[0], r[1]); t.needsUpdate = true;
   texCache.set(key, t); return t;
 }
 async function surface(color, texPath, repeat) {
@@ -412,6 +431,7 @@ function makeInk(width, color) {
 window.setup = async (spec) => {
   S = spec; FPS = spec.fps || 30; SCALE = spec._scale || 1;
   SS = spec._ss || (SCALE >= 1 ? 1.5 : 1.3);   // supersample factor: render larger, downscale on compose
+  TEX_SOFTEN = spec._texSoften !== undefined ? spec._texSoften : 1;   // texture-moire softening (0 = off)
   const rw = Math.round(W * SCALE), rh = Math.round(H * SCALE);
   renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true, alpha: false });
   renderer.setPixelRatio(1); renderer.setSize(Math.round(rw * SS), Math.round(rh * SS));

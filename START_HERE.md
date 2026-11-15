@@ -81,14 +81,15 @@ Follow `ricks/PIPELINE.md` for the creative stages (adapter → director → cas
 - **Destructive save bug (open):** `ricks-kaggle.yml`'s save step overwrites the committed `short.mp4` with
   an empty file when a render produces no output — it has wiped a good video. Fix: only overwrite the mp4
   when the new render actually produced one. (Not yet fixed.)
-- **Texture-motion flicker (open, real cause found):** on a *panning* shot, fine high-contrast textures
+- **Texture-motion flicker (FIXED — texture softening):** on a *panning* shot, fine high-contrast textures
   (the fleur-de-lis wallpaper, the parquet floor) **moire/twinkle** frame-to-frame. Measured + mapped:
   the flicker is entirely on those textured surfaces; plain door/carpet/character don't flicker. Spatial
   fixes (anisotropy, mipmaps, 1.5× supersample, shadow texel-snap) gave **~1% improvement — i.e. did not
   fix it** — because this is *temporal* aliasing from camera motion, not static grazing-angle aliasing.
-  Real fixes (all trade-offs, none applied yet): (a) **soften just the wallpaper + floor textures** a
-  touch, or lower their contrast — cheap, effective, slightly less crisp on those two surfaces; (b) proper
-  temporal AA (accumulate frames) — real engine work; (c) 3–4× supersample — slow. Recommended: (a).
+  FIX APPLIED: `texture()` now pre-softens source images (blur + slight contrast-flatten, scaled by how
+  finely they tile) via `TEX_SOFTEN` — bakes into the pixels so it works on any GL and is locally testable.
+  Measured ~68% flicker reduction in the office; wallpaper/floor softer but character, outlines and the
+  backdrop stay crisp (backdrop is a separate path, unaffected). Tune with `_texSoften` in short.json (0=off).
 
 ## Known engine limits (by design — say so, don't fake)
 No elbows/knees, no lip-sync, no sitting poses, no crowds over ~12 puppets, no water, no animals.
