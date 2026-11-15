@@ -1,0 +1,15 @@
+ricks/projects/db_cooper/../../results_ricks/db_cooper/short.mp4: No such file or directory
+[in#0 @ 0x55eb96a5bc80] Error opening input: No such file or directory
+Error opening input file ricks/projects/db_cooper/../../results_ricks/db_cooper/short.mp4.
+Error opening input files: No such file or directory
+Traceback (most recent call last):
+  File "/home/runner/work/stickman-motion-studio/stickman-motion-studio/ricks/tools/gemini_watch.py", line 76, in <module>
+    main()
+  File "/home/runner/work/stickman-motion-studio/stickman-motion-studio/ricks/tools/gemini_watch.py", line 57, in main
+    clip = os.path.join(d, "clip.mp4"); n = small(a.video, clip)
+                                            ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/stickman-motion-studio/stickman-motion-studio/ricks/tools/gemini_watch.py", line 21, in small
+    subprocess.run(["ffmpeg","-v","error","-y","-i",src,"-vf","scale=480:-2,fps=12","-c:v","libx264",
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['ffmpeg', '-v', 'error', '-y', '-i', 'ricks/projects/db_cooper/../../results_ricks/db_cooper/short.mp4', '-vf', 'scale=480:-2,fps=12', '-c:v', 'libx264', '-b:v', '2170k', '-an', '-movflags', '+faststart', '/tmp/tmp0xr0b3yj/clip.mp4']' returned non-zero exit status 254.
