@@ -31,10 +31,10 @@ be = ("--browser-executable='%s'" % chrome) if chrome else ""
 log = "/tmp/rr.log"
 t = time.time()
 if BLUR:
-    c = ("cd %s && npx remotion render src/index.ts %sSub out/sub.mp4 --gl=swiftshader %s --timeout=300000 --concurrency=4 > %s 2>&1; "
+    c = ("cd %s && npx remotion render src/index.ts %sSub out/sub.mp4 --gl=swiftshader --chrome-mode=chrome-for-testing %s --timeout=300000 --concurrency=4 > %s 2>&1; "
          "ffmpeg -v error -y -i out/sub.mp4 -vf \"tmix=frames=4:weights='1 1 1 1',select='not(mod(n+1\\,4))',setpts=N/30/TB\" -r 30 -c:v libx264 -crf 20 -pix_fmt yuv420p out/pilot.mp4") % (P, COMP, be, log)
 else:
-    c = "cd %s && npx remotion render src/index.ts %s out/pilot.mp4 --gl=swiftshader %s --timeout=300000 --concurrency=4 > %s 2>&1" % (P, COMP, be, log)
+    c = "cd %s && npx remotion render src/index.ts %s out/pilot.mp4 --gl=swiftshader --chrome-mode=chrome-for-testing %s --timeout=300000 --concurrency=4 > %s 2>&1" % (P, COMP, be, log)
 sh(c, timeout=40000, show=200)
 rep["total_s"] = round(time.time() - t, 1)
 try: rep["render_tail"] = open(log).read()[-1600:]
