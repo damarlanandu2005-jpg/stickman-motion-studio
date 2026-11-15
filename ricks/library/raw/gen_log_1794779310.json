@@ -1,0 +1,74 @@
+[
+ {
+  "name": "cooper_character.png",
+  "ok": false,
+  "client": "vertex-global",
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1,
+  "error": "ClientError(\"403 PERMISSION_DENIED. {'error': {'code': 403, 'message': 'This API method requires billing to be enabled. Please enable billing on project #stickman-shorts-513818 by visiting https://console.developers.google.com/billing/enable?project=stickman-shorts-513818 then retry. If you enabled "
+ },
+ {
+  "name": "cooper_character.png",
+  "ok": false,
+  "client": "vertex-global",
+  "model": "gemini-3.1-flash-image-preview",
+  "attempt": 1,
+  "error": "ClientError(\"403 PERMISSION_DENIED. {'error': {'code': 403, 'message': 'This API method requires billing to be enabled. Please enable billing on project #stickman-shorts-513818 by visiting https://console.developers.google.com/billing/enable?project=stickman-shorts-513818 then retry. If you enabled "
+ },
+ {
+  "name": "cooper_character.png",
+  "ok": false,
+  "client": "vertex-global",
+  "model": "gemini-3-pro-image-preview",
+  "attempt": 1,
+  "error": "ClientError(\"403 PERMISSION_DENIED. {'error': {'code': 403, 'message': 'This API method requires billing to be enabled. Please enable billing on project #stickman-shorts-513818 by visiting https://console.developers.google.com/billing/enable?project=stickman-shorts-513818 then retry. If you enabled "
+ },
+ {
+  "name": "cooper_character.png",
+  "ok": false,
+  "client": "api-key",
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1,
+  "error": "ClientError(\"403 PERMISSION_DENIED. {'error': {'code': 403, 'message': 'Your billing account has an outstanding balance. Make a payment at https://aistudio.google.com/billing to restore service. For more information, see https://ai.google.dev/gemini-api/docs/troubleshooting#project-unavailable.', 's"
+ },
+ {
+  "name": "cooper_character.png",
+  "ok": false,
+  "client": "api-key",
+  "model": "gemini-3.1-flash-image-preview",
+  "attempt": 1,
+  "error": "ClientError(\"403 PERMISSION_DENIED. {'error': {'code': 403, 'message': 'Your billing account has an outstanding balance. Make a payment at https://aistudio.google.com/billing to restore service. For more information, see https://ai.google.dev/gemini-api/docs/troubleshooting#project-unavailable.', 's"
+ },
+ {
+  "name": "cooper_character.png",
+  "ok": false,
+  "client": "api-key",
+  "model": "gemini-3-pro-image-preview",
+  "attempt": 1,
+  "error": "ClientError(\"403 PERMISSION_DENIED. {'error': {'code': 403, 'message': 'Your billing account has an outstanding balance. Make a payment at https://aistudio.google.com/billing to restore service. For more information, see https://ai.google.dev/gemini-api/docs/troubleshooting#project-unavailable.', 's"
+ },
+ {
+  "name": "cooper_character.png",
+  "ok": false,
+  "client": "vertex-central",
+  "model": "gemini-2.5-flash-image",
+  "attempt": 1,
+  "error": "ClientError(\"403 PERMISSION_DENIED. {'error': {'code': 403, 'message': 'This API method requires billing to be enabled. Please enable billing on project #stickman-shorts-513818 by visiting https://console.developers.google.com/billing/enable?project=stickman-shorts-513818 then retry. If you enabled "
+ },
+ {
+  "name": "cooper_character.png",
+  "ok": false,
+  "client": "vertex-central",
+  "model": "gemini-3.1-flash-image-preview",
+  "attempt": 1,
+  "error": "ClientError(\"403 PERMISSION_DENIED. {'error': {'code': 403, 'message': 'This API method requires billing to be enabled. Please enable billing on project #stickman-shorts-513818 by visiting https://console.developers.google.com/billing/enable?project=stickman-shorts-513818 then retry. If you enabled "
+ },
+ {
+  "name": "cooper_character.png",
+  "ok": false,
+  "client": "vertex-central",
+  "model": "gemini-3-pro-image-preview",
+  "attempt": 1,
+  "error": "ClientError(\"403 PERMISSION_DENIED. {'error': {'code': 403, 'message': 'This API method requires billing to be enabled. Please enable billing on project #stickman-shorts-513818 by visiting https://console.developers.google.com/billing/enable?project=stickman-shorts-513818 then retry. If you enabled "
+ }
+]

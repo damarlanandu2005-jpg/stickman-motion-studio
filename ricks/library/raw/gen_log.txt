@@ -141,3 +141,15 @@ FAIL backdrop_blue_ridge.png ClientError("403 PERMISSION_DENIED. {'error': {'cod
 FAIL backdrop_blue_ridge.png ClientError("403 PERMISSION_DENIED. {'error': {'code': 403, 'message': 'This API method requires billing to be enabled. Please enable billing on project #stickman-shorts-513818 by visiting https://con
 FAIL backdrop_blue_ridge.png ClientError("403 PERMISSION_DENIED. {'error': {'code': 403, 'message': 'This API method requires billing to be enabled. Please enable billing on project #stickman-shorts-513818 by visiting https://con
 done: 0 ok, 96 failed attempts
+FAIL cooper_character.png vertex-global gemini-2.5-flash-image ClientError("403 PERMISSION_DENIED. {'error': {'code': 403, 'message': 'This API method requires billing to be enabled. Please enable billing on project #stickm
+FAIL cooper_character.png vertex-global gemini-3.1-flash-image-preview ClientError("403 PERMISSION_DENIED. {'error': {'code': 403, 'message': 'This API method requires billing to be enabled. Please enable billing on project #stickm
+FAIL cooper_character.png vertex-global gemini-3-pro-image-preview ClientError("403 PERMISSION_DENIED. {'error': {'code': 403, 'message': 'This API method requires billing to be enabled. Please enable billing on project #stickm
+FAIL cooper_character.png api-key gemini-2.5-flash-image ClientError("403 PERMISSION_DENIED. {'error': {'code': 403, 'message': 'Your billing account has an outstanding balance. Make a payment at https://aistudio.goog
+FAIL cooper_character.png api-key gemini-3.1-flash-image-preview ClientError("403 PERMISSION_DENIED. {'error': {'code': 403, 'message': 'Your billing account has an outstanding balance. Make a payment at https://aistudio.goog
+FAIL cooper_character.png api-key gemini-3-pro-image-preview ClientError("403 PERMISSION_DENIED. {'error': {'code': 403, 'message': 'Your billing account has an outstanding balance. Make a payment at https://aistudio.goog
+FAIL cooper_character.png vertex-central gemini-2.5-flash-image ClientError("403 PERMISSION_DENIED. {'error': {'code': 403, 'message': 'This API method requires billing to be enabled. Please enable billing on project #stickm
+FAIL cooper_character.png vertex-central gemini-3.1-flash-image-preview ClientError("403 PERMISSION_DENIED. {'error': {'code': 403, 'message': 'This API method requires billing to be enabled. Please enable billing on project #stickm
+FAIL cooper_character.png vertex-central gemini-3-pro-image-preview ClientError("403 PERMISSION_DENIED. {'error': {'code': 403, 'message': 'This API method requires billing to be enabled. Please enable billing on project #stickm
+every client/model is dead; giving up on cooper_character.png
+every client/model is dead; giving up on attendant_character.png
+done: 0 ok, 9 failed attempts
