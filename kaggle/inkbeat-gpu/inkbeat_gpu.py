@@ -1,7 +1,8 @@
-# Kaggle T4 render of an inkbeat (Remotion + R3F) composition, to compare against the Ricks engine.
-# Tokens replaced by .github/workflows/inkbeat-kaggle.yml: __BRANCH__ __COMP__ (composition id) __BLUR__ (0|1)
-# Steps: NVIDIA userspace driver -> clone branch -> npm ci in inkbeat/ -> remotion render on the GPU (--gl=angle)
-# -> (optional) 4x motion blur via ffmpeg tmix -> copy mp4 + timing to /kaggle/working.
+# Kaggle CPU render of an inkbeat (Remotion + R3F) composition, to compare against the Ricks engine.
+# Why no GPU: on the T4, Remotion's bundled headless Chrome could not create a WebGL context at all
+# (crash in ~11s on both --gl=angle and --gl=swiftshader). So we drop the GPU (no T4x2 queue wait) and
+# render with Playwright's Chromium, whose SwiftShader software GL is the exact binary that rendered the
+# inkbeat stills in-container. Tokens replaced by the workflow: __BRANCH__ __COMP__ (composition id) __BLUR__ (0|1)
 import subprocess, json, os, shutil, glob, time
 W = "/kaggle/working"; os.makedirs(W, exist_ok=True)
 BRANCH = "__BRANCH__"; COMP = "__COMP__"; BLUR = "__BLUR__" == "1"
@@ -12,35 +13,34 @@ def sh(cmd, timeout=3600, show=2500, env=None):
     except Exception as e:
         out = "EXC " + str(e)[:200]
     print(out[-show:], flush=True); return out
-rep = {"engine": "inkbeat", "comp": COMP, "branch": BRANCH, "blur": BLUR}
-rep["gpu"] = sh("nvidia-smi --query-gpu=name,driver_version --format=csv,noheader").strip()
-v = sh("nvidia-smi --query-gpu=driver_version --format=csv,noheader | head -1").strip()
-sh("cd /tmp && wget -q -O nv.run https://us.download.nvidia.com/XFree86/Linux-x86_64/%s/NVIDIA-Linux-x86_64-%s.run && sh nv.run --no-kernel-module --no-drm --no-x-check --no-nouveau-check --no-questions --silent --no-backup 2>&1 | tail -3" % (v, v), timeout=900)
+rep = {"engine": "inkbeat", "comp": COMP, "branch": BRANCH, "blur": BLUR, "gl_used": "swiftshader", "mode": "cpu+playwright-chromium"}
+rep["cpu"] = sh("nproc").strip()
 rep["node"] = sh("node -v").strip()
+# Playwright Chromium (software GL that works headless); known cache path afterwards.
+sh("pip install -q playwright 2>&1 | tail -2", timeout=600)
+sh("python -m playwright install chromium 2>&1 | tail -3", timeout=900)
+chrome = ""
+for g in ["/root/.cache/ms-playwright/chromium-*/chrome-linux/chrome", "/root/.cache/ms-playwright/chromium_headless_shell-*/chrome-linux/*"]:
+    m = sorted(glob.glob(g))
+    if m: chrome = m[-1]; break
+rep["chrome"] = chrome or "NOT_FOUND"
 sh("rm -rf /tmp/repo && git clone -q --depth 1 --branch %s https://github.com/damarlanandu2005-jpg/stickman-motion-studio /tmp/repo 2>&1 | tail -2" % BRANCH)
 P = "/tmp/repo/inkbeat"
 sh("cd %s && npm ci --no-audit --no-fund 2>&1 | tail -3" % P, timeout=1800)
 sh("which ffmpeg || (apt-get update -qq && apt-get install -y -qq ffmpeg) 2>&1 | tail -2", timeout=900)
-# Remotion fetches its own Chrome Headless Shell (Kaggle internet is on; this worked in run 1).
 out = P + "/out"; os.makedirs(out, exist_ok=True)
-def render(gl, tag):
-    log = "/tmp/rr_%s.log" % tag
-    if BLUR:
-        c = "cd %s && npx remotion render src/index.ts %sSub out/sub.mp4 --gl=%s --timeout=300000 --concurrency=2 > %s 2>&1; ffmpeg -v error -y -i out/sub.mp4 -vf \"tmix=frames=4:weights='1 1 1 1',select='not(mod(n+1\\,4))',setpts=N/30/TB\" -r 30 -c:v libx264 -crf 20 -pix_fmt yuv420p out/pilot.mp4" % (P, COMP, gl, log)
-    else:
-        c = "cd %s && npx remotion render src/index.ts %s out/pilot.mp4 --gl=%s --timeout=300000 --concurrency=4 > %s 2>&1" % (P, COMP, gl, log)
-    sh(c, timeout=40000, show=200)
-    try: return open(log).read()
-    except Exception: return ""
+be = ("--browser-executable='%s'" % chrome) if chrome else ""
+log = "/tmp/rr.log"
 t = time.time()
-log = render("angle", "angle")       # try the GPU path first
-rep["gl_used"] = "angle"
-if not os.path.exists(P + "/out/pilot.mp4"):    # GPU path failed -> software so we still get the video, and record it
-    rep["angle_tail"] = log[-1600:]
-    log = render("swiftshader", "sw"); rep["gl_used"] = "swiftshader"
+if BLUR:
+    c = ("cd %s && npx remotion render src/index.ts %sSub out/sub.mp4 --gl=swiftshader %s --timeout=300000 --concurrency=4 > %s 2>&1; "
+         "ffmpeg -v error -y -i out/sub.mp4 -vf \"tmix=frames=4:weights='1 1 1 1',select='not(mod(n+1\\,4))',setpts=N/30/TB\" -r 30 -c:v libx264 -crf 20 -pix_fmt yuv420p out/pilot.mp4") % (P, COMP, be, log)
+else:
+    c = "cd %s && npx remotion render src/index.ts %s out/pilot.mp4 --gl=swiftshader %s --timeout=300000 --concurrency=4 > %s 2>&1" % (P, COMP, be, log)
+sh(c, timeout=40000, show=200)
 rep["total_s"] = round(time.time() - t, 1)
-rep["render_tail"] = log[-1600:]
-rep["gl_renderer"] = sh("grep -hoiE 'angle \\(nvidia[^)]*\\)|tesla[^,]*|swiftshader|llvmpipe' /tmp/rr_*.log 2>/dev/null | sort -u | tr '\\n' '|'").strip() or "n/a"
+try: rep["render_tail"] = open(log).read()[-1600:]
+except Exception: rep["render_tail"] = ""
 mp4 = P + "/out/pilot.mp4"
 rep["ok"] = os.path.exists(mp4)
 if rep["ok"]:
