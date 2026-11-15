@@ -6,3 +6,9 @@
 - Voice (Kokoro via ricks-assets.yml, only=none voice=yes) + music (pizzicato) + words.json (energy method) are done for all 3.
 - Render ONE AT A TIME (all use the same Kaggle kernel slug): `gh workflow run ricks-kaggle.yml --ref ricks-stage-kaggle -f mode=full -f project=ricks/projects/<name> -f scale=0 -f force=1`.
 - Fact corrections are listed in FACTCHECK_NOTES.md. Verifier (ricks-watch.yml / gemini_watch.py) may also fail on billing: if so, review frames yourself.
+
+## Final summary (2026-11-15 scheduled run)
+- DONE: db_cooper (40.2 s), jungle_fall (40.4 s), lightning_man (40.8 s) rendered full 1080x1920 on Kaggle, short.mp4 in results_ricks/<name>/, delivered.
+- Facts corrected: see FACTCHECK_NOTES.md (applied before render).
+- Assumptions: durations ~40-41 s (voice-bound) accepted as "about 41-42 s"; Gemini verifier skipped (billing), frames inspected by hand from contact sheets.
+- Failures: none; one duplicate workflow dispatch was cancelled. Rendered on T4 x2 per log (not P100).
