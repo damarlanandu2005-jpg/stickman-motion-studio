@@ -2,27 +2,27 @@
  "project": "/tmp/repo/ricks/projects/lustig2",
  "mode": "full",
  "gl_renderer": "ANGLE (NVIDIA Corporation, Tesla T4/PCIe/SSE2, OpenGL ES 3.2)",
- "gate_seconds": 19.8,
+ "gate_seconds": 18.6,
  "flagged": 0,
  "flags": [],
  "gate_ok": true,
- "render_seconds": 649.1,
+ "render_seconds": 537.4,
  "render_ok": true,
- "size_mb": 60.4,
+ "size_mb": 38.6,
  "camera_check": {
   "frames": 1641,
   "step": 1,
-  "pan_speed_med_px_s": 49.5,
-  "zoom_med_pct_s": 4.44,
-  "static_frames_pct": 29.0,
+  "pan_speed_med_px_s": 48.5,
+  "zoom_med_pct_s": 4.39,
+  "static_frames_pct": 29.6,
   "pan_speed_ok": true,
   "zoom_ok": true
  },
  "flicker": {
   "frames": 1641,
-  "pop_blocks": 9133,
-  "pops_per_frame": 5.6,
-  "frames_with_flicker": 403,
+  "pop_blocks": 8046,
+  "pops_per_frame": 4.9,
+  "frames_with_flicker": 384,
   "ok": true
  }
 }
