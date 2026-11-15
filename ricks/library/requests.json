@@ -344,6 +344,207 @@
    "kind": "texture",
    "id": "grass",
    "surface": "soft meadow grass in two close shades of green with small painted tufts and a few tiny white and yellow flowers, thin darker green strokes"
+  },
+  {
+   "kind": "character",
+   "id": "cooper",
+   "who": "a calm, polite 1971 airline passenger: plain dark charcoal business suit, white shirt and a thin black necktie, large dark sunglasses over the eyes, short neat dark hair, composed look"
+  },
+  {
+   "kind": "character",
+   "id": "attendant",
+   "who": "a young 1971 airline flight attendant woman: short dark-red uniform dress with a small white collar and a small red scarf, brown hair in a neat flipped bob, kind look"
+  },
+  {
+   "kind": "character",
+   "id": "pilot",
+   "who": "a 1971 airline captain: navy double-breasted jacket with gold stripes on the sleeves, white shirt, black tie, grey hair, calm stern look"
+  },
+  {
+   "kind": "character",
+   "id": "boy",
+   "who": "an eight-year-old American boy in 1980: red-and-white striped t-shirt, blue jeans, messy sandy-brown hair, curious look"
+  },
+  {
+   "kind": "character",
+   "id": "agent",
+   "who": "a 1970s FBI agent: plain grey suit, white shirt, narrow dark tie, short black hair, serious look"
+  },
+  {
+   "kind": "character",
+   "id": "juliane",
+   "who": "a 17-year-old German-Peruvian schoolgirl in 1971: short pale-yellow sleeveless summer dress with a white collar, long straight blond hair, kind determined look"
+  },
+  {
+   "kind": "character",
+   "id": "father",
+   "who": "a middle-aged biologist in 1971: khaki field shirt with rolled sleeves and dark green trousers, round glasses, short grey beard, thoughtful kind look"
+  },
+  {
+   "kind": "character",
+   "id": "logger",
+   "who": "a Peruvian rainforest logger: faded blue work shirt and brown trousers, black moustache, tanned skin, short black hair, friendly look"
+  },
+  {
+   "kind": "character",
+   "id": "roy",
+   "who": "a middle-aged American park ranger in the 1960s: olive-green ranger uniform shirt with a brown tie and a gold badge, tan trousers, short grey hair and thick grey eyebrows, weary stoic look"
+  },
+  {
+   "kind": "character",
+   "id": "wife",
+   "who": "an American housewife in the 1970s: floral yellow housedress with a white apron, grey-brown hair in a bun, kind worried look"
+  },
+  {
+   "kind": "character",
+   "id": "neighbor",
+   "who": "a Virginia mountain neighbour in the 1970s: red-and-black plaid shirt, blue jeans, short brown hair, worried look"
+  },
+  {
+   "kind": "faces",
+   "id": "cooper",
+   "sheet": "a"
+  },
+  {
+   "kind": "faces",
+   "id": "cooper",
+   "sheet": "b"
+  },
+  {
+   "kind": "faces",
+   "id": "attendant",
+   "sheet": "a"
+  },
+  {
+   "kind": "faces",
+   "id": "attendant",
+   "sheet": "b"
+  },
+  {
+   "kind": "faces",
+   "id": "juliane",
+   "sheet": "a"
+  },
+  {
+   "kind": "faces",
+   "id": "juliane",
+   "sheet": "b"
+  },
+  {
+   "kind": "faces",
+   "id": "roy",
+   "sheet": "a"
+  },
+  {
+   "kind": "faces",
+   "id": "roy",
+   "sheet": "b"
+  },
+  {
+   "kind": "faces",
+   "id": "pilot",
+   "sheet": "a"
+  },
+  {
+   "kind": "faces",
+   "id": "boy",
+   "sheet": "a"
+  },
+  {
+   "kind": "faces",
+   "id": "agent",
+   "sheet": "a"
+  },
+  {
+   "kind": "faces",
+   "id": "father",
+   "sheet": "a"
+  },
+  {
+   "kind": "faces",
+   "id": "logger",
+   "sheet": "a"
+  },
+  {
+   "kind": "faces",
+   "id": "wife",
+   "sheet": "a"
+  },
+  {
+   "kind": "faces",
+   "id": "neighbor",
+   "sheet": "a"
+  },
+  {
+   "kind": "hat",
+   "id": "pilot_cap",
+   "what": "an airline captain's cap: navy peaked cap with a black visor, gold braid on the band and a small gold wings badge on the front"
+  },
+  {
+   "kind": "hat",
+   "id": "ranger_hat",
+   "what": "a flat-brimmed olive-green park ranger campaign hat with a wide flat stiff brim, a high round crown with four dents and a brown leather band"
+  },
+  {
+   "kind": "hat",
+   "id": "straw_hat",
+   "what": "a wide round woven straw hat with a floppy brim and a dark band"
+  },
+  {
+   "kind": "texture",
+   "id": "carpet",
+   "surface": "airliner cabin carpet: a dull blue-grey pattern of small repeating diamonds, flat soft painted look"
+  },
+  {
+   "kind": "texture",
+   "id": "asphalt",
+   "surface": "airport tarmac: dark grey asphalt with faint small cracks and speckles, flat soft painted look"
+  },
+  {
+   "kind": "texture",
+   "id": "jungle_floor",
+   "surface": "rainforest floor: dark brown soil covered with fallen leaves, green ferns and small roots, flat soft painted look"
+  },
+  {
+   "kind": "texture",
+   "id": "water",
+   "surface": "muddy jungle river water: calm brownish-green water with soft ripple lines, flat soft painted look"
+  },
+  {
+   "kind": "backdrop",
+   "id": "airport",
+   "sky": "a clear pale-blue afternoon sky with thin clouds",
+   "far": "a flat airport with a few low terminal buildings, a control tower and two parked jetliners, small grey hills far behind"
+  },
+  {
+   "kind": "backdrop",
+   "id": "night_forest",
+   "sky": "a dark stormy night sky, deep navy with heavy rain clouds and faint streaks of falling rain",
+   "far": "an endless dark pine forest of the Pacific Northwest and misty black mountains with a few tiny distant lights"
+  },
+  {
+   "kind": "backdrop",
+   "id": "river_forest",
+   "sky": "a soft overcast pale sky",
+   "far": "a wide river with a sandy bank and a far shore of green fir forest and low blue mountains"
+  },
+  {
+   "kind": "backdrop",
+   "id": "storm_sky",
+   "sky": "a huge dark thunderstorm sky of heavy purple-grey cumulonimbus clouds with bright pale gaps",
+   "far": "a rolling layer of dark storm clouds along the horizon"
+  },
+  {
+   "kind": "backdrop",
+   "id": "jungle",
+   "sky": "a bright humid morning sky with light mist",
+   "far": "a dense Amazon rainforest canopy of tall green trees, palms and hanging vines under pale mist, with blue hills behind"
+  },
+  {
+   "kind": "backdrop",
+   "id": "blue_ridge",
+   "sky": "a bright summer sky with a few puffy clouds",
+   "far": "layers of hazy blue Appalachian mountain ridges covered in green forest, a few tiny fire-lookout towers on far peaks"
   }
  ]
 }
