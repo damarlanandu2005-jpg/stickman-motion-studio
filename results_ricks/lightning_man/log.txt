@@ -12,10 +12,10 @@ shot 02 b  t=  5.20s  luma  84.3  contrast 38.8  PURE_BLACK
 shot 02 c  t=  5.97s  luma  87.1  contrast 36.4  PURE_BLACK
 shot 03 a  t=  6.70s  luma  93.1  contrast 44.4  PURE_BLACK
 shot 03 b  t=  7.17s  luma  94.9  contrast 43.7  PURE_BLACK
-shot 03 c  t=  7.60s  luma  95.3  contrast 42.9  PURE_BLACK
-shot 04 a  t=  8.20s  luma  90.1  contrast 22.2  ok
-shot 04 b  t=  8.67s  luma  89.4  contrast 21.5  ok
-shot 04 c  t=  9.13s  luma  89.5  contrast 21.4  ok
+shot 03 c  t=  7.60s  luma    95  contrast 42.6  PURE_BLACK
+shot 04 a  t=  8.20s  luma  92.7  contrast 24.3  ok
+shot 04 b  t=  8.67s  luma  92.1  contrast 22.7  ok
+shot 04 c  t=  9.13s  luma  91.8  contrast 22.4  ok
 shot 05 a  t=  9.90s  luma  95.4  contrast 47.8  ok
 shot 05 b  t= 10.63s  luma 122.6  contrast 46.8  ok
 shot 05 c  t= 11.37s  luma  94.8  contrast 39.9  ok
@@ -27,7 +27,7 @@ shot 07 b  t= 14.17s  luma  95.6  contrast   48  ok
 shot 07 c  t= 14.67s  luma  94.1  contrast 48.4  ok
 shot 08 a  t= 15.43s  luma 100.9  contrast 38.8  ok
 shot 08 b  t= 16.27s  luma  97.8  contrast 35.6  ok
-shot 08 c  t= 17.07s  luma    95  contrast 33.9  ok
+shot 08 c  t= 17.07s  luma  95.1  contrast 34.3  ok
 shot 09 a  t= 17.80s  luma  92.9  contrast 49.5  ok
 shot 09 b  t= 18.23s  luma  91.8  contrast 50.9  ok
 shot 09 c  t= 18.63s  luma 163.1  contrast 56.1  ok
@@ -40,30 +40,90 @@ shot 11 c  t= 22.20s  luma  70.9  contrast 54.9  PURE_BLACK
 shot 12 a  t= 23.10s  luma  99.2  contrast 47.8  ok
 shot 12 b  t= 23.97s  luma  91.2  contrast 44.3  ok
 shot 12 c  t= 24.83s  luma  83.9  contrast 41.2  ok
-shot 13 a  t= 25.73s  luma  95.3  contrast 47.6  ok
-shot 13 b  t= 26.40s  luma  92.3  contrast 47.4  ok
-shot 13 c  t= 27.07s  luma 115.4  contrast 50.9  ok
+shot 13 a  t= 25.73s  luma  83.7  contrast 39.2  ok
+shot 13 b  t= 26.40s  luma  82.4  contrast 38.5  ok
+shot 13 c  t= 27.07s  luma 107.1  contrast 46.7  ok
 shot 14 a  t= 27.93s  luma  89.2  contrast 51.2  ok
 shot 14 b  t= 28.57s  luma  87.2  contrast 50.1  ok
 shot 14 c  t= 29.17s  luma  87.5  contrast 50.4  ok
 shot 15 a  t= 29.83s  luma  92.2  contrast 46.6  ok
 shot 15 b  t= 30.20s  luma  90.8  contrast 46.4  ok
-shot 15 c  t= 30.53s  luma  88.4  contrast 45.5  ok
-shot 16 a  t= 31.17s  luma 108.2  contrast   63  PURE_BLACK
-shot 16 b  t= 31.73s  luma 108.4  contrast 62.3  PURE_BLACK
-shot 16 c  t= 32.30s  luma 110.1  contrast 62.5  PURE_BLACK
+shot 15 c  t= 30.53s  luma  91.8  contrast 43.4  ok
+shot 16 a  t= 31.17s  luma  95.4  contrast 51.6  ok
+shot 16 b  t= 31.73s  luma    96  contrast 53.2  PURE_BLACK
+shot 16 c  t= 32.30s  luma  95.1  contrast 53.3  PURE_BLACK
 shot 17 a  t= 33.10s  luma  92.5  contrast 43.7  PURE_BLACK
 shot 17 b  t= 33.77s  luma  89.6  contrast   41  ok
 shot 17 c  t= 34.43s  luma  86.9  contrast 40.8  PURE_BLACK
 shot 18 a  t= 35.30s  luma 127.2  contrast 40.6  ok
 shot 18 b  t= 35.90s  luma 133.6  contrast 43.3  ok
 shot 18 c  t= 36.53s  luma 135.6  contrast 43.1  ok
-shot 19 a  t= 37.40s  luma 123.9  contrast 53.1  PURE_BLACK
-shot 19 b  t= 38.23s  luma   123  contrast 53.5  PURE_BLACK
-shot 19 c  t= 39.10s  luma 124.5  contrast 53.1  PURE_BLACK
-shot 20 a  t= 39.80s  luma 139.7  contrast 47.3  ok
+shot 19 a  t= 37.40s  luma 123.5  contrast 55.8  PURE_BLACK
+shot 19 b  t= 38.23s  luma 122.1  contrast 56.1  PURE_BLACK
+shot 19 c  t= 39.10s  luma 120.8  contrast 56.2  PURE_BLACK
+shot 20 a  t= 39.80s  luma 141.9  contrast 48.5  ok
 shot 20 b  t= 40.17s  luma 139.8  contrast 44.3  ok
 shot 20 c  t= 40.50s  luma   141  contrast 43.3  ok
 63 stills -> /tmp/ricks_out/out_stills/sheet.jpg
-18 still(s) flagged: fix them in short.json and run --stills again before the full render
+17 still(s) flagged: fix them in short.json and run --stills again before the full render
+
+$ node /tmp/repo/ricks/stage/render.mjs /tmp/repo/ricks/projects/lightning_man/short.json /tmp/ricks_out/out.mp4
+GL_RENDERER ANGLE (NVIDIA Corporation, Tesla T4/PCIe/SSE2, OpenGL ES 3.2)
+21 shots, 40.77 s, 1223 frames at 1080x1920
+30/1223 frames, 218 ms/frame, 260 s left
+60/1223 frames, 218 ms/frame, 253 s left
+90/1223 frames, 211 ms/frame, 239 s left
+120/1223 frames, 212 ms/frame, 233 s left
+150/1223 frames, 219 ms/frame, 236 s left
+180/1223 frames, 223 ms/frame, 232 s left
+210/1223 frames, 226 ms/frame, 229 s left
+240/1223 frames, 229 ms/frame, 225 s left
+270/1223 frames, 227 ms/frame, 216 s left
+300/1223 frames, 231 ms/frame, 213 s left
+330/1223 frames, 230 ms/frame, 206 s left
+360/1223 frames, 237 ms/frame, 204 s left
+390/1223 frames, 242 ms/frame, 202 s left
+420/1223 frames, 246 ms/frame, 198 s left
+450/1223 frames, 250 ms/frame, 193 s left
+480/1223 frames, 254 ms/frame, 189 s left
+510/1223 frames, 257 ms/frame, 183 s left
+540/1223 frames, 260 ms/frame, 177 s left
+570/1223 frames, 262 ms/frame, 171 s left
+600/1223 frames, 264 ms/frame, 164 s left
+630/1223 frames, 266 ms/frame, 158 s left
+660/1223 frames, 263 ms/frame, 148 s left
+690/1223 frames, 261 ms/frame, 139 s left
+720/1223 frames, 259 ms/frame, 130 s left
+750/1223 frames, 257 ms/frame, 121 s left
+780/1223 frames, 259 ms/frame, 115 s left
+810/1223 frames, 260 ms/frame, 107 s left
+840/1223 frames, 262 ms/frame, 100 s left
+870/1223 frames, 259 ms/frame, 92 s left
+900/1223 frames, 261 ms/frame, 84 s left
+930/1223 frames, 262 ms/frame, 77 s left
+960/1223 frames, 263 ms/frame, 69 s left
+990/1223 frames, 266 ms/frame, 62 s left
+1020/1223 frames, 266 ms/frame, 54 s left
+1050/1223 frames, 268 ms/frame, 46 s left
+1080/1223 frames, 269 ms/frame, 39 s left
+1110/1223 frames, 271 ms/frame, 31 s left
+1140/1223 frames, 271 ms/frame, 23 s left
+1170/1223 frames, 272 ms/frame, 14 s left
+1200/1223 frames, 272 ms/frame, 6 s left
+1223/1223 frames, 273 ms/frame, 0 s left
+wrote /tmp/ricks_out/out.mp4: 1223 frames, 40.77 s
+
+$ /usr/bin/python3 /tmp/repo/ricks/stage/shortkit.py check /tmp/ricks_out/out.mp4
+{
+ "frames": 1223,
+ "step": 1,
+ "pan_speed_med_px_s": 11.7,
+ "zoom_med_pct_s": 3.77,
+ "static_frames_pct": 56.3,
+ "pan_speed_ok": false,
+ "zoom_ok": true
+}
+
+$ /usr/bin/python3 /tmp/repo/ricks/stage/flicker.py /tmp/ricks_out/out.mp4
+{"frames": 1223, "pop_blocks": 4867, "pops_per_frame": 4.0, "frames_with_flicker": 185, "ok": true}
 

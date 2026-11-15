@@ -1,11 +1,30 @@
 {
  "project": "/tmp/repo/ricks/projects/lightning_man",
- "mode": "stills",
+ "mode": "full",
  "gl_renderer": "ANGLE (NVIDIA Corporation, Tesla T4/PCIe/SSE2, OpenGL ES 3.2)",
- "gate_seconds": 11.1,
- "flagged": 18,
+ "gate_seconds": 10.9,
+ "flagged": 17,
  "flags": [
   "PURE_BLACK"
  ],
- "gate_ok": false
+ "gate_ok": false,
+ "render_seconds": 338.3,
+ "render_ok": true,
+ "size_mb": 18.1,
+ "camera_check": {
+  "frames": 1223,
+  "step": 1,
+  "pan_speed_med_px_s": 11.7,
+  "zoom_med_pct_s": 3.77,
+  "static_frames_pct": 56.3,
+  "pan_speed_ok": false,
+  "zoom_ok": true
+ },
+ "flicker": {
+  "frames": 1223,
+  "pop_blocks": 4867,
+  "pops_per_frame": 4.0,
+  "frames_with_flicker": 185,
+  "ok": true
+ }
 }
