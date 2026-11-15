@@ -28,7 +28,7 @@ jobs:
   render:
     needs: plan
     runs-on: ubuntu-24.04   # ubuntu-latest is now 26.04, which Playwright's browser install rejects
-    timeout-minutes: 16     # hard cap: a hung/throttled runner is killed here instead of stalling the run
+    timeout-minutes: 30     # generous backstop only; the shell `timeout` below bounds the render without cancelling the job
     strategy:
       fail-fast: false
       matrix:
@@ -55,10 +55,15 @@ jobs:
           mkdir -p out/seq
           if [ $START -gt $LAST ]; then echo "shard past end"; exit 0; fi
           echo "shard $SHARD -> frames $START-$END"
-          npx remotion render src/index.ts "$COMP" out/seq \
+          # time-box the render: a slow runner is stopped here but the job STILL SUCCEEDS and uploads
+          # whatever frames finished; the stitch job renders any gaps. No job cancellation, so the run is never cancelled.
+          set +e
+          timeout 780 npx remotion render src/index.ts "$COMP" out/seq \
             --sequence --image-format=png --frames=$START-$END \
             --gl=swangle --chrome-mode=chrome-for-testing --browser-executable="$CHROME" \
             --concurrency=4 --timeout=600000
+          echo "render step rc=$? (124 = hit the 13-min time box; partial frames will be filled by stitch)"
+          set -e
           cd out/seq
           for f in element-*.png; do n=$(echo "$f" | sed -E 's/element-0*([0-9]+)\.png/\1/'); [ -z "$n" ] && n=0; printf -v p "fr_%06d.png" "$n"; mv "$f" "$p"; done
           ls | head
