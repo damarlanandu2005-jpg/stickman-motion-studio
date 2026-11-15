@@ -1,0 +1,12 @@
+{
+ "engine": "inkbeat",
+ "comp": "LustigPilot",
+ "branch": "ricks-stage-kaggle",
+ "blur": false,
+ "gpu": "Tesla T4, 580.178.04\nTesla T4, 580.178.04",
+ "node": "v22.23.4",
+ "total_s": 7.6,
+ "render_tail": "at commitLayoutEffectOnFiber (node_modules/react-dom/cjs/react-dom-client.production.js:10085)\nat recursivelyTraverseLayoutEffects (node_modules/react-dom/cjs/react-dom-client.production.js:11119)\nat commitLayoutEffectOnFiber (node_modules/react-dom/cjs/react-dom-client.production.js:10085)\nat recursivelyTraverseLayoutEffects (node_modules/react-dom/cjs/react-dom-client.production.js:11119)\nat commitLayoutEffectOnFiber (node_modules/react-dom/cjs/react-dom-client.production.js:10085)\nat recursivelyTraverseLayoutEffects (node_modules/react-dom/cjs/react-dom-client.production.js:11119)\nat commitLayoutEffectOnFiber (node_modules/react-dom/cjs/react-dom-client.production.js:10085)\nat recursivelyTraverseLayoutEffects (node_modules/react-dom/cjs/react-dom-client.production.js:11119)\n",
+ "gl_renderer": "n/a",
+ "ok": false
+}
