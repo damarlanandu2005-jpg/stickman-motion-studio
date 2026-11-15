@@ -1,0 +1,19 @@
+{
+ "mode": "stills",
+ "project": "ricks/projects/lightning_man",
+ "branch": "ricks-stage-kaggle",
+ "gpu": "Tesla T4, 580.178.04\nTesla T4, 580.178.04",
+ "node": "v22.23.4",
+ "total_s": 11.2,
+ "result": {
+  "project": "/tmp/repo/ricks/projects/lightning_man",
+  "mode": "stills",
+  "gl_renderer": "ANGLE (NVIDIA Corporation, Tesla T4/PCIe/SSE2, OpenGL ES 3.2)",
+  "gate_seconds": 11.1,
+  "flagged": 18,
+  "flags": [
+   "PURE_BLACK"
+  ],
+  "gate_ok": false
+ }
+}

@@ -1,0 +1,69 @@
+$ node /tmp/repo/ricks/stage/render.mjs /tmp/repo/ricks/projects/lightning_man/short.json /tmp/ricks_out/out.mp4 --stills
+GL_RENDERER ANGLE (NVIDIA Corporation, Tesla T4/PCIe/SSE2, OpenGL ES 3.2)
+21 shots, 40.77 s, 1223 frames at 540x960
+shot 00 a  t=  0.43s  luma  91.7  contrast 48.8  ok
+shot 00 b  t=  1.03s  luma 158.7  contrast 58.3  ok
+shot 00 c  t=  1.63s  luma  89.8  contrast 47.8  ok
+shot 01 a  t=  2.43s  luma  88.6  contrast 49.1  ok
+shot 01 b  t=  3.00s  luma  85.3  contrast 51.5  PURE_BLACK
+shot 01 c  t=  3.60s  luma  79.9  contrast   54  PURE_BLACK
+shot 02 a  t=  4.43s  luma  83.1  contrast 39.3  PURE_BLACK
+shot 02 b  t=  5.20s  luma  84.3  contrast 38.8  PURE_BLACK
+shot 02 c  t=  5.97s  luma  87.1  contrast 36.4  PURE_BLACK
+shot 03 a  t=  6.70s  luma  93.1  contrast 44.4  PURE_BLACK
+shot 03 b  t=  7.17s  luma  94.9  contrast 43.7  PURE_BLACK
+shot 03 c  t=  7.60s  luma  95.3  contrast 42.9  PURE_BLACK
+shot 04 a  t=  8.20s  luma  90.1  contrast 22.2  ok
+shot 04 b  t=  8.67s  luma  89.4  contrast 21.5  ok
+shot 04 c  t=  9.13s  luma  89.5  contrast 21.4  ok
+shot 05 a  t=  9.90s  luma  95.4  contrast 47.8  ok
+shot 05 b  t= 10.63s  luma 122.6  contrast 46.8  ok
+shot 05 c  t= 11.37s  luma  94.8  contrast 39.9  ok
+shot 06 a  t= 12.10s  luma 140.3  contrast   49  ok
+shot 06 b  t= 12.57s  luma 100.1  contrast 47.1  ok
+shot 06 c  t= 13.03s  luma  99.8  contrast 47.1  ok
+shot 07 a  t= 13.67s  luma  97.6  contrast 47.9  ok
+shot 07 b  t= 14.17s  luma  95.6  contrast   48  ok
+shot 07 c  t= 14.67s  luma  94.1  contrast 48.4  ok
+shot 08 a  t= 15.43s  luma 100.9  contrast 38.8  ok
+shot 08 b  t= 16.27s  luma  97.8  contrast 35.6  ok
+shot 08 c  t= 17.07s  luma    95  contrast 33.9  ok
+shot 09 a  t= 17.80s  luma  92.9  contrast 49.5  ok
+shot 09 b  t= 18.23s  luma  91.8  contrast 50.9  ok
+shot 09 c  t= 18.63s  luma 163.1  contrast 56.1  ok
+shot 10 a  t= 19.20s  luma  99.2  contrast 37.6  ok
+shot 10 b  t= 19.67s  luma 100.3  contrast 38.5  ok
+shot 10 c  t= 20.10s  luma 101.6  contrast 38.1  ok
+shot 11 a  t= 20.83s  luma  86.5  contrast 57.8  PURE_BLACK
+shot 11 b  t= 21.50s  luma  84.2  contrast 56.8  ok
+shot 11 c  t= 22.20s  luma  70.9  contrast 54.9  PURE_BLACK
+shot 12 a  t= 23.10s  luma  99.2  contrast 47.8  ok
+shot 12 b  t= 23.97s  luma  91.2  contrast 44.3  ok
+shot 12 c  t= 24.83s  luma  83.9  contrast 41.2  ok
+shot 13 a  t= 25.73s  luma  95.3  contrast 47.6  ok
+shot 13 b  t= 26.40s  luma  92.3  contrast 47.4  ok
+shot 13 c  t= 27.07s  luma 115.4  contrast 50.9  ok
+shot 14 a  t= 27.93s  luma  89.2  contrast 51.2  ok
+shot 14 b  t= 28.57s  luma  87.2  contrast 50.1  ok
+shot 14 c  t= 29.17s  luma  87.5  contrast 50.4  ok
+shot 15 a  t= 29.83s  luma  92.2  contrast 46.6  ok
+shot 15 b  t= 30.20s  luma  90.8  contrast 46.4  ok
+shot 15 c  t= 30.53s  luma  88.4  contrast 45.5  ok
+shot 16 a  t= 31.17s  luma 108.2  contrast   63  PURE_BLACK
+shot 16 b  t= 31.73s  luma 108.4  contrast 62.3  PURE_BLACK
+shot 16 c  t= 32.30s  luma 110.1  contrast 62.5  PURE_BLACK
+shot 17 a  t= 33.10s  luma  92.5  contrast 43.7  PURE_BLACK
+shot 17 b  t= 33.77s  luma  89.6  contrast   41  ok
+shot 17 c  t= 34.43s  luma  86.9  contrast 40.8  PURE_BLACK
+shot 18 a  t= 35.30s  luma 127.2  contrast 40.6  ok
+shot 18 b  t= 35.90s  luma 133.6  contrast 43.3  ok
+shot 18 c  t= 36.53s  luma 135.6  contrast 43.1  ok
+shot 19 a  t= 37.40s  luma 123.9  contrast 53.1  PURE_BLACK
+shot 19 b  t= 38.23s  luma   123  contrast 53.5  PURE_BLACK
+shot 19 c  t= 39.10s  luma 124.5  contrast 53.1  PURE_BLACK
+shot 20 a  t= 39.80s  luma 139.7  contrast 47.3  ok
+shot 20 b  t= 40.17s  luma 139.8  contrast 44.3  ok
+shot 20 c  t= 40.50s  luma   141  contrast 43.3  ok
+63 stills -> /tmp/ricks_out/out_stills/sheet.jpg
+18 still(s) flagged: fix them in short.json and run --stills again before the full render
+
