@@ -70,6 +70,24 @@
     "intensity": 2.6
    },
    "exposure": 1.5
+  },
+  "bright": {
+   "sun": {
+    "azimuth": 35,
+    "elevation": 55,
+    "color": "#fff2dc",
+    "intensity": 3.2
+   },
+   "sky": {
+    "top": "#9fb6ea",
+    "horizon": "#f5e0c8"
+   },
+   "fill": {
+    "sky": "#ffffff",
+    "ground": "#c8c0d8",
+    "intensity": 2.6
+   },
+   "exposure": 1.25
   }
  },
  "ink": {

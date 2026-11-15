@@ -80,6 +80,24 @@
     "intensity": 2.6
    },
    "exposure": 1.5
+  },
+  "bright": {
+   "sun": {
+    "azimuth": 35,
+    "elevation": 55,
+    "color": "#fff2dc",
+    "intensity": 3.2
+   },
+   "sky": {
+    "top": "#9fb6ea",
+    "horizon": "#f5e0c8"
+   },
+   "fill": {
+    "sky": "#ffffff",
+    "ground": "#c8c0d8",
+    "intensity": 2.6
+   },
+   "exposure": 1.25
   }
  },
  "ink": {
@@ -90,6 +108,26 @@
   {
    "t": 0,
    "mood": "day"
+  },
+  {
+   "t": 5.28,
+   "mood": "bright",
+   "fade": 0.3
+  },
+  {
+   "t": 17.46,
+   "mood": "day",
+   "fade": 0.3
+  },
+  {
+   "t": 21.09,
+   "mood": "bright",
+   "fade": 0.3
+  },
+  {
+   "t": 22.92,
+   "mood": "day",
+   "fade": 0.3
   },
   {
    "t": 24.97,
@@ -1146,7 +1184,7 @@
     -17
    ],
    "scale": 3.0,
-   "color": "#2f5f3f"
+   "color": "#4a8a5a"
   },
   {
    "type": "tree",
@@ -1156,7 +1194,7 @@
     -18
    ],
    "scale": 3.4,
-   "color": "#2a5538"
+   "color": "#417f52"
   },
   {
    "type": "tree",
@@ -1166,7 +1204,7 @@
     -17
    ],
    "scale": 3.1,
-   "color": "#316544"
+   "color": "#4f9060"
   },
   {
    "type": "tree",
@@ -1176,7 +1214,7 @@
     -18
    ],
    "scale": 3.3,
-   "color": "#2a5538"
+   "color": "#417f52"
   },
   {
    "type": "box",

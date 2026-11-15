@@ -85,7 +85,8 @@ def db_cooper():
      L("It remains the only", "tarmac", None, move="pull", anchor=[0, 1.4, -3], proof="A large wanted poster: DAN COOPER - NEVER FOUND, an airliner behind",
        extra=A(7, 40, 6, 3, zoom=-3, orbit=-2, rise=1), show=[card("sign_wanted", [0, 0, -3], [4.2, 2.28])]),
     ]
-    lighting = [{"t": 0, "mood": "day"}, {"t": round(tw(n, 101) - 0.1, 2), "mood": "night", "fade": 0.8}, {"t": round(tw(n, 123) - 0.1, 2), "mood": "day", "fade": 0.8}]
+    lighting = [{"t": 0, "mood": "day"}, {"t": round(tw(n, 20) - 0.1, 2), "mood": "bright", "fade": 0.3}, {"t": round(tw(n, 71) - 0.1, 2), "mood": "day", "fade": 0.3},
+                {"t": round(tw(n, 84) - 0.1, 2), "mood": "bright", "fade": 0.3}, {"t": round(tw(n, 93) - 0.1, 2), "mood": "day", "fade": 0.3}, {"t": round(tw(n, 101) - 0.1, 2), "mood": "night", "fade": 0.8}, {"t": round(tw(n, 123) - 0.1, 2), "mood": "day", "fade": 0.8}]
     return base(n, "The Man Who Vanished", places, cast, Ls, lighting, {"texture": "grass", "repeat": [240, 240]})
 
 def jungle_fall():

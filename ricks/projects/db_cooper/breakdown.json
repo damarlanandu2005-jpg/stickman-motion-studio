@@ -20,6 +20,26 @@
    "mood": "day"
   },
   {
+   "t": 5.28,
+   "mood": "bright",
+   "fade": 0.3
+  },
+  {
+   "t": 17.46,
+   "mood": "day",
+   "fade": 0.3
+  },
+  {
+   "t": 21.09,
+   "mood": "bright",
+   "fade": 0.3
+  },
+  {
+   "t": 22.92,
+   "mood": "day",
+   "fade": 0.3
+  },
+  {
    "t": 24.97,
    "mood": "night",
    "fade": 0.8
