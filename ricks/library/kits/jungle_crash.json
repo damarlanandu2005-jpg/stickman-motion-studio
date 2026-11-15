@@ -13,7 +13,7 @@
     -6
    ],
    "scale": 2.8,
-   "color": "#2f6b3a"
+   "color": "#52af63"
   },
   {
    "type": "tree",
@@ -23,7 +23,7 @@
     -10
    ],
    "scale": 3.2,
-   "color": "#2a6a3a"
+   "color": "#4bae63"
   },
   {
    "type": "tree",
@@ -33,7 +33,7 @@
     -8
    ],
    "scale": 3.0,
-   "color": "#35703e"
+   "color": "#5cb76a"
   },
   {
    "type": "tree",
@@ -43,7 +43,7 @@
     -6
    ],
    "scale": 2.6,
-   "color": "#2f6b3a"
+   "color": "#52af63"
   },
   {
    "type": "box",

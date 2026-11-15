@@ -240,7 +240,7 @@
     -7
    ],
    "extra": {
-    "distance": 13,
+    "distance": 26,
     "fov": 42,
     "yaw": -10,
     "pitch": 1,
@@ -276,7 +276,7 @@
     -12
    ],
    "extra": {
-    "distance": 16,
+    "distance": 34,
     "fov": 44,
     "yaw": 8,
     "pitch": 3,
@@ -297,7 +297,7 @@
     -7
    ],
    "extra": {
-    "distance": 11,
+    "distance": 24,
     "fov": 42,
     "yaw": 6,
     "pitch": 1,
@@ -333,7 +333,7 @@
     -7
    ],
    "extra": {
-    "distance": 11,
+    "distance": 24,
     "fov": 42,
     "yaw": -6,
     "pitch": 1,

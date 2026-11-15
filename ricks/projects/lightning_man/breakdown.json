@@ -334,12 +334,12 @@
    "proof": "A scorched work boot with a hole where the big toenail was",
    "acts": [],
    "anchor": [
-    0,
+    2.0,
     0.4,
-    -0.3
+    0.8
    ],
    "extra": {
-    "distance": 2.6,
+    "distance": 3.2,
     "fov": 38,
     "yaw": 6,
     "pitch": 6,
@@ -352,9 +352,9 @@
      "type": "plane",
      "image": "props/boot.png",
      "pos": [
+      2.0,
       0,
-      0,
-      -0.3
+      0.8
      ],
      "size": [
       0.8,
@@ -664,12 +664,12 @@
    "proof": "A GUINNESS WORLD RECORDS - 7 STRIKES plaque",
    "acts": [],
    "anchor": [
-    0,
+    -9,
     1.2,
-    -2
+    -1.5
    ],
    "extra": {
-    "distance": 6,
+    "distance": 7,
     "fov": 40,
     "yaw": -6,
     "pitch": 3,
@@ -682,9 +682,9 @@
      "type": "plane",
      "image": "props/sign_guinness.png",
      "pos": [
+      -9,
       0,
-      0,
-      -2
+      -1.5
      ],
      "size": [
       3.0,
@@ -755,12 +755,12 @@
    "proof": "A THE ODDS? card with a single small bolt",
    "acts": [],
    "anchor": [
-    0,
+    -9,
     1.2,
-    -2
+    -1.5
    ],
    "extra": {
-    "distance": 5,
+    "distance": 9,
     "fov": 40,
     "yaw": 5,
     "pitch": 3,
@@ -773,9 +773,9 @@
      "type": "plane",
      "image": "props/sign_odds.png",
      "pos": [
+      -9,
       0,
-      0,
-      -2
+      -1.5
      ],
      "size": [
       2.6,
@@ -786,9 +786,9 @@
      "type": "plane",
      "image": "props/bolt.png",
      "pos": [
-      1.9,
+      -7.2,
       0,
-      -2.0
+      -1.5
      ],
      "size": [
       0.8,
@@ -935,12 +935,12 @@
    "proof": "A ROY SULLIVAN 1912 - 1983 memorial plaque",
    "acts": [],
    "anchor": [
-    0,
+    -9,
     1.0,
     -1.5
    ],
    "extra": {
-    "distance": 6,
+    "distance": 7,
     "fov": 40,
     "yaw": 4,
     "pitch": 2,
@@ -953,7 +953,7 @@
      "type": "plane",
      "image": "props/sign_roy.png",
      "pos": [
-      0,
+      -9,
       0,
       -1.5
      ],

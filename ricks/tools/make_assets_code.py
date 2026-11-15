@@ -179,7 +179,7 @@ CHARS = {
  "pilot": (dict(torso="#1f2f55", kind="pilot", hair="#a8a8a8", hairstyle="short"), "1971 airline captain, navy jacket with gold stripes, grey hair"),
  "boy": (dict(torso="#d84a3a", kind="stripes", second="#f4f0e4", hair="#b98a52", hairstyle="messy"), "an eight year old boy in a red and white striped t-shirt"),
  "agent": (dict(torso="#7a7f88", kind="agent", second="#22262e", hair="#1f1a22", hairstyle="short"), "1970s FBI agent in a grey suit and narrow tie"),
- "juliane": (dict(torso="#f0dc8a", kind="dress", hair="#e3c46a", hairstyle="long"), "17 year old girl in a pale yellow summer dress with long blond hair"),
+ "juliane": (dict(torso="#9ccbe6", kind="dress", hair="#e3c46a", hairstyle="long"), "17 year old girl in a pale yellow summer dress with long blond hair"),
  "father": (dict(torso="#a89a64", kind="khaki", hair="#a8a8a8", hairstyle="grey_sides", glasses=True, beard="#bdbdbd"), "biologist in a khaki field shirt, round glasses, grey beard"),
  "logger": (dict(torso="#4a6fa0", kind="overall", hair="#1f1a22", hairstyle="short", skin="#efd6ad", moustache="#1f1a22"), "rainforest logger in a faded blue work shirt with a black moustache"),
  "roy": (dict(torso="#6b7a3d", kind="ranger", second="#5a3a22", hair="#9a9a9a", hairstyle="short", browc="#8a8a8a", brow=15), "park ranger in an olive uniform shirt with a badge, grey hair"),
@@ -264,4 +264,6 @@ if __name__ == "__main__":
     if "bd" in what: make_bd()
     if "hats" in what: make_hats()
     if "chars" in what:
-        for k, (sp, desc) in CHARS.items(): make_char(k, sp, desc); print("char", k, flush=True)
+        for k, (sp, desc) in CHARS.items():
+            if os.environ.get("ONLY") and k not in os.environ["ONLY"].split(","): continue
+            make_char(k, sp, desc); print("char", k, flush=True)
