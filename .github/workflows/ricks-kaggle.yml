@@ -55,8 +55,7 @@ jobs:
           D=results_ricks/$(basename "${{ github.event.inputs.project }}"); mkdir -p $D
           cp out/render_result.json $D/ 2>/dev/null || echo '{"note":"no result"}' > $D/render_result.json
           cp out/result.json out/log.txt out/*.jpg $D/ 2>/dev/null || true
-          rm -f $D/short.mp4
-          [ -f out/out.mp4 ] && [ $(stat -c%s out/out.mp4) -lt 99000000 ] && cp out/out.mp4 $D/short.mp4 || true
+          if [ -f out/out.mp4 ] && [ $(stat -c%s out/out.mp4) -gt 100000 ] && [ $(stat -c%s out/out.mp4) -lt 99000000 ]; then cp out/out.mp4 $D/short.mp4; fi
           git checkout -- kaggle 2>/dev/null || true
           git config user.name "claude-bot"; git config user.email "bot@example.com"
           git add results_ricks; git commit -qm "Ricks render result $(basename '${{ github.event.inputs.project }}') [skip ci]" || exit 0
