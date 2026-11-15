@@ -99,25 +99,30 @@ jobs:
           miss=[i for i in range($TOTAL) if i not in have]
           print(','.join(map(str,miss)))")
           echo "have $(ls frames/fr_*.png 2>/dev/null | wc -l)/$TOTAL ; missing: ${MISS:-none}"
+          ROOT="$PWD"   # repo root; keep all paths anchored here
           if [ -n "$MISS" ]; then
             echo "=== rendering missing frames in stitch job ==="
-            cd inkbeat
-            npm ci --no-audit --no-fund
-            npx --yes playwright@1.56.0 install chromium
-            sudo npx --yes playwright@1.56.0 install-deps chromium || true
-            CHROME=$(find /home /root -path '*ms-playwright*' -name chrome -type f 2>/dev/null | head -1)
-            rm -rf out/fix && mkdir -p out/fix
-            set +e
-            timeout 1500 npx remotion render src/index.ts "$COMP" out/fix \
-              --sequence --image-format=png --frames=$MISS \
-              --gl=swangle --chrome-mode=chrome-for-testing --browser-executable="$CHROME" \
-              --concurrency=4 --timeout=600000
-            echo "gap-fill rc=$?"
-            set -e
-            cd out/fix
-            for f in element-*.png; do [ -e "$f" ] || continue; n=$(echo "$f" | sed -E 's/element-0*([0-9]+)\.png/\1/'); [ -z "$n" ] && n=0; printf -v p "fr_%06d.png" "$n"; mv "$f" "$p"; done
-            cd ../..; cp inkbeat/out/fix/fr_*.png frames/ 2>/dev/null || true
+            # subshell so the outer working directory (ROOT) is preserved no matter what
+            (
+              cd inkbeat
+              npm ci --no-audit --no-fund
+              npx --yes playwright@1.56.0 install chromium
+              sudo npx --yes playwright@1.56.0 install-deps chromium || true
+              CHROME=$(find /home /root -path '*ms-playwright*' -name chrome -type f 2>/dev/null | head -1)
+              rm -rf out/fix && mkdir -p out/fix
+              set +e
+              timeout 1500 npx remotion render src/index.ts "$COMP" out/fix \
+                --sequence --image-format=png --frames=$MISS \
+                --gl=swangle --chrome-mode=chrome-for-testing --browser-executable="$CHROME" \
+                --concurrency=4 --timeout=600000
+              echo "gap-fill rc=$?"
+              set -e
+              cd out/fix
+              for f in element-*.png; do [ -e "$f" ] || continue; n=$(echo "$f" | sed -E 's/element-0*([0-9]+)\.png/\1/'); [ -z "$n" ] && n=0; printf -v p "fr_%06d.png" "$n"; mv "$f" "$p"; done
+            )
+            cp "$ROOT"/inkbeat/out/fix/fr_*.png "$ROOT"/frames/ 2>/dev/null || true
           fi
+          cd "$ROOT"
           # backstop: any frame STILL missing is filled from the nearest existing frame so the video is always complete
           python3 -c "
           import os,glob,shutil
