@@ -341,7 +341,7 @@ function moodParams(m) {
   if (m.cutoutTint) P.tint = new THREE.Color(m.cutoutTint);
   else {                                     // flat characters still take the colour of the light they stand in
     const l = P.sunC.clone().multiplyScalar(P.sunI * 0.6).add(P.fSky.clone().multiplyScalar(P.fillI * 0.5)), mx = Math.max(l.r, l.g, l.b, 1e-3);
-    l.multiplyScalar(1 / mx); P.tint = new THREE.Color(1, 1, 1).lerp(l, 0.55).multiplyScalar(clamp(0.55 + 0.2 * P.sunI, 0.6, 1));
+    l.multiplyScalar(1 / mx); P.tint = new THREE.Color(1, 1, 1).lerp(l, 0.28).multiplyScalar(clamp(0.74 + 0.14 * P.sunI, 0.8, 1));   // lighter wash: keep local colours vivid, inkbeat-style
   }
   return P;
 }
@@ -413,7 +413,7 @@ window.setup = async (spec) => {
   const skyGeo = new THREE.SphereGeometry(400, 32, 16);
   skyGeo.setAttribute('color', new THREE.Float32BufferAttribute(new Float32Array(skyGeo.attributes.position.count * 3), 3));
   skyMesh = new THREE.Mesh(skyGeo, new THREE.MeshBasicMaterial({ vertexColors: true, side: THREE.BackSide, fog: false, depthWrite: false })); skyMesh.renderOrder = -10; setRoot.add(skyMesh);
-  scene.fog = new THREE.Fog('#f2b98a', 40, 160);
+  scene.fog = new THREE.Fog('#f2b98a', 110, 420);   // push haze far back so the near set (tower, props) stays crisp, inkbeat-style
   sun = new THREE.DirectionalLight('#ffe0b5', 2.4); sun.castShadow = true;
   const sm = spec.shadowMap || (SCALE < 1 ? 2048 : 4096); sun.shadow.mapSize.set(sm, sm); sun.shadow.bias = -0.0004; sun.shadow.normalBias = 0.02; sun.shadow.radius = 3;
   const sc = sun.shadow.camera; sc.left = -18; sc.right = 18; sc.top = 18; sc.bottom = -18; sc.near = 1; sc.far = 120;
