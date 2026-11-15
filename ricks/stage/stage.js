@@ -18,7 +18,7 @@ const ARRIVE_GAIN = 0.7;              // camera arrives fast, then settles
 const GLIDE_S = 0.8, DISSOLVE_S = 8 / 30;
 const CAPTION_Y = 1350, CAPTION_PX = 70;
 
-let FPS = 30, SCALE = 1, S;
+let FPS = 30, SCALE = 1, SS = 1, S;   // SS = internal supersample factor (render big, downscale) to kill temporal shimmer/aliasing
 let renderer, scene, camera, setRoot, sun, hemi, skyMesh, backdrop, inkPass, backdrops = [];
 let out, octx;                        // 2D output canvas (render + captions)
 const chars = {}, shots = [], anchors = [];
@@ -41,7 +41,10 @@ async function texture(path, repeat) {
   const key = path + '|' + JSON.stringify(repeat || 1);
   if (texCache.has(key)) return texCache.get(key);
   const img = await loadImage(path), t = new THREE.Texture(img);
-  t.colorSpace = THREE.SRGBColorSpace; t.wrapS = t.wrapT = THREE.RepeatWrapping; t.anisotropy = 8;
+  t.colorSpace = THREE.SRGBColorSpace; t.wrapS = t.wrapT = THREE.RepeatWrapping;
+  // max anisotropy + trilinear mipmaps: stops patterned surfaces (wallpaper, wood floor) shimmering at grazing angles
+  t.anisotropy = (renderer && renderer.capabilities) ? renderer.capabilities.getMaxAnisotropy() : 16;
+  t.minFilter = THREE.LinearMipmapLinearFilter; t.magFilter = THREE.LinearFilter; t.generateMipmaps = true;
   const r = Array.isArray(repeat) ? repeat : [repeat || 1, repeat || 1]; t.repeat.set(r[0], r[1]); t.needsUpdate = true;
   texCache.set(key, t); return t;
 }
@@ -358,7 +361,16 @@ function moodAt(t) {
 }
 function applyMood(P, focus) {
   const el = rad(P.el), az = rad(P.az), dir = new THREE.Vector3(Math.sin(az) * Math.cos(el), Math.sin(el), Math.cos(az) * Math.cos(el));
-  sun.color.copy(P.sunC); sun.intensity = P.sunI; sun.target.position.copy(focus); sun.position.copy(focus).addScaledVector(dir, 40); sun.target.updateMatrixWorld();
+  sun.color.copy(P.sunC); sun.intensity = P.sunI;
+  // texel-snap the shadow focus so the shadow map doesn't "swim" frame-to-frame (crawling acne/edges on flat walls/desk)
+  const sc2 = sun.shadow.camera, texel = (sc2.right - sc2.left) / sun.shadow.mapSize.x;
+  const fwd = dir.clone().negate().normalize();
+  const rt = new THREE.Vector3().crossVectors(fwd, new THREE.Vector3(0, 1, 0)).normalize();
+  const upv = new THREE.Vector3().crossVectors(rt, fwd).normalize();
+  const snap = rt.clone().multiplyScalar(Math.round(focus.dot(rt) / texel) * texel)
+    .addScaledVector(upv, Math.round(focus.dot(upv) / texel) * texel)
+    .addScaledVector(fwd, focus.dot(fwd));
+  sun.target.position.copy(snap); sun.position.copy(snap).addScaledVector(dir, 40); sun.target.updateMatrixWorld();
   hemi.color.copy(P.fSky); hemi.groundColor.copy(P.fGnd); hemi.intensity = P.fillI;
   renderer.toneMappingExposure = (S.exposure ?? 1) * P.exposure;
   const pos = skyMesh.geometry.attributes.position, col = skyMesh.geometry.attributes.color, c = new THREE.Color();
@@ -371,9 +383,9 @@ function applyMood(P, focus) {
 
 // ------------------------------------------------------------ ink outline on the 3D set
 function makeInk(width, color) {
-  const rt = new THREE.WebGLRenderTarget(Math.round(W * SCALE), Math.round(H * SCALE), { depthTexture: new THREE.DepthTexture(), samples: 0 });
+  const rt = new THREE.WebGLRenderTarget(Math.round(W * SCALE * SS), Math.round(H * SCALE * SS), { depthTexture: new THREE.DepthTexture(), samples: 0 });
   const mat = new THREE.ShaderMaterial({
-    uniforms: { tN: { value: rt.texture }, tD: { value: rt.depthTexture }, px: { value: new THREE.Vector2(1 / (W * SCALE), 1 / (H * SCALE)) }, w: { value: width * SCALE }, ink: { value: new THREE.Color(color).convertLinearToSRGB() }, near: { value: 0.1 }, far: { value: 1000 } },
+    uniforms: { tN: { value: rt.texture }, tD: { value: rt.depthTexture }, px: { value: new THREE.Vector2(1 / (W * SCALE * SS), 1 / (H * SCALE * SS)) }, w: { value: width * SCALE * SS }, ink: { value: new THREE.Color(color).convertLinearToSRGB() }, near: { value: 0.1 }, far: { value: 1000 } },
     vertexShader: 'varying vec2 vUv; void main(){ vUv = uv; gl_Position = vec4(position.xy, 0.0, 1.0); }',
     fragmentShader: `
       uniform sampler2D tN, tD; uniform vec2 px; uniform float w, near, far; uniform vec3 ink; varying vec2 vUv;
@@ -399,12 +411,13 @@ function makeInk(width, color) {
 // ------------------------------------------------------------ setup
 window.setup = async (spec) => {
   S = spec; FPS = spec.fps || 30; SCALE = spec._scale || 1;
+  SS = spec._ss || (SCALE >= 1 ? 1.5 : 1.3);   // supersample factor: render larger, downscale on compose
   const rw = Math.round(W * SCALE), rh = Math.round(H * SCALE);
   renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true, alpha: false });
-  renderer.setPixelRatio(1); renderer.setSize(rw, rh);
+  renderer.setPixelRatio(1); renderer.setSize(Math.round(rw * SS), Math.round(rh * SS));
   renderer.outputColorSpace = THREE.SRGBColorSpace; renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-  out = canvasOf(rw, rh); octx = out.getContext('2d'); document.body.appendChild(out);
+  out = canvasOf(rw, rh); octx = out.getContext('2d'); octx.imageSmoothingEnabled = true; octx.imageSmoothingQuality = 'high'; document.body.appendChild(out);
   gltf = new GLTFLoader(); gltf.setMeshoptDecoder(MeshoptDecoder);
   const draco = new DRACOLoader(); draco.setDecoderPath('./node_modules/three/examples/jsm/libs/draco/gltf/'); gltf.setDRACOLoader(draco);
   if (spec.font) { try { const ff = new FontFace('ShortCaption', `url(${projectUrl(spec.font)})`); await ff.load(); document.fonts.add(ff); } catch { /* fall back to system heavy sans */ } }
@@ -415,7 +428,7 @@ window.setup = async (spec) => {
   skyMesh = new THREE.Mesh(skyGeo, new THREE.MeshBasicMaterial({ vertexColors: true, side: THREE.BackSide, fog: false, depthWrite: false })); skyMesh.renderOrder = -10; setRoot.add(skyMesh);
   scene.fog = new THREE.Fog('#f2b98a', 110, 420);   // push haze far back so the near set (tower, props) stays crisp, inkbeat-style
   sun = new THREE.DirectionalLight('#ffe0b5', 2.4); sun.castShadow = true;
-  const sm = spec.shadowMap || (SCALE < 1 ? 2048 : 4096); sun.shadow.mapSize.set(sm, sm); sun.shadow.bias = -0.0004; sun.shadow.normalBias = 0.02; sun.shadow.radius = 3;
+  const sm = spec.shadowMap || (SCALE < 1 ? 2048 : 4096); sun.shadow.mapSize.set(sm, sm); sun.shadow.bias = -0.0006; sun.shadow.normalBias = 0.055; sun.shadow.radius = 4;   // kill self-shadow acne (flat-surface flicker) + softer stable edges
   const sc = sun.shadow.camera; sc.left = -18; sc.right = 18; sc.top = 18; sc.bottom = -18; sc.near = 1; sc.far = 120;
   scene.add(sun); scene.add(sun.target);
   hemi = new THREE.HemisphereLight('#8ea2ff', '#6a3b6e', 1.1); scene.add(hemi);
@@ -539,11 +552,11 @@ function compose(i, withCaption = true) {
   for (const o of setRoot.children) { const pr = o.userData.prop; if (pr && pr.from !== undefined) o.visible = t >= pr.from && t < (pr.to ?? 1e9); }   // props that exist only while their line is spoken
   const mix = smoother(plan.mix), focusOf = (p) => p.anchor;
   if (plan.kind === 'dissolve') {
-    applyMood(moodAt(t), focusOf(plan.a)); setCamera(plan.a); drawScene(); octx.globalAlpha = 1; octx.drawImage(renderer.domElement, 0, 0);
-    applyMood(moodAt(t), focusOf(plan.b)); setCamera(plan.b); drawScene(); octx.globalAlpha = clamp(plan.mix, 0, 1); octx.drawImage(renderer.domElement, 0, 0); octx.globalAlpha = 1;
+    applyMood(moodAt(t), focusOf(plan.a)); setCamera(plan.a); drawScene(); octx.globalAlpha = 1; octx.drawImage(renderer.domElement, 0, 0, out.width, out.height);
+    applyMood(moodAt(t), focusOf(plan.b)); setCamera(plan.b); drawScene(); octx.globalAlpha = clamp(plan.mix, 0, 1); octx.drawImage(renderer.domElement, 0, 0, out.width, out.height); octx.globalAlpha = 1;
   } else {
     const p = plan.kind === 'glide' ? { pos: plan.a.pos.clone().lerp(plan.b.pos, mix), quat: plan.a.quat.clone().slerp(plan.b.quat, mix), fov: lerp(plan.a.fov, plan.b.fov, mix), anchor: plan.a.anchor.clone().lerp(plan.b.anchor, mix) } : plan.a;
-    applyMood(moodAt(t), p.anchor); setCamera(p); drawScene(); octx.drawImage(renderer.domElement, 0, 0);
+    applyMood(moodAt(t), p.anchor); setCamera(p); drawScene(); octx.drawImage(renderer.domElement, 0, 0, out.width, out.height);
   }
   if (withCaption) drawCaption(t);
   return plan;
