@@ -21,20 +21,29 @@ sh("rm -rf /tmp/repo && git clone -q --depth 1 --branch %s https://github.com/da
 P = "/tmp/repo/inkbeat"
 sh("cd %s && npm ci --no-audit --no-fund 2>&1 | tail -3" % P, timeout=1800)
 sh("which ffmpeg || (apt-get update -qq && apt-get install -y -qq ffmpeg) 2>&1 | tail -2", timeout=900)
-# use the GPU via ANGLE/EGL; Remotion downloads its own headless shell from remotion.media (Kaggle internet is on)
-gl = "--gl=angle"
+# a known-good Chromium (Playwright), like the ricks path; without --browser-executable Remotion fetches its own shell
+sh("cd %s && npx playwright install chromium 2>&1 | tail -1; npx playwright install-deps chromium 2>&1 | tail -1" % P, timeout=1500)
+CHROME = sh("cd %s && node -e \"const{chromium}=require('playwright-core');console.log(chromium.executablePath())\" 2>/dev/null || find /root/.cache/ms-playwright -name chrome -type f 2>/dev/null | head -1" % P).strip().splitlines()[-1] if True else ""
+be = (" --browser-executable='%s'" % CHROME) if CHROME and "/" in CHROME else ""
 out = P + "/out"; os.makedirs(out, exist_ok=True)
+def render(gl, tag):
+    log = "/tmp/rr_%s.log" % tag
+    if BLUR:
+        c = "cd %s && npx remotion render src/index.ts %sSub out/sub.mp4 --gl=%s%s --timeout=300000 --concurrency=2 > %s 2>&1; ffmpeg -v error -y -i out/sub.mp4 -vf \"tmix=frames=4:weights='1 1 1 1',select='not(mod(n+1\\,4))',setpts=N/30/TB\" -r 30 -c:v libx264 -crf 20 -pix_fmt yuv420p out/pilot.mp4" % (P, COMP, gl, be, log)
+    else:
+        c = "cd %s && npx remotion render src/index.ts %s out/pilot.mp4 --gl=%s%s --timeout=300000 --concurrency=2 > %s 2>&1" % (P, COMP, gl, be, log)
+    sh(c, timeout=40000, show=200)
+    return open(log).read() if os.path.exists(log) else ""
 t = time.time()
-if BLUR:
-    # render SUB x fps, then average 4 sub-frames per output frame (180 deg shutter) -> real motion blur
-    sh("cd %s && node -e \"const{SUB}=require('./src/inkbeat/core/frame');console.log(SUB)\" > /tmp/sub.txt 2>/dev/null; cat /tmp/sub.txt" % P)
-    r = sh("cd %s && npx remotion render src/index.ts %sSub out/sub.mp4 %s --timeout=300000 --concurrency=2 2>&1 | tail -6" % (P, COMP, gl), timeout=40000, show=4000)
-    sh("cd %s && ffmpeg -v error -y -i out/sub.mp4 -vf \"tmix=frames=4:weights='1 1 1 1',select='not(mod(n+1\\,4))',setpts=N/30/TB\" -r 30 -c:v libx264 -crf 20 -pix_fmt yuv420p out/pilot.mp4" % P, timeout=3600)
-else:
-    r = sh("cd %s && npx remotion render src/index.ts %s out/pilot.mp4 %s --timeout=300000 --concurrency=2 2>&1 | tail -8" % (P, COMP, gl), timeout=40000, show=4000)
+rep["chrome"] = CHROME
+log = render("angle", "angle")       # try the GPU path
+rep["gl_used"] = "angle"
+if not os.path.exists(P + "/out/pilot.mp4"):    # fall back to software so we still get the video, and record that GPU failed
+    rep["angle_tail"] = log[-1800:]
+    log = render("swiftshader", "sw"); rep["gl_used"] = "swiftshader"
 rep["total_s"] = round(time.time() - t, 1)
-rep["render_tail"] = r[-1500:]
-rep["gl_renderer"] = sh("grep -oi 'angle\\|swiftshader\\|swangle\\|nvidia\\|tesla' /tmp/*.log 2>/dev/null | sort -u | tr '\\n' ' '").strip() or "n/a"
+rep["render_tail"] = log[-1800:]
+rep["gl_renderer"] = sh("grep -hoiE 'angle \\(nvidia|tesla|swiftshader|llvmpipe|gl_renderer[^,]*' /tmp/rr_*.log 2>/dev/null | sort -u | tr '\\n' '|'").strip() or "n/a"
 mp4 = P + "/out/pilot.mp4"
 rep["ok"] = os.path.exists(mp4)
 if rep["ok"]:
