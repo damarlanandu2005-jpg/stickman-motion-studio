@@ -333,7 +333,7 @@ async function makeProp(p) {
 let gltf;
 
 // ------------------------------------------------------------ lighting moods
-const MOOD0 = { sun: { azimuth: 35, elevation: 50, color: '#ffe0b5', intensity: 2.4 }, sky: { top: '#5f86d8', horizon: '#f2b98a' }, fill: { sky: '#8ea2ff', ground: '#6a3b6e', intensity: 1.1 }, exposure: 1 };
+const MOOD0 = { sun: { azimuth: 35, elevation: 50, color: '#fff1d8', intensity: 2.4 }, sky: { top: '#4f7fd8', horizon: '#c3d4e6' }, fill: { sky: '#9db6ff', ground: '#6a3b6e', intensity: 1.1 }, exposure: 1 };   // clean blue sky (was warm orange haze), inkbeat-style
 function moodParams(m) {
   m = m || {}; const sn = { ...MOOD0.sun, ...(m.sun || {}) }, sk = { ...MOOD0.sky, ...(m.sky || {}) }, fl = { ...MOOD0.fill, ...(m.fill || {}) };
   const P = { az: sn.azimuth, el: sn.elevation, sunI: sn.intensity, fillI: fl.intensity, exposure: m.exposure ?? 1,
@@ -446,7 +446,7 @@ window.setup = async (spec) => {
   lightKeys = lk.map(k => { if (!moods[k.mood]) throw new Error('unknown mood "' + k.mood + '"'); return { t: k.t, fade: k.fade ?? 0.8, P: moodParams(moods[k.mood]) }; });
 
   camera = new THREE.PerspectiveCamera(40, W / H, 0.1, 1000);
-  const ink = spec.ink || {}; if ((ink.set ?? 4) > 0) inkPass = makeInk(ink.set ?? 4, ink.color || LINE);
+  const ink = spec.ink || {}; if ((ink.set ?? 5) > 0) inkPass = makeInk(ink.set ?? 5, ink.color || LINE);   // crisper default outline, inkbeat-style
 
   for (const s of spec._shots) {
     const n = Math.max(2, Math.round(s.dur * FPS)), yaw = rad(s.yaw || 0), pitch = rad(s.pitch ?? 6);
