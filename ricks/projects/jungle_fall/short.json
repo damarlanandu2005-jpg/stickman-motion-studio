@@ -1,0 +1,1462 @@
+{
+ "fps": 30,
+ "audio": {
+  "voice": "audio/voice.mp3",
+  "music": "audio/music.mp3",
+  "musicDb": -17
+ },
+ "words": "audio/words.json",
+ "captions": {
+  "wordsPer": 1
+ },
+ "moods": {
+  "day": {
+   "sun": {
+    "azimuth": 35,
+    "elevation": 50,
+    "color": "#ffe0b5",
+    "intensity": 2.4
+   },
+   "sky": {
+    "top": "#5f86d8",
+    "horizon": "#f2b98a"
+   },
+   "fill": {
+    "sky": "#8ea2ff",
+    "ground": "#6a3b6e",
+    "intensity": 1.1
+   }
+  },
+  "night": {
+   "sun": {
+    "azimuth": -40,
+    "elevation": 38,
+    "color": "#c6d0ff",
+    "intensity": 1.8
+   },
+   "sky": {
+    "top": "#2a3676",
+    "horizon": "#8088c4"
+   },
+   "fill": {
+    "sky": "#a0a8e6",
+    "ground": "#6e6596",
+    "intensity": 1.6
+   },
+   "exposure": 1.28
+  },
+  "storm": {
+   "sun": {
+    "azimuth": -30,
+    "elevation": 30,
+    "color": "#b4bcd2",
+    "intensity": 1.0
+   },
+   "sky": {
+    "top": "#383c54",
+    "horizon": "#7a8098"
+   },
+   "fill": {
+    "sky": "#8f98b8",
+    "ground": "#4a4a62",
+    "intensity": 1.25
+   },
+   "exposure": 1.15
+  },
+  "flash": {
+   "sun": {
+    "azimuth": -30,
+    "elevation": 40,
+    "color": "#ffffff",
+    "intensity": 4.5
+   },
+   "sky": {
+    "top": "#e8ecff",
+    "horizon": "#ffffff"
+   },
+   "fill": {
+    "sky": "#ffffff",
+    "ground": "#d8dcf0",
+    "intensity": 2.6
+   },
+   "exposure": 1.5
+  }
+ },
+ "ink": {
+  "set": 4
+ },
+ "end": "audio",
+ "lighting": [
+  {
+   "t": 0,
+   "mood": "day"
+  },
+  {
+   "t": 4.8,
+   "mood": "storm",
+   "fade": 0.6
+  },
+  {
+   "t": 9.0,
+   "mood": "flash",
+   "fade": 0.05
+  },
+  {
+   "t": 9.2,
+   "mood": "storm",
+   "fade": 0.25
+  },
+  {
+   "t": 14.0,
+   "mood": "day",
+   "fade": 0.8
+  }
+ ],
+ "ground": {
+  "texture": "textures/jungle_floor.png",
+  "repeat": [
+   600,
+   600
+  ]
+ },
+ "backdrop": [
+  {
+   "image": "bg/storm_sky.png",
+   "blur": 3,
+   "repeat": 3,
+   "near": [
+    -34,
+    34
+   ]
+  },
+  {
+   "image": "bg/jungle.png",
+   "blur": 3,
+   "repeat": 3,
+   "near": [
+    36,
+    104
+   ]
+  },
+  {
+   "image": "bg/jungle.png",
+   "blur": 3,
+   "repeat": 3,
+   "near": [
+    106,
+    174
+   ]
+  },
+  {
+   "image": "bg/jungle.png",
+   "blur": 3,
+   "repeat": 3,
+   "near": [
+    176,
+    244
+   ]
+  },
+  {
+   "image": "bg/jungle.png",
+   "blur": 3,
+   "repeat": 3,
+   "near": [
+    246,
+    314
+   ]
+  }
+ ],
+ "characters": [
+  {
+   "id": "jul_s",
+   "puppet": "puppets/juliane",
+   "pos": [
+    0,
+    3.0,
+    0
+   ],
+   "height": 1.65,
+   "face": "scared"
+  },
+  {
+   "id": "jul_j",
+   "puppet": "puppets/juliane",
+   "pos": [
+    69.1,
+    0,
+    0
+   ],
+   "height": 1.65,
+   "face": "neutral"
+  },
+  {
+   "id": "father_j",
+   "puppet": "puppets/father",
+   "pos": [
+    71.0,
+    0,
+    0
+   ],
+   "height": 1.8,
+   "face": "neutral",
+   "flip": true
+  },
+  {
+   "id": "jul_c",
+   "puppet": "puppets/juliane",
+   "pos": [
+    139.1,
+    0,
+    0.2
+   ],
+   "height": 1.65,
+   "face": "confused"
+  },
+  {
+   "id": "jul_r",
+   "puppet": "puppets/juliane",
+   "pos": [
+    210,
+    0.06,
+    -1.0
+   ],
+   "height": 1.65,
+   "face": "neutral"
+  },
+  {
+   "id": "father_r",
+   "puppet": "puppets/father",
+   "pos": [
+    208.2,
+    0,
+    1.4
+   ],
+   "height": 1.8,
+   "face": "neutral"
+  },
+  {
+   "id": "jul_h",
+   "puppet": "puppets/juliane",
+   "pos": [
+    279.4,
+    0,
+    0.3
+   ],
+   "height": 1.65,
+   "face": "nervous"
+  },
+  {
+   "id": "logger_h",
+   "puppet": "puppets/logger",
+   "pos": [
+    281.3,
+    0,
+    0.1
+   ],
+   "height": 1.75,
+   "face": "happy",
+   "flip": true,
+   "hat": {
+    "file": "hats/straw_hat.png",
+    "scale": 1.5,
+    "sit": 0.2
+   }
+  }
+ ],
+ "props": [
+  {
+   "type": "box",
+   "pos": [
+    0,
+    0.01,
+    -4
+   ],
+   "size": [
+    60,
+    0.04,
+    60
+   ],
+   "color": "#5a5870"
+  },
+  {
+   "type": "plane",
+   "image": "props/jet.png",
+   "pos": [
+    0,
+    0,
+    -7
+   ],
+   "size": [
+    15,
+    4.9
+   ]
+  },
+  {
+   "type": "cone",
+   "pos": [
+    -16,
+    0,
+    -14
+   ],
+   "r": 9,
+   "h": 5,
+   "color": "#3f3d55"
+  },
+  {
+   "type": "cone",
+   "pos": [
+    2,
+    0,
+    -22
+   ],
+   "r": 12,
+   "h": 6,
+   "color": "#383650"
+  },
+  {
+   "type": "cone",
+   "pos": [
+    18,
+    0,
+    -15
+   ],
+   "r": 9,
+   "h": 5,
+   "color": "#43415a"
+  },
+  {
+   "type": "cone",
+   "pos": [
+    -6,
+    0,
+    -9
+   ],
+   "r": 4.5,
+   "h": 2.5,
+   "color": "#4a4862"
+  },
+  {
+   "type": "tree",
+   "pos": [
+    62,
+    0,
+    -5
+   ],
+   "scale": 2.6,
+   "color": "#2f6b3a"
+  },
+  {
+   "type": "tree",
+   "pos": [
+    66,
+    0,
+    -9
+   ],
+   "scale": 3.0,
+   "color": "#2a6a3a"
+  },
+  {
+   "type": "tree",
+   "pos": [
+    75,
+    0,
+    -6
+   ],
+   "scale": 2.8,
+   "color": "#35703e"
+  },
+  {
+   "type": "tree",
+   "pos": [
+    79,
+    0,
+    -10
+   ],
+   "scale": 3.2,
+   "color": "#2a6035"
+  },
+  {
+   "type": "tree",
+   "pos": [
+    70,
+    0,
+    -14
+   ],
+   "scale": 3.4,
+   "color": "#2d6538"
+  },
+  {
+   "type": "tree",
+   "pos": [
+    57,
+    0,
+    -11
+   ],
+   "scale": 3.0,
+   "color": "#2a6a3a"
+  },
+  {
+   "type": "tree",
+   "pos": [
+    84,
+    0,
+    -5
+   ],
+   "scale": 2.6,
+   "color": "#2f6b3a"
+  },
+  {
+   "type": "cone",
+   "pos": [
+    67,
+    0,
+    -2.3
+   ],
+   "r": 0.55,
+   "h": 0.9,
+   "color": "#3f9a4a"
+  },
+  {
+   "type": "cone",
+   "pos": [
+    73.5,
+    0,
+    -2.6
+   ],
+   "r": 0.6,
+   "h": 1.0,
+   "color": "#3a8f45"
+  },
+  {
+   "type": "cone",
+   "pos": [
+    63.5,
+    0,
+    -3
+   ],
+   "r": 0.6,
+   "h": 1.1,
+   "color": "#46a050"
+  },
+  {
+   "type": "cone",
+   "pos": [
+    77.5,
+    0,
+    -3.2
+   ],
+   "r": 0.5,
+   "h": 0.8,
+   "color": "#3f9a4a"
+  },
+  {
+   "type": "tree",
+   "pos": [
+    131,
+    0,
+    -6
+   ],
+   "scale": 2.8,
+   "color": "#2f6b3a"
+  },
+  {
+   "type": "tree",
+   "pos": [
+    135,
+    0,
+    -10
+   ],
+   "scale": 3.2,
+   "color": "#2a6a3a"
+  },
+  {
+   "type": "tree",
+   "pos": [
+    147,
+    0,
+    -8
+   ],
+   "scale": 3.0,
+   "color": "#35703e"
+  },
+  {
+   "type": "tree",
+   "pos": [
+    153,
+    0,
+    -6
+   ],
+   "scale": 2.6,
+   "color": "#2f6b3a"
+  },
+  {
+   "type": "box",
+   "pos": [
+    137.6,
+    0.04,
+    -3.2
+   ],
+   "size": [
+    1.8,
+    0.7,
+    0.9
+   ],
+   "color": "#2f5f9a"
+  },
+  {
+   "type": "box",
+   "pos": [
+    137.6,
+    0.5,
+    -3.55
+   ],
+   "size": [
+    1.8,
+    0.9,
+    0.2
+   ],
+   "color": "#2a5588"
+  },
+  {
+   "type": "box",
+   "pos": [
+    137.8,
+    0.05,
+    -1.6
+   ],
+   "size": [
+    0.8,
+    0.55,
+    0.55
+   ],
+   "color": "#7a4a2a"
+  },
+  {
+   "type": "box",
+   "pos": [
+    143.6,
+    0.04,
+    -3.6
+   ],
+   "size": [
+    3.0,
+    0.18,
+    1.4
+   ],
+   "color": "#d6dbe0"
+  },
+  {
+   "type": "box",
+   "pos": [
+    145.4,
+    0.05,
+    -2.2
+   ],
+   "size": [
+    1.0,
+    0.5,
+    0.4
+   ],
+   "color": "#c8cdd2"
+  },
+  {
+   "type": "box",
+   "pos": [
+    141.2,
+    0.05,
+    -4.8
+   ],
+   "size": [
+    1.6,
+    0.12,
+    1.0
+   ],
+   "color": "#c0c6cc"
+  },
+  {
+   "type": "cone",
+   "pos": [
+    146.5,
+    0,
+    -3
+   ],
+   "r": 0.6,
+   "h": 1.0,
+   "color": "#3f9a4a"
+  },
+  {
+   "type": "cone",
+   "pos": [
+    134.4,
+    0,
+    -2.2
+   ],
+   "r": 0.5,
+   "h": 0.8,
+   "color": "#3a8f45"
+  },
+  {
+   "type": "box",
+   "pos": [
+    210,
+    0.02,
+    -4
+   ],
+   "size": [
+    44,
+    0.06,
+    10
+   ],
+   "texture": "textures/water.png",
+   "repeat": [
+    10,
+    3
+   ]
+  },
+  {
+   "type": "tree",
+   "pos": [
+    199,
+    0,
+    -13
+   ],
+   "scale": 3.0,
+   "color": "#2f6b3a"
+  },
+  {
+   "type": "tree",
+   "pos": [
+    205,
+    0,
+    -14
+   ],
+   "scale": 3.2,
+   "color": "#2a6a3a"
+  },
+  {
+   "type": "tree",
+   "pos": [
+    216,
+    0,
+    -13
+   ],
+   "scale": 3.0,
+   "color": "#35703e"
+  },
+  {
+   "type": "tree",
+   "pos": [
+    223,
+    0,
+    -12
+   ],
+   "scale": 2.8,
+   "color": "#2f6b3a"
+  },
+  {
+   "type": "cone",
+   "pos": [
+    203,
+    0,
+    -9
+   ],
+   "r": 0.7,
+   "h": 1.2,
+   "color": "#3f9a4a"
+  },
+  {
+   "type": "cone",
+   "pos": [
+    218,
+    0,
+    -9.5
+   ],
+   "r": 0.7,
+   "h": 1.1,
+   "color": "#3a8f45"
+  },
+  {
+   "type": "house",
+   "pos": [
+    275,
+    0,
+    -7
+   ],
+   "size": [
+    3.6,
+    2.6,
+    3.2
+   ],
+   "color": "#a58a5a",
+   "roof": "#7a6430",
+   "door": "#3a2a1a",
+   "windows": false
+  },
+  {
+   "type": "box",
+   "pos": [
+    292,
+    0.02,
+    -5.5
+   ],
+   "size": [
+    20,
+    0.06,
+    7
+   ],
+   "texture": "textures/water.png",
+   "repeat": [
+    10,
+    2
+   ]
+  },
+  {
+   "type": "box",
+   "pos": [
+    285,
+    0.06,
+    -5.5
+   ],
+   "size": [
+    3.6,
+    0.45,
+    1.2
+   ],
+   "color": "#7a4a2a"
+  },
+  {
+   "type": "box",
+   "pos": [
+    286.9,
+    0.06,
+    -5.5
+   ],
+   "size": [
+    0.9,
+    0.3,
+    0.9
+   ],
+   "color": "#6a3f24"
+  },
+  {
+   "type": "box",
+   "pos": [
+    278.8,
+    0.04,
+    -2.4
+   ],
+   "size": [
+    0.4,
+    0.55,
+    0.4
+   ],
+   "color": "#a02828"
+  },
+  {
+   "type": "tree",
+   "pos": [
+    269,
+    0,
+    -12
+   ],
+   "scale": 3.0,
+   "color": "#2f6b3a"
+  },
+  {
+   "type": "tree",
+   "pos": [
+    288,
+    0,
+    -12
+   ],
+   "scale": 3.1,
+   "color": "#2a6a3a"
+  },
+  {
+   "type": "tree",
+   "pos": [
+    292,
+    0,
+    -8
+   ],
+   "scale": 2.8,
+   "color": "#2f6b3a"
+  },
+  {
+   "type": "cone",
+   "pos": [
+    271.5,
+    0,
+    -3
+   ],
+   "r": 0.6,
+   "h": 1.0,
+   "color": "#3f9a4a"
+  },
+  {
+   "type": "plane",
+   "image": "props/sign_peru.png",
+   "pos": [
+    -4.4,
+    0,
+    -2.5
+   ],
+   "size": [
+    3.3,
+    1.45
+   ],
+   "from": 4.85,
+   "to": 7.27
+  },
+  {
+   "type": "plane",
+   "image": "props/bolt.png",
+   "pos": [
+    3.2,
+    0,
+    -6.2
+   ],
+   "size": [
+    1.7,
+    4.4
+   ],
+   "from": 8.8,
+   "to": 9.89
+  },
+  {
+   "type": "box",
+   "pos": [
+    -3.2,
+    3.8,
+    -6.5
+   ],
+   "size": [
+    1.6,
+    0.25,
+    0.9
+   ],
+   "color": "#e6e8ec",
+   "from": 9.84,
+   "to": 11.46
+  },
+  {
+   "type": "box",
+   "pos": [
+    3.6,
+    1.0,
+    -6.0
+   ],
+   "size": [
+    1.2,
+    0.3,
+    0.8
+   ],
+   "color": "#cfd3d8",
+   "from": 9.84,
+   "to": 11.46
+  },
+  {
+   "type": "box",
+   "pos": [
+    -5.0,
+    1.2,
+    -6.5
+   ],
+   "size": [
+    0.9,
+    0.2,
+    0.7
+   ],
+   "color": "#d6dade",
+   "from": 9.84,
+   "to": 11.46
+  },
+  {
+   "type": "box",
+   "pos": [
+    5.0,
+    3.6,
+    -6.4
+   ],
+   "size": [
+    1.0,
+    0.25,
+    0.7
+   ],
+   "color": "#e6e8ec",
+   "from": 9.84,
+   "to": 11.46
+  },
+  {
+   "type": "box",
+   "pos": [
+    0,
+    2.45,
+    0.0
+   ],
+   "size": [
+    1.0,
+    0.55,
+    0.9
+   ],
+   "color": "#2f5f9a",
+   "from": 11.41,
+   "to": 12.44
+  },
+  {
+   "type": "box",
+   "pos": [
+    0,
+    3.0,
+    -0.4
+   ],
+   "size": [
+    1.0,
+    1.0,
+    0.18
+   ],
+   "color": "#2a5588",
+   "from": 11.41,
+   "to": 12.44
+  },
+  {
+   "type": "box",
+   "pos": [
+    0,
+    2.45,
+    0.0
+   ],
+   "size": [
+    1.0,
+    0.55,
+    0.9
+   ],
+   "color": "#2f5f9a",
+   "from": 12.39,
+   "to": 14.1
+  },
+  {
+   "type": "plane",
+   "image": "props/suitcase.png",
+   "pos": [
+    139.6,
+    0,
+    -1.6
+   ],
+   "size": [
+    0.9,
+    0.62
+   ],
+   "from": 16.41,
+   "to": 18.21
+  },
+  {
+   "type": "plane",
+   "image": "props/water_drop.png",
+   "pos": [
+    209.6,
+    2.1,
+    -1.0
+   ],
+   "size": [
+    0.9,
+    0.9
+   ],
+   "from": 24.42,
+   "to": 26.75
+  },
+  {
+   "type": "plane",
+   "image": "props/sign_day10.png",
+   "pos": [
+    277.5,
+    1.9,
+    -1.0
+   ],
+   "size": [
+    1.6,
+    1.0
+   ],
+   "from": 33.79,
+   "to": 36.03
+  },
+  {
+   "type": "plane",
+   "image": "props/sign_day11.png",
+   "pos": [
+    277.5,
+    1.9,
+    -1.0
+   ],
+   "size": [
+    1.6,
+    1.0
+   ],
+   "from": 35.98,
+   "to": 37.74
+  }
+ ],
+ "actions": [],
+ "shots": [
+  {
+   "start": "w:0",
+   "target": "jul_s",
+   "headWidth": 0.14,
+   "frameY": -0.07,
+   "zoom": 3,
+   "orbit": -2,
+   "rise": -3.2,
+   "yaw": -10,
+   "pitch": 3,
+   "actions": [
+    {
+     "who": "jul_s",
+     "at": 0.2,
+     "face": "scared",
+     "motion": "fall"
+    }
+   ],
+   "out": "dissolve",
+   "outDur": 0.45
+  },
+  {
+   "start": "w:9",
+   "target": "jul_j",
+   "headWidth": 0.25,
+   "frameY": -0.02,
+   "zoom": 6,
+   "orbit": 2.2,
+   "rise": 0.6,
+   "yaw": 8,
+   "pitch": 3,
+   "actions": [
+    {
+     "who": "jul_j",
+     "at": 0.2,
+     "face": "neutral",
+     "to": [
+      70.4,
+      0,
+      1.2
+     ],
+     "walk": true,
+     "over": 2.3
+    }
+   ],
+   "out": "dissolve",
+   "outDur": 0.45
+  },
+  {
+   "start": "w:18",
+   "anchor": [
+    0,
+    2.4,
+    -7
+   ],
+   "zoom": 4,
+   "orbit": 3,
+   "rise": 0.6,
+   "yaw": -10,
+   "pitch": 1,
+   "distance": 13,
+   "fov": 42,
+   "actions": [],
+   "out": "dissolve",
+   "outDur": 0.45
+  },
+  {
+   "start": "w:27",
+   "anchor": [
+    70,
+    3,
+    -12
+   ],
+   "zoom": -2,
+   "orbit": -3,
+   "rise": 2,
+   "yaw": 8,
+   "pitch": 3,
+   "distance": 16,
+   "fov": 44,
+   "actions": [],
+   "out": "dissolve",
+   "outDur": 0.45
+  },
+  {
+   "start": "w:31",
+   "anchor": [
+    0,
+    2.4,
+    -7
+   ],
+   "zoom": 4,
+   "orbit": -3,
+   "rise": 0.4,
+   "yaw": 6,
+   "pitch": 1,
+   "distance": 11,
+   "fov": 42,
+   "actions": []
+  },
+  {
+   "start": "w:33",
+   "anchor": [
+    0,
+    2.4,
+    -7
+   ],
+   "zoom": 3,
+   "orbit": 5,
+   "rise": 0.5,
+   "yaw": -6,
+   "pitch": 1,
+   "distance": 11,
+   "fov": 42,
+   "actions": []
+  },
+  {
+   "start": "w:40",
+   "target": "jul_s",
+   "headWidth": 0.32,
+   "frameY": 0.07,
+   "zoom": 6,
+   "orbit": 2.2,
+   "rise": 0.6,
+   "yaw": -12,
+   "pitch": 3,
+   "actions": [
+    {
+     "who": "jul_s",
+     "at": 0.0,
+     "face": "scared"
+    }
+   ]
+  },
+  {
+   "start": "w:45",
+   "target": "jul_s",
+   "headWidth": 0.25,
+   "frameY": -0.02,
+   "zoom": 3,
+   "orbit": -2,
+   "rise": -3.2,
+   "yaw": 9,
+   "pitch": 3,
+   "actions": [
+    {
+     "who": "jul_s",
+     "at": 0.0,
+     "face": "scared",
+     "motion": "fall"
+    }
+   ],
+   "out": "dissolve",
+   "outDur": 0.45
+  },
+  {
+   "start": "w:52",
+   "target": "jul_c",
+   "headWidth": 0.14,
+   "frameY": -0.07,
+   "zoom": -3,
+   "orbit": -2.5,
+   "rise": 1.0,
+   "yaw": -10,
+   "pitch": 3,
+   "actions": [
+    {
+     "who": "jul_c",
+     "at": 0.2,
+     "face": "confused"
+    },
+    {
+     "who": "jul_c",
+     "at": 1.5,
+     "face": "sad"
+    }
+   ]
+  },
+  {
+   "start": "w:62",
+   "anchor": [
+    140,
+    0.6,
+    -3.4
+   ],
+   "zoom": 4,
+   "orbit": 3,
+   "rise": 0.6,
+   "yaw": -8,
+   "pitch": 4,
+   "distance": 8,
+   "fov": 42,
+   "actions": []
+  },
+  {
+   "start": "w:67",
+   "target": "jul_c",
+   "headWidth": 0.32,
+   "frameY": 0.07,
+   "zoom": 3,
+   "orbit": -5,
+   "rise": 0.8,
+   "yaw": -4,
+   "pitch": 3,
+   "actions": [
+    {
+     "who": "jul_c",
+     "at": 0.2,
+     "face": "sad"
+    },
+    {
+     "who": "jul_c",
+     "at": 1.6,
+     "face": "crying",
+     "motion": "cower"
+    }
+   ],
+   "out": "dissolve",
+   "outDur": 0.45
+  },
+  {
+   "start": "w:78",
+   "target": "father_j",
+   "headWidth": 0.16,
+   "frameY": -0.02,
+   "zoom": 3,
+   "orbit": 5,
+   "rise": -0.8,
+   "yaw": 12,
+   "pitch": 3,
+   "actions": [
+    {
+     "who": "father_j",
+     "at": 0.2,
+     "face": "happy",
+     "motion": "nod"
+    },
+    {
+     "who": "jul_j",
+     "at": 0.2,
+     "face": "happy"
+    }
+   ]
+  },
+  {
+   "start": "w:82",
+   "target": "jul_j",
+   "headWidth": 0.32,
+   "frameY": 0.07,
+   "zoom": 6,
+   "orbit": 2.2,
+   "rise": 0.6,
+   "yaw": -8,
+   "pitch": 3,
+   "actions": [
+    {
+     "who": "jul_j",
+     "at": 0.1,
+     "face": "neutral"
+    }
+   ],
+   "out": "dissolve",
+   "outDur": 0.45
+  },
+  {
+   "start": "w:90",
+   "target": "father_r",
+   "headWidth": 0.25,
+   "frameY": -0.02,
+   "zoom": 3,
+   "orbit": -5,
+   "rise": 0.8,
+   "yaw": 5,
+   "pitch": 3,
+   "actions": [
+    {
+     "who": "father_r",
+     "at": 0.2,
+     "face": "neutral",
+     "motion": "point"
+    }
+   ]
+  },
+  {
+   "start": "w:97",
+   "target": "jul_r",
+   "headWidth": 0.32,
+   "frameY": 0.07,
+   "zoom": 6,
+   "orbit": 2.2,
+   "rise": 0.6,
+   "yaw": -12,
+   "pitch": 3,
+   "actions": [
+    {
+     "who": "jul_r",
+     "at": 0.1,
+     "face": "happy",
+     "motion": "point"
+    }
+   ]
+  },
+  {
+   "start": "w:101",
+   "target": "jul_r",
+   "headWidth": 0.14,
+   "frameY": -0.07,
+   "zoom": 3,
+   "orbit": 5,
+   "rise": -0.8,
+   "yaw": 9,
+   "pitch": 3,
+   "actions": [
+    {
+     "who": "jul_r",
+     "at": 0.1,
+     "face": "neutral",
+     "to": [
+      212.8,
+      0.06,
+      -1.0
+     ],
+     "walk": true,
+     "over": 1.5,
+     "flip": false
+    }
+   ]
+  },
+  {
+   "start": "w:109",
+   "target": "jul_r",
+   "headWidth": 0.32,
+   "frameY": 0.07,
+   "zoom": 6,
+   "orbit": 2.2,
+   "rise": 0.6,
+   "yaw": -10,
+   "pitch": 3,
+   "actions": [
+    {
+     "who": "jul_r",
+     "at": 0.1,
+     "face": "sad"
+    }
+   ]
+  },
+  {
+   "start": "w:114",
+   "target": "jul_r",
+   "headWidth": 0.32,
+   "frameY": 0.07,
+   "zoom": 3,
+   "orbit": -5,
+   "rise": 0.8,
+   "yaw": 8,
+   "pitch": 3,
+   "actions": [
+    {
+     "who": "jul_r",
+     "at": 0.1,
+     "face": "scared",
+     "motion": "cower"
+    }
+   ],
+   "out": "dissolve",
+   "outDur": 0.45
+  },
+  {
+   "start": "w:119",
+   "target": "jul_c",
+   "headWidth": 0.14,
+   "frameY": -0.07,
+   "zoom": 3,
+   "orbit": 5,
+   "rise": -0.8,
+   "yaw": -4,
+   "pitch": 3,
+   "actions": [
+    {
+     "who": "jul_c",
+     "at": 0.1,
+     "face": "sad",
+     "to": [
+      143.4,
+      0,
+      0.4
+     ],
+     "walk": true,
+     "over": 1.9
+    }
+   ],
+   "out": "dissolve",
+   "outDur": 0.45
+  },
+  {
+   "start": "w:126",
+   "target": "jul_h",
+   "headWidth": 0.25,
+   "frameY": -0.02,
+   "zoom": 6,
+   "orbit": 2.2,
+   "rise": 0.6,
+   "yaw": 12,
+   "pitch": 3,
+   "actions": [
+    {
+     "who": "jul_h",
+     "at": 0.2,
+     "face": "happy",
+     "motion": "wave"
+    }
+   ]
+  },
+  {
+   "start": "w:138",
+   "target": "logger_h",
+   "headWidth": 0.16,
+   "frameY": -0.02,
+   "zoom": 3,
+   "orbit": -5,
+   "rise": 0.8,
+   "yaw": -8,
+   "pitch": 3,
+   "actions": [
+    {
+     "who": "logger_h",
+     "at": 0.2,
+     "face": "happy",
+     "motion": "wave"
+    },
+    {
+     "who": "jul_h",
+     "at": 0.2,
+     "face": "happy"
+    }
+   ]
+  },
+  {
+   "start": "w:145",
+   "target": "jul_h",
+   "headWidth": 0.32,
+   "frameY": 0.07,
+   "zoom": -3,
+   "orbit": -2.5,
+   "rise": 1.0,
+   "yaw": 5,
+   "pitch": 3,
+   "actions": [
+    {
+     "who": "jul_h",
+     "at": 0.1,
+     "face": "happy"
+    },
+    {
+     "who": "jul_h",
+     "at": 1.8,
+     "face": "neutral"
+    }
+   ]
+  }
+ ]
+}

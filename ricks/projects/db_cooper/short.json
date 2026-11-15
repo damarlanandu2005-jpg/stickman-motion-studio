@@ -1,0 +1,1980 @@
+{
+ "fps": 30,
+ "audio": {
+  "voice": "audio/voice.mp3",
+  "music": "audio/music.mp3",
+  "musicDb": -17
+ },
+ "words": "audio/words.json",
+ "captions": {
+  "wordsPer": 1
+ },
+ "moods": {
+  "day": {
+   "sun": {
+    "azimuth": 35,
+    "elevation": 50,
+    "color": "#ffe0b5",
+    "intensity": 2.4
+   },
+   "sky": {
+    "top": "#5f86d8",
+    "horizon": "#f2b98a"
+   },
+   "fill": {
+    "sky": "#8ea2ff",
+    "ground": "#6a3b6e",
+    "intensity": 1.1
+   }
+  },
+  "night": {
+   "sun": {
+    "azimuth": -40,
+    "elevation": 38,
+    "color": "#c6d0ff",
+    "intensity": 1.8
+   },
+   "sky": {
+    "top": "#2a3676",
+    "horizon": "#8088c4"
+   },
+   "fill": {
+    "sky": "#a0a8e6",
+    "ground": "#6e6596",
+    "intensity": 1.6
+   },
+   "exposure": 1.28
+  },
+  "storm": {
+   "sun": {
+    "azimuth": -30,
+    "elevation": 30,
+    "color": "#b4bcd2",
+    "intensity": 1.0
+   },
+   "sky": {
+    "top": "#383c54",
+    "horizon": "#7a8098"
+   },
+   "fill": {
+    "sky": "#8f98b8",
+    "ground": "#4a4a62",
+    "intensity": 1.25
+   },
+   "exposure": 1.15
+  },
+  "flash": {
+   "sun": {
+    "azimuth": -30,
+    "elevation": 40,
+    "color": "#ffffff",
+    "intensity": 4.5
+   },
+   "sky": {
+    "top": "#e8ecff",
+    "horizon": "#ffffff"
+   },
+   "fill": {
+    "sky": "#ffffff",
+    "ground": "#d8dcf0",
+    "intensity": 2.6
+   },
+   "exposure": 1.5
+  }
+ },
+ "ink": {
+  "set": 4
+ },
+ "end": "audio",
+ "lighting": [
+  {
+   "t": 0,
+   "mood": "day"
+  },
+  {
+   "t": 24.97,
+   "mood": "night",
+   "fade": 0.8
+  },
+  {
+   "t": 29.91,
+   "mood": "day",
+   "fade": 0.8
+  }
+ ],
+ "ground": {
+  "texture": "textures/grass.png",
+  "repeat": [
+   600,
+   600
+  ]
+ },
+ "backdrop": [
+  {
+   "image": "bg/airport.png",
+   "blur": 3,
+   "repeat": 3,
+   "near": [
+    -34,
+    34
+   ]
+  },
+  {
+   "image": "bg/night_forest.png",
+   "blur": 3,
+   "repeat": 3,
+   "near": [
+    106,
+    174
+   ]
+  },
+  {
+   "image": "bg/river_forest.png",
+   "blur": 3,
+   "repeat": 3,
+   "near": [
+    176,
+    244
+   ]
+  }
+ ],
+ "characters": [
+  {
+   "id": "cooper_t",
+   "puppet": "puppets/cooper",
+   "pos": [
+    -1.0,
+    0,
+    0
+   ],
+   "height": 1.8,
+   "face": "neutral"
+  },
+  {
+   "id": "agent_t",
+   "puppet": "puppets/agent",
+   "pos": [
+    1.3,
+    0,
+    0.1
+   ],
+   "height": 1.8,
+   "face": "neutral",
+   "flip": true
+  },
+  {
+   "id": "pass1",
+   "puppet": "puppets/neighbor",
+   "pos": [
+    9,
+    0,
+    -1.6
+   ],
+   "height": 1.8,
+   "face": "nervous",
+   "flip": true
+  },
+  {
+   "id": "pass2",
+   "puppet": "puppets/wife",
+   "pos": [
+    10.5,
+    0,
+    -1.8
+   ],
+   "height": 1.65,
+   "face": "nervous",
+   "flip": true
+  },
+  {
+   "id": "pass3",
+   "puppet": "puppets/father",
+   "pos": [
+    12,
+    0,
+    -1.5
+   ],
+   "height": 1.8,
+   "face": "nervous",
+   "flip": true
+  },
+  {
+   "id": "cooper_c",
+   "puppet": "puppets/cooper",
+   "pos": [
+    69.3,
+    0,
+    0
+   ],
+   "height": 1.8,
+   "face": "neutral"
+  },
+  {
+   "id": "att_c",
+   "puppet": "puppets/attendant",
+   "pos": [
+    70.8,
+    0,
+    0.1
+   ],
+   "height": 1.7,
+   "face": "neutral",
+   "flip": true
+  },
+  {
+   "id": "pilot_c",
+   "puppet": "puppets/pilot",
+   "pos": [
+    72.0,
+    0,
+    -1.4
+   ],
+   "height": 1.8,
+   "face": "neutral",
+   "flip": true,
+   "hat": {
+    "file": "hats/pilot_cap.png",
+    "scale": 1.08,
+    "sit": 0.2
+   }
+  },
+  {
+   "id": "cooper_n",
+   "puppet": "puppets/cooper",
+   "pos": [
+    140,
+    0.9,
+    -3.2
+   ],
+   "height": 1.8,
+   "face": "neutral"
+  },
+  {
+   "id": "agent_r",
+   "puppet": "puppets/agent",
+   "pos": [
+    209.1,
+    0,
+    0
+   ],
+   "height": 1.8,
+   "face": "neutral"
+  },
+  {
+   "id": "agent2_r",
+   "puppet": "puppets/agent",
+   "pos": [
+    211.0,
+    0,
+    0.1
+   ],
+   "height": 1.8,
+   "face": "confused",
+   "flip": true
+  },
+  {
+   "id": "boy_r",
+   "puppet": "puppets/boy",
+   "pos": [
+    213.4,
+    0,
+    0.3
+   ],
+   "height": 1.2,
+   "face": "neutral",
+   "flip": true
+  }
+ ],
+ "props": [
+  {
+   "type": "box",
+   "pos": [
+    0,
+    0.01,
+    -2
+   ],
+   "size": [
+    44,
+    0.04,
+    40
+   ],
+   "texture": "textures/asphalt.png",
+   "repeat": [
+    22,
+    20
+   ]
+  },
+  {
+   "type": "plane",
+   "image": "props/jet.png",
+   "pos": [
+    0,
+    0,
+    -9
+   ],
+   "size": [
+    17,
+    5.5
+   ]
+  },
+  {
+   "type": "house",
+   "pos": [
+    -14,
+    0,
+    -18
+   ],
+   "size": [
+    9,
+    4,
+    5
+   ],
+   "color": "#8d949c",
+   "roof": "#5c636b",
+   "door": "#3b3a4a"
+  },
+  {
+   "type": "post",
+   "pos": [
+    -9,
+    0,
+    -4
+   ],
+   "h": 4.5,
+   "color": "#6a6a72"
+  },
+  {
+   "type": "post",
+   "pos": [
+    10,
+    0,
+    -5
+   ],
+   "h": 4.5,
+   "color": "#6a6a72"
+  },
+  {
+   "type": "cone",
+   "pos": [
+    -4.5,
+    0,
+    -1.2
+   ],
+   "r": 0.28,
+   "h": 0.7,
+   "color": "#e8742c"
+  },
+  {
+   "type": "cone",
+   "pos": [
+    5.5,
+    0,
+    -1.5
+   ],
+   "r": 0.28,
+   "h": 0.7,
+   "color": "#e8742c"
+  },
+  {
+   "type": "cone",
+   "pos": [
+    7.2,
+    0,
+    -1.2
+   ],
+   "r": 0.28,
+   "h": 0.7,
+   "color": "#e8742c"
+  },
+  {
+   "type": "box",
+   "pos": [
+    -7.5,
+    0.05,
+    -2
+   ],
+   "size": [
+    1.6,
+    0.7,
+    1.0
+   ],
+   "color": "#b8bcc2"
+  },
+  {
+   "type": "box",
+   "pos": [
+    11,
+    0.05,
+    -3
+   ],
+   "size": [
+    2.2,
+    0.8,
+    1.2
+   ],
+   "color": "#a5aab0"
+  },
+  {
+   "type": "box",
+   "pos": [
+    0,
+    0.05,
+    -5.5
+   ],
+   "size": [
+    1.8,
+    1.0,
+    0.5
+   ],
+   "color": "#7c828a"
+  },
+  {
+   "type": "box",
+   "pos": [
+    70,
+    0.0,
+    -3
+   ],
+   "size": [
+    6,
+    0.05,
+    18
+   ],
+   "texture": "textures/carpet.png",
+   "repeat": [
+    3,
+    9
+   ]
+  },
+  {
+   "type": "wall",
+   "pos": [
+    67,
+    0,
+    -3
+   ],
+   "size": [
+    0.3,
+    3.2,
+    18
+   ],
+   "color": "#d9d3c3"
+  },
+  {
+   "type": "wall",
+   "pos": [
+    73,
+    0,
+    -3
+   ],
+   "size": [
+    0.3,
+    3.2,
+    18
+   ],
+   "color": "#d9d3c3"
+  },
+  {
+   "type": "wall",
+   "pos": [
+    70,
+    0,
+    -7
+   ],
+   "size": [
+    6.3,
+    3.2,
+    0.3
+   ],
+   "color": "#cfc8b6"
+  },
+  {
+   "type": "box",
+   "pos": [
+    70,
+    3.2,
+    -3
+   ],
+   "size": [
+    6.3,
+    0.2,
+    18
+   ],
+   "color": "#e8e2d2"
+  },
+  {
+   "type": "box",
+   "pos": [
+    67.7,
+    0.05,
+    -5
+   ],
+   "size": [
+    0.85,
+    0.45,
+    0.85
+   ],
+   "color": "#2f5f9a"
+  },
+  {
+   "type": "box",
+   "pos": [
+    67.7,
+    0.5,
+    -5.35
+   ],
+   "size": [
+    0.85,
+    1.0,
+    0.18
+   ],
+   "color": "#2a5588"
+  },
+  {
+   "type": "box",
+   "pos": [
+    68.6,
+    0.05,
+    -5
+   ],
+   "size": [
+    0.85,
+    0.45,
+    0.85
+   ],
+   "color": "#2f5f9a"
+  },
+  {
+   "type": "box",
+   "pos": [
+    68.6,
+    0.5,
+    -5.35
+   ],
+   "size": [
+    0.85,
+    1.0,
+    0.18
+   ],
+   "color": "#2a5588"
+  },
+  {
+   "type": "box",
+   "pos": [
+    71.4,
+    0.05,
+    -5
+   ],
+   "size": [
+    0.85,
+    0.45,
+    0.85
+   ],
+   "color": "#2f5f9a"
+  },
+  {
+   "type": "box",
+   "pos": [
+    71.4,
+    0.5,
+    -5.35
+   ],
+   "size": [
+    0.85,
+    1.0,
+    0.18
+   ],
+   "color": "#2a5588"
+  },
+  {
+   "type": "box",
+   "pos": [
+    72.3,
+    0.05,
+    -5
+   ],
+   "size": [
+    0.85,
+    0.45,
+    0.85
+   ],
+   "color": "#2f5f9a"
+  },
+  {
+   "type": "box",
+   "pos": [
+    72.3,
+    0.5,
+    -5.35
+   ],
+   "size": [
+    0.85,
+    1.0,
+    0.18
+   ],
+   "color": "#2a5588"
+  },
+  {
+   "type": "box",
+   "pos": [
+    67.7,
+    0.05,
+    -3.6
+   ],
+   "size": [
+    0.85,
+    0.45,
+    0.85
+   ],
+   "color": "#2f5f9a"
+  },
+  {
+   "type": "box",
+   "pos": [
+    67.7,
+    0.5,
+    -3.95
+   ],
+   "size": [
+    0.85,
+    1.0,
+    0.18
+   ],
+   "color": "#2a5588"
+  },
+  {
+   "type": "box",
+   "pos": [
+    68.6,
+    0.05,
+    -3.6
+   ],
+   "size": [
+    0.85,
+    0.45,
+    0.85
+   ],
+   "color": "#2f5f9a"
+  },
+  {
+   "type": "box",
+   "pos": [
+    68.6,
+    0.5,
+    -3.95
+   ],
+   "size": [
+    0.85,
+    1.0,
+    0.18
+   ],
+   "color": "#2a5588"
+  },
+  {
+   "type": "box",
+   "pos": [
+    71.4,
+    0.05,
+    -3.6
+   ],
+   "size": [
+    0.85,
+    0.45,
+    0.85
+   ],
+   "color": "#2f5f9a"
+  },
+  {
+   "type": "box",
+   "pos": [
+    71.4,
+    0.5,
+    -3.95
+   ],
+   "size": [
+    0.85,
+    1.0,
+    0.18
+   ],
+   "color": "#2a5588"
+  },
+  {
+   "type": "box",
+   "pos": [
+    72.3,
+    0.05,
+    -3.6
+   ],
+   "size": [
+    0.85,
+    0.45,
+    0.85
+   ],
+   "color": "#2f5f9a"
+  },
+  {
+   "type": "box",
+   "pos": [
+    72.3,
+    0.5,
+    -3.95
+   ],
+   "size": [
+    0.85,
+    1.0,
+    0.18
+   ],
+   "color": "#2a5588"
+  },
+  {
+   "type": "box",
+   "pos": [
+    67.7,
+    0.05,
+    -2.2
+   ],
+   "size": [
+    0.85,
+    0.45,
+    0.85
+   ],
+   "color": "#2f5f9a"
+  },
+  {
+   "type": "box",
+   "pos": [
+    67.7,
+    0.5,
+    -2.5500000000000003
+   ],
+   "size": [
+    0.85,
+    1.0,
+    0.18
+   ],
+   "color": "#2a5588"
+  },
+  {
+   "type": "box",
+   "pos": [
+    68.6,
+    0.05,
+    -2.2
+   ],
+   "size": [
+    0.85,
+    0.45,
+    0.85
+   ],
+   "color": "#2f5f9a"
+  },
+  {
+   "type": "box",
+   "pos": [
+    68.6,
+    0.5,
+    -2.5500000000000003
+   ],
+   "size": [
+    0.85,
+    1.0,
+    0.18
+   ],
+   "color": "#2a5588"
+  },
+  {
+   "type": "box",
+   "pos": [
+    71.4,
+    0.05,
+    -2.2
+   ],
+   "size": [
+    0.85,
+    0.45,
+    0.85
+   ],
+   "color": "#2f5f9a"
+  },
+  {
+   "type": "box",
+   "pos": [
+    71.4,
+    0.5,
+    -2.5500000000000003
+   ],
+   "size": [
+    0.85,
+    1.0,
+    0.18
+   ],
+   "color": "#2a5588"
+  },
+  {
+   "type": "box",
+   "pos": [
+    72.3,
+    0.05,
+    -2.2
+   ],
+   "size": [
+    0.85,
+    0.45,
+    0.85
+   ],
+   "color": "#2f5f9a"
+  },
+  {
+   "type": "box",
+   "pos": [
+    72.3,
+    0.5,
+    -2.5500000000000003
+   ],
+   "size": [
+    0.85,
+    1.0,
+    0.18
+   ],
+   "color": "#2a5588"
+  },
+  {
+   "type": "box",
+   "pos": [
+    67.17,
+    1.45,
+    -5.5
+   ],
+   "size": [
+    0.08,
+    0.6,
+    0.8
+   ],
+   "color": "#a9cbe8"
+  },
+  {
+   "type": "box",
+   "pos": [
+    72.83,
+    1.45,
+    -5.5
+   ],
+   "size": [
+    0.08,
+    0.6,
+    0.8
+   ],
+   "color": "#a9cbe8"
+  },
+  {
+   "type": "box",
+   "pos": [
+    67.17,
+    1.45,
+    -3
+   ],
+   "size": [
+    0.08,
+    0.6,
+    0.8
+   ],
+   "color": "#a9cbe8"
+  },
+  {
+   "type": "box",
+   "pos": [
+    72.83,
+    1.45,
+    -3
+   ],
+   "size": [
+    0.08,
+    0.6,
+    0.8
+   ],
+   "color": "#a9cbe8"
+  },
+  {
+   "type": "box",
+   "pos": [
+    67.17,
+    1.45,
+    -0.6
+   ],
+   "size": [
+    0.08,
+    0.6,
+    0.8
+   ],
+   "color": "#a9cbe8"
+  },
+  {
+   "type": "box",
+   "pos": [
+    72.83,
+    1.45,
+    -0.6
+   ],
+   "size": [
+    0.08,
+    0.6,
+    0.8
+   ],
+   "color": "#a9cbe8"
+  },
+  {
+   "type": "box",
+   "pos": [
+    67.6,
+    2.55,
+    -2.5
+   ],
+   "size": [
+    0.6,
+    0.5,
+    12
+   ],
+   "color": "#d3cdbd"
+  },
+  {
+   "type": "box",
+   "pos": [
+    72.4,
+    2.55,
+    -2.5
+   ],
+   "size": [
+    0.6,
+    0.5,
+    12
+   ],
+   "color": "#d3cdbd"
+  },
+  {
+   "type": "box",
+   "pos": [
+    70,
+    0.04,
+    -3
+   ],
+   "size": [
+    0.9,
+    0.03,
+    18
+   ],
+   "color": "#8a2f3a"
+  },
+  {
+   "type": "box",
+   "pos": [
+    140,
+    0.01,
+    -2
+   ],
+   "size": [
+    44,
+    0.04,
+    36
+   ],
+   "color": "#18281f"
+  },
+  {
+   "type": "box",
+   "pos": [
+    140,
+    0,
+    -8
+   ],
+   "size": [
+    7,
+    4.4,
+    8
+   ],
+   "color": "#aeb4bc"
+  },
+  {
+   "type": "box",
+   "pos": [
+    140,
+    0,
+    -3.93
+   ],
+   "size": [
+    2.0,
+    2.8,
+    0.12
+   ],
+   "color": "#1c1c26"
+  },
+  {
+   "type": "box",
+   "pos": [
+    140,
+    0.0,
+    -3.2
+   ],
+   "size": [
+    1.9,
+    0.9,
+    1.1
+   ],
+   "color": "#8e949c"
+  },
+  {
+   "type": "box",
+   "pos": [
+    140,
+    0.0,
+    -2.2
+   ],
+   "size": [
+    1.9,
+    0.6,
+    1.0
+   ],
+   "color": "#9aa0a8"
+  },
+  {
+   "type": "box",
+   "pos": [
+    140,
+    0.0,
+    -1.3
+   ],
+   "size": [
+    1.9,
+    0.3,
+    0.9
+   ],
+   "color": "#a8aeb6"
+  },
+  {
+   "type": "plane",
+   "image": "props/jet.png",
+   "pos": [
+    140,
+    3.8,
+    -14
+   ],
+   "size": [
+    9,
+    3
+   ],
+   "rotY": 90
+  },
+  {
+   "type": "cone",
+   "pos": [
+    126,
+    0,
+    -16
+   ],
+   "r": 5,
+   "h": 7,
+   "color": "#14241c"
+  },
+  {
+   "type": "cone",
+   "pos": [
+    135,
+    0,
+    -20
+   ],
+   "r": 6,
+   "h": 9,
+   "color": "#12221a"
+  },
+  {
+   "type": "cone",
+   "pos": [
+    148,
+    0,
+    -18
+   ],
+   "r": 5.5,
+   "h": 8,
+   "color": "#16281f"
+  },
+  {
+   "type": "cone",
+   "pos": [
+    156,
+    0,
+    -14
+   ],
+   "r": 4,
+   "h": 6,
+   "color": "#13231b"
+  },
+  {
+   "type": "box",
+   "pos": [
+    210,
+    0.01,
+    0
+   ],
+   "size": [
+    44,
+    0.04,
+    8
+   ],
+   "color": "#cdbb95"
+  },
+  {
+   "type": "box",
+   "pos": [
+    210,
+    0.02,
+    -9
+   ],
+   "size": [
+    44,
+    0.06,
+    10
+   ],
+   "texture": "textures/water.png",
+   "repeat": [
+    10,
+    3
+   ]
+  },
+  {
+   "type": "tree",
+   "pos": [
+    200,
+    0,
+    -17
+   ],
+   "scale": 3.0,
+   "color": "#2f5f3f"
+  },
+  {
+   "type": "tree",
+   "pos": [
+    206,
+    0,
+    -18
+   ],
+   "scale": 3.4,
+   "color": "#2a5538"
+  },
+  {
+   "type": "tree",
+   "pos": [
+    215,
+    0,
+    -17
+   ],
+   "scale": 3.1,
+   "color": "#316544"
+  },
+  {
+   "type": "tree",
+   "pos": [
+    222,
+    0,
+    -18
+   ],
+   "scale": 3.3,
+   "color": "#2a5538"
+  },
+  {
+   "type": "box",
+   "pos": [
+    205,
+    0.05,
+    -2.5
+   ],
+   "size": [
+    2.6,
+    0.35,
+    0.4
+   ],
+   "color": "#6a4a32"
+  },
+  {
+   "type": "box",
+   "pos": [
+    216,
+    0.05,
+    -3
+   ],
+   "size": [
+    1.4,
+    0.3,
+    0.4
+   ],
+   "color": "#7a5a3a"
+  },
+  {
+   "type": "cone",
+   "pos": [
+    198,
+    0,
+    -4.5
+   ],
+   "r": 0.7,
+   "h": 0.5,
+   "color": "#9a8a6a"
+  },
+  {
+   "type": "cone",
+   "pos": [
+    219,
+    0,
+    -4
+   ],
+   "r": 0.6,
+   "h": 0.4,
+   "color": "#9a8a6a"
+  },
+  {
+   "type": "plane",
+   "image": "props/sign_1971.png",
+   "pos": [
+    4.2,
+    0,
+    -3
+   ],
+   "size": [
+    3.2,
+    1.48
+   ],
+   "from": -0.02,
+   "to": 2.01
+  },
+  {
+   "type": "plane",
+   "image": "props/sign_wanted.png",
+   "pos": [
+    2.5,
+    0,
+    -1.4
+   ],
+   "size": [
+    3.2,
+    1.74
+   ],
+   "from": 3.8,
+   "to": 5.38
+  },
+  {
+   "type": "plane",
+   "image": "props/sign_flight305.png",
+   "pos": [
+    70.6,
+    0.0,
+    -2.0
+   ],
+   "size": [
+    3.0,
+    1.1
+   ],
+   "from": 5.33,
+   "to": 7.41
+  },
+  {
+   "type": "plane",
+   "image": "props/briefcase_wires.png",
+   "pos": [
+    70,
+    0.35,
+    -0.3
+   ],
+   "size": [
+    1.6,
+    1.07
+   ],
+   "from": 12.47,
+   "to": 14.19
+  },
+  {
+   "type": "plane",
+   "image": "props/money_bag.png",
+   "pos": [
+    70,
+    0.25,
+    -0.4
+   ],
+   "size": [
+    1.2,
+    1.3
+   ],
+   "from": 15.2,
+   "to": 16.44
+  },
+  {
+   "type": "plane",
+   "image": "props/parachute.png",
+   "pos": [
+    68.3,
+    0.5,
+    -0.5
+   ],
+   "size": [
+    1.1,
+    0.97
+   ],
+   "from": 16.39,
+   "to": 17.56
+  },
+  {
+   "type": "plane",
+   "image": "props/parachute.png",
+   "pos": [
+    69.4,
+    0.5,
+    -0.5
+   ],
+   "size": [
+    1.1,
+    0.97
+   ],
+   "from": 16.39,
+   "to": 17.56
+  },
+  {
+   "type": "plane",
+   "image": "props/parachute.png",
+   "pos": [
+    70.6,
+    0.5,
+    -0.5
+   ],
+   "size": [
+    1.1,
+    0.97
+   ],
+   "from": 16.39,
+   "to": 17.56
+  },
+  {
+   "type": "plane",
+   "image": "props/parachute.png",
+   "pos": [
+    71.7,
+    0.5,
+    -0.5
+   ],
+   "size": [
+    1.1,
+    0.97
+   ],
+   "from": 16.39,
+   "to": 17.56
+  },
+  {
+   "type": "plane",
+   "image": "props/sign_mexico.png",
+   "pos": [
+    -5.2,
+    0,
+    -2.2
+   ],
+   "size": [
+    2.4,
+    2.8
+   ],
+   "from": 22.97,
+   "to": 25.07
+  },
+  {
+   "type": "plane",
+   "image": "props/sign_wanted.png",
+   "pos": [
+    208.4,
+    0,
+    -0.8
+   ],
+   "size": [
+    2.6,
+    1.42
+   ],
+   "from": 31.16,
+   "to": 32.72
+  },
+  {
+   "type": "plane",
+   "image": "props/cash.png",
+   "pos": [
+    210,
+    0.05,
+    -1.2
+   ],
+   "size": [
+    1.0,
+    0.65
+   ],
+   "from": 32.67,
+   "to": 34.28
+  },
+  {
+   "type": "plane",
+   "image": "props/sign_1980.png",
+   "pos": [
+    213.4,
+    1.7,
+    -0.6
+   ],
+   "size": [
+    1.7,
+    0.9
+   ],
+   "from": 35.34,
+   "to": 36.6
+  },
+  {
+   "type": "plane",
+   "image": "props/sign_wanted.png",
+   "pos": [
+    0,
+    0,
+    -3
+   ],
+   "size": [
+    4.2,
+    2.28
+   ],
+   "from": 36.55,
+   "to": 41.65
+  }
+ ],
+ "actions": [],
+ "shots": [
+  {
+   "start": "w:0",
+   "anchor": [
+    0,
+    2.3,
+    -9
+   ],
+   "zoom": 2,
+   "orbit": 6,
+   "rise": 2.5,
+   "yaw": -12,
+   "pitch": 0,
+   "distance": 15,
+   "fov": 42,
+   "actions": []
+  },
+  {
+   "start": "w:8",
+   "target": "cooper_t",
+   "headWidth": 0.25,
+   "frameY": -0.02,
+   "zoom": 6,
+   "orbit": 2.2,
+   "rise": 0.6,
+   "yaw": 8,
+   "pitch": 3,
+   "actions": [
+    {
+     "who": "cooper_t",
+     "at": 0.0,
+     "face": "neutral",
+     "hold": {
+      "file": "props/money_bag.png",
+      "hand": "R",
+      "scale": 0.5
+     },
+     "pose": {
+      "armR": -55
+     }
+    }
+   ]
+  },
+  {
+   "start": "w:15",
+   "target": "cooper_t",
+   "headWidth": 0.14,
+   "frameY": -0.07,
+   "zoom": -3,
+   "orbit": -2.5,
+   "rise": 1.0,
+   "yaw": -4,
+   "pitch": 3,
+   "actions": [
+    {
+     "who": "cooper_t",
+     "at": 0.0,
+     "face": "neutral"
+    }
+   ],
+   "out": "dissolve",
+   "outDur": 0.45
+  },
+  {
+   "start": "w:20",
+   "target": "cooper_c",
+   "headWidth": 0.32,
+   "frameY": 0.07,
+   "zoom": 3,
+   "orbit": 5,
+   "rise": -0.8,
+   "yaw": 12,
+   "pitch": 3,
+   "actions": [
+    {
+     "who": "cooper_c",
+     "at": 0.0,
+     "face": "neutral"
+    }
+   ]
+  },
+  {
+   "start": "w:29",
+   "target": "cooper_c",
+   "headWidth": 0.25,
+   "frameY": -0.02,
+   "zoom": 6,
+   "orbit": 2.2,
+   "rise": 0.6,
+   "yaw": -8,
+   "pitch": 3,
+   "actions": [
+    {
+     "who": "cooper_c",
+     "at": 0.2,
+     "face": "neutral",
+     "motion": "bow"
+    }
+   ]
+  },
+  {
+   "start": "w:36",
+   "target": "cooper_c",
+   "headWidth": 0.16,
+   "frameY": -0.02,
+   "zoom": 3,
+   "orbit": -5,
+   "rise": 0.8,
+   "yaw": 5,
+   "pitch": 3,
+   "actions": [
+    {
+     "who": "cooper_c",
+     "at": 0.2,
+     "motion": "give",
+     "hold": {
+      "file": "props/note_bomb.png",
+      "hand": "R",
+      "scale": 0.32
+     }
+    },
+    {
+     "who": "att_c",
+     "at": 0.2,
+     "face": "neutral"
+    }
+   ]
+  },
+  {
+   "start": "w:45",
+   "target": "att_c",
+   "headWidth": 0.32,
+   "frameY": 0.07,
+   "zoom": 6,
+   "orbit": 2.2,
+   "rise": 0.6,
+   "yaw": -12,
+   "pitch": 3,
+   "actions": [
+    {
+     "who": "att_c",
+     "at": 0.0,
+     "face": "shocked",
+     "hold": {
+      "file": "props/note_bomb.png",
+      "hand": "L",
+      "scale": 0.32
+     }
+    }
+   ]
+  },
+  {
+   "start": "w:51",
+   "anchor": [
+    70,
+    0.8,
+    -0.3
+   ],
+   "zoom": 4,
+   "orbit": 2,
+   "rise": 0.3,
+   "yaw": -8,
+   "pitch": 8,
+   "distance": 3.2,
+   "fov": 38,
+   "frameY": 0.0,
+   "actions": []
+  },
+  {
+   "start": "w:59",
+   "target": "cooper_c",
+   "headWidth": 0.25,
+   "frameY": -0.02,
+   "zoom": 3,
+   "orbit": 5,
+   "rise": -0.8,
+   "yaw": -10,
+   "pitch": 3,
+   "actions": [
+    {
+     "who": "cooper_c",
+     "at": 0.2,
+     "face": "neutral",
+     "motion": "point"
+    }
+   ]
+  },
+  {
+   "start": "w:64",
+   "anchor": [
+    70,
+    0.9,
+    -0.4
+   ],
+   "zoom": 4,
+   "orbit": -2,
+   "rise": 0.2,
+   "yaw": 6,
+   "pitch": 6,
+   "distance": 3.0,
+   "fov": 38,
+   "actions": []
+  },
+  {
+   "start": "w:68",
+   "anchor": [
+    70,
+    1.1,
+    -0.5
+   ],
+   "zoom": 3,
+   "orbit": 2,
+   "rise": 1.0,
+   "yaw": -6,
+   "pitch": 3,
+   "distance": 4.2,
+   "fov": 40,
+   "actions": [],
+   "out": "dissolve",
+   "outDur": 0.45
+  },
+  {
+   "start": "w:71",
+   "target": "cooper_t",
+   "headWidth": 0.16,
+   "frameY": -0.02,
+   "zoom": 6,
+   "orbit": 2.2,
+   "rise": 0.6,
+   "yaw": 12,
+   "pitch": 3,
+   "actions": [
+    {
+     "who": "agent_t",
+     "at": 0.2,
+     "motion": "give",
+     "hold": {
+      "file": "props/money_bag.png",
+      "hand": "R",
+      "scale": 0.5
+     }
+    },
+    {
+     "who": "cooper_t",
+     "at": 0.9,
+     "motion": "take"
+    }
+   ]
+  },
+  {
+   "start": "w:79",
+   "target": "cooper_t",
+   "headWidth": 0.14,
+   "frameY": -0.07,
+   "zoom": 3,
+   "orbit": -5,
+   "rise": 0.8,
+   "yaw": -8,
+   "pitch": 3,
+   "actions": [
+    {
+     "who": "pass1",
+     "at": 0.2,
+     "to": [
+      -8,
+      0,
+      -1.6
+     ],
+     "walk": true,
+     "over": 2.2,
+     "flip": true
+    },
+    {
+     "who": "pass2",
+     "at": 0.4,
+     "to": [
+      -9.5,
+      0,
+      -1.8
+     ],
+     "walk": true,
+     "over": 2.2,
+     "flip": true
+    },
+    {
+     "who": "pass3",
+     "at": 0.6,
+     "to": [
+      -11,
+      0,
+      -1.5
+     ],
+     "walk": true,
+     "over": 2.2,
+     "flip": true
+    }
+   ],
+   "out": "dissolve",
+   "outDur": 0.45
+  },
+  {
+   "start": "w:84",
+   "target": "cooper_c",
+   "headWidth": 0.16,
+   "frameY": -0.02,
+   "zoom": 6,
+   "orbit": 2.2,
+   "rise": 0.6,
+   "yaw": 5,
+   "pitch": 3,
+   "actions": [
+    {
+     "who": "cooper_c",
+     "at": 0.2,
+     "face": "neutral",
+     "motion": "point"
+    },
+    {
+     "who": "pilot_c",
+     "at": 0.3,
+     "to": [
+      70.9,
+      0,
+      0.0
+     ],
+     "walk": true,
+     "over": 0.8,
+     "face": "nervous"
+    }
+   ],
+   "out": "dissolve",
+   "outDur": 0.45
+  },
+  {
+   "start": "w:93",
+   "anchor": [
+    0,
+    2.0,
+    -9
+   ],
+   "zoom": 2,
+   "orbit": -5,
+   "rise": 2.0,
+   "yaw": 10,
+   "pitch": 0,
+   "distance": 14,
+   "fov": 42,
+   "actions": [],
+   "out": "dissolve",
+   "outDur": 0.45
+  },
+  {
+   "start": "w:101",
+   "anchor": [
+    140,
+    3.5,
+    -8
+   ],
+   "zoom": 2,
+   "orbit": -4,
+   "rise": -2,
+   "yaw": -14,
+   "pitch": 0,
+   "distance": 14,
+   "fov": 44,
+   "actions": []
+  },
+  {
+   "start": "w:107",
+   "target": "cooper_n",
+   "headWidth": 0.14,
+   "frameY": -0.07,
+   "zoom": 6,
+   "orbit": 2.2,
+   "rise": 0.6,
+   "yaw": -10,
+   "pitch": 3,
+   "actions": [
+    {
+     "who": "cooper_n",
+     "at": 0.0,
+     "face": "neutral"
+    }
+   ]
+  },
+  {
+   "start": "w:113",
+   "target": "cooper_n",
+   "headWidth": 0.25,
+   "frameY": -0.02,
+   "zoom": 3,
+   "orbit": -2,
+   "rise": -3.2,
+   "yaw": 8,
+   "pitch": 3,
+   "actions": [
+    {
+     "who": "cooper_n",
+     "at": 0.4,
+     "face": "neutral"
+    },
+    {
+     "who": "cooper_n",
+     "at": 1.5,
+     "motion": "fall",
+     "to": [
+      140,
+      0.0,
+      -1.2
+     ],
+     "over": 0.9
+    }
+   ],
+   "out": "dissolve",
+   "outDur": 0.45
+  },
+  {
+   "start": "w:123",
+   "target": "agent_r",
+   "headWidth": 0.25,
+   "frameY": -0.02,
+   "zoom": 3,
+   "orbit": 5,
+   "rise": -0.8,
+   "yaw": -4,
+   "pitch": 3,
+   "actions": [
+    {
+     "who": "agent_r",
+     "at": 0.2,
+     "motion": "point"
+    },
+    {
+     "who": "agent2_r",
+     "at": 0.2,
+     "face": "confused"
+    }
+   ]
+  },
+  {
+   "start": "w:127",
+   "target": "agent2_r",
+   "headWidth": 0.32,
+   "frameY": 0.07,
+   "zoom": 6,
+   "orbit": 2.2,
+   "rise": 0.6,
+   "yaw": 12,
+   "pitch": 3,
+   "actions": [
+    {
+     "who": "agent2_r",
+     "at": 0.0,
+     "face": "confused",
+     "motion": "shrug"
+    }
+   ]
+  },
+  {
+   "start": "w:132",
+   "anchor": [
+    210,
+    0.3,
+    -1.2
+   ],
+   "zoom": 4,
+   "orbit": 2,
+   "rise": 0.1,
+   "yaw": -6,
+   "pitch": 14,
+   "distance": 3.0,
+   "fov": 38,
+   "actions": []
+  },
+  {
+   "start": "w:141",
+   "target": "boy_r",
+   "headWidth": 0.25,
+   "frameY": -0.02,
+   "zoom": 3,
+   "orbit": -5,
+   "rise": 0.8,
+   "yaw": 5,
+   "pitch": 3,
+   "actions": [
+    {
+     "who": "boy_r",
+     "at": 0.0,
+     "face": "shocked",
+     "hold": {
+      "file": "props/cash.png",
+      "hand": "R",
+      "scale": 0.45
+     },
+     "pose": {
+      "armR": -50
+     }
+    }
+   ]
+  },
+  {
+   "start": "w:149",
+   "target": "boy_r",
+   "headWidth": 0.14,
+   "frameY": -0.07,
+   "zoom": -3,
+   "orbit": -2.5,
+   "rise": 1.0,
+   "yaw": -12,
+   "pitch": 3,
+   "actions": [
+    {
+     "who": "boy_r",
+     "at": 0.0,
+     "face": "neutral"
+    }
+   ],
+   "out": "dissolve",
+   "outDur": 0.45
+  },
+  {
+   "start": "w:152",
+   "anchor": [
+    0,
+    1.4,
+    -3
+   ],
+   "zoom": -3,
+   "orbit": -2,
+   "rise": 1,
+   "yaw": 6,
+   "pitch": 3,
+   "distance": 7,
+   "fov": 40,
+   "actions": []
+  }
+ ]
+}
