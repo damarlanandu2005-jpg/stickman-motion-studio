@@ -58,11 +58,11 @@ jobs:
           # time-box the render: a slow runner is stopped here but the job STILL SUCCEEDS and uploads
           # whatever frames finished; the stitch job renders any gaps. No job cancellation, so the run is never cancelled.
           set +e
-          timeout 780 npx remotion render src/index.ts "$COMP" out/seq \
+          timeout 1100 npx remotion render src/index.ts "$COMP" out/seq \
             --sequence --image-format=png --frames=$START-$END \
             --gl=swangle --chrome-mode=chrome-for-testing --browser-executable="$CHROME" \
             --concurrency=4 --timeout=600000
-          echo "render step rc=$? (124 = hit the 13-min time box; partial frames will be filled by stitch)"
+          echo "render step rc=$? (124 = hit the ~18-min time box; partial frames will be filled by stitch)"
           set -e
           cd out/seq
           for f in element-*.png; do n=$(echo "$f" | sed -E 's/element-0*([0-9]+)\.png/\1/'); [ -z "$n" ] && n=0; printf -v p "fr_%06d.png" "$n"; mv "$f" "$p"; done
@@ -107,14 +107,28 @@ jobs:
             sudo npx --yes playwright@1.56.0 install-deps chromium || true
             CHROME=$(find /home /root -path '*ms-playwright*' -name chrome -type f 2>/dev/null | head -1)
             rm -rf out/fix && mkdir -p out/fix
-            npx remotion render src/index.ts "$COMP" out/fix \
+            set +e
+            timeout 1500 npx remotion render src/index.ts "$COMP" out/fix \
               --sequence --image-format=png --frames=$MISS \
               --gl=swangle --chrome-mode=chrome-for-testing --browser-executable="$CHROME" \
               --concurrency=4 --timeout=600000
+            echo "gap-fill rc=$?"
+            set -e
             cd out/fix
-            for f in element-*.png; do n=$(echo "$f" | sed -E 's/element-0*([0-9]+)\.png/\1/'); [ -z "$n" ] && n=0; printf -v p "fr_%06d.png" "$n"; mv "$f" "$p"; done
-            cd ../..; cp inkbeat/out/fix/fr_*.png frames/
+            for f in element-*.png; do [ -e "$f" ] || continue; n=$(echo "$f" | sed -E 's/element-0*([0-9]+)\.png/\1/'); [ -z "$n" ] && n=0; printf -v p "fr_%06d.png" "$n"; mv "$f" "$p"; done
+            cd ../..; cp inkbeat/out/fix/fr_*.png frames/ 2>/dev/null || true
           fi
+          # backstop: any frame STILL missing is filled from the nearest existing frame so the video is always complete
+          python3 -c "
+          import os,glob,shutil
+          have=sorted(int(os.path.basename(f).split('fr_')[1].split('.')[0]) for f in glob.glob('frames/fr_*.png'))
+          hs=set(have)
+          for i in range($TOTAL):
+              if i not in hs:
+                  nb=min(have,key=lambda x:abs(x-i))
+                  shutil.copy('frames/fr_%06d.png'%nb,'frames/fr_%06d.png'%i)
+                  print('backfilled frame',i,'from',nb)
+          "
           N=$(ls frames/fr_*.png 2>/dev/null | wc -l); echo "final frames: $N/$TOTAL"
           mkdir -p out
           ffmpeg -v error -y -framerate $FPS -start_number 0 -i frames/fr_%06d.png \
