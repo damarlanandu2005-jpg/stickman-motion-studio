@@ -1,0 +1,98 @@
+name: inkbeat split render (GitHub matrix, no GPU, no queue)
+# Fan 240 frames across N parallel GitHub runners (software WebGL via swangle), each rendering a frame
+# range to absolutely-numbered PNGs (element-<frame>.png); a final job pools them and stitches one mp4.
+on:
+  workflow_dispatch:
+    inputs:
+      comp:         { description: "Remotion composition id", default: "LustigPilot" }
+      shards:       { description: "number of parallel runners", default: "15" }
+      total_frames: { description: "total frames to render",    default: "240" }
+      fps:          { description: "frames per second",         default: "30" }
+permissions: { contents: write }
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.g.outputs.matrix }}
+      per:    ${{ steps.g.outputs.per }}
+    steps:
+      - id: g
+        run: |
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json, math, os
+          N = int("${{ github.event.inputs.shards }}"); T = int("${{ github.event.inputs.total_frames }}")
+          per = math.ceil(T / N)
+          print("matrix=" + json.dumps(list(range(N))))
+          print("per=" + str(per))
+          PY
+  render:
+    needs: plan
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix: { shard: ${{ fromJson(needs.plan.outputs.matrix) }} }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "20" }
+      - name: render shard
+        working-directory: inkbeat
+        env:
+          COMP: ${{ github.event.inputs.comp }}
+          PER:  ${{ needs.plan.outputs.per }}
+          TOTAL: ${{ github.event.inputs.total_frames }}
+          SHARD: ${{ matrix.shard }}
+        run: |
+          set -e
+          npm ci --no-audit --no-fund
+          npx --yes playwright@1.56.0 install chromium
+          sudo npx --yes playwright@1.56.0 install-deps chromium || npx --yes playwright@1.56.0 install-deps chromium || true
+          CHROME=$(find /home /root -path '*ms-playwright*' -name chrome -type f 2>/dev/null | head -1)
+          echo "chrome: $CHROME"
+          START=$(( SHARD * PER )); END=$(( START + PER - 1 )); LAST=$(( TOTAL - 1 ))
+          [ $END -gt $LAST ] && END=$LAST
+          if [ $START -gt $LAST ]; then echo "shard past end, nothing to do"; mkdir -p out/seq; exit 0; fi
+          echo "shard $SHARD -> frames $START-$END"
+          rm -rf out/seq && mkdir -p out/seq
+          npx remotion render src/index.ts "$COMP" out/seq \
+            --sequence --image-format=png --frames=$START-$END \
+            --gl=swangle --chrome-mode=chrome-for-testing --browser-executable="$CHROME" \
+            --concurrency=4 --timeout=300000
+          ls -la out/seq | head
+      - uses: actions/upload-artifact@v4
+        with:
+          name: frames-${{ matrix.shard }}
+          path: inkbeat/out/seq/
+          if-no-files-found: ignore
+          retention-days: 1
+  stitch:
+    needs: render
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with: { pattern: frames-*, path: dl, merge-multiple: true }
+      - name: stitch + mux
+        env:
+          FPS: ${{ github.event.inputs.fps }}
+          TOTAL: ${{ github.event.inputs.total_frames }}
+        run: |
+          set -e
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          N=$(ls dl/element-*.png 2>/dev/null | wc -l); echo "collected $N / $TOTAL frames"
+          ffmpeg -v error -y -framerate $FPS -start_number 0 -i dl/element-%d.png \
+            -c:v libx264 -crf 18 -pix_fmt yuv420p -movflags +faststart out/pilot.mp4 || \
+            (mkdir -p out && ffmpeg -v error -y -framerate $FPS -start_number 0 -i dl/element-%d.png -c:v libx264 -crf 18 -pix_fmt yuv420p out/pilot.mp4)
+          ls -la out/pilot.mp4
+          python3 -c "import json,os;json.dump({'frames_collected':$N,'total':$TOTAL,'ok':os.path.exists('out/pilot.mp4'),'size_mb':round(os.path.getsize('out/pilot.mp4')/1e6,2) if os.path.exists('out/pilot.mp4') else 0},open('split_result.json','w'),indent=1)"
+      - name: commit result
+        if: always()
+        run: |
+          D=results_inkbeat; mkdir -p $D
+          cp split_result.json $D/ 2>/dev/null || true
+          [ -f out/pilot.mp4 ] && [ $(stat -c%s out/pilot.mp4) -lt 99000000 ] && cp out/pilot.mp4 $D/inkbeat_pilot.mp4 || true
+          git config user.name "claude-bot"; git config user.email "noreply@anthropic.com"
+          git add -f $D
+          git commit -m "inkbeat split render result [skip ci]" || exit 0
+          git pull -q --rebase -X theirs origin ${{ github.ref_name }} || true
+          git push -q origin HEAD:${{ github.ref_name }}
