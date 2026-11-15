@@ -250,5 +250,14 @@
    230,
    220
   ]
+ },
+ "flame": {
+  "path": "props/flame.png",
+  "desc": "a cartoon flame",
+  "period": "any",
+  "size": [
+   200,
+   260
+  ]
  }
 }

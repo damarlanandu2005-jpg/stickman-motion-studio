@@ -1,0 +1,983 @@
+{
+ "title": "The Man Lightning Wouldn't Leave Alone",
+ "period": "1970s",
+ "audio": {
+  "voice": "audio/voice.mp3",
+  "music": "audio/music.mp3",
+  "musicDb": -17
+ },
+ "words": "audio/words.json",
+ "ground": {
+  "texture": "grass",
+  "repeat": [
+   240,
+   240
+  ]
+ },
+ "lighting": [
+  {
+   "t": 0,
+   "mood": "storm"
+  },
+  {
+   "t": 0.95,
+   "mood": "flash",
+   "fade": 0.05
+  },
+  {
+   "t": 1.09,
+   "mood": "storm",
+   "fade": 0.25
+  },
+  {
+   "t": 6.75,
+   "mood": "flash",
+   "fade": 0.05
+  },
+  {
+   "t": 6.89,
+   "mood": "storm",
+   "fade": 0.25
+  },
+  {
+   "t": 10.33,
+   "mood": "flash",
+   "fade": 0.05
+  },
+  {
+   "t": 10.47,
+   "mood": "storm",
+   "fade": 0.25
+  },
+  {
+   "t": 11.81,
+   "mood": "flash",
+   "fade": 0.05
+  },
+  {
+   "t": 11.95,
+   "mood": "storm",
+   "fade": 0.25
+  },
+  {
+   "t": 13.76,
+   "mood": "flash",
+   "fade": 0.05
+  },
+  {
+   "t": 13.9,
+   "mood": "storm",
+   "fade": 0.25
+  },
+  {
+   "t": 14.26,
+   "mood": "flash",
+   "fade": 0.05
+  },
+  {
+   "t": 14.4,
+   "mood": "storm",
+   "fade": 0.25
+  },
+  {
+   "t": 18.37,
+   "mood": "flash",
+   "fade": 0.05
+  },
+  {
+   "t": 18.51,
+   "mood": "storm",
+   "fade": 0.25
+  },
+  {
+   "t": 21.16,
+   "mood": "flash",
+   "fade": 0.05
+  },
+  {
+   "t": 21.3,
+   "mood": "storm",
+   "fade": 0.25
+  },
+  {
+   "t": 27.05,
+   "mood": "flash",
+   "fade": 0.05
+  },
+  {
+   "t": 27.19,
+   "mood": "storm",
+   "fade": 0.25
+  },
+  {
+   "t": 28.65,
+   "mood": "flash",
+   "fade": 0.05
+  },
+  {
+   "t": 28.79,
+   "mood": "storm",
+   "fade": 0.25
+  },
+  {
+   "t": 34.77,
+   "mood": "day",
+   "fade": 0.8
+  }
+ ],
+ "places": {
+  "road": {
+   "kit": "ranger_road",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "backdrop": "blue_ridge"
+  },
+  "tower": {
+   "kit": "fire_tower",
+   "at": [
+    70,
+    0,
+    0
+   ],
+   "backdrop": "blue_ridge"
+  },
+  "yard": {
+   "kit": "mountain_yard",
+   "at": [
+    140,
+    0,
+    0
+   ],
+   "backdrop": "blue_ridge"
+  }
+ },
+ "cast": [
+  {
+   "id": "roy_r",
+   "char": "roy",
+   "place": "road",
+   "pos": [
+    0,
+    0,
+    0
+   ],
+   "height": 1.8,
+   "face": "neutral",
+   "hat": "ranger_hat"
+  },
+  {
+   "id": "roy_f",
+   "char": "roy",
+   "place": "tower",
+   "pos": [
+    0,
+    0,
+    0
+   ],
+   "height": 1.8,
+   "face": "neutral",
+   "hat": "ranger_hat"
+  },
+  {
+   "id": "roy_y",
+   "char": "roy",
+   "place": "yard",
+   "pos": [
+    -0.6,
+    0,
+    0
+   ],
+   "height": 1.8,
+   "face": "neutral",
+   "hat": "ranger_hat"
+  },
+  {
+   "id": "wife_y",
+   "char": "wife",
+   "place": "yard",
+   "pos": [
+    1.2,
+    0,
+    0.1
+   ],
+   "height": 1.65,
+   "face": "neutral",
+   "flip": true
+  },
+  {
+   "id": "nbr_y",
+   "char": "neighbor",
+   "place": "yard",
+   "pos": [
+    -2.6,
+    0,
+    0.2
+   ],
+   "height": 1.8,
+   "face": "neutral"
+  }
+ ],
+ "props": [],
+ "lines": [
+  {
+   "say": "One man was struck",
+   "place": "road",
+   "move": "push",
+   "proof": "A park ranger with a lightning bolt crashing down beside him",
+   "acts": [
+    {
+     "who": "roy_r",
+     "at": 0.2,
+     "face": "shocked"
+    }
+   ],
+   "subject": "roy_r",
+   "shot": "medium",
+   "show": [
+    {
+     "type": "plane",
+     "image": "props/bolt.png",
+     "pos": [
+      1.6,
+      0,
+      -2.0
+     ],
+     "size": [
+      1.5,
+      3.93
+     ]
+    }
+   ]
+  },
+  {
+   "say": "and survived every",
+   "place": "road",
+   "move": "orbitR",
+   "proof": "The ranger, unharmed, giving a calm nod",
+   "acts": [
+    {
+     "who": "roy_r",
+     "at": 0.2,
+     "face": "neutral",
+     "motion": "nod"
+    }
+   ],
+   "subject": "roy_r",
+   "shot": "close"
+  },
+  {
+   "say": "Roy Sullivan was",
+   "place": "tower",
+   "move": "orbitL",
+   "proof": "Roy in his ranger hat and uniform before the fire lookout tower",
+   "acts": [
+    {
+     "who": "roy_f",
+     "at": 0.2,
+     "face": "neutral"
+    }
+   ],
+   "subject": "roy_f",
+   "shot": "medium"
+  },
+  {
+   "say": "The first bolt",
+   "place": "tower",
+   "move": "push",
+   "proof": "A bolt hits Roy by the tower: STRIKE 1, 1942",
+   "acts": [
+    {
+     "who": "roy_f",
+     "at": 0.1,
+     "face": "shocked",
+     "motion": "cower"
+    }
+   ],
+   "subject": "roy_f",
+   "shot": "medium",
+   "show": [
+    {
+     "type": "plane",
+     "image": "props/bolt.png",
+     "pos": [
+      0.5,
+      0,
+      -0.3
+     ],
+     "size": [
+      1.0,
+      2.62
+     ]
+    },
+    {
+     "type": "plane",
+     "image": "props/sign_strike1.png",
+     "pos": [
+      -2.0,
+      1.8,
+      -1.0
+     ],
+     "size": [
+      1.6,
+      1.0
+     ]
+    }
+   ]
+  },
+  {
+   "say": "and blew off",
+   "place": "tower",
+   "move": "push",
+   "proof": "A scorched work boot with a hole where the big toenail was",
+   "acts": [],
+   "anchor": [
+    0,
+    0.4,
+    -0.3
+   ],
+   "extra": {
+    "distance": 2.6,
+    "fov": 38,
+    "yaw": 6,
+    "pitch": 6,
+    "zoom": 4,
+    "orbit": -2,
+    "rise": 0.1
+   },
+   "show": [
+    {
+     "type": "plane",
+     "image": "props/boot.png",
+     "pos": [
+      0,
+      0,
+      -0.3
+     ],
+     "size": [
+      0.8,
+      0.76
+     ]
+    }
+   ]
+  },
+  {
+   "say": "Years later, lightning",
+   "place": "road",
+   "move": "orbitL",
+   "proof": "A bolt strikes the ranger truck as Roy drives: STRIKE 2, 1969",
+   "acts": [
+    {
+     "who": "roy_r",
+     "at": 0.2,
+     "face": "shocked"
+    }
+   ],
+   "subject": "roy_r",
+   "shot": "wide",
+   "show": [
+    {
+     "type": "plane",
+     "image": "props/bolt.png",
+     "pos": [
+      -5.2,
+      0,
+      -2.4
+     ],
+     "size": [
+      1.4,
+      3.6679999999999997
+     ]
+    },
+    {
+     "type": "plane",
+     "image": "props/sign_strike2.png",
+     "pos": [
+      2.2,
+      1.9,
+      -1.0
+     ],
+     "size": [
+      1.6,
+      1.0
+     ]
+    }
+   ]
+  },
+  {
+   "say": "Then again, in",
+   "place": "yard",
+   "move": "orbitR",
+   "proof": "A bolt hits in Roy's front yard by the house: STRIKE 3, 1970",
+   "acts": [
+    {
+     "who": "roy_y",
+     "at": 0.2,
+     "face": "shocked",
+     "motion": "cower"
+    }
+   ],
+   "subject": "roy_y",
+   "shot": "medium",
+   "show": [
+    {
+     "type": "plane",
+     "image": "props/bolt.png",
+     "pos": [
+      1.1,
+      0,
+      -1.0
+     ],
+     "size": [
+      1.3,
+      3.406
+     ]
+    },
+    {
+     "type": "plane",
+     "image": "props/sign_strike3.png",
+     "pos": [
+      -2.2,
+      1.9,
+      -1.0
+     ],
+     "size": [
+      1.6,
+      1.0
+     ]
+    }
+   ]
+  },
+  {
+   "say": "Then it set his hair",
+   "place": "yard",
+   "move": "push",
+   "proof": "Flames burn above Roy's head: STRIKE 4 and STRIKE 5",
+   "acts": [
+    {
+     "who": "roy_y",
+     "at": 0.1,
+     "face": "shouting",
+     "motion": "cower"
+    }
+   ],
+   "subject": "roy_y",
+   "shot": "close",
+   "show": [
+    {
+     "type": "plane",
+     "image": "props/flame.png",
+     "pos": [
+      -0.1,
+      1.55,
+      0.15
+     ],
+     "size": [
+      0.6,
+      0.78
+     ]
+    },
+    {
+     "type": "plane",
+     "image": "props/flame.png",
+     "pos": [
+      0.25,
+      1.5,
+      0.1
+     ],
+     "size": [
+      0.5,
+      0.65
+     ]
+    },
+    {
+     "type": "plane",
+     "image": "props/sign_strike4.png",
+     "pos": [
+      -1.8,
+      2.1,
+      -1.0
+     ],
+     "size": [
+      1.3,
+      0.8
+     ]
+    },
+    {
+     "type": "plane",
+     "image": "props/sign_strike5.png",
+     "pos": [
+      1.8,
+      2.1,
+      -1.0
+     ],
+     "size": [
+      1.3,
+      0.8
+     ]
+    }
+   ]
+  },
+  {
+   "say": "People began to back",
+   "place": "yard",
+   "move": "orbitL",
+   "proof": "A neighbour backs away from Roy while the storm rolls in",
+   "acts": [
+    {
+     "who": "nbr_y",
+     "at": 0.2,
+     "face": "nervous",
+     "flip": true,
+     "to": [
+      -5.0,
+      0,
+      0.2
+     ],
+     "walk": true,
+     "over": 2.0
+    },
+    {
+     "who": "roy_y",
+     "at": 0.2,
+     "face": "sad"
+    }
+   ],
+   "subject": "nbr_y",
+   "shot": "two"
+  },
+  {
+   "say": "Even his wife",
+   "place": "yard",
+   "move": "push",
+   "proof": "Roy's wife struck by lightning at the clothesline",
+   "acts": [
+    {
+     "who": "wife_y",
+     "at": 0.1,
+     "face": "shocked"
+    }
+   ],
+   "subject": "wife_y",
+   "shot": "close",
+   "show": [
+    {
+     "type": "plane",
+     "image": "props/bolt.png",
+     "pos": [
+      2.4,
+      0,
+      -1.2
+     ],
+     "size": [
+      1.4,
+      3.6679999999999997
+     ]
+    }
+   ]
+  },
+  {
+   "say": "in the yard beside",
+   "place": "yard",
+   "move": "orbitR",
+   "proof": "Roy stands beside his shocked wife in the yard",
+   "acts": [
+    {
+     "who": "roy_y",
+     "at": 0.1,
+     "face": "nervous"
+    },
+    {
+     "who": "wife_y",
+     "at": 0.1,
+     "face": "shocked"
+    }
+   ],
+   "subject": "roy_y",
+   "shot": "two"
+  },
+  {
+   "say": "Seven times, the sky",
+   "place": "road",
+   "move": "craneUp",
+   "proof": "A giant bolt behind Roy: STRIKE 7, 1977",
+   "acts": [
+    {
+     "who": "roy_r",
+     "at": 0.1,
+     "face": "scared"
+    }
+   ],
+   "subject": "roy_r",
+   "shot": "close",
+   "show": [
+    {
+     "type": "plane",
+     "image": "props/bolt.png",
+     "pos": [
+      0.2,
+      0,
+      -2.6
+     ],
+     "size": [
+      2.4,
+      6.288
+     ]
+    },
+    {
+     "type": "plane",
+     "image": "props/sign_strike7.png",
+     "pos": [
+      1.9,
+      1.6,
+      -1.2
+     ],
+     "size": [
+      1.6,
+      1.0
+     ]
+    }
+   ]
+  },
+  {
+   "say": "Seven times, he got",
+   "place": "road",
+   "move": "craneUp",
+   "proof": "Roy rises, scorched but standing",
+   "acts": [
+    {
+     "who": "roy_r",
+     "at": 0.1,
+     "face": "neutral",
+     "motion": "nod"
+    }
+   ],
+   "subject": "roy_r",
+   "shot": "medium"
+  },
+  {
+   "say": "Guinness World Records says",
+   "place": "yard",
+   "move": "pull",
+   "proof": "A GUINNESS WORLD RECORDS - 7 STRIKES plaque",
+   "acts": [],
+   "anchor": [
+    0,
+    1.2,
+    -2
+   ],
+   "extra": {
+    "distance": 6,
+    "fov": 40,
+    "yaw": -6,
+    "pitch": 3,
+    "zoom": -3,
+    "orbit": 2,
+    "rise": 0.8
+   },
+   "show": [
+    {
+     "type": "plane",
+     "image": "props/sign_guinness.png",
+     "pos": [
+      0,
+      0,
+      -2
+     ],
+     "size": [
+      3.0,
+      1.63
+     ]
+    }
+   ]
+  },
+  {
+   "say": "and people called him",
+   "place": "road",
+   "move": "push",
+   "proof": "Roy beside a lightning-rod pole with a bolt striking it",
+   "acts": [
+    {
+     "who": "roy_r",
+     "at": 0.1,
+     "face": "neutral"
+    }
+   ],
+   "subject": "roy_r",
+   "shot": "close",
+   "show": [
+    {
+     "type": "post",
+     "pos": [
+      1.0,
+      0,
+      -0.6
+     ],
+     "h": 3.6,
+     "color": "#b8bcc4"
+    },
+    {
+     "type": "plane",
+     "image": "props/bolt.png",
+     "pos": [
+      1.0,
+      0,
+      -0.8
+     ],
+     "size": [
+      1.1,
+      2.8820000000000006
+     ]
+    }
+   ]
+  },
+  {
+   "say": "No one could explain",
+   "place": "yard",
+   "move": "orbitL",
+   "proof": "Roy confused, thinking",
+   "acts": [
+    {
+     "who": "roy_y",
+     "at": 0.1,
+     "face": "confused"
+    }
+   ],
+   "subject": "roy_y",
+   "shot": "close"
+  },
+  {
+   "say": "The odds of being hit",
+   "place": "yard",
+   "move": "push",
+   "proof": "A THE ODDS? card with a single small bolt",
+   "acts": [],
+   "anchor": [
+    0,
+    1.2,
+    -2
+   ],
+   "extra": {
+    "distance": 5,
+    "fov": 40,
+    "yaw": 5,
+    "pitch": 3,
+    "zoom": 4,
+    "orbit": -2,
+    "rise": 0.3
+   },
+   "show": [
+    {
+     "type": "plane",
+     "image": "props/sign_odds.png",
+     "pos": [
+      0,
+      0,
+      -2
+     ],
+     "size": [
+      2.6,
+      1.33
+     ]
+    },
+    {
+     "type": "plane",
+     "image": "props/bolt.png",
+     "pos": [
+      1.9,
+      0,
+      -2.0
+     ],
+     "size": [
+      0.8,
+      2.096
+     ]
+    }
+   ]
+  },
+  {
+   "say": "The odds of seven",
+   "place": "tower",
+   "move": "push",
+   "proof": "Seven bolts across the sky behind Roy, who shrugs",
+   "acts": [
+    {
+     "who": "roy_f",
+     "at": 0.1,
+     "face": "confused",
+     "motion": "shrug"
+    }
+   ],
+   "subject": "roy_f",
+   "shot": "wide",
+   "show": [
+    {
+     "type": "plane",
+     "image": "props/bolt.png",
+     "pos": [
+      -4.5,
+      0,
+      -6.0
+     ],
+     "size": [
+      1.1,
+      2.8820000000000006
+     ]
+    },
+    {
+     "type": "plane",
+     "image": "props/bolt.png",
+     "pos": [
+      -3.0,
+      0,
+      -6.0
+     ],
+     "size": [
+      1.1,
+      2.8820000000000006
+     ]
+    },
+    {
+     "type": "plane",
+     "image": "props/bolt.png",
+     "pos": [
+      -1.5,
+      0,
+      -6.0
+     ],
+     "size": [
+      1.1,
+      2.8820000000000006
+     ]
+    },
+    {
+     "type": "plane",
+     "image": "props/bolt.png",
+     "pos": [
+      0.0,
+      0,
+      -6.0
+     ],
+     "size": [
+      1.1,
+      2.8820000000000006
+     ]
+    },
+    {
+     "type": "plane",
+     "image": "props/bolt.png",
+     "pos": [
+      1.5,
+      0,
+      -6.0
+     ],
+     "size": [
+      1.1,
+      2.8820000000000006
+     ]
+    },
+    {
+     "type": "plane",
+     "image": "props/bolt.png",
+     "pos": [
+      3.0,
+      0,
+      -6.0
+     ],
+     "size": [
+      1.1,
+      2.8820000000000006
+     ]
+    },
+    {
+     "type": "plane",
+     "image": "props/bolt.png",
+     "pos": [
+      4.5,
+      0,
+      -6.0
+     ],
+     "size": [
+      1.1,
+      2.8820000000000006
+     ]
+    }
+   ]
+  },
+  {
+   "say": "In the end",
+   "place": "yard",
+   "move": "orbitR",
+   "proof": "Roy, in sunshine, walks slowly across his yard",
+   "acts": [
+    {
+     "who": "roy_y",
+     "at": 0.1,
+     "face": "neutral",
+     "to": [
+      2.6,
+      0,
+      0.3
+     ],
+     "walk": true,
+     "over": 2.0
+    }
+   ],
+   "subject": "roy_y",
+   "shot": "wide"
+  },
+  {
+   "say": "Roy died in nineteen",
+   "place": "yard",
+   "move": "craneUp",
+   "proof": "A ROY SULLIVAN 1912 - 1983 memorial plaque",
+   "acts": [],
+   "anchor": [
+    0,
+    1.0,
+    -1.5
+   ],
+   "extra": {
+    "distance": 6,
+    "fov": 40,
+    "yaw": 4,
+    "pitch": 2,
+    "zoom": 2,
+    "orbit": 1,
+    "rise": 1.0
+   },
+   "show": [
+    {
+     "type": "plane",
+     "image": "props/sign_roy.png",
+     "pos": [
+      0,
+      0,
+      -1.5
+     ],
+     "size": [
+      3.0,
+      1.32
+     ]
+    }
+   ]
+  },
+  {
+   "say": "Lightning never got him",
+   "place": "yard",
+   "move": "pull",
+   "proof": "Roy smiles quietly in the sun",
+   "acts": [
+    {
+     "who": "roy_y",
+     "at": 0.1,
+     "face": "smug"
+    }
+   ],
+   "subject": "roy_y",
+   "shot": "close"
+  }
+ ]
+}

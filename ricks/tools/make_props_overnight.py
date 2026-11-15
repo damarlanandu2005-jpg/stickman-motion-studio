@@ -67,6 +67,8 @@ sign("sign_roy", ["ROY SULLIVAN", "1912 - 1983"], (150, 150, 146, 255), INK, "a 
 im, d = canvas(230, 220); poly(d, [(60, 20), (140, 20), (150, 120), (215, 150), (215, 205), (40, 205), (40, 120)], (120, 82, 54, 255), 7)
 d.ellipse([150 * S, 168 * S, 200 * S, 198 * S], fill=(40, 30, 30, 255)); d.rectangle([40 * S, 192 * S, 215 * S, 210 * S], fill=INK)
 fin(im, "boot", "a brown work boot with a scorched hole at the toe", "any")
+im, d = canvas(200, 260); poly(d, [(100, 8), (160, 90), (188, 170), (150, 244), (100, 252), (52, 244), (14, 170), (48, 100), (66, 60), (86, 100)], (240, 110, 30, 255), 8)
+poly(d, [(100, 90), (136, 160), (120, 226), (100, 232), (80, 226), (66, 160)], (255, 205, 70, 255), 3); fin(im, "flame", "a cartoon flame", "any")
 json.dump(REG, open(os.path.join(OUT, "_registry_overnight.json"), "w"), indent=1)
 C = json.load(open(os.path.join(LIB, "catalog.json"))); C["props2d"].update(REG); json.dump(C, open(os.path.join(LIB, "catalog.json"), "w"), indent=1, sort_keys=True)
 print(len(REG), "props written")

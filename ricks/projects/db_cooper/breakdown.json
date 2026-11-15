@@ -1,0 +1,945 @@
+{
+ "title": "The Man Who Vanished",
+ "period": "1970s",
+ "audio": {
+  "voice": "audio/voice.mp3",
+  "music": "audio/music.mp3",
+  "musicDb": -17
+ },
+ "words": "audio/words.json",
+ "ground": {
+  "texture": "grass",
+  "repeat": [
+   240,
+   240
+  ]
+ },
+ "lighting": [
+  {
+   "t": 0,
+   "mood": "day"
+  },
+  {
+   "t": 24.97,
+   "mood": "night",
+   "fade": 0.8
+  },
+  {
+   "t": 29.91,
+   "mood": "day",
+   "fade": 0.8
+  }
+ ],
+ "places": {
+  "tarmac": {
+   "kit": "tarmac",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "backdrop": "airport"
+  },
+  "cabin": {
+   "kit": "plane_cabin",
+   "at": [
+    70,
+    0,
+    0
+   ],
+   "backdrop": null
+  },
+  "night": {
+   "kit": "plane_tail_night",
+   "at": [
+    140,
+    0,
+    0
+   ],
+   "backdrop": "night_forest"
+  },
+  "river": {
+   "kit": "river_bank",
+   "at": [
+    210,
+    0,
+    0
+   ],
+   "backdrop": "river_forest"
+  }
+ },
+ "cast": [
+  {
+   "id": "cooper_t",
+   "char": "cooper",
+   "place": "tarmac",
+   "pos": [
+    -1.0,
+    0,
+    0
+   ],
+   "height": 1.8,
+   "face": "neutral"
+  },
+  {
+   "id": "agent_t",
+   "char": "agent",
+   "place": "tarmac",
+   "pos": [
+    1.3,
+    0,
+    0.1
+   ],
+   "height": 1.8,
+   "face": "neutral",
+   "flip": true
+  },
+  {
+   "id": "pass1",
+   "char": "neighbor",
+   "place": "tarmac",
+   "pos": [
+    9,
+    0,
+    -1.6
+   ],
+   "height": 1.8,
+   "face": "nervous",
+   "flip": true
+  },
+  {
+   "id": "pass2",
+   "char": "wife",
+   "place": "tarmac",
+   "pos": [
+    10.5,
+    0,
+    -1.8
+   ],
+   "height": 1.65,
+   "face": "nervous",
+   "flip": true
+  },
+  {
+   "id": "pass3",
+   "char": "father",
+   "place": "tarmac",
+   "pos": [
+    12,
+    0,
+    -1.5
+   ],
+   "height": 1.8,
+   "face": "nervous",
+   "flip": true
+  },
+  {
+   "id": "cooper_c",
+   "char": "cooper",
+   "place": "cabin",
+   "pos": [
+    -0.7,
+    0,
+    0
+   ],
+   "height": 1.8,
+   "face": "neutral"
+  },
+  {
+   "id": "att_c",
+   "char": "attendant",
+   "place": "cabin",
+   "pos": [
+    0.8,
+    0,
+    0.1
+   ],
+   "height": 1.7,
+   "face": "neutral",
+   "flip": true
+  },
+  {
+   "id": "pilot_c",
+   "char": "pilot",
+   "place": "cabin",
+   "pos": [
+    2.0,
+    0,
+    -1.4
+   ],
+   "height": 1.8,
+   "face": "neutral",
+   "hat": "pilot_cap",
+   "flip": true
+  },
+  {
+   "id": "cooper_n",
+   "char": "cooper",
+   "place": "night",
+   "pos": [
+    0,
+    0.9,
+    -3.2
+   ],
+   "height": 1.8,
+   "face": "neutral"
+  },
+  {
+   "id": "agent_r",
+   "char": "agent",
+   "place": "river",
+   "pos": [
+    -0.9,
+    0,
+    0
+   ],
+   "height": 1.8,
+   "face": "neutral"
+  },
+  {
+   "id": "agent2_r",
+   "char": "agent",
+   "place": "river",
+   "pos": [
+    1.0,
+    0,
+    0.1
+   ],
+   "height": 1.8,
+   "face": "confused",
+   "flip": true
+  },
+  {
+   "id": "boy_r",
+   "char": "boy",
+   "place": "river",
+   "pos": [
+    3.4,
+    0,
+    0.3
+   ],
+   "height": 1.2,
+   "face": "neutral",
+   "flip": true
+  }
+ ],
+ "props": [],
+ "lines": [
+  {
+   "say": "In nineteen seventy-one",
+   "place": "tarmac",
+   "move": "craneUp",
+   "proof": "An airliner parked on the apron with a NOV 24 1971 date card",
+   "acts": [],
+   "anchor": [
+    0,
+    2.3,
+    -9
+   ],
+   "extra": {
+    "distance": 15,
+    "fov": 42,
+    "yaw": -12,
+    "pitch": 0,
+    "orbit": 6,
+    "rise": 2.5,
+    "zoom": 2
+   },
+   "show": [
+    {
+     "type": "plane",
+     "image": "props/sign_1971.png",
+     "pos": [
+      4.2,
+      0,
+      -3
+     ],
+     "size": [
+      3.2,
+      1.48
+     ]
+    }
+   ]
+  },
+  {
+   "say": "jumped out with",
+   "place": "tarmac",
+   "move": "push",
+   "proof": "Cooper in a suit and sunglasses holding a $200,000 money bag",
+   "acts": [
+    {
+     "who": "cooper_t",
+     "at": 0.0,
+     "face": "neutral",
+     "hold": {
+      "file": "props/money_bag.png",
+      "hand": "R",
+      "scale": 0.5
+     },
+     "pose": {
+      "armR": -55
+     }
+    }
+   ],
+   "subject": "cooper_t",
+   "shot": "medium"
+  },
+  {
+   "say": "and was never seen",
+   "place": "tarmac",
+   "move": "pull",
+   "proof": "A NEVER FOUND wanted poster beside the empty-handed Cooper",
+   "acts": [
+    {
+     "who": "cooper_t",
+     "at": 0.0,
+     "face": "neutral"
+    }
+   ],
+   "subject": "cooper_t",
+   "shot": "wide",
+   "show": [
+    {
+     "type": "plane",
+     "image": "props/sign_wanted.png",
+     "pos": [
+      2.5,
+      0,
+      -1.4
+     ],
+     "size": [
+      3.2,
+      1.74
+     ]
+    }
+   ]
+  },
+  {
+   "say": "He bought a ticket",
+   "place": "cabin",
+   "move": "orbitR",
+   "proof": "Cooper in the aisle with a FLIGHT 305 PORTLAND - SEATTLE board behind him",
+   "acts": [
+    {
+     "who": "cooper_c",
+     "at": 0.0,
+     "face": "neutral"
+    }
+   ],
+   "subject": "cooper_c",
+   "shot": "close",
+   "show": [
+    {
+     "type": "plane",
+     "image": "props/sign_flight305.png",
+     "pos": [
+      0.6,
+      0.0,
+      -2.0
+     ],
+     "size": [
+      3.0,
+      1.1
+     ]
+    }
+   ]
+  },
+  {
+   "say": "Calm, polite",
+   "place": "cabin",
+   "move": "push",
+   "proof": "Cooper calmly bows politely in his suit and tie",
+   "acts": [
+    {
+     "who": "cooper_c",
+     "at": 0.2,
+     "face": "neutral",
+     "motion": "bow"
+    }
+   ],
+   "subject": "cooper_c",
+   "shot": "medium"
+  },
+  {
+   "say": "Mid-flight",
+   "place": "cabin",
+   "move": "orbitL",
+   "proof": "Cooper hands a folded note to the flight attendant",
+   "acts": [
+    {
+     "who": "cooper_c",
+     "at": 0.2,
+     "motion": "give",
+     "hold": {
+      "file": "props/note_bomb.png",
+      "hand": "R",
+      "scale": 0.32
+     }
+    },
+    {
+     "who": "att_c",
+     "at": 0.2,
+     "face": "neutral"
+    }
+   ],
+   "subject": "cooper_c",
+   "shot": "two"
+  },
+  {
+   "say": "It said he had a bomb",
+   "place": "cabin",
+   "move": "push",
+   "proof": "The attendant reads the note: I HAVE A BOMB - shocked",
+   "acts": [
+    {
+     "who": "att_c",
+     "at": 0.0,
+     "face": "shocked",
+     "hold": {
+      "file": "props/note_bomb.png",
+      "hand": "L",
+      "scale": 0.32
+     }
+    }
+   ],
+   "subject": "att_c",
+   "shot": "close"
+  },
+  {
+   "say": "He showed her the wires",
+   "place": "cabin",
+   "move": "push",
+   "proof": "An open briefcase packed with red sticks and wires",
+   "acts": [],
+   "anchor": [
+    0,
+    0.8,
+    -0.3
+   ],
+   "extra": {
+    "distance": 3.2,
+    "fov": 38,
+    "yaw": -8,
+    "pitch": 8,
+    "zoom": 4,
+    "orbit": 2,
+    "rise": 0.3,
+    "frameY": 0.0
+   },
+   "show": [
+    {
+     "type": "plane",
+     "image": "props/briefcase_wires.png",
+     "pos": [
+      0,
+      0.35,
+      -0.3
+     ],
+     "size": [
+      1.6,
+      1.07
+     ]
+    }
+   ]
+  },
+  {
+   "say": "Then he made his demands",
+   "place": "cabin",
+   "move": "orbitR",
+   "proof": "Cooper, calm and stern, laying out his demands",
+   "acts": [
+    {
+     "who": "cooper_c",
+     "at": 0.2,
+     "face": "neutral",
+     "motion": "point"
+    }
+   ],
+   "subject": "cooper_c",
+   "shot": "medium"
+  },
+  {
+   "say": "two hundred thousand",
+   "place": "cabin",
+   "move": "push",
+   "proof": "A canvas bag marked $200,000",
+   "acts": [],
+   "anchor": [
+    0,
+    0.9,
+    -0.4
+   ],
+   "extra": {
+    "distance": 3.0,
+    "fov": 38,
+    "yaw": 6,
+    "pitch": 6,
+    "zoom": 4,
+    "orbit": -2,
+    "rise": 0.2
+   },
+   "show": [
+    {
+     "type": "plane",
+     "image": "props/money_bag.png",
+     "pos": [
+      0,
+      0.25,
+      -0.4
+     ],
+     "size": [
+      1.2,
+      1.3
+     ]
+    }
+   ]
+  },
+  {
+   "say": "and four parachutes",
+   "place": "cabin",
+   "move": "craneUp",
+   "proof": "Four red-and-white parachutes in a row",
+   "acts": [],
+   "anchor": [
+    0,
+    1.1,
+    -0.5
+   ],
+   "extra": {
+    "distance": 4.2,
+    "fov": 40,
+    "yaw": -6,
+    "pitch": 3,
+    "zoom": 3,
+    "rise": 1.0
+   },
+   "show": [
+    {
+     "type": "plane",
+     "image": "props/parachute.png",
+     "pos": [
+      -1.7,
+      0.5,
+      -0.5
+     ],
+     "size": [
+      1.1,
+      0.97
+     ]
+    },
+    {
+     "type": "plane",
+     "image": "props/parachute.png",
+     "pos": [
+      -0.6,
+      0.5,
+      -0.5
+     ],
+     "size": [
+      1.1,
+      0.97
+     ]
+    },
+    {
+     "type": "plane",
+     "image": "props/parachute.png",
+     "pos": [
+      0.6,
+      0.5,
+      -0.5
+     ],
+     "size": [
+      1.1,
+      0.97
+     ]
+    },
+    {
+     "type": "plane",
+     "image": "props/parachute.png",
+     "pos": [
+      1.7,
+      0.5,
+      -0.5
+     ],
+     "size": [
+      1.1,
+      0.97
+     ]
+    }
+   ]
+  },
+  {
+   "say": "On the ground",
+   "place": "tarmac",
+   "move": "push",
+   "proof": "On the apron an agent hands the money bag to Cooper",
+   "acts": [
+    {
+     "who": "agent_t",
+     "at": 0.2,
+     "motion": "give",
+     "hold": {
+      "file": "props/money_bag.png",
+      "hand": "R",
+      "scale": 0.5
+     }
+    },
+    {
+     "who": "cooper_t",
+     "at": 0.9,
+     "motion": "take"
+    }
+   ],
+   "subject": "cooper_t",
+   "shot": "two"
+  },
+  {
+   "say": "He let the passengers go",
+   "place": "tarmac",
+   "move": "orbitL",
+   "proof": "Passengers walk away from the plane behind Cooper",
+   "acts": [
+    {
+     "who": "pass1",
+     "at": 0.2,
+     "to": [
+      -8,
+      0,
+      -1.6
+     ],
+     "walk": true,
+     "over": 2.2,
+     "flip": true
+    },
+    {
+     "who": "pass2",
+     "at": 0.4,
+     "to": [
+      -9.5,
+      0,
+      -1.8
+     ],
+     "walk": true,
+     "over": 2.2,
+     "flip": true
+    },
+    {
+     "who": "pass3",
+     "at": 0.6,
+     "to": [
+      -11,
+      0,
+      -1.5
+     ],
+     "walk": true,
+     "over": 2.2,
+     "flip": true
+    }
+   ],
+   "subject": "cooper_t",
+   "shot": "wide"
+  },
+  {
+   "say": "Then he ordered the pilots",
+   "place": "cabin",
+   "move": "push",
+   "proof": "Cooper orders the nervous pilot",
+   "acts": [
+    {
+     "who": "cooper_c",
+     "at": 0.2,
+     "face": "neutral",
+     "motion": "point"
+    },
+    {
+     "who": "pilot_c",
+     "at": 0.3,
+     "to": [
+      0.9,
+      0,
+      0.0
+     ],
+     "walk": true,
+     "over": 0.8,
+     "face": "nervous"
+    }
+   ],
+   "subject": "cooper_c",
+   "shot": "two"
+  },
+  {
+   "say": "and to fly low",
+   "place": "tarmac",
+   "move": "craneUp",
+   "proof": "The airliner pointed toward a MEXICO sign",
+   "acts": [],
+   "anchor": [
+    0,
+    2.0,
+    -9
+   ],
+   "extra": {
+    "distance": 14,
+    "fov": 42,
+    "yaw": 10,
+    "pitch": 0,
+    "orbit": -5,
+    "rise": 2.0,
+    "zoom": 2
+   },
+   "show": [
+    {
+     "type": "plane",
+     "image": "props/sign_mexico.png",
+     "pos": [
+      -5.2,
+      0,
+      -2.2
+     ],
+     "size": [
+      2.4,
+      2.8
+     ]
+    }
+   ]
+  },
+  {
+   "say": "Somewhere over the forests",
+   "place": "night",
+   "move": "craneDown",
+   "proof": "The dark pine forest at night under a stormy sky, the airliner's tail",
+   "acts": [],
+   "anchor": [
+    0,
+    3.5,
+    -8
+   ],
+   "extra": {
+    "distance": 14,
+    "fov": 44,
+    "yaw": -14,
+    "pitch": 0,
+    "orbit": -4,
+    "rise": -2,
+    "zoom": 2
+   }
+  },
+  {
+   "say": "in the rain and the dark",
+   "place": "night",
+   "move": "push",
+   "proof": "Cooper stands at the dark open door of the plane in the night",
+   "acts": [
+    {
+     "who": "cooper_n",
+     "at": 0.0,
+     "face": "neutral"
+    }
+   ],
+   "subject": "cooper_n",
+   "shot": "wide"
+  },
+  {
+   "say": "he opened the rear stairs",
+   "place": "night",
+   "move": "craneDown",
+   "proof": "Cooper at the top of the rear stairs steps off into the night",
+   "acts": [
+    {
+     "who": "cooper_n",
+     "at": 0.4,
+     "face": "neutral"
+    },
+    {
+     "who": "cooper_n",
+     "at": 1.5,
+     "motion": "fall",
+     "to": [
+      0,
+      0.0,
+      -1.2
+     ],
+     "over": 0.9
+    }
+   ],
+   "subject": "cooper_n",
+   "shot": "medium"
+  },
+  {
+   "say": "They searched for years",
+   "place": "river",
+   "move": "orbitR",
+   "proof": "Two FBI agents search the riverbank, one pointing",
+   "acts": [
+    {
+     "who": "agent_r",
+     "at": 0.2,
+     "motion": "point"
+    },
+    {
+     "who": "agent2_r",
+     "at": 0.2,
+     "face": "confused"
+    }
+   ],
+   "subject": "agent_r",
+   "shot": "medium"
+  },
+  {
+   "say": "The FBI never found him",
+   "place": "river",
+   "move": "push",
+   "proof": "A confused FBI agent beside a NEVER FOUND wanted poster",
+   "acts": [
+    {
+     "who": "agent2_r",
+     "at": 0.0,
+     "face": "confused",
+     "motion": "shrug"
+    }
+   ],
+   "subject": "agent2_r",
+   "shot": "close",
+   "show": [
+    {
+     "type": "plane",
+     "image": "props/sign_wanted.png",
+     "pos": [
+      -1.6,
+      0,
+      -0.8
+     ],
+     "size": [
+      2.6,
+      1.42
+     ]
+    }
+   ]
+  },
+  {
+   "say": "The only trace",
+   "place": "river",
+   "move": "push",
+   "proof": "A bundle of banknotes lying in the sand of the river bank",
+   "acts": [],
+   "anchor": [
+    0,
+    0.3,
+    -1.2
+   ],
+   "extra": {
+    "distance": 3.0,
+    "fov": 38,
+    "yaw": -6,
+    "pitch": 14,
+    "zoom": 4,
+    "orbit": 2,
+    "rise": 0.1
+   },
+   "show": [
+    {
+     "type": "plane",
+     "image": "props/cash.png",
+     "pos": [
+      0,
+      0.05,
+      -1.2
+     ],
+     "size": [
+      1.0,
+      0.65
+     ]
+    }
+   ]
+  },
+  {
+   "say": "dug up by a boy",
+   "place": "river",
+   "move": "orbitL",
+   "proof": "A boy holding the bundle of cash, shocked",
+   "acts": [
+    {
+     "who": "boy_r",
+     "at": 0.0,
+     "face": "shocked",
+     "hold": {
+      "file": "props/cash.png",
+      "hand": "R",
+      "scale": 0.45
+     },
+     "pose": {
+      "armR": -50
+     }
+    }
+   ],
+   "subject": "boy_r",
+   "shot": "medium"
+  },
+  {
+   "say": "in nineteen eighty",
+   "place": "river",
+   "move": "pull",
+   "proof": "The boy on the river bank under a 1980 date card",
+   "acts": [
+    {
+     "who": "boy_r",
+     "at": 0.0,
+     "face": "neutral"
+    }
+   ],
+   "subject": "boy_r",
+   "shot": "wide",
+   "show": [
+    {
+     "type": "plane",
+     "image": "props/sign_1980.png",
+     "pos": [
+      3.4,
+      1.7,
+      -0.6
+     ],
+     "size": [
+      1.7,
+      0.9
+     ]
+    }
+   ]
+  },
+  {
+   "say": "It remains the only",
+   "place": "tarmac",
+   "move": "pull",
+   "proof": "A large wanted poster: DAN COOPER - NEVER FOUND, an airliner behind",
+   "acts": [],
+   "anchor": [
+    0,
+    1.4,
+    -3
+   ],
+   "extra": {
+    "distance": 7,
+    "fov": 40,
+    "yaw": 6,
+    "pitch": 3,
+    "zoom": -3,
+    "orbit": -2,
+    "rise": 1
+   },
+   "show": [
+    {
+     "type": "plane",
+     "image": "props/sign_wanted.png",
+     "pos": [
+      0,
+      0,
+      -3
+     ],
+     "size": [
+      4.2,
+      2.28
+     ]
+    }
+   ]
+  }
+ ]
+}

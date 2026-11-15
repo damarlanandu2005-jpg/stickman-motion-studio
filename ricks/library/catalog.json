@@ -924,6 +924,15 @@
     86
    ]
   },
+  "flame": {
+   "desc": "a cartoon flame",
+   "path": "props/flame.png",
+   "period": "any",
+   "size": [
+    200,
+    260
+   ]
+  },
   "jet": {
    "desc": "a side view of a white airliner with a red stripe",
    "path": "props/jet.png",
