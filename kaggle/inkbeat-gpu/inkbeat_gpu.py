@@ -16,17 +16,15 @@ def sh(cmd, timeout=3600, show=2500, env=None):
 rep = {"engine": "inkbeat", "comp": COMP, "branch": BRANCH, "blur": BLUR, "gl_used": "swiftshader", "mode": "cpu+playwright-chromium"}
 rep["cpu"] = sh("nproc").strip()
 rep["node"] = sh("node -v").strip()
-# Playwright Chromium (software GL that works headless); known cache path afterwards.
-sh("pip install -q playwright 2>&1 | tail -2", timeout=600)
-sh("python -m playwright install chromium 2>&1 | tail -3", timeout=900)
-chrome = ""
-for g in ["/root/.cache/ms-playwright/chromium-*/chrome-linux/chrome", "/root/.cache/ms-playwright/chromium_headless_shell-*/chrome-linux/*"]:
-    m = sorted(glob.glob(g))
-    if m: chrome = m[-1]; break
-rep["chrome"] = chrome or "NOT_FOUND"
 sh("rm -rf /tmp/repo && git clone -q --depth 1 --branch %s https://github.com/damarlanandu2005-jpg/stickman-motion-studio /tmp/repo 2>&1 | tail -2" % BRANCH)
 P = "/tmp/repo/inkbeat"
 sh("cd %s && npm ci --no-audit --no-fund 2>&1 | tail -3" % P, timeout=1800)
+# Node Playwright's Chromium (its SwiftShader software GL is what rendered the inkbeat stills in-container;
+# Remotion's own bundled Chrome crashes on Kaggle). Install node playwright, locate the binary with find.
+sh("cd %s && npx --yes playwright@1.56.0 install chromium 2>&1 | tail -2; npx --yes playwright@1.56.0 install-deps chromium 2>&1 | tail -1" % P, timeout=1500)
+chrome = sh("find /root /home -path '*ms-playwright*' -name chrome -type f 2>/dev/null | head -1", show=300).strip().splitlines()
+chrome = chrome[-1].strip() if chrome else ""
+rep["chrome"] = chrome or "NOT_FOUND"
 sh("which ffmpeg || (apt-get update -qq && apt-get install -y -qq ffmpeg) 2>&1 | tail -2", timeout=900)
 out = P + "/out"; os.makedirs(out, exist_ok=True)
 be = ("--browser-executable='%s'" % chrome) if chrome else ""
