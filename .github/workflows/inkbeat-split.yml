@@ -30,7 +30,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      matrix: { shard: ${{ fromJson(needs.plan.outputs.matrix) }} }
+      matrix:
+        shard: ${{ fromJson(needs.plan.outputs.matrix) }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -57,7 +58,7 @@ jobs:
           npx remotion render src/index.ts "$COMP" out/seq \
             --sequence --image-format=png --frames=$START-$END \
             --gl=swangle --chrome-mode=chrome-for-testing --browser-executable="$CHROME" \
-            --concurrency=4 --timeout=300000
+            --concurrency=4 --timeout=900000
           ls -la out/seq | head
       - uses: actions/upload-artifact@v4
         with:
