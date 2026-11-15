@@ -71,7 +71,7 @@
  "backdrop": [
   {
    "image": "bg/paris_plain.png",
-   "blur": 3,
+   "blur": 0,
    "repeat": 3,
    "near": [
     -34,
@@ -80,7 +80,7 @@
   },
   {
    "image": "bg/us_city.png",
-   "blur": 3,
+   "blur": 0,
    "repeat": 3,
    "near": [
     -104,
@@ -89,7 +89,7 @@
   },
   {
    "image": "bg/paris_plain.png",
-   "blur": 3,
+   "blur": 0,
    "repeat": 3,
    "near": [
     176,
