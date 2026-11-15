@@ -61,12 +61,14 @@ Follow `ricks/PIPELINE.md` for the creative stages (adapter → director → cas
 
 ## What WORKS (use these, proven this session)
 - Full script→video pipeline with the library/place-kit system; renders on free Kaggle GPU (~11 min/video).
-- **P100 single-GPU render** — no queue (the fix above).
+- **P100 single-GPU render** — no queue (the fix above). Confirmed: renders a full 1080×1920 clip in ~13 min, gate passes.
 - **Gemini-watches-the-MP4 verification** — real, via Vertex with the existing service account.
-- **Look upgrades in the engine** (committed): dehaze (fog pushed to 110–420), vivid colors (tint 0.28),
-  clean blue sky (backdrop recolored), crisp buildings (backdrop un-blurred), stronger ink outline (set 5).
-- **Flicker fixes** (committed): shadow texel-snap + higher bias (stops shadow swim/acne); 1.3–1.5×
-  supersample; max anisotropy + trilinear mipmaps (stops wallpaper/floor texture shimmer — the main cause).
+- **Look upgrades in the engine** (committed, confirmed on GPU): dehaze (fog pushed to 110–420), vivid
+  colors (tint 0.28), clean blue sky (backdrop recolored), crisp buildings (backdrop un-blurred),
+  stronger ink outline (set 5).
+- **Shadow + AA hardening** (committed, harmless, keep): shadow texel-snap + higher bias; 1.3–1.5×
+  supersample; max anisotropy + trilinear mipmaps. Good practice, but see the flicker note below — they
+  did NOT fix the texture-motion flicker.
 
 ## What FAILS / do NOT retry (lessons, with proof)
 - **inkbeat (Remotion/R3F) on Kaggle** — Remotion's headless Chrome can't get a WebGL context on the T4
@@ -79,6 +81,14 @@ Follow `ricks/PIPELINE.md` for the creative stages (adapter → director → cas
 - **Destructive save bug (open):** `ricks-kaggle.yml`'s save step overwrites the committed `short.mp4` with
   an empty file when a render produces no output — it has wiped a good video. Fix: only overwrite the mp4
   when the new render actually produced one. (Not yet fixed.)
+- **Texture-motion flicker (open, real cause found):** on a *panning* shot, fine high-contrast textures
+  (the fleur-de-lis wallpaper, the parquet floor) **moire/twinkle** frame-to-frame. Measured + mapped:
+  the flicker is entirely on those textured surfaces; plain door/carpet/character don't flicker. Spatial
+  fixes (anisotropy, mipmaps, 1.5× supersample, shadow texel-snap) gave **~1% improvement — i.e. did not
+  fix it** — because this is *temporal* aliasing from camera motion, not static grazing-angle aliasing.
+  Real fixes (all trade-offs, none applied yet): (a) **soften just the wallpaper + floor textures** a
+  touch, or lower their contrast — cheap, effective, slightly less crisp on those two surfaces; (b) proper
+  temporal AA (accumulate frames) — real engine work; (c) 3–4× supersample — slow. Recommended: (a).
 
 ## Known engine limits (by design — say so, don't fake)
 No elbows/knees, no lip-sync, no sitting poses, no crowds over ~12 puppets, no water, no animals.
