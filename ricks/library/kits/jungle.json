@@ -1,0 +1,124 @@
+{
+ "desc": "Amazon rainforest floor: tall trees, ferns",
+ "period": [
+  "1970s"
+ ],
+ "interior": false,
+ "props": [
+  {
+   "type": "tree",
+   "pos": [
+    -8,
+    0,
+    -5
+   ],
+   "scale": 2.6,
+   "color": "#2f6b3a"
+  },
+  {
+   "type": "tree",
+   "pos": [
+    -4,
+    0,
+    -9
+   ],
+   "scale": 3.0,
+   "color": "#2a6a3a"
+  },
+  {
+   "type": "tree",
+   "pos": [
+    5,
+    0,
+    -6
+   ],
+   "scale": 2.8,
+   "color": "#35703e"
+  },
+  {
+   "type": "tree",
+   "pos": [
+    9,
+    0,
+    -10
+   ],
+   "scale": 3.2,
+   "color": "#2a6035"
+  },
+  {
+   "type": "tree",
+   "pos": [
+    0,
+    0,
+    -14
+   ],
+   "scale": 3.4,
+   "color": "#2d6538"
+  },
+  {
+   "type": "tree",
+   "pos": [
+    -13,
+    0,
+    -11
+   ],
+   "scale": 3.0,
+   "color": "#2a6a3a"
+  },
+  {
+   "type": "tree",
+   "pos": [
+    14,
+    0,
+    -5
+   ],
+   "scale": 2.6,
+   "color": "#2f6b3a"
+  },
+  {
+   "type": "cone",
+   "pos": [
+    -3,
+    0,
+    -2.3
+   ],
+   "r": 0.55,
+   "h": 0.9,
+   "color": "#3f9a4a"
+  },
+  {
+   "type": "cone",
+   "pos": [
+    3.5,
+    0,
+    -2.6
+   ],
+   "r": 0.6,
+   "h": 1.0,
+   "color": "#3a8f45"
+  },
+  {
+   "type": "cone",
+   "pos": [
+    -6.5,
+    0,
+    -3
+   ],
+   "r": 0.6,
+   "h": 1.1,
+   "color": "#46a050"
+  },
+  {
+   "type": "cone",
+   "pos": [
+    7.5,
+    0,
+    -3.2
+   ],
+   "r": 0.5,
+   "h": 0.8,
+   "color": "#3f9a4a"
+  }
+ ],
+ "life": []
+}

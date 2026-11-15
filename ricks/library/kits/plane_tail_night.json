@@ -1,0 +1,152 @@
+{
+ "desc": "Open rear stairs of an airliner at night over a dark forest",
+ "period": [
+  "1970s"
+ ],
+ "interior": false,
+ "props": [
+  {
+   "type": "box",
+   "pos": [
+    0,
+    0.01,
+    -2
+   ],
+   "size": [
+    44,
+    0.04,
+    36
+   ],
+   "color": "#18281f"
+  },
+  {
+   "type": "box",
+   "pos": [
+    0,
+    0,
+    -8
+   ],
+   "size": [
+    7,
+    4.4,
+    8
+   ],
+   "color": "#aeb4bc"
+  },
+  {
+   "type": "box",
+   "pos": [
+    0,
+    0,
+    -3.93
+   ],
+   "size": [
+    2.0,
+    2.8,
+    0.12
+   ],
+   "color": "#1c1c26"
+  },
+  {
+   "type": "box",
+   "pos": [
+    0,
+    0.0,
+    -3.2
+   ],
+   "size": [
+    1.9,
+    0.9,
+    1.1
+   ],
+   "color": "#8e949c"
+  },
+  {
+   "type": "box",
+   "pos": [
+    0,
+    0.0,
+    -2.2
+   ],
+   "size": [
+    1.9,
+    0.6,
+    1.0
+   ],
+   "color": "#9aa0a8"
+  },
+  {
+   "type": "box",
+   "pos": [
+    0,
+    0.0,
+    -1.3
+   ],
+   "size": [
+    1.9,
+    0.3,
+    0.9
+   ],
+   "color": "#a8aeb6"
+  },
+  {
+   "type": "plane",
+   "image": "props/jet.png",
+   "pos": [
+    0,
+    3.8,
+    -14
+   ],
+   "size": [
+    9,
+    3
+   ],
+   "rotY": 90
+  },
+  {
+   "type": "cone",
+   "pos": [
+    -14,
+    0,
+    -16
+   ],
+   "r": 5,
+   "h": 7,
+   "color": "#14241c"
+  },
+  {
+   "type": "cone",
+   "pos": [
+    -5,
+    0,
+    -20
+   ],
+   "r": 6,
+   "h": 9,
+   "color": "#12221a"
+  },
+  {
+   "type": "cone",
+   "pos": [
+    8,
+    0,
+    -18
+   ],
+   "r": 5.5,
+   "h": 8,
+   "color": "#16281f"
+  },
+  {
+   "type": "cone",
+   "pos": [
+    16,
+    0,
+    -14
+   ],
+   "r": 4,
+   "h": 6,
+   "color": "#13231b"
+  }
+ ],
+ "life": []
+}

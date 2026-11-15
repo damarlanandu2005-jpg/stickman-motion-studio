@@ -1,0 +1,152 @@
+{
+ "desc": "Airport apron: asphalt, an airliner parked behind, terminal building, cones, ground carts",
+ "period": [
+  "1970s"
+ ],
+ "interior": false,
+ "props": [
+  {
+   "type": "box",
+   "pos": [
+    0,
+    0.01,
+    -2
+   ],
+   "size": [
+    44,
+    0.04,
+    40
+   ],
+   "texture": "textures/asphalt.png",
+   "repeat": [
+    22,
+    20
+   ]
+  },
+  {
+   "type": "plane",
+   "image": "props/jet.png",
+   "pos": [
+    0,
+    0,
+    -9
+   ],
+   "size": [
+    17,
+    5.5
+   ]
+  },
+  {
+   "type": "house",
+   "pos": [
+    -14,
+    0,
+    -18
+   ],
+   "size": [
+    9,
+    4,
+    5
+   ],
+   "color": "#8d949c",
+   "roof": "#5c636b",
+   "door": "#3b3a4a"
+  },
+  {
+   "type": "post",
+   "pos": [
+    -9,
+    0,
+    -4
+   ],
+   "h": 4.5,
+   "color": "#6a6a72"
+  },
+  {
+   "type": "post",
+   "pos": [
+    10,
+    0,
+    -5
+   ],
+   "h": 4.5,
+   "color": "#6a6a72"
+  },
+  {
+   "type": "cone",
+   "pos": [
+    -4.5,
+    0,
+    -1.2
+   ],
+   "r": 0.28,
+   "h": 0.7,
+   "color": "#e8742c"
+  },
+  {
+   "type": "cone",
+   "pos": [
+    5.5,
+    0,
+    -1.5
+   ],
+   "r": 0.28,
+   "h": 0.7,
+   "color": "#e8742c"
+  },
+  {
+   "type": "cone",
+   "pos": [
+    7.2,
+    0,
+    -1.2
+   ],
+   "r": 0.28,
+   "h": 0.7,
+   "color": "#e8742c"
+  },
+  {
+   "type": "box",
+   "pos": [
+    -7.5,
+    0.05,
+    -2
+   ],
+   "size": [
+    1.6,
+    0.7,
+    1.0
+   ],
+   "color": "#b8bcc2"
+  },
+  {
+   "type": "box",
+   "pos": [
+    11,
+    0.05,
+    -3
+   ],
+   "size": [
+    2.2,
+    0.8,
+    1.2
+   ],
+   "color": "#a5aab0"
+  },
+  {
+   "type": "box",
+   "pos": [
+    0,
+    0.05,
+    -5.5
+   ],
+   "size": [
+    1.8,
+    1.0,
+    0.5
+   ],
+   "color": "#7c828a"
+  }
+ ],
+ "life": []
+}

@@ -870,6 +870,33 @@
     290
    ]
   },
+  "bolt": {
+   "desc": "a big yellow lightning bolt",
+   "path": "props/bolt.png",
+   "period": "any",
+   "size": [
+    160,
+    420
+   ]
+  },
+  "boot": {
+   "desc": "a brown work boot with a scorched hole at the toe",
+   "path": "props/boot.png",
+   "period": "any",
+   "size": [
+    230,
+    220
+   ]
+  },
+  "briefcase_wires": {
+   "desc": "an open briefcase packed with red sticks and coloured wires",
+   "path": "props/briefcase_wires.png",
+   "period": "any",
+   "size": [
+    300,
+    200
+   ]
+  },
   "cash": {
    "desc": "a bundle of banknotes with a paper band",
    "path": "props/cash.png",
@@ -897,6 +924,15 @@
     86
    ]
   },
+  "jet": {
+   "desc": "a side view of a white airliner with a red stripe",
+   "path": "props/jet.png",
+   "period": "any",
+   "size": [
+    520,
+    170
+   ]
+  },
   "letter": {
    "desc": "an official letter with a crest and a red wax seal",
    "path": "props/letter.png",
@@ -906,6 +942,15 @@
     220
    ]
   },
+  "money_bag": {
+   "desc": "a canvas bag marked $200,000",
+   "path": "props/money_bag.png",
+   "period": "1970s",
+   "size": [
+    220,
+    250
+   ]
+  },
   "note": {
    "desc": "a music note (floats above musicians)",
    "path": "props/note.png",
@@ -913,6 +958,24 @@
    "size": [
     120,
     150
+   ]
+  },
+  "note_bomb": {
+   "desc": "a hand-written note: I have a bomb",
+   "path": "props/note_bomb.png",
+   "period": "1970s",
+   "size": [
+    230,
+    250
+   ]
+  },
+  "parachute": {
+   "desc": "a red-and-white parachute with its pack",
+   "path": "props/parachute.png",
+   "period": "any",
+   "size": [
+    260,
+    230
    ]
   },
   "pipe": {
@@ -960,6 +1023,24 @@
     194
    ]
   },
+  "sign_1971": {
+   "desc": "a date card: November 24 1971",
+   "path": "props/sign_1971.png",
+   "period": "1970s",
+   "size": [
+    420,
+    194
+   ]
+  },
+  "sign_1980": {
+   "desc": "a date card: 1980",
+   "path": "props/sign_1980.png",
+   "period": "1980s",
+   "size": [
+    300,
+    132
+   ]
+  },
   "sign_20ans": {
    "desc": "a notice: permit for 20 years",
    "path": "props/sign_20ans.png",
@@ -1005,6 +1086,33 @@
     194
    ]
   },
+  "sign_day1": {
+   "desc": "day counter 1",
+   "path": "props/sign_day1.png",
+   "period": "any",
+   "size": [
+    300,
+    194
+   ]
+  },
+  "sign_day10": {
+   "desc": "day counter 10",
+   "path": "props/sign_day10.png",
+   "period": "any",
+   "size": [
+    300,
+    194
+   ]
+  },
+  "sign_day11": {
+   "desc": "day counter 11",
+   "path": "props/sign_day11.png",
+   "period": "any",
+   "size": [
+    300,
+    194
+   ]
+  },
   "sign_expo": {
    "desc": "a blue World's Fair banner",
    "path": "props/sign_expo.png",
@@ -1012,6 +1120,15 @@
    "size": [
     460,
     282
+   ]
+  },
+  "sign_flight305": {
+   "desc": "a flight board",
+   "path": "props/sign_flight305.png",
+   "period": "1970s",
+   "size": [
+    470,
+    194
    ]
   },
   "sign_for_sale": {
@@ -1032,6 +1149,15 @@
     344
    ]
   },
+  "sign_guinness": {
+   "desc": "a record plaque: seven strikes",
+   "path": "props/sign_guinness.png",
+   "period": "1970s",
+   "size": [
+    470,
+    256
+   ]
+  },
   "sign_hated": {
    "desc": "a protest placard",
    "path": "props/sign_hated.png",
@@ -1039,6 +1165,24 @@
    "size": [
     460,
     344
+   ]
+  },
+  "sign_lansa": {
+   "desc": "a plaque: LANSA flight 508",
+   "path": "props/sign_lansa.png",
+   "period": "1970s",
+   "size": [
+    420,
+    194
+   ]
+  },
+  "sign_mexico": {
+   "desc": "a green MEXICO sign",
+   "path": "props/sign_mexico.png",
+   "period": "any",
+   "size": [
+    420,
+    282
    ]
   },
   "sign_newyork": {
@@ -1068,6 +1212,24 @@
     344
    ]
   },
+  "sign_odds": {
+   "desc": "an odds card",
+   "path": "props/sign_odds.png",
+   "period": "any",
+   "size": [
+    380,
+    194
+   ]
+  },
+  "sign_peru": {
+   "desc": "a date card: 24 December 1971, Peru",
+   "path": "props/sign_peru.png",
+   "period": "1970s",
+   "size": [
+    440,
+    194
+   ]
+  },
   "sign_police": {
    "desc": "a police sign",
    "path": "props/sign_police.png",
@@ -1077,6 +1239,15 @@
     282
    ]
   },
+  "sign_roy": {
+   "desc": "a memorial plaque",
+   "path": "props/sign_roy.png",
+   "period": "1980s",
+   "size": [
+    440,
+    194
+   ]
+  },
   "sign_shrine": {
    "desc": "a shrine sign",
    "path": "props/sign_shrine.png",
@@ -1084,6 +1255,78 @@
    "size": [
     420,
     282
+   ]
+  },
+  "sign_strike1": {
+   "desc": "strike counter 1",
+   "path": "props/sign_strike1.png",
+   "period": "any",
+   "size": [
+    360,
+    194
+   ]
+  },
+  "sign_strike2": {
+   "desc": "strike counter 2",
+   "path": "props/sign_strike2.png",
+   "period": "any",
+   "size": [
+    360,
+    194
+   ]
+  },
+  "sign_strike3": {
+   "desc": "strike counter 3",
+   "path": "props/sign_strike3.png",
+   "period": "any",
+   "size": [
+    360,
+    194
+   ]
+  },
+  "sign_strike4": {
+   "desc": "strike counter 4",
+   "path": "props/sign_strike4.png",
+   "period": "any",
+   "size": [
+    360,
+    194
+   ]
+  },
+  "sign_strike5": {
+   "desc": "strike counter 5",
+   "path": "props/sign_strike5.png",
+   "period": "any",
+   "size": [
+    360,
+    194
+   ]
+  },
+  "sign_strike6": {
+   "desc": "strike counter 6",
+   "path": "props/sign_strike6.png",
+   "period": "any",
+   "size": [
+    360,
+    194
+   ]
+  },
+  "sign_strike7": {
+   "desc": "strike counter 7",
+   "path": "props/sign_strike7.png",
+   "period": "any",
+   "size": [
+    360,
+    194
+   ]
+  },
+  "sign_wanted": {
+   "desc": "a wanted poster",
+   "path": "props/sign_wanted.png",
+   "period": "1970s",
+   "size": [
+    470,
+    256
    ]
   },
   "suitcase": {
@@ -1102,6 +1345,15 @@
    "size": [
     230,
     290
+   ]
+  },
+  "water_drop": {
+   "desc": "a blue water drop with ripples (water leads to people)",
+   "path": "props/water_drop.png",
+   "period": "any",
+   "size": [
+    200,
+    200
    ]
   }
  },

@@ -1,0 +1,128 @@
+{
+ "desc": "A loggers' hut by the river, a small boat moored, a fuel can",
+ "period": [
+  "1970s"
+ ],
+ "interior": false,
+ "props": [
+  {
+   "type": "house",
+   "pos": [
+    -5,
+    0,
+    -7
+   ],
+   "size": [
+    3.6,
+    2.6,
+    3.2
+   ],
+   "color": "#a58a5a",
+   "roof": "#7a6430",
+   "door": "#3a2a1a",
+   "windows": false
+  },
+  {
+   "type": "box",
+   "pos": [
+    0,
+    0.02,
+    -5.5
+   ],
+   "size": [
+    44,
+    0.06,
+    7
+   ],
+   "texture": "textures/water.png",
+   "repeat": [
+    10,
+    2
+   ]
+  },
+  {
+   "type": "box",
+   "pos": [
+    2.5,
+    0.06,
+    -5.5
+   ],
+   "size": [
+    3.6,
+    0.45,
+    1.2
+   ],
+   "color": "#7a4a2a"
+  },
+  {
+   "type": "box",
+   "pos": [
+    4.5,
+    0.06,
+    -5.5
+   ],
+   "size": [
+    0.9,
+    0.3,
+    0.9
+   ],
+   "color": "#6a3f24"
+  },
+  {
+   "type": "box",
+   "pos": [
+    -1.2,
+    0.04,
+    -2.4
+   ],
+   "size": [
+    0.4,
+    0.55,
+    0.4
+   ],
+   "color": "#a02828"
+  },
+  {
+   "type": "tree",
+   "pos": [
+    -11,
+    0,
+    -12
+   ],
+   "scale": 3.0,
+   "color": "#2f6b3a"
+  },
+  {
+   "type": "tree",
+   "pos": [
+    8,
+    0,
+    -12
+   ],
+   "scale": 3.1,
+   "color": "#2a6a3a"
+  },
+  {
+   "type": "tree",
+   "pos": [
+    12,
+    0,
+    -8
+   ],
+   "scale": 2.8,
+   "color": "#2f6b3a"
+  },
+  {
+   "type": "cone",
+   "pos": [
+    -8.5,
+    0,
+    -3
+   ],
+   "r": 0.6,
+   "h": 1.0,
+   "color": "#3f9a4a"
+  }
+ ],
+ "life": []
+}

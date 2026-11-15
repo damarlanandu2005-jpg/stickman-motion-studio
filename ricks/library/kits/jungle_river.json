@@ -1,0 +1,90 @@
+{
+ "desc": "A shallow jungle river between banks of trees",
+ "period": [
+  "1970s"
+ ],
+ "interior": false,
+ "props": [
+  {
+   "type": "box",
+   "pos": [
+    0,
+    0.02,
+    -4
+   ],
+   "size": [
+    44,
+    0.06,
+    10
+   ],
+   "texture": "textures/water.png",
+   "repeat": [
+    10,
+    3
+   ]
+  },
+  {
+   "type": "tree",
+   "pos": [
+    -11,
+    0,
+    -13
+   ],
+   "scale": 3.0,
+   "color": "#2f6b3a"
+  },
+  {
+   "type": "tree",
+   "pos": [
+    -5,
+    0,
+    -14
+   ],
+   "scale": 3.2,
+   "color": "#2a6a3a"
+  },
+  {
+   "type": "tree",
+   "pos": [
+    6,
+    0,
+    -13
+   ],
+   "scale": 3.0,
+   "color": "#35703e"
+  },
+  {
+   "type": "tree",
+   "pos": [
+    13,
+    0,
+    -12
+   ],
+   "scale": 2.8,
+   "color": "#2f6b3a"
+  },
+  {
+   "type": "cone",
+   "pos": [
+    -7,
+    0,
+    -9
+   ],
+   "r": 0.7,
+   "h": 1.2,
+   "color": "#3f9a4a"
+  },
+  {
+   "type": "cone",
+   "pos": [
+    8,
+    0,
+    -9.5
+   ],
+   "r": 0.7,
+   "h": 1.1,
+   "color": "#3a8f45"
+  }
+ ],
+ "life": []
+}

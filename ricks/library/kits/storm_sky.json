@@ -1,0 +1,81 @@
+{
+ "desc": "Inside a thunderstorm: dark cloud banks, an airliner",
+ "period": [
+  "1970s"
+ ],
+ "interior": false,
+ "props": [
+  {
+   "type": "box",
+   "pos": [
+    0,
+    0.01,
+    -4
+   ],
+   "size": [
+    60,
+    0.04,
+    60
+   ],
+   "color": "#5a5870"
+  },
+  {
+   "type": "plane",
+   "image": "props/jet.png",
+   "pos": [
+    0,
+    0,
+    -7
+   ],
+   "size": [
+    15,
+    4.9
+   ]
+  },
+  {
+   "type": "cone",
+   "pos": [
+    -16,
+    0,
+    -14
+   ],
+   "r": 9,
+   "h": 5,
+   "color": "#3f3d55"
+  },
+  {
+   "type": "cone",
+   "pos": [
+    2,
+    0,
+    -22
+   ],
+   "r": 12,
+   "h": 6,
+   "color": "#383650"
+  },
+  {
+   "type": "cone",
+   "pos": [
+    18,
+    0,
+    -15
+   ],
+   "r": 9,
+   "h": 5,
+   "color": "#43415a"
+  },
+  {
+   "type": "cone",
+   "pos": [
+    -6,
+    0,
+    -9
+   ],
+   "r": 4.5,
+   "h": 2.5,
+   "color": "#4a4862"
+  }
+ ],
+ "life": []
+}

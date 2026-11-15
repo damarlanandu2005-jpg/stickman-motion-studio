@@ -1,0 +1,132 @@
+{
+ "desc": "Sandy bank of the Columbia River, driftwood, fir trees on the far shore",
+ "period": [
+  "1970s"
+ ],
+ "interior": false,
+ "props": [
+  {
+   "type": "box",
+   "pos": [
+    0,
+    0.01,
+    0
+   ],
+   "size": [
+    44,
+    0.04,
+    8
+   ],
+   "color": "#cdbb95"
+  },
+  {
+   "type": "box",
+   "pos": [
+    0,
+    0.02,
+    -9
+   ],
+   "size": [
+    44,
+    0.06,
+    10
+   ],
+   "texture": "textures/water.png",
+   "repeat": [
+    10,
+    3
+   ]
+  },
+  {
+   "type": "tree",
+   "pos": [
+    -10,
+    0,
+    -17
+   ],
+   "scale": 3.0,
+   "color": "#2f5f3f"
+  },
+  {
+   "type": "tree",
+   "pos": [
+    -4,
+    0,
+    -18
+   ],
+   "scale": 3.4,
+   "color": "#2a5538"
+  },
+  {
+   "type": "tree",
+   "pos": [
+    5,
+    0,
+    -17
+   ],
+   "scale": 3.1,
+   "color": "#316544"
+  },
+  {
+   "type": "tree",
+   "pos": [
+    12,
+    0,
+    -18
+   ],
+   "scale": 3.3,
+   "color": "#2a5538"
+  },
+  {
+   "type": "box",
+   "pos": [
+    -5,
+    0.05,
+    -2.5
+   ],
+   "size": [
+    2.6,
+    0.35,
+    0.4
+   ],
+   "color": "#6a4a32"
+  },
+  {
+   "type": "box",
+   "pos": [
+    6,
+    0.05,
+    -3
+   ],
+   "size": [
+    1.4,
+    0.3,
+    0.4
+   ],
+   "color": "#7a5a3a"
+  },
+  {
+   "type": "cone",
+   "pos": [
+    -12,
+    0,
+    -4.5
+   ],
+   "r": 0.7,
+   "h": 0.5,
+   "color": "#9a8a6a"
+  },
+  {
+   "type": "cone",
+   "pos": [
+    9,
+    0,
+    -4
+   ],
+   "r": 0.6,
+   "h": 0.4,
+   "color": "#9a8a6a"
+  }
+ ],
+ "life": []
+}

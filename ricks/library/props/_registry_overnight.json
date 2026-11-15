@@ -1,0 +1,254 @@
+{
+ "briefcase_wires": {
+  "path": "props/briefcase_wires.png",
+  "desc": "an open briefcase packed with red sticks and coloured wires",
+  "period": "any",
+  "size": [
+   300,
+   200
+  ]
+ },
+ "note_bomb": {
+  "path": "props/note_bomb.png",
+  "desc": "a hand-written note: I have a bomb",
+  "period": "1970s",
+  "size": [
+   230,
+   250
+  ]
+ },
+ "money_bag": {
+  "path": "props/money_bag.png",
+  "desc": "a canvas bag marked $200,000",
+  "period": "1970s",
+  "size": [
+   220,
+   250
+  ]
+ },
+ "parachute": {
+  "path": "props/parachute.png",
+  "desc": "a red-and-white parachute with its pack",
+  "period": "any",
+  "size": [
+   260,
+   230
+  ]
+ },
+ "sign_1971": {
+  "path": "props/sign_1971.png",
+  "desc": "a date card: November 24 1971",
+  "period": "1970s",
+  "size": [
+   420,
+   194
+  ]
+ },
+ "sign_mexico": {
+  "path": "props/sign_mexico.png",
+  "desc": "a green MEXICO sign",
+  "period": "any",
+  "size": [
+   420,
+   282
+  ]
+ },
+ "sign_wanted": {
+  "path": "props/sign_wanted.png",
+  "desc": "a wanted poster",
+  "period": "1970s",
+  "size": [
+   470,
+   256
+  ]
+ },
+ "sign_1980": {
+  "path": "props/sign_1980.png",
+  "desc": "a date card: 1980",
+  "period": "1980s",
+  "size": [
+   300,
+   132
+  ]
+ },
+ "sign_flight305": {
+  "path": "props/sign_flight305.png",
+  "desc": "a flight board",
+  "period": "1970s",
+  "size": [
+   470,
+   194
+  ]
+ },
+ "jet": {
+  "path": "props/jet.png",
+  "desc": "a side view of a white airliner with a red stripe",
+  "period": "any",
+  "size": [
+   520,
+   170
+  ]
+ },
+ "bolt": {
+  "path": "props/bolt.png",
+  "desc": "a big yellow lightning bolt",
+  "period": "any",
+  "size": [
+   160,
+   420
+  ]
+ },
+ "sign_peru": {
+  "path": "props/sign_peru.png",
+  "desc": "a date card: 24 December 1971, Peru",
+  "period": "1970s",
+  "size": [
+   440,
+   194
+  ]
+ },
+ "sign_lansa": {
+  "path": "props/sign_lansa.png",
+  "desc": "a plaque: LANSA flight 508",
+  "period": "1970s",
+  "size": [
+   420,
+   194
+  ]
+ },
+ "sign_day1": {
+  "path": "props/sign_day1.png",
+  "desc": "day counter 1",
+  "period": "any",
+  "size": [
+   300,
+   194
+  ]
+ },
+ "sign_day10": {
+  "path": "props/sign_day10.png",
+  "desc": "day counter 10",
+  "period": "any",
+  "size": [
+   300,
+   194
+  ]
+ },
+ "sign_day11": {
+  "path": "props/sign_day11.png",
+  "desc": "day counter 11",
+  "period": "any",
+  "size": [
+   300,
+   194
+  ]
+ },
+ "water_drop": {
+  "path": "props/water_drop.png",
+  "desc": "a blue water drop with ripples (water leads to people)",
+  "period": "any",
+  "size": [
+   200,
+   200
+  ]
+ },
+ "sign_strike1": {
+  "path": "props/sign_strike1.png",
+  "desc": "strike counter 1",
+  "period": "any",
+  "size": [
+   360,
+   194
+  ]
+ },
+ "sign_strike2": {
+  "path": "props/sign_strike2.png",
+  "desc": "strike counter 2",
+  "period": "any",
+  "size": [
+   360,
+   194
+  ]
+ },
+ "sign_strike3": {
+  "path": "props/sign_strike3.png",
+  "desc": "strike counter 3",
+  "period": "any",
+  "size": [
+   360,
+   194
+  ]
+ },
+ "sign_strike4": {
+  "path": "props/sign_strike4.png",
+  "desc": "strike counter 4",
+  "period": "any",
+  "size": [
+   360,
+   194
+  ]
+ },
+ "sign_strike5": {
+  "path": "props/sign_strike5.png",
+  "desc": "strike counter 5",
+  "period": "any",
+  "size": [
+   360,
+   194
+  ]
+ },
+ "sign_strike6": {
+  "path": "props/sign_strike6.png",
+  "desc": "strike counter 6",
+  "period": "any",
+  "size": [
+   360,
+   194
+  ]
+ },
+ "sign_strike7": {
+  "path": "props/sign_strike7.png",
+  "desc": "strike counter 7",
+  "period": "any",
+  "size": [
+   360,
+   194
+  ]
+ },
+ "sign_guinness": {
+  "path": "props/sign_guinness.png",
+  "desc": "a record plaque: seven strikes",
+  "period": "1970s",
+  "size": [
+   470,
+   256
+  ]
+ },
+ "sign_odds": {
+  "path": "props/sign_odds.png",
+  "desc": "an odds card",
+  "period": "any",
+  "size": [
+   380,
+   194
+  ]
+ },
+ "sign_roy": {
+  "path": "props/sign_roy.png",
+  "desc": "a memorial plaque",
+  "period": "1980s",
+  "size": [
+   440,
+   194
+  ]
+ },
+ "boot": {
+  "path": "props/boot.png",
+  "desc": "a brown work boot with a scorched hole at the toe",
+  "period": "any",
+  "size": [
+   230,
+   220
+  ]
+ }
+}

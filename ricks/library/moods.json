@@ -34,6 +34,42 @@
     "intensity": 1.6
    },
    "exposure": 1.28
+  },
+  "storm": {
+   "sun": {
+    "azimuth": -30,
+    "elevation": 30,
+    "color": "#b4bcd2",
+    "intensity": 1.0
+   },
+   "sky": {
+    "top": "#383c54",
+    "horizon": "#7a8098"
+   },
+   "fill": {
+    "sky": "#8f98b8",
+    "ground": "#4a4a62",
+    "intensity": 1.25
+   },
+   "exposure": 1.15
+  },
+  "flash": {
+   "sun": {
+    "azimuth": -30,
+    "elevation": 40,
+    "color": "#ffffff",
+    "intensity": 4.5
+   },
+   "sky": {
+    "top": "#e8ecff",
+    "horizon": "#ffffff"
+   },
+   "fill": {
+    "sky": "#ffffff",
+    "ground": "#d8dcf0",
+    "intensity": 2.6
+   },
+   "exposure": 1.5
   }
  },
  "ink": {
