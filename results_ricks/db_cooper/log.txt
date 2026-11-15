@@ -10,69 +10,129 @@ shot 01 c  t=  3.47s  luma 117.6  contrast 65.3  ok
 shot 02 a  t=  4.17s  luma 127.3  contrast 64.6  ok
 shot 02 b  t=  4.60s  luma 127.2  contrast 65.1  ok
 shot 02 c  t=  5.07s  luma 125.3  contrast 64.6  ok
-shot 03 a  t=  5.80s  luma  31.3  contrast   38  TOO_DARK
-shot 03 b  t=  6.40s  luma  32.1  contrast   39  TOO_DARK
-shot 03 c  t=  7.00s  luma  32.9  contrast   40  TOO_DARK
-shot 04 a  t=  7.80s  luma  29.9  contrast 36.9  TOO_DARK
-shot 04 b  t=  8.37s  luma  30.6  contrast 37.7  TOO_DARK
-shot 04 c  t=  8.93s  luma  30.2  contrast 38.2  TOO_DARK
-shot 05 a  t=  9.77s  luma  82.8  contrast 72.7  ok
-shot 05 b  t= 10.47s  luma  81.7  contrast 72.2  ok
-shot 05 c  t= 11.20s  luma  81.1  contrast 71.4  ok
-shot 06 a  t= 11.80s  luma  37.5  contrast 48.8  TOO_DARK
-shot 06 b  t= 12.07s  luma  41.6  contrast 54.6  TOO_DARK
-shot 06 c  t= 12.33s  luma  43.4  contrast 57.3  TOO_DARK
-shot 07 a  t= 12.87s  luma  54.6  contrast 59.2  ok
-shot 07 b  t= 13.37s  luma  54.3  contrast 58.9  ok
-shot 07 c  t= 13.87s  luma  55.1  contrast 59.2  ok
-shot 08 a  t= 14.40s  luma  31.3  contrast 40.1  TOO_DARK
-shot 08 b  t= 14.73s  luma  29.7  contrast 37.2  TOO_DARK
-shot 08 c  t= 15.03s  luma  29.8  contrast 37.9  TOO_DARK
-shot 09 a  t= 15.50s  luma  67.8  contrast 67.4  ok
-shot 09 b  t= 15.83s  luma  71.3  contrast   67  ok
-shot 09 c  t= 16.20s  luma  70.3  contrast 66.8  ok
-shot 10 a  t= 16.67s  luma  42.7  contrast 60.1  TOO_DARK
-shot 10 b  t= 17.00s  luma  43.7  contrast 60.7  TOO_DARK
-shot 10 c  t= 17.33s  luma    44  contrast 60.9  TOO_DARK
+shot 03 a  t=  5.80s  luma   125  contrast 63.2  ok
+shot 03 b  t=  6.40s  luma 126.1  contrast 63.7  ok
+shot 03 c  t=  7.00s  luma 126.7  contrast 65.1  ok
+shot 04 a  t=  7.80s  luma 139.7  contrast 57.3  ok
+shot 04 b  t=  8.37s  luma 139.9  contrast 57.9  ok
+shot 04 c  t=  8.93s  luma 136.4  contrast 59.6  ok
+shot 05 a  t=  9.77s  luma 166.5  contrast 55.7  ok
+shot 05 b  t= 10.47s  luma 162.6  contrast 56.6  ok
+shot 05 c  t= 11.20s  luma 158.6  contrast 56.8  ok
+shot 06 a  t= 11.80s  luma 133.7  contrast   63  ok
+shot 06 b  t= 12.07s  luma 132.2  contrast 64.2  ok
+shot 06 c  t= 12.33s  luma 127.4  contrast 65.8  ok
+shot 07 a  t= 12.87s  luma  98.4  contrast 65.9  ok
+shot 07 b  t= 13.37s  luma  97.5  contrast 65.7  ok
+shot 07 c  t= 13.87s  luma  97.7  contrast 65.8  ok
+shot 08 a  t= 14.40s  luma 137.1  contrast 58.2  ok
+shot 08 b  t= 14.73s  luma 137.2  contrast 57.8  ok
+shot 08 c  t= 15.03s  luma 136.1  contrast 58.9  ok
+shot 09 a  t= 15.50s  luma 106.2  contrast 64.3  ok
+shot 09 b  t= 15.83s  luma 107.1  contrast 61.1  ok
+shot 09 c  t= 16.20s  luma 106.7  contrast 61.3  ok
+shot 10 a  t= 16.67s  luma 109.2  contrast   69  ok
+shot 10 b  t= 17.00s  luma 110.4  contrast 69.1  ok
+shot 10 c  t= 17.33s  luma 110.5  contrast 69.3  ok
 shot 11 a  t= 18.00s  luma 122.8  contrast 65.3  ok
 shot 11 b  t= 18.63s  luma 121.1  contrast 64.5  ok
 shot 11 c  t= 19.27s  luma 118.2  contrast 63.4  ok
 shot 12 a  t= 19.97s  luma 126.2  contrast 64.4  ok
 shot 12 b  t= 20.43s  luma 125.5  contrast 64.8  ok
 shot 12 c  t= 20.90s  luma 124.1  contrast 64.1  ok
-shot 13 a  t= 21.57s  luma  83.7  contrast 73.4  ok
-shot 13 b  t= 22.10s  luma  79.5  contrast 71.2  ok
-shot 13 c  t= 22.67s  luma    76  contrast 69.2  ok
+shot 13 a  t= 21.57s  luma   165  contrast 56.4  ok
+shot 13 b  t= 22.10s  luma 167.3  contrast 50.1  ok
+shot 13 c  t= 22.67s  luma 156.8  contrast 56.3  ok
 shot 14 a  t= 23.43s  luma 113.9  contrast 63.9  ok
 shot 14 b  t= 24.03s  luma 114.9  contrast 66.5  ok
 shot 14 c  t= 24.67s  luma 117.2  contrast 67.8  ok
 shot 15 a  t= 25.40s  luma  83.2  contrast 61.5  ok
 shot 15 b  t= 25.90s  luma  78.7  contrast 58.7  ok
-shot 15 c  t= 26.40s  luma  77.3  contrast 59.2  ok
+shot 15 c  t= 26.40s  luma  77.2  contrast 59.2  ok
 shot 16 a  t= 26.93s  luma  66.5  contrast 57.5  ok
 shot 16 b  t= 27.27s  luma  66.5  contrast 57.9  ok
 shot 16 c  t= 27.57s  luma  68.1  contrast   58  ok
 shot 17 a  t= 28.23s  luma  91.5  contrast 58.2  PURE_BLACK
 shot 17 b  t= 28.90s  luma  91.4  contrast 57.5  PURE_BLACK
 shot 17 c  t= 29.57s  luma  93.9  contrast 56.8  ok
-shot 18 a  t= 30.27s  luma   115  contrast 53.8  PURE_BLACK
-shot 18 b  t= 30.60s  luma 115.3  contrast 58.3  PURE_BLACK
-shot 18 c  t= 30.97s  luma 116.8  contrast 58.4  PURE_BLACK
-shot 19 a  t= 31.50s  luma   122  contrast 61.7  PURE_BLACK
-shot 19 b  t= 31.97s  luma   120  contrast 61.6  PURE_BLACK
-shot 19 c  t= 32.43s  luma   119  contrast 61.7  PURE_BLACK
+shot 18 a  t= 30.27s  luma 119.7  contrast 48.5  ok
+shot 18 b  t= 30.60s  luma 119.1  contrast   54  PURE_BLACK
+shot 18 c  t= 30.97s  luma 120.5  contrast 54.1  PURE_BLACK
+shot 19 a  t= 31.50s  luma 126.1  contrast 57.3  PURE_BLACK
+shot 19 b  t= 31.97s  luma 123.7  contrast 57.1  PURE_BLACK
+shot 19 c  t= 32.43s  luma 122.6  contrast 57.3  PURE_BLACK
 shot 20 a  t= 33.03s  luma 135.8  contrast 40.7  ok
 shot 20 b  t= 33.50s  luma 137.3  contrast 39.1  ok
 shot 20 c  t= 33.97s  luma   138  contrast 37.3  ok
-shot 21 a  t= 34.50s  luma 118.6  contrast 59.6  PURE_BLACK
-shot 21 b  t= 34.83s  luma 118.7  contrast 59.3  PURE_BLACK
-shot 21 c  t= 35.17s  luma 119.6  contrast 57.5  PURE_BLACK
-shot 22 a  t= 35.63s  luma 124.4  contrast   59  PURE_BLACK
-shot 22 b  t= 36.00s  luma 122.8  contrast 60.2  PURE_BLACK
-shot 22 c  t= 36.37s  luma   122  contrast 60.7  PURE_BLACK
+shot 21 a  t= 34.50s  luma 122.3  contrast 55.2  PURE_BLACK
+shot 21 b  t= 34.83s  luma 122.8  contrast 54.7  PURE_BLACK
+shot 21 c  t= 35.17s  luma 123.8  contrast 52.8  ok
+shot 22 a  t= 35.63s  luma 127.9  contrast 54.6  ok
+shot 22 b  t= 36.00s  luma 126.6  contrast 55.7  PURE_BLACK
+shot 22 c  t= 36.37s  luma   126  contrast 56.1  PURE_BLACK
 shot 23 a  t= 37.07s  luma 133.2  contrast 75.4  ok
 shot 23 b  t= 38.37s  luma 136.2  contrast 75.3  ok
 shot 23 c  t= 39.70s  luma 135.6  contrast 75.2  ok
 72 stills -> /tmp/ricks_out/out_stills/sheet.jpg
-29 still(s) flagged: fix them in short.json and run --stills again before the full render
+11 still(s) flagged: fix them in short.json and run --stills again before the full render
+
+$ node /tmp/repo/ricks/stage/render.mjs /tmp/repo/ricks/projects/db_cooper/short.json /tmp/ricks_out/out.mp4
+GL_RENDERER ANGLE (NVIDIA Corporation, Tesla T4/PCIe/SSE2, OpenGL ES 3.2)
+24 shots, 40.17 s, 1205 frames at 1080x1920
+30/1205 frames, 333 ms/frame, 391 s left
+60/1205 frames, 343 ms/frame, 392 s left
+90/1205 frames, 349 ms/frame, 389 s left
+120/1205 frames, 351 ms/frame, 381 s left
+150/1205 frames, 354 ms/frame, 373 s left
+180/1205 frames, 360 ms/frame, 369 s left
+210/1205 frames, 343 ms/frame, 342 s left
+240/1205 frames, 331 ms/frame, 320 s left
+270/1205 frames, 322 ms/frame, 301 s left
+300/1205 frames, 315 ms/frame, 285 s left
+330/1205 frames, 311 ms/frame, 272 s left
+360/1205 frames, 307 ms/frame, 259 s left
+390/1205 frames, 303 ms/frame, 247 s left
+420/1205 frames, 298 ms/frame, 234 s left
+450/1205 frames, 295 ms/frame, 223 s left
+480/1205 frames, 292 ms/frame, 212 s left
+510/1205 frames, 290 ms/frame, 201 s left
+540/1205 frames, 295 ms/frame, 196 s left
+570/1205 frames, 299 ms/frame, 190 s left
+600/1205 frames, 303 ms/frame, 183 s left
+630/1205 frames, 307 ms/frame, 176 s left
+660/1205 frames, 310 ms/frame, 169 s left
+690/1205 frames, 310 ms/frame, 160 s left
+720/1205 frames, 313 ms/frame, 152 s left
+750/1205 frames, 315 ms/frame, 143 s left
+780/1205 frames, 310 ms/frame, 132 s left
+810/1205 frames, 303 ms/frame, 120 s left
+840/1205 frames, 297 ms/frame, 108 s left
+870/1205 frames, 290 ms/frame, 97 s left
+900/1205 frames, 285 ms/frame, 87 s left
+930/1205 frames, 284 ms/frame, 78 s left
+960/1205 frames, 283 ms/frame, 69 s left
+990/1205 frames, 281 ms/frame, 60 s left
+1020/1205 frames, 280 ms/frame, 52 s left
+1050/1205 frames, 279 ms/frame, 43 s left
+1080/1205 frames, 278 ms/frame, 35 s left
+1110/1205 frames, 281 ms/frame, 27 s left
+1140/1205 frames, 283 ms/frame, 18 s left
+1170/1205 frames, 285 ms/frame, 10 s left
+1200/1205 frames, 286 ms/frame, 1 s left
+1205/1205 frames, 286 ms/frame, 0 s left
+wrote /tmp/ricks_out/out.mp4: 1205 frames, 40.17 s
+
+$ /usr/bin/python3 /tmp/repo/ricks/stage/shortkit.py check /tmp/ricks_out/out.mp4
+{
+ "frames": 1205,
+ "step": 1,
+ "pan_speed_med_px_s": 16.5,
+ "zoom_med_pct_s": 2.29,
+ "static_frames_pct": 47.3,
+ "pan_speed_ok": true,
+ "zoom_ok": true
+}
+
+$ /usr/bin/python3 /tmp/repo/ricks/stage/flicker.py /tmp/ricks_out/out.mp4
+{"frames": 1205, "pop_blocks": 6260, "pops_per_frame": 5.2, "frames_with_flicker": 224, "ok": true}
 

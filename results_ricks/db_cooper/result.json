@@ -1,12 +1,30 @@
 {
  "project": "/tmp/repo/ricks/projects/db_cooper",
- "mode": "stills",
+ "mode": "full",
  "gl_renderer": "ANGLE (NVIDIA Corporation, Tesla T4/PCIe/SSE2, OpenGL ES 3.2)",
- "gate_seconds": 16.4,
- "flagged": 29,
+ "gate_seconds": 16.3,
+ "flagged": 11,
  "flags": [
-  "PURE_BLACK",
-  "TOO_DARK"
+  "PURE_BLACK"
  ],
- "gate_ok": false
+ "gate_ok": false,
+ "render_seconds": 349.7,
+ "render_ok": true,
+ "size_mb": 11.7,
+ "camera_check": {
+  "frames": 1205,
+  "step": 1,
+  "pan_speed_med_px_s": 16.5,
+  "zoom_med_pct_s": 2.29,
+  "static_frames_pct": 47.3,
+  "pan_speed_ok": true,
+  "zoom_ok": true
+ },
+ "flicker": {
+  "frames": 1205,
+  "pop_blocks": 6260,
+  "pops_per_frame": 5.2,
+  "frames_with_flicker": 224,
+  "ok": true
+ }
 }
