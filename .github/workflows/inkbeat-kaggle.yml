@@ -1,0 +1,60 @@
+name: inkbeat on Kaggle GPU (Remotion render)
+on:
+  push:
+    branches: [ricks-stage-kaggle]
+    paths: ['.github/workflows/inkbeat-kaggle.yml']
+  workflow_dispatch:
+    inputs:
+      comp: { description: "Remotion composition id", default: "LustigPilot" }
+      blur: { description: "1 = 4x motion blur", default: "0" }
+permissions: { contents: write }
+jobs:
+  run:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - run: python -m pip install kaggle==2.2.5 six
+      - name: Push the kernel and wait
+        env:
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+          IN_COMP: ${{ github.event.inputs.comp }}
+          IN_BLUR: ${{ github.event.inputs.blur }}
+          IN_BRANCH: ${{ github.ref_name }}
+        run: |
+          set -u
+          U=$(echo "$KAGGLE_USERNAME" | tr -d '[:space:]'); export KAGGLE_USERNAME="$U"; export KAGGLE_KEY=$(echo "$KAGGLE_KEY" | tr -d '[:space:]')
+          sed -i "s/USERNAME/$U/" kaggle/inkbeat-gpu/kernel-metadata.json
+          sed -i "s#__COMP__#$IN_COMP#; s#__BLUR__#$IN_BLUR#; s#__BRANCH__#$IN_BRANCH#" kaggle/inkbeat-gpu/inkbeat_gpu.py
+          kaggle kernels push -p kaggle/inkbeat-gpu 2>&1 | tee push.txt
+          for i in $(seq 1 1000); do
+            sleep 20
+            S=$(kaggle kernels status "$U/inkbeat-gpu" 2>&1 | tail -1); [ $((i%9)) = 0 ] && echo "$i $S"
+            case "$S" in *COMPLETE*|*ERROR*|*CANCEL*) echo "$S"; break;; esac
+          done
+          mkdir -p out && kaggle kernels output "$U/inkbeat-gpu" -p out 2>&1 | tail -3 || true
+          ls -la out | head -30
+          python3 - <<'PY'
+          import json,glob
+          for f in glob.glob('out/*.log'):
+              try: txt=''.join(x.get('data','') for x in json.load(open(f)))
+              except Exception: txt=open(f).read()
+              print(txt[-6000:])
+          PY
+      - name: Save the result
+        if: always()
+        run: |
+          D=results_inkbeat; mkdir -p $D
+          cp out/inkbeat_result.json $D/ 2>/dev/null || echo '{"note":"no result"}' > $D/inkbeat_result.json
+          rm -f $D/inkbeat_pilot.mp4
+          [ -f out/inkbeat_pilot.mp4 ] && [ $(stat -c%s out/inkbeat_pilot.mp4) -lt 99000000 ] && cp out/inkbeat_pilot.mp4 $D/ || true
+          git checkout -- kaggle 2>/dev/null || true
+          git config user.name "claude-bot"; git config user.email "noreply@anthropic.com"
+          git add -f $D 2>/dev/null || true
+          git commit -m "inkbeat Kaggle result [skip ci]" || exit 0
+          git pull -q --rebase -X theirs origin ${{ github.ref_name }} || true
+          git push -q origin HEAD:${{ github.ref_name }}
