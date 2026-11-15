@@ -1,1 +1,36 @@
-{"note":"no result"}
+{
+ "mode": "full",
+ "project": "ricks/projects/lustig2",
+ "branch": "ricks-stage-kaggle",
+ "gpu": "Tesla T4, 580.178.04\nTesla T4, 580.178.04",
+ "node": "v22.23.4",
+ "total_s": 772.2,
+ "result": {
+  "project": "/tmp/repo/ricks/projects/lustig2",
+  "mode": "full",
+  "gl_renderer": "ANGLE (NVIDIA Corporation, Tesla T4/PCIe/SSE2, OpenGL ES 3.2)",
+  "gate_seconds": 19.8,
+  "flagged": 0,
+  "flags": [],
+  "gate_ok": true,
+  "render_seconds": 649.1,
+  "render_ok": true,
+  "size_mb": 60.4,
+  "camera_check": {
+   "frames": 1641,
+   "step": 1,
+   "pan_speed_med_px_s": 49.5,
+   "zoom_med_pct_s": 4.44,
+   "static_frames_pct": 29.0,
+   "pan_speed_ok": true,
+   "zoom_ok": true
+  },
+  "flicker": {
+   "frames": 1641,
+   "pop_blocks": 9133,
+   "pops_per_frame": 5.6,
+   "frames_with_flicker": 403,
+   "ok": true
+  }
+ }
+}
