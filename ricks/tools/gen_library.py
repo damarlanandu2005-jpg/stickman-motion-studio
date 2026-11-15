@@ -15,9 +15,19 @@ from google import genai
 from google.genai import types
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-MODELS = os.environ.get("IMG_MODELS", "gemini-2.5-flash-image").split(",")
-client = genai.Client(vertexai=True, project=os.environ["GOOGLE_CLOUD_PROJECT"], location=os.environ.get("VIDEO_LOCATION", "us-central1"),
-                      http_options=types.HttpOptions(timeout=300000))
+MODELS = os.environ.get("IMG_MODELS", "gemini-2.5-flash-image,gemini-3.1-flash-image-preview,gemini-3-pro-image-preview").split(",")
+_proj = os.environ.get("GOOGLE_CLOUD_PROJECT")
+CLIENTS = []          # (name, client): tried in order; a (client, model) pair that fails with 403/404 is skipped from then on
+def _add(name, mk):
+    try: CLIENTS.append((name, mk()))
+    except Exception as e: print("client", name, "unavailable:", repr(e)[:120], flush=True)
+if _proj:
+    _add("vertex-global", lambda: genai.Client(vertexai=True, project=_proj, location="global", http_options=types.HttpOptions(timeout=300000, headers={"x-goog-user-project": os.environ.get("USER_PROJECT", _proj)})))
+if os.environ.get("GEMINI_API_KEY"):
+    _add("api-key", lambda: genai.Client(api_key=os.environ["GEMINI_API_KEY"], vertexai=False, http_options=types.HttpOptions(timeout=300000)))
+if _proj:
+    _add("vertex-central", lambda: genai.Client(vertexai=True, project=_proj, location=os.environ.get("VIDEO_LOCATION", "us-central1"), http_options=types.HttpOptions(timeout=300000)))
+DEAD = set()
 
 CHARACTER = ("2D cartoon doodle character: a big round off-white head about as wide as the body, with a soft grey cel-shadow on one side, "
  "tiny solid black dot eyes, thick expressive black eyebrows, tiny simple line mouth, no nose, no ears; thick uniform black outline. "
@@ -53,18 +63,23 @@ log = []
 def gen(path, parts, aspect, tries=4):
     name = os.path.basename(path)
     for attempt in range(tries):
-        for m in MODELS:
-            try:
-                cfg = types.GenerateContentConfig(response_modalities=["IMAGE"], image_config=types.ImageConfig(aspect_ratio=aspect))
-                r = client.models.generate_content(model=m, contents=parts, config=cfg)
-                for c in r.candidates[0].content.parts:
-                    if getattr(c, "inline_data", None) and c.inline_data.data:
-                        open(path, "wb").write(c.inline_data.data)
-                        log.append(dict(name=name, ok=True, model=m, attempt=attempt + 1)); print("OK", name, flush=True); return True
-                raise RuntimeError("no image part")
-            except Exception as e:
-                log.append(dict(name=name, ok=False, attempt=attempt + 1, error=repr(e)[:300])); print("FAIL", name, repr(e)[:200], flush=True)
-                time.sleep(60 * (attempt + 1) if "429" in repr(e) else 5)
+        for cn, client in CLIENTS:
+            for m in MODELS:
+                if (cn, m) in DEAD: continue
+                try:
+                    cfg = types.GenerateContentConfig(response_modalities=["IMAGE"], image_config=types.ImageConfig(aspect_ratio=aspect))
+                    r = client.models.generate_content(model=m, contents=parts, config=cfg)
+                    for c in r.candidates[0].content.parts:
+                        if getattr(c, "inline_data", None) and c.inline_data.data:
+                            open(path, "wb").write(c.inline_data.data)
+                            log.append(dict(name=name, ok=True, client=cn, model=m, attempt=attempt + 1)); print("OK", name, cn, m, flush=True); return True
+                    raise RuntimeError("no image part")
+                except Exception as e:
+                    er = repr(e); log.append(dict(name=name, ok=False, client=cn, model=m, attempt=attempt + 1, error=er[:300])); print("FAIL", name, cn, m, er[:160], flush=True)
+                    if "403" in er or "404" in er or "NOT_FOUND" in er or "PERMISSION" in er: DEAD.add((cn, m))
+                    elif "429" in er: time.sleep(45)
+        if all((cn, m) in DEAD for cn, _ in CLIENTS for m in MODELS): print("every client/model is dead; giving up on", name, flush=True); return False
+        time.sleep(5)
     return False
 
 def img(path): return types.Part.from_bytes(data=open(path, "rb").read(), mime_type="image/png")
