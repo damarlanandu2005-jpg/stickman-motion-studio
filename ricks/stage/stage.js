@@ -468,12 +468,13 @@ function blendMood(a, b, t) {
   for (const k of ['sunC', 'top', 'hor', 'fSky', 'fGnd', 'tint']) o[k] = a[k].clone().lerp(b[k], t);
   return o;
 }
-let lightKeys = [];
+let lightKeys = [], moodByName = {};
 function moodAt(t) {
   let cur = lightKeys[0].P;
   for (let i = 1; i < lightKeys.length; i++) { const k = lightKeys[i]; if (t < k.t) break; cur = blendMood(cur, k.P, smoother((t - k.t) / Math.max(1e-3, k.fade))); }
   return cur;
 }
+function moodForShot(k, t) { const s = shots[k]; return (s && s.mood && moodByName[s.mood]) ? moodByName[s.mood] : moodAt(t); }   // a shot can force its own mood (e.g. "indoor"); else the time-based keyframes
 function applyMood(P, focus) {
   const el = rad(P.el), az = rad(P.az), dir = new THREE.Vector3(Math.sin(az) * Math.cos(el), Math.sin(el), Math.cos(az) * Math.cos(el));
   sun.color.copy(P.sunC); sun.intensity = P.sunI;
@@ -582,6 +583,7 @@ window.setup = async (spec) => {
   const moods = spec.moods || { default: { sun: spec.sun, sky: spec.sky, fill: spec.fill, exposure: 1 } }, first = Object.keys(moods)[0];
   const lk = (spec._lighting && spec._lighting.length) ? spec._lighting : [{ t: 0, mood: first }];
   lightKeys = lk.map(k => { if (!moods[k.mood]) throw new Error('unknown mood "' + k.mood + '"'); return { t: k.t, fade: k.fade ?? 0.8, P: moodParams(moods[k.mood]) }; });
+  moodByName = {}; for (const name in moods) moodByName[name] = moodParams(moods[name]);   // per-shot mood override (interior/exterior cuts)
 
   camera = new THREE.PerspectiveCamera(40, W / H, 0.1, 1000);
   const ink = spec.ink || {}; if ((ink.set ?? 5) > 0) inkPass = makeInk(ink.set ?? 5, ink.color || LINE);   // crisper default outline, inkbeat-style
@@ -589,7 +591,7 @@ window.setup = async (spec) => {
   for (const s of spec._shots) {
     const n = Math.max(2, Math.round(s.dur * FPS)), yaw = rad(s.yaw || 0), pitch = rad(s.pitch ?? 6);
     if (!s.anchor && !chars[s.target]) throw new Error('shot target "' + s.target + '" is not a character id (or give "anchor")');
-    shots.push({ start: s.start, dur: s.dur, n, T: driftTable(n), pan: s.pan || [0, 0], zoom: s.zoom ?? 6, fov: s.fov || 40, glide: s.glide || 'lens',
+    shots.push({ start: s.start, dur: s.dur, n, T: driftTable(n), mood: s.mood || null, pan: s.pan || [0, 0], zoom: s.zoom ?? 6, fov: s.fov || 40, glide: s.glide || 'lens',
       out: s.out === 'whip' ? 'glide' : (s.out || 'glide'), outDur: s.outDur, target: s.target, anchor: s.anchor ? new THREE.Vector3(...s.anchor) : null,
       yaw0: s.yaw || 0, pitch0: s.pitch ?? 6, orbit: s.orbit || 0, rise: s.rise || 0, headWidth: s.headWidth || 0.20, distance: s.distance, ox: s.frameX ?? 0, oy: s.frameY ?? 0.12,
       dir: new THREE.Vector3(Math.sin(yaw) * Math.cos(pitch), Math.sin(pitch), Math.cos(yaw) * Math.cos(pitch)) });
@@ -631,9 +633,9 @@ const handover = (k) => {                                      // transition fro
 };
 function cameraPlan(t) {                                        // -> one pose, or two poses with a mix
   const k = shotIndex(t), hin = k > 0 ? handover(k - 1) : null, hout = handover(k);
-  if (hin && t < hin.at + hin.dur / 2) return { a: shotPose(k - 1, t), b: shotPose(k, t), mix: (t - (hin.at - hin.dur / 2)) / hin.dur, kind: hin.kind };
-  if (hout && t > hout.at - hout.dur / 2) return { a: shotPose(k, t), b: shotPose(k + 1, t), mix: (t - (hout.at - hout.dur / 2)) / hout.dur, kind: hout.kind };
-  return { a: shotPose(k, t), mix: 0, kind: 'none' };
+  if (hin && t < hin.at + hin.dur / 2) return { a: shotPose(k - 1, t), b: shotPose(k, t), ka: k - 1, kb: k, mix: (t - (hin.at - hin.dur / 2)) / hin.dur, kind: hin.kind };
+  if (hout && t > hout.at - hout.dur / 2) return { a: shotPose(k, t), b: shotPose(k + 1, t), ka: k, kb: k + 1, mix: (t - (hout.at - hout.dur / 2)) / hout.dur, kind: hout.kind };
+  return { a: shotPose(k, t), ka: k, mix: 0, kind: 'none' };
 }
 function setCamera(p) { camera.position.copy(p.pos); camera.quaternion.copy(p.quat); camera.fov = p.fov; camera.updateProjectionMatrix(); camera.updateMatrixWorld(); }
 
@@ -677,11 +679,11 @@ function compose(i, withCaption = true) {
   for (const o of setRoot.children) { const pr = o.userData.prop; if (pr && pr.from !== undefined) o.visible = t >= pr.from && t < (pr.to ?? 1e9); }   // props that exist only while their line is spoken
   const mix = smoother(plan.mix), focusOf = (p) => p.anchor;
   if (plan.kind === 'dissolve') {
-    applyMood(moodAt(t), focusOf(plan.a)); setCamera(plan.a); drawScene(); octx.globalAlpha = 1; octx.drawImage(renderer.domElement, 0, 0, out.width, out.height);
-    applyMood(moodAt(t), focusOf(plan.b)); setCamera(plan.b); drawScene(); octx.globalAlpha = clamp(plan.mix, 0, 1); octx.drawImage(renderer.domElement, 0, 0, out.width, out.height); octx.globalAlpha = 1;
+    applyMood(moodForShot(plan.ka, t), focusOf(plan.a)); setCamera(plan.a); drawScene(); octx.globalAlpha = 1; octx.drawImage(renderer.domElement, 0, 0, out.width, out.height);
+    applyMood(moodForShot(plan.kb, t), focusOf(plan.b)); setCamera(plan.b); drawScene(); octx.globalAlpha = clamp(plan.mix, 0, 1); octx.drawImage(renderer.domElement, 0, 0, out.width, out.height); octx.globalAlpha = 1;
   } else {
     const p = plan.kind === 'glide' ? { pos: plan.a.pos.clone().lerp(plan.b.pos, mix), quat: plan.a.quat.clone().slerp(plan.b.quat, mix), fov: lerp(plan.a.fov, plan.b.fov, mix), anchor: plan.a.anchor.clone().lerp(plan.b.anchor, mix) } : plan.a;
-    applyMood(moodAt(t), p.anchor); setCamera(p); drawScene(); octx.drawImage(renderer.domElement, 0, 0, out.width, out.height);
+    applyMood(moodForShot(plan.kind === 'glide' && mix > 0.5 ? plan.kb : plan.ka, t), p.anchor); setCamera(p); drawScene(); octx.drawImage(renderer.domElement, 0, 0, out.width, out.height);
   }
   if (withCaption) drawCaption(t);
   return plan;
@@ -711,8 +713,14 @@ window.probeFrame = (i, quality = 0.9) => {
   for (let j = 0; j < d.length; j += 4) { const l = 0.2126 * d[j] + 0.7152 * d[j + 1] + 0.0722 * d[j + 2]; sum += l; sum2 += l * l; if (d[j] < 10 && d[j + 1] < 10 && d[j + 2] < 10) black++; const key = (d[j] >> 4) << 8 | (d[j + 1] >> 4) << 4 | (d[j + 2] >> 4); bins.set(key, (bins.get(key) || 0) + 1); }
   const mean = sum / n, std = Math.sqrt(Math.max(0, sum2 / n - mean * mean)), dominant = Math.max(...bins.values()) / n;
   if (std < 10 || dominant > 0.85) flags.push('FLAT_FRAME');
-  if (mean < 50) flags.push('TOO_DARK'); if (mean > 215) flags.push('TOO_BRIGHT');
-  if (black / n > 0.03) flags.push('PURE_BLACK');
+  // interiors are legitimately dim, so the dark floor is lower indoors (no false TOO_DARK on a dark cabin)
+  if (mean < (INDOOR ? 20 : 50)) flags.push('TOO_DARK'); if (mean > 215) flags.push('TOO_BRIGHT');
+  if (black / n > (INDOOR ? 0.35 : 0.03)) flags.push('PURE_BLACK');
+  // enclosure check: if the camera is looking INTO a cabin/room but the shot isn't marked indoor, it will show sky (the "box in a field" bug the overnight run produced)
+  if (!INDOOR) {
+    const look = s.anchor ? s.anchor : (chars[s.target] ? chars[s.target].headAt(t) : null);
+    if (look) for (const b of boxes) if (b.p.type === 'cabin' && b.box.clone().expandByScalar(1.5).containsPoint(new THREE.Vector3(look.x, b.box.getCenter(new THREE.Vector3()).y, look.z))) { flags.push('INTERIOR_NOT_ENCLOSED'); break; }
+  }
   return { frame: i, t: +t.toFixed(3), shot: k, flags, inside, head, luma: +mean.toFixed(1), contrast: +std.toFixed(1), dominant: +dominant.toFixed(2), image: out.toDataURL('image/jpeg', quality) };
 };
 window.makeSheet = async (cells, cols = 6) => {                 // cells: [{ image, label, bad }]

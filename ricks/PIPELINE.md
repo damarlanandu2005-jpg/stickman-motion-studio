@@ -53,3 +53,14 @@ public places empty. Fields: `{ "type":"crowd", "count":<n>, "style":"seated"|"s
   overhead bins, a cart; a jungle is DENSE (many trees + undergrowth + a stream), not three cones on bare dirt; an
   office has a desk, chairs, shelves, papers, a lamp, pictures. Aim for the 6-10 dressing pieces per place from step 4,
   plus a crowd where the place would be populated. An empty-looking scene is a failure the blind verifier must catch.
+
+## Interiors — indoor mode (added after "box in a field" failures)
+Interiors (cabin, room, office) MUST use indoor lighting or they render as a lit box sitting in an open
+field/sky. The engine now supports it two ways:
+- A mood with `"indoor": true` + a dark horizon (e.g. `"sky":{"top":"#14181f","horizon":"#14181f"}`)
+  darkens the sky to a void, hides the ground and backdrops, and flattens the character tint.
+- A shot can force its own mood with `"mood":"<name>"` (overrides the time-based `lighting` array).
+  Use this for interior/exterior CUTS: tag every shot that looks into an interior with `"mood":"indoor"`.
+A shot counts as interior if its camera anchor — or its target character — sits inside a `cabin`/room prop.
+The stills gate now flags `INTERIOR_NOT_ENCLOSED` when such a shot is NOT marked indoor, and uses a lower
+dark-floor for indoor shots (so a dim cabin is not wrongly flagged TOO_DARK).
