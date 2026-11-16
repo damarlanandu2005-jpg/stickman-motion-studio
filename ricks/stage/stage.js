@@ -385,6 +385,23 @@ async function makeProp(p) {
   } else if (p.type === 'plane') {
     const [w, h] = p.size || [2, 2], t = await texture(p.image);
     const m = add(new THREE.PlaneGeometry(w, h), new THREE.MeshBasicMaterial({ map: t, transparent: true, alphaTest: 0.05, side: THREE.DoubleSide, toneMapped: false }), h / 2); m.userData.noInk = true; m.userData.tint = true;
+  } else if (p.type === 'cabin') {
+    // airplane fuselage interior section: floor, two side walls with window rows, overhead bins, arched ceiling.
+    // Passengers come from a 'crowd' (style seated) placed inside. Aisle runs along Z. p.size = [width, height, length].
+    const [w, h, d] = size3(p.size, [6, 2.6, 16]);
+    const lift = (m, c, i) => { m = m.clone(); if (m.emissive) { m.emissive.set(c); m.emissiveIntensity = i; } return m; };   // interior is self-lit so the sun being outside doesn't leave it black
+    const shell = lift(await surface(p.color || '#d4d8de'), p.color || '#aeb4be', 0.5);
+    const binM = lift(await surface(p.trim || '#bcc0c8'), p.trim || '#9aa0aa', 0.45);
+    const glass = lift(await surface(p.window || '#cfe6fb'), '#eaf4ff', 1.6);
+    const floorM = lift(await surface(p.floor || '#6a6e76'), '#4a4e56', 0.35);
+    add(new THREE.BoxGeometry(w, 0.08, d), floorM, 0.04);
+    for (const sx of [-1, 1]) {
+      const wall = add(new THREE.BoxGeometry(0.14, h * 0.72, d), shell, h * 0.36); wall.position.x = sx * w / 2;
+      const bin = add(new THREE.BoxGeometry(0.55, 0.38, d), binM, h * 0.82); bin.position.x = sx * (w / 2 - 0.42);
+      const nW = Math.max(3, Math.floor(d / 2.4)), gap = (d - 2.8) / Math.max(1, nW - 1);
+      for (let i = 0; i < nW; i++) { const wd = add(new THREE.BoxGeometry(0.05, 0.42, 0.26), glass, h * 0.46); wd.position.set(sx * (w / 2 - 0.08), h * 0.46, -d / 2 + 1.4 + i * gap); }
+      const cp = add(new THREE.BoxGeometry(w * 0.58, 0.1, d), shell, h * 1.0); cp.position.set(sx * w * 0.25, h * 1.0, 0); cp.rotation.z = -sx * 0.38;
+    }
   } else if (p.type === 'crowd') {
     const [w, h] = p.size || [8, 3];
     const tex = new THREE.CanvasTexture(drawCrowdCanvas(p)); tex.colorSpace = THREE.SRGBColorSpace; tex.anisotropy = 8;
