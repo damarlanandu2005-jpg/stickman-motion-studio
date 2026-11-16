@@ -19,7 +19,7 @@ const GLIDE_S = 0.8, DISSOLVE_S = 8 / 30;
 const CAPTION_Y = 1350, CAPTION_PX = 70;
 
 let FPS = 30, SCALE = 1, SS = 1, TEX_SOFTEN = 1, S;   // SS = supersample factor; TEX_SOFTEN = source-image blur strength to kill texture moire
-let renderer, scene, camera, setRoot, sun, hemi, skyMesh, backdrop, inkPass, backdrops = [];
+let renderer, scene, camera, setRoot, sun, hemi, skyMesh, backdrop, inkPass, backdrops = [], groundMesh, INDOOR = false;
 let out, octx;                        // 2D output canvas (render + captions)
 const chars = {}, shots = [], anchors = [];
 const texCache = new Map();
@@ -454,7 +454,7 @@ let gltf;
 const MOOD0 = { sun: { azimuth: 35, elevation: 50, color: '#fff1d8', intensity: 2.4 }, sky: { top: '#4f7fd8', horizon: '#c3d4e6' }, fill: { sky: '#9db6ff', ground: '#6a3b6e', intensity: 1.1 }, exposure: 1 };   // clean blue sky (was warm orange haze), inkbeat-style
 function moodParams(m) {
   m = m || {}; const sn = { ...MOOD0.sun, ...(m.sun || {}) }, sk = { ...MOOD0.sky, ...(m.sky || {}) }, fl = { ...MOOD0.fill, ...(m.fill || {}) };
-  const P = { az: sn.azimuth, el: sn.elevation, sunI: sn.intensity, fillI: fl.intensity, exposure: m.exposure ?? 1,
+  const P = { az: sn.azimuth, el: sn.elevation, sunI: sn.intensity, fillI: fl.intensity, exposure: m.exposure ?? 1, indoor: !!m.indoor,
     sunC: new THREE.Color(sn.color), top: new THREE.Color(sk.top), hor: new THREE.Color(sk.horizon), fSky: new THREE.Color(fl.sky), fGnd: new THREE.Color(fl.ground) };
   if (m.cutoutTint) P.tint = new THREE.Color(m.cutoutTint);
   else {                                     // flat characters still take the colour of the light they stand in
@@ -488,12 +488,21 @@ function applyMood(P, focus) {
   sun.target.position.copy(snap); sun.position.copy(snap).addScaledVector(dir, 40); sun.target.updateMatrixWorld();
   hemi.color.copy(P.fSky); hemi.groundColor.copy(P.fGnd); hemi.intensity = P.fillI;
   renderer.toneMappingExposure = (S.exposure ?? 1) * P.exposure;
+  INDOOR = !!P.indoor;
   const pos = skyMesh.geometry.attributes.position, col = skyMesh.geometry.attributes.color, c = new THREE.Color();
-  for (let i = 0; i < pos.count; i++) { c.copy(P.hor).lerp(P.top, Math.pow(Math.max(0, pos.getY(i) / 400), 0.6)); col.setXYZ(i, c.r, c.g, c.b); }
-  col.needsUpdate = true; scene.fog.color.copy(P.hor);
-  for (const ch of Object.values(chars)) ch.mesh.material.color.copy(P.tint);
-  setRoot.traverse(o => { if (o.userData.tint) o.material.color.copy(P.tint); });
-  for (const b of backdrops) b.material.color.copy(P.tint);
+  if (INDOOR) {                                                   // interior: dark enclosing void instead of sky + field
+    const dk = P.hor;                                             // director sets the mood's horizon to the dark interior colour
+    for (let i = 0; i < pos.count; i++) col.setXYZ(i, dk.r, dk.g, dk.b);
+    scene.fog.color.copy(dk); if (groundMesh) groundMesh.visible = false;
+  } else {
+    for (let i = 0; i < pos.count; i++) { c.copy(P.hor).lerp(P.top, Math.pow(Math.max(0, pos.getY(i) / 400), 0.6)); col.setXYZ(i, c.r, c.g, c.b); }
+    scene.fog.color.copy(P.hor); if (groundMesh) groundMesh.visible = true;
+  }
+  col.needsUpdate = true;
+  const tint = INDOOR ? new THREE.Color(1, 1, 1).lerp(P.tint, 0.4) : P.tint;   // indoors the sun isn't the main light, so tint the set less
+  for (const ch of Object.values(chars)) ch.mesh.material.color.copy(tint);
+  setRoot.traverse(o => { if (o.userData.tint) o.material.color.copy(tint); });
+  for (const b of backdrops) b.material.color.copy(tint);
 }
 
 // ------------------------------------------------------------ ink outline on the 3D set
@@ -550,8 +559,8 @@ window.setup = async (spec) => {
   hemi = new THREE.HemisphereLight('#8ea2ff', '#6a3b6e', 1.1); scene.add(hemi);
 
   const gr = spec.ground || {};
-  const ground = new THREE.Mesh(new THREE.PlaneGeometry(gr.size || 1000, gr.size || 1000), await surface(gr.color || '#c98a55', gr.texture, gr.repeat || [60, 60]));
-  ground.rotation.x = -Math.PI / 2; ground.receiveShadow = true; ground.layers.enable(1); setRoot.add(ground);
+  groundMesh = new THREE.Mesh(new THREE.PlaneGeometry(gr.size || 1000, gr.size || 1000), await surface(gr.color || '#c98a55', gr.texture, gr.repeat || [60, 60]));
+  groundMesh.rotation.x = -Math.PI / 2; groundMesh.receiveShadow = true; groundMesh.layers.enable(1); setRoot.add(groundMesh);
   for (const p of (spec.props || [])) setRoot.add(await makeProp(p));
 
   backdrops = [];
@@ -633,7 +642,7 @@ function drawScene() {
   for (const ch of Object.values(chars)) ch.mesh.rotation.y = Math.atan2(camera.position.x - ch.mesh.position.x, camera.position.z - ch.mesh.position.z);
   skyMesh.position.copy(camera.position);
   { let act = backdrops.find(b => b.userData.near && camera.position.x >= b.userData.near[0] && camera.position.x <= b.userData.near[1]) || backdrops.find(b => !b.userData.near) || backdrops[0];
-    for (const b of backdrops) { b.visible = b === act; if (b.visible) b.position.set(camera.position.x, b.userData.y, camera.position.z); } }
+    for (const b of backdrops) { b.visible = !INDOOR && b === act; if (b.visible) b.position.set(camera.position.x, b.userData.y, camera.position.z); } }
   const cut = Object.values(chars).map(c => c.mesh);
   if (inkPass) {                                               // normals + depth of the set only
     inkPass.mat.uniforms.near.value = camera.near; inkPass.mat.uniforms.far.value = camera.far;
