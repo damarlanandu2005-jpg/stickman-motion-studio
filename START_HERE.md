@@ -1,5 +1,65 @@
 # START HERE — read this first, every new chat
 
+Repo: `damarlanandu2005-jpg/stickman-motion-studio` · working branch: **`ricks-stage-kaggle`**.
+The owner gives narration scripts and wants finished 40-60 s vertical animated Shorts with no hand-fixing.
+
+## Status on 2026-11-16 (read this before anything else)
+
+The project is mid-rebuild. Follow **`BLUEPRINT.md`** (v2.1, approved by the owner and an outside reviewer).
+Do not go back to patching single videos or the bean engine.
+
+| Blueprint stage | State |
+|---|---|
+| 1 Script, fact-check, Kokoro voice, word timings | Works (in `ricks/tools`, `ricks/projects/<name>/audio`) |
+| 2 Story director | **Done, owner approved the three plans.** `director/DIRECTOR.md`, `director/plan_tool.py`, `director/plans/` |
+| 4 Scene data format + inkbeat adapter | **NEXT TO BUILD** |
+| 3 Set and character library (in inkbeat) | Not built. Sources to lift from: `inkbeat/src/cooper/` |
+| 6 Compiler (generic inkbeat composition driven by scene data) | Not built |
+| 5, 7 Geometry gate, sampled-stills gate, final-video QA | Not built for inkbeat |
+| 8 Three-script benchmark | Not run |
+
+### Next task (stage 4)
+From `director/plans/db_cooper.story_plan.json`, produce a semantic `scene_ir.json` (renderer-neutral
+vocabulary: sets, slots, actions, shot types) plus a separate inkbeat adapter table, and a validator that
+rejects any term the adapter cannot map. Output a list of what the three plans need that inkbeat lacks.
+No rendering in this step. Ask the owner before starting each later stage.
+
+### Owner decisions already made
+- inkbeat's 3D toon figure is the working look (provisional until three automated films exist).
+- 40 s films are allowed.
+- lightning_man: change "Twice." to "again and again" (voice must be regenerated); other fact warnings stay
+  flagged as unverified in the plans.
+- The bean engine (`ricks/stage`) is kept until the benchmark passes, then retired.
+- Deliver only videos that pass the checks. Never hand over a video with a list of known defects.
+- Tell the owner what you will do and wait for "go" before building.
+
+### Hard-won facts (do not re-derive, do not contradict)
+- **inkbeat renders fast on Kaggle.** Needs the NVIDIA userspace driver install and `--gl=angle-egl`; see
+  `kaggle/inkbeat-gpu/inkbeat_gpu.py`. Measured: 40 s film in about 4 min render, under 9 min end to end.
+  Dispatch: `gh workflow run inkbeat-kaggle.yml --ref ricks-stage-kaggle -f comp=<CompId> -f blur=0`;
+  result lands in `results_inkbeat/` (`inkbeat_pilot.mp4`, `inkbeat_result.json`).
+- **Kaggle always runs T4 x2.** The P100 is retired and silently substituted; `machine_shape` does nothing.
+  Queues happen (one run sat over an hour) and cannot be predicted. Send one run at a time.
+- **Local inkbeat stills** work in the container with software GL (about 2 min each, run one at a time;
+  parallel runs give black frames): `npx remotion still ... --gl=swangle`.
+- **inkbeat `aim(from, to, fov, face)`**: the 4th argument is where the subject sits in the frame
+  (about 0.36-0.44), not roll. Passing 0 puts heads off the top of the frame.
+- inkbeat has interior moods (`cold`, `lamp`) and `sky={false}`; valid textures and face states are typed,
+  so run `npx tsc --noEmit` in `inkbeat/` before any render.
+- Hand-made inkbeat reference film: `inkbeat/src/cooper/CooperFull.tsx` (8 scenes, voice, music). The last
+  version sent to the owner is `results_inkbeat/inkbeat_pilot.mp4` unless a later run replaced it; a re-render
+  with scene tags was dispatched and never reviewed.
+- Always confirm a GitHub run really produced output; "success" can hide a failed Kaggle kernel.
+
+## Read in this order
+1. This file. 2. `BLUEPRINT.md`. 3. `director/DIRECTOR.md`. 4. `ricks/ENGINE_STRATEGY.md` (history; its
+correction banner is right, the body below it is superseded).
+
+---
+
+# Legacy notes (bean engine, kept for reference until it is retired)
+
+
 You are picking up an animated-Shorts pipeline. The owner gives **narration scripts**; everything else
 is automatic. This file is the entry point: read it, then the two docs it points to, then run the
 procedure. Do **not** re-derive the design or re-learn the lessons below — they cost real time to find.
@@ -50,7 +110,7 @@ Follow `ricks/PIPELINE.md` for the creative stages (adapter → director → cas
 
 ## Kaggle setup (critical — this is the queue fix)
 - Secrets already set on the repo: `KAGGLE_USERNAME`, `KAGGLE_KEY`, plus `GCP_*` for Gemini/Vertex.
-- **Use a single P100, not T4 x2.** `enable_gpu: true` alone provisions **GPU T4 x2** (two cards), which
+- **SUPERSEDED: the P100 is retired; Kaggle runs T4 x2 whatever is requested.** Old text follows. `enable_gpu: true` alone provisions **GPU T4 x2** (two cards), which
   sits in a long queue. `kaggle/ricks-gpu/kernel-metadata.json` now sets
   `"machine_shape": "NvidiaTeslaP100"` → a single P100 → low demand → starts without queuing. Single-T4
   no longer exists on Kaggle. Keep the P100 setting. (Account health is fine: ~30h/week GPU quota,
