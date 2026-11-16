@@ -105,9 +105,16 @@ export type FaceState = {
   sweat?: boolean;
 };
 
+/** hip height as a fraction of standing hip height, per leg pose */
+const LEG_HIP = { stand: 1, sit: 0.6, kneel: 0.56, crouch: 0.44 } as const;
+/** how far (world units) the head and hands drop for a leg pose, for aiming cameras and placing props */
+export const legDrop = (legs: "stand" | "sit" | "kneel" | "crouch", height = 1.7, build?: Partial<Build>) => layoutOf(build).hipY * (1 - LEG_HIP[legs]) * height;
+
 export type Pose = ArmPose & {
   /** walk phase in radians (advance ~2π per stride) */
   walk?: number;
+  /** leg pose: sit on a seat, kneel on the ground, or crouch. The upper body drops by legDrop(). Default stand. */
+  legs?: "stand" | "sit" | "kneel" | "crouch";
   /** head roll (degrees, + = toward the character's right), nod (+ = down), extra turn (+ = toward its left) */
   headTilt?: number;
   headNod?: number;
@@ -285,7 +292,9 @@ export const Character3D: React.FC<CharacterProps> = (props) => {
   // ---------------------------------------------------------------- limbs (rebuilt when the pose changes)
   const armL = pose.armL;
   const armR = pose.armR;
-  const limbKey = [JSON.stringify(b), armL, armR, pose.armLFwd ?? 0, pose.armRFwd ?? 0, walking ? ph.toFixed(3) : "-"].join("|");
+  const legs = walking ? "stand" : (pose.legs ?? "stand");
+  const hipT = l.hipY * LEG_HIP[legs]; // where the hips sit for this leg pose
+  const limbKey = [JSON.stringify(b), armL, armR, pose.armLFwd ?? 0, pose.armRFwd ?? 0, walking ? ph.toFixed(3) : "-", legs].join("|");
   const limbs = useMemo(() => {
     const arm = (side: "L" | "R") => {
       const s = side === "L" ? -1 : 1;
@@ -311,9 +320,13 @@ export const Character3D: React.FC<CharacterProps> = (props) => {
       const lift = walking ? Math.max(0, side * Math.cos(ph)) * WALK.lift : 0;
       const hx = side * TORSO_R * b.torsoWidth * HIP_X;
       const fx = side * TORSO_R * b.torsoWidth * FOOT_X;
-      const hip = new THREE.Vector3(hx, l.hipY, 0);
-      const ankle = new THREE.Vector3(fx, ANKLE_Y + lift, sw);
-      const knee = new THREE.Vector3((hx + fx) / 2, (l.hipY + ankle.y) / 2 + lift * 0.3, sw * 0.45 + 0.008 + lift * 0.6);
+      const hip = new THREE.Vector3(hx, hipT, 0);
+      let ankle = new THREE.Vector3(fx, ANKLE_Y + lift, sw);
+      let knee = new THREE.Vector3((hx + fx) / 2, (l.hipY + ankle.y) / 2 + lift * 0.3, sw * 0.45 + 0.008 + lift * 0.6);
+      const H = l.hipY;
+      if (legs === "sit") { knee = new THREE.Vector3(hx, hipT + 0.004, H * 0.5); ankle = new THREE.Vector3(fx, ANKLE_Y, H * 0.52); }
+      else if (legs === "kneel") { knee = new THREE.Vector3(fx, 0.04, H * 0.3); ankle = new THREE.Vector3(fx, ANKLE_Y, -H * 0.18); }
+      else if (legs === "crouch") { knee = new THREE.Vector3(hx * 1.5, hipT + H * 0.14, H * 0.42); ankle = new THREE.Vector3(fx, ANKLE_Y, 0.03); }
       const pts = curvePts([hip, knee, ankle], 30);
       const r = LEG_R.map((x) => x * b.limb) as [number, number];
       return { geo: taperTube(pts, r[0], r[1], 34, 16), ankle, lift, r1: r[1], dir: ankle.clone().sub(knee).normalize() };
@@ -347,7 +360,7 @@ export const Character3D: React.FC<CharacterProps> = (props) => {
   const glassesMat = charMat(typeof look.glasses === "string" ? look.glasses : "#4a3426", { spec: 0.8, gloss: 0.5 });
 
   const lean = (pose.lean ?? 0) * D2R;
-  const bob = (pose.bob ?? 0) / 430 + walkBob;
+  const bob = (pose.bob ?? 0) / 430 + walkBob - (l.hipY - hipT);
   const shoes = shoeGeo();
   const handScale = HAND_R * b.hand;
 
