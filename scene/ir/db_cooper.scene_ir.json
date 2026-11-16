@@ -1,0 +1,1312 @@
+{
+ "title": "The Man Who Vanished",
+ "plan": "scripts/db_cooper.txt",
+ "vocab": "scene/vocab.json",
+ "scenes": [
+  {
+   "id": "s1",
+   "set": "night_sky",
+   "enclosed": false,
+   "period": "1971",
+   "mood": "night_rain",
+   "relation": "opening",
+   "tag": "1971",
+   "timeline": "hook",
+   "cast": [
+    {
+     "id": "cooper",
+     "costume": "dark suit, white shirt, black tie, dark glasses, parachute harness"
+    }
+   ],
+   "crowd": {
+    "count": 0,
+    "action": "none"
+   },
+   "dressing": [
+    "airliner with lit windows",
+    "parachute canopy",
+    "rain",
+    "pine forest below",
+    "cloud bank",
+    "moon behind cloud"
+   ],
+   "props_here": [],
+   "shots": [
+    {
+     "id": "sh01",
+     "w0": 0,
+     "type": "wide",
+     "move": "hold_drift",
+     "subject": "airliner with lit windows",
+     "stage": [
+      {
+       "who": "cooper",
+       "slot": "air_far",
+       "action": "hang_parachute",
+       "face": "calm",
+       "holds": [
+        "money_bag"
+       ]
+      }
+     ],
+     "shows": [],
+     "labels": [
+      "1971"
+     ],
+     "events": [],
+     "proof": "money_bag",
+     "intent": "the airliner crosses a stormy night sky; the 1971 tag sits beside it"
+    },
+    {
+     "id": "sh02",
+     "w0": 8,
+     "type": "medium",
+     "move": "push",
+     "subject": "cooper",
+     "stage": [
+      {
+       "who": "cooper",
+       "slot": "air_mid",
+       "action": "hang_parachute",
+       "face": "calm",
+       "holds": [
+        "money_bag"
+       ]
+      }
+     ],
+     "shows": [
+      "money_bag",
+      "parachute canopy"
+     ],
+     "labels": [],
+     "events": [],
+     "proof": "money_bag",
+     "intent": "Cooper hangs under an open parachute, the bank bag tied to his waist"
+    },
+    {
+     "id": "sh03",
+     "w0": 15,
+     "type": "wide",
+     "move": "tilt_down",
+     "subject": "pine forest below",
+     "stage": [
+      {
+       "who": "cooper",
+       "slot": "treeline",
+       "action": "hang_parachute",
+       "face": "calm",
+       "holds": [
+        "money_bag"
+       ]
+      }
+     ],
+     "shows": [
+      "parachute canopy"
+     ],
+     "labels": [],
+     "events": [],
+     "proof": null,
+     "intent": "the canopy sinks into the black treeline and is gone; only rain is left"
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "set": "ticket_hall",
+   "enclosed": true,
+   "period": "1971",
+   "mood": "interior_lamp",
+   "relation": "time_jump",
+   "tag": "NOV 24, 1971 \u00b7 PORTLAND AIRPORT",
+   "timeline": "main",
+   "cast": [
+    {
+     "id": "cooper",
+     "costume": "dark suit, white shirt, black tie, dark glasses"
+    },
+    {
+     "id": "agent",
+     "costume": "airline blazer"
+    }
+   ],
+   "crowd": {
+    "count": 8,
+    "action": "walk_cross"
+   },
+   "dressing": [
+    "ticket counter",
+    "TICKETS sign",
+    "departures board PORTLAND to SEATTLE",
+    "queue rope",
+    "luggage scale",
+    "wall clock"
+   ],
+   "props_here": [],
+   "shots": [
+    {
+     "id": "sh04",
+     "w0": 20,
+     "type": "two_shot",
+     "move": "push",
+     "subject": "cooper",
+     "stage": [
+      {
+       "who": "cooper",
+       "slot": "counter_customer",
+       "action": "receive",
+       "face": "polite_smile",
+       "holds": [
+        "briefcase",
+        "ticket"
+       ]
+      },
+      {
+       "who": "agent",
+       "slot": "counter_staff",
+       "action": "hand_over",
+       "face": "polite_smile",
+       "holds": []
+      }
+     ],
+     "shows": [
+      "ticket",
+      "agent"
+     ],
+     "labels": [],
+     "events": [
+      {
+       "do": "give",
+       "prop": "ticket",
+       "from": "agent",
+       "to": "cooper"
+      }
+     ],
+     "proof": "ticket",
+     "intent": "Cooper at the counter; the agent slides a ticket across and he takes it"
+    },
+    {
+     "id": "sh05",
+     "w0": 26,
+     "type": "detail",
+     "move": "hold_drift",
+     "subject": "ticket",
+     "stage": [
+      {
+       "who": "cooper",
+       "slot": "counter_customer",
+       "action": "hold_up",
+       "face": "calm",
+       "holds": [
+        "briefcase",
+        "ticket"
+       ]
+      }
+     ],
+     "shows": [
+      "ticket"
+     ],
+     "labels": [],
+     "events": [],
+     "proof": "ticket",
+     "intent": "the ticket in his hand: DAN COOPER, one way, Seattle"
+    },
+    {
+     "id": "sh06",
+     "w0": 29,
+     "type": "close",
+     "move": "push",
+     "subject": "cooper",
+     "stage": [
+      {
+       "who": "cooper",
+       "slot": "counter_customer",
+       "action": "pocket",
+       "face": "polite_smile",
+       "holds": [
+        "briefcase"
+       ]
+      },
+      {
+       "who": "agent",
+       "slot": "counter_staff",
+       "action": "stand",
+       "face": "polite_smile",
+       "holds": []
+      }
+     ],
+     "shows": [
+      "briefcase"
+     ],
+     "labels": [],
+     "events": [
+      {
+       "do": "put_away",
+       "prop": "ticket",
+       "who": "cooper"
+      }
+     ],
+     "proof": "cooper",
+     "intent": "he pockets the ticket, nods politely and straightens his tie; briefcase in the other hand"
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "set": "cabin",
+   "enclosed": true,
+   "period": "1971",
+   "mood": "interior_day",
+   "relation": "location_change",
+   "tag": "FLIGHT 305 \u00b7 IN THE AIR",
+   "timeline": "main",
+   "cast": [
+    {
+     "id": "cooper",
+     "costume": "dark suit, white shirt, black tie, dark glasses"
+    },
+    {
+     "id": "attendant",
+     "costume": "burgundy uniform"
+    }
+   ],
+   "crowd": {
+    "count": 36,
+    "action": "seated_idle"
+   },
+   "dressing": [
+    "seat rows",
+    "overhead bins",
+    "window row",
+    "ceiling light panels",
+    "drinks trolley",
+    "aisle carpet"
+   ],
+   "props_here": [],
+   "shots": [
+    {
+     "id": "sh07",
+     "w0": 36,
+     "type": "wide",
+     "move": "push",
+     "subject": "cooper",
+     "stage": [
+      {
+       "who": "cooper",
+       "slot": "seat_rear_aisle",
+       "action": "sit",
+       "face": "calm",
+       "holds": [
+        "briefcase",
+        "note"
+       ]
+      },
+      {
+       "who": "attendant",
+       "slot": "aisle_mid",
+       "action": "walk",
+       "face": "neutral",
+       "holds": []
+      }
+     ],
+     "shows": [
+      "briefcase"
+     ],
+     "labels": [],
+     "events": [],
+     "proof": "note",
+     "intent": "down the aisle: a full cabin, Cooper seated in the last row with the briefcase on his lap"
+    },
+    {
+     "id": "sh08",
+     "w0": 40,
+     "type": "two_shot",
+     "move": "hold_drift",
+     "subject": "cooper",
+     "stage": [
+      {
+       "who": "cooper",
+       "slot": "seat_rear_aisle",
+       "action": "hand_over",
+       "face": "calm",
+       "holds": [
+        "briefcase"
+       ]
+      },
+      {
+       "who": "attendant",
+       "slot": "aisle_rear",
+       "action": "receive",
+       "face": "polite_smile",
+       "holds": [
+        "note"
+       ]
+      }
+     ],
+     "shows": [
+      "note",
+      "attendant"
+     ],
+     "labels": [],
+     "events": [
+      {
+       "do": "give",
+       "prop": "note",
+       "from": "cooper",
+       "to": "attendant"
+      }
+     ],
+     "proof": "note",
+     "intent": "he hands the folded note up to the attendant as she passes"
+    },
+    {
+     "id": "sh09",
+     "w0": 45,
+     "type": "detail",
+     "move": "push",
+     "subject": "note",
+     "stage": [
+      {
+       "who": "attendant",
+       "slot": "aisle_rear",
+       "action": "hold_up",
+       "face": "worried",
+       "holds": [
+        "note"
+       ]
+      },
+      {
+       "who": "cooper",
+       "slot": "seat_rear_aisle",
+       "action": "sit",
+       "face": "calm",
+       "holds": [
+        "briefcase"
+       ]
+      }
+     ],
+     "shows": [
+      "note"
+     ],
+     "labels": [],
+     "events": [],
+     "proof": "note",
+     "intent": "she unfolds it: I HAVE A BOMB. SIT NEXT TO ME."
+    },
+    {
+     "id": "sh10",
+     "w0": 51,
+     "type": "detail",
+     "move": "push",
+     "subject": "briefcase",
+     "stage": [
+      {
+       "who": "cooper",
+       "slot": "seat_rear_aisle",
+       "action": "open_case",
+       "face": "calm",
+       "holds": [
+        "briefcase"
+       ]
+      },
+      {
+       "who": "attendant",
+       "slot": "aisle_rear",
+       "action": "look_at",
+       "face": "worried",
+       "holds": [
+        "note"
+       ]
+      }
+     ],
+     "shows": [
+      "briefcase"
+     ],
+     "labels": [],
+     "events": [
+      {
+       "do": "show",
+       "prop": "briefcase",
+       "who": "cooper"
+      }
+     ],
+     "proof": "briefcase",
+     "intent": "he lifts the lid a hand's width: red sticks, a battery, wires"
+    },
+    {
+     "id": "sh11",
+     "w0": 56,
+     "type": "close",
+     "move": "push",
+     "subject": "attendant",
+     "stage": [
+      {
+       "who": "attendant",
+       "slot": "aisle_rear",
+       "action": "react_shock",
+       "face": "shock",
+       "holds": [
+        "note"
+       ]
+      },
+      {
+       "who": "cooper",
+       "slot": "seat_rear_aisle",
+       "action": "sit",
+       "face": "calm",
+       "holds": [
+        "briefcase"
+       ]
+      }
+     ],
+     "shows": [
+      "note"
+     ],
+     "labels": [],
+     "events": [],
+     "proof": null,
+     "intent": "her eyes go wide; behind her the passengers still read"
+    },
+    {
+     "id": "sh12",
+     "w0": 59,
+     "type": "close",
+     "move": "hold_drift",
+     "subject": "cooper",
+     "stage": [
+      {
+       "who": "cooper",
+       "slot": "seat_rear_aisle",
+       "action": "count_fingers",
+       "face": "stern",
+       "holds": [
+        "briefcase"
+       ]
+      },
+      {
+       "who": "attendant",
+       "slot": "aisle_rear",
+       "action": "look_at",
+       "face": "worried",
+       "holds": [
+        "note"
+       ]
+      }
+     ],
+     "shows": [
+      "briefcase"
+     ],
+     "labels": [],
+     "events": [],
+     "proof": "label:$200,000 \u00b7 4 PARACHUTES",
+     "intent": "he speaks quietly and holds up fingers as he lists the demands"
+    },
+    {
+     "id": "sh13",
+     "w0": 64,
+     "type": "detail",
+     "move": "push",
+     "subject": "note",
+     "stage": [
+      {
+       "who": "attendant",
+       "slot": "aisle_rear",
+       "action": "write",
+       "face": "worried",
+       "holds": [
+        "note"
+       ]
+      },
+      {
+       "who": "cooper",
+       "slot": "seat_rear_aisle",
+       "action": "speak",
+       "face": "stern",
+       "holds": [
+        "briefcase"
+       ]
+      }
+     ],
+     "shows": [],
+     "labels": [
+      "$200,000 \u00b7 4 PARACHUTES"
+     ],
+     "events": [],
+     "proof": "label:$200,000 \u00b7 4 PARACHUTES",
+     "intent": "her pen writes on the note: $200,000"
+    },
+    {
+     "id": "sh14",
+     "w0": 68,
+     "type": "detail",
+     "move": "hold_drift",
+     "subject": "note",
+     "stage": [
+      {
+       "who": "attendant",
+       "slot": "aisle_rear",
+       "action": "write",
+       "face": "worried",
+       "holds": [
+        "note"
+       ]
+      },
+      {
+       "who": "cooper",
+       "slot": "seat_rear_aisle",
+       "action": "speak",
+       "face": "stern",
+       "holds": [
+        "briefcase"
+       ]
+      }
+     ],
+     "shows": [],
+     "labels": [
+      "$200,000 \u00b7 4 PARACHUTES"
+     ],
+     "events": [],
+     "proof": "label:$200,000 \u00b7 4 PARACHUTES",
+     "intent": "and beneath it: 4 PARACHUTES"
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "set": "tarmac",
+   "enclosed": false,
+   "period": "1971",
+   "mood": "dusk",
+   "relation": "location_change",
+   "tag": "SEATTLE \u00b7 ON THE GROUND",
+   "timeline": "main",
+   "cast": [
+    {
+     "id": "attendant",
+     "costume": "burgundy uniform"
+    },
+    {
+     "id": "cooper",
+     "costume": "dark suit, white shirt, black tie, dark glasses"
+    }
+   ],
+   "crowd": {
+    "count": 36,
+    "action": "walk_away"
+   },
+   "dressing": [
+    "parked airliner",
+    "boarding stairs",
+    "fuel truck",
+    "apron markings",
+    "terminal lights",
+    "cart with four parachutes"
+   ],
+   "props_here": [],
+   "shots": [
+    {
+     "id": "sh15",
+     "w0": 71,
+     "type": "wide",
+     "move": "follow",
+     "subject": "attendant",
+     "stage": [
+      {
+       "who": "attendant",
+       "slot": "stairs_mid",
+       "action": "climb_stairs",
+       "face": "worried",
+       "holds": [
+        "money_bag"
+       ]
+      },
+      {
+       "who": "cooper",
+       "slot": "door",
+       "action": "stand",
+       "face": "calm",
+       "holds": [
+        "briefcase"
+       ]
+      }
+     ],
+     "shows": [
+      "money_bag",
+      "cart with four parachutes"
+     ],
+     "labels": [],
+     "events": [],
+     "proof": "money_bag",
+     "intent": "she climbs the boarding stairs with the heavy bank bag; four parachutes wait on a cart"
+    },
+    {
+     "id": "sh16",
+     "w0": 76,
+     "type": "two_shot",
+     "move": "push",
+     "subject": "cooper",
+     "stage": [
+      {
+       "who": "cooper",
+       "slot": "door",
+       "action": "receive",
+       "face": "calm",
+       "holds": [
+        "briefcase",
+        "money_bag"
+       ]
+      },
+      {
+       "who": "attendant",
+       "slot": "stairs_mid",
+       "action": "hand_over",
+       "face": "worried",
+       "holds": []
+      }
+     ],
+     "shows": [
+      "money_bag",
+      "attendant"
+     ],
+     "labels": [],
+     "events": [
+      {
+       "do": "give",
+       "prop": "money_bag",
+       "from": "attendant",
+       "to": "cooper"
+      }
+     ],
+     "proof": "money_bag",
+     "intent": "in the aircraft door Cooper takes the bag from her"
+    },
+    {
+     "id": "sh17",
+     "w0": 79,
+     "type": "wide",
+     "move": "crane_up",
+     "subject": "place",
+     "stage": [
+      {
+       "who": "cooper",
+       "slot": "door",
+       "action": "stand",
+       "face": "calm",
+       "holds": [
+        "briefcase",
+        "money_bag"
+       ]
+      },
+      {
+       "who": "attendant",
+       "slot": "stairs_mid",
+       "action": "stand",
+       "face": "relief",
+       "holds": []
+      }
+     ],
+     "shows": [
+      "boarding stairs"
+     ],
+     "labels": [],
+     "events": [],
+     "proof": "place",
+     "intent": "all the passengers file down the stairs and hurry toward the terminal lights"
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "set": "cockpit",
+   "enclosed": true,
+   "period": "1971",
+   "mood": "interior_night",
+   "relation": "location_change",
+   "tag": "COCKPIT \u00b7 7:40 PM",
+   "timeline": "main",
+   "cast": [
+    {
+     "id": "cooper",
+     "costume": "dark suit, white shirt, black tie, dark glasses"
+    },
+    {
+     "id": "pilot",
+     "costume": "white shirt, epaulettes"
+    },
+    {
+     "id": "copilot",
+     "costume": "white shirt"
+    }
+   ],
+   "crowd": {
+    "count": 0,
+    "action": "none"
+   },
+   "dressing": [
+    "instrument panel",
+    "control yokes",
+    "windscreen with runway lights",
+    "route chart",
+    "throttle levers",
+    "overhead switches"
+   ],
+   "props_here": [],
+   "shots": [
+    {
+     "id": "sh18",
+     "w0": 84,
+     "type": "two_shot",
+     "move": "push",
+     "subject": "cooper",
+     "stage": [
+      {
+       "who": "cooper",
+       "slot": "door",
+       "action": "nod",
+       "face": "stern",
+       "holds": [
+        "briefcase",
+        "money_bag"
+       ]
+      },
+      {
+       "who": "pilot",
+       "slot": "seat_left",
+       "action": "look_at",
+       "face": "worried",
+       "holds": []
+      },
+      {
+       "who": "copilot",
+       "slot": "seat_right",
+       "action": "look_at",
+       "face": "worried",
+       "holds": []
+      }
+     ],
+     "shows": [
+      "pilot",
+      "copilot",
+      "money_bag"
+     ],
+     "labels": [],
+     "events": [],
+     "proof": "pilot",
+     "intent": "Cooper in the cockpit door, case in one hand, bag in the other; he nods at the runway"
+    },
+    {
+     "id": "sh19",
+     "w0": 89,
+     "type": "detail",
+     "move": "push",
+     "subject": "throttle levers",
+     "stage": [
+      {
+       "who": "pilot",
+       "slot": "seat_left",
+       "action": "push_lever",
+       "face": "focused",
+       "holds": []
+      },
+      {
+       "who": "cooper",
+       "slot": "door",
+       "action": "stand",
+       "face": "stern",
+       "holds": [
+        "briefcase",
+        "money_bag"
+       ]
+      },
+      {
+       "who": "copilot",
+       "slot": "seat_right",
+       "action": "sit",
+       "face": "focused",
+       "holds": []
+      }
+     ],
+     "shows": [
+      "pilot"
+     ],
+     "labels": [],
+     "events": [],
+     "proof": "pilot",
+     "intent": "the captain's hand pushes the throttles; runway lights slide past the windscreen"
+    },
+    {
+     "id": "sh20",
+     "w0": 93,
+     "type": "detail",
+     "move": "hold_drift",
+     "subject": "route chart",
+     "stage": [
+      {
+       "who": "copilot",
+       "slot": "seat_right",
+       "action": "draw_line",
+       "face": "focused",
+       "holds": []
+      },
+      {
+       "who": "cooper",
+       "slot": "door",
+       "action": "stand",
+       "face": "stern",
+       "holds": [
+        "briefcase",
+        "money_bag"
+       ]
+      },
+      {
+       "who": "pilot",
+       "slot": "seat_left",
+       "action": "sit",
+       "face": "focused",
+       "holds": []
+      }
+     ],
+     "shows": [
+      "route chart",
+      "copilot"
+     ],
+     "labels": [],
+     "events": [],
+     "proof": "route chart",
+     "intent": "the co-pilot draws a line down the chart to MEXICO CITY; the altimeter stays low"
+    }
+   ]
+  },
+  {
+   "id": "s6",
+   "set": "tail",
+   "enclosed": false,
+   "period": "1971",
+   "mood": "night_rain",
+   "relation": "location_change",
+   "tag": "OVER WASHINGTON \u00b7 8:13 PM",
+   "timeline": "main",
+   "cast": [
+    {
+     "id": "cooper",
+     "costume": "dark suit, white shirt, black tie, dark glasses, parachute harness"
+    }
+   ],
+   "crowd": {
+    "count": 0,
+    "action": "none"
+   },
+   "dressing": [
+    "airliner tail",
+    "rear airstair",
+    "rain",
+    "pine forest below",
+    "storm cloud",
+    "cabin door light"
+   ],
+   "props_here": [],
+   "shots": [
+    {
+     "id": "sh21",
+     "w0": 101,
+     "type": "wide",
+     "move": "hold_drift",
+     "subject": "airliner tail",
+     "stage": [
+      {
+       "who": "cooper",
+       "slot": "rear_door",
+       "action": "stand",
+       "face": "calm",
+       "holds": [
+        "money_bag"
+       ]
+      }
+     ],
+     "shows": [
+      "pine forest below"
+     ],
+     "labels": [],
+     "events": [],
+     "proof": "pine forest below",
+     "intent": "the plane flies low over endless black forest"
+    },
+    {
+     "id": "sh22",
+     "w0": 107,
+     "type": "close",
+     "move": "push",
+     "subject": "cooper",
+     "stage": [
+      {
+       "who": "cooper",
+       "slot": "rear_door",
+       "action": "look_at",
+       "face": "stern",
+       "holds": [
+        "money_bag"
+       ]
+      }
+     ],
+     "shows": [
+      "money_bag"
+     ],
+     "labels": [],
+     "events": [],
+     "proof": null,
+     "intent": "Cooper at the rear door, harness on, bag roped to his waist, rain on his glasses"
+    },
+    {
+     "id": "sh23",
+     "w0": 113,
+     "type": "detail",
+     "move": "tilt_down",
+     "subject": "rear airstair",
+     "stage": [
+      {
+       "who": "cooper",
+       "slot": "rear_door",
+       "action": "stand",
+       "face": "stern",
+       "holds": [
+        "money_bag"
+       ]
+      }
+     ],
+     "shows": [
+      "rear airstair"
+     ],
+     "labels": [],
+     "events": [],
+     "proof": "rear airstair",
+     "intent": "the rear stairs swing down into the slipstream"
+    },
+    {
+     "id": "sh24",
+     "w0": 118,
+     "type": "wide",
+     "move": "follow",
+     "subject": "cooper",
+     "stage": [
+      {
+       "who": "cooper",
+       "slot": "stairs_bottom",
+       "action": "step_off",
+       "face": "calm",
+       "holds": [
+        "money_bag"
+       ]
+      }
+     ],
+     "shows": [
+      "rear airstair",
+      "money_bag"
+     ],
+     "labels": [],
+     "events": [],
+     "proof": "rear airstair",
+     "intent": "he walks down the stairs and steps off into the dark; the plane flies on"
+    }
+   ]
+  },
+  {
+   "id": "s7",
+   "set": "forest",
+   "enclosed": false,
+   "period": "1970s",
+   "mood": "day_grey",
+   "relation": "time_jump",
+   "tag": "THE MANHUNT \u00b7 1971 ONWARD",
+   "timeline": "main",
+   "cast": [
+    {
+     "id": "fbi_lead",
+     "costume": "grey raincoat, hat"
+    },
+    {
+     "id": "fbi_two",
+     "costume": "brown raincoat, hat"
+    }
+   ],
+   "crowd": {
+    "count": 10,
+    "action": "search_line"
+   },
+   "dressing": [
+    "pine trunks",
+    "ferns and undergrowth",
+    "search poles",
+    "helicopter",
+    "mist",
+    "map table"
+   ],
+   "props_here": [],
+   "shots": [
+    {
+     "id": "sh25",
+     "w0": 123,
+     "type": "wide",
+     "move": "crane_up",
+     "subject": "place",
+     "stage": [
+      {
+       "who": "fbi_lead",
+       "slot": "clearing_front",
+       "action": "sweep_search",
+       "face": "stern",
+       "holds": [
+        "sketch"
+       ]
+      },
+      {
+       "who": "fbi_two",
+       "slot": "clearing_side",
+       "action": "sweep_search",
+       "face": "stern",
+       "holds": []
+      }
+     ],
+     "shows": [
+      "search poles",
+      "helicopter"
+     ],
+     "labels": [],
+     "events": [],
+     "proof": "place",
+     "intent": "a long line of searchers probes the undergrowth; a helicopter passes overhead"
+    },
+    {
+     "id": "sh26",
+     "w0": 127,
+     "type": "close",
+     "move": "push",
+     "subject": "fbi_lead",
+     "stage": [
+      {
+       "who": "fbi_lead",
+       "slot": "clearing_front",
+       "action": "lower_prop",
+       "face": "frown",
+       "holds": [
+        "sketch"
+       ]
+      },
+      {
+       "who": "fbi_two",
+       "slot": "clearing_side",
+       "action": "look_away",
+       "face": "frown",
+       "holds": []
+      }
+     ],
+     "shows": [
+      "sketch",
+      "fbi_two"
+     ],
+     "labels": [],
+     "events": [],
+     "proof": "sketch",
+     "intent": "the agent looks from the sketch to the empty trees, then lowers it"
+    }
+   ]
+  },
+  {
+   "id": "s8",
+   "set": "riverbank",
+   "enclosed": false,
+   "period": "1980",
+   "mood": "day_clear",
+   "relation": "time_jump",
+   "tag": "1980 \u00b7 A RIVERBANK",
+   "timeline": "main",
+   "cast": [
+    {
+     "id": "boy",
+     "costume": "orange jumper, jeans"
+    },
+    {
+     "id": "father",
+     "costume": "checked shirt"
+    }
+   ],
+   "crowd": {
+    "count": 0,
+    "action": "none"
+   },
+   "dressing": [
+    "river",
+    "sand bar",
+    "driftwood",
+    "campfire ring",
+    "far bank trees",
+    "picnic blanket"
+   ],
+   "props_here": [
+    "cash_bundle"
+   ],
+   "shots": [
+    {
+     "id": "sh27",
+     "w0": 132,
+     "type": "detail",
+     "move": "push",
+     "subject": "cash_bundle",
+     "stage": [
+      {
+       "who": "boy",
+       "slot": "sand_front",
+       "action": "dig",
+       "face": "wonder",
+       "holds": []
+      },
+      {
+       "who": "father",
+       "slot": "sand_side",
+       "action": "stand",
+       "face": "neutral",
+       "holds": []
+      }
+     ],
+     "shows": [
+      "cash_bundle"
+     ],
+     "labels": [],
+     "events": [],
+     "proof": "cash_bundle",
+     "intent": "small hands brush sand away from rotted bundles of $20 bills"
+    },
+    {
+     "id": "sh28",
+     "w0": 141,
+     "type": "medium",
+     "move": "hold_drift",
+     "subject": "boy",
+     "stage": [
+      {
+       "who": "boy",
+       "slot": "sand_front",
+       "action": "lift",
+       "face": "wonder",
+       "holds": [
+        "cash_bundle"
+       ]
+      },
+      {
+       "who": "father",
+       "slot": "sand_side",
+       "action": "look_at",
+       "face": "wonder",
+       "holds": []
+      }
+     ],
+     "shows": [
+      "cash_bundle",
+      "river",
+      "father"
+     ],
+     "labels": [],
+     "events": [
+      {
+       "do": "take",
+       "prop": "cash_bundle",
+       "who": "boy"
+      }
+     ],
+     "proof": "boy",
+     "intent": "the boy kneels by the river and lifts a bundle to show his father"
+    },
+    {
+     "id": "sh29",
+     "w0": 149,
+     "type": "two_shot",
+     "move": "push",
+     "subject": "father",
+     "stage": [
+      {
+       "who": "father",
+       "slot": "sand_side",
+       "action": "crouch",
+       "face": "shock",
+       "holds": []
+      },
+      {
+       "who": "boy",
+       "slot": "sand_front",
+       "action": "kneel",
+       "face": "wonder",
+       "holds": [
+        "cash_bundle"
+       ]
+      }
+     ],
+     "shows": [
+      "cash_bundle",
+      "boy"
+     ],
+     "labels": [],
+     "events": [],
+     "proof": "boy",
+     "intent": "the father crouches, takes one bill and stares at it"
+    }
+   ]
+  },
+  {
+   "id": "s9",
+   "set": "evidence_room",
+   "enclosed": true,
+   "period": "present day",
+   "mood": "interior_lamp",
+   "relation": "time_jump",
+   "tag": "TODAY",
+   "timeline": "main",
+   "cast": [],
+   "crowd": {
+    "count": 0,
+    "action": "none"
+   },
+   "dressing": [
+    "case file box",
+    "pin board with red string",
+    "desk lamp",
+    "filing cabinets",
+    "wall map of Washington",
+    "evidence bag with the tie"
+   ],
+   "props_here": [
+    "sketch"
+   ],
+   "shots": [
+    {
+     "id": "sh30",
+     "w0": 152,
+     "type": "detail",
+     "move": "push",
+     "subject": "sketch",
+     "stage": [],
+     "shows": [
+      "sketch",
+      "pin board with red string"
+     ],
+     "labels": [],
+     "events": [],
+     "proof": "sketch",
+     "intent": "the composite sketch pinned on a board, red strings leading nowhere"
+    },
+    {
+     "id": "sh31",
+     "w0": 158,
+     "type": "detail",
+     "move": "hold_drift",
+     "subject": "case file box",
+     "stage": [],
+     "shows": [],
+     "labels": [
+      "UNSOLVED"
+     ],
+     "events": [],
+     "proof": null,
+     "intent": "a hand stamps UNSOLVED across the case file"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,43 @@
+{"_about": "Staging for db_cooper, written by the director model from the approved story plan. who@slot:action:face",
+ "scenes": {
+  "s1": {"mood": "night_rain", "crowd_action": "none", "shots": {
+    "sh01": {"move": "hold_drift", "stage": ["cooper@air_far:hang_parachute:calm"]},
+    "sh02": {"move": "push", "stage": ["cooper@air_mid:hang_parachute:calm"]},
+    "sh03": {"move": "tilt_down", "stage": ["cooper@treeline:hang_parachute:calm"]}}},
+  "s2": {"mood": "interior_lamp", "crowd_action": "walk_cross", "shots": {
+    "sh04": {"move": "push", "stage": ["cooper@counter_customer:receive:polite_smile", "agent@counter_staff:hand_over:polite_smile"]},
+    "sh05": {"move": "hold_drift", "stage": ["cooper@counter_customer:hold_up:calm"]},
+    "sh06": {"move": "push", "stage": ["cooper@counter_customer:pocket:polite_smile", "agent@counter_staff:stand:polite_smile"]}}},
+  "s3": {"mood": "interior_day", "crowd_action": "seated_idle", "shots": {
+    "sh07": {"move": "push", "stage": ["cooper@seat_rear_aisle:sit:calm", "attendant@aisle_mid:walk:neutral"]},
+    "sh08": {"move": "hold_drift", "stage": ["cooper@seat_rear_aisle:hand_over:calm", "attendant@aisle_rear:receive:polite_smile"]},
+    "sh09": {"move": "push", "stage": ["attendant@aisle_rear:hold_up:worried", "cooper@seat_rear_aisle:sit:calm"]},
+    "sh10": {"move": "push", "stage": ["cooper@seat_rear_aisle:open_case:calm", "attendant@aisle_rear:look_at:worried"]},
+    "sh11": {"move": "push", "stage": ["attendant@aisle_rear:react_shock:shock", "cooper@seat_rear_aisle:sit:calm"]},
+    "sh12": {"move": "hold_drift", "stage": ["cooper@seat_rear_aisle:count_fingers:stern", "attendant@aisle_rear:look_at:worried"]},
+    "sh13": {"move": "push", "stage": ["attendant@aisle_rear:write:worried", "cooper@seat_rear_aisle:speak:stern"]},
+    "sh14": {"move": "hold_drift", "stage": ["attendant@aisle_rear:write:worried", "cooper@seat_rear_aisle:speak:stern"]}}},
+  "s4": {"mood": "dusk", "crowd_action": "walk_away", "shots": {
+    "sh15": {"move": "follow", "stage": ["attendant@stairs_mid:climb_stairs:worried", "cooper@door:stand:calm"]},
+    "sh16": {"move": "push", "stage": ["cooper@door:receive:calm", "attendant@stairs_mid:hand_over:worried"]},
+    "sh17": {"move": "crane_up", "stage": ["cooper@door:stand:calm", "attendant@stairs_mid:stand:relief"]}}},
+  "s5": {"mood": "interior_night", "crowd_action": "none", "shots": {
+    "sh18": {"move": "push", "stage": ["cooper@door:nod:stern", "pilot@seat_left:look_at:worried", "copilot@seat_right:look_at:worried"]},
+    "sh19": {"move": "push", "stage": ["pilot@seat_left:push_lever:focused", "cooper@door:stand:stern", "copilot@seat_right:sit:focused"]},
+    "sh20": {"move": "hold_drift", "stage": ["copilot@seat_right:draw_line:focused", "cooper@door:stand:stern", "pilot@seat_left:sit:focused"]}}},
+  "s6": {"mood": "night_rain", "crowd_action": "none", "shots": {
+    "sh21": {"move": "hold_drift", "stage": ["cooper@rear_door:stand:calm"]},
+    "sh22": {"move": "push", "stage": ["cooper@rear_door:look_at:stern"]},
+    "sh23": {"move": "tilt_down", "stage": ["cooper@rear_door:stand:stern"]},
+    "sh24": {"move": "follow", "stage": ["cooper@stairs_bottom:step_off:calm"]}}},
+  "s7": {"mood": "day_grey", "crowd_action": "search_line", "shots": {
+    "sh25": {"move": "crane_up", "stage": ["fbi_lead@clearing_front:sweep_search:stern", "fbi_two@clearing_side:sweep_search:stern"]},
+    "sh26": {"move": "push", "stage": ["fbi_lead@clearing_front:lower_prop:frown", "fbi_two@clearing_side:look_away:frown"]}}},
+  "s8": {"mood": "day_clear", "crowd_action": "none", "shots": {
+    "sh27": {"move": "push", "stage": ["boy@sand_front:dig:wonder", "father@sand_side:stand:neutral"]},
+    "sh28": {"move": "hold_drift", "stage": ["boy@sand_front:lift:wonder", "father@sand_side:look_at:wonder"]},
+    "sh29": {"move": "push", "stage": ["father@sand_side:crouch:shock", "boy@sand_front:kneel:wonder"]}}},
+  "s9": {"mood": "interior_lamp", "crowd_action": "none", "shots": {
+    "sh30": {"move": "push", "stage": []},
+    "sh31": {"move": "hold_drift", "stage": []}}}
+ }}

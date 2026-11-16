@@ -1,0 +1,24 @@
+{
+ "_about": "Renderer-neutral vocabulary for scene_ir.json (Blueprint v2.1 stage 4). No renderer names here.",
+ "shot_types": ["wide", "medium", "two_shot", "close", "detail"],
+ "moves": ["hold_drift", "push", "pull", "orbit", "follow", "crane_up", "crane_down", "tilt_down"],
+ "moods": {"day_clear": "exterior", "day_grey": "exterior", "dusk": "exterior", "golden": "exterior", "night_clear": "exterior", "night_rain": "exterior", "storm_day": "exterior",
+           "interior_day": "interior", "interior_lamp": "interior", "interior_night": "interior"},
+ "faces": ["neutral", "calm", "polite_smile", "shock", "worried", "stern", "frown", "wonder", "yell", "focused", "relief", "pain"],
+ "actions": ["stand", "walk", "run", "sit", "kneel", "crouch", "lie", "crawl", "wade", "climb_stairs", "descend_stairs", "step_off", "hang_parachute", "fall",
+             "hand_over", "receive", "hold_up", "carry", "lift", "lower_prop", "pocket", "open_case", "write", "draw_line", "dig", "stamp", "push_lever", "pour_over_head",
+             "point", "nod", "adjust_tie", "speak", "count_fingers", "look_at", "look_up", "look_away", "react_shock", "flinch", "shrug", "wave", "sweep_search", "drive", "peg_laundry", "rock_chair"],
+ "crowd_actions": ["none", "seated_idle", "walk_cross", "walk_away", "queue", "search_line", "back_away", "picnic"],
+ "sets": {
+  "night_sky": {"enclosed": false, "slots": ["air_mid", "air_far", "treeline"]},
+  "storm_sky": {"enclosed": false, "slots": ["air_mid", "air_far", "canopy_top"]},
+  "ticket_hall": {"enclosed": true, "slots": ["counter_customer", "counter_staff", "hall_back"]},
+  "cabin": {"enclosed": true, "slots": ["seat_rear_aisle", "aisle_rear", "aisle_mid", "seat_window", "seat_beside"]},
+  "tarmac": {"enclosed": false, "slots": ["stairs_foot", "stairs_mid", "door", "apron_mid"]},
+  "cockpit": {"enclosed": true, "slots": ["door", "seat_left", "seat_right"]},
+  "tail": {"enclosed": false, "slots": ["rear_door", "stairs_bottom", "air_below"]},
+  "forest": {"enclosed": false, "slots": ["clearing_front", "clearing_side", "line_back"]},
+  "riverbank": {"enclosed": false, "slots": ["sand_front", "sand_side", "waterline"]},
+  "evidence_room": {"enclosed": true, "slots": ["board", "desk"]}
+ }
+}

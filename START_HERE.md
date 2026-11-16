@@ -12,17 +12,20 @@ Do not go back to patching single videos or the bean engine.
 |---|---|
 | 1 Script, fact-check, Kokoro voice, word timings | Works (in `ricks/tools`, `ricks/projects/<name>/audio`) |
 | 2 Story director | **Done, owner approved the three plans.** `director/DIRECTOR.md`, `director/plan_tool.py`, `director/plans/` |
-| 4 Scene data format + inkbeat adapter | **NEXT TO BUILD** |
-| 3 Set and character library (in inkbeat) | Not built. Sources to lift from: `inkbeat/src/cooper/` |
+| 4 Scene data format + inkbeat adapter | **Done for db_cooper.** `scene/vocab.json`, `scene/adapters/inkbeat.json`, `scene/ir_tool.py`, `scene/ir/`, gap list `scene/GAPS.md` |
+| 3 Set and character library (in inkbeat) | **NEXT, but decide scope first** (see below). Sources to lift from: `inkbeat/src/cooper/` |
 | 6 Compiler (generic inkbeat composition driven by scene data) | Not built |
 | 5, 7 Geometry gate, sampled-stills gate, final-video QA | Not built for inkbeat |
 | 8 Three-script benchmark | Not run |
 
-### Next task (stage 4)
-From `director/plans/db_cooper.story_plan.json`, produce a semantic `scene_ir.json` (renderer-neutral
-vocabulary: sets, slots, actions, shot types) plus a separate inkbeat adapter table, and a validator that
-rejects any term the adapter cannot map. Output a list of what the three plans need that inkbeat lacks.
-No rendering in this step. Ask the owner before starting each later stage.
+### Next task (stage 3, library) — needs an owner decision on scope first
+`scene/GAPS.md` shows the three approved plans need 146 things inkbeat lacks: 18 sets, 10 props, 8 actions
+(sit, kneel, crouch, dig, write, open case, push lever, draw line) and about 110 set pieces. Building each
+one by hand does not scale. Proposed approach, not yet approved by the owner: build a small number of
+parametric kits (room, vehicle interior, open ground, forest/jungle, water edge, sky) plus a generic
+set-piece builder, add the missing poses to the character, and make the director choose from a library
+catalogue so plans only ask for what exists or what a kit can make. Ask the owner before starting.
+Staging and IR exist only for db_cooper; jungle_fall and lightning_man still need staging files.
 
 ### Owner decisions already made
 - inkbeat's 3D toon figure is the working look (provisional until three automated films exist).
