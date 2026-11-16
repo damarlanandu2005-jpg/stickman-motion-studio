@@ -38,4 +38,18 @@ Planning and checking: the owner's earlier method (shot plan, measured reference
 ## Verifier criteria (10 each): composition, environment, characters, lighting, camera, style, readability.
 Earlier engine: 34/70 (Railroads, 7 rounds). Bar before unattended daily runs: 45/70.
 
-## Not possible yet (say so, do not fake): elbows and knees, lip sync, sitting poses, crowds over ~12 puppets, water, animals.
+## Not possible yet (say so, do not fake): elbows and knees, lip sync, sitting poses for NAMED puppets, water, animals.
+(Crowds ARE possible now — see the crowd element below. Named foreground puppets still can't sit; seated background people use a `crowd`.)
+
+## Crowds and scene population (added after sparse-scene failures)
+The engine has a `crowd` prop: a scalable billboard of dozens to 200 on-style people. Use it, do not leave
+public places empty. Fields: `{ "type":"crowd", "count":<n>, "style":"seated"|"standing", "size":[w,h],
+"pos":[x,y,z], "rows":<n?>, "palette":[hex,...]?, "seatColor":hex?, "seed":<n> }`.
+- A place that would really be full MUST be full: a plane cabin needs a seated crowd of passengers; a street,
+  market, stadium, courtroom or station needs a standing crowd. Match the count to the place (a jet cabin ≈ 40-90,
+  a street ≈ 30-80, a stadium ≈ 150-200). Put the crowd behind/beside the named characters, never between them
+  and the camera.
+- Every scene needs secondary and tertiary dressing, not just the one "proof" prop: a cabin has seat rows, windows,
+  overhead bins, a cart; a jungle is DENSE (many trees + undergrowth + a stream), not three cones on bare dirt; an
+  office has a desk, chairs, shelves, papers, a lamp, pictures. Aim for the 6-10 dressing pieces per place from step 4,
+  plus a crowd where the place would be populated. An empty-looking scene is a failure the blind verifier must catch.

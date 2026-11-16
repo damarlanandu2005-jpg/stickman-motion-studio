@@ -92,9 +92,8 @@ Follow `ricks/PIPELINE.md` for the creative stages (adapter → director → cas
   backdrop stay crisp (backdrop is a separate path, unaffected). Tune with `_texSoften` in short.json (0=off).
 
 ## Known engine limits (by design — say so, don't fake)
-No elbows/knees, no lip-sync, no sitting poses, no crowds over ~12 puppets, no water, no animals.
-The biggest visual gap vs a polished cartoon is the **character** (flat "bean" vs a modeled figure);
-the world is now good. Closing the character gap is the highest-value next improvement.
+No elbows/knees, no lip-sync, no sitting poses for NAMED puppets, no water, no animals. CROWDS ARE NOW SUPPORTED: a `crowd` prop billboards dozens-200 on-style people (seated for cabins/audiences, standing for streets/stadiums) — USE it so public places aren't empty, and dress scenes with secondary/tertiary props (see PIPELINE.md 'Crowds and scene population').
+The biggest visual gap vs a polished cartoon is the **character** (flat "bean" vs a modeled figure). Also: always populate scenes — crowds + secondary props — the overnight run produced EMPTY scenes because the old docs said crowds were impossible; that is fixed now.
 
 ## Scoring
 Blind verifier scores /70 across 7 criteria (composition, environment, characters, lighting, camera,
