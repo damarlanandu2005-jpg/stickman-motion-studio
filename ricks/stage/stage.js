@@ -395,14 +395,18 @@ async function makeProp(p) {
     const binM = lift(await surface(p.trim || '#bcc0c8'), p.trim || '#9aa0aa', 0.45);
     const glass = lift(await surface(p.window || '#cfe6fb'), '#eaf4ff', 1.7);
     const floorM = lift(await surface(p.floor || '#6a6e76'), '#4a4e56', 0.35);
-    add(new THREE.BoxGeometry(w, 0.08, d), floorM, 0.04).position.z = -d / 2 + 1;
+    const zc = -d / 2 + 1, wallTop = h * 0.82, peak = h * 1.18;   // fully-enclosing tube: tall walls + closed arch roof so no outside shows
+    add(new THREE.BoxGeometry(w, 0.08, d), floorM, 0.04).position.z = zc;
+    const panLen = Math.hypot(w / 2, peak - wallTop), panAng = Math.atan2(peak - wallTop, w / 2);
     for (const sx of [-1, 1]) {
-      const wall = add(new THREE.BoxGeometry(0.14, h * 0.72, d), shell, h * 0.36); wall.position.set(sx * w / 2, h * 0.36, -d / 2 + 1);
-      const bin = add(new THREE.BoxGeometry(0.5, 0.36, d), binM, h * 0.82); bin.position.set(sx * (w / 2 - 0.4), h * 0.82, -d / 2 + 1);
+      const wall = add(new THREE.BoxGeometry(0.14, wallTop, d), shell, wallTop / 2); wall.position.set(sx * w / 2, wallTop / 2, zc);
+      const bin = add(new THREE.BoxGeometry(0.5, 0.34, d), binM, wallTop * 0.92); bin.position.set(sx * (w / 2 - 0.4), wallTop * 0.92, zc);
       const nW = Math.max(3, Math.floor(d / 2.4)), gap = (d - 2.8) / Math.max(1, nW - 1);
-      for (let i = 0; i < nW; i++) { const wd = add(new THREE.BoxGeometry(0.05, 0.42, 0.26), glass, h * 0.46); wd.position.set(sx * (w / 2 - 0.08), h * 0.46, -d / 2 + 1.4 + i * gap); }
-      const cp = add(new THREE.BoxGeometry(w * 0.58, 0.1, d), shell, h * 1.0); cp.position.set(sx * w * 0.25, h * 1.0, -d / 2 + 1); cp.rotation.z = -sx * 0.38;
+      for (let i = 0; i < nW; i++) { const wd = add(new THREE.BoxGeometry(0.05, 0.42, 0.26), glass, wallTop * 0.58); wd.position.set(sx * (w / 2 - 0.08), wallTop * 0.58, zc - d / 2 + 1.4 + i * gap); }
+      const cp = add(new THREE.BoxGeometry(panLen + 0.25, 0.12, d), shell, (wallTop + peak) / 2); cp.position.set(sx * w / 4, (wallTop + peak) / 2, zc); cp.rotation.z = -sx * panAng;   // ceiling panel: wall-top -> peak (two meet, no gap)
     }
+    add(new THREE.BoxGeometry(w + 0.4, 0.3, d), shell, peak + 0.1).position.z = zc;                      // solid top cap: guarantees no sky leaks above the arch
+    add(new THREE.BoxGeometry(w, peak, 0.2), shell, peak / 2).position.set(0, peak / 2, zc - d / 2);     // far bulkhead: closes the far end so no field shows down the aisle
     // seat rows + seated passengers, receding down the aisle
     const aisle = p.aisle || 1.4, perSide = p.perSide || 2, seatW = Math.max(0.5, (w - aisle - 0.5) / 2 / perSide);
     const rows = p.seatRows || Math.max(5, Math.floor((d - 1.5) / 1.15));
