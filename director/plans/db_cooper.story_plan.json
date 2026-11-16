@@ -1,0 +1,1149 @@
+{
+ "title": "The Man Who Vanished",
+ "script": "scripts/db_cooper.txt",
+ "duration_target": [
+  40,
+  60
+ ],
+ "originality": {
+  "story": "retold in our own words from public facts",
+  "characters": "our own designs; no likeness traced from photos or other channels",
+  "shots": "planned from the script, not copied from any existing video",
+  "voice": "Kokoro synthetic voice (Apache-2.0 model)",
+  "music": "must be a track with a recorded licence before delivery",
+  "images": "generated or code-built; no downloaded photos"
+ },
+ "facts": [
+  {
+   "id": "f_hijack",
+   "claim": "1971: a man hijacked a plane and jumped with $200,000",
+   "status": "verified",
+   "url": "https://www.fbi.gov/news/stories/2006/november/dbcooper_112406",
+   "note": "page gives Nov 24 and '35 years' before 2006"
+  },
+  {
+   "id": "f_ticket",
+   "claim": "ticket bought under the name Dan Cooper",
+   "status": "verified",
+   "url": "https://www.fbi.gov/news/stories/2006/november/dbcooper_112406",
+   "note": ""
+  },
+  {
+   "id": "f_note",
+   "claim": "gave a stewardess a note saying he had a bomb",
+   "status": "verified",
+   "url": "https://www.fbi.gov/news/stories/2006/november/dbcooper_112406",
+   "note": "shortly after 3 pm"
+  },
+  {
+   "id": "f_case",
+   "claim": "showed wires and red sticks in a briefcase",
+   "status": "verified",
+   "url": "https://www.fbi.gov/news/stories/2006/november/dbcooper_112406",
+   "note": ""
+  },
+  {
+   "id": "f_demand",
+   "claim": "$200,000 and four parachutes",
+   "status": "verified",
+   "url": "https://www.fbi.gov/news/stories/2006/november/dbcooper_112406",
+   "note": "in twenty-dollar bills"
+  },
+  {
+   "id": "f_seattle",
+   "claim": "money handed over on the ground; passengers released",
+   "status": "verified",
+   "url": "https://www.fbi.gov/news/stories/2006/november/dbcooper_112406",
+   "note": "36 passengers, in Seattle"
+  },
+  {
+   "id": "f_mexico",
+   "claim": "ordered the plane toward Mexico",
+   "status": "verified",
+   "url": "https://www.fbi.gov/news/stories/2006/november/dbcooper_112406",
+   "note": "Mexico City; 'low and slow' not on this page"
+  },
+  {
+   "id": "f_jump",
+   "claim": "jumped at night from the back of the plane",
+   "status": "partly verified",
+   "url": "https://www.fbi.gov/news/stories/2006/november/dbcooper_112406",
+   "note": "page says 'out of the back' a little after 8 pm; rear stairs, rain and Washington forests need a second source"
+  },
+  {
+   "id": "f_search",
+   "claim": "the FBI never found him",
+   "status": "verified",
+   "url": "https://www.fbi.gov/news/stories/2006/november/dbcooper_112406",
+   "note": "'remains a mystery to this day'"
+  },
+  {
+   "id": "f_cash",
+   "claim": "1980: a boy found a bundle of the cash near a river",
+   "status": "partly verified",
+   "url": "https://www.fbi.gov/news/stories/2006/november/dbcooper_112406",
+   "note": "$5,800 found by a young boy; the river location needs a second source"
+  },
+  {
+   "id": "f_unsolved",
+   "claim": "the only unsolved hijacking in commercial aviation history",
+   "status": "unverified",
+   "url": "https://www.fbi.gov/news/stories/2006/november/dbcooper_112406",
+   "note": "not stated on this page; needs a source before publishing"
+  }
+ ],
+ "cast": [
+  {
+   "id": "cooper",
+   "desc": "man in his mid-40s, dark suit, white shirt, black tie, dark glasses; calm, never hurries"
+  },
+  {
+   "id": "agent",
+   "desc": "airline ticket agent, 1971 uniform blazer"
+  },
+  {
+   "id": "attendant",
+   "desc": "flight attendant, burgundy 1971 uniform"
+  },
+  {
+   "id": "pilot",
+   "desc": "captain, white shirt with epaulettes, headset"
+  },
+  {
+   "id": "copilot",
+   "desc": "first officer, white shirt, headset"
+  },
+  {
+   "id": "fbi_lead",
+   "desc": "FBI agent, grey raincoat, hat"
+  },
+  {
+   "id": "fbi_two",
+   "desc": "second FBI agent, brown raincoat, hat"
+  },
+  {
+   "id": "boy",
+   "desc": "8-year-old boy, orange jumper, jeans"
+  },
+  {
+   "id": "father",
+   "desc": "the boy's father, checked shirt"
+  }
+ ],
+ "props": [
+  {
+   "id": "briefcase",
+   "desc": "cheap black attache case; inside, red sticks and wires"
+  },
+  {
+   "id": "ticket",
+   "desc": "paper airline ticket reading DAN COOPER"
+  },
+  {
+   "id": "note",
+   "desc": "folded handwritten note"
+  },
+  {
+   "id": "money_bag",
+   "desc": "canvas bank bag of $20 bills"
+  },
+  {
+   "id": "parachute",
+   "desc": "packed parachute with harness (four are delivered; he wears one)"
+  },
+  {
+   "id": "sketch",
+   "desc": "FBI composite sketch of the hijacker"
+  },
+  {
+   "id": "cash_bundle",
+   "desc": "three rotted bundles of $20 bills"
+  }
+ ],
+ "scenes": [
+  {
+   "id": "s1",
+   "relation": "opening",
+   "relation_reason": "The hook shows the ending first: the jump, then nothing.",
+   "tag": "1971",
+   "timeline": "hook",
+   "place": {
+    "id": "night_sky",
+    "kind": "exterior",
+    "desc": "Night sky over dark forest",
+    "period": "1971",
+    "public": false
+   },
+   "time": "night, rain",
+   "cast": [
+    {
+     "id": "cooper",
+     "costume": "dark suit, white shirt, black tie, dark glasses, parachute harness",
+     "holds": [
+      "money_bag"
+     ]
+    }
+   ],
+   "crowd": {
+    "count": 0
+   },
+   "dressing": [
+    "airliner with lit windows",
+    "parachute canopy",
+    "rain",
+    "pine forest below",
+    "cloud bank",
+    "moon behind cloud"
+   ],
+   "props_here": [],
+   "beats": [
+    {
+     "id": "b01",
+     "claim": "a man hijacked a plane, jumped with $200,000 and vanished",
+     "fact": "f_hijack",
+     "proof": {
+      "item": "money_bag",
+      "how": "tied to him under the open canopy"
+     },
+     "shots": [
+      {
+       "id": "sh01",
+       "w0": 0,
+       "type": "wide",
+       "subject": "airliner with lit windows",
+       "action": "the airliner crosses a stormy night sky; the 1971 tag sits beside it",
+       "shows": [
+        "label:1971"
+       ],
+       "events": []
+      },
+      {
+       "id": "sh02",
+       "w0": 8,
+       "type": "medium",
+       "subject": "cooper",
+       "action": "Cooper hangs under an open parachute, the bank bag tied to his waist",
+       "shows": [
+        "money_bag",
+        "parachute canopy"
+       ],
+       "events": []
+      },
+      {
+       "id": "sh03",
+       "w0": 15,
+       "type": "wide",
+       "subject": "pine forest below",
+       "action": "the canopy sinks into the black treeline and is gone; only rain is left",
+       "shows": [
+        "parachute canopy"
+       ],
+       "events": []
+      }
+     ]
+    }
+   ],
+   "empty_reason": "he is alone in the sky; the emptiness is the point"
+  },
+  {
+   "id": "s2",
+   "relation": "time_jump",
+   "relation_reason": "Back to the start of the same day, to show how it began.",
+   "tag": "NOV 24, 1971 \u00b7 PORTLAND AIRPORT",
+   "timeline": "main",
+   "place": {
+    "id": "ticket_hall",
+    "kind": "interior",
+    "desc": "Airport ticket hall",
+    "period": "1971",
+    "public": true
+   },
+   "time": "afternoon",
+   "cast": [
+    {
+     "id": "cooper",
+     "costume": "dark suit, white shirt, black tie, dark glasses",
+     "holds": [
+      "briefcase"
+     ]
+    },
+    {
+     "id": "agent",
+     "costume": "airline blazer",
+     "holds": [
+      "ticket"
+     ]
+    }
+   ],
+   "crowd": {
+    "count": 8,
+    "what": "travellers with suitcases crossing behind"
+   },
+   "dressing": [
+    "ticket counter",
+    "TICKETS sign",
+    "departures board PORTLAND to SEATTLE",
+    "queue rope",
+    "luggage scale",
+    "wall clock"
+   ],
+   "props_here": [],
+   "beats": [
+    {
+     "id": "b04",
+     "claim": "he bought a ticket as Dan Cooper",
+     "fact": "f_ticket",
+     "proof": {
+      "item": "ticket",
+      "how": "the name DAN COOPER is readable as it changes hands"
+     },
+     "shots": [
+      {
+       "id": "sh04",
+       "w0": 20,
+       "type": "two_shot",
+       "subject": "cooper",
+       "action": "Cooper at the counter; the agent slides a ticket across and he takes it",
+       "shows": [
+        "ticket",
+        "agent"
+       ],
+       "events": [
+        {
+         "do": "give",
+         "prop": "ticket",
+         "from": "agent",
+         "to": "cooper"
+        }
+       ]
+      },
+      {
+       "id": "sh05",
+       "w0": 26,
+       "type": "detail",
+       "subject": "ticket",
+       "action": "the ticket in his hand: DAN COOPER, one way, Seattle",
+       "shows": [
+        "ticket"
+       ],
+       "events": []
+      }
+     ]
+    },
+    {
+     "id": "b06",
+     "claim": "calm, polite, in a suit and tie",
+     "fact": "f_ticket",
+     "proof": {
+      "item": "cooper",
+      "how": "his suit, tie and unhurried nod to the agent"
+     },
+     "shots": [
+      {
+       "id": "sh06",
+       "w0": 29,
+       "type": "close",
+       "subject": "cooper",
+       "action": "he pockets the ticket, nods politely and straightens his tie; briefcase in the other hand",
+       "shows": [
+        "briefcase"
+       ],
+       "events": [
+        {
+         "do": "put_away",
+         "prop": "ticket",
+         "who": "cooper"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "relation": "location_change",
+   "relation_reason": "He boards; the next thing that matters happens in the air.",
+   "tag": "FLIGHT 305 \u00b7 IN THE AIR",
+   "timeline": "main",
+   "place": {
+    "id": "cabin",
+    "kind": "interior",
+    "desc": "Airliner cabin, rear rows",
+    "period": "1971",
+    "public": true
+   },
+   "time": "afternoon",
+   "cast": [
+    {
+     "id": "cooper",
+     "costume": "dark suit, white shirt, black tie, dark glasses",
+     "holds": [
+      "briefcase",
+      "note"
+     ],
+     "holds_reason": "he wrote the note in his seat after boarding"
+    },
+    {
+     "id": "attendant",
+     "costume": "burgundy uniform",
+     "holds": []
+    }
+   ],
+   "crowd": {
+    "count": 36,
+    "what": "seated passengers reading and dozing, unaware"
+   },
+   "dressing": [
+    "seat rows",
+    "overhead bins",
+    "window row",
+    "ceiling light panels",
+    "drinks trolley",
+    "aisle carpet"
+   ],
+   "props_here": [],
+   "beats": [
+    {
+     "id": "b07",
+     "claim": "mid-flight he handed a note to a flight attendant",
+     "fact": "f_note",
+     "proof": {
+      "item": "note",
+      "how": "the note passes from his hand to hers"
+     },
+     "shots": [
+      {
+       "id": "sh07",
+       "w0": 36,
+       "type": "wide",
+       "subject": "cooper",
+       "action": "down the aisle: a full cabin, Cooper seated in the last row with the briefcase on his lap",
+       "shows": [
+        "briefcase"
+       ],
+       "events": []
+      },
+      {
+       "id": "sh08",
+       "w0": 40,
+       "type": "two_shot",
+       "subject": "cooper",
+       "action": "he hands the folded note up to the attendant as she passes",
+       "shows": [
+        "note",
+        "attendant"
+       ],
+       "events": [
+        {
+         "do": "give",
+         "prop": "note",
+         "from": "cooper",
+         "to": "attendant"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "b09",
+     "claim": "it said he had a bomb",
+     "fact": "f_note",
+     "proof": {
+      "item": "note",
+      "how": "the open note reads I HAVE A BOMB"
+     },
+     "shots": [
+      {
+       "id": "sh09",
+       "w0": 45,
+       "type": "detail",
+       "subject": "note",
+       "action": "she unfolds it: I HAVE A BOMB. SIT NEXT TO ME.",
+       "shows": [
+        "note"
+       ],
+       "events": []
+      }
+     ]
+    },
+    {
+     "id": "b10",
+     "claim": "he showed her the wires in his briefcase",
+     "fact": "f_case",
+     "proof": {
+      "item": "briefcase",
+      "how": "the case opens on red sticks and wires"
+     },
+     "shots": [
+      {
+       "id": "sh10",
+       "w0": 51,
+       "type": "detail",
+       "subject": "briefcase",
+       "action": "he lifts the lid a hand's width: red sticks, a battery, wires",
+       "shows": [
+        "briefcase"
+       ],
+       "events": [
+        {
+         "do": "show",
+         "prop": "briefcase",
+         "who": "cooper"
+        }
+       ]
+      },
+      {
+       "id": "sh11",
+       "w0": 56,
+       "type": "close",
+       "subject": "attendant",
+       "action": "her eyes go wide; behind her the passengers still read",
+       "shows": [
+        "note"
+       ],
+       "events": []
+      }
+     ]
+    },
+    {
+     "id": "b12",
+     "claim": "his demands: $200,000 and four parachutes",
+     "fact": "f_demand",
+     "proof": {
+      "item": "label:$200,000 \u00b7 4 PARACHUTES",
+      "how": "she writes the demands on the back of the note"
+     },
+     "shots": [
+      {
+       "id": "sh12",
+       "w0": 59,
+       "type": "close",
+       "subject": "cooper",
+       "action": "he speaks quietly and holds up fingers as he lists the demands",
+       "shows": [
+        "briefcase"
+       ],
+       "events": []
+      },
+      {
+       "id": "sh13",
+       "w0": 64,
+       "type": "detail",
+       "subject": "note",
+       "action": "her pen writes on the note: $200,000",
+       "shows": [
+        "label:$200,000 \u00b7 4 PARACHUTES"
+       ],
+       "events": []
+      },
+      {
+       "id": "sh14",
+       "w0": 68,
+       "type": "detail",
+       "subject": "note",
+       "action": "and beneath it: 4 PARACHUTES",
+       "shows": [
+        "label:$200,000 \u00b7 4 PARACHUTES"
+       ],
+       "events": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "relation": "location_change",
+   "relation_reason": "The demands are met when the plane lands.",
+   "tag": "SEATTLE \u00b7 ON THE GROUND",
+   "timeline": "main",
+   "place": {
+    "id": "tarmac",
+    "kind": "exterior",
+    "desc": "Airport apron beside the parked airliner",
+    "period": "1971",
+    "public": true
+   },
+   "time": "dusk",
+   "cast": [
+    {
+     "id": "attendant",
+     "costume": "burgundy uniform",
+     "holds": [
+      "money_bag"
+     ],
+     "holds_reason": "the airline delivered the ransom to the foot of the stairs; she left the note with the crew"
+    },
+    {
+     "id": "cooper",
+     "costume": "dark suit, white shirt, black tie, dark glasses",
+     "holds": [
+      "briefcase"
+     ],
+     "holds_reason": "the note stayed with the attendant in scene 3"
+    }
+   ],
+   "crowd": {
+    "count": 36,
+    "what": "released passengers walking away from the aircraft with coats and bags"
+   },
+   "dressing": [
+    "parked airliner",
+    "boarding stairs",
+    "fuel truck",
+    "apron markings",
+    "terminal lights",
+    "cart with four parachutes"
+   ],
+   "props_here": [],
+   "beats": [
+    {
+     "id": "b15",
+     "claim": "on the ground the money was handed over",
+     "fact": "f_seattle",
+     "proof": {
+      "item": "money_bag",
+      "how": "the bag goes from the attendant to Cooper in the doorway"
+     },
+     "shots": [
+      {
+       "id": "sh15",
+       "w0": 71,
+       "type": "wide",
+       "subject": "attendant",
+       "action": "she climbs the boarding stairs with the heavy bank bag; four parachutes wait on a cart",
+       "shows": [
+        "money_bag",
+        "cart with four parachutes"
+       ],
+       "events": []
+      },
+      {
+       "id": "sh16",
+       "w0": 76,
+       "type": "two_shot",
+       "subject": "cooper",
+       "action": "in the aircraft door Cooper takes the bag from her",
+       "shows": [
+        "money_bag",
+        "attendant"
+       ],
+       "events": [
+        {
+         "do": "give",
+         "prop": "money_bag",
+         "from": "attendant",
+         "to": "cooper"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "b17",
+     "claim": "he let the passengers go",
+     "fact": "f_seattle",
+     "proof": {
+      "item": "place",
+      "how": "passengers stream down the stairs and away across the apron"
+     },
+     "shots": [
+      {
+       "id": "sh17",
+       "w0": 79,
+       "type": "wide",
+       "subject": "place",
+       "action": "all the passengers file down the stairs and hurry toward the terminal lights",
+       "shows": [
+        "boarding stairs"
+       ],
+       "events": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "relation": "location_change",
+   "relation_reason": "With the money aboard he gives the crew their next order.",
+   "tag": "COCKPIT \u00b7 7:40 PM",
+   "timeline": "main",
+   "place": {
+    "id": "cockpit",
+    "kind": "interior",
+    "desc": "Flight deck",
+    "period": "1971",
+    "public": false
+   },
+   "time": "night",
+   "cast": [
+    {
+     "id": "cooper",
+     "costume": "dark suit, white shirt, black tie, dark glasses",
+     "holds": [
+      "briefcase",
+      "money_bag"
+     ]
+    },
+    {
+     "id": "pilot",
+     "costume": "white shirt, epaulettes",
+     "holds": []
+    },
+    {
+     "id": "copilot",
+     "costume": "white shirt",
+     "holds": []
+    }
+   ],
+   "crowd": {
+    "count": 0
+   },
+   "dressing": [
+    "instrument panel",
+    "control yokes",
+    "windscreen with runway lights",
+    "route chart",
+    "throttle levers",
+    "overhead switches"
+   ],
+   "props_here": [],
+   "beats": [
+    {
+     "id": "b18",
+     "claim": "he ordered the pilots to take off again",
+     "fact": "f_mexico",
+     "proof": {
+      "item": "pilot",
+      "how": "the captain pushes the throttles forward on his order"
+     },
+     "shots": [
+      {
+       "id": "sh18",
+       "w0": 84,
+       "type": "two_shot",
+       "subject": "cooper",
+       "action": "Cooper in the cockpit door, case in one hand, bag in the other; he nods at the runway",
+       "shows": [
+        "pilot",
+        "copilot",
+        "money_bag"
+       ],
+       "events": []
+      },
+      {
+       "id": "sh19",
+       "w0": 89,
+       "type": "detail",
+       "subject": "throttle levers",
+       "action": "the captain's hand pushes the throttles; runway lights slide past the windscreen",
+       "shows": [
+        "pilot"
+       ],
+       "events": []
+      }
+     ]
+    },
+    {
+     "id": "b20",
+     "claim": "fly low and slow toward Mexico",
+     "fact": "f_mexico",
+     "proof": {
+      "item": "route chart",
+      "how": "a pencil line on the chart runs south to MEXICO"
+     },
+     "shots": [
+      {
+       "id": "sh20",
+       "w0": 93,
+       "type": "detail",
+       "subject": "route chart",
+       "action": "the co-pilot draws a line down the chart to MEXICO CITY; the altimeter stays low",
+       "shows": [
+        "route chart",
+        "copilot"
+       ],
+       "events": []
+      }
+     ]
+    }
+   ],
+   "empty_reason": "only the two pilots and Cooper are on the flight deck"
+  },
+  {
+   "id": "s6",
+   "relation": "location_change",
+   "relation_reason": "Forty minutes into that flight he makes his move.",
+   "tag": "OVER WASHINGTON \u00b7 8:13 PM",
+   "timeline": "main",
+   "place": {
+    "id": "tail",
+    "kind": "exterior",
+    "desc": "Tail of the airliner in flight, rear stairs",
+    "period": "1971",
+    "public": false
+   },
+   "time": "night, rain",
+   "cast": [
+    {
+     "id": "cooper",
+     "costume": "dark suit, white shirt, black tie, dark glasses, parachute harness",
+     "holds": [
+      "money_bag"
+     ],
+     "costume_reason": "he put on one of the four parachutes in the empty cabin",
+     "holds_reason": "the briefcase stays behind in the cabin"
+    }
+   ],
+   "crowd": {
+    "count": 0
+   },
+   "dressing": [
+    "airliner tail",
+    "rear airstair",
+    "rain",
+    "pine forest below",
+    "storm cloud",
+    "cabin door light"
+   ],
+   "props_here": [],
+   "beats": [
+    {
+     "id": "b21",
+     "claim": "over the forests of Washington, in rain and dark",
+     "fact": "f_jump",
+     "proof": {
+      "item": "pine forest below",
+      "how": "black forest under the low-flying plane, rain across the frame"
+     },
+     "shots": [
+      {
+       "id": "sh21",
+       "w0": 101,
+       "type": "wide",
+       "subject": "airliner tail",
+       "action": "the plane flies low over endless black forest",
+       "shows": [
+        "pine forest below"
+       ],
+       "events": []
+      },
+      {
+       "id": "sh22",
+       "w0": 107,
+       "type": "close",
+       "subject": "cooper",
+       "action": "Cooper at the rear door, harness on, bag roped to his waist, rain on his glasses",
+       "shows": [
+        "money_bag"
+       ],
+       "events": []
+      }
+     ]
+    },
+    {
+     "id": "b23",
+     "claim": "he opened the rear stairs and leapt",
+     "fact": "f_jump",
+     "proof": {
+      "item": "rear airstair",
+      "how": "the stairs drop open under the tail and he steps off the last tread"
+     },
+     "shots": [
+      {
+       "id": "sh23",
+       "w0": 113,
+       "type": "detail",
+       "subject": "rear airstair",
+       "action": "the rear stairs swing down into the slipstream",
+       "shows": [
+        "rear airstair"
+       ],
+       "events": []
+      },
+      {
+       "id": "sh24",
+       "w0": 118,
+       "type": "wide",
+       "subject": "cooper",
+       "action": "he walks down the stairs and steps off into the dark; the plane flies on",
+       "shows": [
+        "rear airstair",
+        "money_bag"
+       ],
+       "events": []
+      }
+     ]
+    }
+   ],
+   "empty_reason": "he sent the crew to the cockpit; nobody saw him go"
+  },
+  {
+   "id": "s7",
+   "relation": "time_jump",
+   "relation_reason": "The story moves from the man to the people looking for him.",
+   "tag": "THE MANHUNT \u00b7 1971 ONWARD",
+   "timeline": "main",
+   "place": {
+    "id": "forest",
+    "kind": "exterior",
+    "desc": "Wet pine forest, search line",
+    "period": "1970s",
+    "public": true
+   },
+   "time": "grey morning",
+   "cast": [
+    {
+     "id": "fbi_lead",
+     "costume": "grey raincoat, hat",
+     "holds": [
+      "sketch"
+     ]
+    },
+    {
+     "id": "fbi_two",
+     "costume": "brown raincoat, hat",
+     "holds": []
+    }
+   ],
+   "crowd": {
+    "count": 10,
+    "what": "searchers in a line with poles, a helicopter overhead"
+   },
+   "dressing": [
+    "pine trunks",
+    "ferns and undergrowth",
+    "search poles",
+    "helicopter",
+    "mist",
+    "map table"
+   ],
+   "props_here": [],
+   "beats": [
+    {
+     "id": "b25",
+     "claim": "they searched for years",
+     "fact": "f_search",
+     "proof": {
+      "item": "place",
+      "how": "a line of searchers sweeps the forest"
+     },
+     "shots": [
+      {
+       "id": "sh25",
+       "w0": 123,
+       "type": "wide",
+       "subject": "place",
+       "action": "a long line of searchers probes the undergrowth; a helicopter passes overhead",
+       "shows": [
+        "search poles",
+        "helicopter"
+       ],
+       "events": []
+      }
+     ]
+    },
+    {
+     "id": "b26",
+     "claim": "the FBI never found him",
+     "fact": "f_search",
+     "proof": {
+      "item": "sketch",
+      "how": "the agent holds the composite sketch and lowers it"
+     },
+     "shots": [
+      {
+       "id": "sh26",
+       "w0": 127,
+       "type": "close",
+       "subject": "fbi_lead",
+       "action": "the agent looks from the sketch to the empty trees, then lowers it",
+       "shows": [
+        "sketch",
+        "fbi_two"
+       ],
+       "events": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s8",
+   "relation": "time_jump",
+   "relation_reason": "Nine years on, the only physical trace turns up by chance.",
+   "tag": "1980 \u00b7 A RIVERBANK",
+   "timeline": "main",
+   "place": {
+    "id": "riverbank",
+    "kind": "exterior",
+    "desc": "Sandy riverbank",
+    "period": "1980",
+    "public": false
+   },
+   "time": "bright day",
+   "cast": [
+    {
+     "id": "boy",
+     "costume": "orange jumper, jeans",
+     "holds": []
+    },
+    {
+     "id": "father",
+     "costume": "checked shirt",
+     "holds": []
+    }
+   ],
+   "crowd": {
+    "count": 0
+   },
+   "dressing": [
+    "river",
+    "sand bar",
+    "driftwood",
+    "campfire ring",
+    "far bank trees",
+    "picnic blanket"
+   ],
+   "props_here": [
+    "cash_bundle"
+   ],
+   "beats": [
+    {
+     "id": "b27",
+     "claim": "the only trace was a bundle of his cash",
+     "fact": "f_cash",
+     "proof": {
+      "item": "cash_bundle",
+      "how": "rotted $20 bills come out of the sand"
+     },
+     "shots": [
+      {
+       "id": "sh27",
+       "w0": 132,
+       "type": "detail",
+       "subject": "cash_bundle",
+       "action": "small hands brush sand away from rotted bundles of $20 bills",
+       "shows": [
+        "cash_bundle"
+       ],
+       "events": []
+      }
+     ]
+    },
+    {
+     "id": "b28",
+     "claim": "dug up by a boy near a river, in 1980",
+     "fact": "f_cash",
+     "proof": {
+      "item": "boy",
+      "how": "the boy lifts the bundle with the river behind him"
+     },
+     "shots": [
+      {
+       "id": "sh28",
+       "w0": 141,
+       "type": "medium",
+       "subject": "boy",
+       "action": "the boy kneels by the river and lifts a bundle to show his father",
+       "shows": [
+        "cash_bundle",
+        "river",
+        "father"
+       ],
+       "events": [
+        {
+         "do": "take",
+         "prop": "cash_bundle",
+         "who": "boy"
+        }
+       ]
+      },
+      {
+       "id": "sh29",
+       "w0": 149,
+       "type": "two_shot",
+       "subject": "father",
+       "action": "the father crouches, takes one bill and stares at it",
+       "shows": [
+        "cash_bundle",
+        "boy"
+       ],
+       "events": []
+      }
+     ]
+    }
+   ],
+   "empty_reason": "a family outing on an empty stretch of river"
+  },
+  {
+   "id": "s9",
+   "relation": "time_jump",
+   "relation_reason": "To the present: the file is still open.",
+   "tag": "TODAY",
+   "timeline": "main",
+   "place": {
+    "id": "evidence_room",
+    "kind": "interior",
+    "desc": "FBI evidence room",
+    "period": "present day",
+    "public": false
+   },
+   "time": "dim lamp light",
+   "cast": [],
+   "crowd": {
+    "count": 0
+   },
+   "dressing": [
+    "case file box",
+    "pin board with red string",
+    "desk lamp",
+    "filing cabinets",
+    "wall map of Washington",
+    "evidence bag with the tie"
+   ],
+   "props_here": [
+    "sketch"
+   ],
+   "beats": [
+    {
+     "id": "b30",
+     "claim": "the only unsolved hijacking in commercial aviation",
+     "fact": "f_unsolved",
+     "proof": {
+      "item": "sketch",
+      "how": "the sketch pinned at the centre of the board, then the stamp"
+     },
+     "shots": [
+      {
+       "id": "sh30",
+       "w0": 152,
+       "type": "detail",
+       "subject": "sketch",
+       "action": "the composite sketch pinned on a board, red strings leading nowhere",
+       "shows": [
+        "sketch",
+        "pin board with red string"
+       ],
+       "events": []
+      },
+      {
+       "id": "sh31",
+       "w0": 158,
+       "type": "detail",
+       "subject": "case file box",
+       "action": "a hand stamps UNSOLVED across the case file",
+       "shows": [
+        "label:UNSOLVED"
+       ],
+       "events": []
+      }
+     ]
+    }
+   ],
+   "empty_reason": "nobody is left on the case; an empty room says it"
+  }
+ ]
+}

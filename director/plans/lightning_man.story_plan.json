@@ -1,0 +1,1103 @@
+{
+ "title": "The Man Lightning Wouldn't Leave Alone",
+ "script": "scripts/lightning_man.txt",
+ "duration_target": [
+  40,
+  60
+ ],
+ "originality": {
+  "story": "retold in our own words from public facts",
+  "characters": "our own designs; no likeness traced from photos or other channels",
+  "shots": "planned from the script, not copied from any existing video",
+  "voice": "Kokoro synthetic voice (Apache-2.0 model)",
+  "music": "must be a track with a recorded licence before delivery",
+  "images": "generated or code-built; no downloaded photos"
+ },
+ "facts": [
+  {
+   "id": "f_seven",
+   "claim": "struck seven times and survived each",
+   "status": "verified",
+   "url": "https://en.wikipedia.org/wiki/Roy_Sullivan",
+   "note": "documented by the park superintendent, who witnessed none of them"
+  },
+  {
+   "id": "f_ranger",
+   "claim": "park ranger in Virginia",
+   "status": "verified",
+   "url": "https://en.wikipedia.org/wiki/Roy_Sullivan",
+   "note": "Shenandoah National Park, from 1936"
+  },
+  {
+   "id": "f_first",
+   "claim": "first strike went through his leg and took his big toenail",
+   "status": "partly verified",
+   "url": "https://en.wikipedia.org/wiki/Roy_Sullivan",
+   "note": "1942, fire lookout tower: burned a strip down his right leg and hit his toe, left a hole in his shoe; the toenail detail is not on this page"
+  },
+  {
+   "id": "f_drive",
+   "claim": "struck while driving",
+   "status": "verified",
+   "url": "https://en.wikipedia.org/wiki/Roy_Sullivan",
+   "note": "July 1969, in a truck"
+  },
+  {
+   "id": "f_yard",
+   "claim": "struck in his own front yard",
+   "status": "verified",
+   "url": "https://en.wikipedia.org/wiki/Roy_Sullivan",
+   "note": "July 1970, via a power transformer"
+  },
+  {
+   "id": "f_hair",
+   "claim": "it set his hair on fire, twice",
+   "status": "disputed",
+   "url": "https://en.wikipedia.org/wiki/Roy_Sullivan",
+   "note": "source says his hair caught fire five times (1969, 1972, 1973, 1976, 1977); 'twice' undercounts. Suggest 'again and again'"
+  },
+  {
+   "id": "f_avoid",
+   "claim": "people began to avoid him in storms",
+   "status": "verified",
+   "url": "https://en.wikipedia.org/wiki/Roy_Sullivan",
+   "note": "in his later years"
+  },
+  {
+   "id": "f_wife",
+   "claim": "his wife was struck once in the yard beside him",
+   "status": "verified",
+   "url": "https://en.wikipedia.org/wiki/Roy_Sullivan",
+   "note": "hanging clothes in the back yard; he was helping and was unharmed"
+  },
+  {
+   "id": "f_guinness",
+   "claim": "Guinness: nobody struck more; called the human lightning rod",
+   "status": "verified",
+   "url": "https://en.wikipedia.org/wiki/Roy_Sullivan",
+   "note": ""
+  },
+  {
+   "id": "f_odds",
+   "claim": "the odds of one strike are tiny, of seven almost beyond counting",
+   "status": "unverified",
+   "url": "https://en.wikipedia.org/wiki/Roy_Sullivan",
+   "note": "no figure checked; the plan shows no number on screen"
+  },
+  {
+   "id": "f_death",
+   "claim": "died in 1983 aged 71; not from lightning",
+   "status": "verified",
+   "url": "https://en.wikipedia.org/wiki/Roy_Sullivan",
+   "note": "September 28, 1983; the script leaves out the cause and so does the picture"
+  }
+ ],
+ "cast": [
+  {
+   "id": "roy",
+   "desc": "Roy Sullivan, sturdy park ranger; ages from 30 to 71 across the film"
+  },
+  {
+   "id": "wife",
+   "desc": "his wife, housedress and apron"
+  },
+  {
+   "id": "scientist",
+   "desc": "weather scientist, lab coat, chalk in hand"
+  }
+ ],
+ "props": [
+  {
+   "id": "ranger_hat",
+   "desc": "his flat-brim ranger hat; scorched a little more each strike"
+  },
+  {
+   "id": "boot",
+   "desc": "his right boot with a burnt hole at the toe"
+  },
+  {
+   "id": "water_bucket",
+   "desc": "a bucket of water"
+  },
+  {
+   "id": "record_book",
+   "desc": "a record book open at his entry"
+  },
+  {
+   "id": "laundry_basket",
+   "desc": "a wicker laundry basket"
+  }
+ ],
+ "scenes": [
+  {
+   "id": "s1",
+   "relation": "opening",
+   "relation_reason": "The hook: the strike, then the surprise that he is fine.",
+   "tag": "",
+   "timeline": "hook",
+   "place": {
+    "id": "overlook",
+    "kind": "exterior",
+    "desc": "Mountain overlook under a storm",
+    "period": "1970s",
+    "public": false
+   },
+   "time": "storm dusk",
+   "cast": [
+    {
+     "id": "roy",
+     "costume": "park ranger uniform, flat-brim hat",
+     "holds": [
+      "ranger_hat"
+     ]
+    }
+   ],
+   "crowd": {
+    "count": 0
+   },
+   "dressing": [
+    "wooden railing",
+    "trail sign",
+    "storm clouds",
+    "lightning",
+    "pine ridge",
+    "valley below"
+   ],
+   "props_here": [],
+   "beats": [
+    {
+     "id": "b01",
+     "claim": "one man was struck by lightning seven times",
+     "fact": "f_seven",
+     "proof": {
+      "item": "lightning",
+      "how": "a bolt comes straight down on the man at the railing"
+     },
+     "shots": [
+      {
+       "id": "sh01",
+       "w0": 0,
+       "type": "wide",
+       "subject": "roy",
+       "action": "a ranger at a mountain railing; a bolt drops out of the storm straight onto him",
+       "shows": [
+        "lightning",
+        "label:7 TIMES"
+       ],
+       "events": []
+      }
+     ]
+    },
+    {
+     "id": "b02",
+     "claim": "and survived every single one",
+     "fact": "f_seven",
+     "proof": {
+      "item": "roy",
+      "how": "he blinks, smoke rising from his hat, and stands up"
+     },
+     "shots": [
+      {
+       "id": "sh02",
+       "w0": 8,
+       "type": "close",
+       "subject": "roy",
+       "action": "smoke curls off his hat brim; he blinks, pats the hat out and stands up",
+       "shows": [
+        "ranger_hat"
+       ],
+       "events": []
+      }
+     ]
+    }
+   ],
+   "empty_reason": "alone on the overlook in a storm"
+  },
+  {
+   "id": "s2",
+   "relation": "time_jump",
+   "relation_reason": "Who he was before any of it.",
+   "tag": "1936 \u00b7 SHENANDOAH NATIONAL PARK, VIRGINIA",
+   "timeline": "main",
+   "place": {
+    "id": "park_gate",
+    "kind": "exterior",
+    "desc": "National park entrance on a clear day",
+    "period": "1930s",
+    "public": true
+   },
+   "time": "sunny morning",
+   "cast": [
+    {
+     "id": "roy",
+     "costume": "park ranger uniform, flat-brim hat",
+     "holds": [
+      "ranger_hat"
+     ]
+    }
+   ],
+   "crowd": {
+    "count": 8,
+    "what": "visitors with picnic baskets and a 1930s car at the gate"
+   },
+   "dressing": [
+    "park entrance sign",
+    "ranger booth",
+    "1930s car",
+    "split-rail fence",
+    "blue ridge mountains",
+    "flagpole"
+   ],
+   "props_here": [],
+   "beats": [
+    {
+     "id": "b03",
+     "claim": "Roy Sullivan was a park ranger in Virginia",
+     "fact": "f_ranger",
+     "proof": {
+      "item": "park entrance sign",
+      "how": "he stands under the park sign in uniform, waving a car through"
+     },
+     "shots": [
+      {
+       "id": "sh03",
+       "w0": 13,
+       "type": "medium",
+       "subject": "roy",
+       "action": "young Roy in a crisp uniform waves a family's car through the park gate",
+       "shows": [
+        "park entrance sign",
+        "ranger_hat"
+       ],
+       "events": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "relation": "time_jump",
+   "relation_reason": "The first strike.",
+   "tag": "1942 \u00b7 STRIKE 1",
+   "timeline": "main",
+   "place": {
+    "id": "lookout",
+    "kind": "exterior",
+    "desc": "Fire lookout tower on a ridge",
+    "period": "1940s",
+    "public": false
+   },
+   "time": "storm afternoon",
+   "cast": [
+    {
+     "id": "roy",
+     "costume": "park ranger uniform, flat-brim hat",
+     "holds": [
+      "ranger_hat"
+     ]
+    }
+   ],
+   "crowd": {
+    "count": 0
+   },
+   "dressing": [
+    "fire lookout tower",
+    "storm clouds",
+    "lightning",
+    "rocky ridge",
+    "tower stairs",
+    "wind-bent pines"
+   ],
+   "props_here": [
+    "boot"
+   ],
+   "beats": [
+    {
+     "id": "b04",
+     "claim": "the first bolt hit him through his leg",
+     "fact": "f_first",
+     "proof": {
+      "item": "lightning",
+      "how": "the bolt runs down his right leg as he runs from the tower"
+     },
+     "shots": [
+      {
+       "id": "sh04",
+       "w0": 21,
+       "type": "wide",
+       "subject": "roy",
+       "action": "he runs from the lookout tower; a bolt catches him and runs down his right leg",
+       "shows": [
+        "lightning",
+        "fire lookout tower"
+       ],
+       "events": []
+      }
+     ]
+    },
+    {
+     "id": "b05",
+     "claim": "and blew off his big toenail",
+     "fact": "f_first",
+     "proof": {
+      "item": "boot",
+      "how": "his boot with a smoking hole at the toe"
+     },
+     "shots": [
+      {
+       "id": "sh05",
+       "w0": 29,
+       "type": "detail",
+       "subject": "boot",
+       "action": "he sits up and pulls off a boot: a smoking hole at the big toe",
+       "shows": [
+        "boot",
+        "label:1"
+       ],
+       "events": [
+        {
+         "do": "take",
+         "prop": "boot",
+         "who": "roy"
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "empty_reason": "a lone ranger at a remote tower"
+  },
+  {
+   "id": "s4",
+   "relation": "time_jump",
+   "relation_reason": "Twenty-seven years pass before the second.",
+   "tag": "1969 \u00b7 STRIKE 2",
+   "timeline": "main",
+   "place": {
+    "id": "mountain_road",
+    "kind": "exterior",
+    "desc": "Mountain road, ranger truck",
+    "period": "1960s",
+    "public": false
+   },
+   "time": "storm evening",
+   "cast": [
+    {
+     "id": "roy",
+     "costume": "park ranger uniform, flat-brim hat",
+     "holds": [
+      "ranger_hat"
+     ],
+     "holds_reason": "he left the burnt boot behind in 1942"
+    }
+   ],
+   "crowd": {
+    "count": 0
+   },
+   "dressing": [
+    "ranger truck",
+    "winding road",
+    "roadside trees",
+    "storm clouds",
+    "lightning",
+    "cliff edge"
+   ],
+   "props_here": [],
+   "beats": [
+    {
+     "id": "b06",
+     "claim": "years later lightning hit him while he was driving",
+     "fact": "f_drive",
+     "proof": {
+      "item": "ranger truck",
+      "how": "the bolt jumps through the open truck window"
+     },
+     "shots": [
+      {
+       "id": "sh06",
+       "w0": 35,
+       "type": "wide",
+       "subject": "ranger truck",
+       "action": "his truck winds along a mountain road; lightning jumps from a tree through the open window",
+       "shows": [
+        "lightning"
+       ],
+       "events": []
+      },
+      {
+       "id": "sh07",
+       "w0": 40,
+       "type": "close",
+       "subject": "roy",
+       "action": "at the wheel, eyebrows gone, hat smoking, he brakes at the cliff edge",
+       "shows": [
+        "ranger_hat",
+        "label:2"
+       ],
+       "events": []
+      }
+     ]
+    }
+   ],
+   "empty_reason": "an empty road in a storm"
+  },
+  {
+   "id": "s5",
+   "relation": "time_jump",
+   "relation_reason": "A year later, at home.",
+   "tag": "1970 \u00b7 STRIKE 3",
+   "timeline": "main",
+   "place": {
+    "id": "front_yard",
+    "kind": "exterior",
+    "desc": "His front yard",
+    "period": "1970",
+    "public": false
+   },
+   "time": "storm afternoon",
+   "cast": [
+    {
+     "id": "roy",
+     "costume": "shirt sleeves, braces",
+     "holds": [],
+     "costume_reason": "off duty at home",
+     "holds_reason": "his hat is indoors"
+    }
+   ],
+   "crowd": {
+    "count": 0
+   },
+   "dressing": [
+    "small white house",
+    "picket fence",
+    "power pole with transformer",
+    "mailbox",
+    "garden hose",
+    "storm clouds"
+   ],
+   "props_here": [],
+   "beats": [
+    {
+     "id": "b08",
+     "claim": "then again in his own front yard",
+     "fact": "f_yard",
+     "proof": {
+      "item": "power pole with transformer",
+      "how": "the bolt hits the transformer and jumps to his shoulder"
+     },
+     "shots": [
+      {
+       "id": "sh08",
+       "w0": 44,
+       "type": "wide",
+       "subject": "roy",
+       "action": "he crosses his front yard; a bolt hits the transformer on the pole and jumps to his shoulder",
+       "shows": [
+        "power pole with transformer",
+        "label:3"
+       ],
+       "events": []
+      }
+     ]
+    }
+   ],
+   "empty_reason": "alone in his yard"
+  },
+  {
+   "id": "s6",
+   "relation": "time_jump",
+   "relation_reason": "Then it starts going for his head.",
+   "tag": "1972 TO 1973 \u00b7 STRIKES 4 AND 5",
+   "timeline": "main",
+   "place": {
+    "id": "ranger_station",
+    "kind": "interior",
+    "desc": "Ranger station office",
+    "period": "1970s",
+    "public": false
+   },
+   "time": "storm night",
+   "cast": [
+    {
+     "id": "roy",
+     "costume": "park ranger uniform, flat-brim hat",
+     "holds": [
+      "ranger_hat"
+     ],
+     "costume_reason": "back on duty",
+     "holds_reason": "back in uniform"
+    }
+   ],
+   "crowd": {
+    "count": 0
+   },
+   "dressing": [
+    "desk with a radio",
+    "wall map of the park",
+    "window with lightning outside",
+    "coat rack",
+    "wash basin",
+    "filing cabinet"
+   ],
+   "props_here": [
+    "water_bucket"
+   ],
+   "beats": [
+    {
+     "id": "b09",
+     "claim": "then it set his hair on fire, twice",
+     "fact": "f_hair",
+     "proof": {
+      "item": "water_bucket",
+      "how": "flames on his head, then a bucket emptied over it as the counter ticks to 5"
+     },
+     "shots": [
+      {
+       "id": "sh09",
+       "w0": 51,
+       "type": "medium",
+       "subject": "roy",
+       "action": "a flash through the window; his hat flies off and his hair is burning",
+       "shows": [
+        "window with lightning outside",
+        "label:4"
+       ],
+       "events": [
+        {
+         "do": "drop",
+         "prop": "ranger_hat",
+         "who": "roy"
+        }
+       ]
+      },
+      {
+       "id": "sh10",
+       "w0": 56,
+       "type": "close",
+       "subject": "roy",
+       "action": "a second flash; he grabs the bucket and empties it over his head, steam rising",
+       "shows": [
+        "water_bucket",
+        "label:5"
+       ],
+       "events": [
+        {
+         "do": "take",
+         "prop": "water_bucket",
+         "who": "roy"
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "empty_reason": "alone on a night shift"
+  },
+  {
+   "id": "s7",
+   "relation": "time_jump",
+   "relation_reason": "What it did to his life.",
+   "tag": "LATER YEARS",
+   "timeline": "main",
+   "place": {
+    "id": "picnic_area",
+    "kind": "exterior",
+    "desc": "Park picnic ground as a storm builds",
+    "period": "1970s",
+    "public": true
+   },
+   "time": "darkening afternoon",
+   "cast": [
+    {
+     "id": "roy",
+     "costume": "park ranger uniform, flat-brim hat",
+     "holds": [
+      "ranger_hat"
+     ],
+     "holds_reason": "he picked his hat back up; the bucket stayed at the station"
+    }
+   ],
+   "crowd": {
+    "count": 10,
+    "what": "picnickers who pick up their things and edge away from him"
+   },
+   "dressing": [
+    "picnic tables",
+    "barbecue grill",
+    "tall oak",
+    "storm clouds",
+    "trash can",
+    "parked cars"
+   ],
+   "props_here": [],
+   "beats": [
+    {
+     "id": "b11",
+     "claim": "people began to back away from him when storms rolled in",
+     "fact": "f_avoid",
+     "proof": {
+      "item": "roy",
+      "how": "a ring of empty grass opens around him as thunder sounds"
+     },
+     "shots": [
+      {
+       "id": "sh11",
+       "w0": 59,
+       "type": "wide",
+       "subject": "roy",
+       "action": "clouds roll over a busy picnic ground; Roy walks through and families lift their baskets and step back",
+       "shows": [
+        "picnic tables"
+       ],
+       "events": []
+      },
+      {
+       "id": "sh12",
+       "w0": 66,
+       "type": "medium",
+       "subject": "roy",
+       "action": "he stands alone in a widening circle of empty grass and looks up at the sky",
+       "shows": [
+        "storm clouds"
+       ],
+       "events": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s8",
+   "relation": "location_change",
+   "relation_reason": "It reached the person closest to him.",
+   "tag": "HIS BACK YARD",
+   "timeline": "main",
+   "place": {
+    "id": "back_yard",
+    "kind": "exterior",
+    "desc": "His back yard, washing line",
+    "period": "1970s",
+    "public": false
+   },
+   "time": "storm afternoon",
+   "cast": [
+    {
+     "id": "roy",
+     "costume": "shirt sleeves, braces",
+     "holds": [
+      "laundry_basket"
+     ],
+     "costume_reason": "at home",
+     "holds_reason": "helping with the washing; hat indoors"
+    },
+    {
+     "id": "wife",
+     "costume": "housedress, apron",
+     "holds": []
+    }
+   ],
+   "crowd": {
+    "count": 0
+   },
+   "dressing": [
+    "washing line with sheets",
+    "small white house",
+    "picket fence",
+    "clothes pegs",
+    "storm clouds",
+    "lightning"
+   ],
+   "props_here": [],
+   "beats": [
+    {
+     "id": "b13",
+     "claim": "even his wife was struck once, in the yard beside him",
+     "fact": "f_wife",
+     "proof": {
+      "item": "wife",
+      "how": "the bolt hits her at the washing line while he stands a step away, untouched"
+     },
+     "shots": [
+      {
+       "id": "sh13",
+       "w0": 70,
+       "type": "two_shot",
+       "subject": "wife",
+       "action": "she pegs a sheet to the line while Roy holds the basket beside her",
+       "shows": [
+        "roy",
+        "washing line with sheets",
+        "laundry_basket"
+       ],
+       "events": []
+      },
+      {
+       "id": "sh14",
+       "w0": 74,
+       "type": "wide",
+       "subject": "wife",
+       "action": "a bolt hits her, not him; she sits down hard in the grass, dazed, and he stares at the sky",
+       "shows": [
+        "lightning",
+        "roy"
+       ],
+       "events": []
+      }
+     ]
+    }
+   ],
+   "empty_reason": "the two of them at home"
+  },
+  {
+   "id": "s9",
+   "relation": "montage",
+   "relation_reason": "The tally, counted out.",
+   "tag": "1942 TO 1977",
+   "timeline": "main",
+   "place": {
+    "id": "overlook",
+    "kind": "exterior",
+    "desc": "The mountain overlook from the opening",
+    "period": "1970s",
+    "public": false
+   },
+   "time": "storm dusk",
+   "cast": [
+    {
+     "id": "roy",
+     "costume": "park ranger uniform, flat-brim hat",
+     "holds": [
+      "ranger_hat"
+     ],
+     "costume_reason": "in uniform, as in the opening",
+     "holds_reason": "his hat; the basket stays in the yard"
+    }
+   ],
+   "crowd": {
+    "count": 0
+   },
+   "dressing": [
+    "wooden railing",
+    "trail sign",
+    "storm clouds",
+    "lightning",
+    "pine ridge",
+    "valley below"
+   ],
+   "props_here": [
+    "record_book"
+   ],
+   "beats": [
+    {
+     "id": "b15",
+     "claim": "seven times the sky tried to kill him",
+     "fact": "f_seven",
+     "proof": {
+      "item": "lightning",
+      "how": "seven bolts in a row with a counter from 1 to 7"
+     },
+     "shots": [
+      {
+       "id": "sh15",
+       "w0": 81,
+       "type": "wide",
+       "subject": "roy",
+       "action": "bolt after bolt hits the overlook as a counter runs 1 to 7",
+       "shows": [
+        "lightning",
+        "label:1 2 3 4 5 6 7"
+       ],
+       "events": []
+      }
+     ]
+    },
+    {
+     "id": "b16",
+     "claim": "seven times he got back up, burned but breathing",
+     "fact": "f_seven",
+     "proof": {
+      "item": "roy",
+      "how": "he gets to his feet, singed, and puts the hat back on"
+     },
+     "shots": [
+      {
+       "id": "sh16",
+       "w0": 89,
+       "type": "medium",
+       "subject": "roy",
+       "action": "he climbs to his feet, uniform singed, and sets the scorched hat back on his head",
+       "shows": [
+        "ranger_hat"
+       ],
+       "events": []
+      }
+     ]
+    },
+    {
+     "id": "b17",
+     "claim": "Guinness World Records says nobody has been struck more",
+     "fact": "f_guinness",
+     "proof": {
+      "item": "record_book",
+      "how": "a record book open at his entry"
+     },
+     "shots": [
+      {
+       "id": "sh17",
+       "w0": 98,
+       "type": "detail",
+       "subject": "record_book",
+       "action": "a record book open at his page: MOST LIGHTNING STRIKES SURVIVED, 7",
+       "shows": [
+        "record_book"
+       ],
+       "events": []
+      }
+     ]
+    },
+    {
+     "id": "b18",
+     "claim": "people called him the human lightning rod",
+     "fact": "f_guinness",
+     "proof": {
+      "item": "label:THE HUMAN LIGHTNING ROD",
+      "how": "a newspaper headline with his photo"
+     },
+     "shots": [
+      {
+       "id": "sh18",
+       "w0": 107,
+       "type": "close",
+       "subject": "roy",
+       "action": "a newspaper lands on the railing: THE HUMAN LIGHTNING ROD over his picture; he shrugs",
+       "shows": [
+        "label:THE HUMAN LIGHTNING ROD"
+       ],
+       "events": []
+      }
+     ]
+    }
+   ],
+   "empty_reason": "alone on the overlook, as in the opening"
+  },
+  {
+   "id": "s10",
+   "relation": "location_change",
+   "relation_reason": "Could anyone explain it?",
+   "tag": "A WEATHER OFFICE",
+   "timeline": "main",
+   "place": {
+    "id": "weather_office",
+    "kind": "interior",
+    "desc": "Weather office with a chalkboard",
+    "period": "1970s",
+    "public": false
+   },
+   "time": "day",
+   "cast": [
+    {
+     "id": "scientist",
+     "costume": "lab coat",
+     "holds": []
+    }
+   ],
+   "crowd": {
+    "count": 0
+   },
+   "dressing": [
+    "chalkboard",
+    "weather map",
+    "barometer",
+    "desk with papers",
+    "globe",
+    "window"
+   ],
+   "props_here": [],
+   "beats": [
+    {
+     "id": "b19",
+     "claim": "no one could explain it",
+     "fact": "f_odds",
+     "proof": {
+      "item": "scientist",
+      "how": "the scientist looks at the board and shrugs"
+     },
+     "shots": [
+      {
+       "id": "sh19",
+       "w0": 115,
+       "type": "medium",
+       "subject": "scientist",
+       "action": "a weather scientist studies a chalkboard of strike marks, turns and shrugs",
+       "shows": [
+        "chalkboard"
+       ],
+       "events": []
+      }
+     ]
+    },
+    {
+     "id": "b20",
+     "claim": "the odds of being hit even once are tiny",
+     "fact": "f_odds",
+     "proof": {
+      "item": "chalkboard",
+      "how": "one small figure under one bolt among a crowd of dots"
+     },
+     "shots": [
+      {
+       "id": "sh20",
+       "w0": 120,
+       "type": "detail",
+       "subject": "chalkboard",
+       "action": "on the board: a crowd of dots and a single bolt touching just one of them",
+       "shows": [
+        "chalkboard"
+       ],
+       "events": []
+      }
+     ]
+    },
+    {
+     "id": "b21",
+     "claim": "the odds of seven are almost beyond counting",
+     "fact": "f_odds",
+     "proof": {
+      "item": "chalkboard",
+      "how": "seven bolts all pointing at the same dot; the chalk snaps"
+     },
+     "shots": [
+      {
+       "id": "sh21",
+       "w0": 129,
+       "type": "detail",
+       "subject": "chalkboard",
+       "action": "seven bolts drawn onto that same dot; the chalk snaps in the scientist's hand",
+       "shows": [
+        "chalkboard",
+        "scientist"
+       ],
+       "events": []
+      }
+     ]
+    }
+   ],
+   "empty_reason": "one scientist alone with the problem"
+  },
+  {
+   "id": "s11",
+   "relation": "time_jump",
+   "relation_reason": "The end of his life, and the last word.",
+   "tag": "1983",
+   "timeline": "main",
+   "place": {
+    "id": "porch",
+    "kind": "exterior",
+    "desc": "His front porch at sunset",
+    "period": "1983",
+    "public": false
+   },
+   "time": "clear sunset",
+   "cast": [
+    {
+     "id": "roy",
+     "costume": "cardigan, old ranger hat on his knee",
+     "holds": [
+      "ranger_hat"
+     ],
+     "costume_reason": "retired, aged 71"
+    }
+   ],
+   "crowd": {
+    "count": 0
+   },
+   "dressing": [
+    "rocking chair",
+    "porch rail",
+    "small white house",
+    "blue ridge mountains",
+    "clear evening sky",
+    "a far-off storm cloud"
+   ],
+   "props_here": [],
+   "beats": [
+    {
+     "id": "b22",
+     "claim": "after dodging the sky for decades",
+     "fact": "f_death",
+     "proof": {
+      "item": "roy",
+      "how": "old Roy on the porch watches a storm stay far away"
+     },
+     "shots": [
+      {
+       "id": "sh22",
+       "w0": 137,
+       "type": "medium",
+       "subject": "roy",
+       "action": "old Roy rocks on his porch, hat on his knee, watching a storm far off on the horizon",
+       "shows": [
+        "a far-off storm cloud",
+        "ranger_hat"
+       ],
+       "events": []
+      }
+     ]
+    },
+    {
+     "id": "b23",
+     "claim": "Roy died in 1983, at seventy-one",
+     "fact": "f_death",
+     "proof": {
+      "item": "ranger_hat",
+      "how": "the hat alone on the empty rocking chair"
+     },
+     "shots": [
+      {
+       "id": "sh23",
+       "w0": 146,
+       "type": "detail",
+       "subject": "ranger_hat",
+       "action": "the rocking chair is empty; the scorched hat rests on the seat",
+       "shows": [
+        "ranger_hat",
+        "label:1983"
+       ],
+       "events": [
+        {
+         "do": "drop",
+         "prop": "ranger_hat",
+         "who": "roy"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "b24",
+     "claim": "lightning never got him",
+     "fact": "f_death",
+     "proof": {
+      "item": "clear evening sky",
+      "how": "a clear sky over the mountains; the storm has moved away"
+     },
+     "shots": [
+      {
+       "id": "sh24",
+       "w0": 153,
+       "type": "wide",
+       "subject": "place",
+       "action": "the storm slides off behind the mountains and the sky over the porch is clear",
+       "shows": [
+        "clear evening sky"
+       ],
+       "events": []
+      }
+     ]
+    }
+   ],
+   "empty_reason": "an old man alone on his porch"
+  }
+ ]
+}

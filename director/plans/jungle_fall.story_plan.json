@@ -1,0 +1,1047 @@
+{
+ "title": "The Girl Who Fell From the Sky",
+ "script": "scripts/jungle_fall.txt",
+ "duration_target": [
+  40,
+  60
+ ],
+ "originality": {
+  "story": "retold in our own words from public facts",
+  "characters": "our own designs; no likeness traced from photos or other channels",
+  "shots": "planned from the script, not copied from any existing video",
+  "voice": "Kokoro synthetic voice (Apache-2.0 model)",
+  "music": "must be a track with a recorded licence before delivery",
+  "images": "generated or code-built; no downloaded photos"
+ },
+ "facts": [
+  {
+   "id": "f_fall",
+   "claim": "a 17-year-old fell about two miles and survived",
+   "status": "verified",
+   "url": "https://en.wikipedia.org/wiki/LANSA_Flight_508",
+   "note": "3 km (2 mi), aged 17"
+  },
+  {
+   "id": "f_11",
+   "claim": "she was in the jungle eleven days",
+   "status": "verified",
+   "url": "https://en.wikipedia.org/wiki/LANSA_Flight_508",
+   "note": ""
+  },
+  {
+   "id": "f_storm",
+   "claim": "Christmas Eve: the plane flew into a thunderstorm over the Peruvian Amazon; lightning struck; it broke up in the air",
+   "status": "verified",
+   "url": "https://en.wikipedia.org/wiki/LANSA_Flight_508",
+   "note": "24 December 1971"
+  },
+  {
+   "id": "f_dead",
+   "claim": "91 others died; she was the only survivor of 92",
+   "status": "verified",
+   "url": "https://en.wikipedia.org/wiki/LANSA_Flight_508",
+   "note": ""
+  },
+  {
+   "id": "f_inj",
+   "claim": "broken collarbone, eye injury, deep cuts",
+   "status": "verified",
+   "url": "https://en.wikipedia.org/wiki/LANSA_Flight_508",
+   "note": "source also lists a torn knee ligament and concussion"
+  },
+  {
+   "id": "f_parents",
+   "claim": "her parents were biologists; her father taught her to follow water downstream",
+   "status": "unverified",
+   "url": "https://en.wikipedia.org/wiki/LANSA_Flight_508",
+   "note": "not on this page; needs a second source (her memoir or interviews)"
+  },
+  {
+   "id": "f_trek",
+   "claim": "she followed the water for ten days, ran out of food, had maggots in her wounds, passed bodies",
+   "status": "partly verified",
+   "url": "https://en.wikipedia.org/wiki/LANSA_Flight_508",
+   "note": "following a stream is confirmed; food, maggots and bodies need a second source"
+  },
+  {
+   "id": "f_hut",
+   "claim": "she found a boat and a hut on day ten; loggers found her the next day",
+   "status": "partly verified",
+   "url": "https://en.wikipedia.org/wiki/LANSA_Flight_508",
+   "note": "a hut used by hunters and woodcutters is confirmed; the day numbers and the boat need a second source"
+  }
+ ],
+ "cast": [
+  {
+   "id": "juliane",
+   "desc": "17-year-old girl, fair hair, glasses lost in the fall"
+  },
+  {
+   "id": "mother",
+   "desc": "her mother, 40s, travelling dress"
+  },
+  {
+   "id": "father",
+   "desc": "her father, field biologist, khaki shirt, binoculars"
+  },
+  {
+   "id": "young_juliane",
+   "desc": "Juliane at about 14, shorts and boots"
+  },
+  {
+   "id": "logger_1",
+   "desc": "forest worker, straw hat, machete on belt"
+  },
+  {
+   "id": "logger_2",
+   "desc": "forest worker, rolled sleeves"
+  },
+  {
+   "id": "logger_3",
+   "desc": "forest worker, older, grey moustache"
+  }
+ ],
+ "props": [
+  {
+   "id": "seat_row",
+   "desc": "a three-seat row torn from the cabin, her seat belt still fastened"
+  },
+  {
+   "id": "sweets_bag",
+   "desc": "a small paper bag of sweets, her only food"
+  },
+  {
+   "id": "canoe",
+   "desc": "a small wooden boat with an outboard motor"
+  },
+  {
+   "id": "specimen_jar",
+   "desc": "glass specimen jar from her parents' field station"
+  }
+ ],
+ "scenes": [
+  {
+   "id": "s1",
+   "relation": "opening",
+   "relation_reason": "The hook states the impossible fact with the image of the fall.",
+   "tag": "",
+   "timeline": "hook",
+   "place": {
+    "id": "storm_sky",
+    "kind": "exterior",
+    "desc": "Storm sky high above the rainforest",
+    "period": "1971",
+    "public": false
+   },
+   "time": "day, storm",
+   "cast": [
+    {
+     "id": "juliane",
+     "costume": "sleeveless summer dress, sandals",
+     "holds": [
+      "seat_row"
+     ]
+    }
+   ],
+   "crowd": {
+    "count": 0
+   },
+   "dressing": [
+    "storm clouds",
+    "lightning",
+    "rain",
+    "forest canopy far below",
+    "falling debris",
+    "cloud gaps"
+   ],
+   "props_here": [],
+   "beats": [
+    {
+     "id": "b01",
+     "claim": "a seventeen-year-old fell two miles out of the sky",
+     "fact": "f_fall",
+     "proof": {
+      "item": "seat_row",
+      "how": "she is belted into a seat row spinning down through cloud"
+     },
+     "shots": [
+      {
+       "id": "sh01",
+       "w0": 0,
+       "type": "wide",
+       "subject": "juliane",
+       "action": "a seat row tumbles out of the clouds, a girl belted into it, the green canopy far below",
+       "shows": [
+        "seat_row",
+        "forest canopy far below"
+       ],
+       "events": []
+      }
+     ]
+    }
+   ],
+   "empty_reason": "she falls alone"
+  },
+  {
+   "id": "s2",
+   "relation": "contrast",
+   "relation_reason": "Straight from the fall to her walking out, to set up the question: how?",
+   "tag": "11 DAYS LATER",
+   "timeline": "hook",
+   "place": {
+    "id": "river_edge",
+    "kind": "exterior",
+    "desc": "Jungle edge at a river",
+    "period": "1972",
+    "public": false
+   },
+   "time": "morning",
+   "cast": [
+    {
+     "id": "juliane",
+     "costume": "torn dress, one sandal, cut arm, swollen eye",
+     "holds": [],
+     "costume_reason": "eleven days in the jungle",
+     "holds_reason": "she left the seat row where it fell"
+    }
+   ],
+   "crowd": {
+    "count": 0
+   },
+   "dressing": [
+    "wall of jungle",
+    "river",
+    "mud bank",
+    "hanging vines",
+    "morning mist",
+    "a hut roof in the distance"
+   ],
+   "props_here": [],
+   "beats": [
+    {
+     "id": "b02",
+     "claim": "and walked out of the jungle eleven days later",
+     "fact": "f_11",
+     "proof": {
+      "item": "juliane",
+      "how": "she steps out of the trees on her own feet"
+     },
+     "shots": [
+      {
+       "id": "sh02",
+       "w0": 9,
+       "type": "medium",
+       "subject": "juliane",
+       "action": "the same girl, dress torn, one sandal, limps out of the trees into daylight",
+       "shows": [
+        "wall of jungle",
+        "river"
+       ],
+       "events": []
+      }
+     ]
+    }
+   ],
+   "empty_reason": "she walks out alone"
+  },
+  {
+   "id": "s3",
+   "relation": "time_jump",
+   "relation_reason": "Back to the beginning of the flight.",
+   "tag": "DEC 24, 1971 \u00b7 OVER PERU",
+   "timeline": "main",
+   "place": {
+    "id": "cabin",
+    "kind": "interior",
+    "desc": "Airliner cabin, window seats",
+    "period": "1971",
+    "public": true
+   },
+   "time": "midday",
+   "cast": [
+    {
+     "id": "juliane",
+     "costume": "sleeveless summer dress, sandals",
+     "holds": []
+    },
+    {
+     "id": "mother",
+     "costume": "travelling dress",
+     "holds": []
+    }
+   ],
+   "crowd": {
+    "count": 30,
+    "what": "passengers with Christmas parcels"
+   },
+   "dressing": [
+    "seat rows",
+    "window row",
+    "overhead racks with wrapped presents",
+    "aisle",
+    "seat-belt sign",
+    "curtain to the galley"
+   ],
+   "props_here": [],
+   "beats": [
+    {
+     "id": "b03",
+     "claim": "on Christmas Eve, Juliane's plane",
+     "fact": "f_storm",
+     "proof": {
+      "item": "overhead racks with wrapped presents",
+      "how": "wrapped presents in the racks; she sits at the window beside her mother"
+     },
+     "shots": [
+      {
+       "id": "sh03",
+       "w0": 18,
+       "type": "two_shot",
+       "subject": "juliane",
+       "action": "Juliane at the window seat beside her mother; presents rattle in the racks as the light outside darkens",
+       "shows": [
+        "mother",
+        "overhead racks with wrapped presents"
+       ],
+       "events": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "relation": "continuation",
+   "relation_reason": "Same moment, seen from outside the aircraft.",
+   "tag": "",
+   "timeline": "main",
+   "place": {
+    "id": "storm_sky",
+    "kind": "exterior",
+    "desc": "Storm sky over the Amazon",
+    "period": "1971",
+    "public": false
+   },
+   "time": "day, storm",
+   "cast": [
+    {
+     "id": "juliane",
+     "costume": "sleeveless summer dress, sandals",
+     "holds": [
+      "seat_row"
+     ],
+     "holds_reason": "she is belted into the seat row when the cabin breaks up"
+    }
+   ],
+   "crowd": {
+    "count": 0
+   },
+   "dressing": [
+    "propeller airliner",
+    "storm clouds",
+    "lightning",
+    "rain",
+    "forest canopy far below",
+    "falling debris"
+   ],
+   "props_here": [],
+   "beats": [
+    {
+     "id": "b04",
+     "claim": "flew into a thunderstorm over the Peruvian Amazon",
+     "fact": "f_storm",
+     "proof": {
+      "item": "propeller airliner",
+      "how": "the airliner is swallowed by a black storm front over unbroken forest"
+     },
+     "shots": [
+      {
+       "id": "sh04",
+       "w0": 23,
+       "type": "wide",
+       "subject": "propeller airliner",
+       "action": "the airliner flies into a towering black storm above endless rainforest",
+       "shows": [
+        "storm clouds",
+        "forest canopy far below"
+       ],
+       "events": []
+      }
+     ]
+    },
+    {
+     "id": "b05",
+     "claim": "lightning struck",
+     "fact": "f_storm",
+     "proof": {
+      "item": "lightning",
+      "how": "a bolt hits the right wing"
+     },
+     "shots": [
+      {
+       "id": "sh05",
+       "w0": 31,
+       "type": "detail",
+       "subject": "lightning",
+       "action": "a bolt strikes the right wing; fire runs along it",
+       "shows": [
+        "propeller airliner"
+       ],
+       "events": []
+      }
+     ]
+    },
+    {
+     "id": "b06",
+     "claim": "the plane broke apart in the air",
+     "fact": "f_storm",
+     "proof": {
+      "item": "propeller airliner",
+      "how": "the wing separates and the fuselage opens"
+     },
+     "shots": [
+      {
+       "id": "sh06",
+       "w0": 33,
+       "type": "wide",
+       "subject": "propeller airliner",
+       "action": "the wing tears off and the fuselage breaks open; pieces scatter",
+       "shows": [
+        "falling debris"
+       ],
+       "events": []
+      }
+     ]
+    },
+    {
+     "id": "b07",
+     "claim": "still strapped to her seat, she fell two miles into the rainforest",
+     "fact": "f_fall",
+     "proof": {
+      "item": "seat_row",
+      "how": "her seat row spins down toward the canopy, belt fastened"
+     },
+     "shots": [
+      {
+       "id": "sh07",
+       "w0": 40,
+       "type": "medium",
+       "subject": "juliane",
+       "action": "Juliane, belted in, grips the armrest as the seat row spins",
+       "shows": [
+        "seat_row"
+       ],
+       "events": []
+      },
+      {
+       "id": "sh08",
+       "w0": 45,
+       "type": "wide",
+       "subject": "seat_row",
+       "action": "the seat row drops toward the canopy and vanishes through the leaves",
+       "shows": [
+        "seat_row",
+        "forest canopy far below"
+       ],
+       "events": []
+      }
+     ]
+    }
+   ],
+   "empty_reason": "everyone else is inside the breaking aircraft; we stay with her"
+  },
+  {
+   "id": "s5",
+   "relation": "location_change",
+   "relation_reason": "Where the fall ended.",
+   "tag": "THE NEXT MORNING \u00b7 JUNGLE FLOOR",
+   "timeline": "main",
+   "place": {
+    "id": "jungle_floor",
+    "kind": "exterior",
+    "desc": "Dense rainforest floor",
+    "period": "1971",
+    "public": false
+   },
+   "time": "dim green morning",
+   "cast": [
+    {
+     "id": "juliane",
+     "costume": "torn dress, one sandal, cut arm, swollen eye",
+     "holds": [],
+     "costume_reason": "the crash tore her dress and took a sandal",
+     "holds_reason": "she has unbuckled from the seat row"
+    }
+   ],
+   "crowd": {
+    "count": 0
+   },
+   "dressing": [
+    "giant buttress roots",
+    "hanging vines",
+    "ferns and broad leaves",
+    "shafts of light",
+    "scattered suitcases",
+    "a torn wing panel"
+   ],
+   "props_here": [
+    "seat_row",
+    "sweets_bag"
+   ],
+   "beats": [
+    {
+     "id": "b09",
+     "claim": "when she woke she was alone on the jungle floor",
+     "fact": "f_fall",
+     "proof": {
+      "item": "seat_row",
+      "how": "the seat row lies overturned beside her; no one else in any direction"
+     },
+     "shots": [
+      {
+       "id": "sh09",
+       "w0": 52,
+       "type": "wide",
+       "subject": "juliane",
+       "action": "she crawls from under the overturned seat row; forest in every direction, nobody else",
+       "shows": [
+        "seat_row"
+       ],
+       "events": []
+      }
+     ]
+    },
+    {
+     "id": "b10",
+     "claim": "ninety-one other people had died",
+     "fact": "f_dead",
+     "proof": {
+      "item": "scattered suitcases",
+      "how": "empty seats and burst suitcases among the roots, no people"
+     },
+     "shots": [
+      {
+       "id": "sh10",
+       "w0": 62,
+       "type": "detail",
+       "subject": "scattered suitcases",
+       "action": "burst suitcases and a wrapped present in the mud; empty seats beyond",
+       "shows": [
+        "a torn wing panel"
+       ],
+       "events": []
+      }
+     ]
+    },
+    {
+     "id": "b11",
+     "claim": "a broken collarbone, a swollen eye, deep cuts",
+     "fact": "f_inj",
+     "proof": {
+      "item": "juliane",
+      "how": "she holds her shoulder; one eye swollen shut; a cut down her arm"
+     },
+     "shots": [
+      {
+       "id": "sh11",
+       "w0": 67,
+       "type": "close",
+       "subject": "juliane",
+       "action": "she touches her collarbone and winces; one eye is swollen shut, a deep cut on her arm",
+       "shows": [],
+       "events": []
+      }
+     ]
+    }
+   ],
+   "empty_reason": "she is the only one alive; the empty forest is the point"
+  },
+  {
+   "id": "s6",
+   "relation": "flashback",
+   "relation_reason": "What she knows comes from her parents; we see where she learned it.",
+   "tag": "YEARS EARLIER \u00b7 HER PARENTS' FIELD STATION",
+   "timeline": "memory",
+   "place": {
+    "id": "field_station",
+    "kind": "exterior",
+    "desc": "Jungle research station by a stream",
+    "period": "late 1960s",
+    "public": false
+   },
+   "time": "sunny afternoon",
+   "cast": [
+    {
+     "id": "father",
+     "costume": "khaki shirt, binoculars",
+     "holds": [
+      "specimen_jar"
+     ]
+    },
+    {
+     "id": "mother",
+     "costume": "field clothes",
+     "holds": []
+    },
+    {
+     "id": "young_juliane",
+     "costume": "shorts, boots",
+     "holds": []
+    }
+   ],
+   "crowd": {
+    "count": 0
+   },
+   "dressing": [
+    "stilt hut with a thatched roof",
+    "work table with specimen jars",
+    "butterfly net",
+    "notebooks",
+    "stream",
+    "bird cages"
+   ],
+   "props_here": [],
+   "beats": [
+    {
+     "id": "b12",
+     "claim": "her parents were biologists",
+     "fact": "f_parents",
+     "proof": {
+      "item": "specimen_jar",
+      "how": "her father holds a specimen jar to the light at a table of them"
+     },
+     "shots": [
+      {
+       "id": "sh12",
+       "w0": 78,
+       "type": "medium",
+       "subject": "father",
+       "action": "her father holds a specimen jar to the light; her mother sketches a bird at the table",
+       "shows": [
+        "specimen_jar",
+        "mother",
+        "work table with specimen jars"
+       ],
+       "events": []
+      }
+     ]
+    },
+    {
+     "id": "b13",
+     "claim": "one thing her father taught her: find running water and follow it downstream",
+     "fact": "f_parents",
+     "proof": {
+      "item": "stream",
+      "how": "he points along the stream and a leaf floats the way he points"
+     },
+     "shots": [
+      {
+       "id": "sh13",
+       "w0": 82,
+       "type": "two_shot",
+       "subject": "father",
+       "action": "he crouches beside young Juliane at the stream and points the way the water runs",
+       "shows": [
+        "young_juliane",
+        "stream"
+       ],
+       "events": []
+      },
+      {
+       "id": "sh14",
+       "w0": 90,
+       "type": "detail",
+       "subject": "stream",
+       "action": "a leaf dropped in the stream drifts away downstream",
+       "shows": [
+        "stream"
+       ],
+       "events": []
+      }
+     ]
+    }
+   ],
+   "empty_reason": "a family alone at a remote station"
+  },
+  {
+   "id": "s7",
+   "relation": "continuation",
+   "relation_reason": "Back to the jungle floor: she acts on the memory.",
+   "tag": "",
+   "timeline": "main",
+   "place": {
+    "id": "jungle_floor",
+    "kind": "exterior",
+    "desc": "Rainforest floor at a small creek",
+    "period": "1971",
+    "public": false
+   },
+   "time": "dim green morning",
+   "cast": [
+    {
+     "id": "juliane",
+     "costume": "torn dress, one sandal, cut arm, swollen eye",
+     "holds": [
+      "sweets_bag"
+     ],
+     "holds_reason": "she picked the bag of sweets out of the wreckage"
+    }
+   ],
+   "crowd": {
+    "count": 0
+   },
+   "dressing": [
+    "giant buttress roots",
+    "hanging vines",
+    "ferns and broad leaves",
+    "a trickling creek",
+    "shafts of light",
+    "mossy stones"
+   ],
+   "props_here": [],
+   "beats": [
+    {
+     "id": "b15",
+     "claim": "water leads to people",
+     "fact": "f_parents",
+     "proof": {
+      "item": "a trickling creek",
+      "how": "she finds a creek and steps into it, facing downstream"
+     },
+     "shots": [
+      {
+       "id": "sh15",
+       "w0": 97,
+       "type": "medium",
+       "subject": "juliane",
+       "action": "she hears water, parts the ferns, finds a creek and steps into it facing downstream",
+       "shows": [
+        "a trickling creek",
+        "sweets_bag"
+       ],
+       "events": []
+      }
+     ]
+    }
+   ],
+   "empty_reason": "still alone"
+  },
+  {
+   "id": "s8",
+   "relation": "montage",
+   "relation_reason": "Ten days compressed into four images of what it cost.",
+   "tag": "DAYS 2 TO 9",
+   "timeline": "main",
+   "place": {
+    "id": "jungle_river",
+    "kind": "exterior",
+    "desc": "Widening jungle stream",
+    "period": "1971",
+    "public": false
+   },
+   "time": "changing light, rain",
+   "cast": [
+    {
+     "id": "juliane",
+     "costume": "torn dress, one sandal, cut arm, swollen eye",
+     "holds": [
+      "sweets_bag"
+     ]
+    }
+   ],
+   "crowd": {
+    "count": 0
+   },
+   "dressing": [
+    "widening stream",
+    "overhanging trees",
+    "fallen log",
+    "rain",
+    "sand bank",
+    "a seat row in the shallows"
+   ],
+   "props_here": [],
+   "beats": [
+    {
+     "id": "b16",
+     "claim": "she followed the water for ten days",
+     "fact": "f_trek",
+     "proof": {
+      "item": "widening stream",
+      "how": "she wades the middle of a stream that grows wider"
+     },
+     "shots": [
+      {
+       "id": "sh16",
+       "w0": 101,
+       "type": "wide",
+       "subject": "juliane",
+       "action": "she wades down the middle of the stream; the banks pull apart as it widens",
+       "shows": [
+        "widening stream"
+       ],
+       "events": []
+      }
+     ]
+    },
+    {
+     "id": "b17",
+     "claim": "she ran out of food",
+     "fact": "f_trek",
+     "proof": {
+      "item": "sweets_bag",
+      "how": "she tips the bag: empty"
+     },
+     "shots": [
+      {
+       "id": "sh17",
+       "w0": 109,
+       "type": "detail",
+       "subject": "sweets_bag",
+       "action": "she tips the paper bag over her palm; nothing falls out, and she lets it go",
+       "shows": [
+        "sweets_bag"
+       ],
+       "events": [
+        {
+         "do": "drop",
+         "prop": "sweets_bag",
+         "who": "juliane"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "b18",
+     "claim": "maggots burrowed into her wounds",
+     "fact": "f_trek",
+     "proof": {
+      "item": "juliane",
+      "how": "she looks at the cut on her arm and turns her face away"
+     },
+     "shots": [
+      {
+       "id": "sh18",
+       "w0": 114,
+       "type": "close",
+       "subject": "juliane",
+       "action": "she looks at the wound on her arm, flinches and turns away; flies circle",
+       "shows": [],
+       "events": []
+      }
+     ]
+    },
+    {
+     "id": "b19",
+     "claim": "she passed the bodies of other passengers",
+     "fact": "f_trek",
+     "proof": {
+      "item": "a seat row in the shallows",
+      "how": "a seat row half under water, seen from behind; she does not look"
+     },
+     "shots": [
+      {
+       "id": "sh19",
+       "w0": 119,
+       "type": "wide",
+       "subject": "juliane",
+       "action": "she passes a seat row half sunk in the shallows, seen from behind, and keeps her eyes ahead",
+       "shows": [
+        "a seat row in the shallows"
+       ],
+       "events": []
+      }
+     ]
+    }
+   ],
+   "empty_reason": "alone for ten days"
+  },
+  {
+   "id": "s9",
+   "relation": "time_jump",
+   "relation_reason": "The stream finally leads somewhere.",
+   "tag": "DAY 10",
+   "timeline": "main",
+   "place": {
+    "id": "hut_bank",
+    "kind": "exterior",
+    "desc": "River bank with a moored boat and a hut",
+    "period": "1972",
+    "public": false
+   },
+   "time": "late afternoon",
+   "cast": [
+    {
+     "id": "juliane",
+     "costume": "torn dress, one sandal, cut arm, swollen eye",
+     "holds": [],
+     "holds_reason": "she dropped the empty bag in the stream"
+    }
+   ],
+   "crowd": {
+    "count": 0
+   },
+   "dressing": [
+    "river",
+    "mud bank",
+    "palm-thatch hut",
+    "fuel can",
+    "path up the bank",
+    "jungle wall"
+   ],
+   "props_here": [
+    "canoe"
+   ],
+   "beats": [
+    {
+     "id": "b20",
+     "claim": "on the tenth day she found a small boat and a hut",
+     "fact": "f_hut",
+     "proof": {
+      "item": "canoe",
+      "how": "a boat tied at the bank, a hut above it"
+     },
+     "shots": [
+      {
+       "id": "sh20",
+       "w0": 126,
+       "type": "wide",
+       "subject": "canoe",
+       "action": "round a bend: a small boat tied at the bank and a thatched hut above it",
+       "shows": [
+        "canoe",
+        "palm-thatch hut"
+       ],
+       "events": []
+      },
+      {
+       "id": "sh21",
+       "w0": 131,
+       "type": "medium",
+       "subject": "juliane",
+       "action": "she drags herself up the bank, touches the boat to be sure it is real, and lies down under the hut roof",
+       "shows": [
+        "canoe"
+       ],
+       "events": []
+      }
+     ]
+    }
+   ],
+   "empty_reason": "the hut is empty when she arrives"
+  },
+  {
+   "id": "s10",
+   "relation": "time_jump",
+   "relation_reason": "One more night, then people.",
+   "tag": "DAY 11",
+   "timeline": "main",
+   "place": {
+    "id": "hut_bank",
+    "kind": "exterior",
+    "desc": "The same hut, next day",
+    "period": "1972",
+    "public": false
+   },
+   "time": "morning",
+   "cast": [
+    {
+     "id": "juliane",
+     "costume": "torn dress, one sandal, cut arm, swollen eye",
+     "holds": []
+    },
+    {
+     "id": "logger_1",
+     "costume": "straw hat, work shirt",
+     "holds": []
+    },
+    {
+     "id": "logger_2",
+     "costume": "rolled sleeves",
+     "holds": []
+    },
+    {
+     "id": "logger_3",
+     "costume": "old work shirt",
+     "holds": []
+    }
+   ],
+   "crowd": {
+    "count": 0
+   },
+   "dressing": [
+    "river",
+    "mud bank",
+    "palm-thatch hut",
+    "fuel can",
+    "path up the bank",
+    "jungle wall"
+   ],
+   "props_here": [
+    "canoe"
+   ],
+   "beats": [
+    {
+     "id": "b22",
+     "claim": "loggers found her there the next day",
+     "fact": "f_hut",
+     "proof": {
+      "item": "logger_1",
+      "how": "three forest workers stop dead at the sight of her under the hut"
+     },
+     "shots": [
+      {
+       "id": "sh22",
+       "w0": 138,
+       "type": "wide",
+       "subject": "logger_1",
+       "action": "three forest workers come down the path and stop: a girl is lying under their hut",
+       "shows": [
+        "logger_2",
+        "logger_3",
+        "palm-thatch hut"
+       ],
+       "events": []
+      }
+     ]
+    },
+    {
+     "id": "b23",
+     "claim": "out of ninety-two people she was the only one who survived",
+     "fact": "f_dead",
+     "proof": {
+      "item": "label:1 OF 92",
+      "how": "they help her into the boat; the count sits over the river"
+     },
+     "shots": [
+      {
+       "id": "sh23",
+       "w0": 145,
+       "type": "two_shot",
+       "subject": "juliane",
+       "action": "one of them kneels and gives her water; she manages a few words",
+       "shows": [
+        "logger_1"
+       ],
+       "events": []
+      },
+      {
+       "id": "sh24",
+       "w0": 149,
+       "type": "wide",
+       "subject": "canoe",
+       "action": "they carry her to the boat and push off down the river",
+       "shows": [
+        "canoe",
+        "label:1 OF 92"
+       ],
+       "events": []
+      }
+     ]
+    }
+   ],
+   "empty_reason": "three workers at a remote camp"
+  }
+ ]
+}

@@ -194,3 +194,24 @@ Builder's target for the finished pipeline is about 7.5/10 overall. This is a hy
 - How much of the framing gate geometry alone can settle; measure false passes against the stills layer.
 - Character style (decision 1) is decided by the owner after the three benchmark films.
 - Which free storage holds job artifacts, and its size and retention limits.
+
+## 10. Implementation checklist (from the v2.1 review; not a redesign)
+
+- [x] Timelines: a hook, flashback or parallel scene keeps its own continuity snapshot; the first scene's
+      relation is `opening`. Built into the story plan and its validator.
+- [x] Originality and licence rules restored (`director/DIRECTOR.md`; each plan carries an `originality` block).
+      Music licence must be recorded before delivery: not yet done for the existing track.
+- [ ] Style decision by direct comparison: one representative scene in flat 2D and in 3D toon, same set, camera,
+      narration and action, before the cast library is locked.
+- [ ] Duration target: the three test scripts run 40 s; the earlier target was 50-60 s. Owner to decide.
+- [ ] Gemini verdicts: every finding carries timestamp, frame reference, defect category and a specific claim;
+      test against videos with known defects; an inconclusive result is never a pass; owner review stays in
+      place through the benchmark.
+
+## 11. Milestone 1 status (Story Director)
+
+Built: `director/plan_tool.py` (validate, render), `director/DIRECTOR.md`, and plans for db_cooper,
+jungle_fall and lightning_man in `director/plans/`. All three pass the validator with fact warnings.
+The plans were written by the director model following DIRECTOR.md; nothing has been rendered from them.
+Awaiting owner review before any library work.
+
