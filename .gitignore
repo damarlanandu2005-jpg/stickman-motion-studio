@@ -8,3 +8,7 @@ mine/*/frames/
 # Ricks projects keep their 3D models in the repo
 !ricks/projects/*/models/
 !ricks/library/models/
+
+# local render/verification artifacts
+ricks/stage/out_stills/
+ricks/stage/out.mp4
