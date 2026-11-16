@@ -386,21 +386,44 @@ async function makeProp(p) {
     const [w, h] = p.size || [2, 2], t = await texture(p.image);
     const m = add(new THREE.PlaneGeometry(w, h), new THREE.MeshBasicMaterial({ map: t, transparent: true, alphaTest: 0.05, side: THREE.DoubleSide, toneMapped: false }), h / 2); m.userData.noInk = true; m.userData.tint = true;
   } else if (p.type === 'cabin') {
-    // airplane fuselage interior section: floor, two side walls with window rows, overhead bins, arched ceiling.
-    // Passengers come from a 'crowd' (style seated) placed inside. Aisle runs along Z. p.size = [width, height, length].
-    const [w, h, d] = size3(p.size, [6, 2.6, 16]);
-    const lift = (m, c, i) => { m = m.clone(); if (m.emissive) { m.emissive.set(c); m.emissiveIntensity = i; } return m; };   // interior is self-lit so the sun being outside doesn't leave it black
-    const shell = lift(await surface(p.color || '#d4d8de'), p.color || '#aeb4be', 0.5);
+    // airplane fuselage interior: self-lit shell (walls, windows, bins, arched ceiling) PLUS real 3D seat rows
+    // with seated passengers receding down the aisle, so it reads with depth (not a flat crowd billboard).
+    // Aisle runs along -Z (away from camera). p.size = [width, height, length]. p.seatRows auto from length.
+    const [w, h, d] = size3(p.size, [6, 2.6, 20]);
+    const lift = (m, c, i) => { m = m.clone(); if (m.emissive) { m.emissive.set(c); m.emissiveIntensity = i; } return m; };
+    const shell = lift(await surface(p.color || '#d6dae0'), p.color || '#b2b8c2', 0.5);
     const binM = lift(await surface(p.trim || '#bcc0c8'), p.trim || '#9aa0aa', 0.45);
-    const glass = lift(await surface(p.window || '#cfe6fb'), '#eaf4ff', 1.6);
+    const glass = lift(await surface(p.window || '#cfe6fb'), '#eaf4ff', 1.7);
     const floorM = lift(await surface(p.floor || '#6a6e76'), '#4a4e56', 0.35);
-    add(new THREE.BoxGeometry(w, 0.08, d), floorM, 0.04);
+    add(new THREE.BoxGeometry(w, 0.08, d), floorM, 0.04).position.z = -d / 2 + 1;
     for (const sx of [-1, 1]) {
-      const wall = add(new THREE.BoxGeometry(0.14, h * 0.72, d), shell, h * 0.36); wall.position.x = sx * w / 2;
-      const bin = add(new THREE.BoxGeometry(0.55, 0.38, d), binM, h * 0.82); bin.position.x = sx * (w / 2 - 0.42);
+      const wall = add(new THREE.BoxGeometry(0.14, h * 0.72, d), shell, h * 0.36); wall.position.set(sx * w / 2, h * 0.36, -d / 2 + 1);
+      const bin = add(new THREE.BoxGeometry(0.5, 0.36, d), binM, h * 0.82); bin.position.set(sx * (w / 2 - 0.4), h * 0.82, -d / 2 + 1);
       const nW = Math.max(3, Math.floor(d / 2.4)), gap = (d - 2.8) / Math.max(1, nW - 1);
       for (let i = 0; i < nW; i++) { const wd = add(new THREE.BoxGeometry(0.05, 0.42, 0.26), glass, h * 0.46); wd.position.set(sx * (w / 2 - 0.08), h * 0.46, -d / 2 + 1.4 + i * gap); }
-      const cp = add(new THREE.BoxGeometry(w * 0.58, 0.1, d), shell, h * 1.0); cp.position.set(sx * w * 0.25, h * 1.0, 0); cp.rotation.z = -sx * 0.38;
+      const cp = add(new THREE.BoxGeometry(w * 0.58, 0.1, d), shell, h * 1.0); cp.position.set(sx * w * 0.25, h * 1.0, -d / 2 + 1); cp.rotation.z = -sx * 0.38;
+    }
+    // seat rows + seated passengers, receding down the aisle
+    const aisle = p.aisle || 1.4, perSide = p.perSide || 2, seatW = Math.max(0.5, (w - aisle - 0.5) / 2 / perSide);
+    const rows = p.seatRows || Math.max(5, Math.floor((d - 1.5) / 1.15));
+    const skins = ['#f4d9bf', '#ecc6a6', '#dcab82', '#c08b5e', '#9a6a44', '#7a4e32'];
+    const shirts = ['#3a4a6a', '#7a3b3b', '#4a6a4a', '#6a5a3a', '#5a4a6a', '#2f4858', '#8a6a3a', '#55606b', '#7a5a4a'];
+    const skinM = await Promise.all(skins.map(async c => lift(await surface(c), c, 0.6)));   // self-lit so passengers read in the dim interior
+    const shirtM = await Promise.all(shirts.map(async c => lift(await surface(c), c, 0.45)));
+    const seatM = lift(await surface(p.seat || '#4a586e'), '#38445a', 0.4);
+    let s0 = ((p.seed || 5) >>> 0) || 5; const rnd = () => (s0 = (s0 * 1664525 + 1013904223) >>> 0, s0 / 4294967296);
+    for (let r = 0; r < rows; r++) {
+      const z = 0.2 - 0.9 - r * ((d - 1.6) / rows);
+      for (const sd of [-1, 1]) for (let s = 0; s < perSide; s++) {
+        const x = sd * (aisle / 2 + 0.1 + (s + 0.5) * seatW);
+        add(new THREE.BoxGeometry(seatW * 0.92, 0.12, 0.56), seatM, 0.46).position.set(x, 0.46, z);          // seat base
+        add(new THREE.BoxGeometry(seatW * 0.92, 0.6, 0.12), seatM, 0.78).position.set(x, 0.78, z - 0.26);     // seat back
+        if (rnd() < 0.82) {                                                                                   // passenger
+          const sh = shirtM[(rnd() * shirtM.length) | 0], sk = skinM[(rnd() * skinM.length) | 0];
+          add(new THREE.BoxGeometry(seatW * 0.6, 0.46, 0.32), sh, 0.82).position.set(x, 0.82, z + 0.02);      // torso
+          add(new THREE.SphereGeometry(0.17, 12, 10), sk, 1.16).position.set(x + (rnd() - 0.5) * 0.06, 1.16, z + 0.04);  // head
+        }
+      }
     }
   } else if (p.type === 'crowd') {
     const [w, h] = p.size || [8, 3];
