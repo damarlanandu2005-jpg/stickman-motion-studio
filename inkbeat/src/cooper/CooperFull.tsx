@@ -136,16 +136,16 @@ const scene = (t: number): Scene => {
   // ---------- E: low and slow toward Mexico (21.1 – 24.9) ----------
   if (t < 24.9) {
     const u = (t - 21.1) / 3.8;
-    const pl: V3 = [lerp(-9, 5, u), 8.5, -16];
+    const pl: V3 = [lerp(-8, 4, u), 7.5, -22];
     const cam = aim([0, 1.4, 6], [pl[0] * 0.7, pl[1], pl[2]], 50, 0.36);
     return {
       mood: "night", cam, focus: pl, sky: true, light: pl,
       kids: (
         <>
           <Ground c="#1c2a24" tex="grass" />
-          <Forest n={60} x={[-30, 30]} z={[-40, -8]} seed={8} s={1.6} dark />
+          <Forest n={60} x={[-40, 40]} z={[-70, -30]} seed={8} s={1.5} dark />
           <Plane p={pl} yaw={0} />
-          {t > 23.0 ? <Label text="MEXICO →" p={[pl[0] + 1, 5.6, -15]} w={3.4} h={0.8} fg="#1a1416" bg="#e8c24a" font={0.66} /> : null}
+          {t > 23.0 ? <Label text="MEXICO →" p={[pl[0] * 0.7, 4.4, -18]} w={3.6} h={0.85} fg="#1a1416" bg="#e8c24a" font={0.66} /> : null}
         </>
       ),
     };
@@ -185,7 +185,7 @@ const scene = (t: number): Scene => {
           <Ground c="#4d7a48" tex="grass" />
           <Forest n={80} x={[-22, 22]} z={[-40, -1]} seed={21} s={1.5} gap={2.6} />
           <Pine p={[-2.9, 0, -4.6]} s={1.5} /><Pine p={[2.9, 0, -5.2]} s={1.7} />
-          <Label text="FBI" p={[0, 3.3, -6]} w={1.5} h={0.7} fg="#f3ead6" bg="#2a3550" font={0.72} />
+          <Label text="FBI" p={[0.1, 2.75, -3.9]} w={1.0} h={0.46} fg="#f3ead6" bg="#2a3550" font={0.72} />
           <Character3D {...FBI1} position={a} yaw={0.5} t={t} face={{ eyes: "squint", mouth: "frown", brows: "worried", look: 0.4 }} pose={{ armL: [10, 10], armR: [60, 70], walk: t * 5 }} faceCamera={cam.pos} />
           <Character3D {...FBI2} position={b} yaw={-0.4} t={t} face={{ eyes: "squint", mouth: "flat", brows: "worried", look: -0.4 }} pose={{ armL: [50, 60], armR: [10, 10], walk: t * 5 + 2 }} faceCamera={cam.pos} />
         </>
@@ -210,7 +210,7 @@ const scene = (t: number): Scene => {
           <Forest n={50} x={[-26, 26]} z={[-40, -16]} seed={31} s={1.6} />
           <M g={boxG(0.34, 0.16, 0.2)} c="#5d8a4a" p={[0.12, 0.8, -2.25]} />
           <M g={boxG(0.36, 0.05, 0.22)} c="#e9e6de" p={[0.12, 0.8, -2.25]} />
-          <Label text="1980" p={[1.25, 1.7, -3.4]} w={1.0} h={0.46} fg="#1a1416" bg="#e8c24a" font={0.7} />
+          <Label text="1980" p={[0.55, 1.85, -3.4]} w={0.9} h={0.42} fg="#1a1416" bg="#e8c24a" font={0.7} />
           <Character3D {...BOY} position={b} yaw={0.5} t={t} face={{ eyes: "wide", mouth: "grin", brows: "raised", look: 0.3 }} pose={{ armL: [10, 10], armR: [55, 80], headTilt: -4, headNod: 6 }} faceCamera={cam.pos} />
         </>
       ),
