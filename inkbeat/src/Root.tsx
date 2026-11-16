@@ -6,6 +6,7 @@ import { DemoMove, MOVE_FRAMES } from "./demo/DemoMove";
 import { SUB } from "./inkbeat/core/frame";
 import { LustigPilot, PILOT_FRAMES } from "./pilot/LustigPilot";
 import { CooperCabin, COOPER_FRAMES } from "./cooper/CooperCabin";
+import { CooperFull, COOPER_FULL_FRAMES } from "./cooper/CooperFull";
 
 // DemoHero: a low hero framing with foreground props. Demo: one still. Demo-<mood>: the same frame in each act light. DemoWide: the whole set.
 // DemoCast: the three example characters in a row (a landscape family sheet).
@@ -22,6 +23,7 @@ export const Root: React.FC = () => (
     <Composition id="DemoMove" component={DemoMove} durationInFrames={MOVE_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ sub: false }} />
     <Composition id="LustigPilot" component={LustigPilot} durationInFrames={PILOT_FRAMES} fps={30} width={1080} height={1920} defaultProps={{ sub: false }} />
     <Composition id="LustigPilotSub" component={LustigPilot} durationInFrames={PILOT_FRAMES * SUB} fps={30 * SUB} width={1080} height={1920} defaultProps={{ sub: true }} />
+    <Composition id="CooperFull" component={CooperFull} durationInFrames={COOPER_FULL_FRAMES} fps={30} width={1080} height={1920} />
     <Composition id="CooperCabin" component={CooperCabin} durationInFrames={COOPER_FRAMES} fps={30} width={1080} height={1920} />
     <Composition id="DemoMoveSub" component={DemoMove} durationInFrames={MOVE_FRAMES * SUB} fps={30 * SUB} width={1080} height={1920} defaultProps={{ sub: true }} />
   </>
