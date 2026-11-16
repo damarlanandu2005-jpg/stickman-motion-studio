@@ -21,6 +21,9 @@ export const COOPER_FULL_FRAMES = 1206; // 40.2 s @ 30
 const CHUNKS = makeChunks(WORDS, COOPER_FULL_FRAMES / 30);
 const ACCENT = new Set(["hijacked", "bomb.", "parachutes.", "leapt", "never", "unsolved", "Cooper."]);
 
+const CUTS = [5.3, 9.3, 17.5, 21.1, 24.9, 29.9, 32.6, 36.5];
+// where and when each scene is, shown as a tag at its start so every cut has a reason
+const SLUGS: [number, string][] = [[5.3, "NOV 24, 1971 · PORTLAND AIRPORT"], [9.3, "FLIGHT 305 · IN THE AIR"], [17.5, "SEATTLE · ON THE GROUND"], [21.1, "AIRBORNE AGAIN · 7:40 PM"], [24.9, "OVER WASHINGTON · 8:13 PM"], [29.9, "THE MANHUNT"], [32.6, "9 YEARS LATER · COLUMBIA RIVER"], [36.5, "TODAY · STILL MISSING"]];
 const lerp = (a: number, b: number, u: number) => a + (b - a) * u;
 const ease = (u: number) => { const x = Math.min(1, Math.max(0, u)); return x * x * (3 - 2 * x); };
 const mix = (a: V3, b: V3, u: number): V3 => [lerp(a[0], b[0], u), lerp(a[1], b[1], u), lerp(a[2], b[2], u)];
@@ -85,6 +88,7 @@ const scene = (t: number): Scene => {
           {t > 6.3 ? <Label text="DAN COOPER" p={[0, 1.5, -1.5]} r={[0, 0, 0.05]} w={0.95} h={0.34} fg="#1a1416" bg="#f3ead6" font={0.5} /> : null}
           <M g={boxG(0.5, 0.36, 0.14)} c="#2b2224" p={[-1.35, 0.5, -1.7]} />
           <Character3D {...COOPER} position={c} yaw={0.85} t={t} face={{ eyes: "open", mouth: "smile", brows: "neutral", look: 0.3 }} pose={{ armL: [10, 10], armR: [40, 50], headTilt: -2 }} faceCamera={cam.pos} />
+          {PAX.map((s2, i) => <Character3D key={i} {...s2} position={[lerp(-2.2, 1.6, (u + i * 0.33) % 1), 0, -3.4 - i * 0.35]} yaw={1.57} t={t} face={NEUTRAL} pose={{ armL: [10, 10], armR: [10, 10], walk: t * 6 + i * 2 }} />)}
           <Character3D {...AGENT} position={a} yaw={-0.85} t={t} face={{ eyes: "open", mouth: "smile", brows: "raised", look: -0.3 }} pose={{ armL: [30, 40], armR: [10, 10], headTilt: 2 }} faceCamera={cam.pos} />
         </>
       ),
@@ -123,12 +127,13 @@ const scene = (t: number): Scene => {
       mood: "dusk", cam, focus: head, sky: true, light: head,
       kids: (
         <>
-          <Ground c="#6d6f78" tex="stone" />
+          <M g={boxG(240, 0.2, 240)} c="#474c59" p={[0, -0.1, -40]} />
           <Plane p={[0.5, 2.45, -17]} gear />
+          {[-6, -2, 2, 6].map((x) => <M key={x} g={boxG(1.6, 0.02, 0.22)} c="#e9e6de" p={[x, 0.02, -6.5]} />)}
           <M g={boxG(60, 0.02, 0.3)} c="#e8c24a" p={[0, 0.02, -9]} />
           <Character3D {...ATT} position={a} yaw={2.6} t={t} face={{ eyes: "open", mouth: "flat", brows: "worried", look: 0 }} pose={{ armL: [20, 30], armR: [20, 30], walk: t * 7 }} faceCamera={cam.pos} />
           <MoneyBag p={[a[0] + 0.5, 0.5, a[2] + 0.15]} s={0.9} />
-          {PAX.map((s, i) => { const p: V3 = [lerp(0.5, 1.3, u) + i * 0.8, 0, -2.4 - i * 1.0]; return <Character3D key={i} {...s} position={p} yaw={1.2} t={t} face={{ eyes: "open", mouth: "smile", brows: "raised", look: 0 }} pose={{ armL: [10, 10], armR: [10, 10], walk: t * 7 + i * 2 }} faceCamera={cam.pos} />; })}
+          {Array.from({ length: 9 }, (_, i) => { const s = PAX[i % 3]; const p: V3 = [lerp(0.3, 1.0, u) + (i % 3) * 0.75 + (i > 2 ? 0.3 : 0), 0, -2.2 - Math.floor(i / 3) * 1.5 - (i % 3) * 0.35]; return <Character3D key={i} {...s} position={p} yaw={1.2} t={t} face={{ eyes: "open", mouth: "smile", brows: "raised", look: 0 }} pose={{ armL: [10, 10], armR: [10, 10], walk: t * 7 + i * 2 }} faceCamera={cam.pos} />; })}
         </>
       ),
     };
@@ -157,7 +162,7 @@ const scene = (t: number): Scene => {
     const stand: V3 = [-8.15, 2.72, 0];
     const c: V3 = [stand[0] - fall * 2.4, stand[1] + fall * 1.6 - fall * fall * 7.5, 0];
     const head = headOf(fall > 0 ? c : stand, 1.78, BLOCK);
-    const cam = aim(mix([-13.5, 3.2, 6.5], [-12.5, 2.4, 5.2], ease(u)), [-7.6, fall > 0 ? Math.max(1.5, head[1]) : 4.1, 0], 52, 0.42);
+    const cam = aim(mix([-13.5, 3.2, 6.5], [-12.5, 2.4, 5.2], ease(u)), [c[0] + 0.6, Math.max(0.5, head[1] - 0.2), 0], 52, 0.42);
     return {
       mood: "night", cam, focus: head, sky: true, light: head,
       kids: (
@@ -185,7 +190,6 @@ const scene = (t: number): Scene => {
           <Ground c="#4d7a48" tex="grass" />
           <Forest n={80} x={[-22, 22]} z={[-40, -1]} seed={21} s={1.5} gap={2.6} />
           <Pine p={[-2.9, 0, -4.6]} s={1.5} /><Pine p={[2.9, 0, -5.2]} s={1.7} />
-          <Label text="FBI" p={[0.1, 2.75, -3.9]} w={1.0} h={0.46} fg="#f3ead6" bg="#2a3550" font={0.72} />
           <Character3D {...FBI1} position={a} yaw={0.5} t={t} face={{ eyes: "squint", mouth: "frown", brows: "worried", look: 0.4 }} pose={{ armL: [10, 10], armR: [60, 70], walk: t * 5 }} faceCamera={cam.pos} />
           <Character3D {...FBI2} position={b} yaw={-0.4} t={t} face={{ eyes: "squint", mouth: "flat", brows: "worried", look: -0.4 }} pose={{ armL: [50, 60], armR: [10, 10], walk: t * 5 + 2 }} faceCamera={cam.pos} />
         </>
@@ -233,6 +237,13 @@ export const CooperFull: React.FC = () => {
         {s.kids}
         <CastLight at={s.light} cam={s.cam.pos} mood={m} />
       </View>
+      {SLUGS.map(([t0, text]) => {
+        const d = t - t0;
+        if (d < 0 || d > 2.6) return null;
+        const o = Math.min(1, d / 0.25) * Math.min(1, (2.6 - d) / 0.3);
+        return <div key={t0} style={{ position: "absolute", top: 210, left: 0, right: 0, display: "flex", justifyContent: "center", opacity: o }}><div style={{ fontFamily: "Poppins", fontWeight: 800, fontSize: 40, letterSpacing: 2, color: "#f3ead6", background: "rgba(20,22,30,0.82)", padding: "14px 30px", borderRadius: 12, border: "3px solid #e8c24a" }}>{text}</div></div>;
+      })}
+      <AbsoluteFill style={{ background: "#0c0e14", opacity: Math.max(0, ...CUTS.map((c) => 1 - Math.abs(t - c) / 0.16)) }} />
       <Captions chunks={CHUNKS} t={t} accent={ACCENT} />
     </AbsoluteFill>
   );
