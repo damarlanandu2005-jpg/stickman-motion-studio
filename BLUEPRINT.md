@@ -1,6 +1,6 @@
-# Blueprint v2: script-to-Short production engine (2026-11-16)
+# Blueprint v2.1: script-to-Short production engine (2026-11-16)
 
-Supersedes v1 (same date). Folds in an outside review. Nothing in sections 3-8 is built yet unless marked
+Supersedes v1 and v2 (same date). Folds in two rounds of outside review; v2.1 changes are marked (v2.1). Nothing in sections 3-8 is built yet unless marked
 "exists". Scores are the builder's estimates and are targets to test, not predictions.
 
 Goal: the owner supplies a narration script; the system delivers a finished 40-60 s vertical animated Short
@@ -8,9 +8,10 @@ that has passed its own checks, with no human fixing.
 
 ## 1. Decisions
 
-1. **Look:** inkbeat's toon-shaded 3D figures replace the flat bean. This changes the original target (flat 2D
-   characters in a 3D world). Recorded as the owner's choice after viewing both db_cooper films; reversible
-   until the character library is built.
+1. **Look (provisional, v2.1):** inkbeat's toon-shaded 3D figure is the leading candidate, not a locked choice.
+   The original target was flat 2D characters in a 3D world. The owner decides after three complete automated
+   films. Until then the cast library stores roles and attributes (age, period, costume, colours), not
+   inkbeat-specific rig settings, so the figure style can still change.
 2. **Two problems, two layers.** The visual system (characters, sets, light, animation) and the directing
    system (story, scene relationships, framing, proof) are built and scored separately.
 3. **Scene data, not generated code.** The director outputs a schema-validated scene file. A fixed library of
@@ -80,8 +81,12 @@ Each item carries metadata the gate can read. A plan that needs something missin
 item (recorded as a fallback) or blocks if the item is the scene's proof.
 
 ### Stage 4. Scene IR (new)
-`scene_ir.json`, validated against a JSON schema. Renderer-neutral: names from the library, positions in set
-slots, camera as shot type + subject + move, timings from `words.json`. Illustrative shape:
+`scene_ir.json`, validated against a JSON schema. Two parts, kept apart (v2.1):
+- **Semantic scene data** (renderer-neutral): what must be shown, who acts, what they hold, what the camera
+  must communicate, in a fixed vocabulary (`walk_with_prop`, `hand_over`, `medium_wide`, `interior_night`).
+- **Renderer adapter** (inkbeat-specific, separate file and code): maps each vocabulary term to a component,
+  rig action, set slot, mood and camera rig. A term with no adapter entry fails validation.
+The semantic file never names an inkbeat component. Illustrative semantic shape:
 
 ```json
 { "scene": "s04", "set": "tarmac", "time": "dusk", "relation": "location_change",
@@ -99,18 +104,30 @@ ones are dropped.
 the camera frustum with a safe margin at shot start, middle and end; nothing in the library's bounds lies
 between camera and subject or proof; interior sets are enclosed and the mood is an interior one; cast and crowd
 counts meet the set's minimum; continuity state holds.
-**Stills (one frame per shot, low resolution):** face visible and large enough; proof visible; brightness and
-contrast in range; tag and captions do not cover faces; frame is not mostly empty.
-**Auto-fix, then re-check:** re-aim or pull back the camera, move a tag, raise a crowd count, switch to an
-interior mood, swap to the nearest library item (non-proof only). Anything else blocks.
+**Stills (sampled per shot, low resolution; v2.1):** shot start, each key action moment, the proof moment, shot
+end. A static shot may use two samples; a moving camera or a prop interaction uses all four or more. Checks:
+face visible and large enough; proof visible; the action's state is correct at its moment (prop in hand after
+a pickup, gone after a hand-over); brightness and contrast in range; tag and captions do not cover faces;
+frame is not mostly empty.
+**Repairs (v2.1).** Every repair is logged and the shot is re-checked; a repair is never assumed to work.
+
+| Allowed automatically | Must block or go back to the director |
+|---|---|
+| Small camera re-aim, pull-back, margin change | Changing or dropping a proof item |
+| Moving captions and tags | Anything that changes period or historical context |
+| Minor light or exposure correction | Replacing a required character |
+| Swapping a non-critical dressing item for a same-period one | Changing what an action means |
+| | Changing a crowd count the plan set on purpose |
 
 ### Stage 6. Compiler and renderer
 A single generic inkbeat composition reads `scene_ir.json` and mounts library components. Render on Kaggle with
 the proven recipe (NVIDIA userspace driver, `--gl=angle-egl`). GitHub Actions only orchestrates.
 
 ### Stage 7. Post-render QA
-Deterministic: duration matches the voice, audio present and at target loudness, no black or frozen stretches,
-flicker measure under threshold. Gemini watch: given the story plan, confirm each scene shows its proof and
+Deterministic, code-enforced (v2.1): 1080x1920 at 30 fps; valid MP4 that decodes end to end; duration matches
+the voice; no black, blank or frozen stretches; flicker under threshold; audio present, no clipping, no
+unintended silence, target loudness, voice-to-music balance in range; narration in sync with word timings;
+every caption present, on time and inside safe margins. Gemini watch: given the story plan, confirm each scene shows its proof and
 action and list timestamped defects. Defects map back to a scene and trigger a repair round.
 
 ### Stage 8. Delivery and learning
@@ -121,10 +138,13 @@ successful. New library items are saved for reuse.
 ## 4. Infrastructure assumptions
 
 - GitHub Actions: orchestration and state only (no GPU runners are used).
-- Kaggle is a best-effort worker. It always runs T4 x2 (the P100 is retired and silently substituted), may
-  queue, and has a weekly GPU quota. Jobs must be resumable: every stage writes its output to the repo, so a
-  job restarts from the last finished stage.
-- Avoid stacking sessions: all gate stills render on CPU or in one short GPU session; one full render per job.
+- Kaggle is a best-effort worker. It runs T4 x2 (the P100 is retired and substituted), may queue, and has a
+  weekly GPU quota. Quota and availability are checked at job start, never assumed.
+- **Checkpoints (v2.1):** every stage writes a durable checkpoint so a job resumes from the last finished
+  stage. Git holds code, schemas, plans and the job record (a manifest with file hashes). Generated stills,
+  renders and intermediates go to storage outside Git history (GitHub release assets or Actions artifacts).
+- **Render count (v2.1):** one full render active at a time; at most three repair rounds per job, each of which
+  may re-render. Gate stills run on CPU or in one short GPU session.
 - "Free" means no paid compute, not guaranteed turnaround. Per-video cost and time are measured in stage 8.
 
 ## 5. What is kept, changed, retired
@@ -137,12 +157,13 @@ successful. New library items are saved for reuse.
 
 ## 6. Build order
 
-1. Story director and `story_plan.json` (fixes "no meaning between scenes"; engine-independent).
-2. Scene IR schema and validator.
+1. Story director and `story_plan.json` (fixes "no meaning between scenes"; engine-independent). Milestone
+   (v2.1): plans for a set of test scripts are validated and read by the owner before any library work starts.
+2. Scene IR schema, validator, and the separate inkbeat adapter.
 3. Library: lift cabin, ticket hall, tarmac, forest, riverbank, plane, crowd out of the hand-made db_cooper film.
 4. Compiler: generic composition driven by the IR. Milestone: db_cooper regenerated from data matches the
    hand-made film.
-5. Geometry gate, then stills gate, with auto-fix.
+5. Geometry gate, then sampled-stills gate. Test with deliberate failures first; enable auto-repair after.
 6. Post-render QA wired to repair rounds; job record.
 7. Benchmark (section 8).
 
@@ -171,4 +192,5 @@ Builder's target for the finished pipeline is about 7.5/10 overall. This is a hy
 - Whether stills for the gate can run on CPU fast enough (about 2 min per still locally today) or need one
   short GPU session per job.
 - How much of the framing gate geometry alone can settle; measure false passes against the stills layer.
-- Whether the character style decision (decision 1) stands after the benchmark videos.
+- Character style (decision 1) is decided by the owner after the three benchmark films.
+- Which free storage holds job artifacts, and its size and retention limits.
