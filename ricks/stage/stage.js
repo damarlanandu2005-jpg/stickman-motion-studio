@@ -263,6 +263,53 @@ async function makeCharacter(c, rig, actions) {
 }
 
 // ------------------------------------------------------------ set pieces
+// A crowd billboard: many stylized bean-people drawn in receding rows onto one transparent canvas,
+// so a scene can hold dozens to 100+ people cheaply (plane cabins, streets, stadiums). On-style
+// (same ink line + flat fills as the puppets). Deterministic from p.seed.
+function drawCrowdCanvas(p) {
+  const w = (p.size && p.size[0]) || 8, h = (p.size && p.size[1]) || 3;
+  const cw = clamp(Math.round(w * 150), 512, 4096), ch = clamp(Math.round(cw * h / w), 256, 3072);
+  const cv = canvasOf(cw, ch), g = cv.getContext('2d'); g.lineCap = 'round'; g.lineJoin = 'round';
+  const count = clamp(Math.round(p.count || 30), 1, 200);
+  const seated = (p.style || 'standing') === 'seated';
+  const rows = clamp(p.rows || Math.round(Math.sqrt(count) * (seated ? 1.1 : 0.9)), 1, 9);
+  const perRow = Math.ceil(count / rows);
+  const skins = ['#f4d9bf', '#ecc6a6', '#dcab82', '#c08b5e', '#9a6a44', '#7a4e32', '#f1e0cf'];
+  const shirts = p.palette || ['#3a4a6a', '#7a3b3b', '#4a6a4a', '#6a5a3a', '#5a4a6a', '#2f4858', '#8a6a3a', '#55606b', '#7a5a4a', '#3a5a5a', '#8a5a6a', '#4a5a7a'];
+  const hairs = ['#2a211c', '#4a3728', '#6a5540', '#20242a', '#5a3a2a', '#8a7a5a', '#b0a080'];
+  const seat = p.seatColor || '#2b3550';
+  let s0 = ((p.seed || 7) >>> 0) || 7; const rnd = () => (s0 = (s0 * 1664525 + 1013904223) >>> 0, s0 / 4294967296);
+  const bean = (x, y, s, dim) => {
+    const headR = 26 * s, bw = 40 * s, bh = 46 * s, lw = Math.max(1.3, 4.2 * s);
+    const skin = skins[(rnd() * skins.length) | 0], shirt = shirts[(rnd() * shirts.length) | 0], hair = hairs[(rnd() * hairs.length) | 0];
+    const hy = y - bh - headR * 0.45;
+    g.save(); g.globalAlpha = dim; g.lineWidth = lw; g.strokeStyle = LINE;
+    g.fillStyle = shirt; g.beginPath();                                   // shoulders / torso
+    g.moveTo(x - bw / 2, y); g.lineTo(x - bw / 2, hy + headR * 0.5);
+    g.quadraticCurveTo(x, hy - headR * 0.2, x + bw / 2, hy + headR * 0.5); g.lineTo(x + bw / 2, y);
+    g.closePath(); g.fill(); g.stroke();
+    g.fillStyle = skin; g.beginPath(); g.arc(x, hy - headR * 0.15, headR, 0, 6.283); g.fill(); g.stroke();   // head
+    const roll = rnd();
+    if (roll < 0.28) { g.fillStyle = hairs[(rnd() * 3) | 0]; g.beginPath(); g.ellipse(x, hy - headR * 1.0, headR * 1.15, headR * 0.5, 0, 0, 6.283); g.fill(); g.stroke(); }  // hat
+    else if (roll < 0.92) { g.fillStyle = hair; g.beginPath(); g.arc(x, hy - headR * 0.15, headR, Math.PI * 1.02, Math.PI * 1.98); g.closePath(); g.fill(); }                 // hair
+    g.fillStyle = LINE; const er = Math.max(1, headR * 0.15);              // eyes
+    g.beginPath(); g.arc(x - headR * 0.34, hy - headR * 0.08, er, 0, 6.283); g.arc(x + headR * 0.34, hy - headR * 0.08, er, 0, 6.283); g.fill();
+    g.restore();
+  };
+  for (let r = rows - 1; r >= 0; r--) {
+    const f = rows <= 1 ? 0 : r / (rows - 1);                             // 0 = front, 1 = back
+    const s = lerp(1.0, 0.46, f), baseY = lerp(ch * 0.98, ch * 0.40, f), dim = lerp(1.0, 0.68, f);
+    const n = seated ? perRow + Math.round(f * perRow * 0.6) : perRow;    // back rows pack more when seated
+    if (seated) { g.save(); g.globalAlpha = dim * 0.92; g.fillStyle = seat; g.strokeStyle = LINE; g.lineWidth = Math.max(1, 3 * s);
+      const sh = 42 * s; g.beginPath(); g.rect(0, baseY - sh * 0.1, cw, sh); g.fill(); g.restore(); }   // seat-back band hides lower bodies
+    for (let i = 0; i < n; i++) {
+      const jx = (rnd() - 0.5) * (cw / n) * 0.5, x = (i + 0.5) * (cw / n) + jx, y = baseY - (rnd() - 0.5) * 8 * s;
+      bean(x, y, s, dim);
+    }
+  }
+  return cv;
+}
+
 async function makeProp(p) {
   const grp = new THREE.Group(), add = (geo, mat, y = 0) => { const m = new THREE.Mesh(geo, mat); m.position.y = y; grp.add(m); return m; };
   const size3 = (s, d) => Array.isArray(s) ? s : (s ? [s, s, s] : d);
@@ -338,6 +385,11 @@ async function makeProp(p) {
   } else if (p.type === 'plane') {
     const [w, h] = p.size || [2, 2], t = await texture(p.image);
     const m = add(new THREE.PlaneGeometry(w, h), new THREE.MeshBasicMaterial({ map: t, transparent: true, alphaTest: 0.05, side: THREE.DoubleSide, toneMapped: false }), h / 2); m.userData.noInk = true; m.userData.tint = true;
+  } else if (p.type === 'crowd') {
+    const [w, h] = p.size || [8, 3];
+    const tex = new THREE.CanvasTexture(drawCrowdCanvas(p)); tex.colorSpace = THREE.SRGBColorSpace; tex.anisotropy = 8;
+    const m = add(new THREE.PlaneGeometry(w, h), new THREE.MeshBasicMaterial({ map: tex, transparent: true, alphaTest: 0.04, side: THREE.DoubleSide, toneMapped: false, depthWrite: false }), h / 2);
+    m.userData.noInk = true; m.userData.tint = true;   // billboard: no ink pass, mood-tinted like backdrops
   } else if (p.type === 'model') {
     const gl = await new Promise((res, rej) => gltf.load(projectUrl(p.file), res, undefined, () => rej(new Error('cannot load model ' + p.file))));
     const obj = gl.scene, box = new THREE.Box3().setFromObject(obj), sz = box.getSize(new THREE.Vector3());
