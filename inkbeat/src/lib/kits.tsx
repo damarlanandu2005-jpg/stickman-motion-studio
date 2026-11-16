@@ -3,7 +3,7 @@
 // water_edge (river or lake bank), sky (in the air). The airliner cabin stays in cooper/Cabin.tsx for now.
 // Each kit lists the slots where people can stand, so staging never has to invent coordinates.
 import React from "react";
-import { boxG, coreMat, M } from "../inkbeat/core/kit";
+import { boxG, coreMat, M, sphG } from "../inkbeat/core/kit";
 import type { TexKind } from "../inkbeat/mat/materials";
 import type { V3 } from "../inkbeat/types";
 import { Piece } from "./pieces";
@@ -48,7 +48,7 @@ export const Ground: React.FC<GroundOpts> = ({ surface = "grass", backdrop = "no
     }
     if (backdrop === "jungle") for (let i = 0; i < 26; i++) { const x = (hash(i, seed + 20) - 0.5) * 22, z = -3 - hash(i, seed + 21) * 12; if (Math.abs(x) > clear * 0.5) ring.push(<Piece key={"f" + i} kind={i % 3 ? "fern" : "bush"} p={[x, 0, z]} s={0.9 + hash(i, 4) * 0.8} />); }
   } else if (backdrop === "hills") {
-    for (let i = 0; i < 7; i++) ring.push(<M key={i} g={boxG(1, 1, 1)} c={["#6f8fb0", "#7f9dbb", "#5f7fa3"][i % 3]} p={[(i - 3) * 15 + hash(i, seed) * 6, 0, -70 - hash(i, 3) * 20]} s={[26, 9 + hash(i, seed + 1) * 12, 6]} r={[0, 0, 0]} cast={false} />);
+    for (let i = 0; i < 7; i++) ring.push(<M key={i} g={sphG(1, 18)} c={["#6f8fb0", "#7f9dbb", "#5f7fa3"][i % 3]} p={[(i - 3) * 16 + hash(i, seed) * 6, -2, -75 - hash(i, 3) * 20]} s={[22, 10 + hash(i, seed + 1) * 10, 8]} cast={false} />);
     for (let i = 0; i < 16; i++) { const x = (hash(i, seed + 7) - 0.5) * 50, z = -14 - hash(i, seed + 8) * 26; if (Math.abs(x) > clear) ring.push(<Piece key={"t" + i} kind={i % 2 ? "oak" : "pine"} p={[x, 0, z]} s={1 + hash(i, 9) * 0.5} />); }
   } else if (backdrop === "houses") {
     for (let i = 0; i < 5; i++) ring.push(<Piece key={i} kind="house" p={[(i - 2) * 9, 0, -16 - (i % 2) * 3]} c={["#f2ead8", "#d9c9a0", "#c9d6cf"][i % 3]} c2={["#7a3a30", "#3f5a6a", "#5a4030"][i % 3]} />);
@@ -77,8 +77,8 @@ export type SkyOpts = { below?: "pines" | "jungle" | "none"; clouds?: number; se
 export const skySlots = (): Slots => ({ air_near: { p: [0, 3, -4], yaw: 0.3 }, air_mid: { p: [0, 5, -10], yaw: 0 }, air_far: { p: [0, 11, -30], yaw: 0 } });
 export const SkyStage: React.FC<SkyOpts> = ({ below = "pines", clouds = 5, seed = 4, cloudColor }) => (
   <group>
-    {below !== "none" ? <M g={boxG(260, 0.2, 260)} c={below === "jungle" ? "#2c5a36" : "#1c2a24"} tex="grass" ts={8} p={[0, -9.1, -40]} /> : null}
-    {below !== "none" ? Array.from({ length: 70 }, (_, i) => <Piece key={i} kind={below === "jungle" ? "jungle_tree" : "pine"} p={[(hash(i, seed) - 0.5) * 80, -9, -6 - hash(i, seed + 9) * 54]} s={(below === "jungle" ? 1.5 : 2.2) * (0.8 + hash(i, 3) * 0.7)} c={below === "pines" ? "#24463a" : undefined} />) : null}
+    {below !== "none" ? <M g={boxG(260, 0.2, 260)} c={below === "jungle" ? "#2c5a36" : "#1c2a24"} tex="grass" ts={8} p={[0, below === "jungle" ? -24.1 : -14.1, -40]} /> : null}
+    {below !== "none" ? Array.from({ length: 70 }, (_, i) => <Piece key={i} kind={below === "jungle" ? "jungle_tree" : "pine"} p={[(hash(i, seed) - 0.5) * 80, below === "jungle" ? -24 : -14, -6 - hash(i, seed + 9) * 54]} s={(below === "jungle" ? 1.5 : 2.2) * (0.8 + hash(i, 3) * 0.7)} c={below === "pines" ? "#24463a" : undefined} />) : null}
     {Array.from({ length: clouds }, (_, i) => <Piece key={"c" + i} kind="cloud" p={[(hash(i, seed + 1) - 0.5) * 40, 6 + hash(i, seed + 2) * 12, -22 - hash(i, seed + 3) * 20]} s={1.5 + hash(i, 5) * 1.5} c={cloudColor} />)}
   </group>
 );
