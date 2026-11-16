@@ -1,0 +1,139 @@
+{
+ "sets": {
+  "night_sky": {
+   "kit": "sky",
+   "options": {
+    "below": "pines"
+   }
+  },
+  "ticket_hall": {
+   "kit": "room",
+   "options": {
+    "wall": "#cfc3ae"
+   }
+  },
+  "cabin": {
+   "kit": "airliner_cabin",
+   "options": {}
+  },
+  "tarmac": {
+   "kit": "ground",
+   "options": {
+    "surface": "tarmac",
+    "backdrop": "none"
+   }
+  },
+  "cockpit": {
+   "kit": "room",
+   "options": {
+    "w": 3,
+    "d": 2.6,
+    "h": 2.2,
+    "windows": 2,
+    "windowsLit": false
+   }
+  },
+  "tail": {
+   "kit": "sky",
+   "options": {
+    "below": "pines"
+   }
+  },
+  "forest": {
+   "kit": "ground",
+   "options": {
+    "surface": "grass",
+    "backdrop": "pines"
+   }
+  },
+  "riverbank": {
+   "kit": "water_edge",
+   "options": {
+    "bank": "sand",
+    "far": "pines"
+   }
+  },
+  "evidence_room": {
+   "kit": "room",
+   "options": {
+    "wall": "#b9b4a6",
+    "floorTex": "stone"
+   }
+  }
+ },
+ "items": {
+  "airliner with lit windows": "airliner",
+  "parachute canopy": "parachute",
+  "rain": "rain",
+  "pine forest below": "kit",
+  "cloud bank": "cloud",
+  "moon behind cloud": "mood",
+  "ticket counter": "counter",
+  "TICKETS sign": "sign:TICKETS",
+  "departures board PORTLAND to SEATTLE": "board:PORTLAND → SEATTLE",
+  "queue rope": "rope_post",
+  "luggage scale": "scale",
+  "wall clock": "clock",
+  "seat rows": "kit",
+  "overhead bins": "kit",
+  "window row": "kit",
+  "ceiling light panels": "kit",
+  "aisle carpet": "kit",
+  "drinks trolley": "trolley",
+  "parked airliner": "airliner",
+  "boarding stairs": "stairs",
+  "fuel truck": "tanker",
+  "apron markings": "road",
+  "terminal lights": "~house",
+  "cart with four parachutes": [
+   "cart",
+   "pack"
+  ],
+  "instrument panel": "panel",
+  "control yokes": "yoke",
+  "windscreen with runway lights": "~window",
+  "route chart": "papers:MEXICO CITY",
+  "throttle levers": "~panel",
+  "overhead switches": "~panel",
+  "airliner tail": "airliner",
+  "rear airstair": "airliner",
+  "storm cloud": "cloud",
+  "cabin door light": "mood",
+  "pine trunks": "kit",
+  "ferns and undergrowth": [
+   "fern",
+   "bush"
+  ],
+  "search poles": "BUILD: hand-held search poles",
+  "helicopter": "helicopter",
+  "mist": "mood",
+  "map table": [
+   "table",
+   "papers"
+  ],
+  "river": "kit",
+  "sand bar": "kit",
+  "driftwood": "log",
+  "campfire ring": "campfire",
+  "far bank trees": "kit",
+  "picnic blanket": "blanket",
+  "case file box": "box_file:CASE FILE",
+  "pin board with red string": "pin_board",
+  "desk lamp": [
+   "desk",
+   "lamp"
+  ],
+  "filing cabinets": "cabinet",
+  "wall map of Washington": "wall_map",
+  "evidence bag with the tie": "~paper_bag"
+ },
+ "props": {
+  "briefcase": "briefcase",
+  "ticket": "papers:DAN COOPER",
+  "note": "papers:I HAVE A BOMB",
+  "money_bag": "money_bag",
+  "parachute": "pack",
+  "sketch": "sketch",
+  "cash_bundle": "cash"
+ }
+}

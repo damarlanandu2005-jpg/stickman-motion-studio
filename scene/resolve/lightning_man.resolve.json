@@ -1,0 +1,136 @@
+{
+ "sets": {
+  "overlook": {
+   "kit": "ground",
+   "options": {
+    "surface": "stone",
+    "backdrop": "hills"
+   }
+  },
+  "park_gate": {
+   "kit": "ground",
+   "options": {
+    "surface": "grass",
+    "backdrop": "hills"
+   }
+  },
+  "lookout": {
+   "kit": "ground",
+   "options": {
+    "surface": "stone",
+    "backdrop": "hills"
+   }
+  },
+  "mountain_road": {
+   "kit": "ground",
+   "options": {
+    "surface": "grass",
+    "backdrop": "pines"
+   }
+  },
+  "front_yard": {
+   "kit": "ground",
+   "options": {
+    "surface": "lawn",
+    "backdrop": "houses"
+   }
+  },
+  "back_yard": {
+   "kit": "ground",
+   "options": {
+    "surface": "lawn",
+    "backdrop": "houses"
+   }
+  },
+  "ranger_station": {
+   "kit": "room",
+   "options": {
+    "windows": 2,
+    "wall": "#c9d0c4"
+   }
+  },
+  "picnic_area": {
+   "kit": "ground",
+   "options": {
+    "surface": "grass",
+    "backdrop": "hills"
+   }
+  },
+  "weather_office": {
+   "kit": "room",
+   "options": {
+    "windows": 1
+   }
+  },
+  "porch": {
+   "kit": "ground",
+   "options": {
+    "surface": "lawn",
+    "backdrop": "hills"
+   }
+  }
+ },
+ "items": {
+  "wooden railing": "rail_fence",
+  "trail sign": "sign_post:OVERLOOK",
+  "storm clouds": "cloud",
+  "lightning": "lightning",
+  "pine ridge": "pine",
+  "valley below": "kit",
+  "park entrance sign": "sign_post:SHENANDOAH NATIONAL PARK",
+  "ranger booth": "booth",
+  "1930s car": "car",
+  "split-rail fence": "rail_fence",
+  "blue ridge mountains": "kit",
+  "flagpole": "flagpole",
+  "fire lookout tower": "tower",
+  "rocky ridge": "rock",
+  "tower stairs": "stairs",
+  "wind-bent pines": "pine",
+  "ranger truck": "truck",
+  "winding road": "road",
+  "roadside trees": "kit",
+  "cliff edge": "~rock",
+  "small white house": "house",
+  "picket fence": "fence",
+  "power pole with transformer": "pole",
+  "mailbox": "mailbox",
+  "garden hose": "~bucket",
+  "desk with a radio": [
+   "desk",
+   "radio"
+  ],
+  "wall map of the park": "wall_map",
+  "window with lightning outside": "window",
+  "coat rack": "coat_rack",
+  "wash basin": "basin",
+  "filing cabinet": "cabinet",
+  "picnic tables": "picnic_table",
+  "barbecue grill": "grill",
+  "tall oak": "oak",
+  "trash can": "trash_can",
+  "parked cars": "car",
+  "washing line with sheets": "washing_line",
+  "clothes pegs": "~basket",
+  "chalkboard": "board",
+  "weather map": "wall_map",
+  "barometer": "~clock",
+  "desk with papers": [
+   "desk",
+   "papers"
+  ],
+  "globe": "globe",
+  "window": "window",
+  "rocking chair": "rocking_chair",
+  "porch rail": "rail_fence",
+  "clear evening sky": "mood",
+  "a far-off storm cloud": "cloud"
+ },
+ "props": {
+  "ranger_hat": "hat",
+  "boot": "boot",
+  "water_bucket": "bucket",
+  "record_book": "book:MOST LIGHTNING STRIKES SURVIVED",
+  "laundry_basket": "basket"
+ }
+}

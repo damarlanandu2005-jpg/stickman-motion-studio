@@ -1,0 +1,103 @@
+{
+ "sets": {
+  "storm_sky": {
+   "kit": "sky",
+   "options": {
+    "below": "jungle",
+    "cloudColor": "#5a6072",
+    "clouds": 8
+   }
+  },
+  "river_edge": {
+   "kit": "water_edge",
+   "options": {
+    "bank": "mud",
+    "far": "jungle"
+   }
+  },
+  "cabin": {
+   "kit": "airliner_cabin",
+   "options": {}
+  },
+  "jungle_floor": {
+   "kit": "ground",
+   "options": {
+    "surface": "mud",
+    "backdrop": "jungle"
+   }
+  },
+  "field_station": {
+   "kit": "ground",
+   "options": {
+    "surface": "grass",
+    "backdrop": "jungle"
+   }
+  },
+  "jungle_river": {
+   "kit": "water_edge",
+   "options": {
+    "bank": "mud",
+    "far": "jungle"
+   }
+  },
+  "hut_bank": {
+   "kit": "water_edge",
+   "options": {
+    "bank": "mud",
+    "far": "jungle"
+   }
+  }
+ },
+ "items": {
+  "storm clouds": "cloud",
+  "lightning": "lightning",
+  "rain": "rain",
+  "forest canopy far below": "kit",
+  "falling debris": "debris",
+  "cloud gaps": "mood",
+  "wall of jungle": "kit",
+  "river": "kit",
+  "mud bank": "kit",
+  "hanging vines": "jungle_tree",
+  "morning mist": "mood",
+  "a hut roof in the distance": "hut",
+  "seat rows": "kit",
+  "window row": "kit",
+  "overhead racks with wrapped presents": "parcel",
+  "aisle": "kit",
+  "seat-belt sign": "sign:FASTEN SEAT BELTS",
+  "curtain to the galley": "curtain",
+  "propeller airliner": "BUILD: a propeller version of the airliner (the library has a jet; the real aircraft was a turboprop)",
+  "giant buttress roots": "jungle_tree",
+  "ferns and broad leaves": "fern",
+  "shafts of light": "mood",
+  "scattered suitcases": "suitcase",
+  "a torn wing panel": "debris",
+  "stilt hut with a thatched roof": "hut",
+  "work table with specimen jars": [
+   "table",
+   "jars"
+  ],
+  "butterfly net": "net",
+  "notebooks": "book",
+  "stream": "stream",
+  "bird cages": "cage",
+  "a trickling creek": "stream",
+  "mossy stones": "rock",
+  "widening stream": "kit",
+  "overhanging trees": "kit",
+  "fallen log": "log",
+  "sand bank": "kit",
+  "a seat row in the shallows": "seat_row",
+  "palm-thatch hut": "hut",
+  "fuel can": "fuel_can",
+  "path up the bank": "kit",
+  "jungle wall": "kit"
+ },
+ "props": {
+  "seat_row": "seat_row",
+  "sweets_bag": "paper_bag",
+  "canoe": "boat",
+  "specimen_jar": "jars"
+ }
+}

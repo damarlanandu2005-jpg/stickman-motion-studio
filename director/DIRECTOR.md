@@ -31,3 +31,11 @@ contradicts. Facts that are unverified or disputed are warnings the owner sees i
 Stories are retold in our own words from public facts. Characters, shots and designs are our own; reference
 channels are for style study only. Voice is Kokoro. Music must have a recorded licence before delivery. Images
 are generated or code-built, never downloaded photos. Each plan carries this as its `originality` block.
+
+## Plan from the catalogue
+Before writing a plan, read `scene/catalogue.json`: the kits, the set pieces, what the character can and cannot
+do. Choose places a kit can make and dress them with pieces that exist. After the plan, write
+`scene/resolve/<name>.resolve.json` mapping every place to a kit and every dressing string and prop to a
+catalogue item, then run `scene/lib_tool.py check`. A proof item must be made exactly: if the library cannot
+make it, change the shot or flag it to be built. Non-proof dressing may use the nearest piece (`~piece`), which
+is recorded as a stand-in. Do not write actions the catalogue lists under `cannot_yet`.

@@ -19,6 +19,12 @@
     "back_left",
     "back_right",
     "at_wall"
+   ],
+   "features": [
+    "walls",
+    "floor",
+    "ceiling light",
+    "windows"
    ]
   },
   "ground": {
@@ -35,6 +41,12 @@
     "mid_left",
     "mid_right",
     "far"
+   ],
+   "features": [
+    "surface",
+    "backdrop trees",
+    "backdrop hills",
+    "backdrop houses"
    ]
   },
   "water_edge": {
@@ -50,6 +62,11 @@
     "bank_centre",
     "waterline",
     "in_water"
+   ],
+   "features": [
+    "river",
+    "bank",
+    "far bank trees"
    ]
   },
   "sky": {
@@ -63,6 +80,10 @@
     "air_near",
     "air_mid",
     "air_far"
+   ],
+   "features": [
+    "forest below",
+    "clouds"
    ]
   },
   "airliner_cabin": {
@@ -75,6 +96,14 @@
     "aisle_front_left",
     "aisle_front_right",
     "aisle_mid"
+   ],
+   "features": [
+    "seat rows",
+    "overhead bins",
+    "window row",
+    "ceiling light panels",
+    "aisle carpet",
+    "seated passengers"
    ]
   }
  },
@@ -98,7 +127,17 @@
    "bucket",
    "basket",
    "trolley",
-   "cart"
+   "cart",
+   "coat_rack",
+   "basin",
+   "globe",
+   "curtain",
+   "parcel",
+   "paper_bag",
+   "cash",
+   "pack",
+   "hat",
+   "boot"
   ],
   "walls and fittings": [
    "board",
@@ -113,6 +152,7 @@
    "lamp",
    "floor_lamp",
    "radio",
+   "sketch",
    "papers",
    "book",
    "jars",
@@ -148,10 +188,32 @@
    "tanker",
    "boat",
    "helicopter",
+   "grill",
+   "trash_can",
+   "fuel_can",
+   "cage",
+   "net",
+   "debris",
+   "stream",
+   "road",
    "cloud",
    "lightning"
   ]
  },
+ "hand_props": [
+  "briefcase (opens to show a bomb)",
+  "money_bag"
+ ],
+ "aircraft_ids": [
+  "airliner",
+  "helicopter"
+ ],
+ "effect_ids": [
+  "rain",
+  "parachute",
+  "flame",
+  "smoke"
+ ],
  "aircraft": [
   "airliner (parked with gear, flying, with rear airstair)",
   "helicopter"
