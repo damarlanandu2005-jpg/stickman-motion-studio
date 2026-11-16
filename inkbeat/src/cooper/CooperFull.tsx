@@ -116,19 +116,19 @@ const scene = (t: number): Scene => {
   // ---------- D: ransom on the tarmac, passengers freed (17.5 – 21.1) ----------
   if (t < 21.1) {
     const u = (t - 17.5) / 3.6;
-    const a: V3 = [lerp(-2.6, -0.6, u), 0, lerp(-1.6, -3.4, u)];
+    const a: V3 = [lerp(-1.5, -0.7, u), 0, lerp(-2.6, -4.0, u)];
     const head = headOf(a, 1.66, BLOCK);
-    const cam = aim(mix([0.6, 1.7, 4.6], [-0.2, 1.7, 3.6], ease(u)), [0, 1.6, -3], 52, 0.4);
+    const cam = aim(mix([0.6, 1.7, 4.6], [-0.2, 1.7, 3.6], ease(u)), [0.3, 1.6, -3.4], 52, 0.4);
     return {
       mood: "dusk", cam, focus: head, sky: true, light: head,
       kids: (
         <>
           <Ground c="#6d6f78" tex="stone" />
-          <Plane p={[1.5, 2.45, -10]} gear />
-          <M g={boxG(60, 0.02, 0.3)} c="#e8c24a" p={[0, 0.02, -5.5]} />
+          <Plane p={[0.5, 2.45, -17]} gear />
+          <M g={boxG(60, 0.02, 0.3)} c="#e8c24a" p={[0, 0.02, -9]} />
           <Character3D {...ATT} position={a} yaw={2.6} t={t} face={{ eyes: "open", mouth: "flat", brows: "worried", look: 0 }} pose={{ armL: [20, 30], armR: [20, 30], walk: t * 7 }} faceCamera={cam.pos} />
-          <MoneyBag p={[a[0] + 0.1, 0.85, a[2] + 0.3]} />
-          {PAX.map((s, i) => { const p: V3 = [lerp(1.2, 3.6, u) + i * 0.95, 0, -1.2 - i * 1.1]; return <Character3D key={i} {...s} position={p} yaw={1.2} t={t} face={{ eyes: "open", mouth: "smile", brows: "raised", look: 0 }} pose={{ armL: [10, 10], armR: [10, 10], walk: t * 7 + i * 2 }} faceCamera={cam.pos} />; })}
+          <MoneyBag p={[a[0] + 0.5, 0.5, a[2] + 0.15]} s={0.9} />
+          {PAX.map((s, i) => { const p: V3 = [lerp(0.5, 1.3, u) + i * 0.8, 0, -2.4 - i * 1.0]; return <Character3D key={i} {...s} position={p} yaw={1.2} t={t} face={{ eyes: "open", mouth: "smile", brows: "raised", look: 0 }} pose={{ armL: [10, 10], armR: [10, 10], walk: t * 7 + i * 2 }} faceCamera={cam.pos} />; })}
         </>
       ),
     };
