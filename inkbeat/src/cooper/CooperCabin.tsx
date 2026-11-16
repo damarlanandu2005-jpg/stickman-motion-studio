@@ -18,8 +18,8 @@ import { Cabin } from "./Cabin";
 
 export const COOPER_FRAMES = 240; // 8 s @ 30
 
-const COOPER: V3 = [-0.62, 0, -2.5];
-const ATT: V3 = [0.66, 0, -2.15];
+const COOPER: V3 = [-0.6, 0, -3.1];
+const ATT: V3 = [0.62, 0, -2.95];
 const COOPER_HEAD: V3 = headOf(COOPER, 1.78, { torso: "block", torsoWidth: 1.05 });
 
 // Cooper: dark suit, black tie, dark glasses, dark hair, thin moustache
@@ -73,10 +73,10 @@ export const CooperCabin: React.FC = () => {
   const g = useCurrentFrame();
   if (!ready) return <AbsoluteFill style={{ background: "#0c0e14" }} />;
   const t = g / 30;
-  const base = aim([0.05, 1.56, 1.5], [0.05, 1.36, -3.4], 48, 0);
-  const p = poseAt(base, BEATS, 0, t, [{ frac: 0.14 }, { frac: 0.05 }, { deg: 8 }]);
+  const base = aim([0.02, 1.6, 0.9], [0.02, 1.58, -3.0], 46, 0.36); // head-height two-shot; heads sit 36% down the frame
+  const p = poseAt(base, BEATS, 0, t, [{ frac: 0.05 }, { frac: 0.05 }, { deg: 6 }]);
   const cam = withShake(p, p.shake);
-  const m = moodOf("lamp"); // warm lamp-lit interior
+  const m = moodOf("cold"); // warm lamp-lit interior
   // attendant reacts: neutral -> shocked when the bomb line lands
   const attFace = t > 2.9 ? { eyes: "wide" as const, mouth: "o" as const, brows: "raised" as const, look: -0.1 }
     : { eyes: "open" as const, mouth: "flat" as const, brows: "neutral" as const, look: -0.15 };
@@ -86,9 +86,9 @@ export const CooperCabin: React.FC = () => {
       <View mood={m} cam={cam} t={t} focus={COOPER_HEAD} blur={1.6} sky={false}>
         <Cabin p={[0, 0, 0]} len={18} />
         {/* the note, held up between them during the note/bomb line */}
-        {t < 3.2 ? <Label text="I HAVE A BOMB" p={[0.02, 1.2, -2.0]} w={1.2} h={0.5} fg="#1a1416" bg="#f3ead6" font={0.42} /> : null}
+        {t < 3.2 ? <Label text="I HAVE A BOMB" p={[0.02, 1.02, -2.9]} w={0.62} h={0.3} fg="#1a1416" bg="#f3ead6" font={0.4} /> : null}
         {/* the demands, tagged in once he makes them */}
-        {t >= 5.4 ? <Label text="$200,000" p={[0.02, 1.35, -2.1]} w={1.3} h={0.55} fg="#1a1416" bg="#e8c24a" font={0.6} /> : null}
+        {t >= 5.4 ? <Label text="$200,000" p={[0.02, 1.02, -2.9]} w={0.7} h={0.32} fg="#1a1416" bg="#e8c24a" font={0.58} /> : null}
         <Character3D
           {...COOPER_SPEC}
           position={COOPER}

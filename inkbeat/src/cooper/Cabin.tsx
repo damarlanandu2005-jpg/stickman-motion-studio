@@ -36,17 +36,20 @@ export const Cabin: React.FC<{ p?: V3; len?: number }> = ({ p = [0, 0, 0], len =
 
   // floor (carpet) + far bulkhead
   parts.push(<M key={k++} g={boxG(W * 2, 0.1, len)} c={CARPET} p={[0, -0.05, zc]} tex="fabric" />);
-  parts.push(<M key={k++} g={boxG(W * 2, 2.3, 0.2)} c={WALL} p={[0, 1.0, zc - len / 2]} tex="plaster" />);
+  parts.push(<M key={k++} g={boxG(W * 2, 2.3, 0.2)} c={WALL} p={[0, 1.0, zc - len / 2]} tex="none" />);
 
   // two side walls
-  for (const sx of [-1, 1]) parts.push(<M key={k++} g={boxG(0.12, 2.05, len)} c={WALL} p={[sx * W, 1.0, zc]} tex="plaster" />);
+  for (const sx of [-1, 1]) parts.push(<M key={k++} g={boxG(0.12, 2.05, len)} c={WALL} p={[sx * W, 1.0, zc]} tex="none" />);
 
   // chamfered roof: two slanted shoulder panels + a flat crown
-  for (const sx of [-1, 1]) parts.push(<M key={k++} g={boxG(0.9, 0.1, len)} c={TRIM} p={[sx * 1.2, 2.12, zc]} r={[0, 0, sx * 0.62]} tex="plaster" />);
-  parts.push(<M key={k++} g={boxG(1.9, 0.12, len)} c={WALL} p={[0, 2.42, zc]} tex="plaster" />);
+  for (const sx of [-1, 1]) parts.push(<M key={k++} g={boxG(0.9, 0.1, len)} c={TRIM} p={[sx * 1.2, 2.12, zc]} r={[0, 0, sx * 0.62]} tex="none" />);
+  parts.push(<M key={k++} g={boxG(1.9, 0.12, len)} c={WALL} p={[0, 2.42, zc]} tex="none" />);
+
+  // ceiling light panels down the crown
+  for (let z = zc + len / 2 - 1.2; z > zc - len / 2 + 1; z -= 2.2) parts.push(<mesh key={k++} geometry={boxG(0.5, 0.04, 1.3)} material={coreMat("#fff1cf", 1.5)} position={[0, 2.34, z]} />);
 
   // overhead bins (a long angled box each side)
-  for (const sx of [-1, 1]) parts.push(<M key={k++} g={boxG(0.46, 0.4, len)} c={TRIM} p={[sx * 1.33, 1.72, zc]} r={[0, 0, sx * 0.18]} tex="plaster" />);
+  for (const sx of [-1, 1]) parts.push(<M key={k++} g={boxG(0.46, 0.4, len)} c={TRIM} p={[sx * 1.33, 1.72, zc]} r={[0, 0, sx * 0.18]} tex="none" />);
 
   // windows: a run down each wall
   for (let z = zc + len / 2 - 1.4; z > zc - len / 2 + 1; z -= 1.5) for (const sx of [-1, 1]) parts.push(<Window key={k++} p={[sx * (W - 0.09), 1.18, z]} />);
