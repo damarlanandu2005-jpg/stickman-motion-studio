@@ -1,5 +1,19 @@
 # Engine strategy: Ricks vs inkbeat (and how to render each)
 
+> **CORRECTION (2026-11-16): the core verdict below was WRONG. inkbeat DOES render fast on the Kaggle
+> GPU.** The "inkbeat can't use the GPU / not viable" conclusion was reached before the NVIDIA-userspace
+> -driver recipe existed; the inkbeat kernel only ever ran `enable_gpu:false` on software GL. When the
+> SAME driver install that gives Ricks hardware GL is added and Remotion is run with `--gl=angle-egl`,
+> inkbeat renders at **~0.25 s/frame on the Kaggle T4** — the full 8 s LustigPilot pilot in **60 s**
+> (240 frames), vs the ~66 min that software GL would take. Proof: `results_inkbeat/inkbeat_pilot.mp4`
+> (rendered 2026-11-16) and `kaggle/inkbeat-gpu/inkbeat_gpu.py`. So render speed is NO LONGER a reason
+> to prefer Ricks: inkbeat is comparable speed AND a clear tier better in look (real toon characters
+> with limbs, code-built props). The open question is now only the SCRIPT->inkbeat generator (see end).
+> Everything below the line is kept for history but is superseded on the render-viability point.
+
+---
+
+
 _Last updated: 2026-11-15. Written after a full head-to-head of our Ricks engine against the
 inkbeat (Remotion + React-Three-Fiber) engine, including rendering the same 8-second "sold the
 Eiffel Tower twice" pilot on both. Read this before re-litigating the engine question or trying
@@ -72,3 +86,21 @@ is captured as:
 
 Which track dominates depends on volume (many shorts → lean hard on Track A + port the look; a few
 hero pieces → Track B is worth its cost). Not yet decided as of this writing.
+
+## UPDATED PLAN (2026-11-16) — inkbeat is viable; decide the generator
+
+inkbeat already has the hard parts as data-driven systems: `char/` (skeleton+IK, cast, faces, clothes,
+hand-props), `core/` (shots, moods, captions, kit), `post/` (ink outline). A whole short (LustigPilot)
+is ~90 lines because it composes these. What's missing to make inkbeat the PRODUCTION engine is a
+generator: breakdown.json -> an inkbeat comp (place characters from the cast, blocking, camera shots,
+captions timed to the Kokoro voice), the same role `breakdown.py build` plays for Ricks' short.json.
+Plus: port the strict rules (populate scenes, enclose interiors, crowds, camera-on-subject) into the
+inkbeat scene system and a gate that checks inkbeat frames. This is the real work; render viability is
+solved.
+
+### How to render inkbeat on the Kaggle GPU (the working recipe, proven)
+- `kaggle/inkbeat-gpu/kernel-metadata.json`: `enable_gpu:true` (+ `machine_shape:NvidiaTeslaP100` to
+  avoid the T4x2 queue; note the P100 request did not always take — T4 still renders fast).
+- Install the NVIDIA userspace driver (same `.run` recipe as `ricks_gpu.py`).
+- Use Playwright's Chromium (`--browser-executable=...`), `--chrome-mode=chrome-for-testing`, and
+  **`--gl=angle-egl`** (Chrome `--use-angle=gl-egl`). Measured ~0.25 s/frame on the T4.
