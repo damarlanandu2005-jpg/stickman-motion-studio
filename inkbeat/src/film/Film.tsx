@@ -83,12 +83,12 @@ const Held: React.FC<{ token: string; at: V3; c: CharData }> = ({ token, at, c }
   if (kind === "briefcase") return c.action === "open_case" ? <BombCase p={at} /> : <Piece kind="suitcase" p={[at[0], at[1] - 0.3, at[2]]} yaw={c.yaw + 1.57} s={0.6} c="#2b2224" />;
   if (kind === "money_bag") return <MoneyBag p={[at[0], at[1] - 0.25, at[2]]} s={0.7} />;
   if (kind === "pack") return c.action === "hang_parachute" || c.action === "step_off" || c.action === "fall" ? null : <Piece kind="pack" p={[at[0], at[1] - 0.3, at[2]]} yaw={c.yaw} />;
-  if (label) return <Label text={label} p={at} w={Math.min(0.9, 0.12 + label.length * 0.045)} h={0.24} fg="#1a1416" bg="#f3ead6" font={0.5} />;
+  if (label) return <Label text={label} p={at} w={Math.min(0.52, 0.1 + label.length * 0.03)} h={0.15} fg="#1a1416" bg="#f3ead6" font={0.55} />;
   return <group position={at} rotation={[1.25, 0, 0]}><Piece kind={kind} p={[0, 0, 0]} /></group>;
 };
 
-const DIST: Record<string, number> = { wide: 8.5, medium: 4.4, two_shot: 4.3, close: 2.4, detail: 1.6 };
-const FOV: Record<string, number> = { wide: 52, medium: 46, two_shot: 44, close: 36, detail: 32 };
+const DIST: Record<string, number> = { wide: 8.5, medium: 4.6, two_shot: 4.3, close: 3.1, detail: 2.3 };
+const FOV: Record<string, number> = { wide: 52, medium: 46, two_shot: 44, close: 36, detail: 30 };
 
 const Kit: React.FC<{ sc: SceneData }> = ({ sc }) => {
   const o = sc.options as Record<string, never>;
@@ -127,6 +127,7 @@ export const Film: React.FC<{ film: FilmData }> = ({ film }) => {
   const u = ease((t - sh.t0) / Math.max(0.01, sh.t1 - sh.t0));
   const side = (si + hi) % 2 ? 1 : -1;
   let dist = DIST[sh.type] ?? 4.4;
+  if (sub.size) dist = Math.max(dist, sub.size * 2.4); // a big subject (an aircraft, a building) needs room
   // a two-shot must be far enough back to hold both people inside a 9:16 frame
   if (two) dist = Math.max(dist, (sep / 2 + 0.55) / (Math.tan(((FOV.two_shot / 2) * Math.PI) / 180) * 0.5625));
   if (sh.move === "push") dist *= 1 - 0.12 * u; else if (sh.move === "pull") dist *= 0.88 + 0.12 * u;
@@ -152,7 +153,7 @@ export const Film: React.FC<{ film: FilmData }> = ({ film }) => {
         {sc.pieces.map((p, i) => <Piece key={i} kind={p.kind} p={v3(p.p)} yaw={p.yaw} s={p.s} {...(p.opts as object)} />)}
         {sc.planes.map((p, i) => <Plane key={i} p={v3(p.p)} yaw={p.yaw ?? 0} gear={!!p.gear} stairs={!!p.stairs} />)}
         {sc.rain ? <Rain t={t} c={[S[0], S[1], S[2] + 2]} /> : null}
-        {sc.crowd.map((c, i) => { const dt = t - sc.t0; return <Character3D key={"cr" + i} {...spec(CROWD[c.look])} position={[c.p[0] + c.vel[0] * dt, c.p[1], c.p[2] + c.vel[1] * dt]} yaw={c.yaw} t={t} face={FACES.neutral} pose={{ walk: c.walk ? t * 6 + i * 1.7 : undefined }} />; })}
+        {sc.crowd.map((c, i) => { const dt = t - sc.t0; const cx = c.p[0] + c.vel[0] * dt, cz = c.p[2] + c.vel[1] * dt; if (Math.hypot(cx - from[0], cz - from[2]) < 2.4) return null; /* never let a walker cross the lens */ return <Character3D key={"cr" + i} {...spec(CROWD[c.look])} position={[c.p[0] + c.vel[0] * dt, c.p[1], c.p[2] + c.vel[1] * dt]} yaw={c.yaw} t={t} face={FACES.neutral} pose={{ walk: c.walk ? t * 6 + i * 1.7 : undefined }} />; })}
         {sh.chars.map((c) => {
           const look = film.cast[c.id]; if (!look) throw new Error(`no look for cast '${c.id}'`);
           const p = charPos(c, sh, t); const hp = handPoint(c, sh, t, H(c.id)); const hl = handPoint(c, sh, t, H(c.id), true);
@@ -165,7 +166,7 @@ export const Film: React.FC<{ film: FilmData }> = ({ film }) => {
             </React.Fragment>
           );
         })}
-        {sh.labels.map((txt, i) => { const k = dist / 4.4; return <Label key={i} text={txt} p={[S[0], S[1] + (0.42 + i * 0.3) * k * (sh.type === "detail" ? 0.5 : 1), S[2] + 0.05]} w={Math.min(2.6, 0.3 + txt.length * 0.085) * k} h={0.26 * k} fg="#1a1416" bg="#e8c24a" font={0.6} />; })}
+        {sh.labels.map((txt, i) => { const k = dist / 4.4; return <Label key={i} text={txt} p={[S[0], S[1] + (0.5 + i * 0.26) * k, S[2] + 0.05]} w={Math.min(1.5, 0.25 + txt.length * 0.055) * k} h={0.2 * k} fg="#1a1416" bg="#e8c24a" font={0.6} />; })}
         <CastLight at={S} cam={cam.pos} mood={m} />
       </View>
       {sc.tag && t - sc.t0 < 2.6 ? (

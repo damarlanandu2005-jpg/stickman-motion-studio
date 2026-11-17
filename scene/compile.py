@@ -98,7 +98,8 @@ def compile_film(name):
         cz = {"room": -opt.get("d", 6) * .8}.get(kit, -8)
         for i in range(min(n, 10) if act not in ("none", "seated_idle") else 0):
             if act in ("walk_cross", "queue"): d = 1 if i % 2 else -1; crowd.append({"look": i % 5, "p": [-d * 4.5 + d * i * 1.1, 0, cz - (i % 3) * .5], "vel": [d * .8, 0], "yaw": d * 1.57, "walk": True})
-            elif act == "walk_away": o_ = st.get("crowd_from", [0, 0, -9]); crowd.append({"look": i % 5, "p": [o_[0] + 1 + (i % 3) * .8, 0, o_[2] + 1.5 + (i // 3) * 1.3], "vel": [.75, .5], "yaw": 1.0, "walk": True})
+            elif act == "walk_away": o_ = st.get("crowd_from", [0, 0, -9]); az = st.get("azimuth", 0); vx, vz = -.8 * math.cos(az) + .15 * math.sin(az), .8 * math.sin(az) + .15 * math.cos(az)   # across the frame, never at the lens
+                crowd.append({"look": i % 5, "p": [o_[0] + 1 + (i % 3) * .8, 0, o_[2] + 1.5 + (i // 3) * 1.3], "vel": [round(vx, 3), round(vz, 3)], "yaw": round(math.atan2(vx, vz), 3), "walk": True})
             elif act == "search_line": crowd.append({"look": i % 5, "p": [-7.5 + i * 1.6, 0, -9.5 - (i % 2) * .8], "vel": [0, .12], "yaw": 0, "walk": True})
             else: crowd.append({"look": i % 5, "p": [-4 + i * 1.0, 0, cz], "vel": [0, 0], "yaw": 0, "walk": False})
         shots = []
@@ -110,7 +111,11 @@ def compile_film(name):
             subj = sh["subject"]; ids = [c["id"] for c in chars]
             if subj in ids: subject = {"char": subj}
             elif subj in res["props"] and any(res["props"][subj] in c["holds"] for c in chars): subject = {"held": next(c["id"] for c in chars if res["props"][subj] in c["holds"]), "token": res["props"][subj]}
-            elif anchors.get(subj): subject = {"point": anchors[subj]}
+            elif anchors.get(subj):
+                subject = {"point": anchors[subj]}
+                tok0 = res["items"].get(subj, res["props"].get(subj, "")); tok0 = (tok0[0] if isinstance(tok0, list) else tok0).lstrip("~").split(":")[0]
+                size = {"airliner": 7, "tower": 4, "house": 3, "hut": 2.2, "helicopter": 3, "truck": 2.2, "tanker": 2.5, "car": 1.8, "kit": 5}.get(tok0)
+                if size and sh["type"] in ("wide", "medium"): subject["size"] = size
             elif subj == "place": subject = {"point": st.get("centre", slots[next(iter(slots))][0])}
             else: subject = {"point": slots[next(iter(slots))][0]}; notes.append(f"{sc['id']}/{sh['id']}: subject '{subj}' has no position; camera uses the first slot")
             second = None
