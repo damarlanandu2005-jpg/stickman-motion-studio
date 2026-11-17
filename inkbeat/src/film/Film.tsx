@@ -151,7 +151,7 @@ export const Film: React.FC<{ film: FilmData }> = ({ film }) => {
             </React.Fragment>
           );
         })}
-        {sh.labels.map((txt, i) => { const k = dist / 4.4; return <Label key={i} text={txt} p={[S[0], S[1] + (0.5 + i * 0.26) * k, S[2] + 0.05]} w={Math.min(1.5, 0.25 + txt.length * 0.055) * k} h={0.2 * k} fg="#1a1416" bg="#e8c24a" font={0.6} />; })}
+        {sh.labels.map((txt, i) => { const k = dist / 4.4; const ls = sh.labelScale ?? 1; return <Label key={i} text={txt} p={[S[0], S[1] + (sh.labelBelow ? -(0.9 + i * 0.26) : 0.5 + i * 0.26) * k, S[2] + 0.05]} w={Math.min(1.5, 0.25 + txt.length * 0.055) * k * ls} h={0.2 * k * ls} fg="#1a1416" bg="#e8c24a" font={0.6 * ls} />; })}
         <CastLight at={S} cam={cam.pos} mood={m} />
       </View>
       {sc.tag && t - sc.t0 < 2.6 ? (

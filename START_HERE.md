@@ -53,7 +53,11 @@ things people stand on and aircraft parts of an aircraft shot are exempt); label
 faces; 6 of 9 head sample points must be visible; held items may not cover a face; faces may not be cut by the
 frame edge; piece boxes honour size options (`panel` `w`) because `bounds.json` is measured at defaults.
 Result on db_cooper: 17 pass, 14 fixed, 0 blocked. NOT yet re-rendered: check the 31 frames again.
-Known not caught: sh05 (ticket) looks cluttered but no rule fires; sh22 stair rail across Cooper's chest.
+Gate v2.1 (same day, after the clean re-render was reviewed): a cast head partly in and partly out of the frame on ANY edge
+counts as cut (crowd extras are exempt); labels are auto-repaired by placing above/below the subject and shrinking to 62%
+(allowed repair, baked as `labelScale`/`labelBelow`, used by Film.tsx); label-vs-head margin includes hair; a subject piece must
+span >=45% of the frame width; lens up to 66 deg for tiny sets (cockpit). 15 pass, 16 fixed, 0 blocked. Re-render pending review.
+Known not caught: sh22 stair rail across Cooper's chest.
 
 ### NEXT (in order; ask the owner before each)
 1. Render `Film-db-cooper` on Kaggle with the gated cameras. Pull frames at each shot's middle (shot times are in

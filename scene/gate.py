@@ -178,6 +178,7 @@ def subject_points(film, sc, sh, t):
 def evaluate(film, sc, sh, cand):
     """returns (list of problems, baked camera keys) for one candidate camera"""
     probs, keys = [], []
+    lab_ok = {(a, b): True for a in (1, .8, .62) for b in (False, True)} if sh["labels"] else {}
     daz, side, sx, hf, ds, fs = cand
     fov = min(66, FOV[sh["type"]] * fs); face = .5 if sh["type"] == "detail" else .42
     for u in KEYS:
@@ -232,7 +233,7 @@ def evaluate(film, sc, sh, cand):
         if sb and sh["type"] in ("close", "detail") and not (mv == "tilt_down" and u <= .5):
             q = screen_box(frm, look, fov, corners(sb[0]))
             if not q or q[0] < -1.0 or q[2] > 1.0 or q[1] < -.45 or q[3] > .9: probs.append(("shown", f"{sb[1]} is not fully in frame"))
-            elif max(q[2] - q[0], (q[3] - q[1]) * ASPECT) < .3: probs.append(("shown", f"{sb[1]} is too small to read"))
+            elif max(q[2] - q[0], (q[3] - q[1]) * ASPECT) < .45: probs.append(("shown", f"{sb[1]} is too small to read"))
         # fill: nothing in front of the subject may cover a large part of the frame
         Sd = dot(sub(S, frm), [x / (norm(sub(look, frm)) or 1) for x in sub(look, frm)])
         own_ids = {powner for _, powner, _ in must}; sbx = sb[0] if sb else None
@@ -247,36 +248,47 @@ def evaluate(film, sc, sh, cand):
             w_, h_ = min(1, q[2]) - max(-1, q[0]), min(1, q[3]) - max(-1, q[1])
             share = max(0, w_) * max(0, h_) / 4
             if share > (.33 if sh["type"] == "wide" else .2): probs.append(("fill", f"{name} fills {share * 100:.0f}% of the frame in front of the subject")); break
-        # label: stays inside the frame and off every face
+        # label: stays inside the frame and off every face. A label may be moved (above or below the subject) and shrunk (allowed repair).
         dist_s = norm(sub(S, frm)); k = dist_s / 4.4
-        for i, txt in enumerate(sh["labels"]):
-            cx, cy, cz = S[0], S[1] + (.5 + i * .26) * k, S[2] + .05
-            w, h = min(1.5, .25 + len(txt) * .055) * k, .2 * k
-            f_ = sub(look, frm); Lf = norm(f_); f_ = [x / Lf for x in f_]; r_ = cross(f_, [0, 1, 0]); rl_ = norm(r_) or 1; r_ = [x / rl_ for x in r_]
-            ql = screen_box(frm, look, fov, [[cx + sx_ * w / 2 * r_[0], cy + sy_ * h / 2, cz + sx_ * w / 2 * r_[2]] for sx_ in (-1, 1) for sy_ in (-1, 1)])
-            if not ql or ql[0] < -.92 or ql[2] > .92: probs.append(("label", f"label '{txt}' runs outside the frame")); continue
-            for c_ in sh["chars"]:
-                Hc = film["cast"][c_["id"]].get("height", 1.72); hq = ndc(frm, look, fov, head(c_, sh, t, Hc))
-                if not hq: continue
-                rad = .15 * Hc / (hq[2] * math.tan(math.radians(fov) / 2))
-                if ql[0] - rad < hq[0] < ql[2] + rad and ql[1] - rad < hq[1] < ql[3] + rad and abs(hq[0]) < 1 and abs(hq[1]) < 1: probs.append(("label", f"label '{txt}' covers {c_['id']}'s face")); break
+        for pl_ in list(lab_ok):
+            sc_, below = pl_
+            for i, txt in enumerate(sh["labels"]):
+                cx, cy, cz = S[0], S[1] + ((-(.9 + i * .26)) if below else (.5 + i * .26)) * k, S[2] + .05
+                w, h = min(1.5, .25 + len(txt) * .055) * k * sc_, .2 * k * sc_
+                f_ = sub(look, frm); Lf = norm(f_); f_ = [x / Lf for x in f_]; r_ = cross(f_, [0, 1, 0]); rl_ = norm(r_) or 1; r_ = [x / rl_ for x in r_]
+                ql = screen_box(frm, look, fov, [[cx + sx_ * w / 2 * r_[0], cy + sy_ * h / 2, cz + sx_ * w / 2 * r_[2]] for sx_ in (-1, 1) for sy_ in (-1, 1)])
+                bad = not ql or ql[0] < -.88 or ql[2] > .88 or ql[1] < -.4 or ql[3] > .9
+                if not bad:
+                    for c_ in sh["chars"]:
+                        Hc = film["cast"][c_["id"]].get("height", 1.72); hq = ndc(frm, look, fov, head(c_, sh, t, Hc))
+                        if not hq: continue
+                        rad = .22 * Hc / (hq[2] * math.tan(math.radians(fov) / 2))
+                        if ql[0] - rad / ASPECT < hq[0] < ql[2] + rad / ASPECT and ql[1] - rad < hq[1] < ql[3] + rad and abs(hq[0]) < 1.2 and abs(hq[1]) < 1.2: bad = True; break
+                if bad: lab_ok[pl_] = False; break
         # held items must not cover a face that is in frame; no face (cast or background crowd) may be cut by the frame edge
         faces = [(c_["id"], head(c_, sh, t, film["cast"][c_["id"]].get("height", 1.72))) for c_ in sh["chars"]]
         for ci, c_ in enumerate(sc["crowd"]):
             dt = t - sc["t0"]; faces.append((f"background person {ci}", [c_["p"][0] + c_["vel"][0] * dt, c_["p"][1] + 1.37, c_["p"][2] + c_["vel"][1] * dt]))
         for fid, hp_ in faces:
             hq = ndc(frm, look, fov, hp_)
-            if hq and abs(hq[0]) < 1 and (.86 < hq[1] < 1.12) and sh["type"] != "wide": probs.append(("framed", f"{fid}'s face is cut by the frame edge"))
+            if hq and sh["type"] != "wide" and not fid.startswith("background"):   # a head that is partly in the frame and partly out is cut, whichever edge it crosses
+                ry = .12 * film["cast"].get(fid, {}).get("height", 1.72) / (hq[2] * math.tan(math.radians(fov) / 2)); rx = ry / ASPECT
+                if hq[0] + rx > -1 and hq[0] - rx < 1 and hq[1] + ry > -1 and hq[1] - ry < 1 and (abs(hq[0]) + rx > 1 or abs(hq[1]) + ry > 1): probs.append(("framed", f"{fid}'s face is cut by the frame edge"))
             if not hq or abs(hq[0]) > .9 or hq[1] > .9 or hq[1] < -.45: continue
             for o_, n_, b_ in O:
                 if o_ is not None and "'s " in n_ and seg_hits(frm, hp_, b_): probs.append(("sight", f"{n_} covers {fid}'s face")); break
-    return probs, {"keys": keys, "fov": round(fov, 1)}
+    lab = None
+    if sh["labels"]:
+        okp = [pl_ for pl_ in [(1, False), (1, True), (.8, False), (.8, True), (.62, False), (.62, True)] if lab_ok[pl_]]
+        if okp: lab = okp[0]
+        else: probs.append(("label", "no label placement stays inside the frame and off the faces"))
+    return probs, {"keys": keys, "fov": round(fov, 1), "label": lab}
 
 
 def candidates(sh):
     base_h = .12 if sh["type"] == "wide" else .04
     order = []
-    for daz, sx, hf, ds, fs in itertools.product([0, .35, -.35, .7, -.7, 1.1, -1.1, 1.5, -1.5], [.2, .06, .45], [base_h, .15, .3, .5, .8], [1, .8, 1.25, .62, 1.6, 2.2, .45, .34], [1, 1.2, 1.45]):
+    for daz, sx, hf, ds, fs in itertools.product([0, .35, -.35, .7, -.7, 1.1, -1.1, 1.5, -1.5], [.2, .06, .45], [base_h, .15, .3, .5, .8], [1, .8, 1.25, .62, 1.6, 2.2, .45, .34], [1, 1.2, 1.45, 1.8, 2.2]):
         cost = abs(daz) * 2 + abs(sx - .2) * 2 + abs(hf - base_h) * 4 + abs(math.log(ds)) * 3 + (fs - 1) * 3
         order.append((cost, (daz, sx, hf, ds, fs)))
     order.sort(key=lambda x: x[0]); return [c for _, c in order]
@@ -292,7 +304,10 @@ def gate(name):
             p0, cam0 = evaluate(film, sc, sh, (d[0], side0, d[1], d[2], d[3], d[4]))
             sbx0 = subject_box(film, sc, sh) if sh["subject"].get("point") and sh["type"] in ("close", "detail") else None
             if sbx0: b0 = sbx0[0]; sh["focus"] = [round((b0[0] + b0[3]) / 2, 3), round((b0[1] + b0[4]) / 2, 3), round((b0[2] + b0[5]) / 2, 3)]
-            if not p0: sh["cam"] = cam0; rows.append((sc["id"], sh["id"], sh["type"], "pass", "", "")); continue
+            def bake(cam, sh=sh):
+                lab = cam.pop("label", None)
+                if lab: sh["labelScale"], sh["labelBelow"] = lab[0], lab[1]
+            if not p0: bake(cam0); sh["cam"] = cam0; rows.append((sc["id"], sh["id"], sh["type"], "pass", "", "")); continue
             best = (len(p0), p0, cam0); found = None
             for c in cands[:1500]:
                 for side in (side0, -side0):
@@ -302,11 +317,11 @@ def gate(name):
                 if found: break
             why = "; ".join(sorted({m for _, m in p0}))
             if found:
-                c, side, cam = found; sh["cam"] = cam; fixed += 1
+                c, side, cam = found; bake(cam); sh["cam"] = cam; fixed += 1
                 ch = [x for x in [f"turned {abs(c[0]):.1f} rad" if c[0] else "", "raised" if c[2] > .2 else "", "pulled back" if c[3] > 1.1 else "moved in" if c[3] < .9 else "", "wider lens" if c[4] > 1 else "", "other side" if side != side0 else ""] if x]
                 rows.append((sc["id"], sh["id"], sh["type"], "fixed", why, ", ".join(ch) or "shifted sideways"))
             else:
-                sh["cam"] = best[2]; blocked += 1
+                bake(best[2]); sh["cam"] = best[2]; blocked += 1
                 rows.append((sc["id"], sh["id"], sh["type"], "BLOCKED", why, "still failing: " + "; ".join(sorted({m for _, m in best[1]}))))
     os.makedirs(f"{ROOT}/inkbeat/src/film/data", exist_ok=True); os.makedirs(f"{HERE}/gate", exist_ok=True)
     open(f"{ROOT}/inkbeat/src/film/data/{name}.ts", "w").write("// GENERATED by scene/compile.py + scene/gate.py. Do not edit by hand.\nimport type { FilmData } from \"../types\";\nexport const film: FilmData = " + json.dumps(film, indent=1, ensure_ascii=False) + ";\n")
