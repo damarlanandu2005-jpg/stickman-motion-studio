@@ -12,16 +12,22 @@
   "gl": "angle-egl",
   "comp": "Demo",
   "ok": true,
-  "total_s": 18.0,
-  "tail": "ap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead.\n[Tab 1, node_modules/three/build/three.core.js:2022] THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead.\nRendered 1/30, time remaining: 3m 29s\nRendered 2/30, time remaining: 1m 41s\nRendered 3/30, time remaining: 1m 11s\nRendered 4/30, time remaining: 51s\nRendered 5/30, time remaining: 40s\nRendered 6/30, time remaining: 32s\nRendered 7/30, time remaining: 28s\nRendered 8/30, time remaining: 23s\nRendered 9/30, time remaining: 21s\nRendered 10/30, time remaining: 18s\nRendered 11/30, time remaining: 16s\nRendered 12/30, time remaining: 14s\nRendered 13/30, time remaining: 12s\nRendered 14/30, time remaining: 11s\nRendered 15/30, time remaining: 9s\nRendered 16/30, time remaining: 8s\nRendered 17/30, time remaining: 7s\nRendered 18/30, time remaining: 6s\nRendered 19/30, time remaining: 6s\nRendered 20/30, time remaining: 5s\nRendered 21/30, time remaining: 4s\nRendered 22/30, time remaining: 3s\nRendered 23/30, time remaining: 3s\nRendered 24/30, time remaining: 2s\nRendered 25/30, time remaining: 2s\nRendered 26/30, time remaining: 1s\nRendered 27/30, time remaining: 1s\nRendered 28/30, time remaining: 0s\nRendered 28/30, time remaining: 0s\nRendered 29/30, time remaining: 0s\nRendered 30/30\nRendered 30/30\nEncoded 4/30\nEncoded 14/30\nEncoded 24/30\nEncoded 30/30\n+                    out/demo_hw.mp4 435.5 kB\n",
+  "total_s": 15.9,
+  "tail": "owMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead.\n[Tab 1, node_modules/three/build/three.core.js:2022] THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead.\nRendered 1/30, time remaining: 3m 27s\nRendered 2/30, time remaining: 1m 40s\nRendered 3/30, time remaining: 1m 7s\nRendered 4/30, time remaining: 49s\nRendered 5/30, time remaining: 38s\nRendered 6/30, time remaining: 31s\nRendered 7/30, time remaining: 26s\nRendered 8/30, time remaining: 21s\nRendered 9/30, time remaining: 18s\nRendered 10/30, time remaining: 16s\nRendered 11/30, time remaining: 14s\nRendered 12/30, time remaining: 12s\nRendered 13/30, time remaining: 11s\nRendered 14/30, time remaining: 10s\nRendered 15/30, time remaining: 9s\nRendered 16/30, time remaining: 8s\nRendered 17/30, time remaining: 7s\nRendered 18/30, time remaining: 6s\nRendered 19/30, time remaining: 5s\nRendered 20/30, time remaining: 4s\nRendered 21/30, time remaining: 4s\nRendered 22/30, time remaining: 3s\nRendered 23/30, time remaining: 3s\nRendered 24/30, time remaining: 2s\nRendered 25/30, time remaining: 2s\nRendered 26/30, time remaining: 1s\nRendered 27/30, time remaining: 1s\nRendered 27/30, time remaining: 1s\nRendered 28/30, time remaining: 0s\nRendered 29/30, time remaining: 0s\nRendered 30/30\nRendered 30/30\nEncoded 6/30\nEncoded 18/30\nEncoded 24/30\nEncoded 30/30\n+                    out/demo_hw.mp4 431 kB\n",
+  "errors": [],
   "size_mb": 0.4
  },
  "pilot_hw": {
   "gl": "angle-egl",
   "comp": "Film-db-cooper",
   "ok": false,
-  "total_s": 142.6,
+  "total_s": 132.2,
   "tail": "t.production.js:11119)\nat commitLayoutEffectOnFiber (node_modules/react-dom/cjs/react-dom-client.production.js:9967)\nat recursivelyTraverseLayoutEffects (node_modules/react-dom/cjs/react-dom-client.production.js:11119)\nat commitLayoutEffectOnFiber (node_modules/react-dom/cjs/react-dom-client.production.js:10085)\nat recursivelyTraverseLayoutEffects (node_modules/react-dom/cjs/react-dom-client.production.js:11119)\nat commitLayoutEffectOnFiber (node_modules/react-dom/cjs/react-dom-client.production.js:9967)\nat recursivelyTraverseLayoutEffects (node_modules/react-dom/cjs/react-dom-client.production.js:11119)\nat commitLayoutEffectOnFiber (node_modules/react-dom/cjs/react-dom-client.production.js:10085)\nat recursivelyTraverseLayoutEffects (node_modules/react-dom/cjs/react-dom-client.production.js:11119)\nat commitLayoutEffectOnFiber (node_modules/react-dom/cjs/react-dom-client.production.js:10085)\nat recursivelyTraverseLayoutEffects (node_modules/react-dom/cjs/react-dom-client.production.js:11119)\nat commitLayoutEffectOnFiber (node_modules/react-dom/cjs/react-dom-client.production.js:10085)\nat recursivelyTraverseLayoutEffects (node_modules/react-dom/cjs/react-dom-client.production.js:11119)\nat commitLayoutEffectOnFiber (node_modules/react-dom/cjs/react-dom-client.production.js:10085)\nat recursivelyTraverseLayoutEffects (node_modules/react-dom/cjs/react-dom-client.production.js:11119)\n",
+  "errors": [
+   "An error occurred while rendering frame 636:",
+   " Error  THREE.WebGLRenderer: Error creating WebGL context.",
+   "16458 \u2502 \t\t\t\t\t\tthrow new Error( 'THREE.WebGLRenderer: Error creating WebGL context.' );"
+  ],
   "size_mb": 0
  }
 }
