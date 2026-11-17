@@ -116,6 +116,7 @@ export const Film: React.FC<{ film: FilmData }> = ({ film }) => {
   if (sc1) S = headPoint(sc1, sh, t, H(sc1.id));
   else if (held) S = handPoint(held, sh, t, H(held.id));
   else { const p = v3(sub.point ?? [0, 1, -4]); S = [p[0], p[1] + (p[1] < 0.3 && sh.type !== "wide" ? 0.45 : p[1] < 0.3 ? 1.2 : 0), p[2]]; }
+  if (sh.focus) S = v3(sh.focus);   // set by scene/gate.py: the centre of the piece the shot is about
   const two = sh.type === "two_shot" ? by(sh.second) : undefined;
   if (two && sc1) { const b = headPoint(two, sh, t, H(two.id)); S = [(S[0] + b[0]) / 2, (S[1] + b[1]) / 2, (S[2] + b[2]) / 2]; }
 

@@ -11,6 +11,11 @@ For each shot, at five moments across it, a camera must satisfy:
             shot must show); a held item counts, so a paper in front of a face fails
   framed    the subject (and the others the shot must show) are inside the frame with margin, above the captions
   size      the subject's head is neither a speck nor cropped, by shot type
+  shown     (v2) everyone the plan says the shot shows is in frame and not hidden; a close/detail shot of a piece
+            has the WHOLE piece in frame and large enough to read; a held item must not cover any face in frame
+  fill      (v2) nothing in front of the subject covers more than a fifth of the frame (a third in wide shots)
+  label     (v2) an on-screen label stays inside the frame and off every face
+  head      (v2) at least 6 of 9 sample points across a head are visible, not just its centre
 The default camera (shot type + scene view angle) is tried first; if it fails, nearby cameras are searched
 (side, angle, height, distance, lens) and the closest passing one is used. That is the auto-fix. Every change
 is recorded. If nothing passes, the shot is blocked and the least-bad camera is kept only so stills can be made.
@@ -64,12 +69,19 @@ def held_box(tok, at, c):
     return [at[0] - r, at[1] - r, at[2] - r, at[0] + r, at[1] + r, at[2] + r]
 
 
+SIZE_OPTS = {"panel": ("w", 1.8)}   # kind -> (option, default it was measured at); x extents scale with it, keeping the fixed levers
+def piece_box(p):
+    b = list(BND["pieces"][p["kind"]]); so = SIZE_OPTS.get(p["kind"]); w = (p.get("opts") or {}).get(so[0]) if so else None
+    if w: half = max(w / 2, .25); b[0], b[3] = -half, half
+    return yaw_box(b, p["p"], p["yaw"], p["s"])
+
+
 def occluders(film, sc, sh, t):
     """[(owner, name, box)] at time t. owner = a character id for their body and what they hold, else None."""
     O = []
     for p in sc["pieces"]:
         b = BND["pieces"].get(p["kind"])
-        if b and p["kind"] not in ("road", "stream", "blanket", "cloud", "lightning"): O.append((None, p["name"], yaw_box(b, p["p"], p["yaw"], p["s"])))
+        if b and p["kind"] not in ("road", "stream", "blanket", "cloud", "lightning"): O.append((None, p["name"], piece_box(p)))
     for pl in sc["planes"]:
         P, yw = pl["p"], pl.get("yaw", 0)
         parts = [("fuselage", [-9.6, -1.1, -1.1, 8.9, 1.1, 1.1]), ("wing", [-1.2, -.62, -7.5, 2.0, -.38, 7.5]), ("tail fin", [-10, .4, -.15, -7.2, 3.6, .15]), ("tailplane", [-10.2, 3.1, -2.3, -8.6, 3.3, 2.3])]
@@ -116,15 +128,50 @@ def aim_look(frm, S, fov, face):
     d = norm(sub(S, frm)); return [S[0], S[1] - math.tan(math.radians((.5 - face) * fov)) * d, S[2]]
 
 
+def subject_box(film, sc, sh):
+    """For a shot about a placed piece or an aircraft part (a 'point' subject): the world box of that object, or None."""
+    pt = sh["subject"].get("point")
+    if not pt: return None
+    best = None
+    for p in sc["pieces"]:
+        b = BND["pieces"].get(p["kind"])
+        if not b or p["kind"] in ("road", "stream", "blanket", "cloud", "lightning"): continue
+        d = math.dist(p["p"], pt)
+        if d < .35 and (best is None or d < best[0]): best = (d, piece_box(p), p["name"])
+    if best: return best[1], best[2]
+    for pl in sc["planes"]:
+        P, yw = pl["p"], pl.get("yaw", 0)
+        parts = [("airliner airstair", [-8.45, -3.4, -.5, -4.95, -1.05, .5]), ("airliner tail fin", [-10, .4, -.15, -7.2, 3.6, .15]), ("airliner fuselage", [-9.6, -1.1, -1.1, 8.9, 1.1, 1.1])]
+        for n, b in parts:
+            w = yaw_box(b, P, yw)
+            if inside(pt, w, .05): return w, n
+    return None
+def corners(b): return [[x, y, z] for x in (b[0], b[3]) for y in (b[1], b[4]) for z in (b[2], b[5])]
+def screen_box(frm, look, fov, pts):
+    """bbox in frame units of the visible part of a point set; None if all behind the lens"""
+    q = [ndc(frm, look, fov, p) for p in pts]; q = [x for x in q if x]
+    if not q: return None
+    return min(x[0] for x in q), min(x[1] for x in q), max(x[0] for x in q), max(x[1] for x in q)
+def head_samples(frm, pt, r):
+    """pt plus 8 points on a ring of radius r facing the lens"""
+    f = sub(pt, frm); L = norm(f) or 1; f = [x / L for x in f]; rr = cross(f, [0, 1, 0]); rl = norm(rr) or 1; rr = [x / rl for x in rr]; u = cross(rr, f)
+    return [pt] + [[pt[i] + r * (math.cos(a) * rr[i] + math.sin(a) * u[i]) for i in range(3)] for a in [k * math.pi / 4 for k in range(8)]]
+
+
 def subject_points(film, sc, sh, t):
     """(S, owner of S, [(point, owner, label)] that must be seen)"""
     by = {c["id"]: c for c in sh["chars"]}; H = lambda i: film["cast"][i].get("height", 1.72); s = sh["subject"]; must = []
     if s.get("char") in by: c = by[s["char"]]; S = head(c, sh, t, H(c["id"])); own = c["id"]; must.append((S, own, c["id"]))
     elif s.get("held") in by: c = by[s["held"]]; S = hand(c, sh, t, H(c["id"])); own = c["id"]; must.append((S, own, "the " + s["token"].split(":")[0]))
     else:
-        p = s.get("point", [0, 1, -4]); S = [p[0], p[1] + ((.45 if sh["type"] != "wide" else 1.2) if p[1] < .3 else 0), p[2]]; own = "__point__"; must.append((S, own, "the subject"))
+        p = s.get("point", [0, 1, -4]); S = [p[0], p[1] + ((.45 if sh["type"] != "wide" else 1.2) if p[1] < .3 else 0), p[2]]; own = "__point__"
+        sb = subject_box(film, sc, sh)
+        if sb and sh["type"] in ("close", "detail"): bx = sb[0]; S = [(bx[0] + bx[3]) / 2, (bx[1] + bx[4]) / 2, (bx[2] + bx[5]) / 2]
+        must.append((S, own, "the subject"))
     if sh["type"] == "two_shot" and sh.get("second") in by and s.get("char") in by:
         c2 = by[sh["second"]]; b = head(c2, sh, t, H(c2["id"])); must.append((b, c2["id"], c2["id"])); S = [(S[0] + b[0]) / 2, (S[1] + b[1]) / 2, (S[2] + b[2]) / 2]
+    for w in sh.get("shows", []):
+        if w in by and w != s.get("char") and w != sh.get("second") and w != s.get("held"): must.append((head(by[w], sh, t, H(w)), w, "also " + w))
     return S, own, must
 
 
@@ -138,7 +185,11 @@ def evaluate(film, sc, sh, cand):
         S, own, must = subject_points(film, sc, sh, t)
         dist = DIST[sh["type"]] * ds
         if sh["subject"].get("size"): dist = max(dist, sh["subject"]["size"] * 2.4 * ds)
-        if len(must) > 1: sep = math.hypot(must[0][0][0] - must[1][0][0], must[0][0][2] - must[1][0][2]); dist = max(dist, (sep / 2 + .55) / (math.tan(math.radians(FOV["two_shot"] / 2)) * ASPECT) * ds)
+        sbd = subject_box(film, sc, sh) if sh["subject"].get("point") and sh["type"] in ("close", "detail") else None
+        if sbd:   # stand far enough that the whole piece fits the lens, whatever its size
+            bx = sbd[0]; ew, eh = max(bx[3] - bx[0], bx[5] - bx[2]), bx[4] - bx[1]; tn = math.tan(math.radians(fov) / 2)
+            dist = max(dist, max(ew * .62 / (tn * ASPECT), eh * .62 / tn))
+        if sh["type"] == "two_shot" and len(must) > 1: sep = math.hypot(must[0][0][0] - must[1][0][0], must[0][0][2] - must[1][0][2]); dist = max(dist, (sep / 2 + .55) / (math.tan(math.radians(FOV["two_shot"] / 2)) * ASPECT) * ds)
         mv = sh["move"]
         if mv == "push": dist *= 1 - .12 * e
         elif mv == "pull": dist *= .88 + .12 * e
@@ -163,12 +214,62 @@ def evaluate(film, sc, sh, cand):
                     continue
                 if seg_hits(frm, pt, box): probs.append(("sight", f"{name} hides {label}")); break
             q = ndc(frm, look, fov, pt)
-            if mv == "tilt_down" and u < .5: continue   # a tilt arrives on its subject; it need not hold it from the first frame
-            if not q or abs(q[0]) > .78 or q[1] > .86 or q[1] < -.42: probs.append(("framed", f"{label} is out of frame")); continue
+            if mv == "tilt_down" and u <= .5: continue   # a tilt arrives on its subject; it need not hold it from the first frame
+            xl = .95 if label.startswith("also ") else .78
+            if not q or abs(q[0]) > xl or q[1] > .86 or q[1] < -.42: probs.append(("framed", f"{label} is out of frame")); continue
             if powner not in ("__point__",) and not label.startswith("the "):
                 Hh = film["cast"][powner].get("height", 1.72); sz = .13 * Hh / (q[2] * math.tan(math.radians(fov) / 2))
-                if sz < HEAD_MIN[sh["type"]]: probs.append(("size", f"{label} is too small in frame"))
+                if not label.startswith("also ") and sz < HEAD_MIN[sh["type"]]: probs.append(("size", f"{label} is too small in frame"))
                 if sz > HEAD_MAX: probs.append(("size", f"{label} is cropped (too close)"))
+                # head: most of the head must be visible, not just its centre (a seat back across the face fails)
+                if not label.startswith("the "):
+                    hid = 0
+                    for sp in head_samples(frm, pt, .1 * Hh):
+                        if any(o_ != powner and seg_hits(frm, sp, b_, 0) and not inside(pt, b_, .12) for o_, n_, b_ in O): hid += 1
+                    if hid > 3: probs.append(("head", f"{label}'s head is mostly hidden ({9 - hid}/9 visible)"))
+        # shown: the whole piece a close or detail shot is about must be in frame and big enough to read
+        sb = subject_box(film, sc, sh) if sh["subject"].get("point") else None
+        if sb and sh["type"] in ("close", "detail") and not (mv == "tilt_down" and u <= .5):
+            q = screen_box(frm, look, fov, corners(sb[0]))
+            if not q or q[0] < -1.0 or q[2] > 1.0 or q[1] < -.45 or q[3] > .9: probs.append(("shown", f"{sb[1]} is not fully in frame"))
+            elif max(q[2] - q[0], (q[3] - q[1]) * ASPECT) < .3: probs.append(("shown", f"{sb[1]} is too small to read"))
+        # fill: nothing in front of the subject may cover a large part of the frame
+        Sd = dot(sub(S, frm), [x / (norm(sub(look, frm)) or 1) for x in sub(look, frm)])
+        own_ids = {powner for _, powner, _ in must}; sbx = sb[0] if sb else None
+        for owner, name, box in O:
+            if owner in own_ids or (sbx is not None and box == sbx): continue
+            if sb and sb[1].startswith("airliner") and name.startswith("airliner"): continue
+            if any(box[0] - .1 <= char_pos(c_, sh, t)[0] <= box[3] + .1 and box[2] - .1 <= char_pos(c_, sh, t)[2] <= box[5] + .1 and box[1] - .1 <= char_pos(c_, sh, t)[1] <= box[4] + .4 for c_ in sh["chars"]): continue   # they stand on it or sit in it
+            ctr = [(box[0] + box[3]) / 2, (box[1] + box[4]) / 2, (box[2] + box[5]) / 2]
+            if dot(sub(ctr, frm), [x / (norm(sub(look, frm)) or 1) for x in sub(look, frm)]) > Sd - .3: continue
+            q = screen_box(frm, look, fov, corners(box))
+            if not q: continue
+            w_, h_ = min(1, q[2]) - max(-1, q[0]), min(1, q[3]) - max(-1, q[1])
+            share = max(0, w_) * max(0, h_) / 4
+            if share > (.33 if sh["type"] == "wide" else .2): probs.append(("fill", f"{name} fills {share * 100:.0f}% of the frame in front of the subject")); break
+        # label: stays inside the frame and off every face
+        dist_s = norm(sub(S, frm)); k = dist_s / 4.4
+        for i, txt in enumerate(sh["labels"]):
+            cx, cy, cz = S[0], S[1] + (.5 + i * .26) * k, S[2] + .05
+            w, h = min(1.5, .25 + len(txt) * .055) * k, .2 * k
+            f_ = sub(look, frm); Lf = norm(f_); f_ = [x / Lf for x in f_]; r_ = cross(f_, [0, 1, 0]); rl_ = norm(r_) or 1; r_ = [x / rl_ for x in r_]
+            ql = screen_box(frm, look, fov, [[cx + sx_ * w / 2 * r_[0], cy + sy_ * h / 2, cz + sx_ * w / 2 * r_[2]] for sx_ in (-1, 1) for sy_ in (-1, 1)])
+            if not ql or ql[0] < -.92 or ql[2] > .92: probs.append(("label", f"label '{txt}' runs outside the frame")); continue
+            for c_ in sh["chars"]:
+                Hc = film["cast"][c_["id"]].get("height", 1.72); hq = ndc(frm, look, fov, head(c_, sh, t, Hc))
+                if not hq: continue
+                rad = .15 * Hc / (hq[2] * math.tan(math.radians(fov) / 2))
+                if ql[0] - rad < hq[0] < ql[2] + rad and ql[1] - rad < hq[1] < ql[3] + rad and abs(hq[0]) < 1 and abs(hq[1]) < 1: probs.append(("label", f"label '{txt}' covers {c_['id']}'s face")); break
+        # held items must not cover a face that is in frame; no face (cast or background crowd) may be cut by the frame edge
+        faces = [(c_["id"], head(c_, sh, t, film["cast"][c_["id"]].get("height", 1.72))) for c_ in sh["chars"]]
+        for ci, c_ in enumerate(sc["crowd"]):
+            dt = t - sc["t0"]; faces.append((f"background person {ci}", [c_["p"][0] + c_["vel"][0] * dt, c_["p"][1] + 1.37, c_["p"][2] + c_["vel"][1] * dt]))
+        for fid, hp_ in faces:
+            hq = ndc(frm, look, fov, hp_)
+            if hq and abs(hq[0]) < 1 and (.86 < hq[1] < 1.12) and sh["type"] != "wide": probs.append(("framed", f"{fid}'s face is cut by the frame edge"))
+            if not hq or abs(hq[0]) > .9 or hq[1] > .9 or hq[1] < -.45: continue
+            for o_, n_, b_ in O:
+                if o_ is not None and "'s " in n_ and seg_hits(frm, hp_, b_): probs.append(("sight", f"{n_} covers {fid}'s face")); break
     return probs, {"keys": keys, "fov": round(fov, 1)}
 
 
@@ -189,6 +290,8 @@ def gate(name):
             side0 = 1 if (si + hi) % 2 else -1; n += 1
             cands = candidates(sh); d = cands[0]
             p0, cam0 = evaluate(film, sc, sh, (d[0], side0, d[1], d[2], d[3], d[4]))
+            sbx0 = subject_box(film, sc, sh) if sh["subject"].get("point") and sh["type"] in ("close", "detail") else None
+            if sbx0: b0 = sbx0[0]; sh["focus"] = [round((b0[0] + b0[3]) / 2, 3), round((b0[1] + b0[4]) / 2, 3), round((b0[2] + b0[5]) / 2, 3)]
             if not p0: sh["cam"] = cam0; rows.append((sc["id"], sh["id"], sh["type"], "pass", "", "")); continue
             best = (len(p0), p0, cam0); found = None
             for c in cands[:1500]:

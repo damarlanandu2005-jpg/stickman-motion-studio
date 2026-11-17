@@ -44,6 +44,17 @@ searching nearby cameras (angle, side, height, distance, lens); cameras are bake
 `Film.tsx` interpolates them. db_cooper: 31 shots, 24 pass as planned, 7 fixed, 0 blocked.
 Unknown: whether the rendered picture now looks right. The gate is a box model of the scene.
 
+**Gate v2 (2026-11-17, after the first gated render was reviewed: 31 mid-shot frames).** The v1 gate passed shots that
+looked wrong: cockpit (sh18-20), tail airstair (sh23), seat back over Cooper (sh12), the $200,000 banner running
+edge to edge (sh13/14). Causes found in the code, fixed as RULES: point subjects now aim at the centre of the
+piece (`subject_box`) and the whole piece must be in frame and readable; the plan's `shows` people (now carried
+into the film by compile.py) must be in frame; nothing in front of the subject may cover >20% of the frame (33% wide;
+things people stand on and aircraft parts of an aircraft shot are exempt); labels must stay inside the frame and off
+faces; 6 of 9 head sample points must be visible; held items may not cover a face; faces may not be cut by the
+frame edge; piece boxes honour size options (`panel` `w`) because `bounds.json` is measured at defaults.
+Result on db_cooper: 17 pass, 14 fixed, 0 blocked. NOT yet re-rendered: check the 31 frames again.
+Known not caught: sh05 (ticket) looks cluttered but no rule fires; sh22 stair rail across Cooper's chest.
+
 ### NEXT (in order; ask the owner before each)
 1. Render `Film-db-cooper` on Kaggle with the gated cameras. Pull frames at each shot's middle (shot times are in
    `scene/film/db_cooper.film.json`) and look at all 31. If a shot passes the gate but looks wrong, fix the GATE

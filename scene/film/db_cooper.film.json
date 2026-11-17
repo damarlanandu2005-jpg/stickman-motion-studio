@@ -982,7 +982,8 @@
      ],
      "labels": [
       "1971"
-     ]
+     ],
+     "shows": []
     },
     {
      "id": "sh02",
@@ -1011,7 +1012,11 @@
        ]
       }
      ],
-     "labels": []
+     "labels": [],
+     "shows": [
+      "money_bag",
+      "parachute canopy"
+     ]
     },
     {
      "id": "sh03",
@@ -1045,7 +1050,10 @@
        ]
       }
      ],
-     "labels": []
+     "labels": [],
+     "shows": [
+      "parachute canopy"
+     ]
     }
    ]
   },
@@ -1306,7 +1314,11 @@
        "holds": []
       }
      ],
-     "labels": []
+     "labels": [],
+     "shows": [
+      "ticket",
+      "agent"
+     ]
     },
     {
      "id": "sh05",
@@ -1337,7 +1349,10 @@
        ]
       }
      ],
-     "labels": []
+     "labels": [],
+     "shows": [
+      "ticket"
+     ]
     },
     {
      "id": "sh06",
@@ -1379,7 +1394,10 @@
        "holds": []
       }
      ],
-     "labels": []
+     "labels": [],
+     "shows": [
+      "briefcase"
+     ]
     }
    ]
   },
@@ -1458,7 +1476,10 @@
        "holds": []
       }
      ],
-     "labels": []
+     "labels": [],
+     "shows": [
+      "briefcase"
+     ]
     },
     {
      "id": "sh08",
@@ -1502,7 +1523,11 @@
        ]
       }
      ],
-     "labels": []
+     "labels": [],
+     "shows": [
+      "note",
+      "attendant"
+     ]
     },
     {
      "id": "sh09",
@@ -1547,7 +1572,10 @@
        ]
       }
      ],
-     "labels": []
+     "labels": [],
+     "shows": [
+      "note"
+     ]
     },
     {
      "id": "sh10",
@@ -1592,7 +1620,10 @@
        ]
       }
      ],
-     "labels": []
+     "labels": [],
+     "shows": [
+      "briefcase"
+     ]
     },
     {
      "id": "sh11",
@@ -1636,7 +1667,10 @@
        ]
       }
      ],
-     "labels": []
+     "labels": [],
+     "shows": [
+      "note"
+     ]
     },
     {
      "id": "sh12",
@@ -1680,7 +1714,10 @@
        ]
       }
      ],
-     "labels": []
+     "labels": [],
+     "shows": [
+      "briefcase"
+     ]
     },
     {
      "id": "sh13",
@@ -1727,7 +1764,8 @@
      ],
      "labels": [
       "$200,000 · 4 PARACHUTES"
-     ]
+     ],
+     "shows": []
     },
     {
      "id": "sh14",
@@ -1774,7 +1812,8 @@
      ],
      "labels": [
       "$200,000 · 4 PARACHUTES"
-     ]
+     ],
+     "shows": []
     }
    ]
   },
@@ -2064,7 +2103,11 @@
        ]
       }
      ],
-     "labels": []
+     "labels": [],
+     "shows": [
+      "money_bag",
+      "cart with four parachutes"
+     ]
     },
     {
      "id": "sh16",
@@ -2107,7 +2150,11 @@
        "holds": []
       }
      ],
-     "labels": []
+     "labels": [],
+     "shows": [
+      "money_bag",
+      "attendant"
+     ]
     },
     {
      "id": "sh17",
@@ -2154,7 +2201,10 @@
        "holds": []
       }
      ],
-     "labels": []
+     "labels": [],
+     "shows": [
+      "boarding stairs"
+     ]
     }
    ]
   },
@@ -2320,7 +2370,12 @@
        "holds": []
       }
      ],
-     "labels": []
+     "labels": [],
+     "shows": [
+      "pilot",
+      "copilot",
+      "money_bag"
+     ]
     },
     {
      "id": "sh19",
@@ -2380,7 +2435,10 @@
        "holds": []
       }
      ],
-     "labels": []
+     "labels": [],
+     "shows": [
+      "pilot"
+     ]
     },
     {
      "id": "sh20",
@@ -2440,7 +2498,11 @@
        "holds": []
       }
      ],
-     "labels": []
+     "labels": [],
+     "shows": [
+      "route chart",
+      "copilot"
+     ]
     }
    ]
   },
@@ -2525,7 +2587,10 @@
        ]
       }
      ],
-     "labels": []
+     "labels": [],
+     "shows": [
+      "pine forest below"
+     ]
     },
     {
      "id": "sh22",
@@ -2554,7 +2619,10 @@
        ]
       }
      ],
-     "labels": []
+     "labels": [],
+     "shows": [
+      "money_bag"
+     ]
     },
     {
      "id": "sh23",
@@ -2587,7 +2655,10 @@
        ]
       }
      ],
-     "labels": []
+     "labels": [],
+     "shows": [
+      "rear airstair"
+     ]
     },
     {
      "id": "sh24",
@@ -2616,7 +2687,11 @@
        ]
       }
      ],
-     "labels": []
+     "labels": [],
+     "shows": [
+      "rear airstair",
+      "money_bag"
+     ]
     }
    ]
   },
@@ -2886,7 +2961,11 @@
        "holds": []
       }
      ],
-     "labels": []
+     "labels": [],
+     "shows": [
+      "search poles",
+      "helicopter"
+     ]
     },
     {
      "id": "sh26",
@@ -2928,7 +3007,11 @@
        "holds": []
       }
      ],
-     "labels": []
+     "labels": [],
+     "shows": [
+      "sketch",
+      "fbi_two"
+     ]
     }
    ]
   },
@@ -3044,7 +3127,10 @@
        "holds": []
       }
      ],
-     "labels": []
+     "labels": [],
+     "shows": [
+      "cash_bundle"
+     ]
     },
     {
      "id": "sh28",
@@ -3086,7 +3172,12 @@
        "holds": []
       }
      ],
-     "labels": []
+     "labels": [],
+     "shows": [
+      "cash_bundle",
+      "river",
+      "father"
+     ]
     },
     {
      "id": "sh29",
@@ -3128,7 +3219,11 @@
        ]
       }
      ],
-     "labels": []
+     "labels": [],
+     "shows": [
+      "cash_bundle",
+      "boy"
+     ]
     }
    ]
   },
@@ -3271,7 +3366,11 @@
      },
      "second": null,
      "chars": [],
-     "labels": []
+     "labels": [],
+     "shows": [
+      "sketch",
+      "pin board with red string"
+     ]
     },
     {
      "id": "sh31",
@@ -3290,7 +3389,8 @@
      "chars": [],
      "labels": [
       "UNSOLVED"
-     ]
+     ],
+     "shows": []
     }
    ]
   }

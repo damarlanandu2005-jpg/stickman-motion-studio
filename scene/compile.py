@@ -123,7 +123,7 @@ def compile_film(name):
             else: subject = {"point": slots[next(iter(slots))][0]}; notes.append(f"{sc['id']}/{sh['id']}: subject '{subj}' has no position; camera uses the first slot")
             second = None
             if sh["type"] == "two_shot": second = next((c for c in ids if c != subj and (c in sh["shows"] or True)), None)
-            shots.append({"id": sh["id"], "t0": round(T(sh["w0"]), 3), "t1": round(ends[(sc["id"], sh["id"])], 3), "type": sh["type"], "move": sh["move"], "subject": subject, "second": second, "chars": chars, "labels": sh["labels"]})
+            shots.append({"id": sh["id"], "t0": round(T(sh["w0"]), 3), "t1": round(ends[(sc["id"], sh["id"])], 3), "type": sh["type"], "move": sh["move"], "subject": subject, "second": second, "chars": chars, "labels": sh["labels"], "shows": sh.get("shows", [])})
         w, d = opt.get("w", 7), opt.get("d", 6)
         lim = {"room": {"x": w / 2 - .5, "zmax": 2.6, "ymax": opt.get("h", 3.2) - .5}, "airliner_cabin": {"x": .55, "zmax": 1.2, "ymax": 1.95}}.get(kit)
         film["scenes"].append({"id": sc["id"], "t0": shots[0]["t0"], "t1": shots[-1]["t1"], "tag": sc["tag"] if si else "", "kit": kit, "options": opt, "mood": MOODS[sc["mood"]], "sky": not sc["enclosed"],
