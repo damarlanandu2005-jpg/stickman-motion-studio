@@ -80,6 +80,12 @@ Known not caught: sh05 (ticket) looks cluttered but no rule fires; sh22 stair ra
 - Labels: keep held papers small (max about 0.5 m wide) or they cover faces.
 - Fact checks for the three scripts are recorded in each story plan (`facts`, with source and status).
 
+- A render can silently go wrong with no error in `inkbeat_result.json`: on 2026-11-17 one run (commit 1059431) froze the
+  fills at 26.73 s (sh22 on), leaving later scenes as ghost outlines over the sh21 picture; the identical commit
+  re-rendered clean. So it is flaky. Stage 7 MUST detect it (frozen/ghosted stretches) before any delivery; never
+  trust `ok: true` alone. Also: the kaggle CLI has no single-GPU option (P100 retired, T4 x2 always); queue time
+  is Kaggle's and varies from none to 30+ min; cancelling a queued run only restarts the wait.
+
 ### Owner decisions already made
 - inkbeat's 3D toon figure is the working look (provisional until three automated films exist).
 - 40 s films are allowed.
