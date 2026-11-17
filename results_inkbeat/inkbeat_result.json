@@ -1,1 +1,31 @@
-{"note":"no result"}
+{
+ "engine": "inkbeat",
+ "comp": "Film-db-cooper",
+ "branch": "ricks-stage-kaggle",
+ "test": "p100-hardware-gl",
+ "gpu": "Tesla T4, 580.178.04\nTesla T4, 580.178.04",
+ "node": "v22.23.4",
+ "chrome": "/root/.cache/ms-playwright/chromium-1194/chrome-linux/chrome",
+ "gl_renderer": "requireStack: [ '/tmp/probe.js' ]\n}\n\nNode.js v22.23.4",
+ "hardware_gl": true,
+ "demo_hw": {
+  "gl": "angle-egl",
+  "comp": "Demo",
+  "ok": true,
+  "total_s": 17.4,
+  "tail": "Map: PCFSoftShadowMap has been removed. Using PCFShadowMap instead.\n[Tab 1, node_modules/three/build/three.core.js:2022] THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead.\nRendered 1/30, time remaining: 3m 25s\nRendered 2/30, time remaining: 1m 39s\nRendered 3/30, time remaining: 1m 4s\nRendered 4/30, time remaining: 47s\nRendered 5/30, time remaining: 37s\nRendered 6/30, time remaining: 30s\nRendered 7/30, time remaining: 26s\nRendered 8/30, time remaining: 21s\nRendered 9/30, time remaining: 19s\nRendered 10/30, time remaining: 16s\nRendered 11/30, time remaining: 14s\nRendered 12/30, time remaining: 12s\nRendered 13/30, time remaining: 12s\nRendered 14/30, time remaining: 10s\nRendered 15/30, time remaining: 9s\nRendered 16/30, time remaining: 8s\nRendered 17/30, time remaining: 7s\nRendered 18/30, time remaining: 6s\nRendered 19/30, time remaining: 6s\nRendered 20/30, time remaining: 5s\nRendered 21/30, time remaining: 4s\nRendered 22/30, time remaining: 3s\nRendered 23/30, time remaining: 3s\nRendered 24/30, time remaining: 2s\nRendered 25/30, time remaining: 2s\nRendered 26/30, time remaining: 1s\nRendered 26/30, time remaining: 1s\nRendered 27/30, time remaining: 1s\nRendered 28/30, time remaining: 0s\nRendered 29/30, time remaining: 0s\nRendered 30/30\nRendered 30/30\nEncoded 5/30\nEncoded 15/30\nEncoded 24/30\nEncoded 30/30\n+                    out/demo_hw.mp4 431.8 kB\n",
+  "errors": [],
+  "size_mb": 0.4
+ },
+ "pilot_hw": {
+  "gl": "angle-egl",
+  "comp": "Film-db-cooper",
+  "ok": false,
+  "total_s": 185.1,
+  "tail": "1206, time remaining: 49s\nRendered 925/1206, time remaining: 49s\nRendered 925/1206, time remaining: 49s\nRendered 926/1206, time remaining: 49s\nRendered 927/1206, time remaining: 48s\nRendered 928/1206, time remaining: 48s\nRendered 928/1206, time remaining: 48s\nRendered 929/1206, time remaining: 48s\nRendered 930/1206, time remaining: 48s\nRendered 930/1206, time remaining: 48s\nRendered 931/1206, time remaining: 48s\nRendered 932/1206, time remaining: 48s\nRendered 932/1206, time remaining: 48s\nRendered 933/1206, time remaining: 48s\nRendered 934/1206, time remaining: 47s\nRendered 934/1206, time remaining: 47s\nRendered 935/1206, time remaining: 48s\nRendered 936/1206, time remaining: 47s\nRendered 937/1206, time remaining: 47s\nRendered 937/1206, time remaining: 47s\nRendered 938/1206, time remaining: 48s\nRendered 938/1206, time remaining: 48s\nRendered 938/1206, time remaining: 48s\nRendered 938/1206, time remaining: 48s\nRendered 938/1206, time remaining: 48s\nRendered 938/1206, time remaining: 48s\nRendered 938/1206, time remaining: 48s\nRendered 938/1206, time remaining: 48s\n\nError: Could not take a screenshot because Google Chrome ran out of memory or disk space. Decrease the concurrency to use less RAM.\n    at screenshotTask (/tmp/repo/inkbeat/node_modules/@remotion/renderer/dist/screenshot-task.js:100:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n",
+  "errors": [
+   "Error: Could not take a screenshot because Google Chrome ran out of memory or disk space. Decrease the concurrency to use less RAM."
+  ],
+  "size_mb": 0
+ }
+}
