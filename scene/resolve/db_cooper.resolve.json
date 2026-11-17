@@ -4,24 +4,261 @@
    "kit": "sky",
    "options": {
     "below": "pines"
+   },
+   "slots": {
+    "air_far": {
+     "p": [
+      2.5,
+      6,
+      -14
+     ],
+     "yaw": 0.2
+    },
+    "air_mid": {
+     "p": [
+      0,
+      3,
+      -4.5
+     ],
+     "yaw": 0.3
+    },
+    "treeline": {
+     "p": [
+      0.5,
+      -3.5,
+      -8
+     ],
+     "yaw": 0.2
+    }
+   },
+   "anchors": {
+    "pine forest below": [
+     0.5,
+     -6,
+     -10
+    ],
+    "parachute canopy": [
+     0.5,
+     0,
+     -8
+    ]
+   },
+   "layout": {
+    "airliner with lit windows": {
+     "p": [
+      -5,
+      10,
+      -26
+     ],
+     "yaw": 0
+    }
    }
   },
   "ticket_hall": {
    "kit": "room",
    "options": {
     "wall": "#cfc3ae"
+   },
+   "slots": {
+    "counter_customer": {
+     "p": [
+      -0.7,
+      0,
+      -2.5
+     ],
+     "yaw": 0.85
+    },
+    "counter_staff": {
+     "p": [
+      0.7,
+      0,
+      -2.6
+     ],
+     "yaw": -0.85
+    },
+    "hall_back": {
+     "p": [
+      0,
+      0,
+      -4.6
+     ],
+     "yaw": 0
+    }
+   },
+   "layout": {
+    "ticket counter": {
+     "p": [
+      0,
+      0,
+      -2.9
+     ],
+     "yaw": 1.5708,
+     "opts": {
+      "w": 1.8,
+      "d": 0.5
+     }
+    },
+    "queue rope": {
+     "p": [
+      -2.4,
+      0,
+      -1.6
+     ],
+     "yaw": 0.6
+    },
+    "luggage scale": {
+     "p": [
+      2.3,
+      0,
+      -2.9
+     ],
+     "yaw": -0.4
+    }
    }
   },
   "cabin": {
    "kit": "airliner_cabin",
-   "options": {}
+   "options": {},
+   "slots": {
+    "seat_rear_aisle": {
+     "p": [
+      -0.82,
+      0,
+      -2.95
+     ],
+     "yaw": 0.9,
+     "legs": "sit"
+    },
+    "aisle_rear": {
+     "p": [
+      0.25,
+      0,
+      -2.75
+     ],
+     "yaw": -0.9
+    },
+    "aisle_mid": {
+     "p": [
+      0,
+      0,
+      -6
+     ],
+     "yaw": 0
+    }
+   }
   },
   "tarmac": {
    "kit": "ground",
    "options": {
     "surface": "tarmac",
     "backdrop": "none"
-   }
+   },
+   "slots": {
+    "stairs_foot": {
+     "p": [
+      0,
+      0,
+      -10.4
+     ],
+     "yaw": 0
+    },
+    "stairs_mid": {
+     "p": [
+      0,
+      1.79,
+      -13.2
+     ],
+     "yaw": 3.14
+    },
+    "door": {
+     "p": [
+      0,
+      2.39,
+      -13.9
+     ],
+     "yaw": 1.2
+    },
+    "apron_mid": {
+     "p": [
+      2,
+      0,
+      -6
+     ],
+     "yaw": 0
+    }
+   },
+   "layout": {
+    "parked airliner": {
+     "p": [
+      0.5,
+      2.45,
+      -15.4
+     ],
+     "yaw": 0,
+     "gear": true
+    },
+    "boarding stairs": {
+     "p": [
+      0,
+      0,
+      -11.5
+     ],
+     "yaw": 0
+    },
+    "fuel truck": {
+     "p": [
+      -7.5,
+      0,
+      -9
+     ],
+     "yaw": 0.4
+    },
+    "apron markings": {
+     "p": [
+      0,
+      0,
+      -6.5
+     ],
+     "yaw": 0
+    },
+    "terminal lights": {
+     "p": [
+      13,
+      0,
+      -24
+     ],
+     "yaw": -0.3
+    },
+    "cart with four parachutes": [
+     {
+      "p": [
+       3.2,
+       0,
+       -9.2
+      ],
+      "yaw": 0.3
+     },
+     {
+      "p": [
+       3.2,
+       0.46,
+       -9.2
+      ],
+      "yaw": 0.3
+     }
+    ]
+   },
+   "crowd_from": [
+    1.5,
+    0,
+    -10
+   ],
+   "centre": [
+    1.5,
+    1.2,
+    -10
+   ],
+   "azimuth": 1.05
   },
   "cockpit": {
    "kit": "room",
@@ -31,19 +268,211 @@
     "h": 2.2,
     "windows": 2,
     "windowsLit": false
+   },
+   "slots": {
+    "door": {
+     "p": [
+      0,
+      0,
+      -2.05
+     ],
+     "yaw": 0
+    },
+    "seat_left": {
+     "p": [
+      -0.7,
+      0,
+      -1.35
+     ],
+     "yaw": 0.45,
+     "legs": "sit"
+    },
+    "seat_right": {
+     "p": [
+      0.7,
+      0,
+      -1.35
+     ],
+     "yaw": -0.45,
+     "legs": "sit"
+    }
+   },
+   "layout": {
+    "instrument panel": {
+     "p": [
+      0,
+      -0.25,
+      -0.55
+     ],
+     "yaw": 3.1416,
+     "opts": {
+      "w": 2.2
+     }
+    },
+    "control yokes": {
+     "p": [
+      -0.7,
+      0,
+      -0.95
+     ],
+     "yaw": 3.1416
+    },
+    "throttle levers": {
+     "p": [
+      0,
+      -0.45,
+      -0.75
+     ],
+     "yaw": 3.1416,
+     "opts": {
+      "w": 0.5
+     }
+    },
+    "overhead switches": {
+     "p": [
+      0,
+      1.25,
+      -1.9
+     ],
+     "yaw": 0,
+     "opts": {
+      "w": 1.4
+     }
+    },
+    "route chart": {
+     "p": [
+      0.7,
+      0.82,
+      -1.0
+     ],
+     "yaw": 0.3
+    },
+    "windscreen with runway lights": {
+     "p": [
+      0,
+      0,
+      -2.47
+     ],
+     "yaw": 0
+    }
    }
   },
   "tail": {
    "kit": "sky",
    "options": {
     "below": "pines"
-   }
+   },
+   "slots": {
+    "rear_door": {
+     "p": [
+      -2.2,
+      4.09,
+      -6
+     ],
+     "yaw": -1.9
+    },
+    "stairs_bottom": {
+     "p": [
+      -5.15,
+      2.72,
+      -6
+     ],
+     "yaw": -1.9
+    },
+    "air_below": {
+     "p": [
+      -7,
+      -2,
+      -6
+     ],
+     "yaw": -1.9
+    }
+   },
+   "anchors": {
+    "pine forest below": [
+     -4,
+     -8,
+     -10
+    ]
+   },
+   "layout": {
+    "airliner tail": {
+     "p": [
+      3,
+      5.2,
+      -6
+     ],
+     "yaw": 0,
+     "stairs": true,
+     "focus": [
+      -4,
+      4.4,
+      -6
+     ]
+    },
+    "rear airstair": {
+     "p": [
+      3,
+      5.2,
+      -6
+     ],
+     "yaw": 0,
+     "stairs": true,
+     "focus": [
+      -3.7,
+      3.4,
+      -6
+     ]
+    }
+   },
+   "side_view": true
   },
   "forest": {
    "kit": "ground",
    "options": {
     "surface": "grass",
     "backdrop": "pines"
+   },
+   "slots": {
+    "clearing_front": {
+     "p": [
+      -0.9,
+      0,
+      -2.8
+     ],
+     "yaw": 0.5
+    },
+    "clearing_side": {
+     "p": [
+      0.9,
+      0,
+      -3.2
+     ],
+     "yaw": -0.5
+    },
+    "line_back": {
+     "p": [
+      0,
+      0,
+      -8
+     ],
+     "yaw": 0
+    }
+   },
+   "centre": [
+    0,
+    1.2,
+    -8
+   ],
+   "layout": {
+    "helicopter": {
+     "p": [
+      3,
+      8,
+      -18
+     ],
+     "yaw": 0.5
+    }
    }
   },
   "riverbank": {
@@ -51,6 +480,63 @@
    "options": {
     "bank": "sand",
     "far": "pines"
+   },
+   "slots": {
+    "sand_front": {
+     "p": [
+      -0.5,
+      0,
+      -2.9
+     ],
+     "yaw": 0.4
+    },
+    "sand_side": {
+     "p": [
+      0.9,
+      0,
+      -3.2
+     ],
+     "yaw": -0.6
+    },
+    "waterline": {
+     "p": [
+      0.4,
+      0,
+      -5.2
+     ],
+     "yaw": 0
+    }
+   },
+   "layout": {
+    "cash_bundle": {
+     "p": [
+      -0.15,
+      0,
+      -2.4
+     ]
+    },
+    "picnic blanket": {
+     "p": [
+      2.6,
+      0,
+      -2.2
+     ],
+     "yaw": 0.3
+    },
+    "campfire ring": {
+     "p": [
+      -2.4,
+      0,
+      -3.4
+     ]
+    }
+   },
+   "anchors": {
+    "river": [
+     0,
+     0,
+     -9
+    ]
    }
   },
   "evidence_room": {
@@ -58,6 +544,89 @@
    "options": {
     "wall": "#b9b4a6",
     "floorTex": "stone"
+   },
+   "slots": {
+    "board": {
+     "p": [
+      0,
+      0,
+      -4.9
+     ],
+     "yaw": 0
+    },
+    "desk": {
+     "p": [
+      0,
+      0,
+      -3.6
+     ],
+     "yaw": 0
+    }
+   },
+   "layout": {
+    "desk lamp": [
+     {
+      "p": [
+       0.6,
+       0,
+       -3.2
+      ],
+      "yaw": 0
+     },
+     {
+      "p": [
+       1.05,
+       0.79,
+       -3.2
+      ],
+      "yaw": 0
+     }
+    ],
+    "case file box": {
+     "p": [
+      0.45,
+      0.79,
+      -3.15
+     ],
+     "yaw": 0.2
+    },
+    "sketch": {
+     "p": [
+      -1.75,
+      1.55,
+      -5.8
+     ],
+     "yaw": 0,
+     "opts": {}
+    },
+    "pin board with red string": {
+     "p": [
+      -1.75,
+      0,
+      -5.86
+     ]
+    },
+    "wall map of Washington": {
+     "p": [
+      1.6,
+      0,
+      -5.86
+     ]
+    },
+    "filing cabinets": {
+     "p": [
+      3.0,
+      0,
+      -5.4
+     ]
+    },
+    "evidence bag with the tie": {
+     "p": [
+      0.1,
+      0.79,
+      -3.3
+     ]
+    }
    }
   }
  },
@@ -135,5 +704,94 @@
   "parachute": "pack",
   "sketch": "sketch",
   "cash_bundle": "cash"
+ },
+ "looks": {
+  "cooper": {
+   "height": 1.78,
+   "skin": "#ecccae",
+   "outfit": "jacket",
+   "top": "#23262e",
+   "bottom": "#1b1d23",
+   "hair": "swoop",
+   "hairColor": "#20191a",
+   "glasses": "#15161a",
+   "mustache": "#20191a",
+   "nose": "hook"
+  },
+  "agent": {
+   "height": 1.72,
+   "skin": "#e7b48e",
+   "outfit": "jacket",
+   "top": "#3f5d8a",
+   "bottom": "#2a3550",
+   "hair": "swoop",
+   "hairColor": "#5a4535"
+  },
+  "attendant": {
+   "height": 1.66,
+   "skin": "#f1d6bd",
+   "outfit": "jacket",
+   "top": "#7a2230",
+   "bottom": "#5a1a26",
+   "hair": "swoop",
+   "hairColor": "#3a2820"
+  },
+  "pilot": {
+   "height": 1.72,
+   "skin": "#ecccae",
+   "outfit": "shirt",
+   "top": "#e9e6de",
+   "bottom": "#1b1d23",
+   "hair": "swoop",
+   "hairColor": "#5a4535",
+   "hat": "cap"
+  },
+  "copilot": {
+   "height": 1.72,
+   "skin": "#d49a6a",
+   "outfit": "shirt",
+   "top": "#e9e6de",
+   "bottom": "#1b1d23",
+   "hair": "swoop",
+   "hairColor": "#2a211c"
+  },
+  "fbi_lead": {
+   "height": 1.72,
+   "skin": "#e7b48e",
+   "outfit": "jacket",
+   "top": "#8d8f96",
+   "bottom": "#2c2f38",
+   "hair": "swoop",
+   "hairColor": "#2a211c",
+   "hat": "flat"
+  },
+  "fbi_two": {
+   "height": 1.72,
+   "skin": "#d49a6a",
+   "outfit": "jacket",
+   "top": "#6a5a48",
+   "bottom": "#2c2f38",
+   "hair": "swoop",
+   "hairColor": "#141216",
+   "hat": "flat"
+  },
+  "boy": {
+   "height": 1.18,
+   "skin": "#f1d6bd",
+   "outfit": "shirt",
+   "top": "#d0672f",
+   "bottom": "#3b5a8a",
+   "hair": "swoop",
+   "hairColor": "#8a5a2a"
+  },
+  "father": {
+   "height": 1.72,
+   "skin": "#ecccae",
+   "outfit": "shirt",
+   "top": "#7a3a30",
+   "bottom": "#3b5a8a",
+   "hair": "swoop",
+   "hairColor": "#3a2a22"
+  }
  }
 }
