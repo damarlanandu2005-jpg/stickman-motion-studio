@@ -11,7 +11,6 @@ import { CastLight } from "../inkbeat/core/castLight";
 import { Label } from "../inkbeat/core/kit";
 import { useFonts } from "../inkbeat/core/frame";
 import { moodOf } from "../inkbeat/core/moods";
-import { aim } from "../inkbeat/core/rig";
 import { View } from "../inkbeat/core/View";
 import type { V3 } from "../inkbeat/types";
 import { Cabin } from "../cooper/Cabin";
@@ -39,7 +38,7 @@ const FACES: Record<string, any> = {
   focused: { eyes: "squint", mouth: "flat", brows: "neutral" }, relief: { eyes: "half", mouth: "smile", brows: "raised" }, pain: { eyes: "closed", mouth: "frown", brows: "worried" },
 };
 // what each vocabulary action does to the body: [leg pose, arm pose, walking?, head nod]
-const UP = new Set(["hand_over", "receive", "hold_up", "open_case", "lift", "count_fingers", "write", "draw_line", "push_lever", "point"]);
+const UP = new Set(["hand_over", "receive", "hold_up", "open_case", "lift", "count_fingers", "push_lever", "point"]); // keep in step with scene/gate.py
 const pose = (c: CharData, t: number): any => {
   const a = c.action;
   const legs = c.legs ?? (a === "sit" ? "sit" : a === "kneel" || a === "dig" ? "kneel" : a === "crouch" ? "crouch" : "stand");
@@ -87,8 +86,6 @@ const Held: React.FC<{ token: string; at: V3; c: CharData }> = ({ token, at, c }
   return <group position={at} rotation={[1.25, 0, 0]}><Piece kind={kind} p={[0, 0, 0]} /></group>;
 };
 
-const DIST: Record<string, number> = { wide: 8.5, medium: 4.6, two_shot: 4.3, close: 3.1, detail: 2.3 };
-const FOV: Record<string, number> = { wide: 52, medium: 46, two_shot: 44, close: 36, detail: 30 };
 
 const Kit: React.FC<{ sc: SceneData }> = ({ sc }) => {
   const o = sc.options as Record<string, never>;
@@ -120,28 +117,15 @@ export const Film: React.FC<{ film: FilmData }> = ({ film }) => {
   else if (held) S = handPoint(held, sh, t, H(held.id));
   else { const p = v3(sub.point ?? [0, 1, -4]); S = [p[0], p[1] + (p[1] < 0.3 && sh.type !== "wide" ? 0.45 : p[1] < 0.3 ? 1.2 : 0), p[2]]; }
   const two = sh.type === "two_shot" ? by(sh.second) : undefined;
-  let sep = 0;
-  if (two && sc1) { const b = headPoint(two, sh, t, H(two.id)); sep = Math.hypot(S[0] - b[0], S[2] - b[2]); S = [(S[0] + b[0]) / 2, (S[1] + b[1]) / 2, (S[2] + b[2]) / 2]; }
+  if (two && sc1) { const b = headPoint(two, sh, t, H(two.id)); S = [(S[0] + b[0]) / 2, (S[1] + b[1]) / 2, (S[2] + b[2]) / 2]; }
 
-  // ---- camera from shot type, move and the set's limits ----
+  // ---- camera: chosen and checked by scene/gate.py, baked as five keys across the shot ----
   const u = ease((t - sh.t0) / Math.max(0.01, sh.t1 - sh.t0));
-  const side = (si + hi) % 2 ? 1 : -1;
-  let dist = DIST[sh.type] ?? 4.4;
-  if (sub.size) dist = Math.max(dist, sub.size * 2.4); // a big subject (an aircraft, a building) needs room
-  // a two-shot must be far enough back to hold both people inside a 9:16 frame
-  if (two) dist = Math.max(dist, (sep / 2 + 0.55) / (Math.tan(((FOV.two_shot / 2) * Math.PI) / 180) * 0.5625));
-  if (sh.move === "push") dist *= 1 - 0.12 * u; else if (sh.move === "pull") dist *= 0.88 + 0.12 * u;
-  const sx = sh.move === "orbit" ? 0.08 + 0.3 * u : 0.2 + (sh.move === "hold_drift" ? 0.05 * u : 0);
-  const az = sc.azimuth ?? 0, off = two ? side * 0.06 : side * sx; // the set may ask to be seen from an angle
-  let from: V3 = [S[0] + dist * (Math.sin(az) + off * Math.cos(az)), S[1] + dist * (sh.type === "wide" ? 0.12 : 0.04) + (sh.move === "crane_up" ? 0.22 * dist * u : 0), S[2] + dist * 0.97 * (Math.cos(az) - off * Math.sin(az))];
-  let fov = FOV[sh.type] ?? 46;
-  if (sc.limit) {
-    const L = sc.limit;
-    if (from[2] > L.zmax) { fov = Math.min(64, fov + (from[2] - L.zmax) * 3.2); from[2] = L.zmax; }
-    from = [Math.max(-L.x, Math.min(L.x, from[0])), Math.min(L.ymax, from[1]), from[2]];
-  }
-  const target: V3 = sh.move === "tilt_down" ? [S[0], S[1] + (1 - u) * 0.25 * dist, S[2]] : S;
-  const cam = aim(from, target, fov, sh.type === "detail" ? 0.5 : 0.42);
+  const K = sh.cam.keys; const x = u * (K.length - 1); const k0 = Math.min(K.length - 2, Math.floor(x)); const f = x - k0;
+  const mixv = (a: number[], b: number[]): V3 => [a[0] + (b[0] - a[0]) * f, a[1] + (b[1] - a[1]) * f, a[2] + (b[2] - a[2]) * f];
+  const from = mixv(K[k0].from, K[k0 + 1].from);
+  const cam = { pos: from, look: mixv(K[k0].look, K[k0 + 1].look), fov: sh.cam.fov, roll: 0 };
+  const dist = Math.hypot(S[0] - from[0], S[1] - from[1], S[2] - from[2]);
   const m = moodOf(sc.mood);
 
   return (
@@ -151,7 +135,7 @@ export const Film: React.FC<{ film: FilmData }> = ({ film }) => {
       <View mood={m} cam={cam} t={t} focus={S} blur={1.2} sky={sc.sky}>
         <Kit sc={sc} />
         {sc.pieces.map((p, i) => <Piece key={i} kind={p.kind} p={v3(p.p)} yaw={p.yaw} s={p.s} {...(p.opts as object)} />)}
-        {sc.planes.map((p, i) => <Plane key={i} p={v3(p.p)} yaw={p.yaw ?? 0} gear={!!p.gear} stairs={!!p.stairs} />)}
+        {sc.planes.map((p, i) => <Plane key={i} p={v3(p.p)} yaw={p.yaw ?? 0} gear={!!p.gear} stairs={!!p.stairs && t >= (p.stairs_from ?? 0)} />)}
         {sc.rain ? <Rain t={t} c={[S[0], S[1], S[2] + 2]} /> : null}
         {sc.crowd.map((c, i) => { const dt = t - sc.t0; const cx = c.p[0] + c.vel[0] * dt, cz = c.p[2] + c.vel[1] * dt; if (Math.hypot(cx - from[0], cz - from[2]) < 2.4) return null; /* never let a walker cross the lens */ return <Character3D key={"cr" + i} {...spec(CROWD[c.look])} position={[c.p[0] + c.vel[0] * dt, c.p[1], c.p[2] + c.vel[1] * dt]} yaw={c.yaw} t={t} face={FACES.neutral} pose={{ walk: c.walk ? t * 6 + i * 1.7 : undefined }} />; })}
         {sh.chars.map((c) => {
