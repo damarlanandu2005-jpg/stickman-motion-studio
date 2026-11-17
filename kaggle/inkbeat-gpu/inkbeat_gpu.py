@@ -59,7 +59,7 @@ be = ("--browser-executable='%s'" % chrome) if chrome else ""
 def render(comp, mp4, gl, extra="", timeout=6000):
     log = "/tmp/rr_%s.log" % gl.replace("-", "")
     t = time.time()
-    c = "cd %s && npx remotion render src/index.ts %s out/%s --gl=%s --chrome-mode=chrome-for-testing %s %s --timeout=300000 --concurrency=2 > %s 2>&1" % (P, comp, mp4, gl, be, extra, log)
+    c = "cd %s && npx remotion render src/index.ts %s out/%s --gl=%s --chrome-mode=chrome-for-testing %s %s --timeout=300000 --concurrency=1 > %s 2>&1" % (P, comp, mp4, gl, be, extra, log)
     sh(c, timeout=timeout, show=120)
     dt = round(time.time() - t, 1)
     try: full = open(log).read(); tail = full[-1400:]
