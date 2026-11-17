@@ -62,10 +62,11 @@ def render(comp, mp4, gl, extra="", timeout=6000):
     c = "cd %s && npx remotion render src/index.ts %s out/%s --gl=%s --chrome-mode=chrome-for-testing %s %s --timeout=300000 --concurrency=2 > %s 2>&1" % (P, comp, mp4, gl, be, extra, log)
     sh(c, timeout=timeout, show=120)
     dt = round(time.time() - t, 1)
-    try: tail = open(log).read()[-1400:]
-    except Exception: tail = ""
+    try: full = open(log).read(); tail = full[-1400:]
+    except Exception: full = tail = ""
+    errs = [l[:400] for l in full.splitlines() if ("Error" in l or "error" in l) and "node_modules" not in l][:12]
     ok = os.path.exists(out + "/" + mp4)
-    return {"gl": gl, "comp": comp, "ok": ok, "total_s": dt, "tail": tail,
+    return {"gl": gl, "comp": comp, "ok": ok, "total_s": dt, "tail": tail, "errors": errs,
             "size_mb": round(os.path.getsize(out + "/" + mp4) / 1e6, 1) if ok else 0}
 
 # hardware first (angle-egl = Chrome --use-angle=gl-egl, the ricks path); record it
