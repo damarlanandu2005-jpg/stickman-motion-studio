@@ -961,7 +961,8 @@ export const film: FilmData = {
        -5,
        10,
        -26
-      ]
+      ],
+      "size": 7
      },
      "second": null,
      "chars": [
@@ -1025,7 +1026,8 @@ export const film: FilmData = {
        0.5,
        -6,
        -10
-      ]
+      ],
+      "size": 5
      },
      "second": null,
      "chars": [
@@ -1886,10 +1888,10 @@ export const film: FilmData = {
       -8.5
      ],
      "vel": [
-      0.75,
-      0.5
+      -0.268,
+      0.769
      ],
-     "yaw": 1.0,
+     "yaw": -0.335,
      "walk": true
     },
     {
@@ -1900,10 +1902,10 @@ export const film: FilmData = {
       -8.5
      ],
      "vel": [
-      0.75,
-      0.5
+      -0.268,
+      0.769
      ],
-     "yaw": 1.0,
+     "yaw": -0.335,
      "walk": true
     },
     {
@@ -1914,10 +1916,10 @@ export const film: FilmData = {
       -8.5
      ],
      "vel": [
-      0.75,
-      0.5
+      -0.268,
+      0.769
      ],
-     "yaw": 1.0,
+     "yaw": -0.335,
      "walk": true
     },
     {
@@ -1928,10 +1930,10 @@ export const film: FilmData = {
       -7.2
      ],
      "vel": [
-      0.75,
-      0.5
+      -0.268,
+      0.769
      ],
-     "yaw": 1.0,
+     "yaw": -0.335,
      "walk": true
     },
     {
@@ -1942,10 +1944,10 @@ export const film: FilmData = {
       -7.2
      ],
      "vel": [
-      0.75,
-      0.5
+      -0.268,
+      0.769
      ],
-     "yaw": 1.0,
+     "yaw": -0.335,
      "walk": true
     },
     {
@@ -1956,10 +1958,10 @@ export const film: FilmData = {
       -7.2
      ],
      "vel": [
-      0.75,
-      0.5
+      -0.268,
+      0.769
      ],
-     "yaw": 1.0,
+     "yaw": -0.335,
      "walk": true
     },
     {
@@ -1970,10 +1972,10 @@ export const film: FilmData = {
       -5.9
      ],
      "vel": [
-      0.75,
-      0.5
+      -0.268,
+      0.769
      ],
-     "yaw": 1.0,
+     "yaw": -0.335,
      "walk": true
     },
     {
@@ -1984,10 +1986,10 @@ export const film: FilmData = {
       -5.9
      ],
      "vel": [
-      0.75,
-      0.5
+      -0.268,
+      0.769
      ],
-     "yaw": 1.0,
+     "yaw": -0.335,
      "walk": true
     },
     {
@@ -1998,10 +2000,10 @@ export const film: FilmData = {
       -5.9
      ],
      "vel": [
-      0.75,
-      0.5
+      -0.268,
+      0.769
      ],
-     "yaw": 1.0,
+     "yaw": -0.335,
      "walk": true
     },
     {
@@ -2012,10 +2014,10 @@ export const film: FilmData = {
       -4.6
      ],
      "vel": [
-      0.75,
-      0.5
+      -0.268,
+      0.769
      ],
-     "yaw": 1.0,
+     "yaw": -0.335,
      "walk": true
     }
    ],
@@ -2502,7 +2504,8 @@ export const film: FilmData = {
        -4,
        4.4,
        -6
-      ]
+      ],
+      "size": 7
      },
      "second": null,
      "chars": [

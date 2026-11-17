@@ -50,8 +50,8 @@ jobs:
         run: |
           D=results_inkbeat; mkdir -p $D
           cp out/inkbeat_result.json $D/ 2>/dev/null || echo '{"note":"no result"}' > $D/inkbeat_result.json
-          rm -f $D/inkbeat_pilot.mp4
-          [ -f out/inkbeat_pilot.mp4 ] && [ $(stat -c%s out/inkbeat_pilot.mp4) -lt 99000000 ] && cp out/inkbeat_pilot.mp4 $D/ || true
+          # keep the last good video unless this run really produced a new one
+          [ -f out/inkbeat_pilot.mp4 ] && [ $(stat -c%s out/inkbeat_pilot.mp4) -lt 99000000 ] && cp out/inkbeat_pilot.mp4 $D/ || echo "no new video; kept the previous one"
           git checkout -- kaggle 2>/dev/null || true
           git config user.name "claude-bot"; git config user.email "noreply@anthropic.com"
           git add -f $D 2>/dev/null || true

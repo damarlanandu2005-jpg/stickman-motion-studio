@@ -98,7 +98,9 @@ def compile_film(name):
         cz = {"room": -opt.get("d", 6) * .8}.get(kit, -8)
         for i in range(min(n, 10) if act not in ("none", "seated_idle") else 0):
             if act in ("walk_cross", "queue"): d = 1 if i % 2 else -1; crowd.append({"look": i % 5, "p": [-d * 4.5 + d * i * 1.1, 0, cz - (i % 3) * .5], "vel": [d * .8, 0], "yaw": d * 1.57, "walk": True})
-            elif act == "walk_away": o_ = st.get("crowd_from", [0, 0, -9]); az = st.get("azimuth", 0); vx, vz = -.8 * math.cos(az) + .15 * math.sin(az), .8 * math.sin(az) + .15 * math.cos(az)   # across the frame, never at the lens
+            elif act == "walk_away":
+                o_ = st.get("crowd_from", [0, 0, -9]); az = st.get("azimuth", 0)
+                vx, vz = -.8 * math.cos(az) + .15 * math.sin(az), .8 * math.sin(az) + .15 * math.cos(az)   # across the frame, never at the lens
                 crowd.append({"look": i % 5, "p": [o_[0] + 1 + (i % 3) * .8, 0, o_[2] + 1.5 + (i // 3) * 1.3], "vel": [round(vx, 3), round(vz, 3)], "yaw": round(math.atan2(vx, vz), 3), "walk": True})
             elif act == "search_line": crowd.append({"look": i % 5, "p": [-7.5 + i * 1.6, 0, -9.5 - (i % 2) * .8], "vel": [0, .12], "yaw": 0, "walk": True})
             else: crowd.append({"look": i % 5, "p": [-4 + i * 1.0, 0, cz], "vel": [0, 0], "yaw": 0, "walk": False})
