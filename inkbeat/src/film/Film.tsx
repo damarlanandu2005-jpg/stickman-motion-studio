@@ -147,7 +147,7 @@ export const Film: React.FC<{ film: FilmData }> = ({ film }) => {
     <AbsoluteFill style={{ background: "#0c0e14" }}>
       <Audio src={staticFile(film.voice)} />
       <Audio src={staticFile(film.music)} volume={0.14} />
-      <View key={sc.id} mood={m} cam={cam} t={t} focus={S} blur={1.2} sky={sc.sky}>
+      <View mood={m} cam={cam} t={t} focus={S} blur={1.2} sky={sc.sky}>
         <Kit sc={sc} />
         {sc.pieces.map((p, i) => <Piece key={i} kind={p.kind} p={v3(p.p)} yaw={p.yaw} s={p.s} {...(p.opts as object)} />)}
         {sc.planes.map((p, i) => <Plane key={i} p={v3(p.p)} yaw={p.yaw ?? 0} gear={!!p.gear} stairs={!!p.stairs} />)}
